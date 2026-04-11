@@ -1,0 +1,839 @@
+<!DOCTYPE html>
+<html lang="en" data-palette="violet" data-mode="dark" data-lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Alexandru Chiuță — Single-File Architect</title>
+<meta name="description" content="Crafting powerful single-file HTML applications. Open. Offline-first. Yours.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+
+[data-mode="dark"][data-palette="violet"]{--bg:#07060f;--bg2:#0e0c1c;--bg3:#141228;--text:#ece9f8;--muted:#9b98b8;--accent:#8b5cf6;--accent-lo:rgba(139,92,246,.14);--border:rgba(120,90,220,.2);--border-hi:rgba(150,120,255,.42)}
+[data-mode="dark"][data-palette="cyan"]{--bg:#040d10;--bg2:#07161c;--bg3:#0c1f28;--text:#e8f4f8;--muted:#7ab0be;--accent:#06b6d4;--accent-lo:rgba(6,182,212,.14);--border:rgba(6,182,212,.2);--border-hi:rgba(6,182,212,.44)}
+[data-mode="dark"][data-palette="amber"]{--bg:#0f0b03;--bg2:#1a1407;--bg3:#241c0a;--text:#f6f1e6;--muted:#b8a468;--accent:#f59e0b;--accent-lo:rgba(245,158,11,.14);--border:rgba(245,158,11,.2);--border-hi:rgba(245,158,11,.46)}
+[data-mode="dark"][data-palette="rose"]{--bg:#0f0507;--bg2:#1c090d;--bg3:#260d13;--text:#f8e6ea;--muted:#ba7888;--accent:#f43f5e;--accent-lo:rgba(244,63,94,.14);--border:rgba(244,63,94,.2);--border-hi:rgba(244,63,94,.44)}
+[data-mode="dark"][data-palette="teal"]{--bg:#04100f;--bg2:#071a19;--bg3:#0b2422;--text:#e8f6f4;--muted:#70b0a8;--accent:#14b8a6;--accent-lo:rgba(20,184,166,.14);--border:rgba(20,184,166,.2);--border-hi:rgba(20,184,166,.44)}
+[data-mode="dark"][data-palette="green"]{--bg:#060f06;--bg2:#0a1a0a;--bg3:#0e240f;--text:#eaf6eb;--muted:#78ac7e;--accent:#22c55e;--accent-lo:rgba(34,197,94,.14);--border:rgba(34,197,94,.2);--border-hi:rgba(34,197,94,.44)}
+[data-mode="dark"][data-palette="orange"]{--bg:#0f0804;--bg2:#1a1207;--bg3:#24190a;--text:#f6eee6;--muted:#b89060;--accent:#f97316;--accent-lo:rgba(249,115,22,.14);--border:rgba(249,115,22,.2);--border-hi:rgba(249,115,22,.46)}
+[data-mode="dark"][data-palette="slate"]{--bg:#08090f;--bg2:#0e1018;--bg3:#141722;--text:#eaecf6;--muted:#98a4be;--accent:#94a3b8;--accent-lo:rgba(148,163,184,.14);--border:rgba(148,163,184,.2);--border-hi:rgba(148,163,184,.42)}
+
+[data-mode="light"][data-palette="violet"]{--bg:#f0eef8;--bg2:#ffffff;--bg3:#e6e2f4;--text:#0e0a22;--muted:#5a5270;--accent:#7c3aed;--accent-lo:rgba(124,58,237,.1);--border:rgba(124,58,237,.18);--border-hi:rgba(124,58,237,.38)}
+[data-mode="light"][data-palette="cyan"]{--bg:#edf6f9;--bg2:#ffffff;--bg3:#d8eef4;--text:#041420;--muted:#345e6e;--accent:#0891b2;--accent-lo:rgba(8,145,178,.1);--border:rgba(8,145,178,.18);--border-hi:rgba(8,145,178,.38)}
+[data-mode="light"][data-palette="amber"]{--bg:#faf5e8;--bg2:#ffffff;--bg3:#f4eacc;--text:#180e02;--muted:#6a5020;--accent:#d97706;--accent-lo:rgba(217,119,6,.1);--border:rgba(217,119,6,.2);--border-hi:rgba(217,119,6,.42)}
+[data-mode="light"][data-palette="rose"]{--bg:#faeef0;--bg2:#ffffff;--bg3:#f4d8dc;--text:#180410;--muted:#6e3848;--accent:#e11d48;--accent-lo:rgba(225,29,72,.1);--border:rgba(225,29,72,.18);--border-hi:rgba(225,29,72,.38)}
+[data-mode="light"][data-palette="teal"]{--bg:#edf7f5;--bg2:#ffffff;--bg3:#d4eeea;--text:#021814;--muted:#2c5e58;--accent:#0f766e;--accent-lo:rgba(15,118,110,.1);--border:rgba(15,118,110,.18);--border-hi:rgba(15,118,110,.38)}
+[data-mode="light"][data-palette="green"]{--bg:#eef7ee;--bg2:#ffffff;--bg3:#d4eeda;--text:#040e06;--muted:#2c5832;--accent:#16a34a;--accent-lo:rgba(22,163,74,.1);--border:rgba(22,163,74,.18);--border-hi:rgba(22,163,74,.38)}
+[data-mode="light"][data-palette="orange"]{--bg:#faf3ec;--bg2:#ffffff;--bg3:#f4e4d0;--text:#180c04;--muted:#6a4c24;--accent:#ea580c;--accent-lo:rgba(234,88,12,.1);--border:rgba(234,88,12,.2);--border-hi:rgba(234,88,12,.42)}
+[data-mode="light"][data-palette="slate"]{--bg:#f0f2f6;--bg2:#ffffff;--bg3:#e2e6f0;--text:#0c1018;--muted:#465058;--accent:#475569;--accent-lo:rgba(71,85,105,.1);--border:rgba(71,85,105,.18);--border-hi:rgba(71,85,105,.36)}
+
+html,body{height:100%}
+body{background:var(--bg);color:var(--text);font-family:'Syne',sans-serif;overflow-x:hidden;display:flex;flex-direction:column;transition:background .3s,color .3s}
+:root{--r:10px;--mono:'JetBrains Mono',monospace;--green:#22c55e}
+#bg-canvas{position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.6;transition:opacity .4s}
+.wrap{max-width:1280px;margin:0 auto;padding:0 1.25rem;position:relative;z-index:1;width:100%}
+
+/* NAV */
+nav{position:sticky;top:0;z-index:100;background:color-mix(in srgb,var(--bg) 82%,transparent);backdrop-filter:blur(18px);border-bottom:1px solid var(--border);flex-shrink:0;transition:background .3s,border-color .3s}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;height:44px;gap:.75rem}
+.nav-logo{font-family:var(--mono);font-size:.75rem;color:var(--accent);text-decoration:none;letter-spacing:.05em;transition:color .3s;white-space:nowrap}
+.nav-links{display:flex;align-items:center;gap:.6rem;flex-shrink:0}
+.nav-links a{font-family:var(--mono);font-size:.68rem;color:var(--muted);text-decoration:none;letter-spacing:.06em;text-transform:uppercase;transition:color .2s;white-space:nowrap}
+.nav-links a:hover{color:var(--text)}
+
+/* SHARED PANEL BTN */
+.panel-btn{display:flex;align-items:center;gap:.3rem;font-family:var(--mono);font-size:.67rem;color:var(--muted);background:var(--bg2);border:1px solid var(--border);border-radius:6px;padding:.26rem .55rem;cursor:pointer;transition:border-color .2s,color .2s,background .3s;white-space:nowrap;line-height:1}
+.panel-btn:hover{border-color:var(--border-hi);color:var(--accent)}
+.daynight-btn.is-auto{border-color:color-mix(in srgb,var(--accent) 30%,transparent);color:var(--accent)}
+.panel-btn svg{width:11px;height:11px;flex-shrink:0}
+
+/* FLOATING PANELS */
+.float-panel{position:absolute;top:calc(100% + 4px);background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:.85rem 1rem;display:none;flex-direction:column;gap:.8rem;z-index:200;box-shadow:0 16px 48px rgba(0,0,0,.4);transition:background .3s,border-color .3s}
+.float-panel.open{display:flex}
+#theme-panel{right:1.25rem;min-width:240px}
+#lang-panel{right:calc(1.25rem + 145px);min-width:190px}
+@media(max-width:680px){
+  #theme-panel,#lang-panel{right:.5rem;left:.5rem;min-width:0}
+  .theme-grid{grid-template-columns:repeat(4,1fr)}
+}
+
+.panel-label{font-family:var(--mono);font-size:.56rem;color:var(--muted);text-transform:uppercase;letter-spacing:.14em;margin-bottom:.35rem}
+
+/* LANG GRID */
+.lang-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:.4rem}
+.lang-opt{display:flex;align-items:center;gap:.4rem;padding:.4rem .55rem;border-radius:7px;cursor:pointer;border:1px solid var(--border);background:transparent;font-family:var(--mono);font-size:.68rem;color:var(--muted);transition:all .18s;white-space:nowrap}
+.lang-opt:hover{border-color:var(--border-hi);color:var(--text);background:var(--bg3)}
+.lang-opt.active{border-color:var(--accent);background:var(--accent-lo);color:var(--accent)}
+.lang-flag{font-size:14px;line-height:1}
+
+/* MODE ROW */
+.theme-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:.4rem}
+.tswatch{display:flex;flex-direction:column;align-items:center;gap:.22rem;cursor:pointer}
+.tswatch-card{width:100%;height:28px;border-radius:5px;border:1.5px solid rgba(128,128,128,.25);position:relative;overflow:hidden;transition:transform .15s,border-color .15s,box-shadow .15s}
+.tswatch-card::after{content:'';position:absolute;top:0;left:0;right:0;height:3px}
+.tswatch:hover .tswatch-card{transform:scale(1.06)}
+.tswatch.active .tswatch-card{border-color:var(--text);box-shadow:0 0 0 2px var(--accent-lo)}
+.tswatch-name{font-family:var(--mono);font-size:.5rem;color:var(--muted);transition:color .15s;letter-spacing:.03em}
+.tswatch.active .tswatch-name{color:var(--accent)}
+
+/* HERO */
+.hero-strip{border-bottom:1px solid var(--border);flex-shrink:0;transition:border-color .3s}
+.hero-inner{display:grid;grid-template-columns:1fr auto;align-items:center;gap:1.5rem;padding:1rem 0}
+.hero-left{display:flex;flex-direction:column;gap:.3rem}
+.hero-name{font-size:clamp(1.5rem,3vw,2.3rem);font-weight:800;line-height:1;letter-spacing:-.03em}
+.hero-name span{background:linear-gradient(120deg,var(--accent) 0%,color-mix(in srgb,var(--accent) 40%,#06b6d4) 55%,color-mix(in srgb,var(--accent) 30%,#f59e0b) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;transition:background .3s}
+.hero-tagline{font-family:var(--mono);font-size:.71rem;color:var(--muted);line-height:1.5;transition:color .3s}
+.hero-tagline strong{color:var(--text);font-weight:500}
+.hero-badges{display:flex;gap:.4rem;flex-wrap:wrap;margin-top:.15rem}
+.badge{font-family:var(--mono);font-size:.61rem;color:var(--muted);padding:.17rem .5rem;border:1px solid var(--border);border-radius:100px;white-space:nowrap;display:flex;align-items:center;gap:.3rem;background:var(--bg2);transition:border-color .3s,color .3s,background .3s;text-decoration:none}
+.badge:hover{border-color:var(--border-hi);color:var(--text)}
+.badge .dot{width:5px;height:5px;border-radius:50%;background:var(--green);animation:pulse 2s ease-in-out infinite;flex-shrink:0}
+.badge.orcid-badge{color:var(--accent);border-color:color-mix(in srgb,var(--accent) 35%,transparent)}
+.badge.orcid-badge:hover{background:var(--accent-lo)}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+
+/* STATS */
+.stats-row{display:flex;border:1px solid var(--border);border-radius:var(--r);overflow:hidden;background:var(--bg2);transition:border-color .3s,background .3s}
+.stat{flex:1;padding:.6rem .9rem;border-right:1px solid var(--border);display:flex;flex-direction:column;gap:.06rem;transition:border-color .3s}
+.stat:last-child{border-right:none}
+.stat-value{font-size:1.2rem;font-weight:800;line-height:1}
+.stat-value .u{font-size:.58rem;color:var(--accent);font-family:var(--mono);transition:color .3s}
+.stat-label{font-family:var(--mono);font-size:.56rem;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;transition:color .3s}
+
+/* APPS */
+.apps-header{display:flex;align-items:center;justify-content:space-between;padding:.55rem 0 .45rem;flex-shrink:0}
+.apps-title{font-family:var(--mono);font-size:.66rem;color:var(--muted);text-transform:uppercase;letter-spacing:.12em;transition:color .3s}
+.apps-count{font-family:var(--mono);font-size:.63rem;color:var(--muted);transition:color .3s}
+
+/* GRID */
+#apps-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:.6rem;align-content:start}
+
+/* CARD */
+.app-card{display:flex;background:var(--bg2);border:1px solid var(--border);border-radius:var(--r);overflow:hidden;text-decoration:none;transition:border-color .25s,transform .25s,box-shadow .25s,background .3s;animation:fadeUp .5s ease both;min-height:84px}
+.app-card:hover{border-color:var(--border-hi);transform:translateY(-2px);box-shadow:0 10px 28px rgba(0,0,0,.25),0 0 0 1px var(--border-hi)}
+@keyframes fadeUp{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
+.card-icon{width:68px;flex-shrink:0;position:relative;overflow:hidden}
+.card-icon canvas{width:100%;height:100%;display:block}
+.card-body{flex:1;padding:.6rem .7rem;display:flex;flex-direction:column;gap:.22rem;min-width:0}
+.card-top{display:flex;align-items:center;gap:.35rem}
+.card-name{font-size:.84rem;font-weight:800;letter-spacing:-.02em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.card-lang{font-family:var(--mono);font-size:.52rem;padding:.09rem .36rem;border-radius:100px;border:1px solid;font-weight:500;letter-spacing:.04em;text-transform:uppercase;flex-shrink:0}
+.lang-html{color:#f59e0b;border-color:rgba(245,158,11,.3);background:rgba(245,158,11,.1)}
+.lang-js{color:#06b6d4;border-color:rgba(6,182,212,.3);background:rgba(6,182,212,.1)}
+.lang-default{color:var(--muted);border-color:var(--border)}
+.card-desc{font-family:var(--mono);font-size:.64rem;color:var(--muted);line-height:1.5;flex:1;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;overflow:hidden;transition:color .3s}
+.card-links{display:flex;gap:.28rem;margin-top:.04rem}
+.card-link{font-family:var(--mono);font-size:.57rem;color:var(--muted);text-decoration:none;padding:.14rem .42rem;border:1px solid var(--border);border-radius:4px;background:var(--bg3);transition:border-color .2s,color .2s,background .3s;display:flex;align-items:center;gap:.2rem;white-space:nowrap}
+.card-link svg{width:9px;height:9px;flex-shrink:0}
+.card-link:hover{border-color:var(--border-hi);color:var(--text)}
+.card-link.live-link{color:var(--accent);border-color:color-mix(in srgb,var(--accent) 40%,transparent);background:var(--accent-lo)}
+.card-link.date-chip{pointer-events:none;border-color:transparent;background:transparent;color:var(--muted)}
+
+/* FOOTER */
+footer{border-top:1px solid var(--border);flex-shrink:0;transition:border-color .3s}
+.footer-inner{display:flex;align-items:center;justify-content:space-between;height:34px;font-family:var(--mono);font-size:.6rem;color:var(--muted)}
+.footer-inner a{color:var(--muted);text-decoration:none;transition:color .2s}
+.footer-inner a:hover{color:var(--text)}
+.footer-left{display:flex;align-items:center;gap:.6rem}
+.footer-links{display:flex;gap:1.1rem}
+.orcid-link{color:var(--accent)!important;display:flex;align-items:center;gap:.3rem}
+.orcid-icon{width:14px;height:14px;border-radius:50%;background:#a6ce39;display:inline-flex;align-items:center;justify-content:center;font-size:8px;font-weight:700;color:#fff;font-family:sans-serif;flex-shrink:0}
+
+/* LOADING */
+#loading-state{grid-column:1/-1;text-align:center;padding:2rem;font-family:var(--mono);font-size:.75rem;color:var(--muted);display:flex;flex-direction:column;align-items:center;gap:.75rem}
+.loader{width:18px;height:18px;border:1.5px solid var(--border);border-top-color:var(--accent);border-radius:50%;animation:spin .7s linear infinite;transition:border-top-color .3s}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+main{flex:1;display:flex;flex-direction:column;padding:.6rem 0;overflow:hidden}
+main>.wrap{flex:1;display:flex;flex-direction:column;overflow:hidden}
+
+@media(max-width:960px){#apps-grid{grid-template-columns:repeat(2,1fr)}.hero-inner{grid-template-columns:1fr;gap:.6rem}.stats-row{display:none}}
+@media(max-width:620px){#apps-grid{grid-template-columns:1fr}.hero-name{font-size:1.6rem}.nav-links a:not(.panel-btn){display:none}#lang-panel{right:.5rem}}
+@media(hover:none){.app-card:active{border-color:var(--border-hi);background:var(--bg3)}}
+</style>
+</head>
+<body>
+<canvas id="bg-canvas"></canvas>
+
+<nav>
+  <div class="wrap nav-inner">
+    <a href="#" class="nav-logo">chiuta.github.io</a>
+    <div class="nav-links">
+      <a href="https://chiuta.ro" target="_blank">OmniHost</a>
+      <a href="https://github.com/chiuta" target="_blank">GitHub</a>
+      <!-- ANIM BTN -->
+      <button class="panel-btn" id="anim-toggle" aria-label="Animations" onclick="toggleAnim()" title="Animații">
+        <svg id="anim-icon" viewBox="0 0 16 16" fill="currentColor"><path d="M11.596 8.697l-6.363 3.692c-.54.313-1.233-.066-1.233-.697V4.308c0-.63.692-1.01 1.233-.696l6.363 3.692a.802.802 0 0 1 0 1.393z"/></svg>
+      </button>
+      <!-- DAY/NIGHT BTN -->
+      <button class="panel-btn daynight-btn" id="daynight-btn" onclick="toggleDayNight()" title="Zi / Noapte">
+        <svg id="daynight-icon" viewBox="0 0 16 16" fill="currentColor" width="12" height="12"></svg>
+        <span id="daynight-label"></span>
+      </button>
+      <!-- LANG BTN -->
+      <button class="panel-btn" id="lang-toggle" aria-label="Language">
+        <svg viewBox="0 0 16 16" fill="currentColor"><path d="M0 5a5 5 0 0 0 4.027 4.905 6.5 6.5 0 0 1 .544-2.073C3.375 7.573 2.245 6.676 2.245 5a2.751 2.751 0 0 1 5.502 0v.5a.5.5 0 0 0 1 0V5a3.75 3.75 0 0 0-7.5 0zm6.977 3.745A5.002 5.002 0 0 0 10 10a5 5 0 0 0 5-5 .5.5 0 0 0-1 0 4 4 0 0 1-4.95 3.888 6.46 6.46 0 0 1-2.073-.143zM5 0a5 5 0 1 0 0 10A5 5 0 0 0 5 0z"/><path d="M5 6.5a.5.5 0 0 1 .5.5v.5H6a.5.5 0 0 1 0 1h-.5V9a.5.5 0 0 1-1 0v-.5H4a.5.5 0 0 1 0-1h.5V7a.5.5 0 0 1 .5-.5zm5 0c.315 0 .61.147.801.4l1.5 2a.5.5 0 1 1-.802.6L11.298 9H9.702l-.201.5a.5.5 0 1 1-.802-.6l1.5-2A1 1 0 0 1 10 6.5zm0 1.467L9.598 9h.804L10 7.967z"/></svg>
+        <span id="lang-label">EN</span>
+      </button>
+      <!-- THEME BTN -->
+      <button class="panel-btn" id="theme-toggle" aria-label="Theme">
+        <svg viewBox="0 0 16 16" fill="currentColor"><path d="M9.796 1.343c-.527-1.79-3.065-1.79-3.592 0l-.094.319a.873.873 0 0 1-1.255.52l-.292-.16c-1.64-.892-3.433.902-2.54 2.541l.159.292a.873.873 0 0 1-.52 1.255l-.319.094c-1.79.527-1.79 3.065 0 3.592l.319.094a.873.873 0 0 1 .52 1.255l-.16.292c-.892 1.64.901 3.434 2.541 2.54l.292-.159a.873.873 0 0 1 1.255.52l.094.319c.527 1.79 3.065 1.79 3.592 0l.094-.319a.873.873 0 0 1 1.255-.52l.292.16c1.64.893 3.434-.902 2.54-2.541l-.159-.292a.873.873 0 0 1 .52-1.255l.319-.094c1.79-.527 1.79-3.065 0-3.592l-.319-.094a.873.873 0 0 1-.52-1.255l.16-.292c.893-1.64-.902-3.433-2.541-2.54l-.292.159a.873.873 0 0 1-1.255-.52zm-2.633.283c.246-.835 1.428-.835 1.674 0l.094.319a1.873 1.873 0 0 0 2.693 1.115l.291-.16c.764-.415 1.6.42 1.184 1.185l-.159.292a1.873 1.873 0 0 0 1.116 2.692l.318.094c.835.246.835 1.428 0 1.674l-.319.094a1.873 1.873 0 0 0-1.115 2.693l.16.291c.415.764-.42 1.6-1.185 1.184l-.291-.159a1.873 1.873 0 0 0-2.693 1.116l-.094.318c-.246.835-1.428.835-1.674 0l-.094-.319a1.873 1.873 0 0 0-2.692-1.115l-.292.16c-.764.415-1.6-.42-1.184-1.185l.159-.291A1.873 1.873 0 0 0 1.945 8.93l-.319-.094c-.835-.246-.835-1.428 0-1.674l.319-.094A1.873 1.873 0 0 0 3.06 4.474l-.16-.292c-.415-.764.42-1.6 1.185-1.184l.292.159a1.873 1.873 0 0 0 2.692-1.115zm1.856 1.9a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5"/></svg>
+        <span data-i18n="themeLbl">Theme</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- LANG PANEL -->
+  <div class="float-panel" id="lang-panel">
+    <div>
+      <div class="panel-label" data-i18n="langLbl">Language</div>
+      <div class="lang-grid" id="lang-grid"></div>
+    </div>
+  </div>
+
+  <!-- THEME PANEL -->
+  <div class="float-panel" id="theme-panel">
+    <div>
+      <div class="panel-label" data-i18n="darkThemes">Dark themes</div>
+      <div class="theme-grid" id="swatches-dark"></div>
+    </div>
+    <div>
+      <div class="panel-label" data-i18n="lightThemes">Light themes</div>
+      <div class="theme-grid" id="swatches-light"></div>
+    </div>
+  </div>
+</nav>
+
+<div class="hero-strip">
+  <div class="wrap">
+    <div class="hero-inner">
+      <div class="hero-left">
+        <h1 class="hero-name">A.I. <span>Chiuță</span></h1>
+        <p class="hero-tagline"><strong data-i18n="taglineStrong">Single-file HTML apps</strong><span data-i18n="taglineRest"> — offline-first, no server, no account. The file is yours.</span></p>
+        <div class="hero-badges">
+          <span class="badge"><span class="dot"></span><span data-i18n="badgeLocation">Bucharest, RO</span></span>
+          <span class="badge" data-i18n="badgeOffline">◈ Offline-First</span>
+          <span class="badge" data-i18n="badgeVanilla">⬡ Vanilla JS</span>
+          <span class="badge" data-i18n="badgeTelemetry">⌀ Zero Telemetry</span>
+        </div>
+      </div>
+      <div class="stats-row">
+        <div class="stat"><div class="stat-value" id="stat-repos">—</div><div class="stat-label" data-i18n="statRepos">Repos</div></div>
+        <div class="stat"><div class="stat-value">141<span class="u">+</span></div><div class="stat-label" data-i18n="statModules">Modules</div></div>
+        <div class="stat"><div class="stat-value">61<span class="u">lang</span></div><div class="stat-label" data-i18n="statLangs">Languages</div></div>
+        <div class="stat"><div class="stat-value">0<span class="u">b↑</span></div><div class="stat-label" data-i18n="statSent">Sent</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<main>
+  <div class="wrap">
+    <div class="apps-header">
+      <span class="apps-title" data-i18n="projects">Projects</span>
+      <span class="apps-count" id="apps-count"></span>
+    </div>
+    <div id="apps-grid">
+      <div id="loading-state"><div class="loader"></div><div data-i18n="loading">Fetching from GitHub…</div></div>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap footer-inner">
+    <div class="footer-left">
+      <span data-i18n="copyright">© 2026 Alexandru Chiuță</span>
+    </div>
+    <div class="footer-links">
+      <a href="https://orcid.org/0009-0008-6858-4299" target="_blank" rel="noopener" class="orcid-link">
+        <span class="orcid-icon">iD</span> ORCID
+      </a>
+      <a href="https://github.com/chiuta" target="_blank">GitHub</a>
+      <a href="https://chiuta.ro" target="_blank">chiuta.ro</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* ══════════════════════════════════════════
+   I18N — translations
+══════════════════════════════════════════ */
+const T = {
+  en:{
+    themeLbl:'Theme', langLbl:'Language', modeLbl:'Mode', colorLbl:'Color',
+    dark:'Dark', light:'Light',
+    taglineStrong:'Single-file HTML apps',
+    taglineRest:' — offline-first, no server, no account. The file is yours.',
+    badgeLocation:'Bucharest, RO', badgeOffline:'◈ Offline-First',
+    badgeVanilla:'⬡ Vanilla JS', badgeTelemetry:'⌀ Zero Telemetry',
+    statRepos:'Repos', statModules:'Modules', statLangs:'Languages', statSent:'Sent',
+    projects:'Projects', loading:'Fetching from GitHub…',
+    nProjects: n => `${n} projects`,
+    darkThemes:'Dark themes',lightThemes:'Light themes',
+    darkThemes:'Teme întunecate',lightThemes:'Teme luminoase',
+    darkThemes:'Thèmes sombres',lightThemes:'Thèmes clairs',
+    darkThemes:'Temi scuri',lightThemes:'Temi chiari',
+    darkThemes:'Temas oscuros',lightThemes:'Temas claros',
+    darkThemes:'Temas escuros',lightThemes:'Temas claros',
+    copyright:'© 2026 Alexandru-Ionuț Chiuță',
+    desc:{
+      OmniHost:'Complete personal productivity suite — 141 modules: notes, tasks, finance, health & more. The file is your database.',
+      VoiceAtelier:'TTS studio for crafting multi-voice, multilingual speech with per-character assignment and SSML prosody.',
+      TranslateHub:'Client-side translation hub across dozens of languages — zero data ever leaves your browser.',
+      FreeDetect:'AI-generated text & plagiarism detector. Runs entirely in-browser; your documents stay local.',
+      PromptVault:'Local-first prompt manager for AI workflows. Organise, tag, and reuse — no account needed.',
+      'AI-Liber':'Open, libre AI utilities for writing, analysis and research that keep you in full control.',
+      PrintreInteligente:'Interactive science fiction web book — 115 pages, branching lunar survival scenarios inspired by NASA Artemis 2, 108 fictional reviews, and a full Web Speech API audiobook.',
+    }
+  },
+  ro:{
+    themeLbl:'Temă', langLbl:'Limbă', modeLbl:'Mod', colorLbl:'Culoare',
+    dark:'Întunecat', light:'Luminos',
+    taglineStrong:'Aplicații HTML single-file',
+    taglineRest:' — offline-first, fără server, fără cont. Fișierul este al tău.',
+    badgeLocation:'București, RO', badgeOffline:'◈ Offline-First',
+    badgeVanilla:'⬡ Vanilla JS', badgeTelemetry:'⌀ Zero Telemetrie',
+    statRepos:'Repo-uri', statModules:'Module', statLangs:'Limbi', statSent:'Trimis',
+    projects:'Proiecte', loading:'Se încarcă din GitHub…',
+    nProjects: n => `${n} proiecte`,
+    copyright:'© 2026 Alexandru-Ionuț Chiuță',
+    desc:{
+      OmniHost:'Suite completă de productivitate — 141 module: notițe, taskuri, finanțe, sănătate și mai mult. Fișierul este baza ta de date.',
+      VoiceAtelier:'Studio TTS pentru sinteză vocală multi-voce și multilingvă, cu alocare per personaj și control SSML.',
+      TranslateHub:'Hub de traducere client-side în zeci de limbi — niciun byte nu părăsește browserul tău.',
+      FreeDetect:'Detector de text generat de AI și plagiat. Rulează complet în browser; documentele tale rămân locale.',
+      PromptVault:'Manager de prompturi local-first pentru fluxuri AI. Organizează, etichetează, reutilizează — fără cont.',
+      'AI-Liber':'Utilități AI libere și deschise pentru scriere, analiză și cercetare, cu control total al utilizatorului.',
+      PrintreInteligente:'Carte web de science fiction interactivă — 115 pagini, scenarii ramificate de supraviețuire lunară inspirate de NASA Artemis 2, 108 recenzii fictive și audiobook complet cu Web Speech API.',
+    }
+  },
+  fr:{
+    themeLbl:'Thème', langLbl:'Langue', modeLbl:'Mode', colorLbl:'Couleur',
+    dark:'Sombre', light:'Clair',
+    taglineStrong:'Applications HTML fichier unique',
+    taglineRest:' — hors ligne, sans serveur, sans compte. Le fichier vous appartient.',
+    badgeLocation:'Bucarest, RO', badgeOffline:'◈ Hors Ligne',
+    badgeVanilla:'⬡ Vanilla JS', badgeTelemetry:'⌀ Zéro Télémétrie',
+    statRepos:'Dépôts', statModules:'Modules', statLangs:'Langues', statSent:'Envoyé',
+    projects:'Projets', loading:'Chargement depuis GitHub…',
+    nProjects: n => `${n} projets`,
+    copyright:'© 2026 Alexandru-Ionuț Chiuță',
+    desc:{
+      OmniHost:'Suite complète de productivité — 141 modules : notes, tâches, finances, santé et plus. Le fichier est votre base de données.',
+      VoiceAtelier:'Studio TTS pour créer des voix multiples et multilingues avec affectation par personnage et prosodie SSML.',
+      TranslateHub:'Hub de traduction côté client dans des dizaines de langues — aucune donnée ne quitte jamais votre navigateur.',
+      FreeDetect:'Détecteur de texte généré par IA et de plagiat. Fonctionne entièrement dans le navigateur ; vos documents restent locaux.',
+      PromptVault:'Gestionnaire de prompts local pour flux IA. Organisez, étiquetez, réutilisez — sans compte requis.',
+      'AI-Liber':'Utilitaires IA libres pour l\'écriture, l\'analyse et la recherche, avec contrôle total sur vos données.',
+      PrintreInteligente:'Livre web de science-fiction interactif — 115 pages, scénarios de survie lunaire inspirés de NASA Artemis 2, 108 critiques fictives et livre audio complet avec Web Speech API.',
+    }
+  },
+  it:{
+    themeLbl:'Tema', langLbl:'Lingua', modeLbl:'Modalità', colorLbl:'Colore',
+    dark:'Scuro', light:'Chiaro',
+    taglineStrong:'App HTML a file singolo',
+    taglineRest:' — offline-first, nessun server, nessun account. Il file è tuo.',
+    badgeLocation:'Bucarest, RO', badgeOffline:'◈ Offline-First',
+    badgeVanilla:'⬡ Vanilla JS', badgeTelemetry:'⌀ Zero Telemetria',
+    statRepos:'Repository', statModules:'Moduli', statLangs:'Lingue', statSent:'Inviato',
+    projects:'Progetti', loading:'Caricamento da GitHub…',
+    nProjects: n => `${n} progetti`,
+    copyright:'© 2026 Alexandru-Ionuț Chiuță',
+    desc:{
+      OmniHost:'Suite completa di produttività — 141 moduli: note, attività, finanze, salute e altro. Il file è il tuo database.',
+      VoiceAtelier:'Studio TTS per creare audio multi-voce e multilingue con assegnazione per personaggio e prosodia SSML.',
+      TranslateHub:'Hub di traduzione lato client in decine di lingue — nessun dato lascia mai il tuo browser.',
+      FreeDetect:'Rilevatore di testo generato da IA e plagio. Funziona interamente nel browser; i tuoi documenti rimangono locali.',
+      PromptVault:'Gestore di prompt locale per flussi AI. Organizza, etichetta e riutilizza — nessun account necessario.',
+      'AI-Liber':'Utilità AI libere e aperte per scrittura, analisi e ricerca, con pieno controllo dell\'utente.',
+      PrintreInteligente:'Libro web di fantascienza interattivo — 115 pagine, scenari di sopravvivenza lunare ispirati a NASA Artemis 2, 108 recensioni fittizie e audiolibro completo con Web Speech API.',
+    }
+  },
+  es:{
+    themeLbl:'Tema', langLbl:'Idioma', modeLbl:'Modo', colorLbl:'Color',
+    dark:'Oscuro', light:'Claro',
+    taglineStrong:'Apps HTML de archivo único',
+    taglineRest:' — sin servidor, sin cuenta, offline. El archivo es tuyo.',
+    badgeLocation:'Bucarest, RO', badgeOffline:'◈ Offline-First',
+    badgeVanilla:'⬡ Vanilla JS', badgeTelemetry:'⌀ Cero Telemetría',
+    statRepos:'Repos', statModules:'Módulos', statLangs:'Idiomas', statSent:'Enviado',
+    projects:'Proyectos', loading:'Cargando desde GitHub…',
+    nProjects: n => `${n} proyectos`,
+    copyright:'© 2026 Alexandru-Ionuț Chiuță',
+    desc:{
+      OmniHost:'Suite completa de productividad — 141 módulos: notas, tareas, finanzas, salud y más. El archivo es tu base de datos.',
+      VoiceAtelier:'Estudio TTS para crear voz multi-voz y multilingüe con asignación por personaje y prosodia SSML.',
+      TranslateHub:'Centro de traducción del lado del cliente en docenas de idiomas — ningún dato sale de tu navegador.',
+      FreeDetect:'Detector de texto generado por IA y plagio. Se ejecuta completamente en el navegador; tus documentos permanecen locales.',
+      PromptVault:'Gestor de prompts local para flujos de IA. Organiza, etiqueta y reutiliza — sin cuenta necesaria.',
+      'AI-Liber':'Utilidades de IA libres y abiertas para escritura, análisis e investigación, con control total del usuario.',
+      PrintreInteligente:'Libro web de ciencia ficción interactivo — 115 páginas, escenarios de supervivencia lunar inspirados en NASA Artemis 2, 108 reseñas ficticias y audiolibro completo con Web Speech API.',
+    }
+  },
+  pt:{
+    themeLbl:'Tema', langLbl:'Idioma', modeLbl:'Modo', colorLbl:'Cor',
+    dark:'Escuro', light:'Claro',
+    taglineStrong:'Apps HTML de arquivo único',
+    taglineRest:' — offline, sem servidor, sem conta. O arquivo é seu.',
+    badgeLocation:'Bucareste, RO', badgeOffline:'◈ Offline-First',
+    badgeVanilla:'⬡ Vanilla JS', badgeTelemetry:'⌀ Zero Telemetria',
+    statRepos:'Repos', statModules:'Módulos', statLangs:'Idiomas', statSent:'Enviado',
+    projects:'Projetos', loading:'A carregar do GitHub…',
+    nProjects: n => `${n} projetos`,
+    copyright:'© 2026 Alexandru-Ionuț Chiuță',
+    desc:{
+      OmniHost:'Suite completa de produtividade — 141 módulos: notas, tarefas, finanças, saúde e mais. O arquivo é a sua base de dados.',
+      VoiceAtelier:'Estúdio TTS para criar voz multi-voz e multilíngue com atribuição por personagem e prosódia SSML.',
+      TranslateHub:'Hub de tradução do lado do cliente em dezenas de idiomas — nenhum dado sai do seu browser.',
+      FreeDetect:'Detetor de texto gerado por IA e plágio. Funciona inteiramente no browser; os seus documentos ficam locais.',
+      PromptVault:'Gestor de prompts local para fluxos de IA. Organize, etiquete e reutilize — sem conta necessária.',
+      'AI-Liber':'Utilitários de IA livres e abertos para escrita, análise e investigação, com controlo total do utilizador.',
+      PrintreInteligente:'Livro web de ficção científica interativo — 115 páginas, cenários de sobrevivência lunar inspirados na NASA Artemis 2, 108 resenhas fictícias e audiolivro completo com Web Speech API.',
+    }
+  },
+};
+
+const LANG_META = [
+  {id:'en', label:'EN', flag:'🇬🇧', name:'English'},
+  {id:'ro', label:'RO', flag:'🇷🇴', name:'Română'},
+  {id:'fr', label:'FR', flag:'🇫🇷', name:'Français'},
+  {id:'it', label:'IT', flag:'🇮🇹', name:'Italiano'},
+  {id:'es', label:'ES', flag:'🇪🇸', name:'Español'},
+  {id:'pt', label:'PT', flag:'🇵🇹', name:'Português'},
+];
+
+/* ── LANG SYSTEM ─────────────────────────────────── */
+let cachedApps=[], cachedCount=-1;
+let curLang = localStorage.getItem('lang') || 'en';
+
+function t(key){ return (T[curLang]||T.en)[key] || (T.en)[key] || key; }
+function desc(name){ return ((T[curLang]||T.en).desc||{})[name] || (T.en.desc||{})[name] || 'Single-file HTML application.'; }
+
+function applyLang(lang){
+  curLang = lang;
+  document.documentElement.dataset.lang = lang;
+  document.documentElement.lang = lang;
+  localStorage.setItem('lang', lang);
+  document.getElementById('lang-label').textContent = LANG_META.find(l=>l.id===lang)?.label || lang.toUpperCase();
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.dataset.i18n;
+    const txt = t(key);
+    if(txt !== undefined) el.textContent = txt;
+  });
+  document.querySelectorAll('.lang-opt').forEach(o => o.classList.toggle('active', o.dataset.lang === lang));
+  // update count label
+  const cnt = document.getElementById('apps-count');
+  if(cnt && cachedCount >= 0) cnt.textContent = t('nProjects')(cachedCount);
+  // re-render cards with new descriptions
+  if(cachedApps.length) renderCards(cachedApps);
+}
+
+// Build lang grid
+const lgEl = document.getElementById('lang-grid');
+LANG_META.forEach(l => {
+  const b = document.createElement('button');
+  b.className = 'lang-opt' + (l.id === curLang ? ' active' : '');
+  b.dataset.lang = l.id;
+  b.innerHTML = `<span class="lang-flag">${l.flag}</span>${l.name}`;
+  b.onclick = () => { applyLang(l.id); };
+  lgEl.appendChild(b);
+});
+
+/* ── THEME SYSTEM ─────────────────────────────────── */
+const PALETTES=[
+  {id:'violet',name:'Violet',dark:'#8b5cf6',light:'#7c3aed'},
+  {id:'cyan',  name:'Cyan',  dark:'#06b6d4',light:'#0891b2'},
+  {id:'teal',  name:'Teal',  dark:'#14b8a6',light:'#0f766e'},
+  {id:'green', name:'Green', dark:'#22c55e',light:'#16a34a'},
+  {id:'amber', name:'Amber', dark:'#f59e0b',light:'#d97706'},
+  {id:'orange',name:'Orange',dark:'#f97316',light:'#ea580c'},
+  {id:'rose',  name:'Rose',  dark:'#f43f5e',light:'#e11d48'},
+  {id:'slate', name:'Slate', dark:'#94a3b8',light:'#475569'},
+];
+const html = document.documentElement;
+let curPalette = localStorage.getItem('palette')||'violet';
+function getAutoMode(){const h=new Date().getHours();return(h>=7&&h<20)?'light':'dark';}
+let curMode = localStorage.getItem('mode') || getAutoMode();
+
+function accentColor(){ const p=PALETTES.find(p=>p.id===curPalette); return p?(curMode==='dark'?p.dark:p.light):'#8b5cf6'; }
+
+function applyTheme(palette,mode){
+  curPalette=palette;curMode=mode;
+  html.dataset.palette=palette;html.dataset.mode=mode;
+  localStorage.setItem('palette',palette);localStorage.setItem('mode',mode);
+  buildSwatches();
+  if(typeof syncDayNight==='function') syncDayNight();
+  setTimeout(()=>document.querySelectorAll('.card-icon canvas[data-name]').forEach(c=>drawIcon(c,c.dataset.name)),40);
+}
+function setMode(m){applyTheme(curPalette,m)}
+function setPalette(p){applyTheme(p,curMode)}
+
+// Background & accent combos per mode
+const PALETTE_COLORS = {
+  dark:{
+    violet:{bg:'#07060f',accent:'#8b5cf6'},
+    cyan:  {bg:'#040d10',accent:'#06b6d4'},
+    teal:  {bg:'#04100f',accent:'#14b8a6'},
+    green: {bg:'#060f06',accent:'#22c55e'},
+    amber: {bg:'#0f0b03',accent:'#f59e0b'},
+    orange:{bg:'#0f0804',accent:'#f97316'},
+    rose:  {bg:'#0f0507',accent:'#f43f5e'},
+    slate: {bg:'#08090f',accent:'#94a3b8'},
+  },
+  light:{
+    violet:{bg:'#f0eef8',accent:'#7c3aed'},
+    cyan:  {bg:'#edf6f9',accent:'#0891b2'},
+    teal:  {bg:'#edf7f5',accent:'#0f766e'},
+    green: {bg:'#eef7ee',accent:'#16a34a'},
+    amber: {bg:'#faf5e8',accent:'#d97706'},
+    orange:{bg:'#faf3ec',accent:'#ea580c'},
+    rose:  {bg:'#faeef0',accent:'#e11d48'},
+    slate: {bg:'#f0f2f6',accent:'#475569'},
+  }
+};
+
+function buildSwatches(){
+  ['dark','light'].forEach(mode=>{
+    const el=document.getElementById('swatches-'+mode);
+    el.innerHTML='';
+    PALETTES.forEach(p=>{
+      const colors=PALETTE_COLORS[mode][p.id];
+      const isActive=p.id===curPalette&&mode===curMode;
+      const d=document.createElement('div');
+      d.className='tswatch'+(isActive?' active':'');
+      d.dataset.palette=p.id;d.dataset.mode=mode;
+      d.innerHTML=`<div class="tswatch-card" style="background:${colors.bg}"><div style="position:absolute;top:0;left:0;right:0;height:3px;background:${colors.accent}"></div><div style="position:absolute;bottom:4px;right:5px;width:8px;height:8px;border-radius:50%;background:${colors.accent};opacity:.8"></div></div><span class="tswatch-name">${p.name}</span>`;
+      d.onclick=()=>applyTheme(p.id,mode);
+      el.appendChild(d);
+    });
+  });
+}
+buildSwatches();
+
+/* DAY/NIGHT TOGGLE */
+const SUN_SVG = '<path d="M8 11a3 3 0 1 1 0-6 3 3 0 0 1 0 6m0 1a4 4 0 1 0 0-8 4 4 0 0 0 0 8M8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0m0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13m8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5M3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8m10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0m-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0m9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707M4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707"/>';
+const MOON_SVG = '<path d="M6 .278a.77.77 0 0 1 .08.858 7.2 7.2 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.318 7.277q.792-.001 1.533-.16a.79.79 0 0 1 .81.316.73.73 0 0 1-.031.893A8.35 8.35 0 0 1 8.344 16C3.734 16 0 12.286 0 7.71 0 4.266 2.114 1.312 5.124.06A.75.75 0 0 1 6 .278"/>';
+
+function syncDayNight(){
+  const icon  = document.getElementById('daynight-icon');
+  const label = document.getElementById('daynight-label');
+  const btn   = document.getElementById('daynight-btn');
+  const auto  = getAutoMode();
+  const isAuto = curMode === auto;
+  if(curMode === 'light'){
+    icon.innerHTML  = SUN_SVG;
+    label.textContent = '☀ Zi';
+    btn.title = 'Treceți la noapte';
+  } else {
+    icon.innerHTML  = MOON_SVG;
+    label.textContent = '🌙 Noapte';
+    btn.title = 'Treceți la zi';
+  }
+  btn.classList.toggle('is-auto', isAuto);
+}
+
+function toggleDayNight(){
+  applyTheme(curPalette, curMode==='dark'?'light':'dark');
+  syncDayNight();
+}
+
+// Panel toggles
+function makeToggle(btnId, panelId, otherId){
+  const btn=document.getElementById(btnId), panel=document.getElementById(panelId);
+  const other=document.getElementById(otherId);
+  btn.addEventListener('click',e=>{e.stopPropagation();other.classList.remove('open');panel.classList.toggle('open')});
+}
+makeToggle('theme-toggle','theme-panel','lang-panel');
+makeToggle('lang-toggle','lang-panel','theme-panel');
+document.addEventListener('click',()=>{document.querySelectorAll('.float-panel').forEach(p=>p.classList.remove('open'))});
+document.querySelectorAll('.float-panel').forEach(p=>p.addEventListener('click',e=>e.stopPropagation()));
+
+applyTheme(curPalette,curMode);
+applyLang(curLang);
+syncDayNight();
+/* ── BG CANVAS ──────────────────────────────────── */
+(function(){
+  const c=document.getElementById('bg-canvas'),ctx=c.getContext('2d');
+  let W,H,t=0,frame=0,raf=null,running=true;
+  /* shared */
+  const HUES={violet:270,cyan:190,amber:38,rose:350,teal:174,green:142,orange:24,slate:220};
+  const gh=()=>HUES[curPalette]||270;
+  const lm=()=>curMode==='light';
+
+  /* ── DARK: stars + constellations + meteors ─── */
+  let stars=[],orbs=[],meteors=[];
+  function mkStars(){
+    stars=Array.from({length:160},()=>({
+      x:Math.random()*W,y:Math.random()*H,
+      r:Math.random()*1.8+.3,
+      vx:(Math.random()-.5)*.18,vy:(Math.random()-.5)*.14,
+      op:Math.random()*.85+.25,tw:Math.random()*Math.PI*2,ts:Math.random()*.025+.006,
+    }));
+  }
+  function mkOrbs(){
+    const h=gh();
+    orbs=Array.from({length:4},(_,i)=>({
+      x:Math.random()*W,y:Math.random()*H,r:170+Math.random()*230,
+      vx:(Math.random()-.5)*.22,vy:(Math.random()-.5)*.17,
+      hue:(h+i*42)%360,ph:Math.random()*Math.PI*2,
+    }));
+  }
+  function mkMeteor(){
+    meteors.push({x:Math.random()*W*1.2,y:-20,len:90+Math.random()*130,
+      spd:5+Math.random()*5,ang:Math.PI/4+Math.random()*.35,
+      life:1,dec:.016+Math.random()*.012,hue:(gh()+Math.random()*50-25+360)%360});
+  }
+  function drawDark(){
+    const h=gh();
+    /* grid */
+    ctx.strokeStyle=`hsla(${h},50%,55%,.1)`;ctx.lineWidth=.8;
+    for(let x=0;x<W;x+=58){ctx.beginPath();ctx.moveTo(x,0);ctx.lineTo(x,H);ctx.stroke()}
+    for(let y=0;y<H;y+=58){ctx.beginPath();ctx.moveTo(0,y);ctx.lineTo(W,y);ctx.stroke()}
+    /* orbs */
+    orbs.forEach(o=>{
+      o.x+=o.vx+Math.sin(t+o.ph)*.16;o.y+=o.vy+Math.cos(t+o.ph*.7)*.13;
+      if(o.x<-o.r)o.x=W+o.r;if(o.x>W+o.r)o.x=-o.r;
+      if(o.y<-o.r)o.y=H+o.r;if(o.y>H+o.r)o.y=-o.r;
+      const g=ctx.createRadialGradient(o.x,o.y,0,o.x,o.y,o.r);
+      g.addColorStop(0,`hsla(${o.hue},75%,58%,.16)`);
+      g.addColorStop(.55,`hsla(${o.hue},75%,58%,.05)`);
+      g.addColorStop(1,`hsla(${o.hue},75%,58%,0)`);
+      ctx.fillStyle=g;ctx.beginPath();ctx.arc(o.x,o.y,o.r,0,Math.PI*2);ctx.fill();
+    });
+    /* stars */
+    stars.forEach(s=>{
+      s.x+=s.vx;s.y+=s.vy;s.tw+=s.ts;
+      if(s.x<0)s.x=W;if(s.x>W)s.x=0;if(s.y<0)s.y=H;if(s.y>H)s.y=0;
+      const op=s.op*(0.65+0.35*Math.sin(s.tw));
+      ctx.fillStyle=`hsla(${h},55%,82%,${op})`;
+      ctx.beginPath();ctx.arc(s.x,s.y,s.r,0,Math.PI*2);ctx.fill();
+    });
+    /* network */
+    ctx.lineWidth=.6;
+    for(let i=0;i<stars.length;i++)for(let j=i+1;j<stars.length;j++){
+      const dx=stars[i].x-stars[j].x,dy=stars[i].y-stars[j].y,d=Math.sqrt(dx*dx+dy*dy);
+      if(d<145){const a=(1-d/145)*.22;ctx.strokeStyle=`hsla(${h},60%,78%,${a})`;
+        ctx.beginPath();ctx.moveTo(stars[i].x,stars[i].y);ctx.lineTo(stars[j].x,stars[j].y);ctx.stroke();}
+    }
+    /* meteors */
+    meteors=meteors.filter(m=>m.life>0);
+    meteors.forEach(m=>{
+      m.x+=Math.cos(m.ang)*m.spd;m.y+=Math.sin(m.ang)*m.spd;m.life-=m.dec;
+      const tx=m.x-Math.cos(m.ang)*m.len,ty=m.y-Math.sin(m.ang)*m.len;
+      const g=ctx.createLinearGradient(tx,ty,m.x,m.y);
+      g.addColorStop(0,`hsla(${m.hue},80%,80%,0)`);
+      g.addColorStop(1,`hsla(${m.hue},80%,95%,${m.life*.7})`);
+      ctx.strokeStyle=g;ctx.lineWidth=1.4;
+      ctx.beginPath();ctx.moveTo(tx,ty);ctx.lineTo(m.x,m.y);ctx.stroke();
+    });
+    if(frame%210===0&&Math.random()<.85)mkMeteor();
+  }
+
+  /* ── LIGHT: AI neural network ─────────────────── */
+  let nodes=[],pulses=[];
+  function mkNodes(){
+    nodes=Array.from({length:32},()=>({
+      x:Math.random()*W,y:Math.random()*H,
+      r:3+Math.random()*5.5,
+      vx:(Math.random()-.5)*.14,vy:(Math.random()-.5)*.11,
+      ph:Math.random()*Math.PI*2,
+      sig:Math.random(), /* signal phase for packet */
+    }));
+  }
+  function drawHex(h){
+    const sz=44,hw=sz*Math.sqrt(3),hh=sz*1.5;
+    ctx.strokeStyle=`hsla(${h},55%,35%,.07)`;ctx.lineWidth=.9;
+    for(let row=-1;row<H/hh+2;row++)for(let col=-1;col<W/hw+2;col++){
+      const x=col*hw+(row%2)*hw/2,y=row*hh;
+      ctx.beginPath();
+      for(let k=0;k<7;k++){const a=Math.PI/3*k-Math.PI/6;
+        k===0?ctx.moveTo(x+sz*Math.cos(a),y+sz*Math.sin(a)):ctx.lineTo(x+sz*Math.cos(a),y+sz*Math.sin(a));}
+      ctx.closePath();ctx.stroke();
+    }
+  }
+  function drawAI(){
+    const h=gh();
+    drawHex(h);
+    /* move nodes */
+    nodes.forEach(n=>{
+      n.x+=n.vx+Math.sin(t+n.ph)*.09;n.y+=n.vy+Math.cos(t+n.ph*.8)*.07;
+      n.sig=(n.sig+.004)%1;
+      if(n.x<0)n.x=W;if(n.x>W)n.x=0;if(n.y<0)n.y=H;if(n.y>H)n.y=0;
+    });
+    /* connections + signal packets */
+    const D=190;
+    for(let i=0;i<nodes.length;i++)for(let j=i+1;j<nodes.length;j++){
+      const a=nodes[i],b=nodes[j];
+      const dx=a.x-b.x,dy=a.y-b.y,d=Math.sqrt(dx*dx+dy*dy);
+      if(d<D){
+        const str=(1-d/D);
+        /* connection line */
+        ctx.strokeStyle=`hsla(${h},65%,38%,${str*.38})`;
+        ctx.lineWidth=str*1.8;
+        ctx.beginPath();ctx.moveTo(a.x,a.y);ctx.lineTo(b.x,b.y);ctx.stroke();
+        /* animated signal packet */
+        const prog=((t*.25+i*.17+j*.11)%1);
+        const px=a.x+(b.x-a.x)*prog,py=a.y+(b.y-a.y)*prog;
+        ctx.fillStyle=`hsla(${h},80%,32%,${str*.65})`;
+        ctx.beginPath();ctx.arc(px,py,2.2,0,Math.PI*2);ctx.fill();
+      }
+    }
+    /* nodes */
+    nodes.forEach((n,i)=>{
+      /* glow */
+      const g=ctx.createRadialGradient(n.x,n.y,0,n.x,n.y,n.r*4);
+      const pulse=0.5+0.5*Math.sin(t*1.5+n.ph);
+      g.addColorStop(0,`hsla(${h},70%,42%,${.18*pulse})`);
+      g.addColorStop(1,`hsla(${h},70%,42%,0)`);
+      ctx.fillStyle=g;ctx.beginPath();ctx.arc(n.x,n.y,n.r*4,0,Math.PI*2);ctx.fill();
+      /* core */
+      ctx.fillStyle=`hsla(${h},65%,35%,.82)`;
+      ctx.beginPath();ctx.arc(n.x,n.y,n.r,0,Math.PI*2);ctx.fill();
+      /* inner highlight */
+      ctx.fillStyle=`hsla(${h},80%,70%,.45)`;
+      ctx.beginPath();ctx.arc(n.x-n.r*.28,n.y-n.r*.28,n.r*.38,0,Math.PI*2);ctx.fill();
+    });
+    /* pulse rings */
+    pulses=pulses.filter(p=>p.r<130);
+    pulses.forEach(p=>{
+      p.r+=1.8;
+      const a=(1-p.r/130)*.55;
+      ctx.strokeStyle=`hsla(${h},70%,35%,${a})`;
+      ctx.lineWidth=1.8;
+      ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);ctx.stroke();
+    });
+    if(frame%100===0&&nodes.length){
+      const n=nodes[Math.floor(Math.random()*nodes.length)];
+      pulses.push({x:n.x,y:n.y,r:0});
+    }
+  }
+
+  /* ── RESIZE ────────────────────────────────────── */
+  function resize(){
+    W=c.width=innerWidth;H=c.height=innerHeight;
+    mkStars();mkOrbs();mkNodes();pulses=[];meteors=[];
+  }
+
+  /* ── LOOP ──────────────────────────────────────── */
+  function loop(){
+    if(!running)return;
+    ctx.clearRect(0,0,W,H);t+=.004;frame++;
+    lm()?drawAI():drawDark();
+    raf=requestAnimationFrame(loop);
+  }
+  window._animToggle=function(on){
+    running=on;
+    if(!on){cancelAnimationFrame(raf);ctx.clearRect(0,0,W,H);}
+    else loop();
+  };
+  addEventListener('resize',resize);
+  resize();loop();
+})();
+
+/* ── ICON ───────────────────────────────────────── */
+function hash(s){let h=0x811c9dc5;for(let i=0;i<s.length;i++){h^=s.charCodeAt(i);h=(h*0x01000193)>>>0}return h}
+const paletteHues={violet:270,cyan:190,amber:38,rose:350,teal:174,green:142,orange:24,slate:220};
+
+function drawIcon(canvas,name){
+  const ctx=canvas.getContext('2d');
+  const W=canvas.width=canvas.offsetWidth||68,H=canvas.height=canvas.offsetHeight||84;
+  const seed=hash(name),baseHue=paletteHues[curPalette]||270,hue2=(baseHue+(seed%60)+20)%360;
+  const lm=curMode==='light';
+  ctx.fillStyle=`hsl(${baseHue},${lm?20:22}%,${lm?94:8}%)`;ctx.fillRect(0,0,W,H);
+  const type=seed%4,lv=lm?40:62;
+  ctx.globalAlpha=lm?.5:.65;
+  if(type===0){for(let r=6;r<W*1.3;r+=12){ctx.strokeStyle=`hsla(${baseHue},75%,${lv}%,${.5-r/(W*1.8)})`;ctx.lineWidth=.8;ctx.beginPath();ctx.arc(W*.55,H*.42,r,0,Math.PI*2);ctx.stroke()}}
+  else if(type===1){for(let x=4;x<W;x+=10)for(let y=4;y<H;y+=10){const d=Math.sqrt((x-W*.4)**2+(y-H*.38)**2),sz=Math.max(0,2.2-d/28);if(sz<.1)continue;ctx.fillStyle=`hsla(${baseHue},80%,${lv}%,${sz/2.2})`;ctx.beginPath();ctx.arc(x,y,sz,0,Math.PI*2);ctx.fill()}}
+  else if(type===2){ctx.strokeStyle=`hsla(${baseHue},65%,${lv}%,.25)`;ctx.lineWidth=.8;for(let i=-H;i<W+H;i+=14){ctx.beginPath();ctx.moveTo(i,0);ctx.lineTo(i+H,H);ctx.stroke()}const g=ctx.createRadialGradient(W*.55,H*.42,0,W*.55,H*.42,W*.7);g.addColorStop(0,`hsla(${hue2},80%,${lv}%,.42)`);g.addColorStop(1,`hsla(${hue2},80%,${lv}%,0)`);ctx.fillStyle=g;ctx.fillRect(0,0,W,H)}
+  else{const cx=W*.55,cy=H*.4;for(let r=8;r<W*1.4;r+=18){ctx.strokeStyle=`hsla(${baseHue},70%,${lv}%,${.45-r/(W*2.2)})`;ctx.lineWidth=.8;ctx.beginPath();for(let k=0;k<7;k++){const a=(Math.PI/3)*k-Math.PI/6;k===0?ctx.moveTo(cx+r*Math.cos(a),cy+r*Math.sin(a)):ctx.lineTo(cx+r*Math.cos(a),cy+r*Math.sin(a))}ctx.closePath();ctx.stroke()}}
+  ctx.globalAlpha=1;
+  ctx.fillStyle=`hsla(${baseHue},90%,${lm?25:75}%,${lm?.1:.13})`;ctx.font=`800 ${W*.75}px 'Syne',sans-serif`;ctx.textAlign='center';ctx.textBaseline='middle';ctx.fillText(name[0],W*.5,H*.5);
+  const col=accentColor();
+  const bar=ctx.createLinearGradient(0,0,W,0);bar.addColorStop(0,col+'cc');bar.addColorStop(1,col+'22');ctx.fillStyle=bar;ctx.fillRect(0,0,W,2);
+}
+
+/* ── CARDS ──────────────────────────────────────── */
+const LIVE={OmniHost:'https://chiuta.ro',PrintreInteligente:'https://alexio.tf'};
+const ghSvg=`<svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>`;
+const extSvg=`<svg viewBox="0 0 16 16" fill="currentColor"><path d="M8.636 3.5a.5.5 0 0 0-.5-.5H1.5A1.5 1.5 0 0 0 0 4.5v10A1.5 1.5 0 0 0 1.5 16h10a1.5 1.5 0 0 0 1.5-1.5V7.864a.5.5 0 0 0-1 0V14.5a.5.5 0 0 1-.5.5h-10a.5.5 0 0 1-.5-.5v-10a.5.5 0 0 1 .5-.5h6.636a.5.5 0 0 0 .5-.5z"/><path d="M16 .5a.5.5 0 0 0-.5-.5h-5a.5.5 0 0 0 0 1h3.793L6.146 9.146a.5.5 0 1 0 .708.708L15 1.707V5.5a.5.5 0 0 0 1 0v-5z"/></svg>`;
+
+function fmtDate(iso){if(!iso)return'';return new Date(iso).toLocaleDateString(curLang==='ro'?'ro-RO':curLang==='fr'?'fr-FR':curLang==='it'?'it-IT':curLang==='es'?'es-ES':curLang==='pt'?'pt-PT':'en-GB',{year:'numeric',month:'short'})}
+function langCls(l){return l==='HTML'?'lang-html':l==='JavaScript'?'lang-js':'lang-default'}
+
+function createCard(repo,i){
+  const d=desc(repo.name),lang=repo.language||'HTML',live=LIVE[repo.name];
+  const a=document.createElement('a');
+  a.href=live||repo.html_url;a.target='_blank';a.rel='noopener';a.className='app-card';
+  a.style.animationDelay=`${i*.06}s`;
+  a.innerHTML=`
+<div class="card-icon"><canvas data-name="${repo.name}"></canvas></div>
+<div class="card-body">
+  <div class="card-top">
+    <span class="card-name">${repo.name}</span>
+    <span class="card-lang ${langCls(lang)}">${lang}</span>
+  </div>
+  <div class="card-desc">${d}</div>
+  <div class="card-links" onclick="event.preventDefault();event.stopPropagation()">
+    <a href="${repo.html_url}" target="_blank" rel="noopener" class="card-link">${ghSvg}GitHub</a>
+    ${live?`<a href="${live}" target="_blank" rel="noopener" class="card-link live-link">${extSvg}Live</a>`:''}
+    ${repo.updated_at?`<span class="card-link date-chip">${fmtDate(repo.updated_at)}</span>`:''}
+  </div>
+</div>`;
+  return a;
+}
+
+function renderCards(apps){
+  cachedApps=apps;
+  const grid=document.getElementById('apps-grid');grid.innerHTML='';
+  apps.forEach((r,i)=>grid.appendChild(createCard(r,i)));
+  requestAnimationFrame(()=>grid.querySelectorAll('.card-icon canvas').forEach(c=>drawIcon(c,c.dataset.name)));
+}
+
+async function init(){
+  try{
+    const[uR,rR]=await Promise.all([fetch('https://api.github.com/users/chiuta'),fetch('https://api.github.com/users/chiuta/repos?sort=updated&per_page=30')]);
+    const user=await uR.json(),repos=await rR.json();
+    document.getElementById('stat-repos').textContent=user.public_repos;
+    const apps=repos.filter(r=>!r.fork&&r.name!=='chiuta.github.io');
+    cachedCount=apps.length;
+    document.getElementById('apps-count').textContent=t('nProjects')(cachedCount);
+    renderCards(apps);
+  }catch(e){
+    const apps=Object.keys((T.en.desc||{})).map(name=>({name,updated_at:null,language:'HTML',html_url:`https://github.com/chiuta/${name}`,fork:false}));
+    cachedCount=apps.length;
+    document.getElementById('apps-count').textContent=t('nProjects')(cachedCount);
+    renderCards(apps);
+  }
+}
+
+/* ANIM TOGGLE */
+let animOn = true; // pornesc întotdeauna automat
+function syncAnimBtn(){
+  const icon = document.getElementById('anim-icon');
+  const btn = document.getElementById('anim-toggle');
+  if(animOn){
+    icon.innerHTML='<path d="M11.596 8.697l-6.363 3.692c-.54.313-1.233-.066-1.233-.697V4.308c0-.63.692-1.01 1.233-.696l6.363 3.692a.802.802 0 0 1 0 1.393z"/>';
+    btn.title='Oprește animațiile';
+    document.getElementById('bg-canvas').style.opacity='';
+  } else {
+    icon.innerHTML='<path d="M5.5 3.5A1.5 1.5 0 0 1 7 5v6a1.5 1.5 0 0 1-3 0V5a1.5 1.5 0 0 1 1.5-1.5zm5 0A1.5 1.5 0 0 1 12 5v6a1.5 1.5 0 0 1-3 0V5a1.5 1.5 0 0 1 1.5-1.5z"/>';
+    btn.title='Pornește animațiile';
+    document.getElementById('bg-canvas').style.opacity='0';
+  }
+}
+function toggleAnim(){
+  animOn=!animOn;
+  localStorage.setItem('anim', animOn?'on':'off');
+  if(window._animToggle) window._animToggle(animOn);
+  syncAnimBtn();
+}
+syncAnimBtn();
+if(!animOn && window._animToggle) window._animToggle(false);
+
+new ResizeObserver(()=>document.querySelectorAll('.card-icon canvas[data-name]').forEach(c=>drawIcon(c,c.dataset.name))).observe(document.getElementById('apps-grid'));
+init();
+</script>
+</body>
+</html>
