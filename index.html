@@ -8,6 +8,14 @@
 <meta name="author" content="Alexandru-Ionuț Chiuță">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://chiuta.github.io/">
+<!-- hreflang alternates (same URL serves all langs via client-side i18n) -->
+<link rel="alternate" hreflang="en" href="https://chiuta.github.io/">
+<link rel="alternate" hreflang="ro" href="https://chiuta.github.io/">
+<link rel="alternate" hreflang="fr" href="https://chiuta.github.io/">
+<link rel="alternate" hreflang="it" href="https://chiuta.github.io/">
+<link rel="alternate" hreflang="es" href="https://chiuta.github.io/">
+<link rel="alternate" hreflang="pt" href="https://chiuta.github.io/">
+<link rel="alternate" hreflang="x-default" href="https://chiuta.github.io/">
 <!-- Open Graph -->
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://chiuta.github.io/">
@@ -16,6 +24,11 @@
 <meta property="og:image" content="https://chiuta.github.io/og-image.png">
 <meta property="og:site_name" content="A.I. Chiuță">
 <meta property="og:locale" content="en_US">
+<meta property="og:locale:alternate" content="ro_RO">
+<meta property="og:locale:alternate" content="fr_FR">
+<meta property="og:locale:alternate" content="it_IT">
+<meta property="og:locale:alternate" content="es_ES">
+<meta property="og:locale:alternate" content="pt_PT">
 <!-- Twitter Card -->
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="A.I. Chiuță — Single-File Architect">
@@ -45,6 +58,36 @@
 </script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<!-- Anti-FOUC: resolve theme BEFORE first paint -->
+<script>
+(function(){
+  try{
+    var ls = localStorage;
+    var savedMode = ls.getItem('mode');
+    var savedLang = ls.getItem('lang');
+    var lastPal   = ls.getItem('lastPalette');
+    var all = ['violet','cyan','teal','green','amber','orange','rose','slate'];
+    // Pick random palette (persisted for this first paint only; may be re-randomised by main script)
+    var pool = lastPal ? all.filter(function(p){return p!==lastPal;}) : all;
+    var pal = pool[Math.floor(Math.random()*pool.length)];
+    ls.setItem('lastPalette', pal);
+    // Mode: saved > prefers-color-scheme > clock
+    var mode;
+    if(savedMode==='light'||savedMode==='dark'){ mode = savedMode; }
+    else if(window.matchMedia){
+      var mq = matchMedia('(prefers-color-scheme: dark)');
+      if(mq && typeof mq.matches === 'boolean' && (mq.media||'').indexOf('prefers-color-scheme')>-1){
+        mode = mq.matches ? 'dark' : 'light';
+      }
+    }
+    if(!mode){ var h = new Date().getHours(); mode = (h>=7 && h<20) ? 'light' : 'dark'; }
+    var h = document.documentElement;
+    h.dataset.palette = pal;
+    h.dataset.mode = mode;
+    if(savedLang){ h.dataset.lang = savedLang; h.lang = savedLang; }
+  }catch(e){/* storage blocked — defaults in HTML take over */}
+})();
+</script>
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
@@ -108,7 +151,7 @@ nav{position:sticky;top:0;z-index:100;background:color-mix(in srgb,var(--bg) 82%
 
 /* MODE ROW */
 .theme-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:.4rem}
-.tswatch{display:flex;flex-direction:column;align-items:center;gap:.22rem;cursor:pointer}
+.tswatch{display:flex;flex-direction:column;align-items:center;gap:.22rem;cursor:pointer;background:none;border:0;padding:0;font:inherit;color:inherit;appearance:none;-webkit-appearance:none}
 .tswatch-card{width:100%;height:28px;border-radius:5px;border:1.5px solid rgba(128,128,128,.25);position:relative;overflow:hidden;transition:transform .15s,border-color .15s,box-shadow .15s}
 .tswatch-card::after{content:'';position:absolute;top:0;left:0;right:0;height:3px}
 .tswatch:hover .tswatch-card{transform:scale(1.06)}
@@ -122,14 +165,13 @@ nav{position:sticky;top:0;z-index:100;background:color-mix(in srgb,var(--bg) 82%
 .hero-left{display:flex;flex-direction:column;gap:.3rem}
 .hero-name{font-size:clamp(1.5rem,3vw,2.3rem);font-weight:800;line-height:1;letter-spacing:-.03em}
 .hero-name span{background:linear-gradient(120deg,var(--accent) 0%,color-mix(in srgb,var(--accent) 40%,#06b6d4) 55%,color-mix(in srgb,var(--accent) 30%,#f59e0b) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;transition:background .3s}
+@media (forced-colors: active){.hero-name span{-webkit-text-fill-color:currentColor;background:none;color:LinkText}}
 .hero-tagline{font-family:var(--mono);font-size:.71rem;color:var(--muted);line-height:1.5;transition:color .3s}
 .hero-tagline strong{color:var(--text);font-weight:500}
 .hero-badges{display:flex;gap:.4rem;flex-wrap:wrap;margin-top:.15rem}
 .badge{font-family:var(--mono);font-size:.61rem;color:var(--muted);padding:.17rem .5rem;border:1px solid var(--border);border-radius:100px;white-space:nowrap;display:flex;align-items:center;gap:.3rem;background:var(--bg2);transition:border-color .3s,color .3s,background .3s;text-decoration:none}
 .badge:hover{border-color:var(--border-hi);color:var(--text)}
 .badge .dot{width:5px;height:5px;border-radius:50%;background:var(--green);animation:pulse 2s ease-in-out infinite;flex-shrink:0}
-.badge.orcid-badge{color:var(--accent);border-color:color-mix(in srgb,var(--accent) 35%,transparent)}
-.badge.orcid-badge:hover{background:var(--accent-lo)}
 @keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
 
 /* STATS */
@@ -163,7 +205,8 @@ nav{position:sticky;top:0;z-index:100;background:color-mix(in srgb,var(--bg) 82%
 .lang-default{color:var(--muted);border-color:var(--border)}
 .card-desc{font-family:var(--mono);font-size:.64rem;color:var(--muted);line-height:1.5;flex:1;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;overflow:hidden;transition:color .3s;min-height:0}
 .card-links{display:flex;gap:.28rem;margin-top:.04rem}
-.card-link{font-family:var(--mono);font-size:.57rem;color:var(--muted);text-decoration:none;padding:.14rem .42rem;border:1px solid var(--border);border-radius:4px;background:var(--bg3);transition:border-color .2s,color .2s,background .3s;display:flex;align-items:center;gap:.2rem;white-space:nowrap}
+.card-link{font-family:var(--mono);font-size:.57rem;color:var(--muted);text-decoration:none;padding:.14rem .42rem;border:1px solid var(--border);border-radius:4px;background:var(--bg3);transition:border-color .2s,color .2s,background .3s;display:flex;align-items:center;gap:.2rem;white-space:nowrap;cursor:pointer;font-weight:inherit;line-height:1}
+button.card-link{appearance:none;-webkit-appearance:none}
 .card-link svg{width:9px;height:9px;flex-shrink:0}
 .card-link:hover{border-color:var(--border-hi);color:var(--text)}
 .card-link.live-link{color:var(--accent);border-color:color-mix(in srgb,var(--accent) 40%,transparent);background:var(--accent-lo)}
@@ -194,12 +237,23 @@ main>.wrap{flex:1;display:flex;flex-direction:column;overflow:hidden}
 }
 
 @media(max-width:960px){#apps-grid{grid-template-columns:repeat(2,1fr)}.hero-inner{grid-template-columns:1fr;gap:.6rem}.stats-row{display:none}}
-@media(max-width:620px){#apps-grid{grid-template-columns:1fr}.hero-name{font-size:1.6rem}.nav-links a:not(.panel-btn){display:none}#lang-panel{right:.5rem}}
+@media(max-width:620px){#apps-grid{grid-template-columns:1fr}.hero-name{font-size:1.6rem}.nav-links a:not(.panel-btn){display:none}}
 @media(hover:none){.app-card:active{border-color:var(--border-hi);background:var(--bg3)}}
+
+/* A11y: keyboard focus */
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:4px}
+.tswatch:focus-visible .tswatch-card{border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-lo)}
+
+/* Respect reduced motion: silence card fade + canvas opacity */
+@media (prefers-reduced-motion: reduce){
+  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
+  #bg-canvas{opacity:0!important}
+  .badge .dot{animation:none}
+}
 </style>
 </head>
 <body>
-<canvas id="bg-canvas"></canvas>
+<canvas id="bg-canvas" aria-hidden="true"></canvas>
 
 <nav>
   <div class="wrap nav-inner">
@@ -217,12 +271,12 @@ main>.wrap{flex:1;display:flex;flex-direction:column;overflow:hidden}
         <span id="daynight-label"></span>
       </button>
       <!-- LANG BTN -->
-      <button class="panel-btn" id="lang-toggle" aria-label="Language">
+      <button class="panel-btn" id="lang-toggle" aria-label="Language" aria-expanded="false" aria-controls="lang-panel" aria-haspopup="true">
         <svg viewBox="0 0 16 16" fill="currentColor"><path d="M0 5a5 5 0 0 0 4.027 4.905 6.5 6.5 0 0 1 .544-2.073C3.375 7.573 2.245 6.676 2.245 5a2.751 2.751 0 0 1 5.502 0v.5a.5.5 0 0 0 1 0V5a3.75 3.75 0 0 0-7.5 0zm6.977 3.745A5.002 5.002 0 0 0 10 10a5 5 0 0 0 5-5 .5.5 0 0 0-1 0 4 4 0 0 1-4.95 3.888 6.46 6.46 0 0 1-2.073-.143zM5 0a5 5 0 1 0 0 10A5 5 0 0 0 5 0z"/><path d="M5 6.5a.5.5 0 0 1 .5.5v.5H6a.5.5 0 0 1 0 1h-.5V9a.5.5 0 0 1-1 0v-.5H4a.5.5 0 0 1 0-1h.5V7a.5.5 0 0 1 .5-.5zm5 0c.315 0 .61.147.801.4l1.5 2a.5.5 0 1 1-.802.6L11.298 9H9.702l-.201.5a.5.5 0 1 1-.802-.6l1.5-2A1 1 0 0 1 10 6.5zm0 1.467L9.598 9h.804L10 7.967z"/></svg>
         <span id="lang-label">EN</span>
       </button>
       <!-- THEME BTN -->
-      <button class="panel-btn" id="theme-toggle" aria-label="Theme">
+      <button class="panel-btn" id="theme-toggle" aria-label="Theme" aria-expanded="false" aria-controls="theme-panel" aria-haspopup="true">
         <svg viewBox="0 0 16 16" fill="currentColor"><path d="M9.796 1.343c-.527-1.79-3.065-1.79-3.592 0l-.094.319a.873.873 0 0 1-1.255.52l-.292-.16c-1.64-.892-3.433.902-2.54 2.541l.159.292a.873.873 0 0 1-.52 1.255l-.319.094c-1.79.527-1.79 3.065 0 3.592l.319.094a.873.873 0 0 1 .52 1.255l-.16.292c-.892 1.64.901 3.434 2.541 2.54l.292-.159a.873.873 0 0 1 1.255.52l.094.319c.527 1.79 3.065 1.79 3.592 0l.094-.319a.873.873 0 0 1 1.255-.52l.292.16c1.64.893 3.434-.902 2.54-2.541l-.159-.292a.873.873 0 0 1 .52-1.255l.319-.094c1.79-.527 1.79-3.065 0-3.592l-.319-.094a.873.873 0 0 1-.52-1.255l.16-.292c.893-1.64-.902-3.433-2.541-2.54l-.292.159a.873.873 0 0 1-1.255-.52zm-2.633.283c.246-.835 1.428-.835 1.674 0l.094.319a1.873 1.873 0 0 0 2.693 1.115l.291-.16c.764-.415 1.6.42 1.184 1.185l-.159.292a1.873 1.873 0 0 0 1.116 2.692l.318.094c.835.246.835 1.428 0 1.674l-.319.094a1.873 1.873 0 0 0-1.115 2.693l.16.291c.415.764-.42 1.6-1.185 1.184l-.291-.159a1.873 1.873 0 0 0-2.693 1.116l-.094.318c-.246.835-1.428.835-1.674 0l-.094-.319a1.873 1.873 0 0 0-2.692-1.115l-.292.16c-.764.415-1.6-.42-1.184-1.185l.159-.291A1.873 1.873 0 0 0 1.945 8.93l-.319-.094c-.835-.246-.835-1.428 0-1.674l.319-.094A1.873 1.873 0 0 0 3.06 4.474l-.16-.292c-.415-.764.42-1.6 1.185-1.184l.292.159a1.873 1.873 0 0 0 2.692-1.115zm1.856 1.9a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5"/></svg>
         <span data-i18n="themeLbl">Theme</span>
       </button>
@@ -326,12 +380,7 @@ const T = {
     statRepos:'Repos', statModules:'Modules', statLangs:'Languages', statSent:'Sent',
     projects:'Projects', loading:'Fetching from GitHub…',
     nProjects: n => `${n} projects`,
-    darkThemes:'Dark themes',lightThemes:'Light themes',
-    darkThemes:'Teme întunecate',lightThemes:'Teme luminoase',
-    darkThemes:'Thèmes sombres',lightThemes:'Thèmes clairs',
-    darkThemes:'Temi scuri',lightThemes:'Temi chiari',
-    darkThemes:'Temas oscuros',lightThemes:'Temas claros',
-    darkThemes:'Temas escuros',lightThemes:'Temas claros',
+    darkThemes:'Dark themes', lightThemes:'Light themes',
     copyright:'© 2026 Alexandru-Ionuț Chiuță',
     desc:{
       OmniHost:'Complete personal productivity suite — 141 modules: notes, tasks, finance, health & more. The file is your database.',
@@ -354,6 +403,7 @@ const T = {
     statRepos:'Repo-uri', statModules:'Module', statLangs:'Limbi', statSent:'Trimis',
     projects:'Proiecte', loading:'Se încarcă din GitHub…',
     nProjects: n => `${n} proiecte`,
+    darkThemes:'Teme întunecate', lightThemes:'Teme luminoase',
     copyright:'© 2026 Alexandru-Ionuț Chiuță',
     desc:{
       OmniHost:'Suite completă de productivitate — 141 module: notițe, taskuri, finanțe, sănătate și mai mult. Fișierul este baza ta de date.',
@@ -376,6 +426,7 @@ const T = {
     statRepos:'Dépôts', statModules:'Modules', statLangs:'Langues', statSent:'Envoyé',
     projects:'Projets', loading:'Chargement depuis GitHub…',
     nProjects: n => `${n} projets`,
+    darkThemes:'Thèmes sombres', lightThemes:'Thèmes clairs',
     copyright:'© 2026 Alexandru-Ionuț Chiuță',
     desc:{
       OmniHost:'Suite complète de productivité — 141 modules : notes, tâches, finances, santé et plus. Le fichier est votre base de données.',
@@ -398,6 +449,7 @@ const T = {
     statRepos:'Repository', statModules:'Moduli', statLangs:'Lingue', statSent:'Inviato',
     projects:'Progetti', loading:'Caricamento da GitHub…',
     nProjects: n => `${n} progetti`,
+    darkThemes:'Temi scuri', lightThemes:'Temi chiari',
     copyright:'© 2026 Alexandru-Ionuț Chiuță',
     desc:{
       OmniHost:'Suite completa di produttività — 141 moduli: note, attività, finanze, salute e altro. Il file è il tuo database.',
@@ -420,6 +472,7 @@ const T = {
     statRepos:'Repos', statModules:'Módulos', statLangs:'Idiomas', statSent:'Enviado',
     projects:'Proyectos', loading:'Cargando desde GitHub…',
     nProjects: n => `${n} proyectos`,
+    darkThemes:'Temas oscuros', lightThemes:'Temas claros',
     copyright:'© 2026 Alexandru-Ionuț Chiuță',
     desc:{
       OmniHost:'Suite completa de productividad — 141 módulos: notas, tareas, finanzas, salud y más. El archivo es tu base de datos.',
@@ -439,9 +492,10 @@ const T = {
     taglineRest:' — offline, sem servidor, sem conta. O arquivo é seu.',
     badgeLocation:'Bucareste, RO', badgeOffline:'◈ Offline-First',
     badgeVanilla:'⬡ Vanilla JS', badgeTelemetry:'⌀ Zero Telemetria',
-    statRepos:'Repos', statModules:'Módulos', statLangs:'Idiomas', statSent:'Enviado',
+    statRepos:'Repositórios', statModules:'Módulos', statLangs:'Idiomas', statSent:'Enviado',
     projects:'Projetos', loading:'A carregar do GitHub…',
     nProjects: n => `${n} projetos`,
+    darkThemes:'Temas escuros', lightThemes:'Temas claros',
     copyright:'© 2026 Alexandru-Ionuț Chiuță',
     desc:{
       OmniHost:'Suite completa de produtividade — 141 módulos: notas, tarefas, finanças, saúde e mais. O arquivo é a sua base de dados.',
@@ -513,20 +567,23 @@ const PALETTES=[
   {id:'rose',  name:'Rose',  dark:'#f43f5e',light:'#e11d48'},
   {id:'slate', name:'Slate', dark:'#94a3b8',light:'#475569'},
 ];
+const PALETTE_HUES={violet:270,cyan:190,teal:174,green:142,amber:38,orange:24,rose:350,slate:220};
 const html = document.documentElement;
-let curPalette = getRandomPalette(); /* aleator la fiecare vizită */
-function getAutoMode(){const h=new Date().getHours();return(h>=7&&h<20)?'light':'dark';}
-
-function getRandomPalette(){
-  const all=['violet','cyan','teal','green','amber','orange','rose','slate'];
-  const last=localStorage.getItem('lastPalette');
-  const pool=last?all.filter(p=>p!==last):all;
-  const pick=pool[Math.floor(Math.random()*pool.length)];
-  localStorage.setItem('lastPalette',pick);
-  return pick;
+function getAutoMode(){
+  if(window.matchMedia){
+    const mq = matchMedia('(prefers-color-scheme: dark)');
+    if(mq && typeof mq.matches==='boolean' && (mq.media||'').indexOf('prefers-color-scheme')>-1){
+      return mq.matches ? 'dark' : 'light';
+    }
+  }
+  const h = new Date().getHours();
+  return (h>=7 && h<20) ? 'light' : 'dark';
 }
 
-let curMode = localStorage.getItem('mode') || getAutoMode();
+/* Palette & mode were pre-set by anti-FOUC inline script in <head>.
+   Re-use those to avoid a second randomisation / flash. */
+let curPalette = html.dataset.palette || 'violet';
+let curMode    = html.dataset.mode === 'light' ? 'light' : 'dark';
 
 function accentColor(){ const p=PALETTES.find(p=>p.id===curPalette); return p?(curMode==='dark'?p.dark:p.light):'#8b5cf6'; }
 
@@ -572,11 +629,14 @@ function buildSwatches(){
     PALETTES.forEach(p=>{
       const colors=PALETTE_COLORS[mode][p.id];
       const isActive=p.id===curPalette&&mode===curMode;
-      const d=document.createElement('div');
+      const d=document.createElement('button');
+      d.type='button';
       d.className='tswatch'+(isActive?' active':'');
       d.dataset.palette=p.id;d.dataset.mode=mode;
+      d.setAttribute('aria-label',p.name+' '+mode);
+      d.setAttribute('aria-pressed',isActive?'true':'false');
       d.innerHTML=`<div class="tswatch-card" style="background:${colors.bg}"><div style="position:absolute;top:0;left:0;right:0;height:3px;background:${colors.accent}"></div><div style="position:absolute;bottom:4px;right:5px;width:8px;height:8px;border-radius:50%;background:${colors.accent};opacity:.8"></div></div><span class="tswatch-name">${p.name}</span>`;
-      d.onclick=()=>applyTheme(p.id,mode);
+      d.addEventListener('click',()=>applyTheme(p.id,mode));
       el.appendChild(d);
     });
   });
@@ -611,20 +671,62 @@ function toggleDayNight(){
 }
 
 // Panel toggles
+function syncPanelAria(){
+  document.getElementById('theme-toggle').setAttribute('aria-expanded',
+    document.getElementById('theme-panel').classList.contains('open')?'true':'false');
+  document.getElementById('lang-toggle').setAttribute('aria-expanded',
+    document.getElementById('lang-panel').classList.contains('open')?'true':'false');
+}
+function closeAllPanels(){
+  document.querySelectorAll('.float-panel').forEach(p=>p.classList.remove('open'));
+  syncPanelAria();
+}
 function makeToggle(btnId, panelId, otherId){
   const btn=document.getElementById(btnId), panel=document.getElementById(panelId);
   const other=document.getElementById(otherId);
-  btn.addEventListener('click',e=>{e.stopPropagation();other.classList.remove('open');panel.classList.toggle('open')});
+  btn.addEventListener('click',e=>{
+    e.stopPropagation();
+    other.classList.remove('open');
+    panel.classList.toggle('open');
+    syncPanelAria();
+    if(panel.classList.contains('open')){
+      // focus first interactive element in panel for keyboard users
+      const firstFocusable=panel.querySelector('button,[tabindex]:not([tabindex="-1"])');
+      if(firstFocusable) setTimeout(()=>firstFocusable.focus(),0);
+    }
+  });
 }
 makeToggle('theme-toggle','theme-panel','lang-panel');
 makeToggle('lang-toggle','lang-panel','theme-panel');
-document.addEventListener('click',()=>{document.querySelectorAll('.float-panel').forEach(p=>p.classList.remove('open'))});
+document.addEventListener('click',()=>closeAllPanels());
 document.querySelectorAll('.float-panel').forEach(p=>p.addEventListener('click',e=>e.stopPropagation()));
+document.addEventListener('keydown',e=>{
+  if(e.key==='Escape'){
+    const wasOpen=document.querySelector('.float-panel.open');
+    if(wasOpen){
+      closeAllPanels();
+      // return focus to whichever toggle opened it
+      const toggleId = wasOpen.id==='theme-panel'?'theme-toggle':'lang-toggle';
+      document.getElementById(toggleId).focus();
+    }
+  }
+});
 
 applyTheme(curPalette,curMode);
 applyLang(curLang);
 syncDayNight();
-/* Re-check day/night every 60 seconds */
+/* React to OS theme change if user hasn't explicitly chosen */
+if(window.matchMedia){
+  try{
+    matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e=>{
+      if(!localStorage.getItem('mode')){
+        applyTheme(curPalette, e.matches?'dark':'light');
+        syncDayNight();
+      }
+    });
+  }catch(_){/* Safari < 14 */}
+}
+/* Re-check auto-mode every 60s as fallback (only if user hasn't chosen) */
 setInterval(function(){
   const auto = getAutoMode();
   const saved = localStorage.getItem('mode');
@@ -635,8 +737,7 @@ setInterval(function(){
   const c=document.getElementById('bg-canvas'),ctx=c.getContext('2d');
   let W,H,t=0,frame=0,raf=null,running=true;
   /* shared */
-  const HUES={violet:270,cyan:190,amber:38,rose:350,teal:174,green:142,orange:24,slate:220};
-  const gh=()=>HUES[curPalette]||270;
+  const gh=()=>PALETTE_HUES[curPalette]||270;
   const lm=()=>curMode==='light';
 
   /* ── DARK: stars + constellations + meteors ─── */
@@ -811,12 +912,11 @@ setInterval(function(){
 
 /* ── ICON ───────────────────────────────────────── */
 function hash(s){let h=0x811c9dc5;for(let i=0;i<s.length;i++){h^=s.charCodeAt(i);h=(h*0x01000193)>>>0}return h}
-const paletteHues={violet:270,cyan:190,amber:38,rose:350,teal:174,green:142,orange:24,slate:220};
 
 function drawIcon(canvas,name){
   const ctx=canvas.getContext('2d');
   const W=canvas.width=canvas.offsetWidth||68,H=canvas.height=canvas.offsetHeight||84;
-  const seed=hash(name),baseHue=paletteHues[curPalette]||270,hue2=(baseHue+(seed%60)+20)%360;
+  const seed=hash(name),baseHue=PALETTE_HUES[curPalette]||270,hue2=(baseHue+(seed%60)+20)%360;
   const lm=curMode==='light';
   ctx.fillStyle=`hsl(${baseHue},${lm?20:22}%,${lm?94:8}%)`;ctx.fillRect(0,0,W,H);
   const type=seed%4,lv=lm?40:62;
@@ -849,29 +949,73 @@ const LIVE_EXTRA={
 const ghSvg=`<svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>`;
 const extSvg=`<svg viewBox="0 0 16 16" fill="currentColor"><path d="M8.636 3.5a.5.5 0 0 0-.5-.5H1.5A1.5 1.5 0 0 0 0 4.5v10A1.5 1.5 0 0 0 1.5 16h10a1.5 1.5 0 0 0 1.5-1.5V7.864a.5.5 0 0 0-1 0V14.5a.5.5 0 0 1-.5.5h-10a.5.5 0 0 1-.5-.5v-10a.5.5 0 0 1 .5-.5h6.636a.5.5 0 0 0 .5-.5z"/><path d="M16 .5a.5.5 0 0 0-.5-.5h-5a.5.5 0 0 0 0 1h3.793L6.146 9.146a.5.5 0 1 0 .708.708L15 1.707V5.5a.5.5 0 0 0 1 0v-5z"/></svg>`;
 
-function fmtDate(iso){if(!iso)return'';return new Date(iso).toLocaleDateString(curLang==='ro'?'ro-RO':curLang==='fr'?'fr-FR':curLang==='it'?'it-IT':curLang==='es'?'es-ES':curLang==='pt'?'pt-PT':'en-GB',{year:'numeric',month:'short'})}
+const LOCALES={en:'en-GB',ro:'ro-RO',fr:'fr-FR',it:'it-IT',es:'es-ES',pt:'pt-PT'};
+function fmtDate(iso){if(!iso)return'';return new Date(iso).toLocaleDateString(LOCALES[curLang]||'en-GB',{year:'numeric',month:'short'})}
 function langCls(l){return l==='HTML'?'lang-html':l==='JavaScript'?'lang-js':'lang-default'}
+
+/* Small helper: create an element with attrs + optional text */
+function el(tag,attrs,text){
+  const n=document.createElement(tag);
+  if(attrs)for(const k in attrs){
+    if(k==='class')n.className=attrs[k];
+    else if(k==='dataset')for(const d in attrs[k])n.dataset[d]=attrs[k][d];
+    else n.setAttribute(k,attrs[k]);
+  }
+  if(text!=null)n.textContent=text;
+  return n;
+}
+/* Open an external URL safely (replaces nested <a> inside card <a>) */
+function openExt(url,ev){
+  if(ev){ev.preventDefault();ev.stopPropagation();}
+  window.open(url,'_blank','noopener,noreferrer');
+}
 
 function createCard(repo,i){
   const d=desc(repo.name),lang=repo.language||'HTML',live=LIVE[repo.name];
+  const extra=LIVE_EXTRA[repo.name];
   const a=document.createElement('a');
-  a.href=live||repo.html_url;a.target='_blank';a.rel='noopener';a.className='app-card';
+  a.href=live||repo.html_url;a.target='_blank';a.rel='noopener noreferrer';
+  a.className='app-card';
   a.style.animationDelay=`${i*.06}s`;
-  a.innerHTML=`
-<div class="card-icon"><canvas data-name="${repo.name}"></canvas></div>
-<div class="card-body">
-  <div class="card-top">
-    <span class="card-name">${repo.name}</span>
-    <span class="card-lang ${langCls(lang)}">${lang}</span>
-  </div>
-  <div class="card-desc">${d}</div>
-  <div class="card-links" onclick="event.preventDefault();event.stopPropagation()">
-    <a href="${repo.html_url}" target="_blank" rel="noopener" class="card-link">${ghSvg}GitHub</a>
-    ${live?`<a href="${live}" target="_blank" rel="noopener" class="card-link live-link">${extSvg}Live</a>`:''}
-    ${LIVE_EXTRA[repo.name]?`<a href="${LIVE_EXTRA[repo.name]}" target="_blank" rel="noopener" class="card-link live-link" style="opacity:.75">${extSvg}Website</a>`:''}
-    ${repo.updated_at?`<span class="card-link date-chip">${fmtDate(repo.updated_at)}</span>`:''}
-  </div>
-</div>`;
+
+  // icon
+  const icon=el('div',{class:'card-icon'});
+  const canvas=el('canvas',{dataset:{name:repo.name}});
+  icon.appendChild(canvas);
+
+  // body
+  const body=el('div',{class:'card-body'});
+  const top=el('div',{class:'card-top'});
+  top.appendChild(el('span',{class:'card-name'},repo.name));
+  top.appendChild(el('span',{class:'card-lang '+langCls(lang)},lang));
+  body.appendChild(top);
+  body.appendChild(el('div',{class:'card-desc'},d));
+
+  // links row — use <button> (not <a>) to avoid nested anchors
+  const links=el('div',{class:'card-links'});
+  const mkLink=(url,label,cls,extraStyle)=>{
+    const b=el('button',{type:'button',class:'card-link'+(cls?' '+cls:''),'aria-label':label+' — '+repo.name});
+    if(extraStyle)b.setAttribute('style',extraStyle);
+    // icon
+    const ic=document.createElement('span');
+    ic.setAttribute('aria-hidden','true');
+    ic.innerHTML = (cls && cls.indexOf('live-link')>-1) ? extSvg : ghSvg; // static SVG, safe
+    b.appendChild(ic);
+    b.appendChild(document.createTextNode(label));
+    b.addEventListener('click',ev=>openExt(url,ev));
+    return b;
+  };
+  links.appendChild(mkLink(repo.html_url,'GitHub',''));
+  if(live) links.appendChild(mkLink(live,'Live','live-link'));
+  if(extra) links.appendChild(mkLink(extra,'Website','live-link','opacity:.75'));
+  if(repo.updated_at){
+    const chip=el('span',{class:'card-link date-chip'},fmtDate(repo.updated_at));
+    links.appendChild(chip);
+  }
+  body.appendChild(links);
+
+  a.appendChild(icon);
+  a.appendChild(body);
   return a;
 }
 
@@ -883,34 +1027,51 @@ function renderCards(apps){
 }
 
 async function init(){
+  const FALLBACK = Object.keys((T.en.desc||{})).map(name=>({
+    name, updated_at:null, language:'HTML',
+    html_url:`https://github.com/chiuta/${name}`, fork:false
+  }));
   try{
-    const[uR,rR]=await Promise.all([fetch('https://api.github.com/users/chiuta'),fetch('https://api.github.com/users/chiuta/repos?sort=updated&per_page=30')]);
-    const user=await uR.json(),repos=await rR.json();
-    document.getElementById('stat-repos').textContent=user.public_repos;
-    const apps=repos.filter(r=>!r.fork&&r.name!=='chiuta.github.io');
-    cachedCount=apps.length;
-    document.getElementById('apps-count').textContent=t('nProjects')(cachedCount);
-    renderCards(apps);
+    const [uR,rR] = await Promise.all([
+      fetch('https://api.github.com/users/chiuta'),
+      fetch('https://api.github.com/users/chiuta/repos?sort=updated&per_page=30')
+    ]);
+    if(!uR.ok || !rR.ok) throw new Error('GitHub API '+uR.status+'/'+rR.status);
+    const user = await uR.json();
+    const repos = await rR.json();
+    if(!Array.isArray(repos)) throw new Error('repos not an array');
+    if(typeof user.public_repos === 'number'){
+      document.getElementById('stat-repos').textContent = user.public_repos;
+    }
+    const apps = repos.filter(r => r && !r.fork && r.name !== 'chiuta.github.io');
+    cachedCount = apps.length;
+    document.getElementById('apps-count').textContent = t('nProjects')(cachedCount);
+    renderCards(apps.length ? apps : FALLBACK);
   }catch(e){
-    const apps=Object.keys((T.en.desc||{})).map(name=>({name,updated_at:null,language:'HTML',html_url:`https://github.com/chiuta/${name}`,fork:false}));
-    cachedCount=apps.length;
-    document.getElementById('apps-count').textContent=t('nProjects')(cachedCount);
-    renderCards(apps);
+    console.warn('GitHub API unavailable, using fallback:', e.message);
+    cachedCount = FALLBACK.length;
+    document.getElementById('apps-count').textContent = t('nProjects')(cachedCount);
+    renderCards(FALLBACK);
   }
 }
 
 /* ANIM TOGGLE */
-let animOn = localStorage.getItem('anim') !== 'off'; // restored, default on
+// Default off if user prefers reduced motion and hasn't explicitly opted in
+const prefersReduced = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+const savedAnim = localStorage.getItem('anim');
+let animOn = savedAnim ? (savedAnim !== 'off') : !prefersReduced;
 function syncAnimBtn(){
   const icon = document.getElementById('anim-icon');
   const btn = document.getElementById('anim-toggle');
   if(animOn){
     icon.innerHTML='<path d="M11.596 8.697l-6.363 3.692c-.54.313-1.233-.066-1.233-.697V4.308c0-.63.692-1.01 1.233-.696l6.363 3.692a.802.802 0 0 1 0 1.393z"/>';
     btn.title='Oprește animațiile';
+    btn.setAttribute('aria-pressed','true');
     document.getElementById('bg-canvas').style.opacity='';
   } else {
     icon.innerHTML='<path d="M5.5 3.5A1.5 1.5 0 0 1 7 5v6a1.5 1.5 0 0 1-3 0V5a1.5 1.5 0 0 1 1.5-1.5zm5 0A1.5 1.5 0 0 1 12 5v6a1.5 1.5 0 0 1-3 0V5a1.5 1.5 0 0 1 1.5-1.5z"/>';
     btn.title='Pornește animațiile';
+    btn.setAttribute('aria-pressed','false');
     document.getElementById('bg-canvas').style.opacity='0';
   }
 }
@@ -923,7 +1084,21 @@ function toggleAnim(){
 syncAnimBtn();
 if(!animOn && window._animToggle) window._animToggle(false);
 
-new ResizeObserver(()=>document.querySelectorAll('.card-icon canvas[data-name]').forEach(c=>drawIcon(c,c.dataset.name))).observe(document.getElementById('apps-grid'));
+/* Pause canvas when tab hidden (save battery / CPU) */
+document.addEventListener('visibilitychange', ()=>{
+  if(!window._animToggle) return;
+  if(document.hidden) window._animToggle(false);
+  else if(animOn) window._animToggle(true);
+});
+
+/* Debounced ResizeObserver for card icons */
+let _roTimer=null;
+new ResizeObserver(()=>{
+  if(_roTimer) cancelAnimationFrame(_roTimer);
+  _roTimer = requestAnimationFrame(()=>{
+    document.querySelectorAll('.card-icon canvas[data-name]').forEach(c=>drawIcon(c,c.dataset.name));
+  });
+}).observe(document.getElementById('apps-grid'));
 init();
 </script>
 </body>
