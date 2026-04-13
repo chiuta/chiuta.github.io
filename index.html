@@ -191,7 +191,7 @@ nav{position:sticky;top:0;z-index:100;background:color-mix(in srgb,var(--bg) 82%
 #apps-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:.6rem;align-content:start}
 
 /* CARD */
-.app-card{display:flex;background:var(--bg2);border:1px solid var(--border);border-radius:var(--r);overflow:hidden;text-decoration:none;transition:border-color .25s,transform .25s,box-shadow .25s,background .3s;animation:fadeUp .5s ease both;min-height:84px}
+.app-card{display:flex;background:var(--bg2);border:1px solid var(--border);border-radius:var(--r);overflow:hidden;transition:border-color .25s,transform .25s,box-shadow .25s,background .3s;animation:fadeUp .5s ease both;min-height:84px}
 .app-card:hover{border-color:var(--border-hi);transform:translateY(-2px);box-shadow:0 10px 28px rgba(0,0,0,.25),0 0 0 1px var(--border-hi)}
 @keyframes fadeUp{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
 .card-icon{width:68px;flex-shrink:0;position:relative;overflow:hidden}
@@ -210,6 +210,8 @@ button.card-link{appearance:none;-webkit-appearance:none}
 .card-link svg{width:9px;height:9px;flex-shrink:0}
 .card-link:hover{border-color:var(--border-hi);color:var(--text)}
 .card-link.live-link{color:var(--accent);border-color:color-mix(in srgb,var(--accent) 40%,transparent);background:var(--accent-lo)}
+.card-link.web-link{opacity:.75}
+.card-link.web-link:hover{opacity:1}
 .card-link.date-chip{pointer-events:none;border-color:transparent;background:transparent;color:var(--muted)}
 
 /* FOOTER */
@@ -238,7 +240,6 @@ main>.wrap{flex:1;display:flex;flex-direction:column;overflow:hidden}
 
 @media(max-width:960px){#apps-grid{grid-template-columns:repeat(2,1fr)}.hero-inner{grid-template-columns:1fr;gap:.6rem}.stats-row{display:none}}
 @media(max-width:620px){#apps-grid{grid-template-columns:1fr}.hero-name{font-size:1.6rem}.nav-links a:not(.panel-btn){display:none}}
-@media(hover:none){.app-card:active{border-color:var(--border-hi);background:var(--bg3)}}
 
 /* A11y: keyboard focus */
 :focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:4px}
@@ -268,7 +269,6 @@ main>.wrap{flex:1;display:flex;flex-direction:column;overflow:hidden}
       <!-- DAY/NIGHT BTN -->
       <button class="panel-btn daynight-btn" id="daynight-btn" onclick="toggleDayNight()" title="Zi / Noapte">
         <svg id="daynight-icon" viewBox="0 0 16 16" fill="currentColor" width="12" height="12"></svg>
-        <span id="daynight-label"></span>
       </button>
       <!-- LANG BTN -->
       <button class="panel-btn" id="lang-toggle" aria-label="Language" aria-expanded="false" aria-controls="lang-panel" aria-haspopup="true">
@@ -391,6 +391,10 @@ const T = {
       'AI-Liber':'Open, libre AI utilities for writing, analysis and research that keep you in full control.',
       AcademiSearch:'Client-side academic search engine — find research papers, journals and scientific resources directly in your browser, with zero data sent to any server.',
       PrintreInteligente:'Interactive science fiction web book — 115 pages, branching lunar survival scenarios inspired by NASA Artemis 2, 108 fictional reviews, and a full Web Speech API audiobook.',
+      IncredibleCosmos:'108 cosmic gravity puzzles — place planets and stars, press Play, and gravity guides a comet to its target. Set in the Printre inteligențe universe.',
+      'ROePAS-neoficial':'Unofficial compact interface for the Romanian RoePAS public-services portal — service catalog, institution lookup by county and recent announcements, no account, no tracking.',
+      'SU-ETIC':'HTML quine — a single page that displays its own source code, a self-referential demonstration in one file.',
+      'chiuta.github.io':'Portfolio and index of every app — this very page. A self-referential single-file HTML hub.',
     }
   },
   ro:{
@@ -414,6 +418,10 @@ const T = {
       'AI-Liber':'Utilități AI libere și deschise pentru scriere, analiză și cercetare, cu control total al utilizatorului.',
       AcademiSearch:'Motor de căutare academic client-side — găsești articole științifice, jurnale și resurse de cercetare direct în browser, fără a trimite date nicăieri.',
       PrintreInteligente:'Carte web de science fiction interactivă — 115 pagini, scenarii ramificate de supraviețuire lunară inspirate de NASA Artemis 2, 108 recenzii fictive și audiobook complet cu Web Speech API.',
+      IncredibleCosmos:'108 puzzle-uri cosmice de gravitație — plasezi planete și stele, apeși Play, iar gravitația ghidează cometa spre țintă. Extensie a universului Printre inteligențe.',
+      'ROePAS-neoficial':'Interfață compactă neoficială pentru portalul RoePAS — catalog de servicii publice, căutare de instituții pe județe și anunțuri recente, fără cont și fără urmărire.',
+      'SU-ETIC':'Quine HTML — o pagină care își afișează propriul cod sursă, demonstrație de auto-referință într-un singur fișier.',
+      'chiuta.github.io':'Portofoliul și indexul tuturor aplicațiilor — chiar pagina pe care o vezi acum. Hub single-file HTML autoreferențial.',
     }
   },
   fr:{
@@ -437,6 +445,10 @@ const T = {
       'AI-Liber':'Utilitaires IA libres pour l\'écriture, l\'analyse et la recherche, avec contrôle total sur vos données.',
       AcademiSearch:'Moteur de recherche académique côté client — trouvez des articles scientifiques et des ressources de recherche directement dans votre navigateur, sans aucun envoi de données.',
       PrintreInteligente:'Livre web de science-fiction interactif — 115 pages, scénarios de survie lunaire inspirés de NASA Artemis 2, 108 critiques fictives et livre audio complet avec Web Speech API.',
+      IncredibleCosmos:'108 puzzles cosmiques de gravité — placez des planètes et des étoiles, appuyez sur Play, et la gravité guide une comète vers sa cible. Dans l\'univers Printre inteligențe.',
+      'ROePAS-neoficial':'Interface compacte non officielle pour le portail roumain RoePAS des services publics — catalogue de services, recherche d\'institutions par département et annonces récentes, sans compte ni suivi.',
+      'SU-ETIC':'Quine HTML — une page qui affiche son propre code source, démonstration d\'auto-référence dans un seul fichier.',
+      'chiuta.github.io':'Portfolio et index de toutes les applications — la page que vous voyez en ce moment. Hub HTML fichier unique auto-référentiel.',
     }
   },
   it:{
@@ -460,6 +472,10 @@ const T = {
       'AI-Liber':'Utilità AI libere e aperte per scrittura, analisi e ricerca, con pieno controllo dell\'utente.',
       AcademiSearch:'Motore di ricerca accademico lato client — trova articoli scientifici e risorse di ricerca direttamente nel browser, senza inviare dati a nessun server.',
       PrintreInteligente:'Libro web di fantascienza interattivo — 115 pagine, scenari di sopravvivenza lunare ispirati a NASA Artemis 2, 108 recensioni fittizie e audiolibro completo con Web Speech API.',
+      IncredibleCosmos:'108 puzzle cosmici di gravità — posiziona pianeti e stelle, premi Play, e la gravità guida una cometa verso il bersaglio. Ambientato nell\'universo Printre inteligențe.',
+      'ROePAS-neoficial':'Interfaccia compatta non ufficiale per il portale rumeno RoePAS dei servizi pubblici — catalogo servizi, ricerca istituzioni per provincia e annunci recenti, senza account né tracciamento.',
+      'SU-ETIC':'Quine HTML — una pagina che mostra il proprio codice sorgente, dimostrazione di auto-riferimento in un singolo file.',
+      'chiuta.github.io':'Portfolio e indice di tutte le applicazioni — proprio la pagina che stai guardando. Hub HTML a file singolo auto-referenziale.',
     }
   },
   es:{
@@ -483,6 +499,10 @@ const T = {
       'AI-Liber':'Utilidades de IA libres y abiertas para escritura, análisis e investigación, con control total del usuario.',
       AcademiSearch:'Motor de búsqueda académico del lado del cliente — encuentra artículos científicos y recursos de investigación directamente en tu navegador, sin enviar datos a ningún servidor.',
       PrintreInteligente:'Libro web de ciencia ficción interactivo — 115 páginas, escenarios de supervivencia lunar inspirados en NASA Artemis 2, 108 reseñas ficticias y audiolibro completo con Web Speech API.',
+      IncredibleCosmos:'108 puzles cósmicos de gravedad — coloca planetas y estrellas, pulsa Play y la gravedad guía un cometa hasta su objetivo. Ambientado en el universo Printre inteligențe.',
+      'ROePAS-neoficial':'Interfaz compacta no oficial para el portal rumano RoePAS de servicios públicos — catálogo de servicios, búsqueda de instituciones por provincia y anuncios recientes, sin cuenta ni seguimiento.',
+      'SU-ETIC':'Quine HTML — una página que muestra su propio código fuente, demostración de autorreferencia en un único archivo.',
+      'chiuta.github.io':'Portafolio e índice de todas las aplicaciones — esta misma página que estás viendo. Hub HTML de archivo único autorreferencial.',
     }
   },
   pt:{
@@ -506,6 +526,10 @@ const T = {
       'AI-Liber':'Utilitários de IA livres e abertos para escrita, análise e investigação, com controlo total do utilizador.',
       AcademiSearch:'Motor de pesquisa académico do lado do cliente — encontra artigos científicos e recursos de investigação diretamente no browser, sem enviar dados para nenhum servidor.',
       PrintreInteligente:'Livro web de ficção científica interativo — 115 páginas, cenários de sobrevivência lunar inspirados na NASA Artemis 2, 108 resenhas fictícias e audiolivro completo com Web Speech API.',
+      IncredibleCosmos:'108 puzzles cósmicos de gravidade — coloca planetas e estrelas, carrega em Play e a gravidade guia um cometa até ao alvo. Parte do universo Printre inteligențe.',
+      'ROePAS-neoficial':'Interface compacta não oficial para o portal romeno RoePAS de serviços públicos — catálogo de serviços, pesquisa de instituições por distrito e anúncios recentes, sem conta nem rastreamento.',
+      'SU-ETIC':'Quine HTML — uma página que mostra o seu próprio código-fonte, demonstração de autorreferência num único ficheiro.',
+      'chiuta.github.io':'Portefólio e índice de todas as aplicações — esta mesma página que está a ver. Hub HTML de ficheiro único autorreferencial.',
     }
   },
 };
@@ -649,17 +673,14 @@ const MOON_SVG = '<path d="M6 .278a.77.77 0 0 1 .08.858 7.2 7.2 0 0 0-.878 3.46c
 
 function syncDayNight(){
   const icon  = document.getElementById('daynight-icon');
-  const label = document.getElementById('daynight-label');
   const btn   = document.getElementById('daynight-btn');
   const auto  = getAutoMode();
   const isAuto = curMode === auto;
   if(curMode === 'light'){
     icon.innerHTML  = SUN_SVG;
-    label.textContent = '☀ Zi';
     btn.title = 'Treceți la noapte';
   } else {
     icon.innerHTML  = MOON_SVG;
-    label.textContent = '🌙 Noapte';
     btn.title = 'Treceți la zi';
   }
   btn.classList.toggle('is-auto', isAuto);
@@ -932,20 +953,30 @@ function drawIcon(canvas,name){
 }
 
 /* ── CARDS ──────────────────────────────────────── */
-const LIVE={
-  OmniHost:'https://chiuta.ro',
-  PrintreInteligente:'https://alexio.tf',
-  'AI-Liber':'https://chiuta.github.io/AI-Liber',
-  PromptVault:'https://chiuta.github.io/PromptVault',
-  TranslateHub:'https://chiuta.github.io/TranslateHub',
-  VoiceAtelier:'https://chiuta.github.io/VoiceAtelier',
-  FreeDetect:'https://chiuta.github.io/FreeDetect',
-  AcademiSearch:'https://chiuta.github.io/AcademiSearch/',
-};
-const LIVE_EXTRA={
-  OmniHost:'https://chiuta.github.io/OmniHost',
-  PrintreInteligente:'https://chiuta.github.io/PrintreInteligente',
-};
+/* Live URL = GitHub Pages for this user. Auto-detected from repo.has_pages + repo.name.
+   For the user.github.io root repo, the Pages URL IS the root (self-reference). */
+const GH_USER = 'chiuta';
+function livePagesUrl(repo){
+  if(!repo || !repo.name) return null;
+  if(!repo.has_pages) return null;
+  if(repo.name.toLowerCase() === GH_USER + '.github.io') return `https://${GH_USER}.github.io/`;
+  return `https://${GH_USER}.github.io/${repo.name}/`;
+}
+/* Website URL on alexio.tf. Format: https://alexio.tf/<name-lowercase>/
+   Exceptions: PrintreInteligente → https://alexio.tf ; user.github.io root → https://alexio.tf/chiuta/ */
+function websiteUrl(repo){
+  if(!repo || !repo.name) return null;
+  if(repo.name === 'PrintreInteligente') return 'https://alexio.tf';
+  if(repo.name.toLowerCase() === GH_USER + '.github.io') return `https://alexio.tf/${GH_USER}/`;
+  return `https://alexio.tf/${repo.name.toLowerCase()}/`;
+}
+/* Best-effort fallback set: repos known to have GitHub Pages even if API is unreachable.
+   Used only when the API is down. */
+const PAGES_FALLBACK = new Set([
+  'AI-Liber','PromptVault','TranslateHub','VoiceAtelier','FreeDetect','AcademiSearch',
+  'OmniHost','PrintreInteligente'
+]);
+
 const ghSvg=`<svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>`;
 const extSvg=`<svg viewBox="0 0 16 16" fill="currentColor"><path d="M8.636 3.5a.5.5 0 0 0-.5-.5H1.5A1.5 1.5 0 0 0 0 4.5v10A1.5 1.5 0 0 0 1.5 16h10a1.5 1.5 0 0 0 1.5-1.5V7.864a.5.5 0 0 0-1 0V14.5a.5.5 0 0 1-.5.5h-10a.5.5 0 0 1-.5-.5v-10a.5.5 0 0 1 .5-.5h6.636a.5.5 0 0 0 .5-.5z"/><path d="M16 .5a.5.5 0 0 0-.5-.5h-5a.5.5 0 0 0 0 1h3.793L6.146 9.146a.5.5 0 1 0 .708.708L15 1.707V5.5a.5.5 0 0 0 1 0v-5z"/></svg>`;
 
@@ -971,10 +1002,12 @@ function openExt(url,ev){
 }
 
 function createCard(repo,i){
-  const d=desc(repo.name),lang=repo.language||'HTML',live=LIVE[repo.name];
-  const extra=LIVE_EXTRA[repo.name];
-  const a=document.createElement('a');
-  a.href=live||repo.html_url;a.target='_blank';a.rel='noopener noreferrer';
+  const d=desc(repo.name),lang=repo.language||'HTML';
+  const live = livePagesUrl(repo);
+  const ghUrl = repo.html_url || `https://github.com/${GH_USER}/${repo.name}`;
+
+  // Card is a plain container — only the action buttons are clickable.
+  const a=document.createElement('div');
   a.className='app-card';
   a.style.animationDelay=`${i*.06}s`;
 
@@ -993,10 +1026,8 @@ function createCard(repo,i){
 
   // links row — use <button> (not <a>) to avoid nested anchors
   const links=el('div',{class:'card-links'});
-  const mkLink=(url,label,cls,extraStyle)=>{
+  const mkLink=(url,label,cls)=>{
     const b=el('button',{type:'button',class:'card-link'+(cls?' '+cls:''),'aria-label':label+' — '+repo.name});
-    if(extraStyle)b.setAttribute('style',extraStyle);
-    // icon
     const ic=document.createElement('span');
     ic.setAttribute('aria-hidden','true');
     ic.innerHTML = (cls && cls.indexOf('live-link')>-1) ? extSvg : ghSvg; // static SVG, safe
@@ -1005,9 +1036,10 @@ function createCard(repo,i){
     b.addEventListener('click',ev=>openExt(url,ev));
     return b;
   };
-  links.appendChild(mkLink(repo.html_url,'GitHub',''));
+  links.appendChild(mkLink(ghUrl,'GitHub',''));
   if(live) links.appendChild(mkLink(live,'Live','live-link'));
-  if(extra) links.appendChild(mkLink(extra,'Website','live-link','opacity:.75'));
+  const web = websiteUrl(repo);
+  if(web) links.appendChild(mkLink(web,'Website','live-link web-link'));
   if(repo.updated_at){
     const chip=el('span',{class:'card-link date-chip'},fmtDate(repo.updated_at));
     links.appendChild(chip);
@@ -1028,13 +1060,21 @@ function renderCards(apps){
 
 async function init(){
   const FALLBACK = Object.keys((T.en.desc||{})).map(name=>({
-    name, updated_at:null, language:'HTML',
-    html_url:`https://github.com/chiuta/${name}`, fork:false
+    name, updated_at:null, created_at:null, language:'HTML',
+    html_url:`https://github.com/${GH_USER}/${name}`,
+    has_pages: PAGES_FALLBACK.has(name),
+    fork:false
   }));
+  // Sort helper: oldest → newest. null dates go last.
+  const byCreatedAsc = (a,b) => {
+    const da = a.created_at ? new Date(a.created_at).getTime() : Infinity;
+    const db = b.created_at ? new Date(b.created_at).getTime() : Infinity;
+    return da - db;
+  };
   try{
     const [uR,rR] = await Promise.all([
-      fetch('https://api.github.com/users/chiuta'),
-      fetch('https://api.github.com/users/chiuta/repos?sort=updated&per_page=30')
+      fetch(`https://api.github.com/users/${GH_USER}`),
+      fetch(`https://api.github.com/users/${GH_USER}/repos?sort=created&direction=asc&per_page=100`)
     ]);
     if(!uR.ok || !rR.ok) throw new Error('GitHub API '+uR.status+'/'+rR.status);
     const user = await uR.json();
@@ -1043,7 +1083,9 @@ async function init(){
     if(typeof user.public_repos === 'number'){
       document.getElementById('stat-repos').textContent = user.public_repos;
     }
-    const apps = repos.filter(r => r && !r.fork && r.name !== 'chiuta.github.io');
+    const apps = repos
+      .filter(r => r && !r.fork)
+      .sort(byCreatedAsc);
     cachedCount = apps.length;
     document.getElementById('apps-count').textContent = t('nProjects')(cachedCount);
     renderCards(apps.length ? apps : FALLBACK);
