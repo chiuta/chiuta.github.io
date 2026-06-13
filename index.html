@@ -1,1168 +1,1201 @@
 <!DOCTYPE html>
-<html lang="en" data-palette="violet" data-mode="dark" data-lang="en">
+<html lang="ro">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>A.I. Chiuță — Single-File Architect</title>
-<meta name="description" content="A.I. Chiuță builds free, open-source, single-file HTML apps — OmniHost, VoiceAtelier, TranslateHub, FreeDetect, PromptVault and more. Offline-first, no server, no account.">
-<meta name="author" content="Alexandru-Ionuț Chiuță">
-<meta name="robots" content="index, follow">
-<link rel="canonical" href="https://chiuta.github.io/">
-<!-- hreflang alternates (same URL serves all langs via client-side i18n) -->
-<link rel="alternate" hreflang="en" href="https://chiuta.github.io/">
-<link rel="alternate" hreflang="ro" href="https://chiuta.github.io/">
-<link rel="alternate" hreflang="fr" href="https://chiuta.github.io/">
-<link rel="alternate" hreflang="it" href="https://chiuta.github.io/">
-<link rel="alternate" hreflang="es" href="https://chiuta.github.io/">
-<link rel="alternate" hreflang="pt" href="https://chiuta.github.io/">
-<link rel="alternate" hreflang="x-default" href="https://chiuta.github.io/">
-<!-- Open Graph -->
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://chiuta.github.io/">
-<meta property="og:title" content="A.I. Chiuță — Single-File Architect">
-<meta property="og:description" content="Free, open-source, single-file HTML apps. OmniHost · VoiceAtelier · TranslateHub · FreeDetect · PromptVault · Printre inteligențe · AcademiSearch. Offline-first, zero telemetry.">
-<meta property="og:image" content="https://chiuta.github.io/og-image.png">
-<meta property="og:site_name" content="A.I. Chiuță">
-<meta property="og:locale" content="en_US">
-<meta property="og:locale:alternate" content="ro_RO">
-<meta property="og:locale:alternate" content="fr_FR">
-<meta property="og:locale:alternate" content="it_IT">
-<meta property="og:locale:alternate" content="es_ES">
-<meta property="og:locale:alternate" content="pt_PT">
-<!-- Twitter Card -->
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="A.I. Chiuță — Single-File Architect">
-<meta name="twitter:description" content="Free single-file HTML apps. OmniHost · VoiceAtelier · TranslateHub · FreeDetect · PromptVault · Printre inteligențe · AcademiSearch.">
-<meta name="twitter:image" content="https://chiuta.github.io/og-image.png">
-<!-- Favicon (inline SVG) -->
-<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%238b5cf6'/><text x='16' y='22' font-family='serif' font-size='18' font-weight='bold' fill='white' text-anchor='middle'>A</text></svg>">
-<!-- JSON-LD Person schema -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Person",
-  "name": "Alexandru-Ionuț Chiuță",
-  "alternateName": "A.I. Chiuță",
-  "url": "https://chiuta.github.io/",
-  "sameAs": [
-    "https://github.com/chiuta",
-    "https://orcid.org/0009-0008-6858-4299",
-    "https://chiuta.ro",
-    "https://alexio.tf"
-  ],
-  "jobTitle": "Single-File Web Architect",
-  "description": "Creator of free, open-source, single-file HTML applications. Projects include OmniHost, VoiceAtelier, TranslateHub, FreeDetect, PromptVault, Printre inteligențe, and AcademiSearch.",
-  "knowsAbout": ["HTML", "CSS", "JavaScript", "Progressive Web Apps", "Single-file Architecture", "Science Fiction Writing"],
-  "address": {"@type": "PostalAddress", "addressLocality": "București", "addressCountry": "RO"}
-}
-</script>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<!-- Anti-FOUC: resolve theme BEFORE first paint -->
-<script>
-(function(){
-  try{
-    var ls = localStorage;
-    var savedMode = ls.getItem('mode');
-    var savedLang = ls.getItem('lang');
-    var lastPal   = ls.getItem('lastPalette');
-    var all = ['violet','cyan','teal','green','amber','orange','rose','slate'];
-    // Pick random palette (persisted for this first paint only; may be re-randomised by main script)
-    var pool = lastPal ? all.filter(function(p){return p!==lastPal;}) : all;
-    var pal = pool[Math.floor(Math.random()*pool.length)];
-    ls.setItem('lastPalette', pal);
-    // Mode: saved > prefers-color-scheme > clock
-    var mode;
-    if(savedMode==='light'||savedMode==='dark'){ mode = savedMode; }
-    else if(window.matchMedia){
-      var mq = matchMedia('(prefers-color-scheme: dark)');
-      if(mq && typeof mq.matches === 'boolean' && (mq.media||'').indexOf('prefers-color-scheme')>-1){
-        mode = mq.matches ? 'dark' : 'light';
-      }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SU-ETIC – Sistem Unitar pentru Educație Timpurie Incluzivă și de Calitate</title>
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&family=Source+Sans+3:wght@300;400;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --navy: #1a3a5c;
+      --navy-dark: #0f2340;
+      --navy-mid: #234e78;
+      --gold: #c9972b;
+      --gold-light: #e8b94a;
+      --gold-pale: #fdf3dc;
+      --blue-light: #e8f2fb;
+      --white: #ffffff;
+      --gray-light: #f4f6f9;
+      --gray: #6b7280;
+      --text: #1e2d40;
+      --border: #dde3ec;
     }
-    if(!mode){ var h = new Date().getHours(); mode = (h>=7 && h<20) ? 'light' : 'dark'; }
-    var h = document.documentElement;
-    h.dataset.palette = pal;
-    h.dataset.mode = mode;
-    if(savedLang){ h.dataset.lang = savedLang; h.lang = savedLang; }
-  }catch(e){/* storage blocked — defaults in HTML take over */}
-})();
-</script>
-<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-<style>
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 
-[data-mode="dark"][data-palette="violet"]{--bg:#07060f;--bg2:#0e0c1c;--bg3:#141228;--text:#ece9f8;--muted:#9b98b8;--accent:#8b5cf6;--accent-lo:rgba(139,92,246,.14);--border:rgba(120,90,220,.2);--border-hi:rgba(150,120,255,.42)}
-[data-mode="dark"][data-palette="cyan"]{--bg:#040d10;--bg2:#07161c;--bg3:#0c1f28;--text:#e8f4f8;--muted:#7ab0be;--accent:#06b6d4;--accent-lo:rgba(6,182,212,.14);--border:rgba(6,182,212,.2);--border-hi:rgba(6,182,212,.44)}
-[data-mode="dark"][data-palette="amber"]{--bg:#0f0b03;--bg2:#1a1407;--bg3:#241c0a;--text:#f6f1e6;--muted:#b8a468;--accent:#f59e0b;--accent-lo:rgba(245,158,11,.14);--border:rgba(245,158,11,.2);--border-hi:rgba(245,158,11,.46)}
-[data-mode="dark"][data-palette="rose"]{--bg:#0f0507;--bg2:#1c090d;--bg3:#260d13;--text:#f8e6ea;--muted:#ba7888;--accent:#f43f5e;--accent-lo:rgba(244,63,94,.14);--border:rgba(244,63,94,.2);--border-hi:rgba(244,63,94,.44)}
-[data-mode="dark"][data-palette="teal"]{--bg:#04100f;--bg2:#071a19;--bg3:#0b2422;--text:#e8f6f4;--muted:#70b0a8;--accent:#14b8a6;--accent-lo:rgba(20,184,166,.14);--border:rgba(20,184,166,.2);--border-hi:rgba(20,184,166,.44)}
-[data-mode="dark"][data-palette="green"]{--bg:#060f06;--bg2:#0a1a0a;--bg3:#0e240f;--text:#eaf6eb;--muted:#78ac7e;--accent:#22c55e;--accent-lo:rgba(34,197,94,.14);--border:rgba(34,197,94,.2);--border-hi:rgba(34,197,94,.44)}
-[data-mode="dark"][data-palette="orange"]{--bg:#0f0804;--bg2:#1a1207;--bg3:#24190a;--text:#f6eee6;--muted:#b89060;--accent:#f97316;--accent-lo:rgba(249,115,22,.14);--border:rgba(249,115,22,.2);--border-hi:rgba(249,115,22,.46)}
-[data-mode="dark"][data-palette="slate"]{--bg:#08090f;--bg2:#0e1018;--bg3:#141722;--text:#eaecf6;--muted:#98a4be;--accent:#94a3b8;--accent-lo:rgba(148,163,184,.14);--border:rgba(148,163,184,.2);--border-hi:rgba(148,163,184,.42)}
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-[data-mode="light"][data-palette="violet"]{--bg:#f0eef8;--bg2:#ffffff;--bg3:#e6e2f4;--text:#0e0a22;--muted:#5a5270;--accent:#7c3aed;--accent-lo:rgba(124,58,237,.1);--border:rgba(124,58,237,.18);--border-hi:rgba(124,58,237,.38)}
-[data-mode="light"][data-palette="cyan"]{--bg:#edf6f9;--bg2:#ffffff;--bg3:#d8eef4;--text:#041420;--muted:#345e6e;--accent:#0891b2;--accent-lo:rgba(8,145,178,.1);--border:rgba(8,145,178,.18);--border-hi:rgba(8,145,178,.38)}
-[data-mode="light"][data-palette="amber"]{--bg:#faf5e8;--bg2:#ffffff;--bg3:#f4eacc;--text:#180e02;--muted:#6a5020;--accent:#d97706;--accent-lo:rgba(217,119,6,.1);--border:rgba(217,119,6,.2);--border-hi:rgba(217,119,6,.42)}
-[data-mode="light"][data-palette="rose"]{--bg:#faeef0;--bg2:#ffffff;--bg3:#f4d8dc;--text:#180410;--muted:#6e3848;--accent:#e11d48;--accent-lo:rgba(225,29,72,.1);--border:rgba(225,29,72,.18);--border-hi:rgba(225,29,72,.38)}
-[data-mode="light"][data-palette="teal"]{--bg:#edf7f5;--bg2:#ffffff;--bg3:#d4eeea;--text:#021814;--muted:#2c5e58;--accent:#0f766e;--accent-lo:rgba(15,118,110,.1);--border:rgba(15,118,110,.18);--border-hi:rgba(15,118,110,.38)}
-[data-mode="light"][data-palette="green"]{--bg:#eef7ee;--bg2:#ffffff;--bg3:#d4eeda;--text:#040e06;--muted:#2c5832;--accent:#16a34a;--accent-lo:rgba(22,163,74,.1);--border:rgba(22,163,74,.18);--border-hi:rgba(22,163,74,.38)}
-[data-mode="light"][data-palette="orange"]{--bg:#faf3ec;--bg2:#ffffff;--bg3:#f4e4d0;--text:#180c04;--muted:#6a4c24;--accent:#ea580c;--accent-lo:rgba(234,88,12,.1);--border:rgba(234,88,12,.2);--border-hi:rgba(234,88,12,.42)}
-[data-mode="light"][data-palette="slate"]{--bg:#f0f2f6;--bg2:#ffffff;--bg3:#e2e6f0;--text:#0c1018;--muted:#465058;--accent:#475569;--accent-lo:rgba(71,85,105,.1);--border:rgba(71,85,105,.18);--border-hi:rgba(71,85,105,.36)}
+    body {
+      font-family: 'Source Sans 3', sans-serif;
+      color: var(--text);
+      background: var(--white);
+      font-size: 16px;
+      line-height: 1.7;
+    }
 
-html,body{min-height:100%}
-body{background:var(--bg);color:var(--text);font-family:'Syne',sans-serif;overflow-x:hidden;transition:background .3s,color .3s;-webkit-tap-highlight-color:transparent;-webkit-text-size-adjust:100%;text-size-adjust:100%}
-:root{--r:10px;--mono:'JetBrains Mono',monospace;--green:#22c55e}
-#bg-canvas{position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.6;transition:opacity .4s}
-.wrap{max-width:1280px;margin:0 auto;padding:0 1.25rem;position:relative;z-index:1;width:100%}
+    /* ─── EU FUNDING BAR ─── */
+    .eu-bar {
+      background: var(--navy-dark);
+      color: rgba(255,255,255,0.75);
+      font-size: 12px;
+      padding: 6px 0;
+      text-align: center;
+      letter-spacing: 0.03em;
+    }
+    .eu-bar span { color: var(--gold-light); font-weight: 600; }
 
-/* NAV */
-nav{position:sticky;top:0;z-index:100;background:color-mix(in srgb,var(--bg) 82%,transparent);backdrop-filter:blur(18px);border-bottom:1px solid var(--border);flex-shrink:0;transition:background .3s,border-color .3s}
-.nav-inner{display:flex;align-items:center;justify-content:space-between;height:44px;gap:.75rem}
-.nav-logo{font-family:var(--mono);font-size:.75rem;color:var(--accent);text-decoration:none;letter-spacing:.05em;transition:color .3s;white-space:nowrap}
-.nav-links{display:flex;align-items:center;gap:.6rem;flex-shrink:0}
-.nav-links a{font-family:var(--mono);font-size:.68rem;color:var(--muted);text-decoration:none;letter-spacing:.06em;text-transform:uppercase;transition:color .2s;white-space:nowrap}
-.nav-links a:hover{color:var(--text)}
+    /* ─── HEADER ─── */
+    header {
+      background: var(--white);
+      border-bottom: 3px solid var(--gold);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 12px rgba(26,58,92,0.10);
+    }
+    .header-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      height: 72px;
+    }
+    .logo-block {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      text-decoration: none;
+    }
+    .logo-badge {
+      width: 48px;
+      height: 48px;
+      background: linear-gradient(135deg, var(--navy) 0%, var(--navy-mid) 100%);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .logo-badge svg { width: 30px; height: 30px; }
+    .logo-text strong {
+      display: block;
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--navy);
+      letter-spacing: 0.02em;
+      line-height: 1.2;
+    }
+    .logo-text small {
+      display: block;
+      font-size: 11px;
+      color: var(--gray);
+      font-weight: 400;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+    nav { display: flex; align-items: center; gap: 4px; }
+    nav a {
+      text-decoration: none;
+      color: var(--navy);
+      font-size: 14px;
+      font-weight: 600;
+      padding: 8px 12px;
+      border-radius: 6px;
+      transition: background 0.18s, color 0.18s;
+      white-space: nowrap;
+    }
+    nav a:hover { background: var(--blue-light); color: var(--navy-dark); }
+    .nav-cta {
+      background: var(--gold) !important;
+      color: var(--white) !important;
+      padding: 8px 16px !important;
+    }
+    .nav-cta:hover { background: var(--gold-light) !important; }
+    .hamburger { display: none; background: none; border: none; cursor: pointer; padding: 4px; }
 
-/* SHARED PANEL BTN */
-.panel-btn{display:flex;align-items:center;gap:.3rem;font-family:var(--mono);font-size:.67rem;color:var(--muted);background:var(--bg2);border:1px solid var(--border);border-radius:6px;padding:.26rem .55rem;cursor:pointer;transition:border-color .2s,color .2s,background .3s;white-space:nowrap;line-height:1}
-.panel-btn:hover{border-color:var(--border-hi);color:var(--accent)}
-.daynight-btn.is-auto{border-color:color-mix(in srgb,var(--accent) 30%,transparent);color:var(--accent)}
-.panel-btn svg{width:11px;height:11px;flex-shrink:0}
+    /* ─── HERO ─── */
+    .hero {
+      background: linear-gradient(135deg, var(--navy-dark) 0%, var(--navy) 50%, var(--navy-mid) 100%);
+      color: var(--white);
+      padding: 80px 24px 72px;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 80% 60% at 70% 50%, rgba(201,151,43,0.12) 0%, transparent 70%);
+    }
+    .hero-inner {
+      max-width: 960px;
+      margin: 0 auto;
+      position: relative;
+      text-align: center;
+    }
+    .hero-badge {
+      display: inline-block;
+      background: rgba(201,151,43,0.2);
+      border: 1px solid rgba(201,151,43,0.5);
+      color: var(--gold-light);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 5px 16px;
+      border-radius: 20px;
+      margin-bottom: 20px;
+    }
+    .hero h1 {
+      font-family: 'Merriweather', serif;
+      font-size: clamp(26px, 4.5vw, 44px);
+      font-weight: 700;
+      line-height: 1.25;
+      margin-bottom: 20px;
+    }
+    .hero h1 em { font-style: normal; color: var(--gold-light); }
+    .hero-sub {
+      font-size: 18px;
+      font-weight: 300;
+      color: rgba(255,255,255,0.80);
+      max-width: 700px;
+      margin: 0 auto 32px;
+    }
+    .hero-meta {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 36px;
+    }
+    .hero-pill {
+      background: rgba(255,255,255,0.10);
+      border: 1px solid rgba(255,255,255,0.20);
+      border-radius: 8px;
+      padding: 8px 18px;
+      font-size: 13px;
+      color: rgba(255,255,255,0.90);
+    }
+    .hero-pill strong { color: var(--gold-light); }
+    .hero-cta-group { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+    .btn-primary {
+      background: var(--gold);
+      color: var(--white);
+      font-weight: 700;
+      font-size: 15px;
+      padding: 13px 28px;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: background 0.18s, transform 0.12s;
+      display: inline-block;
+    }
+    .btn-primary:hover { background: var(--gold-light); transform: translateY(-1px); }
+    .btn-outline {
+      background: transparent;
+      color: var(--white);
+      font-weight: 600;
+      font-size: 15px;
+      padding: 12px 28px;
+      border: 2px solid rgba(255,255,255,0.45);
+      border-radius: 8px;
+      text-decoration: none;
+      transition: border-color 0.18s, background 0.18s;
+      display: inline-block;
+    }
+    .btn-outline:hover { border-color: var(--white); background: rgba(255,255,255,0.06); }
 
-/* FLOATING PANELS */
-.float-panel{position:absolute;top:calc(100% + 4px);background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:.85rem 1rem;display:none;flex-direction:column;gap:.8rem;z-index:200;box-shadow:0 16px 48px rgba(0,0,0,.4);transition:background .3s,border-color .3s}
-.float-panel.open{display:flex}
-#theme-panel{right:1.25rem;min-width:240px}
-#lang-panel{right:calc(1.25rem + 145px);min-width:190px}
-@media(max-width:680px){
-  #theme-panel,#lang-panel{right:.5rem;left:.5rem;min-width:0}
-  .theme-grid{grid-template-columns:repeat(4,1fr)}
-}
+    /* ─── STATS BAR ─── */
+    .stats-bar {
+      background: var(--gold-pale);
+      border-top: 3px solid var(--gold);
+      border-bottom: 3px solid var(--gold);
+    }
+    .stats-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    }
+    .stat-item {
+      padding: 24px 20px;
+      text-align: center;
+      border-right: 1px solid rgba(201,151,43,0.25);
+    }
+    .stat-item:last-child { border-right: none; }
+    .stat-value {
+      font-family: 'Merriweather', serif;
+      font-size: 26px;
+      font-weight: 700;
+      color: var(--navy);
+      line-height: 1.1;
+      display: block;
+    }
+    .stat-label {
+      font-size: 12px;
+      color: var(--gray);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-weight: 600;
+      margin-top: 4px;
+      display: block;
+    }
 
-.panel-label{font-family:var(--mono);font-size:.56rem;color:var(--muted);text-transform:uppercase;letter-spacing:.14em;margin-bottom:.35rem}
+    /* ─── SECTIONS ─── */
+    section { padding: 72px 24px; }
+    section:nth-child(even) { background: var(--gray-light); }
+    .section-inner { max-width: 1200px; margin: 0 auto; }
+    .section-tag {
+      display: inline-block;
+      background: var(--blue-light);
+      color: var(--navy);
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      padding: 4px 12px;
+      border-radius: 4px;
+      margin-bottom: 12px;
+    }
+    h2 {
+      font-family: 'Merriweather', serif;
+      font-size: clamp(22px, 3vw, 32px);
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 12px;
+      line-height: 1.3;
+    }
+    .section-lead {
+      font-size: 17px;
+      color: var(--gray);
+      max-width: 680px;
+      margin-bottom: 48px;
+      line-height: 1.7;
+    }
+    .divider {
+      width: 48px;
+      height: 3px;
+      background: var(--gold);
+      margin: 16px 0 24px;
+      border-radius: 2px;
+    }
 
-/* LANG GRID */
-.lang-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:.4rem}
-.lang-opt{display:flex;align-items:center;gap:.4rem;padding:.4rem .55rem;border-radius:7px;cursor:pointer;border:1px solid var(--border);background:transparent;font-family:var(--mono);font-size:.68rem;color:var(--muted);transition:all .18s;white-space:nowrap}
-.lang-opt:hover{border-color:var(--border-hi);color:var(--text);background:var(--bg3)}
-.lang-opt.active{border-color:var(--accent);background:var(--accent-lo);color:var(--accent)}
-.lang-flag{font-size:14px;line-height:1}
+    /* ─── OBJECTIVES ─── */
+    .obj-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 0;
+    }
+    .obj-general {
+      background: linear-gradient(135deg, var(--navy) 0%, var(--navy-mid) 100%);
+      color: var(--white);
+      padding: 36px 40px;
+      border-radius: 12px 12px 0 0;
+      margin-bottom: 2px;
+    }
+    .obj-general h3 {
+      font-family: 'Merriweather', serif;
+      font-size: 14px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--gold-light);
+      margin-bottom: 12px;
+    }
+    .obj-general p {
+      font-size: 17px;
+      line-height: 1.75;
+      color: rgba(255,255,255,0.90);
+    }
+    .obj-specifice {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2px;
+    }
+    .obj-item {
+      background: var(--white);
+      padding: 28px 28px 28px 24px;
+      border-left: 4px solid var(--gold);
+      position: relative;
+    }
+    .obj-item:last-child { border-radius: 0 0 12px 0; }
+    .obj-item:nth-last-child(2) { border-radius: 0 0 0 12px; }
+    .obj-num {
+      font-family: 'Merriweather', serif;
+      font-size: 36px;
+      font-weight: 700;
+      color: var(--border);
+      position: absolute;
+      top: 16px;
+      right: 20px;
+      line-height: 1;
+    }
+    .obj-item h4 {
+      font-size: 13px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--gold);
+      margin-bottom: 8px;
+    }
+    .obj-item p { font-size: 15px; color: var(--text); line-height: 1.65; }
 
-/* MODE ROW */
-.theme-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:.4rem}
-.tswatch{display:flex;flex-direction:column;align-items:center;gap:.22rem;cursor:pointer;background:none;border:0;padding:0;font:inherit;color:inherit;appearance:none;-webkit-appearance:none}
-.tswatch-card{width:100%;height:28px;border-radius:5px;border:1.5px solid rgba(128,128,128,.25);position:relative;overflow:hidden;transition:transform .15s,border-color .15s,box-shadow .15s}
-.tswatch-card::after{content:'';position:absolute;top:0;left:0;right:0;height:3px}
-.tswatch:hover .tswatch-card{transform:scale(1.06)}
-.tswatch.active .tswatch-card{border-color:var(--text);box-shadow:0 0 0 2px var(--accent-lo)}
-.tswatch-name{font-family:var(--mono);font-size:.5rem;color:var(--muted);transition:color .15s;letter-spacing:.03em}
-.tswatch.active .tswatch-name{color:var(--accent)}
+    /* ─── ACTIVITIES ─── */
+    .act-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+    }
+    .act-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 28px;
+      transition: box-shadow 0.2s, transform 0.2s;
+    }
+    .act-card:hover { box-shadow: 0 6px 24px rgba(26,58,92,0.10); transform: translateY(-2px); }
+    .act-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 10px;
+      background: var(--blue-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 16px;
+      font-size: 22px;
+    }
+    .act-card h3 {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 10px;
+    }
+    .act-card p { font-size: 14px; color: var(--gray); line-height: 1.65; }
 
-/* HERO */
-.hero-strip{border-bottom:1px solid var(--border);flex-shrink:0;transition:border-color .3s}
-.hero-inner{display:grid;grid-template-columns:1fr auto;align-items:center;gap:1.5rem;padding:1rem 0}
-.hero-left{display:flex;flex-direction:column;gap:.3rem}
-.hero-name{font-size:clamp(1.5rem,3vw,2.3rem);font-weight:800;line-height:1;letter-spacing:-.03em}
-.hero-name span{background:linear-gradient(120deg,var(--accent) 0%,color-mix(in srgb,var(--accent) 40%,#06b6d4) 55%,color-mix(in srgb,var(--accent) 30%,#f59e0b) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;transition:background .3s}
-@media (forced-colors: active){.hero-name span{-webkit-text-fill-color:currentColor;background:none;color:LinkText}}
-.hero-tagline{font-family:var(--mono);font-size:.71rem;color:var(--muted);line-height:1.5;transition:color .3s}
-.hero-tagline strong{color:var(--text);font-weight:500}
-.hero-badges{display:flex;gap:.4rem;flex-wrap:wrap;margin-top:.15rem}
-.badge{font-family:var(--mono);font-size:.61rem;color:var(--muted);padding:.17rem .5rem;border:1px solid var(--border);border-radius:100px;white-space:nowrap;display:flex;align-items:center;gap:.3rem;background:var(--bg2);transition:border-color .3s,color .3s,background .3s;text-decoration:none}
-.badge:hover{border-color:var(--border-hi);color:var(--text)}
-.badge .dot{width:5px;height:5px;border-radius:50%;background:var(--green);animation:pulse 2s ease-in-out infinite;flex-shrink:0}
-@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+    /* ─── TARGET ─── */
+    .target-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 20px;
+    }
+    .target-card {
+      background: var(--white);
+      border-radius: 10px;
+      padding: 28px;
+      text-align: center;
+      box-shadow: 0 2px 12px rgba(26,58,92,0.07);
+      border-top: 4px solid var(--navy);
+    }
+    .target-num {
+      font-family: 'Merriweather', serif;
+      font-size: 40px;
+      font-weight: 700;
+      color: var(--navy);
+      line-height: 1.1;
+    }
+    .target-num sup { font-size: 18px; vertical-align: super; }
+    .target-desc { font-size: 14px; color: var(--gray); margin-top: 8px; line-height: 1.55; }
+    .target-sub { font-size: 13px; color: var(--gold); font-weight: 600; margin-top: 6px; }
 
-/* STATS */
-.stats-row{display:flex;border:1px solid var(--border);border-radius:var(--r);overflow:hidden;background:var(--bg2);transition:border-color .3s,background .3s}
-.stat{flex:1;padding:.6rem .9rem;border-right:1px solid var(--border);display:flex;flex-direction:column;gap:.06rem;transition:border-color .3s}
-.stat:last-child{border-right:none}
-.stat-value{font-size:1.2rem;font-weight:800;line-height:1}
-.stat-value .u{font-size:.58rem;color:var(--accent);font-family:var(--mono);transition:color .3s}
-.stat-label{font-family:var(--mono);font-size:.56rem;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;transition:color .3s}
+    /* ─── PARTNERS ─── */
+    .partners-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 20px;
+    }
+    .partner-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 28px 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .partner-badge {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      padding: 3px 10px;
+      border-radius: 4px;
+      align-self: flex-start;
+    }
+    .badge-lead { background: var(--navy); color: var(--white); }
+    .badge-partner { background: var(--blue-light); color: var(--navy); }
+    .partner-card h3 { font-size: 15px; font-weight: 700; color: var(--navy); line-height: 1.4; }
+    .partner-card p { font-size: 13px; color: var(--gray); line-height: 1.6; }
 
-/* APPS */
-.apps-header{display:flex;align-items:center;justify-content:space-between;padding:.55rem 0 .45rem;flex-shrink:0}
-.apps-title{font-family:var(--mono);font-size:.66rem;color:var(--muted);text-transform:uppercase;letter-spacing:.12em;transition:color .3s}
-.apps-count{font-family:var(--mono);font-size:.63rem;color:var(--muted);transition:color .3s}
+    /* ─── RESULTS ─── */
+    .results-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 16px;
+    }
+    .result-item {
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+      padding: 18px;
+      background: var(--white);
+      border-radius: 8px;
+      border: 1px solid var(--border);
+    }
+    .result-dot {
+      width: 10px;
+      height: 10px;
+      background: var(--gold);
+      border-radius: 50%;
+      flex-shrink: 0;
+      margin-top: 6px;
+    }
+    .result-item p { font-size: 14px; color: var(--text); line-height: 1.6; }
 
-/* GRID */
-#apps-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:.6rem;align-content:start}
+    /* ─── INDICATORS ─── */
+    .ind-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 14px;
+      background: var(--white);
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 2px 12px rgba(26,58,92,0.07);
+    }
+    .ind-table thead { background: var(--navy); color: var(--white); }
+    .ind-table th { padding: 14px 20px; text-align: left; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; }
+    .ind-table td { padding: 14px 20px; border-bottom: 1px solid var(--border); }
+    .ind-table tr:last-child td { border-bottom: none; }
+    .ind-table tr:hover td { background: var(--blue-light); }
+    .ind-type { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 11px; font-weight: 700; }
+    .ind-type.realizare { background: var(--blue-light); color: var(--navy); }
+    .ind-type.rezultat { background: var(--gold-pale); color: #7a5000; }
+    .ind-num { font-weight: 700; color: var(--navy); font-size: 16px; }
 
-/* CARD */
-.app-card{display:flex;background:var(--bg2);border:1px solid var(--border);border-radius:var(--r);overflow:hidden;transition:border-color .25s,transform .25s,box-shadow .25s,background .3s;animation:fadeUp .5s ease both;min-height:84px}
-.app-card:hover{border-color:var(--border-hi);transform:translateY(-2px);box-shadow:0 10px 28px rgba(0,0,0,.25),0 0 0 1px var(--border-hi)}
-@keyframes fadeUp{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
-.card-icon{width:68px;flex-shrink:0;position:relative;overflow:hidden}
-.card-icon canvas{width:100%;height:100%;display:block}
-.card-body{flex:1;padding:.6rem .7rem;display:flex;flex-direction:column;gap:.22rem;min-width:0}
-.card-top{display:flex;align-items:center;gap:.35rem}
-.card-name{font-size:.84rem;font-weight:800;letter-spacing:-.02em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.card-lang{font-family:var(--mono);font-size:.52rem;padding:.09rem .36rem;border-radius:100px;border:1px solid;font-weight:500;letter-spacing:.04em;text-transform:uppercase;flex-shrink:0}
-.lang-html{color:#f59e0b;border-color:rgba(245,158,11,.3);background:rgba(245,158,11,.1)}
-.lang-js{color:#06b6d4;border-color:rgba(6,182,212,.3);background:rgba(6,182,212,.1)}
-.lang-default{color:var(--muted);border-color:var(--border)}
-.card-desc{font-family:var(--mono);font-size:.64rem;color:var(--muted);line-height:1.5;flex:1;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;overflow:hidden;transition:color .3s;min-height:0}
-.card-links{display:flex;gap:.28rem;margin-top:.04rem}
-.card-link{font-family:var(--mono);font-size:.57rem;color:var(--muted);text-decoration:none;padding:.14rem .42rem;border:1px solid var(--border);border-radius:4px;background:var(--bg3);transition:border-color .2s,color .2s,background .3s;display:flex;align-items:center;gap:.2rem;white-space:nowrap;cursor:pointer;font-weight:inherit;line-height:1}
-button.card-link{appearance:none;-webkit-appearance:none}
-.card-link svg{width:9px;height:9px;flex-shrink:0}
-.card-link:hover{border-color:var(--border-hi);color:var(--text)}
-.card-link.live-link{color:var(--accent);border-color:color-mix(in srgb,var(--accent) 40%,transparent);background:var(--accent-lo)}
-.card-link.web-link{opacity:.75}
-.card-link.web-link:hover{opacity:1}
-.card-link.date-chip{pointer-events:none;border-color:transparent;background:transparent;color:var(--muted)}
+    /* ─── BUDGET ─── */
+    .budget-block {
+      background: linear-gradient(135deg, var(--navy) 0%, var(--navy-mid) 100%);
+      border-radius: 14px;
+      padding: 40px;
+      color: var(--white);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+      align-items: center;
+    }
+    @media (max-width: 640px) { .budget-block { grid-template-columns: 1fr; } }
+    .budget-main h3 {
+      font-family: 'Merriweather', serif;
+      font-size: 14px;
+      color: var(--gold-light);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 6px;
+    }
+    .budget-amount {
+      font-family: 'Merriweather', serif;
+      font-size: clamp(28px, 4vw, 42px);
+      font-weight: 700;
+      line-height: 1.1;
+      margin-bottom: 6px;
+    }
+    .budget-sub { font-size: 14px; color: rgba(255,255,255,0.65); }
+    .budget-breakdown { display: flex; flex-direction: column; gap: 14px; }
+    .budget-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: 14px;
+      border-bottom: 1px solid rgba(255,255,255,0.12);
+    }
+    .budget-row:last-child { border-bottom: none; padding-bottom: 0; }
+    .budget-row span:first-child { font-size: 13px; color: rgba(255,255,255,0.70); }
+    .budget-row span:last-child { font-size: 15px; font-weight: 700; color: var(--gold-light); }
+    .budget-bar {
+      margin-top: 20px;
+      height: 8px;
+      background: rgba(255,255,255,0.15);
+      border-radius: 4px;
+      overflow: hidden;
+    }
+    .budget-bar-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--gold-light), var(--gold));
+      border-radius: 4px;
+      width: 92.2%;
+    }
+    .budget-bar-label { font-size: 12px; color: rgba(255,255,255,0.55); margin-top: 6px; }
 
-/* FOOTER */
-footer{border-top:1px solid var(--border);flex-shrink:0;transition:border-color .3s}
-.footer-inner{display:flex;align-items:center;justify-content:space-between;height:34px;font-family:var(--mono);font-size:.6rem;color:var(--muted)}
-.footer-inner a{color:var(--muted);text-decoration:none;transition:color .2s}
-.footer-inner a:hover{color:var(--text)}
-.footer-left{display:flex;align-items:center;gap:.6rem}
-.footer-links{display:flex;gap:1.1rem}
-.orcid-link{color:var(--accent)!important;display:flex;align-items:center;gap:.3rem}
-.orcid-icon{width:14px;height:14px;border-radius:50%;background:#a6ce39;display:inline-flex;align-items:center;justify-content:center;font-size:8px;font-weight:700;color:#fff;font-family:sans-serif;flex-shrink:0}
+    /* ─── INFO BOX ─── */
+    .info-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 16px;
+      margin-top: 32px;
+    }
+    .info-card {
+      background: var(--white);
+      border-radius: 10px;
+      padding: 22px;
+      border-left: 4px solid var(--navy);
+    }
+    .info-card h4 { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--gray); margin-bottom: 8px; }
+    .info-card p { font-size: 15px; font-weight: 600; color: var(--navy); }
 
-/* LOADING */
-#loading-state{grid-column:1/-1;text-align:center;padding:2rem;font-family:var(--mono);font-size:.75rem;color:var(--muted);display:flex;flex-direction:column;align-items:center;gap:.75rem}
-.loader{width:18px;height:18px;border:1.5px solid var(--border);border-top-color:var(--accent);border-radius:50%;animation:spin .7s linear infinite;transition:border-top-color .3s}
-@keyframes spin{to{transform:rotate(360deg)}}
+    /* ─── FOOTER ─── */
+    footer {
+      background: var(--navy-dark);
+      color: rgba(255,255,255,0.70);
+      padding: 48px 24px 32px;
+    }
+    .footer-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 40px;
+    }
+    @media (max-width: 720px) { .footer-inner { grid-template-columns: 1fr; } }
+    .footer-brand strong { display: block; color: var(--white); font-size: 17px; margin-bottom: 8px; }
+    .footer-brand p { font-size: 13px; line-height: 1.65; margin-bottom: 16px; }
+    .footer-smis {
+      display: inline-block;
+      background: rgba(201,151,43,0.18);
+      border: 1px solid rgba(201,151,43,0.35);
+      color: var(--gold-light);
+      font-size: 12px;
+      font-weight: 700;
+      padding: 4px 12px;
+      border-radius: 4px;
+    }
+    .footer-col h4 { color: var(--white); font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 16px; }
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .footer-col ul li a { color: rgba(255,255,255,0.65); text-decoration: none; font-size: 14px; transition: color 0.15s; }
+    .footer-col ul li a:hover { color: var(--gold-light); }
+    .footer-bottom {
+      max-width: 1200px;
+      margin: 32px auto 0;
+      padding-top: 24px;
+      border-top: 1px solid rgba(255,255,255,0.10);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+      font-size: 12px;
+      color: rgba(255,255,255,0.40);
+    }
+    .eu-logos { display: flex; gap: 16px; align-items: center; }
+    .eu-flag {
+      width: 48px;
+      height: 32px;
+      background: #003399;
+      border-radius: 3px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+    }
 
-main{padding:.6rem 0 1.5rem}
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 768px) {
+      nav { display: none; }
+      .hamburger { display: block; }
+      .stat-item { border-right: none; border-bottom: 1px solid rgba(201,151,43,0.20); }
+      .stats-inner { grid-template-columns: 1fr 1fr; }
+      .obj-specifice { grid-template-columns: 1fr; }
+    }
 
-/* Mobile-first improvements: comfortable tap targets, safe-area insets for notches */
-@media(max-width:960px){#apps-grid{grid-template-columns:repeat(2,1fr)}.hero-inner{grid-template-columns:1fr;gap:.6rem}}
-@media(max-width:760px){
-  .stats-row{flex-wrap:wrap}
-  .stat{flex:1 1 50%;border-bottom:1px solid var(--border)}
-  .stat:nth-child(2){border-right:none}
-  .stat:nth-last-child(-n+2){border-bottom:none}
-  .nav-inner{height:48px;gap:.4rem}
-  .panel-btn{padding:.4rem .6rem;font-size:.7rem;min-height:34px}
-  .nav-logo{font-size:.7rem}
-}
-@media(max-width:620px){
-  #apps-grid{grid-template-columns:1fr}
-  .hero-name{font-size:1.65rem}
-  .hero-inner{padding:.85rem 0}
-  .nav-links a:not(.panel-btn){display:none}
-  .nav-links{gap:.35rem}
-  .panel-btn span[data-i18n]{display:none}
-  .panel-btn{padding:.45rem .55rem}
-  .wrap{padding:0 .9rem}
-  .footer-inner{flex-direction:column;height:auto;padding:.5rem 0;gap:.35rem;text-align:center}
-  .footer-links{gap:.8rem;flex-wrap:wrap;justify-content:center}
-  .hero-badges{gap:.3rem}
-  .badge{font-size:.6rem}
-}
-/* Respect iOS safe areas */
-@supports(padding:env(safe-area-inset-left)){
-  body{padding-left:env(safe-area-inset-left);padding-right:env(safe-area-inset-right)}
-  footer{padding-bottom:env(safe-area-inset-bottom)}
-}
-
-/* A11y: keyboard focus */
-:focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:4px}
-.tswatch:focus-visible .tswatch-card{border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-lo)}
-
-/* Respect reduced motion: silence card fade + canvas opacity */
-@media (prefers-reduced-motion: reduce){
-  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
-  #bg-canvas{opacity:0!important}
-  .badge .dot{animation:none}
-}
-</style>
+    /* ─── ANCHOR SCROLL ─── */
+    html { scroll-behavior: smooth; }
+    [id] { scroll-margin-top: 80px; }
+  </style>
 </head>
 <body>
-<canvas id="bg-canvas" aria-hidden="true"></canvas>
 
-<nav>
-  <div class="wrap nav-inner">
-    <a href="#" class="nav-logo">chiuta.github.io</a>
-    <div class="nav-links">
-      <a href="https://chiuta.ro" target="_blank">OmniHost</a>
-      <a href="https://github.com/chiuta" target="_blank">GitHub</a>
-      <!-- ANIM BTN -->
-      <button class="panel-btn" id="anim-toggle" aria-label="Animations" onclick="toggleAnim()" title="Animații">
-        <svg id="anim-icon" viewBox="0 0 16 16" fill="currentColor"><path d="M11.596 8.697l-6.363 3.692c-.54.313-1.233-.066-1.233-.697V4.308c0-.63.692-1.01 1.233-.696l6.363 3.692a.802.802 0 0 1 0 1.393z"/></svg>
-      </button>
-      <!-- DAY/NIGHT BTN -->
-      <button class="panel-btn daynight-btn" id="daynight-btn" onclick="toggleDayNight()" title="Zi / Noapte">
-        <svg id="daynight-icon" viewBox="0 0 16 16" fill="currentColor" width="12" height="12"></svg>
-      </button>
-      <!-- LANG BTN -->
-      <button class="panel-btn" id="lang-toggle" aria-label="Language" aria-expanded="false" aria-controls="lang-panel" aria-haspopup="true">
-        <svg viewBox="0 0 16 16" fill="currentColor"><path d="M0 5a5 5 0 0 0 4.027 4.905 6.5 6.5 0 0 1 .544-2.073C3.375 7.573 2.245 6.676 2.245 5a2.751 2.751 0 0 1 5.502 0v.5a.5.5 0 0 0 1 0V5a3.75 3.75 0 0 0-7.5 0zm6.977 3.745A5.002 5.002 0 0 0 10 10a5 5 0 0 0 5-5 .5.5 0 0 0-1 0 4 4 0 0 1-4.95 3.888 6.46 6.46 0 0 1-2.073-.143zM5 0a5 5 0 1 0 0 10A5 5 0 0 0 5 0z"/><path d="M5 6.5a.5.5 0 0 1 .5.5v.5H6a.5.5 0 0 1 0 1h-.5V9a.5.5 0 0 1-1 0v-.5H4a.5.5 0 0 1 0-1h.5V7a.5.5 0 0 1 .5-.5zm5 0c.315 0 .61.147.801.4l1.5 2a.5.5 0 1 1-.802.6L11.298 9H9.702l-.201.5a.5.5 0 1 1-.802-.6l1.5-2A1 1 0 0 1 10 6.5zm0 1.467L9.598 9h.804L10 7.967z"/></svg>
-        <span id="lang-label">EN</span>
-      </button>
-      <!-- THEME BTN -->
-      <button class="panel-btn" id="theme-toggle" aria-label="Theme" aria-expanded="false" aria-controls="theme-panel" aria-haspopup="true">
-        <svg viewBox="0 0 16 16" fill="currentColor"><path d="M9.796 1.343c-.527-1.79-3.065-1.79-3.592 0l-.094.319a.873.873 0 0 1-1.255.52l-.292-.16c-1.64-.892-3.433.902-2.54 2.541l.159.292a.873.873 0 0 1-.52 1.255l-.319.094c-1.79.527-1.79 3.065 0 3.592l.319.094a.873.873 0 0 1 .52 1.255l-.16.292c-.892 1.64.901 3.434 2.541 2.54l.292-.159a.873.873 0 0 1 1.255.52l.094.319c.527 1.79 3.065 1.79 3.592 0l.094-.319a.873.873 0 0 1 1.255-.52l.292.16c1.64.893 3.434-.902 2.54-2.541l-.159-.292a.873.873 0 0 1 .52-1.255l.319-.094c1.79-.527 1.79-3.065 0-3.592l-.319-.094a.873.873 0 0 1-.52-1.255l.16-.292c.893-1.64-.902-3.433-2.541-2.54l-.292.159a.873.873 0 0 1-1.255-.52zm-2.633.283c.246-.835 1.428-.835 1.674 0l.094.319a1.873 1.873 0 0 0 2.693 1.115l.291-.16c.764-.415 1.6.42 1.184 1.185l-.159.292a1.873 1.873 0 0 0 1.116 2.692l.318.094c.835.246.835 1.428 0 1.674l-.319.094a1.873 1.873 0 0 0-1.115 2.693l.16.291c.415.764-.42 1.6-1.185 1.184l-.291-.159a1.873 1.873 0 0 0-2.693 1.116l-.094.318c-.246.835-1.428.835-1.674 0l-.094-.319a1.873 1.873 0 0 0-2.692-1.115l-.292.16c-.764.415-1.6-.42-1.184-1.185l.159-.291A1.873 1.873 0 0 0 1.945 8.93l-.319-.094c-.835-.246-.835-1.428 0-1.674l.319-.094A1.873 1.873 0 0 0 3.06 4.474l-.16-.292c-.415-.764.42-1.6 1.185-1.184l.292.159a1.873 1.873 0 0 0 2.692-1.115zm1.856 1.9a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5"/></svg>
-        <span data-i18n="themeLbl">Theme</span>
-      </button>
-    </div>
-  </div>
+<!-- EU BAR -->
+<div class="eu-bar">
+  Proiect cofinanțat de <span>Uniunea Europeană</span> din <span>Fondul Social European+</span> prin <span>Programul Educație și Ocupare 2021–2027</span> &nbsp;|&nbsp; Cod SMIS: <span>333468</span>
+</div>
 
-  <!-- LANG PANEL -->
-  <div class="float-panel" id="lang-panel">
-    <div>
-      <div class="panel-label" data-i18n="langLbl">Language</div>
-      <div class="lang-grid" id="lang-grid"></div>
-    </div>
-  </div>
-
-  <!-- THEME PANEL -->
-  <div class="float-panel" id="theme-panel">
-    <div>
-      <div class="panel-label" data-i18n="darkThemes">Dark themes</div>
-      <div class="theme-grid" id="swatches-dark"></div>
-    </div>
-    <div>
-      <div class="panel-label" data-i18n="lightThemes">Light themes</div>
-      <div class="theme-grid" id="swatches-light"></div>
-    </div>
-  </div>
-</nav>
-
-<div class="hero-strip">
-  <div class="wrap">
-    <div class="hero-inner">
-      <div class="hero-left">
-        <h1 class="hero-name">A.I. <span>Chiuță</span></h1>
-        <p class="hero-tagline"><strong data-i18n="taglineStrong">Single-file HTML apps</strong><span data-i18n="taglineRest"> — offline-first, no server, no account. The file is yours.</span></p>
-        <div class="hero-badges">
-          <span class="badge"><span class="dot"></span><span data-i18n="badgeLocation">Bucharest, RO</span></span>
-          <span class="badge" data-i18n="badgeOffline">◈ Offline-First</span>
-          <span class="badge" data-i18n="badgeVanilla">⬡ Vanilla JS</span>
-          <span class="badge" data-i18n="badgeTelemetry">⌀ Zero Telemetry</span>
-        </div>
+<!-- HEADER -->
+<header>
+  <div class="header-inner">
+    <a href="#" class="logo-block">
+      <div class="logo-badge">
+        <svg viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="15" cy="10" r="6" fill="#c9972b"/>
+          <path d="M6 26c0-4.97 4.03-9 9-9s9 4.03 9 9" stroke="#ffffff" stroke-width="2.2" stroke-linecap="round"/>
+          <circle cx="8" cy="16" r="3.5" fill="rgba(255,255,255,0.4)"/>
+          <circle cx="22" cy="16" r="3.5" fill="rgba(255,255,255,0.4)"/>
+        </svg>
       </div>
-      <div class="stats-row">
-        <div class="stat"><div class="stat-value" id="stat-repos">8</div><div class="stat-label" data-i18n="statRepos">Repos</div></div>
-        <div class="stat"><div class="stat-value">141<span class="u">+</span></div><div class="stat-label" data-i18n="statModules">Modules</div></div>
-        <div class="stat"><div class="stat-value">61<span class="u">lang</span></div><div class="stat-label" data-i18n="statLangs">Languages</div></div>
-        <div class="stat"><div class="stat-value">0<span class="u">b↑</span></div><div class="stat-label" data-i18n="statSent">Sent</div></div>
+      <div class="logo-text">
+        <strong>SU-ETIC</strong>
+        <small>Educație Timpurie Incluzivă și de Calitate</small>
       </div>
+    </a>
+    <nav>
+      <a href="#despre">Despre</a>
+      <a href="#obiective">Obiective</a>
+      <a href="#activitati">Activități</a>
+      <a href="#parteneri">Parteneri</a>
+      <a href="#rezultate">Rezultate</a>
+      <a href="#contact" class="nav-cta">Contact</a>
+    </nav>
+    <button class="hamburger" aria-label="Meniu">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#1a3a5c" stroke-width="2.2">
+        <line x1="3" y1="6" x2="21" y2="6"/>
+        <line x1="3" y1="12" x2="21" y2="12"/>
+        <line x1="3" y1="18" x2="21" y2="18"/>
+      </svg>
+    </button>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero" id="despre">
+  <div class="hero-inner">
+    <div class="hero-badge">Program Educație și Ocupare 2021–2027 · Prioritatea 5</div>
+    <h1>
+      Sistem Unitar pentru<br />
+      <em>Educație Timpurie Incluzivă</em><br />
+      și de Calitate
+    </h1>
+    <p class="hero-sub">
+      Un proiect național de reformă a educației timpurii, destinat îmbunătățirii calității
+      serviciilor pentru copiii de la naștere la 6 ani și formării personalului didactic la nivel național.
+    </p>
+    <div class="hero-meta">
+      <div class="hero-pill"><strong>01.02.2025</strong> – 31.01.2029</div>
+      <div class="hero-pill"><strong>48 luni</strong> implementare</div>
+      <div class="hero-pill">Cod SMIS: <strong>333468</strong></div>
+      <div class="hero-pill">ESO4.6 · Obiectiv specific</div>
+    </div>
+    <div class="hero-cta-group">
+      <a href="#obiective" class="btn-primary">Obiectivele proiectului</a>
+      <a href="#activitati" class="btn-outline">Activități &amp; Rezultate</a>
+    </div>
+  </div>
+</section>
+
+<!-- STATS BAR -->
+<div class="stats-bar">
+  <div class="stats-inner">
+    <div class="stat-item">
+      <span class="stat-value">163,5 <small style="font-size:16px">mil.</small></span>
+      <span class="stat-label">Lei – Valoare totală proiect</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-value">12.438</span>
+      <span class="stat-label">Personal didactic format</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-value">8.400</span>
+      <span class="stat-label">Elevi formați (3 ani)</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-value">420</span>
+      <span class="stat-label">Mentori naționali</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-value">42</span>
+      <span class="stat-label">Județe acoperite</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-value">4</span>
+      <span class="stat-label">Parteneri instituționali</span>
     </div>
   </div>
 </div>
 
-<main>
-  <div class="wrap">
-    <div class="apps-header">
-      <span class="apps-title" data-i18n="projects">Projects</span>
-      <span class="apps-count" id="apps-count"></span>
-    </div>
-    <div id="apps-grid">
-      <div id="loading-state"><div class="loader"></div><div data-i18n="loading">Fetching from GitHub…</div></div>
-    <noscript>
-      <style>.app-card{display:block;padding:.75rem 1rem;border:1px solid rgba(139,92,246,.3);border-radius:10px;margin-bottom:.5rem;text-decoration:none;color:inherit;background:rgba(14,12,28,.8)}.app-card h3{font-size:1rem;margin-bottom:.25rem}.app-card p{font-size:.75rem;opacity:.7}</style>
-      <a class="app-card" href="https://chiuta.ro"><h3>OmniHost</h3><p>Complete personal productivity suite — 141 modules. The file is your database.</p></a>
-      <a class="app-card" href="https://alexio.tf"><h3>Printre inteligențe</h3><p>Interactive SF web book inspired by NASA Artemis 2.</p></a>
-      <a class="app-card" href="https://chiuta.github.io/AI-Liber"><h3>AI-Liber</h3><p>Open, libre AI utilities for writing, analysis and research.</p></a>
-      <a class="app-card" href="https://chiuta.github.io/PromptVault"><h3>PromptVault</h3><p>Local-first prompt manager for AI workflows.</p></a>
-      <a class="app-card" href="https://chiuta.github.io/TranslateHub"><h3>TranslateHub</h3><p>Client-side translation hub across dozens of languages.</p></a>
-      <a class="app-card" href="https://chiuta.github.io/VoiceAtelier"><h3>VoiceAtelier</h3><p>TTS studio for multi-voice, multilingual speech synthesis.</p></a>
-      <a class="app-card" href="https://chiuta.github.io/FreeDetect"><h3>FreeDetect</h3><p>AI-generated text and plagiarism detector, runs in-browser.</p></a>
-      <a class="app-card" href="https://chiuta.github.io/AcademiSearch/"><h3>AcademiSearch</h3><p>Client-side academic search engine for research papers.</p></a>
-    </noscript>
+<!-- OBIECTIVE -->
+<section id="obiective">
+  <div class="section-inner">
+    <div class="section-tag">Obiective</div>
+    <h2>Obiectivele proiectului</h2>
+    <div class="divider"></div>
+    <p class="section-lead">
+      Proiectul SU-ETIC urmărește consolidarea unui sistem național unitar de educație timpurie,
+      prin intervenții structurale la nivelul cadrului de calitate, al formării personalului și al curriculumului.
+    </p>
+
+    <div class="obj-grid">
+      <div class="obj-general">
+        <h3>Obiectiv General</h3>
+        <p>
+          Sprijinirea, în continuare, a dezvoltării unui sistem unitar de educație timpurie, incluzivă
+          și de calitate, cu scopul îmbunătățirii ratelor de participare, atât la nivel antepreșcolar,
+          cât și la nivel preșcolar, inclusiv pentru copiii provenind din grupuri defavorizate.
+        </p>
+      </div>
+      <div class="obj-specifice">
+        <div class="obj-item">
+          <span class="obj-num">1</span>
+          <h4>OS 1 · Cadru de calitate</h4>
+          <p>Elaborarea unui set unitar de standarde de calitate pentru programele de educație timpurie, pilotat cu sprijinul a 5 ISJ-uri nominalizate prin OM.</p>
+        </div>
+        <div class="obj-item">
+          <span class="obj-num">2</span>
+          <h4>OS 2 · Capacitate instituțională</h4>
+          <p>Creșterea capacității unităților de învățământ preuniversitar și a inspectoratelor școlare de a evalua și monitoriza calitatea programelor de educație timpurie.</p>
+        </div>
+        <div class="obj-item">
+          <span class="obj-num">3</span>
+          <h4>OS 3 · Formare inițială</h4>
+          <p>Dezvoltarea sistemului de formare inițială a personalului didactic: curriculum actualizat, ateliere de vară, ghiduri metodice pentru licee pedagogice și universități PIPP.</p>
+        </div>
+        <div class="obj-item">
+          <span class="obj-num">4</span>
+          <h4>OS 4 · Mentorat &amp; formare continuă</h4>
+          <p>Program de mentorat și formare continuă adaptat tendințelor europene, cu accent pe diminuarea decalajului urban-rural și strategii didactice inovatoare.</p>
+        </div>
+        <div class="obj-item">
+          <span class="obj-num">5</span>
+          <h4>OS 5 · Curriculum incluziv</h4>
+          <p>Sprijinirea implementării noului curriculum și a principiilor de bază ale educației timpurii incluzive, prin ghiduri de bune practici cu accent pe inovare didactică și multiculturalism.</p>
+        </div>
+      </div>
     </div>
   </div>
-</main>
+</section>
 
-<footer>
-  <div class="wrap footer-inner">
-    <div class="footer-left">
-      <span data-i18n="copyright">© 2026 Alexandru-Ionuț Chiuță</span>
+<!-- ACTIVITATI -->
+<section id="activitati">
+  <div class="section-inner">
+    <div class="section-tag">Activități</div>
+    <h2>Activitățile proiectului</h2>
+    <div class="divider"></div>
+    <p class="section-lead">
+      Proiectul este structurat în 5 activități principale plus managementul de proiect,
+      acoperind întregul lanț de intervenție în educația timpurie națională.
+    </p>
+    <div class="act-list">
+      <div class="act-card">
+        <div class="act-icon">🗂️</div>
+        <h3>A0 · Management de proiect</h3>
+        <p>Organizarea echipelor, elaborarea planului de implementare și de achiziții, monitorizare și evaluare continuă. Coordonare cu toți cei 3 parteneri printr-un sistem integrat de proceduri interne.</p>
+      </div>
+      <div class="act-card">
+        <div class="act-icon">📋</div>
+        <h3>A1 · Cadrul de asigurare a calității</h3>
+        <p>Elaborarea și pilotarea setului unitar de standarde de calitate pentru ET, cu sprijinul a 5 ISJ-uri. Include un raport de analiză comparativă internațională, vizite de studiu și întâlniri cu experți, inclusiv reprezentanți ai Fundației Reggio Children din Italia.</p>
+      </div>
+      <div class="act-card">
+        <div class="act-icon">🎓</div>
+        <h3>A2 · Formarea personalului de monitorizare</h3>
+        <p>Program de formare acreditat (80 ore) pentru 188 formatori ARACIP și 1.500 de directori, metodiști, inspectori și membri CEAC. Derulat hibrid (sincron + asincron) în spațiile ISJ/CCD/ARACIP zonale.</p>
+      </div>
+      <div class="act-card">
+        <div class="act-icon">🏫</div>
+        <h3>A3 · Formare inițială a cadrelor didactice</h3>
+        <p>Formare continuă (80 ore, 4 module) pentru 400 profesori din licee pedagogice. Ateliere de vară anuale (5 zile, 2.800 elevi/an) pentru elevii de clasa a XI-a. Elaborarea și distribuția a 7 ghiduri metodice pe discipline (1.500 seturi).</p>
+      </div>
+      <div class="act-card">
+        <div class="act-icon">🤝</div>
+        <h3>A4 · Program de mentorat</h3>
+        <p>Selecție și instruire a 420 mentori (câte 10/județ + mun. București). Derularea programului de formare, consiliere și mentorat pentru 10.440 cadre didactice. Elaborarea a 5 ghiduri de bune practici pentru mentorat didactic.</p>
+      </div>
+      <div class="act-card">
+        <div class="act-icon">📣</div>
+        <h3>A5 · Informare și publicitate</h3>
+        <p>Două conferințe naționale, evenimente de multiplicare regionale în cele 8 ISJ-uri pilot, distribuire de broșuri și materiale la nivelul ISJ-urilor, anunțuri publicitare și actualizarea permanentă a site-ului proiectului.</p>
+      </div>
     </div>
-    <div class="footer-links">
-      <a href="https://orcid.org/0009-0008-6858-4299" target="_blank" rel="noopener" class="orcid-link">
-        <span class="orcid-icon">iD</span> ORCID
-      </a>
-      <a href="https://github.com/chiuta" target="_blank">GitHub</a>
-      <a href="https://chiuta.ro" target="_blank">chiuta.ro</a>
+  </div>
+</section>
+
+<!-- GRUP TINTA -->
+<section id="grup-tinta" style="background: var(--blue-light);">
+  <div class="section-inner">
+    <div class="section-tag">Beneficiari</div>
+    <h2>Grupul țintă</h2>
+    <div class="divider"></div>
+    <p class="section-lead">
+      Proiectul adresează direct <strong>20.838 beneficiari</strong>, acoperind întreg lanțul formativ
+      din educația timpurie națională.
+    </p>
+    <div class="target-grid">
+      <div class="target-card">
+        <div class="target-num">10.350</div>
+        <div class="target-sub">Personal didactic de predare</div>
+        <div class="target-desc">Cadre didactice din unitățile de învățământ preuniversitar cu grupe antepreșcolare și preșcolare</div>
+      </div>
+      <div class="target-card">
+        <div class="target-num">1.126</div>
+        <div class="target-sub">Personal de conducere, îndrumare, control</div>
+        <div class="target-desc">Directori, inspectori, metodiști, responsabili CEAC implicați în monitorizarea calității ET</div>
+      </div>
+      <div class="target-card">
+        <div class="target-num">294</div>
+        <div class="target-sub">Profesori licee pedagogice</div>
+        <div class="target-desc">Cadre didactice din liceele pedagogice și liceele cu clase de vocațional pedagogic</div>
+      </div>
+      <div class="target-card">
+        <div class="target-num">80</div>
+        <div class="target-sub">Personal auxiliar</div>
+        <div class="target-desc">Personal auxiliar inclusiv mediatori școlari din unitățile de ET</div>
+      </div>
+      <div class="target-card">
+        <div class="target-num">188</div>
+        <div class="target-sub">Formatori ARACIP</div>
+        <div class="target-desc">Formatori selectați și formați de ARACIP pentru programul de asigurare a calității</div>
+      </div>
+      <div class="target-card">
+        <div class="target-num">8.400</div>
+        <div class="target-sub">Elevi din programe de formare</div>
+        <div class="target-desc">2.800 elevi/an × 3 ani, din clasa a XI-a a liceelor pedagogice și claselor vocațional pedagogic</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PARTENERI -->
+<section id="parteneri">
+  <div class="section-inner">
+    <div class="section-tag">Consorțiu</div>
+    <h2>Partenerii proiectului</h2>
+    <div class="divider"></div>
+    <p class="section-lead">
+      Proiectul este implementat de un consorțiu de 4 instituții publice complementare,
+      cu expertiză dovedită în educație timpurie, asigurarea calității și formare universitară.
+    </p>
+    <div class="partners-grid">
+      <div class="partner-card">
+        <span class="partner-badge badge-lead">Beneficiar Lider</span>
+        <h3>Ministerul Educației și Cercetării</h3>
+        <p>Coordonatorul național al proiectului. Elaborează cadrul normativ și programele-cadru, coordonează implementarea la nivel național și asigură acreditarea programelor de formare prin OM.</p>
+        <a href="https://edu.ro" target="_blank" style="font-size:13px; color:var(--navy); font-weight:600;">edu.ro →</a>
+      </div>
+      <div class="partner-card">
+        <span class="partner-badge badge-partner">Partener 1</span>
+        <h3>ARACIP</h3>
+        <p>Agenția Română de Asigurare a Calității în Învățământul Preuniversitar. Elaborează și pilotează programele de formare pentru asigurarea calității ET. Formează și coordonează cei 188 de formatori naționali.</p>
+        <a href="https://aracip.edu.ro" target="_blank" style="font-size:13px; color:var(--navy); font-weight:600;">aracip.edu.ro →</a>
+      </div>
+      <div class="partner-card">
+        <span class="partner-badge badge-partner">Partener 2</span>
+        <h3>Universitatea Națională de Știință și Tehnologie Politehnica București</h3>
+        <p>Centrul Universitar Pitești – Departamentul de Științe ale Educației. Contribuie la elaborarea programului de formare a mentorilor și la derularea activităților de formare inițială pentru personalul didactic.</p>
+        <a href="https://upb.ro" target="_blank" style="font-size:13px; color:var(--navy); font-weight:600;">upb.ro →</a>
+      </div>
+      <div class="partner-card">
+        <span class="partner-badge badge-partner">Partener 3</span>
+        <h3>Universitatea „Ștefan cel Mare" din Suceava</h3>
+        <p>Contribuie la elaborarea programului de mentorat, instruirea a 210 mentori județeni și formarea a 220 profesori din ET. Beneficiază de o alocare de 24.000.000 lei din bugetul proiectului.</p>
+        <a href="https://usv.ro" target="_blank" style="font-size:13px; color:var(--navy); font-weight:600;">usv.ro →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REZULTATE -->
+<section id="rezultate" style="background: var(--gray-light);">
+  <div class="section-inner">
+    <div class="section-tag">Rezultate</div>
+    <h2>Rezultatele așteptate</h2>
+    <div class="divider"></div>
+    <p class="section-lead">
+      Proiectul produce un set diversificat de rezultate cu relevanță sistemică,
+      care vor fi puse la dispoziție gratuit prin site-ul proiectului și al MEC.
+    </p>
+    <div class="results-grid">
+      <div class="result-item">
+        <div class="result-dot"></div>
+        <p><strong>Set unitar de standarde de calitate</strong> pentru programele de educație timpurie, elaborat și pilotat cu sprijinul a 5 ISJ-uri nominalizate prin ordin de ministru</p>
+      </div>
+      <div class="result-item">
+        <div class="result-dot"></div>
+        <p><strong>Program-cadru de dezvoltare</strong> a sistemului național unitar de educație timpurie incluzivă și de calitate, aprobat prin ordin de ministru</p>
+      </div>
+      <div class="result-item">
+        <div class="result-dot"></div>
+        <p><strong>Program de formare acreditat</strong> pentru personalul implicat în asigurarea și monitorizarea calității serviciilor de educație timpurie (80 ore, hibrid)</p>
+      </div>
+      <div class="result-item">
+        <div class="result-dot"></div>
+        <p><strong>188 formatori ARACIP</strong> formați și activați ca persoane-resursă la nivel național, eligibili pentru Registrul evaluatorilor externi ARACIP</p>
+      </div>
+      <div class="result-item">
+        <div class="result-dot"></div>
+        <p><strong>1.500 de persoane</strong> formate în asigurarea calității (directori, metodiști, inspectori, CEAC) din toată țara</p>
+      </div>
+      <div class="result-item">
+        <div class="result-dot"></div>
+        <p><strong>400 profesori din licee pedagogice</strong> formați pentru implementarea noului curriculum (80 ore, 4 module, prezență fizică + asincron)</p>
+      </div>
+      <div class="result-item">
+        <div class="result-dot"></div>
+        <p><strong>8.400 elevi</strong> participanți la atelierele de vară pedagogice în 3 ani (2.800/an), din clasa a XI-a a liceelor pedagogice și claselor vocațional pedagogic</p>
+      </div>
+      <div class="result-item">
+        <div class="result-dot"></div>
+        <p><strong>7 ghiduri metodice</strong> pe discipline, editate și distribuite în 1.500 de seturi, pentru profesorii din licee pedagogice și universitățile PIPP</p>
+      </div>
+      <div class="result-item">
+        <div class="result-dot"></div>
+        <p><strong>420 mentori naționali</strong> formați (câte 10 per județ + mun. București), care vor susține formarea a 10.440 de cadre didactice din ET</p>
+      </div>
+      <div class="result-item">
+        <div class="result-dot"></div>
+        <p><strong>5 ghiduri de bune practici</strong> pentru mentorat didactic (educație incluzivă, CES, digital, STEAM, socio-emoțional, comunități de învățare)</p>
+      </div>
+      <div class="result-item">
+        <div class="result-dot"></div>
+        <p><strong>42 analize de nevoi</strong> și <strong>42 planuri de măsuri</strong> județene pentru evaluarea competențelor îmbunătățite ale personalului didactic</p>
+      </div>
+      <div class="result-item">
+        <div class="result-dot"></div>
+        <p><strong>Document-cadru Reggio Emilia</strong> pentru fundamentarea politicilor MEC, elaborat de CNSET și înaintat spre avizare</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INDICATORI -->
+<section id="indicatori">
+  <div class="section-inner">
+    <div class="section-tag">Indicatori</div>
+    <h2>Indicatori de performanță</h2>
+    <div class="divider"></div>
+    <p class="section-lead">
+      Proiectul este monitorizat prin indicatori de realizare și de rezultat stabiliți la nivel de program,
+      conform cadrului de performanță PEO 2021–2027.
+    </p>
+    <div style="overflow-x:auto;">
+      <table class="ind-table">
+        <thead>
+          <tr>
+            <th>Cod indicator</th>
+            <th>Denumire</th>
+            <th>Tip</th>
+            <th>Țintă</th>
+            <th>U.M.</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>EECO05</strong></td>
+            <td>Angajați, inclusiv persoane care desfășoară o activitate independentă</td>
+            <td><span class="ind-type realizare">Realizare</span></td>
+            <td class="ind-num">12.438</td>
+            <td>nr. persoane</td>
+          </tr>
+          <tr>
+            <td><strong>EECO09</strong></td>
+            <td>Participanți absolvenți de învățământ secundar inferior sau sub acest nivel</td>
+            <td><span class="ind-type realizare">Realizare</span></td>
+            <td class="ind-num">8.400</td>
+            <td>nr. persoane</td>
+          </tr>
+          <tr>
+            <td><strong>5SO12</strong></td>
+            <td>Mecanisme, metodologii, proceduri, instrumente, programe, standarde dezvoltate/îmbunătățite</td>
+            <td><span class="ind-type realizare">Realizare</span></td>
+            <td class="ind-num">1</td>
+            <td>număr</td>
+          </tr>
+          <tr>
+            <td><strong>EECR03</strong></td>
+            <td>Persoane care dobândesc o calificare la încetarea calității de participant</td>
+            <td><span class="ind-type rezultat">Rezultat</span></td>
+            <td class="ind-num">16.671</td>
+            <td>nr. persoane</td>
+          </tr>
+          <tr>
+            <td><strong>5SR10</strong></td>
+            <td>Mecanisme, metodologii, proceduri, instrumente, programe, standarde aprobate/acreditate/utilizate</td>
+            <td><span class="ind-type rezultat">Rezultat</span></td>
+            <td class="ind-num">1</td>
+            <td>număr</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- BUGET -->
+<section id="buget" style="background: var(--gray-light);">
+  <div class="section-inner">
+    <div class="section-tag">Finanțare</div>
+    <h2>Bugetul proiectului</h2>
+    <div class="divider"></div>
+    <div class="budget-block">
+      <div class="budget-main">
+        <h3>Valoare totală proiect</h3>
+        <div class="budget-amount">163.495.767 <small style="font-size:20px; font-weight:300;">RON</small></div>
+        <div class="budget-sub">inclusiv alocarea pentru toti cei 4 parteneri instituționali</div>
+        <div class="budget-bar"><div class="budget-bar-fill"></div></div>
+        <div class="budget-bar-label">92,2% finanțare nerambursabilă FSE+ și buget de stat</div>
+      </div>
+      <div class="budget-breakdown">
+        <div class="budget-row">
+          <span>Valoare totală (componenta MEC + P1)</span>
+          <span>115.495.758,06 RON</span>
+        </div>
+        <div class="budget-row">
+          <span>Finanțare nerambursabilă (FSE+)</span>
+          <span>106.491.477,03 RON</span>
+        </div>
+        <div class="budget-row">
+          <span>Cofinanțare buget de stat</span>
+          <span>9.004.281,03 RON</span>
+        </div>
+        <div class="budget-row">
+          <span>Alocare Universitatea „Ștefan cel Mare" Suceava</span>
+          <span>24.000.000 RON</span>
+        </div>
+        <div class="budget-row">
+          <span>Fond</span>
+          <span>Fondul Social European+ (FSE+)</span>
+        </div>
+        <div class="budget-row">
+          <span>Program</span>
+          <span>Educație și Ocupare 2021–2027</span>
+        </div>
+      </div>
+    </div>
+    <div class="info-cards">
+      <div class="info-card">
+        <h4>Prioritate</h4>
+        <p>P5 – Îmbunătățirea participării copiilor la educația antepreșcolară și preșcolară</p>
+      </div>
+      <div class="info-card">
+        <h4>Obiectiv specific</h4>
+        <p>ESO4.6 – Promovarea accesului egal la educație de calitate și favorabilă incluziunii</p>
+      </div>
+      <div class="info-card">
+        <h4>Perioadă de implementare</h4>
+        <p>01.02.2025 – 31.01.2029 (48 luni)</p>
+      </div>
+      <div class="info-card">
+        <h4>Arie de implementare</h4>
+        <p>Națională – toate județele + municipiul București</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-inner">
+    <div class="section-tag">Contact</div>
+    <h2>Informații utile</h2>
+    <div class="divider"></div>
+    <p class="section-lead">
+      Pentru informații suplimentare despre proiect, activități și oportunități de participare,
+      contactați echipa de management a proiectului.
+    </p>
+    <div class="partners-grid">
+      <div class="partner-card">
+        <h3>🏛️ Ministerul Educației și Cercetării</h3>
+        <p><strong>Beneficiar lider proiect SU-ETIC</strong></p>
+        <p>Str. General Berthelot nr. 28-30, Sector 1, București, 010168</p>
+        <p style="margin-top:8px;">
+          <a href="mailto:cabinet@edu.gov.ro" style="color:var(--navy); font-weight:600;">cabinet@edu.gov.ro</a><br/>
+          <a href="tel:+40214056200" style="color:var(--navy);">0214 056 200</a>
+        </p>
+        <a href="https://edu.ro/lansare_proiect_SU-ETIC" target="_blank" style="font-size:13px; color:var(--gold); font-weight:600; margin-top:8px; display:block;">Anunț oficial lansare proiect →</a>
+      </div>
+      <div class="partner-card">
+        <h3>🔗 Resurse proiect</h3>
+        <p>Documentele elaborate în cadrul proiectului – broșuri, ghiduri, metodologii, galerie video, link-uri utile – vor fi diseminate prin site-ul proiectului și al MEC, accesibile gratuit.</p>
+        <ul style="list-style:none; margin-top:12px; display:flex; flex-direction:column; gap:6px;">
+          <li><a href="https://edu.ro" target="_blank" style="color:var(--navy); font-size:14px;">↗ edu.ro – Site MEC</a></li>
+          <li><a href="https://aracip.edu.ro" target="_blank" style="color:var(--navy); font-size:14px;">↗ aracip.edu.ro – Site ARACIP</a></li>
+          <li><a href="https://suetic.usv.ro" target="_blank" style="color:var(--navy); font-size:14px;">↗ suetic.usv.ro – Pagina USV</a></li>
+        </ul>
+      </div>
+      <div class="partner-card">
+        <h3>📋 Date identificare proiect</h3>
+        <table style="font-size:13px; width:100%; border-collapse:collapse;">
+          <tr><td style="padding:5px 0; color:var(--gray);">Cod SMIS</td><td style="font-weight:600; color:var(--navy);">333468</td></tr>
+          <tr><td style="padding:5px 0; color:var(--gray);">Cod apel</td><td style="font-weight:600; color:var(--navy); font-size:11px;">PEO/447/PEO_P5/OP4/<br/>ESO4.6/PEO_A65_C</td></tr>
+          <tr><td style="padding:5px 0; color:var(--gray);">Titlu apel</td><td style="font-weight:600; color:var(--navy);">SU-ETIC Non-competitiv</td></tr>
+          <tr><td style="padding:5px 0; color:var(--gray);">Versiune CF</td><td style="font-weight:600; color:var(--navy);">21</td></tr>
+          <tr><td style="padding:5px 0; color:var(--gray);">Perioadă</td><td style="font-weight:600; color:var(--navy);">feb. 2025 – ian. 2029</td></tr>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <strong>SU-ETIC – Sistem Unitar pentru Educație Timpurie Incluzivă și de Calitate</strong>
+      <p>
+        Proiect cofinanțat de Uniunea Europeană prin Fondul Social European Plus (FSE+),
+        în cadrul Programului Educație și Ocupare 2021–2027, Prioritatea 5.
+      </p>
+      <span class="footer-smis">SMIS 333468</span>
+    </div>
+    <div class="footer-col">
+      <h4>Navigare</h4>
+      <ul>
+        <li><a href="#despre">Despre proiect</a></li>
+        <li><a href="#obiective">Obiective</a></li>
+        <li><a href="#activitati">Activități</a></li>
+        <li><a href="#parteneri">Parteneri</a></li>
+        <li><a href="#rezultate">Rezultate</a></li>
+        <li><a href="#indicatori">Indicatori</a></li>
+        <li><a href="#buget">Buget</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Parteneri</h4>
+      <ul>
+        <li><a href="https://edu.ro" target="_blank">Ministerul Educației</a></li>
+        <li><a href="https://aracip.edu.ro" target="_blank">ARACIP</a></li>
+        <li><a href="https://upb.ro" target="_blank">UNSTPB / CUP</a></li>
+        <li><a href="https://usv.ro" target="_blank">USV Suceava</a></li>
+        <li><a href="https://mfe.gov.ro" target="_blank">Min. Fondurilor Europene</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div>
+      © 2025–2029 SU-ETIC · Conținutul acestui site nu reprezintă în mod necesar poziția oficială a UE.
+      Responsabilitatea pentru informații aparține autorilor.
+    </div>
+    <div class="eu-logos">
+      <div class="eu-flag">🇪🇺</div>
+      <span style="font-size:11px; color:rgba(255,255,255,0.45);">Uniunea Europeană<br/>Fondul Social European+</span>
     </div>
   </div>
 </footer>
 
 <script>
-/* ══════════════════════════════════════════
-   I18N — translations
-══════════════════════════════════════════ */
-const T = {
-  en:{
-    themeLbl:'Theme', langLbl:'Language', modeLbl:'Mode', colorLbl:'Color',
-    dark:'Dark', light:'Light',
-    taglineStrong:'Single-file HTML apps',
-    taglineRest:' — offline-first, no server, no account. The file is yours.',
-    badgeLocation:'Bucharest, RO', badgeOffline:'◈ Offline-First',
-    badgeVanilla:'⬡ Vanilla JS', badgeTelemetry:'⌀ Zero Telemetry',
-    statRepos:'Repos', statModules:'Modules', statLangs:'Languages', statSent:'Sent',
-    projects:'Projects', loading:'Fetching from GitHub…',
-    nProjects: n => `${n} projects`,
-    darkThemes:'Dark themes', lightThemes:'Light themes',
-    copyright:'© 2026 Alexandru-Ionuț Chiuță',
-    desc:{
-      OmniHost:'Complete personal productivity suite — 141 modules: notes, tasks, finance, health & more. The file is your database.',
-      VoiceAtelier:'TTS studio for crafting multi-voice, multilingual speech with per-character assignment and SSML prosody.',
-      TranslateHub:'Client-side translation hub across dozens of languages — zero data ever leaves your browser.',
-      FreeDetect:'AI-generated text & plagiarism detector. Runs entirely in-browser; your documents stay local.',
-      PromptVault:'Local-first prompt manager for AI workflows. Organise, tag, and reuse — no account needed.',
-      'AI-Liber':'Open, libre AI utilities for writing, analysis and research that keep you in full control.',
-      AcademiSearch:'Client-side academic search engine — find research papers, journals and scientific resources directly in your browser, with zero data sent to any server.',
-      PrintreInteligente:'Interactive science fiction web book — 115 pages, branching lunar survival scenarios inspired by NASA Artemis 2, 108 fictional reviews, and a full Web Speech API audiobook.',
-      IncredibleCosmos:'108 cosmic gravity puzzles — place planets and stars, press Play, and gravity guides a comet to its target. Set in the Printre inteligențe universe.',
-      'ROePAS-neoficial':'Unofficial compact interface for the Romanian RoePAS public-services portal — service catalog, institution lookup by county and recent announcements, no account, no tracking.',
-      'SU-ETIC':'HTML quine — a single page that displays its own source code, a self-referential demonstration in one file.',
-      'chiuta.github.io':'Portfolio and index of every app — this very page. A self-referential single-file HTML hub.',
-    }
-  },
-  ro:{
-    themeLbl:'Temă', langLbl:'Limbă', modeLbl:'Mod', colorLbl:'Culoare',
-    dark:'Întunecat', light:'Luminos',
-    taglineStrong:'Aplicații HTML single-file',
-    taglineRest:' — offline-first, fără server, fără cont. Fișierul este al tău.',
-    badgeLocation:'București, RO', badgeOffline:'◈ Offline-First',
-    badgeVanilla:'⬡ Vanilla JS', badgeTelemetry:'⌀ Zero Telemetrie',
-    statRepos:'Repo-uri', statModules:'Module', statLangs:'Limbi', statSent:'Trimis',
-    projects:'Proiecte', loading:'Se încarcă din GitHub…',
-    nProjects: n => `${n} proiecte`,
-    darkThemes:'Teme întunecate', lightThemes:'Teme luminoase',
-    copyright:'© 2026 Alexandru-Ionuț Chiuță',
-    desc:{
-      OmniHost:'Suite completă de productivitate — 141 module: notițe, taskuri, finanțe, sănătate și mai mult. Fișierul este baza ta de date.',
-      VoiceAtelier:'Studio TTS pentru sinteză vocală multi-voce și multilingvă, cu alocare per personaj și control SSML.',
-      TranslateHub:'Hub de traducere client-side în zeci de limbi — niciun byte nu părăsește browserul tău.',
-      FreeDetect:'Detector de text generat de AI și plagiat. Rulează complet în browser; documentele tale rămân locale.',
-      PromptVault:'Manager de prompturi local-first pentru fluxuri AI. Organizează, etichetează, reutilizează — fără cont.',
-      'AI-Liber':'Utilități AI libere și deschise pentru scriere, analiză și cercetare, cu control total al utilizatorului.',
-      AcademiSearch:'Motor de căutare academic client-side — găsești articole științifice, jurnale și resurse de cercetare direct în browser, fără a trimite date nicăieri.',
-      PrintreInteligente:'Carte web de science fiction interactivă — 115 pagini, scenarii ramificate de supraviețuire lunară inspirate de NASA Artemis 2, 108 recenzii fictive și audiobook complet cu Web Speech API.',
-      IncredibleCosmos:'108 puzzle-uri cosmice de gravitație — plasezi planete și stele, apeși Play, iar gravitația ghidează cometa spre țintă. Extensie a universului Printre inteligențe.',
-      'ROePAS-neoficial':'Interfață compactă neoficială pentru portalul RoePAS — catalog de servicii publice, căutare de instituții pe județe și anunțuri recente, fără cont și fără urmărire.',
-      'SU-ETIC':'Quine HTML — o pagină care își afișează propriul cod sursă, demonstrație de auto-referință într-un singur fișier.',
-      'chiuta.github.io':'Portofoliul și indexul tuturor aplicațiilor — chiar pagina pe care o vezi acum. Hub single-file HTML autoreferențial.',
-    }
-  },
-  fr:{
-    themeLbl:'Thème', langLbl:'Langue', modeLbl:'Mode', colorLbl:'Couleur',
-    dark:'Sombre', light:'Clair',
-    taglineStrong:'Applications HTML fichier unique',
-    taglineRest:' — hors ligne, sans serveur, sans compte. Le fichier vous appartient.',
-    badgeLocation:'Bucarest, RO', badgeOffline:'◈ Hors Ligne',
-    badgeVanilla:'⬡ Vanilla JS', badgeTelemetry:'⌀ Zéro Télémétrie',
-    statRepos:'Dépôts', statModules:'Modules', statLangs:'Langues', statSent:'Envoyé',
-    projects:'Projets', loading:'Chargement depuis GitHub…',
-    nProjects: n => `${n} projets`,
-    darkThemes:'Thèmes sombres', lightThemes:'Thèmes clairs',
-    copyright:'© 2026 Alexandru-Ionuț Chiuță',
-    desc:{
-      OmniHost:'Suite complète de productivité — 141 modules : notes, tâches, finances, santé et plus. Le fichier est votre base de données.',
-      VoiceAtelier:'Studio TTS pour créer des voix multiples et multilingues avec affectation par personnage et prosodie SSML.',
-      TranslateHub:'Hub de traduction côté client dans des dizaines de langues — aucune donnée ne quitte jamais votre navigateur.',
-      FreeDetect:'Détecteur de texte généré par IA et de plagiat. Fonctionne entièrement dans le navigateur ; vos documents restent locaux.',
-      PromptVault:'Gestionnaire de prompts local pour flux IA. Organisez, étiquetez, réutilisez — sans compte requis.',
-      'AI-Liber':'Utilitaires IA libres pour l\'écriture, l\'analyse et la recherche, avec contrôle total sur vos données.',
-      AcademiSearch:'Moteur de recherche académique côté client — trouvez des articles scientifiques et des ressources de recherche directement dans votre navigateur, sans aucun envoi de données.',
-      PrintreInteligente:'Livre web de science-fiction interactif — 115 pages, scénarios de survie lunaire inspirés de NASA Artemis 2, 108 critiques fictives et livre audio complet avec Web Speech API.',
-      IncredibleCosmos:'108 puzzles cosmiques de gravité — placez des planètes et des étoiles, appuyez sur Play, et la gravité guide une comète vers sa cible. Dans l\'univers Printre inteligențe.',
-      'ROePAS-neoficial':'Interface compacte non officielle pour le portail roumain RoePAS des services publics — catalogue de services, recherche d\'institutions par département et annonces récentes, sans compte ni suivi.',
-      'SU-ETIC':'Quine HTML — une page qui affiche son propre code source, démonstration d\'auto-référence dans un seul fichier.',
-      'chiuta.github.io':'Portfolio et index de toutes les applications — la page que vous voyez en ce moment. Hub HTML fichier unique auto-référentiel.',
-    }
-  },
-  it:{
-    themeLbl:'Tema', langLbl:'Lingua', modeLbl:'Modalità', colorLbl:'Colore',
-    dark:'Scuro', light:'Chiaro',
-    taglineStrong:'App HTML a file singolo',
-    taglineRest:' — offline-first, nessun server, nessun account. Il file è tuo.',
-    badgeLocation:'Bucarest, RO', badgeOffline:'◈ Offline-First',
-    badgeVanilla:'⬡ Vanilla JS', badgeTelemetry:'⌀ Zero Telemetria',
-    statRepos:'Repository', statModules:'Moduli', statLangs:'Lingue', statSent:'Inviato',
-    projects:'Progetti', loading:'Caricamento da GitHub…',
-    nProjects: n => `${n} progetti`,
-    darkThemes:'Temi scuri', lightThemes:'Temi chiari',
-    copyright:'© 2026 Alexandru-Ionuț Chiuță',
-    desc:{
-      OmniHost:'Suite completa di produttività — 141 moduli: note, attività, finanze, salute e altro. Il file è il tuo database.',
-      VoiceAtelier:'Studio TTS per creare audio multi-voce e multilingue con assegnazione per personaggio e prosodia SSML.',
-      TranslateHub:'Hub di traduzione lato client in decine di lingue — nessun dato lascia mai il tuo browser.',
-      FreeDetect:'Rilevatore di testo generato da IA e plagio. Funziona interamente nel browser; i tuoi documenti rimangono locali.',
-      PromptVault:'Gestore di prompt locale per flussi AI. Organizza, etichetta e riutilizza — nessun account necessario.',
-      'AI-Liber':'Utilità AI libere e aperte per scrittura, analisi e ricerca, con pieno controllo dell\'utente.',
-      AcademiSearch:'Motore di ricerca accademico lato client — trova articoli scientifici e risorse di ricerca direttamente nel browser, senza inviare dati a nessun server.',
-      PrintreInteligente:'Libro web di fantascienza interattivo — 115 pagine, scenari di sopravvivenza lunare ispirati a NASA Artemis 2, 108 recensioni fittizie e audiolibro completo con Web Speech API.',
-      IncredibleCosmos:'108 puzzle cosmici di gravità — posiziona pianeti e stelle, premi Play, e la gravità guida una cometa verso il bersaglio. Ambientato nell\'universo Printre inteligențe.',
-      'ROePAS-neoficial':'Interfaccia compatta non ufficiale per il portale rumeno RoePAS dei servizi pubblici — catalogo servizi, ricerca istituzioni per provincia e annunci recenti, senza account né tracciamento.',
-      'SU-ETIC':'Quine HTML — una pagina che mostra il proprio codice sorgente, dimostrazione di auto-riferimento in un singolo file.',
-      'chiuta.github.io':'Portfolio e indice di tutte le applicazioni — proprio la pagina che stai guardando. Hub HTML a file singolo auto-referenziale.',
-    }
-  },
-  es:{
-    themeLbl:'Tema', langLbl:'Idioma', modeLbl:'Modo', colorLbl:'Color',
-    dark:'Oscuro', light:'Claro',
-    taglineStrong:'Apps HTML de archivo único',
-    taglineRest:' — sin servidor, sin cuenta, offline. El archivo es tuyo.',
-    badgeLocation:'Bucarest, RO', badgeOffline:'◈ Offline-First',
-    badgeVanilla:'⬡ Vanilla JS', badgeTelemetry:'⌀ Cero Telemetría',
-    statRepos:'Repos', statModules:'Módulos', statLangs:'Idiomas', statSent:'Enviado',
-    projects:'Proyectos', loading:'Cargando desde GitHub…',
-    nProjects: n => `${n} proyectos`,
-    darkThemes:'Temas oscuros', lightThemes:'Temas claros',
-    copyright:'© 2026 Alexandru-Ionuț Chiuță',
-    desc:{
-      OmniHost:'Suite completa de productividad — 141 módulos: notas, tareas, finanzas, salud y más. El archivo es tu base de datos.',
-      VoiceAtelier:'Estudio TTS para crear voz multi-voz y multilingüe con asignación por personaje y prosodia SSML.',
-      TranslateHub:'Centro de traducción del lado del cliente en docenas de idiomas — ningún dato sale de tu navegador.',
-      FreeDetect:'Detector de texto generado por IA y plagio. Se ejecuta completamente en el navegador; tus documentos permanecen locales.',
-      PromptVault:'Gestor de prompts local para flujos de IA. Organiza, etiqueta y reutiliza — sin cuenta necesaria.',
-      'AI-Liber':'Utilidades de IA libres y abiertas para escritura, análisis e investigación, con control total del usuario.',
-      AcademiSearch:'Motor de búsqueda académico del lado del cliente — encuentra artículos científicos y recursos de investigación directamente en tu navegador, sin enviar datos a ningún servidor.',
-      PrintreInteligente:'Libro web de ciencia ficción interactivo — 115 páginas, escenarios de supervivencia lunar inspirados en NASA Artemis 2, 108 reseñas ficticias y audiolibro completo con Web Speech API.',
-      IncredibleCosmos:'108 puzles cósmicos de gravedad — coloca planetas y estrellas, pulsa Play y la gravedad guía un cometa hasta su objetivo. Ambientado en el universo Printre inteligențe.',
-      'ROePAS-neoficial':'Interfaz compacta no oficial para el portal rumano RoePAS de servicios públicos — catálogo de servicios, búsqueda de instituciones por provincia y anuncios recientes, sin cuenta ni seguimiento.',
-      'SU-ETIC':'Quine HTML — una página que muestra su propio código fuente, demostración de autorreferencia en un único archivo.',
-      'chiuta.github.io':'Portafolio e índice de todas las aplicaciones — esta misma página que estás viendo. Hub HTML de archivo único autorreferencial.',
-    }
-  },
-  pt:{
-    themeLbl:'Tema', langLbl:'Idioma', modeLbl:'Modo', colorLbl:'Cor',
-    dark:'Escuro', light:'Claro',
-    taglineStrong:'Apps HTML de arquivo único',
-    taglineRest:' — offline, sem servidor, sem conta. O arquivo é seu.',
-    badgeLocation:'Bucareste, RO', badgeOffline:'◈ Offline-First',
-    badgeVanilla:'⬡ Vanilla JS', badgeTelemetry:'⌀ Zero Telemetria',
-    statRepos:'Repositórios', statModules:'Módulos', statLangs:'Idiomas', statSent:'Enviado',
-    projects:'Projetos', loading:'A carregar do GitHub…',
-    nProjects: n => `${n} projetos`,
-    darkThemes:'Temas escuros', lightThemes:'Temas claros',
-    copyright:'© 2026 Alexandru-Ionuț Chiuță',
-    desc:{
-      OmniHost:'Suite completa de produtividade — 141 módulos: notas, tarefas, finanças, saúde e mais. O arquivo é a sua base de dados.',
-      VoiceAtelier:'Estúdio TTS para criar voz multi-voz e multilíngue com atribuição por personagem e prosódia SSML.',
-      TranslateHub:'Hub de tradução do lado do cliente em dezenas de idiomas — nenhum dado sai do seu browser.',
-      FreeDetect:'Detetor de texto gerado por IA e plágio. Funciona inteiramente no browser; os seus documentos ficam locais.',
-      PromptVault:'Gestor de prompts local para fluxos de IA. Organize, etiquete e reutilize — sem conta necessária.',
-      'AI-Liber':'Utilitários de IA livres e abertos para escrita, análise e investigação, com controlo total do utilizador.',
-      AcademiSearch:'Motor de pesquisa académico do lado do cliente — encontra artigos científicos e recursos de investigação diretamente no browser, sem enviar dados para nenhum servidor.',
-      PrintreInteligente:'Livro web de ficção científica interativo — 115 páginas, cenários de sobrevivência lunar inspirados na NASA Artemis 2, 108 resenhas fictícias e audiolivro completo com Web Speech API.',
-      IncredibleCosmos:'108 puzzles cósmicos de gravidade — coloca planetas e estrelas, carrega em Play e a gravidade guia um cometa até ao alvo. Parte do universo Printre inteligențe.',
-      'ROePAS-neoficial':'Interface compacta não oficial para o portal romeno RoePAS de serviços públicos — catálogo de serviços, pesquisa de instituições por distrito e anúncios recentes, sem conta nem rastreamento.',
-      'SU-ETIC':'Quine HTML — uma página que mostra o seu próprio código-fonte, demonstração de autorreferência num único ficheiro.',
-      'chiuta.github.io':'Portefólio e índice de todas as aplicações — esta mesma página que está a ver. Hub HTML de ficheiro único autorreferencial.',
-    }
-  },
-};
-
-const LANG_META = [
-  {id:'en', label:'EN', flag:'🇬🇧', name:'English'},
-  {id:'ro', label:'RO', flag:'🇷🇴', name:'Română'},
-  {id:'fr', label:'FR', flag:'🇫🇷', name:'Français'},
-  {id:'it', label:'IT', flag:'🇮🇹', name:'Italiano'},
-  {id:'es', label:'ES', flag:'🇪🇸', name:'Español'},
-  {id:'pt', label:'PT', flag:'🇵🇹', name:'Português'},
-];
-
-/* ── LANG SYSTEM ─────────────────────────────────── */
-let cachedApps=[], cachedCount=-1;
-let curLang = localStorage.getItem('lang') || 'en';
-
-function t(key){ return (T[curLang]||T.en)[key] || (T.en)[key] || key; }
-function desc(name){ return ((T[curLang]||T.en).desc||{})[name] || (T.en.desc||{})[name] || 'Single-file HTML application.'; }
-
-function applyLang(lang){
-  curLang = lang;
-  document.documentElement.dataset.lang = lang;
-  document.documentElement.lang = lang;
-  localStorage.setItem('lang', lang);
-  document.getElementById('lang-label').textContent = LANG_META.find(l=>l.id===lang)?.label || lang.toUpperCase();
-  document.querySelectorAll('[data-i18n]').forEach(el => {
-    const key = el.dataset.i18n;
-    const txt = t(key);
-    if(txt !== undefined) el.textContent = txt;
-  });
-  document.querySelectorAll('.lang-opt').forEach(o => o.classList.toggle('active', o.dataset.lang === lang));
-  // update count label
-  const cnt = document.getElementById('apps-count');
-  if(cnt && cachedCount >= 0) cnt.textContent = t('nProjects')(cachedCount);
-  // re-render cards with new descriptions
-  if(cachedApps.length) renderCards(cachedApps);
-}
-
-// Build lang grid
-const lgEl = document.getElementById('lang-grid');
-LANG_META.forEach(l => {
-  const b = document.createElement('button');
-  b.className = 'lang-opt' + (l.id === curLang ? ' active' : '');
-  b.dataset.lang = l.id;
-  b.innerHTML = `<span class="lang-flag">${l.flag}</span>${l.name}`;
-  b.onclick = () => { applyLang(l.id); };
-  lgEl.appendChild(b);
-});
-
-/* ── THEME SYSTEM ─────────────────────────────────── */
-const PALETTES=[
-  {id:'violet',name:'Violet',dark:'#8b5cf6',light:'#7c3aed'},
-  {id:'cyan',  name:'Cyan',  dark:'#06b6d4',light:'#0891b2'},
-  {id:'teal',  name:'Teal',  dark:'#14b8a6',light:'#0f766e'},
-  {id:'green', name:'Green', dark:'#22c55e',light:'#16a34a'},
-  {id:'amber', name:'Amber', dark:'#f59e0b',light:'#d97706'},
-  {id:'orange',name:'Orange',dark:'#f97316',light:'#ea580c'},
-  {id:'rose',  name:'Rose',  dark:'#f43f5e',light:'#e11d48'},
-  {id:'slate', name:'Slate', dark:'#94a3b8',light:'#475569'},
-];
-const PALETTE_HUES={violet:270,cyan:190,teal:174,green:142,amber:38,orange:24,rose:350,slate:220};
-const html = document.documentElement;
-function getAutoMode(){
-  if(window.matchMedia){
-    const mq = matchMedia('(prefers-color-scheme: dark)');
-    if(mq && typeof mq.matches==='boolean' && (mq.media||'').indexOf('prefers-color-scheme')>-1){
-      return mq.matches ? 'dark' : 'light';
-    }
-  }
-  const h = new Date().getHours();
-  return (h>=7 && h<20) ? 'light' : 'dark';
-}
-
-/* Palette & mode were pre-set by anti-FOUC inline script in <head>.
-   Re-use those to avoid a second randomisation / flash. */
-let curPalette = html.dataset.palette || 'violet';
-let curMode    = html.dataset.mode === 'light' ? 'light' : 'dark';
-
-function accentColor(){ const p=PALETTES.find(p=>p.id===curPalette); return p?(curMode==='dark'?p.dark:p.light):'#8b5cf6'; }
-
-function applyTheme(palette,mode){
-  curPalette=palette;curMode=mode;
-  html.dataset.palette=palette;html.dataset.mode=mode;
-  localStorage.setItem('mode',mode); /* paleta nu se persistă — e aleatorie la fiecare vizită */
-  buildSwatches();
-  if(typeof syncDayNight==='function') syncDayNight();
-  setTimeout(()=>document.querySelectorAll('.card-icon canvas[data-name]').forEach(c=>drawIcon(c,c.dataset.name)),40);
-}
-function setMode(m){applyTheme(curPalette,m)}
-function setPalette(p){applyTheme(p,curMode)}
-
-// Background & accent combos per mode
-const PALETTE_COLORS = {
-  dark:{
-    violet:{bg:'#07060f',accent:'#8b5cf6'},
-    cyan:  {bg:'#040d10',accent:'#06b6d4'},
-    teal:  {bg:'#04100f',accent:'#14b8a6'},
-    green: {bg:'#060f06',accent:'#22c55e'},
-    amber: {bg:'#0f0b03',accent:'#f59e0b'},
-    orange:{bg:'#0f0804',accent:'#f97316'},
-    rose:  {bg:'#0f0507',accent:'#f43f5e'},
-    slate: {bg:'#08090f',accent:'#94a3b8'},
-  },
-  light:{
-    violet:{bg:'#f0eef8',accent:'#7c3aed'},
-    cyan:  {bg:'#edf6f9',accent:'#0891b2'},
-    teal:  {bg:'#edf7f5',accent:'#0f766e'},
-    green: {bg:'#eef7ee',accent:'#16a34a'},
-    amber: {bg:'#faf5e8',accent:'#d97706'},
-    orange:{bg:'#faf3ec',accent:'#ea580c'},
-    rose:  {bg:'#faeef0',accent:'#e11d48'},
-    slate: {bg:'#f0f2f6',accent:'#475569'},
-  }
-};
-
-function buildSwatches(){
-  ['dark','light'].forEach(mode=>{
-    const el=document.getElementById('swatches-'+mode);
-    el.innerHTML='';
-    PALETTES.forEach(p=>{
-      const colors=PALETTE_COLORS[mode][p.id];
-      const isActive=p.id===curPalette&&mode===curMode;
-      const d=document.createElement('button');
-      d.type='button';
-      d.className='tswatch'+(isActive?' active':'');
-      d.dataset.palette=p.id;d.dataset.mode=mode;
-      d.setAttribute('aria-label',p.name+' '+mode);
-      d.setAttribute('aria-pressed',isActive?'true':'false');
-      d.innerHTML=`<div class="tswatch-card" style="background:${colors.bg}"><div style="position:absolute;top:0;left:0;right:0;height:3px;background:${colors.accent}"></div><div style="position:absolute;bottom:4px;right:5px;width:8px;height:8px;border-radius:50%;background:${colors.accent};opacity:.8"></div></div><span class="tswatch-name">${p.name}</span>`;
-      d.addEventListener('click',()=>applyTheme(p.id,mode));
-      el.appendChild(d);
-    });
-  });
-}
-buildSwatches();
-
-/* DAY/NIGHT TOGGLE */
-const SUN_SVG = '<path d="M8 11a3 3 0 1 1 0-6 3 3 0 0 1 0 6m0 1a4 4 0 1 0 0-8 4 4 0 0 0 0 8M8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0m0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13m8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5M3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8m10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0m-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0m9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707M4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707"/>';
-const MOON_SVG = '<path d="M6 .278a.77.77 0 0 1 .08.858 7.2 7.2 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.318 7.277q.792-.001 1.533-.16a.79.79 0 0 1 .81.316.73.73 0 0 1-.031.893A8.35 8.35 0 0 1 8.344 16C3.734 16 0 12.286 0 7.71 0 4.266 2.114 1.312 5.124.06A.75.75 0 0 1 6 .278"/>';
-
-function syncDayNight(){
-  const icon  = document.getElementById('daynight-icon');
-  const btn   = document.getElementById('daynight-btn');
-  const auto  = getAutoMode();
-  const isAuto = curMode === auto;
-  if(curMode === 'light'){
-    icon.innerHTML  = SUN_SVG;
-    btn.title = 'Treceți la noapte';
-  } else {
-    icon.innerHTML  = MOON_SVG;
-    btn.title = 'Treceți la zi';
-  }
-  btn.classList.toggle('is-auto', isAuto);
-}
-
-function toggleDayNight(){
-  applyTheme(curPalette, curMode==='dark'?'light':'dark');
-  syncDayNight();
-}
-
-// Panel toggles
-function syncPanelAria(){
-  document.getElementById('theme-toggle').setAttribute('aria-expanded',
-    document.getElementById('theme-panel').classList.contains('open')?'true':'false');
-  document.getElementById('lang-toggle').setAttribute('aria-expanded',
-    document.getElementById('lang-panel').classList.contains('open')?'true':'false');
-}
-function closeAllPanels(){
-  document.querySelectorAll('.float-panel').forEach(p=>p.classList.remove('open'));
-  syncPanelAria();
-}
-function makeToggle(btnId, panelId, otherId){
-  const btn=document.getElementById(btnId), panel=document.getElementById(panelId);
-  const other=document.getElementById(otherId);
-  btn.addEventListener('click',e=>{
-    e.stopPropagation();
-    other.classList.remove('open');
-    panel.classList.toggle('open');
-    syncPanelAria();
-    if(panel.classList.contains('open')){
-      // focus first interactive element in panel for keyboard users
-      const firstFocusable=panel.querySelector('button,[tabindex]:not([tabindex="-1"])');
-      if(firstFocusable) setTimeout(()=>firstFocusable.focus(),0);
+  // Hamburger menu toggle for mobile
+  const ham = document.querySelector('.hamburger');
+  const nav = document.querySelector('nav');
+  ham.addEventListener('click', () => {
+    if (nav.style.display === 'flex') {
+      nav.style.display = 'none';
+    } else {
+      nav.style.display = 'flex';
+      nav.style.flexDirection = 'column';
+      nav.style.position = 'absolute';
+      nav.style.top = '72px';
+      nav.style.left = '0';
+      nav.style.right = '0';
+      nav.style.background = '#fff';
+      nav.style.padding = '12px 24px 20px';
+      nav.style.borderBottom = '2px solid var(--border)';
+      nav.style.boxShadow = '0 8px 24px rgba(26,58,92,0.12)';
     }
   });
-}
-makeToggle('theme-toggle','theme-panel','lang-panel');
-makeToggle('lang-toggle','lang-panel','theme-panel');
-document.addEventListener('click',()=>closeAllPanels());
-document.querySelectorAll('.float-panel').forEach(p=>p.addEventListener('click',e=>e.stopPropagation()));
-document.addEventListener('keydown',e=>{
-  if(e.key==='Escape'){
-    const wasOpen=document.querySelector('.float-panel.open');
-    if(wasOpen){
-      closeAllPanels();
-      // return focus to whichever toggle opened it
-      const toggleId = wasOpen.id==='theme-panel'?'theme-toggle':'lang-toggle';
-      document.getElementById(toggleId).focus();
-    }
-  }
-});
-
-applyTheme(curPalette,curMode);
-applyLang(curLang);
-syncDayNight();
-/* React to OS theme change if user hasn't explicitly chosen */
-if(window.matchMedia){
-  try{
-    matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e=>{
-      if(!localStorage.getItem('mode')){
-        applyTheme(curPalette, e.matches?'dark':'light');
-        syncDayNight();
-      }
-    });
-  }catch(_){/* Safari < 14 */}
-}
-/* Re-check auto-mode every 60s as fallback (only if user hasn't chosen) */
-setInterval(function(){
-  const auto = getAutoMode();
-  const saved = localStorage.getItem('mode');
-  if(!saved && curMode !== auto){ applyTheme(curPalette, auto); syncDayNight(); }
-}, 60000);
-/* ── BG CANVAS ──────────────────────────────────── */
-(function(){
-  const c=document.getElementById('bg-canvas'),ctx=c.getContext('2d');
-  let W,H,t=0,frame=0,raf=null,running=true;
-  /* shared */
-  const gh=()=>PALETTE_HUES[curPalette]||270;
-  const lm=()=>curMode==='light';
-
-  /* ── DARK: stars + constellations + meteors ─── */
-  let stars=[],orbs=[],meteors=[];
-  function mkStars(){
-    stars=Array.from({length:160},()=>({
-      x:Math.random()*W,y:Math.random()*H,
-      r:Math.random()*1.8+.3,
-      vx:(Math.random()-.5)*.18,vy:(Math.random()-.5)*.14,
-      op:Math.random()*.85+.25,tw:Math.random()*Math.PI*2,ts:Math.random()*.025+.006,
-    }));
-  }
-  function mkOrbs(){
-    const h=gh();
-    orbs=Array.from({length:4},(_,i)=>({
-      x:Math.random()*W,y:Math.random()*H,r:170+Math.random()*230,
-      vx:(Math.random()-.5)*.22,vy:(Math.random()-.5)*.17,
-      hue:(h+i*42)%360,ph:Math.random()*Math.PI*2,
-    }));
-  }
-  function mkMeteor(){
-    meteors.push({x:Math.random()*W*1.2,y:-20,len:90+Math.random()*130,
-      spd:5+Math.random()*5,ang:Math.PI/4+Math.random()*.35,
-      life:1,dec:.016+Math.random()*.012,hue:(gh()+Math.random()*50-25+360)%360});
-  }
-  function drawDark(){
-    const h=gh();
-    /* grid */
-    ctx.strokeStyle=`hsla(${h},50%,55%,.1)`;ctx.lineWidth=.8;
-    for(let x=0;x<W;x+=58){ctx.beginPath();ctx.moveTo(x,0);ctx.lineTo(x,H);ctx.stroke()}
-    for(let y=0;y<H;y+=58){ctx.beginPath();ctx.moveTo(0,y);ctx.lineTo(W,y);ctx.stroke()}
-    /* orbs */
-    orbs.forEach(o=>{
-      o.x+=o.vx+Math.sin(t+o.ph)*.16;o.y+=o.vy+Math.cos(t+o.ph*.7)*.13;
-      if(o.x<-o.r)o.x=W+o.r;if(o.x>W+o.r)o.x=-o.r;
-      if(o.y<-o.r)o.y=H+o.r;if(o.y>H+o.r)o.y=-o.r;
-      const g=ctx.createRadialGradient(o.x,o.y,0,o.x,o.y,o.r);
-      g.addColorStop(0,`hsla(${o.hue},75%,58%,.16)`);
-      g.addColorStop(.55,`hsla(${o.hue},75%,58%,.05)`);
-      g.addColorStop(1,`hsla(${o.hue},75%,58%,0)`);
-      ctx.fillStyle=g;ctx.beginPath();ctx.arc(o.x,o.y,o.r,0,Math.PI*2);ctx.fill();
-    });
-    /* stars */
-    stars.forEach(s=>{
-      s.x+=s.vx;s.y+=s.vy;s.tw+=s.ts;
-      if(s.x<0)s.x=W;if(s.x>W)s.x=0;if(s.y<0)s.y=H;if(s.y>H)s.y=0;
-      const op=s.op*(0.65+0.35*Math.sin(s.tw));
-      ctx.fillStyle=`hsla(${h},55%,82%,${op})`;
-      ctx.beginPath();ctx.arc(s.x,s.y,s.r,0,Math.PI*2);ctx.fill();
-    });
-    /* network */
-    ctx.lineWidth=.6;
-    for(let i=0;i<stars.length;i++)for(let j=i+1;j<stars.length;j++){
-      const dx=stars[i].x-stars[j].x,dy=stars[i].y-stars[j].y,d=Math.sqrt(dx*dx+dy*dy);
-      if(d<145){const a=(1-d/145)*.22;ctx.strokeStyle=`hsla(${h},60%,78%,${a})`;
-        ctx.beginPath();ctx.moveTo(stars[i].x,stars[i].y);ctx.lineTo(stars[j].x,stars[j].y);ctx.stroke();}
-    }
-    /* meteors */
-    meteors=meteors.filter(m=>m.life>0);
-    meteors.forEach(m=>{
-      m.x+=Math.cos(m.ang)*m.spd;m.y+=Math.sin(m.ang)*m.spd;m.life-=m.dec;
-      const tx=m.x-Math.cos(m.ang)*m.len,ty=m.y-Math.sin(m.ang)*m.len;
-      const g=ctx.createLinearGradient(tx,ty,m.x,m.y);
-      g.addColorStop(0,`hsla(${m.hue},80%,80%,0)`);
-      g.addColorStop(1,`hsla(${m.hue},80%,95%,${m.life*.7})`);
-      ctx.strokeStyle=g;ctx.lineWidth=1.4;
-      ctx.beginPath();ctx.moveTo(tx,ty);ctx.lineTo(m.x,m.y);ctx.stroke();
-    });
-    if(frame%210===0&&Math.random()<.85)mkMeteor();
-  }
-
-  /* ── LIGHT: AI neural network ─────────────────── */
-  let nodes=[],pulses=[];
-  function mkNodes(){
-    nodes=Array.from({length:32},()=>({
-      x:Math.random()*W,y:Math.random()*H,
-      r:3+Math.random()*5.5,
-      vx:(Math.random()-.5)*.14,vy:(Math.random()-.5)*.11,
-      ph:Math.random()*Math.PI*2,
-      sig:Math.random(), /* signal phase for packet */
-    }));
-  }
-  function drawHex(h){
-    const sz=44,hw=sz*Math.sqrt(3),hh=sz*1.5;
-    ctx.strokeStyle=`hsla(${h},55%,35%,.07)`;ctx.lineWidth=.9;
-    for(let row=-1;row<H/hh+2;row++)for(let col=-1;col<W/hw+2;col++){
-      const x=col*hw+(row%2)*hw/2,y=row*hh;
-      ctx.beginPath();
-      for(let k=0;k<7;k++){const a=Math.PI/3*k-Math.PI/6;
-        k===0?ctx.moveTo(x+sz*Math.cos(a),y+sz*Math.sin(a)):ctx.lineTo(x+sz*Math.cos(a),y+sz*Math.sin(a));}
-      ctx.closePath();ctx.stroke();
-    }
-  }
-  function drawAI(){
-    const h=gh();
-    drawHex(h);
-    /* move nodes */
-    nodes.forEach(n=>{
-      n.x+=n.vx+Math.sin(t+n.ph)*.09;n.y+=n.vy+Math.cos(t+n.ph*.8)*.07;
-      n.sig=(n.sig+.004)%1;
-      if(n.x<0)n.x=W;if(n.x>W)n.x=0;if(n.y<0)n.y=H;if(n.y>H)n.y=0;
-    });
-    /* connections + signal packets */
-    const D=190;
-    for(let i=0;i<nodes.length;i++)for(let j=i+1;j<nodes.length;j++){
-      const a=nodes[i],b=nodes[j];
-      const dx=a.x-b.x,dy=a.y-b.y,d=Math.sqrt(dx*dx+dy*dy);
-      if(d<D){
-        const str=(1-d/D);
-        /* connection line */
-        ctx.strokeStyle=`hsla(${h},65%,38%,${str*.38})`;
-        ctx.lineWidth=str*1.8;
-        ctx.beginPath();ctx.moveTo(a.x,a.y);ctx.lineTo(b.x,b.y);ctx.stroke();
-        /* animated signal packet */
-        const prog=((t*.25+i*.17+j*.11)%1);
-        const px=a.x+(b.x-a.x)*prog,py=a.y+(b.y-a.y)*prog;
-        ctx.fillStyle=`hsla(${h},80%,32%,${str*.65})`;
-        ctx.beginPath();ctx.arc(px,py,2.2,0,Math.PI*2);ctx.fill();
-      }
-    }
-    /* nodes */
-    nodes.forEach((n,i)=>{
-      /* glow */
-      const g=ctx.createRadialGradient(n.x,n.y,0,n.x,n.y,n.r*4);
-      const pulse=0.5+0.5*Math.sin(t*1.5+n.ph);
-      g.addColorStop(0,`hsla(${h},70%,42%,${.18*pulse})`);
-      g.addColorStop(1,`hsla(${h},70%,42%,0)`);
-      ctx.fillStyle=g;ctx.beginPath();ctx.arc(n.x,n.y,n.r*4,0,Math.PI*2);ctx.fill();
-      /* core */
-      ctx.fillStyle=`hsla(${h},65%,35%,.82)`;
-      ctx.beginPath();ctx.arc(n.x,n.y,n.r,0,Math.PI*2);ctx.fill();
-      /* inner highlight */
-      ctx.fillStyle=`hsla(${h},80%,70%,.45)`;
-      ctx.beginPath();ctx.arc(n.x-n.r*.28,n.y-n.r*.28,n.r*.38,0,Math.PI*2);ctx.fill();
-    });
-    /* pulse rings */
-    pulses=pulses.filter(p=>p.r<130);
-    pulses.forEach(p=>{
-      p.r+=1.8;
-      const a=(1-p.r/130)*.55;
-      ctx.strokeStyle=`hsla(${h},70%,35%,${a})`;
-      ctx.lineWidth=1.8;
-      ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);ctx.stroke();
-    });
-    if(frame%100===0&&nodes.length){
-      const n=nodes[Math.floor(Math.random()*nodes.length)];
-      pulses.push({x:n.x,y:n.y,r:0});
-    }
-  }
-
-  /* ── RESIZE ────────────────────────────────────── */
-  function resize(){
-    W=c.width=innerWidth;H=c.height=innerHeight;
-    mkStars();mkOrbs();mkNodes();pulses=[];meteors=[];
-  }
-
-  /* ── LOOP ──────────────────────────────────────── */
-  function loop(){
-    if(!running)return;
-    ctx.clearRect(0,0,W,H);t+=.004;frame++;
-    lm()?drawAI():drawDark();
-    raf=requestAnimationFrame(loop);
-  }
-  window._animToggle=function(on){
-    running=on;
-    if(!on){cancelAnimationFrame(raf);ctx.clearRect(0,0,W,H);}
-    else loop();
-  };
-  addEventListener('resize',resize);
-  resize();loop();
-})();
-
-/* ── ICON ───────────────────────────────────────── */
-function hash(s){let h=0x811c9dc5;for(let i=0;i<s.length;i++){h^=s.charCodeAt(i);h=(h*0x01000193)>>>0}return h}
-
-function drawIcon(canvas,name){
-  const ctx=canvas.getContext('2d');
-  const W=canvas.width=canvas.offsetWidth||68,H=canvas.height=canvas.offsetHeight||84;
-  const seed=hash(name),baseHue=PALETTE_HUES[curPalette]||270,hue2=(baseHue+(seed%60)+20)%360;
-  const lm=curMode==='light';
-  ctx.fillStyle=`hsl(${baseHue},${lm?20:22}%,${lm?94:8}%)`;ctx.fillRect(0,0,W,H);
-  const type=seed%4,lv=lm?40:62;
-  ctx.globalAlpha=lm?.5:.65;
-  if(type===0){for(let r=6;r<W*1.3;r+=12){ctx.strokeStyle=`hsla(${baseHue},75%,${lv}%,${.5-r/(W*1.8)})`;ctx.lineWidth=.8;ctx.beginPath();ctx.arc(W*.55,H*.42,r,0,Math.PI*2);ctx.stroke()}}
-  else if(type===1){for(let x=4;x<W;x+=10)for(let y=4;y<H;y+=10){const d=Math.sqrt((x-W*.4)**2+(y-H*.38)**2),sz=Math.max(0,2.2-d/28);if(sz<.1)continue;ctx.fillStyle=`hsla(${baseHue},80%,${lv}%,${sz/2.2})`;ctx.beginPath();ctx.arc(x,y,sz,0,Math.PI*2);ctx.fill()}}
-  else if(type===2){ctx.strokeStyle=`hsla(${baseHue},65%,${lv}%,.25)`;ctx.lineWidth=.8;for(let i=-H;i<W+H;i+=14){ctx.beginPath();ctx.moveTo(i,0);ctx.lineTo(i+H,H);ctx.stroke()}const g=ctx.createRadialGradient(W*.55,H*.42,0,W*.55,H*.42,W*.7);g.addColorStop(0,`hsla(${hue2},80%,${lv}%,.42)`);g.addColorStop(1,`hsla(${hue2},80%,${lv}%,0)`);ctx.fillStyle=g;ctx.fillRect(0,0,W,H)}
-  else{const cx=W*.55,cy=H*.4;for(let r=8;r<W*1.4;r+=18){ctx.strokeStyle=`hsla(${baseHue},70%,${lv}%,${.45-r/(W*2.2)})`;ctx.lineWidth=.8;ctx.beginPath();for(let k=0;k<7;k++){const a=(Math.PI/3)*k-Math.PI/6;k===0?ctx.moveTo(cx+r*Math.cos(a),cy+r*Math.sin(a)):ctx.lineTo(cx+r*Math.cos(a),cy+r*Math.sin(a))}ctx.closePath();ctx.stroke()}}
-  ctx.globalAlpha=1;
-  ctx.fillStyle=`hsla(${baseHue},90%,${lm?25:75}%,${lm?.1:.13})`;ctx.font=`800 ${W*.75}px 'Syne',sans-serif`;ctx.textAlign='center';ctx.textBaseline='middle';ctx.fillText(name[0],W*.5,H*.5);
-  const col=accentColor();
-  const bar=ctx.createLinearGradient(0,0,W,0);bar.addColorStop(0,col+'cc');bar.addColorStop(1,col+'22');ctx.fillStyle=bar;ctx.fillRect(0,0,W,2);
-}
-
-/* ── CARDS ──────────────────────────────────────── */
-/* Live URL = GitHub Pages for this user. Auto-detected from repo.has_pages + repo.name.
-   For the user.github.io root repo, the Pages URL IS the root (self-reference). */
-const GH_USER = 'chiuta';
-function livePagesUrl(repo){
-  if(!repo || !repo.name) return null;
-  if(!repo.has_pages) return null;
-  if(repo.name.toLowerCase() === GH_USER + '.github.io') return `https://${GH_USER}.github.io/`;
-  return `https://${GH_USER}.github.io/${repo.name}/`;
-}
-/* Website URL on alexio.tf. Format: https://alexio.tf/<name-lowercase>/
-   Exceptions: PrintreInteligente → https://alexio.tf ; user.github.io root → https://alexio.tf/chiuta/ */
-function websiteUrl(repo){
-  if(!repo || !repo.name) return null;
-  if(repo.name === 'PrintreInteligente') return 'https://alexio.tf';
-  if(repo.name.toLowerCase() === GH_USER + '.github.io') return `https://alexio.tf/${GH_USER}/`;
-  return `https://alexio.tf/${repo.name.toLowerCase()}/`;
-}
-/* Best-effort fallback set: repos known to have GitHub Pages even if API is unreachable.
-   Used only when the API is down. */
-const PAGES_FALLBACK = new Set([
-  'AI-Liber','PromptVault','TranslateHub','VoiceAtelier','FreeDetect','AcademiSearch',
-  'OmniHost','PrintreInteligente'
-]);
-
-const ghSvg=`<svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>`;
-const extSvg=`<svg viewBox="0 0 16 16" fill="currentColor"><path d="M8.636 3.5a.5.5 0 0 0-.5-.5H1.5A1.5 1.5 0 0 0 0 4.5v10A1.5 1.5 0 0 0 1.5 16h10a1.5 1.5 0 0 0 1.5-1.5V7.864a.5.5 0 0 0-1 0V14.5a.5.5 0 0 1-.5.5h-10a.5.5 0 0 1-.5-.5v-10a.5.5 0 0 1 .5-.5h6.636a.5.5 0 0 0 .5-.5z"/><path d="M16 .5a.5.5 0 0 0-.5-.5h-5a.5.5 0 0 0 0 1h3.793L6.146 9.146a.5.5 0 1 0 .708.708L15 1.707V5.5a.5.5 0 0 0 1 0v-5z"/></svg>`;
-
-const LOCALES={en:'en-GB',ro:'ro-RO',fr:'fr-FR',it:'it-IT',es:'es-ES',pt:'pt-PT'};
-function fmtDate(iso){if(!iso)return'';return new Date(iso).toLocaleDateString(LOCALES[curLang]||'en-GB',{year:'numeric',month:'short'})}
-function langCls(l){return l==='HTML'?'lang-html':l==='JavaScript'?'lang-js':'lang-default'}
-
-/* Small helper: create an element with attrs + optional text */
-function el(tag,attrs,text){
-  const n=document.createElement(tag);
-  if(attrs)for(const k in attrs){
-    if(k==='class')n.className=attrs[k];
-    else if(k==='dataset')for(const d in attrs[k])n.dataset[d]=attrs[k][d];
-    else n.setAttribute(k,attrs[k]);
-  }
-  if(text!=null)n.textContent=text;
-  return n;
-}
-/* Open an external URL safely (replaces nested <a> inside card <a>) */
-function openExt(url,ev){
-  if(ev){ev.preventDefault();ev.stopPropagation();}
-  window.open(url,'_blank','noopener,noreferrer');
-}
-
-function createCard(repo,i){
-  const d=desc(repo.name),lang=repo.language||'HTML';
-  const live = livePagesUrl(repo);
-  const ghUrl = repo.html_url || `https://github.com/${GH_USER}/${repo.name}`;
-
-  // Card is a plain container — only the action buttons are clickable.
-  const a=document.createElement('div');
-  a.className='app-card';
-  a.style.animationDelay=`${i*.06}s`;
-
-  // icon
-  const icon=el('div',{class:'card-icon'});
-  const canvas=el('canvas',{dataset:{name:repo.name}});
-  icon.appendChild(canvas);
-
-  // body
-  const body=el('div',{class:'card-body'});
-  const top=el('div',{class:'card-top'});
-  top.appendChild(el('span',{class:'card-name'},repo.name));
-  top.appendChild(el('span',{class:'card-lang '+langCls(lang)},lang));
-  body.appendChild(top);
-  body.appendChild(el('div',{class:'card-desc'},d));
-
-  // links row — use <button> (not <a>) to avoid nested anchors
-  const links=el('div',{class:'card-links'});
-  const mkLink=(url,label,cls)=>{
-    const b=el('button',{type:'button',class:'card-link'+(cls?' '+cls:''),'aria-label':label+' — '+repo.name});
-    const ic=document.createElement('span');
-    ic.setAttribute('aria-hidden','true');
-    ic.innerHTML = (cls && cls.indexOf('live-link')>-1) ? extSvg : ghSvg; // static SVG, safe
-    b.appendChild(ic);
-    b.appendChild(document.createTextNode(label));
-    b.addEventListener('click',ev=>openExt(url,ev));
-    return b;
-  };
-  links.appendChild(mkLink(ghUrl,'GitHub',''));
-  if(live) links.appendChild(mkLink(live,'Live','live-link'));
-  const web = websiteUrl(repo);
-  if(web) links.appendChild(mkLink(web,'Website','live-link web-link'));
-  if(repo.updated_at){
-    const chip=el('span',{class:'card-link date-chip'},fmtDate(repo.updated_at));
-    links.appendChild(chip);
-  }
-  body.appendChild(links);
-
-  a.appendChild(icon);
-  a.appendChild(body);
-  return a;
-}
-
-function renderCards(apps){
-  cachedApps=apps;
-  const grid=document.getElementById('apps-grid');grid.innerHTML='';
-  apps.forEach((r,i)=>grid.appendChild(createCard(r,i)));
-  requestAnimationFrame(()=>grid.querySelectorAll('.card-icon canvas').forEach(c=>drawIcon(c,c.dataset.name)));
-}
-
-async function init(){
-  const FALLBACK = Object.keys((T.en.desc||{})).map(name=>({
-    name, updated_at:null, created_at:null, language:'HTML',
-    html_url:`https://github.com/${GH_USER}/${name}`,
-    has_pages: PAGES_FALLBACK.has(name),
-    fork:false
+  // Close nav on link click
+  nav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    if (window.innerWidth <= 768) nav.style.display = 'none';
   }));
-  // Sort helper: oldest → newest. null dates go last.
-  const byCreatedAsc = (a,b) => {
-    const da = a.created_at ? new Date(a.created_at).getTime() : Infinity;
-    const db = b.created_at ? new Date(b.created_at).getTime() : Infinity;
-    return da - db;
-  };
-  try{
-    const [uR,rR] = await Promise.all([
-      fetch(`https://api.github.com/users/${GH_USER}`),
-      fetch(`https://api.github.com/users/${GH_USER}/repos?sort=created&direction=asc&per_page=100`)
-    ]);
-    if(!uR.ok || !rR.ok) throw new Error('GitHub API '+uR.status+'/'+rR.status);
-    const user = await uR.json();
-    const repos = await rR.json();
-    if(!Array.isArray(repos)) throw new Error('repos not an array');
-    if(typeof user.public_repos === 'number'){
-      document.getElementById('stat-repos').textContent = user.public_repos;
-    }
-    const apps = repos
-      .filter(r => r && !r.fork)
-      .sort(byCreatedAsc);
-    cachedCount = apps.length;
-    document.getElementById('apps-count').textContent = t('nProjects')(cachedCount);
-    renderCards(apps.length ? apps : FALLBACK);
-  }catch(e){
-    console.warn('GitHub API unavailable, using fallback:', e.message);
-    cachedCount = FALLBACK.length;
-    document.getElementById('apps-count').textContent = t('nProjects')(cachedCount);
-    renderCards(FALLBACK);
-  }
-}
-
-/* ANIM TOGGLE */
-// Default off if user prefers reduced motion and hasn't explicitly opted in
-const prefersReduced = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
-const savedAnim = localStorage.getItem('anim');
-let animOn = savedAnim ? (savedAnim !== 'off') : !prefersReduced;
-function syncAnimBtn(){
-  const icon = document.getElementById('anim-icon');
-  const btn = document.getElementById('anim-toggle');
-  if(animOn){
-    icon.innerHTML='<path d="M11.596 8.697l-6.363 3.692c-.54.313-1.233-.066-1.233-.697V4.308c0-.63.692-1.01 1.233-.696l6.363 3.692a.802.802 0 0 1 0 1.393z"/>';
-    btn.title='Oprește animațiile';
-    btn.setAttribute('aria-pressed','true');
-    document.getElementById('bg-canvas').style.opacity='';
-  } else {
-    icon.innerHTML='<path d="M5.5 3.5A1.5 1.5 0 0 1 7 5v6a1.5 1.5 0 0 1-3 0V5a1.5 1.5 0 0 1 1.5-1.5zm5 0A1.5 1.5 0 0 1 12 5v6a1.5 1.5 0 0 1-3 0V5a1.5 1.5 0 0 1 1.5-1.5z"/>';
-    btn.title='Pornește animațiile';
-    btn.setAttribute('aria-pressed','false');
-    document.getElementById('bg-canvas').style.opacity='0';
-  }
-}
-function toggleAnim(){
-  animOn=!animOn;
-  localStorage.setItem('anim', animOn?'on':'off');
-  if(window._animToggle) window._animToggle(animOn);
-  syncAnimBtn();
-}
-syncAnimBtn();
-if(!animOn && window._animToggle) window._animToggle(false);
-
-/* Pause canvas when tab hidden (save battery / CPU) */
-document.addEventListener('visibilitychange', ()=>{
-  if(!window._animToggle) return;
-  if(document.hidden) window._animToggle(false);
-  else if(animOn) window._animToggle(true);
-});
-
-/* Debounced ResizeObserver for card icons */
-let _roTimer=null;
-new ResizeObserver(()=>{
-  if(_roTimer) cancelAnimationFrame(_roTimer);
-  _roTimer = requestAnimationFrame(()=>{
-    document.querySelectorAll('.card-icon canvas[data-name]').forEach(c=>drawIcon(c,c.dataset.name));
-  });
-}).observe(document.getElementById('apps-grid'));
-init();
 </script>
+
 </body>
 </html>
