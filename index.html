@@ -2,7 +2,10 @@
 <html lang="en" data-palette="violet" data-mode="dark" data-lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="color-scheme" content="dark light">
+<meta name="theme-color" id="theme-color-meta" content="#07060f">
+<meta name="referrer" content="strict-origin-when-cross-origin">
 <title>A.I. Chiuță — Single-File Architect</title>
 <meta name="description" content="A.I. Chiuță builds free, open-source, single-file HTML apps — OmniHost, VoiceAtelier, TranslateHub, FreeDetect, PromptVault and more. Offline-first, no server, no account.">
 <meta name="author" content="Alexandru-Ionuț Chiuță">
@@ -22,6 +25,12 @@
 <meta property="og:title" content="A.I. Chiuță — Single-File Architect">
 <meta property="og:description" content="Free, open-source, single-file HTML apps. OmniHost · VoiceAtelier · TranslateHub · FreeDetect · PromptVault · Printre inteligențe · AcademiSearch. Offline-first, zero telemetry.">
 <meta property="og:image" content="https://chiuta.github.io/og-image.png">
+<meta property="og:image:secure_url" content="https://chiuta.github.io/og-image.png">
+<meta property="og:image:type" content="image/png">
+<meta property="og:image:width" content="2400">
+<meta property="og:image:height" content="1260">
+<meta property="og:image:alt" content="A.I. Chiuță — Single-File Architect. Free, offline-first, single-file HTML apps. 34 projects, 6 languages, zero telemetry.">
+<meta property="og:updated_time" content="2026-06-14">
 <meta property="og:site_name" content="A.I. Chiuță">
 <meta property="og:locale" content="en_US">
 <meta property="og:locale:alternate" content="ro_RO">
@@ -34,6 +43,7 @@
 <meta name="twitter:title" content="A.I. Chiuță — Single-File Architect">
 <meta name="twitter:description" content="Free single-file HTML apps. OmniHost · VoiceAtelier · TranslateHub · FreeDetect · PromptVault · Printre inteligențe · AcademiSearch.">
 <meta name="twitter:image" content="https://chiuta.github.io/og-image.png">
+<meta name="twitter:image:alt" content="A.I. Chiuță — Single-File Architect. Free, offline-first, single-file HTML apps. 34 projects, 6 languages, zero telemetry.">
 <!-- Favicon (inline SVG) -->
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%238b5cf6'/><text x='16' y='22' font-family='serif' font-size='18' font-weight='bold' fill='white' text-anchor='middle'>A</text></svg>">
 <!-- JSON-LD Person schema -->
@@ -84,6 +94,8 @@
     var h = document.documentElement;
     h.dataset.palette = pal;
     h.dataset.mode = mode;
+    var tcm = document.getElementById('theme-color-meta');
+    if(tcm) tcm.setAttribute('content', mode==='light' ? '#f0eef8' : '#07060f');
     if(savedLang){ h.dataset.lang = savedLang; h.lang = savedLang; }
   }catch(e){/* storage blocked — defaults in HTML take over */}
 })();
@@ -262,6 +274,10 @@ main{padding:.6rem 0 1.5rem}
   footer{padding-bottom:env(safe-area-inset-bottom)}
 }
 
+/* A11y: skip link */
+.skip-link{position:absolute;left:-9999px;top:0;z-index:300;background:var(--accent);color:#fff;padding:.5rem .9rem;border-radius:0 0 8px 0;font-family:var(--mono);font-size:.7rem;text-decoration:none;font-weight:600}
+.skip-link:focus{left:0}
+
 /* A11y: keyboard focus */
 :focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:4px}
 .tswatch:focus-visible .tswatch-card{border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-lo)}
@@ -272,9 +288,27 @@ main{padding:.6rem 0 1.5rem}
   #bg-canvas{opacity:0!important}
   .badge .dot{animation:none}
 }
+
+/* Clean printing: white paper, ink-friendly, hide chrome, reveal link URLs */
+@media print{
+  html[data-mode][data-palette]{--bg:#fff!important;--bg2:#fff!important;--bg3:#fff!important;--text:#000!important;--muted:#2a2a2a!important;--border:#bbb!important;--border-hi:#888!important;--accent:#2a1670!important;--accent-lo:#f0f0f0!important;--green:#0a0!important}
+  html,body{background:#fff!important;color:#000!important}
+  #bg-canvas,.skip-link,.panel-btn,.float-panel,.badge .dot{display:none!important}
+  nav{position:static!important;backdrop-filter:none!important}
+  *{animation:none!important;transition:none!important;box-shadow:none!important;text-shadow:none!important}
+  .hero-name span{-webkit-text-fill-color:#000!important;color:#000!important;background:none!important}
+  #apps-grid{grid-template-columns:1fr 1fr!important;gap:.35rem!important}
+  .app-card{break-inside:avoid;page-break-inside:avoid;transform:none!important;border:1px solid #bbb!important;min-height:0!important}
+  .card-icon{display:none!important}
+  .card-desc{display:block!important;-webkit-line-clamp:none!important;overflow:visible!important}
+  .nav-links a[href]:after,.footer-links a[href]:after{content:" (" attr(href) ")";font-size:.8em;color:#555;font-weight:400}
+  .card-link{pointer-events:none}
+  a{color:#000!important}
+}
 </style>
 </head>
 <body>
+<a href="#main" class="skip-link">Skip to content</a>
 <canvas id="bg-canvas" aria-hidden="true"></canvas>
 
 <nav>
@@ -348,14 +382,14 @@ main{padding:.6rem 0 1.5rem}
   </div>
 </div>
 
-<main>
+<main id="main">
   <div class="wrap">
     <div class="apps-header">
-      <span class="apps-title" data-i18n="projects">Projects</span>
-      <span class="apps-count" id="apps-count"></span>
+      <h2 class="apps-title" data-i18n="projects">Projects</h2>
+      <span class="apps-count" id="apps-count" aria-live="polite"></span>
     </div>
-    <div id="apps-grid">
-      <div id="loading-state"><div class="loader"></div><div data-i18n="loading">Fetching from GitHub…</div></div>
+    <div id="apps-grid" role="list">
+      <div id="loading-state" role="status"><div class="loader"></div><div data-i18n="loading">Fetching from GitHub…</div></div>
     <noscript>
       <style>#loading-state{display:none}.app-card{display:block;padding:.75rem 1rem;border:1px solid rgba(139,92,246,.3);border-radius:10px;margin-bottom:.5rem;text-decoration:none;color:inherit;background:rgba(14,12,28,.8)}.app-card h3{font-size:1rem;margin-bottom:.25rem}.app-card p{font-size:.75rem;opacity:.7}</style>
       <a class="app-card" href="https://chiuta.ro"><h3>OmniHost</h3><p>Complete personal productivity suite — 141 modules. The file is your database.</p></a>
@@ -698,12 +732,12 @@ const LANG_META = [
 
 /* Localized labels for icon-only controls (aria-label + title), refreshed on language change */
 const CTRL = {
-  en:{animPlay:'Play background animation',animPause:'Pause background animation',toDark:'Switch to dark mode',toLight:'Switch to light mode',theme:'Theme',lang:'Language'},
-  ro:{animPlay:'Pornește animația de fundal',animPause:'Oprește animația de fundal',toDark:'Comută pe modul întunecat',toLight:'Comută pe modul luminos',theme:'Temă',lang:'Limbă'},
-  fr:{animPlay:'Activer l\'animation d\'arrière-plan',animPause:'Mettre en pause l\'animation',toDark:'Passer en mode sombre',toLight:'Passer en mode clair',theme:'Thème',lang:'Langue'},
-  it:{animPlay:'Avvia l\'animazione di sfondo',animPause:'Metti in pausa l\'animazione',toDark:'Passa alla modalità scura',toLight:'Passa alla modalità chiara',theme:'Tema',lang:'Lingua'},
-  es:{animPlay:'Activar la animación de fondo',animPause:'Pausar la animación',toDark:'Cambiar al modo oscuro',toLight:'Cambiar al modo claro',theme:'Tema',lang:'Idioma'},
-  pt:{animPlay:'Ativar a animação de fundo',animPause:'Pausar a animação',toDark:'Mudar para o modo escuro',toLight:'Mudar para o modo claro',theme:'Tema',lang:'Idioma'},
+  en:{animPlay:'Play background animation',animPause:'Pause background animation',toDark:'Switch to dark mode',toLight:'Switch to light mode',theme:'Theme',lang:'Language',skip:'Skip to content'},
+  ro:{animPlay:'Pornește animația de fundal',animPause:'Oprește animația de fundal',toDark:'Comută pe modul întunecat',toLight:'Comută pe modul luminos',theme:'Temă',lang:'Limbă',skip:'Sari la conținut'},
+  fr:{animPlay:'Activer l\'animation d\'arrière-plan',animPause:'Mettre en pause l\'animation',toDark:'Passer en mode sombre',toLight:'Passer en mode clair',theme:'Thème',lang:'Langue',skip:'Aller au contenu'},
+  it:{animPlay:'Avvia l\'animazione di sfondo',animPause:'Metti in pausa l\'animazione',toDark:'Passa alla modalità scura',toLight:'Passa alla modalità chiara',theme:'Tema',lang:'Lingua',skip:'Vai al contenuto'},
+  es:{animPlay:'Activar la animación de fondo',animPause:'Pausar la animación',toDark:'Cambiar al modo oscuro',toLight:'Cambiar al modo claro',theme:'Tema',lang:'Idioma',skip:'Saltar al contenido'},
+  pt:{animPlay:'Ativar a animação de fundo',animPause:'Pausar a animação',toDark:'Mudar para o modo escuro',toLight:'Mudar para o modo claro',theme:'Tema',lang:'Idioma',skip:'Saltar para o conteúdo'},
 };
 function ct(k){ return (CTRL[curLang]||CTRL.en)[k] || CTRL.en[k] || k; }
 
@@ -732,6 +766,7 @@ function applyLang(lang){
   // localize icon-only control labels for screen readers
   const lt=document.getElementById('lang-toggle'); if(lt) lt.setAttribute('aria-label', ct('lang'));
   const tt=document.getElementById('theme-toggle'); if(tt) tt.setAttribute('aria-label', ct('theme'));
+  const sk=document.querySelector('.skip-link'); if(sk) sk.textContent=ct('skip');
   try{ if(typeof syncDayNight==='function') syncDayNight(); }catch(_){}
   try{ if(typeof syncAnimBtn==='function') syncAnimBtn(); }catch(_){}
   // re-render cards with new descriptions
@@ -784,6 +819,9 @@ function applyTheme(palette,mode){
   curPalette=palette;curMode=mode;
   html.dataset.palette=palette;html.dataset.mode=mode;
   localStorage.setItem('mode',mode); /* paleta nu se persistă — e aleatorie la fiecare vizită */
+  const tc=document.getElementById('theme-color-meta');
+  if(tc){ const pc=(typeof PALETTE_COLORS!=='undefined'&&PALETTE_COLORS[mode])?PALETTE_COLORS[mode][palette]:null;
+    tc.setAttribute('content', pc?pc.bg:(mode==='dark'?'#07060f':'#f0eef8')); }
   buildSwatches();
   if(typeof syncDayNight==='function') syncDayNight();
   setTimeout(()=>document.querySelectorAll('.card-icon canvas[data-name]').forEach(c=>drawIcon(c,c.dataset.name)),40);
@@ -1185,6 +1223,7 @@ function createCard(repo,i){
   // Card is a plain container — only the action buttons are clickable.
   const a=document.createElement('div');
   a.className='app-card';
+  a.setAttribute('role','listitem');
   a.style.animationDelay=`${i*.06}s`;
 
   // icon
@@ -1195,7 +1234,7 @@ function createCard(repo,i){
   // body
   const body=el('div',{class:'card-body'});
   const top=el('div',{class:'card-top'});
-  top.appendChild(el('span',{class:'card-name'},repo.name));
+  top.appendChild(el('h3',{class:'card-name'},repo.name));
   top.appendChild(el('span',{class:'card-lang '+langCls(lang)},lang));
   body.appendChild(top);
   body.appendChild(el('div',{class:'card-desc'},d));
