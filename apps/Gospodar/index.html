@@ -8,7 +8,7 @@
 <meta name="application-version" content="1.0.0">
 <meta name="last-updated" content="2026-10-14">
 <meta name="color-scheme" content="light dark">
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-BKfdG+DcXX7us+8hgJDkTA3HM5d+avI7Zc/8c6uPVps='; style-src 'unsafe-inline'; img-src data: blob:; media-src data: blob:; font-src data:; connect-src 'none'; base-uri 'none'; form-action 'none'; frame-src 'none'; object-src 'none'; worker-src blob:; manifest-src 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-MOweOJSW9PGRWgQyHV6dWtkO5csLiGwrIZ+sP3X6+5Y='; style-src 'unsafe-inline'; img-src data: blob:; media-src data: blob:; font-src data:; connect-src 'none'; base-uri 'none'; form-action 'none'; frame-src 'none'; object-src 'none'; worker-src blob:; manifest-src 'none'">
 <style>
 :root{
   color-scheme:light dark;
@@ -595,10 +595,11 @@ async function decryptBlob(blob, pass) {
 }
 
 /* ---------- calculatoare (formule transparente, întregi) ---------- */
+function monthlyInterest(ratePct) { const p = parseDec(normTyped(ratePct)); const den = P10(p.k) * 1200n; return B => rdiv(BigInt(B) * p.n, den); } // dobânda lunară exactă (rațional), rotunjită o dată
 function loanSchedule(o) { // {principal(minor), ratePct(str), months, type:'annuity'|'equal'}
   const P = o.principal, n = o.months; const r = fpFromPct(o.ratePct, 1200);
   if (r === null || !(P > 0) || !(n >= 1) || !Number.isInteger(n)) return null;
-  const rows = []; let B = P, totalInt = 0;
+  const rows = []; let B = P, totalInt = 0; const intOf = monthlyInterest(o.ratePct);
   let pay = 0, pow = 0n;
   if (o.type === 'annuity') {
     if (r === 0n) pay = Number(rdiv(BigInt(P), BigInt(n)));
@@ -606,7 +607,7 @@ function loanSchedule(o) { // {principal(minor), ratePct(str), months, type:'ann
   }
   const baseP = Math.floor(P / n);
   for (let k = 1; k <= n; k++) {
-    const interest = Number(rdiv(BigInt(B) * r, FPS)); let princ, pm;
+    const interest = Number(intOf(B)); let princ, pm;
     if (k === n) { princ = B; pm = B + interest; }
     else if (o.type === 'annuity') { princ = Math.min(pay - interest, B); pm = pay; if (princ < 0) { princ = 0; pm = interest; } }
     else { princ = baseP; pm = princ + interest; }
@@ -616,10 +617,10 @@ function loanSchedule(o) { // {principal(minor), ratePct(str), months, type:'ann
 }
 function compoundRun(o) { // {initial, deposit, ratePct, months, timing:'end'|'begin'}
   const r = fpFromPct(o.ratePct, 1200); if (r === null) return null;
-  let B = o.initial, contrib = o.initial, intTot = 0; const rows = [];
+  let B = o.initial, contrib = o.initial, intTot = 0; const rows = []; const intOf = monthlyInterest(o.ratePct);
   for (let k = 1; k <= o.months; k++) {
     if (o.timing === 'begin') { B += o.deposit; contrib += o.deposit; }
-    const it = Number(rdiv(BigInt(B) * r, FPS)); B += it; intTot += it;
+    const it = Number(intOf(B)); B += it; intTot += it;
     if (o.timing !== 'begin') { B += o.deposit; contrib += o.deposit; }
     rows.push({ k, bal: B, contrib, interest: intTot });
   }
@@ -706,7 +707,7 @@ function regexProbe(src, samples, ms) { // test într-un Worker (poate fi oprit)
   });
 }
 
-Object.assign(window, { __G: { VERSION, UPDATED, LANGS, LOCALES, K, PBKDF2_ITER, $, esc, store, loadDict, t, DICT, dec, P10, rdiv, parseDec, normTyped, parseMinorStr, parseTyped, minorToDot, fmt, fmtN, fmtPct, fmtInt, fmtDec, FPS, dnum, dstr, validDate, mkDate, today, mkey, addMonthsKey, monthDays, dateIn, monthLabel, monthShort, fmtDate, strip, norm, rateRat, convertMinor, parseCSV, detectSep, ENCODINGS, decodeBytes, DATE_FORMATS, parseDateFmt, detectDateFmt, cleanNum, detectNumFmt, parseNumFmt, guessMapping, findStart, looksLikeHeader, buildImportRows, checkBalances, b64, unb64, deriveKey, encWith, decWith, encryptWithPass, decryptBlob, loanSchedule, compoundRun, goalDeposit, inflationRows, vatCalc, fxCalc, regexStatic, regexProbe, setLang(l) { LANG = l; nfCache.clear(); }, getLang: () => LANG, storageOk: () => storageOk } });
+Object.assign(window, { __G: { VERSION, UPDATED, LANGS, LOCALES, K, PBKDF2_ITER, $, esc, store, loadDict, t, DICT, dec, P10, rdiv, parseDec, normTyped, parseMinorStr, parseTyped, minorToDot, fmt, fmtN, fmtPct, fmtInt, fmtDec, FPS, fpFromPct, dnum, dstr, validDate, mkDate, today, mkey, addMonthsKey, monthDays, dateIn, monthLabel, monthShort, fmtDate, strip, norm, rateRat, convertMinor, parseCSV, detectSep, ENCODINGS, decodeBytes, DATE_FORMATS, parseDateFmt, detectDateFmt, cleanNum, detectNumFmt, parseNumFmt, guessMapping, findStart, looksLikeHeader, buildImportRows, checkBalances, b64, unb64, deriveKey, encWith, decWith, encryptWithPass, decryptBlob, loanSchedule, compoundRun, goalDeposit, inflationRows, vatCalc, fxCalc, regexStatic, regexProbe, setLang(l) { LANG = l; nfCache.clear(); }, getLang: () => LANG, storageOk: () => storageOk } });
 })();
 
 (() => {

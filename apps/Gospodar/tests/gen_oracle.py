@@ -1,23 +1,24 @@
 #!/usr/bin/env python3
-"""Generează oracol independent (decimal exact) pentru calculatoarele Gospodar.
+"""Generează oracol independent (rațional exact, fractions) pentru calculatoarele Gospodar.
 Rulare: python3 -I gen_oracle.py > oracle.json   (nu folosește cod din aplicație)
-Convenții: sume în subunități (bani); rotunjire „jumătate în sus” la fiecare perioadă."""
+Convenții (rapoarte exacte, fără zecimale trunchiate): sume în subunități (bani); rotunjire „jumătate în sus” la fiecare perioadă."""
 import json
-from decimal import Decimal, getcontext, ROUND_HALF_UP
-getcontext().prec = 90
+from fractions import Fraction
+from math import floor, ceil
 
-def rnd(x):  # -> int, jumătate în sus (în afara lui zero)
-    return int(x.quantize(Decimal(1), rounding=ROUND_HALF_UP))
+def rnd(x):  # -> int, jumătate în sus (în afara lui zero), pe raționale exacte
+    x = Fraction(x)
+    return floor(x + Fraction(1, 2)) if x >= 0 else -floor(-x + Fraction(1, 2))
 
 def loan(P, pct, n, kind):
-    r = Decimal(pct) / Decimal(1200)
+    r = Fraction(pct) / Fraction(1200)
     pay = None
     if kind == 'annuity':
-        pay = rnd(Decimal(P) / n) if r == 0 else rnd(Decimal(P) * r / (1 - (1 + r) ** (-n)))
+        pay = rnd(Fraction(P) / n) if r == 0 else rnd(Fraction(P) * r / (1 - (1 + r) ** (-n)))
     B = P; rows = []; tot = 0
     base = P // n
     for k in range(1, n + 1):
-        i = rnd(Decimal(B) * r)
+        i = rnd(Fraction(B) * r)
         if k == n: pr = B; pm = B + i
         elif kind == 'annuity':
             pr = min(pay - i, B); pm = pay
@@ -27,36 +28,36 @@ def loan(P, pct, n, kind):
     return {'P': P, 'pct': pct, 'n': n, 'kind': kind, 'payment': pay, 'totalInterest': tot, 'first': rows[0], 'last': rows[-1], 'mid': rows[n // 2], 'sumPay': sum(x[0] for x in rows)}
 
 def compound(P0, D, pct, n, timing):
-    r = Decimal(pct) / Decimal(1200); B = P0; it = 0; c = P0
+    r = Fraction(pct) / Fraction(1200); B = P0; it = 0; c = P0
     for k in range(n):
         if timing == 'begin': B += D; c += D
-        i = rnd(Decimal(B) * r); B += i; it += i
+        i = rnd(Fraction(B) * r); B += i; it += i
         if timing != 'begin': B += D; c += D
     return {'P': P0, 'D': D, 'pct': pct, 'n': n, 'timing': timing, 'final': B, 'contrib': c, 'interest': it}
 
 def goal(T, C, pct, n):
-    r = Decimal(pct) / Decimal(1200)
+    r = Fraction(pct) / Fraction(1200)
     if r == 0: d = max(0, -((-(T - C)) // n))
     else:
-        pw = (1 + r) ** n; x = (Decimal(T) - Decimal(C) * pw) * r / (pw - 1)
-        d = 0 if x <= 0 else int(x.to_integral_value(rounding='ROUND_CEILING'))
+        pw = (1 + r) ** n; x = (Fraction(T) - Fraction(C) * pw) * r / (pw - 1)
+        d = 0 if x <= 0 else ceil(x)
     def sim(d):
         B = C
         for _ in range(n):
-            B += rnd(Decimal(B) * r); B += d
+            B += rnd(Fraction(B) * r); B += d
         return B
     while sim(d) < T: d += 1
     return {'T': T, 'C': C, 'pct': pct, 'n': n, 'deposit': d, 'final': sim(d)}
 
 def infl(A, pct, y):
-    g = Decimal(pct) / 100
-    return {'A': A, 'pct': pct, 'y': y, 'nominal': rnd(Decimal(A) * (1 + g) ** y), 'real': rnd(Decimal(A) / (1 + g) ** y)}
+    g = Fraction(pct) / 100
+    return {'A': A, 'pct': pct, 'y': y, 'nominal': rnd(Fraction(A) * (1 + g) ** y), 'real': rnd(Fraction(A) / (1 + g) ** y)}
 
 def vat(A, pct, mode):
-    p = Decimal(pct)
+    p = Fraction(pct)
     if mode == 'add':
-        v = rnd(Decimal(A) * p / 100); return {'A': A, 'pct': pct, 'mode': mode, 'net': A, 'vat': v, 'gross': A + v}
-    net = rnd(Decimal(A) * 100 / (100 + p)); return {'A': A, 'pct': pct, 'mode': mode, 'net': net, 'vat': A - net, 'gross': A}
+        v = rnd(Fraction(A) * p / 100); return {'A': A, 'pct': pct, 'mode': mode, 'net': A, 'vat': v, 'gross': A + v}
+    net = rnd(Fraction(A) * 100 / (100 + p)); return {'A': A, 'pct': pct, 'mode': mode, 'net': net, 'vat': A - net, 'gross': A}
 
 out = {
  'loans': [loan(P, pct, n, k) for P, pct, n in [(25000000, '7.5', 300), (1000000, '0', 12), (12345678, '5.99', 241), (9999999, '12.375', 60), (500000, '3.1', 7), (80000000, '6.25', 360), (123456, '18', 24), (100, '5', 3), (7777777, '0.5', 120)] for k in ('annuity', 'equal')],

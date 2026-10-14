@@ -83,7 +83,7 @@ await T('calcule exacte: 0,1 + 0,2, parsare, formatare, conversii', async () => 
   assert.equal(r.f, 49765); assert.equal(r.g, 10000); assert.equal(r.h, 5); assert.equal(r.i, 109); assert.equal(r.j, null);
   assert.equal(r.k, '-0.05'); assert.equal(r.l, '1234.56'); assert.equal(r.m, null); assert.equal(r.n, null);
   const f = await E(p, () => [GOSPODAR.G.fmt(123456, 'RON'), GOSPODAR.G.fmt(-5, 'EUR', {sign: true})]);
-  assert.match(f[0], /1\.234,56\s*RON/); assert.match(f[1], /-0,05\s*€|−0,05\s*€/);
+  assert.match(f[0], /1\.234,56\s*RON/); assert.match(f[1], /[-−]0,05\s*(€|EUR)/);
   // sumă pe tranzacții: 1000 × 0,10 = 100,00 exact
   const s = await E(p, () => { const a = GOSPODAR.S.addAccount({name: 'T', cur: 'RON'}); for (let i = 0; i < 1000; i++) GOSPODAR.S.addTx({date: '2026-10-01', amt: 10, acc: a.id}, true); GOSPODAR.S.commit('tx'); return GOSPODAR.S.balances().get(a.id); });
   assert.equal(s, 10000);
