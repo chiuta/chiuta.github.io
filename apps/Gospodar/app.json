@@ -1,0 +1,61 @@
+{
+  "schema": 1,
+  "slug": "gospodar",
+  "name": "Gospodar",
+  "version": "1.0.0",
+  "updated": "2026-10-14",
+  "description": "Gospodar: buget de gospodărie local, cu conturi, categorii, import CSV cu asistent de mapare, reguli de categorizare, bugete lunare, rapoarte și calculatoare cu formule transparente. Rulează local, nu trimite nimic.",
+  "egress": [],
+  "permissions": [
+    "serviceWorker",
+    "localStorage",
+    "Web Crypto",
+    "Worker"
+  ],
+  "storageKeys": [],
+  "sizeBytes": 418599,
+  "sha256": "3b6f9cac5f9751f6888aa79eb0f6dcb4d6ce442cf8f187128fc5633e8a7aa793",
+  "csp": {
+    "present": true,
+    "directives": {
+      "default-src": "'none'",
+      "script-src": "sha256×3",
+      "style-src": "'unsafe-inline'",
+      "img-src": "'self' data: blob:",
+      "media-src": "data: blob:",
+      "font-src": "data:",
+      "connect-src": "'none'",
+      "base-uri": "'none'",
+      "form-action": "'none'",
+      "frame-src": "'none'",
+      "object-src": "'none'",
+      "worker-src": "'self' blob:",
+      "manifest-src": "'self'"
+    },
+    "scriptInline": "hash",
+    "connect": "'none'"
+  },
+  "features": {
+    "export": true,
+    "import": true,
+    "i18n": [],
+    "pwa": {
+      "manifest": true,
+      "serviceWorker": true
+    },
+    "modules": [
+      "core",
+      "label",
+      "bundle"
+    ]
+  },
+  "kit": {
+    "version": "1.0.0",
+    "modules": [
+      "core",
+      "label",
+      "bundle"
+    ]
+  },
+  "selfSerializing": false
+}

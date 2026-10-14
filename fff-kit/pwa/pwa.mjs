@@ -127,7 +127,9 @@ function stripBlock(html) {
 }
 
 /* ───────────── detectare ───────────── */
-export function detect(html, dir) {
+export function detect(html0, dir) {
+  // blocul fff-kit și eticheta #fff-info conțin cuvinte precum „serviceWorker” (hartă de capabilități): nu sunt PWA propriu
+  const html = html0.replace(/<!--fff:kit:start[\s\S]*?<!--fff:kit:end-->/g, '').replace(/<script[^>]*id=["']fff-info["'][\s\S]*?<\/script>/g, '');
   const hs = scrub(html);
   const reasons = [];
   if (/<link\b[^>]*\brel=["']?manifest/i.test(hs) || /rel=["']manifest["']|application\/manifest\+json|\.webmanifest/i.test(html)) reasons.push('manifest propriu');

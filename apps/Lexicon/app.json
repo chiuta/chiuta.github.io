@@ -1,0 +1,63 @@
+{
+  "schema": 1,
+  "slug": "lexicon",
+  "name": "Lexicon",
+  "version": "1.0.0",
+  "updated": "2026-10-14",
+  "description": "Lexicon: motor de dicționar offline cu date aduse de utilizator (TSV/CSV, JSON, StarDict, dictd, XDXF), căutare rapidă insensibilă la diacritice, fuzzy, wildcard, flashcards. Include doar un set demonstrativ.",
+  "egress": [],
+  "permissions": [
+    "clipboard",
+    "serviceWorker",
+    "indexedDB",
+    "localStorage"
+  ],
+  "storageKeys": [],
+  "sizeBytes": 361475,
+  "sha256": "774e39009c10f55efb473c13837c14331850804c75d038e9e69a06e4decc34ad",
+  "csp": {
+    "present": true,
+    "directives": {
+      "default-src": "'none'",
+      "script-src": "sha256×3",
+      "style-src": "'unsafe-inline'",
+      "img-src": "'self' data: blob:",
+      "media-src": "data: blob:",
+      "font-src": "data:",
+      "connect-src": "'none'",
+      "base-uri": "'none'",
+      "form-action": "'none'",
+      "frame-src": "'none'",
+      "object-src": "'none'",
+      "worker-src": "'self' blob:",
+      "manifest-src": "'self'"
+    },
+    "scriptInline": "hash",
+    "connect": "'none'"
+  },
+  "features": {
+    "export": true,
+    "import": true,
+    "i18n": [],
+    "pwa": {
+      "manifest": true,
+      "serviceWorker": true
+    },
+    "modules": [
+      "core",
+      "label",
+      "bundle",
+      "search"
+    ]
+  },
+  "kit": {
+    "version": "1.0.0",
+    "modules": [
+      "core",
+      "label",
+      "bundle",
+      "search"
+    ]
+  },
+  "selfSerializing": false
+}

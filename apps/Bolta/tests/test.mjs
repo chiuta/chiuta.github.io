@@ -47,7 +47,7 @@ test('încărcare: fără erori, CSP valid, meta, fără handlere inline / eval 
   ok(!/\beval\s*\(|new Function\s*\(/.test(html.replace(/\/\*[\s\S]*?\*\//g, '')), 'eval / new Function');
   ok(!/https?:\/\/[^\s"'<>)]*\.(js|css|png|woff2?)/i.test(html.replace(/"https?:\/\/(www\.w3\.org|[^"]*)"/g, '')), 'resurse externe');
   for (const n of ['application-version', 'last-updated', 'description']) ok(new RegExp(`<meta name="${n}" content="[^"]+"`).test(html), 'meta ' + n);
-  ok(!/manifest|serviceWorker/i.test(html.replace(/manifest-src 'none'/, '')), 'manifest / SW');
+  ok(!/manifest|serviceWorker/i.test(html.replace(/<!--fff:pwa:start[\s\S]*?<!--fff:pwa:end-->/g,'').replace(/<!--fff:kit:start[\s\S]*?<!--fff:kit:end-->/g,'').replace(/<script[^>]*id="fff-info"[\s\S]*?<\/script>/,'').replace(/(manifest|worker)-src [^;]*/g,'')), 'manifest / SW (în afara blocurilor kit/PWA)');
   ok(!/cnred/i.test(html), 'CNRED');
   const p = await newPage();
   eq(await p.textContent('#app-version'), 'v 1.0.0 · 2026-10-14', '#app-version');
