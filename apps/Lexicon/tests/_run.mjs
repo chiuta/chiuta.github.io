@@ -561,7 +561,7 @@ console.log('5. Import TSV/CSV/JSON: antet, mapare coloane, diacritice speciale,
   const d1 = await dl1;
   const exp = JSON.parse(fs.readFileSync(await d1.path(), 'utf8'));
   ok('export dicționar: format lexicon-dict cu metadate și intrări', exp.format === 'lexicon-dict' && exp.title === 'Special TSV' && exp.entries.length === 10 && exp.entries.find(e => e.h === 'Straße').senses[0].x[0] === 'Die Straße ist lang.', exp.entries.slice(0, 2));
-  await doImport(p, [F('re.json', JSON.stringify(exp))], {title: 'Special TSV (reimport)'});
+  await doImport(p, [F('re.json', JSON.stringify(exp))], {title: 'Special TSV (reimport)', nolic: true});
   const re = await p.evaluate(async () => { const s = Lexicon.state().dicts; return {a: s.find(d => d.title === 'Special TSV').count, b: s.find(d => d.title === 'Special TSV (reimport)').count}; });
   ok('round-trip export → import: același număr de intrări', re.a === re.b && re.a === 10, re);
   await tab(p, 'search');
@@ -640,7 +640,7 @@ console.log('6. StarDict (.ifo/.idx/.dict/.dict.dz/.syn), dictd (.index/.dict[.d
   const dd = [
     {w: 'abecedar', body: 'abecedar\n  carte pentru învățarea literelor\n'},
     {w: 'ţăran', body: 'Țăran\n  om care lucrează pământul\n'},
-    {w: 'lung', body: 'lung\n' + 'linie lungă de text pentru a mări offsetul. '.repeat(40) + '\n'},
+    {w: 'lung', body: 'lung\n' + 'linie lungă de text pentru a mări offsetul. '.repeat(120) + '\n'},
     {w: 'zefir', body: 'zefir\n  vânt blând de vest\n'}
   ];
   const dd1 = makeDictd(dd, {title: 'Dictd Test Lexicon'});
@@ -682,6 +682,212 @@ console.log('6. StarDict (.ifo/.idx/.dict/.dict.dz/.syn), dictd (.index/.dict[.d
   ok('XDXF: click pe kref deschide „stea”', true);
   // ștergere dicționare de test (păstrăm doar demo + Special TSV)
   ok('0 erori / 0 violări CSP / 0 rețea după toate importurile', T1.errors.length === 0 && T1.net.length === 0 && (await P.evaluate(() => (window.__csp || []).length)) === 0, [T1.errors, T1.net]);
+}
+
+/* ============================================================ 7. mai multe dicționare: activare, ordine, metadate, ștergere */
+console.log('7. Mai multe dicționare simultan: activare/dezactivare, ordine, metadate, ștergere');
+{
+  const p = P;
+  await tab(p, 'dicts');
+  // curăță: șterge tot în afară de demo și „Special TSV”
+  for (;;) {
+    const s = await st(p);
+    const del = s.dicts.find(d => d.format !== 'demo' && d.title !== 'Special TSV');
+    if (!del) break;
+    await p.click('[data-act="del"][data-id="' + del.id + '"]'); await p.click('#conf-yes');
+    await p.waitForFunction(id => !document.querySelector('[data-act="del"][data-id="' + id + '"]'), del.id);
+  }
+  const s0 = await st(p);
+  ok('ștergere dicționare prin interfață (cu confirmare)', s0.dicts.length === 2 && s0.dicts.some(d => d.format === 'demo') && s0.dicts.some(d => d.title === 'Special TSV'), s0.dicts.map(d => d.title));
+  const demoId = await dictId(p, 'Set demonstrativ românesc (Lexicon)');
+  await p.check('#act-' + demoId);
+  ok('dicționar activat din nou', (await st(p)).dicts.find(d => d.id === demoId).enabled === true);
+  await doImport(p, [F('alt.tsv', 'casă\tDefiniția din celălalt dicționar.\napă\tApa din celălalt dicționar.')], {title: 'Alt dicționar', license: 'test', before: async q => { await q.selectOption('#imp-header', 'no'); }});
+  await tab(p, 'search');
+  await openWord(p, 'casă');
+  let h3s = await p.locator('#article .dsec h3').allInnerTexts();
+  ok('articol cu secțiuni din mai multe dicționare, în ordinea dicționarelor', h3s.length === 2 && /^Set demonstrativ/.test(h3s[0]) && /^Alt dicționar/.test(h3s[1]), h3s);
+  await tab(p, 'dicts');
+  const altId = await dictId(p, 'Alt dicționar');
+  await p.click('[data-act="up"][data-id="' + altId + '"]');
+  await p.click('[data-act="up"][data-id="' + altId + '"]');
+  const order = (await st(p)).dicts.sort((a, b) => a.order - b.order).map(d => d.title);
+  ok('schimbarea ordinii (↑) se reflectă în stare', order[0] === 'Alt dicționar', order);
+  ok('focalizarea rămâne pe butonul mutat / vecin (tastatură)', (await p.evaluate(() => document.activeElement.dataset.act)) !== undefined);
+  await tab(p, 'search');
+  await p.waitForFunction(() => /^Alt dicționar/.test(document.querySelector('#article .dsec h3')?.textContent || ''));
+  h3s = await p.locator('#article .dsec h3').allInnerTexts();
+  ok('articolul se reordonează după ordinea dicționarelor', /^Alt dicționar/.test(h3s[0]) && /^Set demonstrativ/.test(h3s[1]), h3s);
+  await tab(p, 'dicts');
+  await p.uncheck('#act-' + demoId);
+  await tab(p, 'search');
+  await p.waitForFunction(() => document.querySelectorAll('#article .dsec').length === 1);
+  ok('dezactivare: articolul păstrează doar dicționarul activ', /Alt dicționar/.test(await p.locator('#article .dsec h3').innerText()));
+  const gone = await openWord(p, 'pădure');
+  ok('cuvânt din dicționarul dezactivat nu mai e găsit', /Niciun rezultat/.test(gone), gone.slice(0, 80));
+  await tab(p, 'dicts'); await p.check('#act-' + demoId); await tab(p, 'search');
+  ok('filtru pe dicționar în căutare', (await p.locator('#dfilter option').count()) === 4);
+  await p.selectOption('#dfilter', String(altId));
+  await p.fill('#q', 'apă'); await p.press('#q', 'Enter'); await p.waitForSelector('#results .ritem');
+  const fr = await p.evaluate(async ids => ({a: (await Lexicon.search('apa', {dict: ids[0]})).rows.map(r => r.refs[0].d), b: (await Lexicon.search('apa', {dict: ids[1]})).rows.map(r => r.refs[0].d)}), [altId, demoId]);
+  ok('filtru pe dicționar: căutarea e limitată la dicționarul ales', fr.a.length === 1 && fr.a[0] === altId && fr.b.length === 1 && fr.b[0] === demoId && (await p.locator('#results .ritem').count()) === 1, fr);
+  await p.selectOption('#dfilter', '0');
+  // metadate
+  await tab(p, 'dicts');
+  await p.click('[data-act="edit"][data-id="' + altId + '"]');
+  await p.waitForSelector('#mt-title');
+  await p.fill('#mt-license', 'CC BY 4.0 (test)'); await p.fill('#mt-langs', 'ro'); await p.fill('#mt-title', 'Alt dicționar (editat)');
+  await p.click('#meta-body .btn.primary');
+  await p.waitForSelector('#dlg-meta:not([open])', {state: 'attached'});
+  const cardTxt = await p.locator('#dlist').innerText();
+  ok('editare metadate: titlu, limbi, licență', /Alt dicționar \(editat\)/.test(cardTxt) && /CC BY 4\.0 \(test\)/.test(cardTxt));
+  await p.click('[data-act="edit"][data-id="' + altId + '"]'); await p.waitForSelector('#mt-title');
+  await p.fill('#mt-title', ''); await p.click('#meta-body .btn.primary');
+  ok('titlul gol la editare este refuzat', await p.locator('#dlg-meta').evaluate(d => d.open));
+  await p.click('#meta-body .btn:not(.primary)');
+}
+
+/* ============================================================ 8. flashcards, export, ortografie, date utilizator */
+console.log('8. Flashcards, export (CSV/JSON/Markdown), verificare ortografie, copie de rezervă');
+{
+  const p = P;
+  await tab(p, 'search');
+  ok('SRS: interval „Bine” 1 → 3 → crește; „Din nou” resetează', await p.evaluate(() => {
+    const c = {reps: 0, int: 0, ease: 2.5, lapses: 0, due: 0}; const iv = [];
+    for (let i = 0; i < 4; i++) { Lexicon.gradeCard(c, 2); iv.push(c.int); }
+    Lexicon.gradeCard(c, 0);
+    const a = {reps: 0, int: 0, ease: 2.5}; Lexicon.gradeCard(a, 3);
+    return iv[0] === 1 && iv[1] === 3 && iv[2] > iv[1] && iv[3] > iv[2] && c.reps === 0 && c.int === 0 && c.lapses === 1 && c.ease < 2.5 && a.int === 3 && a.ease > 2.5;
+  }));
+  await openWord(p, 'apă'); await p.click('#art-card');
+  await openWord(p, 'soare'); await p.click('#art-card');
+  await p.click('#art-card');
+  ok('„deja în pachet” la a doua adăugare', /deja în pachet/.test(await p.locator('#toast').innerText()));
+  await tab(p, 'cards');
+  ok('statistici: 2 în pachet, 2 de repetat', /În pachet: 2/.test(await p.locator('#cstats').innerText()) && /De repetat acum: 2/.test(await p.locator('#cstats').innerText()));
+  ok('față de card: cuvântul, fără răspuns încă', (await p.locator('#c-front').innerText()).length > 1 && (await p.locator('#c-g2').count()) === 0);
+  const first = await p.locator('#c-front').innerText();
+  await p.click('#c-show');
+  ok('„Arată răspunsul” afișează definiția și butoanele de notare', (await p.locator('#cbox .back').innerText()).length > 10 && (await p.locator('[data-grade]').count()) === 4);
+  await p.click('#c-g2');
+  let srs = await p.evaluate(() => JSON.parse(localStorage.getItem('fff.lexicon.srs')));
+  const graded = Object.values(srs.cards).find(c => c.h === first);
+  ok('notare „Bine”: interval 1 zi, scadență mâine, persistat', graded.int === 1 && graded.reps === 1 && graded.due === (await p.evaluate(() => Lexicon.dayNum())) + 1, graded);
+  ok('statistici după notare: 1 de repetat', /De repetat acum: 1/.test(await p.locator('#cstats').innerText()));
+  await p.click('#c-show'); await p.keyboard.press('1');
+  srs = await p.evaluate(() => JSON.parse(localStorage.getItem('fff.lexicon.srs')));
+  ok('tastele 1–4 notează; „Din nou” păstrează cardul în sesiune', Object.values(srs.cards).some(c => c.lapses === 1) && /De repetat acum: 1/.test(await p.locator('#cstats').innerText()));
+  await p.click('#c-show'); await p.click('#c-g2');
+  ok('sesiune terminată: mesaj și „următoarea peste N zile”', /terminat repetițiile/.test(await p.locator('#cbox').innerText()));
+  await p.check('#c-rev');
+  ok('mod invers: persistat în setări', (await p.evaluate(() => JSON.parse(localStorage.getItem('fff.lexicon.srs')).rev)) === true);
+  await p.uncheck('#c-rev');
+  await p.click('#p-cards details summary');
+  await p.click('[data-cdel="soare"]');
+  ok('eliminare card din pachet', /În pachet: 1/.test(await p.locator('#cstats').innerText()));
+  // favorite → pachet
+  await p.click('#c-addfav');
+  await p.waitForFunction(() => /În pachet: 1/.test(document.querySelector('#cstats').textContent));
+  ok('„Adaugă favoritele în pachet” nu duplică cardurile existente', true);
+
+  // ---- export favorite
+  await tab(p, 'search');
+  await openWord(p, 'foc'); await p.click('#art-fav');
+  await openWord(p, 'casă'); await p.click('#art-fav');
+  await tab(p, 'tools');
+  const grab = async sel => { const d = p.waitForEvent('download'); await p.click(sel); const dl = await d; return {name: dl.suggestedFilename(), text: fs.readFileSync(await dl.path(), 'utf8')}; };
+  let ex = await grab('[data-exp="fav"][data-fmt="csv"]');
+  ok('export favorite CSV: BOM, antet, câte un rând pe intrare, ghilimele corecte', ex.text.startsWith('﻿headword,dictionary,definition,forms') && /\r\n/.test(ex.text) && /apă,"?Set demonstrativ/.test(ex.text) && /^lexicon-favorite-\d{4}-\d{2}-\d{2}\.csv$/.test(ex.name), ex.text.slice(0, 300));
+  const rows = ex.text.replace(/^﻿/, '').split('\r\n').filter(Boolean);
+  ok('CSV: toate favoritele prezente (apă, foc, casă) cu definiții din toate dicționarele active', ['apă', 'foc', 'casă'].every(w => rows.some(r => r.startsWith(w + ','))) && rows.length >= 5, rows.length);
+  ex = await grab('[data-exp="fav"][data-fmt="json"]');
+  const ej = JSON.parse(ex.text);
+  ok('export favorite JSON valid, importabil (lexicon-dict)', ej.format === 'lexicon-dict' && ej.entries.some(e => e.h === 'apă' && /Lichid/.test(e.def)) && ej.entries.length >= 4, ej.entries.map(e => e.h));
+  ex = await grab('[data-exp="fav"][data-fmt="md"]');
+  ok('export favorite Markdown (titluri și listă)', /^# Favorite/.test(ex.text) && /^## apă/m.test(ex.text) && /^- \*\*Set demonstrativ/m.test(ex.text) && /\.md$/.test(ex.name), ex.text.slice(0, 200));
+  // export rezultate
+  await tab(p, 'search'); await p.selectOption('#mode', 'prefix'); await p.fill('#q', 'ca'); await p.press('#q', 'Enter'); await p.waitForSelector('#results .ritem');
+  const nres = await p.locator('#results .ritem').count();
+  await tab(p, 'tools');
+  ok('contor rezultate în fila Instrumente', new RegExp(nres + ' cuvinte').test(await p.locator('#n-res-x').innerText()), await p.locator('#n-res-x').innerText());
+  ex = await grab('[data-exp="res"][data-fmt="csv"]');
+  const rr = ex.text.replace(/^﻿/, '').split('\r\n').filter(Boolean).slice(1);
+  await tab(p, 'search'); await p.selectOption('#mode', 'auto'); await tab(p, 'tools');
+  ok('export rezultate CSV: tot subsetul căutat', rr.length >= nres && /^lexicon-cautare-/.test(ex.name), [rr.length, nres]);
+  // export gol
+  await p.click('#u-wipe'); await p.click('#conf-no');
+  // ---- ortografie
+  const sdoc = await newCtx();
+  const q2 = await newPage({ctx: sdoc});
+  const p2 = q2.page;
+  await tab(p2, 'tools');
+  await p2.fill('#spell-in', 'ceva');
+  await p2.click('#spell-go');
+  ok('ortografie: ordinea de lucru, mesaj dacă nu e niciun dicționar de forme (demo are forme)', /necunoscute/.test(await p2.locator('#spell-out').innerText()));
+  await p2.fill('#spell-in', 'Casa mare e frumoasa. Mâinile mele sunt curate; zorzonel și dragoste, merg 123 xyzzy xyzzy în frunzelor?');
+  await p2.click('#spell-go');
+  const so = await p2.locator('#spell-out').innerText();
+  const sp = await p2.evaluate(() => Lexicon.spell('Casa mare e frumoasa. Mâinile mele sunt curate; zorzonel și dragoste, merg 123 xyzzy xyzzy în frunzelor?'));
+  ok('ortografie: formele flexionare din dicționar sunt cunoscute (casa, mâinile, merg, frumoasa)', !sp.unknown.some(u => ['casa', 'mainile', 'merg', 'frumoasa', 'mare', 'curate'].includes(u.n)), sp.unknown.map(u => u.n));
+  ok('ortografie: cuvintele necunoscute listate cu număr de apariții și sugestii', sp.unknown.some(u => u.n === 'xyzzy' && u.count === 2) && sp.unknown.some(u => u.n === 'zorzonel') && !sp.unknown.some(u => u.n === '123') && /xyzzy/.test(so) && /Sugestii/.test(so), so.slice(0, 300));
+  ok('ortografie: „frunzelor” (formă lipsă din set) apare ca necunoscută, fără ghicire', sp.unknown.some(u => u.n === 'frunzelor'));
+  await p2.check('#spell-caps'); await p2.fill('#spell-in', 'Zorzonel și zorzonel'); await p2.click('#spell-go');
+  ok('ortografie: opțiunea „ignoră majusculele”', (await p2.evaluate(() => Lexicon.spell('Zorzonel și zorzonel', {ignoreCaps: true}).unknown.length)) === 1);
+  // dezactivează toate dicționarele → mesaj
+  await tab(p2, 'dicts'); const did = (await st(p2)).dicts[0].id; await p2.uncheck('#act-' + did);
+  await tab(p2, 'tools'); await p2.click('#spell-go');
+  ok('ortografie fără dicționar activ: mesaj clar', /dicționar activ/.test(await p2.locator('#spell-out').innerText()));
+  // dicționar fără forme → avertisment
+  await tab(p2, 'dicts');
+  await doImport(p2, [F('fara-forme.tsv', 'cuvânt\tdefiniție\nmasă\tmobilă\nmeserie\tocupație')], {title: 'Fără forme', license: 'test'});
+  await tab(p2, 'tools'); await p2.fill('#spell-in', 'mese meserie'); await p2.click('#spell-go');
+  ok('ortografie: avertisment când niciun dicționar activ nu are forme', /nu conține forme flexionare/.test(await p2.locator('#spell-out').innerText()), await p2.locator('#spell-out').innerText());
+  await q2.ctx.close();
+
+  // ---- date utilizator: export/import .fff.json
+  await tab(p, 'tools');
+  const ub = await grab('#u-exp');
+  const bundle = JSON.parse(ub.text);
+  ok('copie de rezervă .fff.json: format fff-bundle, app, versiune, chei cu prefix', bundle.format === 'fff-bundle' && bundle.schema === 1 && bundle.app === 'lexicon' && bundle.version === '1.0.0' && bundle.updated === '2026-10-14' && Object.keys(bundle.data).every(k => k.startsWith('fff.lexicon.')) && 'fff.lexicon.fav' in bundle.data && 'fff.lexicon.srs' in bundle.data && /\.fff\.json$/.test(ub.name), Object.keys(bundle.data));
+  await tab(p, 'search');
+  while (await p.locator('#favlist [data-rm]').count()) await p.locator('#favlist [data-rm]').first().click();
+  ok('favorite golite', (await p.locator('#favlist .ritem').count()) === 0);
+  await tab(p, 'tools');
+  await p.setInputFiles('#u-imp', [F('rau.fff.json', JSON.stringify({format: 'fff-bundle', app: 'alta', data: {}}))]);
+  await p.waitForFunction(() => /nu este o copie/.test(document.querySelector('#toast').textContent));
+  ok('import date: fișier de altă aplicație refuzat', true);
+  await p.setInputFiles('#u-imp', [F('b.fff.json', ub.text)]);
+  await p.click('#conf-yes');
+  await p.waitForFunction(() => /Date importate/.test(document.querySelector('#toast').textContent));
+  await tab(p, 'search');
+  ok('import date: favoritele revin', (await p.locator('#favlist .ritem').count()) === 3, await p.locator('#favlist').innerText());
+  ok('0 erori / 0 rețea după flashcards, export, ortografie', T1.errors.length === 0 && T1.net.length === 0, [T1.errors, T1.net]);
+}
+
+/* ============================================================ 9. persistență după reîncărcare */
+console.log('9. Persistență după reîncărcare (IndexedDB, favorite, istoric, limbă, temă)');
+{
+  const p = P;
+  await tab(p, 'search');
+  await p.selectOption('#lang', 'fr');
+  await p.click('#theme');   // auto → light
+  await p.click('#theme');   // → dark
+  await p.selectOption('#mode', 'prefix');
+  const before = await st(p);
+  await p.reload();
+  await p.waitForFunction(() => document.documentElement.dataset.ready);
+  const after = await st(p);
+  ok('dicționarele importate persistă după reîncărcare', after.dicts.length === before.dicts.length && after.dicts.map(d => d.title + d.count).join() === before.dicts.map(d => d.title + d.count).join(), [before.dicts.length, after.dicts.length]);
+  ok('ordinea și starea activ/inactiv persistă', after.dicts.map(d => d.order + ':' + d.enabled).join() === before.dicts.map(d => d.order + ':' + d.enabled).join());
+  ok('limba persistă (cheie fff.lexicon.lang, html[lang])', (await p.evaluate(() => [localStorage.getItem('fff.lexicon.lang'), document.documentElement.lang])).join() === 'fr,fr');
+  ok('tema persistă (data-theme=dark)', (await p.evaluate(() => document.documentElement.dataset.theme)) === 'dark');
+  ok('modul de căutare persistă', (await p.inputValue('#mode')) === 'prefix');
+  ok('favorite, istoric și flashcards persistă', after.fav === 3 && after.hist >= 5 && (await p.evaluate(() => Object.keys(JSON.parse(localStorage.getItem('fff.lexicon.srs')).cards).length)) === 1, after);
+  ok('textele interfeței în franceză', /Recherche/.test(await p.locator('#t-search').innerText()));
+  const res = await p.evaluate(async () => (await Lexicon.search('ubung', {})).rows.map(r => r.h));
+  ok('căutarea funcționează imediat după reîncărcare (index încărcat din IndexedDB)', res[0] === 'Übung', res);
+  await p.selectOption('#lang', 'ro'); await p.click('#theme'); await p.selectOption('#mode', 'auto');
+  ok('0 erori după reîncărcare', T1.errors.length === 0, T1.errors);
 }
 
 await browser.close();

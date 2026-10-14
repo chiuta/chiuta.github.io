@@ -8,7 +8,7 @@
 <meta name="application-version" content="1.0.0">
 <meta name="last-updated" content="2026-10-14">
 <meta name="color-scheme" content="light dark">
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-MIccqpPzqRx7rBtcipdaeXemy3RD2T9HrB20MunBcJ4='; style-src 'unsafe-inline'; img-src data: blob:; media-src data: blob:; font-src data:; connect-src 'none'; base-uri 'none'; form-action 'none'; frame-src 'none'; object-src 'none'; worker-src blob:; manifest-src 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-0K8e4ojx4SpZL7LNyCQSanZApT+e6682/8HDc9nNMmI='; style-src 'unsafe-inline'; img-src data: blob:; media-src data: blob:; font-src data:; connect-src 'none'; base-uri 'none'; form-action 'none'; frame-src 'none'; object-src 'none'; worker-src blob:; manifest-src 'none'">
 <style>
 :root{
   color-scheme:light dark;
@@ -1162,16 +1162,20 @@ function decodeText(u8, enc) {
   if (e === 'auto') { try { return new TextDecoder('utf-8', {fatal: true}).decode(u); } catch (x) { return new TextDecoder('windows-1250').decode(u); } }
   return new TextDecoder(e).decode(u);
 }
+function countOut(line, d) {
+  let q = false, n = 0;
+  for (let i = 0; i < line.length; i++) { const c = line[i]; if (c === '"') q = !q; else if (!q && c === d) n++; }
+  return n;
+}
 function sniffDelim(text) {
   const lines = text.split(/\r\n|\n|\r/).filter(l => l.trim()).slice(0, 8);
-  let best = '\t', bs = -1;
-  for (const d of ['\t', ';', '|', ',']) {
-    const cs = lines.map(l => l.split(d).length - 1);
-    const mn = Math.min(...cs, 99);
-    const sc = mn > 0 ? mn * 10 + (d === '\t' ? 3 : d === ';' ? 2 : d === '|' ? 1 : 0) : 0;
-    if (sc > bs) { bs = sc; best = d; }
+  const order = ['\t', ';', '|', ','];
+  for (const l of lines.slice(0, 3)) {
+    let best = null, bs = 0;
+    for (const d of order) { const c = countOut(l, d); if (c > bs) { bs = c; best = d; } }
+    if (best) return best;
   }
-  return bs > 0 ? best : '\t';
+  return '\t';
 }
 function parseDelimited(text, delim) {
   const rows = [];

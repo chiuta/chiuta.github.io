@@ -8,7 +8,7 @@
 <meta name="application-version" content="1.0.0">
 <meta name="last-updated" content="2026-10-14">
 <meta name="color-scheme" content="light dark">
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-BydgOcJkf66Pzd+Fr/W2CmGkQMFUcPZVdBOtJpduOvY='; style-src 'unsafe-inline'; img-src data: blob:; media-src data: blob:; font-src data:; connect-src 'none'; base-uri 'none'; form-action 'none'; frame-src 'none'; object-src 'none'; worker-src blob:; manifest-src 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-UHA+eMD7uoFY1UanXNV/aghY8mlssih+uIoMzIj3p/M='; style-src 'unsafe-inline'; img-src data: blob:; media-src data: blob:; font-src data:; connect-src 'none'; base-uri 'none'; form-action 'none'; frame-src 'none'; object-src 'none'; worker-src blob:; manifest-src 'none'">
 <style>
 :root{
   color-scheme:light dark;
@@ -700,7 +700,7 @@ function regexProbe(src, samples, ms) { // test într-un Worker (poate fi oprit)
       const timer = setTimeout(() => fin('timeout'), ms || 300);
       w.onmessage = e => { clearTimeout(timer); fin(e.data); };
       w.onerror = () => { clearTimeout(timer); fin('noworker'); };
-      w.postMessage({ p: src, s: ['a'.repeat(40) + '!', 'x'.repeat(120) + '?', '0'.repeat(60), ' '.repeat(30) + 'a'].concat(samples.map(x => String(x).slice(0, 300))) });
+      w.postMessage({ p: src, s: ['a'.repeat(28) + '!', 'a'.repeat(32) + '!', 'a'.repeat(40) + '!', 'x'.repeat(120) + '?', '0'.repeat(60), ' '.repeat(30) + 'a'].concat(samples.map(x => String(x).slice(0, 300))) });
     } catch (e) { fin('noworker'); }
   });
 }
@@ -1193,6 +1193,7 @@ function render() {
   window.scrollTo(0, sy);
 }
 U.post = {};
+function deferRender() { clearTimeout(U._dr); U._dr = setTimeout(render, 300); }
 function refreshAll() { render(); updateHeader(); }
 function updateHeader() { const l = $('lockBtn'); if (l) l.hidden = !S.isEncrypted() || !S.isUnlockedEnc(); const st = S.saveStatus(); const w = $('saveWarn'); if (w) { w.hidden = st.ok && st.storage; w.textContent = !st.storage ? t('warn_nostorage') : (!st.ok ? t('warn_quota') : ''); } }
 
@@ -1298,7 +1299,7 @@ U.views.tx = () => {
   <div id="txTable">${txTableHtml()}</div>`;
 };
 function refreshTable() { const el = $('txTable'); if (el) el.innerHTML = txTableHtml(); }
-U.ins.flt = (el, e, kind) => { U.f[el.dataset.k] = el.value; U.f.page = 0; if (el.dataset.k === 'q' && kind === 'input') { clearTimeout(U._ft); U._ft = setTimeout(refreshTable, 120); } else refreshTable(); };
+U.ins.flt = (el, e, kind) => { if (kind === 'change' && U.f[el.dataset.k] === el.value) return; U.f[el.dataset.k] = el.value; U.f.page = 0; if (el.dataset.k === 'q' && kind === 'input') { clearTimeout(U._ft); U._ft = setTimeout(refreshTable, 120); } else refreshTable(); };
 U.acts.fltclear = () => { U.f = { q: '', acc: '', cat: '', type: '', from: '', to: '', tag: '', page: 0 }; render(); };
 U.acts.page = el => { U.f.page += +el.dataset.d; refreshTable(); const tb = $('txTable'); if (tb) tb.scrollIntoView({ block: 'start' }); };
 U.ins.sel = el => { if (el.checked) U.sel.add(el.dataset.id); else U.sel.delete(el.dataset.id); refreshTable(); };
@@ -1410,7 +1411,7 @@ U.acts.exportcsv = () => {
     onSubmit: form => { download('gospodar-tranzactii-' + today() + '.csv', txCsv(list, form.elements.style.value), 'text/csv;charset=utf-8'); return true; } });
 };
 
-Object.assign(U, { DS, toast, openDlg, confirmDlg, field, opts, accOptions, catOptions, amtCell, base, B, parseSigned, tagsParse, emptyState, mkNav, bar, notesBlock, disclaimer, go, render, refreshAll, updateHeader, refreshTable, openTx, openQuick, openTransfer, curCode, D, VIEWS });
+Object.assign(U, { deferRender, DS, toast, openDlg, confirmDlg, field, opts, accOptions, catOptions, amtCell, base, B, parseSigned, tagsParse, emptyState, mkNav, bar, notesBlock, disclaimer, go, render, refreshAll, updateHeader, refreshTable, openTx, openQuick, openTransfer, curCode, D, VIEWS });
 window.__U = U;
 })();
 
@@ -1599,7 +1600,7 @@ U.views.setup = () => {
 U.ins.rate = (el, e, kind) => {
   if (kind !== 'change') return; const v = el.value.trim(); const cur = el.dataset.cur;
   if (v === '') { delete D().settings.rates[cur]; } else { const r = G.rateRat(v); if (!r) { toast(t('err_rate')); el.value = D().settings.rates[cur] || ''; return; } D().settings.rates[cur] = G.normTyped(v); }
-  S.commit('rates'); const id = el.id; U.render(); const n = $(id); if (n) n.focus();
+  S.commit('rates'); U.deferRender();
 };
 U.acts.delrate = el => { delete D().settings.rates[el.dataset.cur]; S.commit('rates'); U.render(); };
 U.acts.addrate = () => { const c = $('newcur').value.trim().toUpperCase(); if (!validCur(c)) return toast(t('err_cur')); if (c === base()) return toast(t('err_cur_base')); if (!(c in D().settings.rates)) D().settings.rates[c] = ''; S.commit('rates'); U.render(); const r = $('rate-' + c); if (r) r.focus(); };
@@ -1747,7 +1748,7 @@ U.views.bud = () => {
     return `<tr><th scope="row" class="lvl${lvl}" data-l="${esc(t('category'))}">${esc(c.name)}</th><td class="n" data-l="${esc(t('budget_month'))}"><label class="sr" for="bg-${c.id}">${esc(t('budget_month'))}: ${esc(c.name)}</label><input id="bg-${c.id}" class="rate" inputmode="decimal" autocomplete="off" data-in="budget" data-id="${c.id}" value="${lim ? esc(minorToDot(lim, base()).replace('.', DS())) : ''}" placeholder="—"></td><td class="n" data-l="${esc(t('spent'))}">${esc(B(sp))}</td><td class="n" data-l="${esc(t('remaining'))}">${has ? esc(fmt(lim - sp, base(), { sign: false })) : '—'}</td><td data-l="${esc(t('progress'))}">${has ? `${bar(pct * 100, st[0])}<small>${esc(G.fmtPct(pct))} · <b class="st ${st[0]}">${esc(st[1])}</b></small>` : '<span class="muted">—</span>'}</td></tr>`; }).join('')}</tbody></table></div><p class="note">${esc(t('bud_note'))}</p>`;
   return h;
 };
-U.ins.budget = (el, e, kind) => { if (kind !== 'change') return; const v = el.value.trim(); const id = el.dataset.id; if (!v) delete D().budgets[id]; else { const m = parseTyped(v, base()); if (m == null || m < 0) { toast(t('err_amount')); return; } if (m === 0) delete D().budgets[id]; else D().budgets[id] = m; } S.commit('bud'); const fid = el.id; U.render(); const n = $(fid); if (n) n.focus(); };
+U.ins.budget = (el, e, kind) => { if (kind !== 'change') return; const v = el.value.trim(); const id = el.dataset.id; if (!v) delete D().budgets[id]; else { const m = parseTyped(v, base()); if (m == null || m < 0) { toast(t('err_amount')); return; } if (m === 0) delete D().budgets[id]; else D().budgets[id] = m; } S.commit('bud'); U.deferRender(); };
 })();
 
 (() => {

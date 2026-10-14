@@ -239,7 +239,7 @@ await T('reguli: conține (diacritice), regex, sumă, cont, previzualizare, apli
   await p.click('[data-act=addrule]');
   await p.fill('#ru-name', 'rea'); await p.selectOption('#ru-mode', 'regex'); await p.fill('#ru-pat', '(a+)+$'); await pickCat(p, '#ru-cat', 'Salariu'); await p.click('dialog [data-dk=ok]'); await p.waitForTimeout(150);
   assert.match(await p.textContent('dialog .derr'), /risc de blocare/);
-  await p.fill('#ru-pat', '(a?){30}a{30}'); await p.click('dialog [data-dk=ok]'); await p.waitForTimeout(900);
+  await p.fill('#ru-pat', 'a*a*a*a*a*a*a*a*a*a*b'); await p.click('dialog [data-dk=ok]'); await p.waitForTimeout(900);
   assert.match(await p.textContent('dialog .derr'), /limita de timp/);
   await p.fill('#ru-pat', '(abc'); await p.click('dialog [data-dk=ok]'); await p.waitForTimeout(300);
   assert.match(await p.textContent('dialog .derr'), /invalidă|risc|nu sunt permise/i);
@@ -262,9 +262,9 @@ await T('conturi multi-monedă, transfer între conturi, cursuri manuale, sold t
   await p.click('[data-act=addacc]'); await p.fill('#ac-name', 'Euro'); await p.fill('#ac-cur', 'eur'); await p.fill('#ac-open', '100'); await p.click('dialog [data-dk=ok]'); await p.waitForTimeout(100);
   assert.match(await p.textContent('main'), /1 EUR/);
   assert.match(await p.textContent('main'), /lipsește cursul/);
-  await p.fill('#rate-EUR', '4,9765'); await p.press('#rate-EUR', 'Tab'); await p.waitForTimeout(100);
+  await p.fill('#rate-EUR', '4,9765'); await p.press('#rate-EUR', 'Tab'); await p.waitForTimeout(450);
   assert.equal(await E(p, () => GOSPODAR.S.data().settings.rates.EUR), '4.9765');
-  await p.fill('#rate-EUR', 'abc'); await p.press('#rate-EUR', 'Tab'); await p.waitForTimeout(50); assert.equal(await E(p, () => GOSPODAR.S.data().settings.rates.EUR), '4.9765');
+  await p.fill('#rate-EUR', 'abc'); await p.press('#rate-EUR', 'Tab'); await p.waitForTimeout(450); assert.equal(await E(p, () => GOSPODAR.S.data().settings.rates.EUR), '4.9765');
   await nav(p, 'tx'); await p.click('[data-act=newtr]');
   await p.selectOption('#tr-from', {label: 'Lei (RON)'}); await p.selectOption('#tr-to', {label: 'Euro (EUR)'}); await p.fill('#tr-out', '497,65');
   assert.equal(await p.inputValue('#tr-in'), '100,00');
@@ -316,11 +316,11 @@ await T('bugete: bare de progres, avertizări (aproape / depășit), refunduri',
   await E(p, a => { const S = GOSPODAR.S; const c = S.data().cats.find(x => x.name === 'Supermarket').id; S.addTx({date: '2026-10-02', amt: -85000, acc: a, cat: c, desc: 'x'}, true); S.addTx({date: '2026-10-03', amt: -30000, acc: a, cat: c, desc: 'y'}, true); S.addTx({date: '2026-10-04', amt: 5000, acc: a, cat: c, desc: 'rambursare'}, true); S.commit('t'); }, a);
   await nav(p, 'bud');
   const id = await E(p, () => GOSPODAR.S.data().cats.find(x => x.name === 'Alimentație').id);
-  await p.fill('#bg-' + id, '1.100'); await p.press('#bg-' + id, 'Tab'); await p.waitForTimeout(100);
+  await p.fill('#bg-' + id, '1.100'); await p.press('#bg-' + id, 'Tab'); await p.waitForTimeout(450);
   let t = await p.textContent('main'); assert.match(t, /aproape de limită/); assert.match(t, /100,00 RON|1\.100,00/); assert.match(t, /1\.100,00/);
-  await p.fill('#bg-' + id, '900'); await p.press('#bg-' + id, 'Tab'); await p.waitForTimeout(100);
-  t = await p.textContent('main'); assert.match(t, /depășit/); assert.match(await p.textContent('[role=status]'), /Alimentație/);
-  await p.fill('#bg-' + id, ''); await p.press('#bg-' + id, 'Tab'); await p.waitForTimeout(100);
+  await p.fill('#bg-' + id, '900'); await p.press('#bg-' + id, 'Tab'); await p.waitForTimeout(450);
+  t = await p.textContent('main'); assert.match(t, /depășit/); assert.match(await p.textContent('main [role=status]'), /Alimentație/);
+  await p.fill('#bg-' + id, ''); await p.press('#bg-' + id, 'Tab'); await p.waitForTimeout(450);
   assert.equal(await E(p, () => Object.keys(GOSPODAR.S.data().budgets).length), 0);
   await clean(p); await close(p);
 });
@@ -369,7 +369,7 @@ await T('criptare AES-GCM: activare, nimic în clar, blocare, parolă greșită,
   assert.match(await p.textContent('dialog .derr'), /confirmarea/);
   await p.check('#enc-ack'); await p.click('dialog [data-dk=ok]'); assert.match(await p.textContent('dialog .derr'), /cel puțin 8/);
   await p.fill('#pw1', 'parola-lunga-123'); await p.fill('#pw2', 'parola-lunga-124'); await p.click('dialog [data-dk=ok]'); assert.match(await p.textContent('dialog .derr'), /nu coincid/);
-  await p.fill('#pw2', 'parola-lunga-123'); await p.click('dialog [data-dk=ok]'); await p.waitForSelector('dialog', {state: 'detached'}); await p.waitForTimeout(500);
+  await p.fill('#pw2', 'parola-lunga-123'); await p.click('dialog [data-dk=ok]'); await p.waitForFunction(() => /Criptare activată/.test(document.getElementById('toast').textContent), null, {timeout: 20000});
   await E(p, () => GOSPODAR.S.whenSaved());
   const ls = await E(p, () => { const o = {}; for (let i = 0; i < localStorage.length; i++) o[localStorage.key(i)] = localStorage.getItem(localStorage.key(i)); return o; });
   assert.ok(!('fff.gospodar.data' in ls), 'datele în clar au fost șterse'); const enc = JSON.parse(ls['fff.gospodar.enc']);
@@ -389,7 +389,7 @@ await T('criptare AES-GCM: activare, nimic în clar, blocare, parolă greșită,
   await p.fill('#lockPw', 'parola-lunga-123'); await p.press('#lockPw', 'Enter'); await p.waitForSelector('#appwrap', {state: 'visible', timeout: 20000});
   // schimbare parolă
   await nav(p, 'set'); await p.click('[data-act=encchange]'); await p.fill('#pw1', 'parola-lunga-123'); await p.click('dialog [data-dk=ok]'); await p.waitForTimeout(1500);
-  await p.fill('#pw1', 'alta-parola-9999'); await p.fill('#pw2', 'alta-parola-9999'); await p.click('dialog [data-dk=ok]'); await p.waitForSelector('dialog', {state: 'detached', timeout: 20000}); await E(p, () => GOSPODAR.S.whenSaved());
+  await p.fill('#pw1', 'alta-parola-9999'); await p.fill('#pw2', 'alta-parola-9999'); await p.click('dialog [data-dk=ok]'); await p.waitForFunction(() => /Parola a fost schimbată/.test(document.getElementById('toast').textContent), null, {timeout: 20000}); await E(p, () => GOSPODAR.S.whenSaved());
   await p.reload(); await p.waitForSelector('#lockPw'); await p.fill('#lockPw', 'parola-lunga-123'); await p.press('#lockPw', 'Enter'); await p.waitForFunction(() => /greșită/.test(document.getElementById('lockErr').textContent), null, {timeout: 20000});
   await p.fill('#lockPw', 'alta-parola-9999'); await p.press('#lockPw', 'Enter'); await p.waitForSelector('#appwrap', {state: 'visible', timeout: 20000});
   // dezactivare

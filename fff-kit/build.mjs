@@ -9,7 +9,7 @@ import {fileURLToPath} from 'node:url';
 import {recomputeCspHashes, checkCspHashes, cspMeta, inlineScripts, sha256b64} from './lib/csp.mjs';
 
 const KIT = path.dirname(fileURLToPath(import.meta.url));
-const ORDER = ['core', 'label', 'bundle', 'qr', 'p2p', 'srs', 'tts', 'pii', 'search', 'ephem'];
+const ORDER = ['core', 'label', 'bundle', 'qr', 'p2p', 'srs', 'tts', 'pii', 'search', 'ephem', 'ephem-stars'];
 const BLOCK_RE = /\n<!--fff:kit:start[^>]*-->[\s\S]*?<!--fff:kit:end-->/;
 const INFO_RE = /\n<!--fff:info:start-->[\s\S]*?<!--fff:info:end-->/;
 const FORMAT_V = 1;

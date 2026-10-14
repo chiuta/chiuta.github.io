@@ -8,7 +8,7 @@
 <meta name="application-version" content="1.0.0">
 <meta name="last-updated" content="2026-10-14">
 <meta name="color-scheme" content="light dark">
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-CtiwkMXTR70oip65A2PjTvRyvOE3o2tOZZuPftq0Sfc='; style-src 'unsafe-inline'; img-src data: blob:; media-src data: blob:; font-src data:; connect-src 'none'; base-uri 'none'; form-action 'none'; frame-src 'none'; object-src 'none'; worker-src blob:; manifest-src 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-sFXSZ+fzejQgb36BrgB2owGP2WewZ5iAz9iVTL947Fc='; style-src 'unsafe-inline'; img-src data: blob:; media-src data: blob:; font-src data:; connect-src 'none'; base-uri 'none'; form-action 'none'; frame-src 'none'; object-src 'none'; worker-src blob:; manifest-src 'none'">
 <style>
 :root{
   color-scheme:light dark;
@@ -97,7 +97,7 @@ fieldset label{margin-right:.8rem;white-space:nowrap;min-height:28px}
 .stat .k{font-size:.78rem;color:var(--ink2);overflow-wrap:anywhere}
 .stat .v{font-size:1.25rem;font-weight:600;font-variant-numeric:tabular-nums;overflow-wrap:anywhere}
 canvas.cv{width:100%;display:block;background:var(--bg);border:1px solid var(--line);border-radius:6px}
-.tbl-wrap{overflow-x:auto}
+.tbl-wrap{overflow-x:auto;position:relative}
 table{border-collapse:collapse;width:100%;font-size:.9rem}
 th,td{border-bottom:1px solid var(--line);padding:.3rem .5rem;text-align:left;vertical-align:top}
 th{font-weight:600;color:var(--ink2);font-size:.82rem}
@@ -144,6 +144,7 @@ dialog::backdrop{background:rgba(0,0,0,.45)}
     <button type="button" id="themeBtn" class="btn" data-i18n="theme"></button>
   </div>
 </header>
+<main id="main" tabindex="-1">
 <div class="banner" id="honest" role="note"><strong data-i18n="honest_h"></strong> <span data-i18n="honest_t"></span></div>
 <div class="chips" id="chips"></div>
 <div class="tabs" role="tablist" id="tabs" data-i18n-aria="tabs_label">
@@ -154,7 +155,6 @@ dialog::backdrop{background:rgba(0,0,0,.45)}
   <button type="button" role="tab" id="t-log" aria-controls="p-log" data-tab="log" data-i18n="tab_log"></button>
   <button type="button" role="tab" id="t-about" aria-controls="p-about" data-tab="about" data-i18n="tab_about"></button>
 </div>
-<main id="main" tabindex="-1">
 
 <!-- ============ MĂSURARE ============ -->
 <section id="p-meas" class="panel" role="tabpanel" aria-labelledby="t-meas" tabindex="-1">
@@ -173,7 +173,7 @@ dialog::backdrop{background:rgba(0,0,0,.45)}
       <button type="button" id="btnDemo" class="btn" data-i18n="btn_demo"></button>
       <input type="file" id="fileIn" accept=".wav,audio/*" hidden>
     </div>
-    <div class="row"><label for="devSel" data-i18n="device"></label><select id="devSel" disabled><option>—</option></select></div>
+    <div class="row"><label for="devSel" data-i18n="device"></label><select id="devSel" disabled><option value="">—</option></select></div>
     <div id="micStatus" class="status" role="status" aria-live="polite"></div>
     <div id="progWrap" hidden><label for="prog" class="note" data-i18n="processing"></label><progress id="prog" max="100" value="0"></progress></div>
   </div>
@@ -1322,7 +1322,7 @@ async function listDevices() {
     const ds = (await navigator.mediaDevices.enumerateDevices()).filter(d => d.kind === 'audioinput');
     const cur = S.devId || '';
     sel.innerHTML = '';
-    if (!ds.length) { const o = document.createElement('option'); o.textContent = '—'; sel.appendChild(o); }
+    if (!ds.length) { const o = document.createElement('option'); o.value = ''; o.textContent = '—'; sel.appendChild(o); }
     ds.forEach((d, i) => { const o = document.createElement('option'); o.value = d.deviceId; o.textContent = d.label || ('Mic ' + (i + 1)); sel.appendChild(o); });
     if (cur) sel.value = cur;
     sel.disabled = ds.length < 2;
@@ -1446,7 +1446,7 @@ async function pump(rd, source, name) {
     setStatus(esc(t(cancelled ? 'file_cancel' : 'file_done', {n: name || '', d: fdur(eng.session.dur)})), cancelled ? '' : 'ok');
     if (set.autosave) saveSession();
     uiButtons(); renderAll();
-  } finally { S.busy = false; }
+  } finally { S.busy = false; uiButtons(); }
 }
 async function analyzeFile(file) {
   let rd;
