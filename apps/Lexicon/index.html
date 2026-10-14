@@ -8,7 +8,7 @@
 <meta name="application-version" content="1.0.0">
 <meta name="last-updated" content="2026-10-14">
 <meta name="color-scheme" content="light dark">
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-0K8e4ojx4SpZL7LNyCQSanZApT+e6682/8HDc9nNMmI='; style-src 'unsafe-inline'; img-src data: blob:; media-src data: blob:; font-src data:; connect-src 'none'; base-uri 'none'; form-action 'none'; frame-src 'none'; object-src 'none'; worker-src blob:; manifest-src 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-2ZsNa2oMKppjV7O7hNheBAFqeD/ho9Ve1jWcuNUcar4='; style-src 'unsafe-inline'; img-src data: blob:; media-src data: blob:; font-src data:; connect-src 'none'; base-uri 'none'; form-action 'none'; frame-src 'none'; object-src 'none'; worker-src blob:; manifest-src 'none'">
 <style>
 :root{
   color-scheme:light dark;
@@ -168,6 +168,8 @@ mark{background:var(--warn-bg);color:var(--ink)}
   .card{border:0;padding:0}
   .panel:not(#p-search){display:none!important}
 }
+
+input[type=file]{max-width:100%;min-width:0}
 </style>
 </head>
 <body>
@@ -180,14 +182,14 @@ mark{background:var(--warn-bg);color:var(--ink)}
     <button type="button" class="btn" id="theme"></button>
   </div>
 </header>
-<div class="privbar" id="privbar"><span data-i18n="privbar">Rulează local, nu trimite nimic. Include doar un set demonstrativ, nu un dicționar complet; calitatea depinde de dicționarele pe care le imporți.</span></div>
-<nav class="tabs" role="tablist" aria-label="Lexicon" id="tabs">
+<div class="privbar" id="privbar" role="region" data-i18n-aria="privbar_aria"><span data-i18n="privbar">Rulează local, nu trimite nimic. Include doar un set demonstrativ, nu un dicționar complet; calitatea depinde de dicționarele pe care le imporți.</span></div>
+<nav aria-label="Lexicon"><div class="tabs" role="tablist" aria-label="Lexicon" id="tabs">
   <button type="button" role="tab" id="t-search" aria-controls="p-search" aria-selected="true" data-tab="search" data-i18n="tab_search">Căutare</button>
   <button type="button" role="tab" id="t-dicts" aria-controls="p-dicts" aria-selected="false" tabindex="-1" data-tab="dicts" data-i18n="tab_dicts">Dicționare</button>
   <button type="button" role="tab" id="t-cards" aria-controls="p-cards" aria-selected="false" tabindex="-1" data-tab="cards" data-i18n="tab_cards">Flashcards</button>
   <button type="button" role="tab" id="t-tools" aria-controls="p-tools" aria-selected="false" tabindex="-1" data-tab="tools" data-i18n="tab_tools">Instrumente</button>
   <button type="button" role="tab" id="t-about" aria-controls="p-about" aria-selected="false" tabindex="-1" data-tab="about" data-i18n="tab_about">Despre</button>
-</nav>
+</div></nav>
 <main id="main" tabindex="-1">
 
 <section id="p-search" class="panel" role="tabpanel" aria-labelledby="t-search">
@@ -2484,6 +2486,7 @@ K('o_fuzzy', "Încearcă aproximativ dacă nu găsește nimic", "Try approximate
 K('o_forms', "Potrivește și formele flexionare", "Also match inflected forms", "Inclure les formes fléchies", "Includi le forme flesse", "Incluir formas flexionadas", "Incluir formas flexionadas", "Ragozott alakok is", "Auch flektierte Formen");
 K('o_dict', "Dicționar", "Dictionary", "Dictionnaire", "Dizionario", "Diccionario", "Dicionário", "Szótár", "Wörterbuch");
 K('all_active', "Toate dicționarele active", "All active dictionaries", "Tous les dictionnaires actifs", "Tutti i dizionari attivi", "Todos los diccionarios activos", "Todos os dicionários ativos", "Minden aktív szótár", "Alle aktiven Wörterbücher");
+K('privbar_aria', "Notă despre confidențialitate", "Privacy note", "Note de confidentialité", "Nota sulla privacy", "Nota de privacidad", "Nota de privacidade", "Adatvédelmi megjegyzés", "Hinweis zum Datenschutz");
 K('left_aria', "Rezultate, istoric și favorite", "Results, history and favorites", "Résultats, historique et favoris", "Risultati, cronologia e preferiti", "Resultados, historial y favoritos", "Resultados, histórico e favoritos", "Találatok, előzmények és kedvencek", "Ergebnisse, Verlauf und Favoriten");
 K('article_aria', "Articolul de dicționar", "Dictionary entry", "Article du dictionnaire", "Voce del dizionario", "Artículo del diccionario", "Artigo do dicionário", "Szótárcikk", "Wörterbuchartikel");
 K('results', "Rezultate", "Results", "Résultats", "Risultati", "Resultados", "Resultados", "Találatok", "Ergebnisse");

@@ -8,7 +8,7 @@
 <meta name="application-version" content="1.0.0">
 <meta name="last-updated" content="2026-10-14">
 <meta name="color-scheme" content="light dark">
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-UHA+eMD7uoFY1UanXNV/aghY8mlssih+uIoMzIj3p/M='; style-src 'unsafe-inline'; img-src data: blob:; media-src data: blob:; font-src data:; connect-src 'none'; base-uri 'none'; form-action 'none'; frame-src 'none'; object-src 'none'; worker-src blob:; manifest-src 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-BKfdG+DcXX7us+8hgJDkTA3HM5d+avI7Zc/8c6uPVps='; style-src 'unsafe-inline'; img-src data: blob:; media-src data: blob:; font-src data:; connect-src 'none'; base-uri 'none'; form-action 'none'; frame-src 'none'; object-src 'none'; worker-src blob:; manifest-src 'none'">
 <style>
 :root{
   color-scheme:light dark;
@@ -521,10 +521,11 @@ function guessMapping(rows, hasHeader, lang, cur) {
   if (map.desc < 0) { let bi = -1, bl = 0; for (let c = 0; c < ncol; c++) { if (used.has(c)) continue; const cells = body.map(r => r[c] || ''); const avg = cells.reduce((a, x) => a + x.length, 0) / (cells.length || 1); if (avg > bl && numeric(c) < 0.5) { bl = avg; bi = c; } } take('desc', bi); }
   return map;
 }
-function findStart(rows) { // sare peste preambul: prima linie cu numărul modal de câmpuri
-  const cnt = new Map(); rows.slice(0, 60).forEach(r => cnt.set(r.length, (cnt.get(r.length) || 0) + 1));
+function findStart(rows) { // sare peste preambul: prima linie cu lățimea efectivă (ultima celulă nevidă) cel puțin cât cea modală
+  const eff = r => { let n = r.length; while (n > 0 && !String(r[n - 1]).trim()) n--; return n; };
+  const cnt = new Map(); rows.slice(0, 60).forEach(r => { const e = eff(r); cnt.set(e, (cnt.get(e) || 0) + 1); });
   let mode = 0, mc = 0; cnt.forEach((c, len) => { if (len > 1 && (c > mc || (c === mc && len > mode))) { mc = c; mode = len; } });
-  for (let i = 0; i < Math.min(rows.length, 60); i++) if (rows[i].length === mode) return i;
+  for (let i = 0; i < Math.min(rows.length, 60); i++) if (eff(rows[i]) >= mode) return i;
   return 0;
 }
 function looksLikeHeader(rows, s, dfmt) {

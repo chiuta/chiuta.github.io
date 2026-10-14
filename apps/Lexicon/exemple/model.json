@@ -1,0 +1,15 @@
+{
+  "format": "lexicon-dict",
+  "schema": 1,
+  "title": "Model de dicționar propriu",
+  "langs": "ro",
+  "source": "Scris de mână, exemplu",
+  "license": "Domeniu public (exemplu)",
+  "notes": "Fișier model pentru formatul JSON al aplicației Lexicon.",
+  "entries": [
+    {"h": "masă", "forms": ["mese", "masa"], "pos": "substantiv feminin",
+     "senses": [{"d": "Mobilă cu blat plat.", "x": ["Cina e pe masă."]}, {"d": "Prânz sau cină, ca moment al zilei."}],
+     "etymology": "lat. mensa"},
+    {"h": "scaun", "def": "Obiect cu spătar pe care ne așezăm. Vezi și [[masă]]."}
+  ]
+}

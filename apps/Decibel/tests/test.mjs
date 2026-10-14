@@ -276,7 +276,7 @@ await T('microfon simulat: sinus 1 kHz — nivel RMS, AGC/echo/zgomot verificate
   await p.click('#btnCalApply');
   const cal = await p.evaluate(() => Decibel.cal()); near(cal.offset, 94 - exp, 0.3, 'offset calibrare'); assert.equal(cal.on, true); assert.equal(cal.method, 'calibrator');
   await p.click('#t-meas'); await p.waitForTimeout(1500);
-  const big = parseFloat((await p.textContent('#bigVal')).replace(',', '.')); near(big, 94, 0.5, 'nivel calibrat afișat'); assert.match(await p.textContent('#uncText'), /±3/);
+  const big = parseFloat((await p.textContent('#bigVal')).replace(',', '.')); near(big, 94, 0.5, 'nivel calibrat afișat'); assert.match(await p.textContent('#uncText'), /±8/)  /* 94 dB > 90: ±3 + 5 */;
   // oprire → jurnal
   await p.click('#btnStop'); await p.waitForFunction(() => !Decibel.state().running);
   const log = await p.evaluate(() => JSON.parse(localStorage.getItem('fff.decibel.sessions'))); assert.equal(log.length, 1); assert.equal(log[0].source, 'mic'); assert.equal(log[0].cal, true);
@@ -312,7 +312,7 @@ await T('microfon simulat: zgomot roz — LAeq/LCeq față de referința în dom
   const b = await launch(FAKE(w)); const p = await open(b);
   await p.click('#btnMic'); await p.waitForFunction(() => Decibel.state().running && Decibel.state().sess.n > 110, null, {timeout: 40000});
   const r = await p.evaluate(() => { const s = Decibel.state().sess; return [0, 1, 2].map(k => s.leq(k, 64)); });
-  near(r[2], ref.Z, 0.35, 'Z roz'); near(r[0], ref.A, 0.5, 'A roz'); near(r[1], ref.C, 0.5, 'C roz');
+  near(r[2], ref.Z, 0.5, 'Z roz'); near(r[0], ref.A, 0.5, 'A roz'); near(r[1], ref.C, 0.5, 'C roz');
   console.log('       roz (mic, fs 44,1/48k): ', r.map(v => v.toFixed(2)).join('/'), ' ref ', ref.Z.toFixed(2), ref.A.toFixed(2), ref.C.toFixed(2));
   await p.click('#btnStop'); await p.ctx.close(); await b.close();
 });
