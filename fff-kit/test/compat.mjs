@@ -118,13 +118,16 @@ async function testApp(browser, e) {
       const rv = await revealVersion(k.page);
       lab.version = rv;
       if (rv.state === 'visible') {
-        lab.hit = await k.page.evaluate(() => { const e = document.getElementById('app-version'); e.scrollIntoView({block: 'center', inline: 'center'}); const r = e.getBoundingClientRect(); const t = document.elementFromPoint(Math.min(Math.max(r.x + r.width / 2, 1), innerWidth - 1), Math.min(Math.max(r.y + r.height / 2, 1), innerHeight - 1)); return !!t && (t === e || e.contains(t)); });
+        await k.page.evaluate(() => { document.getElementById('app-version').scrollIntoView({block: 'center', inline: 'center', behavior: 'instant'}); });
+        await k.page.waitForTimeout(400);
+        lab.hit = await k.page.evaluate(() => { const e = document.getElementById('app-version'); const r = e.getBoundingClientRect(); const t = document.elementFromPoint(Math.min(Math.max(r.x + r.width / 2, 1), innerWidth - 1), Math.min(Math.max(r.y + r.height / 2, 1), innerHeight - 1)); return !!t && (t === e || e.contains(t)); });
         if (!lab.hit) rec.note.push('#app-version acoperit de alt element / în afara ecranului în punctul central (la fel și fără kit?)');
         const isOpen = () => k.page.evaluate(() => FFF.label.isOpen());
         try {
           await k.page.click('#app-version', {timeout: 3000});
           await k.page.waitForTimeout(250);
           lab.clickOpens = await isOpen(); lab.clickMode = 'click';
+          if (!lab.clickOpens) throw new Error('click fără efect (poate pagină în derulare)');
         } catch (err) {
           lab.clickErr = err.message.split('\n')[0];
           // element instabil (animat) sau în afara ecranului pentru Playwright: evenimente reale prin dispatch / tastatură
