@@ -37,7 +37,7 @@
 </style>
 
 <meta charset="UTF-8">
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data: blob:; style-src 'self' 'unsafe-inline'; font-src 'self' data:; media-src 'self' blob: data:; object-src 'none'; base-uri 'self'; form-action 'self'; worker-src 'self' blob:; script-src 'self' 'sha256-JuFnltJ1A8u5g8+jRetyl4y0TDFg4gl+mU42hh8HzqU=' 'sha256-OyLA9cQdXewSHdGhNYGqewvmKPrinRnukIPijxWUSQs='; connect-src 'none'">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data: blob:; style-src 'self' 'unsafe-inline'; font-src 'self' data:; media-src 'self' blob: data:; object-src 'none'; base-uri 'self'; form-action 'self'; worker-src 'self' blob:; script-src 'self' 'sha256-JuFnltJ1A8u5g8+jRetyl4y0TDFg4gl+mU42hh8HzqU=' 'sha256-HuVZpHpmv3o1fs037SK/BjAjFicprlCPVuX89q694Ws='; connect-src 'none'">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <meta name="color-scheme" content="dark light">
 <meta name="theme-color" id="theme-color-meta" content="#07060f">
@@ -371,7 +371,7 @@ main{padding-bottom:4.5rem}
         <svg id="daynight-icon" viewBox="0 0 16 16" fill="currentColor" width="12" height="12"></svg>
       </button>
       <!-- LANG BTN -->
-      <button class="panel-btn" id="lang-toggle" aria-label="Language" aria-expanded="false" aria-controls="lang-panel" aria-haspopup="true">
+      <button class="panel-btn" id="lang-toggle" aria-label="EN — Language" aria-expanded="false" aria-controls="lang-panel" aria-haspopup="true">
         <svg viewBox="0 0 16 16" fill="currentColor"><path d="M0 5a5 5 0 0 0 4.027 4.905 6.5 6.5 0 0 1 .544-2.073C3.375 7.573 2.245 6.676 2.245 5a2.751 2.751 0 0 1 5.502 0v.5a.5.5 0 0 0 1 0V5a3.75 3.75 0 0 0-7.5 0zm6.977 3.745A5.002 5.002 0 0 0 10 10a5 5 0 0 0 5-5 .5.5 0 0 0-1 0 4 4 0 0 1-4.95 3.888 6.46 6.46 0 0 1-2.073-.143zM5 0a5 5 0 1 0 0 10A5 5 0 0 0 5 0z"/><path d="M5 6.5a.5.5 0 0 1 .5.5v.5H6a.5.5 0 0 1 0 1h-.5V9a.5.5 0 0 1-1 0v-.5H4a.5.5 0 0 1 0-1h.5V7a.5.5 0 0 1 .5-.5zm5 0c.315 0 .61.147.801.4l1.5 2a.5.5 0 1 1-.802.6L11.298 9H9.702l-.201.5a.5.5 0 1 1-.802-.6l1.5-2A1 1 0 0 1 10 6.5zm0 1.467L9.598 9h.804L10 7.967z"/></svg>
         <span id="lang-label">EN</span>
       </button>
@@ -610,7 +610,7 @@ function applyLang(lang){
   const cnt = document.getElementById('apps-count');
   if(cnt && cachedCount >= 0) cnt.textContent = t('nProjects')(cachedCount);
   // localize icon-only control labels for screen readers
-  const lt=document.getElementById('lang-toggle'); if(lt) lt.setAttribute('aria-label', ct('lang'));
+  const lt=document.getElementById('lang-toggle'); if(lt) lt.setAttribute('aria-label', document.getElementById('lang-label').textContent+' — '+ct('lang'));
   const tt=document.getElementById('theme-toggle'); if(tt) tt.setAttribute('aria-label', ct('theme'));
   const sk=document.querySelector('.skip-link'); if(sk) sk.textContent=ct('skip');
   try{ if(typeof syncDayNight==='function') syncDayNight(); }catch(_){}

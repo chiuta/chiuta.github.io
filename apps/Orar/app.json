@@ -16,8 +16,8 @@
     "clepsidra.events",
     "clepsidra.schedule"
   ],
-  "sizeBytes": 406168,
-  "sha256": "91df09f1ddee6207279fc12034a288160321264dd71d7f567913c69a58e1c34e",
+  "sizeBytes": 406520,
+  "sha256": "3bea2acd3f1d603d4e9cdc1b2f9423645523cc9eec848ec12c1d3b43f5af8708",
   "csp": {
     "present": true,
     "directives": {
