@@ -115,7 +115,7 @@ await T('dobândă compusă, obiectiv, inflație, TVA, FX vs oracol', async () =
   ORACLE.goals.forEach((c, i) => assert.deepEqual(o.g[i], [c.deposit, c.final], 'obiectiv ' + i));
   ORACLE.infl.forEach((c, i) => assert.deepEqual(o.i[i], [c.nominal, c.real], 'inflație ' + i));
   ORACLE.vat.forEach((c, i) => assert.deepEqual(o.v[i], [c.net, c.vat, c.gross], 'TVA ' + i));
-  assert.deepEqual(o.fx, [49765, 10000, 123]);
+  assert.deepEqual(o.fx, [49765, 10000, 1230]); // 1000 JPY × 0,0123 = 12,30 EUR
   await close(p);
 });
 
