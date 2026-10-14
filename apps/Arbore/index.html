@@ -8,7 +8,7 @@
 <meta name="application-version" content="1.0.0">
 <meta name="last-updated" content="2026-10-14">
 <meta name="color-scheme" content="light dark">
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-K5LHR+3wSFqlA1BdXduMKYuLalYtmBGZH2H9S6Eyzco='; style-src 'unsafe-inline'; img-src data: blob:; media-src data: blob:; font-src data:; connect-src 'none'; base-uri 'none'; form-action 'none'; frame-src 'none'; object-src 'none'; worker-src blob:; manifest-src 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-attJb2vFU4NAN/5EfUPzsUl5PhtObc1/KE74WWkavEg='; style-src 'unsafe-inline'; img-src data: blob:; media-src data: blob:; font-src data:; connect-src 'none'; base-uri 'none'; form-action 'none'; frame-src 'none'; object-src 'none'; worker-src blob:; manifest-src 'none'">
 <style>
 :root{
   color-scheme:light dark;
@@ -69,6 +69,7 @@ label.chk input{margin-top:.25rem;width:18px;height:18px;flex:none}
 .tools{display:flex;flex-wrap:wrap;gap:.4rem;align-items:center}
 .tools select{width:auto}
 .savestat{font-size:.82rem;color:var(--ink2)}
+#b-theme{font-size:1.15rem;line-height:1}
 .privbar{display:flex;flex-wrap:wrap;gap:.3rem .8rem;align-items:center;padding:.4rem 1rem;background:var(--ok-bg);color:var(--ink);border-bottom:1px solid var(--line);font-size:.9rem}
 .tabs{display:flex;flex-wrap:wrap;gap:.25rem;padding:.4rem 1rem 0;border-bottom:1px solid var(--line);background:var(--surface)}
 .tabs button{border:1px solid transparent;border-bottom:0;background:none;padding:.45rem .8rem;border-radius:8px 8px 0 0;cursor:pointer;min-height:36px}
@@ -1324,8 +1325,9 @@ async function findDuplicates(db, limit) {
     if (arr.length < 2) continue;
     if (arr.length > 400) arr.length = 400; // protecție: blocuri uriașe
     for (let i = 0; i < arr.length; i++) {
-      if ((++n & 255) === 0) await slice();
+      await slice();
       for (let j = i + 1; j < arr.length; j++) {
+        if ((j & 31) === 0) await slice();
         const a = arr[i], b = arr[j];
         const key = a.id < b.id ? a.id + '|' + b.id : b.id + '|' + a.id;
         if (seen.has(key)) continue;
@@ -3170,7 +3172,7 @@ function initChart() {
   $('#c-print').addEventListener('click', () => printChart($('#c-multi').checked));
   window.addEventListener('resize', () => { if (S.tab === 'chart') fitChart(); });
 }
-function recenter(id) { S.root = id; lsSet('root', id); CH.focusId = ''; renderChart(); const g = $('#vp [data-key].root'); if (g) { setChartFocus(g.dataset.key, false); } }
+function recenter(id) { const had = !!(document.activeElement && $('#dg').contains(document.activeElement)); S.root = id; lsSet('root', id); CH.focusId = ''; renderChart(); const g = $('#vp [data-key].root'); if (g) { setChartFocus(g.dataset.key, had); } }
 function svgDocument() {
   if (!CH.L) return null;
   const b = CH.bbox, w = Math.ceil(b.w), h = Math.ceil(b.h);
@@ -3788,7 +3790,7 @@ function wireDelegates() {
     if ((e.ctrlKey || e.metaKey) && !e.shiftKey && e.key.toLowerCase() === 'z' && !/^(INPUT|TEXTAREA|SELECT)$/.test((e.target.tagName || '')) && !document.querySelector('dialog[open]')) { e.preventDefault(); undo(); }
   });
   $$('dialog').forEach(d => d.addEventListener('close', () => { const o = OPENERS[d.id]; OPENERS[d.id] = null; if (o && document.contains(o) && o.offsetParent !== null) { try { o.focus(); } catch (er) { /* */ } } }));
-  window.addEventListener('beforeunload', () => { if (ST.dirty && !ST.locked) { try { if (!ST.enc) localStorage.setItem(KEY_TREE, JSON.stringify(DB)); } catch (e) { /* cota */ } } });
+  window.addEventListener('beforeunload', () => { if (ST.dirty && !ST.locked && ST.where !== 'idb') { try { if (!ST.enc) localStorage.setItem(KEY_TREE, JSON.stringify(DB)); } catch (e) { /* cota */ } } });
 }
 function validDb(d) { return d && typeof d === 'object' && d.persons && d.families; }
 async function boot() {

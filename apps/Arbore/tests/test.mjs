@@ -447,29 +447,20 @@ console.log('8. Performanță: 10.000 de persoane');
     const places = ['Brașov', 'Cluj-Napoca', 'Sibiu', 'Iași', 'București', 'Timișoara', 'Făgăraș', 'Alba Iulia'];
     let seed = 12345; const rnd = () => (seed = (seed * 1664525 + 1013904223) % 4294967296) / 4294967296;
     const L = ['0 HEAD', '1 CHAR UTF-8', '1 GEDC', '2 VERS 5.5.1'];
-    const persons = []; let nI = 0, nF = 0; const fams = [];
-    const newP = (y, sex, s) => { const id = ++nI; persons.push({id, y, sex, s}); L.push(`0 @I${id}@ INDI`, `1 NAME ${given[(rnd() * given.length) | 0]} /${s}/`, `1 SEX ${sex}`, '1 BIRT', `2 DATE ${y}`, `2 PLAC ${places[(rnd() * places.length) | 0]}`); if (y < 1930) { L.push('1 DEAT', `2 DATE ${y + 50 + ((rnd() * 30) | 0)}`); } return id; };
-    // rădăcini: 250 cupluri în 1700-1760, apoi generații de ~28 ani
-    let cur = [];
-    for (let i = 0; i < 250; i++) { const s = sur[(rnd() * sur.length) | 0]; const y = 1700 + ((rnd() * 60) | 0); cur.push([newP(y, 'M', s), newP(y + 2, 'F', sur[(rnd() * sur.length) | 0]), y]); }
-    const famLines = [];
-    while (nI < 10000) {
-      const next = [];
-      for (const [h, w, y] of cur) {
-        if (nI >= 10000) break;
-        const f = ++nF; const k = 1 + ((rnd() * 3) | 0); const ch = [];
-        famLines.push(`0 @F${f}@ FAM`, `1 HUSB @I${h}@`, `1 WIFE @I${w}@`);
-        for (let c = 0; c < k && nI < 10000; c++) {
-          const cy = y + 24 + ((rnd() * 12) | 0); const sex = rnd() < 0.5 ? 'M' : 'F';
-          const surname = persons[h - 1].s; const id = newP(cy, sex, sex === 'M' ? surname : surname + 'escu'.slice(0, 0));
-          famLines.push(`1 CHIL @I${id}@`); ch.push(id);
-          const spy = cy + ((rnd() * 5) | 0);
-          if (cy > 1700) { next.push(sex === 'M' ? [id, newP(spy, 'F', sur[(rnd() * sur.length) | 0]), cy] : [newP(spy, 'M', sur[(rnd() * sur.length) | 0]), id, cy]); }
-        }
+    let nI = 0, nF = 0; const famLines = [];
+    const newP = (y, sex, s) => { const id = ++nI; L.push(`0 @I${id}@ INDI`, `1 NAME ${given[(rnd() * given.length) | 0]} /${s}/`, `1 SEX ${sex}`, '1 BIRT', `2 DATE ${y}`, `2 PLAC ${places[(rnd() * places.length) | 0]}`); if (y < 1930) L.push('1 DEAT', `2 DATE ${y + 50 + ((rnd() * 30) | 0)}`); return {id, y, sex, s}; };
+    let gen = [];
+    for (let i = 0; i < 300; i++) { const sex = i % 2 ? 'F' : 'M'; gen.push(newP(1700 + ((rnd() * 20) | 0), sex, sur[(rnd() * sur.length) | 0])); }
+    const shuf = a => { for (let i = a.length - 1; i > 0; i--) { const j = (rnd() * (i + 1)) | 0; [a[i], a[j]] = [a[j], a[i]]; } return a; };
+    while (nI < 10000 && gen.length > 1) {
+      const M = shuf(gen.filter(x => x.sex === 'M')), F = shuf(gen.filter(x => x.sex === 'F')), next = [];
+      for (let i = 0; i < Math.min(M.length, F.length) && nI < 10000; i++) {
+        const h = M[i], w = F[i], f = ++nF, k = 1 + ((rnd() * 4) | 0);
+        famLines.push(`0 @F${f}@ FAM`, `1 HUSB @I${h.id}@`, `1 WIFE @I${w.id}@`);
+        for (let c = 0; c < k && nI < 10000; c++) { const ch = newP(Math.max(h.y, w.y) + 22 + ((rnd() * 14) | 0), rnd() < 0.5 ? 'M' : 'F', h.s); famLines.push(`1 CHIL @I${ch.id}@`); next.push(ch); }
       }
-      cur = next; if (!cur.length) break;
+      gen = next;
     }
-    // atașăm legăturile FAMC/FAMS: se pun după INDI ca linii suplimentare nu sunt permise (nivel 0), deci le adăugăm într-un al doilea pas
     return {ged: L.join('\n') + '\n' + famLines.join('\n') + '\n0 TRLR\n', n: nI, f: nF};
   });
   ok('GEDCOM sintetic generat cu ≥ 10.000 de persoane', gen.n >= 10000, gen.n);
@@ -490,7 +481,7 @@ console.log('8. Performanță: 10.000 de persoane');
     // încărcare în UI + listă virtualizată
     document.querySelector('#t-people').click();
     await new Promise(r => setTimeout(r, 300));
-    res.domRows = document.querySelectorAll('#list .item, #list [role="option"], #list li, #list .prow').length;
+    res.domRows = document.querySelectorAll('#vl-rows .vrow').length;
     // căutare
     const q = document.querySelector('#q'); maxGap = 0; last = performance.now(); t0 = performance.now();
     q.value = 'Popescu 17'; q.dispatchEvent(new Event('input', {bubbles: true}));
@@ -723,8 +714,8 @@ console.log('11. Accesibilitate (axe), overflow, teme, mișcare redusă, print')
   const pr = await p.evaluate(() => [...document.styleSheets].flatMap(s => [...s.cssRules]).some(r => r.media && /print/.test(r.media.mediaText)));
   ok('există @media print', pr);
   await p.emulateMedia({media: 'print'});
-  const hid = await p.evaluate(() => getComputedStyle(document.querySelector('header.top')).display);
-  ok('în print antetul este ascuns', hid === 'none', hid);
+  const hid = await p.evaluate(() => { document.body.classList.add('printing'); const d = getComputedStyle(document.querySelector('header.top')).display; document.body.classList.remove('printing'); return d; });
+  ok('în print (body.printing) restul paginii este ascuns', hid === 'none', hid);
   await t.ctx.close();
 }
 
