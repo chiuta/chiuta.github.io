@@ -494,8 +494,9 @@ test('C3 simplificare Douglas–Peucker: număr rezultat, formă în toleranță
   ok(worst > 1, 'simplificarea nu e trivială (abatere > 1 m)');
   // toleranță mai mică => mai multe puncte
   await page.click('#b-undo'); await page.fill('#s-tol', '1');
-  await page.waitForFunction(() => /din\s+20000/.test(document.getElementById('s-count').textContent), null, {timeout: 20000});
-  const m2 = (await page.locator('#s-count').innerText()).match(/(\d+) din/); ok(+m2[1] > predicted, 'toleranță mai mică => mai multe puncte');
+  // eticheta se actualizează cu debounce (200 ms): așteaptă să difere de cea anterioară (altfel s-ar citi textul vechi)
+  await page.waitForFunction((prev) => { const t = document.getElementById('s-count').textContent; return /din\s+20000/.test(t) && t !== prev; }, label, {timeout: 20000});
+  const m2 = (await page.locator('#s-count').innerText()).match(/(\d+) din/); ok(+m2[1] > predicted, 'toleranță mai mică => mai multe puncte: '+predicted+' vs '+m2[1]);
   await closeAll(page);
 });
 test('C4 eliminare spike-uri GPS (viteză și salt)', async () => {

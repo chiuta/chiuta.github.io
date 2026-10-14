@@ -6,6 +6,8 @@ import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
 import zlib from 'node:zlib';
+import crypto from 'node:crypto';
+import {spawnSync} from 'node:child_process';
 import {fileURLToPath, pathToFileURL} from 'node:url';
 
 const require = createRequire('/opt/node-tools/package.json');
@@ -160,7 +162,15 @@ console.log('1. Pornire, meta, CSP, rețea, set demonstrativ');
   ok('CSP: default-src none, fără unsafe-eval, script-src doar hash', /default-src 'none'/.test(info.csp) && !/unsafe-eval/.test(info.csp) && /script-src 'sha256-[A-Za-z0-9+\/=]+'/.test(info.csp) && !/script-src[^;]*unsafe-inline/.test(info.csp) && /connect-src 'none'/.test(info.csp) && /base-uri 'none'/.test(info.csp) && /form-action 'none'/.test(info.csp), info.csp);
   ok('0 violări CSP', info.viol.length === 0, info.viol);
   ok('fără handlere inline', info.inline === 0);
-  ok('fără manifest/sw', !info.manifest);
+  // PWA adăugat ulterior: un singur link manifest către fișierul generat, valid; înregistrarea SW există doar în blocul pwa
+  {
+    let mf = null; try { mf = JSON.parse(fs.readFileSync(path.join(here, '..', 'manifest.webmanifest'), 'utf8')); } catch (e) {}
+    const noPwa = html.replace(/<!--fff:pwa:start[\s\S]*?<!--fff:pwa:end-->/, '').replace(/<script[^>]*id="fff-info"[\s\S]*?<\/script>/, '').replace(/<script type="application\/json" id="fff-i18n">[\s\S]*?<\/script>/, '').replace(/<script id="fff-kit">[\s\S]*?<\/script>/, '');
+    ok('manifest: un singur link către manifest.webmanifest valid, înregistrare SW doar în blocul pwa', !!info.manifest && (html.match(/rel="manifest"/g) || []).length === 1 && mf && mf.start_url === './' && mf.display === 'standalone' && !/serviceWorker/.test(noPwa), {manifest: info.manifest, start: mf && mf.start_url});
+    const csp = /http-equiv="Content-Security-Policy"\s+content="([^"]*)"/.exec(html)[1];
+    ok("CSP: manifest-src 'self', worker-src 'self' blob:", /manifest-src 'self'(;|$)/.test(csp) && /worker-src 'self' blob:(;|$)/.test(csp), csp);
+    for (const [mod, a] of [['build.mjs', 'check'], ['pwa/pwa.mjs', 'check']]) { const r = spawnSync(process.execPath, [path.resolve(here, '../../../fff-kit', mod), a, path.resolve(here, '..')], {encoding: 'utf8'}); ok(mod + ' ' + a, r.status === 0, r.stdout + r.stderr); }
+  }
   ok('0 pageerror/console error', t.errors.length === 0, t.errors);
   ok('0 cereri de rețea', t.net.length === 0, t.net);
   ok('niciun text de interfață nu a rămas cheie brută', info.leak.length === 0, info.leak);
@@ -168,8 +178,10 @@ console.log('1. Pornire, meta, CSP, rețea, set demonstrativ');
   const s = await st(t.page);
   ok('set demonstrativ instalat (≈300+ intrări)', s.dicts.length === 1 && s.dicts[0].count >= 300 && s.dicts[0].count < 400 && s.dicts[0].format === 'demo', s.dicts);
   ok('IndexedDB persistent activ', s.persistent === true);
-  const scripts = html.match(/<script>/g) || [];
-  ok('un singur script executabil inline', scripts.length === 1);
+  // scripturi executabile inline: kit (#fff-kit), înregistrare PWA, aplicația; JSON (fff-i18n, fff-info) și text/plain (demo-data) nu se execută
+  const scr = [...html.matchAll(/<script\b([^>]*)>([\s\S]*?)<\/script>/g)].filter(m => !/\bsrc=/.test(m[1]) && !/type="(application\/json|text\/plain)"/.test(m[1]));
+  const cspH = /http-equiv="Content-Security-Policy"\s+content="([^"]*)"/.exec(html)[1]; const ssH = /script-src([^;]*)/.exec(cspH)[1];
+  ok('3 scripturi executabile inline (kit, pwa, aplicație), fiecare cu hash CSP calculat independent, fără alte hash-uri', scr.length === 3 && (ssH.match(/sha256-/g) || []).length === 3 && scr.every(m => ssH.includes("'sha256-" + crypto.createHash('sha256').update(m[2], 'utf8').digest('base64') + "'")) && !/unsafe-/.test(ssH), {n: scr.length});
   ok('fără eval / new Function în sursă', !/\beval\s*\(|new Function\s*\(/.test(html));
   ok('fără innerHTML / insertAdjacentHTML / document.write în cod', !/\.innerHTML\s*=|insertAdjacentHTML|document\.write/.test(html.replace(/<script type="text\/plain"[\s\S]*?<\/script>/, '')));
   const home = await p.locator('#article').innerText();
@@ -1155,12 +1167,14 @@ console.log('12. Limbi (8), tipărire, integrare progresivă window.FFF, fără 
   await li.ctx.close();
 
   // FFF progresiv
-  const fx = await newPage({init: () => { window.FFF = {tts: {speak: (t, o) => { window.__spoken = [t, o]; }, supported: () => true}, download: (n, b, m) => { window.__fffdl = n; }}; }});
+  const fx = await newPage({init: () => { window.FFF = {tts: {speak: (t, o) => { window.__spoken = [t, o]; }, supported: () => true}}; }});
   const q = fx.page;
   await openWord(q, 'casă');
   ok('FFF.tts disponibil → buton „Ascultă” în articol', (await q.locator('#art-tts').count()) === 1);
   await q.click('#art-tts');
   ok('buton „Ascultă” apelează FFF.tts.speak cu cuvântul', (await q.evaluate(() => window.__spoken))?.[0] === 'casă');
+  // nucleul fff-kit își definește propriul FFF.download (suprascrie un mock din init): se înlocuiește după încărcare, ca să se verifice că aplicația îl apelează
+  await q.evaluate(() => { window.FFF.download = (n, b, m) => { window.__fffdl = n; }; });
   await q.click('#art-fav'); await tab(q, 'tools'); await q.click('[data-exp="fav"][data-fmt="csv"]');
   await q.waitForFunction(() => window.__fffdl);
   ok('exporturile folosesc FFF.download când există', /^lexicon-favorite-.*\.csv$/.test(await q.evaluate(() => window.__fffdl)));

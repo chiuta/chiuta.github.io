@@ -4,6 +4,8 @@ import {createRequire} from 'module';
 import fs from 'node:fs';
 import path from 'node:path';
 import {fileURLToPath, pathToFileURL} from 'node:url';
+import crypto from 'node:crypto';
+import {spawnSync} from 'node:child_process';
 const require = createRequire('/opt/node-tools/package.json');
 const {chromium} = require('playwright');
 const HERE = path.dirname(fileURLToPath(import.meta.url));
@@ -57,7 +59,15 @@ await test('pornire: 0 erori, 0 rețea, 0 CSP, meta, versiune, lang', async () =
   ok(CSP.checkCspHashes(html).ok, 'hash-uri CSP');
   ok(!/\son(click|load|error|input|change|submit)\s*=/i.test(html), 'fără handlere inline');
   ok(!/\beval\s*\(|new Function\(/.test(html), 'fără eval');
-  ok(/default-src 'none'/.test(html) && /connect-src 'none'/.test(html) && !/script-src[^;]*unsafe/.test(html), 'CSP strict');
+  // CSP luat din meta (nu din tot fișierul: #fff-info descrie CSP-ul în JSON și ar da potriviri false)
+  const cspMeta = /http-equiv="Content-Security-Policy"\s+content="([^"]*)"/.exec(html)[1]; const dirs = Object.fromEntries(cspMeta.split(';').map(x => x.trim()).filter(Boolean).map(x => { const [k, ...v] = x.split(/\s+/); return [k, v.join(' ')]; }));
+  eq([dirs['default-src'], dirs['connect-src'], dirs['manifest-src'], dirs['worker-src'], dirs['img-src']], ["'none'", "'none'", "'self'", "'self' blob:", "'self' data: blob:"], 'CSP');
+  ok(!/unsafe-/.test(dirs['script-src']), 'CSP strict: script-src fără unsafe');
+  // hash independent pentru TOATE scripturile inline executabile (kit, pwa, aplicație)
+  const scr = [...html.matchAll(/<script\b([^>]*)>([\s\S]*?)<\/script>/g)].filter(m => !/\bsrc=/.test(m[1]) && !/type="application\/json"/.test(m[1]));
+  eq(scr.length, 3, 'kit + pwa + aplicație'); eq((dirs['script-src'].match(/sha256-/g) || []).length, 3, 'hash-uri');
+  for (const m of scr) ok(dirs['script-src'].includes("'sha256-" + crypto.createHash('sha256').update(m[2], 'utf8').digest('base64') + "'"), 'hash lipsă: ' + m[2].slice(0, 30));
+  for (const [mod, a] of [['build.mjs', 'check'], ['pwa/pwa.mjs', 'check']]) { const r = spawnSync(process.execPath, [path.resolve(HERE, '../../../fff-kit', mod), a, path.resolve(HERE, '..')], {encoding: 'utf8'}); ok(r.status === 0, mod + ' check: ' + r.stdout + r.stderr); }
   ok(!/https?:\/\/(?!www\.w3\.org)/.test(html.replace(/<meta[^>]*>/g, '')) || true);
   await ctx.close();
 });

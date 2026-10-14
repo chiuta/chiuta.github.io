@@ -5,6 +5,8 @@ import fs from 'node:fs';
 import path from 'node:path';
 import assert from 'node:assert/strict';
 import {fileURLToPath} from 'node:url';
+import crypto from 'node:crypto';
+import {spawnSync} from 'node:child_process';
 
 const require = createRequire('/opt/node-tools/package.json');
 const {chromium} = require('playwright');
@@ -64,9 +66,15 @@ await T('pornire: 0 erori, CSP, fără rețea, meta, versiune, lang', async () =
   assert.equal(await E(p, () => document.querySelector('meta[name=last-updated]').content), '2026-10-14');
   assert.equal((await p.textContent('#app-version')).trim(), 'v 1.0.0 · 2026-10-14');
   const csp = await E(p, () => document.querySelector('meta[http-equiv=Content-Security-Policy]').content);
-  assert.match(csp, /default-src 'none'; script-src 'sha256-[A-Za-z0-9+/=]+'; style-src 'unsafe-inline'/);
-  assert.match(csp, /connect-src 'none'/); assert.ok(!/unsafe-eval/.test(csp));
+  // script-src: 3 scripturi inline executabile (kit, înregistrare PWA, aplicație), fiecare cu hash; fără unsafe
+  assert.match(csp, /^default-src 'none'; script-src ('sha256-[A-Za-z0-9+/=]+' ?){3}; style-src 'unsafe-inline'; /);
+  assert.match(csp, /connect-src 'none'/); assert.ok(!/unsafe-eval/.test(csp)); assert.ok(!/script-src[^;]*unsafe/.test(csp));
+  assert.match(csp, /manifest-src 'self'(;|$)/); assert.match(csp, /worker-src 'self' blob:(;|$)/); assert.match(csp, /img-src 'self' data: blob:/);
   const html = fs.readFileSync(path.join(HERE, '..', 'index.html'), 'utf8');
+  const scr = [...html.matchAll(/<script\b([^>]*)>([\s\S]*?)<\/script>/g)].filter(m => !/\bsrc=/.test(m[1]) && !/type="application\/json"/.test(m[1]));
+  assert.equal(scr.length, 3, 'kit + pwa + aplicație');
+  for (const m of scr) assert.ok(csp.includes("'sha256-" + crypto.createHash('sha256').update(m[2], 'utf8').digest('base64') + "'"), 'hash lipsă: ' + m[2].slice(0, 30));
+  for (const [mod, a] of [['build.mjs', 'check'], ['pwa/pwa.mjs', 'check']]) { const r = spawnSync(process.execPath, [path.resolve(HERE, '../../../fff-kit', mod), a, path.resolve(HERE, '..')], {encoding: 'utf8'}); assert.equal(r.status, 0, mod + ' check: ' + r.stdout + r.stderr); }
   assert.ok(!/\son(click|change|input|submit|load)=/i.test(html), 'handlere inline');
   assert.ok(!/\beval\(|new Function\(/.test(html), 'eval');
   assert.match(await p.textContent('main'), /Începe cu un cont/);
@@ -512,7 +520,7 @@ await T('layout: fără depășire orizontală la 360×740 și 1280×800; tastat
   // tastatură: Tab ajunge la butoanele de navigare și Enter schimbă vizualizarea; focus în dialog
   const p = await newPage(); await demo(p); await p.focus('#nav [data-v=dash]'); await p.keyboard.press('Tab'); await p.keyboard.press('Enter'); await p.waitForTimeout(80);
   assert.equal(await p.getAttribute('#nav [data-v=tx]', 'aria-current'), 'page'); assert.equal(await E(p, () => document.activeElement.tagName), 'H2');
-  await p.click('[data-act=newtx]'); assert.ok(await E(p, () => !!document.activeElement.closest('dialog'))); await p.keyboard.press('Escape'); assert.equal(await p.locator('dialog').count(), 0);
+  await p.click('[data-act=newtx]'); assert.ok(await E(p, () => !!document.activeElement.closest('dialog'))); await p.keyboard.press('Escape'); await p.waitForFunction(() => !document.querySelector('dialog'), null, {timeout: 3000}); /* evenimentul `close` (care elimină dialogul) e asincron față de Escape */ assert.equal(await p.locator('dialog').count(), 0);
   await close(p);
   const ctx = await browser.newContext({reducedMotion: 'reduce', viewport: {width: 1280, height: 800}}); const q = await newPage({ctx}); await demo(q);
   assert.equal(await E(q, () => getComputedStyle(document.getElementById('toast')).transitionDuration), '0s'); await close(q);

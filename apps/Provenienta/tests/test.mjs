@@ -47,8 +47,12 @@ const jpegOk = S.signAsset('jpeg', baseJpg, std());
 const browser = await chromium.launch({ executablePath: '/opt/pw-browsers/chromium', args: ['--no-sandbox'] });
 const netReqs = []; const pageErrors = [];
 async function mkCtx(opts = {}) {
-  const ctx = await browser.newContext(Object.assign({ viewport: { width: 1280, height: 800 }, acceptDownloads: true, locale: 'ro-RO' }, opts));
-  await ctx.route(/^https?:/, (r) => { const u = r.request().url(); if (u.startsWith('https://provenienta.test/index.html')) return r.fulfill({ status: 200, contentType: 'text/html; charset=utf-8', body: fs.readFileSync(APP_FILE) }); netReqs.push(u); r.abort(); });
+  const ctx = await browser.newContext(Object.assign({ viewport: { width: 1280, height: 800 }, acceptDownloads: true, locale: 'ro-RO', serviceWorkers: 'block' }, opts));
+  await ctx.route(/^https?:/, (r) => { const u = r.request().url(); if (u.startsWith('https://provenienta.test/index.html')) return r.fulfill({ status: 200, contentType: 'text/html; charset=utf-8', body: fs.readFileSync(APP_FILE) });
+    // fișiere auxiliare PWA (manifest, icoane) servite de pe disc din directorul aplicației: nu sunt cereri externe
+    const m = /^https:\/\/provenienta\.test\/(manifest\.webmanifest|icon-192\.png|icon-512\.png|icon-maskable-512\.png)$/.exec(u);
+    if (m) return r.fulfill({ status: 200, contentType: m[1].endsWith('png') ? 'image/png' : 'application/manifest+json', body: fs.readFileSync(path.resolve(HERE, '..', m[1])) });
+    netReqs.push(u); r.abort(); });
   await ctx.addInitScript(() => { window.__csp = []; document.addEventListener('securitypolicyviolation', (e) => window.__csp.push(e.violatedDirective + ' ' + e.blockedURI)); });
   return ctx;
 }
@@ -79,7 +83,15 @@ await test('pornire: 0 erori, 0 CSP, 0 rețea, meta și versiune', async () => {
   const info = await page.evaluate(() => ({ csp: window.__csp, ver: document.querySelector('#app-version').textContent, mv: document.querySelector('meta[name=application-version]').content, up: document.querySelector('meta[name=last-updated]').content, lang: document.documentElement.lang, t: document.title, desc: !!document.querySelector('meta[name=description]').content, h1: document.querySelectorAll('h1').length, inline: document.querySelectorAll('[onclick],[onchange]').length }));
   eq(info.csp, []); eq(info.mv, '1.0.0'); eq(info.up, '2026-10-14'); assert(/v 1\.0\.0 · 2026-10-14/.test(info.ver)); eq(info.lang, 'ro'); eq(info.h1, 1); eq(info.inline, 0); assert(info.desc);
   const html = fs.readFileSync(APP_FILE, 'utf8');
-  assert(/connect-src 'none'/.test(html) && /default-src 'none'/.test(html) && !/unsafe-eval/.test(html)); assert(!/script-src[^;]*unsafe-inline/.test(html));
+  // CSP din meta (nu din tot fișierul: #fff-info descrie CSP-ul în JSON și ar da potriviri false pe „script-src … unsafe-inline”)
+  const csp = /http-equiv="Content-Security-Policy"\s+content="([^"]*)"/.exec(html)[1]; const ss = /script-src([^;]*)/.exec(csp)[1];
+  assert(/connect-src 'none'/.test(csp) && /default-src 'none'/.test(csp) && !/unsafe-eval/.test(csp)); assert(!/unsafe-/.test(ss));
+  assert(/manifest-src 'self'(;|$)/.test(csp) && /worker-src 'self' blob:(;|$)/.test(csp) && /img-src 'self' data: blob:/.test(csp), csp);
+  // hash independent pentru TOATE scripturile inline executabile (kit, pwa, aplicație) + verificările kitului și PWA
+  const scr = [...html.matchAll(/<script\b([^>]*)>([\s\S]*?)<\/script>/g)].filter((m) => !/\bsrc=/.test(m[1]) && !/type="application\/json"/.test(m[1]));
+  eq(scr.length, 3, 'kit + pwa + aplicație'); eq((ss.match(/sha256-/g) || []).length, 3, 'hash-uri');
+  for (const m of scr) assert(ss.includes("'sha256-" + crypto.createHash('sha256').update(m[2], 'utf8').digest('base64') + "'"), 'hash lipsă: ' + m[2].slice(0, 30));
+  for (const [mod, a] of [['build.mjs', 'check'], ['pwa/pwa.mjs', 'check']]) { const r = spawnSync(process.execPath, [path.resolve(HERE, '../../../fff-kit', mod), a, path.resolve(HERE, '..')], { encoding: 'utf8' }); assert(r.status === 0, mod + ' check: ' + r.stdout + r.stderr); }
   assert(!/CNRED/i.test(html));
   eq(netReqs, []);
 });

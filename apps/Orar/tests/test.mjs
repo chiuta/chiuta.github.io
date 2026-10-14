@@ -6,7 +6,7 @@ import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
 import crypto from 'node:crypto';
-import {execFileSync} from 'node:child_process';
+import {execFileSync, spawnSync} from 'node:child_process';
 import assert from 'node:assert/strict';
 import {fileURLToPath} from 'node:url';
 
@@ -554,14 +554,17 @@ await T('pornire: fără erori, fără CSP, fără rețea; meta, versiune, CSP e
   const csp = /http-equiv="Content-Security-Policy" content="([^"]+)"/.exec(html)[1];
   const dirs = Object.fromEntries(csp.split(';').map(s => s.trim()).filter(Boolean).map(s => { const [k, ...v] = s.split(/\s+/); return [k, v.join(' ')]; }));
   assert.equal(dirs['default-src'], "'none'"); assert.equal(dirs['connect-src'], "'none'"); assert.equal(dirs['base-uri'], "'none'"); assert.equal(dirs['form-action'], "'none'");
-  assert.equal(dirs['frame-src'], "'none'"); assert.equal(dirs['object-src'], "'none'"); assert.equal(dirs['manifest-src'], "'none'"); assert.equal(dirs['worker-src'], 'blob:');
-  assert.equal(dirs['img-src'], 'data: blob:'); assert.equal(dirs['media-src'], 'data: blob:'); assert.equal(dirs['font-src'], 'data:'); assert.equal(dirs['style-src'], "'unsafe-inline'");
+  assert.equal(dirs['frame-src'], "'none'"); assert.equal(dirs['object-src'], "'none'"); assert.equal(dirs['manifest-src'], "'self'"); assert.equal(dirs['worker-src'], "'self' blob:");
+  assert.equal(dirs['img-src'], "'self' data: blob:"); assert.equal(dirs['media-src'], 'data: blob:'); assert.equal(dirs['font-src'], 'data:'); assert.equal(dirs['style-src'], "'unsafe-inline'");
   assert.ok(!/unsafe-(inline|eval)/.test(dirs['script-src']));
-  const scripts = [...html.matchAll(/<script\b([^>]*)>([\s\S]*?)<\/script>/g)].filter(m => !/src=/.test(m[1]) && m[2].trim());
-  assert.equal(scripts.length, 1);
-  for (const m of scripts) assert.ok(dirs['script-src'].includes("'sha256-" + crypto.createHash('sha256').update(m[2], 'utf8').digest('base64') + "'"), 'hash CSP al scriptului');
+  // scripturi executabile inline: kit (#fff-kit), înregistrare PWA și aplicația; JSON-urile (fff-i18n, fff-info) nu se execută
+  const scripts = [...html.matchAll(/<script\b([^>]*)>([\s\S]*?)<\/script>/g)].filter(m => !/src=/.test(m[1]) && !/type="application\/json"/.test(m[1]) && m[2].trim());
+  assert.equal(scripts.length, 3, 'kit + pwa + aplicație');
+  assert.equal((dirs['script-src'].match(/sha256-/g) || []).length, scripts.length, 'un hash per script');
+  for (const m of scripts) assert.ok(dirs['script-src'].includes("'sha256-" + crypto.createHash('sha256').update(m[2], 'utf8').digest('base64') + "'"), 'hash CSP al scriptului ' + m[2].slice(0, 30));
+  for (const [mod, args] of [['build.mjs', ['check']], [path.join('pwa', 'pwa.mjs'), ['check']]]) { const r = spawnSync(process.execPath, [path.resolve(HERE, '../../../fff-kit', mod), ...args, path.resolve(HERE, '..')], {encoding: 'utf8'}); assert.equal(r.status, 0, mod + ' check: ' + r.stdout + r.stderr); }
   assert.ok(!/\son[a-z]+\s*=\s*["']/i.test(html.replace(/<script[\s\S]*?<\/script>/g, '')), 'fără handlere inline');
-  assert.ok(!/\beval\s*\(|new Function\s*\(/.test(scripts[0][2]), 'fără eval');
+  for (const m of scripts) assert.ok(!/\beval\s*\(|new Function\s*\(/.test(m[2]), 'fără eval/new Function în ' + m[2].slice(0, 30));
   assert.ok(!/https?:\/\/(?!www\.w3\.org)/.test(html.replace(/https?:\/\/(tools\.ietf|datatracker)[^\s"')]*/g, '')) || true);
   await closePage(p);
 });

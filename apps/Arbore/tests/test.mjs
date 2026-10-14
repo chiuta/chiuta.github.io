@@ -4,6 +4,8 @@ import {createRequire} from 'node:module';
 import fs from 'node:fs';
 import path from 'node:path';
 import {fileURLToPath, pathToFileURL} from 'node:url';
+import crypto from 'node:crypto';
+import {spawnSync} from 'node:child_process';
 
 const require = createRequire('/opt/node-tools/package.json');
 const {chromium} = require('playwright');
@@ -53,7 +55,7 @@ console.log('1. Pornire, meta, CSP, rețea');
     csp: document.querySelector('meta[http-equiv="Content-Security-Policy"]')?.content || '',
     viol: window.__csp || [],
     priv: document.querySelector('#privbar')?.textContent || '',
-    manifest: !!document.querySelector('link[rel="manifest"]'),
+    manifest: document.querySelector('link[rel="manifest"]')?.getAttribute('href') || '',
     inline: document.querySelectorAll('[onclick],[onchange],[oninput],[onload]').length
   }));
   ok('application-version 1.0.0', info.ver === '1.0.0', info.ver);
@@ -62,7 +64,19 @@ console.log('1. Pornire, meta, CSP, rețea');
   ok('#app-version vizibil', info.vis === 'v 1.0.0 · 2026-10-14', info.vis);
   ok('html[lang]=ro implicit', info.lang === 'ro', info.lang);
   ok('CSP: default-src none, connect-src none, hash script', /default-src 'none'/.test(info.csp) && /connect-src 'none'/.test(info.csp) && /script-src 'sha256-/.test(info.csp) && !/unsafe-eval/.test(info.csp) && !/script-src[^;]*unsafe-inline/.test(info.csp), info.csp);
-  ok('fără manifest, fără handlere inline', !info.manifest && info.inline === 0);
+  // PWA adăugat ulterior: manifestul trebuie să fie exact cel generat (nu o a doua sursă), iar handlerele inline rămân interzise
+  ok('fără handlere inline', info.inline === 0);
+  {
+    const html = fs.readFileSync(path.join(here, '..', 'index.html'), 'utf8');
+    let mf = null; try { mf = JSON.parse(fs.readFileSync(path.join(here, '..', 'manifest.webmanifest'), 'utf8')); } catch (e) {}
+    ok('un singur link manifest, către manifest.webmanifest valid (start_url ./, standalone)', info.manifest === 'manifest.webmanifest' && (html.match(/rel="manifest"/g) || []).length === 1 && mf && mf.start_url === './' && mf.display === 'standalone', [info.manifest, mf && mf.start_url]);
+    const csp = /http-equiv="Content-Security-Policy"\s+content="([^"]*)"/.exec(html)[1];
+    const ss = (/script-src([^;]*)/.exec(csp) || [])[1] || '';
+    const scr = [...html.matchAll(/<script\b([^>]*)>([\s\S]*?)<\/script>/g)].filter(m => !/\bsrc=/.test(m[1]) && !/type="application\/json"/.test(m[1]));
+    ok('hash CSP independent pentru TOATE scripturile inline (kit, pwa, aplicație)', scr.length === 3 && (ss.match(/sha256-/g) || []).length === 3 && scr.every(m => ss.includes("'sha256-" + crypto.createHash('sha256').update(m[2], 'utf8').digest('base64') + "'")), scr.length);
+    ok("CSP: manifest-src 'self', worker-src 'self' blob:", /manifest-src 'self'(;|$)/.test(csp) && /worker-src 'self' blob:(;|$)/.test(csp), csp);
+    for (const [mod, a] of [['build.mjs', 'check'], ['pwa/pwa.mjs', 'check']]) { const r = spawnSync(process.execPath, [path.resolve(here, '../../../fff-kit', mod), a, path.resolve(here, '..')], {encoding: 'utf8'}); ok(mod + ' ' + a, r.status === 0, r.stdout + r.stderr); }
+  }
   ok('bannerul de confidențialitate este vizibil', /nu face cereri de rețea|rămân pe acest/i.test(info.priv));
   ok('0 violări CSP', info.viol.length === 0, info.viol);
   ok('0 pageerror', t.errors.length === 0, t.errors);

@@ -1,11 +1,10 @@
 {
- "ok": 42,
+ "ok": 44,
  "total": 44,
  "results": [
   {
    "name": "pornire: 0 erori, 0 rețea, 0 CSP, meta, versiune, lang",
-   "ok": false,
-   "err": "assert: CSP strict"
+   "ok": true
   },
   {
    "name": "rutare prin hash și tipuri de panou",
@@ -121,8 +120,7 @@
   },
   {
    "name": "Cifruri: interfață — cifrare/decifrare, pași, avertisment, analiză UI",
-   "ok": false,
-   "err": "assert: "
+   "ok": true
   },
   {
    "name": "Dactilema: fără figuri, cu avertisment și surse",

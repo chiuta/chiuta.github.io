@@ -35,8 +35,12 @@ const contains = (buf, s) => buf.includes(Buffer.from(s, 'utf8')) || buf.include
 const browser = await chromium.launch({ executablePath: '/opt/pw-browsers/chromium', args: ['--no-sandbox'] });
 const netReqs = [];
 async function mkCtx(opts = {}) {
-  const ctx = await browser.newContext(Object.assign({ viewport: { width: 1280, height: 800 }, acceptDownloads: true, locale: 'ro-RO' }, opts));
-  await ctx.route(/^https?:/, (r) => { const u = r.request().url(); if (u.startsWith('https://curatitor.test/index.html')) return r.fulfill({ status: 200, contentType: 'text/html; charset=utf-8', body: fs.readFileSync(APP_FILE) }); netReqs.push(u); r.abort(); });
+  const ctx = await browser.newContext(Object.assign({ viewport: { width: 1280, height: 800 }, acceptDownloads: true, locale: 'ro-RO', serviceWorkers: 'block' }, opts));
+  await ctx.route(/^https?:/, (r) => { const u = r.request().url(); if (u.startsWith('https://curatitor.test/index.html')) return r.fulfill({ status: 200, contentType: 'text/html; charset=utf-8', body: fs.readFileSync(APP_FILE) });
+    // fișiere auxiliare PWA (manifest, icoane) servite de pe disc din directorul aplicației: nu sunt cereri externe
+    const m = /^https:\/\/curatitor\.test\/(manifest\.webmanifest|icon-192\.png|icon-512\.png|icon-maskable-512\.png)$/.exec(u);
+    if (m) return r.fulfill({ status: 200, contentType: m[1].endsWith('png') ? 'image/png' : 'application/manifest+json', body: fs.readFileSync(path.resolve(HERE, '..', m[1])) });
+    netReqs.push(u); r.abort(); });
   await ctx.addInitScript(() => { window.__csp = []; document.addEventListener('securitypolicyviolation', (e) => window.__csp.push(e.violatedDirective + ' ' + e.blockedURI)); });
   return ctx;
 }
@@ -91,17 +95,24 @@ await test('pornire: 0 erori, 0 violări CSP, 0 cereri de rețea, meta de versiu
   eq(await p.textContent('#app-version'), 'v 1.0.0 · 2026-10-14');
   eq(await p.evaluate(() => document.documentElement.lang), 'ro');
   const csp = await p.evaluate(() => document.querySelector('meta[http-equiv=Content-Security-Policy]').content);
-  assert(/default-src 'none'/.test(csp) && /connect-src 'none'/.test(csp) && /worker-src blob:/.test(csp) && !/unsafe-eval/.test(csp) && !/script-src[^;]*unsafe-inline/.test(csp), 'CSP: ' + csp);
+  assert(/default-src 'none'/.test(csp) && /connect-src 'none'/.test(csp) && /worker-src 'self' blob:/.test(csp) && /manifest-src 'self'/.test(csp) && !/unsafe-eval/.test(csp) && !/script-src[^;]*unsafe-inline/.test(csp), 'CSP: ' + csp);
   // fără handlere inline
   assert(await p.evaluate(() => !document.querySelector('[onclick],[onload],[onchange],[oninput]')), 'handlere inline');
   assert(await p.isVisible('#emptyMsg'), 'stare goală');
   assert(netReqs.length === 0, 'cereri de rețea: ' + netReqs.join(','));
   await p.close();
 });
-await test('hash-ul CSP corespunde scriptului inline (recalculat independent)', async () => {
+await test('hash-uri CSP pentru TOATE scripturile inline (recalculate independent) + kit check + pwa check', async () => {
   const html = fs.readFileSync(path.resolve(HERE, '../index.html'), 'utf8');
-  const m = html.match(/<script>([\s\S]*?)<\/script>/); const h = require('crypto').createHash('sha256').update(m[1], 'utf8').digest('base64');
-  assert(html.includes("'sha256-" + h + "'"), 'hash lipsă'); assert((html.match(/<script\b/g) || []).length === 1, 'un singur script');
+  const cr = require('crypto');
+  const scripts = [...html.matchAll(/<script\b([^>]*)>([\s\S]*?)<\/script>/g)].filter((m) => !/\bsrc=/.test(m[1]) && !/type="application\/json"/.test(m[1]));
+  assert(scripts.length >= 3, 'scripturi inline: ' + scripts.length);
+  const csp = html.match(/http-equiv="Content-Security-Policy"\s+content="([^"]*)"/)[1]; const ss = csp.match(/script-src([^;]*)/)[1];
+  for (const m of scripts) { const h = cr.createHash('sha256').update(m[2], 'utf8').digest('base64'); assert(ss.includes("'sha256-" + h + "'"), 'hash lipsă pentru script ' + (m[1] || 'fără atribute') + ' ' + m[2].slice(0, 40)); }
+  eq((ss.match(/sha256-/g) || []).length, scripts.length, 'hash-uri fără script corespunzător');
+  assert(!/unsafe-inline|unsafe-eval/.test(ss), 'script-src slăbit');
+  eq((html.match(/<script\b[^>]*\bsrc=/g) || []).length, 0, 'script extern');
+  for (const [cmd, args] of [[process.execPath, [path.resolve(HERE, '../../../fff-kit/build.mjs'), 'check', path.resolve(HERE, '..')]], [process.execPath, [path.resolve(HERE, '../../../fff-kit/pwa/pwa.mjs'), 'check', path.resolve(HERE, '..')]]]) { const r = spawnSync(cmd, args, { encoding: 'utf8' }); assert(r.status === 0, args[1].split('/').slice(-2).join('/') + ' check: ' + r.stdout + r.stderr); }
 });
 
 /* ===================== 2. JPEG ===================== */
