@@ -222,17 +222,17 @@
    }
   }
  },
- "perf_ms_1MB": 365,
+ "perf_ms_1MB": 667,
  "perf_bytes": 1000000,
  "pathological_ms": {
-  "cifre": 7,
-  "majuscule": 164,
-  "zerouri": 5,
-  "strada": 14,
-  "ip": 4,
-  "email": 4,
-  "iban": 2,
-  "url": 84,
-  "dubla": 4
+  "cifre": 14,
+  "majuscule": 808,
+  "zerouri": 8,
+  "strada": 24,
+  "ip": 2,
+  "email": 7,
+  "iban": 9,
+  "url": 13,
+  "dubla": 1
  }
 }

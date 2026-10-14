@@ -483,7 +483,7 @@ test('randare: Luna (fază desenată corect), Soarele, planete, pământul; pixe
       const ph = E.moon(jd); out[nm] = {L, R: Rr, tot, illum: ph.illum, alt: m.alt};
     }
     return out; });
-  ok(res.full.tot > 200, 'Luna plină luminează disc: ' + res.full.tot); ok(res.new.tot < res.full.tot / 20, 'Luna nouă aproape întunecată'); ok(res.first.tot > 20 && res.first.tot < res.full.tot * 0.8, 'primul pătrar parțial');
+  ok(res.full.tot > 200, 'Luna plină luminează disc: ' + res.full.tot); const rq = res.first.tot / res.full.tot, rl = res.last.tot / res.full.tot; ok(rq > 0.38 && rq < 0.62, 'primul pătrar ≈ jumătate din disc: ' + rq.toFixed(2)); ok(rl > 0.38 && rl < 0.62, 'ultimul pătrar ≈ jumătate din disc: ' + rl.toFixed(2)); ok(res.first.L < res.first.R * 0.3, 'primul pătrar: partea luminată e la dreapta'); ok(res.last.R < res.last.L * 0.3, 'ultimul pătrar: partea luminată e la stânga');
   report.luna_pixeli = {plina: res.full.tot, pătrar: res.first.tot, noua: res.new.tot};
   await close(p);
 });

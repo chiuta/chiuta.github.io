@@ -19,8 +19,8 @@ fs.mkdirSync(WORK, {recursive: true});
 
 async function visit(browser, url, {w, h, scheme = 'light'}) {
   const ctx = await browser.newContext({viewport: {width: w, height: h}, acceptDownloads: true, colorScheme: scheme, locale: 'ro-RO'});
-  let net = 0;
-  await ctx.route(/^https?:/, (r) => { net++; r.abort(); });
+  const nets = [];
+  await ctx.route(/^https?:/, (r) => { nets.push(r.request().url().replace(/[?#].*$/, '')); r.abort(); });
   await ctx.addInitScript(() => { try { if (!localStorage.getItem('__fffseed')) { localStorage.setItem('__fffseed', '1'); localStorage.setItem('zz.foreign.key', 'ramane'); } } catch (e) { /* ignorat */ } });
   const page = await ctx.newPage();
   const errs = [];
@@ -28,7 +28,7 @@ async function visit(browser, url, {w, h, scheme = 'light'}) {
   page.on('console', (m) => { const t = m.text(); if (/Content Security Policy|Refused to/i.test(t)) errs.push('csp: ' + norm(t)); });
   await page.goto(url, {waitUntil: 'load', timeout: 60000}).catch((e) => errs.push('goto: ' + e.message));
   await page.waitForTimeout(3500);
-  return {ctx, page, errs, netCount: () => net};
+  return {ctx, page, errs, netCount: () => nets.length, nets};
 }
 async function axeRun(page, sel) {
   if (!(await page.evaluate(() => !!window.axe))) await page.evaluate(axeSrc);
@@ -96,11 +96,11 @@ async function testApp(browser, e) {
   for (const vp of [{n: '1280', w: 1280, h: 800}, {n: '360', w: 360, h: 740}]) {
     const o = await visit(browser, ourl, vp);
     const oo = await overflow(o.page), oa = await axeRun(o.page).catch(() => null);
-    const oerr = o.errs.slice(), onet = o.netCount();
+    const oerr = o.errs.slice(), onet = o.netCount(), onets = o.nets.slice();
     await o.ctx.close();
     const k = await visit(browser, kurl, vp);
     const ko = await overflow(k.page), ka = await axeRun(k.page).catch(() => null);
-    const kerr = k.errs.slice(), knet = k.netCount();
+    const kerr = k.errs.slice(), knet = k.netCount(), knew = k.nets.filter((u) => !onets.includes(u));
     const newErr = kerr.filter((m) => !oerr.includes(m));
     const newAxe = (ka || []).filter((m) => !(oa || []).includes(m));
     const newOverflow = (ko.doc > 0 || ko.body > 0) && !(oo.doc > 0 || oo.body > 0);
@@ -108,7 +108,7 @@ async function testApp(browser, e) {
     if (newErr.length) rec.probleme.push(`${vp.n}: erori noi: ${newErr.slice(0, 2).join(' | ')}`);
     if (newAxe.length) rec.probleme.push(`${vp.n}: axe nou: ${newAxe.slice(0, 3).join(' ; ')}`);
     if (newOverflow) rec.probleme.push(`${vp.n}: depășire orizontală nouă ${JSON.stringify(ko)}`);
-    if (knet > onet) rec.probleme.push(`${vp.n}: ${knet - onet} cereri de rețea noi`);
+    if (knew.length) rec.probleme.push(`${vp.n}: cereri de rețea noi: ${knew.slice(0, 2).join(' ')}`);
     if (vp.n === '1280') {
       // etichetă
       const lab = {};
