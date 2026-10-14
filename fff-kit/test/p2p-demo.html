@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="ro">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>X și 0 prin fff-kit</title>
+<style>
+  :root { --bg:#fafafa; --fg:#16161a; --muted:#4a4a55; --cell:#ffffff; --line:#6b6b75; --acc:#1d4ed8; }
+  @media (prefers-color-scheme: dark) { :root { --bg:#17171b; --fg:#ececf1; --muted:#b4b4c0; --cell:#232329; --line:#9a9aa6; --acc:#8ab4ff; } }
+  body { margin:0; padding:1rem; background:var(--bg); color:var(--fg); font:1rem/1.45 system-ui,sans-serif; }
+  main { max-width:26rem; margin:0 auto; }
+  h1 { font-size:1.4rem; margin:.2rem 0 .6rem; }
+  #board { display:grid; grid-template-columns:repeat(3,1fr); gap:.4rem; margin:1rem 0; }
+  #board button { aspect-ratio:1; font-size:2.2rem; font-weight:700; background:var(--cell); color:var(--fg); border:2px solid var(--line); border-radius:.5rem; cursor:pointer; }
+  #board button:focus-visible, .ctl:focus-visible { outline:3px solid #f59e0b; outline-offset:2px; }
+  .ctl { min-height:2.5rem; padding:.4rem 1rem; font:inherit; border:2px solid var(--acc); border-radius:.4rem; background:transparent; color:var(--acc); cursor:pointer; }
+  #status, #conn { margin:.4rem 0; }
+  #conn { color:var(--muted); font-size:.9rem; }
+  footer { margin-top:1.5rem; font-size:.85rem; color:var(--muted); }
+</style>
+<script src="core-shim.js"></script>
+<script>
+  /* Banca de traduceri vine din harness-ul de test (window.__I18N); în kit-ul real o injectează build.mjs. */
+  if (window.__I18N) for (const k in window.__I18N) FFF.registerI18n(k, window.__I18N[k]);
+</script>
+<script src="../src/qr.js"></script>
+<script src="../src/p2p.js"></script>
+</head>
+<body>
+<main>
+  <h1>X și 0 — doi jucători, fără server</h1>
+  <p>Demonstrație pentru <code>FFF.p2p</code>: gazda joacă X, oaspetele joacă 0; gazda este autoritară.</p>
+  <div class="row">
+    <button class="ctl" id="p2p-open" type="button">Multiplayer</button>
+    <button class="ctl" id="newgame" type="button" hidden>Joc nou</button>
+  </div>
+  <div id="board" role="group" aria-label="Tablă de joc"></div>
+  <p id="status" role="status" aria-live="polite">Apasă „Multiplayer” pentru a începe.</p>
+  <p id="conn"></p>
+  <footer>Jucătorii își schimbă oferta și răspunsul prin copiere sau QR; nu există server.</footer>
+</main>
+<script>
+(function () {
+  'use strict';
+  const LINES = [[0,1,2],[3,4,5],[6,7,8],[0,3,6],[1,4,7],[2,5,8],[0,4,8],[2,4,6]];
+  const g = {board: Array(9).fill(''), turn: 'X', winner: null, me: null, ls: null, rolls: [], log: [], session: null};
+  window.__game = g;
+  const $ = id => document.getElementById(id);
+  const cells = [];
+  for (let i = 0; i < 9; i++) {
+    const b = document.createElement('button');
+    b.type = 'button'; b.dataset.i = i; b.setAttribute('aria-label', 'Celula ' + (i + 1));
+    b.addEventListener('click', () => play(i));
+    $('board').appendChild(b); cells.push(b);
+  }
+  const winnerOf = b => { for (const [x, y, z] of LINES) if (b[x] && b[x] === b[y] && b[x] === b[z]) return b[x]; return b.every(Boolean) ? '=' : null; };
+  function say(t) { $('status').textContent = t; }
+  function render() {
+    cells.forEach((c, i) => { c.textContent = g.board[i]; c.setAttribute('aria-label', 'Celula ' + (i + 1) + (g.board[i] ? ': ' + g.board[i] : '')); });
+    if (!g.session) return;
+    if (g.winner === '=') say('Remiză.');
+    else if (g.winner) say('A câștigat ' + g.winner + (g.winner === g.me ? ' (tu).' : '.'));
+    else say(g.turn === g.me ? 'Este rândul tău (' + g.me + ').' : 'Rândul celuilalt (' + g.turn + ').');
+    $('newgame').hidden = !g.winner;
+  }
+  /* aplicare deterministă — rulează identic la gazdă și la oaspete, în ordinea seq */
+  function apply(move, info) {
+    if (move.fresh) {
+      if (!g.winner) return 'game-not-over';
+      g.board = Array(9).fill(''); g.winner = null;
+      const r = info.rng(); g.rolls.push(r); g.turn = r < 0.5 ? 'X' : 'O';
+      g.log.push('fresh'); render(); return;
+    }
+    const sym = info.from === 'host' ? 'X' : 'O';
+    if (g.winner) return 'game-over';
+    if (g.turn !== sym) return 'not-your-turn';
+    const i = move.i;
+    if (!Number.isInteger(i) || i < 0 || i > 8 || g.board[i]) return 'illegal-cell';
+    g.board[i] = sym; g.turn = sym === 'X' ? 'O' : 'X'; g.winner = winnerOf(g.board);
+    g.log.push(sym + i); render();
+  }
+  function play(i) {
+    if (!g.ls) return say('Conectează-te mai întâi.');
+    g.ls.move({i}).catch(e => say('Mutare refuzată: ' + e.message));
+  }
+  $('newgame').addEventListener('click', () => g.ls && g.ls.move({fresh: true}).catch(e => say('Refuzat: ' + e.message)));
+  function start(session) {
+    g.session = session; g.me = session.role === 'host' ? 'X' : 'O';
+    g.ls = FFF.p2p.lockstep(session, {
+      onMove: apply,
+      onState: (st, info) => {
+        if (st) { g.board = st.board.slice(); g.turn = st.turn; g.winner = st.winner; }
+        else { g.board = Array(9).fill(''); g.turn = 'X'; g.winner = null; }
+        g.log.push('state:' + info.reason); render();
+      },
+      snapshot: () => ({board: g.board.slice(), turn: g.turn, winner: g.winner}),
+      hash: () => g.board.join('') + g.turn + (g.winner || '')
+    });
+    session.on('latency', ms => { $('conn').textContent = 'Latență: ' + ms + ' ms'; });
+    session.on('state', st => { if (st === 'lost') say('Conexiune pierdută…'); });
+    session.on('close', why => { say('Conexiune închisă (' + why + ').'); });
+    render();
+  }
+  g.start = start;
+  $('p2p-open').addEventListener('click', () => {
+    const opts = window.__DIALOG_OPTS || {};
+    FFF.p2p.dialog(Object.assign({title: 'Multiplayer X și 0', onOpen: start}, opts));
+  });
+  render();
+})();
+</script>
+</body>
+</html>

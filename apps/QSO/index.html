@@ -1,0 +1,1925 @@
+<!DOCTYPE html>
+<html lang="ro" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="application-version" content="1.0.0">
+<meta name="last-updated" content="2026-10-14">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-XoD/dAKvZqwB5nnjYWk6YKck4sFh+1Y4/fy3hnSRAiA=' 'sha256-2JUjz3n5ig7g/d1U6eeBVqaUVa1GuHXOVPbxyB+gvaM='; style-src 'unsafe-inline'; img-src data: blob:; media-src data: blob:; font-src data:; connect-src 'none'; base-uri 'none'; form-action 'none'; frame-src 'none'; object-src 'none'; worker-src blob:; manifest-src 'none'">
+<meta name="description" content="QSO: jurnal de stație radioamator offline, neoficial — ADIF 3.1 import/export, locatori Maidenhead, distanțe, statistici, Cabrillo de bază. Fără cont, fără telemetrie.">
+<meta name="referrer" content="no-referrer">
+<title>QSO — jurnal radioamator</title>
+<script>
+(function(){try{var t=localStorage.getItem("fff.qso.theme");if(t!=="light"&&t!=="dark")t=(window.matchMedia&&matchMedia("(prefers-color-scheme: light)").matches)?"light":"dark";document.documentElement.setAttribute("data-theme",t);var l=localStorage.getItem("fff.qso.lang");if(l)document.documentElement.setAttribute("lang",l);}catch(e){}})();
+</script>
+<style>
+:root{color-scheme:dark;
+ --bg:#14181b;--panel:#1b2024;--raised:#232a30;--sunken:#0f1214;--border:#2c343a;--border-soft:#242b31;
+ --text:#eae7e0;--dim:#a2a9ae;--accent:#e0883d;--accent-fill:#e0883d;--accent-ink:#1a1206;--accent-glow:rgba(224,136,61,.35);
+ --good:#5fbf7a;--bad:#ef8077;--warn:#e3b341;--radius:12px;--radius-sm:8px;
+ --mono:ui-monospace,"SF Mono","Cascadia Mono","Roboto Mono",Consolas,monospace;
+ --sans:-apple-system,"SF Pro Text","Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif}
+:root[data-theme="light"]{color-scheme:light;
+ --bg:#f1f3f1;--panel:#fff;--raised:#fff;--sunken:#e4e8e5;--border:#c9d0cc;--border-soft:#e2e6e3;
+ --text:#1c2321;--dim:#505a55;--accent:#9a4f10;--accent-fill:#9c4d0d;--accent-ink:#fff;--accent-glow:rgba(160,85,21,.2);
+ --good:#1d6b34;--bad:#a82c22;--warn:#7a5a00}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--text);font:15px/1.45 var(--sans);min-height:100vh}
+a{color:var(--accent)}
+button,input,select,textarea{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.skip{position:absolute;left:8px;top:-60px;background:var(--accent-fill);color:var(--accent-ink);padding:8px 12px;border-radius:8px;z-index:50}
+.skip:focus{top:8px}
+header.top{display:flex;flex-wrap:wrap;gap:10px 14px;align-items:center;padding:10px 16px;background:var(--panel);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:20}
+header.top h1{font-size:20px;margin:0;letter-spacing:.06em}
+header.top h1 small{font-weight:400;font-size:12px;color:var(--dim);letter-spacing:0;margin-left:6px}
+.clock{font:600 20px var(--mono);color:var(--accent);padding:2px 10px;border:1px solid var(--border);border-radius:var(--radius-sm);background:var(--sunken);white-space:nowrap}
+.clock small{font-size:11px;color:var(--dim);margin-left:4px}
+.spacer{flex:1}
+.hdr-tools{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.tabs{display:flex;gap:4px;padding:8px 16px 0;overflow-x:auto;border-bottom:1px solid var(--border);background:var(--bg)}
+.tabs button{background:none;border:1px solid transparent;border-bottom:none;padding:8px 14px;border-radius:var(--radius-sm) var(--radius-sm) 0 0;cursor:pointer;color:var(--dim);white-space:nowrap;min-height:36px}
+.tabs button[aria-selected="true"]{background:var(--panel);border-color:var(--border);color:var(--text);font-weight:600;box-shadow:inset 0 2px 0 var(--accent)}
+main{padding:16px;max-width:1500px;margin:0 auto}
+section.tab[hidden]{display:none}
+.card{background:var(--panel);border:1px solid var(--border);border-radius:var(--radius);padding:14px;margin-bottom:16px}
+.card h2{font-size:16px;margin:0 0 10px}
+.card h3{font-size:14px;margin:12px 0 6px;color:var(--dim);font-weight:600}
+.grid{display:grid;gap:10px 12px;grid-template-columns:repeat(auto-fit,minmax(150px,1fr))}
+.grid .w2{grid-column:span 2}.grid .full{grid-column:1/-1}
+@media(max-width:420px){.grid .w2{grid-column:1/-1}}
+label{display:flex;flex-direction:column;gap:3px;font-size:13px;color:var(--dim)}
+label.inline{flex-direction:row;align-items:center;gap:6px}
+input,select,textarea{background:var(--sunken);border:1px solid var(--border);border-radius:var(--radius-sm);padding:7px 9px;min-height:36px;color:var(--text);width:100%}
+input[type=checkbox],input[type=radio]{width:auto;min-height:0;accent-color:var(--accent-fill)}
+input.call{font:700 18px var(--mono);text-transform:uppercase;letter-spacing:.04em}
+input.mono,.mono{font-family:var(--mono)}
+input[aria-invalid="true"]{border-color:var(--bad);box-shadow:0 0 0 1px var(--bad)}
+textarea{resize:vertical;min-height:60px}
+.hint{font-size:12px;color:var(--dim);min-height:16px}
+.hint.bad{color:var(--bad)}.hint.good{color:var(--good)}.hint.warn{color:var(--warn)}
+.btn{background:var(--raised);border:1px solid var(--border);border-radius:var(--radius-sm);padding:7px 12px;min-height:36px;cursor:pointer;display:inline-flex;align-items:center;gap:6px;color:var(--text)}
+.btn:hover{border-color:var(--accent)}
+.btn.primary{background:var(--accent-fill);border-color:var(--accent-fill);color:var(--accent-ink);font-weight:700}
+.btn.danger{border-color:var(--bad);color:var(--bad)}
+.btn.small{padding:3px 8px;min-height:28px;font-size:13px}
+.btn[disabled]{opacity:.5;cursor:not-allowed}
+.row{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.row.end{justify-content:flex-end}
+.badge{display:inline-block;padding:1px 7px;border-radius:99px;border:1px solid var(--border);font-size:12px;color:var(--dim)}
+.badge.bad{color:var(--bad);border-color:var(--bad)}.badge.warn{color:var(--warn);border-color:var(--warn)}.badge.good{color:var(--good);border-color:var(--good)}
+.tablewrap{overflow:auto;border:1px solid var(--border);border-radius:var(--radius-sm);max-height:70vh}
+table{border-collapse:collapse;width:100%;font-size:13px}
+caption{text-align:left;padding:6px 8px;color:var(--dim)}
+th,td{padding:5px 8px;border-bottom:1px solid var(--border-soft);text-align:left;white-space:nowrap}
+th{position:sticky;top:0;background:var(--raised);z-index:1}
+th button{background:none;border:none;cursor:pointer;font-weight:700;padding:0;color:var(--text)}
+tbody tr:hover{background:var(--raised)}
+td.call{font:700 13px var(--mono)}
+td input,td select{min-height:28px;padding:2px 5px;min-width:70px}
+tr.dupe td.call::after{content:" ⚠";color:var(--warn)}
+.stats{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(270px,1fr))}
+.bars{list-style:none;margin:0;padding:0;font-size:13px}
+.bars li{display:grid;grid-template-columns:minmax(60px,110px) 1fr 44px;gap:8px;align-items:center;margin:3px 0}
+.bars .bar{height:12px;background:var(--sunken);border-radius:6px;overflow:hidden}
+.bars .bar i{display:block;height:100%;background:var(--accent-fill)}
+.bars b{text-align:right;font-family:var(--mono)}
+svg.chart{width:100%;height:auto;max-height:420px}
+svg text{fill:var(--dim);font:11px var(--sans)}
+dialog{background:var(--panel);color:var(--text);border:1px solid var(--border);border-radius:var(--radius);padding:16px;max-width:min(640px,94vw);width:100%}
+dialog::backdrop{background:rgba(0,0,0,.55)}
+dialog h2{margin-top:0;font-size:17px}
+dl.kv{display:grid;grid-template-columns:max-content 1fr;gap:3px 12px;margin:0;font-size:13px}
+dl.kv dt{color:var(--dim)}dl.kv dd{margin:0;word-break:break-word;font-family:var(--mono)}
+.toast{position:fixed;left:50%;transform:translateX(-50%);bottom:16px;background:var(--raised);border:1px solid var(--accent);border-radius:var(--radius-sm);padding:8px 14px;z-index:60;max-width:92vw}
+.toast[hidden]{display:none}
+.kbd{font:12px var(--mono);border:1px solid var(--border);border-bottom-width:2px;border-radius:5px;padding:0 5px;background:var(--sunken)}
+pre.out{background:var(--sunken);border:1px solid var(--border);border-radius:var(--radius-sm);padding:10px;overflow:auto;max-height:260px;font:12px var(--mono);white-space:pre-wrap;word-break:break-all}
+footer{padding:16px;color:var(--dim);font-size:12px;text-align:center}
+.notice{border-left:3px solid var(--warn);padding:6px 10px;background:var(--sunken);border-radius:0 var(--radius-sm) var(--radius-sm) 0;font-size:13px}
+/* mod câmp */
+body.field main{max-width:1000px}
+body.field .card.qsoform input,body.field .card.qsoform select{font-size:20px;min-height:48px}
+body.field .card.qsoform input.call{font-size:30px}
+body.field label{font-size:15px}
+body.field .tabs,body.field .hide-field{display:none}
+body.field .clock{font-size:30px}
+@media(prefers-reduced-motion:no-preference){.btn,.tabs button{transition:border-color .15s,background .15s}}
+@media(max-width:560px){main{padding:10px}header.top{padding:8px 10px}.clock{font-size:17px}}
+@media print{
+ header.top,.tabs,.noprint,footer,.card.qsoform,.toolbar,.pager{display:none!important}
+ body{background:#fff;color:#000;font-size:11px}
+ section.tab{display:none!important}
+ section#tab-log{display:block!important}
+ .card{border:none;padding:0}
+ .tablewrap{max-height:none;overflow:visible;border:none}
+ th{position:static;background:#eee;color:#000}th button{color:#000}
+ td,th{color:#000;border-bottom:1px solid #999}
+ td:last-child,th:last-child,td.sel,th.sel{display:none}
+ tr.dupe td.call::after{content:""}
+ .printonly{display:block!important}
+}
+.printonly{display:none}
+
+</style>
+</head>
+<body>
+<a class="skip" href="#main" data-i18n="skip">Sari la conținut</a>
+<header class="top">
+ <h1>QSO<small data-i18n="subtitle">jurnal de stație radioamator</small></h1>
+ <div class="clock" id="clock" role="timer" aria-label="UTC" title="UTC"><span id="clockT">--:--:--</span><small>UTC</small></div>
+ <div class="spacer"></div>
+ <div class="hdr-tools">
+  <label class="inline"><span class="sr" data-i18n="language">Limbă</span><select id="langSel" aria-label="Limbă" style="width:auto"></select></label>
+  <button class="btn small" id="themeBtn" type="button" data-i18n="theme">Temă</button>
+  <button class="btn small" id="fieldBtn" type="button" aria-pressed="false" data-i18n="fieldMode">Mod câmp</button>
+  <button class="btn small" id="helpBtn" type="button" data-i18n="keys">Taste rapide</button>
+ </div>
+</header>
+<nav aria-label="Secțiuni" data-i18n-aria="sections"><div class="tabs" role="tablist" aria-label="Secțiuni" data-i18n-aria="sections">
+ <button role="tab" id="tb-log" aria-controls="tab-log" aria-selected="true" data-tab="log" data-i18n="tabLog">Jurnal</button>
+ <button role="tab" id="tb-calc" aria-controls="tab-calc" aria-selected="false" tabindex="-1" data-tab="calc" data-i18n="tabCalc">Calcule</button>
+ <button role="tab" id="tb-stats" aria-controls="tab-stats" aria-selected="false" tabindex="-1" data-tab="stats" data-i18n="tabStats">Statistici</button>
+ <button role="tab" id="tb-io" aria-controls="tab-io" aria-selected="false" tabindex="-1" data-tab="io" data-i18n="tabIo">Import / Export</button>
+ <button role="tab" id="tb-station" aria-controls="tab-station" aria-selected="false" tabindex="-1" data-tab="station" data-i18n="tabStation">Stație și setări</button>
+</div></nav>
+<main id="main" tabindex="-1">
+
+<!-- ================= JURNAL ================= -->
+<section class="tab" id="tab-log" role="tabpanel" aria-labelledby="tb-log">
+ <div class="card qsoform">
+  <h2 id="formTitle" data-i18n="newQso">QSO nou</h2>
+  <form id="qsoForm" novalidate autocomplete="off">
+   <div class="row" style="margin-bottom:8px">
+    <span class="badge" id="stationBadge"></span>
+    <span class="badge" id="contestBadge" hidden></span>
+   </div>
+   <div class="grid">
+    <label class="w2"><span data-i18n="call">Indicativ lucrat</span>
+     <input class="call" id="f_call" name="call" maxlength="20" autocapitalize="characters" spellcheck="false" aria-describedby="callHint" required>
+     <span class="hint" id="callHint" aria-live="polite"></span></label>
+    <label><span data-i18n="date">Data (UTC)</span><input type="date" id="f_date"></label>
+    <label><span data-i18n="time">Ora (UTC)</span><input type="time" id="f_time" step="1"></label>
+    <div class="row" style="align-self:end;padding-bottom:4px">
+     <button class="btn small" type="button" id="nowBtn" data-i18n="now">Acum</button>
+     <label class="inline"><input type="checkbox" id="f_live" checked><span data-i18n="live">Ceas live</span></label>
+    </div>
+    <label><span data-i18n="freq">Frecvență (MHz)</span><input id="f_freq" inputmode="decimal" class="mono" placeholder="14.074"></label>
+    <label><span data-i18n="band">Bandă</span><select id="f_band"></select></label>
+    <label><span data-i18n="mode">Mod</span><select id="f_mode"></select></label>
+    <label><span data-i18n="submode">Submod</span><select id="f_submode"></select></label>
+    <label><span data-i18n="rstS">RST trimis</span><input id="f_rsts" class="mono" maxlength="4" aria-describedby="rstHint"></label>
+    <label><span data-i18n="rstR">RST primit</span><input id="f_rstr" class="mono" maxlength="4" aria-describedby="rstHint"></label>
+    <label><span data-i18n="power">Putere (W)</span><input id="f_pwr" inputmode="decimal" class="mono"></label>
+    <label><span data-i18n="grid">Locator Maidenhead</span><input id="f_grid" class="mono" maxlength="8" spellcheck="false" aria-describedby="gridHint"><span class="hint" id="gridHint" aria-live="polite"></span></label>
+    <label><span data-i18n="name">Nume</span><input id="f_name"></label>
+    <label><span data-i18n="qth">QTH</span><input id="f_qth"></label>
+    <label class="w2"><span data-i18n="comment">Comentarii</span><input id="f_comment"></label>
+    <label><span data-i18n="qslS">QSL trimis</span><select id="f_qsls"></select></label>
+    <label><span data-i18n="qslR">QSL primit</span><select id="f_qslr"></select></label>
+   </div>
+   <span class="hint" id="rstHint" data-i18n="rstHint"></span>
+   <details id="contestBox" style="margin-top:10px">
+    <summary data-i18n="contest">Concurs</summary>
+    <div class="grid" style="margin-top:8px">
+     <label class="inline full"><input type="checkbox" id="c_on"><span data-i18n="contestOn">Mod concurs (număr de ordine automat, „dupe” pe concurs)</span></label>
+     <label class="w2"><span data-i18n="contestId">Nume concurs (CONTEST_ID)</span><input id="c_id" list="contestList" class="mono" placeholder="CQ-WW-SSB"></label>
+     <datalist id="contestList"></datalist>
+     <label><span data-i18n="stx">Nr. trimis (STX)</span><input id="f_stx" inputmode="numeric" class="mono"></label>
+     <label><span data-i18n="srx">Nr. primit (SRX)</span><input id="f_srx" inputmode="numeric" class="mono"></label>
+     <label><span data-i18n="stxStr">Schimb trimis</span><input id="f_stxs"></label>
+     <label><span data-i18n="srxStr">Schimb primit</span><input id="f_srxs"></label>
+    </div>
+   </details>
+   <div class="row" style="margin-top:12px">
+    <button class="btn primary" type="submit" id="saveBtn" data-i18n="save">Salvează QSO</button>
+    <button class="btn" type="button" id="clearBtn" data-i18n="clear">Golește</button>
+    <button class="btn" type="button" id="cancelEditBtn" hidden data-i18n="cancelEdit">Renunță la editare</button>
+    <span class="hint" id="saveHint" aria-live="polite"></span>
+   </div>
+  </form>
+ </div>
+
+ <div class="card">
+  <h2 data-i18n="logTitle">Jurnal</h2>
+  <div class="printonly" id="printHead"></div>
+  <div class="toolbar row" style="margin-bottom:8px">
+   <label style="flex:1;min-width:150px"><span class="sr" data-i18n="search">Căutare</span><input type="search" id="q" data-i18n-ph="searchPh" placeholder="Caută…" aria-label="Căutare"></label>
+   <label><span class="sr" data-i18n="band">Bandă</span><select id="flBand" aria-label="Bandă" style="width:auto"></select></label>
+   <label><span class="sr" data-i18n="mode">Mod</span><select id="flMode" aria-label="Mod" style="width:auto"></select></label>
+   <label><span class="sr" data-i18n="year">An</span><select id="flYear" aria-label="An" style="width:auto"></select></label>
+   <label><span class="sr" data-i18n="qslR">QSL primit</span><select id="flQsl" aria-label="QSL" style="width:auto"></select></label>
+   <label class="inline"><input type="checkbox" id="flDupe"><span data-i18n="onlyDupes">doar duplicate</span></label>
+  </div>
+  <div class="toolbar row" style="margin-bottom:8px">
+   <span class="badge" id="countBadge"></span>
+   <button class="btn small" type="button" id="undoBtn" data-i18n="undo">Anulează</button>
+   <button class="btn small" type="button" id="redoBtn" data-i18n="redo">Refă</button>
+   <button class="btn small danger" type="button" id="delSelBtn" data-i18n="delSel">Șterge selecția</button>
+   <button class="btn small" type="button" id="printBtn" data-i18n="print">Tipărește</button>
+   <button class="btn small" type="button" id="sampleBtn" data-i18n="sample">Încarcă exemplu</button>
+  </div>
+  <div class="tablewrap" tabindex="0" role="region" aria-labelledby="tblCap">
+   <table id="logTable">
+    <caption class="sr" id="tblCap" data-i18n="logTitle">Jurnal</caption>
+    <thead><tr id="thead"></tr></thead>
+    <tbody id="tbody"></tbody>
+   </table>
+  </div>
+  <p class="hint" id="emptyMsg" hidden data-i18n="empty">Jurnalul este gol. Adaugă primul QSO sau apasă „Încarcă exemplu”.</p>
+  <div class="pager row" style="margin-top:8px">
+   <button class="btn small" type="button" id="prevPg" data-i18n="prev">Înapoi</button>
+   <span id="pgInfo" aria-live="polite"></span>
+   <button class="btn small" type="button" id="nextPg" data-i18n="next">Înainte</button>
+  </div>
+ </div>
+</section>
+
+<!-- ================= CALCULE ================= -->
+<section class="tab" id="tab-calc" role="tabpanel" aria-labelledby="tb-calc" hidden>
+ <div class="card">
+  <h2 data-i18n="distTitle">Distanță și azimut (cerc mare)</h2>
+  <div class="grid">
+   <label><span data-i18n="locA">Locator A</span><input id="k_a" class="mono" maxlength="8"></label>
+   <label><span data-i18n="locB">Locator B</span><input id="k_b" class="mono" maxlength="8"></label>
+   <div class="row" style="align-self:end"><button class="btn small" type="button" id="k_useMine" data-i18n="useMine">A = locatorul meu</button></div>
+  </div>
+  <div id="k_out" class="hint" aria-live="polite" style="margin-top:8px;font-size:14px;color:var(--text)"></div>
+  <p class="hint" data-i18n="distNote">Sferă R = 6371,0088 km, centrul pătratelor de locator; precizia depinde de lungimea locatorului (4 caractere ≈ ±100 km).</p>
+ </div>
+ <div class="card">
+  <h2 data-i18n="convTitle">Locator ↔ coordonate</h2>
+  <div class="grid">
+   <label><span data-i18n="locator">Locator</span><input id="k_loc" class="mono" maxlength="8"></label>
+   <label><span data-i18n="lat">Latitudine (°)</span><input id="k_lat" class="mono" inputmode="decimal"></label>
+   <label><span data-i18n="lon">Longitudine (°)</span><input id="k_lon" class="mono" inputmode="decimal"></label>
+   <label><span data-i18n="locLen">Lungime locator</span><select id="k_len"><option>4</option><option selected>6</option><option>8</option></select></label>
+  </div>
+  <div id="k_conv" class="hint" aria-live="polite" style="margin-top:8px;font-size:14px;color:var(--text)"></div>
+ </div>
+ <div class="card">
+  <h2 data-i18n="sunTitle">Ora locală și răsărit/apus (aproximativ)</h2>
+  <div class="grid">
+   <label><span data-i18n="locator">Locator</span><input id="s_loc" class="mono" maxlength="8"></label>
+   <label><span data-i18n="date">Data</span><input type="date" id="s_date"></label>
+  </div>
+  <div id="s_out" class="hint" aria-live="polite" style="margin-top:8px;font-size:14px;color:var(--text)"></div>
+  <p class="hint" data-i18n="sunNote">Formulă simplă (NOAA simplificată, refracție standard 0,833°): eroare tipică ± câteva minute; ora locală este ora solară medie (longitudine/15), nu fusul oficial și nu include ora de vară.</p>
+ </div>
+ <div class="card">
+  <h2 data-i18n="pfxTitle">Prefix → țară</h2>
+  <label style="max-width:320px"><span data-i18n="call">Indicativ</span><input id="p_call" class="mono" maxlength="20" style="text-transform:uppercase"></label>
+  <div id="p_out" class="hint" aria-live="polite" style="margin-top:8px;font-size:14px;color:var(--text)"></div>
+  <p class="notice" id="pfxDisclaimer"></p>
+ </div>
+</section>
+
+<!-- ================= STATISTICI ================= -->
+<section class="tab" id="tab-stats" role="tabpanel" aria-labelledby="tb-stats" hidden>
+ <div class="card"><h2 data-i18n="tabStats">Statistici</h2><div id="st_summary" class="row"></div></div>
+ <div class="stats">
+  <div class="card"><h2 data-i18n="byBand">Pe bandă</h2><ul class="bars" id="st_band"></ul></div>
+  <div class="card"><h2 data-i18n="byMode">Pe mod</h2><ul class="bars" id="st_mode"></ul></div>
+  <div class="card"><h2 data-i18n="byCountry">Pe țară</h2><ul class="bars" id="st_country"></ul></div>
+  <div class="card"><h2 data-i18n="byYear">Pe an</h2><ul class="bars" id="st_year"></ul></div>
+ </div>
+ <div class="card"><h2 data-i18n="perHour">QSO pe oră (UTC)</h2><div id="st_hour"></div></div>
+ <div class="card"><h2 data-i18n="mapTitle">Hartă azimutală (centrată pe stația proprie)</h2>
+  <div id="st_map"></div>
+  <p class="hint" data-i18n="mapNote">Fără contururi de continente (nu se încarcă date externe): sunt desenate doar punctele QSO pe direcția și distanța lor, din locatorul lucrat (sau centrul țării nu se folosește). Inelele: 5000, 10000, 15000, 20000 km.</p></div>
+</section>
+
+<!-- ================= IMPORT / EXPORT ================= -->
+<section class="tab" id="tab-io" role="tabpanel" aria-labelledby="tb-io" hidden>
+ <div class="card">
+  <h2 data-i18n="importTitle">Import</h2>
+  <div class="row">
+   <label><span data-i18n="importFile">Fișier (.adi, .adx, .csv, .json)</span><input type="file" id="impFile" accept=".adi,.adif,.adx,.csv,.json,.txt"></label>
+   <label class="inline"><input type="checkbox" id="impSkip" checked><span data-i18n="impSkip">omite QSO identice deja existente</span></label>
+  </div>
+  <p class="hint" id="impMsg" aria-live="polite"></p>
+  <pre class="out" id="impReport" hidden></pre>
+ </div>
+ <div class="card">
+  <h2 data-i18n="exportTitle">Export</h2>
+  <label style="max-width:360px"><span data-i18n="scope">Ce se exportă</span><select id="exScope"><option value="all" data-i18n="scAll">Tot jurnalul</option><option value="filtered" data-i18n="scFiltered">Doar rândurile filtrate</option><option value="contest" data-i18n="scContest">Doar concursul curent</option></select></label>
+  <div class="row" style="margin-top:10px">
+   <button class="btn" type="button" id="exAdi">ADIF (.adi)</button>
+   <button class="btn" type="button" id="exAdx">ADX (.adx)</button>
+   <button class="btn" type="button" id="exCsv">CSV</button>
+   <button class="btn" type="button" id="exJson">JSON</button>
+  </div>
+  <h3 data-i18n="cabTitle">Cabrillo 3.0 (de bază)</h3>
+  <div class="grid">
+   <label><span data-i18n="cabContest">CONTEST</span><input id="cb_contest" class="mono"></label>
+   <label><span>CATEGORY-OPERATOR</span><select id="cb_op"><option>SINGLE-OP</option><option>MULTI-OP</option><option>CHECKLOG</option></select></label>
+   <label><span>CATEGORY-BAND</span><input id="cb_band" class="mono" value="ALL"></label>
+   <label><span>CATEGORY-MODE</span><select id="cb_mode"><option>MIXED</option><option>SSB</option><option>CW</option><option>RTTY</option><option>DIGI</option><option>FM</option></select></label>
+   <label><span>CATEGORY-POWER</span><select id="cb_pwr"><option>LOW</option><option>HIGH</option><option>QRP</option></select></label>
+  </div>
+  <div class="row" style="margin-top:8px"><button class="btn" type="button" id="exCab" data-i18n="cabExport">Exportă Cabrillo</button></div>
+  <p class="notice" data-i18n="cabWarn">Atenție: Cabrillo are formate de schimb specifice fiecărui concurs. Fișierul generat conține antetul și liniile QSO în forma generică; verifică regulamentul concursului și corectează manual înainte de trimitere.</p>
+ </div>
+ <div class="card">
+  <h2 data-i18n="backupTitle">Copie de siguranță</h2>
+  <div class="row">
+   <button class="btn" type="button" id="bkExport" data-i18n="bkExport">Exportă .fff.json</button>
+   <label><span class="sr" data-i18n="bkImport">Importă copie</span><input type="file" id="bkFile" accept=".json" aria-label="Importă copie .fff.json"></label>
+   <button class="btn danger" type="button" id="wipeBtn" data-i18n="wipe">Șterge tot</button>
+  </div>
+  <p class="hint" id="bkMsg" aria-live="polite"></p>
+ </div>
+</section>
+
+<!-- ================= STAȚIE ================= -->
+<section class="tab" id="tab-station" role="tabpanel" aria-labelledby="tb-station" hidden>
+ <div class="card">
+  <h2 data-i18n="stationTitle">Stația proprie</h2>
+  <div class="grid">
+   <label><span data-i18n="profile">Profil</span><select id="pf_sel"></select></label>
+   <label><span data-i18n="pfName">Nume profil</span><input id="pf_name"></label>
+   <label><span data-i18n="myCall">Indicativ stație</span><input id="pf_call" class="mono" maxlength="20" style="text-transform:uppercase" aria-describedby="pfHint"></label>
+   <label><span data-i18n="operator">Operator (OPERATOR)</span><input id="pf_op" class="mono" maxlength="20" style="text-transform:uppercase"></label>
+   <label><span data-i18n="myGrid">Locator propriu</span><input id="pf_grid" class="mono" maxlength="8"></label>
+   <label><span data-i18n="power">Putere (W)</span><input id="pf_pwr" inputmode="decimal" class="mono"></label>
+  </div>
+  <p class="hint" id="pfHint" aria-live="polite"></p>
+  <div class="row">
+   <button class="btn primary" type="button" id="pfSave" data-i18n="pfSave">Salvează profilul</button>
+   <button class="btn" type="button" id="pfNew" data-i18n="pfNew">Profil nou</button>
+   <button class="btn danger" type="button" id="pfDel" data-i18n="pfDel">Șterge profilul</button>
+  </div>
+ </div>
+ <div class="card">
+  <h2 data-i18n="settings">Setări</h2>
+  <div class="grid">
+   <label><span data-i18n="dupeWin">Fereastră duplicate (minute; 0 = oricând)</span><input id="st_win" inputmode="numeric" class="mono"></label>
+   <label class="inline" style="align-self:end"><input type="checkbox" id="st_guard"><span data-i18n="guard">Avertizează la închiderea paginii mereu</span></label>
+  </div>
+ </div>
+ <div class="card">
+  <h2 data-i18n="about">Despre</h2>
+  <p data-i18n="aboutText"></p>
+  <p class="notice" data-i18n="limits"></p>
+  <p class="hint" data-i18n="privacy"></p>
+ </div>
+</section>
+</main>
+<footer><span id="app-version">v 1.0.0 · 2026-10-14</span> · QSO · <span data-i18n="footer">rulează local, nu trimite nimic</span></footer>
+
+<div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+
+<dialog id="dlgConfirm" aria-labelledby="dcTitle"><h2 id="dcTitle" data-i18n="confirm">Confirmare</h2><p id="dcMsg"></p>
+ <div class="row end"><button class="btn" type="button" id="dcNo" data-i18n="cancel">Renunță</button><button class="btn danger" type="button" id="dcYes" data-i18n="yes">Confirmă</button></div></dialog>
+
+<dialog id="dlgDetail" aria-labelledby="ddTitle"><h2 id="ddTitle" data-i18n="detail">Detalii QSO</h2><dl class="kv" id="ddBody"></dl>
+ <div class="row end" style="margin-top:12px"><button class="btn" type="button" id="ddClose" data-i18n="close">Închide</button></div></dialog>
+
+<dialog id="dlgKeys" aria-labelledby="dkTitle"><h2 id="dkTitle" data-i18n="keys">Taste rapide</h2>
+ <ul id="keysList" style="padding-left:18px"></ul>
+ <div class="row end"><button class="btn" type="button" id="dkClose" data-i18n="close">Închide</button></div></dialog>
+
+<script>
+/* ===== QSO lib: geo, indicative, benzi ===== */
+const Lib = (function(){
+'use strict';
+const R_EARTH = 6371.0088;
+const rad = d => d*Math.PI/180, deg = r => r*180/Math.PI;
+
+/* ---- Maidenhead ---- */
+const GRID_RE = /^[A-R]{2}[0-9]{2}([A-X]{2}([0-9]{2})?)?$/i;
+function gridValid(g){
+  if(typeof g!=='string') return false;
+  g=g.trim();
+  if(![4,6,8].includes(g.length)) return false;
+  return GRID_RE.test(g);
+}
+function normGrid(g){
+  g=g.trim();
+  return g.slice(0,2).toUpperCase()+g.slice(2,4)+g.slice(4,6).toLowerCase()+g.slice(6,8);
+}
+/* centru (sau colț SV) al pătratului */
+function gridToLatLon(g, corner){
+  if(!gridValid(g)) return null;
+  g=g.trim().toUpperCase();
+  let lon=-180, lat=-90, w=20, h=10;
+  lon += (g.charCodeAt(0)-65)*20; lat += (g.charCodeAt(1)-65)*10;
+  if(g.length>=4){ w=2; h=1; lon += +g[2]*2; lat += +g[3]; }
+  if(g.length>=6){ w=2/24; h=1/24; lon += (g.charCodeAt(4)-65)*w; lat += (g.charCodeAt(5)-65)*h; }
+  if(g.length>=8){ w=w/10; h=h/10; lon += +g[6]*w; lat += +g[7]*h; }
+  if(!corner){ lon+=w/2; lat+=h/2; }
+  return {lat, lon, w, h};
+}
+function latLonToGrid(lat, lon, len){
+  len = len||6;
+  if(!(lat>=-90&&lat<=90&&lon>=-180&&lon<=180)) return null;
+  if(lat===90) lat=89.9999999; if(lon===180) lon=179.9999999;
+  let lo=lon+180, la=lat+90, s='';
+  s+=String.fromCharCode(65+Math.floor(lo/20))+String.fromCharCode(65+Math.floor(la/10));
+  lo%=20; la%=10;
+  if(len>=4){ s+=Math.floor(lo/2)+''+Math.floor(la); lo%=2; la%=1; }
+  if(len>=6){ s+=String.fromCharCode(97+Math.floor(lo/(2/24)))+String.fromCharCode(97+Math.floor(la/(1/24))); lo%=(2/24); la%=(1/24); }
+  if(len>=8){ s+=Math.floor(lo/(2/240))+''+Math.floor(la/(1/240)); }
+  return s;
+}
+/* distanță (km) + azimut inițial (grade) + azimut invers pe cerc mare, sferă R=6371.0088 km */
+function greatCircle(a, b){
+  const p1=rad(a.lat), p2=rad(b.lat), dl=rad(b.lon-a.lon);
+  const dp=p2-p1;
+  const h=Math.sin(dp/2)**2+Math.cos(p1)*Math.cos(p2)*Math.sin(dl/2)**2;
+  const c=2*Math.atan2(Math.sqrt(h),Math.sqrt(Math.max(0,1-h)));
+  const y=Math.sin(dl)*Math.cos(p2), x=Math.cos(p1)*Math.sin(p2)-Math.sin(p1)*Math.cos(p2)*Math.cos(dl);
+  const y2=Math.sin(-dl)*Math.cos(p1), x2=Math.cos(p2)*Math.sin(p1)-Math.sin(p2)*Math.cos(p1)*Math.cos(-dl);
+  return {km:R_EARTH*c, az:(deg(Math.atan2(y,x))+360)%360, back:(deg(Math.atan2(y2,x2))+360)%360};
+}
+function gridDistance(g1,g2){
+  const a=gridToLatLon(g1), b=gridToLatLon(g2);
+  if(!a||!b) return null;
+  return greatCircle(a,b);
+}
+
+/* ---- Răsărit/apus aproximativ (NOAA simplificat) ---- */
+function sunTimes(lat, lon, date){
+  // date: Date UTC (ziua). Întoarce {rise, set} ca minute UTC din zi sau {polar:'zi'|'noapte'}
+  const y=date.getUTCFullYear(), start=Date.UTC(y,0,0);
+  const N=Math.floor((Date.UTC(y,date.getUTCMonth(),date.getUTCDate())-start)/86400000);
+  const g=2*Math.PI/365*(N-1+(12-12)/24);
+  const eqt=229.18*(0.000075+0.001868*Math.cos(g)-0.032077*Math.sin(g)-0.014615*Math.cos(2*g)-0.040849*Math.sin(2*g));
+  const decl=0.006918-0.399912*Math.cos(g)+0.070257*Math.sin(g)-0.006758*Math.cos(2*g)+0.000907*Math.sin(2*g)-0.002697*Math.cos(3*g)+0.00148*Math.sin(3*g);
+  const zen=rad(90.833);
+  const cosH=(Math.cos(zen)/(Math.cos(rad(lat))*Math.cos(decl)))-Math.tan(rad(lat))*Math.tan(decl);
+  if(cosH>1) return {polar:'noapte'};
+  if(cosH<-1) return {polar:'zi'};
+  const ha=deg(Math.acos(cosH));
+  let rise=720-4*(lon+ha)-eqt, set=720-4*(lon-ha)-eqt;
+  const wrap=m=>((m%1440)+1440)%1440;
+  return {rise:wrap(rise), set:wrap(set)};
+}
+const fmtMin = m => { m=Math.round(m)%1440; return String(Math.floor(m/60)).padStart(2,'0')+':'+String(m%60).padStart(2,'0'); };
+
+/* ---- Indicative ---- */
+const RO_RE = /^(Y[OPQR])([0-9])([A-Z]{1,3})$/;
+// format ITU general: prefix (1-2 litere sau cifră+litera/litera+cifră) + cifră + sufix 1-4 litere (maxim 3 recomandat; admitem până la 4 pentru evenimente speciale)
+const INT_RE = /^([A-Z][A-Z0-9]|[0-9][A-Z]|[A-Z])([0-9])([A-Z]{1,4})$/;
+const INT_RE2 = /^([A-Z]{1,2}|[0-9][A-Z]{1,2}|[A-Z][0-9])([0-9]+)([A-Z]{1,4})$/;
+const SUFFIXES = ['P','M','MM','AM','QRP','A','LH'];
+function parseCall(raw){
+  if(typeof raw!=='string') return {ok:false,reason:'gol'};
+  let s=raw.trim().toUpperCase().replace(/\s+/g,'');
+  if(!s) return {ok:false,reason:'gol'};
+  if(!/^[A-Z0-9\/]+$/.test(s)) return {ok:false,reason:'caractere'};
+  if(s.length>20) return {ok:false,reason:'lung'};
+  const parts=s.split('/');
+  if(parts.length>3||parts.some(p=>!p)) return {ok:false,reason:'bară'};
+  // identifică indicativul de bază: partea cea mai lungă care are formă valabilă
+  const isBase = p => /^Y[OPQR][0-9]/.test(p) ? RO_RE.test(p) : (INT_RE.test(p) || INT_RE2.test(p));
+  let base=null, prefix=null, suffix=null;
+  if(parts.length===1){
+    if(!isBase(parts[0])) return {ok:false,reason:'format'};
+    base=parts[0];
+  } else if(parts.length===2){
+    const [a,b]=parts;
+    if(SUFFIXES.includes(b)&&isBase(a)){ base=a; suffix=b; }
+    else if(/^[0-9]$/.test(b)&&isBase(a)){ base=a; suffix=b; }       // /5 = district
+    else if(isBase(a)&&!isBase(b)&&/^[A-Z0-9]{1,4}$/.test(b)&&/[0-9]|^[A-Z]{1,2}$/.test(b)){ base=a; suffix=b; }
+    else if(isBase(b)&&/^[A-Z0-9]{1,5}$/.test(a)&&!isBase(a)&&/^[A-Z0-9]{1,3}[0-9]?[A-Z]?$/.test(a)&&/[A-Z]/.test(a)){ base=b; prefix=a; }
+    else if(isBase(a)&&isBase(b)){ base=a.length>=b.length?a:b; prefix=null; }
+    else return {ok:false,reason:'format'};
+  } else {
+    const [a,b,c]=parts;
+    if(isBase(b)&&/^[A-Z0-9]{1,5}$/.test(a)&&SUFFIXES.includes(c)){ prefix=a; base=b; suffix=c; }
+    else return {ok:false,reason:'format'};
+  }
+  const portable = suffix? (suffix==='P'||suffix==='M'||suffix==='MM'||suffix==='AM'||suffix==='QRP'||suffix==='A'||/^[0-9]$/.test(suffix)):false;
+  return {ok:true, norm:s, base, prefix, suffix, ro:RO_RE.test(base), mobileMaritime:suffix==='MM', mobile:suffix==='M', portable:suffix==='P'||!!prefix};
+}
+const callValid = s => parseCall(s).ok;
+/* prefix de căutare (țară): prefixul de la /prefix dacă există, altfel baza */
+function callPrefixSource(p){ return p.prefix||p.base; }
+
+/* ---- Benzi ADIF 3.1 (MHz) ---- */
+const BANDS = [
+ ['2190m',0.1357,0.1378],['630m',0.472,0.479],['560m',0.501,0.504],['160m',1.8,2.0],['80m',3.5,4.0],['60m',5.06,5.45],
+ ['40m',7.0,7.3],['30m',10.1,10.15],['20m',14.0,14.35],['17m',18.068,18.168],['15m',21.0,21.45],['12m',24.89,24.99],
+ ['10m',28.0,29.7],['8m',40,45],['6m',50,54],['5m',54.000001,69.9],['4m',70,71],['2m',144,148],['1.25m',222,225],
+ ['70cm',420,450],['33cm',902,928],['23cm',1240,1300],['13cm',2300,2450],['9cm',3300,3500],['6cm',5650,5925],['3cm',10000,10500]
+].map(([n,lo,hi])=>({name:n,lo,hi}));
+const BAND_NAMES = BANDS.map(b=>b.name);
+const BAND_LABEL = {'2190m':'2200 m (2190m)','630m':'630 m','560m':'560 m'};
+function bandFromFreq(mhz){
+  const f=parseFloat(mhz); if(!(f>0)) return '';
+  const b=BANDS.find(b=>f>=b.lo&&f<=b.hi); return b?b.name:'';
+}
+const BAND_DEFAULT_FREQ = {'2190m':0.137,'630m':0.4755,'560m':0.5025,'160m':1.84,'80m':3.6,'60m':5.3515,'40m':7.1,'30m':10.12,'20m':14.2,'17m':18.1,'15m':21.2,'12m':24.94,'10m':28.4,'8m':40.68,'6m':50.2,'5m':56,'4m':70.2,'2m':145.5,'1.25m':223.5,'70cm':433.5,'33cm':910,'23cm':1296.2,'13cm':2320,'9cm':3400,'6cm':5760,'3cm':10368};
+
+/* ---- Moduri ---- */
+const MODES = {
+ SSB:['USB','LSB'], CW:['PCW'], FM:[], AM:[], RTTY:['ASCI'],
+ FT8:[], FT4:[], PSK:['PSK31','PSK63','PSK125','QPSK31','BPSK31'], DIGITALVOICE:['C4FM','DMR','DSTAR','FREEDV'],
+ MFSK:['FT4','JS8','FST4','Q65','JT65A'], JT65:[], JT9:[], MSK144:[], OLIVIA:[], HELL:[], DOMINO:[], SSTV:[], PKT:[], ATV:[], FAX:[], THOR:[], CONTESTI:[], WSPR:[]
+};
+// În ADIF 3.1: FT4 este MFSK/FT4; FT8 este mod; PSK31 e submod al PSK; JS8 -> MFSK/JS8.
+delete MODES.CONTESTI;
+const MODE_NAMES=Object.keys(MODES);
+const MODE_DEFAULT_RST = {SSB:'59',FM:'59',AM:'59',DIGITALVOICE:'59',CW:'599',RTTY:'599',PSK:'599',FT8:'-10',FT4:'-10',MFSK:'-10',JT65:'-15',JT9:'-15',MSK144:'+00',WSPR:'-20'};
+const MODE_RST_KIND = m => ({SSB:'rs',FM:'rs',AM:'rs',DIGITALVOICE:'rs',CW:'rst',RTTY:'rst',PSK:'rst',OLIVIA:'rst',HELL:'rst',DOMINO:'rst',THOR:'rst',SSTV:'rst',PKT:'rst',FAX:'rst',ATV:'rst'}[m]||'snr');
+function rstValid(mode, v){
+  v=String(v||'').trim(); if(!v) return true;
+  const k=MODE_RST_KIND(mode);
+  if(k==='rs') return /^[1-5][1-9]$/.test(v)||/^[1-5][1-9][+]?$/.test(v)||/^[1-5]$/.test(v) ? true : /^[1-5][1-9]\+?\d*$/.test(v);
+  if(k==='rst') return /^[1-5][1-9][1-9][A-Za-z+]?$/.test(v)||/^[1-5][1-9]$/.test(v);
+  return /^[+-]?\d{1,3}$/.test(v);
+}
+
+/* ---- Utilitare dată/oră ---- */
+const pad=(n,l=2)=>String(n).padStart(l,'0');
+function nowUTC(d){ d=d||new Date(); return {date:d.getUTCFullYear()+pad(d.getUTCMonth()+1)+pad(d.getUTCDate()), time:pad(d.getUTCHours())+pad(d.getUTCMinutes())+pad(d.getUTCSeconds())}; }
+function adifDateValid(s){ if(!/^\d{8}$/.test(s||'')) return false; const y=+s.slice(0,4),m=+s.slice(4,6),d=+s.slice(6,8); if(y<1930||m<1||m>12||d<1) return false; return d<=new Date(Date.UTC(y,m,0)).getUTCDate(); }
+function adifTimeValid(s){ if(!/^(\d{4}|\d{6})$/.test(s||'')) return false; const h=+s.slice(0,2),mi=+s.slice(2,4),se=s.length===6?+s.slice(4,6):0; return h<24&&mi<60&&se<60; }
+function toEpoch(date,time){ time=(time||'0000'); time=time.padEnd(6,'0'); return Date.UTC(+date.slice(0,4),+date.slice(4,6)-1,+date.slice(6,8),+time.slice(0,2),+time.slice(2,4),+time.slice(4,6)); }
+const isoDate = d => d.slice(0,4)+'-'+d.slice(4,6)+'-'+d.slice(6,8);
+const isoTime = t => t.slice(0,2)+':'+t.slice(2,4)+(t.length>=6?':'+t.slice(4,6):'');
+
+return {R_EARTH,rad,deg,gridValid,normGrid,gridToLatLon,latLonToGrid,greatCircle,gridDistance,sunTimes,fmtMin,parseCall,callValid,callPrefixSource,
+  BANDS,BAND_NAMES,BAND_LABEL,bandFromFreq,BAND_DEFAULT_FREQ,MODES,MODE_NAMES,MODE_DEFAULT_RST,MODE_RST_KIND,rstValid,pad,nowUTC,adifDateValid,adifTimeValid,toEpoch,isoDate,isoTime};
+})();
+
+/* ===== ADIF, CSV, Cabrillo, duplicate ===== */
+const Fmt = (function(){
+'use strict';
+const enc=new TextEncoder(), dec=new TextDecoder('utf-8');
+const ORDER=['STATION_CALLSIGN','OPERATOR','CALL','QSO_DATE','TIME_ON','QSO_DATE_OFF','TIME_OFF','BAND','FREQ','BAND_RX','FREQ_RX','MODE','SUBMODE','RST_SENT','RST_RCVD','TX_PWR','MY_GRIDSQUARE','GRIDSQUARE','NAME','QTH','COUNTRY','DXCC','CQZ','ITUZ','CONT','QSL_SENT','QSL_RCVD','QSLSDATE','QSLRDATE','CONTEST_ID','STX','SRX','STX_STRING','SRX_STRING','COMMENT','NOTES'];
+const NUMERIC_TYPES={FREQ:'N',FREQ_RX:'N',TX_PWR:'N',STX:'N',SRX:'N',DXCC:'E',CQZ:'N',ITUZ:'N'};
+const byteLen = s => enc.encode(s).length;
+function field(name,val){
+  if(val===undefined||val===null) return '';
+  val=String(val); if(val==='') return '';
+  return '<'+name+':'+byteLen(val)+'>'+val;
+}
+function cleanVal(v){ return String(v).replace(/\r\n|\r|\n/g,'\r\n'); }
+function recToAdi(r){
+  const names=[]; const seen=new Set();
+  ORDER.forEach(k=>{ if(r[k]!==undefined&&r[k]!==''){names.push(k);seen.add(k);} });
+  Object.keys(r).filter(k=>!k.startsWith('_')&&!seen.has(k)&&r[k]!==''&&r[k]!==undefined).sort().forEach(k=>names.push(k));
+  return names.map(k=>field(k,cleanVal(r[k]))).join(' ')+' <EOR>';
+}
+function toAdi(recs,opts){
+  opts=opts||{};
+  const ts=(()=>{const d=new Date();const p=n=>String(n).padStart(2,'0');return d.getUTCFullYear()+p(d.getUTCMonth()+1)+p(d.getUTCDate())+' '+p(d.getUTCHours())+p(d.getUTCMinutes())+p(d.getUTCSeconds());})();
+  let h='ADIF export from QSO (fara frontiere)\r\n'+field('ADIF_VER','3.1.4')+'\r\n'+field('PROGRAMID','QSO')+'\r\n'+field('PROGRAMVERSION','1.0.0')+'\r\n'+field('CREATED_TIMESTAMP',ts)+'\r\n';
+  if(opts.extraHeader) Object.keys(opts.extraHeader).forEach(k=>{h+=field(k,opts.extraHeader[k])+'\r\n';});
+  h+='<EOH>\r\n\r\n';
+  return h+recs.map(recToAdi).join('\r\n')+(recs.length?'\r\n':'');
+}
+/* parser pe octeți UTF-8; lungimi în octeți, cu rezervă pe caractere */
+function parseAdi(input){
+  const bytes = typeof input==='string'? enc.encode(input) : input;
+  const out={header:{},headerText:'',records:[],warnings:[],charFallback:0};
+  let i=0; const n=bytes.length;
+  const LT=60, GT=62;
+  let cur={}, inHeader=true, sawEOH=false;
+  // dacă nu există <EOH> la nicio poziție, nu există antet: toate câmpurile sunt înregistrări
+  const text0=dec.decode(bytes.subarray(0,Math.min(n,200000)));
+  const hasEOH=/<EOH>/i.test(dec.decode(bytes));
+  const firstLt = bytes.indexOf(LT);
+  if(!hasEOH) inHeader=false;
+  else if(firstLt===0){ inHeader=true; } // antet fără text liber: câmpuri apoi EOH
+  let headerStart=0, textBefore='';
+  if(hasEOH&&firstLt>0){ textBefore=dec.decode(bytes.subarray(0,firstLt)); i=firstLt; }
+  while(i<n){
+    const lt=bytes.indexOf(LT,i); if(lt<0) break;
+    const gt=bytes.indexOf(GT,lt+1); if(gt<0){ out.warnings.push('Etichetă neîncheiată la octetul '+lt); break; }
+    const tag=dec.decode(bytes.subarray(lt+1,gt));
+    const parts=tag.split(':');
+    const name=parts[0].trim().toUpperCase();
+    i=gt+1;
+    if(name==='EOH'){ inHeader=false; sawEOH=true; continue; }
+    if(name==='EOR'){ if(Object.keys(cur).length){ out.records.push(cur); } cur={}; continue; }
+    if(parts.length<2){ out.warnings.push('Etichetă fără lungime ignorată: <'+tag+'>'); continue; }
+    const len=parseInt(parts[1],10);
+    if(!(len>=0)){ out.warnings.push('Lungime invalidă în <'+tag+'>'); continue; }
+    let end=i+len, val;
+    if(end>n){ end=n; }
+    // verifică: după valoare urmează spații/<... sau capăt
+    let ok=false;
+    { let j=end; while(j<n&&(bytes[j]===32||bytes[j]===9||bytes[j]===10||bytes[j]===13)) j++; ok=(j>=n||bytes[j]===LT); }
+    if(!ok){
+      // rezervă: lungime în caractere
+      const rest=dec.decode(bytes.subarray(i));
+      const chars=Array.from(rest);
+      if(chars.length>=len){
+        const v=chars.slice(0,len).join('');
+        const after=chars.slice(len).join('').replace(/^[\s]+/,'');
+        if(after===''||after[0]==='<'){ val=v; end=i+enc.encode(v).length; out.charFallback++; ok=true; }
+      }
+    }
+    if(!ok){ val=dec.decode(bytes.subarray(i,end)); out.warnings.push('Lungime posibil greșită la câmpul '+name+' (se folosește ca atare)'); }
+    else if(val===undefined) val=dec.decode(bytes.subarray(i,end));
+    i=end;
+    if(inHeader) out.header[name]=val; else cur[name]=val;
+  }
+  if(Object.keys(cur).length){ out.records.push(cur); out.warnings.push('Ultima înregistrare fără <EOR>; a fost păstrată'); }
+  out.headerText=textBefore.trim();
+  return out;
+}
+/* normalizare minimă a unei înregistrări importate; păstrează câmpurile necunoscute */
+function normalizeRec(r){
+  const o={};
+  Object.keys(r).forEach(k=>{ o[k.toUpperCase()]=r[k].replace(/\r\n/g,'\n'); });
+  if(o.CALL) o.CALL=o.CALL.trim().toUpperCase();
+  if(o.TIME_ON&&o.TIME_ON.length===4) o.TIME_ON+= '00';
+  if(o.TIME_OFF&&o.TIME_OFF.length===4) o.TIME_OFF+='00';
+  if(o.BAND) { const b=o.BAND; const m=Lib.BAND_NAMES.find(x=>x.toLowerCase()===b.toLowerCase()); if(m) o.BAND=m; }
+  if(!o.BAND&&o.FREQ){ const b=Lib.bandFromFreq(o.FREQ); if(b) o.BAND=b; }
+  if(o.MODE) o.MODE=o.MODE.toUpperCase();
+  if(o.SUBMODE) o.SUBMODE=o.SUBMODE.toUpperCase();
+  if(o.GRIDSQUARE&&Lib.gridValid(o.GRIDSQUARE)) o.GRIDSQUARE=Lib.normGrid(o.GRIDSQUARE);
+  if(o.MY_GRIDSQUARE&&Lib.gridValid(o.MY_GRIDSQUARE)) o.MY_GRIDSQUARE=Lib.normGrid(o.MY_GRIDSQUARE);
+  return o;
+}
+function validateRec(r){
+  const e=[];
+  if(!r.CALL) e.push('CALL lipsă'); else if(!Lib.callValid(r.CALL)) e.push('CALL cu format neobișnuit');
+  if(!Lib.adifDateValid(r.QSO_DATE)) e.push('QSO_DATE invalid');
+  if(!Lib.adifTimeValid(r.TIME_ON)) e.push('TIME_ON invalid');
+  return e;
+}
+/* ---- ADX (XML) ---- */
+function esc(s){ return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+function toAdx(recs){
+  let x='<?xml version="1.0" encoding="UTF-8"?>\n<ADX>\n<HEADER><ADIF_VER>3.1.4</ADIF_VER><PROGRAMID>QSO</PROGRAMID><PROGRAMVERSION>1.0.0</PROGRAMVERSION></HEADER>\n<RECORDS>\n';
+  recs.forEach(r=>{ x+='<RECORD>'; Object.keys(r).filter(k=>!k.startsWith('_')&&r[k]!=='').forEach(k=>{ const t=/^APP_/.test(k)?'APP':null; x+= t? '<APP PROGRAMID="'+esc(k.split('_')[1]||'X')+'" FIELDNAME="'+esc(k.split('_').slice(2).join('_'))+'" TYPE="S">'+esc(r[k])+'</APP>' : '<'+k+'>'+esc(r[k])+'</'+k+'>'; }); x+='</RECORD>\n'; });
+  return x+'</RECORDS>\n</ADX>\n';
+}
+function parseAdx(text){
+  const doc=new DOMParser().parseFromString(text,'application/xml');
+  if(doc.querySelector('parsererror')) throw new Error('XML invalid');
+  const recs=[...doc.getElementsByTagName('RECORD')].map(el=>{
+    const o={}; [...el.children].forEach(c=>{
+      if(c.tagName==='APP') o['APP_'+(c.getAttribute('PROGRAMID')||'X')+'_'+(c.getAttribute('FIELDNAME')||'F')]=c.textContent;
+      else if(c.tagName==='USERDEF') o[c.getAttribute('FIELDNAME')||'USERDEF']=c.textContent;
+      else o[c.tagName.toUpperCase()]=c.textContent;
+    }); return o; });
+  return {header:{},records:recs,warnings:[]};
+}
+/* ---- CSV ---- */
+const CSV_COLS=['QSO_DATE','TIME_ON','CALL','BAND','FREQ','MODE','SUBMODE','RST_SENT','RST_RCVD','TX_PWR','GRIDSQUARE','NAME','QTH','COUNTRY','QSL_SENT','QSL_RCVD','CONTEST_ID','STX','SRX','STATION_CALLSIGN','MY_GRIDSQUARE','COMMENT'];
+function csvCell(v){ v=v===undefined?'':String(v); return /[",\r\n;]/.test(v)||/^\s|\s$/.test(v)? '"'+v.replace(/"/g,'""')+'"' : v; }
+function toCsv(recs){
+  return '﻿'+[CSV_COLS.join(',')].concat(recs.map(r=>CSV_COLS.map(c=>csvCell(r[c])).join(','))).join('\r\n')+'\r\n';
+}
+function parseCsvText(t){
+  t=t.replace(/^﻿/,''); const rows=[]; let row=[],cell='',q=false;
+  for(let i=0;i<t.length;i++){ const c=t[i];
+    if(q){ if(c==='"'){ if(t[i+1]==='"'){cell+='"';i++;} else q=false; } else cell+=c; }
+    else if(c==='"') q=true;
+    else if(c===','){ row.push(cell);cell=''; }
+    else if(c==='\n'||c==='\r'){ if(c==='\r'&&t[i+1]==='\n') i++; row.push(cell);cell=''; if(row.length>1||row[0]!=='') rows.push(row); row=[]; }
+    else cell+=c; }
+  if(cell!==''||row.length){ row.push(cell); rows.push(row); }
+  return rows;
+}
+function fromCsv(text){
+  const rows=parseCsvText(text); if(!rows.length) return {records:[],warnings:['CSV gol']};
+  const hdr=rows[0].map(h=>h.trim().toUpperCase());
+  const recs=rows.slice(1).map(r=>{ const o={}; hdr.forEach((h,i)=>{ if(h&&r[i]!==undefined&&r[i]!=='') o[h]=r[i]; }); return o; });
+  return {header:{},records:recs,warnings:[]};
+}
+/* ---- Cabrillo 3.0 de bază ---- */
+const CAB_MODE=m=>({CW:'CW',SSB:'PH',AM:'PH',FM:'FM',RTTY:'RY'}[m]||'DG');
+function toCabrillo(recs,meta){
+  meta=meta||{};
+  const L=['START-OF-LOG: 3.0'];
+  L.push('CALLSIGN: '+(meta.callsign||''));
+  L.push('CONTEST: '+(meta.contest||''));
+  L.push('CATEGORY-OPERATOR: '+(meta.catOp||'SINGLE-OP'));
+  L.push('CATEGORY-BAND: '+(meta.catBand||'ALL'));
+  L.push('CATEGORY-MODE: '+(meta.catMode||'MIXED'));
+  L.push('CATEGORY-POWER: '+(meta.catPower||'LOW'));
+  if(meta.locator) L.push('GRID-LOCATOR: '+meta.locator);
+  L.push('CLAIMED-SCORE: ');
+  L.push('NAME: '+(meta.name||'')); 
+  L.push('CREATED-BY: QSO 1.0.0 (fără frontiere)');
+  const p3=v=>String(v||'').padStart(3,'0');
+  recs.slice().sort((a,b)=>Lib.toEpoch(a.QSO_DATE,a.TIME_ON)-Lib.toEpoch(b.QSO_DATE,b.TIME_ON)).forEach(r=>{
+    let khz=r.FREQ?Math.round(parseFloat(r.FREQ)*1000):0;
+    const fq=khz>0&&khz<30000?String(khz).padStart(5,' '):(r.BAND||'').toUpperCase().replace('CM','CM');
+    const tx=(r.RST_SENT||'59')+' '+(r.STX_STRING||p3(r.STX));
+    const rx=(r.RST_RCVD||'59')+' '+(r.SRX_STRING||p3(r.SRX));
+    L.push('QSO: '+fq+' '+CAB_MODE(r.MODE)+' '+Lib.isoDate(r.QSO_DATE)+' '+(r.TIME_ON||'0000').slice(0,4)+' '+(r.STATION_CALLSIGN||meta.callsign||'').padEnd(13)+' '+tx.padEnd(10)+' '+(r.CALL||'').padEnd(13)+' '+rx);
+  });
+  L.push('END-OF-LOG:');
+  return L.join('\r\n')+'\r\n';
+}
+/* ---- Duplicate ---- */
+const MODE_GROUP=m=>({CW:'CW',SSB:'PH',AM:'PH',FM:'PH',DIGITALVOICE:'PH'}[m]||'DG');
+function findDupe(recs,c,opts){
+  opts=opts||{}; const win=opts.windowMin===undefined?60:opts.windowMin; const tc=Lib.toEpoch(c.QSO_DATE||'19700101',c.TIME_ON);
+  const contest=c.CONTEST_ID||'';
+  for(const r of recs){
+    if(r._id!==undefined&&r._id===c._id) continue;
+    if((r.CALL||'')!==(c.CALL||'')) continue;
+    if(contest){ if(r.CONTEST_ID!==contest) continue; if(r.BAND!==c.BAND||MODE_GROUP(r.MODE)!==MODE_GROUP(c.MODE)) continue; return r; }
+    if(r.BAND!==c.BAND||(r.MODE||'')!==(c.MODE||'')) continue;
+    if(win<=0) return r;
+    if(Math.abs(Lib.toEpoch(r.QSO_DATE,r.TIME_ON)-tc)<=win*60000) return r;
+  }
+  return null;
+}
+return {toAdi,parseAdi,normalizeRec,validateRec,toAdx,parseAdx,toCsv,fromCsv,toCabrillo,findDupe,byteLen,CSV_COLS,ORDER,MODE_GROUP};
+})();
+
+/* ===== Tabel intern de prefixe (NU este lista DXCC completă / nu e instrument oficial) ===== */
+const Pfx = (function(){
+'use strict';
+/* prefixe|țară|continent|CQ|ITU   (CQ/ITU gol = necunoscut sau variabil în interiorul țării) */
+const RAW = `
+YO-YR|România|EU|20|28
+DA-DR,Y2-Y9|Germania|EU|14|28
+F,TH,TM,TO,TP,TQ,TV,TW,TX,TY|Franța|EU|14|27
+TK|Corsica|EU|15|28
+I|Italia|EU|15|28
+IS0,IM0|Sardinia|EU|15|28
+EA,EB,EC,ED,EE,EF,EG,EH,AM-AO|Spania|EU|14|37
+EA6,EB6,EC6,ED6,EE6,EF6,EG6,EH6|Insulele Baleare|EU|14|37
+EA8,EB8,EC8,ED8,EE8,EF8,EG8,EH8|Insulele Canare|AF|33|36
+EA9,EB9,EC9,ED9,EE9,EF9,EG9,EH9|Ceuta și Melilla|AF|33|37
+CT,CQ,CR,CS|Portugalia|EU|14|37
+CT3,CQ3,CR3,CS3|Madeira|AF|33|36
+CU|Azore|EU|14|36
+G,M,2|Anglia|EU|14|27
+GM,MM,2M|Scoția|EU|14|27
+GW,MW,2W|Țara Galilor|EU|14|27
+GI,MI,2I|Irlanda de Nord|EU|14|27
+GD,MD,2D|Insula Man|EU|14|27
+GJ,MJ,2J|Jersey|EU|14|27
+GU,MU,2U|Guernsey|EU|14|27
+EI,EJ|Irlanda|EU|14|27
+PA-PI|Olanda|EU|14|27
+ON-OT|Belgia|EU|14|27
+LX|Luxemburg|EU|14|27
+HB|Elveția|EU|14|28
+HB0|Liechtenstein|EU|14|28
+OE|Austria|EU|15|28
+SN-SR,3Z|Polonia|EU|15|28
+OK,OL|Cehia|EU|15|28
+OM|Slovacia|EU|15|28
+HA,HG|Ungaria|EU|15|28
+S5|Slovenia|EU|15|28
+9A|Croația|EU|15|28
+E7|Bosnia și Herțegovina|EU|15|28
+YT,YU|Serbia|EU|15|28
+4O|Muntenegru|EU|15|28
+Z3|Macedonia de Nord|EU|15|28
+ZA|Albania|EU|15|28
+Z6|Kosovo|EU|15|28
+LZ|Bulgaria|EU|20|28
+SV-SZ,J4|Grecia|EU|20|28
+ER|Moldova|EU|16|29
+UR-UZ,EM-EO|Ucraina|EU|16|29
+EU-EW|Belarus|EU|16|29
+R,UA-UI|Rusia|EU/AS|||
+TA-TC,YM|Turcia|AS|20|39
+5B,C4,H2,P3|Cipru|AS|20|39
+9H|Malta|EU|15|28
+OZ,OU-OW,5P,5Q|Danemarca|EU|14|18
+LA-LN|Norvegia|EU|14|18
+SA-SM,7S,8S|Suedia|EU|14|18
+OF-OJ|Finlanda|EU|15|18
+OH0|Insulele Åland|EU|15|18
+TF|Islanda|EU|40|17
+OY|Insulele Feroe|EU|14|18
+OX|Groenlanda|NA|40|5
+XP|Groenlanda|NA|40|5
+JW|Svalbard|EU|40|18
+JX|Jan Mayen|EU|40|18
+ES|Estonia|EU|15|29
+YL|Letonia|EU|15|29
+LY|Lituania|EU|15|29
+3A|Monaco|EU|14|27
+C3|Andorra|EU|14|27
+T7|San Marino|EU|15|28
+HV|Vatican|EU|15|28
+ZB|Gibraltar|EU|14|37
+JA-JS,7J-7N,8J-8N|Japonia|AS|25|45
+HL,DS,6K-6N,D7-D9|Coreea de Sud|AS|25|44
+P5|Coreea de Nord|AS|25|44
+B,3H-3U|China||||
+BM-BQ,BU-BX|Taiwan|AS|24|44
+VR|Hong Kong|AS|24|44
+XX|Macao|AS|24|44
+VU,8T-8Y,AT-AW|India|AS|22|41
+AP-AS,6P-6S|Pakistan|AS|21|41
+S2,S3|Bangladesh|AS|22|41
+4P-4S|Sri Lanka|AS|22|41
+9N|Nepal|AS|22|42
+A5|Bhutan|AS|22|41
+E2,HS|Thailanda|AS|26|49
+XV,3W|Vietnam|AS|26|49
+XU|Cambodgia|AS|26|49
+XW|Laos|AS|26|49
+XY,XZ|Myanmar|AS|26|49
+9M,9W|Malaysia|AS|28|54
+9V|Singapore|AS|28|54
+V8|Brunei|OC|28|54
+YB-YH,7A-7I,8A-8I|Indonezia|OC||
+DU-DZ,4D-4I|Filipine|OC|27|50
+JT-JV|Mongolia|AS|23|
+UN-UQ|Kazahstan|AS||
+UJ-UM|Uzbekistan|AS|17|30
+EZ|Turkmenistan|AS|17|30
+EX|Kârgâzstan|AS|17|30
+EY|Tadjikistan|AS|17|30
+EK|Armenia|AS|21|29
+4J,4K|Azerbaidjan|AS|21|29
+4L|Georgia|AS|21|29
+4X,4Z|Israel|AS|20|39
+OD|Liban|AS|20|39
+JY|Iordania|AS|20|39
+YK,6C|Siria|AS|20|39
+YI|Irak|AS|21|39
+EP,EQ,9B-9D|Iran|AS|21|40
+HZ,7Z,8Z|Arabia Saudită|AS|21|39
+9K|Kuweit|AS|21|39
+A7|Qatar|AS|21|39
+A9|Bahrain|AS|21|39
+A6|Emiratele Arabe Unite|AS|21|39
+A4|Oman|AS|21|39
+7O|Yemen|AS|21|39
+T6,YA|Afganistan|AS|21|40
+SU,6A,6B|Egipt|AF|34|38
+5A|Libia|AF|34|38
+3V,TS|Tunisia|AF|33|37
+7R,7T-7Y|Algeria|AF|33|37
+CN,5C-5G|Maroc|AF|33|37
+ZR-ZU,S8,H5|Africa de Sud|AF|38|57
+V5|Namibia|AF|38|57
+A2,8O|Botswana|AF|38|57
+Z2|Zimbabwe|AF|38|53
+9I,9J|Zambia|AF|36|53
+C8,C9|Mozambic|AF|37|53
+5R,6X|Madagascar|AF|39|53
+5Y,5Z|Kenya|AF|37|48
+5H,5I|Tanzania|AF|37|53
+5X|Uganda|AF|37|48
+ET|Etiopia|AF|37|48
+5N,5O|Nigeria|AF|35|46
+9G|Ghana|AF|35|46
+6V,6W|Senegal|AF|35|46
+TU|Coasta de Fildeș|AF|35|46
+TJ|Camerun|AF|36|47
+D2,D3|Angola|AF|36|52
+9O-9T|R.D. Congo|AF||
+3B8|Mauritius|AF|39|53
+FR|Réunion|AF|39|53
+S7|Seychelles|AF|39|53
+D4|Capul Verde|AF|35|46
+ST,6T,6U|Sudan|AF|34|47
+TZ|Mali|AF|35|46
+5U|Niger|AF|35|46
+TT|Ciad|AF|36|47
+XT|Burkina Faso|AF|35|46
+TY|Benin|AF|35|46
+5V|Togo|AF|35|46
+A8,D5,EL,5L,5M,6Z|Liberia|AF|35|46
+9L|Sierra Leone|AF|35|46
+3X|Guineea|AF|35|46
+C5|Gambia|AF|35|46
+5T|Mauritania|AF|35|46
+TR|Gabon|AF|36|52
+TN|Congo|AF|36|52
+9X|Rwanda|AF|36|52
+9U|Burundi|AF|36|52
+7Q|Malawi|AF|37|53
+7P|Lesotho|AF|38|57
+3DA|Eswatini|AF|38|57
+T5,6O|Somalia|AF|37|48
+J2|Djibouti|AF|37|48
+E3|Eritreea|AF|37|48
+3C|Guineea Ecuatorială|AF|36|47
+D6|Comore|AF|39|53
+8Q|Maldive|AS|22|41
+K,W,N,AA-AL|Statele Unite|NA||
+KH6,WH6,NH6,AH6|Hawaii|OC|31|61
+KL7,WL7,NL7,AL7|Alaska|NA|1|
+KP4,NP4,WP4,KP3|Puerto Rico|NA|8|11
+KP2,NP2,WP2|Insulele Virgine SUA|NA|8|11
+KH2,WH2,NH2,AH2|Guam|OC|27|64
+VE,VA,VO,VY,CY,CZ,CF-CK,XJ-XO|Canada|NA||
+XA-XI,4A-4C,6D-6J|Mexic|NA|6||
+CL,CM,CO,T4|Cuba|NA|8|11
+HI|Republica Dominicană|NA|8|11
+HH|Haiti|NA|8|11
+6Y|Jamaica|NA|8|11
+C6|Bahamas|NA|8|11
+9Y,9Z|Trinidad și Tobago|SA|9|11
+8P|Barbados|NA|8|11
+TI,TE|Costa Rica|NA|7|11
+HO,HP,H3,H8,H9,3E,3F|Panama|NA|7|11
+TG,TD|Guatemala|NA|7|11
+HQ,HR|Honduras|NA|7|11
+YS,HU|El Salvador|NA|7|11
+YN,H6,H7,HT|Nicaragua|NA|7|11
+V3|Belize|NA|7|11
+VP9|Bermude|NA|5|11
+PP-PY,ZV-ZZ|Brazilia|SA|11||
+LO-LW,AY,AZ,L2-L9|Argentina|SA|13|14
+CA-CE,XQ,XR,3G|Chile|SA|12|14
+CV-CX|Uruguay|SA|13|14
+ZP|Paraguay|SA|11|14
+CP|Bolivia|SA|10|14
+OA-OC,4T|Peru|SA|10|12
+HC,HD|Ecuador|SA|10|12
+HJ,HK,5J,5K|Columbia|SA|9|12
+YV-YY,4M|Venezuela|SA|9|12
+8R|Guyana|SA|9|12
+PZ|Suriname|SA|9|12
+FY|Guyana Franceză|SA|9|12
+VK,AX|Australia|OC||
+ZL-ZM|Noua Zeelandă|OC|32|60
+3D2|Fiji|OC|32|56
+P2|Papua Noua Guinee|OC|28|51
+5W|Samoa|OC|32|62
+A3|Tonga|OC|32|62
+FO|Polinezia Franceză|OC|32|63
+FK|Noua Caledonie|OC|32|56
+YJ|Vanuatu|OC|32|56
+H4|Insulele Solomon|OC|28|51
+T3|Kiribati|OC|31|62
+T8|Palau|OC|27|64
+V6|Micronezia|OC|27|65
+V7|Insulele Marshall|OC|31|65
+C2|Nauru|OC|31|65
+T2|Tuvalu|OC|31|65
+E5|Insulele Cook|OC|32|63
+E6|Niue|OC|32|62
+VP8|Falkland și teritorii sud-atlantice|SA|||
+`;
+const table = [];
+function expandToken(t){
+  const m=t.match(/^([A-Z0-9]+)-([A-Z0-9]+)$/);
+  if(!m) return [t];
+  const a=m[1], b=m[2];
+  if(a.length!==b.length||a.slice(0,-1)!==b.slice(0,-1)) return [a,b];
+  const out=[]; for(let c=a.charCodeAt(a.length-1); c<=b.charCodeAt(b.length-1); c++) out.push(a.slice(0,-1)+String.fromCharCode(c));
+  return out;
+}
+const map = new Map();
+RAW.trim().split('\n').forEach(line=>{
+  const [pf,name,cont,cq,itu]=line.split('|');
+  const ent={name, cont:cont||'', cq:cq?+cq:null, itu:itu?+itu:null, prefixes:[]};
+  table.push(ent);
+  pf.split(',').forEach(tok=>expandToken(tok.trim()).forEach(p=>{ ent.prefixes.push(p); map.set(p,ent); }));
+});
+let maxLen=0; map.forEach((v,k)=>{ if(k.length>maxLen) maxLen=k.length; });
+function lookup(call){
+  const p = Lib.parseCall(call);
+  if(!p.ok) return null;
+  let src = Lib.callPrefixSource(p);
+  // sufixul /MM → fără țară
+  if(p.mobileMaritime) return {name:'Mobil maritim (/MM)', cont:'', cq:null, itu:null, prefix:'MM', special:true};
+  // /district numeric → mută cifra în prefix doar pentru căutare, ex. K1ABC/5 nu schimbă țara
+  for(let n=Math.min(maxLen,src.length); n>=1; n--){
+    const k=src.slice(0,n); const e=map.get(k);
+    if(e) return {name:e.name, cont:e.cont, cq:e.cq, itu:e.itu, prefix:k, entity:e};
+  }
+  return null;
+}
+return {table, lookup, count:table.length, prefixCount:map.size};
+})();
+
+const I18N = {
+about:["Despre","About","À propos","Informazioni","Acerca de","Sobre","Névjegy","Über"],
+aboutText:["QSO este un jurnal de stație pentru radioamatori: înregistrezi legături (QSO), calculezi distanțe și azimuturi din locatori Maidenhead, importi/exporți ADIF 3.1, faci statistici și hărți simple. Completează ETER (enciclopedie) și INDICATIV (antrenor ANCOM). Neoficial și independent.","QSO is a station log for amateur radio operators: record contacts, compute distances and bearings from Maidenhead locators, import/export ADIF 3.1, build statistics and simple maps. It complements ETER (encyclopedia) and INDICATIV (ANCOM trainer). Unofficial and independent.","QSO est un journal de station pour radioamateurs : enregistrez vos contacts, calculez distances et azimuts à partir des locators Maidenhead, importez/exportez ADIF 3.1, obtenez des statistiques et des cartes simples. Il complète ETER (encyclopédie) et INDICATIV (entraîneur ANCOM). Non officiel et indépendant.","QSO è un log di stazione per radioamatori: registra i collegamenti, calcola distanze e azimut dai locatori Maidenhead, importa/esporta ADIF 3.1, crea statistiche e mappe semplici. Completa ETER (enciclopedia) e INDICATIV (allenatore ANCOM). Non ufficiale e indipendente.","QSO es un diario de estación para radioaficionados: registra contactos, calcula distancias y acimuts desde locators Maidenhead, importa/exporta ADIF 3.1, genera estadísticas y mapas sencillos. Complementa ETER (enciclopedia) e INDICATIV (entrenador ANCOM). No oficial e independiente.","QSO é um diário de estação para radioamadores: registe contactos, calcule distâncias e azimutes a partir de locators Maidenhead, importe/exporte ADIF 3.1, gere estatísticas e mapas simples. Complementa o ETER (enciclopédia) e o INDICATIV (treinador ANCOM). Não oficial e independente.","A QSO egy rádióamatőr állomásnapló: kapcsolatok rögzítése, távolság és azimut számítása Maidenhead lokátorokból, ADIF 3.1 import/export, statisztikák és egyszerű térképek. Kiegészíti az ETER (enciklopédia) és INDICATIV (ANCOM-tréner) alkalmazásokat. Nem hivatalos és független.","QSO ist ein Stationslogbuch für Funkamateure: Verbindungen erfassen, Entfernungen und Peilungen aus Maidenhead-Lokatoren berechnen, ADIF 3.1 importieren/exportieren, Statistiken und einfache Karten erstellen. Ergänzt ETER (Enzyklopädie) und INDICATIV (ANCOM-Trainer). Inoffiziell und unabhängig."],
+actions:["Acțiuni","Actions","Actions","Azioni","Acciones","Ações","Műveletek","Aktionen"],
+approx:["aproximativ","approximate","approximatif","approssimativo","aproximado","aproximado","közelítő","ungefähr"],
+auto:["auto","auto","auto","auto","auto","auto","auto","auto"],
+azimuth:["azimut","bearing","azimut","azimut","acimut","azimute","azimut","Peilung"],
+backAz:["azimut invers","back bearing","azimut inverse","azimut inverso","acimut inverso","azimute inverso","ellenirány","Gegenpeilung"],
+backupTitle:["Copie de siguranță","Backup","Sauvegarde","Copia di sicurezza","Copia de seguridad","Cópia de segurança","Biztonsági mentés","Sicherung"],
+band:["Bandă","Band","Bande","Banda","Banda","Banda","Sáv","Band"],
+bkExport:["Exportă .fff.json","Export .fff.json","Exporter .fff.json","Esporta .fff.json","Exportar .fff.json","Exportar .fff.json","Exportálás .fff.json","Exportieren .fff.json"],
+bkExported:["Copie exportată.","Backup exported.","Sauvegarde exportée.","Copia esportata.","Copia exportada.","Cópia exportada.","Mentés exportálva.","Sicherung exportiert."],
+bkImport:["Importă copie","Import backup","Importer une sauvegarde","Importa copia","Importar copia","Importar cópia","Mentés importálása","Sicherung importieren"],
+bkReplace:["Copia înlocuiește tot jurnalul, profilurile și setările curente. Continui?","The backup replaces the whole log, profiles and settings. Continue?","La sauvegarde remplace tout le journal, les profils et les réglages. Continuer ?","La copia sostituisce tutto il log, i profili e le impostazioni. Continuare?","La copia reemplaza todo el diario, los perfiles y los ajustes. ¿Continuar?","A cópia substitui todo o diário, perfis e definições. Continuar?","A mentés felülírja a teljes naplót, profilokat és beállításokat. Folytatja?","Die Sicherung ersetzt das gesamte Logbuch, die Profile und Einstellungen. Fortfahren?"],
+bkRestored:["Copie restaurată: {0} QSO.","Backup restored: {0} QSOs.","Sauvegarde restaurée : {0} QSO.","Copia ripristinata: {0} QSO.","Copia restaurada: {0} QSO.","Cópia restaurada: {0} QSO.","Mentés visszaállítva: {0} QSO.","Sicherung wiederhergestellt: {0} QSO."],
+bkWrongApp:["Fișierul nu aparține aplicației QSO.","This file does not belong to the QSO app.","Ce fichier n'appartient pas à l'application QSO.","Il file non appartiene all'app QSO.","El archivo no pertenece a la aplicación QSO.","O ficheiro não pertence à aplicação QSO.","A fájl nem a QSO alkalmazáshoz tartozik.","Die Datei gehört nicht zur QSO-App."],
+byBand:["Pe bandă","By band","Par bande","Per banda","Por banda","Por banda","Sáv szerint","Nach Band"],
+byCountry:["Pe țară (tabel intern, orientativ)","By country (internal table, indicative)","Par pays (table interne, indicatif)","Per paese (tabella interna, indicativa)","Por país (tabla interna, orientativa)","Por país (tabela interna, indicativa)","Ország szerint (belső tábla, tájékoztató)","Nach Land (interne Tabelle, Richtwert)"],
+byMode:["Pe mod","By mode","Par mode","Per modo","Por modo","Por modo","Mód szerint","Nach Betriebsart"],
+byYear:["Pe an","By year","Par année","Per anno","Por año","Por ano","Év szerint","Nach Jahr"],
+cabContest:["CONTEST (nume concurs)","CONTEST (contest name)","CONTEST (nom du concours)","CONTEST (nome del contest)","CONTEST (nombre del concurso)","CONTEST (nome do concurso)","CONTEST (verseny neve)","CONTEST (Contestname)"],
+cabExport:["Exportă Cabrillo","Export Cabrillo","Exporter Cabrillo","Esporta Cabrillo","Exportar Cabrillo","Exportar Cabrillo","Cabrillo exportálása","Cabrillo exportieren"],
+cabNeedContest:["Completează numele concursului.","Enter the contest name.","Indiquez le nom du concours.","Inserisci il nome del contest.","Indica el nombre del concurso.","Indique o nome do concurso.","Adja meg a verseny nevét.","Contestnamen eingeben."],
+cabNone:["Niciun QSO cu CONTEST_ID = {0}.","No QSO with CONTEST_ID = {0}.","Aucun QSO avec CONTEST_ID = {0}.","Nessun QSO con CONTEST_ID = {0}.","Ningún QSO con CONTEST_ID = {0}.","Nenhum QSO com CONTEST_ID = {0}.","Nincs QSO CONTEST_ID = {0} értékkel.","Kein QSO mit CONTEST_ID = {0}."],
+cabTitle:["Cabrillo 3.0 (de bază)","Cabrillo 3.0 (basic)","Cabrillo 3.0 (de base)","Cabrillo 3.0 (di base)","Cabrillo 3.0 (básico)","Cabrillo 3.0 (básico)","Cabrillo 3.0 (alap)","Cabrillo 3.0 (einfach)"],
+cabWarn:["Atenție: Cabrillo are formate de schimb specifice fiecărui concurs. Fișierul conține antetul și liniile QSO în formă generică; verifică regulamentul și corectează manual înainte de trimitere.","Warning: Cabrillo exchange formats are contest-specific. The file contains the header and QSO lines in a generic form; check the contest rules and fix it manually before submitting.","Attention : les formats d'échange Cabrillo sont propres à chaque concours. Le fichier contient l'en-tête et les lignes QSO sous forme générique ; vérifiez le règlement et corrigez à la main avant l'envoi.","Attenzione: i formati di scambio Cabrillo sono specifici di ogni contest. Il file contiene l'intestazione e le righe QSO in forma generica; controlla il regolamento e correggi a mano prima dell'invio.","Atención: los formatos de intercambio de Cabrillo son específicos de cada concurso. El archivo contiene la cabecera y las líneas QSO en forma genérica; revisa las bases y corrígelo a mano antes de enviarlo.","Atenção: os formatos de troca do Cabrillo são específicos de cada concurso. O ficheiro contém o cabeçalho e as linhas QSO em forma genérica; verifique o regulamento e corrija manualmente antes de enviar.","Figyelem: a Cabrillo csereformátumok versenyenként eltérnek. A fájl általános alakban tartalmazza a fejlécet és a QSO-sorokat; beküldés előtt ellenőrizze a szabályzatot és javítsa kézzel.","Achtung: Cabrillo-Austauschformate sind contestspezifisch. Die Datei enthält Kopf und QSO-Zeilen in allgemeiner Form; vor dem Einreichen Ausschreibung prüfen und von Hand korrigieren."],
+call:["Indicativ lucrat","Callsign worked","Indicatif contacté","Nominativo collegato","Indicativo trabajado","Indicativo contactado","Hívójel","Gearbeitetes Rufzeichen"],
+cancel:["Renunță","Cancel","Annuler","Annulla","Cancelar","Cancelar","Mégse","Abbrechen"],
+cancelEdit:["Renunță la editare","Cancel editing","Annuler la modification","Annulla modifica","Cancelar edición","Cancelar edição","Szerkesztés megszakítása","Bearbeitung abbrechen"],
+center:["Centru","Center","Centre","Centro","Centro","Centro","Középpont","Mittelpunkt"],
+charFallback:["{0} câmp(uri) citite cu lungime în caractere (fișier cu lungimi în octeți incorecte).","{0} field(s) read using length in characters (file has wrong byte lengths).","{0} champ(s) lus avec une longueur en caractères (longueurs en octets incorrectes).","{0} campo/i letti con lunghezza in caratteri (lunghezze in byte errate).","{0} campo(s) leídos con longitud en caracteres (longitudes en bytes incorrectas).","{0} campo(s) lidos com comprimento em caracteres (comprimentos em bytes incorretos).","{0} mező karakterhosszal olvasva (hibás bájthosszak).","{0} Feld(er) mit Zeichenlänge gelesen (falsche Bytelängen)."],
+clear:["Golește","Clear","Effacer","Svuota","Vaciar","Limpar","Törlés","Leeren"],
+close:["Închide","Close","Fermer","Chiudi","Cerrar","Fechar","Bezárás","Schließen"],
+colContest:["Concurs","Contest","Concours","Contest","Concurso","Concurso","Verseny","Contest"],
+colDate:["Data","Date","Date","Data","Fecha","Data","Dátum","Datum"],
+colFreq:["MHz","MHz","MHz","MHz","MHz","MHz","MHz","MHz"],
+colGrid:["Locator","Grid","Locator","Locatore","Locator","Locator","Lokátor","Locator"],
+colKm:["km","km","km","km","km","km","km","km"],
+colQsl:["QSL","QSL","QSL","QSL","QSL","QSL","QSL","QSL"],
+colRstR:["RST pr.","RST rcvd","RST reçu","RST ric.","RST rec.","RST rec.","RST kap.","RST empf."],
+colRstS:["RST tr.","RST sent","RST env.","RST inv.","RST env.","RST env.","RST adott","RST gesch."],
+colTime:["UTC","UTC","UTC","UTC","UTC","UTC","UTC","UTC"],
+comment:["Comentarii","Comments","Commentaires","Commenti","Comentarios","Comentários","Megjegyzés","Kommentar"],
+confirm:["Confirmare","Confirmation","Confirmation","Conferma","Confirmación","Confirmação","Megerősítés","Bestätigung"],
+confirmDel1:["Ștergi acest QSO? Poți anula cu „Anulează”.","Delete this QSO? You can undo it.","Supprimer ce QSO ? Vous pouvez annuler.","Eliminare questo QSO? Puoi annullare.","¿Eliminar este QSO? Puedes deshacerlo.","Eliminar este QSO? Pode anular.","Törli ezt a QSO-t? Visszavonható.","Dieses QSO löschen? Rückgängig möglich."],
+confirmDelN:["Ștergi {0} QSO-uri? Poți anula cu „Anulează”.","Delete {0} QSOs? You can undo it.","Supprimer {0} QSO ? Vous pouvez annuler.","Eliminare {0} QSO? Puoi annullare.","¿Eliminar {0} QSO? Puedes deshacerlo.","Eliminar {0} QSO? Pode anular.","Töröl {0} QSO-t? Visszavonható.","{0} QSO löschen? Rückgängig möglich."],
+contest:["Concurs","Contest","Concours","Contest","Concurso","Concurso","Verseny","Contest"],
+contestId:["Nume concurs (CONTEST_ID)","Contest name (CONTEST_ID)","Nom du concours (CONTEST_ID)","Nome contest (CONTEST_ID)","Nombre del concurso (CONTEST_ID)","Nome do concurso (CONTEST_ID)","Verseny neve (CONTEST_ID)","Contestname (CONTEST_ID)"],
+contestOn:["Mod concurs (număr de ordine automat, „dupe” pe concurs)","Contest mode (automatic serial number, per-contest dupe check)","Mode concours (numéro de série automatique, doublons par concours)","Modalità contest (numero progressivo automatico, dupe per contest)","Modo concurso (número de serie automático, duplicados por concurso)","Modo concurso (número de série automático, duplicados por concurso)","Versenymód (automatikus sorszám, versenyenkénti dupe)","Contest-Modus (automatische Seriennummer, Dupe-Prüfung je Contest)"],
+convTitle:["Locator ↔ coordonate","Locator ↔ coordinates","Locator ↔ coordonnées","Locatore ↔ coordinate","Locator ↔ coordenadas","Locator ↔ coordenadas","Lokátor ↔ koordináták","Locator ↔ Koordinaten"],
+countOf:["{0} din {1} QSO","{0} of {1} QSOs","{0} sur {1} QSO","{0} di {1} QSO","{0} de {1} QSO","{0} de {1} QSO","{0} / {1} QSO","{0} von {1} QSO"],
+countries:["Țări","Countries","Pays","Paesi","Países","Países","Országok","Länder"],
+country:["Țară","Country","Pays","Paese","País","País","Ország","Land"],
+dark:["întunecată","dark","sombre","scuro","oscuro","escuro","sötét","dunkel"],
+date:["Data (UTC)","Date (UTC)","Date (UTC)","Data (UTC)","Fecha (UTC)","Data (UTC)","Dátum (UTC)","Datum (UTC)"],
+delSel:["Șterge selecția","Delete selection","Supprimer la sélection","Elimina selezione","Eliminar selección","Eliminar seleção","Kijelölés törlése","Auswahl löschen"],
+delete:["Șterge","Delete","Supprimer","Elimina","Eliminar","Eliminar","Törlés","Löschen"],
+deleted:["{0} QSO șterse.","{0} QSO deleted.","{0} QSO supprimé(s).","{0} QSO eliminati.","{0} QSO eliminados.","{0} QSO eliminados.","{0} QSO törölve.","{0} QSO gelöscht."],
+detail:["Detalii QSO","QSO details","Détails du QSO","Dettagli QSO","Detalles del QSO","Detalhes do QSO","QSO részletei","QSO-Details"],
+detailShort:["Detalii","Details","Détails","Dettagli","Detalles","Detalhes","Részletek","Details"],
+deviceTime:["ora dispozitivului","device time","heure de l'appareil","ora del dispositivo","hora del dispositivo","hora do dispositivo","eszköz ideje","Gerätezeit"],
+distNote:["Sferă R = 6371,0088 km, centrul pătratelor de locator; precizia depinde de lungimea locatorului (4 caractere ≈ ±100 km).","Sphere R = 6371.0088 km, centre of the locator squares; accuracy depends on locator length (4 characters ≈ ±100 km).","Sphère R = 6371,0088 km, centre des carrés locator ; la précision dépend de la longueur du locator (4 caractères ≈ ±100 km).","Sfera R = 6371,0088 km, centro dei quadrati locatore; la precisione dipende dalla lunghezza (4 caratteri ≈ ±100 km).","Esfera R = 6371,0088 km, centro de los cuadros locator; la precisión depende de la longitud (4 caracteres ≈ ±100 km).","Esfera R = 6371,0088 km, centro dos quadrados locator; a precisão depende do comprimento (4 caracteres ≈ ±100 km).","Gömb R = 6371,0088 km, a lokátornégyzetek közepe; a pontosság a lokátor hosszától függ (4 karakter ≈ ±100 km).","Kugel R = 6371,0088 km, Mitte der Locator-Felder; Genauigkeit hängt von der Länge ab (4 Zeichen ≈ ±100 km)."],
+distTitle:["Distanță și azimut (cerc mare)","Distance and bearing (great circle)","Distance et azimut (grand cercle)","Distanza e azimut (cerchio massimo)","Distancia y acimut (círculo máximo)","Distância e azimute (círculo máximo)","Távolság és azimut (főkör)","Entfernung und Peilung (Großkreis)"],
+dupeShort:["posibil duplicat","possible duplicate","doublon possible","possibile duplicato","posible duplicado","possível duplicado","lehetséges duplum","mögliches Duplikat"],
+dupeWarn:["posibil duplicat (același indicativ, bandă, mod la {0})","possible duplicate (same call, band, mode at {0})","doublon possible (même indicatif, bande, mode à {0})","possibile duplicato (stesso nominativo, banda, modo a {0})","posible duplicado (mismo indicativo, banda, modo a {0})","possível duplicado (mesmo indicativo, banda, modo a {0})","lehetséges duplum (azonos hívójel, sáv, mód: {0})","mögliches Duplikat (gleiches Rufzeichen, Band, Mode um {0})"],
+dupeWin:["Fereastră duplicate (minute; 0 = oricând)","Duplicate window (minutes; 0 = any time)","Fenêtre des doublons (minutes ; 0 = n'importe quand)","Finestra duplicati (minuti; 0 = sempre)","Ventana de duplicados (minutos; 0 = siempre)","Janela de duplicados (minutos; 0 = sempre)","Duplum-ablak (perc; 0 = bármikor)","Dupe-Zeitfenster (Minuten; 0 = immer)"],
+editInForm:["Editează în formular","Edit in form","Modifier dans le formulaire","Modifica nel modulo","Editar en el formulario","Editar no formulário","Szerkesztés az űrlapon","Im Formular bearbeiten"],
+editQso:["Editare QSO","Editing QSO","Modification du QSO","Modifica QSO","Editando QSO","A editar QSO","QSO szerkesztése","QSO bearbeiten"],
+editRow:["Editează","Edit","Modifier","Modifica","Editar","Editar","Szerk.","Bearb."],
+empty:["Jurnalul este gol. Adaugă primul QSO sau apasă „Încarcă exemplu”.","The log is empty. Add your first QSO or press “Load example”.","Le journal est vide. Ajoutez un premier QSO ou appuyez sur « Charger un exemple ».","Il log è vuoto. Aggiungi il primo QSO o premi «Carica esempio».","El diario está vacío. Añade tu primer QSO o pulsa «Cargar ejemplo».","O diário está vazio. Adicione o primeiro QSO ou prima «Carregar exemplo».","A napló üres. Adja hozzá az első QSO-t, vagy nyomja meg a „Példa betöltése” gombot.","Das Logbuch ist leer. Erstes QSO eintragen oder „Beispiel laden“ drücken."],
+errCall:["Indicativ invalid (ex. YO3ABC, DL1ABC/P, OH0/YO3ABC)","Invalid callsign (e.g. YO3ABC, DL1ABC/P, OH0/YO3ABC)","Indicatif invalide (ex. YO3ABC, DL1ABC/P, OH0/YO3ABC)","Nominativo non valido (es. YO3ABC, DL1ABC/P, OH0/YO3ABC)","Indicativo no válido (p. ej. YO3ABC, DL1ABC/P, OH0/YO3ABC)","Indicativo inválido (ex. YO3ABC, DL1ABC/P, OH0/YO3ABC)","Érvénytelen hívójel (pl. YO3ABC, DL1ABC/P, OH0/YO3ABC)","Ungültiges Rufzeichen (z. B. YO3ABC, DL1ABC/P, OH0/YO3ABC)"],
+errCoord:["Coordonate în afara limitelor.","Coordinates out of range.","Coordonnées hors limites.","Coordinate fuori limite.","Coordenadas fuera de rango.","Coordenadas fora do intervalo.","A koordináták tartományon kívül vannak.","Koordinaten außerhalb des Bereichs."],
+errDate:["Dată invalidă.","Invalid date.","Date invalide.","Data non valida.","Fecha no válida.","Data inválida.","Érvénytelen dátum.","Ungültiges Datum."],
+errFreq:["Frecvență invalidă (MHz, ex. 14.074).","Invalid frequency (MHz, e.g. 14.074).","Fréquence invalide (MHz, ex. 14.074).","Frequenza non valida (MHz, es. 14.074).","Frecuencia no válida (MHz, p. ej. 14.074).","Frequência inválida (MHz, ex. 14.074).","Érvénytelen frekvencia (MHz, pl. 14.074).","Ungültige Frequenz (MHz, z. B. 14.074)."],
+errGrid:["Locator invalid (4, 6 sau 8 caractere, ex. KN34, KN34bj).","Invalid locator (4, 6 or 8 characters, e.g. KN34, KN34bj).","Locator invalide (4, 6 ou 8 caractères, ex. KN34, KN34bj).","Locatore non valido (4, 6 o 8 caratteri, es. KN34, KN34bj).","Locator no válido (4, 6 u 8 caracteres, p. ej. KN34, KN34bj).","Locator inválido (4, 6 ou 8 caracteres, ex. KN34, KN34bj).","Érvénytelen lokátor (4, 6 vagy 8 karakter, pl. KN34, KN34bj).","Ungültiger Locator (4, 6 oder 8 Zeichen, z. B. KN34, KN34bj)."],
+errGrid2:["Introdu doi locatori valizi.","Enter two valid locators.","Saisissez deux locators valides.","Inserisci due locatori validi.","Introduce dos locators válidos.","Introduza dois locators válidos.","Adjon meg két érvényes lokátort.","Zwei gültige Locator eingeben."],
+errProfile:["Profil invalid: verifică indicativul și locatorul.","Invalid profile: check callsign and locator.","Profil invalide : vérifiez l'indicatif et le locator.","Profilo non valido: controlla nominativo e locatore.","Perfil no válido: revisa indicativo y locator.","Perfil inválido: verifique indicativo e locator.","Érvénytelen profil: ellenőrizze a hívójelet és a lokátort.","Ungültiges Profil: Rufzeichen und Locator prüfen."],
+errPwr:["Putere invalidă.","Invalid power.","Puissance invalide.","Potenza non valida.","Potencia no válida.","Potência inválida.","Érvénytelen teljesítmény.","Ungültige Leistung."],
+errTime:["Oră invalidă.","Invalid time.","Heure invalide.","Ora non valida.","Hora no válida.","Hora inválida.","Érvénytelen idő.","Ungültige Zeit."],
+exportTitle:["Export","Export","Exportation","Esportazione","Exportación","Exportação","Exportálás","Export"],
+exported:["{0} QSO exportate.","{0} QSOs exported.","{0} QSO exportés.","{0} QSO esportati.","{0} QSO exportados.","{0} QSO exportados.","{0} QSO exportálva.","{0} QSO exportiert."],
+farthest:["Cel mai îndepărtat","Farthest","Plus lointain","Più lontano","Más lejano","Mais distante","Legtávolabbi","Weitester"],
+fieldMode:["Mod câmp","Field mode","Mode portable","Modalità portatile","Modo campo","Modo campo","Terepi mód","Feldmodus"],
+footer:["rulează local, nu trimite nimic","runs locally, sends nothing","fonctionne en local, n'envoie rien","funziona in locale, non invia nulla","funciona en local, no envía nada","corre localmente, não envia nada","helyben fut, nem küld semmit","läuft lokal, sendet nichts"],
+freq:["Frecvență (MHz)","Frequency (MHz)","Fréquence (MHz)","Frequenza (MHz)","Frecuencia (MHz)","Frequência (MHz)","Frekvencia (MHz)","Frequenz (MHz)"],
+freqBandMismatch:["Frecvența nu se află în banda aleasă.","The frequency is not inside the chosen band.","La fréquence n'est pas dans la bande choisie.","La frequenza non rientra nella banda scelta.","La frecuencia no está dentro de la banda elegida.","A frequência não está na banda escolhida.","A frekvencia nincs a választott sávban.","Die Frequenz liegt nicht im gewählten Band."],
+grid:["Locator Maidenhead","Maidenhead locator","Locator Maidenhead","Locatore Maidenhead","Locator Maidenhead","Locator Maidenhead","Maidenhead lokátor","Maidenhead-Locator"],
+guard:["Avertizează mereu la închiderea paginii","Always warn before closing the page","Toujours avertir avant de fermer la page","Avvisa sempre prima di chiudere la pagina","Avisar siempre antes de cerrar la página","Avisar sempre antes de fechar a página","Mindig figyelmeztessen bezáráskor","Vor dem Schließen immer warnen"],
+impDone:["Import: {0} adăugate, {1} omise (identice), {2} respinse.","Import: {0} added, {1} skipped (identical), {2} rejected.","Import : {0} ajoutés, {1} ignorés (identiques), {2} rejetés.","Importazione: {0} aggiunti, {1} saltati (identici), {2} respinti.","Importación: {0} añadidos, {1} omitidos (idénticos), {2} rechazados.","Importação: {0} adicionados, {1} omitidos (idênticos), {2} rejeitados.","Import: {0} hozzáadva, {1} kihagyva (azonos), {2} elutasítva.","Import: {0} hinzugefügt, {1} übersprungen (identisch), {2} abgelehnt."],
+impFail:["Import eșuat","Import failed","Échec de l'importation","Importazione non riuscita","Error de importación","Falha na importação","Az import sikertelen","Import fehlgeschlagen"],
+impSkip:["omite QSO identice deja existente","skip QSOs identical to existing ones","ignorer les QSO identiques déjà présents","salta i QSO identici già presenti","omitir QSO idénticos ya existentes","omitir QSO idênticos já existentes","a már meglévő azonos QSO-k kihagyása","bereits vorhandene identische QSO überspringen"],
+importFile:["Fișier (.adi, .adx, .csv, .json)","File (.adi, .adx, .csv, .json)","Fichier (.adi, .adx, .csv, .json)","File (.adi, .adx, .csv, .json)","Archivo (.adi, .adx, .csv, .json)","Ficheiro (.adi, .adx, .csv, .json)","Fájl (.adi, .adx, .csv, .json)","Datei (.adi, .adx, .csv, .json)"],
+importTitle:["Import","Import","Importation","Importazione","Importación","Importação","Import","Import"],
+kBand:["banda următoare (Shift = precedenta)","next band (Shift = previous)","bande suivante (Maj = précédente)","banda successiva (Maiusc = precedente)","banda siguiente (Mayús = anterior)","banda seguinte (Shift = anterior)","következő sáv (Shift = előző)","nächstes Band (Umschalt = vorheriges)"],
+kCall:["mută cursorul pe indicativ","focus the callsign field","aller au champ indicatif","vai al campo nominativo","ir al campo indicativo","ir para o campo indicativo","ugrás a hívójel mezőre","zum Rufzeichenfeld"],
+kClear:["golește formularul","clear the form","vider le formulaire","svuota il modulo","vaciar el formulario","limpar o formulário","űrlap törlése","Formular leeren"],
+kEsc:["închide dialogul deschis","close the open dialog","fermer la boîte de dialogue","chiudi la finestra aperta","cerrar el diálogo abierto","fechar o diálogo aberto","megnyitott ablak bezárása","offenen Dialog schließen"],
+kField:["comută modul câmp","toggle field mode","basculer le mode portable","attiva/disattiva modalità portatile","alternar modo campo","alternar modo campo","terepi mód be/ki","Feldmodus umschalten"],
+kHelp:["această listă","this list","cette liste","questo elenco","esta lista","esta lista","ez a lista","diese Liste"],
+kMode:["modul următor (Shift = precedentul)","next mode (Shift = previous)","mode suivant (Maj = précédent)","modo successivo (Maiusc = precedente)","modo siguiente (Mayús = anterior)","modo seguinte (Shift = anterior)","következő mód (Shift = előző)","nächster Mode (Umschalt = vorheriger)"],
+kNow:["setează data/ora UTC curentă","set current UTC date/time","régler la date/heure UTC actuelle","imposta data/ora UTC attuale","fijar fecha/hora UTC actual","definir data/hora UTC atual","aktuális UTC dátum/idő","aktuelles UTC-Datum/-Zeit setzen"],
+kSave:["salvează QSO","save the QSO","enregistrer le QSO","salva il QSO","guardar el QSO","guardar o QSO","QSO mentése","QSO speichern"],
+kTabs:["secțiunile aplicației","app sections","sections de l'application","sezioni dell'app","secciones de la aplicación","secções da aplicação","az alkalmazás szakaszai","Bereiche der App"],
+kUndo:["anulează / refă","undo / redo","annuler / rétablir","annulla / ripeti","deshacer / rehacer","anular / refazer","visszavonás / újra","rückgängig / wiederholen"],
+keys:["Taste rapide","Keyboard shortcuts","Raccourcis clavier","Scorciatoie","Atajos de teclado","Atalhos de teclado","Gyorsbillentyűk","Tastenkürzel"],
+language:["Limbă","Language","Langue","Lingua","Idioma","Idioma","Nyelv","Sprache"],
+lastProfile:["Nu poți șterge ultimul profil.","You cannot delete the last profile.","Impossible de supprimer le dernier profil.","Non puoi eliminare l'ultimo profilo.","No puedes eliminar el último perfil.","Não pode eliminar o último perfil.","Az utolsó profil nem törölhető.","Das letzte Profil kann nicht gelöscht werden."],
+lat:["Latitudine (°)","Latitude (°)","Latitude (°)","Latitudine (°)","Latitud (°)","Latitude (°)","Szélesség (°)","Breite (°)"],
+light:["luminoasă","light","claire","chiaro","claro","claro","világos","hell"],
+limits:["Limite: tabelul de prefixe este intern, parțial (~220 de entități) și NU este lista DXCC completă ori un instrument oficial; zonele CQ/ITU lipsesc („necunoscut”) unde variază în țară. Răsăritul/apusul este aproximativ. Cabrillo este generic. Nu se verifică licența sau legalitatea unei legături.","Limits: the prefix table is internal, partial (~220 entities) and is NOT the complete DXCC list nor an official tool; CQ/ITU zones are left “unknown” where they vary inside a country. Sunrise/sunset is approximate. Cabrillo is generic. Licences or the validity of a contact are not checked.","Limites : la table des préfixes est interne, partielle (~220 entités) et n'est PAS la liste DXCC complète ni un outil officiel ; les zones CQ/ITU sont « inconnues » quand elles varient dans un pays. Lever/coucher approximatifs. Cabrillo générique. Licences et validité d'un contact non vérifiées.","Limiti: la tabella dei prefissi è interna, parziale (~220 entità) e NON è la lista DXCC completa né uno strumento ufficiale; le zone CQ/ITU restano «sconosciute» dove variano nel paese. Alba/tramonto approssimati. Cabrillo generico. Non si verificano licenze o validità dei collegamenti.","Límites: la tabla de prefijos es interna, parcial (~220 entidades) y NO es la lista DXCC completa ni una herramienta oficial; las zonas CQ/ITU quedan «desconocidas» donde varían dentro del país. Salida/puesta del sol aproximadas. Cabrillo genérico. No se comprueban licencias ni la validez de un contacto.","Limites: a tabela de prefixos é interna, parcial (~220 entidades) e NÃO é a lista DXCC completa nem uma ferramenta oficial; as zonas CQ/ITU ficam «desconhecidas» onde variam no país. Nascer/pôr do sol aproximados. Cabrillo genérico. Não se verificam licenças nem a validade de um contacto.","Korlátok: a prefixtábla belső, részleges (~220 entitás), NEM a teljes DXCC-lista és nem hivatalos eszköz; a CQ/ITU zónák „ismeretlenek”, ahol az országon belül változnak. A napkelte/napnyugta közelítő. A Cabrillo általános. Az engedélyt és a kapcsolat érvényességét nem ellenőrzi.","Grenzen: Die Präfixtabelle ist intern, unvollständig (~220 Entitäten) und NICHT die vollständige DXCC-Liste oder ein offizielles Werkzeug; CQ-/ITU-Zonen bleiben „unbekannt“, wo sie im Land variieren. Sonnenauf-/-untergang ungefähr. Cabrillo allgemein. Lizenzen oder Gültigkeit einer Verbindung werden nicht geprüft."],
+live:["Ceas live","Live clock","Horloge live","Orologio live","Reloj en vivo","Relógio ao vivo","Élő óra","Live-Uhr"],
+locA:["Locator A","Locator A","Locator A","Locatore A","Locator A","Locator A","A lokátor","Locator A"],
+locB:["Locator B","Locator B","Locator B","Locatore B","Locator B","Locator B","B lokátor","Locator B"],
+locLen:["Lungime locator","Locator length","Longueur du locator","Lunghezza locatore","Longitud del locator","Comprimento do locator","Lokátor hossza","Locator-Länge"],
+locator:["Locator","Locator","Locator","Locatore","Locator","Locator","Lokátor","Locator"],
+logTitle:["Jurnal","Log","Journal","Log","Diario","Diário","Napló","Logbuch"],
+lon:["Longitudine (°)","Longitude (°)","Longitude (°)","Longitudine (°)","Longitud (°)","Longitude (°)","Hosszúság (°)","Länge (°)"],
+colCall:["Indicativ","Callsign","Indicatif","Nominativo","Indicativo","Indicativo","Hívójel","Rufzeichen"],
+mapCount:["{0} puncte desenate din {1} QSO (doar cele cu locator).","{0} points drawn out of {1} QSOs (only those with a locator).","{0} points tracés sur {1} QSO (seulement ceux avec locator).","{0} punti disegnati su {1} QSO (solo quelli con locatore).","{0} puntos dibujados de {1} QSO (solo con locator).","{0} pontos desenhados de {1} QSO (só com locator).","{0} pont kirajzolva {1} QSO-ból (csak lokátorral).","{0} Punkte von {1} QSO gezeichnet (nur mit Locator)."],
+mapNeedGrid:["Setează locatorul stației proprii (secțiunea Stație) pentru a desena harta.","Set your station locator (Station section) to draw the map.","Définissez le locator de votre station (section Station) pour tracer la carte.","Imposta il locatore della tua stazione (sezione Stazione) per disegnare la mappa.","Define el locator de tu estación (sección Estación) para dibujar el mapa.","Defina o locator da sua estação (secção Estação) para desenhar o mapa.","Adja meg az állomás lokátorát (Állomás szakasz) a térképhez.","Locator der eigenen Station (Bereich Station) eintragen, um die Karte zu zeichnen."],
+mapNote:["Proiecție azimutală echidistantă centrată pe stația proprie, fără contururi de continente (nu se încarcă date externe): punctele sunt QSO-urile cu locator, pe direcția și distanța lor. Inele: 5000, 10000, 15000, 20000 km.","Azimuthal equidistant projection centred on your station, without continent outlines (no external data is loaded): points are QSOs with a locator, at their bearing and distance. Rings: 5000, 10000, 15000, 20000 km.","Projection azimutale équidistante centrée sur votre station, sans contours de continents (aucune donnée externe) : points = QSO avec locator, selon leur azimut et distance. Anneaux : 5000, 10000, 15000, 20000 km.","Proiezione azimutale equidistante centrata sulla tua stazione, senza contorni dei continenti (nessun dato esterno): i punti sono i QSO con locatore, per direzione e distanza. Anelli: 5000, 10000, 15000, 20000 km.","Proyección acimutal equidistante centrada en tu estación, sin contornos de continentes (no se cargan datos externos): puntos = QSO con locator, según rumbo y distancia. Anillos: 5000, 10000, 15000, 20000 km.","Projeção azimutal equidistante centrada na sua estação, sem contornos de continentes (sem dados externos): pontos = QSO com locator, pelo rumo e distância. Anéis: 5000, 10000, 15000, 20000 km.","Azimutális egyenközű vetület az állomás körül, kontinensek körvonala nélkül (külső adat nincs): a pontok a lokátorral rendelkező QSO-k irányuk és távolságuk szerint. Gyűrűk: 5000, 10000, 15000, 20000 km.","Azimutale äquidistante Projektion um die eigene Station, ohne Kontinentumrisse (keine externen Daten): Punkte sind QSO mit Locator nach Richtung und Entfernung. Ringe: 5000, 10000, 15000, 20000 km."],
+mapTitle:["Hartă azimutală (centrată pe stația proprie)","Azimuthal map (centred on your station)","Carte azimutale (centrée sur votre station)","Mappa azimutale (centrata sulla tua stazione)","Mapa acimutal (centrado en tu estación)","Mapa azimutal (centrado na sua estação)","Azimutális térkép (az állomás körül)","Azimutalkarte (um die eigene Station)"],
+meanSolar:["ora solară medie","mean solar time","heure solaire moyenne","ora solare media","hora solar media","hora solar média","közép napidő","mittlere Sonnenzeit"],
+mode:["Mod","Mode","Mode","Modo","Modo","Modo","Mód","Mode"],
+myCall:["Indicativ stație","Station callsign","Indicatif de la station","Nominativo della stazione","Indicativo de la estación","Indicativo da estação","Állomás hívójele","Stationsrufzeichen"],
+myGrid:["Locator propriu","Own locator","Locator propre","Locatore proprio","Locator propio","Locator próprio","Saját lokátor","Eigener Locator"],
+name:["Nume","Name","Nom","Nome","Nombre","Nome","Név","Name"],
+newProfile:["Profil nou","New profile","Nouveau profil","Nuovo profilo","Perfil nuevo","Novo perfil","Új profil","Neues Profil"],
+newQso:["QSO nou","New QSO","Nouveau QSO","Nuovo QSO","Nuevo QSO","Novo QSO","Új QSO","Neues QSO"],
+next:["Înainte","Next","Suivant","Avanti","Siguiente","Seguinte","Következő","Weiter"],
+noData:["Fără date.","No data.","Aucune donnée.","Nessun dato.","Sin datos.","Sem dados.","Nincs adat.","Keine Daten."],
+noStation:["Stația nu este setată — completează în „Stație și setări”","Station not set — fill it in under “Station and settings”","Station non définie — à renseigner dans « Station et réglages »","Stazione non impostata — compila in «Stazione e impostazioni»","Estación sin definir — complétala en «Estación y ajustes»","Estação não definida — preencha em «Estação e definições»","Az állomás nincs beállítva — töltse ki az „Állomás és beállítások” részben","Station nicht gesetzt — unter „Station und Einstellungen“ eintragen"],
+nothingRedo:["Nimic de refăcut.","Nothing to redo.","Rien à rétablir.","Niente da ripetere.","Nada que rehacer.","Nada para refazer.","Nincs mit újra végrehajtani.","Nichts zu wiederholen."],
+nothingUndo:["Nimic de anulat.","Nothing to undo.","Rien à annuler.","Niente da annullare.","Nada que deshacer.","Nada para anular.","Nincs mit visszavonni.","Nichts rückgängig zu machen."],
+now:["Acum","Now","Maintenant","Ora","Ahora","Agora","Most","Jetzt"],
+onlyDupes:["doar duplicate","duplicates only","doublons seulement","solo duplicati","solo duplicados","só duplicados","csak duplumok","nur Duplikate"],
+operator:["Operator (OPERATOR)","Operator (OPERATOR)","Opérateur (OPERATOR)","Operatore (OPERATOR)","Operador (OPERATOR)","Operador (OPERATOR)","Operátor (OPERATOR)","Operator (OPERATOR)"],
+pageOf:["Pagina {0} din {1}","Page {0} of {1}","Page {0} sur {1}","Pagina {0} di {1}","Página {0} de {1}","Página {0} de {1}","{0}. oldal / {1}","Seite {0} von {1}"],
+perHour:["QSO pe oră (UTC)","QSOs per hour (UTC)","QSO par heure (UTC)","QSO per ora (UTC)","QSO por hora (UTC)","QSO por hora (UTC)","QSO óránként (UTC)","QSO pro Stunde (UTC)"],
+pfDel:["Șterge profilul","Delete profile","Supprimer le profil","Elimina profilo","Eliminar perfil","Eliminar perfil","Profil törlése","Profil löschen"],
+pfDelConfirm:["Ștergi profilul curent? QSO-urile existente rămân neschimbate.","Delete the current profile? Existing QSOs stay unchanged.","Supprimer le profil actuel ? Les QSO existants restent inchangés.","Eliminare il profilo corrente? I QSO esistenti restano invariati.","¿Eliminar el perfil actual? Los QSO existentes no cambian.","Eliminar o perfil atual? Os QSO existentes não mudam.","Törli az aktuális profilt? A meglévő QSO-k nem változnak.","Aktuelles Profil löschen? Vorhandene QSO bleiben unverändert."],
+pfName:["Nume profil","Profile name","Nom du profil","Nome profilo","Nombre del perfil","Nome do perfil","Profil neve","Profilname"],
+pfNew:["Profil nou","New profile","Nouveau profil","Nuovo profilo","Perfil nuevo","Novo perfil","Új profil","Neues Profil"],
+pfSave:["Salvează profilul","Save profile","Enregistrer le profil","Salva profilo","Guardar perfil","Guardar perfil","Profil mentése","Profil speichern"],
+pfxDisclaimer:["Tabel intern cu {0} entități — orientativ, NU este lista DXCC completă și nu este un instrument oficial. Zonele CQ/ITU apar doar unde sunt sigure; altfel „necunoscut”.","Internal table with {0} entities — indicative only, NOT the complete DXCC list and not an official tool. CQ/ITU zones appear only where certain; otherwise “unknown”.","Table interne de {0} entités — indicative, ce n'est PAS la liste DXCC complète ni un outil officiel. Zones CQ/ITU seulement si sûres ; sinon « inconnu ».","Tabella interna di {0} entità — indicativa, NON è la lista DXCC completa né uno strumento ufficiale. Zone CQ/ITU solo se certe; altrimenti «sconosciuto».","Tabla interna de {0} entidades — orientativa, NO es la lista DXCC completa ni una herramienta oficial. Zonas CQ/ITU solo si son seguras; si no, «desconocido».","Tabela interna de {0} entidades — indicativa, NÃO é a lista DXCC completa nem uma ferramenta oficial. Zonas CQ/ITU só quando seguras; caso contrário «desconhecido».","Belső tábla {0} entitással — tájékoztató, NEM a teljes DXCC-lista és nem hivatalos eszköz. CQ/ITU zónák csak biztos esetben; különben „ismeretlen”.","Interne Tabelle mit {0} Entitäten — nur Richtwert, NICHT die vollständige DXCC-Liste und kein offizielles Werkzeug. CQ-/ITU-Zonen nur wenn sicher, sonst „unbekannt“."],
+pfxTitle:["Prefix → țară","Prefix → country","Préfixe → pays","Prefisso → paese","Prefijo → país","Prefixo → país","Előtag → ország","Präfix → Land"],
+polarDay:["Soarele nu apune în această zi (zi polară).","The sun does not set on this day (polar day).","Le soleil ne se couche pas ce jour-là (jour polaire).","Il sole non tramonta in questo giorno (giorno polare).","El sol no se pone este día (día polar).","O sol não se põe neste dia (dia polar).","A nap ezen a napon nem nyugszik le (sarki nappal).","Die Sonne geht an diesem Tag nicht unter (Polartag)."],
+polarNight:["Soarele nu răsare în această zi (noapte polară).","The sun does not rise on this day (polar night).","Le soleil ne se lève pas ce jour-là (nuit polaire).","Il sole non sorge in questo giorno (notte polare).","El sol no sale este día (noche polar).","O sol não nasce neste dia (noite polar).","A nap ezen a napon nem kel fel (sarki éjszaka).","Die Sonne geht an diesem Tag nicht auf (Polarnacht)."],
+power:["Putere (W)","Power (W)","Puissance (W)","Potenza (W)","Potencia (W)","Potência (W)","Teljesítmény (W)","Leistung (W)"],
+prev:["Înapoi","Previous","Précédent","Indietro","Anterior","Anterior","Előző","Zurück"],
+print:["Tipărește","Print","Imprimer","Stampa","Imprimir","Imprimir","Nyomtatás","Drucken"],
+privacy:["Confidențialitate: rulează local; nu trimite nimic în rețea. Jurnalul se păstrează doar în browserul tău (localStorage). Fă copii de siguranță regulate (.fff.json sau ADIF): ștergerea datelor site-ului din browser șterge și jurnalul.","Privacy: runs locally; nothing is sent over the network. The log is kept only in your browser (localStorage). Make regular backups (.fff.json or ADIF): clearing the site data in your browser also deletes the log.","Confidentialité : fonctionne en local ; rien n'est envoyé sur le réseau. Le journal reste uniquement dans votre navigateur (localStorage). Faites des sauvegardes régulières (.fff.json ou ADIF) : effacer les données du site efface aussi le journal.","Privacy: funziona in locale; nulla viene inviato in rete. Il log resta solo nel tuo browser (localStorage). Fai copie regolari (.fff.json o ADIF): cancellare i dati del sito cancella anche il log.","Privacidad: funciona en local; no se envía nada por la red. El diario se guarda solo en tu navegador (localStorage). Haz copias regulares (.fff.json o ADIF): borrar los datos del sitio borra también el diario.","Privacidade: corre localmente; nada é enviado pela rede. O diário fica só no seu navegador (localStorage). Faça cópias regulares (.fff.json ou ADIF): limpar os dados do site apaga também o diário.","Adatvédelem: helyben fut, semmit nem küld a hálózaton. A napló csak a böngészőben marad (localStorage). Készítsen rendszeres mentést (.fff.json vagy ADIF): a webhelyadatok törlése a naplót is törli.","Datenschutz: läuft lokal, sendet nichts über das Netz. Das Logbuch bleibt nur in Ihrem Browser (localStorage). Regelmäßig sichern (.fff.json oder ADIF): Löschen der Websitedaten löscht auch das Logbuch."],
+profile:["Profil","Profile","Profil","Profilo","Perfil","Perfil","Profil","Profil"],
+qslR:["QSL primit","QSL received","QSL reçue","QSL ricevuta","QSL recibida","QSL recebida","QSL kapott","QSL empfangen"],
+qslS:["QSL trimis","QSL sent","QSL envoyée","QSL inviata","QSL enviada","QSL enviada","QSL küldött","QSL gesendet"],
+qth:["QTH","QTH","QTH","QTH","QTH","QTH","QTH","QTH"],
+recent:["Ultimele QSO","Recent QSOs","QSO récents","Ultimi QSO","Últimos QSO","Últimos QSO","Legutóbbi QSO-k","Letzte QSO"],
+redo:["Refă","Redo","Rétablir","Ripeti","Rehacer","Refazer","Újra","Wiederholen"],
+redone:["Refăcut.","Redone.","Rétabli.","Ripetuto.","Rehecho.","Refeito.","Újra végrehajtva.","Wiederholt."],
+rejected:["respins","rejected","rejeté","respinto","rechazado","rejeitado","elutasítva","abgelehnt"],
+replace:["Înlocuiește","Replace","Remplacer","Sostituisci","Reemplazar","Substituir","Felülír","Ersetzen"],
+rstHint:["RST: SSB/FM 59, CW/RTTY/PSK 599; modurile digitale (FT8/FT4) folosesc raportul S/N în dB, ex. -10.","RST: SSB/FM 59, CW/RTTY/PSK 599; digital modes (FT8/FT4) use the S/N report in dB, e.g. -10.","RST : SSB/FM 59, CW/RTTY/PSK 599 ; les modes numériques (FT8/FT4) utilisent le rapport S/B en dB, ex. -10.","RST: SSB/FM 59, CW/RTTY/PSK 599; i modi digitali (FT8/FT4) usano il rapporto S/N in dB, es. -10.","RST: SSB/FM 59, CW/RTTY/PSK 599; los modos digitales (FT8/FT4) usan el informe S/N en dB, p. ej. -10.","RST: SSB/FM 59, CW/RTTY/PSK 599; os modos digitais (FT8/FT4) usam o relatório S/N em dB, ex. -10.","RST: SSB/FM 59, CW/RTTY/PSK 599; a digitális módok (FT8/FT4) S/N jelentést használnak dB-ben, pl. -10.","RST: SSB/FM 59, CW/RTTY/PSK 599; Digimodes (FT8/FT4) nutzen den S/N-Rapport in dB, z. B. -10."],
+rstR:["RST primit","RST received","RST reçu","RST ricevuto","RST recibido","RST recebido","RST kapott","RST empfangen"],
+rstS:["RST trimis","RST sent","RST envoyé","RST inviato","RST enviado","RST enviado","RST adott","RST gesendet"],
+sample:["Încarcă exemplu","Load example","Charger un exemple","Carica esempio","Cargar ejemplo","Carregar exemplo","Példa betöltése","Beispiel laden"],
+sampleLoaded:["Exemplu încărcat: {0} QSO (indicative fictive).","Example loaded: {0} QSOs (fictitious callsigns).","Exemple chargé : {0} QSO (indicatifs fictifs).","Esempio caricato: {0} QSO (nominativi fittizi).","Ejemplo cargado: {0} QSO (indicativos ficticios).","Exemplo carregado: {0} QSO (indicativos fictícios).","Példa betöltve: {0} QSO (kitalált hívójelek).","Beispiel geladen: {0} QSO (fiktive Rufzeichen)."],
+save:["Salvează","Save","Enregistrer","Salva","Guardar","Guardar","Mentés","Speichern"],
+saved:["Salvat","Saved","Enregistré","Salvato","Guardado","Guardado","Mentve","Gespeichert"],
+scAll:["Tot jurnalul","Whole log","Tout le journal","Tutto il log","Todo el diario","Todo o diário","Teljes napló","Gesamtes Logbuch"],
+scContest:["Doar concursul curent","Current contest only","Concours actuel seulement","Solo il contest corrente","Solo el concurso actual","Só o concurso atual","Csak az aktuális verseny","Nur aktueller Contest"],
+scFiltered:["Doar rândurile filtrate","Filtered rows only","Lignes filtrées seulement","Solo le righe filtrate","Solo las filas filtradas","Só as linhas filtradas","Csak a szűrt sorok","Nur gefilterte Zeilen"],
+scope:["Ce se exportă","What to export","Que exporter","Cosa esportare","Qué exportar","O que exportar","Mit exportáljon","Was exportieren"],
+search:["Căutare","Search","Recherche","Ricerca","Búsqueda","Pesquisa","Keresés","Suche"],
+searchPh:["Caută indicativ, nume, QTH, țară…","Search callsign, name, QTH, country…","Chercher indicatif, nom, QTH, pays…","Cerca nominativo, nome, QTH, paese…","Buscar indicativo, nombre, QTH, país…","Pesquisar indicativo, nome, QTH, país…","Keresés: hívójel, név, QTH, ország…","Suche: Rufzeichen, Name, QTH, Land…"],
+sections:["Secțiuni","Sections","Sections","Sezioni","Secciones","Secções","Szakaszok","Bereiche"],
+selAll:["Selectează pagina","Select page","Sélectionner la page","Seleziona pagina","Seleccionar página","Selecionar página","Oldal kijelölése","Seite auswählen"],
+select:["Selectează","Select","Sélectionner","Seleziona","Seleccionar","Selecionar","Kijelöl","Auswählen"],
+settings:["Setări","Settings","Réglages","Impostazioni","Ajustes","Definições","Beállítások","Einstellungen"],
+size:["dimensiune","size","taille","dimensione","tamaño","tamanho","méret","Größe"],
+skip:["Sari la conținut","Skip to content","Aller au contenu","Vai al contenuto","Saltar al contenido","Saltar para o conteúdo","Ugrás a tartalomhoz","Zum Inhalt springen"],
+srx:["Nr. primit (SRX)","Received no. (SRX)","N° reçu (SRX)","N. ricevuto (SRX)","N.º recibido (SRX)","N.º recebido (SRX)","Kapott sorszám (SRX)","Empf. Nr. (SRX)"],
+srxStr:["Schimb primit","Exchange received","Échange reçu","Scambio ricevuto","Intercambio recibido","Troca recebida","Kapott csere","Empfangener Austausch"],
+stationTitle:["Stația proprie","Own station","Station propre","Stazione propria","Estación propia","Estação própria","Saját állomás","Eigene Station"],
+storeFail:["Nu pot salva în browser (stocare indisponibilă). Exportă o copie de siguranță.","Cannot save in the browser (storage unavailable). Export a backup.","Impossible d'enregistrer dans le navigateur (stockage indisponible). Exportez une sauvegarde.","Impossibile salvare nel browser (archivio non disponibile). Esporta una copia.","No se puede guardar en el navegador (almacenamiento no disponible). Exporta una copia.","Não é possível guardar no navegador (armazenamento indisponível). Exporte uma cópia.","Nem menthető a böngészőbe (nincs tárhely). Exportáljon mentést.","Speichern im Browser nicht möglich (Speicher nicht verfügbar). Sicherung exportieren."],
+stx:["Nr. trimis (STX)","Sent no. (STX)","N° envoyé (STX)","N. inviato (STX)","N.º enviado (STX)","N.º enviado (STX)","Adott sorszám (STX)","Gesend. Nr. (STX)"],
+stxStr:["Schimb trimis","Exchange sent","Échange envoyé","Scambio inviato","Intercambio enviado","Troca enviada","Adott csere","Gesendeter Austausch"],
+submode:["Submod","Submode","Sous-mode","Sottomodo","Submodo","Submodo","Almód","Submode"],
+subtitle:["jurnal de stație radioamator","amateur radio station log","journal de station radioamateur","log di stazione radioamatore","diario de estación de radioaficionado","diário de estação de radioamador","rádióamatőr állomásnapló","Amateurfunk-Stationslogbuch"],
+sunNote:["Formulă simplă (NOAA simplificată, refracție standard 0,833°): eroare tipică de câteva minute; ora locală este ora solară medie (longitudine/15), nu fusul oficial și nu include ora de vară.","Simple formula (simplified NOAA, standard refraction 0.833°): typical error of a few minutes; local time is mean solar time (longitude/15), not the official time zone and without daylight saving.","Formule simple (NOAA simplifiée, réfraction standard 0,833°) : erreur typique de quelques minutes ; l'heure locale est l'heure solaire moyenne (longitude/15), pas le fuseau officiel ni l'heure d'été.","Formula semplice (NOAA semplificata, rifrazione standard 0,833°): errore tipico di qualche minuto; l'ora locale è l'ora solare media (longitudine/15), non il fuso ufficiale né l'ora legale.","Fórmula simple (NOAA simplificada, refracción estándar 0,833°): error típico de unos minutos; la hora local es la hora solar media (longitud/15), no el huso oficial ni el horario de verano.","Fórmula simples (NOAA simplificada, refração padrão 0,833°): erro típico de alguns minutos; a hora local é a hora solar média (longitude/15), não o fuso oficial nem o horário de verão.","Egyszerű képlet (egyszerűsített NOAA, 0,833° refrakció): tipikus hiba néhány perc; a helyi idő a közép napidő (hosszúság/15), nem a hivatalos zónaidő, nyári időszámítás nélkül.","Einfache Formel (vereinfachtes NOAA, Standardrefraktion 0,833°): typischer Fehler einige Minuten; Ortszeit ist mittlere Sonnenzeit (Länge/15), nicht die amtliche Zeitzone und ohne Sommerzeit."],
+sunTitle:["Ora locală și răsărit/apus (aproximativ)","Local time and sunrise/sunset (approximate)","Heure locale et lever/coucher (approximatif)","Ora locale e alba/tramonto (approssimati)","Hora local y salida/puesta del sol (aproximado)","Hora local e nascer/pôr do sol (aproximado)","Helyi idő és napkelte/napnyugta (közelítő)","Ortszeit und Sonnenauf-/-untergang (ungefähr)"],
+sunrise:["Răsărit","Sunrise","Lever","Alba","Salida","Nascer","Napkelte","Sonnenaufgang"],
+sunset:["Apus","Sunset","Coucher","Tramonto","Puesta","Pôr do sol","Napnyugta","Sonnenuntergang"],
+swCorner:["colț SV","SW corner","coin SO","angolo SO","esquina SO","canto SO","DNy sarok","SW-Ecke"],
+tabCalc:["Calcule","Calculations","Calculs","Calcoli","Cálculos","Cálculos","Számítások","Berechnungen"],
+tabIo:["Import / Export","Import / Export","Import / Export","Importa / Esporta","Importar / Exportar","Importar / Exportar","Import / Export","Import / Export"],
+tabLog:["Jurnal","Log","Journal","Log","Diario","Diário","Napló","Logbuch"],
+tabStation:["Stație și setări","Station and settings","Station et réglages","Stazione e impostazioni","Estación y ajustes","Estação e definições","Állomás és beállítások","Station und Einstellungen"],
+tabStats:["Statistici","Statistics","Statistiques","Statistiche","Estadísticas","Estatísticas","Statisztika","Statistik"],
+theme:["Temă","Theme","Thème","Tema","Tema","Tema","Téma","Design"],
+time:["Ora (UTC)","Time (UTC)","Heure (UTC)","Ora (UTC)","Hora (UTC)","Hora (UTC)","Idő (UTC)","Zeit (UTC)"],
+total:["Total QSO","Total QSOs","Total QSO","Totale QSO","Total QSO","Total QSO","Összes QSO","QSO gesamt"],
+undo:["Anulează","Undo","Annuler","Annulla","Deshacer","Anular","Visszavonás","Rückgängig"],
+undone:["Anulat.","Undone.","Annulé.","Annullato.","Deshecho.","Anulado.","Visszavonva.","Rückgängig gemacht."],
+uniqueCalls:["Indicative unice","Unique callsigns","Indicatifs uniques","Nominativi unici","Indicativos únicos","Indicativos únicos","Egyedi hívójelek","Eindeutige Rufzeichen"],
+unknown:["necunoscut","unknown","inconnu","sconosciuto","desconocido","desconhecido","ismeretlen","unbekannt"],
+unknownCountry:["Țară necunoscută (nu e în tabelul intern)","Unknown country (not in the internal table)","Pays inconnu (absent de la table interne)","Paese sconosciuto (non nella tabella interna)","País desconocido (no está en la tabla interna)","País desconhecido (não está na tabela interna)","Ismeretlen ország (nincs a belső táblában)","Unbekanntes Land (nicht in der internen Tabelle)"],
+unknownKept:["Câmpuri necunoscute/APP păstrate","Unknown/APP fields kept","Champs inconnus/APP conservés","Campi sconosciuti/APP conservati","Campos desconocidos/APP conservados","Campos desconhecidos/APP mantidos","Ismeretlen/APP mezők megőrizve","Unbekannte/APP-Felder beibehalten"],
+useMine:["A = locatorul meu","A = my locator","A = mon locator","A = il mio locatore","A = mi locator","A = o meu locator","A = saját lokátorom","A = mein Locator"],
+utcNow:["UTC acum","UTC now","UTC maintenant","UTC adesso","UTC ahora","UTC agora","UTC most","UTC jetzt"],
+viaPrefix:["prefix portabil {0}","portable prefix {0}","préfixe portable {0}","prefisso portatile {0}","prefijo portátil {0}","prefixo portátil {0}","portábilis előtag {0}","portables Präfix {0}"],
+wipe:["Șterge tot","Delete everything","Tout supprimer","Elimina tutto","Borrar todo","Apagar tudo","Összes törlése","Alles löschen"],
+wipeConfirm:["Ștergi TOT: jurnalul, profilurile și setările din acest browser? Fă mai întâi o copie de siguranță. Operația nu se poate anula.","Delete EVERYTHING: log, profiles and settings in this browser? Make a backup first. This cannot be undone.","Tout supprimer : journal, profils et réglages de ce navigateur ? Faites d'abord une sauvegarde. Irréversible.","Eliminare TUTTO: log, profili e impostazioni in questo browser? Fai prima una copia. Non si può annullare.","¿Borrar TODO: diario, perfiles y ajustes de este navegador? Haz antes una copia. No se puede deshacer.","Apagar TUDO: diário, perfis e definições neste navegador? Faça primeiro uma cópia. Não é possível anular.","TÖRLI AZ ÖSSZESET: naplót, profilokat és beállításokat ebben a böngészőben? Előbb mentsen. Nem vonható vissza.","ALLES löschen: Logbuch, Profile und Einstellungen in diesem Browser? Zuerst sichern. Nicht rückgängig zu machen."],
+wiped:["Date șterse.","Data deleted.","Données supprimées.","Dati eliminati.","Datos borrados.","Dados apagados.","Adatok törölve.","Daten gelöscht."],
+workedBefore:["lucrat de {0} ori înainte","worked {0} time(s) before","déjà contacté {0} fois","già collegato {0} volte","trabajado {0} vez/veces antes","contactado {0} vez(es) antes","korábban {0} alkalommal","bereits {0}× gearbeitet"],
+year:["An","Year","Année","Anno","Año","Ano","Év","Jahr"],
+yes:["Confirmă","Confirm","Confirmer","Conferma","Confirmar","Confirmar","Megerősít","Bestätigen"]
+};
+
+/* ===== Aplicația QSO — partea A: stare, i18n, jurnal ===== */
+const APP = (function(){
+'use strict';
+const VERSION='1.0.0', UPDATED='2026-10-14', KEY='fff.qso.data', KEY_LANG='fff.qso.lang', KEY_THEME='fff.qso.theme';
+const LANGS=['ro','en','fr','it','es','pt','hu','de'];
+const LANG_NAMES={ro:'Română',en:'English',fr:'Français',it:'Italiano',es:'Español',pt:'Português',hu:'Magyar',de:'Deutsch'};
+const $=id=>document.getElementById(id);
+const esc=s=>String(s==null?'':s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+let lang='ro';
+function lsGet(k){ try{ return localStorage.getItem(k); }catch(e){ return null; } }
+function lsSet(k,v){ try{ localStorage.setItem(k,v); return true; }catch(e){ return false; } }
+function lsDel(k){ try{ localStorage.removeItem(k); }catch(e){} }
+
+/* ---- i18n ---- */
+function t(key){
+  const e=I18N[key]; let s;
+  if(!e) s=key; else { const i=LANGS.indexOf(lang); s=e[i]!=null&&e[i]!==''?e[i]:(e[1]||e[0]); }
+  for(let a=1;a<arguments.length;a++) s=s.split('{'+(a-1)+'}').join(arguments[a]);
+  return s;
+}
+function applyI18n(root){
+  root=root||document;
+  root.querySelectorAll('[data-i18n]').forEach(el=>{ el.textContent=t(el.dataset.i18n); });
+  root.querySelectorAll('[data-i18n-ph]').forEach(el=>{ el.placeholder=t(el.dataset.i18nPh); });
+  root.querySelectorAll('[data-i18n-aria]').forEach(el=>{ el.setAttribute('aria-label',t(el.dataset.i18nAria)); });
+  document.documentElement.lang=lang;
+  document.title='QSO — '+t('subtitle');
+}
+
+/* ---- Stare ---- */
+const S={records:[],nextId:1,profiles:[],profile:null,settings:{win:60,guard:false,field:false},contest:{on:false,id:''}};
+const hist={undo:[],redo:[]}; const H={};
+let saveTimer=null, memOnly=false;
+function newProfile(){ return {id:'p'+Date.now().toString(36)+Math.floor(Math.random()*1e4),name:'',call:'',op:'',grid:'',pwr:''}; }
+function curProfile(){ return S.profiles.find(p=>p.id===S.profile)||S.profiles[0]; }
+function serialize(){ return JSON.stringify({v:1,records:S.records,nextId:S.nextId,profiles:S.profiles,profile:S.profile,settings:S.settings,contest:S.contest}); }
+function persistNow(){ clearTimeout(saveTimer); saveTimer=null; const ok=lsSet(KEY,serialize()); if(!ok&&!memOnly){ memOnly=true; toast(t('storeFail')); } }
+function persist(){ if(saveTimer) return; saveTimer=setTimeout(persistNow,250); }
+function load(){
+  let raw=lsGet(KEY);
+  if(raw){ try{ loadFrom(JSON.parse(raw)); }catch(e){} }
+  if(!S.profiles.length){ const p=newProfile(); p.name='Stația 1'; S.profiles.push(p); S.profile=p.id; }
+}
+function loadFrom(d){
+  if(!d||!Array.isArray(d.records)) throw new Error('format');
+  S.records=d.records.filter(r=>r&&typeof r==='object').map((r,i)=>{ r=Object.assign({},r); if(r._id===undefined) r._id=i+1; return r; });
+  S.nextId=Math.max(d.nextId||1,...S.records.map(r=>r._id+1),1);
+  S.profiles=Array.isArray(d.profiles)?d.profiles:[]; S.profile=d.profile||(S.profiles[0]&&S.profiles[0].id);
+  S.settings=Object.assign(S.settings,d.settings||{}); S.contest=Object.assign({on:false,id:''},d.contest||{});
+}
+/* ---- istoric (înregistrările sunt imutabile → copii superficiale ale listei) ---- */
+function commit(newRecs){
+  hist.undo.push(S.records); if(hist.undo.length>100) hist.undo.shift(); hist.redo.length=0;
+  S.records=newRecs; persist(); renderAll();
+}
+function undo(){ if(!hist.undo.length){ toast(t('nothingUndo')); return; } hist.redo.push(S.records); S.records=hist.undo.pop(); persist(); renderAll(); toast(t('undone')); }
+function redo(){ if(!hist.redo.length){ toast(t('nothingRedo')); return; } hist.undo.push(S.records); S.records=hist.redo.pop(); persist(); renderAll(); toast(t('redone')); }
+
+/* ---- toast / dialoguri ---- */
+let toastTimer=null;
+function toast(msg){ const el=$('toast'); el.textContent=msg; el.hidden=false; clearTimeout(toastTimer); toastTimer=setTimeout(()=>{ el.hidden=true; },3500); }
+function confirmDlg(msg,yesLabel){
+  return new Promise(res=>{
+    const d=$('dlgConfirm'); $('dcMsg').textContent=msg; $('dcYes').textContent=yesLabel||t('yes');
+    const done=v=>{ $('dcYes').onclick=null; $('dcNo').onclick=null; d.onclose=null; if(d.open) d.close(); res(v); };
+    $('dcYes').onclick=()=>done(true); $('dcNo').onclick=()=>done(false); d.onclose=()=>done(false);
+    d.showModal(); $('dcNo').focus();
+  });
+}
+
+/* ---- Formular ---- */
+const QSL_OPTS=['','Y','N','R','Q','I'];
+const touched={rsts:false,rstr:false,band:false};
+let editId=null, liveTimer=null;
+function opt(v,l){ const o=document.createElement('option'); o.value=v; o.textContent=l; return o; }
+function fillSel(sel,items,keep){ const cur=sel.value; sel.textContent=''; items.forEach(([v,l])=>sel.appendChild(opt(v,l))); if(keep&&[...sel.options].some(o=>o.value===cur)) sel.value=cur; }
+function initSelects(){
+  fillSel($('f_band'),[['','— '+t('auto')+' —']].concat(Lib.BAND_NAMES.map(b=>[b,b])),true);
+  fillSel($('f_mode'),Lib.MODE_NAMES.map(m=>[m,m]),true);
+  fillSel($('f_qsls'),QSL_OPTS.map(v=>[v,v||'—']),true); fillSel($('f_qslr'),QSL_OPTS.map(v=>[v,v||'—']),true);
+  fillSel($('flBand'),[['','— '+t('band')+' —']].concat(Lib.BAND_NAMES.map(b=>[b,b])),true);
+  fillSel($('flMode'),[['','— '+t('mode')+' —']].concat(Lib.MODE_NAMES.map(m=>[m,m])),true);
+  fillSel($('flQsl'),[['','— QSL —'],['Y','QSL ✓'],['N','QSL ✗']],true);
+  fillSubmodes();
+}
+function fillSubmodes(){ const m=$('f_mode').value; const subs=Lib.MODES[m]||[]; fillSel($('f_submode'),[['','—']].concat(subs.map(s=>[s,s])),true); }
+function setDefaultRst(){
+  const d=Lib.MODE_DEFAULT_RST[$('f_mode').value]||'59';
+  if(!touched.rsts) $('f_rsts').value=d; if(!touched.rstr) $('f_rstr').value=d;
+}
+function updateLive(){
+  if(!$('f_live').checked||editId!==null) return;
+  const n=Lib.nowUTC();
+  $('f_date').value=Lib.isoDate(n.date); $('f_time').value=Lib.isoTime(n.time);
+}
+function setNow(){ $('f_live').checked=true; updateLive(); }
+function tickClock(){
+  const d=new Date(); $('clockT').textContent=Lib.pad(d.getUTCHours())+':'+Lib.pad(d.getUTCMinutes())+':'+Lib.pad(d.getUTCSeconds());
+  updateLive();
+}
+function stationBadge(){
+  const p=curProfile(); const b=$('stationBadge');
+  b.textContent = p&&p.call ? [p.call,p.grid,p.pwr?p.pwr+' W':''].filter(Boolean).join(' · ') : t('noStation');
+  b.className='badge'+(p&&p.call?'':' warn');
+  const cb=$('contestBadge'); cb.hidden=!(S.contest.on&&S.contest.id); cb.textContent=t('contest')+': '+S.contest.id;
+}
+function readForm(){
+  const v=id=>$(id).value.trim();
+  const r={};
+  const d=$('f_date').value, tm=$('f_time').value;
+  r.QSO_DATE=d.replace(/-/g,''); r.TIME_ON=tm.replace(/:/g,'').padEnd(6,'0').slice(0,6);
+  r.CALL=Lib.parseCall(v('f_call')).norm||v('f_call').toUpperCase();
+  const f=v('f_freq').replace(',','.'); if(f) r.FREQ=String(parseFloat(f));
+  r.BAND=$('f_band').value||(f?Lib.bandFromFreq(f):'');
+  r.MODE=$('f_mode').value; if($('f_submode').value) r.SUBMODE=$('f_submode').value;
+  if(v('f_rsts')) r.RST_SENT=v('f_rsts'); if(v('f_rstr')) r.RST_RCVD=v('f_rstr');
+  const pw=v('f_pwr').replace(',','.'); if(pw) r.TX_PWR=String(parseFloat(pw));
+  if(v('f_grid')) r.GRIDSQUARE=Lib.normGrid(v('f_grid'));
+  if(v('f_name')) r.NAME=v('f_name'); if(v('f_qth')) r.QTH=v('f_qth'); if(v('f_comment')) r.COMMENT=v('f_comment');
+  if($('f_qsls').value) r.QSL_SENT=$('f_qsls').value; if($('f_qslr').value) r.QSL_RCVD=$('f_qslr').value;
+  if(S.contest.on&&S.contest.id){ r.CONTEST_ID=S.contest.id;
+    if(v('f_stx')) r.STX=v('f_stx'); if(v('f_srx')) r.SRX=v('f_srx'); if(v('f_stxs')) r.STX_STRING=v('f_stxs'); if(v('f_srxs')) r.SRX_STRING=v('f_srxs'); }
+  const p=curProfile();
+  if(p){ if(p.call) r.STATION_CALLSIGN=p.call; const op=p.op||''; if(op) r.OPERATOR=op; if(p.grid&&Lib.gridValid(p.grid)) r.MY_GRIDSQUARE=Lib.normGrid(p.grid); }
+  return r;
+}
+function validateForm(show){
+  const errs=[]; const call=Lib.parseCall($('f_call').value);
+  const mark=(id,bad)=>{ $(id).setAttribute('aria-invalid',bad?'true':'false'); };
+  const callBad=!call.ok; mark('f_call',callBad&&$('f_call').value!==''||(show&&callBad));
+  if(callBad) errs.push(['f_call',t('errCall')]);
+  const g=$('f_grid').value.trim(); const gBad=g!==''&&!Lib.gridValid(g); mark('f_grid',gBad);
+  if(gBad) errs.push(['f_grid',t('errGrid')]);
+  const f=$('f_freq').value.trim().replace(',','.'); const fBad=f!==''&&!(parseFloat(f)>0&&isFinite(f)); mark('f_freq',fBad);
+  if(fBad) errs.push(['f_freq',t('errFreq')]);
+  const dBad=!Lib.adifDateValid($('f_date').value.replace(/-/g,'')); mark('f_date',dBad);
+  if(dBad) errs.push(['f_date',t('errDate')]);
+  const tBad=!Lib.adifTimeValid($('f_time').value.replace(/:/g,'').padEnd(6,'0')); mark('f_time',tBad);
+  if(tBad) errs.push(['f_time',t('errTime')]);
+  const pw=$('f_pwr').value.trim().replace(',','.'); const pBad=pw!==''&&!(parseFloat(pw)>=0&&isFinite(pw)); mark('f_pwr',pBad);
+  if(pBad) errs.push(['f_pwr',t('errPwr')]);
+  return errs;
+}
+function updateCallHint(){
+  const raw=$('f_call').value.trim(); const h=$('callHint');
+  if(!raw){ h.textContent=''; h.className='hint'; $('f_call').setAttribute('aria-invalid','false'); return; }
+  const p=Lib.parseCall(raw);
+  if(!p.ok){ h.textContent=t('errCall'); h.className='hint bad'; $('f_call').setAttribute('aria-invalid','true'); return; }
+  $('f_call').setAttribute('aria-invalid','false');
+  const c=Pfx.lookup(p.norm); let s=c?(c.name+(c.cq?' · CQ '+c.cq:'')+(c.itu?' · ITU '+c.itu:'')):t('unknownCountry');
+  const tmp=readForm(); tmp._id=editId===null?undefined:editId;
+  const dupe=Fmt.findDupe(S.records,tmp,{windowMin:S.settings.win});
+  const prev=S.records.filter(r=>r.CALL===p.norm&&r._id!==editId).length;
+  let cls='hint good';
+  if(dupe){ s+=' — ⚠ '+t('dupeWarn',Lib.isoDate(dupe.QSO_DATE)+' '+Lib.isoTime(dupe.TIME_ON)); cls='hint warn'; }
+  else if(prev){ s+=' — '+t('workedBefore',prev); }
+  h.textContent=s; h.className=cls;
+  if(!$('f_grid').value&&!editId){ const last=S.records.filter(r=>r.CALL===p.norm&&r.GRIDSQUARE).slice(-1)[0]; if(last) $('f_grid').placeholder=last.GRIDSQUARE; }
+  updateGridHint();
+}
+function updateGridHint(){
+  const g=$('f_grid').value.trim(), h=$('gridHint');
+  if(!g){ h.textContent=''; h.className='hint'; return; }
+  if(!Lib.gridValid(g)){ h.textContent=t('errGrid'); h.className='hint bad'; return; }
+  const mine=curProfile()&&curProfile().grid;
+  if(mine&&Lib.gridValid(mine)){ const d=Lib.gridDistance(mine,g); h.textContent=Math.round(d.km).toLocaleString(lang)+' km · '+Math.round(d.az)+'°'; h.className='hint good'; }
+  else { h.textContent='✓'; h.className='hint good'; }
+}
+function updateFreqBand(){
+  const f=$('f_freq').value.trim().replace(',','.'); if(!f) return;
+  const b=Lib.bandFromFreq(f);
+  if(b){ $('f_band').value=b; touched.band=false; $('f_freq').setAttribute('aria-invalid','false'); }
+}
+function nextSerial(){
+  if(!(S.contest.on&&S.contest.id)) return '';
+  const mx=S.records.filter(r=>r.CONTEST_ID===S.contest.id).reduce((m,r)=>Math.max(m,parseInt(r.STX,10)||0),0);
+  return String(mx+1);
+}
+function resetForm(keepSticky){
+  const keep={band:$('f_band').value,mode:$('f_mode').value,sub:$('f_submode').value,freq:$('f_freq').value,pwr:$('f_pwr').value,stxs:$('f_stxs').value};
+  ['f_call','f_grid','f_name','f_qth','f_comment','f_srx','f_srxs'].forEach(id=>{ $(id).value=''; $(id).setAttribute('aria-invalid','false'); });
+  $('f_qsls').value=''; $('f_qslr').value='';
+  touched.rsts=touched.rstr=false; setDefaultRst();
+  $('callHint').textContent=''; $('gridHint').textContent=''; $('f_grid').placeholder='';
+  const p=curProfile(); if(!keepSticky||!keep.pwr) $('f_pwr').value=p&&p.pwr||''; 
+  $('f_stx').value=nextSerial();
+  editId=null; $('formTitle').textContent=t('newQso'); $('cancelEditBtn').hidden=true; $('f_live').checked=true; updateLive();
+}
+function loadIntoForm(r){
+  editId=r._id; $('formTitle').textContent=t('editQso')+' #'+r._id; $('cancelEditBtn').hidden=false;
+  $('f_live').checked=false;
+  $('f_call').value=r.CALL||''; $('f_date').value=r.QSO_DATE?Lib.isoDate(r.QSO_DATE):''; $('f_time').value=r.TIME_ON?Lib.isoTime(r.TIME_ON.padEnd(6,'0')):'';
+  $('f_freq').value=r.FREQ||''; $('f_band').value=r.BAND||''; $('f_mode').value=Lib.MODE_NAMES.includes(r.MODE)?r.MODE:$('f_mode').value; fillSubmodes(); $('f_submode').value=r.SUBMODE||'';
+  $('f_rsts').value=r.RST_SENT||''; $('f_rstr').value=r.RST_RCVD||''; touched.rsts=touched.rstr=true;
+  $('f_pwr').value=r.TX_PWR||''; $('f_grid').value=r.GRIDSQUARE||''; $('f_name').value=r.NAME||''; $('f_qth').value=r.QTH||''; $('f_comment').value=r.COMMENT||'';
+  $('f_qsls').value=r.QSL_SENT||''; $('f_qslr').value=r.QSL_RCVD||'';
+  $('f_stx').value=r.STX||''; $('f_srx').value=r.SRX||''; $('f_stxs').value=r.STX_STRING||''; $('f_srxs').value=r.SRX_STRING||'';
+  updateCallHint(); window.scrollTo({top:0}); $('f_call').focus();
+}
+function saveQso(){
+  const errs=validateForm(true);
+  if(errs.length){ $('saveHint').textContent=errs[0][1]; $('saveHint').className='hint bad'; $(errs[0][0]).focus(); return false; }
+  const f=readForm();
+  if(editId!==null){
+    const old=S.records.find(r=>r._id===editId); if(!old){ resetForm(); return false; }
+    const nr=Object.assign({},old,f,{_id:editId});
+    // câmpuri șterse în formular se elimină
+    ['FREQ','SUBMODE','RST_SENT','RST_RCVD','TX_PWR','GRIDSQUARE','NAME','QTH','COMMENT','QSL_SENT','QSL_RCVD','STX','SRX','STX_STRING','SRX_STRING'].forEach(k=>{ if(f[k]===undefined) delete nr[k]; });
+    if(!f.CONTEST_ID&&!S.contest.on) { /* păstrează contestul existent */ }
+    commit(S.records.map(r=>r._id===editId?nr:r)); toast(t('saved')+' '+nr.CALL);
+    resetForm(true);
+  } else {
+    f._id=S.nextId++;
+    const dupe=Fmt.findDupe(S.records,f,{windowMin:S.settings.win});
+    commit(S.records.concat([f]));
+    toast(t('saved')+' '+f.CALL+(dupe?' — ⚠ '+t('dupeShort'):''));
+    resetForm(true);
+  }
+  $('saveHint').textContent=''; $('f_call').focus(); persistNow();
+  return true;
+}
+
+/* ---- Tabel ---- */
+const COLS=[
+ ['QSO_DATE','colDate'],['TIME_ON','colTime'],['CALL','colCall'],['BAND','band'],['MODE','mode'],['FREQ','colFreq'],['RST_SENT','colRstS'],['RST_RCVD','colRstR'],
+ ['GRIDSQUARE','colGrid'],['_km','colKm'],['NAME','name'],['QTH','qth'],['COMMENT','comment'],['_qsl','colQsl'],['CONTEST_ID','colContest']];
+let sortKey='_when', sortDir=-1, page=0; const PAGE=100;
+const selected=new Set(); let rowEdit=null;
+let dupeCache={recs:null,win:null,set:null};
+function dupeSet(){
+  if(dupeCache.recs===S.records&&dupeCache.win===S.settings.win) return dupeCache.set;
+  const byCall=new Map(); S.records.forEach(r=>{ const k=r.CALL||''; (byCall.get(k)||byCall.set(k,[]).get(k)).push(r); });
+  const set=new Set();
+  byCall.forEach(list=>{ if(list.length<2) return;
+    for(let i=0;i<list.length;i++) for(let j=i+1;j<list.length;j++){ const a=list[i],b=list[j];
+      if(Fmt.findDupe([a],b,{windowMin:S.settings.win})){ set.add(a._id); set.add(b._id); } } });
+  dupeCache={recs:S.records,win:S.settings.win,set}; return set;
+}
+const searchCache=new WeakMap();
+function searchStr(r){
+  let s=searchCache.get(r); if(s) return s;
+  const c=Pfx.lookup(r.CALL||''); s=[r.CALL,r.NAME,r.QTH,r.COMMENT,r.GRIDSQUARE,r.BAND,r.MODE,r.SUBMODE,r.CONTEST_ID,r.COUNTRY,c&&c.name,r.QSO_DATE&&Lib.isoDate(r.QSO_DATE)].filter(Boolean).join(' ').toLowerCase();
+  searchCache.set(r,s); return s;
+}
+function foldStr(s){ return s.normalize('NFD').replace(/[̀-ͯ]/g,'').toLowerCase(); }
+function filtered(){
+  const q=foldStr($('q').value.trim()), b=$('flBand').value, m=$('flMode').value, y=$('flYear').value, ql=$('flQsl').value, dp=$('flDupe').checked;
+  const ds=dp?dupeSet():null;
+  return S.records.filter(r=>{
+    if(b&&r.BAND!==b) return false; if(m&&r.MODE!==m) return false; if(y&&(r.QSO_DATE||'').slice(0,4)!==y) return false;
+    if(ql==='Y'&&r.QSL_RCVD!=='Y') return false; if(ql==='N'&&r.QSL_RCVD==='Y') return false;
+    if(dp&&!ds.has(r._id)) return false;
+    if(q){ const s=foldStr(searchStr(r)); if(!q.split(/\s+/).every(w=>s.includes(w))) return false; }
+    return true;
+  });
+}
+function myGridFor(r){ return r.MY_GRIDSQUARE||(curProfile()&&curProfile().grid)||''; }
+function kmOf(r){ const g=r.GRIDSQUARE, m=myGridFor(r); if(!g||!m||!Lib.gridValid(g)||!Lib.gridValid(m)) return null; return Lib.gridDistance(m,g).km; }
+function sortVal(r,k){
+  if(k==='_when') return Lib.toEpoch(r.QSO_DATE||'19700101',r.TIME_ON||'0000');
+  if(k==='_km') return kmOf(r)==null?-1:kmOf(r);
+  if(k==='_qsl') return (r.QSL_RCVD==='Y'?2:0)+(r.QSL_SENT==='Y'?1:0);
+  const v=r[k]; if(k==='FREQ') return parseFloat(v)||0; return (v||'').toString().toLowerCase();
+}
+function sorted(list){
+  const k=sortKey, d=sortDir;
+  return list.map((r,i)=>[r,sortVal(r,k),i]).sort((a,b)=>{ const x=a[1],y=b[1]; const c=x<y?-1:x>y?1:0; return c?c*d:(a[2]-b[2])*(d); }).map(a=>a[0]);
+}
+function renderHead(){
+  const tr=$('thead'); tr.textContent='';
+  const th0=document.createElement('th'); th0.className='sel'; th0.innerHTML='<input type="checkbox" id="selAll" aria-label="'+esc(t('selAll'))+'">'; tr.appendChild(th0);
+  const wk=document.createElement('th'); wk.scope='col'; wk.innerHTML='<button type="button" data-sort="_when">#</button>'; tr.appendChild(wk);
+  COLS.forEach(([k,l])=>{ const th=document.createElement('th'); th.scope='col'; if(sortKey===k) th.setAttribute('aria-sort',sortDir>0?'ascending':'descending');
+    th.innerHTML='<button type="button" data-sort="'+k+'">'+esc(t(l))+(sortKey===k?(sortDir>0?' ▲':' ▼'):'')+'</button>'; tr.appendChild(th); });
+  const ta=document.createElement('th'); ta.innerHTML='<span class="sr">'+esc(t('actions'))+'</span>'; tr.appendChild(ta);
+}
+function cellText(r,k){
+  if(k==='_km'){ const km=kmOf(r); return km==null?'':Math.round(km).toLocaleString(lang); }
+  if(k==='_qsl') return (r.QSL_SENT==='Y'?'↑':'')+(r.QSL_RCVD==='Y'?'↓':'')||'';
+  if(k==='QSO_DATE') return r.QSO_DATE?Lib.isoDate(r.QSO_DATE):'';
+  if(k==='TIME_ON') return r.TIME_ON?Lib.isoTime(r.TIME_ON.slice(0,4)):'';
+  return r[k]==null?'':r[k];
+}
+const EDIT_FIELDS=['QSO_DATE','TIME_ON','CALL','BAND','MODE','FREQ','RST_SENT','RST_RCVD','GRIDSQUARE','NAME','QTH','COMMENT'];
+function renderRow(r,idx,ds){
+  const tr=document.createElement('tr'); tr.dataset.id=r._id; if(ds.has(r._id)) tr.className='dupe';
+  if(rowEdit===r._id){
+    let h='<td class="sel"></td><td>'+(idx)+'</td>';
+    COLS.forEach(([k])=>{
+      if(!EDIT_FIELDS.includes(k)){ h+='<td>'+esc(cellText(r,k))+'</td>'; return; }
+      const v=k==='QSO_DATE'?(r.QSO_DATE||''):k==='TIME_ON'?(r.TIME_ON||''):(r[k]||'');
+      if(k==='BAND') h+='<td><select data-f="BAND" aria-label="'+esc(t('band'))+'">'+['',...Lib.BAND_NAMES].map(b=>'<option'+(b===v?' selected':'')+'>'+esc(b)+'</option>').join('')+'</select></td>';
+      else if(k==='MODE') h+='<td><select data-f="MODE" aria-label="'+esc(t('mode'))+'">'+Lib.MODE_NAMES.map(b=>'<option'+(b===v?' selected':'')+'>'+esc(b)+'</option>').join('')+'</select></td>';
+      else h+='<td><input data-f="'+k+'" value="'+esc(v)+'" aria-label="'+esc(t(COLS.find(c=>c[0]===k)[1]))+'"'+(k==='QSO_DATE'?' size="9" maxlength="8"':k==='TIME_ON'?' size="7" maxlength="6"':'')+'></td>';
+    });
+    h+='<td><button class="btn small primary" type="button" data-act="rowsave">'+esc(t('save'))+'</button> <button class="btn small" type="button" data-act="rowcancel">'+esc(t('cancel'))+'</button></td>';
+    tr.innerHTML=h; return tr;
+  }
+  let h='<td class="sel"><input type="checkbox" data-sel="'+r._id+'" aria-label="'+esc(t('select'))+' '+esc(r.CALL||'')+'"'+(selected.has(r._id)?' checked':'')+'></td><td>'+idx+'</td>';
+  COLS.forEach(([k])=>{ h+='<td'+(k==='CALL'?' class="call"':'')+'>'+esc(cellText(r,k))+'</td>'; });
+  h+='<td><button class="btn small" type="button" data-act="edit">'+esc(t('editRow'))+'</button> <button class="btn small" type="button" data-act="detail">'+esc(t('detailShort'))+'</button> <button class="btn small danger" type="button" data-act="del" aria-label="'+esc(t('delete'))+' '+esc(r.CALL||'')+'">✕</button></td>';
+  tr.innerHTML=h; return tr;
+}
+function renderYears(){
+  const ys=[...new Set(S.records.map(r=>(r.QSO_DATE||'').slice(0,4)).filter(Boolean))].sort().reverse();
+  fillSel($('flYear'),[['','— '+t('year')+' —']].concat(ys.map(y=>[y,y])),true);
+}
+function renderTable(){
+  renderHead();
+  const list=sorted(filtered()); const total=list.length;
+  const pages=Math.max(1,Math.ceil(total/PAGE)); if(page>=pages) page=pages-1; if(page<0) page=0;
+  const slice=list.slice(page*PAGE,page*PAGE+PAGE); const ds=dupeSet();
+  const tb=$('tbody'); tb.textContent=''; const frag=document.createDocumentFragment();
+  slice.forEach((r,i)=>frag.appendChild(renderRow(r,page*PAGE+i+1,ds))); tb.appendChild(frag);
+  $('emptyMsg').hidden=S.records.length>0; $('logTable').parentNode.hidden=S.records.length===0;
+  $('countBadge').textContent=t('countOf',total,S.records.length);
+  $('pgInfo').textContent=t('pageOf',page+1,pages); $('prevPg').disabled=page===0; $('nextPg').disabled=page>=pages-1;
+  $('undoBtn').disabled=!hist.undo.length; $('redoBtn').disabled=!hist.redo.length; $('delSelBtn').disabled=selected.size===0;
+  $('delSelBtn').textContent=t('delSel')+(selected.size?' ('+selected.size+')':'');
+  const sa=$('selAll'); if(sa){ sa.checked=slice.length>0&&slice.every(r=>selected.has(r._id)); }
+  const p=curProfile(); $('printHead').textContent='QSO — '+(p&&p.call||'')+' '+(p&&p.grid||'')+' — '+new Date().toISOString().slice(0,10)+' UTC — '+total+' QSO';
+  return list;
+}
+function renderAll(){ renderYears(); renderTable(); stationBadge(); if(H.station) H.station(); if(!$('tab-stats').hidden&&H.stats) H.stats(); updateCallHint(); }
+function rowSave(tr){
+  const id=+tr.dataset.id; const old=S.records.find(r=>r._id===id); if(!old) return;
+  const nr=Object.assign({},old); let bad=null;
+  tr.querySelectorAll('[data-f]').forEach(el=>{ const k=el.dataset.f; let v=el.value.trim();
+    if(k==='CALL'){ const p=Lib.parseCall(v); if(!p.ok) bad=['CALL',t('errCall')]; v=p.norm||v.toUpperCase(); }
+    if(k==='GRIDSQUARE'&&v){ if(!Lib.gridValid(v)) bad=['GRIDSQUARE',t('errGrid')]; else v=Lib.normGrid(v); }
+    if(k==='QSO_DATE'&&!Lib.adifDateValid(v)) bad=['QSO_DATE',t('errDate')];
+    if(k==='TIME_ON'){ if(v.length===4) v+='00'; if(!Lib.adifTimeValid(v)) bad=['TIME_ON',t('errTime')]; }
+    if(k==='FREQ'&&v){ v=v.replace(',','.'); if(!(parseFloat(v)>0)) bad=['FREQ',t('errFreq')]; }
+    if(v==='') delete nr[k]; else nr[k]=v; });
+  if(bad){ toast(bad[1]); const el=tr.querySelector('[data-f="'+bad[0]+'"]'); if(el) el.focus(); return; }
+  if(nr.FREQ&&!nr.BAND){ const b=Lib.bandFromFreq(nr.FREQ); if(b) nr.BAND=b; }
+  rowEdit=null; commit(S.records.map(r=>r._id===id?nr:r)); toast(t('saved'));
+}
+async function deleteIds(ids){
+  if(!ids.length) return;
+  const ok=await confirmDlg(ids.length===1?t('confirmDel1'):t('confirmDelN',ids.length),t('delete'));
+  if(!ok) return;
+  const set=new Set(ids); ids.forEach(i=>selected.delete(i));
+  commit(S.records.filter(r=>!set.has(r._id))); toast(t('deleted',ids.length));
+}
+function showDetail(r){
+  const dl=$('ddBody'); dl.textContent='';
+  const add=(k,v)=>{ const dt=document.createElement('dt'); dt.textContent=k; const dd=document.createElement('dd'); dd.textContent=v; dl.appendChild(dt); dl.appendChild(dd); };
+  const c=Pfx.lookup(r.CALL||''); if(c) add(t('country'),c.name+(c.cq?' · CQ '+c.cq:'')+(c.itu?' · ITU '+c.itu:''));
+  const km=kmOf(r); if(km!=null){ const d=Lib.gridDistance(myGridFor(r),r.GRIDSQUARE); add(t('colKm'),Math.round(km)+' km · '+Math.round(d.az)+'° / '+Math.round(d.back)+'°'); }
+  Object.keys(r).filter(k=>!k.startsWith('_')).sort((a,b)=>{ const ia=Fmt.ORDER.indexOf(a), ib=Fmt.ORDER.indexOf(b); return (ia<0?999:ia)-(ib<0?999:ib)||a.localeCompare(b); }).forEach(k=>add(k,r[k]));
+  const dlg=$('dlgDetail'); dlg.dataset.id=r._id;
+  let eb=$('ddEdit'); if(!eb){ eb=document.createElement('button'); eb.id='ddEdit'; eb.type='button'; eb.className='btn'; $('ddClose').parentNode.insertBefore(eb,$('ddClose')); eb.addEventListener('click',()=>{ const rr=S.records.find(x=>x._id===+dlg.dataset.id); dlg.close(); if(rr) loadIntoForm(rr); }); }
+  eb.textContent=t('editInForm');
+  dlg.showModal();
+}
+return {H,t,$,esc,S,hist,Lib,lsGet,lsSet,lsDel,KEY,KEY_LANG,KEY_THEME,LANGS,LANG_NAMES,get lang(){return lang;},set lang(v){lang=v;},applyI18n,load,loadFrom,persist,persistNow,serialize,commit,undo,redo,toast,confirmDlg,
+ initSelects,fillSubmodes,setDefaultRst,tickClock,updateLive,setNow,stationBadge,readForm,validateForm,updateCallHint,updateGridHint,updateFreqBand,resetForm,loadIntoForm,saveQso,touched,
+ renderAll,renderTable,filtered,sorted,rowSave,deleteIds,showDetail,curProfile,newProfile,kmOf,myGridFor,dupeSet,fillSel,
+ get editId(){return editId;},set editId(v){editId=v;},selected,
+ get sortKey(){return sortKey;},set sortKey(v){sortKey=v;},get sortDir(){return sortDir;},set sortDir(v){sortDir=v;},get page(){return page;},set page(v){page=v;},
+ get rowEdit(){return rowEdit;},set rowEdit(v){rowEdit=v;},VERSION,UPDATED,nextSerial,get memOnly(){return memOnly;}};
+})();
+
+/* ===== Aplicația QSO — partea B: calcule, statistici, IO, inițializare ===== */
+(function(){
+'use strict';
+const {t,$,esc,S,hist,H}=APP;
+const num=(v,l)=>Number(v).toLocaleString(APP.lang,{maximumFractionDigits:l==null?0:l});
+
+/* ---- Calcule ---- */
+function calcDist(){
+  const a=$('k_a').value.trim(), b=$('k_b').value.trim(), o=$('k_out');
+  if(!a&&!b){ o.textContent=''; return; }
+  if(!Lib.gridValid(a)||!Lib.gridValid(b)){ o.textContent=t('errGrid2'); return; }
+  const d=Lib.gridDistance(a,b);
+  o.innerHTML=esc(num(d.km,0))+' km ('+esc(num(d.km/1.609344,0))+' mi) · '+esc(t('azimuth'))+' '+esc(num(d.az,1))+'° · '+esc(t('backAz'))+' '+esc(num(d.back,1))+'°';
+}
+function calcConv(src){
+  const loc=$('k_loc'), lat=$('k_lat'), lon=$('k_lon'), o=$('k_conv'), len=+$('k_len').value;
+  if(src==='loc'){
+    const g=loc.value.trim(); if(!g){ o.textContent=''; return; }
+    const c=Lib.gridToLatLon(g); if(!c){ o.textContent=t('errGrid'); return; }
+    lat.value=c.lat.toFixed(4); lon.value=c.lon.toFixed(4);
+    const sw=Lib.gridToLatLon(g,true);
+    o.textContent=t('center')+': '+c.lat.toFixed(4)+'°, '+c.lon.toFixed(4)+'° · '+t('swCorner')+': '+sw.lat.toFixed(4)+'°, '+sw.lon.toFixed(4)+'° · '+t('size')+': '+c.w.toFixed(4)+'° × '+c.h.toFixed(4)+'°';
+  } else {
+    const la=parseFloat(lat.value.replace(',','.')), lo=parseFloat(lon.value.replace(',','.'));
+    if(isNaN(la)||isNaN(lo)){ o.textContent=''; return; }
+    const g=Lib.latLonToGrid(la,lo,len); if(!g){ o.textContent=t('errCoord'); return; }
+    loc.value=g; o.textContent=t('locator')+': '+g;
+  }
+}
+function calcSun(){
+  const g=$('s_loc').value.trim(), o=$('s_out'); if(!g){ o.textContent=''; return; }
+  const c=Lib.gridToLatLon(g); if(!c){ o.textContent=t('errGrid'); return; }
+  const ds=$('s_date').value||new Date().toISOString().slice(0,10); const d=new Date(ds+'T00:00:00Z');
+  if(isNaN(d)){ o.textContent=''; return; }
+  const sun=Lib.sunTimes(c.lat,c.lon,d); const now=new Date();
+  const mean=new Date(now.getTime()+c.lon/15*3600000);
+  let s=t('utcNow')+': '+now.toISOString().slice(11,19)+' · '+t('meanSolar')+': '+mean.toISOString().slice(11,19)+' · '+t('deviceTime')+': '+now.toLocaleTimeString(APP.lang)+'<br>';
+  if(sun.polar) s+=esc(sun.polar==='zi'?t('polarDay'):t('polarNight'));
+  else s+=esc(t('sunrise'))+': '+Lib.fmtMin(sun.rise)+' UTC · '+esc(t('sunset'))+': '+Lib.fmtMin(sun.set)+' UTC ('+esc(t('approx'))+')';
+  o.innerHTML=s;
+}
+function calcPfx(){
+  const v=$('p_call').value.trim(), o=$('p_out'); if(!v){ o.textContent=''; return; }
+  const p=Lib.parseCall(v); if(!p.ok){ o.textContent=t('errCall'); return; }
+  const c=Pfx.lookup(p.norm);
+  if(!c){ o.textContent=t('unknownCountry'); return; }
+  o.textContent=c.name+' ('+c.prefix+')'+(c.cont?' · '+c.cont:'')+' · CQ '+(c.cq||t('unknown'))+' · ITU '+(c.itu||t('unknown'))+(p.prefix?' · '+t('viaPrefix',p.prefix):'');
+}
+
+/* ---- Statistici ---- */
+function countBy(fn){ const m=new Map(); S.records.forEach(r=>{ const k=fn(r); if(k==null||k==='') return; m.set(k,(m.get(k)||0)+1); }); return m; }
+function bars(ul,m,order,limit){
+  let arr=[...m.entries()]; if(order) arr.sort((a,b)=>order.indexOf(a[0])-order.indexOf(b[0])); else arr.sort((a,b)=>b[1]-a[1]||String(a[0]).localeCompare(b[0]));
+  if(limit) arr=arr.slice(0,limit);
+  const mx=Math.max(1,...arr.map(a=>a[1])); ul.textContent='';
+  if(!arr.length){ ul.innerHTML='<li class="hint">'+esc(t('noData'))+'</li>'; return; }
+  arr.forEach(([k,v])=>{ const li=document.createElement('li'); li.innerHTML='<span>'+esc(k)+'</span><span class="bar" aria-hidden="true"><i style="width:'+(v/mx*100).toFixed(1)+'%"></i></span><b>'+v+'</b>'; ul.appendChild(li); });
+}
+function countryOf(r){ const c=Pfx.lookup(r.CALL||''); return c?c.name:(r.COUNTRY||t('unknown')); }
+function renderStats(){
+  const R=S.records; const calls=new Set(R.map(r=>r.CALL)); const ctry=new Set(R.map(countryOf).filter(x=>x!==t('unknown')));
+  let mxKm=0, mxCall=''; R.forEach(r=>{ const k=APP.kmOf(r); if(k!=null&&k>mxKm){ mxKm=k; mxCall=r.CALL; } });
+  $('st_summary').innerHTML=[ [t('total'),R.length],[t('uniqueCalls'),calls.size],[t('countries'),ctry.size],[t('farthest'),mxKm?num(mxKm)+' km ('+mxCall+')':'—'] ].map(([k,v])=>'<span class="badge">'+esc(k)+': <b>'+esc(v)+'</b></span>').join('');
+  bars($('st_band'),countBy(r=>r.BAND),Lib.BAND_NAMES);
+  bars($('st_mode'),countBy(r=>r.MODE));
+  bars($('st_country'),countBy(countryOf),null,25);
+  bars($('st_year'),countBy(r=>(r.QSO_DATE||'').slice(0,4)),null);
+  hourChart(); mapChart();
+}
+function hourChart(){
+  const h=new Array(24).fill(0); S.records.forEach(r=>{ const x=parseInt((r.TIME_ON||'').slice(0,2),10); if(x>=0&&x<24) h[x]++; });
+  const mx=Math.max(1,...h), W=480, Ht=170, bw=W/24;
+  let s='<svg class="chart" viewBox="0 0 '+W+' '+(Ht+24)+'" role="img" aria-label="'+esc(t('perHour'))+'">';
+  h.forEach((v,i)=>{ const bh=v/mx*Ht; s+='<rect x="'+(i*bw+2)+'" y="'+(Ht-bh)+'" width="'+(bw-4)+'" height="'+bh+'" fill="var(--accent-fill)"><title>'+String(i).padStart(2,'0')+':00 UTC — '+v+'</title></rect>'; if(i%3===0) s+='<text x="'+(i*bw+bw/2)+'" y="'+(Ht+14)+'" text-anchor="middle">'+i+'</text>'; });
+  s+='<text x="2" y="10">'+mx+'</text></svg>';
+  $('st_hour').innerHTML=s;
+}
+function mapChart(){
+  const p=APP.curProfile(); const mg=p&&p.grid;
+  if(!mg||!Lib.gridValid(mg)){ $('st_map').innerHTML='<p class="hint">'+esc(t('mapNeedGrid'))+'</p>'; return; }
+  const c0=Lib.gridToLatLon(mg), Rm=185, cx=210, cy=210, MAXKM=20015;
+  let s='<svg class="chart" viewBox="0 0 420 420" role="img" aria-label="'+esc(t('mapTitle'))+'">';
+  [5000,10000,15000,20000].forEach(k=>{ const r=k/MAXKM*Rm; s+='<circle cx="'+cx+'" cy="'+cy+'" r="'+r.toFixed(1)+'" fill="none" stroke="var(--border)" stroke-width="1"/><text x="'+(cx+3)+'" y="'+(cy-r+11)+'">'+k/1000+'k</text>'; });
+  for(let a=0;a<360;a+=30){ const x=cx+Rm*Math.sin(Lib.rad(a)), y=cy-Rm*Math.cos(Lib.rad(a)); s+='<line x1="'+cx+'" y1="'+cy+'" x2="'+x.toFixed(1)+'" y2="'+y.toFixed(1)+'" stroke="var(--border-soft)"/>'; }
+  [['N',0],['E',90],['S',180],['W',270]].forEach(([l,a])=>{ const x=cx+(Rm+12)*Math.sin(Lib.rad(a)), y=cy-(Rm+12)*Math.cos(Lib.rad(a)); s+='<text x="'+x.toFixed(1)+'" y="'+(y+4).toFixed(1)+'" text-anchor="middle" style="font-weight:700">'+l+'</text>'; });
+  let n=0; const pts=S.records.filter(r=>r.GRIDSQUARE&&Lib.gridValid(r.GRIDSQUARE)).slice(-2000);
+  pts.forEach(r=>{ const o=Lib.gridToLatLon(r.GRIDSQUARE); const d=Lib.greatCircle(c0,o); const rr=d.km/MAXKM*Rm; const x=cx+rr*Math.sin(Lib.rad(d.az)), y=cy-rr*Math.cos(Lib.rad(d.az)); n++;
+    s+='<circle cx="'+x.toFixed(1)+'" cy="'+y.toFixed(1)+'" r="3" fill="var(--accent-fill)" fill-opacity=".75" stroke="var(--bg)" stroke-width=".6"><title>'+esc(r.CALL)+' · '+Math.round(d.km)+' km · '+Math.round(d.az)+'°</title></circle>'; });
+  s+='<circle cx="'+cx+'" cy="'+cy+'" r="4" fill="var(--text)"/></svg>';
+  $('st_map').innerHTML=s+'<p class="hint">'+esc(t('mapCount',n,S.records.length))+'</p>';
+}
+H.stats=renderStats;
+
+/* ---- Stație ---- */
+function renderStationPanel(){
+  const p=APP.curProfile(); if(!p) return;
+  APP.fillSel($('pf_sel'),S.profiles.map(x=>[x.id,x.name||x.call||'—']));
+  $('pf_sel').value=p.id;
+  if(document.activeElement && ['pf_name','pf_call','pf_op','pf_grid','pf_pwr'].includes(document.activeElement.id)) return;
+  $('pf_name').value=p.name||''; $('pf_call').value=p.call||''; $('pf_op').value=p.op||''; $('pf_grid').value=p.grid||''; $('pf_pwr').value=p.pwr||'';
+  $('st_win').value=S.settings.win; $('st_guard').checked=!!S.settings.guard;
+}
+H.station=renderStationPanel;
+function pfHint(){
+  const c=$('pf_call').value.trim(), g=$('pf_grid').value.trim(); const msgs=[]; 
+  if(c&&!Lib.callValid(c)) msgs.push(t('errCall')); if(g&&!Lib.gridValid(g)) msgs.push(t('errGrid'));
+  $('pfHint').textContent=msgs.join(' · '); $('pfHint').className='hint'+(msgs.length?' bad':'');
+  $('pf_call').setAttribute('aria-invalid',c&&!Lib.callValid(c)?'true':'false'); $('pf_grid').setAttribute('aria-invalid',g&&!Lib.gridValid(g)?'true':'false');
+  return msgs.length===0;
+}
+function pfSave(){
+  if(!pfHint()){ toast_(t('errProfile')); return; }
+  const p=APP.curProfile();
+  p.name=$('pf_name').value.trim()||$('pf_call').value.trim().toUpperCase()||p.name; p.call=Lib.parseCall($('pf_call').value).norm||''; p.op=$('pf_op').value.trim().toUpperCase();
+  p.grid=$('pf_grid').value.trim()?Lib.normGrid($('pf_grid').value.trim()):''; p.pwr=$('pf_pwr').value.trim().replace(',','.');
+  APP.persistNow(); APP.stationBadge(); renderStationPanel(); $('f_pwr').value=p.pwr||''; toast_(t('saved'));
+  if(!$('tab-stats').hidden) renderStats(); APP.renderTable();
+}
+const toast_=APP.toast;
+
+/* ---- IO ---- */
+function download(name,data,mime){
+  const blob=new Blob([data],{type:mime||'application/octet-stream'}); const a=document.createElement('a');
+  a.href=URL.createObjectURL(blob); a.download=name; document.body.appendChild(a); a.click(); a.remove(); setTimeout(()=>URL.revokeObjectURL(a.href),4000);
+}
+function exportSet(){
+  const sc=$('exScope').value; let list=S.records;
+  if(sc==='filtered') list=APP.sorted(APP.filtered()).slice().reverse();
+  else if(sc==='contest'){ const id=S.contest.id||$('cb_contest').value.trim(); list=S.records.filter(r=>r.CONTEST_ID===id); }
+  return list;
+}
+function fname(ext){ const p=APP.curProfile(); return 'QSO_'+((p&&p.call)||'log').replace(/[^A-Z0-9]/gi,'_')+'_'+new Date().toISOString().slice(0,10).replace(/-/g,'')+'.'+ext; }
+function pub(r){ const o={}; Object.keys(r).forEach(k=>{ if(!k.startsWith('_')) o[k]=r[k]; }); return o; }
+function bundleObj(){ return {format:'fff-bundle',schema:1,app:'qso',version:APP.VERSION,updated:APP.UPDATED,exported:new Date().toISOString(),data:{[APP.KEY]:APP.serialize(),[APP.KEY_LANG]:APP.lang}}; }
+function doImportRecords(raw,srcName,warn){
+  const rep=[]; const existing=new Set(S.records.map(r=>[r.CALL,r.QSO_DATE,r.TIME_ON,r.BAND,r.MODE].join('|')));
+  let skipped=0, invalid=0, added=0; const out=[]; let id=S.nextId; const unknown=new Set();
+  raw.forEach((r0,i)=>{
+    const r=Fmt.normalizeRec(r0); const errs=Fmt.validateRec(r);
+    if(!r.CALL||!r.QSO_DATE||!r.TIME_ON){ invalid++; rep.push('#'+(i+1)+': '+errs.join(', ')+' — '+t('rejected')); return; }
+    if(errs.length) rep.push('#'+(i+1)+' '+r.CALL+': '+errs.join(', '));
+    const key=[r.CALL,r.QSO_DATE,r.TIME_ON,r.BAND,r.MODE].join('|');
+    if($('impSkip').checked&&existing.has(key)){ skipped++; return; }
+    existing.add(key); Object.keys(r).forEach(k=>{ if(!Fmt.ORDER.includes(k)) unknown.add(k); });
+    r._id=id++; out.push(r); added++;
+  });
+  S.nextId=id;
+  if(out.length) APP.commit(S.records.concat(out));
+  const msg=t('impDone',added,skipped,invalid);
+  $('impMsg').textContent=msg;
+  const lines=[srcName+': '+msg]; if(unknown.size) lines.push(t('unknownKept')+': '+[...unknown].slice(0,40).join(', ')); (warn||[]).forEach(w=>lines.push('! '+w)); rep.slice(0,60).forEach(x=>lines.push(x)); if(rep.length>60) lines.push('… '+(rep.length-60));
+  const pre=$('impReport'); pre.hidden=false; pre.textContent=lines.join('\n');
+  return {added,skipped,invalid};
+}
+async function importFile(file){
+  const buf=new Uint8Array(await file.arrayBuffer()); const name=file.name; const low=name.toLowerCase();
+  const text=()=>new TextDecoder('utf-8').decode(buf).replace(/^﻿/,'');
+  try{
+    if(low.endsWith('.json')){
+      const j=JSON.parse(text());
+      if(j&&j.format==='fff-bundle'){ return restoreBundle(j); }
+      const arr=Array.isArray(j)?j:(j&&j.records);
+      if(!Array.isArray(arr)) throw new Error('json');
+      return doImportRecords(arr,name);
+    }
+    if(low.endsWith('.csv')){ const c=Fmt.fromCsv(text()); return doImportRecords(c.records,name,c.warnings); }
+    if(low.endsWith('.adx')){ const x=Fmt.parseAdx(text()); return doImportRecords(x.records,name,x.warnings); }
+    const p=Fmt.parseAdi(buf);
+    if(!p.records.length&&/^\s*<\?xml|<ADX/i.test(text().slice(0,200))){ const x=Fmt.parseAdx(text()); return doImportRecords(x.records,name,x.warnings); }
+    const w=p.warnings.slice(); if(p.charFallback) w.push(t('charFallback',p.charFallback));
+    return doImportRecords(p.records,name,w);
+  }catch(e){ $('impMsg').textContent=t('impFail')+' ('+e.message+')'; $('impReport').hidden=true; }
+}
+async function restoreBundle(j){
+  if(j.app!=='qso'){ $('bkMsg').textContent=t('bkWrongApp'); $('impMsg').textContent=t('bkWrongApp'); return; }
+  const ok=await APP.confirmDlg(t('bkReplace'),t('replace')); if(!ok) return;
+  try{ const d=JSON.parse(j.data[APP.KEY]); APP.loadFrom(d); if(!S.profiles.length){ const p=APP.newProfile(); p.name='Stația 1'; S.profiles.push(p); S.profile=p.id; }
+    hist.undo.length=0; hist.redo.length=0; APP.persistNow(); APP.resetForm(); APP.renderAll(); $('bkMsg').textContent=t('bkRestored',S.records.length); $('impMsg').textContent=$('bkMsg').textContent;
+  }catch(e){ $('bkMsg').textContent=t('impFail'); }
+}
+
+/* ---- Exemplu (reale ca structură; indicative fictive) ---- */
+function sampleData(){
+  const base=Date.UTC(2026,9,10,6,0,0); const rows=[
+   ['DL1ABC','20m','SSB','USB',14.205,'59','59','JO62','Jürgen','Berlin','Lucrat pe 20 m'],['OK1XYZ','40m','CW','',7.025,'599','579','JO70','Pavel','Praga',''],
+   ['HA5ZZZ','80m','SSB','LSB',3.7,'59','57','JN97','László','Budapesta','Semnal bun'],['I2ABC','20m','FT8','',14.074,'-08','-12','JN45','','',''],
+   ['W1AW','20m','CW','',14.03,'579','559','FN31','Hiram','Newington','DX peste ocean'],['JA1AAA','15m','FT8','',21.074,'-15','-18','PM95','','',''],
+   ['SP5KAB','40m','SSB','LSB',7.1,'59','59','KO02','Ewa','Varșovia','Țară vecină: România – Polonia'],['EA3ABC','20m','FT4','',14.08,'-05','-07','JN11','','',''],
+   ['LZ1ABC','2m','FM','',145.5,'59','59','KN22','Ivan','Sofia','Local'],['YO3AAA','70cm','FM','',433.5,'59','59','KN34','Ion','București','Releu'],
+   ['PY2ABC','15m','SSB','USB',21.3,'57','55','GG66','Carlos','São Paulo',''],['VK2ABC','20m','FT8','',14.074,'-18','-20','QF56','','','']];
+  const prof=APP.curProfile(); const recs=rows.map((r,i)=>{ const ts=new Date(base+i*3300000); const n=Lib.nowUTC(ts);
+    const o={_id:S.nextId++,CALL:r[0],QSO_DATE:n.date,TIME_ON:n.time,BAND:r[1],MODE:r[2],FREQ:String(r[4]),RST_SENT:r[5],RST_RCVD:r[6],GRIDSQUARE:r[7]};
+    if(r[3]) o.SUBMODE=r[3]; if(r[8]) o.NAME=r[8]; if(r[9]) o.QTH=r[9]; if(r[10]) o.COMMENT=r[10];
+    if(prof&&prof.call) o.STATION_CALLSIGN=prof.call; if(prof&&prof.grid) o.MY_GRIDSQUARE=prof.grid; o.TX_PWR='100'; if(i%3===0) o.QSL_SENT='Y'; if(i%4===0) o.QSL_RCVD='Y'; return o; });
+  APP.commit(S.records.concat(recs)); toast_(t('sampleLoaded',recs.length));
+}
+
+/* ---- Taste rapide ---- */
+const KEYS=[['Ctrl+Enter','kSave'],['Alt+N','kNow'],['Alt+C','kCall'],['Alt+X','kClear'],['Alt+B','kBand'],['Alt+M','kMode'],['Alt+Z / Alt+Y','kUndo'],['Alt+K','kField'],['Alt+1 … 5','kTabs'],['Alt+H','kHelp'],['Esc','kEsc']];
+function renderKeys(){ $('keysList').innerHTML=KEYS.map(([k,d])=>'<li><span class="kbd">'+esc(k)+'</span> — '+esc(t(d))+'</li>').join(''); }
+function showTab(name,focus){
+  document.querySelectorAll('.tabs [role=tab]').forEach(b=>{ const on=b.dataset.tab===name; b.setAttribute('aria-selected',on?'true':'false'); b.tabIndex=on?0:-1; if(on&&focus) b.focus(); });
+  document.querySelectorAll('section.tab').forEach(s=>{ s.hidden=s.id!=='tab-'+name; });
+  if(name==='stats') renderStats();
+  if(name==='station') renderStationPanel();
+  if(name==='log') APP.renderTable();
+}
+function setField(on){
+  S.settings.field=!!on; document.body.classList.toggle('field',!!on); $('fieldBtn').setAttribute('aria-pressed',on?'true':'false');
+  document.querySelector('#tab-log .card:not(.qsoform)').classList.toggle('hide-field',!!on);
+  $('recentCard').hidden=!on; if(on){ showTab('log'); renderRecent(); $('f_call').focus(); } APP.persist();
+}
+function renderRecent(){
+  const last=S.records.slice(-5).reverse();
+  $('recentList').innerHTML=last.map(r=>'<li><span class="mono">'+esc(Lib.isoTime((r.TIME_ON||'0000').slice(0,4)))+'</span> <b class="mono">'+esc(r.CALL)+'</b> '+esc(r.BAND||'')+' '+esc(r.MODE||'')+' '+esc(r.RST_SENT||'')+'/'+esc(r.RST_RCVD||'')+'</li>').join('')||'<li class="hint">'+esc(t('empty'))+'</li>';
+}
+function cycleSel(id,dir){ const s=$(id); const n=s.options.length; s.selectedIndex=(s.selectedIndex+dir+n)%n; s.dispatchEvent(new Event('change',{bubbles:true})); }
+
+/* ---- Inițializare ---- */
+function init(){
+  // limbă
+  const ls=APP.lsGet(APP.KEY_LANG); APP.lang=APP.LANGS.includes(ls)?ls:'ro';
+  APP.load(); 
+  const ls2=$('langSel'); ls2.textContent=''; APP.LANGS.forEach(l=>{ const o=document.createElement('option'); o.value=l; o.textContent=APP.LANG_NAMES[l]; ls2.appendChild(o); }); ls2.value=APP.lang;
+  const recent=document.createElement('div'); recent.className='card'; recent.id='recentCard'; recent.hidden=true; recent.innerHTML='<h2 id="recentTitle"></h2><ul id="recentList" style="padding-left:18px;margin:0"></ul>';
+  $('tab-log').insertBefore(recent,$('tab-log').children[1]);
+  const retitle=()=>{ $('recentTitle').textContent=t('recent'); $('pfxDisclaimer').textContent=t('pfxDisclaimer',Pfx.count); renderKeys(); };
+  function fullI18n(){ APP.applyI18n(); APP.initSelects(); retitle(); APP.renderAll(); calcDist(); calcConv('loc'); calcSun(); calcPfx(); if(!$('tab-stats').hidden) renderStats(); setThemeLabel(); }
+  APP.initSelects();
+  $('c_on').checked=!!S.contest.on; $('c_id').value=S.contest.id||'';
+  $('contestList').innerHTML=['CQ-WW-SSB','CQ-WW-CW','CQ-WPX-SSB','CQ-WPX-CW','ARRL-DX-CW','ARRL-DX-SSB','IARU-HF','CQ-160-CW','EU-HF','RO-DX','YO-DX-HF','CQ-VHF','ARRL-VHF-JAN'].map(x=>'<option value="'+x+'">').join('');
+  APP.applyI18n(); retitle();
+  APP.resetForm(false); $('f_stx').value=APP.nextSerial();
+  APP.setDefaultRst();
+  const d0=new Date(); $('s_date').value=d0.toISOString().slice(0,10);
+  setField(!!S.settings.field && false); // câmpul nu se reia automat
+  // tema
+  function setThemeLabel(){ $('themeBtn').textContent=t('theme')+': '+(document.documentElement.dataset.theme==='light'?t('light'):t('dark')); }
+  $('themeBtn').addEventListener('click',()=>{ const n=document.documentElement.dataset.theme==='light'?'dark':'light'; document.documentElement.dataset.theme=n; APP.lsSet(APP.KEY_THEME,n); setThemeLabel(); });
+  setThemeLabel();
+  ls2.addEventListener('change',()=>{ APP.lang=ls2.value; APP.lsSet(APP.KEY_LANG,APP.lang); fullI18n(); });
+  // taburi
+  document.querySelectorAll('.tabs [role=tab]').forEach((b,i,all)=>{
+    b.addEventListener('click',()=>showTab(b.dataset.tab));
+    b.addEventListener('keydown',e=>{ let j=null; if(e.key==='ArrowRight') j=(i+1)%all.length; else if(e.key==='ArrowLeft') j=(i-1+all.length)%all.length; else if(e.key==='Home') j=0; else if(e.key==='End') j=all.length-1; if(j!==null){ e.preventDefault(); showTab(all[j].dataset.tab,true);} });
+  });
+  // formular
+  const f=$('qsoForm');
+  f.addEventListener('submit',e=>{ e.preventDefault(); APP.saveQso(); renderRecent(); });
+  $('f_call').addEventListener('input',()=>{ const el=$('f_call'); const p=el.selectionStart; el.value=el.value.toUpperCase().replace(/\s/g,''); try{ el.setSelectionRange(p,p);}catch(e){} APP.updateCallHint(); });
+  ['f_date','f_time'].forEach(id=>$(id).addEventListener('input',()=>{ $('f_live').checked=false; APP.updateCallHint(); }));
+  $('f_live').addEventListener('change',()=>APP.updateLive());
+  $('nowBtn').addEventListener('click',APP.setNow);
+  $('f_freq').addEventListener('input',()=>{ APP.updateFreqBand(); APP.updateCallHint(); });
+  $('f_band').addEventListener('change',()=>{ APP.touched.band=true; const fv=$('f_freq').value.trim().replace(',','.'); if(fv&&Lib.bandFromFreq(fv)!==$('f_band').value&&$('f_band').value){ $('saveHint').textContent=t('freqBandMismatch'); $('saveHint').className='hint warn'; } else $('saveHint').textContent=''; APP.updateCallHint(); });
+  $('f_mode').addEventListener('change',()=>{ APP.fillSubmodes(); APP.setDefaultRst(); APP.updateCallHint(); });
+  $('f_rsts').addEventListener('input',()=>{ APP.touched.rsts=true; });
+  $('f_rstr').addEventListener('input',()=>{ APP.touched.rstr=true; });
+  [['f_rsts'],['f_rstr']].forEach(([id])=>$(id).addEventListener('blur',()=>{ const v=$(id).value.trim(); const ok=Lib.rstValid($('f_mode').value,v); $(id).setAttribute('aria-invalid',ok?'false':'true'); }));
+  $('f_grid').addEventListener('input',()=>{ const el=$('f_grid'); APP.updateGridHint(); el.setAttribute('aria-invalid',el.value.trim()!==''&&!Lib.gridValid(el.value.trim())?'true':'false'); });
+  $('clearBtn').addEventListener('click',()=>{ APP.resetForm(false); $('f_call').focus(); });
+  $('cancelEditBtn').addEventListener('click',()=>{ APP.resetForm(false); $('f_call').focus(); });
+  $('c_on').addEventListener('change',()=>{ S.contest.on=$('c_on').checked; S.contest.id=$('c_id').value.trim(); $('f_stx').value=APP.nextSerial(); APP.stationBadge(); APP.persist(); });
+  $('c_id').addEventListener('input',()=>{ S.contest.id=$('c_id').value.trim().toUpperCase(); $('f_stx').value=APP.nextSerial(); APP.stationBadge(); APP.persist(); $('cb_contest').value=S.contest.id; });
+  if(S.contest.on) $('contestBox').open=true;
+  // tabel
+  $('thead').addEventListener('click',e=>{ const b=e.target.closest('[data-sort]'); if(b){ const k=b.dataset.sort; if(APP.sortKey===k) APP.sortDir=-APP.sortDir; else{ APP.sortKey=k; APP.sortDir=(k==='_when'||k==='_km')?-1:1; } APP.page=0; APP.renderTable(); return; }
+    if(e.target.id==='selAll'){ const ids=[...document.querySelectorAll('#tbody [data-sel]')].map(x=>+x.dataset.sel); ids.forEach(i=>e.target.checked?APP.selected.add(i):APP.selected.delete(i)); APP.renderTable(); } });
+  $('tbody').addEventListener('click',async e=>{
+    const tr=e.target.closest('tr'); if(!tr) return; const id=+tr.dataset.id; const r=S.records.find(x=>x._id===id);
+    const sel=e.target.closest('[data-sel]'); if(sel){ sel.checked?APP.selected.add(id):APP.selected.delete(id); $('delSelBtn').disabled=APP.selected.size===0; $('delSelBtn').textContent=t('delSel')+(APP.selected.size?' ('+APP.selected.size+')':''); return; }
+    const a=e.target.closest('[data-act]'); if(!a) return; const act=a.dataset.act;
+    if(act==='edit'){ APP.rowEdit=id; APP.renderTable(); const el=document.querySelector('#tbody tr[data-id="'+id+'"] input'); if(el) el.focus(); }
+    else if(act==='rowcancel'){ APP.rowEdit=null; APP.renderTable(); }
+    else if(act==='rowsave'){ APP.rowSave(tr); }
+    else if(act==='detail'){ APP.showDetail(r); }
+    else if(act==='del'){ APP.deleteIds([id]); }
+  });
+  $('tbody').addEventListener('keydown',e=>{ if(e.target.matches('[data-f]')){ const tr=e.target.closest('tr'); if(e.key==='Enter'){ e.preventDefault(); APP.rowSave(tr); } else if(e.key==='Escape'){ e.stopPropagation(); APP.rowEdit=null; APP.renderTable(); } } });
+  $('tbody').addEventListener('dblclick',e=>{ const tr=e.target.closest('tr'); if(tr&&APP.rowEdit===null&&!e.target.closest('button,input,select')){ APP.rowEdit=+tr.dataset.id; APP.renderTable(); } });
+  let qt=null; $('q').addEventListener('input',()=>{ clearTimeout(qt); qt=setTimeout(()=>{ APP.page=0; APP.renderTable(); },120); });
+  ['flBand','flMode','flYear','flQsl','flDupe'].forEach(id=>$(id).addEventListener('change',()=>{ APP.page=0; APP.renderTable(); }));
+  $('prevPg').addEventListener('click',()=>{ APP.page--; APP.renderTable(); }); $('nextPg').addEventListener('click',()=>{ APP.page++; APP.renderTable(); });
+  $('undoBtn').addEventListener('click',()=>APP.undo()); $('redoBtn').addEventListener('click',()=>APP.redo());
+  $('delSelBtn').addEventListener('click',()=>APP.deleteIds([...APP.selected]));
+  $('printBtn').addEventListener('click',()=>window.print());
+  $('sampleBtn').addEventListener('click',sampleData);
+  // dialoguri
+  $('ddClose').addEventListener('click',()=>$('dlgDetail').close()); $('dkClose').addEventListener('click',()=>$('dlgKeys').close());
+  $('helpBtn').addEventListener('click',()=>$('dlgKeys').showModal());
+  $('fieldBtn').addEventListener('click',()=>setField(!document.body.classList.contains('field')));
+  // calcule
+  ['k_a','k_b'].forEach(id=>$(id).addEventListener('input',calcDist));
+  $('k_useMine').addEventListener('click',()=>{ const p=APP.curProfile(); $('k_a').value=p&&p.grid||''; calcDist(); });
+  $('k_loc').addEventListener('input',()=>calcConv('loc')); $('k_lat').addEventListener('input',()=>calcConv('ll')); $('k_lon').addEventListener('input',()=>calcConv('ll')); $('k_len').addEventListener('change',()=>calcConv('ll'));
+  $('s_loc').addEventListener('input',calcSun); $('s_date').addEventListener('input',calcSun); $('p_call').addEventListener('input',calcPfx);
+  // IO
+  $('impFile').addEventListener('change',async()=>{ const f=$('impFile').files[0]; if(f) await importFile(f); $('impFile').value=''; });
+  $('exAdi').addEventListener('click',()=>{ const l=exportSet(); download(fname('adi'),Fmt.toAdi(l.map(pub)),'text/plain;charset=utf-8'); toast_(t('exported',l.length)); });
+  $('exAdx').addEventListener('click',()=>{ const l=exportSet(); download(fname('adx'),Fmt.toAdx(l.map(pub)),'application/xml'); toast_(t('exported',l.length)); });
+  $('exCsv').addEventListener('click',()=>{ const l=exportSet(); download(fname('csv'),Fmt.toCsv(l),'text/csv;charset=utf-8'); toast_(t('exported',l.length)); });
+  $('exJson').addEventListener('click',()=>{ const l=exportSet(); download(fname('json'),JSON.stringify(l.map(pub),null,1),'application/json'); toast_(t('exported',l.length)); });
+  $('exCab').addEventListener('click',()=>{
+    const cid=$('cb_contest').value.trim()||S.contest.id; if(!cid){ toast_(t('cabNeedContest')); $('cb_contest').focus(); return; }
+    const l=S.records.filter(r=>r.CONTEST_ID===cid); if(!l.length){ toast_(t('cabNone',cid)); return; }
+    const p=APP.curProfile()||{};
+    download(fname('log'),Fmt.toCabrillo(l,{callsign:p.call,contest:cid,locator:p.grid,catOp:$('cb_op').value,catBand:$('cb_band').value,catMode:$('cb_mode').value,catPower:$('cb_pwr').value}),'text/plain;charset=utf-8'); toast_(t('exported',l.length)); });
+  $('bkExport').addEventListener('click',()=>{ download(fname('fff.json'),JSON.stringify(bundleObj(),null,1),'application/json'); $('bkMsg').textContent=t('bkExported'); });
+  $('bkFile').addEventListener('change',async()=>{ const f=$('bkFile').files[0]; $('bkFile').value=''; if(!f) return; try{ const j=JSON.parse(await f.text()); if(j.format!=='fff-bundle') throw new Error('format'); await restoreBundle(j); }catch(e){ $('bkMsg').textContent=t('impFail')+' ('+e.message+')'; } });
+  $('wipeBtn').addEventListener('click',async()=>{ if(!await APP.confirmDlg(t('wipeConfirm'),t('wipe'))) return;
+    S.records=[]; S.nextId=1; S.profiles=[]; const p=APP.newProfile(); p.name='Stația 1'; S.profiles.push(p); S.profile=p.id; S.contest={on:false,id:''}; hist.undo.length=0; hist.redo.length=0;
+    APP.lsDel(APP.KEY); APP.persistNow(); $('c_on').checked=false; $('c_id').value=''; APP.resetForm(false); APP.renderAll(); $('bkMsg').textContent=t('wiped'); });
+  // stație
+  $('pf_sel').addEventListener('change',()=>{ S.profile=$('pf_sel').value; APP.persist(); document.activeElement.blur(); renderStationPanel(); APP.stationBadge(); $('f_pwr').value=APP.curProfile().pwr||''; APP.renderTable(); });
+  ['pf_call','pf_grid'].forEach(id=>$(id).addEventListener('input',pfHint));
+  $('pfSave').addEventListener('click',pfSave);
+  $('pfNew').addEventListener('click',()=>{ pfSave(); const p=APP.newProfile(); p.name=t('newProfile'); S.profiles.push(p); S.profile=p.id; APP.persist(); renderStationPanel(); $('pf_name').focus(); });
+  $('pfDel').addEventListener('click',async()=>{ if(S.profiles.length<2){ toast_(t('lastProfile')); return; } if(!await APP.confirmDlg(t('pfDelConfirm'),t('delete'))) return;
+    S.profiles=S.profiles.filter(p=>p.id!==S.profile); S.profile=S.profiles[0].id; APP.persist(); renderStationPanel(); APP.stationBadge(); });
+  $('st_win').addEventListener('change',()=>{ const v=parseInt($('st_win').value,10); S.settings.win=isNaN(v)||v<0?60:v; $('st_win').value=S.settings.win; APP.persist(); APP.renderTable(); });
+  $('st_guard').addEventListener('change',()=>{ S.settings.guard=$('st_guard').checked; APP.persist(); });
+  // taste rapide
+  document.addEventListener('keydown',e=>{
+    if(e.ctrlKey&&e.key==='Enter'&&!e.altKey){ if($('qsoForm').contains(document.activeElement)||document.body.classList.contains('field')){ e.preventDefault(); APP.saveQso(); renderRecent(); } return; }
+    if(e.ctrlKey&&!e.altKey&&!e.shiftKey&&e.key.toLowerCase()==='z'&&!/^(INPUT|TEXTAREA|SELECT)$/.test(document.activeElement.tagName)){ e.preventDefault(); APP.undo(); return; }
+    if(!e.altKey||e.ctrlKey||e.metaKey) return;
+    const c=e.code; let h=true;
+    if(c==='KeyN') APP.setNow(); else if(c==='KeyC'){ showTab('log'); $('f_call').focus(); $('f_call').select(); }
+    else if(c==='KeyX'){ APP.resetForm(false); $('f_call').focus(); }
+    else if(c==='KeyB') cycleSel('f_band',e.shiftKey?-1:1); else if(c==='KeyM') cycleSel('f_mode',e.shiftKey?-1:1);
+    else if(c==='KeyZ') APP.undo(); else if(c==='KeyY') redoK(); else if(c==='KeyK') setField(!document.body.classList.contains('field'));
+    else if(c==='KeyH'){ $('dlgKeys').showModal(); }
+    else if(/^Digit[1-5]$/.test(c)) showTab(['log','calc','stats','io','station'][+c.slice(5)-1],false);
+    else h=false;
+    if(h) e.preventDefault();
+  });
+  function redoK(){ APP.redo(); }
+  window.addEventListener('beforeunload',e=>{ if(S.settings.guard||document.body.classList.contains('field')||$('f_call').value.trim()!==''){ e.preventDefault(); e.returnValue=''; } APP.persistNow(); });
+  window.addEventListener('pagehide',()=>APP.persistNow());
+  // ceas
+  APP.tickClock(); setInterval(APP.tickClock,1000);
+  APP.renderAll(); calcPfx();
+  window.__qso={APP,Lib,Fmt,Pfx,importFile,exportSet,bundleObj,showTab,setField};
+}
+if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',init); else init();
+})();
+
+</script>
+</body>
+</html>

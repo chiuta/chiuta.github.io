@@ -1,0 +1,238 @@
+{
+ "dev_n": 207,
+ "dev": {
+  "total": {
+   "tp": 95,
+   "fp": 0,
+   "fn": 0,
+   "precision": 1,
+   "recall": 1
+  },
+  "per_type": {
+   "email": {
+    "tp": 9,
+    "fp": 0,
+    "fn": 0,
+    "precision": 1,
+    "recall": 1
+   },
+   "phone": {
+    "tp": 18,
+    "fp": 0,
+    "fn": 0,
+    "precision": 1,
+    "recall": 1
+   },
+   "iban": {
+    "tp": 13,
+    "fp": 0,
+    "fn": 0,
+    "precision": 1,
+    "recall": 1
+   },
+   "cnp": {
+    "tp": 9,
+    "fp": 0,
+    "fn": 0,
+    "precision": 1,
+    "recall": 1
+   },
+   "card": {
+    "tp": 10,
+    "fp": 0,
+    "fn": 0,
+    "precision": 1,
+    "recall": 1
+   },
+   "ip": {
+    "tp": 6,
+    "fp": 0,
+    "fn": 0,
+    "precision": 1,
+    "recall": 1
+   },
+   "secret": {
+    "tp": 12,
+    "fp": 0,
+    "fn": 0,
+    "precision": 1,
+    "recall": 1
+   },
+   "url": {
+    "tp": 5,
+    "fp": 0,
+    "fn": 0,
+    "precision": 1,
+    "recall": 1
+   },
+   "address": {
+    "tp": 13,
+    "fp": 0,
+    "fn": 0,
+    "precision": 1,
+    "recall": 1
+   }
+  }
+ },
+ "dev_names_cue": {
+  "total": {
+   "tp": 8,
+   "fp": 0,
+   "fn": 0,
+   "precision": 1,
+   "recall": 1
+  },
+  "per_type": {
+   "name": {
+    "tp": 8,
+    "fp": 0,
+    "fn": 0,
+    "precision": 1,
+    "recall": 1
+   }
+  }
+ },
+ "low_names_n": 17,
+ "low_names": {
+  "total": {
+   "tp": 8,
+   "fp": 6,
+   "fn": 0,
+   "precision": 0.571,
+   "recall": 1
+  },
+  "per_type": {
+   "name": {
+    "tp": 8,
+    "fp": 6,
+    "fn": 0,
+    "precision": 0.571,
+    "recall": 1
+   }
+  }
+ },
+ "heldout_n": 72,
+ "heldout": {
+  "total": {
+   "tp": 34,
+   "fp": 0,
+   "fn": 0,
+   "precision": 1,
+   "recall": 1
+  },
+  "per_type": {
+   "email": {
+    "tp": 4,
+    "fp": 0,
+    "fn": 0,
+    "precision": 1,
+    "recall": 1
+   },
+   "phone": {
+    "tp": 7,
+    "fp": 0,
+    "fn": 0,
+    "precision": 1,
+    "recall": 1
+   },
+   "iban": {
+    "tp": 4,
+    "fp": 0,
+    "fn": 0,
+    "precision": 1,
+    "recall": 1
+   },
+   "cnp": {
+    "tp": 3,
+    "fp": 0,
+    "fn": 0,
+    "precision": 1,
+    "recall": 1
+   },
+   "card": {
+    "tp": 3,
+    "fp": 0,
+    "fn": 0,
+    "precision": 1,
+    "recall": 1
+   },
+   "ip": {
+    "tp": 3,
+    "fp": 0,
+    "fn": 0,
+    "precision": 1,
+    "recall": 1
+   },
+   "secret": {
+    "tp": 3,
+    "fp": 0,
+    "fn": 0,
+    "precision": 1,
+    "recall": 1
+   },
+   "url": {
+    "tp": 1,
+    "fp": 0,
+    "fn": 0,
+    "precision": 1,
+    "recall": 1
+   },
+   "address": {
+    "tp": 6,
+    "fp": 0,
+    "fn": 0,
+    "precision": 1,
+    "recall": 1
+   }
+  }
+ },
+ "heldout_names_cue": {
+  "total": {
+   "tp": 5,
+   "fp": 0,
+   "fn": 0,
+   "precision": 1,
+   "recall": 1
+  },
+  "per_type": {
+   "name": {
+    "tp": 5,
+    "fp": 0,
+    "fn": 0,
+    "precision": 1,
+    "recall": 1
+   }
+  }
+ },
+ "low_names_lexicon_threshold": {
+  "total": {
+   "tp": 8,
+   "fp": 0,
+   "fn": 0,
+   "precision": 1,
+   "recall": 1
+  },
+  "per_type": {
+   "name": {
+    "tp": 8,
+    "fp": 0,
+    "fn": 0,
+    "precision": 1,
+    "recall": 1
+   }
+  }
+ },
+ "perf_ms_1MB": 365,
+ "perf_bytes": 1000000,
+ "pathological_ms": {
+  "cifre": 7,
+  "majuscule": 164,
+  "zerouri": 5,
+  "strada": 14,
+  "ip": 4,
+  "email": 4,
+  "iban": 2,
+  "url": 84,
+  "dubla": 4
+ }
+}

@@ -1,0 +1,10 @@
+{
+  "ro": {"install": "Instalează", "installed": "Instalată ca aplicație", "iosHint": "Pe iPhone/iPad: Partajează → Adaugă pe ecranul principal.", "unavailable": "Instalarea e disponibilă când pagina e servită prin https (nu dintr-un fișier local)."},
+  "en": {"install": "Install", "installed": "Installed as an app", "iosHint": "On iPhone/iPad: Share → Add to Home Screen.", "unavailable": "Installation is available when served over https (not from a local file)."},
+  "fr": {"install": "Installer", "installed": "Installée comme application", "iosHint": "Sur iPhone/iPad : Partager → Sur l'écran d'accueil.", "unavailable": "L'installation est possible lorsque la page est servie en https (pas depuis un fichier local)."},
+  "it": {"install": "Installa", "installed": "Installata come app", "iosHint": "Su iPhone/iPad: Condividi → Aggiungi alla schermata Home.", "unavailable": "L'installazione è disponibile quando la pagina è servita via https (non da un file locale)."},
+  "es": {"install": "Instalar", "installed": "Instalada como aplicación", "iosHint": "En iPhone/iPad: Compartir → Añadir a pantalla de inicio.", "unavailable": "La instalación está disponible cuando la página se sirve por https (no desde un archivo local)."},
+  "pt": {"install": "Instalar", "installed": "Instalada como aplicação", "iosHint": "No iPhone/iPad: Partilhar → Adicionar ao ecrã principal.", "unavailable": "A instalação está disponível quando a página é servida por https (não a partir de um ficheiro local)."},
+  "hu": {"install": "Telepítés", "installed": "Alkalmazásként telepítve", "iosHint": "iPhone/iPad esetén: Megosztás → Hozzáadás a főképernyőhöz.", "unavailable": "A telepítés akkor érhető el, ha az oldalt https-en keresztül szolgálják ki (nem helyi fájlból)."},
+  "de": {"install": "Installieren", "installed": "Als App installiert", "iosHint": "Auf iPhone/iPad: Teilen → Zum Home-Bildschirm.", "unavailable": "Die Installation ist verfügbar, wenn die Seite über https ausgeliefert wird (nicht aus einer lokalen Datei)."}
+}

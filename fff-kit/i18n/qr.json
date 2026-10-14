@@ -1,0 +1,90 @@
+{
+ "ro": {
+  "label": "Cod QR",
+  "tooLong": "Textul este prea lung pentru un cod QR.",
+  "noCamera": "Nu am găsit nicio cameră.",
+  "denied": "Accesul la cameră a fost refuzat.",
+  "insecure": "Camera nu este disponibilă în acest context (necesită HTTPS sau fișier local de încredere).",
+  "cameraError": "Camera nu a putut fi pornită.",
+  "notRequested": "Camera nu a fost cerută explicit; scanarea nu pornește singură.",
+  "stopped": "Scanarea a fost oprită.",
+  "badSource": "Sursă de scanare nesuportată."
+ },
+ "en": {
+  "label": "QR code",
+  "tooLong": "The text is too long for a QR code.",
+  "noCamera": "No camera found.",
+  "denied": "Camera access was denied.",
+  "insecure": "The camera is not available in this context (it needs HTTPS or a trusted local file).",
+  "cameraError": "The camera could not be started.",
+  "notRequested": "The camera was not explicitly requested; scanning does not start by itself.",
+  "stopped": "Scanning was stopped.",
+  "badSource": "Unsupported scan source."
+ },
+ "fr": {
+  "label": "Code QR",
+  "tooLong": "Le texte est trop long pour un code QR.",
+  "noCamera": "Aucune caméra trouvée.",
+  "denied": "L'accès à la caméra a été refusé.",
+  "insecure": "La caméra n'est pas disponible dans ce contexte (HTTPS ou fichier local de confiance requis).",
+  "cameraError": "La caméra n'a pas pu démarrer.",
+  "notRequested": "La caméra n'a pas été demandée explicitement ; le scan ne démarre pas tout seul.",
+  "stopped": "Le scan a été arrêté.",
+  "badSource": "Source de scan non prise en charge."
+ },
+ "it": {
+  "label": "Codice QR",
+  "tooLong": "Il testo è troppo lungo per un codice QR.",
+  "noCamera": "Nessuna fotocamera trovata.",
+  "denied": "L'accesso alla fotocamera è stato negato.",
+  "insecure": "La fotocamera non è disponibile in questo contesto (serve HTTPS o un file locale attendibile).",
+  "cameraError": "Impossibile avviare la fotocamera.",
+  "notRequested": "La fotocamera non è stata richiesta esplicitamente; la scansione non parte da sola.",
+  "stopped": "Scansione interrotta.",
+  "badSource": "Sorgente di scansione non supportata."
+ },
+ "es": {
+  "label": "Código QR",
+  "tooLong": "El texto es demasiado largo para un código QR.",
+  "noCamera": "No se encontró ninguna cámara.",
+  "denied": "Se denegó el acceso a la cámara.",
+  "insecure": "La cámara no está disponible en este contexto (requiere HTTPS o un archivo local de confianza).",
+  "cameraError": "No se pudo iniciar la cámara.",
+  "notRequested": "La cámara no se solicitó explícitamente; el escaneo no empieza solo.",
+  "stopped": "Se detuvo el escaneo.",
+  "badSource": "Fuente de escaneo no compatible."
+ },
+ "pt": {
+  "label": "Código QR",
+  "tooLong": "O texto é demasiado longo para um código QR.",
+  "noCamera": "Nenhuma câmara encontrada.",
+  "denied": "O acesso à câmara foi negado.",
+  "insecure": "A câmara não está disponível neste contexto (requer HTTPS ou um ficheiro local fiável).",
+  "cameraError": "Não foi possível iniciar a câmara.",
+  "notRequested": "A câmara não foi pedida explicitamente; a digitalização não começa sozinha.",
+  "stopped": "A digitalização foi parada.",
+  "badSource": "Origem de digitalização não suportada."
+ },
+ "hu": {
+  "label": "QR-kód",
+  "tooLong": "A szöveg túl hosszú egy QR-kódhoz.",
+  "noCamera": "Nem található kamera.",
+  "denied": "A kamerahozzáférést megtagadták.",
+  "insecure": "A kamera ebben a környezetben nem érhető el (HTTPS vagy megbízható helyi fájl szükséges).",
+  "cameraError": "A kamerát nem sikerült elindítani.",
+  "notRequested": "A kamerát nem kérték kifejezetten; a beolvasás nem indul el magától.",
+  "stopped": "A beolvasást leállították.",
+  "badSource": "Nem támogatott beolvasási forrás."
+ },
+ "de": {
+  "label": "QR-Code",
+  "tooLong": "Der Text ist für einen QR-Code zu lang.",
+  "noCamera": "Keine Kamera gefunden.",
+  "denied": "Der Kamerazugriff wurde verweigert.",
+  "insecure": "Die Kamera ist in diesem Kontext nicht verfügbar (HTTPS oder eine vertrauenswürdige lokale Datei nötig).",
+  "cameraError": "Die Kamera konnte nicht gestartet werden.",
+  "notRequested": "Die Kamera wurde nicht ausdrücklich angefordert; das Scannen startet nicht von selbst.",
+  "stopped": "Das Scannen wurde gestoppt.",
+  "badSource": "Nicht unterstützte Scan-Quelle."
+ }
+}

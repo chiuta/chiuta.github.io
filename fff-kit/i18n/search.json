@@ -1,0 +1,58 @@
+{
+"ro": {
+"none": "Niciun rezultat.",
+"count": "{n} rezultate.",
+"one": "Un rezultat.",
+"no_index": "Nu există index de căutare.",
+"embed_missing": "Pentru căutarea semantică este necesar un model furnizat de tine (funcție embed). Kitul nu include niciun model."
+},
+"en": {
+"none": "No results.",
+"count": "{n} results.",
+"one": "One result.",
+"no_index": "There is no search index.",
+"embed_missing": "Semantic search needs a model that you provide (an embed function). The kit includes no model."
+},
+"fr": {
+"none": "Aucun résultat.",
+"count": "{n} résultats.",
+"one": "Un résultat.",
+"no_index": "Aucun index de recherche.",
+"embed_missing": "La recherche sémantique nécessite un modèle fourni par vous (fonction embed). Le kit n’inclut aucun modèle."
+},
+"it": {
+"none": "Nessun risultato.",
+"count": "{n} risultati.",
+"one": "Un risultato.",
+"no_index": "Non esiste un indice di ricerca.",
+"embed_missing": "La ricerca semantica richiede un modello fornito da te (funzione embed). Il kit non include alcun modello."
+},
+"es": {
+"none": "Sin resultados.",
+"count": "{n} resultados.",
+"one": "Un resultado.",
+"no_index": "No hay índice de búsqueda.",
+"embed_missing": "La búsqueda semántica requiere un modelo aportado por ti (función embed). El kit no incluye ningún modelo."
+},
+"pt": {
+"none": "Sem resultados.",
+"count": "{n} resultados.",
+"one": "Um resultado.",
+"no_index": "Não existe índice de pesquisa.",
+"embed_missing": "A pesquisa semântica requer um modelo fornecido por si (função embed). O kit não inclui nenhum modelo."
+},
+"hu": {
+"none": "Nincs találat.",
+"count": "{n} találat.",
+"one": "Egy találat.",
+"no_index": "Nincs keresési index.",
+"embed_missing": "A szemantikus kereséshez te adsz modellt (embed függvény). A készlet nem tartalmaz modellt."
+},
+"de": {
+"none": "Keine Treffer.",
+"count": "{n} Treffer.",
+"one": "Ein Treffer.",
+"no_index": "Es gibt keinen Suchindex.",
+"embed_missing": "Die semantische Suche braucht ein von dir bereitgestelltes Modell (embed-Funktion). Das Kit enthält kein Modell."
+}
+}

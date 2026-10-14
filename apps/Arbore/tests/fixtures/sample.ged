@@ -1,0 +1,502 @@
+0 HEAD
+1 SOUR ArboreTest
+2 NAME Fixture Arbore
+2 VERS 1.0
+1 DEST ANY
+1 DATE 14 OCT 2026
+1 SUBM @U1@
+1 GEDC
+2 VERS 5.5.1
+2 FORM LINEAGE-LINKED
+1 CHAR UTF-8
+1 LANG Romanian
+1 _SCHEMA
+2 _TAGX Etichetă necunoscută de antet
+0 @U1@ SUBM
+1 NAME Familia fictivă Moldovan
+0 @I1@ INDI
+1 NAME Gheorghe /Moldovan/
+2 GIVN Gheorghe
+2 SURN Moldovan
+2 NICK Gicu
+2 NPFX Meșter
+1 SEX M
+1 BIRT
+2 DATE 12 MAR 1898
+2 PLAC Brașov, Brașov, România
+2 SOUR @S1@
+3 PAGE Fila 41, act nr. 212
+3 QUAY 3
+3 _CUSTOM date de arhivă
+1 DEAT
+2 DATE 3 NOV 1971
+2 PLAC Brașov, Brașov, România
+2 CAUS Insuficiență cardiacă
+2 BURI
+1 OCCU Meșter fierar
+1 RESI
+2 DATE FROM 1920 TO 1971
+2 PLAC Brașov, Brașov, România
+2 ADDR Str. Lungă nr. 14
+1 _UID 6F1C0A9B77A14D5E8E22A8B1C0D1A001
+1 _MILT Participant în campania din 1917
+2 DATE 1917
+1 EVEN Pelerinaj la Mănăstirea Putna
+2 TYPE Pelerinaj
+2 DATE 1938
+2 PLAC Putna, Suceava, România
+1 BURI
+2 DATE 6 NOV 1971
+2 PLAC Cimitirul Groaveri, Brașov, România
+1 CHR
+2 DATE 20 MAR 1898
+2 PLAC Biserica Sf. Nicolae, Șcheii Brașovului, Brașov
+1 NOTE @N1@
+1 OBJE @O1@
+1 NOTE Notă scurtă inline cu diacritice: ăâîșț ĂÂÎȘȚ — și caractere speciale € „ghilimele”.
+1 FAMS @F1@
+0 @I2@ INDI
+1 NAME Elena /Moldovan/
+2 GIVN Elena
+2 SURN Moldovan
+1 NAME Elena /Pop/
+2 TYPE birth
+1 SEX F
+1 BIRT
+2 DATE ABT 1902
+2 PLAC Prejmer, Brașov, România
+1 DEAT
+2 DATE 1980
+2 PLAC Brașov, Brașov, România
+1 OCCU Casnică
+1 FAMS @F1@
+0 @I3@ INDI
+1 NAME Vasile /Moldovan/
+2 GIVN Vasile
+2 SURN Moldovan
+2 NSFX Sr.
+1 SEX M
+1 BIRT
+2 DATE 7 JUL 1925
+2 PLAC Brașov, Brașov, România
+1 DEAT
+2 DATE 21 JAN 1999
+2 PLAC Brașov, Brașov, România
+1 OCCU Inginer mecanic
+1 EDUC Politehnica Timișoara
+2 DATE 1944
+1 FAMC @F1@
+2 PEDI birth
+1 FAMS @F2@
+1 FAMS @F11@
+0 @I4@ INDI
+1 NAME Maria /Vasilescu/
+2 GIVN Maria
+2 SURN Vasilescu
+1 NAME Maria /Moldovan/
+2 TYPE birth
+1 SEX F
+1 BIRT
+2 DATE 2 FEB 1928
+2 PLAC Brașov, Brașov, România
+1 FAMC @F1@
+2 PEDI birth
+1 FAMS @F3@
+0 @I5@ INDI
+1 NAME Ion /Vasilescu/
+2 GIVN Ion
+2 SURN Vasilescu
+1 SEX M
+1 BIRT
+2 DATE 1925
+2 PLAC Săcele, Brașov, România
+1 DEAT
+2 DATE BEF 1990
+1 FAMS @F3@
+0 @I6@ INDI
+1 NAME Ana /Ionescu/
+2 GIVN Ana
+2 SURN Ionescu
+1 NAME Ana /Moldovan/
+2 TYPE birth
+1 SEX F
+1 BIRT
+2 DATE BET 1930 AND 1931
+2 PLAC Brașov, Brașov, România
+1 FAMC @F1@
+2 PEDI birth
+1 FAMS @F4@
+0 @I7@ INDI
+1 NAME Petre /Ionescu/
+2 GIVN Petre
+2 SURN Ionescu
+1 SEX M
+1 BIRT
+2 DATE EST 1927
+1 DEAT
+2 DATE 1985
+2 PLAC București, România
+1 FAMS @F4@
+0 @I8@ INDI
+1 NAME Floarea /Moldovan/
+2 GIVN Floarea
+2 SURN Moldovan
+1 NAME Floarea /Dumitrescu/
+2 TYPE birth
+1 SEX F
+1 BIRT
+2 DATE 15 SEP 1930
+2 PLAC Făgăraș, Brașov, România
+1 DEAT
+2 DATE 2002
+2 PLAC Brașov, Brașov, România
+1 FAMS @F2@
+0 @I9@ INDI
+1 NAME Mihai /Moldovan/
+2 GIVN Mihai
+2 SURN Moldovan
+1 SEX M
+1 BIRT
+2 DATE 4 APR 1953
+2 PLAC Brașov, Brașov, România
+1 OCCU Profesor
+1 RESI
+2 PLAC Cluj-Napoca, Cluj, România
+2 DATE FROM 1990
+1 FAMC @F2@
+2 PEDI birth
+1 FAMS @F5@
+1 FAMS @F6@
+0 @I10@ INDI
+1 NAME Ioana /Moldovan/
+2 GIVN Ioana
+2 SURN Moldovan
+1 SEX F
+1 BIRT
+2 DATE 1956
+2 PLAC Brașov, Brașov, România
+1 FAMC @F2@
+2 PEDI birth
+0 @I11@ INDI
+1 NAME Radu /Moldovan/
+2 GIVN Radu
+2 SURN Moldovan
+1 SEX M
+1 BIRT
+2 DATE CAL 1960
+2 PLAC Brașov, Brașov, România
+1 FAMC @F2@
+2 PEDI birth
+0 @I12@ INDI
+1 NAME Andrei /Vasilescu/
+2 GIVN Andrei
+2 SURN Vasilescu
+1 SEX M
+1 BIRT
+2 DATE 11 NOV 1951
+2 PLAC Brașov, Brașov, România
+1 ASSO @I3@
+2 RELA Godfather
+1 FAMC @F3@
+2 PEDI birth
+1 FAMS @F7@
+0 @I13@ INDI
+1 NAME Cristina /Vasilescu/
+2 GIVN Cristina
+2 SURN Vasilescu
+1 SEX F
+1 BIRT
+2 DATE 1955
+2 PLAC Brașov, Brașov, România
+1 FAMC @F3@
+2 PEDI birth
+0 @I14@ INDI
+1 NAME Dan /Ionescu/
+2 GIVN Dan
+2 SURN Ionescu
+1 SEX M
+1 BIRT
+2 DATE 1958
+2 PLAC București, România
+1 FAMC @F4@
+2 PEDI birth
+1 FAMS @F8@
+0 @I15@ INDI
+1 NAME Carmen /Moldovan/
+2 GIVN Carmen
+2 SURN Moldovan
+1 NAME Carmen /Stan/
+2 TYPE birth
+1 SEX F
+1 BIRT
+2 DATE 29 MAY 1955
+2 PLAC Sibiu, Sibiu, România
+1 ASSO @I5@
+2 RELA Wedding godparent
+1 FAMC @F10@
+2 PEDI birth
+1 FAMS @F5@
+0 @I16@ INDI
+1 NAME Alexandru /Moldovan/
+2 GIVN Alexandru
+2 SURN Moldovan
+1 SEX M
+1 BIRT
+2 DATE 3 AUG 1980
+2 PLAC Cluj-Napoca, Cluj, România
+1 OCCU Programator
+1 FAMC @F5@
+2 PEDI birth
+1 FAMS @F9@
+1 _TAG programator
+1 _TAG nord-vest
+0 @I17@ INDI
+1 NAME Elena /Moldovan/
+2 GIVN Elena
+2 SURN Moldovan
+1 SEX F
+1 BIRT
+2 DATE 1984
+2 PLAC Cluj-Napoca, Cluj, România
+1 FAMC @F5@
+2 PEDI birth
+0 @I18@ INDI
+1 NAME Laura /Marin/
+2 GIVN Laura
+2 SURN Marin
+1 SEX F
+1 BIRT
+2 DATE 1954
+2 PLAC Alba Iulia, Alba, România
+1 FAMS @F6@
+0 @I19@ INDI
+1 NAME Paul /Moldovan/
+2 GIVN Paul
+2 SURN Moldovan
+1 SEX M
+1 BIRT
+2 DATE 1977
+2 PLAC Cluj-Napoca, Cluj, România
+1 FAMC @F5@
+2 PEDI adopted
+0 @I20@ INDI
+1 NAME Sofia /Vasilescu/
+2 GIVN Sofia
+2 SURN Vasilescu
+1 NAME Sofia /Radu/
+2 TYPE birth
+1 SEX F
+1 BIRT
+2 DATE 1956
+2 PLAC Bacău, Bacău, România
+1 FAMS @F7@
+0 @I21@ INDI
+1 NAME Tudor /Vasilescu/
+2 GIVN Tudor
+2 SURN Vasilescu
+1 SEX M
+1 BIRT
+2 DATE 1982
+2 PLAC Brașov, Brașov, România
+1 FAMC @F7@
+2 PEDI birth
+0 @I22@ INDI
+1 NAME Ioana /Vasilescu/
+2 GIVN Ioana
+2 SURN Vasilescu
+1 SEX F
+1 BIRT
+2 DATE 1985
+2 PLAC Brașov, Brașov, România
+1 FAMC @F7@
+2 PEDI birth
+0 @I23@ INDI
+1 NAME Monica /Ionescu/
+2 GIVN Monica
+2 SURN Ionescu
+1 SEX F
+1 BIRT
+2 DATE 1960
+2 PLAC București, România
+1 FAMS @F8@
+0 @I24@ INDI
+1 NAME Bogdan /Ionescu/
+2 GIVN Bogdan
+2 SURN Ionescu
+1 SEX M
+1 BIRT
+2 DATE 1986
+2 PLAC București, România
+1 FAMC @F8@
+2 PEDI birth
+0 @I26@ INDI
+1 NAME Diana /Moldovan/
+2 GIVN Diana
+2 SURN Moldovan
+1 SEX F
+1 BIRT
+2 DATE 1983
+2 PLAC Cluj-Napoca, Cluj, România
+1 FAMS @F9@
+0 @I27@ INDI
+1 NAME Matei /Moldovan/
+2 GIVN Matei
+2 SURN Moldovan
+1 SEX M
+1 BIRT
+2 DATE 2010
+2 PLAC Cluj-Napoca, Cluj, România
+1 FAMC @F9@
+2 PEDI birth
+0 @I28@ INDI
+1 NAME Aurelia /Stan/
+2 GIVN Aurelia
+2 SURN Stan
+1 SEX F
+1 BIRT
+2 DATE 1930
+2 PLAC Sibiu, Sibiu, România
+1 DEAT
+2 DATE 2015
+2 PLAC Sibiu, Sibiu, România
+1 FAMS @F10@
+0 @I29@ INDI
+1 NAME Nicolae /Stan/
+2 GIVN Nicolae
+2 SURN Stan
+1 SEX M
+1 BIRT
+2 DATE 1927
+2 PLAC Sibiu, Sibiu, România
+1 DEAT
+2 DATE 1999
+2 PLAC Sibiu, Sibiu, România
+1 FAMS @F10@
+0 @I30@ INDI
+1 NAME Silvia /Moldovan/
+2 GIVN Silvia
+2 SURN Moldovan
+1 NAME Silvia /Grigore/
+2 TYPE birth
+1 SEX F
+1 BIRT
+2 DATE 1935
+2 PLAC Brașov, Brașov, România
+1 DEAT
+2 DATE 2010
+2 PLAC Brașov, Brașov, România
+1 FAMS @F11@
+0 @I31@ INDI
+1 NAME Teodora /Moldovan/
+2 GIVN Teodora
+2 SURN Moldovan
+1 SEX F
+1 BIRT
+2 DATE 1962
+2 PLAC Brașov, Brașov, România
+1 FAMC @F11@
+2 PEDI birth
+0 @F1@ FAM
+1 HUSB @I1@
+1 WIFE @I2@
+1 CHIL @I3@
+1 CHIL @I4@
+1 CHIL @I6@
+1 MARR
+2 DATE 10 JUN 1922
+2 PLAC Prejmer, Brașov, România
+0 @F2@ FAM
+1 HUSB @I3@
+1 WIFE @I8@
+1 CHIL @I9@
+1 CHIL @I10@
+1 CHIL @I11@
+1 MARR
+2 DATE 1951
+2 PLAC Brașov, Brașov, România
+0 @F3@ FAM
+1 HUSB @I5@
+1 WIFE @I4@
+1 CHIL @I12@
+1 CHIL @I13@
+1 MARR
+2 DATE 1949
+2 PLAC Brașov, Brașov, România
+0 @F4@ FAM
+1 HUSB @I7@
+1 WIFE @I6@
+1 CHIL @I14@
+1 MARR
+2 DATE 1956
+0 @F5@ FAM
+1 HUSB @I9@
+1 WIFE @I15@
+1 CHIL @I16@
+1 CHIL @I17@
+1 CHIL @I19@
+1 MARR
+2 DATE 15 AUG 1976
+2 PLAC Sibiu, Sibiu, România
+1 NOTE Nași de cununie: Maria și Ion Vasilescu.
+1 _CUSTOMFAM valoare personalizată
+0 @F6@ FAM
+1 HUSB @I9@
+1 WIFE @I18@
+1 MARR
+2 DATE 1975
+2 PLAC Alba Iulia, Alba, România
+1 DIV
+2 DATE 1976
+0 @F7@ FAM
+1 HUSB @I12@
+1 WIFE @I20@
+1 CHIL @I21@
+1 CHIL @I22@
+1 MARR
+2 DATE 1980
+0 @F8@ FAM
+1 HUSB @I14@
+1 WIFE @I23@
+1 CHIL @I24@
+1 MARR
+2 DATE 1984
+0 @F9@ FAM
+1 HUSB @I16@
+1 WIFE @I26@
+1 CHIL @I27@
+1 MARR
+2 DATE 2008
+0 @F10@ FAM
+1 HUSB @I29@
+1 WIFE @I28@
+1 CHIL @I15@
+1 MARR
+2 DATE 1950
+0 @F11@ FAM
+1 HUSB @I3@
+1 WIFE @I30@
+1 CHIL @I31@
+1 MARR
+2 DATE 1980
+0 @S1@ SOUR
+1 TITL Registrul de nașteri Brașov 1898
+1 ABBR RN-BV-1898
+1 AUTH Starea civilă Brașov
+1 REPO @R1@
+2 CALN Fond 12/1898
+0 @R1@ REPO
+1 NAME Arhivele Naționale Brașov
+1 ADDR Str. Gh. Bariț nr. 1
+0 @O1@ OBJE
+1 FILE fotografii/gheorghe.jpg
+2 FORM jpg
+1 TITL Portret Gheorghe Moldovan
+0 @N1@ NOTE Gheorghe Moldovan a fost meșter fierar în Brașov; atelierul din Str. Lungă a funcționat până în 1968. Gheorghe Moldovan
+1 CONC a fost meșter fierar în Brașov; atelierul din Str. Lungă a funcționat până în 1968. Gheorghe Moldovan a fost meșter fier
+1 CONC ar în Brașov; atelierul din Str. Lungă a funcționat până în 1968. 
+1 CONT A doua linie a notei, după un CONT.
+1 CONT Cuvânt-foarte-lung-fără-spații-Cuvânt-foarte-lung-fără-spații-Cuvânt-foarte-lung-fără-spații-Cuvânt-foarte-lung-fără-spa
+1 CONC ții-Cuvânt-foarte-lung-fără-spații-Cuvânt-foarte-lung-fără-spații-Cuvânt-foarte-lung-fără-spații-Cuvânt-foarte-lung-fără
+1 CONC -spații-Cuvânt-foarte-lung-fără-spații-Cuvânt-foarte-lung-fără-spații-Cuvânt-foarte-lung-fără-spații-Cuvânt-foarte-lung-
+1 CONC fără-spații-
+0 TRLR

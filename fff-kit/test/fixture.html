@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="ro">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-x'; style-src 'unsafe-inline'; img-src data: blob:; connect-src 'none'; base-uri 'none'; form-action 'none'">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="application-version" content="1.2.3">
+<meta name="last-updated" content="2026-10-14">
+<meta name="description" content="Aplicație demo pentru testele fff-kit.">
+<title>Demo FFF</title>
+<style>
+body{font-family:system-ui,sans-serif;margin:0;padding:16px;background:#fff;color:#111}
+button{min-height:32px}
+@media (prefers-color-scheme:dark){body{background:#111;color:#eee}}
+footer{margin-top:24px;font-size:.85rem}
+</style>
+</head>
+<body>
+<header><p>Demo</p></header>
+<main>
+<h1>Demo FFF</h1>
+<p><button id="inc" type="button">Crește</button> <output id="count">0</output></p>
+<p><label for="note">Notă</label> <input id="note" type="text"></p>
+<p><select id="lg" aria-label="Limbă"><option value="ro">ro</option><option value="en">en</option><option value="fr">fr</option></select></p>
+</main>
+<footer>Demo · <span id="app-version">v 1.2.3 · 2026-10-14</span></footer>
+<script>
+(function(){
+  var c = parseInt(localStorage.getItem('fx.count') || '0', 10);
+  var out = document.getElementById('count'), note = document.getElementById('note'), lg = document.getElementById('lg');
+  out.textContent = c;
+  note.value = localStorage.getItem('fx.note') || '';
+  document.getElementById('inc').addEventListener('click', function(){ c++; out.textContent = c; localStorage.setItem('fx.count', String(c)); });
+  note.addEventListener('input', function(){ localStorage.setItem('fx.note', note.value); });
+  lg.value = localStorage.getItem('lang') || 'ro';
+  document.documentElement.lang = lg.value;
+  lg.addEventListener('change', function(){ localStorage.setItem('lang', lg.value); document.documentElement.lang = lg.value; });
+  window.__fx = {fetchTry: function(){ return fetch('https://example.org/x'); }};
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,84 @@
+// Set „ținut deoparte”: scris DUPĂ reglajul detectorului pe setul de dezvoltare, rulat o singură dată înainte de raportare.
+import {cnpMake, ibanMake, luhnMake} from './pii-dataset.mjs';
+export const ex = [];
+const P = (text, ...labels) => ex.push({text, labels: labels.map(([type, value]) => ({type, value})), kind: 'P'});
+const N = (text) => ex.push({text, labels: [], kind: 'N'});
+// e-mail
+P('Pentru programări: programari@clinica-sanatatea.ro (luni–vineri).', ['email', 'programari@clinica-sanatatea.ro']);
+P('CC: Ana.Pop@Universitate.RO', ['email', 'Ana.Pop@Universitate.RO']);
+P('Mail me at k.nowak99@mail.example.org!', ['email', 'k.nowak99@mail.example.org']);
+P('Írj ide: kovacs.janos@egyetem.hu', ['email', 'kovacs.janos@egyetem.hu']);
+N('Fișierul se numește icon@3x.svg în pachet.');
+N('Pune @ în loc de (at) în adresă.');
+N('Costă 3 @ 4,50 lei bucata.');
+// telefon
+P('Mă găsiți la 0733.456.789 după ora 17.', ['phone', '0733.456.789']);
+P('Fix: 0256 201 345', ['phone', '0256 201 345']);
+P('Urgențe medic de familie: 0765 432 109', ['phone', '0765 432 109']);
+P('Call +1 212 555 0147 now', ['phone', '+1 212 555 0147']);
+P('Contact: +40 (0)21 410 11 22'.replace('(0)', ''), ['phone', '+40  21 410 11 22'.replace('  ', ' ')]);
+P('Telefon mobil: 0040733123456', ['phone', '0040733123456']);
+P('Ruf mich an: +43 660 1234567', ['phone', '+43 660 1234567']);
+N('Dosar nr. 1234/2025, termen 12.03.2026.');
+N('Cantitate: 0700 buc. conform comenzii.');
+N('Intervalul 2020-2025 a fost analizat.');
+N('Cod poștal-ul nu a fost completat.');
+N('Cifra de afaceri: 12.345.678 lei.');
+N('Brevet 2018/0345678 depus la OSIM.');
+N('Coordonate 44.4268, 26.1025 pe hartă.');
+// IBAN / CNP / card
+P('Plata în contul RO66 BACX 0000 0012 3456 7890 s-a făcut.'.replace('RO66 BACX 0000 0012 3456 7890', ibanMake('RO', 'BACX0000001234567890').replace(/(.{4})/g, '$1 ').trim()), ['iban', ibanMake('RO', 'BACX0000001234567890').replace(/(.{4})/g, '$1 ').trim()]);
+P('Cont ' + ibanMake('BE', '539007547034') + ' la banca din Bruxelles', ['iban', ibanMake('BE', '539007547034')]);
+P('IBAN ' + ibanMake('SE', '50000000058398257466'), ['iban', ibanMake('SE', '50000000058398257466')]);
+P('IBAN ' + ibanMake('AT', '1904300234573201'), ['iban', ibanMake('AT', '1904300234573201')]);
+N('Contul ' + ibanMake('RO', 'BACX0000001234567890').slice(0, -1) + '7 conține o greșeală.');
+N('Codul ISO RO1234 nu e un cont.');
+P('Beneficiar, CNP ' + cnpMake(1, '91', '08', '23', '35', '412'), ['cnp', cnpMake(1, '91', '08', '23', '35', '412')]);
+P('Elev: CNP ' + cnpMake(6, '10', '05', '17', '29', '208'), ['cnp', cnpMake(6, '10', '05', '17', '29', '208')]);
+P('CNP-ul ' + cnpMake(6, '00', '02', '29', '12', '017') + ' apare în dosar.', ['cnp', cnpMake(6, '00', '02', '29', '12', '017')]);
+N('Număr ' + cnpMake(1, '91', '08', '23', '35', '412').slice(0, 12) + '0 din registru.'.replace('0 din', '0 din'));
+N('Cod ' + cnpMake(3, '91', '14', '23', '35', '412') + ' neutilizat.');
+N('Referința 8888888888888 din arhivă.');
+P('Card client ' + luhnMake('4', 16).replace(/(.{4})/g, '$1 ').trim(), ['card', luhnMake('4', 16).replace(/(.{4})/g, '$1 ').trim()]);
+P('Mastercard ' + luhnMake('52', 16), ['card', luhnMake('52', 16)]);
+P('Card: ' + luhnMake('37', 15), ['card', luhnMake('37', 15)]);
+N('Card ' + luhnMake('4', 16).slice(0, -1) + '3 respins (cifră de control).'.replace('3 respins', '3 respins'));
+N('Serie lot ' + luhnMake('7', 16) + ' fabricație.');
+N('Telefonul 0722 123 456 și 0733 456 789 sunt în listă.'.replace(/.*/, 'Comanda 1234567890123456 expediată.'));
+// IP / secrete / URL
+P('Atacul a venit de la 198.51.100.23 aseară.', ['ip', '198.51.100.23']);
+P('Gazda 91.200.14.5 nu răspunde', ['ip', '91.200.14.5']);
+P('Ping 2606:4700:4700::1111 ok', ['ip', '2606:4700:4700::1111']);
+N('Pachet 3.14.15.92.65 versiune internă.');
+N('Subrețeaua 10.0.0.0 este rezervată.');
+P('export GITHUB_TOKEN='+('ghp_abcdefghi'+'jklmnopqrstuvwxyz0123456789')+'', ['secret', ('ghp_abcdefghi'+'jklmnopqrstuvwxyz0123456789')]);
+P('passwd=Sup3rSecret!x', ['secret', 'Sup3rSecret!x']);
+P('"client_secret": "d41d8cd98f00b204e9800998ecf8427e"', ['secret', 'd41d8cd98f00b204e9800998ecf8427e']);
+N('secret: <ascuns>');
+N('token = ${TOKEN}');
+N('Pentru autentificare folosește parola ta obișnuită.');
+N('api_key: xxxxxxxxxxxxxxxxxxxxxxxx');
+P('Link: https://cloud.exemplu.eu/share?id=7&access_token=ya29.a0AfH6SMBx12345', ['url', 'https://cloud.exemplu.eu/share?id=7&access_token=ya29.a0AfH6SMBx12345']);
+N('https://exemplu.eu/search?q=token+bucket&page=3');
+N('https://blog.exemplu.eu/2026/10/cum-alegi-un-card?ref=newsletter');
+// adrese
+P('Domiciliu: Str. Lunga nr. 5A, Brașov', ['address', 'Str. Lunga nr. 5A']);
+P('Locuiește pe Bulevardul Iuliu Maniu 7, sector 6', ['address', 'Bulevardul Iuliu Maniu 7, sector 6']);
+P('Sede: Corso Vittorio Emanuele 45', ['address', 'Corso Vittorio Emanuele 45']);
+P('Lieferadresse: Berliner Straße 77, 10115 Berlin', ['address', 'Berliner Straße 77, 10115 Berlin']);
+P('Adresse : 8 avenue des Champs-Élysées', ['address', '8 avenue des Champs-Élysées']);
+P('Moradia na Avenida da Liberdade 110', ['address', 'Avenida da Liberdade 110']);
+N('Calea ferată a fost modernizată în 2021.');
+N('Intrarea în muzeu costă 20 de lei.');
+N('Aleea castanilor este foarte frumoasă primăvara.');
+N('Strada din fața școlii este închisă temporar.');
+// nume cu indiciu
+P('Doamna Elena Dobre a confirmat prezența.', ['name', 'Elena Dobre']);
+P('Dl. Vasile Rusu este responsabil.', ['name', 'Vasile Rusu']);
+P('Mi chiamo Chiara Bianchi e vivo a Torino.', ['name', 'Chiara Bianchi']);
+P('Me llamo Lucía Fernández.', ['name', 'Lucía Fernández']);
+P('Mein Name ist Anna Schmidt.', ['name', 'Anna Schmidt']);
+N('Domnul primar a inaugurat podul.');
+N('Mă numesc oficial „administrator”.');
+N('Prof. univ. a susținut cursul.');
+export const low = [];

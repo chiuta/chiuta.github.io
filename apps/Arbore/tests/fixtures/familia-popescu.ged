@@ -1,0 +1,126 @@
+0 HEAD
+1 SOUR Registru
+2 NAME Registru de familie
+2 VERS 3.1
+1 GEDC
+2 VERS 5.5.1
+2 FORM LINEAGE-LINKED
+1 CHAR UTF-8
+1 LANG Romanian
+1 SUBM @U1@
+0 @U1@ SUBM
+1 NAME Autor Test
+0 @I1@ INDI
+1 NAME Ștefan Ioan /Popescu/
+2 GIVN Ștefan Ioan
+2 SURN Popescu
+2 NICK Fănel
+1 NAME Ștefan /Popa/
+2 TYPE aka
+1 SEX M
+1 BIRT
+2 DATE BET 1 JAN 1890 AND 31 DEC 1892
+2 PLAC Șinca Veche, Brașov, România
+1 DEAT
+2 DATE BEF 1960
+2 PLAC Făgăraș, Brașov, România
+1 OCCU Fierar
+1 RESI
+2 DATE FROM 1910 TO 1950
+2 ADDR Str. Principală 12
+2 PLAC Șinca Veche
+1 EVEN
+2 TYPE Mobilizat
+2 DATE ABT 1916
+1 _SIGNATURE ștampilă
+2 _COLOR albastru
+3 _SHADE închis
+1 NOTE Născut într-o familie de fierari.
+2 CONT A muncit la atelierul din Făgăraș.
+2 CONT Familia Popescu s-a stabilit în satul Șinca Veche după Primul Război M
+2 CONC ondial; Familia Popescu s-a stabilit în satul Șinca Veche după Primul 
+2 CONC Război Mondial; Familia Popescu s-a stabilit în satul Șinca Veche după
+2 CONC  Primul Război Mondial; Familia Popescu s-a stabilit în satul Șinca Ve
+2 CONC che după Primul Război Mondial; Familia Popescu s-a stabilit în satul 
+2 CONC Șinca Veche după Primul Război Mondial; Familia Popescu s-a stabilit î
+2 CONC n satul Șinca Veche după Primul Război Mondial; 
+1 SOUR @S1@
+2 PAGE f. 12
+2 QUAY 2
+1 FAMS @F1@
+0 @I2@ INDI
+1 NAME Maria /Dumbravă/
+2 SURN Dumbravă
+1 NAME Maria /Popescu/
+2 TYPE married
+1 SEX F
+1 BIRT
+2 DATE ABT 1895
+1 DEAT
+2 DATE 1972
+1 FAMS @F1@
+0 @I3@ INDI
+1 NAME Ion /Popescu/
+1 SEX M
+1 BIRT
+2 DATE 12 MAR 1920
+2 PLAC Șinca Veche
+1 DEAT
+2 DATE 1999
+1 BURI
+2 PLAC Cimitirul Central, Brașov
+1 FAMC @F1@
+1 FAMS @F2@
+1 _UID 7B3F2A
+0 @I4@ INDI
+1 NAME Ioana /Șerban/
+1 SEX F
+1 BIRT
+2 DATE 1925
+1 CHR
+2 DATE 1925
+2 PLAC Biserica Sf. Nicolae
+1 FAMS @F2@
+1 OBJE @O1@
+0 @I5@ INDI
+1 NAME Elena /Popescu/
+1 SEX F
+1 BIRT
+2 DATE 4 JUL 1950
+1 FAMC @F2@
+0 @I6@ INDI
+1 NAME Gheorghe /Popescu/
+1 SEX M
+1 BIRT
+2 DATE 1953
+1 FAMC @F2@
+0 @F1@ FAM
+1 HUSB @I1@
+1 WIFE @I2@
+1 CHIL @I3@
+1 MARR
+2 DATE 1918
+2 PLAC Șinca Veche
+0 @F2@ FAM
+1 HUSB @I3@
+1 WIFE @I4@
+1 CHIL @I5@
+1 CHIL @I6@
+1 MARR
+2 DATE 15 AUG 1948
+2 PLAC Brașov
+1 DIV
+2 DATE 1975
+1 _CUSTFAM valoare
+0 @S1@ SOUR
+1 TITL Registrul stării civile Șinca Veche
+1 AUTH Primăria
+1 REPO @R1@
+0 @R1@ REPO
+1 NAME Arhivele Naționale Brașov
+0 @O1@ OBJE
+1 FILE portret.jpg
+2 FORM jpeg
+0 _CUSTREC @X1@
+1 DATA ceva neînțeles
+0 TRLR

@@ -1,0 +1,157 @@
+{
+ "corpus": {
+  "documente": 66,
+  "interogari": 40,
+  "sinonime_grupuri": 15
+ },
+ "relevanta": {
+  "includes_toate_cuvintele": {
+   "success_at_5": 0.4,
+   "recall_at_5": 0.375,
+   "mrr_at_10": 0.4,
+   "by_category": {
+    "morfologie": {
+     "n": 24,
+     "recall_at_5": 0.417
+    },
+    "sinonime": {
+     "n": 9,
+     "recall_at_5": 0.111
+    },
+    "diacritice": {
+     "n": 3,
+     "recall_at_5": 0.333
+    },
+    "exact": {
+     "n": 3,
+     "recall_at_5": 1
+    },
+    "greșeli": {
+     "n": 1,
+     "recall_at_5": 0
+    }
+   }
+  },
+  "includes_oricare_cuvant_clasat": {
+   "success_at_5": 0.85,
+   "recall_at_5": 0.813,
+   "mrr_at_10": 0.838,
+   "by_category": {
+    "morfologie": {
+     "n": 24,
+     "recall_at_5": 0.958
+    },
+    "sinonime": {
+     "n": 9,
+     "recall_at_5": 0.611
+    },
+    "diacritice": {
+     "n": 3,
+     "recall_at_5": 0.333
+    },
+    "exact": {
+     "n": 3,
+     "recall_at_5": 1
+    },
+    "greșeli": {
+     "n": 1,
+     "recall_at_5": 0
+    }
+   }
+  },
+  "fff_search_fara_sinonime": {
+   "success_at_5": 0.975,
+   "recall_at_5": 0.938,
+   "mrr_at_10": 0.956,
+   "by_category": {
+    "morfologie": {
+     "n": 24,
+     "recall_at_5": 1
+    },
+    "sinonime": {
+     "n": 9,
+     "recall_at_5": 0.778
+    },
+    "diacritice": {
+     "n": 3,
+     "recall_at_5": 0.833
+    },
+    "exact": {
+     "n": 3,
+     "recall_at_5": 1
+    },
+    "greșeli": {
+     "n": 1,
+     "recall_at_5": 1
+    }
+   }
+  },
+  "fff_search_cu_sinonime": {
+   "success_at_5": 1,
+   "recall_at_5": 1,
+   "mrr_at_10": 0.988,
+   "by_category": {
+    "morfologie": {
+     "n": 24,
+     "recall_at_5": 1
+    },
+    "sinonime": {
+     "n": 9,
+     "recall_at_5": 1
+    },
+    "diacritice": {
+     "n": 3,
+     "recall_at_5": 1
+    },
+    "exact": {
+     "n": 3,
+     "recall_at_5": 1
+    },
+    "greșeli": {
+     "n": 1,
+     "recall_at_5": 1
+    }
+   }
+  },
+  "fff_search_doar_stemming_BM25": {
+   "success_at_5": 0.875,
+   "recall_at_5": 0.838,
+   "mrr_at_10": 0.875,
+   "by_category": {
+    "morfologie": {
+     "n": 24,
+     "recall_at_5": 0.917
+    },
+    "sinonime": {
+     "n": 9,
+     "recall_at_5": 0.667
+    },
+    "diacritice": {
+     "n": 3,
+     "recall_at_5": 0.833
+    },
+    "exact": {
+     "n": 3,
+     "recall_at_5": 1
+    },
+    "greșeli": {
+     "n": 1,
+     "recall_at_5": 0
+    }
+   }
+  }
+ },
+ "performanta": {
+  "documente": 6000,
+  "termeni_unici": 16509,
+  "postari": 435361,
+  "indexare_ms": 1126,
+  "interogare_medie_ms_cu_fuzzy_si_ngrame": 4.05,
+  "interogare_medie_ms_doar_BM25_stemming": 0.79,
+  "export_ms": 113,
+  "export_octeti": 6354484,
+  "export_fara_documente_octeti": 2445557,
+  "export_gzip_octeti": 1744755,
+  "import_ms": 108
+ }
+}
