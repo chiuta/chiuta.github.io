@@ -1,0 +1,184 @@
+{
+ "ok": 42,
+ "total": 44,
+ "results": [
+  {
+   "name": "pornire: 0 erori, 0 rețea, 0 CSP, meta, versiune, lang",
+   "ok": false,
+   "err": "assert: CSP strict"
+  },
+  {
+   "name": "rutare prin hash și tipuri de panou",
+   "ok": true
+  },
+  {
+   "name": "Morse: vectori cunoscuți",
+   "ok": true
+  },
+  {
+   "name": "Morse: toate caracterele ITU — dus-întors",
+   "ok": true
+  },
+  {
+   "name": "Morse: cronometrare calculată (puncte, linii, pauze, PARIS, Farnsworth)",
+   "ok": true
+  },
+  {
+   "name": "Morse: audio randat — durata segmentelor, frecvența, WAV",
+   "ok": true
+  },
+  {
+   "name": "Morse: Koch — generator determinist, seturi, nivele, moduri",
+   "ok": true
+  },
+  {
+   "name": "Morse: interfață — convertor în ambele sensuri, setări, timp",
+   "ok": true
+  },
+  {
+   "name": "Morse: redare reală (AudioContext) — evenimente identice cu cele calculate",
+   "ok": true
+  },
+  {
+   "name": "Morse: clipire — durate măsurate pe elementul vizual",
+   "ok": true
+  },
+  {
+   "name": "Morse: vibrații — tiparul trimis la navigator.vibrate",
+   "ok": true
+  },
+  {
+   "name": "Morse: Koch — interfață, evaluare cu greșeli marcate",
+   "ok": true
+  },
+  {
+   "name": "Morse: ritm — clasificare apăsări și evaluare",
+   "ok": true
+  },
+  {
+   "name": "Morse: antrenor cod→literă și literă→cod",
+   "ok": true
+  },
+  {
+   "name": "Braille: celula, numerotare, Unicode, vectori",
+   "ok": true
+  },
+  {
+   "name": "Braille: tabela ASCII braille — corespondențe verificate",
+   "ok": true
+  },
+  {
+   "name": "Braille: dus-întors (exemple + 400 șiruri aleatoare), BRF cu rânduri",
+   "ok": true
+  },
+  {
+   "name": "Braille: profil litere românești (lucru / pliere / personalizat) și validare",
+   "ok": true
+  },
+  {
+   "name": "Braille: interfață convertor (Unicode, BRF, SVG, ambele sensuri)",
+   "ok": true
+  },
+  {
+   "name": "Braille: antrenor — recunoașterea celulei",
+   "ok": true
+  },
+  {
+   "name": "Braille: scriere Perkins (F D S J K L) — acorduri reale de taste",
+   "ok": true
+  },
+  {
+   "name": "Alfabete fonetice: epelare, variante, dus-întors pe toate seturile",
+   "ok": true
+  },
+  {
+   "name": "Semafor: 26 perechi distincte, geometrie, notație dus-întors",
+   "ok": true
+  },
+  {
+   "name": "Pigpen: 26 simboluri distincte, specificații dus-întors, paletă",
+   "ok": true
+  },
+  {
+   "name": "Baudot/ITA2: vectori, schimbări LTRS/FIGS, dus-întors, bandă",
+   "ok": true
+  },
+  {
+   "name": "ASCII/Base64/URL/Unicode: vectori RFC 4648, UTF-8, toate formatele",
+   "ok": true
+  },
+  {
+   "name": "Cifruri: vectori cunoscuți (Cezar, ROT13, Atbash, Vigenère, Beaufort, Playfair, rail fence, Polybius, A1Z26)",
+   "ok": true
+  },
+  {
+   "name": "Cifruri: dus-întors aleatoriu pentru toate cifrurile",
+   "ok": true
+  },
+  {
+   "name": "Cifruri: analiză — frecvențe, IC, atac Cezar, Kasiski, recuperare cheie Vigenère",
+   "ok": true
+  },
+  {
+   "name": "Cifruri: interfață — cifrare/decifrare, pași, avertisment, analiză UI",
+   "ok": false,
+   "err": "assert: "
+  },
+  {
+   "name": "Dactilema: fără figuri, cu avertisment și surse",
+   "ok": true
+  },
+  {
+   "name": "Provocarea zilei: determinism din dată, rezolvabilitate, persistență",
+   "ok": true
+  },
+  {
+   "name": "SM-2: formule, intervale, factor de ușurință, limita zilnică de carduri noi",
+   "ok": true
+  },
+  {
+   "name": "Carduri SRS: interfață, notare, persistență, limită de carduri noi",
+   "ok": true
+  },
+  {
+   "name": "Date: export .fff.json, import, validare, ștergere totală",
+   "ok": true
+  },
+  {
+   "name": "Limbi (8): comutare, persistență, html[lang], chei complete, 0 erori",
+   "ok": true
+  },
+  {
+   "name": "Limbă: textul introdus se păstrează la schimbarea limbii și între panouri",
+   "ok": true
+  },
+  {
+   "name": "Temă: comutator (auto/luminos/întunecat) și persistență",
+   "ok": true
+  },
+  {
+   "name": "Fișe tipăribile: conținut generat și vizibil doar la tipărire",
+   "ok": true
+  },
+  {
+   "name": "axe: 0 violări în toate panourile și subfilele (luminos)",
+   "ok": true
+  },
+  {
+   "name": "axe: întunecat (contrast AA) + dialog deschis + analiză + Perkins + Koch",
+   "ok": true
+  },
+  {
+   "name": "layout: fără depășire orizontală la 360×740 și 1280×800, în toate panourile",
+   "ok": true
+  },
+  {
+   "name": "tastatură: ordine de focus, Enter în câmpuri, focus vizibil, mișcare redusă",
+   "ok": true
+  },
+  {
+   "name": "fără erori, rețea, CSP după utilizare intensă",
+   "ok": true
+  }
+ ]
+}
