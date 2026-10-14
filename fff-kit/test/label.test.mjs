@@ -5,7 +5,7 @@ import {execSync} from 'node:child_process';
 import {makeApp, launch, newPage, axe, check, summary, FIXTURE, HERE} from './_pw.mjs';
 
 const browser = await launch();
-const app = makeApp(FIXTURE, {config: {egressNote: 'Nota demo de rețea.'}});
+const app = makeApp(FIXTURE, {config: {egressNote: 'Nota demo de rețea.', selfModifying: true}});
 const {page, errors, net} = await newPage(browser);
 await page.goto(app.url);
 await page.waitForTimeout(600);
@@ -22,6 +22,7 @@ check('rețea: gazda declarată + nota din fff.config.json', txt.includes('examp
 check('stocare: chei + octeți', /fx\.count\s+\d+ B/.test(txt) && txt.includes('chei'), txt.match(/Stocare[\s\S]{0,200}/)?.[0]);
 check('permisiuni: localStorage listat', txt.includes('localStorage'));
 check('fișier: SHA-256 declarat + dimensiune', txt.includes(await page.evaluate(() => document.documentElement.getAttribute('data-fff-hash'))) && /Dimensiune: [\d.]+ KB/.test(txt));
+check('selfModifying din fff.config.json → avertisment în dialog', txt.includes('își poate salva propria copie'));
 check('kit: versiune și module', txt.includes('fff-kit v1.0.0') && txt.includes('core, label, bundle'));
 await page.keyboard.press('Escape'); await page.waitForTimeout(150);
 check('Esc închide și elimină dialogul din DOM', await page.evaluate(() => document.querySelectorAll('dialog').length === 0));

@@ -8,7 +8,7 @@
 <meta name="application-version" content="1.0.0">
 <meta name="last-updated" content="2026-10-14">
 <meta name="color-scheme" content="light dark">
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-zrsnTy9y3ol6mNi5AXHnTLmmDZCMJe554epnist782c='; style-src 'unsafe-inline'; img-src data: blob:; media-src data: blob:; font-src data:; connect-src 'none'; base-uri 'none'; form-action 'none'; frame-src 'none'; object-src 'none'; worker-src blob:; manifest-src 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-MIccqpPzqRx7rBtcipdaeXemy3RD2T9HrB20MunBcJ4='; style-src 'unsafe-inline'; img-src data: blob:; media-src data: blob:; font-src data:; connect-src 'none'; base-uri 'none'; form-action 'none'; frame-src 'none'; object-src 'none'; worker-src blob:; manifest-src 'none'">
 <style>
 :root{
   color-scheme:light dark;
@@ -704,7 +704,7 @@ const SPECRE = /[ßæœøđðłıþħŧĸŋƒǆ]/g;
 const FASTRE = /^[a-z0-9 ]*$/;
 function norm(s) {
   s = String(s == null ? '' : s).toLowerCase();
-  if (FASTRE.test(s)) return s.trim();
+  if (FASTRE.test(s)) return s.indexOf('  ') < 0 ? s.trim() : s.replace(/\s+/g, ' ').trim();
   s = s.normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(SPECRE, c => SPEC[c]);
   s = s.replace(/[‘’ʼ`´]/g, "'").replace(/[‐‑‒–—]/g, '-');
   s = s.replace(/\s+/g, ' ').trim();
