@@ -38,6 +38,8 @@ async function newPage(o = {}) {
   return page;
 }
 const close = p => p.ctx.close();
+const okLast = p => p.locator('dialog[open] [data-dk=ok]').last().click();
+const pickCat = (p, sel, name) => p.evaluate(([sel, name]) => { const e = document.querySelector(sel); const o = [...e.options].find(o => o.textContent.trim() === name); e.value = o.value; }, [sel, name]);
 async function clean(p, label = '') { assert.deepEqual(await p.evaluate(() => window.__csp), [], 'CSP ' + label); assert.deepEqual(p.errs, [], 'erori ' + label); assert.deepEqual(p.net, [], 'rețea ' + label); }
 const E = (p, fn, arg) => p.evaluate(fn, arg);
 const nav = async (p, v) => { await p.click(`#nav [data-v="${v}"]`); await p.waitForTimeout(80); };
@@ -235,7 +237,7 @@ await T('reguli: conține (diacritice), regex, sumă, cont, previzualizare, apli
   t = await txs(p); assert.ok(t.every(x => x.cat === '' && x.tags.length === 0));
   // mutare regulă + regex invalid / periculos / expirat
   await p.click('[data-act=addrule]');
-  await p.fill('#ru-name', 'rea'); await p.selectOption('#ru-mode', 'regex'); await p.fill('#ru-pat', '(a+)+$'); await p.selectOption('#ru-cat', {label: 'Salariu'}); await p.click('dialog [data-dk=ok]'); await p.waitForTimeout(150);
+  await p.fill('#ru-name', 'rea'); await p.selectOption('#ru-mode', 'regex'); await p.fill('#ru-pat', '(a+)+$'); await pickCat(p, '#ru-cat', 'Salariu'); await p.click('dialog [data-dk=ok]'); await p.waitForTimeout(150);
   assert.match(await p.textContent('dialog .derr'), /risc de blocare/);
   await p.fill('#ru-pat', '(a?){30}a{30}'); await p.click('dialog [data-dk=ok]'); await p.waitForTimeout(900);
   assert.match(await p.textContent('dialog .derr'), /limita de timp/);
@@ -258,7 +260,7 @@ await T('conturi multi-monedă, transfer între conturi, cursuri manuale, sold t
   const p = await newPage(); await wipe(p); await nav(p, 'setup');
   await p.click('[data-act=addacc]'); await p.fill('#ac-name', 'Lei'); await p.fill('#ac-open', '1.000,00'); await p.click('dialog [data-dk=ok]');
   await p.click('[data-act=addacc]'); await p.fill('#ac-name', 'Euro'); await p.fill('#ac-cur', 'eur'); await p.fill('#ac-open', '100'); await p.click('dialog [data-dk=ok]'); await p.waitForTimeout(100);
-  assert.match(await p.textContent('#s-cur ~ *'), /Lei|1 EUR/);
+  assert.match(await p.textContent('main'), /1 EUR/);
   assert.match(await p.textContent('main'), /lipsește cursul/);
   await p.fill('#rate-EUR', '4,9765'); await p.press('#rate-EUR', 'Tab'); await p.waitForTimeout(100);
   assert.equal(await E(p, () => GOSPODAR.S.data().settings.rates.EUR), '4.9765');
@@ -272,7 +274,7 @@ await T('conturi multi-monedă, transfer între conturi, cursuri manuale, sold t
   // transferul nu intră în venituri/cheltuieli
   assert.deepEqual(await E(p, () => GOSPODAR.S.monthSummary('2026-10')), {inc: 0, exp: 0, net: 0, n: 0});
   // ștergerea unui picior șterge perechea
-  await p.locator('[data-act=edittx]').first().click(); await p.click('dialog [data-dk=del]'); await p.click('dialog [data-dk=ok]'); await p.waitForTimeout(100);
+  await p.locator('[data-act=edittx]').first().click(); await p.click('dialog [data-dk=del]'); await okLast(p); await p.waitForTimeout(100);
   assert.equal((await txs(p)).length, 0);
   await clean(p); await close(p);
 });
@@ -296,7 +298,7 @@ await T('tranzacții: adăugare rapidă din tastatură (n), reguli, editare, fil
   await p.fill('#f-q', ''); await p.selectOption('#f-cat', '__none'); await p.waitForTimeout(100);
   assert.match(await p.textContent('#txTable'), /venit nespecificat/);
   // selecție în masă + categorie
-  await p.check('[data-in=selpage]'); await p.selectOption('#bulkcat', {label: 'Altele'}); await p.click('[data-act=bulkcat]'); await p.waitForTimeout(100);
+  await p.check('[data-in=selpage]'); await pickCat(p, '#bulkcat', 'Altele'); await p.click('[data-act=bulkcat]'); await p.waitForTimeout(100);
   t = await txs(p); assert.ok(t.filter(x => x.desc === 'venit nespecificat')[0].cat);
   await p.click('[data-act=fltclear]');
   // editare + ștergere
@@ -349,9 +351,9 @@ await T('rapoarte: SVG cu titlu/descriere, tabele, comparație, solduri; tipări
   assert.equal(await p.locator('svg.chart:not([aria-labelledby])').count(), 0);
   const t = await p.textContent('main'); for (const k of ['Cheltuieli pe categorii', 'Evoluție lunară', 'Flux de numerar', 'Top comercianți', 'Comparație lună cu lună', 'Sold pe cont']) assert.match(t, new RegExp(k));
   // total pe categorii = cheltuieli lună
-  const exp = await E(p, () => GOSPODAR.S.monthSummary('2026-10').exp); const items = await E(p, () => [...document.querySelectorAll('#r1 ~ div table tfoot td')].map(x => x.textContent));
+  const exp = await E(p, () => GOSPODAR.S.monthSummary('2026-10').exp); const items = await E(p, () => [...document.querySelectorAll('section:has(#r1) table tfoot td')].map(x => x.textContent));
   assert.match(items[0], new RegExp(((exp / 100).toLocaleString('ro-RO', {minimumFractionDigits: 2}))));
-  await p.selectOption('#rep-group', 'leaf'); await p.waitForTimeout(80); assert.ok((await p.locator('#r1 ~ div table tbody tr').count()) > 6);
+  await p.selectOption('#rep-group', 'leaf'); await p.waitForTimeout(80); assert.ok((await p.locator('section:has(#r1) table tbody tr').count()) > 6);
   await p.click('#mk-prev'); await p.waitForTimeout(80); assert.match(await p.textContent('.mlabel'), /septembrie 2026/i);
   await p.evaluate(() => GOSPODAR.U.renderPrint()); await p.emulateMedia({media: 'print'});
   assert.equal(await p.isVisible('#printReport'), true); assert.equal(await p.isVisible('#nav'), false); assert.equal(await p.isVisible('main'), false);
@@ -535,7 +537,7 @@ await T('categorii și conturi: editare, subcategorii, ștergere, set implicit r
   const sid = await E(p, () => GOSPODAR.S.data().cats.find(c => c.name === 'Hrană').id);
   await p.click(`[data-act=editcat][data-id="${sid}"]`); await p.fill('#ct-name', 'Hrană pisică'); await p.click('dialog [data-dk=ok]'); await p.waitForTimeout(80);
   assert.ok(await E(p, () => GOSPODAR.S.data().cats.some(c => c.name === 'Hrană pisică')));
-  await p.click(`[data-act=editcat][data-id="${sid}"]`); await p.click('dialog [data-dk=del]'); await p.click('dialog [data-dk=ok]'); await p.waitForTimeout(80);
+  await p.click(`[data-act=editcat][data-id="${sid}"]`); await p.click('dialog [data-dk=del]'); await okLast(p); await p.waitForTimeout(80);
   assert.ok(!(await E(p, () => GOSPODAR.S.data().cats.some(c => c.name === 'Hrană pisică'))));
   await clean(p); await close(p);
 });
@@ -543,7 +545,7 @@ await T('categorii și conturi: editare, subcategorii, ștergere, set implicit r
 await T('persistență: reîncărcare păstrează datele; fără cereri de rețea; demo = cursuri de exemplu', async () => {
   const p = await newPage(); await demo(p); const n = (await txs(p)).length; await E(p, () => GOSPODAR.S.whenSaved());
   await p.reload(); await p.waitForSelector('#view h2'); assert.equal((await txs(p)).length, n);
-  assert.match(await p.textContent('main'), /Octombrie 2026/); await clean(p); await close(p);
+  assert.match(await p.textContent('main'), /octombrie 2026/i); await clean(p); await close(p);
 });
 
 await browser.close();

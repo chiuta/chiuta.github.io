@@ -78,12 +78,16 @@ LC_ALL=C sed -E 's/data-fff-hash="[0-9a-f]*"/data-fff-hash=""/g; s/"sha256":"[0-
 ## Teste
 
 ```
+node fff-kit/test/all.mjs            # rulează cele patru de mai jos
 node fff-kit/test/core.test.mjs      # 34 verificări
-node fff-kit/test/label.test.mjs     # 42 (inclusiv axe în dialog, luminos/întunecat, 360 px)
+node fff-kit/test/label.test.mjs     # 47 (inclusiv axe în dialog, luminos/întunecat, 360 px)
 node fff-kit/test/bundle.test.mjs    # 50 (export/import/ștergere, criptare, rollback, UI)
 node fff-kit/test/build.test.mjs     # 60 (apply/idempotență/remove/check/info)
-node fff-kit/test/compat.mjs --inv shots_inv.json --work <dir> --out rezultate.json   # copii ale aplicațiilor existente
+node fff-kit/test/compat.mjs --inv shots_inv.json --work <dir> --out rezultate.json   # copii ale aplicațiilor existente (nu le modifică pe cele originale)
+node fff-kit/test/quine.mjs --work <dir>   # aplicații care își salvează propria copie: fișierul salvat trebuie să rămână funcțional
 ```
+
+`compat.mjs` aplică `core,label,bundle` (+ `info`) pe câte o copie a fiecărei aplicații și măsoară, cu rețeaua blocată, la 1280×800 și 360×740 după 3,5 s: erori de pagină/CSP noi, depășire orizontală nouă, violări axe noi, cereri de rețea noi, transformarea lui `#app-version` în buton și deschiderea dialogului (după deschiderea panoului „despre” unde elementul e ascuns), axe în dialog (luminos și întunecat), apoi export → ștergere → import cu verificarea valorilor și a faptului că o cheie străină rămâne neatinsă.
 
 Testele folosesc Playwright cu Chromium (`/opt/pw-browsers/chromium`), rețea blocată; variabilele `FFF_TMP` (directorul temporar) și `FFF_AXE` (calea `axe.min.js`) sunt opționale.
 

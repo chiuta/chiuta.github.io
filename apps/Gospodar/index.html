@@ -8,7 +8,7 @@
 <meta name="application-version" content="1.0.0">
 <meta name="last-updated" content="2026-10-14">
 <meta name="color-scheme" content="light dark">
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-//tOYXv45y8RZFFXfCO+yz3LUn0NmrgXn9yl4WHiOA0='; style-src 'unsafe-inline'; img-src data: blob:; media-src data: blob:; font-src data:; connect-src 'none'; base-uri 'none'; form-action 'none'; frame-src 'none'; object-src 'none'; worker-src blob:; manifest-src 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-BydgOcJkf66Pzd+Fr/W2CmGkQMFUcPZVdBOtJpduOvY='; style-src 'unsafe-inline'; img-src data: blob:; media-src data: blob:; font-src data:; connect-src 'none'; base-uri 'none'; form-action 'none'; frame-src 'none'; object-src 'none'; worker-src blob:; manifest-src 'none'">
 <style>
 :root{
   color-scheme:light dark;
@@ -315,12 +315,16 @@ function parseDec(str) {
   return { n, k: frac.length };
 }
 /** Text tastat de utilizator (virgulă sau punct, cu separatori de mii) → zecimal cu punct. */
-function normTyped(str) {
-  let s = String(str).trim().replace(/[\s  ']/g, '').replace('−', '-');
+function normTyped(str, money) {
+  let s = String(str).trim().replace(/[\s\u00a0\u202f']/g, '').replace('−', '-');
   const lc = s.lastIndexOf(','), ld = s.lastIndexOf('.');
   if (lc >= 0 && ld >= 0) { const decc = lc > ld ? ',' : '.'; const grp = decc === ',' ? '.' : ','; s = s.split(grp).join('').replace(decc, '.'); }
-  else if (lc >= 0) { s = (s.split(',').length > 2) ? s.split(',').join('') : s.replace(',', '.'); }
-  else if (ld >= 0 && s.split('.').length > 2) s = s.split('.').join('');
+  else if (lc >= 0 || ld >= 0) {
+    const c = lc >= 0 ? ',' : '.'; const parts = s.split(c);
+    if (parts.length > 2) s = parts.join('');
+    else if (money && parts[1].length === 3 && /^[+-]?[1-9]\d{0,2}$/.test(parts[0]) && c === (LANG === 'en' ? ',' : '.')) s = parts.join('');
+    else s = s.replace(c, '.');
+  }
   return s;
 }
 function parseMinorStr(dotStr, cur) { // șir cu punct → întreg în subunități (rotunjit)
@@ -328,7 +332,7 @@ function parseMinorStr(dotStr, cur) { // șir cu punct → întreg în subunită
   const v = rdiv(p.n * P10(dec(cur)), P10(p.k));
   const num = Number(v); return Number.isSafeInteger(num) ? num : null;
 }
-const parseTyped = (str, cur) => parseMinorStr(normTyped(str), cur);
+const parseTyped = (str, cur) => parseMinorStr(normTyped(str, true), cur);
 function minorToDot(minor, cur) { // întreg → "-1234.50"
   const d = dec(cur); const neg = minor < 0; let s = String(Math.abs(minor));
   if (d > 0) { s = s.padStart(d + 1, '0'); s = s.slice(0, -d) + '.' + s.slice(-d); }
@@ -1488,12 +1492,12 @@ U.views.imp = () => {
   if (!IM.acc || !S.acc(IM.acc)) IM.acc = (d.accounts.find(a => !a.archived) || d.accounts[0]).id;
   const encs = Object.entries(G.ENCODINGS);
   return `<h2>${esc(t('nav_imp'))}</h2><p class="note">${esc(t('imp_intro'))}</p>
-  <section class="panel" aria-labelledby="imp1"><h3 id="imp1">1. ${esc(t('imp_source'))}</h3>
+  <section class="panel"><h3 id="imp1">1. ${esc(t('imp_source'))}</h3>
    <div class="grid2">${field('im-file', t('imp_file'), `<input id="im-file" type="file" accept=".csv,.txt,.tsv,text/csv,text/plain" data-in="imfile">`)}
    ${field('im-acc', t('imp_target'), `<select id="im-acc" data-in="imacc">${accOptions(IM.acc)}</select>`)}</div>
    ${field('im-paste', t('imp_paste'), `<textarea id="im-paste" rows="3" data-in="impaste" spellcheck="false" placeholder="data;descriere;suma\n01.10.2026;PLATA POS;-123,45"></textarea>`)}
   </section>
-  <section class="panel" id="imCfg" ${IM.rows.length ? '' : 'hidden'} aria-labelledby="imp2"><h3 id="imp2">2. ${esc(t('imp_settings'))}</h3>
+  <section class="panel" id="imCfg" ${IM.rows.length ? '' : 'hidden'} ><h3 id="imp2">2. ${esc(t('imp_settings'))}</h3>
    <div class="grid4">
     ${field('im-enc', t('imp_encoding'), `<select id="im-enc" data-in="imenc"><option value="auto">${esc(t('auto'))}${IM.raw && IM.encSel === 'auto' ? ' (' + esc(G.ENCODINGS[IM.encUsed] || IM.encUsed) + ')' : ''}</option>${encs.map(([v, l]) => `<option value="${v}"${IM.encSel === v ? ' selected' : ''}>${l}</option>`).join('')}</select>`)}
     ${field('im-sep', t('imp_sep'), `<select id="im-sep" data-in="imsep">${opts([['auto', t('auto') + ' (' + (IM.sep === '\t' ? 'tab' : IM.sep) + ')'], [',', ', (' + t('comma') + ')'], [';', '; (' + t('semicolon') + ')'], ['tab', 'Tab']], IM.sepSel)}</select>`)}
@@ -1574,11 +1578,11 @@ function accTypes() { return ['current', 'cash', 'card', 'savings'].map(k => [k,
 U.views.setup = () => {
   const d = D(), bal = S.balances();
   let h = `<h2>${esc(t('nav_setup'))}</h2>${curList()}`;
-  h += `<section class="panel" aria-labelledby="s-acc"><div class="ph"><h3 id="s-acc">${esc(t('accounts'))}</h3><button class="btn small primary" data-act="addacc">+ ${esc(t('add_account'))}</button></div>`;
+  h += `<section class="panel"><div class="ph"><h3 id="s-acc">${esc(t('accounts'))}</h3><button class="btn small primary" data-act="addacc">+ ${esc(t('add_account'))}</button></div>`;
   h += d.accounts.length ? `<div class="tw" tabindex="0" role="region" aria-label="${esc(t('accounts'))}"><table class="tbl stack"><thead><tr><th scope="col">${esc(t('name'))}</th><th scope="col">${esc(t('type'))}</th><th scope="col">${esc(t('currency'))}</th><th scope="col" class="n">${esc(t('opening'))}</th><th scope="col" class="n">${esc(t('balance'))}</th><th scope="col"><span class="sr">${esc(t('edit'))}</span></th></tr></thead><tbody>${d.accounts.map(a => `<tr><td data-l="${esc(t('name'))}">${esc(a.name)}${a.archived ? ` <span class="badge">${esc(t('archived'))}</span>` : ''}</td><td data-l="${esc(t('type'))}">${esc(t('atype_' + a.type))}</td><td data-l="${esc(t('currency'))}">${esc(a.cur)}</td><td class="n" data-l="${esc(t('opening'))}">${amtCell(a.open || 0, a.cur, { sign: false })}</td><td class="n" data-l="${esc(t('balance'))}">${amtCell(bal.get(a.id), a.cur, { sign: false })}</td><td><button class="btn small" data-act="editacc" data-id="${a.id}" aria-label="${esc(t('edit'))}: ${esc(a.name)}">${esc(t('edit'))}</button></td></tr>`).join('')}</tbody></table></div>` : `<p class="muted">${esc(t('no_accounts_text'))}</p>`;
   h += `</section>`;
   // categorii
-  h += `<section class="panel" aria-labelledby="s-cat"><div class="ph"><h3 id="s-cat">${esc(t('categories'))}</h3><button class="btn small primary" data-act="addcat" data-parent="">+ ${esc(t('add_category'))}</button></div><p class="note">${esc(t('cat_note'))}</p><ul class="tree">`;
+  h += `<section class="panel"><div class="ph"><h3 id="s-cat">${esc(t('categories'))}</h3><button class="btn small primary" data-act="addcat" data-parent="">+ ${esc(t('add_category'))}</button></div><p class="note">${esc(t('cat_note'))}</p><ul class="tree">`;
   d.cats.filter(c => !c.parent).forEach(r => {
     const kids = d.cats.filter(c => c.parent === r.id);
     h += `<li><div class="trow"><strong>${esc(r.name)}</strong> <span class="badge">${esc(r.kind === 'inc' ? t('income1') : t('expense'))}</span><span class="sp"></span><button class="btn small" data-act="addcat" data-parent="${r.id}" aria-label="${esc(t('add_subcategory'))}: ${esc(r.name)}">+ ${esc(t('add_subcategory'))}</button><button class="btn small" data-act="editcat" data-id="${r.id}" aria-label="${esc(t('edit'))}: ${esc(r.name)}">${esc(t('edit'))}</button></div>${kids.length ? `<ul>${kids.map(k => `<li><div class="trow"><span>${esc(k.name)}</span><span class="sp"></span><button class="btn small" data-act="editcat" data-id="${k.id}" aria-label="${esc(t('edit'))}: ${esc(r.name)} › ${esc(k.name)}">${esc(t('edit'))}</button></div></li>`).join('')}</ul>` : ''}</li>`;
@@ -1586,7 +1590,7 @@ U.views.setup = () => {
   h += `</ul></section>`;
   // monede
   const used = [...new Set(d.accounts.map(a => a.cur).concat(Object.keys(d.settings.rates)))].filter(c => c !== d.settings.base).sort();
-  h += `<section class="panel" aria-labelledby="s-cur"><h3 id="s-cur">${esc(t('currencies'))}</h3><p class="note">${esc(t('cur_note'))}</p>
+  h += `<section class="panel"><h3 id="s-cur">${esc(t('currencies'))}</h3><p class="note">${esc(t('cur_note'))}</p>
   <div class="grid2">${field('base-cur', t('base_currency'), `<input id="base-cur" list="curlist" value="${esc(d.settings.base)}" maxlength="3" autocomplete="off" data-in="basecur" style="text-transform:uppercase">`, t('base_cur_hint'))}</div>
   <div class="tw" tabindex="0" role="region" aria-label="${esc(t('rates'))}"><table class="tbl"><thead><tr><th scope="col">${esc(t('currency'))}</th><th scope="col">${esc(t('rate_label', { b: d.settings.base }))}</th><th scope="col"><span class="sr">${esc(t('delete'))}</span></th></tr></thead><tbody>${used.map(c => { const inUse = d.accounts.some(a => a.cur === c); return `<tr><td>1 ${esc(c)} =</td><td><label class="sr" for="rate-${c}">${esc(t('rate_label', { b: d.settings.base }))} ${esc(c)}</label><input id="rate-${c}" class="rate" inputmode="decimal" data-in="rate" data-cur="${c}" value="${esc(d.settings.rates[c] || '')}" placeholder="0,0000" autocomplete="off"> ${esc(d.settings.base)}${!d.settings.rates[c] && inUse ? ` <span class="warnc">⚠ ${esc(t('rate_missing'))}</span>` : ''}</td><td>${inUse ? '' : `<button class="btn small" data-act="delrate" data-cur="${c}" aria-label="${esc(t('delete'))} ${esc(c)}">${esc(t('delete'))}</button>`}</td></tr>`; }).join('') || `<tr><td colspan="3" class="muted">${esc(t('no_rates'))}</td></tr>`}</tbody></table></div>
   <div class="row"><div class="fld"><label for="newcur">${esc(t('add_currency'))}</label><input id="newcur" list="curlist" maxlength="3" autocomplete="off" style="text-transform:uppercase"></div><button class="btn small" data-act="addrate">${esc(t('add'))}</button></div></section>`;
@@ -1824,7 +1828,7 @@ function reportHtml(forPrint) {
   const miss = S.getAgg().missing; if (miss) h += `<p class="note">${esc(t('missing_rates', { n: miss }))}</p>`;
   // 1. categorii
   const items = catSpendItems(mk, U.repGroup); const totalSp = items.reduce((a, i) => a + i.value, 0);
-  h += `<section class="panel" aria-labelledby="r1"><div class="ph"><h3 id="r1">${esc(t('rep_cat'))}</h3>${forPrint ? '' : `<label class="chk"><span>${esc(t('group_by'))}</span> <select id="rep-group" data-in="repgroup">${opts([['parent', t('group_parent')], ['leaf', t('group_leaf')]], U.repGroup)}</select></label>`}</div>`;
+  h += `<section class="panel"><div class="ph"><h3 id="r1">${esc(t('rep_cat'))}</h3>${forPrint ? '' : `<label class="chk"><span>${esc(t('group_by'))}</span> <select id="rep-group" data-in="repgroup">${opts([['parent', t('group_parent')], ['leaf', t('group_leaf')]], U.repGroup)}</select></label>`}</div>`;
   if (items.length) {
     const top = items.slice(0, 12);
     h += hbars(top.map(i => ({ label: i.label, value: i.value, text: G.fmtN(i.value, cur) })), { title: t('rep_cat') + ' — ' + monthLabel(mk), desc: top.map(i => i.label + ': ' + fmt(i.value, cur)).join('; ') });
@@ -1834,30 +1838,30 @@ function reportHtml(forPrint) {
   h += `</section>`;
   // 2. evoluție
   const keys = lastMonths(mk, 12); const sums = keys.map(k => S.monthSummary(k));
-  h += `<section class="panel" aria-labelledby="r2"><h3 id="r2">${esc(t('rep_evolution'))}</h3>`;
+  h += `<section class="panel"><h3 id="r2">${esc(t('rep_evolution'))}</h3>`;
   h += colChart(keys.map(monthShort), [{ name: t('income'), cls: 'c-pos', vals: sums.map(s => s.inc) }, { name: t('expenses'), cls: 'c-neg', vals: sums.map(s => s.exp) }], { title: t('rep_evolution'), desc: keys.map((k, i) => monthLabel(k) + ': ' + t('income') + ' ' + fmt(sums[i].inc, cur) + ', ' + t('expenses') + ' ' + fmt(sums[i].exp, cur)).join('; ') }) + legend([{ cls: 'c-pos', label: t('income') }, { cls: 'c-neg', label: t('expenses') }]);
   h += `<details><summary>${esc(t('show_table'))}</summary>${tableOf([t('month'), t('income'), t('expenses'), t('net')], keys.map((k, i) => [esc(monthLabel(k)), esc(G.fmtN(sums[i].inc, cur)), esc(G.fmtN(sums[i].exp, cur)), esc(fmt(sums[i].net, cur, { sign: true }))]), { label: t('rep_evolution') })}</details></section>`;
   // 3. flux de numerar
   const bals = balanceSeries(keys);
-  h += `<section class="panel" aria-labelledby="r3"><h3 id="r3">${esc(t('rep_cashflow'))}</h3><p class="note">${esc(t('cashflow_note'))}</p>`;
+  h += `<section class="panel"><h3 id="r3">${esc(t('rep_cashflow'))}</h3><p class="note">${esc(t('cashflow_note'))}</p>`;
   h += colChart(keys.map(monthShort), [{ name: t('net'), cls: 'c-acc', vals: sums.map(s => s.net) }], { title: t('rep_cashflow'), desc: keys.map((k, i) => monthLabel(k) + ': ' + t('net') + ' ' + fmt(sums[i].net, cur) + ', ' + t('end_balance') + ' ' + fmt(bals[i], cur)).join('; '), line: { vals: bals } }) + legend([{ cls: 'c-acc', label: t('net') }, { cls: 'c-line', label: t('end_balance') }]);
   h += `<details><summary>${esc(t('show_table'))}</summary>${tableOf([t('month'), t('income'), t('expenses'), t('net'), t('end_balance')], keys.map((k, i) => [esc(monthLabel(k)), esc(G.fmtN(sums[i].inc, cur)), esc(G.fmtN(sums[i].exp, cur)), esc(fmt(sums[i].net, cur, { sign: true })), esc(G.fmtN(bals[i], cur))]), { label: t('rep_cashflow') })}</details></section>`;
   // 4. comercianți
   const tm = S.topMerchants(mk, mk, 10);
-  h += `<section class="panel" aria-labelledby="r4"><h3 id="r4">${esc(t('rep_merchants'))}</h3><p class="note">${esc(t('merchants_note'))}</p>`;
+  h += `<section class="panel"><h3 id="r4">${esc(t('rep_merchants'))}</h3><p class="note">${esc(t('merchants_note'))}</p>`;
   if (tm.length) { h += hbars(tm.map(m => ({ label: m.name, value: m.sum, text: G.fmtN(m.sum, cur) })), { title: t('rep_merchants'), desc: tm.map(m => m.name + ': ' + fmt(m.sum, cur)).join('; ') }); h += tableOf([t('merchant'), t('amount') + ' (' + cur + ')', t('count')], tm.map(m => [esc(m.name), esc(G.fmtN(m.sum, cur)), String(m.n)]), { label: t('rep_merchants') }); } else h += `<p class="muted">${esc(t('no_data_month'))}</p>`;
   h += `</section>`;
   // 5. comparație lună/lună
   const pk = addMonthsKey(mk, -1); const cur_ = catSpendItems(mk, 'parent'), prev_ = catSpendItems(pk, 'parent');
   const ids = [...new Set(cur_.map(i => i.id).concat(prev_.map(i => i.id)))];
   const rows = ids.map(id => { const a = (cur_.find(i => i.id === id) || {}).value || 0, b = (prev_.find(i => i.id === id) || {}).value || 0; const name = id ? S.cat(id).name : t('uncategorized'); return { name, a, b, diff: a - b }; }).sort((x, y) => Math.abs(y.diff) - Math.abs(x.diff));
-  h += `<section class="panel" aria-labelledby="r5"><h3 id="r5">${esc(t('rep_compare'))}</h3>`;
+  h += `<section class="panel"><h3 id="r5">${esc(t('rep_compare'))}</h3>`;
   h += rows.length ? tableOf([t('category'), monthLabel(mk), monthLabel(pk), t('difference'), t('change_pct')], rows.map(r => [esc(r.name), esc(G.fmtN(r.a, cur)), esc(G.fmtN(r.b, cur)), esc(fmt(r.diff, cur, { sign: true })), r.b > 0 ? esc((r.diff >= 0 ? '+' : '') + G.fmtPct(r.diff / r.b, 0)) : '—']), { label: t('rep_compare'), foot: [esc(t('total')), esc(G.fmtN(ms.exp, cur)), esc(G.fmtN(S.monthSummary(pk).exp, cur)), esc(fmt(ms.exp - S.monthSummary(pk).exp, cur, { sign: true })), '—'] }) : `<p class="muted">${esc(t('no_data_month'))}</p>`;
   h += `</section>`;
   // 6. solduri conturi
   const bal = S.balances(); let tot = 0, missB = 0;
   const arows = d.accounts.filter(a => !a.archived).map(a => { const b = bal.get(a.id); const v = S.toBase(b, a.cur); if (v === null) missB++; else tot += v; return [esc(a.name + ' (' + a.cur + ')'), esc(fmt(b, a.cur)), v === null ? '—' : esc(fmt(v, cur))]; });
-  h += `<section class="panel" aria-labelledby="r6"><h3 id="r6">${esc(t('rep_balances'))}</h3>${arows.length ? tableOf([t('account'), t('balance'), t('in_base', { b: cur })], arows, { label: t('rep_balances'), foot: [esc(t('total')), '', esc(fmt(tot, cur))] }) : `<p class="muted">${esc(t('no_accounts_text'))}</p>`}${missB ? `<p class="note">${esc(t('missing_rates', { n: missB }))}</p>` : ''}</section>`;
+  h += `<section class="panel"><h3 id="r6">${esc(t('rep_balances'))}</h3>${arows.length ? tableOf([t('account'), t('balance'), t('in_base', { b: cur })], arows, { label: t('rep_balances'), foot: [esc(t('total')), '', esc(fmt(tot, cur))] }) : `<p class="muted">${esc(t('no_accounts_text'))}</p>`}${missB ? `<p class="note">${esc(t('missing_rates', { n: missB }))}</p>` : ''}</section>`;
   return h;
 }
 U.views.rep = () => {
@@ -2099,17 +2103,17 @@ async function doUnlock(e) {
 U.views.set = () => {
   const d = D(); const enc = S.isEncrypted(); const size = S.serialize().length;
   return `<h2>${esc(t('nav_set'))}</h2>
-  <section class="panel" aria-labelledby="st1"><h3 id="st1">${esc(t('appearance'))}</h3><div class="grid2">${field('set-lang', t('language'), `<select id="set-lang" data-in="setlang">${Object.entries(LANG_NAMES).map(([k, v]) => `<option value="${k}"${k === G.getLang() ? ' selected' : ''}>${v}</option>`).join('')}</select>`, t('lang_note'))}<div class="fld end"><button class="btn" data-act="theme">${esc(t('theme'))}: ${esc(t('theme_' + theme))}</button></div></div></section>
-  <section class="panel" aria-labelledby="st2"><h3 id="st2">${esc(t('data_backup'))}</h3><p class="note">${esc(t('data_local_note'))}</p>
+  <section class="panel"><h3 id="st1">${esc(t('appearance'))}</h3><div class="grid2">${field('set-lang', t('language'), `<select id="set-lang" data-in="setlang">${Object.entries(LANG_NAMES).map(([k, v]) => `<option value="${k}"${k === G.getLang() ? ' selected' : ''}>${v}</option>`).join('')}</select>`, t('lang_note'))}<div class="fld end"><button class="btn" data-act="theme">${esc(t('theme'))}: ${esc(t('theme_' + theme))}</button></div></div></section>
+  <section class="panel"><h3 id="st2">${esc(t('data_backup'))}</h3><p class="note">${esc(t('data_local_note'))}</p>
    <div class="row"><button class="btn" data-act="exportjson">${esc(t('export_json'))}</button><button class="btn" data-act="exportenc">${esc(t('export_enc'))}</button><button class="btn" data-act="exportallcsv">${esc(t('export_all_csv'))}</button></div>
    <div class="fld">${'<label for="imp-json">' + esc(t('import_json')) + '</label>'}<input id="imp-json" type="file" accept=".json,application/json" data-in="importfile"></div>
    <div class="row"><button class="btn" data-act="demo">${esc(t('load_demo'))}</button><button class="btn danger" data-act="wipe">${esc(t('wipe_all'))}</button></div>
    <p class="note">${esc(t('storage_used', { kb: (size / 1024).toFixed(1), n: d.txs.length }))}</p></section>
-  <section class="panel" aria-labelledby="st3"><h3 id="st3">${esc(t('encryption'))}</h3><p class="note">${esc(t('enc_explain'))}</p><p class="note warn">${esc(t('pw_lost_warn'))}</p>
+  <section class="panel"><h3 id="st3">${esc(t('encryption'))}</h3><p class="note">${esc(t('enc_explain'))}</p><p class="note warn">${esc(t('pw_lost_warn'))}</p>
    <p><strong>${esc(t('enc_status'))}:</strong> ${esc(enc ? t('enc_on') : t('enc_off'))}</p>
    <div class="row">${enc ? `<button class="btn" data-act="lock">${esc(t('lock_now'))}</button><button class="btn" data-act="encchange">${esc(t('enc_change'))}</button><button class="btn danger" data-act="encoff">${esc(t('enc_disable'))}</button>` : `<button class="btn primary" data-act="encon">${esc(t('enc_enable'))}</button>`}</div>
    ${enc ? `<div class="grid2">${field('set-al', t('autolock'), `<input id="set-al" type="number" min="0" max="240" step="1" value="${d.settings.autolock || 0}" data-in="autolock">`, t('autolock_hint'))}</div>` : ''}</section>
-  <section class="panel" aria-labelledby="st4"><h3 id="st4">${esc(t('about'))}</h3><p>${esc(t('about_text'))}</p><h4>${esc(t('limits'))}</h4><ul><li>${esc(t('lim1'))}</li><li>${esc(t('lim2'))}</li><li>${esc(t('lim3'))}</li><li>${esc(t('lim4'))}</li></ul><h4>${esc(t('shortcuts'))}</h4><ul><li><kbd>n</kbd> — ${esc(t('quick_add'))}</li><li><kbd>Esc</kbd> — ${esc(t('close'))}</li></ul></section>` + disclaimer();
+  <section class="panel"><h3 id="st4">${esc(t('about'))}</h3><p>${esc(t('about_text'))}</p><h4>${esc(t('limits'))}</h4><ul><li>${esc(t('lim1'))}</li><li>${esc(t('lim2'))}</li><li>${esc(t('lim3'))}</li><li>${esc(t('lim4'))}</li></ul><h4>${esc(t('shortcuts'))}</h4><ul><li><kbd>n</kbd> — ${esc(t('quick_add'))}</li><li><kbd>Esc</kbd> — ${esc(t('close'))}</li></ul></section>` + disclaimer();
 };
 U.ins.setlang = el => setLang(el.value);
 U.acts.theme = () => { setTheme(theme === 'auto' ? 'light' : theme === 'light' ? 'dark' : 'auto'); U.render(); };

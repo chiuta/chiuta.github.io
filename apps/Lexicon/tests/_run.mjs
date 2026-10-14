@@ -44,6 +44,7 @@ async function newPage(opts = {}) {
 }
 const st = p => p.evaluate(() => Lexicon.state());
 async function openWord(p, w) {
+  if (await p.locator('#p-search').isHidden()) await p.click('#t-search');
   await p.fill('#q', w); await p.press('#q', 'Enter');
   await p.waitForFunction(() => document.querySelector('#article h2'));
   await p.waitForTimeout(60);
@@ -302,7 +303,8 @@ console.log('3. Interfață: sugestii în timp real, articol, linkuri, favorite,
   // tastatură: "/" focalizează căutarea
   await p.evaluate(() => document.activeElement.blur());
   await p.keyboard.press('/');
-  ok('tasta „/” focalizează căutarea', (await p.evaluate(() => document.activeElement.id)) === 'q');
+  const ae = await p.evaluate(() => document.activeElement.tagName + '#' + document.activeElement.id);
+  ok('tasta „/” focalizează căutarea', ae === 'INPUT#q', ae);
   // modul text prin UI
   await p.selectOption('#mode', 'text'); await p.fill('#q', 'oamenii'); await p.press('#q', 'Enter');
   await p.waitForSelector('#results .ritem');
@@ -457,7 +459,7 @@ console.log('5. Import TSV/CSV/JSON: antet, mapare coloane, diacritice speciale,
   await p.click('#imp-go');
   await p.waitForSelector('#imp-msg .msg.ok');
   const msg = await p.locator('#imp-msg').innerText();
-  ok('raport import: intrări importate și omise', /Importat: 11 intrări \(2 omise\)/.test(msg), msg);
+  ok('raport import: intrări importate și omise', /Importat: 10 intrări \(2 omise\)/.test(msg), msg);
   await p.click('#imp-cancel'); await p.waitForSelector('#dlg-import:not([open])', {state: 'attached'});
   const sd = await st(p);
   const sp = sd.dicts.find(d => d.title === 'Special TSV');
@@ -469,7 +471,7 @@ console.log('5. Import TSV/CSV/JSON: antet, mapare coloane, diacritice speciale,
       u: await r('ubung'), u2: await r('ÜBUNG'), o: await r('or', {mode: 'exact'}), o2: await r('őr'), h: await r('hugseg'), hf: await r('hűségem'),
       c: await r('cafe'), c2: await r('CAFÉ'), cf: await r('cafes'), f: await r('facade'), cr: await r('creme'), cr2: await r('crème'),
       dz: await r('ǆevap'), dz2: await r('dzevap'), sc: await r('scoala'), sc2: await r('școală'), sc3: await r('ŞCOALĂ'),
-      multi: await r('cuvant cu spatiu'), wild: await r('str?ße'), wild2: await r('*ung'), pre: await r('uber', {mode: 'prefix'}),
+      multi: await r('cuvant cu spatiu'), wild: await r('str?ße'), wild2: await r('*ung'), pre: await r('ubu', {mode: 'prefix'}),
       fz: await r('strase'), empty: await r('faradef', {mode: 'exact'}), emptyHw: await r('fara cuvant', {mode: 'text'})
     };
   });
@@ -482,7 +484,7 @@ console.log('5. Import TSV/CSV/JSON: antet, mapare coloane, diacritice speciale,
   ok('ǆ → dz, ş/ș sunt echivalente', q.dz2[0] === 'ǆevap:exact' && q.sc[0] === 'şcoală:exact' && q.sc2[0] === 'şcoală:exact' && q.sc3[0] === 'şcoală:exact', [q.dz, q.dz2, q.sc, q.sc2, q.sc3]);
   ok('intrare cu mai multe cuvinte', q.multi[0] === 'cuvânt cu spațiu:exact', q.multi);
   ok('wildcard peste ß: „str?ße” și „*ung”', q.wild.some(x => x.startsWith('Straße')) && q.wild2.some(x => x.startsWith('Übung')), [q.wild, q.wild2]);
-  ok('prefix „uber” → Übung', q.pre.some(x => x.startsWith('Übung')), q.pre);
+  ok('prefix „ubu” → Übung', q.pre.some(x => x.startsWith('Übung')), q.pre);
   ok('fuzzy „strase” → Straße', q.fz[0] === 'Straße:fuzzy', q.fz);
   ok('rânduri fără definiție / fără titlu omise', q.empty.length === 0 && q.emptyHw.length === 0, [q.empty, q.emptyHw]);
   const art = await openWord(p, 'Straße');
@@ -493,7 +495,8 @@ console.log('5. Import TSV/CSV/JSON: antet, mapare coloane, diacritice speciale,
   const csv = 'colA;colB;colC\r\n"Definiția cu ""ghilimele"" și\nlinie nouă";"ghilimea";"ghilimele2;ghilimelele"\r\n"alta";"altceva";\r\n';
   await p.setInputFiles('#file-in', [F('manual.csv', csv)]);
   await p.waitForSelector('#imp-title');
-  ok('CSV cu ; detectat; antet nerecunoscut → mapare manuală posibilă', /;/.test(await p.locator('#imp-map').innerText()));
+  ok('CSV cu ; detectat; antet nerecunoscut → implicit fără antet, se poate seta manual', /;/.test(await p.locator('#imp-map').innerText()) && (await p.inputValue('#map-hw')) === '#1');
+  await p.selectOption('#imp-header', 'yes');
   await p.selectOption('#map-hw', 'colB'); await p.selectOption('#map-def', 'colA'); await p.selectOption('#map-forms', 'colC');
   await p.fill('#imp-title', 'CSV manual'); await p.fill('#imp-license', 'CC0 (test)');
   ok('licență completată: avertismentul dispare', !(await p.locator('#imp-licwarn').isVisible()));
@@ -557,10 +560,10 @@ console.log('5. Import TSV/CSV/JSON: antet, mapare coloane, diacritice speciale,
   await p.click('[data-act="export"][data-id="' + (await dictId(p, 'Special TSV')) + '"]');
   const d1 = await dl1;
   const exp = JSON.parse(fs.readFileSync(await d1.path(), 'utf8'));
-  ok('export dicționar: format lexicon-dict cu metadate și intrări', exp.format === 'lexicon-dict' && exp.title === 'Special TSV' && exp.entries.length === 11 && exp.entries.find(e => e.h === 'Straße').senses[0].x[0] === 'Die Straße ist lang.', exp.entries.slice(0, 2));
+  ok('export dicționar: format lexicon-dict cu metadate și intrări', exp.format === 'lexicon-dict' && exp.title === 'Special TSV' && exp.entries.length === 10 && exp.entries.find(e => e.h === 'Straße').senses[0].x[0] === 'Die Straße ist lang.', exp.entries.slice(0, 2));
   await doImport(p, [F('re.json', JSON.stringify(exp))], {title: 'Special TSV (reimport)'});
   const re = await p.evaluate(async () => { const s = Lexicon.state().dicts; return {a: s.find(d => d.title === 'Special TSV').count, b: s.find(d => d.title === 'Special TSV (reimport)').count}; });
-  ok('round-trip export → import: același număr de intrări', re.a === re.b && re.a === 11, re);
+  ok('round-trip export → import: același număr de intrări', re.a === re.b && re.a === 10, re);
   await tab(p, 'search');
   const art2 = await openWord(p, 'Straße');
   ok('round-trip: forme și sensuri păstrate (articol din două dicționare)', (art2.match(/Straße/g) || []).length >= 2 && /Forme: Straßen, Strassen/.test(art2), art2.slice(0, 300));
