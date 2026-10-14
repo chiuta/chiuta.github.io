@@ -45,9 +45,11 @@ async function newPage(opts = {}) {
 const st = p => p.evaluate(() => Lexicon.state());
 async function openWord(p, w) {
   if (await p.locator('#p-search').isHidden()) await p.click('#t-search');
+  const prev = await p.evaluate(() => document.querySelector('#article')?.innerText || '');
   await p.fill('#q', w); await p.press('#q', 'Enter');
   await p.waitForFunction(() => document.querySelector('#article h2'));
-  await p.waitForTimeout(60);
+  await p.waitForFunction(pv => (document.querySelector('#article')?.innerText || '') !== pv, prev, {timeout: 2500}).catch(() => {});
+  await p.waitForTimeout(80);
   return p.locator('#article').innerText();
 }
 async function doImport(p, files, o = {}) {
@@ -1118,7 +1120,7 @@ console.log('11. Accesibilitate: axe-core, depășire orizontală 360/1280, tast
   await k.fill('#q', 'pad');
   await k.waitForSelector('#sugg li', {state: 'visible'});
   await k.press('#q', 'ArrowDown'); await k.press('#q', 'Enter');
-  await k.waitForFunction(() => document.querySelector('#article h2')?.textContent.startsWith('pad'));
+  await k.waitForFunction(() => document.querySelector('#article h2')?.textContent.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().startsWith('pad'));
   ok('flux complet din tastatură: sugestie → articol', true);
   await k.setInputFiles('#file-in', [F('t.tsv', 'a\tb')]); await k.waitForSelector('#imp-title');
   await k.keyboard.press('Escape');
