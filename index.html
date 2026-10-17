@@ -11,7 +11,6 @@
   orice scop, cu condiția păstrării notei de copyright și a textului licenței MIT.
 
   Sprijin voluntar (opțional, niciodată obligatoriu):
-    Patreon:         https://www.patreon.com/c/alexio_tf
     Buy Me a Coffee: https://buymeacoffee.com/echo.of.the.strings
   ============================================================================
 -->
@@ -36,7 +35,7 @@
 </style>
 
 <meta charset="UTF-8">
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data: blob:; style-src 'self' 'unsafe-inline'; font-src 'self' data:; media-src 'self' blob: data:; object-src 'none'; base-uri 'self'; form-action 'self'; worker-src 'self' blob:; script-src 'self' 'sha256-JuFnltJ1A8u5g8+jRetyl4y0TDFg4gl+mU42hh8HzqU=' 'sha256-37qr35uP/FPDxEDUTP718afrAaz+lbHtPaXevseuUXw='; connect-src 'none'">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data: blob:; style-src 'self' 'unsafe-inline'; font-src 'self' data:; media-src 'self' blob: data:; object-src 'none'; base-uri 'self'; form-action 'self'; worker-src 'self' blob:; script-src 'self' 'sha256-JuFnltJ1A8u5g8+jRetyl4y0TDFg4gl+mU42hh8HzqU=' 'sha256-z04B2qnM2zsGWXlWIEfx9GAST568S4sfj1FGaJ8x9JY='; connect-src 'none'">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <meta name="color-scheme" content="dark light">
 <meta name="theme-color" id="theme-color-meta" content="#07060f">
@@ -623,7 +622,6 @@ function applyContent(lang){
   if(d){
     d.setAttribute('aria-label',m.donateTitle||'');
     const l=d.querySelector('.tf-lbl'); if(l) l.textContent=(m.donateLabel||'')+':';
-    const pa=d.querySelector('.tf-pat'); if(pa) pa.setAttribute('aria-label',(m.donateLabel||'')+' Patreon');
     const x=d.querySelector('.tf-x'); if(x){x.title=m.donateHide||'';x.setAttribute('aria-label',m.donateHide||'');}
     const o=d.querySelector('.tf-open'); if(o){o.title=m.donateLabel||'';o.setAttribute('aria-label',m.donateLabel||'');}
     const cb=document.getElementById('tf-donate-cb'); if(cb) cb.setAttribute('aria-label',m.donateCbLabel||'');
@@ -1268,35 +1266,20 @@ init();
   syncFx();
 })();
 </script>
-<!-- tf-donate: sprijin voluntar (Patreon + Buy Me a Coffee) — self-contained, fără resurse externe, fără JS -->
-<div id="tf-donate" role="complementary" aria-label="Sprijină autorul">
-<style>
-#tf-donate{position:fixed;right:14px;bottom:14px;z-index:2147483600;font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;line-height:1}
-#tf-donate *{box-sizing:border-box}
-#tf-donate .tf-cb{position:absolute;width:1px;height:1px;opacity:0;pointer-events:none}
-#tf-donate .tf-panel{display:flex;gap:8px;align-items:center;background:rgba(20,20,24,.84);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);padding:7px 9px 7px 12px;border-radius:999px;box-shadow:0 4px 18px rgba(0,0,0,.30)}
-#tf-donate .tf-lbl{color:#fff;font-size:12px;font-weight:600;opacity:.85;white-space:nowrap}
-#tf-donate a.tf-b{display:inline-flex;align-items:center;gap:6px;padding:7px 12px;border-radius:999px;text-decoration:none;font-size:12.5px;font-weight:700;line-height:1;transition:transform .14s ease;border:0}
-#tf-donate a.tf-b:hover{transform:translateY(-2px)}
-#tf-donate a.tf-pat{background:#fff;color:#000}
-#tf-donate a.tf-bmc{background:#ffdd00;color:#1a1a1a}
-#tf-donate a.tf-b svg{width:15px;height:15px;display:block}
-#tf-donate .tf-x,#tf-donate .tf-open{display:inline-flex;align-items:center;justify-content:center;cursor:pointer;text-decoration:none;border:0;color:#fff}
-#tf-donate .tf-x{width:24px;height:24px;border-radius:50%;background:rgba(255,255,255,.16);font-size:12px}
-#tf-donate .tf-open{display:none;width:46px;height:46px;border-radius:50%;background:#e0245e;font-size:20px;box-shadow:0 4px 16px rgba(0,0,0,.32)}
-#tf-donate .tf-cb:checked ~ .tf-panel{display:none}
-#tf-donate .tf-cb:checked ~ .tf-open{display:inline-flex}
-@media (max-width:560px){#tf-donate .tf-lbl{display:none}}
+
+<div id="tf-donate" role="complementary" aria-label="Buy Me a Coffee"><style>
+#tf-donate{box-sizing:border-box;display:flex;justify-content:center;width:100%;padding:18px 12px calc(18px + env(safe-area-inset-bottom,0px));margin:0;position:relative;z-index:2147483000;background:none;color:inherit;font:600 13px/1 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;clear:both;flex:0 0 auto}
+#tf-donate.tf-lift{padding-bottom:calc(84px + env(safe-area-inset-bottom,0px))}
+#tf-donate.tf-fx{position:fixed;width:auto;padding:0;margin:0}
+#tf-donate.tf-br{right:12px;bottom:calc(12px + env(safe-area-inset-bottom,0px))}
+#tf-donate.tf-bl{left:12px;bottom:calc(12px + env(safe-area-inset-bottom,0px))}
+#tf-donate.tf-tr{right:12px;top:12px}
+#tf-donate.tf-tl{left:12px;top:12px}
+#tf-donate a{display:inline-flex;align-items:center;gap:8px;padding:9px 16px;border-radius:999px;background:#ffdd00;color:#1a1a1a;text-decoration:none;font:inherit;font-weight:700;box-shadow:0 1px 6px rgba(0,0,0,.25)}
+#tf-donate a:hover{filter:brightness(1.06)}
+#tf-donate a:focus-visible{outline:2px solid #4a90d9;outline-offset:2px}
+#tf-donate svg{width:16px;height:16px;display:block}
 @media print{#tf-donate{display:none}}
-</style>
-<input type="checkbox" id="tf-donate-cb" class="tf-cb" aria-label="Ascunde bara de sprijin">
-<div class="tf-panel">
-<span class="tf-lbl">Sprijină:</span>
-<a class="tf-b tf-pat" href="https://www.patreon.com/c/alexio_tf" target="_blank" rel="noopener" aria-label="Sprijină pe Patreon"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="15.4" cy="9.4" r="6.6" fill="currentColor"/><rect x="2.4" y="2.4" width="3.7" height="19.2" fill="currentColor"/></svg>Patreon</a>
-<a class="tf-b tf-bmc" href="https://buymeacoffee.com/echo.of.the.strings" target="_blank" rel="noopener" aria-label="Buy Me a Coffee"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 8h11v6.5a4 4 0 0 1-4 4H9a4 4 0 0 1-4-4V8z"/><path d="M16 9.5h2.2a2.3 2.3 0 0 1 0 4.6H16"/><path d="M7.5 4.5V3M11.5 4.5V3"/></svg>Coffee</a>
-<label for="tf-donate-cb" class="tf-x" title="Ascunde" aria-label="Ascunde">✕</label>
-</div>
-<label for="tf-donate-cb" class="tf-open" title="Sprijină" aria-label="Sprijină">♥</label>
-</div>
+</style><a href="https://buymeacoffee.com/echo.of.the.strings" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 8h11v6.5a4 4 0 0 1-4 4H9a4 4 0 0 1-4-4V8z"/><path d="M16 9.5h2.2a2.3 2.3 0 0 1 0 4.6H16"/><path d="M7.5 4.5V3M11.5 4.5V3"/></svg>Buy Me a Coffee</a></div>
 </body>
 </html>

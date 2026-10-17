@@ -12,8 +12,8 @@
     "Worker"
   ],
   "storageKeys": [],
-  "sizeBytes": 341487,
-  "sha256": "c18be1c3d8815d5ee70bf6b55da2f2a121c5eff046773cb1212691d3e8c16bd5",
+  "sizeBytes": 343088,
+  "sha256": "cc10450bbdcc65dfaf3a808e41c0f69dd30745ecd6a708da0cf8043b052f0b75",
   "csp": {
     "present": true,
     "directives": {
