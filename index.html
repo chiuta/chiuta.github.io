@@ -36,7 +36,7 @@
 </style>
 
 <meta charset="UTF-8">
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data: blob:; style-src 'self' 'unsafe-inline'; font-src 'self' data:; media-src 'self' blob: data:; object-src 'none'; base-uri 'self'; form-action 'self'; worker-src 'self' blob:; script-src 'self' 'sha256-JuFnltJ1A8u5g8+jRetyl4y0TDFg4gl+mU42hh8HzqU=' 'sha256-s3Hh+12YZLipbzBtT/cntJkWUZucIF4i0+PLn7OvEMQ='; connect-src 'none'">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data: blob:; style-src 'self' 'unsafe-inline'; font-src 'self' data:; media-src 'self' blob: data:; object-src 'none'; base-uri 'self'; form-action 'self'; worker-src 'self' blob:; script-src 'self' 'sha256-JuFnltJ1A8u5g8+jRetyl4y0TDFg4gl+mU42hh8HzqU=' 'sha256-37qr35uP/FPDxEDUTP718afrAaz+lbHtPaXevseuUXw='; connect-src 'none'">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <meta name="color-scheme" content="dark light">
 <meta name="theme-color" id="theme-color-meta" content="#07060f">
@@ -350,6 +350,43 @@ a.card-link{text-decoration:none}
 main{padding-bottom:4.5rem}
 @media print{.page-note,#q{display:none}}
 </style>
+<style id="fx-helix-css">
+/* ═══ Helix: cele 109 aplicații ca foi (fișiere) pe o spirală 3D. Doar CSS 3D + puțin JS; se oprește cu butonul de animații. ═══ */
+.hero-strip{position:relative;overflow:hidden}
+.hero-strip::before{content:"";position:absolute;right:-8%;top:-30%;width:62%;height:160%;pointer-events:none;background:radial-gradient(closest-side,color-mix(in srgb,var(--accent) 24%,transparent),transparent 70%);filter:blur(10px)}
+.hero-inner{grid-template-columns:minmax(0,1fr) minmax(280px,540px);grid-template-areas:"l s" "st s";column-gap:2rem;align-items:center;padding:1.6rem 0;min-height:clamp(340px,48vh,470px);position:relative}
+.hero-left{grid-area:l;align-self:end}
+.stats-row{grid-area:st;align-self:start;justify-self:start}
+.hero-name{font-size:clamp(2.6rem,6.4vw,5rem);letter-spacing:-.045em}
+.hero-tagline{max-width:34rem;font-size:clamp(.95rem,1.4vw,1.1rem)}
+.fx-stage{grid-area:s;grid-row:1/3;position:relative;height:100%;min-height:330px;perspective:1100px;perspective-origin:50% 38%;--R:150px;--w:42px;--h:54px;--dy:2.95px;--a:15.6deg;touch-action:pan-y;user-select:none}
+.fx-rig{position:absolute;inset:0;transform-style:preserve-3d;transform:rotateX(calc(-11deg + var(--py,0) * -9deg)) rotateY(calc(var(--px,0) * 16deg));transition:transform .5s cubic-bezier(.2,.8,.2,1)}
+.fx-helix{position:absolute;left:50%;top:50%;width:0;height:0;transform-style:preserve-3d;animation:fx-spin 52s linear infinite}
+.fx-helix::before{content:"";position:absolute;left:-1px;width:2px;top:calc(var(--n) * var(--dy) * -.55);height:calc(var(--n) * var(--dy) * 1.1);background:linear-gradient(transparent,var(--accent),transparent);box-shadow:0 0 26px 5px color-mix(in srgb,var(--accent) 45%,transparent)}
+@keyframes fx-spin{to{transform:rotateY(360deg)}}
+.fx-pg{--c:color-mix(in srgb,var(--accent),#f59e0b calc(var(--t) * 70%));position:absolute;left:0;top:0;width:var(--w);height:var(--h);margin:calc(var(--h) / -2) 0 0 calc(var(--w) / -2);
+  transform:rotateY(calc(var(--i) * var(--a))) translateY(calc((var(--i) - var(--n) / 2) * var(--dy))) translateZ(var(--R));
+  background:linear-gradient(160deg,color-mix(in srgb,var(--c) 40%,transparent),color-mix(in srgb,var(--c) 7%,transparent));
+  border:1px solid color-mix(in srgb,var(--c) 75%,transparent);border-radius:3px;
+  clip-path:polygon(0 0,76% 0,100% 20%,100% 100%,0 100%);cursor:pointer;
+  animation:fx-in 1.25s cubic-bezier(.16,.84,.24,1) backwards;animation-delay:calc(var(--i) * 13ms + .15s);
+  transition:background .25s,filter .25s,translate .25s}
+.fx-pg::before{content:"";position:absolute;inset:26% 14% 12% 14%;background:repeating-linear-gradient(to bottom,color-mix(in srgb,var(--c) 55%,transparent) 0 2px,transparent 2px 6px)}
+.fx-pg.on,.fx-pg:hover{background:linear-gradient(160deg,color-mix(in srgb,var(--c) 90%,#fff),color-mix(in srgb,var(--c) 35%,transparent));filter:drop-shadow(0 0 10px var(--c));translate:0 0 24px}
+@keyframes fx-in{from{opacity:0;transform:rotateY(calc(var(--i) * var(--a) + 200deg)) translateY(calc(var(--n) * var(--dy) * -.9)) translateZ(0) scale(.25)}}
+[data-fx="off"] .fx-helix,.fx-stage.fx-idle .fx-helix{animation-play-state:paused}
+.app-card{position:relative}
+.app-card::after{content:"";position:absolute;inset:0;pointer-events:none;opacity:0;transition:opacity .3s;background:radial-gradient(240px circle at var(--mx,50%) var(--my,50%),color-mix(in srgb,var(--accent) 17%,transparent),transparent 72%)}
+.app-card:hover::after{opacity:1}
+.app-card.fx-ping{border-color:var(--accent)!important;box-shadow:0 0 0 3px var(--accent-lo),0 0 44px color-mix(in srgb,var(--accent) 42%,transparent)!important}
+@media(max-width:960px){
+  .hero-inner{grid-template-columns:1fr;grid-template-areas:"s" "l" "st";min-height:0;padding:.6rem 0 1rem}
+  .fx-stage{grid-row:auto;min-height:250px;--R:104px;--w:29px;--h:38px;--dy:2.1px;margin-bottom:-.6rem}
+  .hero-left{align-self:start}
+}
+@media(max-width:520px){.fx-stage{min-height:210px;--R:88px;--w:25px;--h:33px;--dy:1.75px}}
+@media print,(forced-colors:active){.fx-stage,.hero-strip::before{display:none}}
+</style>
 </head>
 <body>
 <a href="#main" class="skip-link">Skip to content</a>
@@ -416,6 +453,7 @@ main{padding-bottom:4.5rem}
           <span class="badge" data-i18n="badgeTelemetry">⌀ Zero Telemetry</span>
         </div>
       </div>
+      <div class="fx-stage" id="fx-stage" aria-hidden="true"><div class="fx-rig" id="fx-rig"><div class="fx-helix" id="fx-helix"></div></div></div>
       <div class="stats-row">
         <div class="stat"><div class="stat-value" id="stat-repos">109</div><div class="stat-label" data-i18n="statRepos">Repos</div></div>
         <div class="stat"><div class="stat-value">13</div><div class="stat-label" data-i18n="statModules">Modules</div></div>
@@ -1178,6 +1216,57 @@ new ResizeObserver(()=>{
   });
 }).observe(document.getElementById('apps-grid'));
 init();
+/* ═══ Helix 3D: 109 foi = 109 aplicații. Atingi o foaie → sari la aplicație; treci peste o aplicație → se aprinde foaia ei. ═══ */
+(function(){
+  var host=document.getElementById('fx-helix'), stage=document.getElementById('fx-stage');
+  if(!host||!stage) return;
+  var grid=document.getElementById('apps-grid');
+  var cards=Array.prototype.slice.call(document.querySelectorAll('#apps-grid .app-card'));
+  var N=cards.length||109, pages=[], frag=document.createDocumentFragment();
+  host.style.setProperty('--n',N);
+  for(var i=0;i<N;i++){
+    var p=document.createElement('div'); p.className='fx-pg';
+    p.style.setProperty('--i',i); p.style.setProperty('--t',(i/N).toFixed(3));
+    var nm=cards[i]&&cards[i].querySelector('.card-name'); if(nm) p.title=nm.textContent;
+    p.dataset.k=i; pages.push(p); frag.appendChild(p);
+  }
+  host.appendChild(frag);
+  var pingT=0;
+  host.addEventListener('click',function(e){
+    var p=e.target.closest&&e.target.closest('.fx-pg'); if(!p) return;
+    var c=cards[+p.dataset.k]; if(!c) return;
+    c.hidden=false; c.scrollIntoView({behavior:prefersReduced?'auto':'smooth',block:'center'});
+    c.classList.add('fx-ping'); clearTimeout(pingT); pingT=setTimeout(function(){c.classList.remove('fx-ping');},1800);
+  });
+  /* aplicația de sub cursor aprinde foaia ei și urmărește cursorul cu o rază de lumină */
+  var lit=null, raf=0, mx=0, my=0, tgt=null;
+  grid.addEventListener('pointerover',function(e){
+    var c=e.target.closest&&e.target.closest('.app-card'); var k=c?cards.indexOf(c):-1;
+    if(lit) lit.classList.remove('on'); lit=k>-1?pages[k]:null; if(lit) lit.classList.add('on');
+  });
+  grid.addEventListener('pointerleave',function(){ if(lit){lit.classList.remove('on');lit=null;} });
+  grid.addEventListener('pointermove',function(e){
+    if(e.pointerType!=='mouse') return; var c=e.target.closest&&e.target.closest('.app-card'); if(!c) return;
+    tgt=c; mx=e.clientX; my=e.clientY;
+    if(!raf) raf=requestAnimationFrame(function(){ raf=0; var r=tgt.getBoundingClientRect(); tgt.style.setProperty('--mx',(mx-r.left)+'px'); tgt.style.setProperty('--my',(my-r.top)+'px'); });
+  },{passive:true});
+  /* paralaxă: spirala se înclină după cursor (doar mouse, doar cu animațiile pornite) */
+  var hero=document.querySelector('.hero-strip'), rig=document.getElementById('fx-rig'), pr=0;
+  if(hero&&rig&&!prefersReduced){
+    hero.addEventListener('pointermove',function(e){
+      if(e.pointerType!=='mouse'||!animOn) return;
+      var r=hero.getBoundingClientRect(), x=((e.clientX-r.left)/r.width-.5)*2, y=((e.clientY-r.top)/r.height-.5)*2;
+      if(pr) return; pr=requestAnimationFrame(function(){ pr=0; rig.style.setProperty('--px',x.toFixed(3)); rig.style.setProperty('--py',y.toFixed(3)); });
+    },{passive:true});
+    hero.addEventListener('pointerleave',function(){ rig.style.setProperty('--px',0); rig.style.setProperty('--py',0); });
+  }
+  /* oprește spirala când nu se vede sau când animațiile sunt oprite din buton */
+  if('IntersectionObserver' in window) new IntersectionObserver(function(en){ stage.classList.toggle('fx-idle',!en[0].isIntersecting); }).observe(stage);
+  var ab=document.getElementById('anim-toggle');
+  function syncFx(){ document.documentElement.setAttribute('data-fx',animOn?'on':'off'); }
+  if(ab){ new MutationObserver(syncFx).observe(ab,{attributes:true,attributeFilter:['aria-pressed']}); }
+  syncFx();
+})();
 </script>
 <!-- tf-donate: sprijin voluntar (Patreon + Buy Me a Coffee) — self-contained, fără resurse externe, fără JS -->
 <div id="tf-donate" role="complementary" aria-label="Sprijină autorul">
