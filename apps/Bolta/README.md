@@ -120,7 +120,7 @@ Interfața are 8 limbi: română (implicită) și engleză, scrise de autor; fra
 
 ## Licență
 
-Nestabilită încă de autor — toate drepturile rezervate până la alegerea unei licențe. Componentele terțe rămân sub licențele lor, enumerate mai sus.
+MIT — vezi fișierul `LICENSE` din rădăcina depozitului. Componentele terțe rămân sub licențele lor, enumerate mai sus.
 
 ## Istoric
 

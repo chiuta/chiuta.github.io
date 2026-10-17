@@ -60,7 +60,7 @@ Româna este limba de referință. Engleza este scrisă împreună cu româna, d
 
 ## Licență
 
-Licență: nestabilită încă de autor — toate drepturile rezervate până la alegerea unei licențe.
+Licență: MIT — vezi fișierul `LICENSE` din rădăcina depozitului.
 
 ## Istoric
 

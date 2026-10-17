@@ -15,7 +15,7 @@ Cod propriu (scris pentru acest kit). Datele numerice și tabelele de mai jos pr
 | ΔT 1973–2027 (tabel anual) | valori UT1−UTC și TAI−UTC publicate de IERS (Observatorul Paris / USNO), extrase prin `astropy-iers-data` | date publice IERS | `src/ephem.js` (`DT_OBS`), `tools/dt_obs.json` |
 | Catalog stelar (1627 stele, V ≤ 5,0): poziții, mișcări proprii | Hipparcos, noua reducere (F. van Leeuwen 2007; ESA; CDS I/311), prin pachetul PyPI `hipparcos-catalog` (Steven Michael) | date ESA publice; ambalare MIT | `src/ephem-stars.js` |
 | V, B−V, denumiri IAU/Bayer/Flamsteed, figurile constelațiilor, centre de etichetă | `d3-celestial` 0.7.x (Olaf Frohn), derivat din XHIP (CDS V/137D) și lista IAU WGSN | BSD-3-Clause (text mai jos) | `src/ephem-stars.js` |
-| Denumiri românești ale constelațiilor și ale câtorva stele | autorul kitului (nomenclatură uzuală, neoficială) | CC0 / domeniu public în cadrul kitului | `src/ephem-stars.js` |
+| Denumiri românești ale constelațiilor și ale câtorva stele | autorul kitului (nomenclatură uzuală, neoficială) | MIT (ca restul kitului) | `src/ephem-stars.js` |
 
 Instrumentele de verificare (NU sunt distribuite cu kitul, doar folosite în `test/ref/make_ephem_ref.py`): JPL DE421 și DE423 (efemeride NASA/JPL, domeniu public) ambalate de B. Rhodes (pachetele PyPI `de421`, `de423`, MIT), `jplephem` (MIT), `astropy` (BSD-3-Clause), `pyerfa`/ERFA (BSD-3-Clause), `ephem` (pyephem, MIT).
 

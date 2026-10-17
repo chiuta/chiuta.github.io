@@ -58,7 +58,7 @@ Nu există cod terț în aplicație (axe-core este folosit doar în teste).
 Interfața este în română (implicit), engleză, franceză, italiană, spaniolă, portugheză, maghiară și germană. Traducerile fr/it/es/pt/hu/de sunt automate, neverificate nativ.
 
 ## Licență
-Nestabilită încă de autor — toate drepturile rezervate până la alegerea unei licențe.
+MIT — vezi fișierul `LICENSE` din rădăcina depozitului.
 
 ## Istoric
 - 1.0.0 — 2026-10-14: prima versiune.

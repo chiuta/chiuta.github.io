@@ -54,7 +54,7 @@ Limba implicită este româna. Traducerile în franceză, italiană, spaniolă, 
 
 ## Licență
 
-Licență: nestabilită încă de autor — toate drepturile rezervate până la alegerea unei licențe
+Licență: MIT — vezi fișierul `LICENSE` din rădăcina depozitului
 
 ## Istoric
 

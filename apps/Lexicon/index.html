@@ -1380,7 +1380,7 @@
 <meta name="application-version" content="1.0.0">
 <meta name="last-updated" content="2026-10-14">
 <meta name="color-scheme" content="light dark">
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-bRX2Zfhyp2jG4HPoQsDOe57Ta0m02imDzd0UOFF3IJE=' 'sha256-YO40Pa9U54kBXfBS8s7ySLVhwIuT7JC9cMSApha5DIk=' 'sha256-2ZsNa2oMKppjV7O7hNheBAFqeD/ho9Ve1jWcuNUcar4='; style-src 'unsafe-inline'; img-src 'self' data: blob:; media-src data: blob:; font-src data:; connect-src 'none'; base-uri 'none'; form-action 'none'; frame-src 'none'; object-src 'none'; worker-src 'self' blob:; manifest-src 'self'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-bRX2Zfhyp2jG4HPoQsDOe57Ta0m02imDzd0UOFF3IJE=' 'sha256-YO40Pa9U54kBXfBS8s7ySLVhwIuT7JC9cMSApha5DIk=' 'sha256-DLlj4qBS/2aYDy3bWyM4vo08oZ7LW4ozk0zo1mJos5M='; style-src 'unsafe-inline'; img-src 'self' data: blob:; media-src data: blob:; font-src data:; connect-src 'none'; base-uri 'none'; form-action 'none'; frame-src 'none'; object-src 'none'; worker-src 'self' blob:; manifest-src 'self'">
 <style>
 :root{
   color-scheme:light dark;
@@ -3152,7 +3152,7 @@ function demoRecs() {
 }
 async function installDemo() {
   const recs = demoRecs();
-  return commitDict({title: 'Set demonstrativ românesc (Lexicon)', langs: 'ro', source: 'Scris de autorul aplicației (definiții proprii)', license: 'Conținut original al autorului aplicației; licență nestabilită încă, toate drepturile rezervate', notes: 'Set demonstrativ, nu un dicționar complet. Etimologii indicate doar acolo unde autorul este sigur.', format: 'demo', demo: true}, recs);
+  return commitDict({title: 'Set demonstrativ românesc (Lexicon)', langs: 'ro', source: 'Scris de autorul aplicației (definiții proprii)', license: 'Conținut original al autorului aplicației; licență MIT', notes: 'Set demonstrativ, nu un dicționar complet. Etimologii indicate doar acolo unde autorul este sigur.', format: 'demo', demo: true}, recs);
 }
 
 /* ---------- liste: istoric / favorite ---------- */

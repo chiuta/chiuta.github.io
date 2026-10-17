@@ -66,7 +66,7 @@ Interfața editorului și a cursurilor generate: română și engleză scrise de
 
 ## Licență
 
-Licență: nestabilită încă de autor — toate drepturile rezervate până la alegerea unei licențe.
+Licență: MIT — vezi fișierul `LICENSE` din rădăcina depozitului.
 
 ## Istoric
 

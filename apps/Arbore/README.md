@@ -56,7 +56,7 @@ Interfața este în ro, en, fr, it, es, pt, hu, de. Traducerile fr/it/es/pt/hu/d
 
 ## Licență
 
-Nestabilită încă de autor — toate drepturile rezervate până la alegerea unei licențe.
+MIT — vezi fișierul `LICENSE` din rădăcina depozitului.
 
 ## Istoric
 
