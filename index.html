@@ -35,7 +35,7 @@
 </style>
 
 <meta charset="UTF-8">
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data: blob:; style-src 'self' 'unsafe-inline'; font-src 'self' data:; media-src 'self' blob: data:; object-src 'none'; base-uri 'self'; form-action 'self'; worker-src 'self' blob:; script-src 'self' 'sha256-JuFnltJ1A8u5g8+jRetyl4y0TDFg4gl+mU42hh8HzqU=' 'sha256-QnLrUNsb1WYUXlJuedCu/RNf721UM3TYI5vwBqbCj6c='; connect-src 'none'">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data: blob:; style-src 'self' 'unsafe-inline'; font-src 'self' data:; media-src 'self' blob: data:; object-src 'none'; base-uri 'self'; form-action 'self'; worker-src 'self' blob:; script-src 'self' 'sha256-JuFnltJ1A8u5g8+jRetyl4y0TDFg4gl+mU42hh8HzqU=' 'sha256-p8pCBNJZ7IZa2Dkfxi/hM2wnm4QFjqBRv2xOAFt1X/U='; connect-src 'none'">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <meta name="color-scheme" content="dark light">
 <meta name="theme-color" id="theme-color-meta" content="#07060f">
@@ -64,6 +64,8 @@
 <meta property="og:locale:alternate" content="it_IT">
 <meta property="og:locale:alternate" content="es_ES">
 <meta property="og:locale:alternate" content="pt_PT">
+<meta property="og:locale:alternate" content="de_DE">
+<meta property="og:locale:alternate" content="hu_HU">
 <!-- Twitter Card -->
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="A.I. Chiuță — Single-File Architect">
@@ -403,6 +405,8 @@ html[lang^="fr"] .app-card.is-new .card-name::after{content:"NOUVEAU"}
 html[lang^="it"] .app-card.is-new .card-name::after{content:"NUOVO"}
 html[lang^="es"] .app-card.is-new .card-name::after{content:"NUEVO"}
 html[lang^="pt"] .app-card.is-new .card-name::after{content:"NOVO"}
+html[lang^="de"] .app-card.is-new .card-name::after{content:"NEU"}
+html[lang^="hu"] .app-card.is-new .card-name::after{content:"ÚJ"}
 @media(prefers-reduced-motion:reduce){.fx-pg.nw,.fx-cap .fx-new,.app-card.is-new .card-name::after{animation:none}}
 [data-fx="off"] .fx-pg.nw{animation:none}
 </style>
@@ -476,7 +480,7 @@ html[lang^="pt"] .app-card.is-new .card-name::after{content:"NOVO"}
       <div class="stats-row">
         <div class="stat"><div class="stat-value" id="stat-repos">110</div><div class="stat-label" data-i18n="statRepos">Repos</div></div>
         <div class="stat"><div class="stat-value">13</div><div class="stat-label" data-i18n="statModules">Modules</div></div>
-        <div class="stat"><div class="stat-value">6<span class="u">lang</span></div><div class="stat-label" data-i18n="statLangs">Languages</div></div>
+        <div class="stat"><div class="stat-value">8<span class="u">lang</span></div><div class="stat-label" data-i18n="statLangs">Languages</div></div>
         <div class="stat" title="This page makes no network requests."><div class="stat-value">0<span class="u">b↑</span></div><div class="stat-label" data-i18n="statSent">Sent</div></div>
       </div>
     </div>
@@ -497,7 +501,7 @@ html[lang^="pt"] .app-card.is-new .card-name::after{content:"NOVO"}
 <footer>
   <div class="wrap footer-inner">
     <div class="footer-left">
-      <span data-i18n="copyright">© 2026 Alexandru-Ionuț Chiuță · actualizat 14.10.2026</span>
+      <span data-i18n="copyright">© 2026 Alexandru-Ionuț Chiuță · actualizat 18.10.2026</span>
     </div>
     <div class="footer-links">
       <a href="https://orcid.org/0009-0008-6858-4299" target="_blank" rel="noopener noreferrer" class="orcid-link">
@@ -526,7 +530,7 @@ const T = {
     projects:'Projects', loading:'Fetching from GitHub…',
     nProjects: n => `${n} projects`,
     darkThemes:'Dark themes', lightThemes:'Light themes',
-    copyright:'© 2026 Alexandru-Ionuț Chiuță · updated 14 Oct 2026',
+    copyright:'© 2026 Alexandru-Ionuț Chiuță · updated 18 Oct 2026',
   },
   ro:{
     themeLbl:'Temă', langLbl:'Limbă', modeLbl:'Mod', colorLbl:'Culoare',
@@ -540,7 +544,7 @@ const T = {
     projects:'Proiecte', loading:'Se încarcă din GitHub…',
     nProjects: n => `${n} proiecte`,
     darkThemes:'Teme întunecate', lightThemes:'Teme luminoase',
-    copyright:'© 2026 Alexandru-Ionuț Chiuță · actualizat 14.10.2026',
+    copyright:'© 2026 Alexandru-Ionuț Chiuță · actualizat 18.10.2026',
   },
   fr:{
     themeLbl:'Thème', langLbl:'Langue', modeLbl:'Mode', colorLbl:'Couleur',
@@ -554,7 +558,7 @@ const T = {
     projects:'Projets', loading:'Chargement depuis GitHub…',
     nProjects: n => `${n} projets`,
     darkThemes:'Thèmes sombres', lightThemes:'Thèmes clairs',
-    copyright:'© 2026 Alexandru-Ionuț Chiuță · mis à jour le 14.10.2026',
+    copyright:'© 2026 Alexandru-Ionuț Chiuță · mis à jour le 18.10.2026',
   },
   it:{
     themeLbl:'Tema', langLbl:'Lingua', modeLbl:'Modalità', colorLbl:'Colore',
@@ -568,7 +572,7 @@ const T = {
     projects:'Progetti', loading:'Caricamento da GitHub…',
     nProjects: n => `${n} progetti`,
     darkThemes:'Temi scuri', lightThemes:'Temi chiari',
-    copyright:'© 2026 Alexandru-Ionuț Chiuță · aggiornato il 14.10.2026',
+    copyright:'© 2026 Alexandru-Ionuț Chiuță · aggiornato il 18.10.2026',
   },
   es:{
     themeLbl:'Tema', langLbl:'Idioma', modeLbl:'Modo', colorLbl:'Color',
@@ -582,7 +586,7 @@ const T = {
     projects:'Proyectos', loading:'Cargando desde GitHub…',
     nProjects: n => `${n} proyectos`,
     darkThemes:'Temas oscuros', lightThemes:'Temas claros',
-    copyright:'© 2026 Alexandru-Ionuț Chiuță · actualizado el 14.10.2026',
+    copyright:'© 2026 Alexandru-Ionuț Chiuță · actualizado el 18.10.2026',
   },
   pt:{
     themeLbl:'Tema', langLbl:'Idioma', modeLbl:'Modo', colorLbl:'Cor',
@@ -596,7 +600,33 @@ const T = {
     projects:'Projetos', loading:'A carregar do GitHub…',
     nProjects: n => `${n} projetos`,
     darkThemes:'Temas escuros', lightThemes:'Temas claros',
-    copyright:'© 2026 Alexandru-Ionuț Chiuță · atualizado em 14.10.2026',
+    copyright:'© 2026 Alexandru-Ionuț Chiuță · atualizado em 18.10.2026',
+  },
+  de:{
+    themeLbl:'Design', langLbl:'Sprache', modeLbl:'Modus', colorLbl:'Farbe',
+    dark:'Dunkel', light:'Hell',
+    taglineStrong:'Offene Bildungs- und Prüfwerkzeuge',
+    taglineRest:" — einzelne Datei, überwiegend offline, kein Konto. Jede App nennt ihre Grenzen.",
+    noteTxt:"Persönliche Projekte eines einzelnen Autors, keine offiziellen Dienste. Nur zu Bildungszwecken: Nichts hier ist medizinische, rechtliche oder finanzielle Beratung. Die README jeder App listet alle Anfragen an Dritte auf.", searchPh:"Apps filtern…", noRes:"keine Ergebnisse",
+    badgeLocation:'Bukarest, RO', badgeOffline:'◈ Offline-First', badgeVanilla:'⬡ Single-file', badgeTelemetry:'⌀ Null Telemetrie',
+    statRepos:"Apps", statModules:"Rubriken", statLangs:"Sprachen", statSent:'Gesendet',
+    projects:'Projekte', loading:'Wird von GitHub geladen…',
+    nProjects: n => `${n} Projekte`,
+    darkThemes:'Dunkle Designs', lightThemes:'Helle Designs',
+    copyright:'© 2026 Alexandru-Ionuț Chiuță · aktualisiert am 18.10.2026',
+  },
+  hu:{
+    themeLbl:'Téma', langLbl:'Nyelv', modeLbl:'Mód', colorLbl:'Szín',
+    dark:'Sötét', light:'Világos',
+    taglineStrong:'Nyílt oktatási és ellenőrző eszközök',
+    taglineRest:" — egyetlen fájl, többnyire offline, fiók nélkül. Minden alkalmazás megnevezi a korlátait.",
+    noteTxt:"Egyetlen szerző személyes projektjei, nem hivatalos szolgáltatások. Kizárólag oktatási célra: az itt található tartalom nem minősül orvosi, jogi vagy pénzügyi tanácsnak. Az egyes alkalmazások README-je felsorolja a harmadik felek felé irányuló kéréseket.", searchPh:"Alkalmazások szűrése…", noRes:"nincs találat",
+    badgeLocation:'Bukarest, RO', badgeOffline:'◈ Offline-First', badgeVanilla:'⬡ Single-file', badgeTelemetry:'⌀ Nulla telemetria',
+    statRepos:"Alkalmazás", statModules:"Rovat", statLangs:"Nyelv", statSent:'Elküldve',
+    projects:'Projektek', loading:'Betöltés a GitHubról…',
+    nProjects: n => `${n} projekt`,
+    darkThemes:'Sötét témák', lightThemes:'Világos témák',
+    copyright:'© 2026 Alexandru-Ionuț Chiuță · frissítve: 2026. 10. 18.',
   },
 };
 
@@ -607,6 +637,8 @@ const LANG_META = [
   {id:'it', label:'IT', flag:'🇮🇹', name:'Italiano'},
   {id:'es', label:'ES', flag:'🇪🇸', name:'Español'},
   {id:'pt', label:'PT', flag:'🇵🇹', name:'Português'},
+  {id:'de', label:'DE', flag:'🇩🇪', name:'Deutsch'},
+  {id:'hu', label:'HU', flag:'🇭🇺', name:'Magyar'},
 ];
 
 /* Localized labels for icon-only controls (aria-label + title), refreshed on language change */
@@ -617,11 +649,13 @@ const CTRL = {
   it:{animPlay:'Avvia l\'animazione di sfondo',animPause:'Metti in pausa l\'animazione',toDark:'Passa alla modalità scura',toLight:'Passa alla modalità chiara',theme:'Tema',lang:'Lingua',skip:'Vai al contenuto'},
   es:{animPlay:'Activar la animación de fondo',animPause:'Pausar la animación',toDark:'Cambiar al modo oscuro',toLight:'Cambiar al modo claro',theme:'Tema',lang:'Idioma',skip:'Saltar al contenido'},
   pt:{animPlay:'Ativar a animação de fundo',animPause:'Pausar a animação',toDark:'Mudar para o modo escuro',toLight:'Mudar para o modo claro',theme:'Tema',lang:'Idioma',skip:'Saltar para o conteúdo'},
+  de:{animPlay:'Hintergrundanimation starten',animPause:'Hintergrundanimation pausieren',toDark:'Zum dunklen Modus wechseln',toLight:'Zum hellen Modus wechseln',theme:'Design',lang:'Sprache',skip:'Zum Inhalt springen'},
+  hu:{animPlay:'Háttéranimáció indítása',animPause:'Háttéranimáció szüneteltetése',toDark:'Váltás sötét módra',toLight:'Váltás világos módra',theme:'Téma',lang:'Nyelv',skip:'Ugrás a tartalomra'},
 };
 function ct(k){ return (CTRL[curLang]||CTRL.en)[k] || CTRL.en[k] || k; }
 
 /* ── LANG SYSTEM ─────────────────────────────────── */
-const CONTENT_LANGS=['en','ro','fr','it','es','pt'];
+const CONTENT_LANGS=['en','ro','fr','it','es','pt','de','hu'];
 let cachedApps=[], cachedCount=-1;
 let curLang = localStorage.getItem('lang') || ((navigator.language||'en').slice(0,2).toLowerCase());
 if(!CONTENT_LANGS.includes(curLang)) curLang='en';
@@ -1096,7 +1130,7 @@ const PAGES_FALLBACK = new Set([
 const ghSvg=`<svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>`;
 const extSvg=`<svg viewBox="0 0 16 16" fill="currentColor"><path d="M8.636 3.5a.5.5 0 0 0-.5-.5H1.5A1.5 1.5 0 0 0 0 4.5v10A1.5 1.5 0 0 0 1.5 16h10a1.5 1.5 0 0 0 1.5-1.5V7.864a.5.5 0 0 0-1 0V14.5a.5.5 0 0 1-.5.5h-10a.5.5 0 0 1-.5-.5v-10a.5.5 0 0 1 .5-.5h6.636a.5.5 0 0 0 .5-.5z"/><path d="M16 .5a.5.5 0 0 0-.5-.5h-5a.5.5 0 0 0 0 1h3.793L6.146 9.146a.5.5 0 1 0 .708.708L15 1.707V5.5a.5.5 0 0 0 1 0v-5z"/></svg>`;
 
-const LOCALES={en:'en-GB',ro:'ro-RO',fr:'fr-FR',it:'it-IT',es:'es-ES',pt:'pt-PT'};
+const LOCALES={en:'en-GB',ro:'ro-RO',fr:'fr-FR',it:'it-IT',es:'es-ES',pt:'pt-PT',de:'de-DE',hu:'hu-HU'};
 function fmtDate(iso){if(!iso)return'';return new Date(iso).toLocaleDateString(LOCALES[curLang]||'en-GB',{year:'numeric',month:'short'})}
 function langCls(l){return l==='HTML'?'lang-html':l==='JavaScript'?'lang-js':'lang-default'}
 
@@ -1260,7 +1294,7 @@ init();
   var lit=null, raf=0, mx=0, my=0, tgt=null;
   /* legenda: numele aplicației aprinse (la hover, la atingere sau automat), cu insigna „nou” pentru cea mai recentă */
   var cap=document.getElementById('fx-cap'), capN=cap&&cap.querySelector('.fx-name'), capT=cap&&cap.querySelector('.fx-tag'), capB=cap&&cap.querySelector('.fx-new');
-  var NEWL={ro:'NOU',en:'NEW',fr:'NOUVEAU',it:'NUOVO',es:'NUEVO',pt:'NOVO'}, newK=-1, cur=-1, hold=0;
+  var NEWL={ro:'NOU',en:'NEW',fr:'NOUVEAU',it:'NUOVO',es:'NUEVO',pt:'NOVO',de:'NEU',hu:'ÚJ'}, newK=-1, cur=-1, hold=0;
   for(var q=0;q<cards.length;q++){ if(cards[q].querySelector('[data-c="apps|orarium|title"]')){ newK=q; break; } }
   if(newK>-1){ pages[newK].classList.add('nw'); cards[newK].classList.add('is-new'); }
   function light(k){ if(lit) lit.classList.remove('on'); lit=k>-1?pages[k]:null; if(lit) lit.classList.add('on'); }
