@@ -324,6 +324,11 @@ function detectStorageKeys(src) {
   while ((m = re.exec(src))) { if (/sessionStorage$/i.test(m[1])) continue; if (!m[3].startsWith('fff.')) keys.add(m[3]); }
   const re2 = /localStorage\s*\[\s*(['"`])([^'"`$\\\n]{1,80})\1\s*\]/g;
   while ((m = re2.exec(src))) if (!m[2].startsWith('fff.')) keys.add(m[2]);
+  // chei declarate ca constante (ex. var STORAGE_KEY = "app_state_v1"), dacă fișierul folosește localStorage
+  if (/localStorage/.test(src)) {
+    const re3 = /\b(?:var|let|const)\s+[A-Za-z_$]*KEY[A-Za-z_$]*\s*=\s*(['"])([A-Za-z][\w.:-]{3,60})\1/g;
+    while ((m = re3.exec(src))) if (!m[2].startsWith('fff.')) keys.add(m[2]);
+  }
   return [...keys].sort();
 }
 function detectLangs(src) {
