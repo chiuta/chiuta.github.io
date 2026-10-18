@@ -1,6 +1,6 @@
 # Fabrica
 
-**Versiune:** 1.0.0 · **Ultima actualizare:** 14 octombrie 2026
+**Versiune:** 1.1.0 · **Ultima actualizare:** 2026-10-19
 
 Fabrica este o fabrică de cursuri și chestionare: scrii un curs (date, avertismente, niveluri și lecții în Markdown simplu, întrebări de șapte tipuri, glosar, tablou de dovezi, test final cu bancă de întrebări și extragere determinată de seed), îl validezi și îl exporți ca **un singur fișier HTML autonom** (opțional ZIP cu README). Fișierul generat rulează offline, are navigare, progres salvat local, repetiție spațiată pentru întrebările greșite, test final, certificat de parcurgere tipăribil (fără valoare de acreditare), mod luminos/întunecat și interfață în 8 limbi. Include un exemplu complet („Cum citești o etichetă nutrițională”) și trei șabloane de pornire.
 
@@ -71,3 +71,4 @@ Licență: MIT — vezi fișierul `LICENSE` din rădăcina depozitului.
 ## Istoric
 
 - 1.0.0 — 2026-10-14: prima versiune.
+- 1.1.0 — 2026-10-19: export „Quiz pentru Undava (.json)” și import din fișiere Undava (.json) prin butonul de import CSV; se transferă doar întrebările cu echivalent (alegere unică, adevărat/fals, răspuns scurt, completare cu un gol).

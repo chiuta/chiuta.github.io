@@ -42,8 +42,8 @@ let ed=await mk(APP); await ed.waitForFunction(()=>window.__fabrica);
 const edHtml=fs.readFileSync(path.resolve(__dir,'..','index.html'),'utf8');
 ok(cspHashOK(edHtml),'hash-urile CSP ale editorului corespund scripturilor inline');
 ok(!/ on\w+=/.test(edHtml.replace(/<script[\s\S]*?<\/script>/g,'')),'fără handlere inline în editor');
-ok(/<meta name="application-version" content="1.0.0">/.test(edHtml)&&/<meta name="last-updated" content="2026-10-14">/.test(edHtml),'meta versiune');
-eq(await ed.textContent('#app-version'),'v1.0.0 · 2026-10-14','#app-version');
+ok(/<meta name="application-version" content="1.1.0">/.test(edHtml)&&/<meta name="last-updated" content="2026-10-19">/.test(edHtml),'meta versiune');
+eq(await ed.textContent('#app-version'),'v1.1.0 · 2026-10-19','#app-version');
 eq(ed.__errs,[],'0 pageerror/CSP la pornire'); eq(ed.__reqs,[],'0 cereri de rețea');
 eq(await ed.evaluate(()=>document.documentElement.lang),'ro','html[lang]=ro implicit');
 await axe(ed,'editor, panou Curs');
@@ -196,7 +196,7 @@ await ed.evaluate(()=>window.__fabrica.setCourse({title:'altceva',levels:[]})); 
 eq(await ed.evaluate(()=>window.__fabrica.course.levels.length),2,'import din HTML exportat');
 // .fff.json
 const fBundle=await dl('[data-act="exp-bundle"]'); const bj=JSON.parse(fs.readFileSync(fBundle,'utf8'));
-eq([bj.format,bj.schema,bj.app,bj.version,bj.updated],['fff-bundle',1,'fabrica','1.0.0','2026-10-14'],'bundle .fff.json');
+eq([bj.format,bj.schema,bj.app,bj.version,bj.updated],['fff-bundle',1,'fabrica','1.1.0','2026-10-19'],'bundle .fff.json');
 await ed.evaluate(()=>window.__fabrica.setCourse({title:'altceva',levels:[]})); await ed.setInputFiles('#filef',fBundle); await ed.waitForTimeout(200);
 eq(await ed.evaluate(()=>window.__fabrica.course.title),'Cum citești o etichetă nutrițională','import bundle .fff.json');
 // fișier invalid
@@ -249,7 +249,8 @@ eq(g.__errs,[],'generat: 0 pageerror/CSP'); eq(g.__reqs,[],'generat: 0 cereri de
 ok(cspHashOK(htmlStr),'generat: hash CSP valid');
 ok(!/\son\w+=/.test(htmlStr.replace(/<script[\s\S]*?<\/script>/g,'')),'generat: fără handlere inline');
 const meta=await g.evaluate(()=>({v:document.querySelector('meta[name=application-version]').content,u:document.querySelector('meta[name=last-updated]').content,d:document.querySelector('meta[name=description]').content,av:document.getElementById('app-version').textContent,t:document.title,lang:document.documentElement.lang}));
-eq([meta.v,meta.u,meta.av,meta.lang],['1.0.0','2026-10-14','v1.0.0 · 2026-10-14','ro'],'generat: meta + #app-version'); ok(meta.d.includes('Un curs scurt'),'generat: meta description');
+const TODAY=new Date().toISOString().slice(0,10); // curs generat: versiune proprie 1.0.0, data = ziua generării
+eq([meta.v,meta.u,meta.av,meta.lang],[ '1.0.0',TODAY,'v1.0.0 · '+TODAY,'ro'],'generat: meta + #app-version'); ok(meta.d.includes('Un curs scurt'),'generat: meta description');
 await axe(g,'generat, prezentare (luminos)');
 eq(await g.evaluate(()=>document.documentElement.getAttribute('data-theme')),'light','temă luminoasă implicită (sistem)');
 await g.setViewportSize({width:360,height:740}); ok(await overflow(g)<=0,'generat 360 px: prezentare fără depășire');
