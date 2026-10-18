@@ -125,3 +125,7 @@ MIT — vezi fișierul `LICENSE` din rădăcina depozitului. Componentele terțe
 ## Istoric
 
 - **1.0.0 — 2026-10-14:** prima versiune.
+
+## Linkuri adânci
+
+`#sky&t=2087-05-17T02:35:00Z&ll=59.9139,10.7522` deschide cerul la momentul (UTC, 1900–2100) și locul indicate; parametrii invalizi sunt ignorați. Locul din link înlocuiește locul salvat. `#<filă>` (sky, events etc.) rămâne valabil.
