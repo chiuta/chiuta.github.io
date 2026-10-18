@@ -13,7 +13,7 @@ await page.waitForTimeout(500);
 console.log('FFF.app / meta');
 const A = await page.evaluate(() => ({app: FFF.app, v: FFF.version, mods: FFF.core.modules(), disabled: FFF.core.disabled}));
 check('FFF.app = {slug,name,version,updated}', A.app.slug === 'demo-fff' && A.app.name === 'Demo FFF' && A.app.version === '1.2.3' && A.app.updated === '2026-10-14', A.app);
-check('FFF.version și module', A.v === '1.0.0' && A.mods.join() === 'core' && A.disabled === false, A);
+check('FFF.version și module', A.v === '1.1.0' && A.mods.join() === 'core' && A.disabled === false, A);
 
 console.log('lang / onLang');
 const L = await page.evaluate(async () => {

@@ -71,12 +71,15 @@
   }
 
   /* ---------- construire ---------- */
-  function plain() {
+  var redactors = [];
+  function plain(redact) {
     var keys = F.store.indexKeys(), data = {};
     keys.forEach(function (k) {
       if (k === F.store.indexKey) return;
       var v = F.store.raw.get(k);
-      if (typeof v === 'string') data[k] = v;
+      if (typeof v !== 'string') return;
+      if (redact) redactors.forEach(function (f) { try { var r = f(k, v); if (typeof r === 'string') v = r; } catch (e) { /* un redactor defect nu oprește exportul, dar nici nu lasă valoarea originală: */ v = ''; } });
+      data[k] = v;
     });
     var a = F.app;
     return {format: 'fff-bundle', schema: SCHEMA, app: a.slug, version: a.version || '', updated: a.updated || '', exported: new Date().toISOString(), data: data};
@@ -140,14 +143,16 @@
   var bundle = F.bundle = {
     schema: SCHEMA,
     iterations: ITER,
-    build: plain,
+    build: function () { return plain(false); },
+    /** Înregistrează fn(cheie, valoare) -> valoare curățată (șir); se aplică doar exportului necriptat. */
+    redact: function (fn) { if (typeof fn === 'function') redactors.push(fn); },
     confirm: confirmDlg,
 
     /** Descarcă un .fff.json. Cu {encrypt:true, password} produce varianta criptată. */
     export: function (opt) {
       opt = opt || {};
       return Promise.resolve().then(function () {
-        var obj = plain();
+        var obj = plain(!opt.encrypt && !opt.secrets);   // exportul necriptat trece prin redactori (secrete scoase); cel criptat sau {secrets:true} e complet
         var n = Object.keys(obj.data).length;
         if (opt.encrypt) {
           if (typeof opt.password !== 'string' || opt.password.length < 8) throw BErr('pw_short');
