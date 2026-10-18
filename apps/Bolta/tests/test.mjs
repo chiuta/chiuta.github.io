@@ -29,7 +29,7 @@ async function newPage(o = {}) {
   page.on('pageerror', e => issues.push('pageerror: ' + e.message));
   page.on('console', m => { if (m.type() === 'error') issues.push('console.error: ' + m.text()); });
   await page.addInitScript(() => { window.__csp = []; document.addEventListener('securitypolicyviolation', e => window.__csp.push(e.violatedDirective + ' ' + e.blockedURI)); });
-  await page.goto(APP);
+  await page.goto(APP + (o.hash || ''));
   await page.waitForFunction(() => window.__bolta && window.__bolta.FR.ok);
   page._ctx = ctx;
   return page;
@@ -50,8 +50,8 @@ test('încărcare: fără erori, CSP valid, meta, fără handlere inline / eval 
   ok(!/manifest|serviceWorker/i.test(html.replace(/<!--fff:pwa:start[\s\S]*?<!--fff:pwa:end-->/g,'').replace(/<!--fff:kit:start[\s\S]*?<!--fff:kit:end-->/g,'').replace(/<script[^>]*id="fff-info"[\s\S]*?<\/script>/,'').replace(/(manifest|worker)-src [^;]*/g,'')), 'manifest / SW (în afara blocurilor kit/PWA)');
   ok(!/cnred/i.test(html), 'CNRED');
   const p = await newPage();
-  eq(await p.textContent('#app-version'), 'v 1.0.0 · 2026-10-14', '#app-version');
-  eq(await p.evaluate(() => document.querySelector('meta[name=application-version]').content), '1.0.0', 'versiune');
+  eq(await p.textContent('#app-version'), 'v 1.1.1 · 2026-10-18', '#app-version');
+  eq(await p.evaluate(() => document.querySelector('meta[name=application-version]').content), '1.1.1', 'versiune');
   eq((await p.evaluate(() => window.__csp)).length, 0, 'violări CSP');
   eq(await p.evaluate(() => window.__bolta.ST.count), 1627, 'stele în catalog');
   const nl = await p.evaluate(() => Object.keys(localStorage).filter(k => !k.startsWith('fff.bolta.')));
@@ -500,6 +500,44 @@ test('performanță: randare cu 1627 stele (cadre/s măsurate în Chromium headl
 test('captură de verificare: cerul se desenează (fișier nenul)', async () => {
   const p = await newPage(); await p.evaluate(() => { const b = window.__bolta; b.setTime(b.wallToMs(2026, 10, 14, 20, 30, 0, 'Europe/Bucharest'), false); b.setOpt('full', true); });
   await p.waitForTimeout(300); await p.screenshot({path: path.join(TMP, 'cer.png')}); ok(fs.statSync(path.join(TMP, 'cer.png')).size > 30000, 'captură cer'); await close(p);
+});
+
+
+/* ---------- link adânc #sky&t=<ISO UTC>&ll=lat,lon ---------- */
+const T1 = '2087-05-14T22:14:00Z';
+const lsDump = p => p.evaluate(() => JSON.stringify(Object.fromEntries(Object.keys(localStorage).map(k => [k, localStorage.getItem(k)]))));
+test('link #sky&t&ll: valid — aplică momentul și locul, NU persistă locul', async () => {
+  const p = await newPage({hash: '#sky&t=2087-05-14T22:14:00Z&ll=59.9139,10.7522'});
+  eq(await p.evaluate(() => window.__bolta.S.ms), Date.parse(T1), 'moment din link');
+  const pl = await p.evaluate(() => window.__bolta.S.place); near(pl.lat, 59.9139, 1e-4, 'lat'); near(pl.lon, 10.7522, 1e-4, 'lon');
+  ok(pl.tz !== 'UTC' || (await p.evaluate(() => Intl.DateTimeFormat().resolvedOptions().timeZone)) === 'UTC', 'fus orar al dispozitivului, nu UTC forțat');
+  await p.evaluate(() => window.__bolta.setOpt('full', true));   // declanșează saveSettings
+  ok(!/Link 59/.test(await lsDump(p)), 'locul din link nu e în localStorage');
+  await close(p);
+});
+test('link #sky&ll: locul real al utilizatorului rămâne după redeschidere curată', async () => {
+  const p = await newPage(); const before = await p.evaluate(() => { const b = window.__bolta; b.applyPlace({name: 'Acasă', lat: 44.4268, lon: 26.1025, elev: 80, tz: 'Europe/Bucharest'}); return b.S.place.name; });
+  eq(before, 'Acasă', 'loc setat');
+  await p.goto(APP + '#sky&ll=59.9139,10.7522&t=' + T1); await p.reload(); await p.waitForFunction(() => window.__bolta && window.__bolta.FR.ok);
+  eq(await p.evaluate(() => window.__bolta.S.place.name.slice(0, 4)), 'Link', 'locul din link activ');
+  await p.evaluate(() => window.__bolta.setOpt('full', false));
+  eq(await p.evaluate(() => JSON.parse(localStorage.getItem(Object.keys(localStorage).find(k => /set/.test(k) && localStorage.getItem(k).includes('"place"'))) || 'null').place.name), 'Acasă', 'în stocare rămâne Acasă');
+  await p.goto(APP + '#sky'); await p.reload(); await p.waitForFunction(() => window.__bolta && window.__bolta.FR.ok);
+  eq(await p.evaluate(() => window.__bolta.S.place.name), 'Acasă', 'după redeschidere curată');
+  await close(p);
+});
+test('link fără tab (#t=…&ll=…): ambele se aplică', async () => {
+  const p = await newPage({hash: '#t=' + T1 + '&ll=-33.8688,151.2093'});
+  eq(await p.evaluate(() => window.__bolta.S.ms), Date.parse(T1), 't aplicat');
+  near(await p.evaluate(() => window.__bolta.S.place.lat), -33.8688, 1e-4, 'll aplicat'); await close(p);
+});
+test('link: date/coordonate invalide sunt respinse (2026-02-31, T24:00, 2100+, lat 91)', async () => {
+  const mk = async h => { const p = await newPage({hash: h}); const r = await p.evaluate(() => ({ms: window.__bolta.S.ms, live: window.__bolta.S.live, name: window.__bolta.S.place.name})); await close(p); return r; };
+  for (const t of ['2026-02-31T00:00:00Z', '2026-04-31T10:00:00Z', '2026-06-01T24:00:00Z', '2101-01-01T00:00:00Z', '1899-12-31T23:00:00Z', '9999-99-99', 'abc', '2026-06-01T10:61:00Z']) {
+    const r = await mk('#sky&t=' + t); ok(r.live === true, 'respins: ' + t);
+  }
+  const ok1 = await mk('#sky&t=2024-02-29T12:00:00Z'); eq(ok1.ms, Date.parse('2024-02-29T12:00:00Z'), '29 februarie bisect acceptat'); eq(ok1.live, false, 'înghețat pe momentul din link');
+  for (const ll of ['91,0', '0,181', 'NaN,0', '1e999,0', 'a,b']) { const r = await mk('#sky&ll=' + ll); ok(!/^Link/.test(r.name), 'respins ll=' + ll); }
 });
 
 /* ---------- rulare ---------- */
