@@ -35,7 +35,7 @@
 </style>
 
 <meta charset="UTF-8">
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data: blob:; style-src 'self' 'unsafe-inline'; font-src 'self' data:; media-src 'self' blob: data:; object-src 'none'; base-uri 'self'; form-action 'self'; worker-src 'self' blob:; script-src 'self' 'sha256-JuFnltJ1A8u5g8+jRetyl4y0TDFg4gl+mU42hh8HzqU=' 'sha256-xYNjzlpOt/dmlehbsJ/rohO/rl/yU/wHzBlZ1JewC8A='; connect-src 'none'">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data: blob:; style-src 'self' 'unsafe-inline'; font-src 'self' data:; media-src 'self' blob: data:; object-src 'none'; base-uri 'self'; form-action 'self'; worker-src 'self' blob:; script-src 'self' 'sha256-JuFnltJ1A8u5g8+jRetyl4y0TDFg4gl+mU42hh8HzqU=' 'sha256-QnLrUNsb1WYUXlJuedCu/RNf721UM3TYI5vwBqbCj6c='; connect-src 'none'">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <meta name="color-scheme" content="dark light">
 <meta name="theme-color" id="theme-color-meta" content="#07060f">
@@ -385,6 +385,26 @@ main{padding-bottom:4.5rem}
 }
 @media(max-width:520px){.fx-stage{min-height:210px;--R:88px;--w:25px;--h:33px;--dy:1.75px}}
 @media print,(forced-colors:active){.fx-stage,.hero-strip::before{display:none}}
+
+/* ═══ Legendă vie: numele aplicației aprinse, reflector automat, insignă „nou” ═══ */
+.fx-cap{position:absolute;left:50%;bottom:3%;z-index:3;display:flex;align-items:center;gap:.55rem;width:max-content;max-width:98%;padding:.45rem .9rem;border:1px solid color-mix(in srgb,var(--accent) 65%,transparent);border-radius:999px;background:color-mix(in srgb,var(--bg) 80%,transparent);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);box-shadow:0 0 26px color-mix(in srgb,var(--accent) 35%,transparent);opacity:0;transform:translate(-50%,10px) scale(.96);transition:opacity .4s,transform .4s;cursor:pointer;white-space:nowrap;user-select:none;pointer-events:auto}
+.fx-cap.show{opacity:1;transform:translate(-50%,0) scale(1)}
+.fx-cap .fx-name{font-weight:800;font-size:clamp(.85rem,1.3vw,1.05rem);letter-spacing:.02em;color:var(--text);overflow:hidden;text-overflow:ellipsis}
+.fx-cap .fx-tag{font-size:.62rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;opacity:.7}
+.fx-cap .fx-go{color:var(--accent);font-weight:800}
+.fx-cap .fx-new{padding:.18rem .5rem;border-radius:999px;background:linear-gradient(90deg,#f59e0b,#ef4444);color:#fff;font-size:.6rem;font-weight:800;letter-spacing:.1em;animation:fx-blink 1.4s ease-in-out infinite alternate}
+.fx-pg.nw{--c:#fbbf24;scale:1.3;animation:fx-in 1.25s cubic-bezier(.16,.84,.24,1) backwards,fx-glow 1.8s ease-in-out 1.6s infinite alternate;animation-delay:calc(var(--i) * 13ms + .15s),1.6s}
+@keyframes fx-glow{from{filter:drop-shadow(0 0 3px #fbbf24)}to{filter:drop-shadow(0 0 16px #f59e0b) brightness(1.35)}}
+@keyframes fx-blink{from{opacity:.65}to{opacity:1}}
+.app-card.is-new{border-color:color-mix(in srgb,#f59e0b 70%,transparent)!important;box-shadow:0 0 0 1px color-mix(in srgb,#f59e0b 30%,transparent),0 0 30px color-mix(in srgb,#f59e0b 18%,transparent)}
+.app-card.is-new .card-name::after{content:"NOU";display:inline-block;margin-left:.55rem;padding:.12rem .4rem;border-radius:999px;background:linear-gradient(90deg,#f59e0b,#ef4444);color:#fff;font:800 .55rem/1.2 inherit;letter-spacing:.1em;vertical-align:middle;animation:fx-blink 1.4s ease-in-out infinite alternate}
+html[lang^="en"] .app-card.is-new .card-name::after{content:"NEW"}
+html[lang^="fr"] .app-card.is-new .card-name::after{content:"NOUVEAU"}
+html[lang^="it"] .app-card.is-new .card-name::after{content:"NUOVO"}
+html[lang^="es"] .app-card.is-new .card-name::after{content:"NUEVO"}
+html[lang^="pt"] .app-card.is-new .card-name::after{content:"NOVO"}
+@media(prefers-reduced-motion:reduce){.fx-pg.nw,.fx-cap .fx-new,.app-card.is-new .card-name::after{animation:none}}
+[data-fx="off"] .fx-pg.nw{animation:none}
 </style>
 </head>
 <body>
@@ -452,7 +472,7 @@ main{padding-bottom:4.5rem}
           <span class="badge" data-i18n="badgeTelemetry">⌀ Zero Telemetry</span>
         </div>
       </div>
-      <div class="fx-stage" id="fx-stage" aria-hidden="true"><div class="fx-rig" id="fx-rig"><div class="fx-helix" id="fx-helix"></div></div></div>
+      <div class="fx-stage" id="fx-stage" aria-hidden="true"><div class="fx-rig" id="fx-rig"><div class="fx-helix" id="fx-helix"></div></div><div class="fx-cap" id="fx-cap"><span class="fx-new" hidden></span><b class="fx-name"></b><span class="fx-tag"></span><span class="fx-go" aria-hidden="true">↗</span></div></div>
       <div class="stats-row">
         <div class="stat"><div class="stat-value" id="stat-repos">110</div><div class="stat-label" data-i18n="statRepos">Repos</div></div>
         <div class="stat"><div class="stat-value">13</div><div class="stat-label" data-i18n="statModules">Modules</div></div>
@@ -1238,10 +1258,40 @@ init();
   });
   /* aplicația de sub cursor aprinde foaia ei și urmărește cursorul cu o rază de lumină */
   var lit=null, raf=0, mx=0, my=0, tgt=null;
+  /* legenda: numele aplicației aprinse (la hover, la atingere sau automat), cu insigna „nou” pentru cea mai recentă */
+  var cap=document.getElementById('fx-cap'), capN=cap&&cap.querySelector('.fx-name'), capT=cap&&cap.querySelector('.fx-tag'), capB=cap&&cap.querySelector('.fx-new');
+  var NEWL={ro:'NOU',en:'NEW',fr:'NOUVEAU',it:'NUOVO',es:'NUEVO',pt:'NOVO'}, newK=-1, cur=-1, hold=0;
+  for(var q=0;q<cards.length;q++){ if(cards[q].querySelector('[data-c="apps|orarium|title"]')){ newK=q; break; } }
+  if(newK>-1){ pages[newK].classList.add('nw'); cards[newK].classList.add('is-new'); }
+  function light(k){ if(lit) lit.classList.remove('on'); lit=k>-1?pages[k]:null; if(lit) lit.classList.add('on'); }
+  function show(k){
+    if(!cap||k<0||!cards[k]) return; cur=k; var c=cards[k], n=c.querySelector('.card-name'), t=c.querySelector('.card-lang');
+    capN.textContent=n?n.textContent:''; capT.textContent=t?t.textContent:'';
+    capB.hidden=(k!==newK); capB.textContent=NEWL[(document.documentElement.lang||'en').slice(0,2)]||'NEW';
+    cap.classList.add('show');
+  }
+  function go(k){
+    var c=cards[k]; if(!c) return; c.hidden=false; c.scrollIntoView({behavior:prefersReduced?'auto':'smooth',block:'center'});
+    c.classList.add('fx-ping'); clearTimeout(pingT); pingT=setTimeout(function(){c.classList.remove('fx-ping');},1800);
+  }
+  if(cap) cap.addEventListener('click',function(){ go(cur); });
   grid.addEventListener('pointerover',function(e){
     var c=e.target.closest&&e.target.closest('.app-card'); var k=c?cards.indexOf(c):-1;
-    if(lit) lit.classList.remove('on'); lit=k>-1?pages[k]:null; if(lit) lit.classList.add('on');
+    light(k); if(k>-1){ show(k); hold=Date.now()+5000; }
   });
+  host.addEventListener('pointerover',function(e){
+    var p=e.target.closest&&e.target.closest('.fx-pg'); if(!p) return; var k=+p.dataset.k; light(k); show(k); hold=Date.now()+5000;
+  });
+  /* reflector automat: începe cu aplicația nouă, apoi trece prin celelalte într-o ordine amestecată */
+  var order=[], z, j, tmp; for(z=0;z<cards.length;z++) if(z!==newK) order.push(z);
+  for(z=order.length-1;z>0;z--){ j=Math.floor(Math.random()*(z+1)); tmp=order[z]; order[z]=order[j]; order[j]=tmp; }
+  if(newK>-1) order.unshift(newK);
+  var oi=0;
+  function tick(){
+    if(Date.now()<hold||prefersReduced||!animOn||document.hidden||stage.classList.contains('fx-idle')) return;
+    var k=order[oi++%order.length]; light(k); show(k);
+  }
+  setTimeout(function(){ tick(); setInterval(tick,2600); },1900);
   grid.addEventListener('pointerleave',function(){ if(lit){lit.classList.remove('on');lit=null;} });
   grid.addEventListener('pointermove',function(e){
     if(e.pointerType!=='mouse') return; var c=e.target.closest&&e.target.closest('.app-card'); if(!c) return;
