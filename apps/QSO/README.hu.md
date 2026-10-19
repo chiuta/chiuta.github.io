@@ -4,6 +4,8 @@
 
 **Verzió:** 1.0.1 · **Utolsó frissítés:** 2026-10-19
 
+A felület nyelvei: **Română, English, Français, Italiano, Español, Português (PT), Deutsch, Magyar**
+
 A QSO egy nem hivatalos, offline állomásnapló rádióamatőröknek: rögzíted az összeköttetéseket (UTC dátum/idő, hívójel, sáv, üzemmód, RST, lokátor, QSL, verseny), Maidenhead-lokátorokból távolságot és azimutot számolsz, felismered a duplikátumokat, ADIF 3.1-et (valamint ADX-et, CSV-t, JSON-t, alap Cabrillo 3.0-t) importálsz és exportálsz, és statisztikákat meg egy egyszerű azimutális térképet látsz. Kiegészíti az **ETER**-t (rádióamatőr-enciklopédia) és az **INDICATIV**-ot (felkészítő az ANCOM-vizsgára) ugyanazzal a terminológiával; nem módosítja őket, és nem függ tőlük.
 
 ![képernyőkép](screenshot.png)

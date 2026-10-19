@@ -4,6 +4,8 @@
 
 **Versão:** 1.0.0 · **Última atualização:** 2026-10-14
 
+Idiomas da interface: **Română, English, Français, Italiano, Español, Português (PT), Deutsch, Magyar**
+
 O Gospodar é um orçamento doméstico que funciona localmente, num único ficheiro HTML, sem conta e sem sincronização. Gere contas (conta corrente, numerário, cartão, poupanças), categorias com subcategorias (conjunto predefinido romeno, editável), transações com etiquetas e notas, transferências entre contas e montantes em várias moedas com taxas de câmbio introduzidas manualmente. Importa extratos CSV através de um assistente de mapeamento de colunas, aplica regras de categorização, acompanha transações recorrentes e orçamentos mensais, produz relatórios (gráficos SVG) e inclui seis calculadoras com fórmulas transparentes. Os dados são sensíveis e permanecem neste navegador; a cifragem com palavra-passe do conjunto guardado é opcional.
 
 ![captura de ecrã](screenshot.png)

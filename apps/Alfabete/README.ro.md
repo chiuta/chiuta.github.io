@@ -4,6 +4,8 @@
 
 **Versiune:** 1.0.1 · **Ultima actualizare:** 2026-10-19
 
+Limbile interfeței: **Română, English, Français, Italiano, Español, Português (PT), Deutsch, Magyar**
+
 Alfabete este o aplicație offline pentru alfabete și coduri: pentru fiecare cod ai o referință vizuală, un convertor în ambele sensuri, un antrenor cu verificare și o fișă tipăribilă. Acoperă Morse (audio cu WPM/Farnsworth, lumină, vibrații, Koch, ureche, ritm), braille latin de grad 1 (Unicode, BRF, SVG, scriere Perkins), alfabete fonetice (ITU/NATO, românesc, DIN 5009, francez), semafor, pigpen, Baudot/ITA2, ASCII/binar/hex/octal/Base64/URL/escape Unicode, cifruri clasice cu pași explicați și analiză de frecvență, provocarea zilei și carduri cu repetiție spațiată (SM-2). Completează aplicațiile Eter (Morse/Koch) și Atingere (braille).
 
 ![captură](screenshot.png)

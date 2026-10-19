@@ -4,6 +4,8 @@
 
 **Versiune:** 1.0.0 · **Ultima actualizare:** 2026-10-14
 
+Limbile interfeței: **Română, English, Français, Italiano, Español, Português (PT), Deutsch, Magyar**
+
 Orar este un calendar și un program săptămânal care rulează într-un singur fișier HTML, fără server și fără cont. Are vizualizări lună / săptămână / zi / agendă, săptămâni ISO 8601, evenimente cu fus orar (implicit Europe/Bucharest), recurențe în stil RFC 5545 cu editor vizual, alarme cât timp fila e deschisă, sărbătorile legale românești calculate (inclusiv cele mobile, din Paștele ortodox), import și export `.ics`, șabloane de program (ture, curs/laborator), calculator de intervale și numărătoare inversă.
 
 ![captură](screenshot.png)

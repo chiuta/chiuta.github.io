@@ -4,6 +4,8 @@
 
 **Version :** 1.0.0 · **Dernière mise à jour :** 2026-10-14
 
+Langues de l'interface : **Română, English, Français, Italiano, Español, Português (PT), Deutsch, Magyar**
+
 Sonomètre, analyseur de spectre et test auditif indicatif, dans un seul fichier HTML. Il mesure le niveau sonore en temps réel avec les pondérations A, C et Z (IEC 61672, filtres IIR), les constantes de temps Fast/Slow, le LAeq sur un intervalle choisi, Lmax/Lmin, L10/L50/L90, un histogramme, le SEL et la dose de bruit par rapport à une limite choisie. Il affiche le spectre en bandes de 1/3 d'octave et d'1/1 octave (20 Hz–20 kHz) et une FFT linéaire, avec la fréquence de crête et un spectrogramme. Il comprend un étalonnage par décalage en dB, un générateur de bruit rose/blanc et de sinus à 1 kHz, un test audiométrique séparé et un journal local des sessions. Il complète les applications sonores FrequencyLaboratory, generator-frecvente, Aurora, CalmWaves et ASMR.
 
 ![capture d'écran](screenshot.png)

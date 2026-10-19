@@ -4,6 +4,8 @@
 
 **Verzió:** 1.0.0 · **Utolsó frissítés:** 2026-10-14
 
+A felület nyelvei: **Română, English, Français, Italiano, Español, Português (PT), Deutsch, Magyar**
+
 Az Orar egy naptár és heti órarend, amely egyetlen HTML-fájlban fut, szerver és fiók nélkül. Hónap / hét / nap / napirend nézetei vannak, ISO 8601 szerinti hetek, időzónával rendelkező események, RFC 5545 stílusú ismétlődések vizuális szerkesztővel, riasztások, amíg a lap nyitva van, kiszámított román törvényes ünnepnapok (a mozgóakat is beleértve, az ortodox húsvétból kiindulva), `.ics` import és export, órarendsablonok (műszakok, előadás/labor), intervallumszámoló és visszaszámláló.
 
 ![képernyőkép](screenshot.png)

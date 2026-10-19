@@ -4,6 +4,8 @@
 
 **Verzió:** 1.0.0 · **Utolsó frissítés:** 2026-10-14
 
+A felület nyelvei: **Română, English, Français, Italiano, Español, Português (PT), Deutsch, Magyar**
+
 Az Arbore egy teljes egészében a böngészőben futó családfakutató program: személyek (több név, leánykori nevek, hiányos dátumok, helyek, foglalkozások, egyéni események, jegyzetek, források, címkék, kis fényképek), családok (partnerek, kapcsolat típusa, vér szerinti/örökbe fogadott/mostoha gyermekek, házasság és válás), GEDCOM 5.5.1 import/export, SVG-diagramok (felmenők 3–7 nemzedéken át, leszármazottak, homokóra, legyező), személyi adatlap, idővonal, helyek listája, a román terminológiát használó rokonsági számoló, valamint adatminőség-ellenőrzések (duplikátumok, ellentmondások, összevonás visszavonási lehetőséggel).
 
 ![képernyőkép](screenshot.png)

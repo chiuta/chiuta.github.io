@@ -4,6 +4,8 @@
 
 **Version:** 1.0.1 · **Zuletzt aktualisiert:** 2026-10-19
 
+Oberflächensprachen: **Română, English, Français, Italiano, Español, Português (PT), Deutsch, Magyar**
+
 QSO ist ein inoffizielles Offline-Stationslogbuch für Funkamateure: Du erfasst Verbindungen (Datum/Uhrzeit in UTC, Rufzeichen, Band, Betriebsart, RST, Locator, QSL, Contest), berechnest Entfernungen und Azimute aus Maidenhead-Locatoren, erkennst Doppelverbindungen, importierst und exportierst ADIF 3.1 (außerdem ADX, CSV, JSON, einfaches Cabrillo 3.0) und siehst Statistiken sowie eine einfache Azimutalkarte. Es ergänzt **ETER** (Enzyklopädie des Amateurfunks) und **INDICATIV** (Trainer für die ANCOM-Prüfung) mit derselben Terminologie; es verändert sie nicht und hängt nicht von ihnen ab.
 
 ![Screenshot](screenshot.png)

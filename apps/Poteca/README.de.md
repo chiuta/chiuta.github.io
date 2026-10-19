@@ -4,6 +4,8 @@
 
 **Version:** 1.0.0 · **Zuletzt aktualisiert:** 2026-10-14
 
+Oberflächensprachen: **Română, English, Français, Italiano, Español, Português (PT), Deutsch, Magyar**
+
 Poteca öffnet GPX-, GeoJSON-, KML- und CSV-Tracks, zeigt sie auf einer lokalen Karte (ohne Basiskarte) an, berechnet Statistiken (Strecke, Anstieg/Abstieg, Zeit in Bewegung und im Stand, Geschwindigkeiten, Steigungen, Runden pro Kilometer/Meile), zeigt ein interaktives, mit der Karte synchronisiertes Höhenprofil und ermöglicht es, Tracks zu bearbeiten (zuschneiden, teilen, zusammenführen, umkehren, vereinfachen, GPS-Sprünge entfernen, manuelle Punkte, Wegpunkte) und zu exportieren. Alles läuft im Browser, offline.
 
 ![Screenshot](screenshot.png)

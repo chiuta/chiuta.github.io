@@ -4,6 +4,8 @@
 
 **Verzió:** 1.0.0 · **Utolsó frissítés:** 2026-10-14
 
+A felület nyelvei: **Română, English, Français, Italiano, Español, Português (PT), Deutsch, Magyar**
+
 A Gospodar egy háztartási költségvetés, amely helyben fut, egyetlen HTML-fájlban, fiók és szinkronizálás nélkül. Számlákat vezet (folyószámla, készpénz, kártya, megtakarítás), kategóriákat alkategóriákkal (román alapértelmezett készlet, szerkeszthető), tranzakciókat címkékkel és jegyzetekkel, számlák közötti átutalásokat, valamint több pénznemben megadott összegeket kézzel bevitt árfolyamokkal. CSV-kivonatokat importál oszlopleképező varázslóval, kategorizálási szabályokat alkalmaz, követi az ismétlődő tranzakciókat és a havi költségvetéseket, jelentéseket készít (SVG-diagramok), és hat átlátható képletű számológépet tartalmaz. Az adatok érzékenyek, és ebben a böngészőben maradnak; a mentett adatkészlet jelszavas titkosítása opcionális.
 
 ![képernyőkép](screenshot.png)

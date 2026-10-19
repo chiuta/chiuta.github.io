@@ -4,6 +4,8 @@
 
 **Version :** 1.0.0 · **Dernière mise à jour :** 2026-10-14
 
+Langues de l'interface : **Română, English, Français, Italiano, Español, Português (PT), Deutsch, Magyar**
+
 Lexicon est un moteur de dictionnaire qui fonctionne entièrement hors ligne, dans un seul fichier HTML. Il n'inclut pas de dictionnaire complet : vous apportez vos propres dictionnaires (TSV/CSV, JSON, StarDict, dictd, XDXF), vous les conservez dans IndexedDB et vous les consultez instantanément : préfixe, exact, sans diacritiques, approximatif (Damerau–Levenshtein), formes fléchies, plein texte dans les définitions et jokers (`?`, `*`). Il propose historique, favoris, mot du jour, cartes mémoire avec répétition espacée, export et correction orthographique. Le jeu inclus (345 entrées originales en roumain) est un **jeu de démonstration, pas un dictionnaire complet**.
 
 ![capture d'écran](screenshot.png)

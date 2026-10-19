@@ -4,6 +4,8 @@
 
 **Versione:** 1.0.0 · **Ultimo aggiornamento:** 2026-10-14
 
+Lingue dell'interfaccia: **Română, English, Français, Italiano, Español, Português (PT), Deutsch, Magyar**
+
 Curatitor ti mostra quali metadati nascondono i tuoi file (posizione GPS, modello del dispositivo, nome dell'autore, programma di modifica, date, commenti, miniature incorporate) e li rimuove localmente, nel browser. La pulizia avviene a livello di segmenti/blocchi, senza ricodifica dove possibile: i pixel di un JPEG, i frame di un MP3 o i pacchetti di un MP4 restano identici byte per byte. Dopo ogni pulizia, l'applicazione riapre il risultato e verifica automaticamente che non sia rimasto alcun campo rimovibile e che i dati di immagine/audio/video siano invariati.
 
 ![schermata](screenshot.png)

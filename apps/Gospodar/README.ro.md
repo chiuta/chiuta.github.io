@@ -4,6 +4,8 @@
 
 **Versiune:** 1.0.0 · **Ultima actualizare:** 2026-10-14
 
+Limbile interfeței: **Română, English, Français, Italiano, Español, Português (PT), Deutsch, Magyar**
+
 Gospodar este un buget de gospodărie care rulează local, într-un singur fișier HTML, fără cont și fără sincronizare. Ține conturi (cont curent, numerar, card, economii), categorii cu subcategorii (set implicit românesc, editabil), tranzacții cu etichete și note, transferuri între conturi și sume în mai multe monede cu cursuri introduse manual. Importă extrase CSV printr-un asistent de mapare a coloanelor, aplică reguli de categorizare, urmărește tranzacții recurente și bugete lunare, produce rapoarte (grafice SVG) și include șase calculatoare cu formule transparente. Datele sunt sensibile și rămân în acest browser; criptarea cu parolă a setului salvat este opțională.
 
 ![captură](screenshot.png)

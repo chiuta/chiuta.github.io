@@ -4,6 +4,8 @@
 
 **Version:** 1.0.1 · **Last updated:** 2026-10-19
 
+Interface languages: **Română, English, Français, Italiano, Español, Português (PT), Deutsch, Magyar**
+
 QSO is an unofficial, offline station log for radio amateurs: you record contacts (UTC date/time, callsign, band, mode, RST, locator, QSL, contest), compute distances and bearings from Maidenhead locators, detect duplicates, import and export ADIF 3.1 (plus ADX, CSV, JSON, basic Cabrillo 3.0), and see statistics and a simple azimuthal map. It complements **ETER** (an amateur radio encyclopedia) and **INDICATIV** (a trainer for the ANCOM exam), using the same terminology; it does not modify them and does not depend on them.
 
 ![screenshot](screenshot.png)

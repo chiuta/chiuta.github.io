@@ -4,6 +4,8 @@
 
 **Versione:** 1.0.0 · **Ultimo aggiornamento:** 2026-10-14
 
+Lingue dell'interfaccia: **Română, English, Français, Italiano, Español, Português (PT), Deutsch, Magyar**
+
 Lexicon è un motore di dizionario che funziona interamente offline, in un unico file HTML. Non include un dizionario completo: porti tu i tuoi dizionari (TSV/CSV, JSON, StarDict, dictd, XDXF), li conservi in IndexedDB e li consulti all'istante: prefisso, esatto, senza segni diacritici, approssimato (Damerau–Levenshtein), forme flesse, testo integrale nelle definizioni e caratteri jolly (`?`, `*`). Ha cronologia, preferiti, parola del giorno, flashcard con ripetizione dilazionata, esportazione e controllo ortografico. Il set incluso (345 voci originali in romeno) è un **set dimostrativo, non un dizionario completo**.
 
 ![schermata](screenshot.png)

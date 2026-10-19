@@ -4,6 +4,8 @@
 
 **Verzió:** 1.0.0 · **Utolsó frissítés:** 2026-10-14
 
+A felület nyelvei: **Română, English, Français, Italiano, Español, Português (PT), Deutsch, Magyar**
+
 Hangszintmérő, spektrumanalizátor és tájékoztató jellegű hallásvizsgálat egyetlen HTML-fájlban. Valós időben méri a hangszintet A, C és Z súlyozással (IEC 61672, IIR-szűrők), Fast/Slow időállandókkal, a választott időtartamra vett LAeq-val, Lmax/Lmin, L10/L50/L90 értékekkel, hisztogrammal, SEL-lel és a választott határértékhez viszonyított zajdózissal. A spektrumot 1/3 oktávos és 1/1 oktávos sávokban (20 Hz–20 kHz), valamint lineáris FFT-vel jeleníti meg, a csúcsfrekvenciával és spektrogrammal. Tartalmaz dB-eltolásos kalibrálást, rózsaszín/fehér zaj- és 1 kHz-es szinuszgenerátort, különálló audiometriai tesztet és helyi munkamenet-naplót. Kiegészíti a FrequencyLaboratory, generator-frecvente, Aurora, CalmWaves és ASMR hangalkalmazásokat.
 
 ![képernyőkép](screenshot.png)

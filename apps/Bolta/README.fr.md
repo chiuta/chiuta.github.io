@@ -4,6 +4,8 @@
 
 **Version :** 1.1.2 · **Dernière mise à jour :** 2026-10-19
 
+Langues de l'interface : **Română, English, Français, Italiano, Español, Português (PT), Deutsch, Magyar**
+
 Bolta montre le ciel pour n'importe quel lieu de la Terre et n'importe quel moment entre 1900 et 2100 : le Soleil, la Lune (avec sa phase dessinée correctement), les planètes, 1627 étoiles jusqu'à la magnitude 5,0, les constellations (avec des noms roumains et anglais), l'écliptique, l'équateur, les grilles et une Voie lactée stylisée. Il calcule le lever, le passage au méridien et le coucher, peut lister les événements proches (phases lunaires, conjonctions, oppositions, élongations, saisons, éclipses) avec export `.ics`, et possède une page dédiée à l'éclipse totale de Soleil du 2 août 2027, avec circonstances locales, compte à rebours, simulation des disques et schéma de la bande de totalité. Tout s'exécute dans le navigateur, sans réseau.
 
 ![capture](screenshot.png)

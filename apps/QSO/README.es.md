@@ -4,6 +4,8 @@
 
 **Versión:** 1.0.1 · **Última actualización:** 2026-10-19
 
+Idiomas de la interfaz: **Română, English, Français, Italiano, Español, Português (PT), Deutsch, Magyar**
+
 QSO es un diario de estación sin conexión y no oficial para radioaficionados: registras los contactos (fecha/hora UTC, indicativo, banda, modo, RST, locator, QSL, concurso), calculas distancias y acimutes a partir de locators Maidenhead, detectas duplicados, importas y exportas ADIF 3.1 (además de ADX, CSV, JSON, Cabrillo 3.0 básico) y ves estadísticas y un mapa acimutal sencillo. Complementa a **ETER** (enciclopedia de radioafición) e **INDICATIV** (entrenador para el examen de ANCOM), con la misma terminología; no los modifica ni depende de ellos.
 
 ![captura de pantalla](screenshot.png)

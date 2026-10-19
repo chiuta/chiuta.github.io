@@ -4,6 +4,8 @@
 
 **Version:** 1.0.0 · **Zuletzt aktualisiert:** 2026-10-14
 
+Oberflächensprachen: **Română, English, Français, Italiano, Español, Português (PT), Deutsch, Magyar**
+
 Gospodar ist ein Haushaltsbuch, das lokal in einer einzigen HTML-Datei läuft, ohne Konto und ohne Synchronisierung. Es führt Konten (Girokonto, Bargeld, Karte, Ersparnisse), Kategorien mit Unterkategorien (rumänischer Standardsatz, bearbeitbar), Transaktionen mit Tags und Notizen, Überweisungen zwischen Konten und Beträge in mehreren Währungen mit manuell eingegebenen Kursen. Es importiert CSV-Kontoauszüge über einen Assistenten zur Spaltenzuordnung, wendet Kategorisierungsregeln an, verfolgt wiederkehrende Transaktionen und Monatsbudgets, erstellt Berichte (SVG-Diagramme) und enthält sechs Rechner mit transparenten Formeln. Die Daten sind sensibel und bleiben in diesem Browser; die Passwortverschlüsselung des gespeicherten Datensatzes ist optional.
 
 ![Screenshot](screenshot.png)

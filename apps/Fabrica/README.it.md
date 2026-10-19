@@ -4,6 +4,8 @@
 
 **Versione:** 1.1.0 · **Ultimo aggiornamento:** 2026-10-19
 
+Lingue dell'interfaccia: **Română, English, Français, Italiano, Español, Português (PT), Deutsch, Magyar**
+
 Fabrica è una fabbrica di corsi e quiz: scrivi un corso (dati, avvertenze, livelli e lezioni in Markdown semplice, domande di sette tipi, glossario, quadro delle prove, test finale con banca di domande ed estrazione determinata da un seed), lo convalidi e lo esporti come **un unico file HTML autonomo** (facoltativamente uno ZIP con un README). Il file generato funziona offline e ha navigazione, progressi salvati localmente, ripetizione dilazionata per le domande sbagliate, test finale, attestato di completamento stampabile (senza valore di accreditamento), modalità chiara/scura e interfaccia in 8 lingue. Include un esempio completo («Come leggere un'etichetta nutrizionale») e tre modelli di partenza.
 
 ![schermata](screenshot.png)

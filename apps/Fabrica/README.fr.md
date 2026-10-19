@@ -4,6 +4,8 @@
 
 **Version :** 1.1.0 · **Dernière mise à jour :** 2026-10-19
 
+Langues de l'interface : **Română, English, Français, Italiano, Español, Português (PT), Deutsch, Magyar**
+
 Fabrica est une fabrique de cours et de quiz : vous rédigez un cours (données, avertissements, niveaux et leçons en Markdown simple, questions de sept types, glossaire, tableau de preuves, test final avec banque de questions et tirage déterminé par une graine), vous le validez et vous l'exportez sous la forme d'**un seul fichier HTML autonome** (en option un ZIP avec un README). Le fichier généré fonctionne hors ligne et offre navigation, progression enregistrée localement, répétition espacée pour les questions ratées, test final, certificat de parcours imprimable (sans valeur d'accréditation), mode clair/sombre et interface en 8 langues. Il comprend un exemple complet (« Comment lire une étiquette nutritionnelle ») et trois modèles de départ.
 
 ![capture d'écran](screenshot.png)

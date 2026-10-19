@@ -4,6 +4,8 @@
 
 **Versiune:** 1.1.0 · **Ultima actualizare:** 2026-10-19
 
+Limbile interfeței: **Română, English, Français, Italiano, Español, Português (PT), Deutsch, Magyar**
+
 Fabrica este o fabrică de cursuri și chestionare: scrii un curs (date, avertismente, niveluri și lecții în Markdown simplu, întrebări de șapte tipuri, glosar, tablou de dovezi, test final cu bancă de întrebări și extragere determinată de seed), îl validezi și îl exporți ca **un singur fișier HTML autonom** (opțional ZIP cu README). Fișierul generat rulează offline, are navigare, progres salvat local, repetiție spațiată pentru întrebările greșite, test final, certificat de parcurgere tipăribil (fără valoare de acreditare), mod luminos/întunecat și interfață în 8 limbi. Include un exemplu complet („Cum citești o etichetă nutrițională”) și trei șabloane de pornire.
 
 ![captură](screenshot.png)

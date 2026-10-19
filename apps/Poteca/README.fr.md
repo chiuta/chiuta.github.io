@@ -4,6 +4,8 @@
 
 **Version :** 1.0.0 · **Dernière mise à jour :** 2026-10-14
 
+Langues de l'interface : **Română, English, Français, Italiano, Español, Português (PT), Deutsch, Magyar**
+
 Poteca ouvre des traces GPX, GeoJSON, KML et CSV, les affiche sur une carte locale (sans fond de carte), calcule des statistiques (distance, dénivelé positif/négatif, temps en mouvement et à l'arrêt, vitesses, pentes, tours par kilomètre/mile), présente un profil altimétrique interactif synchronisé avec la carte et permet d'éditer les traces (découpe, scission, fusion, inversion, simplification, suppression des sauts GPS, points manuels, waypoints) et de les exporter. Tout s'exécute dans le navigateur, hors ligne.
 
 ![capture d'écran](screenshot.png)

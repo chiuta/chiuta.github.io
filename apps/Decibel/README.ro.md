@@ -4,6 +4,8 @@
 
 **Versiune:** 1.0.0 · **Ultima actualizare:** 2026-10-14
 
+Limbile interfeței: **Română, English, Français, Italiano, Español, Português (PT), Deutsch, Magyar**
+
 Sonometru, analizor de spectru și test auditiv orientativ, într-un singur fișier HTML. Măsoară nivelul sonor în timp real cu ponderări A, C și Z (IEC 61672, filtre IIR), constante de timp Fast/Slow, LAeq pe un interval ales, Lmax/Lmin, L10/L50/L90, histogramă, SEL și doză de zgomot față de o limită aleasă. Afișează spectrul pe benzi de 1/3 și 1/1 octavă (20 Hz–20 kHz) și FFT liniar, cu frecvența de vârf și spectrogramă. Include calibrare cu decalaj în dB, generator de zgomot roz/alb și sinus de 1 kHz, un test audiometric separat și un jurnal local de sesiuni. Completează aplicațiile de sunet FrequencyLaboratory, generator-frecvente, Aurora, CalmWaves și ASMR.
 
 ![captură](screenshot.png)

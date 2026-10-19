@@ -4,6 +4,8 @@
 
 **Versión:** 1.0.0 · **Última actualización:** 2026-10-14
 
+Idiomas de la interfaz: **Română, English, Français, Italiano, Español, Português (PT), Deutsch, Magyar**
+
 Poteca abre rutas GPX, GeoJSON, KML y CSV, las muestra en un mapa local (sin mapa base), calcula estadísticas (distancia, ascenso/descenso, tiempo en movimiento y parado, velocidades, pendientes, vueltas por kilómetro/milla), presenta un perfil de elevación interactivo sincronizado con el mapa y permite editar las rutas (recortar, dividir, unir, invertir, simplificar, eliminar saltos GPS, puntos manuales, waypoints) y exportarlas. Todo se ejecuta en el navegador, sin conexión.
 
 ![captura de pantalla](screenshot.png)

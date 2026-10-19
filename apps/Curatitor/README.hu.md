@@ -4,6 +4,8 @@
 
 **Verzió:** 1.0.0 · **Utolsó frissítés:** 2026-10-14
 
+A felület nyelvei: **Română, English, Français, Italiano, Español, Português (PT), Deutsch, Magyar**
+
 A Curatitor megmutatja, milyen metaadatokat rejtenek a fájljai (GPS-hely, eszköz modellje, a szerző neve, szerkesztőprogram, dátumok, megjegyzések, beágyazott miniatűrök), és helyben, a böngészőben eltávolítja őket. A tisztítás szegmensek/blokkok szintjén történik, ahol lehet, újrakódolás nélkül: egy JPEG képpontjai, egy MP3 keretei vagy egy MP4 csomagjai bájtra azonosak maradnak. Minden tisztítás után az alkalmazás újra megnyitja az eredményt, és automatikusan ellenőrzi, hogy nem maradt eltávolítható mező, és hogy a kép-/hang-/videóadatok változatlanok.
 
 ![képernyőkép](screenshot.png)

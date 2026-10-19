@@ -4,6 +4,8 @@
 
 **Verzió:** 1.1.2 · **Utolsó frissítés:** 2026-10-19
 
+A felület nyelvei: **Română, English, Français, Italiano, Español, Português (PT), Deutsch, Magyar**
+
 A Bolta a Föld bármely helyéhez és 1900 és 2100 közötti bármely időponthoz megmutatja az eget: a Napot, a Holdat (helyesen megrajzolt fázissal), a bolygókat, 1627 csillagot 5,0 magnitúdóig, a csillagképeket (román és angol nevekkel), az ekliptikát, az egyenlítőt, a hálókat és egy stilizált Tejútrendszert. Kiszámítja a kelést, a meridiánátvonulást és a nyugvást, felsorolhatja a közeli eseményeket (holdfázisok, együttállások, oppozíciók, elongációk, évszakok, fogyatkozások) `.ics` exporttal, és külön oldala van a 2027. augusztus 2-i teljes napfogyatkozásnak, helyi körülményekkel, visszaszámlálással, a korongok szimulációjával és a teljességi sáv vázlatával. Minden a böngészőben fut, hálózat nélkül.
 
 ![képernyőkép](screenshot.png)

@@ -4,6 +4,8 @@
 
 **Version:** 1.0.0 · **Zuletzt aktualisiert:** 2026-10-14
 
+Oberflächensprachen: **Română, English, Français, Italiano, Español, Português (PT), Deutsch, Magyar**
+
 Curatitor zeigt Ihnen, welche Metadaten Ihre Dateien verbergen (GPS-Standort, Gerätemodell, Autorenname, Bearbeitungsprogramm, Daten, Kommentare, eingebettete Miniaturbilder), und entfernt sie lokal im Browser. Die Bereinigung erfolgt auf der Ebene von Segmenten/Blöcken, wo möglich ohne Neukodierung: Die Pixel eines JPEG, die Frames einer MP3 oder die Pakete einer MP4 bleiben byte-identisch. Nach jeder Bereinigung öffnet die Anwendung das Ergebnis erneut und prüft automatisch, dass kein entfernbares Feld übrig geblieben ist und die Bild-/Audio-/Videodaten unverändert sind.
 
 ![Screenshot](screenshot.png)

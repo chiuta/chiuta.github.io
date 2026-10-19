@@ -4,6 +4,8 @@
 
 **Version:** 1.0.1 · **Zuletzt aktualisiert:** 2026-10-19
 
+Oberflächensprachen: **Română, English, Français, Italiano, Español, Português (PT), Deutsch, Magyar**
+
 Alfabete ist eine Offline-App für Alphabete und Codes: Zu jedem Code gibt es eine visuelle Referenz, einen Konverter in beide Richtungen, einen Trainer mit Überprüfung und ein druckbares Merkblatt. Sie deckt Morse (Audio mit WPM/Farnsworth, Licht, Vibration, Koch, Gehörtraining, Rhythmus), lateinische Braille-Schrift der Stufe 1 (Unicode, BRF, SVG, Perkins-Schreibweise), Buchstabieralphabete (ITU/NATO, rumänisch, DIN 5009, französisch), Winkeralphabet, Pigpen, Baudot/ITA2, ASCII/binär/hex/oktal/Base64/URL/Unicode-Escapes, klassische Chiffren mit erklärten Schritten und Häufigkeitsanalyse, die Tagesaufgabe sowie Karteikarten mit verteilter Wiederholung (SM-2) ab. Sie ergänzt die Apps Eter (Morse/Koch) und Atingere (Braille).
 
 ![Screenshot](screenshot.png)

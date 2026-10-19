@@ -4,6 +4,8 @@
 
 **Version:** 1.0.0 · **Last updated:** 2026-10-14
 
+Interface languages: **Română, English, Français, Italiano, Español, Português (PT), Deutsch, Magyar**
+
 Sound level meter, spectrum analyzer and indicative hearing test, in a single HTML file. It measures sound level in real time with A, C and Z weightings (IEC 61672, IIR filters), Fast/Slow time constants, LAeq over a chosen interval, Lmax/Lmin, L10/L50/L90, a histogram, SEL and noise dose against a chosen limit. It displays the spectrum in 1/3-octave and 1/1-octave bands (20 Hz–20 kHz) and a linear FFT, with the peak frequency and a spectrogram. It includes calibration with a dB offset, a pink/white noise and 1 kHz sine generator, a separate audiometric test and a local session log. It complements the sound apps FrequencyLaboratory, generator-frecvente, Aurora, CalmWaves and ASMR.
 
 ![screenshot](screenshot.png)

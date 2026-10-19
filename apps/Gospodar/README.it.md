@@ -4,6 +4,8 @@
 
 **Versione:** 1.0.0 · **Ultimo aggiornamento:** 2026-10-14
 
+Lingue dell'interfaccia: **Română, English, Français, Italiano, Español, Português (PT), Deutsch, Magyar**
+
 Gospodar è un budget familiare che funziona in locale, in un unico file HTML, senza account e senza sincronizzazione. Gestisce conti (conto corrente, contanti, carta, risparmi), categorie con sottocategorie (set predefinito romeno, modificabile), transazioni con etichette e note, trasferimenti tra conti e importi in più valute con tassi inseriti manualmente. Importa estratti conto CSV tramite una procedura guidata di mappatura delle colonne, applica regole di categorizzazione, tiene traccia delle transazioni ricorrenti e dei budget mensili, produce report (grafici SVG) e include sei calcolatori con formule trasparenti. I dati sono sensibili e restano in questo browser; la cifratura con password del set salvato è facoltativa.
 
 ![schermata](screenshot.png)

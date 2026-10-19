@@ -4,6 +4,8 @@
 
 **Versiune:** 1.0.1 · **Ultima actualizare:** 2026-10-19
 
+Limbile interfeței: **Română, English, Français, Italiano, Español, Português (PT), Deutsch, Magyar**
+
 QSO este un jurnal de stație offline, neoficial, pentru radioamatori: înregistrezi legăturile (data/ora UTC, indicativ, bandă, mod, RST, locator, QSL, concurs), calculezi distanțe și azimuturi din locatori Maidenhead, detectezi duplicatele, importi și exporți ADIF 3.1 (plus ADX, CSV, JSON, Cabrillo 3.0 de bază), vezi statistici și o hartă azimutală simplă. Completează **ETER** (enciclopedie de radioamatorism) și **INDICATIV** (antrenor pentru examenul ANCOM), cu aceeași terminologie; nu le modifică și nu depinde de ele.
 
 ![captură](screenshot.png)

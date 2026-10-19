@@ -4,6 +4,8 @@
 
 **Versão:** 1.0.0 · **Última atualização:** 2026-10-14
 
+Idiomas da interface: **Română, English, Français, Italiano, Español, Português (PT), Deutsch, Magyar**
+
 Sonómetro, analisador de espetro e teste auditivo indicativo, num único ficheiro HTML. Mede o nível sonoro em tempo real com ponderações A, C e Z (IEC 61672, filtros IIR), constantes de tempo Fast/Slow, LAeq num intervalo escolhido, Lmax/Lmin, L10/L50/L90, histograma, SEL e dose de ruído face a um limite escolhido. Apresenta o espetro em bandas de 1/3 de oitava e de 1/1 oitava (20 Hz–20 kHz) e uma FFT linear, com a frequência de pico e um espetrograma. Inclui calibração com desvio em dB, um gerador de ruído rosa/branco e de sinusoide de 1 kHz, um teste audiométrico separado e um registo local de sessões. Complementa as aplicações de som FrequencyLaboratory, generator-frecvente, Aurora, CalmWaves e ASMR.
 
 ![captura de ecrã](screenshot.png)

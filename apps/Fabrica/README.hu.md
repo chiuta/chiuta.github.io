@@ -4,6 +4,8 @@
 
 **Verzió:** 1.1.0 · **Utolsó frissítés:** 2026-10-19
 
+A felület nyelvei: **Română, English, Français, Italiano, Español, Português (PT), Deutsch, Magyar**
+
 A Fabrica tanfolyamok és kvízek gyára: megírsz egy tanfolyamot (adatok, figyelmeztetések, szintek és leckék egyszerű Markdownban, hétféle típusú kérdések, szószedet, bizonyítéktábla, záróteszt kérdésbankkal és seed által meghatározott sorsolással), érvényesíted, és exportálod **egyetlen önálló HTML-fájlként** (opcionálisan ZIP-ként README-vel). A létrehozott fájl offline fut, és rendelkezik navigációval, helyben mentett haladással, térközökkel ismétlő gyakorlással a hibásan megválaszolt kérdésekhez, zárótesttel, kinyomtatható teljesítési tanúsítvánnyal (akkreditációs érték nélkül), világos/sötét móddal és 8 nyelvű felülettel. Tartalmaz egy teljes példát („Hogyan olvassunk élelmiszer-címkét”) és három kezdősablont.
 
 ![képernyőkép](screenshot.png)

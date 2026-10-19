@@ -4,6 +4,8 @@
 
 **Verzió:** 1.0.1 · **Utolsó frissítés:** 2026-10-19
 
+A felület nyelvei: **Română, English, Français, Italiano, Español, Português (PT), Deutsch, Magyar**
+
 Az Alfabete egy offline alkalmazás ábécékhez és kódokhoz: minden kódhoz kapsz vizuális referenciát, kétirányú átalakítót, ellenőrzéssel ellátott gyakorlót és nyomtatható lapot. Lefedi a Morse-kódot (hang WPM/Farnsworth beállítással, fény, rezgés, Koch-módszer, hallás utáni gyakorlás, ritmus), a latin 1. fokozatú Braille-írást (Unicode, BRF, SVG, Perkins-féle írás), a fonetikus ábécéket (ITU/NATO, román, DIN 5009, francia), a jelzőzászlós (szemafor) ábécét, a pigpent, a Baudot/ITA2-t, az ASCII/bináris/hexa/oktális/Base64/URL/Unicode escape-formátumokat, a klasszikus titkosításokat magyarázott lépésekkel és gyakorisági elemzéssel, a nap kihívását, valamint a térközű ismétlésen alapuló kártyákat (SM-2). Kiegészíti az Eter (Morse/Koch) és az Atingere (Braille) alkalmazásokat.
 
 ![képernyőkép](screenshot.png)

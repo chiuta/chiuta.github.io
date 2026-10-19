@@ -4,6 +4,8 @@
 
 **Versione:** 1.0.0 · **Ultimo aggiornamento:** 2026-10-14
 
+Lingue dell'interfaccia: **Română, English, Français, Italiano, Español, Português (PT), Deutsch, Magyar**
+
 Fonometro, analizzatore di spettro e test uditivo indicativo, in un unico file HTML. Misura il livello sonoro in tempo reale con le ponderazioni A, C e Z (IEC 61672, filtri IIR), le costanti di tempo Fast/Slow, il LAeq su un intervallo scelto, Lmax/Lmin, L10/L50/L90, un istogramma, il SEL e la dose di rumore rispetto a un limite scelto. Mostra lo spettro in bande di 1/3 di ottava e di 1/1 ottava (20 Hz–20 kHz) e una FFT lineare, con la frequenza di picco e uno spettrogramma. Include la calibrazione con scostamento in dB, un generatore di rumore rosa/bianco e di sinusoide a 1 kHz, un test audiometrico separato e un registro locale delle sessioni. Completa le app audio FrequencyLaboratory, generator-frecvente, Aurora, CalmWaves e ASMR.
 
 ![schermata](screenshot.png)
