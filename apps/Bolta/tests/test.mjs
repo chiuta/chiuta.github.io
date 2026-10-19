@@ -50,8 +50,8 @@ test('încărcare: fără erori, CSP valid, meta, fără handlere inline / eval 
   ok(!/manifest|serviceWorker/i.test(html.replace(/<!--fff:pwa:start[\s\S]*?<!--fff:pwa:end-->/g,'').replace(/<!--fff:kit:start[\s\S]*?<!--fff:kit:end-->/g,'').replace(/<script[^>]*id="fff-info"[\s\S]*?<\/script>/,'').replace(/(manifest|worker)-src [^;]*/g,'')), 'manifest / SW (în afara blocurilor kit/PWA)');
   ok(!/cnred/i.test(html), 'CNRED');
   const p = await newPage();
-  eq(await p.textContent('#app-version'), 'v 1.1.1 · 2026-10-18', '#app-version');
-  eq(await p.evaluate(() => document.querySelector('meta[name=application-version]').content), '1.1.1', 'versiune');
+  eq(await p.textContent('#app-version'), 'v 1.1.2 · 2026-10-19', '#app-version');
+  eq(await p.evaluate(() => document.querySelector('meta[name=application-version]').content), '1.1.2', 'versiune');
   eq((await p.evaluate(() => window.__csp)).length, 0, 'violări CSP');
   eq(await p.evaluate(() => window.__bolta.ST.count), 1627, 'stele în catalog');
   const nl = await p.evaluate(() => Object.keys(localStorage).filter(k => !k.startsWith('fff.bolta.')));

@@ -1,6 +1,6 @@
 # Bolta — planetariu offline
 
-**Versiune:** 1.0.0 · **Ultima actualizare:** 14 octombrie 2026
+**Versiune:** 1.1.2 · **Ultima actualizare:** 19 octombrie 2026
 
 Bolta arată cerul pentru orice loc de pe Pământ și orice moment între 1900 și 2100: Soarele, Luna (cu faza desenată corect), planetele, 1627 de stele până la magnitudinea 5,0, constelațiile (cu nume românești și englezești), ecliptica, ecuatorul, grilele și o Cale Lactee stilizată. Calculează răsăritul, trecerea la meridian și apusul, poate lista evenimentele apropiate (faze lunare, conjuncții, opoziții, elongații, anotimpuri, eclipse) cu export `.ics` și are o pagină dedicată eclipsei totale de Soare din 2 august 2027, cu circumstanțe locale, numărătoare inversă, simulare a discurilor și schemă a benzii totalității. Totul rulează în browser, fără rețea.
 
@@ -124,6 +124,9 @@ MIT — vezi fișierul `LICENSE` din rădăcina depozitului. Componentele terțe
 
 ## Istoric
 
+- **1.1.2 — 2026-10-19:** buton „← înapoi la <sursă>” pentru `from=terra|orarium|vatra|fieldobserver|nota-zero` (8 limbi; alte valori ignorate). Parametrul `from` nu se salvează.
+- **1.1.1 — 2026-10-18:** locul din link doar pentru sesiune, `#t&ll` fără filă, validare reală a datei.
+- **1.1.0 — 2026-10-18:** link adânc `#sky&t=&ll=`.
 - **1.0.0 — 2026-10-14:** prima versiune.
 
 ## Linkuri adânci
