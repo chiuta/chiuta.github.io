@@ -12,8 +12,8 @@
     "Web Crypto"
   ],
   "storageKeys": [],
-  "sizeBytes": 318448,
-  "sha256": "fbd913a06bf42af9648bf69a580c1a73e132afe5af08d5bf027ff7cdb251f228",
+  "sizeBytes": 319084,
+  "sha256": "f8f85198c663b0f6471bbf3bddfd1dcdf925f062902ab26863e7479da9a82bec",
   "csp": {
     "present": true,
     "directives": {
@@ -58,7 +58,7 @@
     ]
   },
   "kit": {
-    "version": "1.0.0",
+    "version": "1.1.1",
     "modules": [
       "core",
       "label",

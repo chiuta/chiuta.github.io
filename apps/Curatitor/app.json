@@ -12,8 +12,8 @@
     "Worker"
   ],
   "storageKeys": [],
-  "sizeBytes": 343088,
-  "sha256": "cc10450bbdcc65dfaf3a808e41c0f69dd30745ecd6a708da0cf8043b052f0b75",
+  "sizeBytes": 343724,
+  "sha256": "a153f4f48d3cac3f24fbf8af35b57fa7eaafc19ad6d48ebf219db90414bbcd54",
   "csp": {
     "present": true,
     "directives": {
@@ -49,7 +49,7 @@
     ]
   },
   "kit": {
-    "version": "1.0.0",
+    "version": "1.1.1",
     "modules": [
       "core",
       "label",

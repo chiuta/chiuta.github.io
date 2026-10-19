@@ -19,13 +19,13 @@
     "Web Crypto"
   ],
   "storageKeys": [],
-  "sizeBytes": 474327,
-  "sha256": "036a09fb65df085f8ed3e1ded3b8ff12c99a99988f242e3c8fbcb0fea65f6eb8",
+  "sizeBytes": 474909,
+  "sha256": "02bedc114b745bd6e31d121161a628bf81997bf790cb0bd85c0d66ad6471eb49",
   "csp": {
     "present": true,
     "directives": {
       "default-src": "'none'",
-      "script-src": "sha256×5",
+      "script-src": "sha256×4",
       "style-src": "'unsafe-inline'",
       "img-src": "'self' data: blob:",
       "media-src": "data: blob:",
@@ -65,7 +65,7 @@
     ]
   },
   "kit": {
-    "version": "1.1.0",
+    "version": "1.1.1",
     "modules": [
       "core",
       "label",
