@@ -1,6 +1,6 @@
 # fff-kit
 
-**Versiune:** 1.0.0 · **Ultima actualizare:** 14 octombrie 2026
+**Versiune:** 1.1.1 · **Ultima actualizare:** 19 octombrie 2026
 
 Module comune pentru aplicațiile „fără frontiere”, **lipite în fiecare `index.html`** de un pas de build. Aplicația rămâne un fișier care funcționează descărcat, offline, fără server. Nimic din kit nu face cereri de rețea.
 
@@ -46,7 +46,7 @@ Toate modulele sunt IIFE care definesc `window.FFF`; singura variabilă globală
 
 **`FFF.bundle`** — `export({encrypt, password, filename})`, `inspect(file, {password})`, `import(file, {password, confirm, reload})`, `wipe({confirm, reload})`, `build()`, `redact(fn)`; erorile au `.code` (`format, schema, app, password_required, bad_password, pw_short, nocrypto, read, too_big, quota, key`) și mesaj tradus în limba curentă. Confirmările folosesc un `<dialog>` propriu (nu `window.confirm`).
 
-**Redactare (kit 1.1.0).** `FFF.bundle.redact(function (cheie, valoare) { … return valoareCurățată; })` înregistrează un redactor pentru secrete (chei API etc.). Redactorii se aplică doar exportului **necriptat** (`export()` fără `encrypt`); un redactor care aruncă excepție golește valoarea (eșuează închis). `export({encrypt:true, password})` (copie criptată) păstrează totul, iar `export({secrets:true})` dezactivează explicit redactarea. `build()` rămâne complet (neredactat), pentru apelurile existente. La restaurarea unei copii necriptate, valorile redactate trebuie reintroduse manual.
+**Redactare (kit 1.1.0, întărită în 1.1.1).** `FFF.bundle.redact(function (cheie, valoare) { … return valoareCurățată; })` înregistrează un redactor pentru secrete (chei API etc.). Redactorii se aplică doar exportului **necriptat** (`export()` fără `encrypt`); un redactor care aruncă excepție sau întoarce altceva decât un șir golește valoarea (eșuează închis; pentru a păstra o valoare, întoarce-o). `export({encrypt:true, password})` (copie criptată) păstrează totul, iar `export({secrets:true})` dezactivează explicit redactarea. `build()` rămâne complet (neredactat), pentru apelurile existente. La restaurarea unei copii necriptate, valorile redactate trebuie reintroduse manual.
 
 ## Formatul `.fff.json`
 

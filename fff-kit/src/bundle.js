@@ -78,7 +78,7 @@
       if (k === F.store.indexKey) return;
       var v = F.store.raw.get(k);
       if (typeof v !== 'string') return;
-      if (redact) redactors.forEach(function (f) { try { var r = f(k, v); if (typeof r === 'string') v = r; } catch (e) { /* un redactor defect nu oprește exportul, dar nici nu lasă valoarea originală: */ v = ''; } });
+      if (redact) redactors.forEach(function (f) { try { var r = f(k, v); if (typeof r === 'string') v = r; else v = ''; } catch (e) { /* un redactor defect nu oprește exportul, dar nici nu lasă valoarea originală: */ v = ''; } });
       data[k] = v;
     });
     var a = F.app;

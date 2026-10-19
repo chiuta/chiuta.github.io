@@ -131,7 +131,7 @@ check('storageKeys literale (fără sessionStorage, fără fff.*)', info.storage
 check('nume, versiune, dată, descriere din meta; config suprascrie/adaugă', info.name === 'Demo FFF' && info.version === '1.2.3' && info.updated === '2026-10-14' && info.description === 'Descriere din config' && info.egressNote === 'Doar la acțiunea utilizatorului.' && info.selfModifying === true);
 check('config nu poate suprascrie sha256/sizeBytes', /^[0-9a-f]{64}$/.test(info.sha256));
 check('features: export/import/i18n/pwa/module', info.features.export && info.features.import && info.features.i18n.join() === 'ro,en,fr' && info.features.pwa.manifest === true && info.features.modules.join() === 'core,label,bundle');
-check('kit: versiune + module; csp rezumat', info.kit.version === '1.1.0' && info.kit.modules.length === 3 && info.csp.present && info.csp.scriptInline === 'hash' && info.csp.directives['script-src'] === 'sha256×2', info.csp);
+check('kit: versiune + module; csp rezumat', info.kit.version === '1.1.1' && info.kit.modules.length === 3 && info.csp.present && info.csp.scriptInline === 'hash' && info.csp.directives['script-src'] === 'sha256×2', info.csp);
 const html = rf(di);
 const size = Buffer.byteLength(html);
 check('sizeBytes = dimensiunea fișierului', info.sizeBytes === size, [info.sizeBytes, size]);

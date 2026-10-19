@@ -157,6 +157,23 @@ await nav2; await U.page.waitForTimeout(500);
 const back = await U.page.evaluate(() => ({c: localStorage.getItem('fx.count'), n: localStorage.getItem('fx.note'), l: localStorage.getItem('lang'), out: document.getElementById('count').textContent}));
 check('import criptat din UI → date restaurate, pagina reîncărcată', back.c === '3' && back.n === 'ăîșț ★ "ghilimele" \\' && back.l === 'fr' && back.out === '3', back);
 
+console.log('redactare (kit 1.1.x)');
+const RD = await A.page.evaluate(async () => {
+  const out = {};
+  localStorage.setItem('fx.note', 'secret-123');
+  FFF.bundle.redact((k, v) => k === 'fx.note' ? 'REDACTAT' : v);
+  FFF.bundle.redact((k, v) => { if (k === 'lang') throw new Error('defect'); return v; });
+  FFF.bundle.redact((k, v) => k === 'fx.count' ? undefined : v);
+  out.build = FFF.bundle.build().data;
+  const cap = async (opt) => { let txt; const orig = URL.createObjectURL; URL.createObjectURL = (b) => { txt = b; return orig.call(URL, b); }; try { await FFF.bundle.export(opt); } catch (e) { out.err = e.code || String(e); } URL.createObjectURL = orig; return txt ? JSON.parse(await txt.text()).data : null; };
+  out.plain = await cap({});
+  out.secrets = await cap({secrets: true});
+  return out;
+});
+check('build() rămâne complet (neredactat)', RD.build['fx.note'] === 'secret-123' && RD.build.lang === 'fr', RD.build);
+check('export necriptat: valoarea redactată, redactor defect → gol, ne-șir → gol', RD.plain && RD.plain['fx.note'] === 'REDACTAT' && RD.plain.lang === '' && RD.plain['fx.count'] === '', RD.plain);
+check('export {secrets:true}: complet', RD.secrets && RD.secrets['fx.note'] === 'secret-123' && RD.secrets.lang === 'fr', RD.secrets);
+
 console.log('curat');
 const allErr = [...A.errors, ...U.errors].filter((e) => !/Failed to load resource|QuotaExceeded|plin/.test(e));
 check('0 pageerror/CSP', allErr.length === 0, allErr);

@@ -23,7 +23,7 @@ check('stocare: chei + octeți', /fx\.count\s+\d+ B/.test(txt) && txt.includes('
 check('permisiuni: localStorage listat', txt.includes('localStorage'));
 check('fișier: SHA-256 declarat + dimensiune', txt.includes(await page.evaluate(() => document.documentElement.getAttribute('data-fff-hash'))) && /Dimensiune: [\d.]+ KB/.test(txt));
 check('selfModifying din fff.config.json → avertisment în dialog', txt.includes('își poate salva propria copie'));
-check('kit: versiune și module', txt.includes('fff-kit v1.1.0') && txt.includes('core, label, bundle'));
+check('kit: versiune și module', txt.includes('fff-kit v1.1.1') && txt.includes('core, label, bundle'));
 await page.keyboard.press('Escape'); await page.waitForTimeout(150);
 check('Esc închide și elimină dialogul din DOM', await page.evaluate(() => document.querySelectorAll('dialog').length === 0));
 check('focusul revine pe #app-version', await page.evaluate(() => document.activeElement && document.activeElement.id === 'app-version'));
