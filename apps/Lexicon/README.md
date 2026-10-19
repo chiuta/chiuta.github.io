@@ -1,64 +1,66 @@
 # Lexicon
 
-**Versiune:** 1.0.0 · **Ultima actualizare:** 14 octombrie 2026
+**English** · [Română](README.ro.md) · [Français](README.fr.md) · [Italiano](README.it.md) · [Español](README.es.md) · [Português](README.pt.md) · [Deutsch](README.de.md) · [Magyar](README.hu.md)
 
-Lexicon este un motor de dicționar care rulează complet offline, într-un singur fișier HTML. Nu include un dicționar complet: aduci tu propriile dicționare (TSV/CSV, JSON, StarDict, dictd, XDXF), le păstrezi în IndexedDB și le cauți instant: prefix, exact, fără diacritice, aproximativ (Damerau–Levenshtein), forme flexionare, text integral în definiții și wildcard (`?`, `*`). Are istoric, favorite, cuvântul zilei, flashcards cu repetiție spațiată, export și verificare ortografică. Setul inclus (345 de intrări originale în română) este **set demonstrativ, nu un dicționar complet**.
+**Version:** 1.0.0 · **Last updated:** 2026-10-14
 
-![captură](screenshot.png)
+Lexicon is a dictionary engine that runs entirely offline, in a single HTML file. It does not ship a complete dictionary: you bring your own dictionaries (TSV/CSV, JSON, StarDict, dictd, XDXF), keep them in IndexedDB and search them instantly: prefix, exact, diacritic-insensitive, approximate (Damerau–Levenshtein), inflected forms, full text in definitions and wildcard (`?`, `*`). It has history, favourites, a word of the day, flashcards with spaced repetition, export and spell checking. The bundled set (345 original Romanian entries) is a **demo set, not a complete dictionary**.
 
-**Live:** https://chiuta.github.io/apps/Lexicon/
+![screenshot](screenshot.png)
 
-## Cum se folosește
-1. Deschide fila **Dicționare** și alege fișierele (se pot importa mai multe odată). Pentru TSV/CSV/JSON se arată o previzualizare și maparea coloanelor.
-2. Completează metadatele: titlu, limbi, sursă și **licență** (obligatorie; fără ea apare un avertisment).
-3. Activează/dezactivează dicționarele și schimbă ordinea de afișare.
-4. În **Căutare**, scrie cuvântul: sugestiile apar în timp real; `[[cuvânt]]` și legăturile interne din articole se deschid direct. Scurtătură: `/` mută cursorul în câmpul de căutare.
-5. **Flashcards** (SM-2 simplificat), **Instrumente** (export favorite CSV/JSON/Markdown, export subset căutat, „Verifică ortografia unui text”, copie de rezervă `.fff.json`, „Șterge tot”).
+**Live app:** https://chiuta.github.io/apps/Lexicon/
 
-## Aduce-ți propriul dicționar
-Folderul `exemple/` conține `model.tsv` și `model.json` (formatul minim: cuvânt, definiție, opțional forme, categorie, exemple, etimologie).
+## How to use
+1. Open the **Dictionaries** tab and choose the files (several can be imported at once). For TSV/CSV/JSON a preview and column mapping are shown.
+2. Fill in the metadata: title, languages, source and **licence** (mandatory; without it a warning appears).
+3. Enable/disable dictionaries and change the display order.
+4. In **Search**, type the word: suggestions appear in real time; `[[word]]` and internal links in articles open directly. Shortcut: `/` moves the cursor to the search field.
+5. **Flashcards** (simplified SM-2), **Tools** (export favourites as CSV/JSON/Markdown, export the searched subset, "Check the spelling of a text", `.fff.json` backup, "Delete everything").
 
-**Verifică licența fiecărei surse (de exemplu datele publicate de dexonline au condiții proprii de licență și atribuire; nu am verificat condițiile actuale).** Aplicația nu include și nu descarcă niciun dicționar de licență incertă; răspunderea pentru datele importate îți aparține.
+## Bring your own dictionary
+The `exemple/` folder contains `model.tsv` and `model.json` (minimal format: word, definition, optionally forms, category, examples, etymology).
 
-## Formate acceptate
-- **TSV / CSV** cu antet (delimitator detectat, câmpuri între ghilimele, codare UTF-8, Windows-1250/1252, ISO-8859-2). Câmpurile `forme` și `exemple` se separă cu `|`.
-- **JSON**: listă de obiecte, obiect cuvânt→definiție, listă de liste sau formatul nativ `lexicon-dict`.
-- **StarDict**: `.ifo` + `.idx` (+ `.idx.gz`) + `.dict` sau `.dict.dz` (gzip/dictzip, prin `DecompressionStream`), `.syn` (devin forme), offseturi pe 32 sau 64 de biți, `sametypesequence`.
-- **dictd**: `.index` + `.dict` / `.dict.dz`, offseturi în baza 64.
-- **XDXF** simplu (`<ar>`, `<k>`).
+**Check the licence of every source (for example, data published by dexonline has its own licence and attribution conditions; I have not verified the current conditions).** The app neither includes nor downloads any dictionary of uncertain licence; responsibility for the imported data is yours.
 
-## Ce NU face și limitele
-- Nu are conținut lexicografic propriu în afara setului demonstrativ.
-- Fișierul se citește integral în memorie la import; fișierele foarte mari (sute de MB) pot depăși memoria browserului.
-- Căutarea în definiții parcurge toate intrările (fără index inversat) și nu ordonează după relevanță.
-- Legăturile externe din articole nu sunt active: se afișează ca text cu adresa.
-- XDXF este acceptat doar în forma simplă; HTML-ul este curățat de un parser propriu cu listă de etichete permise, deci formatările complexe se pierd.
-- Importul a 300.000 de intrări este lent (vezi mai jos); căutarea după aceea este instantanee.
-- Verificarea ortografică se bazează doar pe dicționarele active (cuvinte și forme); nu analizează gramatical.
-- Fără IndexedDB (mod privat) datele rămân doar în memorie și se pierd la reîncărcare; aplicația avertizează.
+## Supported formats
+- **TSV / CSV** with a header row (delimiter detected, quoted fields, UTF-8, Windows-1250/1252, ISO-8859-2 encodings). The `forme` and `exemple` fields are separated by `|`.
+- **JSON**: a list of objects, a word→definition object, a list of lists, or the native `lexicon-dict` format.
+- **StarDict**: `.ifo` + `.idx` (+ `.idx.gz`) + `.dict` or `.dict.dz` (gzip/dictzip, via `DecompressionStream`), `.syn` (become forms), 32- or 64-bit offsets, `sametypesequence`.
+- **dictd**: `.index` + `.dict` / `.dict.dz`, base-64 offsets.
+- Simple **XDXF** (`<ar>`, `<k>`).
 
-## Confidențialitate
-Rulează local, nu trimite nimic. Nu există cereri de rețea (`connect-src 'none'`). Dicționarele sunt în IndexedDB, iar istoricul, favoritele, limba și tema în `localStorage` (chei `fff.lexicon.*`). „Șterge tot” elimină totul.
+## What it does NOT do, and its limits
+- It has no lexicographic content of its own beyond the demo set.
+- The file is read fully into memory on import; very large files (hundreds of MB) may exceed the browser's memory.
+- Searching in definitions scans all entries (no inverted index) and does not sort by relevance.
+- External links in articles are not active: they are shown as text with the address.
+- XDXF is supported only in its simple form; HTML is sanitised by a custom parser with an allow-list of tags, so complex formatting is lost.
+- Importing 300,000 entries is slow (see below); searching afterwards is instantaneous.
+- Spell checking relies only on the active dictionaries (words and forms); it does no grammatical analysis.
+- Without IndexedDB (private mode) data stays only in memory and is lost on reload; the app warns you.
 
-## Performanță măsurată (în test, Chromium headless, mașină încărcată)
-Set sintetic de 300.000 de intrări (32,8 MB TSV, 100.000 cu forme):
-- import și indexare: 270–353 s (scris în IndexedDB; depinde mult de încărcarea mașinii);
-- sugestii în timp real: medie 0,02 ms, p95 0,1 ms, maxim 4 ms (708 interogări; ținta era sub 50 ms);
-- exact 0,4 ms, prefix 0,2 ms, wildcard cu `*` în față 37–427 ms, fuzzy complet 49–464 ms, sugestii fuzzy fără prefix 0,2–1,9 s;
-- text integral în definiții: 2–3 s (5,7 s fără potrivire);
-- reîncărcare cu setul de 300.000 în IndexedDB: 150–250 ms; heap aproximativ 141 MB.
+## Privacy
+It runs locally and sends nothing. There are no network requests (`connect-src 'none'`). Dictionaries are in IndexedDB, while history, favourites, language and theme are in `localStorage` (keys `fff.lexicon.*`). "Delete everything" removes it all.
 
-## Tehnic
-Un singur `index.html`, script inline cu hash în CSP (`script-src 'sha256-…'`, `default-src 'none'`, `connect-src 'none'`, fără handlere inline, fără `eval`; `worker-src blob:` este moștenit din șablon). Index în memorie (chei normalizate sortate, căutare binară), IndexedDB pentru intrări și text integral. Conținutul HTML trece printr-un parser propriu și se construiește cu `createElement`/`textContent`. Detectează opțional `window.FFF`; funcționează complet și fără. Teste: `node tests/test.mjs` (Playwright; 292 de verificări: parsare StarDict/dictd cu fișiere generate în test, interogări, 28 de payload-uri XSS, persistență, 300.000 de intrări, axe 0, depășire 360×740 și 1280×800). Variabila `LEXICON_SKIP_PERF=1` omite testul mare.
+## Measured performance (in testing, headless Chromium, loaded machine)
+Synthetic set of 300,000 entries (32.8 MB TSV, 100,000 with forms):
+- import and indexing: 270–353 s (written to IndexedDB; depends heavily on machine load);
+- real-time suggestions: mean 0.02 ms, p95 0.1 ms, maximum 4 ms (708 queries; the target was under 50 ms);
+- exact 0.4 ms, prefix 0.2 ms, wildcard with leading `*` 37–427 ms, full fuzzy 49–464 ms, fuzzy suggestions without prefix 0.2–1.9 s;
+- full text in definitions: 2–3 s (5.7 s with no match);
+- reload with the 300,000 set in IndexedDB: 150–250 ms; heap about 141 MB.
 
-## Terți
-Nu există cod terț în aplicație (axe-core este folosit doar în teste).
+## Technical
+A single `index.html`, inline script with a hash in the CSP (`script-src 'sha256-…'`, `default-src 'none'`, `connect-src 'none'`, no inline handlers, no `eval`; `worker-src blob:` is inherited from the template). In-memory index (sorted normalised keys, binary search), IndexedDB for entries and full text. HTML content goes through a custom parser and is built with `createElement`/`textContent`. Optionally detects `window.FFF`; it works fully without it. Tests: `node tests/test.mjs` (Playwright; 292 checks: StarDict/dictd parsing with files generated in the test, queries, 28 XSS payloads, persistence, 300,000 entries, axe 0, overflow at 360×740 and 1280×800). The `LEXICON_SKIP_PERF=1` variable skips the large test.
 
-## Traduceri
-Interfața este în română (implicit), engleză, franceză, italiană, spaniolă, portugheză, maghiară și germană. Traducerile fr/it/es/pt/hu/de sunt automate, neverificate nativ.
+## Third parties
+There is no third-party code in the app (axe-core is used only in tests).
 
-## Licență
-MIT — vezi fișierul `LICENSE` din rădăcina depozitului.
+## Translations
+The interface is in Romanian (default), English, French, Italian, Spanish, Portuguese, Hungarian and German. The fr/it/es/pt/hu/de translations are automatic and not verified by native speakers.
 
-## Istoric
-- 1.0.0 — 2026-10-14: prima versiune.
+## Licence
+MIT — see the `LICENSE` file in the repository root.
+
+## History
+- 1.0.0 — 2026-10-14: first release.

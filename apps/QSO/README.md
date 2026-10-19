@@ -1,64 +1,66 @@
-# QSO — jurnal de stație radioamator
+# QSO — amateur radio station log
 
-**Versiune:** 1.0.1 · **Ultima actualizare:** 2026-10-19
+**English** · [Română](README.ro.md) · [Français](README.fr.md) · [Italiano](README.it.md) · [Español](README.es.md) · [Português](README.pt.md) · [Deutsch](README.de.md) · [Magyar](README.hu.md)
 
-QSO este un jurnal de stație offline, neoficial, pentru radioamatori: înregistrezi legăturile (data/ora UTC, indicativ, bandă, mod, RST, locator, QSL, concurs), calculezi distanțe și azimuturi din locatori Maidenhead, detectezi duplicatele, importi și exporți ADIF 3.1 (plus ADX, CSV, JSON, Cabrillo 3.0 de bază), vezi statistici și o hartă azimutală simplă. Completează **ETER** (enciclopedie de radioamatorism) și **INDICATIV** (antrenor pentru examenul ANCOM), cu aceeași terminologie; nu le modifică și nu depinde de ele.
+**Version:** 1.0.1 · **Last updated:** 2026-10-19
 
-![captură](screenshot.png)
+QSO is an unofficial, offline station log for radio amateurs: you record contacts (UTC date/time, callsign, band, mode, RST, locator, QSL, contest), compute distances and bearings from Maidenhead locators, detect duplicates, import and export ADIF 3.1 (plus ADX, CSV, JSON, basic Cabrillo 3.0), and see statistics and a simple azimuthal map. It complements **ETER** (an amateur radio encyclopedia) and **INDICATIV** (a trainer for the ANCOM exam), using the same terminology; it does not modify them and does not depend on them.
+
+![screenshot](screenshot.png)
 
 **Live:** https://chiuta.github.io/apps/QSO/
 
-## Cum se folosește
+## How to use it
 
-1. **Stație și setări** → completează profilul (indicativ, locator propriu, putere, operator). Poți avea mai multe profiluri.
-2. **Jurnal** → completează formularul și apasă „Salvează” (sau `Ctrl+Enter`). Ceasul UTC este permanent în antet; „Ceas live” ține data/ora la zi, „Acum” le resetează. Frecvența alege banda; modul alege RST-ul implicit (59 / 599 / −10 pentru FT8, FT4).
-3. Indicativul este validat formal pe loc (YO/YP/YQ/YR + cifră + 1–3 litere; formate internaționale generale, prefixe portabile `OH0/YO3ABC`, sufixe `/P`, `/M`, `/MM`); apar țara (din tabelul intern) și avertizarea de duplicat.
-4. **Concurs** → bifează „Mod concurs”, scrie CONTEST_ID; numărul de ordine (STX) se completează automat, iar „dupe” se judecă pe concurs (aceeași stație, bandă și grup de moduri CW/PH/DG).
-5. Tabelul: căutare fără diacritice, filtre (bandă, mod, an, QSL, duplicate), sortare, **editare în rând** (buton „Editează” sau dublu clic), detalii (inclusiv câmpurile ADIF necunoscute), ștergere cu confirmare, ștergerea selecției, **anulare/refacere**, tipărire (CSS de print).
-6. **Mod câmp** (`Alt+K`): formular mare, funcționează fără mouse (`Alt+C` indicativ, `Alt+B`/`Alt+M` bandă/mod, `Ctrl+Enter` salvare, `Alt+Z`/`Alt+Y` anulare/refacere, `Alt+1…5` secțiuni, `Alt+H` lista completă), ceas UTC mare permanent și protecție la închiderea accidentală a paginii.
-7. **Calcule**: distanță/azimut între doi locatori, locator ↔ coordonate, ora locală și răsărit/apus aproximative, prefix → țară.
-8. **Statistici**: pe bandă, mod, țară, an; grafic QSO pe oră (UTC); hartă azimutală centrată pe stația proprie (SVG generat local).
-9. **Import / Export** și **copie de siguranță** `.fff.json`; „Șterge tot”.
+1. **Station and settings** → fill in the profile (callsign, own locator, power, operator). You can have several profiles.
+2. **Log** → fill in the form and press "Save" (or `Ctrl+Enter`). The UTC clock is permanently in the header; "Live clock" keeps the date/time up to date, "Now" resets them. The frequency picks the band; the mode picks the default RST (59 / 599 / −10 for FT8, FT4).
+3. The callsign is formally validated on the spot (YO/YP/YQ/YR + digit + 1–3 letters; general international formats, portable prefixes `OH0/YO3ABC`, suffixes `/P`, `/M`, `/MM`); the country (from the internal table) and the duplicate warning appear.
+4. **Contest** → tick "Contest mode", enter CONTEST_ID; the serial number (STX) is filled in automatically, and "dupe" is judged per contest (same station, band and mode group CW/PH/DG).
+5. The table: search without diacritics, filters (band, mode, year, QSL, duplicates), sorting, **in-row editing** ("Edit" button or double-click), details (including unknown ADIF fields), deletion with confirmation, deletion of the selection, **undo/redo**, printing (print CSS).
+6. **Field mode** (`Alt+K`): large form, works without a mouse (`Alt+C` callsign, `Alt+B`/`Alt+M` band/mode, `Ctrl+Enter` save, `Alt+Z`/`Alt+Y` undo/redo, `Alt+1…5` sections, `Alt+H` full list), a permanent large UTC clock and protection against accidentally closing the page.
+7. **Calculations**: distance/bearing between two locators, locator ↔ coordinates, approximate local time and sunrise/sunset, prefix → country.
+8. **Statistics**: by band, mode, country, year; QSOs-per-hour chart (UTC); azimuthal map centred on your own station (SVG generated locally).
+9. **Import / Export** and `.fff.json` **backup**; "Delete all".
 
-## Ce NU face și limitele
+## What it does NOT do, and its limits
 
-- **Tabelul de prefixe** este intern, parțial (~220 de entități) și **NU este lista DXCC completă** ori un instrument oficial. Zonele CQ/ITU apar doar unde sunt sigure pentru întreaga entitate; acolo unde variază în interiorul țării (SUA, Canada, Rusia, Australia, China etc.) apare „necunoscut”. Entitățile DXCC rare/distincte lipsesc; un indicativ neacoperit apare ca „țară necunoscută”.
-- Nu verifică licența, valabilitatea unui indicativ în realitate, nici validitatea unei legături pentru diplome sau concursuri. Nu se conectează la QRZ, LoTW, eQSL, Club Log etc. (nu are rețea).
-- **Răsărit/apus**: formulă simplă (NOAA simplificată, refracție 0,833°), eroare tipică de câteva minute; ora locală este ora solară medie (longitudine/15), nu fusul oficial și nu include ora de vară.
-- **Distanțele**: sferă R = 6371,0088 km, din centrul pătratului de locator; cu 4 caractere eroarea poate atinge zeci–sute de km. Nu e distanță pe elipsoid.
-- **Cabrillo** 3.0: doar antet + linii QSO în formă generică (frecvență în kHz, mod CW/PH/FM/RY/DG, schimb din STX/SRX sau STX_STRING/SRX_STRING). Formatele de schimb diferă de la concurs la concurs; verifică regulamentul și corectează manual. Nu calculează punctaje.
-- **ADIF**: lungimile se citesc în octeți UTF-8 (cu rezervă în caractere dacă fișierul e inconsistent, semnalat în raport). Câmpurile necunoscute și `APP_*` se păstrează și se reexportă; nu se interpretează USERDEF-urile din antet și nu se validează toate enumerările (ex. DXCC, STATE). Câmpurile `*_INTL` nu sunt tratate special. ADX: import/export de bază.
-- Fără hartă cu contururi de continente (nu se încarcă date externe): harta arată punctele QSO pe direcție și distanță.
-- Datele stau în `localStorage`; ștergerea datelor site-ului din browser șterge jurnalul. Fă copii de siguranță regulate (`.fff.json` sau ADIF). Pentru zeci de mii de QSO limita browserului (~5 MB) poate deveni o problemă.
+- **The prefix table** is internal, partial (~220 entities) and **is NOT the complete DXCC list** or an official tool. CQ/ITU zones appear only where they are certain for the whole entity; where they vary within a country (USA, Canada, Russia, Australia, China, etc.) "unknown" appears. Rare/distinct DXCC entities are missing; an uncovered callsign appears as "unknown country".
+- It does not check the licence, the real-world validity of a callsign, or the validity of a contact for awards or contests. It does not connect to QRZ, LoTW, eQSL, Club Log, etc. (it has no network).
+- **Sunrise/sunset**: a simple formula (simplified NOAA, refraction 0.833°), typical error of a few minutes; the local time is mean solar time (longitude/15), not the official time zone, and does not include daylight saving time.
+- **Distances**: sphere R = 6371.0088 km, from the centre of the locator square; with 4 characters the error can reach tens to hundreds of km. It is not a distance on the ellipsoid.
+- **Cabrillo** 3.0: only the header + QSO lines in a generic form (frequency in kHz, mode CW/PH/FM/RY/DG, exchange from STX/SRX or STX_STRING/SRX_STRING). Exchange formats differ from contest to contest; check the rules and correct manually. It does not compute scores.
+- **ADIF**: lengths are read in UTF-8 bytes (with a fallback to characters if the file is inconsistent, flagged in the report). Unknown fields and `APP_*` are kept and re-exported; the USERDEFs in the header are not interpreted and not all enumerations are validated (e.g. DXCC, STATE). `*_INTL` fields are not treated specially. ADX: basic import/export.
+- No map with continent outlines (no external data is loaded): the map shows the QSO points by direction and distance.
+- The data lives in `localStorage`; clearing the site data in the browser deletes the log. Make regular backups (`.fff.json` or ADIF). For tens of thousands of QSOs the browser limit (~5 MB) can become a problem.
 
-## Confidențialitate
+## Privacy
 
-Rulează local, nu trimite nimic în rețea (CSP cu `connect-src 'none'`; 0 cereri externe, verificat în teste). Jurnalul, profilurile și setările sunt păstrate doar în browserul tău, sub cheile `fff.qso.*`.
+It runs locally and sends nothing over the network (CSP with `connect-src 'none'`; 0 external requests, verified in the tests). The log, the profiles and the settings are kept only in your browser, under the `fff.qso.*` keys.
 
-## Formate acceptate
+## Supported formats
 
-- Import: `.adi`/`.adif` (cu sau fără antet, `<EOH>`, `<EOR>`, etichete cu litere mici, indicator de tip `<FREQ:9:N>`), `.adx`, `.csv` (antet cu nume de câmpuri ADIF), `.json` (listă de înregistrări) și `.fff.json` (copie de siguranță, `{"format":"fff-bundle","schema":1,"app":"qso",…}`).
-- Export: `.adi` (ADIF 3.1.4, antet cu `ADIF_VER`, `PROGRAMID`), `.adx`, `.csv` (UTF-8 cu BOM), `.json`, Cabrillo 3.0, `.fff.json`.
-- Câmpuri ADIF scrise: STATION_CALLSIGN, OPERATOR, CALL, QSO_DATE, TIME_ON, BAND, FREQ, MODE, SUBMODE, RST_SENT, RST_RCVD, TX_PWR, MY_GRIDSQUARE, GRIDSQUARE, NAME, QTH, COMMENT, QSL_SENT, QSL_RCVD, CONTEST_ID, STX, SRX, STX_STRING, SRX_STRING, plus orice alt câmp importat.
-- Benzi (ADIF 3.1): 2190m, 630m, 560m, 160m … 10m, 8m, 6m, 5m, 4m, 2m, 1.25m, 70cm, 33cm, 23cm, 13cm, 9cm, 6cm, 3cm, cu limitele din enumerarea ADIF.
+- Import: `.adi`/`.adif` (with or without a header, `<EOH>`, `<EOR>`, lowercase tags, type indicator `<FREQ:9:N>`), `.adx`, `.csv` (header with ADIF field names), `.json` (a list of records) and `.fff.json` (backup, `{"format":"fff-bundle","schema":1,"app":"qso",…}`).
+- Export: `.adi` (ADIF 3.1.4, header with `ADIF_VER`, `PROGRAMID`), `.adx`, `.csv` (UTF-8 with BOM), `.json`, Cabrillo 3.0, `.fff.json`.
+- ADIF fields written: STATION_CALLSIGN, OPERATOR, CALL, QSO_DATE, TIME_ON, BAND, FREQ, MODE, SUBMODE, RST_SENT, RST_RCVD, TX_PWR, MY_GRIDSQUARE, GRIDSQUARE, NAME, QTH, COMMENT, QSL_SENT, QSL_RCVD, CONTEST_ID, STX, SRX, STX_STRING, SRX_STRING, plus any other imported field.
+- Bands (ADIF 3.1): 2190m, 630m, 560m, 160m … 10m, 8m, 6m, 5m, 4m, 2m, 1.25m, 70cm, 33cm, 23cm, 13cm, 9cm, 6cm, 3cm, with the limits from the ADIF enumeration.
 
-## Tehnic
+## Technical
 
-Un singur `index.html` (HTML + CSS + JS inline, fără biblioteci, fără fonturi externe), ~165 KB. CSP: `default-src 'none'; script-src 'sha256-…'; style-src 'unsafe-inline'; img-src data: blob:; …; connect-src 'none'; worker-src blob:` — `style-src 'unsafe-inline'` și `blob:` sunt necesare pentru stilurile inline și pentru descărcarea fișierelor generate local (Blob). Fără handlere inline, fără `eval`. Înregistrările sunt imutabile, ceea ce face ieftine anularea/refacerea (100 de pași). Tabelul este paginat (100 rânduri/pagină); căutarea folosește un cache de text normalizat; duplicatele se compară doar în interiorul aceluiași indicativ. Teste: `node tests/test.mjs` (Playwright, rețea blocată; axe-core se citește dintr-o cale locală a mediului de dezvoltare): indicative pozitive/negative, distanțe față de o implementare independentă (legea cosinusurilor, decodare separată a locatorilor), round-trip ADIF/ADX/CSV/JSON/`.fff.json` cu diacritice și lungimi în octeți, 3000 de QSO la performanță, mod câmp de la tastatură, 8 limbi, axe 0 violări la 360 px și 1280 px în ambele teme.
+A single `index.html` (inline HTML + CSS + JS, no libraries, no external fonts), ~165 KB. CSP: `default-src 'none'; script-src 'sha256-…'; style-src 'unsafe-inline'; img-src data: blob:; …; connect-src 'none'; worker-src blob:` — `style-src 'unsafe-inline'` and `blob:` are needed for the inline styles and for downloading locally generated files (Blob). No inline handlers, no `eval`. Records are immutable, which makes undo/redo cheap (100 steps). The table is paginated (100 rows/page); search uses a normalized-text cache; duplicates are compared only within the same callsign. Tests: `node tests/test.mjs` (Playwright, network blocked; axe-core is read from a local path of the development environment): positive/negative callsigns, distances against an independent implementation (law of cosines, separate locator decoding), ADIF/ADX/CSV/JSON/`.fff.json` round trips with diacritics and byte lengths, 3000 QSOs for performance, field mode from the keyboard, 8 languages, axe 0 violations at 360 px and 1280 px in both themes.
 
-## Terți
+## Third parties
 
-Niciun cod terț.
+No third-party code.
 
-## Traduceri
+## Translations
 
-Interfața este disponibilă în română (implicit), engleză, franceză, italiană, spaniolă, portugheză, maghiară și germană. Traducerile fr/it/es/pt/hu/de sunt **automate și neverificate nativ**; termenii tehnici (ADIF, Cabrillo, QSO, RST, Maidenhead, DXCC) își păstrează numele. Numele țărilor din tabelul de prefixe sunt afișate în română.
+The interface is available in Romanian (default), English, French, Italian, Spanish, Portuguese, Hungarian and German. The fr/it/es/pt/hu/de translations are **machine-generated and not checked by native speakers**; technical terms (ADIF, Cabrillo, QSO, RST, Maidenhead, DXCC) keep their names. The country names in the prefix table are displayed in Romanian.
 
-## Licență
+## License
 
-MIT — vezi fișierul `LICENSE` din rădăcina depozitului.
+MIT — see the `LICENSE` file at the root of the repository.
 
-## Istoric
+## History
 
-- **1.0.0 — 2026-10-14:** prima versiune.
-- **1.0.1 — 2026-10-19:** buton „Vezi în TerRa” în dialogul Detalii QSO (locatorul corespondentului + ora QSO, fără cereri de rețea).
+- **1.0.0 — 2026-10-14:** first version.
+- **1.0.1 — 2026-10-19:** "See in TerRa" button in the QSO Details dialog (the correspondent's locator + the QSO time, no network requests).

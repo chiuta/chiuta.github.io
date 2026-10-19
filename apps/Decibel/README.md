@@ -1,61 +1,63 @@
 # Decibel
 
-**Versiune:** 1.0.0 · **Ultima actualizare:** 14 octombrie 2026
+**English** · [Română](README.ro.md) · [Français](README.fr.md) · [Italiano](README.it.md) · [Español](README.es.md) · [Português](README.pt.md) · [Deutsch](README.de.md) · [Magyar](README.hu.md)
 
-Sonometru, analizor de spectru și test auditiv orientativ, într-un singur fișier HTML. Măsoară nivelul sonor în timp real cu ponderări A, C și Z (IEC 61672, filtre IIR), constante de timp Fast/Slow, LAeq pe un interval ales, Lmax/Lmin, L10/L50/L90, histogramă, SEL și doză de zgomot față de o limită aleasă. Afișează spectrul pe benzi de 1/3 și 1/1 octavă (20 Hz–20 kHz) și FFT liniar, cu frecvența de vârf și spectrogramă. Include calibrare cu decalaj în dB, generator de zgomot roz/alb și sinus de 1 kHz, un test audiometric separat și un jurnal local de sesiuni. Completează aplicațiile de sunet FrequencyLaboratory, generator-frecvente, Aurora, CalmWaves și ASMR.
+**Version:** 1.0.0 · **Last updated:** 2026-10-14
 
-![captură](screenshot.png)
+Sound level meter, spectrum analyzer and indicative hearing test, in a single HTML file. It measures sound level in real time with A, C and Z weightings (IEC 61672, IIR filters), Fast/Slow time constants, LAeq over a chosen interval, Lmax/Lmin, L10/L50/L90, a histogram, SEL and noise dose against a chosen limit. It displays the spectrum in 1/3-octave and 1/1-octave bands (20 Hz–20 kHz) and a linear FFT, with the peak frequency and a spectrogram. It includes calibration with a dB offset, a pink/white noise and 1 kHz sine generator, a separate audiometric test and a local session log. It complements the sound apps FrequencyLaboratory, generator-frecvente, Aurora, CalmWaves and ASMR.
 
-**Live:** https://chiuta.github.io/apps/Decibel/
+![screenshot](screenshot.png)
 
-## Cum se folosește
+**Live app:** https://chiuta.github.io/apps/Decibel/
 
-1. **Măsurare:** apasă „Pornește microfonul” (browserul cere permisiunea), alege ponderarea și constanta de timp. „Marchează eveniment” (sau tasta M) pune un marcaj în grafic. „Analizează fișier audio…” și „Încarcă exemplu” folosesc același motor, fără microfon.
-2. **Calibrare:** fără calibrare, valorile sunt în dBFS (nu dB SPL). Introdu un decalaj manual sau folosește asistentul: măsoară 10 s un calibrator sau un sonometru de referință, iar tu introduci nivelul de referință. Decalajul se salvează pe profil (microfon și browser) și se aplică retroactiv.
-3. **Spectru:** benzi 1/3 sau 1/1 octavă, FFT liniar (fereastră Hann), vârf cu interpolare parabolică, spectrogramă; curbe NR doar pentru valori calibrate.
-4. **Audiogramă:** tonuri pure 250 Hz–8 kHz, metodă Hughson–Westlake simplificată. Fără calibrarea căștilor cu un sonometru rezultatul este doar un prag relativ, nu dB HL.
-5. **Jurnal:** sesiunile (dată, durată, LAeq, Lmax, locație) se salvează local; export CSV, JSON, `.fff.json` și tipărire (PDF din dialogul de tipărire). Butonul „Șterge tot” șterge toate datele locale.
+## How to use
 
-## Ce NU face și limite
+1. **Measurement:** press "Pornește microfonul" (Start microphone; the browser asks for permission), choose the weighting and the time constant. "Marchează eveniment" (Mark event, or the M key) puts a marker on the chart. "Analizează fișier audio…" (Analyze audio file…) and "Încarcă exemplu" (Load example) use the same engine, without a microphone.
+2. **Calibration:** without calibration, values are in dBFS (not dB SPL). Enter a manual offset or use the wizard: it measures a calibrator or a reference sound level meter for 10 s, and you enter the reference level. The offset is saved per profile (microphone and browser) and applied retroactively.
+3. **Spectrum:** 1/3- or 1/1-octave bands, linear FFT (Hann window), peak with parabolic interpolation, spectrogram; NR curves only for calibrated values.
+4. **Audiogram:** pure tones 250 Hz–8 kHz, simplified Hughson–Westlake method. Without calibrating the headphones against a sound level meter, the result is only a relative threshold, not dB HL.
+5. **Log:** sessions (date, duration, LAeq, Lmax, location) are saved locally; export to CSV, JSON, `.fff.json` and printing (PDF from the print dialog). The "Șterge tot" (Delete all) button deletes all local data.
 
-- **Nu este un sonometru certificat.** Microfoanele de telefon/laptop nu sunt calibrate, au răspuns în frecvență neuniform, compresie și saturează peste ~90–100 dB. Măsurătorile NU sunt valabile legal și NU înlocuiesc evaluarea expunerii la zgomot din protecția muncii; verifică legislația aplicabilă.
-- Doza folosește limite orientative (NIOSH 85 dB(A)/8 h cu rată de schimb 3 dB, recomandările UE 80/85/87 dB(A) din Directiva 2003/10/CE, sau valori proprii); nu sunt inventate valori legale.
-- Incertitudinea afișată este orientativă (±3/±4/±5 dB după metoda de calibrare, cu +5 dB în afara 35–90 dB).
-- Verificarea filtrelor față de toleranțele clasei 2 se face doar pentru filtre; tabelele și toleranțele sunt transcrise din memorie și pot conține mici erori. Peste ~8 kHz filtrele bilineare se abat de la forma analogică.
-- Lmax/Lmin/L10/L50/L90 exclud primele 0,5 s (Fast) sau 3 s (Slow). Sesiunile sub 5 s nu se salvează automat.
-- Fără curbe NC (valori nesigure); NR se bazează pe coeficienți ISO R 1996, transcriși din memorie.
-- **Audiograma nu este un test medical** și nu oferă interpretare clinică. Valorile RETSPL implicite (TDH-39) sunt editabile și transcrise din memorie. Pentru probleme de auz consultă un medic ORL sau un audiolog.
-- Modul fișier folosește primul canal, maximum 60 de minute. Bundle-urile criptate nu sunt acceptate.
-- Browserul poate ignora dezactivarea AGC/anulării ecoului/reducerii zgomotului; aplicația verifică și avertizează.
+## What it does NOT do, and limits
 
-## Confidențialitate
+- **It is not a certified sound level meter.** Phone/laptop microphones are not calibrated, have an uneven frequency response and compression, and saturate above ~90–100 dB. The measurements are NOT legally valid and do NOT replace the noise exposure assessment required by occupational safety rules; check the applicable legislation.
+- The dose uses indicative limits (NIOSH 85 dB(A)/8 h with a 3 dB exchange rate, the EU recommendations of 80/85/87 dB(A) from Directive 2003/10/EC, or your own values); no legal values are invented.
+- The displayed uncertainty is indicative (±3/±4/±5 dB depending on the calibration method, with +5 dB outside 35–90 dB).
+- Checking the filters against Class 2 tolerances is done for the filters only; the tables and tolerances were transcribed from memory and may contain small errors. Above ~8 kHz the bilinear filters deviate from the analog shape.
+- Lmax/Lmin/L10/L50/L90 exclude the first 0.5 s (Fast) or 3 s (Slow). Sessions shorter than 5 s are not saved automatically.
+- No NC curves (unreliable values); NR is based on ISO R 1996 coefficients, transcribed from memory.
+- **The audiogram is not a medical test** and provides no clinical interpretation. The default RETSPL values (TDH-39) are editable and were transcribed from memory. For hearing problems, consult an ENT doctor or an audiologist.
+- File mode uses the first channel, up to 60 minutes. Encrypted bundles are not accepted.
+- The browser may ignore the disabling of AGC/echo cancellation/noise suppression; the app checks and warns.
 
-Rulează local, nu trimite nimic. Sunetul nu este înregistrat și nu părăsește pagina; se procesează în timp real. Setările, profilurile de calibrare și jurnalul se păstrează doar în `localStorage` (prefix `fff.decibel.`), în browserul tău.
+## Privacy
 
-## Formate acceptate
+It runs locally and sends nothing. Sound is not recorded and does not leave the page; it is processed in real time. Settings, calibration profiles and the log are kept only in `localStorage` (prefix `fff.decibel.`), in your browser.
 
-Fișiere audio: WAV PCM 8/16/24/32 biți și float 32/64 (parser propriu), alte formate prin decodorul browserului. Import/export: `.fff.json`; export CSV și JSON.
+## Supported formats
 
-## Tehnic
+Audio files: WAV PCM 8/16/24/32-bit and float 32/64 (own parser), other formats through the browser's decoder. Import/export: `.fff.json`; CSV and JSON export.
 
-- Un singur `index.html`, fără biblioteci externe, fără rețea. CSP strict standard (`default-src 'none'`, script cu hash SHA-256 recalculat cu `fff-kit/lib/csp.mjs`, `connect-src 'none'`); nu a fost nevoie de adaptări ale CSP.
-- Nivel: dBFS RMS (sinus la scara completă = −3,01 dBFS); SPL = dBFS + decalaj, aplicat la afișare.
-- Ponderări: biquad-uri bilineare din polii IEC 61672, normalizate la 0 dB la 1 kHz. Timp: medie exponențială a pătratelor (125 ms / 1 s).
-- Spectru: FFT radix-2 propriu, benzi IEC 61260 în baza 10. Microfon: `getUserMedia` + `ScriptProcessorNode` (AudioWorklet evitat din cauza CSP).
-- Teste: `node tests/test.mjs` (Playwright, microfon simulat cu WAV-uri generate: sinus 1 kHz, zgomot roz, impulsuri; axe, depășire pe 360×740 și 1280×800, tastatură).
+## Technical
 
-## Terți
+- A single `index.html`, no external libraries, no network. Standard strict CSP (`default-src 'none'`, script with a SHA-256 hash recomputed with `fff-kit/lib/csp.mjs`, `connect-src 'none'`); no CSP adaptations were needed.
+- Level: dBFS RMS (a full-scale sine = −3.01 dBFS); SPL = dBFS + offset, applied at display time.
+- Weightings: bilinear biquads from the IEC 61672 poles, normalized to 0 dB at 1 kHz. Time: exponential averaging of squares (125 ms / 1 s).
+- Spectrum: own radix-2 FFT, IEC 61260 base-10 bands. Microphone: `getUserMedia` + `ScriptProcessorNode` (AudioWorklet avoided because of the CSP).
+- Tests: `node tests/test.mjs` (Playwright, microphone simulated with generated WAV files: 1 kHz sine, pink noise, impulses; axe, overflow at 360×740 and 1280×800, keyboard).
 
-Nicio bibliotecă sau resursă de la terți.
+## Third parties
 
-## Traduceri
+No third-party library or resource.
 
-Limba implicită este româna. Traducerile în franceză, italiană, spaniolă, portugheză, maghiară și germană sunt automate și nu au fost verificate de vorbitori nativi.
+## Translations
 
-## Licență
+The default language is Romanian. The translations into French, Italian, Spanish, Portuguese, Hungarian and German are automatic and have not been checked by native speakers.
 
-Licență: MIT — vezi fișierul `LICENSE` din rădăcina depozitului
+## License
 
-## Istoric
+License: MIT — see the `LICENSE` file in the repository root
 
-- 1.0.0 — 2026-10-14: prima versiune
+## History
+
+- 1.0.0 — 2026-10-14: first version

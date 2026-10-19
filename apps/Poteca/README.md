@@ -1,65 +1,67 @@
-# Poteca — vizualizator și editor de trasee GPX
+# Poteca — GPX track viewer and editor
 
-**Versiune:** 1.0.0 · **Ultima actualizare:** 14 octombrie 2026
+**English** · [Română](README.ro.md) · [Français](README.fr.md) · [Italiano](README.it.md) · [Español](README.es.md) · [Português](README.pt.md) · [Deutsch](README.de.md) · [Magyar](README.hu.md)
 
-Poteca deschide trasee GPX, GeoJSON, KML și CSV, le afișează pe o hartă locală (fără hartă de bază), calculează statistici (distanță, urcare/coborâre, timp în mișcare și oprit, viteze, pante, ture pe kilometri/mile), arată un profil de altitudine interactiv sincronizat cu harta și permite editarea traseelor (tăiere, împărțire, unire, inversare, simplificare, eliminarea săriturilor GPS, puncte manuale, waypoint-uri) și exportul lor. Totul rulează în browser, offline.
+**Version:** 1.0.0 · **Last updated:** 2026-10-14
 
-![captură](screenshot.png)
+Poteca opens GPX, GeoJSON, KML and CSV tracks, displays them on a local map (no base map), computes statistics (distance, ascent/descent, moving and stopped time, speeds, gradients, laps per kilometre/mile), shows an interactive elevation profile synchronised with the map, and lets you edit tracks (trim, split, merge, reverse, simplify, remove GPS jumps, manual points, waypoints) and export them. Everything runs in the browser, offline.
 
-Captura arată datele demonstrative sintetice („Încarcă exemplu”), generate local; nu sunt trasee reale.
+![screenshot](screenshot.png)
 
-**Live:** https://chiuta.github.io/apps/Poteca/
+The screenshot shows synthetic demo data ("Load example"), generated locally; they are not real tracks.
 
-## Cum se folosește
+**Live app:** https://chiuta.github.io/apps/Poteca/
 
-1. **Deschide fișiere** (sau trage-le în pagină): mai multe fișiere deodată. Jurnalul de import spune ce s-a citit, ce s-a ignorat și de ce.
-2. Fila **Trasee**: vizibilitate, culoare, nume, ștergere. **Statistici**: valorile, diferența dintre urcarea netezită și cea brută, tabelul de ture (km sau mile) și tabelul de segmente. Parametrii (netezire, prag de urcare, prag de oprire) se pot modifica.
-3. **Harta**: roata mouse-ului / ciupire / `+` `−` pentru zoom, tragere sau săgeți pentru deplasare, `0` pentru încadrare. Moduri: navigare, adaugă punct, mută punct, șterge punct, waypoint.
-4. **Profilul**: clic sau săgeți (Shift = pas mare) mută cursorul, sincron cu harta; coloreză după pantă, viteză sau puls; marchează A și B pentru tăiere/extragere/împărțire.
-5. Fila **Editare**: tăiere la interval, împărțire, unire, inversare, simplificare Douglas–Peucker (cu numărul de puncte rezultat afișat în prealabil), eliminarea săriturilor GPS, decalaj de timp, comparare a două trasee.
-6. Fila **Straturi**: straturi GeoJSON proprii și imagini georeferențiate (imagine + 2 puncte de control sau casetă manuală).
-7. Fila **Export**: GPX 1.1, GeoJSON, KML, CSV; SVG/PNG pentru hartă și profil; tipărire cu legendă; zonă de confidențialitate (taie primii/ultimii N metri la export).
-8. Fila **Sesiune**: copie de siguranță `.fff.json`, import, „Șterge tot”.
+## How to use
 
-## Ce NU face și limitele
+1. **Open files** (or drag them onto the page): several files at once. The import log tells you what was read, what was ignored and why.
+2. **Tracks** tab: visibility, colour, name, deletion. **Statistics**: the values, the difference between smoothed and raw ascent, the lap table (km or miles) and the segment table. The parameters (smoothing, ascent threshold, stop threshold) can be changed.
+3. **Map**: mouse wheel / pinch / `+` `−` to zoom, drag or arrow keys to pan, `0` to fit. Modes: browse, add point, move point, delete point, waypoint.
+4. **Profile**: click or arrow keys (Shift = large step) move the cursor, in sync with the map; colour by gradient, speed or heart rate; mark A and B for trimming/extracting/splitting.
+5. **Edit** tab: trim to a range, split, merge, reverse, Douglas–Peucker simplification (with the resulting number of points shown beforehand), GPS jump removal, time offset, comparison of two tracks.
+6. **Layers** tab: your own GeoJSON layers and georeferenced images (image + 2 control points or a manual bounding box).
+7. **Export** tab: GPX 1.1, GeoJSON, KML, CSV; SVG/PNG for the map and the profile; printing with a legend; privacy zone (cuts the first/last N metres on export).
+8. **Session** tab: `.fff.json` backup, import, "Delete all".
 
-- **Nu are hartă de bază.** Nu descarcă nicio dală (fără rețea). Se văd doar traseele, grila adaptivă, bara de scară și ce straturi încarci tu.
-- Imaginile de fundal: PNG/JPEG/WebP cu două puncte de control sau casetă manuală, în proiecția Web Mercator; **nu** se citește GeoTIFF, nu se corectează rotația.
-- Statisticile de urcare depind de netezire și de prag; valorile sunt estimări (altitudinea GPS e zgomotoasă). Poteca arată și valoarea brută pentru comparație.
-- Distanța este haversine (sferă R = 6 371 008,8 m); Vincenty (WGS84) este opțional și poate diferi cu până la ~0,3 %.
-- Eliminarea săriturilor este euristică: verifică rezultatul pe hartă înainte de a salva.
-- Compararea a două trasee funcționează numai pe porțiunile comune (apropiere spațială); diferențele de timp cer ca ambele trasee să aibă timp.
-- Fișierele foarte mari: 200.000 de puncte (~21 MB GPX) se importă în câteva secunde (în testul nostru, ≈3 s în aplicație), dar interfața se poate bloca scurt (până la ~2 s) la operațiile grele. Fișierele GPX peste ~4 MB nu mai sunt verificate pentru bună-formare XML; se citesc tolerant.
-- Memoria browserului limitează numărul total de puncte; sesiunea mare se salvează comprimat în IndexedDB (localStorage numai pentru sesiuni mici). Dacă salvarea eșuează, se afișează starea „nesalvat”.
-- Nu are conversie de datum, MGRS/UTM, rute pe drumuri, sau sincronizare cu dispozitive GPS.
-- Traducerile sunt automate (vezi mai jos).
+## What it does NOT do, and limits
 
-## Confidențialitate
+- **No base map.** It downloads no tiles (no network). You only see the tracks, the adaptive grid, the scale bar and the layers you load yourself.
+- Background images: PNG/JPEG/WebP with two control points or a manual bounding box, in the Web Mercator projection; GeoTIFF is **not** read, rotation is not corrected.
+- Ascent statistics depend on smoothing and threshold; the values are estimates (GPS elevation is noisy). Poteca also shows the raw value for comparison.
+- Distance is haversine (sphere R = 6,371,008.8 m); Vincenty (WGS84) is optional and may differ by up to ~0.3%.
+- Jump removal is heuristic: check the result on the map before saving.
+- Comparing two tracks works only on the shared portions (spatial proximity); time differences require both tracks to have time.
+- Very large files: 200,000 points (~21 MB GPX) import in a few seconds (in our test, ≈3 s in the app), but the interface may freeze briefly (up to ~2 s) during heavy operations. GPX files above ~4 MB are no longer checked for XML well-formedness; they are read tolerantly.
+- Browser memory limits the total number of points; a large session is saved compressed in IndexedDB (localStorage only for small sessions). If saving fails, the "unsaved" state is shown.
+- No datum conversion, MGRS/UTM, road routing, or synchronisation with GPS devices.
+- Translations are automatic (see below).
 
-Rulează local, nu trimite nimic. CSP-ul blochează orice conexiune de rețea (`connect-src 'none'`). Fișierele tale nu părăsesc dispozitivul. Se salvează local doar sesiunea (localStorage/IndexedDB, chei cu prefixul `fff.poteca.`) și preferințele (limbă, temă). „Șterge tot” elimină tot. Zona de confidențialitate taie începutul și sfârșitul traseului la export (de ex. pentru a nu dezvălui adresa de domiciliu).
+## Privacy
 
-## Formate acceptate
+It runs locally and sends nothing. The CSP blocks every network connection (`connect-src 'none'`). Your files never leave the device. Only the session (localStorage/IndexedDB, keys prefixed `fff.poteca.`) and the preferences (language, theme) are saved locally. "Delete all" removes everything. The privacy zone cuts the beginning and end of the track on export (e.g. so as not to reveal your home address).
 
-- **GPX 1.0 și 1.1**: `trk`/`trkseg`, `rte`, `wpt`; extensii Garmin TrackPointExtension (`hr`, `cad`, `atemp`); prefixe de spații de nume; fără `time`/`ele`; XML trunchiat (se recuperează ce se poate).
-- **GeoJSON** (Point, LineString, MultiLineString, Polygon → strat), **KML** (Placemark cu LineString/Point/gx:Track), **CSV** (delimitator și antet detectate, virgulă zecimală, grupare pe traseu).
-- Export: GPX 1.1 (verificat în teste cu un parser independent), GeoJSON, KML, CSV, SVG, PNG.
+## Supported formats
 
-## Tehnic
+- **GPX 1.0 and 1.1**: `trk`/`trkseg`, `rte`, `wpt`; Garmin TrackPointExtension extensions (`hr`, `cad`, `atemp`); namespace prefixes; without `time`/`ele`; truncated XML (whatever can be recovered is recovered).
+- **GeoJSON** (Point, LineString, MultiLineString, Polygon → layer), **KML** (Placemark with LineString/Point/gx:Track), **CSV** (delimiter and header detected, decimal comma, grouping by track).
+- Export: GPX 1.1 (verified in tests with an independent parser), GeoJSON, KML, CSV, SVG, PNG.
 
-Un singur fișier `index.html`, fără biblioteci externe. Proiecții locale Web Mercator și echirectangulară; desen pe canvas, cu aceeași cale de desen pentru exportul SVG/PNG și tipărire. Profil SVG accesibil (rol `slider`). Netezirea altitudinii pe fereastră de distanță, urcare/coborâre cu histerezis, viteză maximă pe fereastră de 5 s, Douglas–Peucker iterativ. Sesiune împachetată în delte întregi și comprimată gzip. CSP strict: `script-src` cu hash sha256, fără `eval`, fără handlere inline, `connect-src 'none'`; nu a fost nevoie de nicio relaxare (`worker-src blob:` și `img-src data: blob:` sunt din șablonul comun). Testele (`tests/test.mjs`, Playwright, rețea blocată, CSP aplicat) verifică statistici față de valori analitice, round-trip-uri GPX/GeoJSON/KML, toleranța simplificării, accesibilitate (axe-core, 0 încălcări) și performanța la 200.000 de puncte.
+## Technical notes
 
-## Terți
+A single `index.html` file, with no external libraries. Local Web Mercator and equirectangular projections; canvas drawing, with the same drawing path for SVG/PNG export and printing. Accessible SVG profile (`slider` role). Elevation smoothing over a distance window, ascent/descent with hysteresis, maximum speed over a 5 s window, iterative Douglas–Peucker. Session packed into integer deltas and gzip-compressed. Strict CSP: `script-src` with a sha256 hash, no `eval`, no inline handlers, `connect-src 'none'`; no relaxation was needed (`worker-src blob:` and `img-src data: blob:` come from the shared template). The tests (`tests/test.mjs`, Playwright, network blocked, CSP enforced) check statistics against analytical values, GPX/GeoJSON/KML round-trips, simplification tolerance, accessibility (axe-core, 0 violations) and performance at 200,000 points.
 
-Niciun cod terț.
+## Third parties
 
-## Traduceri
+No third-party code.
 
-Interfața are 8 limbi: română (implicită) și engleză, scrise de autor; franceză, italiană, spaniolă, portugheză, maghiară și germană sunt traduceri automate, neverificate de vorbitori nativi.
+## Translations
 
-## Licență
+The interface has 8 languages: Romanian (default) and English, written by the author; French, Italian, Spanish, Portuguese, Hungarian and German are automatic translations, not verified by native speakers.
 
-MIT — vezi fișierul `LICENSE` din rădăcina depozitului.
+## License
 
-## Istoric
+MIT — see the `LICENSE` file in the repository root.
 
-- 1.0.0 — 2026-10-14: prima versiune.
+## History
+
+- 1.0.0 — 2026-10-14: first release.

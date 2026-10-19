@@ -1,51 +1,53 @@
 # Alfabete
 
-**Versiune:** 1.0.1 · **Ultima actualizare:** 2026-10-19
+**English** · [Română](README.ro.md) · [Français](README.fr.md) · [Italiano](README.it.md) · [Español](README.es.md) · [Português](README.pt.md) · [Deutsch](README.de.md) · [Magyar](README.hu.md)
 
-Alfabete este o aplicație offline pentru alfabete și coduri: pentru fiecare cod ai o referință vizuală, un convertor în ambele sensuri, un antrenor cu verificare și o fișă tipăribilă. Acoperă Morse (audio cu WPM/Farnsworth, lumină, vibrații, Koch, ureche, ritm), braille latin de grad 1 (Unicode, BRF, SVG, scriere Perkins), alfabete fonetice (ITU/NATO, românesc, DIN 5009, francez), semafor, pigpen, Baudot/ITA2, ASCII/binar/hex/octal/Base64/URL/escape Unicode, cifruri clasice cu pași explicați și analiză de frecvență, provocarea zilei și carduri cu repetiție spațiată (SM-2). Completează aplicațiile Eter (Morse/Koch) și Atingere (braille).
+**Version:** 1.0.1 · **Last updated:** 2026-10-19
 
-![captură](screenshot.png)
+Alfabete is an offline app for alphabets and codes: for each code you get a visual reference, a two-way converter, a trainer with answer checking and a printable sheet. It covers Morse (audio with WPM/Farnsworth, light, vibration, Koch, ear training, rhythm), Latin grade 1 braille (Unicode, BRF, SVG, Perkins-style writing), phonetic alphabets (ITU/NATO, Romanian, DIN 5009, French), semaphore, pigpen, Baudot/ITA2, ASCII/binary/hex/octal/Base64/URL/Unicode escapes, classical ciphers with explained steps and frequency analysis, the daily challenge and spaced-repetition cards (SM-2). It complements the Eter (Morse/Koch) and Atingere (braille) apps.
 
-**Live:** https://chiuta.github.io/apps/Alfabete/
+![screenshot](screenshot.png)
 
-## Cum se folosește
+**Live app:** https://chiuta.github.io/apps/Alfabete/
 
-Alege un panou din bara de sus, apoi o subfilă: Referință, Convertor, antrenor, Fișă tipăribilă. În convertoare scrii în oricare dintre câmpuri, iar celălalt se actualizează. La Morse poți reda sunetul, lumina sau vibrația (unde browserul permite) și exporta WAV. La braille poți descărca BRF sau SVG. „Provocarea zilei” se generează determinist din dată. Limba (ro, en, fr, it, es, pt, hu, de) și tema (automată/luminoasă/întunecată) se schimbă din antet; textul introdus se păstrează.
+## How to use
 
-## Ce NU face și limite
+Pick a panel from the top bar, then a sub-tab: Reference, Converter, trainer, Printable sheet. In the converters you type in either field and the other one updates. For Morse you can play the sound, light or vibration (where the browser allows it) and export WAV. For braille you can download BRF or SVG. The "Daily challenge" is generated deterministically from the date. The language (ro, en, fr, it, es, pt, hu, de) and the theme (automatic/light/dark) are changed from the header; the text you entered is kept.
 
-- Braille: doar **grad 1** (literă cu literă). Gradul 2 (contracții) nu este implementat și nu este pretins. Literele românești (ă â î ș ț) nu au fost verificate față de o sursă oficială: sunt oferite profiluri selectabile (de lucru, pliere la litera de bază, personalizat), marcate ca atare. Punctuația variază între limbi.
-- Alfabetul fonetic românesc, diacriticele Morse și variantele naționale nu sunt standardizate; sunt marcate „neoficial”/„variantă”. Cele ITU/NATO și semnele ITU-R M.1677-1 sunt cele standard.
-- Dactilema: **fără figuri** (nu desenăm mâini aproximative); doar descrieri scurte și trimitere la surse oficiale. Descrierile ASL și sensul prosign-urilor apar în engleză în afara limbilor ro/en.
-- Semaforul: tabelul a fost verificat încrucișat cu o sursă publică, dar merită verificat cu o sursă oficială; semnele pentru cifre și anulare nu sunt desenate.
-- Cifrurile clasice sunt didactice, **nu oferă securitate**. Atacul asupra Cezar/Vigenère funcționează pe texte suficient de lungi, în engleză sau cu frecvențe proprii.
-- Vibrațiile depind de API-ul Vibration (lipsește pe iOS/desktop); lumina rapidă poate afecta persoanele fotosensibile.
+## What it does NOT do, and limits
 
-## Confidențialitate
+- Braille: only **grade 1** (letter by letter). Grade 2 (contractions) is not implemented and is not claimed. The Romanian letters (ă â î ș ț) have not been checked against an official source: selectable profiles are offered (working, fold to base letter, custom), labelled as such. Punctuation varies between languages.
+- The Romanian phonetic alphabet, Morse diacritics and national variants are not standardized; they are marked "unofficial"/"variant". The ITU/NATO ones and the ITU-R M.1677-1 signs are the standard ones.
+- Fingerspelling: **no figures** (we do not draw approximate hands); only short descriptions and a pointer to official sources. The ASL descriptions and the meaning of prosigns appear in English outside the ro/en languages.
+- Semaphore: the table was cross-checked against a public source, but it deserves checking against an official source; the signs for numerals and cancel are not drawn.
+- The classical ciphers are didactic and **offer no security**. The attack on Caesar/Vigenère works on sufficiently long texts, in English or with custom frequencies.
+- Vibration depends on the Vibration API (missing on iOS/desktop); fast flashing light can affect photosensitive people.
 
-Rulează local, nu trimite nimic nicăieri. Singurele date (setări, statistici, carduri, ciorne) stau în localStorage sub prefixul `fff.alfabete.`.
+## Privacy
 
-## Formate
+It runs locally and sends nothing anywhere. The only data (settings, statistics, cards, drafts) is kept in localStorage under the prefix `fff.alfabete.`.
 
-Export/import de date: `.fff.json` (format `fff-bundle`, schema 1). Ieșiri: WAV (Morse), BRF și SVG (braille), fișe tipăribile (print/PDF).
+## Formats
 
-## Tehnic
+Data export/import: `.fff.json` (`fff-bundle` format, schema 1). Outputs: WAV (Morse), BRF and SVG (braille), printable sheets (print/PDF).
 
-Un singur fișier `index.html`, JS și CSS inline, CSP strict cu hash, fără resurse externe. Teste: `node tests/test.mjs` (Playwright; 44 de teste: vectori cunoscuți, dus-întors pentru fiecare cod, durate Morse calculate și măsurate pe audio randat/clipire, axe 0 în ambele teme, layout la 360 și 1280 px).
+## Technical
 
-## Terți
+A single `index.html` file, inline JS and CSS, strict CSP with a hash, no external resources. Tests: `node tests/test.mjs` (Playwright; 44 tests: known vectors, round trip for every code, Morse durations computed and measured on rendered audio/blinking, axe 0 in both themes, layout at 360 and 1280 px).
 
-Nu folosește cod de la terți.
+## Third parties
 
-## Traduceri
+It uses no third-party code.
 
-Româna și engleza sunt scrise de mână; franceza, italiana, spaniola, portugheza, maghiara și germana sunt traduceri automate, neverificate de vorbitori nativi.
+## Translations
 
-## Licență
+Romanian and English are written by hand; French, Italian, Spanish, Portuguese, Hungarian and German are machine translations, not verified by native speakers.
 
-MIT — vezi fișierul `LICENSE` din rădăcina depozitului.
+## License
 
-## Istoric
+MIT — see the `LICENSE` file at the repository root.
 
-- 1.0.0 — 2026-10-14: prima versiune
-- 1.0.1 — 2026-10-19: panoul se alege doar din partea dinaintea primului „&” a adresei (#panou&from=…), ca linkurile din ETER/INDICATIV să deschidă panoul corect.
+## History
+
+- 1.0.0 — 2026-10-14: first release
+- 1.0.1 — 2026-10-19: the panel is chosen only from the part of the address before the first "&" (#panel&from=…), so that links from ETER/INDICATIV open the correct panel.
