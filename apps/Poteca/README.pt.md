@@ -8,7 +8,7 @@ Idiomas da interface: **Română, English, Français, Italiano, Español, Portug
 
 O Poteca abre percursos GPX, GeoJSON, KML e CSV, apresenta-os num mapa local (sem mapa de base), calcula estatísticas (distância, subida/descida, tempo em movimento e parado, velocidades, declives, voltas por quilómetro/milha), mostra um perfil altimétrico interativo sincronizado com o mapa e permite editar os percursos (cortar, dividir, juntar, inverter, simplificar, eliminar saltos de GPS, pontos manuais, waypoints) e exportá-los. Tudo corre no navegador, offline.
 
-![captura de ecrã](screenshot.png)
+![captura de ecrã](screenshot.pt.png)
 
 A captura mostra dados de demonstração sintéticos («Carregar exemplo»), gerados localmente; não são percursos reais.
 

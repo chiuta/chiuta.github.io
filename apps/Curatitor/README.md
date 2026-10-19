@@ -8,7 +8,7 @@ Interface languages: **Română, English, Français, Italiano, Español, Portugu
 
 Curatitor shows you what metadata your files are hiding (GPS location, camera model, author name, editing software, dates, comments, embedded thumbnails) and removes it locally, in the browser. Cleaning is done at the level of segments/blocks, without re-encoding where possible: the pixels of a JPEG, the frames of an MP3 or the packets of an MP4 remain byte-for-byte identical. After each cleaning, the application reopens the result and automatically verifies that no removable field is left and that the image/audio/video data is unchanged.
 
-![screenshot](screenshot.png)
+![screenshot](screenshot.en.png)
 
 **Live:** https://chiuta.github.io/apps/Curatitor/
 

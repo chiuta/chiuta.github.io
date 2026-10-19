@@ -8,7 +8,7 @@ Langues de l'interface : **Română, English, Français, Italiano, Español, Por
 
 Curatitor vous montre quelles métadonnées cachent vos fichiers (localisation GPS, modèle d'appareil, nom de l'auteur, logiciel d'édition, dates, commentaires, miniatures intégrées) et les supprime localement, dans le navigateur. Le nettoyage se fait au niveau des segments/blocs, sans ré-encodage là où c'est possible : les pixels d'un JPEG, les trames d'un MP3 ou les paquets d'un MP4 restent identiques à l'octet près. Après chaque nettoyage, l'application rouvre le résultat et vérifie automatiquement qu'il ne reste aucun champ supprimable et que les données d'image/son/vidéo sont inchangées.
 
-![capture](screenshot.png)
+![capture](screenshot.fr.png)
 
 **En ligne :** https://chiuta.github.io/apps/Curatitor/
 

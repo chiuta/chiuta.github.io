@@ -8,7 +8,7 @@ A felület nyelvei: **Română, English, Français, Italiano, Español, Portugu�
 
 A Poteca megnyitja a GPX, GeoJSON, KML és CSV formátumú nyomvonalakat, helyi térképen (alaptérkép nélkül) jeleníti meg őket, statisztikákat számol (távolság, emelkedés/lejtés, mozgással és állással töltött idő, sebességek, lejtőszögek, körök kilométerenként/mérföldenként), a térképpel szinkronizált interaktív magassági profilt mutat, és lehetővé teszi a nyomvonalak szerkesztését (vágás, szétválasztás, egyesítés, megfordítás, egyszerűsítés, GPS-ugrások eltávolítása, kézi pontok, útpontok) és exportálását. Minden a böngészőben fut, offline.
 
-![képernyőkép](screenshot.png)
+![képernyőkép](screenshot.hu.png)
 
 A képernyőkép szintetikus bemutató adatokat mutat („Példa betöltése”), amelyeket helyben állítottunk elő; nem valódi nyomvonalak.
 

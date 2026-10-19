@@ -8,7 +8,7 @@ A felület nyelvei: **Română, English, Français, Italiano, Español, Portugu�
 
 A Lexicon egy szótármotor, amely teljesen offline, egyetlen HTML-fájlban fut. Nem tartalmaz teljes szótárat: te hozod a saját szótáraidat (TSV/CSV, JSON, StarDict, dictd, XDXF), IndexedDB-ben tárolod őket, és azonnal keresel bennük: előtag, pontos, ékezetek nélküli, hozzávetőleges (Damerau–Levenshtein), ragozott alakok, teljes szöveg a definíciókban és helyettesítő karakterek (`?`, `*`). Van előzmény, kedvencek, a nap szava, térközökkel ismétlő kártyák, exportálás és helyesírás-ellenőrzés. A mellékelt készlet (345 eredeti román nyelvű szócikk) **bemutató készlet, nem teljes szótár**.
 
-![képernyőkép](screenshot.png)
+![képernyőkép](screenshot.hu.png)
 
 **Online alkalmazás:** https://chiuta.github.io/apps/Lexicon/
 

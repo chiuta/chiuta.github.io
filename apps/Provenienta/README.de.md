@@ -8,7 +8,7 @@ Oberflächensprachen: **Română, English, Français, Italiano, Español, Portug
 
 Proveniență ist ein **lokaler, experimenteller** Prüfer für C2PA-Manifeste / Content Credentials. Er liest das in eine Datei eingebettete Manifest (oder ein separates `.c2pa`-Manifest), zeigt es in einfacher Sprache an (wer signiert hat, welche Bearbeitungen deklariert wurden, ob eine KI-Erzeugung deklariert wird), in einer Zeitleiste und als technischen Baum, und prüft anschließend im Browser mit Web Crypto die COSE-Signatur, die in der Datei enthaltene Zertifikatskette, die Hashes der Assertions und die **harte Bindung** (Hard Binding) an die Bytes der Datei (er erkennt eine nach der Signierung veränderte Datei). Außerdem gibt es einen Vergleichsmodus für zwei Dateien und den Export eines JSON-/Markdown-Berichts ohne den Inhalt der Datei.
 
-![Screenshot](screenshot.png)
+![Screenshot](screenshot.de.png)
 
 **Live-App:** https://chiuta.github.io/apps/Provenienta/
 

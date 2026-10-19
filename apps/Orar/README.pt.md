@@ -8,7 +8,7 @@ Idiomas da interface: **Română, English, Français, Italiano, Español, Portug
 
 O Orar é um calendário e um horário semanal que funcionam num único ficheiro HTML, sem servidor e sem conta. Tem vistas de mês / semana / dia / agenda, semanas ISO 8601, eventos com fuso horário (Europe/Bucharest por predefinição), recorrências ao estilo RFC 5545 com um editor visual, alarmes enquanto o separador está aberto, os feriados legais romenos calculados (incluindo os móveis, a partir da Páscoa ortodoxa), importação e exportação `.ics`, modelos de horário (turnos, aula/laboratório), uma calculadora de intervalos e uma contagem decrescente.
 
-![captura de ecrã](screenshot.png)
+![captura de ecrã](screenshot.pt.png)
 
 **Aplicação online:** https://chiuta.github.io/apps/Orar/
 

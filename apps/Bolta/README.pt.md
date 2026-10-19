@@ -8,7 +8,7 @@ Idiomas da interface: **Română, English, Français, Italiano, Español, Portug
 
 O Bolta mostra o céu para qualquer local da Terra e qualquer momento entre 1900 e 2100: o Sol, a Lua (com a fase desenhada corretamente), os planetas, 1627 estrelas até à magnitude 5,0, as constelações (com nomes romenos e ingleses), a eclítica, o equador, as grelhas e uma Via Láctea estilizada. Calcula o nascer, a passagem meridiana e o pôr, pode listar os eventos próximos (fases da Lua, conjunções, oposições, elongações, estações do ano, eclipses) com exportação `.ics`, e tem uma página dedicada ao eclipse total do Sol de 2 de agosto de 2027, com circunstâncias locais, contagem decrescente, simulação dos discos e esquema da faixa de totalidade. Tudo corre no navegador, sem rede.
 
-![captura](screenshot.png)
+![captura](screenshot.pt.png)
 
 A captura mostra o estado real da aplicação para Bucareste, 14 de outubro de 2026, às 20:30 (UTC+3), com Saturno selecionado; todos os valores são calculados localmente, nada é simulado.
 

@@ -8,7 +8,7 @@ Oberflächensprachen: **Română, English, Français, Italiano, Español, Portug
 
 Schallpegelmesser, Spektrumanalysator und orientierender Hörtest in einer einzigen HTML-Datei. Er misst den Schallpegel in Echtzeit mit den Bewertungen A, C und Z (IEC 61672, IIR-Filter), den Zeitbewertungen Fast/Slow, LAeq über ein wählbares Intervall, Lmax/Lmin, L10/L50/L90, einem Histogramm, SEL und der Lärmdosis gegenüber einem gewählten Grenzwert. Er zeigt das Spektrum in Terz- und Oktavbändern (20 Hz–20 kHz) sowie eine lineare FFT mit Spitzenfrequenz und Spektrogramm. Enthalten sind eine Kalibrierung mit dB-Offset, ein Generator für rosa/weißes Rauschen und einen 1-kHz-Sinus, ein separater audiometrischer Test und ein lokales Sitzungsprotokoll. Er ergänzt die Klang-Apps FrequencyLaboratory, generator-frecvente, Aurora, CalmWaves und ASMR.
 
-![Screenshot](screenshot.png)
+![Screenshot](screenshot.de.png)
 
 **Online-App:** https://chiuta.github.io/apps/Decibel/
 

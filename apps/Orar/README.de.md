@@ -8,7 +8,7 @@ Oberflächensprachen: **Română, English, Français, Italiano, Español, Portug
 
 Orar ist ein Kalender und Wochenplan, der in einer einzigen HTML-Datei läuft, ohne Server und ohne Konto. Er bietet Monats- / Wochen- / Tages- / Agenda-Ansichten, ISO-8601-Wochen, Termine mit Zeitzone (standardmäßig Europe/Bucharest), Wiederholungen im Stil von RFC 5545 mit einem visuellen Editor, Alarme, solange der Tab geöffnet ist, berechnete rumänische gesetzliche Feiertage (einschließlich der beweglichen, ausgehend vom orthodoxen Ostern), `.ics`-Import und -Export, Planvorlagen (Schichten, Vorlesung/Labor), einen Intervallrechner und einen Countdown.
 
-![Screenshot](screenshot.png)
+![Screenshot](screenshot.de.png)
 
 **Online-Anwendung:** https://chiuta.github.io/apps/Orar/
 

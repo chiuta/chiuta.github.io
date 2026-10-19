@@ -8,7 +8,7 @@ Lingue dell'interfaccia: **Română, English, Français, Italiano, Español, Por
 
 Orar è un calendario e un orario settimanale che funzionano in un unico file HTML, senza server e senza account. Offre le viste mese / settimana / giorno / agenda, le settimane ISO 8601, eventi con fuso orario (Europe/Bucharest per impostazione predefinita), ricorrenze in stile RFC 5545 con un editor visuale, sveglie finché la scheda è aperta, le festività legali romene calcolate (comprese quelle mobili, a partire dalla Pasqua ortodossa), importazione ed esportazione `.ics`, modelli di orario (turni, lezione/laboratorio), un calcolatore di intervalli e un conto alla rovescia.
 
-![schermata](screenshot.png)
+![schermata](screenshot.it.png)
 
 **Applicazione online:** https://chiuta.github.io/apps/Orar/
 

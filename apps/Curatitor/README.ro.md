@@ -8,7 +8,7 @@ Limbile interfeței: **Română, English, Français, Italiano, Español, Portugu
 
 Curatitor îți arată ce metadate ascund fișierele tale (locație GPS, modelul aparatului, numele autorului, programul de editare, date, comentarii, miniaturi încorporate) și le elimină local, în browser. Curățarea se face la nivel de segmente/blocuri, fără re-codare acolo unde se poate: pixelii unui JPEG, cadrele unui MP3 sau pachetele unui MP4 rămân identice octet cu octet. După fiecare curățare, aplicația redeschide rezultatul și verifică automat că nu a mai rămas niciun câmp eliminabil și că datele de imagine/sunet/video sunt neschimbate.
 
-![captură](screenshot.png)
+![captură](screenshot.ro.png)
 
 **Live:** https://chiuta.github.io/apps/Curatitor/
 

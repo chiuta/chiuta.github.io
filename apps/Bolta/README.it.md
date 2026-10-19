@@ -8,7 +8,7 @@ Lingue dell'interfaccia: **Română, English, Français, Italiano, Español, Por
 
 Bolta mostra il cielo per qualsiasi luogo della Terra e qualsiasi momento tra il 1900 e il 2100: il Sole, la Luna (con la fase disegnata correttamente), i pianeti, 1627 stelle fino alla magnitudine 5,0, le costellazioni (con nomi rumeni e inglesi), l'eclittica, l'equatore, le griglie e una Via Lattea stilizzata. Calcola il sorgere, il transito al meridiano e il tramonto, può elencare gli eventi vicini (fasi lunari, congiunzioni, opposizioni, elongazioni, stagioni, eclissi) con esportazione `.ics`, e ha una pagina dedicata all'eclissi totale di Sole del 2 agosto 2027, con circostanze locali, conto alla rovescia, simulazione dei dischi e schema della fascia di totalità. Tutto funziona nel browser, senza rete.
 
-![schermata](screenshot.png)
+![schermata](screenshot.it.png)
 
 La schermata mostra lo stato reale dell'app per Bucarest, 14 ottobre 2026, ore 20:30 (UTC+3), con Saturno selezionato; tutti i valori sono calcolati localmente, nulla è simulato.
 

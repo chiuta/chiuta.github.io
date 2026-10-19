@@ -8,7 +8,7 @@ Lingue dell'interfaccia: **Română, English, Français, Italiano, Español, Por
 
 Proveniență è un verificatore **locale e sperimentale** di manifest C2PA / Content Credentials. Legge il manifest incorporato in un file (o un manifest `.c2pa` separato), lo mostra in linguaggio semplice (chi ha firmato, quali modifiche sono state dichiarate, se è dichiarata una generazione con IA), in una cronologia e come albero tecnico, poi verifica nel browser, con Web Crypto, la firma COSE, la catena di certificati contenuta nel file, gli hash delle asserzioni e il **legame forte** (hard binding) con i byte del file (rileva un file modificato dopo la firma). Ha anche una modalità di confronto tra due file e l'esportazione di un report JSON/Markdown senza il contenuto del file.
 
-![schermata](screenshot.png)
+![schermata](screenshot.it.png)
 
 **App online:** https://chiuta.github.io/apps/Provenienta/
 

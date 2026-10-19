@@ -8,7 +8,7 @@ Interface languages: **Română, English, Français, Italiano, Español, Portugu
 
 Bolta shows the sky for any place on Earth and any moment between 1900 and 2100: the Sun, the Moon (with its phase drawn correctly), the planets, 1627 stars down to magnitude 5.0, the constellations (with Romanian and English names), the ecliptic, the equator, the grids and a stylized Milky Way. It computes sunrise, meridian transit and sunset, can list the nearby events (lunar phases, conjunctions, oppositions, elongations, seasons, eclipses) with `.ics` export, and has a dedicated page for the total solar eclipse of 2 August 2027, with local circumstances, a countdown, a simulation of the discs and a diagram of the totality band. Everything runs in the browser, with no network.
 
-![screenshot](screenshot.png)
+![screenshot](screenshot.en.png)
 
 The screenshot shows the real state of the app for Bucharest, 14 October 2026, 20:30 (UTC+3), with Saturn selected; all values are computed locally, nothing is simulated.
 

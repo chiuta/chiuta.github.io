@@ -8,7 +8,7 @@ Limbile interfeței: **Română, English, Français, Italiano, Español, Portugu
 
 Lexicon este un motor de dicționar care rulează complet offline, într-un singur fișier HTML. Nu include un dicționar complet: aduci tu propriile dicționare (TSV/CSV, JSON, StarDict, dictd, XDXF), le păstrezi în IndexedDB și le cauți instant: prefix, exact, fără diacritice, aproximativ (Damerau–Levenshtein), forme flexionare, text integral în definiții și wildcard (`?`, `*`). Are istoric, favorite, cuvântul zilei, flashcards cu repetiție spațiată, export și verificare ortografică. Setul inclus (345 de intrări originale în română) este **set demonstrativ, nu un dicționar complet**.
 
-![captură](screenshot.png)
+![captură](screenshot.ro.png)
 
 **Live:** https://chiuta.github.io/apps/Lexicon/
 

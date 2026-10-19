@@ -8,7 +8,7 @@ A felület nyelvei: **Română, English, Français, Italiano, Español, Portugu�
 
 A Proveniență egy **helyi és kísérleti** ellenőrző C2PA-manifesztekhez / Content Credentials adatokhoz. Beolvassa a fájlba ágyazott manifesztet (vagy egy különálló `.c2pa` manifesztet), közérthető nyelven jeleníti meg (ki írta alá, milyen szerkesztéseket deklaráltak, deklarálnak-e MI-generálást), idővonalon és műszaki fa formájában, majd a böngészőben, a Web Crypto segítségével ellenőrzi a COSE-aláírást, a fájlban található tanúsítványláncot, az állítások (assertions) hash-eit és a fájl bájtjaihoz való **erős kötést** (hard binding) – így észleli az aláírás után módosított fájlt. Két fájl összehasonlító módja is van, és a fájl tartalma nélküli JSON/Markdown jelentést tud exportálni.
 
-![képernyőkép](screenshot.png)
+![képernyőkép](screenshot.hu.png)
 
 **Online alkalmazás:** https://chiuta.github.io/apps/Provenienta/
 

@@ -8,7 +8,7 @@ Lingue dell'interfaccia: **Română, English, Français, Italiano, Español, Por
 
 Alfabete è un'applicazione offline per alfabeti e codici: per ogni codice hai un riferimento visivo, un convertitore bidirezionale, un allenatore con verifica e una scheda stampabile. Copre il Morse (audio con WPM/Farnsworth, luce, vibrazioni, Koch, ascolto, ritmo), il braille latino di grado 1 (Unicode, BRF, SVG, scrittura Perkins), gli alfabeti fonetici (ITU/NATO, rumeno, DIN 5009, francese), il semaforo, il pigpen, il Baudot/ITA2, ASCII/binario/esadecimale/ottale/Base64/URL/sequenze di escape Unicode, i cifrari classici con passaggi spiegati e analisi delle frequenze, la sfida del giorno e le schede a ripetizione dilazionata (SM-2). Completa le applicazioni Eter (Morse/Koch) e Atingere (braille).
 
-![schermata](screenshot.png)
+![schermata](screenshot.it.png)
 
 **Applicazione online:** https://chiuta.github.io/apps/Alfabete/
 

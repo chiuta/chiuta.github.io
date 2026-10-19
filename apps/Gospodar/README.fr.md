@@ -8,7 +8,7 @@ Langues de l'interface : **Română, English, Français, Italiano, Español, Por
 
 Gospodar est un budget de ménage qui s'exécute localement, dans un seul fichier HTML, sans compte et sans synchronisation. Il tient des comptes (compte courant, espèces, carte, épargne), des catégories avec sous-catégories (jeu par défaut roumain, modifiable), des transactions avec étiquettes et notes, des virements entre comptes et des montants en plusieurs devises avec des taux saisis manuellement. Il importe des relevés CSV via un assistant de mappage des colonnes, applique des règles de catégorisation, suit les transactions récurrentes et les budgets mensuels, produit des rapports (graphiques SVG) et inclut six calculateurs aux formules transparentes. Les données sont sensibles et restent dans ce navigateur ; le chiffrement par mot de passe du jeu enregistré est facultatif.
 
-![capture d'écran](screenshot.png)
+![capture d'écran](screenshot.fr.png)
 
 **Application en ligne :** https://chiuta.github.io/apps/Gospodar/
 

@@ -8,7 +8,7 @@ Interface languages: **Română, English, Français, Italiano, Español, Portugu
 
 Alfabete is an offline app for alphabets and codes: for each code you get a visual reference, a two-way converter, a trainer with answer checking and a printable sheet. It covers Morse (audio with WPM/Farnsworth, light, vibration, Koch, ear training, rhythm), Latin grade 1 braille (Unicode, BRF, SVG, Perkins-style writing), phonetic alphabets (ITU/NATO, Romanian, DIN 5009, French), semaphore, pigpen, Baudot/ITA2, ASCII/binary/hex/octal/Base64/URL/Unicode escapes, classical ciphers with explained steps and frequency analysis, the daily challenge and spaced-repetition cards (SM-2). It complements the Eter (Morse/Koch) and Atingere (braille) apps.
 
-![screenshot](screenshot.png)
+![screenshot](screenshot.en.png)
 
 **Live app:** https://chiuta.github.io/apps/Alfabete/
 

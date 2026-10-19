@@ -8,7 +8,7 @@ Limbile interfeței: **Română, English, Français, Italiano, Español, Portugu
 
 Poteca deschide trasee GPX, GeoJSON, KML și CSV, le afișează pe o hartă locală (fără hartă de bază), calculează statistici (distanță, urcare/coborâre, timp în mișcare și oprit, viteze, pante, ture pe kilometri/mile), arată un profil de altitudine interactiv sincronizat cu harta și permite editarea traseelor (tăiere, împărțire, unire, inversare, simplificare, eliminarea săriturilor GPS, puncte manuale, waypoint-uri) și exportul lor. Totul rulează în browser, offline.
 
-![captură](screenshot.png)
+![captură](screenshot.ro.png)
 
 Captura arată datele demonstrative sintetice („Încarcă exemplu”), generate local; nu sunt trasee reale.
 

@@ -8,7 +8,7 @@ Oberflächensprachen: **Română, English, Français, Italiano, Español, Portug
 
 Bolta zeigt den Himmel für jeden Ort der Erde und jeden Zeitpunkt zwischen 1900 und 2100: die Sonne, den Mond (mit korrekt gezeichneter Phase), die Planeten, 1627 Sterne bis zur Helligkeit 5,0, die Sternbilder (mit rumänischen und englischen Namen), die Ekliptik, den Äquator, die Gitter und eine stilisierte Milchstraße. Es berechnet Aufgang, Meridiandurchgang und Untergang, kann die nahen Ereignisse auflisten (Mondphasen, Konjunktionen, Oppositionen, Elongationen, Jahreszeiten, Finsternisse) mit `.ics`-Export und hat eine eigene Seite für die totale Sonnenfinsternis vom 2. August 2027, mit lokalen Umständen, Countdown, Simulation der Scheiben und Schema des Totalitätsstreifens. Alles läuft im Browser, ohne Netzwerk.
 
-![Screenshot](screenshot.png)
+![Screenshot](screenshot.de.png)
 
 Der Screenshot zeigt den realen Zustand der App für Bukarest, 14. Oktober 2026, 20:30 Uhr (UTC+3), mit ausgewähltem Saturn; alle Werte werden lokal berechnet, nichts ist simuliert.
 

@@ -8,7 +8,7 @@ Interface languages: **Română, English, Français, Italiano, Español, Portugu
 
 Fabrica is a factory for courses and quizzes: you write a course (data, warnings, levels and lessons in simple Markdown, questions of seven types, glossary, evidence table, final test with a question bank and seed-determined draw), validate it and export it as **a single self-contained HTML file** (optionally a ZIP with a README). The generated file runs offline and has navigation, locally saved progress, spaced repetition for wrong answers, a final test, a printable completion certificate (with no accreditation value), light/dark mode and an interface in 8 languages. It includes a complete example ("How to read a nutrition label") and three starter templates.
 
-![screenshot](screenshot.png)
+![screenshot](screenshot.en.png)
 
 **Live app:** https://chiuta.github.io/apps/Fabrica/
 

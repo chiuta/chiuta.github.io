@@ -8,7 +8,7 @@ Idiomas de la interfaz: **Română, English, Français, Italiano, Español, Port
 
 Lexicon es un motor de diccionario que funciona completamente sin conexión, en un único archivo HTML. No incluye un diccionario completo: tú aportas tus propios diccionarios (TSV/CSV, JSON, StarDict, dictd, XDXF), los guardas en IndexedDB y los consultas al instante: prefijo, exacto, sin diacríticos, aproximado (Damerau–Levenshtein), formas flexionadas, texto completo en las definiciones y comodines (`?`, `*`). Tiene historial, favoritos, palabra del día, tarjetas de estudio con repetición espaciada, exportación y corrección ortográfica. El conjunto incluido (345 entradas originales en rumano) es un **conjunto de demostración, no un diccionario completo**.
 
-![captura de pantalla](screenshot.png)
+![captura de pantalla](screenshot.es.png)
 
 **Aplicación en línea:** https://chiuta.github.io/apps/Lexicon/
 

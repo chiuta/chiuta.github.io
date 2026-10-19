@@ -8,7 +8,7 @@ Lingue dell'interfaccia: **Română, English, Français, Italiano, Español, Por
 
 QSO è un log di stazione offline e non ufficiale per radioamatori: registri i collegamenti (data/ora UTC, nominativo, banda, modo, RST, locatore, QSL, contest), calcoli distanze e azimut dai locatori Maidenhead, rilevi i duplicati, importi ed esporti ADIF 3.1 (oltre a ADX, CSV, JSON, Cabrillo 3.0 di base), e vedi statistiche e una semplice mappa azimutale. Completa **ETER** (enciclopedia di radioamatorismo) e **INDICATIV** (allenatore per l'esame ANCOM), con la stessa terminologia; non li modifica e non dipende da essi.
 
-![schermata](screenshot.png)
+![schermata](screenshot.it.png)
 
 **Online:** https://chiuta.github.io/apps/QSO/
 

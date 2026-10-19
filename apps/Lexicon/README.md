@@ -8,7 +8,7 @@ Interface languages: **Română, English, Français, Italiano, Español, Portugu
 
 Lexicon is a dictionary engine that runs entirely offline, in a single HTML file. It does not ship a complete dictionary: you bring your own dictionaries (TSV/CSV, JSON, StarDict, dictd, XDXF), keep them in IndexedDB and search them instantly: prefix, exact, diacritic-insensitive, approximate (Damerau–Levenshtein), inflected forms, full text in definitions and wildcard (`?`, `*`). It has history, favourites, a word of the day, flashcards with spaced repetition, export and spell checking. The bundled set (345 original Romanian entries) is a **demo set, not a complete dictionary**.
 
-![screenshot](screenshot.png)
+![screenshot](screenshot.en.png)
 
 **Live app:** https://chiuta.github.io/apps/Lexicon/
 

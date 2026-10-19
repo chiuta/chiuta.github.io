@@ -8,7 +8,7 @@ Idiomas da interface: **Română, English, Français, Italiano, Español, Portug
 
 O Curatitor mostra-lhe que metadados escondem os seus ficheiros (localização GPS, modelo do dispositivo, nome do autor, programa de edição, datas, comentários, miniaturas incorporadas) e remove-os localmente, no navegador. A limpeza faz-se ao nível de segmentos/blocos, sem recodificação sempre que possível: os píxeis de um JPEG, as tramas de um MP3 ou os pacotes de um MP4 permanecem idênticos byte a byte. Após cada limpeza, a aplicação reabre o resultado e verifica automaticamente que não restou nenhum campo removível e que os dados de imagem/áudio/vídeo não foram alterados.
 
-![captura](screenshot.png)
+![captura](screenshot.pt.png)
 
 **Online:** https://chiuta.github.io/apps/Curatitor/
 

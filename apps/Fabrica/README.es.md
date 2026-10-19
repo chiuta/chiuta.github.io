@@ -8,7 +8,7 @@ Idiomas de la interfaz: **Română, English, Français, Italiano, Español, Port
 
 Fabrica es una fábrica de cursos y cuestionarios: escribes un curso (datos, advertencias, niveles y lecciones en Markdown sencillo, preguntas de siete tipos, glosario, tabla de pruebas, prueba final con banco de preguntas y extracción determinada por una semilla), lo validas y lo exportas como **un único archivo HTML autónomo** (opcionalmente un ZIP con un README). El archivo generado funciona sin conexión y tiene navegación, progreso guardado localmente, repetición espaciada para las preguntas falladas, prueba final, certificado de finalización imprimible (sin valor de acreditación), modo claro/oscuro e interfaz en 8 idiomas. Incluye un ejemplo completo («Cómo leer una etiqueta nutricional») y tres plantillas de partida.
 
-![captura](screenshot.png)
+![captura](screenshot.es.png)
 
 **Aplicación en línea:** https://chiuta.github.io/apps/Fabrica/
 

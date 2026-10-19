@@ -8,7 +8,7 @@ Oberflächensprachen: **Română, English, Français, Italiano, Español, Portug
 
 Arbore ist ein Genealogieprogramm, das vollständig im Browser läuft: Personen (mehrere Namen, Mädchennamen, unvollständige Daten, Orte, Berufe, eigene Ereignisse, Notizen, Quellen, Schlagwörter, kleine Fotos), Familien (Partner, Art der Verbindung, leibliche/adoptierte/Stiefkinder, Heirat und Scheidung), GEDCOM-5.5.1-Import/-Export, SVG-Diagramme (Ahnentafel über 3–7 Generationen, Nachkommen, Sanduhr, Fächer), persönliches Datenblatt, Zeitleiste, Ortsliste, Verwandtschaftsrechner mit rumänischer Terminologie und Datenqualitätsprüfungen (Duplikate, Unstimmigkeiten, Zusammenführen mit Rückgängig-Funktion).
 
-![Screenshot](screenshot.png)
+![Screenshot](screenshot.de.png)
 
 **Online-App:** https://chiuta.github.io/apps/Arbore/
 

@@ -8,7 +8,7 @@ Interface languages: **Română, English, Français, Italiano, Español, Portugu
 
 Gospodar is a household budget that runs locally, in a single HTML file, with no account and no sync. It keeps accounts (current account, cash, card, savings), categories with subcategories (a default Romanian set, editable), transactions with tags and notes, transfers between accounts and amounts in several currencies with manually entered exchange rates. It imports CSV statements through a column-mapping wizard, applies categorisation rules, tracks recurring transactions and monthly budgets, produces reports (SVG charts) and includes six calculators with transparent formulas. The data is sensitive and stays in this browser; password encryption of the saved set is optional.
 
-![screenshot](screenshot.png)
+![screenshot](screenshot.en.png)
 
 **Live app:** https://chiuta.github.io/apps/Gospodar/
 

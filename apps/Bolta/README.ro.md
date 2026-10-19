@@ -8,7 +8,7 @@ Limbile interfeței: **Română, English, Français, Italiano, Español, Portugu
 
 Bolta arată cerul pentru orice loc de pe Pământ și orice moment între 1900 și 2100: Soarele, Luna (cu faza desenată corect), planetele, 1627 de stele până la magnitudinea 5,0, constelațiile (cu nume românești și englezești), ecliptica, ecuatorul, grilele și o Cale Lactee stilizată. Calculează răsăritul, trecerea la meridian și apusul, poate lista evenimentele apropiate (faze lunare, conjuncții, opoziții, elongații, anotimpuri, eclipse) cu export `.ics` și are o pagină dedicată eclipsei totale de Soare din 2 august 2027, cu circumstanțe locale, numărătoare inversă, simulare a discurilor și schemă a benzii totalității. Totul rulează în browser, fără rețea.
 
-![captură](screenshot.png)
+![captură](screenshot.ro.png)
 
 Captura arată starea reală a aplicației pentru București, 14 octombrie 2026, ora 20:30 (UTC+3), cu Saturn selectat; toate valorile sunt calculate local, nimic nu este simulat.
 

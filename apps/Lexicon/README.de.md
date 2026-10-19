@@ -8,7 +8,7 @@ Oberflächensprachen: **Română, English, Français, Italiano, Español, Portug
 
 Lexicon ist eine Wörterbuch-Engine, die vollständig offline in einer einzigen HTML-Datei läuft. Sie enthält kein vollständiges Wörterbuch: Du bringst deine eigenen Wörterbücher mit (TSV/CSV, JSON, StarDict, dictd, XDXF), speicherst sie in IndexedDB und durchsuchst sie sofort: Präfix, exakt, ohne diakritische Zeichen, näherungsweise (Damerau–Levenshtein), Flexionsformen, Volltext in den Definitionen und Platzhalter (`?`, `*`). Es gibt Verlauf, Favoriten, Wort des Tages, Karteikarten mit verteilter Wiederholung, Export und Rechtschreibprüfung. Das mitgelieferte Set (345 originale Einträge auf Rumänisch) ist ein **Demo-Set, kein vollständiges Wörterbuch**.
 
-![Screenshot](screenshot.png)
+![Screenshot](screenshot.de.png)
 
 **Online-App:** https://chiuta.github.io/apps/Lexicon/
 

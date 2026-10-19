@@ -8,7 +8,7 @@ Idiomas de la interfaz: **Română, English, Français, Italiano, Español, Port
 
 Proveniență es un verificador **local y experimental** de manifiestos C2PA / Content Credentials. Lee el manifiesto incrustado en un archivo (o un manifiesto `.c2pa` independiente), lo muestra en lenguaje sencillo (quién firmó, qué ediciones declaró, si declara generación con IA), en una cronología y como árbol técnico, y luego verifica en el navegador, con Web Crypto, la firma COSE, la cadena de certificados contenida en el archivo, los hashes de las aserciones y el **enlace fuerte** (hard binding) con los bytes del archivo (detecta un archivo modificado después de la firma). También tiene un modo de comparación entre dos archivos y exporta un informe JSON/Markdown sin el contenido del archivo.
 
-![captura de pantalla](screenshot.png)
+![captura de pantalla](screenshot.es.png)
 
 **Aplicación en línea:** https://chiuta.github.io/apps/Provenienta/
 

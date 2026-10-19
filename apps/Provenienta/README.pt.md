@@ -8,7 +8,7 @@ Idiomas da interface: **Română, English, Français, Italiano, Español, Portug
 
 O Proveniență é um verificador **local e experimental** de manifestos C2PA / Content Credentials. Lê o manifesto incorporado num ficheiro (ou um manifesto `.c2pa` separado), apresenta-o em linguagem simples (quem assinou, que edições declarou, se declara geração com IA), numa cronologia e como árvore técnica, e depois verifica no navegador, com Web Crypto, a assinatura COSE, a cadeia de certificados contida no ficheiro, os hashes das asserções e a **ligação forte** (hard binding) aos bytes do ficheiro (deteta um ficheiro modificado depois de assinado). Tem também um modo de comparação entre dois ficheiros e exporta um relatório JSON/Markdown sem o conteúdo do ficheiro.
 
-![captura de ecrã](screenshot.png)
+![captura de ecrã](screenshot.pt.png)
 
 **Aplicação online:** https://chiuta.github.io/apps/Provenienta/
 
