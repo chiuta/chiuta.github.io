@@ -28,7 +28,9 @@ export function cspMeta(html) {
   return m ? {tag: m[0], index: m.index} : null;
 }
 
-/** Rescrie lista de hash-uri din script-src. Dacă script-src conține 'unsafe-inline' nu face nimic. */
+/** Rescrie lista de hash-uri din script-src. Regulă unică (și pentru tools/fixcsp.py, care doar apelează această funcție):
+ *  dacă script-src conține 'unsafe-inline', hash-urile se ELIMINĂ (un hash lângă 'unsafe-inline' face browserul să ignore 'unsafe-inline',
+ *  deci handlerele inline ar fi blocate); altfel lista de hash-uri devine exact mulțimea scripturilor inline executabile. */
 export function recomputeCspHashes(html) {
   const meta = cspMeta(html);
   if (!meta) return {html, changed: false, note: 'fără CSP'};
@@ -37,7 +39,12 @@ export function recomputeCspHashes(html) {
   const content = cm[2] ?? cm[3];
   const sm = content.match(/(^|;\s*)(script-src)([^;]*)/);
   if (!sm) return {html, changed: false, note: 'fără script-src'};
-  if (/'unsafe-inline'/.test(sm[3])) return {html, changed: false, note: 'unsafe-inline'};
+  if (/'unsafe-inline'/.test(sm[3])) {
+    if (!/'sha(256|384|512)-[^']+'/.test(sm[3])) return {html, changed: false, note: 'unsafe-inline'};
+    const nd = 'script-src' + sm[3].replace(/\s*'sha(?:256|384|512)-[^']+'/g, '');
+    const nc = content.replace(/(^|;\s*)script-src[^;]*/, (_, p) => p + nd);
+    return {html: html.replace(meta.tag, () => meta.tag.replace(cm[0], `content=${q}${nc}${q}`)), changed: true, note: 'unsafe-inline: hash-uri eliminate'};
+  }
   const hashes = [...new Set(inlineScripts(html).map(s => `'sha256-${sha256b64(s.body)}'`))];
   const have = new Set((sm[3].match(/'sha256-[^']+'/g) || []));
   if (have.size === hashes.length && hashes.every(h => have.has(h))) return {html, changed: false, note: 'neschimbat'};

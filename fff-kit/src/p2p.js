@@ -41,6 +41,26 @@
     }
     return PREFIX + '.' + (kind === 'offer' ? 'o' : 'a') + '.' + method + '.' + toB64u(body);
   }
+  /** Candidate ICE: format RFC 8839 strict, doar typ host/srflx/relay, adresă IP sau nume mDNS (*.local), port 1..65535, cel mult MAX_CAND. */
+  const MAX_CAND = 32;
+  const CAND_RE = /^a=candidate:[A-Za-z0-9+\/]{1,32} [12] (?:udp|tcp|UDP|TCP) \d{1,10} (\S{2,255}) (\d{1,5}) typ (host|srflx|relay)(?: raddr (\S{2,255}) rport (\d{1,5}))?(?: (?:tcptype (?:active|passive|so)|generation \d{1,3}|ufrag [A-Za-z0-9+\/]{1,256}|network-id \d{1,5}|network-cost \d{1,5}))*$/;
+  function okAddr(a) {
+    if (/^\d{1,3}(?:\.\d{1,3}){3}$/.test(a)) return a.split('.').every(x => +x <= 255);
+    if (/^[0-9A-Fa-f:.]{2,45}$/.test(a) && a.includes(':')) return /^[0-9A-Fa-f:.]+$/.test(a) && (a.match(/::/g) || []).length <= 1;
+    return /^[A-Za-z0-9-]{1,63}\.local$/.test(a);        // mDNS (Chrome ascunde IP-urile locale)
+  }
+  function validCandidates(lines) {
+    let n = 0;
+    for (const l of lines) {
+      if (!l.startsWith('a=candidate:')) continue;
+      if (++n > MAX_CAND) return false;
+      const m = CAND_RE.exec(l);
+      if (!m) return false;
+      if (!okAddr(m[1]) || +m[2] < 1 || +m[2] > 65535) return false;
+      if (m[4] !== undefined && (!okAddr(m[4]) || +m[5] > 65535)) return false;
+    }
+    return true;
+  }
   async function decodeSignal(code) {
     code = String(code == null ? '' : code).replace(/\s+/g, '').replace(/^["'`]+|["'`]+$/g, '');
     if (code.length > 40000) throw coded('bad-code', 'badCode');
@@ -56,6 +76,7 @@
     try { sdp = new TextDecoder('utf-8', {fatal: true}).decode(bytes); } catch (e) { throw coded('bad-code', 'badCode'); }
     const lines = sdp.split('\n');
     if (lines[0] !== 'v=0' || lines.length > 400 || lines.some(l => !/^[a-z]=/.test(l))) throw coded('bad-code', 'badCode');
+    if (!validCandidates(lines)) throw coded('bad-code', 'badCode');
     return {kind: m[1] === 'o' ? 'offer' : 'answer', sdp: lines.join('\r\n') + '\r\n'};
   }
 
@@ -280,6 +301,7 @@
     o = o || {};
     let sess = session, seq = 0, seed = o.seed != null ? o.seed >>> 0 : randSeed(), rng = mulberry(seed), started = false, stopped = false, cid = 0, helloTries = 0, helloTimer = 0;
     const isHost = () => sess.role === 'host', log = [], ahead = new Map(), pending = new Map(), offs = [];
+    const AHEAD_MAX = 256;
     const keep = o.history || 500, stats = {resyncs: 0, rejected: 0, dupes: 0, applied: 0};
     const fail = (reason, extra) => { const e = Object.assign(new Error(reason), {code: reason}, extra || {}); if (o.onError) o.onError(e); return e; };
     const send = m => sess.send(m);
@@ -301,7 +323,10 @@
     }
     function applyRemote(m) {                                  // oaspete: o mutare numerotată de la gazdă
       if (m.seq <= seq) { stats.dupes++; return; }
-      if (m.seq > seq + 1) { ahead.set(m.seq, m); send({t: 'need', from: seq}); return; }
+      if (m.seq > seq + 1) {
+        if (m.seq - seq > AHEAD_MAX || ahead.size >= AHEAD_MAX) { send({t: 'need', from: seq}); return; }   // plafon: un partener rău nu umple memoria
+        ahead.set(m.seq, m); send({t: 'need', from: seq}); return;
+      }
       const mine = m.from === 'guest' && pending.has(m.cid);
       const r = tryApply(m.move, {seq: m.seq, from: m.from, mine, rng});
       if (!r.ok) { fail('diverged', {detail: r.reason}); stats.resyncs++; send({t: 'need', from: seq, force: true}); return; }
@@ -634,5 +659,5 @@ dialog.fff-p2p .fff-p2p-warn{background:#3b2f0e;color:#ffe9b0;border-color:#d9a4
     return api;
   }
 
-  F.p2p = {supported, host, join, dialog, lockstep, qrView, frames, assembler, encodeSignal, decodeSignal, parseStun, limits: {maxMessage: MAX_MSG, singleQr: SINGLE_MAX, frameLen: FRAME_LEN}};
+  F.p2p = {supported, host, join, dialog, lockstep, qrView, frames, assembler, encodeSignal, decodeSignal, parseStun, validCandidates, limits: {maxCandidates: MAX_CAND, maxAhead: 256, maxMessage: MAX_MSG, singleQr: SINGLE_MAX, frameLen: FRAME_LEN}};
 })();

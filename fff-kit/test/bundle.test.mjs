@@ -94,7 +94,7 @@ const tamper = (o) => JSON.stringify({...E, ...o});
 const ct = Buffer.from(E.ct, 'base64'); ct[5] ^= 1;
 check('ct modificat → bad_password', (await impEnc(tamper({ct: ct.toString('base64')}), 'parola-secreta')).code === 'bad_password');
 check('iter modificat → bad_password', (await impEnc(tamper({iter: 310001}), 'parola-secreta')).code === 'bad_password');
-check('iter absurd respins ca format', (await impEnc(tamper({iter: 1}), 'parola-secreta')).code === 'format' && (await impEnc(tamper({iter: 1e12}), 'parola-secreta')).code === 'format');
+check('iter absurd respins (cod iter)', (await impEnc(tamper({iter: 1}), 'parola-secreta')).code === 'iter' && (await impEnc(tamper({iter: 1e12}), 'parola-secreta')).code === 'iter');
 check('app din antet modificat → app greșit', (await impEnc(tamper({app: 'alta'}), 'parola-secreta')).code === 'app');
 const okE = await impEnc(ee.text, 'parola-secreta');
 check('parolă corectă → importă', okE.keys === 3 && (await A.page.evaluate(() => localStorage.getItem('fx.count'))) === '3');

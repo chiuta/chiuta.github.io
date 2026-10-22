@@ -222,23 +222,32 @@
     return d;
   }
 
+  /** Număr cu separator de mii după limbă (aceeași formă ca în textele traduse). */
+  function fmtNum(n) {
+    var sep = {en: ',', it: '.', de: '.'}[F.lang()] || ' ';
+    return String(n).replace(/\B(?=(\d{3})+(?!\d))/g, sep);
+  }
+
   function backup() {
     var bk = section('bk', T('bk_h'));
     var status = h('p', {role: 'status', class: 'fff-res'});
     function say(msg, kind) { status.className = 'fff-res' + (kind ? ' fff-' + kind : ''); status.textContent = msg; }
     function fail(e) { say((e && e.message) || String(e), 'bad'); }
-    bk.appendChild(h('p', {class: 'fff-mut fff-sm', text: T('bk_hint')}));
+    bk.appendChild(h('p', {class: 'fff-mut fff-sm', text: T('bk_hint', {iter: fmtNum(F.bundle.iterations)})}));
 
     /* export criptat */
     var encRow = h('div', {class: 'fff-box', hidden: ''});
-    var pw1 = field(T('bk_pw'), 'password', 'new-password'), pw2 = field(T('bk_pw2'), 'password', 'new-password');
+    var pw1 = field(T('bk_pw', {n: F.bundle.minPassword}), 'password', 'new-password'), pw2 = field(T('bk_pw2'), 'password', 'new-password');
     var goEnc = btn(T('bk_go'), 'fff-primary', function () {
       if (pw1.input.value !== pw2.input.value) return say(T('pw_mismatch'), 'bad');
       F.bundle.export({encrypt: true, password: pw1.input.value}).then(function (r) {
+        pwStrength.textContent = '';
         say(T('ok_export_enc', {file: r.filename, n: r.keys}), 'ok'); pw1.input.value = pw2.input.value = ''; encRow.hidden = true; encBtn.setAttribute('aria-expanded', 'false');
       }).catch(fail);
     });
-    encRow.appendChild(pw1.wrap); encRow.appendChild(pw2.wrap); encRow.appendChild(h('div', {class: 'fff-row'}, goEnc));
+    var pwStrength = h('p', {role: 'status', class: 'fff-mut fff-sm fff-res'});
+    pw1.input.addEventListener('input', function () { pwStrength.textContent = pw1.input.value ? F.t('bundle', ['pw_weak', 'pw_fair', 'pw_strong'][F.bundle.passwordStrength(pw1.input.value)]) : ''; });
+    encRow.appendChild(pw1.wrap); encRow.appendChild(pwStrength); encRow.appendChild(pw2.wrap); encRow.appendChild(h('div', {class: 'fff-row'}, goEnc));
 
     /* import */
     var impRow = h('div', {class: 'fff-box', hidden: ''});
@@ -258,7 +267,7 @@
     }
 
     var expB = btn(T('bk_export'), '', function () {
-      F.bundle.export().then(function (r) { say(T('ok_export', {file: r.filename, n: r.keys}), 'ok'); }).catch(fail);
+      F.bundle.export().then(function (r) { if (r.cancelled) return say(T('cancelled')); say(T('ok_export', {file: r.filename, n: r.keys}), 'ok'); }).catch(fail);
     });
     var encBtn = btn(T('bk_export_enc'), '', function () {
       var open = encRow.hidden;

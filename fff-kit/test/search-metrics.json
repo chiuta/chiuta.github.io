@@ -145,13 +145,13 @@
   "documente": 6000,
   "termeni_unici": 16509,
   "postari": 435361,
-  "indexare_ms": 1126,
-  "interogare_medie_ms_cu_fuzzy_si_ngrame": 4.05,
-  "interogare_medie_ms_doar_BM25_stemming": 0.79,
-  "export_ms": 113,
+  "indexare_ms": 1779,
+  "interogare_medie_ms_cu_fuzzy_si_ngrame": 17.17,
+  "interogare_medie_ms_doar_BM25_stemming": 9.41,
+  "export_ms": 214,
   "export_octeti": 6354484,
   "export_fara_documente_octeti": 2445557,
   "export_gzip_octeti": 1744755,
-  "import_ms": 108
+  "import_ms": 269
  }
 }

@@ -202,6 +202,65 @@ function removeKit(dirArg) {
 }
 
 /* ---------------- check ---------------- */
+function readConfigSafe(dir) { try { return readConfig(dir); } catch { return {}; } }
+
+/** Cheile din bundle.js (SENSITIVE_RE) sunt sursa unică a modelului „cheie sensibilă”. */
+const SENSITIVE_RE = (() => { const m = rd('src/bundle.js').match(/SENSITIVE_RE\s*=\s*\/(.*)\/([a-z]*);/); return m ? new RegExp(m[1], m[2]) : /api[-_]?key|token|secret|password|passwd|totp/i; })();
+
+/** Excepții justificate de la politicile CSP: fff.config.json → "cspExceptions": [{"rule":"script-unsafe-inline","reason":"..."}] (sau șirul "regulă: motiv"). */
+const CSP_RULES = ['script-unsafe-inline', 'script-unsafe-eval', 'no-script-src', 'hash-outside-meta'];
+function parseCspExceptions(list) {
+  const rules = new Set(), problems = [];
+  for (const e of Array.isArray(list) ? list : []) {
+    const rule = typeof e === 'string' ? e.split(':')[0].trim() : e && e.rule;
+    const reason = typeof e === 'string' ? e.split(':').slice(1).join(':').trim() : e && String(e.reason || '').trim();
+    if (!CSP_RULES.includes(rule)) { problems.push(`cspExceptions: regulă necunoscută „${rule}” (valide: ${CSP_RULES.join(', ')})`); continue; }
+    if (!reason || reason.length < 8) { problems.push(`cspExceptions: excepția „${rule}” fără justificare (câmpul „reason”, min. 8 caractere) — ignorată`); continue; }
+    rules.add(rule);
+  }
+  return {rules, problems};
+}
+/** Politici CSP: unsafe-inline/unsafe-eval în script-src, lipsa script-src/default-src (sau a CSP), hash-uri în afara metei CSP principale. Întoarce mesaje. */
+function cspPolicyIssues(html, cfg = {}) {
+  const exc = parseCspExceptions(cfg.cspExceptions), out = [...exc.problems];
+  const flag = (rule, msg) => { if (!exc.rules.has(rule)) out.push(`CSP [${rule}]: ${msg} — excepție justificată: fff.config.json → cspExceptions`); };
+  const p = cspParts(html);
+  if (!p) { flag('no-script-src', 'pagina nu are <meta http-equiv="Content-Security-Policy">'); return out; }
+  const dirs = cspDirectives(p.content);
+  const eff = dirs['script-src'] || dirs['default-src'];
+  if (!eff) flag('no-script-src', 'CSP fără script-src și fără default-src (scripturile nu sunt restricționate)');
+  else {
+    if (eff.includes("'unsafe-inline'")) flag('script-unsafe-inline', "script-src permite 'unsafe-inline' (folosește hash-uri)");
+    if (eff.includes("'unsafe-eval'")) flag('script-unsafe-eval', "script-src permite 'unsafe-eval'");
+  }
+  const metas = html.match(/<meta[^>]+http-equiv=["']Content-Security-Policy["'][^>]*>/gi) || [];
+  const hashes = new Set(inlineScripts(html).map((s) => `'sha256-${sha256b64(s.body)}'`));
+  const extra = metas.slice(1).filter((m) => [...hashes].some((h) => m.includes(h)));
+  if (extra.length) flag('hash-outside-meta', 'hash-uri de scripturi apar într-o a doua meta CSP, în afara celei principale (verificarea și recalcularea citesc doar prima)');
+  return out;
+}
+/** Aplicații cu chei de stocare sensibile (token, api key, parolă…) fără bundle.redact(...). */
+function sensitiveWithoutRedactor(html) {
+  const mods = currentModules(html);
+  if (!mods.includes('bundle')) return [];
+  const src = html.replace(BLOCK_RE, '').replace(INFO_RE, '');
+  const keys = detectStorageKeys(src).filter((k) => SENSITIVE_RE.test(k));
+  if (!keys.length || /\.redact\s*\(/.test(src)) return [];
+  return [`chei sensibile în stocare (${keys.slice(0, 5).join(', ')}) fără FFF.bundle.redact(): exportul necriptat le conține (în kit ≥1.1.3 cere confirmare + criptare)`];
+}
+/** Compară blocul kit din pagină cu cel generat din sursă (aceeași versiune). Întoarce mesaje despre părțile care diferă. */
+function kitDrift(html, mods) {
+  const cur = html.match(BLOCK_RE);
+  if (!cur) return [];
+  const slug = metaContent(html, 'fff-app'), disable = metaContent(html, 'fff-disable');
+  let exp;
+  try { exp = buildBlock(slug, mods, {disable}).text; } catch { return []; }
+  if (cur[0] === exp) return [];
+  const parts = (t) => { const o = {}; const re = /\/\* ---- fff-kit\/([a-z0-9-]+) ---- \*\/\n([\s\S]*?)(?=\/\* ---- fff-kit\/|<\/script>)/g; let m; while ((m = re.exec(t))) o[m[1]] = m[2]; const st = t.match(/<style id="fff-style">([\s\S]*?)<\/style>/); o.__css = st ? st[1] : ''; const i18 = t.match(/id="fff-i18n">([\s\S]*?)<\/script>/); o.__i18n = i18 ? i18[1] : ''; return o; };
+  const a = parts(cur[0]), b = parts(exp);
+  const diff = [...new Set([...Object.keys(a), ...Object.keys(b)])].filter((k) => a[k] !== b[k]).map((k) => k === '__css' ? 'css' : k === '__i18n' ? 'i18n' : k);
+  return [`derivă: blocul kit din pagină diferă de sursa kitului v${kitVersion()}${diff.length ? ' (' + diff.join(', ') + ')' : ''} — rulează apply`];
+}
 function canonicalize(s) {
   return s.replace(/data-fff-hash="[0-9a-f]*"/g, 'data-fff-hash=""').replace(/"sha256":"[0-9a-f]*"/g, '"sha256":""');
 }
@@ -223,6 +282,7 @@ function checkKit(dirArg, opt = {}) {
     if (kitScript) for (const m of mods) if (!kitScript[1].includes(`/* ---- fff-kit/${m} ---- */`)) errors.push(`modulul ${m} declarat dar absent din script`);
     const ver = (kitScript && kitScript[1].match(/\/\* fff-kit ([0-9.]+) \*\//)) || [];
     if (ver[1] && ver[1] !== kitVersion()) warns.push(`kit v${ver[1]} în fișier, v${kitVersion()} disponibilă (rulează apply)`);
+    else for (const d of kitDrift(html, mods)) warns.push(d);
   }
   const c = checkCspHashes(html);
   if (!c.ok) errors.push(`hash-uri CSP lipsă pentru ${c.missing.length} script(uri) inline`);
@@ -233,6 +293,9 @@ function checkKit(dirArg, opt = {}) {
     const eff = dirs['style-src'] || dirs['default-src'];
     if (sm && eff && !eff.includes("'unsafe-inline'") && !eff.includes(`'sha256-${sha256b64(sm[1])}'`)) errors.push('stilul kitului nu este permis de CSP (style-src)');
   }
+  const cfg = readConfigSafe(path.dirname(file));
+  for (const m of cspPolicyIssues(html, cfg)) add(true, m);
+  for (const m of sensitiveWithoutRedactor(html)) warns.push(m);
   if (!metaContent(html, 'application-version')) add(true, 'lipsește <meta name="application-version">');
   if (!metaContent(html, 'last-updated')) add(true, 'lipsește <meta name="last-updated">');
   if (!/\bid=["']?app-version\b/.test(html)) add(true, 'lipsește elementul #app-version');
@@ -500,11 +563,12 @@ function usage() {
   console.log(`fff-kit build
   node build.mjs apply <dir> --slug S --modules core,label,bundle[,qr,p2p,srs,tts,pii,search,ephem] [--disable "motiv"]
   node build.mjs remove <dir>
-  node build.mjs check <dir> [--lax] [--json]
+  node build.mjs check <dir> [--lax] [--json]   (strict: politicile CSP sunt erori; --lax: avertismente; excepții: fff.config.json → cspExceptions)
+  node build.mjs fixcsp <dir>                    (recalculează hash-urile CSP ale scripturilor inline)
   node build.mjs info <dir> [--slug S] [--probe]
 Module: ${ORDER.join(', ')}`);
 }
-export {applyKit, removeKit, checkKit, runInfo, validateInfo, detectLangs, isValidHost, canonicalize, sha256hex, ORDER, kitVersion};
+export {applyKit, removeKit, checkKit, cspPolicyIssues, parseCspExceptions, sensitiveWithoutRedactor, kitDrift, SENSITIVE_RE, runInfo, validateInfo, detectLangs, isValidHost, canonicalize, sha256hex, ORDER, kitVersion};
 
 if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
   const {pos, opt} = parseArgs(process.argv.slice(2));
@@ -513,6 +577,12 @@ if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.me
     try {
       if (!cmd || !dir) { usage(); process.exit(cmd ? 2 : 0); }
       if (cmd === 'apply') { const r = applyKit(dir, opt); console.log(`apply ok: ${r.file} · slug=${r.slug} · module=${r.modules.join(',')}`); }
+      else if (cmd === 'fixcsp') {
+        const {file} = resolveTarget(dir);
+        const r = recomputeCspHashes(readHtml(file));
+        if (r.changed) fs.writeFileSync(file, r.html);
+        console.log(`fixcsp ${r.changed ? 'rescris' : 'neschimbat'}: ${file} (${r.note})`);
+      }
       else if (cmd === 'remove') { const r = removeKit(dir); console.log(r.removed ? `remove ok: ${r.file}` : `nimic de scos în ${r.file}`); }
       else if (cmd === 'check') {
         const r = checkKit(dir, opt);
