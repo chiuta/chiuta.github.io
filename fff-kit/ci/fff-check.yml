@@ -1,0 +1,169 @@
+# Workflow REUTILIZABIL fff-check — se instalează în hub ca .github/workflows/fff-check.yml
+# (sursa canonică: fff-kit/ci/fff-check.yml; instalare: node fff-kit/tools/add-ci.mjs --hub <cale-hub>).
+# Depozitele de aplicații îl apelează cu `uses: chiuta/chiuta.github.io/.github/workflows/fff-check.yml@main` (vezi ci/caller.yml).
+# Ce face, pe o copie curată a aplicației:
+#   1. build.mjs check (STRICT implicit; `lax: true` doar ca etapă de tranziție)  — CSP, hash-uri, reguli native-dialog / unprefixed-storage / cdn-without-sri / i18n-parity
+#   2. derivă de kit: `release --dry-run --bump none` nu trebuie să modifice index.html / app.json (kitul din pagină = sursa kitului din hub la ref-ul ales)
+#   3. testele aplicației (tests/*.mjs), cu Playwright + Chromium instalate de workflow; rețeaua nu e necesară
+#   4. axe-core pe pagină și pe dialogul „Transparență”, la 360 și 1366 px, temă luminoasă și întunecată
+name: fff-check
+
+on:
+  workflow_call:
+    inputs:
+      app-dir:
+        description: 'Directorul aplicației (cel cu index.html), relativ la rădăcina depozitului'
+        type: string
+        default: '.'
+      kit-repo:
+        description: 'Depozitul hubului care conține fff-kit/'
+        type: string
+        default: 'chiuta/chiuta.github.io'
+      kit-ref:
+        description: 'Ramura/eticheta/commit-ul hubului din care se ia kitul (fixează o etichetă pentru rulări reproductibile)'
+        type: string
+        default: 'main'
+      lax:
+        description: 'check cu --lax (politicile și regulile noi devin avertismente). Doar pentru tranziție.'
+        type: boolean
+        default: false
+      drift:
+        description: 'Verifică deriva de kit (pagina trebuie să fie identică cu ce ar produce kitul curent)'
+        type: boolean
+        default: true
+      run-tests:
+        description: 'Rulează tests/*.mjs ale aplicației'
+        type: boolean
+        default: true
+      test-glob:
+        description: 'Fișierele de test (glob, relativ la app-dir)'
+        type: string
+        default: 'tests/*.mjs'
+      axe:
+        description: 'Rulează axe-core pe pagină și pe dialogul Transparență'
+        type: boolean
+        default: true
+      node-version:
+        type: string
+        default: '20'
+      playwright-version:
+        type: string
+        default: '1.49.1'
+      axe-version:
+        type: string
+        default: '4.10.2'
+      test-timeout-minutes:
+        type: number
+        default: 15
+
+permissions:
+  contents: read
+
+concurrency:
+  group: fff-check-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  check:
+    name: fff-check
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    env:
+      APP_DIR: ${{ inputs.app-dir }}
+      KIT: ${{ github.workspace }}/.fff-hub/fff-kit
+      PLAYWRIGHT_BROWSERS_PATH: ${{ github.workspace }}/.pw-browsers
+    steps:
+      - name: Aplicația
+        uses: actions/checkout@v4
+
+      - name: Kitul (fff-kit din hub)
+        uses: actions/checkout@v4
+        with:
+          repository: ${{ inputs.kit-repo }}
+          ref: ${{ inputs.kit-ref }}
+          path: .fff-hub
+          sparse-checkout: |
+            fff-kit
+          persist-credentials: false
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ inputs.node-version }}
+
+      - name: Sumar
+        shell: bash
+        run: |
+          set -euo pipefail
+          KV=$(node -e "console.log(require('fs').readFileSync(process.env.KIT+'/src/core.js','utf8').match(/KIT_VERSION\s*=\s*'([^']+)'/)[1])")
+          echo "### fff-check" >> "$GITHUB_STEP_SUMMARY"
+          echo "- aplicație: \`$APP_DIR\` · kit \`$KV\` din \`${{ inputs.kit-repo }}@${{ inputs.kit-ref }}\` · lax: \`${{ inputs.lax }}\`" >> "$GITHUB_STEP_SUMMARY"
+          test -f "$APP_DIR/index.html" || { echo "::error::lipsește $APP_DIR/index.html"; exit 1; }
+
+      - name: check ${{ inputs.lax && '(--lax)' || '(strict)' }}
+        shell: bash
+        run: |
+          set -o pipefail
+          FLAGS=""; if [ "${{ inputs.lax }}" = "true" ]; then FLAGS="--lax"; fi
+          node "$KIT/build.mjs" check "$APP_DIR" $FLAGS | tee check.txt
+          { echo; echo '```'; cat check.txt; echo '```'; } >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Derivă de kit
+        if: ${{ inputs.drift }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          node "$KIT/build.mjs" release "$APP_DIR" --dry-run --bump none --json --lax > drift.json || true
+          node -e '
+            const r = JSON.parse(require("fs").readFileSync("drift.json", "utf8"));
+            const bad = (r.changed || []).filter((f) => /^(index\.html|app\.json)$/.test(f));
+            if (!Object.keys(r.steps || {}).length) { console.log("::error::release dry-run a eșuat: " + r.errors.join("; ")); process.exit(1); }
+            if (bad.length) { console.log("::error::derivă de kit: " + bad.join(", ") + " ar fi modificate de `node fff-kit/build.mjs release " + process.env.APP_DIR + " --bump none` — rulează comanda local și fă commit"); process.exit(1); }
+            console.log("fără derivă: pagina coincide cu kitul " + r.kit);
+          '
+
+      - name: Playwright + axe-core
+        if: ${{ inputs.run-tests || inputs.axe }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          npm install --no-save --no-package-lock --no-audit --no-fund playwright@${{ inputs.playwright-version }} axe-core@${{ inputs.axe-version }}
+          npx playwright install --with-deps chromium
+          CH=$(node -e "console.log(require('playwright').chromium.executablePath())")
+          echo "CHROMIUM_PATH=$CH" >> "$GITHUB_ENV"
+          echo "FFF_AXE=$PWD/node_modules/axe-core/axe.min.js" >> "$GITHUB_ENV"
+          echo "AXE_PATH=$PWD/node_modules/axe-core/axe.min.js" >> "$GITHUB_ENV"
+          # compatibilitate cu testele încă neportate (căi /opt/…): vezi fff-kit/tools/portable-tests.mjs
+          if grep -rqs "/opt/node-tools\|/opt/pw-browsers" "$APP_DIR/tests" 2>/dev/null; then
+            sudo mkdir -p /opt/node-tools /opt/pw-browsers
+            echo '{"name":"ci-node-tools","private":true}' | sudo tee /opt/node-tools/package.json >/dev/null
+            sudo ln -sfn "$PWD/node_modules" /opt/node-tools/node_modules
+            sudo ln -sfn "$CH" /opt/pw-browsers/chromium
+            echo "::notice::teste cu căi /opt/…: shim creat (rulează tools/portable-tests.mjs --write ca să dispară nevoia)"
+          fi
+
+      - name: Testele aplicației
+        if: ${{ inputs.run-tests }}
+        timeout-minutes: ${{ inputs.test-timeout-minutes }}
+        shell: bash
+        working-directory: ${{ inputs.app-dir }}
+        env:
+          TEST_GLOB: ${{ inputs.test-glob }}
+        run: |
+          shopt -s nullglob
+          files=( $TEST_GLOB )
+          if [ ${#files[@]} -eq 0 ]; then echo "::notice::niciun test ($TEST_GLOB)"; exit 0; fi
+          fail=0
+          for f in "${files[@]}"; do
+            echo "::group::$f"
+            if ! node "$f"; then echo "::error file=$f::testul a eșuat"; fail=1; fi
+            echo "::endgroup::"
+          done
+          exit $fail
+
+      - name: axe-core (pagină + dialogul Transparență; 360 și 1366 px; luminos/întunecat)
+        if: ${{ inputs.axe }}
+        shell: bash
+        run: |
+          set -o pipefail
+          node "$KIT/ci/axe-check.mjs" "$APP_DIR" | tee axe.txt
+          { echo; echo '#### axe-core'; echo '```'; cat axe.txt; echo '```'; } >> "$GITHUB_STEP_SUMMARY"

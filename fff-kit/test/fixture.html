@@ -26,12 +26,12 @@ footer{margin-top:24px;font-size:.85rem}
 <footer>Demo · <span id="app-version">v 1.2.3 · 2026-10-14</span></footer>
 <script>
 (function(){
-  var c = parseInt(localStorage.getItem('fx.count') || '0', 10);
+  var c = parseInt(localStorage.getItem('demo-fff.count') || '0', 10);
   var out = document.getElementById('count'), note = document.getElementById('note'), lg = document.getElementById('lg');
   out.textContent = c;
-  note.value = localStorage.getItem('fx.note') || '';
-  document.getElementById('inc').addEventListener('click', function(){ c++; out.textContent = c; localStorage.setItem('fx.count', String(c)); });
-  note.addEventListener('input', function(){ localStorage.setItem('fx.note', note.value); });
+  note.value = localStorage.getItem('demo-fff.note') || '';
+  document.getElementById('inc').addEventListener('click', function(){ c++; out.textContent = c; localStorage.setItem('demo-fff.count', String(c)); });
+  note.addEventListener('input', function(){ localStorage.setItem('demo-fff.note', note.value); });
   lg.value = localStorage.getItem('lang') || 'ro';
   document.documentElement.lang = lg.value;
   lg.addEventListener('change', function(){ localStorage.setItem('lang', lg.value); document.documentElement.lang = lg.value; });

@@ -14,7 +14,7 @@ const here = path.dirname(fileURLToPath(import.meta.url));
 const opt = Object.fromEntries(process.argv.slice(2).map((a) => { const m = /^--([a-z-]+)(?:=(.*))?$/.exec(a); return m ? [m[1], m[2] === undefined ? true : m[2]] : [a, true]; }));
 const timeout = (opt.timeout === undefined ? 900 : Number(opt.timeout)) * 1000;
 const only = opt.only ? String(opt.only).split(',') : null, skip = new Set(opt.skip ? String(opt.skip).split(',') : []);
-const AXE = process.env.FFF_AXE || '/tmp/claude-0/-home-claude/78529928-3825-51c3-b9bd-0e81655ab6bc/scratchpad/sweep/node_modules/axe-core/axe.min.js';
+import {AXE} from './_axe.mjs';
 const tests = [
   ...fs.readdirSync(here).filter((f) => f.endsWith('.test.mjs')).sort().map((f) => ({name: f.replace(/\.test\.mjs$/, ''), file: f})),
   {name: 'ephem.browser', file: 'ephem.browser.mjs'},

@@ -1,4 +1,4 @@
-# fff-kit — specificație (14 octombrie 2026)
+# fff-kit — specificație (v1.2.0, 22 octombrie 2026)
 
 Scop: module comune pentru aplicațiile „fără frontiere”, **lipite în fiecare `index.html`** de un pas de build (aplicația rămâne funcțională ca fișier descărcat, offline, fără server). Regula „un singur fișier” NU mai e strictă: sunt permise fișiere auxiliare opționale (manifest, sw.js, icoane, `app.json`, teste, README, capturi), dar `index.html` singur trebuie să rămână complet funcțional offline.
 
@@ -56,6 +56,15 @@ SM-2: `FFF.srs.create(deckId)`, `.add(items)`, `.next(now)`, `.grade(id,0..5)`, 
 
 ## FFF.ephem (astronomie)
 Biblioteca `src/ephem.js`: `FFF.ephem.sun(jd)`, `.moon(jd)`, `.planet(name,jd)` (Mercur…Neptun; poziții geocentrice ecliptice și ecuatoriale, distanță), `.toHorizontal(ra,dec,jd,lat,lon)`, `.rise/.set/.transit`, `.sidereal`, `.jdFromDate`, `.dateFromJd`, `.moonPhase`, `.eclipseLocal(besselianOrComputed, lat, lon, elev)` pentru Eclipsa din 2 august 2027 (contacte C1–C4, magnitudine, obscurare, durată, altitudine Soare). Algoritmi: Meeus (VSOP87 trunchiat, ELP2000-82 trunchiat) cu erori documentate (≤ 1′ Soare/planete, ≤ 10′ Lună). Teste împotriva valorilor publicate (efemeride JPL/USNO/NASA Espenak pentru eclipsa din 2 aug 2027: maxim ≈ 10:07 UTC, durată maximă ≈ 6 m 23 s lângă Luxor).
+
+## FFF.dialog (v1.2.0)
+`src/dialog.js` + `i18n/dialog.json` (8 limbi). `FFF.dialog.{confirm,alert,prompt,choice,show,toast,notify,closeAll,isOpen,open}`; `<dialog>` modal nativ cu `role=dialog`, `aria-labelledby/describedby`, Escape, capcană de focus, restaurarea focusului; toasturi în regiuni `aria-live` (`popover=manual`, max. 4). Ținte ≥ 44 px pe `pointer:coarse`; tema prin `--fff-*` (+ `--fff-bad/ok`, `--fff-toast-*`). Aliasuri `ffAsk/ffShow/ffPrompt` (doar dacă lipsesc). `FFF.bundle.confirm` e un strat peste el când modulul există.
+
+## FFF.store (v1.2.0)
+`src/store.js`. Prefix `<slug>.` (rezervă la citire: `fff.<slug>.`), JSON sigur, erori/cote prinse (`lastError`, `store:error`), `migrate(map,{wrap,dryRun,dropOld})` idempotentă (copiază, verifică, șterge vechiul; nu suprascrie niciodată valori noi). Cheile `<slug>.*` sunt „cunoscute” pentru bundle/freeze. Ordinea modulelor: `core, store, dialog, label, bundle, …`.
+
+## Reguli de verificare, release, CI (v1.2.0)
+`check`: `unprefixed-storage`, `native-dialog`, `cdn-without-sri`, `i18n-parity` (avertisment în lax, eroare în strict; excepții în `fff.config.json → exceptions`, prefixe în `storagePrefixes`). `build.mjs release|release-all` (bump, apply păstrând slug/module/disable, fixcsp, info, check; `--dry-run`, raport JSON). `ci/fff-check.yml` (workflow reutilizabil), `ci/caller.yml`, `tools/add-ci.mjs`, `tools/portable-tests.mjs`, `tools/i18n-parity.mjs`. Detalii în README.
 
 ## Teste
 `fff-kit/test/*.mjs` (Playwright cu `createRequire('/opt/node-tools/package.json')`, chromium `/opt/pw-browsers/chromium`, rețea blocată). Fiecare modul: teste unitare în pagină + test de integrare pe un `index.html` demonstrativ `fff-kit/test/fixture.html`.

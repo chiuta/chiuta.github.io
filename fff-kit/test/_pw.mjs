@@ -5,11 +5,12 @@ import path from 'node:path';
 import {createRequire} from 'node:module';
 import {fileURLToPath} from 'node:url';
 import {applyKit, runInfo} from '../build.mjs';
+import {AXE} from './_axe.mjs';
 
 const require = createRequire('/opt/node-tools/package.json');
 export const {chromium} = require('playwright');
 export const HERE = path.dirname(fileURLToPath(import.meta.url));
-export const AXE = process.env.FFF_AXE || '/tmp/claude-0/-home-claude/78529928-3825-51c3-b9bd-0e81655ab6bc/scratchpad/sweep/node_modules/axe-core/axe.min.js';
+export {AXE};
 export const FIXTURE = fs.readFileSync(path.join(HERE, 'fixture.html'), 'utf8');
 
 export function tmpDir(prefix = 'fffk-') { return fs.mkdtempSync(path.join(process.env.FFF_TMP || os.tmpdir(), prefix)); }
@@ -24,7 +25,7 @@ export function makeApp(html, {slug = 'demo-fff', modules = 'core,label,bundle',
   return {dir, file, url: 'file://' + file};
 }
 export async function launch() {
-  return chromium.launch({executablePath: '/opt/pw-browsers/chromium', args: ['--no-sandbox']});
+  return chromium.launch({executablePath: process.env.CHROMIUM_PATH || '/opt/pw-browsers/chromium', args: ['--no-sandbox']});
 }
 /** Context cu rețeaua blocată; colectează erori. */
 export async function newPage(browser, opts = {}) {

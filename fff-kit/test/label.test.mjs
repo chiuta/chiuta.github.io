@@ -19,11 +19,11 @@ check('click deschide <dialog> modal', await page.evaluate(() => { const d = doc
 const txt = await page.evaluate(() => document.querySelector('dialog.fff-dlg').innerText);
 check('conține secțiunile cerute', ['Transparență', 'Demo FFF', 'Rețea', 'Stocare', 'Permisiuni', 'Fișier', 'Copie de siguranță'].every((s) => txt.includes(s)), txt.slice(0, 200));
 check('rețea: gazda declarată + nota din fff.config.json', txt.includes('example.org') && txt.includes('Nota demo de rețea.'));
-check('stocare: chei + octeți', /fx\.count\s+\d+ B/.test(txt) && txt.includes('chei'), txt.match(/Stocare[\s\S]{0,200}/)?.[0]);
+check('stocare: chei + octeți', /demo-fff\.count\s+\d+ B/.test(txt) && txt.includes('chei'), txt.match(/Stocare[\s\S]{0,200}/)?.[0]);
 check('permisiuni: localStorage listat', txt.includes('localStorage'));
 check('fișier: SHA-256 declarat + dimensiune', txt.includes(await page.evaluate(() => document.documentElement.getAttribute('data-fff-hash'))) && /Dimensiune: [\d.]+ KB/.test(txt));
 check('selfModifying din fff.config.json → avertisment în dialog', txt.includes('își poate salva propria copie'));
-check('kit: versiune și module', txt.includes('fff-kit v1.1.4') && txt.includes('core, label, bundle'));
+check('kit: versiune și module', txt.includes('fff-kit v1.2.0') && txt.includes('core, label, bundle'));
 await page.keyboard.press('Escape'); await page.waitForTimeout(150);
 check('Esc închide și elimină dialogul din DOM', await page.evaluate(() => document.querySelectorAll('dialog').length === 0));
 check('focusul revine pe #app-version', await page.evaluate(() => document.activeElement && document.activeElement.id === 'app-version'));
@@ -37,10 +37,10 @@ check('click pe fundal închide', !(await page.evaluate(() => FFF.label.isOpen()
 
 console.log('stocare live');
 await page.click('#app-version');
-await page.evaluate(() => localStorage.setItem('fx.big', 'x'.repeat(5000)));
+await page.evaluate(() => localStorage.setItem('demo-fff.big', 'x'.repeat(5000)));
 await page.waitForTimeout(1800);
 const live = await page.evaluate(() => document.querySelector('dialog.fff-dlg').innerText);
-check('lista de stocare se actualizează live (fx.big ≈ 4.9 KB)', /fx\.big\s+4\.9 KB/.test(live), live.match(/fx\.big.*/)?.[0]);
+check('lista de stocare se actualizează live (demo-fff.big ≈ 4.9 KB)', /demo-fff\.big\s+4\.9 KB/.test(live), live.match(/demo-fff\.big.*/)?.[0]);
 await page.evaluate(() => FFF.label.close());
 
 console.log('verificator de hash');

@@ -13,7 +13,7 @@ await page.waitForTimeout(500);
 console.log('FFF.app / meta');
 const A = await page.evaluate(() => ({app: FFF.app, v: FFF.version, mods: FFF.core.modules(), disabled: FFF.core.disabled}));
 check('FFF.app = {slug,name,version,updated}', A.app.slug === 'demo-fff' && A.app.name === 'Demo FFF' && A.app.version === '1.2.3' && A.app.updated === '2026-10-14', A.app);
-check('FFF.version și module', A.v === '1.1.4' && A.mods.join() === 'core' && A.disabled === false, A);
+check('FFF.version și module', A.v === '1.2.0' && A.mods.join() === 'core' && A.disabled === false, A);
 
 console.log('lang / onLang');
 const L = await page.evaluate(async () => {
@@ -69,7 +69,7 @@ const S = await page.evaluate(() => {
   const o = {};
   o.raw = JSON.stringify(Object.keys(localStorage).sort());
   o.idx = JSON.parse(localStorage.getItem('fff.demo-fff.__keys'));
-  o.count = localStorage.getItem('fx.count');
+  o.count = localStorage.getItem('demo-fff.count');
   o.native = /\[native code\]/.test(Storage.prototype.setItem.toString());
   localStorage.setItem('extra.k', '1');
   localStorage.setItem('fff.demo-fff.mine', '2'); // cheile fff.* nu se indexează
@@ -81,19 +81,19 @@ const S = await page.evaluate(() => {
   o.ik = FFF.store.indexKeys();
   return o;
 });
-check('cheile aplicației rămân neschimbate (fără redenumire)', S.count === '2' && S.raw.includes('"fx.count"') && S.raw.includes('"fx.note"') && S.raw.includes('"lang"'), S.raw);
-check('index fff.<slug>.__keys cu cheile atinse', S.idx.join() === 'fx.count,fx.note,lang', S.idx);
+check('cheile aplicației rămân neschimbate (fără redenumire)', S.count === '2' && S.raw.includes('"demo-fff.count"') && S.raw.includes('"demo-fff.note"') && S.raw.includes('"lang"'), S.raw);
+check('index fff.<slug>.__keys cu cheile atinse', S.idx.join() === 'demo-fff.count,demo-fff.note,lang', S.idx);
 check('cheia nouă se indexează, fff.* nu', S.idx2.includes('extra.k') && !S.idx2.some((k) => k.startsWith('fff.')), S.idx2);
 check('removeItem scoate din index', !S.idx3.includes('extra.k'), S.idx3);
 check('sessionStorage nu e observat', S.noSession);
-check('indexKeys = indexate + fff.<slug>.* (fără indexul propriu)', S.ik.includes('fx.count') && S.ik.includes('fff.demo-fff.mine') && !S.ik.includes('fff.demo-fff.__keys'), S.ik);
+check('indexKeys = indexate + fff.<slug>.* (fără indexul propriu)', S.ik.includes('demo-fff.count') && S.ik.includes('fff.demo-fff.mine') && !S.ik.includes('fff.demo-fff.__keys'), S.ik);
 check('getItem pe cheie preexistentă o indexează', await page.evaluate(() => { localStorage.clear(); return true; }));
 const pre = await newPage(browser);
 await pre.ctx.addInitScript(() => { try { if (!localStorage.getItem('__seeded')) { localStorage.setItem('old.key', 'v'); localStorage.setItem('__seeded', '1'); } } catch (e) { /* ignorat */ } });
 await pre.page.goto(app.url);
 await pre.page.waitForTimeout(300);
 const idxPre = await pre.page.evaluate(() => { localStorage.getItem('old.key'); return JSON.parse(localStorage.getItem('fff.demo-fff.__keys')); });
-check('init-script (înaintea kitului) vs. kit: cheile citite ulterior se indexează', idxPre.includes('old.key') && idxPre.includes('fx.count') === false, idxPre);
+check('init-script (înaintea kitului) vs. kit: cheile citite ulterior se indexează', idxPre.includes('old.key') && idxPre.includes('demo-fff.count') === false, idxPre);
 
 console.log('FFF.store');
 const ST = await page.evaluate(() => {

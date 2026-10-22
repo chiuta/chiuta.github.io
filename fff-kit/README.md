@@ -1,10 +1,10 @@
 # fff-kit
 
-**Versiune:** 1.1.4 · **Ultima actualizare:** 22 octombrie 2026
+**Versiune:** 1.2.0 · **Ultima actualizare:** 22 octombrie 2026
 
 Module comune pentru aplicațiile „fără frontiere”, **lipite în fiecare `index.html`** de un pas de build. Aplicația rămâne un fișier care funcționează descărcat, offline, fără server. Nimic din kit nu face cereri de rețea.
 
-Acest README acoperă nucleul: `core`, `label` („Transparență”) și `bundle` (copie de siguranță `.fff.json`). Celelalte module (`qr`, `p2p`, `srs`, `tts`, `pii`, `search`, `ephem`) au propriile fișiere `src/<nume>.js` + `i18n/<nume>.json` și se includ cu același `build.mjs`; specificația lor este în `SPEC.md`.
+Acest README acoperă nucleul: `core`, `label` („Transparență”) și `bundle` (copie de siguranță `.fff.json`). Modulele `dialog` și `store` (1.2.0) sunt descrise în „Novități în 1.2.0”. Celelalte module (`qr`, `p2p`, `srs`, `tts`, `pii`, `search`, `ephem`) au propriile fișiere `src/<nume>.js` + `i18n/<nume>.json` și se includ cu același `build.mjs`; specificația lor este în `SPEC.md`.
 
 ## Cum se aplică
 
@@ -98,6 +98,68 @@ LC_ALL=C sed -E 's/data-fff-hash="[0-9a-f]*"/data-fff-hash=""/g; s/"sha256":"[0-
 
 `sizeBytes` este dimensiunea fișierului final; build-ul găsește prin iterație punctul fix (cifrele lui apar în fișier).
 
+## Novități în 1.2.0
+
+Module noi (opt-in: `node build.mjs apply <dir> --modules core,store,dialog,label,bundle`; aplicațiile existente nu se schimbă până nu le adaugi): **`dialog`**, **`store`**; reguli noi în `check`; comenzile `release` / `release-all`; CI reutilizabil; `tools/portable-tests.mjs`; `tools/i18n-parity.mjs`.
+
+### FFF.dialog (modulul `dialog`)
+
+Dialoguri și notificări accesibile, în locul `alert/confirm/prompt` native. Toate sunt `<dialog>` modal nativ (`showModal`), cu `role="dialog"`, `aria-modal`, `aria-labelledby`/`aria-describedby`, Escape (via evenimentul `cancel`), capcană de focus (Tab/Shift+Tab) și restaurarea focusului la elementul care a deschis dialogul.
+
+* `await FFF.dialog.confirm(mesaj, {title, yes, no, danger, focus})` → `true` / `false` (Escape = `false`; focusul inițial e pe „Anulează”, sau pe „Da” cu `focus:'yes'`; `title:false` = fără titlu).
+* `await FFF.dialog.alert(mesaj, {title, ok})` → `undefined` la închidere.
+* `await FFF.dialog.prompt(mesaj, valoareImplicită, {title, yes, no, placeholder, type, multiline, maxlength, required, validate})` → șir sau `null` (Escape/Anulează). `validate(v)` întoarce `true` sau un text de eroare, afișat în `role="alert"`.
+* `FFF.dialog.choice(mesaj, [{label, value, primary, danger}], {title})` → `value` al butonului ales sau `null` (Escape); `FFF.dialog.show(mesaj, text, {title, ok})` afișează un text selectat, în citire (pentru copiere).
+* `FFF.dialog.toast(text, {type:'info|success|warning|error', timeout, action})` și `FFF.dialog.notify(...)` (sinonim): regiune `aria-live` (politicoasă; `error`/`warning` → asertivă), maximum 4 simultane, cronometrul se oprește la hover/focus, `popover="manual"` (deasupra dialogurilor modale; sub un modal sunt vizibile, dar inerte). Regiunile se creează la nevoie și se scot la 1,5 s după ultimul toast, deci nu rămân în `outerHTML`.
+* `FFF.dialog.closeAll()`, `FFF.dialog.isOpen()`.
+* Texte în 8 limbi (`i18n/dialog.json`, în limba `FFF.lang()`); țintele au minimum 44 px pe `pointer:coarse`. Tema: `--fff-bg/fg/muted/line/btn/accent/accent-fg/font` plus `--fff-bad`, `--fff-ok` și, pentru toasturi, `--fff-toast-bg`, `--fff-toast-fg`, `--fff-toast-accent`.
+* `FFF.bundle.confirm` (dialogurile de import/export) este acum un strat peste `FFF.dialog` când modulul e prezent; altfel rămâne implementarea veche.
+
+**Migrare din `ffAsk` / `ffShow` / `ffPrompt`.** Modulul definește `window.ffAsk`, `window.ffShow`, `window.ffPrompt` ca aliasuri (doar dacă aplicația nu le definește deja): `ffAsk(mesaj, opț)` → `FFF.dialog.confirm`, `ffShow(mesaj, text, opț)` → `FFF.dialog.show`, `ffPrompt(mesaj, valoare, opț)` → `FFF.dialog.prompt`, toate întorc promisiuni, fără titlu implicit. Pași: (1) adaugă `dialog` la module; (2) șterge blocul propriu `ffdlg` (CSS + JS) din aplicație, ca aliasurile kitului să preia apelurile; (3) înlocuiește treptat `ffAsk(...)` cu `FFF.dialog.confirm(...)`; (4) regula `native-dialog` din `check` găsește apelurile `alert(`/`confirm(`/`prompt(` rămase.
+
+### FFF.store (modulul `store`)
+
+Stocare cu prefix de slug, JSON sigur: `FFF.store.get(k, implicit)`, `set(k, v)`, `remove(k)`, `keys()`, `has(k)`, `owns(numeComplet)`, `appPrefix` (`"<slug>."`), `lastError`.
+
+* Cheile se scriu ca `<slug>.<k>`; citirea cade (rezervă) pe `fff.<slug>.<k>` (spațiul vechi al kitului, folosit de `srs`/`tts`), apoi pe memorie.
+* Nu aruncă niciodată: cotă depășită, `localStorage` blocat, JSON circular/BigInt → `set` întoarce `false`, valoarea rămâne în memorie, `lastError = {op, key, quota, message}` și se emite `store:error` pe `FFF.bus`.
+* Integrare: cheile `<slug>.*` sunt „cunoscute” pentru `FFF.bundle` (export/import/ștergere, fără avertismentul de chei nedeclarate), iar `FFF.store.freeze()` (restaurare) le blochează ca pe toate scrierile.
+* **`FFF.store.migrate({'vechi':'nou', 'prefix_*':'nou.*'}, {wrap, dryRun, dropOld})`** → `{moved, same, conflicts, missing, errors, frozen}`. Idempotentă: copiază valoarea brută, verifică citirea înapoi, abia apoi șterge cheia veche; **nu suprascrie niciodată** o valoare nouă (identică → doar șterge vechea; diferită → `conflicts`, rămân ambele). La cotă depășită cheia veche rămâne. Nu atinge chei `fff.*`; nu face nimic cât timp stocarea e înghețată. Emite `store:migrated`.
+
+**Rețetă de migrare într-o aplicație existentă** (cheile literale `count`, `note`, `theme_dark` → `<slug>.…`): (1) adaugă `store` (înaintea `bundle`) la module; (2) la pornire, înainte de prima citire: `FFF.store.migrate({count:'count', note:'note', theme_dark:'theme', 'save_*':'slot.*'});` (rulează la fiecare pornire, e ieftină și idempotentă); (3) înlocuiește `localStorage.getItem('count')` cu `FFF.store.get('count', 0)` etc.; (4) copiile de siguranță `.fff.json` vechi, cu nume vechi de chei, se importă tot; apelează `migrate` după import (ascultă `bundle:imported`). Dacă aplicația are date mari sau chei dinamice, păstrează cheile și doar prefixează-le (`storagePrefixes` în `fff.config.json` le acceptă pentru regula `unprefixed-storage`).
+
+### Reguli noi în `build.mjs check`
+
+Avertismente în `--lax` (implicit la `release --lax`), **erori** în modul strict (implicit). Sunt euristice (scanner de comentarii/șiruri, nu parser): chei sau apeluri construite dinamic nu se văd.
+
+| regulă | ce caută |
+|---|---|
+| `unprefixed-storage` | chei literale `getItem/setItem/removeItem/localStorage['…']` și constante `…KEY = '…'` fără prefixul slugului (`<slug>`, `<slug>.`, `_`, `:`, `-`, `/` sau camelCase), fără `fff.`. Acceptate fără prefix: `lang`, `language`, `locale` (le citește `FFF.lang()`) și sondele `__t`. Prefixe suplimentare: `fff.config.json → storagePrefixes`. `sessionStorage` e ignorat. |
+| `native-dialog` | apeluri directe `alert(`/`confirm(`/`prompt(` (și `window.…`) în JS inline și în atribute `on*`. Metodele (`x.confirm(…)`) și definițiile nu contează. |
+| `cdn-without-sri` | `<script src>`, `<link rel=stylesheet|modulepreload|preload as=script|style>` și `createElement('script')` + `.src` către `http(s)://` extern (nu `localhost`) fără `integrity`. |
+| `i18n-parity` | chei lipsă între limbi în dicționarele paginii (formate: limbă→chei, cheie→limbi, tablouri pe limbă, scripturi JSON, tabele `|`). Un dicționar completat la rulare (`T[l].x = …`) nu se vede: suprimă justificat. |
+
+**Excepții** în `fff.config.json`: `{"exceptions":[{"rule":"native-dialog","reason":"min. 8 caractere"}], "storagePrefixes":["acordaj"]}` (regulile CSP existente se suprimă tot cu `cspExceptions`; ambele liste sunt citite). Scanarea de paritate i18n poate rula și singură: `node tools/i18n-parity.mjs --app <dir|fișier> [--used] [--json] [--max N]` (cod de ieșire 0 = paritate, 1 = lipsuri, 2 = utilizare; `--used` verifică și `data-i18n`).
+
+### `release` și `release-all`
+
+```
+node build.mjs release <dir> [--bump patch|minor|none] [--to X.Y.Z] [--date AAAA-LL-ZZ] [--slug S] [--add-modules a,b] [--modules lista] [--lax] [--dry-run] [--no-tests] [--no-readme] [--json] [--init]
+node build.mjs release-all <rădăcină> [aceleași opțiuni] [--only a,b] [--skip a,b] [--report raport.json]
+```
+
+Pași: (1) ridicarea versiunii (`--bump`, implicit `patch`; `none` = nu o schimbă) în toate locurile standard: `<meta application-version>` și `last-updated`, textul `#app-version`, `sw.js` (`VERSION="…"`), `README*.md` (linia „Versiune · Ultima actualizare”, 8 limbi), versiuni scrise în teste (rândurile despre versiunea kitului nu se ating); (2) `apply` kit **păstrând** slugul, modulele și `fff-disable` existente (`--add-modules` adaugă); (3) `fixcsp`; (4) `info` (`app.json`, `data-fff-hash`); (5) `check` (strict implicit, `--lax` pentru primul val). `--dry-run` lucrează pe o copie temporară și nu scrie nimic în aplicație. `release-all` descoperă `<rădăcină>/<depozit>/index.html` și `<rădăcină>/chiuta.github.io/apps/*/index.html` (nu și rădăcina hubului), continuă după erori și scrie un raport JSON. `release` nu rulează `git`.
+
+### CI (GitHub Actions)
+
+`ci/fff-check.yml` este un workflow reutilizabil (`on: workflow_call`): `check` strict, testele aplicației (Playwright, `tests/*.test.mjs`), derivă față de kit (`release --dry-run --bump none` nu trebuie să schimbe `index.html`/`app.json`) și axe (`ci/axe-check.mjs`: pagina și dialogul Transparență, luminos/întunecat, 1366 și 360 px). Intrări: `app-dir`, `kit-repo`, `kit-ref`, `lax`, `drift`, `run-tests`, `test-glob`, `axe`, `node-version`, `playwright-version`, `axe-version`. Permisiuni minime (`contents: read`), fără secrete, doar acțiuni `actions/*`.
+
+Cum se adaugă: (1) o dată, în hub: `node fff-kit/tools/add-ci.mjs --hub <cale-hub>` copiază workflow-ul reutilizabil în `<hub>/.github/workflows/fff-check.yml` (de comis și publicat); (2) pentru depozitele aplicațiilor: `node fff-kit/tools/add-ci.mjs <rădăcină> [--lax] [--kit-ref REF] [--app-dir DIR] [--dry-run] [--force]` scrie `.github/workflows/fff-check.yml` (din `ci/caller.yml`) în fiecare depozit cu `.git`; omite aplicațiile din hub și nu suprascrie un fișier modificat fără `--force`. Nu rulează `git`: comiterea o faci tu. Workflow-ul nu a fost rulat pe GitHub în această etapă.
+
+### `tools/portable-tests.mjs`
+
+Face testele aplicațiilor portabile: `node tools/portable-tests.mjs <aplicație>… [--root <rădăcină>] [--write] [--no-versions] [--json] [--quiet]`. Implicit afișează doar diff-ul (nu scrie). Transformă: calea Chromium → `process.env.CHROMIUM_PATH || undefined`; calea Playwright → `createRequire(process.env.PW_ROOT || import.meta.url)`; calea axe → un helper `__fffAxe()` (`FFF_AXE`, `AXE_PATH`, `axe-core` instalat); versiunile și datele scrise în teste → citite din `app.json` (`__FFF_APP`). Idempotent (marcaj `[fff-portable]`); raportează căile absolute rămase și cazurile „manuale”. Atenție: înlocuiește orice literal egal cu versiunea aplicației din teste, deci verifică diff-ul; testele din subdirectoare nu sunt tratate.
+
 ## Teste
 
 ```
@@ -106,6 +168,12 @@ node fff-kit/test/core.test.mjs      # 34 verificări
 node fff-kit/test/label.test.mjs     # 57 (inclusiv axe în dialog, luminos/întunecat, 360 px, dimensiuni minime 1.1.4)
 node fff-kit/test/bundle.test.mjs    # 53 (export/import/ștergere, criptare, rollback, UI)
 node fff-kit/test/build.test.mjs     # 68 (apply/idempotență/remove/check/info, politici CSP)
+node fff-kit/test/dialog.test.mjs    # 62 (FFF.dialog: API, ARIA, focus, Escape, toast aria-live, axe, 360/1366 px)
+node fff-kit/test/store.test.mjs     # 32 (FFF.store: prefix, JSON, cote, migrate idempotentă, freeze/bundle)
+node fff-kit/test/rules.test.mjs     # 51 (native-dialog, unprefixed-storage, cdn-without-sri, i18n-parity)
+node fff-kit/test/release.test.mjs   # 58 (release/release-all pe copii în /tmp)
+node fff-kit/test/portable-tests.test.mjs # 33
+node fff-kit/test/ci.test.mjs        # 35 (workflow, add-ci, derivă, axe-check)
 node fff-kit/test/hardening.test.mjs # kit 1.1.3: pagehide vs. restaurare, chei la import, rollback, parolă/iterații, export sensibil, anti-clickjacking, politici CSP, derivă, ICE/lockstep, tools/
 # + qr, p2p, srs, tts, pii, search, ephem (*.test.mjs), ephem.browser.mjs, kit3-ui.mjs
 node fff-kit/test/compat.mjs --inv shots_inv.json --work <dir> --out rezultate.json   # copii ale aplicațiilor existente (nu le modifică pe cele originale)
@@ -120,6 +188,7 @@ Testele folosesc Playwright cu Chromium (`/opt/pw-browsers/chromium`), rețea bl
 
 * `tools/fixcsp.py <dir>…` — recalculează hash-urile CSP (apelează `node build.mjs fixcsp`; fără implementare proprie). Necesită Node ≥ 18.
 * `tools/ver.py [--apply]` — rescrie linia „Versiune · Ultima actualizare” din `README*.md` (8 limbi) pornind de la `<meta application-version / last-updated>`; fără `--apply` doar numără. `tools/lang.py [--apply]` — adaugă linia „Limbile interfeței”. Portabile: rădăcina e trei niveluri deasupra `tools/` (sau `FFF_ROOT=/cale`) și așteaptă `<rădăcină>/<depozit>/{README*.md,index.html}` plus `<rădăcină>/chiuta.github.io/apps/<aplicație>/…`; sar peste aplicațiile fără `index.html` sau fără README. Se rulează cu `python3 -I`.
+* `tools/add-ci.mjs`, `tools/portable-tests.mjs`, `tools/i18n-parity.mjs` — vezi „Novități în 1.2.0”.
 * `tools/gen-ephem.mjs`, `gen-stars.mjs` — generatoarele modulului `ephem` (vezi `docs/ephem.md`).
 
 ## Limite (pe scurt, pe cinstite)
@@ -132,7 +201,7 @@ Testele folosesc Playwright cu Chromium (`/opt/pw-browsers/chromium`), rețea bl
 * **Hash-ul nu e o semnătură**: dovedește doar că fișierul coincide cu valoarea declarată *în el însuși*; cine poate modifica fișierul poate modifica și hash-ul. Util pentru a verifica o descărcare față de valoarea publicată separat (de ex. în README sau pe pagina de pornire).
 * **CSP**: hash-urile se calculează pe textul exact al scripturilor; fișierele cu CRLF în scripturi pot avea hash-uri diferite după normalizarea făcută de browser (build-ul avertizează).
 * **Context sigur**: criptarea cere Web Crypto (`https:` sau fișier local); fără el, exportul/importul criptat dă o eroare tradusă. SHA-256 are rezervă în JS.
-* **Teme**: dialogul preia culorile deschis/închis din fundalul paginii gazdă (altfel din `prefers-color-scheme`); variabilele `--fff-bg`, `--fff-fg`, `--fff-muted`, `--fff-line`, `--fff-btn`, `--fff-accent`, `--fff-accent-fg`, `--fff-font` pot fi setate de aplicație.
+* **Teme**: dialogul preia culorile deschis/închis din fundalul paginii gazdă (altfel din `prefers-color-scheme`); variabilele `--fff-bg`, `--fff-fg`, `--fff-muted`, `--fff-line`, `--fff-btn`, `--fff-accent`, `--fff-accent-fg`, `--fff-font`, `--fff-bad`, `--fff-ok`, `--fff-toast-bg`, `--fff-toast-fg`, `--fff-toast-accent` pot fi setate de aplicație.
 
 ## Terți
 

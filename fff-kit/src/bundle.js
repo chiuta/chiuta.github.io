@@ -44,6 +44,8 @@
   /* ---------- confirmare (dialog propriu, nu window.confirm) ---------- */
   function confirmDlg(message, opt) {
     opt = opt || {};
+    /* kit ≥ 1.2.0: dacă modulul „dialog” e prezent, confirmarea trece prin FFF.dialog (un singur sistem de dialoguri) */
+    if (F.dialog && F.dialog.confirm) return F.dialog.confirm(message, {title: false, yes: opt.yes, no: opt.no, danger: !!opt.danger});
     return new Promise(function (res) {
       var d = doc.createElement('dialog');
       d.className = 'fff-dlg fff-dlg-sm';
@@ -67,6 +69,7 @@
   }
   /** Dialog cu mai multe butoane: [{label, value, primary, danger}] → valoarea aleasă sau null (anulare). Ultimul buton = implicit evidențiat. */
   function choiceDlg(message, buttons) {
+    if (F.dialog && F.dialog.choice) return F.dialog.choice(message, buttons, {title: false});
     return new Promise(function (res) {
       var d = doc.createElement('dialog');
       d.className = 'fff-dlg fff-dlg-sm';
@@ -234,6 +237,7 @@
     var pfx = F.store.prefix;
     return keys.filter(function (k) {
       if (k.indexOf(pfx) === 0 || idx[k] === 1) return false;
+      if (F.store.appPrefix && k.indexOf(F.store.appPrefix) === 0) return false;   // modulul „store”: <slug>.*
       return !decl.some(function (d) {
         if (d.charAt(d.length - 1) === '*') return k.indexOf(d.slice(0, -1)) === 0;
         if (/[_.:-]$/.test(d)) return k.indexOf(d) === 0;

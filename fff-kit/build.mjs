@@ -7,9 +7,11 @@ import {createHash} from 'node:crypto';
 import {createRequire} from 'node:module';
 import {fileURLToPath} from 'node:url';
 import {recomputeCspHashes, checkCspHashes, cspMeta, inlineScripts, sha256b64} from './lib/csp.mjs';
+import {blankBlocks} from './lib/jsscan.mjs';
+import {NEW_RULES, nativeDialogIssues, unprefixedStorageIssues, cdnWithoutSriIssues, i18nParityIssues} from './lib/rules.mjs';
 
 const KIT = path.dirname(fileURLToPath(import.meta.url));
-const ORDER = ['core', 'label', 'bundle', 'qr', 'p2p', 'srs', 'tts', 'pii', 'search', 'ephem', 'ephem-stars'];
+const ORDER = ['core', 'store', 'dialog', 'label', 'bundle', 'qr', 'p2p', 'srs', 'tts', 'pii', 'search', 'ephem', 'ephem-stars'];
 const BLOCK_RE = /\n<!--fff:kit:start[^>]*-->[\s\S]*?<!--fff:kit:end-->/;
 const INFO_RE = /\n<!--fff:info:start-->[\s\S]*?<!--fff:info:end-->/;
 const FORMAT_V = 1;
@@ -44,7 +46,7 @@ function parseArgs(argv) {
     const a = argv[i];
     if (a.startsWith('--')) {
       const k = a.slice(2);
-      if (['slug', 'modules', 'disable'].includes(k)) opt[k] = argv[++i];
+      if (['slug', 'modules', 'disable', 'bump', 'to', 'date', 'add-modules', 'only', 'skip', 'report'].includes(k)) opt[k] = argv[++i];
       else opt[k] = true;
     } else pos.push(a);
   }
@@ -140,7 +142,7 @@ function buildBlock(slug, modules, opt) {
     if (fs.existsSync(cp)) css += fs.readFileSync(cp, 'utf8');
     const ip = path.join(KIT, 'i18n', m + '.json');
     if (fs.existsSync(ip)) i18n[m] = JSON.parse(fs.readFileSync(ip, 'utf8'));
-    else if (m !== 'core') console.error(`avertisment: lipsește i18n/${m}.json`);
+    else if (m !== 'core' && m !== 'store') console.error(`avertisment: lipsește i18n/${m}.json`);
   }
   if (/<\/script|<!--/i.test(js)) throw new Error('sursa kitului conține „</script” sau „<!--” (interzis în script inline)');
   if (/<\/style/i.test(css)) throw new Error('CSS-ul kitului conține „</style”');
@@ -208,7 +210,8 @@ function readConfigSafe(dir) { try { return readConfig(dir); } catch { return {}
 const SENSITIVE_RE = (() => { const m = rd('src/bundle.js').match(/SENSITIVE_RE\s*=\s*\/(.*)\/([a-z]*);/); return m ? new RegExp(m[1], m[2]) : /api[-_]?key|token|secret|password|passwd|totp/i; })();
 
 /** Excepții justificate de la politicile CSP: fff.config.json → "cspExceptions": [{"rule":"script-unsafe-inline","reason":"..."}] (sau șirul "regulă: motiv"). */
-const CSP_RULES = ['script-unsafe-inline', 'script-unsafe-eval', 'no-script-src', 'hash-outside-meta'];
+const CSP_RULES = ['script-unsafe-inline', 'script-unsafe-eval', 'no-script-src', 'hash-outside-meta', ...NEW_RULES];
+const excList = (cfg) => [...(Array.isArray(cfg.cspExceptions) ? cfg.cspExceptions : []), ...(Array.isArray(cfg.exceptions) ? cfg.exceptions : [])];
 function parseCspExceptions(list) {
   const rules = new Set(), problems = [];
   for (const e of Array.isArray(list) ? list : []) {
@@ -222,7 +225,7 @@ function parseCspExceptions(list) {
 }
 /** Politici CSP: unsafe-inline/unsafe-eval în script-src, lipsa script-src/default-src (sau a CSP), hash-uri în afara metei CSP principale. Întoarce mesaje. */
 function cspPolicyIssues(html, cfg = {}) {
-  const exc = parseCspExceptions(cfg.cspExceptions), out = [...exc.problems];
+  const exc = parseCspExceptions(excList(cfg)), out = [...exc.problems];
   const flag = (rule, msg) => { if (!exc.rules.has(rule)) out.push(`CSP [${rule}]: ${msg} — excepție justificată: fff.config.json → cspExceptions`); };
   const p = cspParts(html);
   if (!p) { flag('no-script-src', 'pagina nu are <meta http-equiv="Content-Security-Policy">'); return out; }
@@ -237,6 +240,20 @@ function cspPolicyIssues(html, cfg = {}) {
   const hashes = new Set(inlineScripts(html).map((s) => `'sha256-${sha256b64(s.body)}'`));
   const extra = metas.slice(1).filter((m) => [...hashes].some((h) => m.includes(h)));
   if (extra.length) flag('hash-outside-meta', 'hash-uri de scripturi apar într-o a doua meta CSP, în afara celei principale (verificarea și recalcularea citesc doar prima)');
+  return out;
+}
+/** Textul aplicației (fără blocurile kit/fff-info), cu aceleași numere de linie ca fișierul. */
+function appSource(html) { return blankBlocks(html, [BLOCK_RE, INFO_RE]); }
+/** Reguli euristice pe codul aplicației (native-dialog, unprefixed-storage, cdn-without-sri, i18n-parity); respectă excepțiile din fff.config.json. */
+function codeRuleIssues(html, cfg = {}) {
+  const exc = parseCspExceptions(excList(cfg)).rules, app = appSource(html), slug = metaContent(html, 'fff-app') || cfg.slug || '';
+  const out = [];
+  const want = (r) => !exc.has(r);
+  const tail = (r) => ` — excepție justificată: fff.config.json → exceptions`;
+  if (want('native-dialog')) for (const m of nativeDialogIssues(app)) out.push(m + tail());
+  if (want('unprefixed-storage')) for (const m of unprefixedStorageIssues(app, slug, cfg)) out.push(m + tail());
+  if (want('cdn-without-sri')) for (const m of cdnWithoutSriIssues(app)) out.push(m + tail());
+  if (want('i18n-parity')) for (const m of i18nParityIssues(app)) out.push(m + tail());
   return out;
 }
 /** Aplicații cu chei de stocare sensibile (token, api key, parolă…) fără bundle.redact(...). */
@@ -295,6 +312,7 @@ function checkKit(dirArg, opt = {}) {
   }
   const cfg = readConfigSafe(path.dirname(file));
   for (const m of cspPolicyIssues(html, cfg)) add(true, m);
+  for (const m of codeRuleIssues(html, cfg)) add(true, m);
   for (const m of sensitiveWithoutRedactor(html)) warns.push(m);
   if (!metaContent(html, 'application-version')) add(true, 'lipsește <meta name="application-version">');
   if (!metaContent(html, 'last-updated')) add(true, 'lipsește <meta name="last-updated">');
@@ -566,9 +584,11 @@ function usage() {
   node build.mjs check <dir> [--lax] [--json]   (strict: politicile CSP sunt erori; --lax: avertismente; excepții: fff.config.json → cspExceptions)
   node build.mjs fixcsp <dir>                    (recalculează hash-urile CSP ale scripturilor inline)
   node build.mjs info <dir> [--slug S] [--probe]
+  node build.mjs release <dir> [--bump patch|minor|none] [--to X.Y.Z] [--slug S] [--add-modules dialog,store] [--modules ...] [--date YYYY-MM-DD] [--dry-run] [--lax] [--no-tests] [--no-readme] [--json] [--report f.json]
+  node build.mjs release-all <rootdir> [--dry-run] [--only a,b] [--skip a,b] [--bump ...] [--lax] [--report f.json] [--json]   (apply kit + bump + fixcsp + info + check pe toate depozitele)
 Module: ${ORDER.join(', ')}`);
 }
-export {applyKit, removeKit, checkKit, cspPolicyIssues, parseCspExceptions, sensitiveWithoutRedactor, kitDrift, SENSITIVE_RE, runInfo, validateInfo, detectLangs, isValidHost, canonicalize, sha256hex, ORDER, kitVersion};
+export {applyKit, removeKit, checkKit, codeRuleIssues, appSource, cspPolicyIssues, parseCspExceptions, sensitiveWithoutRedactor, kitDrift, SENSITIVE_RE, runInfo, validateInfo, detectLangs, isValidHost, canonicalize, sha256hex, ORDER, kitVersion};
 
 if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
   const {pos, opt} = parseArgs(process.argv.slice(2));
@@ -595,6 +615,22 @@ if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.me
         const r = runInfo(dir, opt, extra);
         console.log(`info ok: ${r.file} · sha256=${r.info.sha256.slice(0, 16)}… · ${r.info.sizeBytes} B · egress=${r.info.egress.length} · permisiuni=${r.info.permissions.length}`);
         if (r.validation.length) { r.validation.forEach((e) => console.log('EROARE  fff-info: ' + e)); console.log('info EȘUAT (validare): ' + r.file); process.exit(1); }
+      } else if (cmd === 'release' || cmd === 'release-all') {
+        const {releaseApp, releaseAll} = await import('./lib/release.mjs');
+        const ro = {bump: opt.bump || 'patch', to: opt.to, slug: opt.slug, modules: opt.modules, addModules: opt['add-modules'], date: opt.date, dryRun: !!opt['dry-run'], lax: !!opt.lax, tests: !opt['no-tests'], readme: !opt['no-readme'], only: opt.only, skip: opt.skip, init: !!opt.init};
+        const rep = cmd === 'release' ? releaseApp(dir, ro) : releaseAll(dir, ro);
+        const ok = cmd === 'release' ? rep.ok : rep.summary.errors === 0;
+        if (opt.report) fs.writeFileSync(opt.report, JSON.stringify(rep, null, 1) + '\n');
+        if (opt.json) console.log(JSON.stringify(rep, null, 1));
+        else if (cmd === 'release') {
+          console.log(`release ${rep.ok ? 'ok' : 'EȘUAT'}${rep.dryRun ? ' (dry-run)' : ''}: ${rep.dir} · slug=${rep.slug} · ${rep.from || '—'} → ${rep.to || '—'} · kit ${rep.kit} · module ${rep.modules.join(',')}`);
+          console.log('  modificate: ' + (rep.changed.join(', ') || '(nimic)'));
+          rep.errors.forEach((e) => console.log('  EROARE  ' + e)); rep.warnings.forEach((e) => console.log('  avert.  ' + e));
+        } else {
+          for (const a of rep.apps) console.log(`${a.status.padEnd(9)} ${path.basename(a.dir).padEnd(32)} ${a.from || ''} → ${a.to || ''}  ${a.changed ? a.changed.length + ' fișiere' : ''}${a.errors && a.errors.length ? '  ! ' + a.errors[0].slice(0, 110) : ''}`);
+          console.log(JSON.stringify(rep.summary));
+        }
+        process.exit(ok ? 0 : 1);
       } else { usage(); process.exit(2); }
     } catch (e) { console.error('EROARE: ' + e.message); process.exit(1); }
   })();

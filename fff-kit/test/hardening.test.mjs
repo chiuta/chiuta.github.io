@@ -19,8 +19,8 @@ const bundleOf = (data, app = 'demo-fff') => JSON.stringify({format: 'fff-bundle
 
 /* ====================================================================== versiune */
 console.log('versiune');
-check('KIT_VERSION = 1.1.4 (core.js, build.mjs)', kitVersion() === '1.1.4' && /KIT_VERSION = '1\.1\.4'/.test(fs.readFileSync(path.join(KIT, 'src/core.js'), 'utf8')));
-check('README: Versiune 1.1.4', /\*\*Versiune:\*\* 1\.1\.4/.test(fs.readFileSync(path.join(KIT, 'README.md'), 'utf8')));
+check('KIT_VERSION = 1.2.0 (core.js, build.mjs)', kitVersion() === '1.2.0' && /KIT_VERSION = '1\.2\.0'/.test(fs.readFileSync(path.join(KIT, 'src/core.js'), 'utf8')));
+check('README: Versiune 1.2.0', /\*\*Versiune:\*\* 1\.2\.0/.test(fs.readFileSync(path.join(KIT, 'README.md'), 'utf8')));
 
 /* ====================================================================== D3: iterații în texte */
 console.log('D3: textele din label.json derivă din constantă');
@@ -83,7 +83,7 @@ console.log('F11: derivă a blocului kit față de sursă');
   const h = rf(d);
   fs.writeFileSync(path.join(d, 'index.html'), h.replace("var SCHEMA = 1,", "var SCHEMA = 1, /* editat de mână */"));
   const o = run(['check', d, '--lax']);
-  check('modificare manuală a bundle.js în pagină → avertisment „derivă” cu modulul', /avert\.  derivă: blocul kit din pagină diferă de sursa kitului v1\.1\.4 \(bundle\)/.test(o.stdout), o.stdout);
+  check('modificare manuală a bundle.js în pagină → avertisment „derivă” cu modulul', /avert\.  derivă: blocul kit din pagină diferă de sursa kitului v1\.2\.0 \(bundle\)/.test(o.stdout), o.stdout);
   fs.writeFileSync(path.join(d, 'index.html'), h.replace('.fff-dlg-sm{', '.fff-dlg-sm{/*x*/'));
   check('modificare în CSS → „derivă (css)”', /derivă: .*\(css\)/.test(run(['check', d, '--lax']).stdout));
   run(['apply', d, '--slug', 'demo-fff', '--modules', 'core,label,bundle']);
@@ -114,7 +114,7 @@ console.log('F9/D9: tools/ (fixcsp.py, ver.py, lang.py)');
 /* ====================================================================== browser */
 const browser = await launch();
 const app = makeApp(FIXTURE);
-const SAVER = FIXTURE.replace('window.__fx =', "window.addEventListener('pagehide', function(){ localStorage.setItem('fx.count', String(c)); localStorage.setItem('fx.note', note.value); }); window.addEventListener('beforeunload', function(){ localStorage.setItem('fx.count', String(c)); }); window.__fx =");
+const SAVER = FIXTURE.replace('window.__fx =', "window.addEventListener('pagehide', function(){ localStorage.setItem('demo-fff.count', String(c)); localStorage.setItem('demo-fff.note', note.value); }); window.addEventListener('beforeunload', function(){ localStorage.setItem('demo-fff.count', String(c)); }); window.__fx =");
 const saverApp = makeApp(SAVER, {slug: 'demo-fff'});
 
 console.log('M2: restaurarea nu e suprascrisă de salvarea la pagehide/beforeunload');
@@ -125,19 +125,19 @@ console.log('M2: restaurarea nu e suprascrisă de salvarea la pagehide/beforeunl
   await S.page.fill('#note', 'in-memorie');
   // control: fără fix (scriere + reload simplu) salvarea la pagehide suprascrie importul
   const nav0 = S.page.waitForNavigation({waitUntil: 'load'});
-  await S.page.evaluate(() => { FFF.store.raw.set('fx.count', '3'); FFF.store.raw.set('fx.note', 'din-backup'); setTimeout(() => location.reload(), 0); });
+  await S.page.evaluate(() => { FFF.store.raw.set('demo-fff.count', '3'); FFF.store.raw.set('demo-fff.note', 'din-backup'); setTimeout(() => location.reload(), 0); });
   await nav0; await S.page.waitForTimeout(200);
-  check('control: fără înghețare, pagehide suprascrie restaurarea (reproduce defectul)', await S.page.evaluate(() => localStorage.getItem('fx.count')) === '5' && await S.page.evaluate(() => localStorage.getItem('fx.note')) === 'in-memorie');
+  check('control: fără înghețare, pagehide suprascrie restaurarea (reproduce defectul)', await S.page.evaluate(() => localStorage.getItem('demo-fff.count')) === '5' && await S.page.evaluate(() => localStorage.getItem('demo-fff.note')) === 'in-memorie');
   // cu kitul: import + reload
   for (let i = 0; i < 4; i++) await S.page.click('#inc');          // 9 în memorie
   await S.page.fill('#note', 'iar-in-memorie');
   const nav = S.page.waitForNavigation({waitUntil: 'load'});
   const imp = await S.page.evaluate(async (t) => {
     const ev = [];
-    FFF.bus.on('bundle:imported', (d) => { ev.push({frozen: FFF.store.frozen(), n: d.keys}); try { localStorage.setItem('fx.count', 'din-handler'); } catch (e) { /* ignorat */ } });
+    FFF.bus.on('bundle:imported', (d) => { ev.push({frozen: FFF.store.frozen(), n: d.keys}); try { localStorage.setItem('demo-fff.count', 'din-handler'); } catch (e) { /* ignorat */ } });
     const r = await FFF.bundle.import(new File([t], 'b.fff.json'), {confirm: false, reload: true, delay: 4000});
     // în fereastra de dinainte de reload: scrierile (inclusiv IndexedDB) sunt blocate
-    localStorage.setItem('late', '1'); localStorage.removeItem('fx.note'); sessionStorage.setItem('late', '1');
+    localStorage.setItem('late', '1'); localStorage.removeItem('demo-fff.note'); sessionStorage.setItem('late', '1');
     const idb = await new Promise((res) => { const rq = indexedDB.open('t'); rq.onupgradeneeded = () => rq.result.createObjectStore('s', {keyPath: 'id'}); rq.onsuccess = () => res(rq.result); rq.onerror = () => res(null); });
     let cnt = 0;
     if (idb) {
@@ -146,34 +146,34 @@ console.log('M2: restaurarea nu e suprascrisă de salvarea la pagehide/beforeunl
       cnt = await new Promise((res) => { const rq = idb.transaction('s').objectStore('s').count(); rq.onsuccess = () => res(rq.result); });
       idb.close();
     }
-    return {r, ev, late: localStorage.getItem('late'), note: localStorage.getItem('fx.note'), count: localStorage.getItem('fx.count'), ses: sessionStorage.getItem('late'), cnt, frozen: FFF.store.frozen()};
-  }, bundleOf({'fx.count': '3', 'fx.note': 'din-backup'}));
+    return {r, ev, late: localStorage.getItem('late'), note: localStorage.getItem('demo-fff.note'), count: localStorage.getItem('demo-fff.count'), ses: sessionStorage.getItem('late'), cnt, frozen: FFF.store.frozen()};
+  }, bundleOf({'demo-fff.count': '3', 'demo-fff.note': 'din-backup'}));
   check('bundle:imported emis sincron DUPĂ înghețare; scrierile din handler sunt ignorate', imp.ev.length === 1 && imp.ev[0].frozen === true && imp.ev[0].n === 2 && imp.count === '3', imp);
   check('după import, înainte de reload: setItem/removeItem/IndexedDB.put sunt no-op', imp.late === null && imp.note === 'din-backup' && imp.ses === null && imp.cnt === 0 && imp.frozen === true, imp);
   await nav; await S.page.waitForTimeout(300);
-  const after = await S.page.evaluate(() => ({c: localStorage.getItem('fx.count'), n: localStorage.getItem('fx.note'), out: document.getElementById('count').textContent, note: document.getElementById('note').value, frozen: FFF.store.frozen()}));
+  const after = await S.page.evaluate(() => ({c: localStorage.getItem('demo-fff.count'), n: localStorage.getItem('demo-fff.note'), out: document.getElementById('count').textContent, note: document.getElementById('note').value, frozen: FFF.store.frozen()}));
   check('după reload: valorile restaurate, nu cele din memorie', after.c === '3' && after.n === 'din-backup' && after.out === '3' && after.note === 'din-backup' && after.frozen === false, after);
   // wipe: aceeași protecție
   for (let i = 0; i < 2; i++) await S.page.click('#inc');
   const nav2 = S.page.waitForNavigation({waitUntil: 'load'});
   await S.page.evaluate(() => FFF.bundle.wipe({confirm: false, reload: true, delay: 100}));
   await nav2; await S.page.waitForTimeout(300);
-  check('wipe + reload: pagehide nu recreează datele', await S.page.evaluate(() => localStorage.getItem('fx.count')) === null && await S.page.evaluate(() => localStorage.getItem('fx.note')) === null);
+  check('wipe + reload: pagehide nu recreează datele', await S.page.evaluate(() => localStorage.getItem('demo-fff.count')) === null && await S.page.evaluate(() => localStorage.getItem('demo-fff.note')) === null);
   // fără reload: nu îngheață
-  const nf = await S.page.evaluate(async (t) => { await FFF.bundle.import(new File([t], 'b.fff.json'), {confirm: false, reload: false}); localStorage.setItem('liber', '1'); return {frozen: FFF.store.frozen(), v: localStorage.getItem('liber')}; }, bundleOf({'fx.count': '4'}));
+  const nf = await S.page.evaluate(async (t) => { await FFF.bundle.import(new File([t], 'b.fff.json'), {confirm: false, reload: false}); localStorage.setItem('liber', '1'); return {frozen: FFF.store.frozen(), v: localStorage.getItem('liber')}; }, bundleOf({'demo-fff.count': '4'}));
   check('import fără reload nu îngheață scrierile', nf.frozen === false && nf.v === '1', nf);
   // UI complet (Transparență → Importă…): același rezultat
   await S.page.evaluate(() => localStorage.clear());
   await S.page.reload(); await S.page.waitForTimeout(300);
   for (let i = 0; i < 6; i++) await S.page.click('#inc');
-  const f = path.join(saverApp.dir, 'ui.fff.json'); fs.writeFileSync(f, bundleOf({'fx.count': '2'}));
+  const f = path.join(saverApp.dir, 'ui.fff.json'); fs.writeFileSync(f, bundleOf({'demo-fff.count': '2'}));
   await S.page.click('#app-version');
   const [fc] = await Promise.all([S.page.waitForEvent('filechooser'), S.page.click('dialog button:has-text("Importă…")')]);
   const nav3 = S.page.waitForNavigation({waitUntil: 'load', timeout: 10000});
   await fc.setFiles(f);
   await S.page.waitForSelector('dialog.fff-dlg-sm'); await S.page.click('dialog.fff-dlg-sm button.fff-primary');
   await nav3; await S.page.waitForTimeout(300);
-  check('UI „Importă…” cu aplicație care salvează la pagehide: valoarea importată rămâne', await S.page.evaluate(() => localStorage.getItem('fx.count')) === '2' && await S.page.evaluate(() => document.getElementById('count').textContent) === '2');
+  check('UI „Importă…” cu aplicație care salvează la pagehide: valoarea importată rămâne', await S.page.evaluate(() => localStorage.getItem('demo-fff.count')) === '2' && await S.page.evaluate(() => document.getElementById('count').textContent) === '2');
   check('0 erori de pagină (M2)', S.errors.filter((e) => !/Failed to load resource/.test(e)).length === 0, S.errors);
 }
 
@@ -189,9 +189,9 @@ console.log('D1: dialogul de import arată cheile; cele nedeclarate sunt semnala
     await A.page.click('dialog.fff-dlg-sm button.fff-primary');
     return {txt, res: await A.page.evaluate(() => window.__imp)};
   };
-  const a = await ask({'fx.count': '1', 'fx.note': 'n', 'fff.demo-fff.srs': '1'});
-  check('dialog: numele cheilor, fără avertisment pentru cele declarate/ale aplicației', /Chei: fx\.count, fx\.note, fff\.demo-fff\.srs/.test(a.txt) && !/Atenție/.test(a.txt) && a.res.unknown.length === 0, a.txt);
-  const b = await ask({'fx.count': '1', evil_key: 'x', 'alta.cheie': 'y'});
+  const a = await ask({'demo-fff.count': '1', 'demo-fff.note': 'n', 'fff.demo-fff.srs': '1'});
+  check('dialog: numele cheilor, fără avertisment pentru cele declarate/ale aplicației', /Chei: demo-fff\.count, demo-fff\.note, fff\.demo-fff\.srs/.test(a.txt) && !/Atenție/.test(a.txt) && a.res.unknown.length === 0, a.txt);
+  const b = await ask({'demo-fff.count': '1', evil_key: 'x', 'alta.cheie': 'y'});
   check('chei în afara declarațiilor: avertisment cu numele lor (import cu confirmare)', /Atenție: 2 chei nu sunt declarate/.test(b.txt) && /evil_key, alta\.cheie/.test(b.txt) && b.res.keys === 3 && b.res.unknown.join() === 'evil_key,alta.cheie', b.txt);
   const c = await ask({k1: 'a', k2: 'b'}, () => FFF.bundle.allow(['k1', 'k*']));
   check('FFF.bundle.allow: cheie exactă și prefix cu *', c.res.unknown.length === 0 && !/Atenție/.test(c.txt), c.txt);
@@ -229,9 +229,9 @@ console.log('D2: rollback și export cu chei din Object.prototype');
     return {code, a: localStorage.getItem('toString'), b: localStorage.getItem('__proto__')};
   }, bundleOf({toString: 'nou', ['__proto__']: 'nou2', zzz: 'f'}));
   check('rollback restaurează valorile vechi ale cheilor din Object.prototype', RB2.a === 'vechi' && RB2.b === 'vechi2', RB2);
-  await A.page.evaluate(() => { localStorage.clear(); localStorage.setItem('constructor', 'c1'); localStorage.setItem('__proto__', 'p1'); localStorage.setItem('toString', 't1'); localStorage.setItem('fx.count', '1'); });
+  await A.page.evaluate(() => { localStorage.clear(); localStorage.setItem('constructor', 'c1'); localStorage.setItem('__proto__', 'p1'); localStorage.setItem('toString', 't1'); localStorage.setItem('demo-fff.count', '1'); });
   const ex = await A.page.evaluate(() => { const b = FFF.bundle.build(); return {keys: Object.keys(b.data).sort(), p: b.data['__proto__'], c: b.data.constructor, t: b.data.toString, idx: FFF.store.indexKeys().sort()}; });
-  check('export: __proto__/constructor/toString apar în data, cu valorile lor', ex.keys.join() === '__proto__,constructor,fx.count,toString' && ex.p === 'p1' && ex.c === 'c1' && ex.t === 't1', ex);
+  check('export: __proto__/constructor/toString apar în data, cu valorile lor', ex.keys.join() === '__proto__,constructor,demo-fff.count,toString' && ex.p === 'p1' && ex.c === 'c1' && ex.t === 't1', ex);
   await A.page.evaluate(() => { localStorage.removeItem('toString'); });
   check('indexKeys nu inventează chei absente (toString ș.a.)', await A.page.evaluate(() => FFF.store.indexKeys().indexOf('toString') < 0));
   const rt = await A.page.evaluate(async () => { const t = JSON.stringify(FFF.bundle.build()); localStorage.clear(); const r = await FFF.bundle.import(new File([t], 'r.fff.json'), {confirm: false, reload: false}); return {n: r.keys, p: localStorage.getItem('__proto__'), c: localStorage.getItem('constructor')}; });
@@ -262,7 +262,7 @@ console.log('F4/F5: parola de export și limitele de iterații');
 {
   const A = await newPage(browser);
   await A.page.goto(app.url); await A.page.waitForTimeout(300);
-  await A.page.evaluate(() => localStorage.setItem('fx.count', '1'));
+  await A.page.evaluate(() => localStorage.setItem('demo-fff.count', '1'));
   const exp = (pw, lang) => A.page.evaluate(async ([p, l]) => { document.documentElement.lang = l || 'ro'; try { const r = await FFF.bundle.export({encrypt: true, password: p, filename: 'p.json'}); return {ok: r.encrypted}; } catch (e) { return {code: e.code, msg: e.message}; } }, [pw, lang]);
   const s11 = await exp('a1b2c3d4e5f'), s12 = await exp('a1b2c3d4e5f6');
   check('parolă de 11 caractere respinsă, mesaj cu „12”', s11.code === 'pw_short' && /12/.test(s11.msg), s11);
@@ -297,12 +297,12 @@ console.log('M4: export necriptat cu date sensibile cere confirmare și propune 
 {
   const A = await newPage(browser);
   await A.page.goto(app.url); await A.page.waitForTimeout(300);
-  await A.page.evaluate(() => { localStorage.setItem('fx.count', '1'); localStorage.setItem('openai_api_key', 'sk-SECRET-1'); localStorage.setItem('fx.session_token', 'tok-2'); });
+  await A.page.evaluate(() => { localStorage.setItem('demo-fff.count', '1'); localStorage.setItem('openai_api_key', 'sk-SECRET-1'); localStorage.setItem('demo-fff.session_token', 'tok-2'); });
   const start = () => A.page.evaluate(() => { window.__ex = FFF.bundle.export().then((r) => r, (e) => ({err: e.code})); });
   await start();
   await A.page.waitForSelector('dialog.fff-dlg-sm');
   const txt = await A.page.evaluate(() => document.querySelector('dialog.fff-dlg-sm').innerText);
-  check('mesaj: „date sensibile necriptate”, cheile sensibile numite, propunere de criptare', /date sensibile necriptate/.test(txt) && /openai_api_key/.test(txt) && /fx\.session_token/.test(txt) && !/fx\.count,/.test(txt) && /Criptează \(recomandat\)/.test(txt), txt);
+  check('mesaj: „date sensibile necriptate”, cheile sensibile numite, propunere de criptare', /date sensibile necriptate/.test(txt) && /openai_api_key/.test(txt) && /demo-fff\.session_token/.test(txt) && !/demo-fff\.count,/.test(txt) && /Criptează \(recomandat\)/.test(txt), txt);
   check('„Criptează (recomandat)” e butonul evidențiat (primary)', await A.page.evaluate(() => document.querySelector('dialog.fff-dlg-sm button.fff-primary').textContent) === 'Criptează (recomandat)');
   await A.page.click('dialog.fff-dlg-sm button:has-text("Anulează")');
   const cancelled = await A.page.evaluate(() => window.__ex);

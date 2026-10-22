@@ -46,7 +46,7 @@ check('slug lipsă (fără meta fff-app) → eroare', r.status !== 0 && /slug/.t
 const kitCopy = tmpDir('kit-');
 fs.mkdirSync(path.join(kitCopy, 'src')); fs.mkdirSync(path.join(kitCopy, 'i18n')); fs.mkdirSync(path.join(kitCopy, 'lib'));
 for (const f of ['build.mjs']) fs.copyFileSync(path.join(HERE, '..', f), path.join(kitCopy, f));
-fs.copyFileSync(path.join(HERE, '..', 'lib/csp.mjs'), path.join(kitCopy, 'lib/csp.mjs'));
+for (const f of fs.readdirSync(path.join(HERE, '..', 'lib'))) fs.copyFileSync(path.join(HERE, '..', 'lib', f), path.join(kitCopy, 'lib', f));
 for (const f of ['core.js', 'label.js', 'bundle.js', 'kit.css']) fs.copyFileSync(path.join(HERE, '..', 'src', f), path.join(kitCopy, 'src', f));
 for (const f of ['label.json', 'bundle.json']) fs.copyFileSync(path.join(HERE, '..', 'i18n', f), path.join(kitCopy, 'i18n', f));
 const dm = mk(ORIG);
@@ -116,7 +116,7 @@ const di = mk(ORIG.replace("window.__fx = {fetchTry: function(){ return fetch('h
   "localStorage.getItem('app.theme'); localStorage.setItem(\"app.scores\", 1); sessionStorage.getItem('sess.only'); localStorage.removeItem('app.old');",
 ].join('\n')).replace('</head>', '<link rel="stylesheet" href="https://fonts.example.com/css"><link rel="canonical" href="https://canon.example.com/"><link rel="manifest" href="manifest.json"><script src="https://cdn.example.io/lib.js"></script></head>').replace('</main>', '<a href="https://linkonly.example.com/">link</a><img src="https://img.example.org/a.png" alt=""><svg xmlns="http://www.w3.org/2000/svg"></svg></main>').replace("connect-src 'none'", "connect-src https://csp.example.com 'self'"));
 run(['apply', di, '--slug', 'demo-fff']);
-fs.writeFileSync(path.join(di, 'fff.config.json'), JSON.stringify({egressNote: 'Doar la acțiunea utilizatorului.', description: 'Descriere din config', selfModifying: true, sha256: 'nu-se-suprascrie'}));
+fs.writeFileSync(path.join(di, 'fff.config.json'), JSON.stringify({egressNote: 'Doar la acțiunea utilizatorului.', description: 'Descriere din config', selfModifying: true, sha256: 'nu-se-suprascrie', storagePrefixes: ['app.'], exceptions: [{rule: 'cdn-without-sri', reason: 'test: resurse externe fictive'}, {rule: 'native-dialog', reason: 'test: fixture cu apeluri native'}]}));
 r = run(['info', di]);
 check('info: cod 0', r.status === 0, r.stderr);
 const info = JSON.parse(fs.readFileSync(path.join(di, 'app.json'), 'utf8'));
@@ -127,11 +127,11 @@ check('egress: via indică sursa', info.egress.find((e) => e.host === 'api.examp
 const perms = info.permissions;
 check('permisiuni detectate', ['getUserMedia', 'geolocation', 'Worker', 'speechSynthesis', 'clipboard', 'indexedDB', 'Web Crypto', 'localStorage'].every((p) => perms.includes(p)), perms);
 check('permisiuni: fără false-positive din kit (serviceWorker, WebGL, Notification)', !perms.some((p) => ['serviceWorker', 'WebGL', 'WebGPU', 'Notification', 'RTCPeerConnection', 'BroadcastChannel'].includes(p)), perms);
-check('storageKeys literale (fără sessionStorage, fără fff.*)', info.storageKeys.join() === 'app.old,app.scores,app.theme,fx.count,fx.note,lang', info.storageKeys);
+check('storageKeys literale (fără sessionStorage, fără fff.*)', info.storageKeys.join() === 'app.old,app.scores,app.theme,demo-fff.count,demo-fff.note,lang', info.storageKeys);
 check('nume, versiune, dată, descriere din meta; config suprascrie/adaugă', info.name === 'Demo FFF' && info.version === '1.2.3' && info.updated === '2026-10-14' && info.description === 'Descriere din config' && info.egressNote === 'Doar la acțiunea utilizatorului.' && info.selfModifying === true);
 check('config nu poate suprascrie sha256/sizeBytes', /^[0-9a-f]{64}$/.test(info.sha256));
 check('features: export/import/i18n/pwa/module', info.features.export && info.features.import && info.features.i18n.join() === 'ro,en,fr' && info.features.pwa.manifest === true && info.features.modules.join() === 'core,label,bundle');
-check('kit: versiune + module; csp rezumat', info.kit.version === '1.1.4' && info.kit.modules.length === 3 && info.csp.present && info.csp.scriptInline === 'hash' && info.csp.directives['script-src'] === 'sha256×2', info.csp);
+check('kit: versiune + module; csp rezumat', info.kit.version === '1.2.0' && info.kit.modules.length === 3 && info.csp.present && info.csp.scriptInline === 'hash' && info.csp.directives['script-src'] === 'sha256×2', info.csp);
 const html = rf(di);
 const size = Buffer.byteLength(html);
 check('sizeBytes = dimensiunea fișierului', info.sizeBytes === size, [info.sizeBytes, size]);
