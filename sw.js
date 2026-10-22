@@ -2,7 +2,7 @@
    Atinge DOAR pagina principală a hub-ului (index, manifest, icoane). Orice alt URL (/apps/…, depozitele, linkurile externe)
    trece neatins către rețea / către service worker-ul propriu al aplicației. */
 'use strict';
-var VERSION = "h2711091e";
+var VERSION = "h7e00f260";
 var PREFIX = 'fff-chiuta-hub-', CACHE = PREFIX + VERSION;
 var SCOPE = new URL(self.registration.scope);
 var SHELL = ['./', './index.html', './manifest.webmanifest', './icon-192.png', './icon-512.png', './icon-maskable-512.png'];

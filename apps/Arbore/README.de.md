@@ -2,7 +2,7 @@
 
 [English](README.md) · [Română](README.ro.md) · [Français](README.fr.md) · [Italiano](README.it.md) · [Español](README.es.md) · [Português](README.pt.md) · **Deutsch** · [Magyar](README.hu.md)
 
-**Version:** 1.0.2 · **Zuletzt aktualisiert:** 2026-10-22
+**Version:** 1.0.3 · **Zuletzt aktualisiert:** 2026-10-22
 
 Oberflächensprachen: **Română, English, Français, Italiano, Español, Português (PT), Deutsch, Magyar**
 
@@ -67,3 +67,4 @@ MIT — siehe die Datei `LICENSE` im Stammverzeichnis des Repositorys.
 - 1.0.0 — 2026-10-14: erste Version.
 - 1.0.1 — 2026-10-22: die Passwortverschlüsselung leitet den Schlüssel jetzt mit PBKDF2-SHA256 bei 600.000 Iterationen ab (OWASP); vorhandene Kopien mit 310.000 lassen sich weiterhin öffnen und werden beim nächsten Speichern nach dem Entsperren aktualisiert; Erinnerung (mit Schaltfläche „Jetzt exportieren“), wenn seit 30 Tagen keine JSON/GEDCOM-Sicherung existiert; der CSV-Export entschärft Textzellen, die mit = + - @ (und Tab/CR) beginnen; Touch-Ziele von mindestens 24 px.
 - 1.0.2 — 2026-10-22: fff-kit 1.1.2: PBKDF2 mit 600.000 Iterationen, Schutz vor Clickjacking.
+- 1.0.3 — 2026-10-22: fff-kit 1.1.4: Touch-Ziele und Mindestschriftgröße in der gemeinsamen Oberfläche.

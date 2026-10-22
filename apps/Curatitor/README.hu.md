@@ -2,7 +2,7 @@
 
 [English](README.md) · [Română](README.ro.md) · [Français](README.fr.md) · [Italiano](README.it.md) · [Español](README.es.md) · [Português](README.pt.md) · [Deutsch](README.de.md) · **Magyar**
 
-**Verzió:** 1.0.2 · **Utolsó frissítés:** 2026-10-22
+**Verzió:** 1.0.3 · **Utolsó frissítés:** 2026-10-22
 
 A felület nyelvei: **Română, English, Français, Italiano, Español, Português (PT), Deutsch, Magyar**
 
@@ -77,3 +77,4 @@ MIT — lásd a tárhely gyökerében lévő `LICENSE` fájlt.
 - 1.0.0 — 2026-10-14: első verzió
 - 1.0.1 — 2026-10-22: A „Minden törlése” az oldalon belüli megerősítő ablakot használja a window.confirm helyett; a jelölőnégyzetek és rádiógombok érintési célja legalább 24 px; a műszaki címke (fff-info) most mind a 8 felületi nyelvet felsorolja.
 - 1.0.2 — 2026-10-22: fff-kit 1.1.2: PBKDF2 600 000 iterációval, clickjacking elleni védelem.
+- 1.0.3 — 2026-10-22: fff-kit 1.1.4: érintési célok és minimális szövegméret a közös felületen.

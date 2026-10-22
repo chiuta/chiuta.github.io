@@ -2,7 +2,7 @@
 
 [English](README.md) · [Română](README.ro.md) · [Français](README.fr.md) · [Italiano](README.it.md) · [Español](README.es.md) · [Português](README.pt.md) · **Deutsch** · [Magyar](README.hu.md)
 
-**Version:** 1.0.2 · **Zuletzt aktualisiert:** 2026-10-22
+**Version:** 1.0.3 · **Zuletzt aktualisiert:** 2026-10-22
 
 Oberflächensprachen: **Română, English, Français, Italiano, Español, Português (PT), Deutsch, Magyar**
 
@@ -69,3 +69,4 @@ MIT — siehe die Datei `LICENSE` im Wurzelverzeichnis des Repositorys.
 - 1.0.0 — 2026-10-14: erste Version.
 - 1.0.1 — 2026-10-22: der CSV-Export entschärft Streckennamen, die mit = + - @ (und Tab/CR) beginnen, gegen Formelinjektion, und der CSV-Import entfernt das Apostroph wieder; das technische Label wird neu erzeugt (8 Sprachen, Version).
 - 1.0.2 — 2026-10-22: fff-kit 1.1.2: PBKDF2 mit 600.000 Iterationen, Schutz vor Clickjacking.
+- 1.0.3 — 2026-10-22: fff-kit 1.1.4: Touch-Ziele und Mindestschriftgröße in der gemeinsamen Oberfläche.

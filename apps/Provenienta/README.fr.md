@@ -2,7 +2,7 @@
 
 [English](README.md) · [Română](README.ro.md) · **Français** · [Italiano](README.it.md) · [Español](README.es.md) · [Português](README.pt.md) · [Deutsch](README.de.md) · [Magyar](README.hu.md)
 
-**Version :** 1.0.2 · **Dernière mise à jour :** 2026-10-22
+**Version :** 1.0.3 · **Dernière mise à jour :** 2026-10-22
 
 Langues de l'interface : **Română, English, Français, Italiano, Español, Português (PT), Deutsch, Magyar**
 
@@ -63,3 +63,4 @@ MIT — voir le fichier `LICENSE` à la racine du dépôt.
 - 1.0.0 — 2026-10-14 : première version.
 - 1.0.1 — 2026-10-22 : nouvelle note bien visible dans le bloc d’état et dans le rapport exporté : une signature valide ne prouve pas que l’image est vraie, et un signataire inconnu paraît tout aussi valide ; cibles tactiles d’au moins 24 px.
 - 1.0.2 — 2026-10-22 : fff-kit 1.1.2 : PBKDF2 à 600 000 itérations, protection anti-clickjacking.
+- 1.0.3 — 2026-10-22 : fff-kit 1.1.4 : cibles tactiles et taille minimale du texte dans l’interface commune.

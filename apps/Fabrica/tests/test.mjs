@@ -42,8 +42,8 @@ let ed=await mk(APP); await ed.waitForFunction(()=>window.__fabrica);
 const edHtml=fs.readFileSync(path.resolve(__dir,'..','index.html'),'utf8');
 ok(cspHashOK(edHtml),'hash-urile CSP ale editorului corespund scripturilor inline');
 ok(!/ on\w+=/.test(edHtml.replace(/<script[\s\S]*?<\/script>/g,'')),'fără handlere inline în editor');
-ok(/<meta name="application-version" content="1.1.2">/.test(edHtml)&&/<meta name="last-updated" content="2026-10-22">/.test(edHtml),'meta versiune');
-eq(await ed.textContent('#app-version'),'v1.1.2 · 2026-10-22','#app-version');
+ok(/<meta name="application-version" content="1.1.3">/.test(edHtml)&&/<meta name="last-updated" content="2026-10-22">/.test(edHtml),'meta versiune');
+eq(await ed.textContent('#app-version'),'v1.1.3 · 2026-10-22','#app-version');
 eq(ed.__errs,[],'0 pageerror/CSP la pornire'); eq(ed.__reqs,[],'0 cereri de rețea');
 eq(await ed.evaluate(()=>document.documentElement.lang),'ro','html[lang]=ro implicit');
 await axe(ed,'editor, panou Curs');
@@ -196,7 +196,7 @@ await ed.evaluate(()=>window.__fabrica.setCourse({title:'altceva',levels:[]})); 
 eq(await ed.evaluate(()=>window.__fabrica.course.levels.length),2,'import din HTML exportat');
 // .fff.json
 const fBundle=await dl('[data-act="exp-bundle"]'); const bj=JSON.parse(fs.readFileSync(fBundle,'utf8'));
-eq([bj.format,bj.schema,bj.app,bj.version,bj.updated],['fff-bundle',1,'fabrica','1.1.2','2026-10-22'],'bundle .fff.json');
+eq([bj.format,bj.schema,bj.app,bj.version,bj.updated],['fff-bundle',1,'fabrica','1.1.3','2026-10-22'],'bundle .fff.json');
 await ed.evaluate(()=>window.__fabrica.setCourse({title:'altceva',levels:[]})); await ed.setInputFiles('#filef',fBundle); await ed.waitForTimeout(200);
 eq(await ed.evaluate(()=>window.__fabrica.course.title),'Cum citești o etichetă nutrițională','import bundle .fff.json');
 // fișier invalid

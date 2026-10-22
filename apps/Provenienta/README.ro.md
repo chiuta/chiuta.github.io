@@ -2,7 +2,7 @@
 
 [English](README.md) · **Română** · [Français](README.fr.md) · [Italiano](README.it.md) · [Español](README.es.md) · [Português](README.pt.md) · [Deutsch](README.de.md) · [Magyar](README.hu.md)
 
-**Versiune:** 1.0.2 · **Ultima actualizare:** 2026-10-22
+**Versiune:** 1.0.3 · **Ultima actualizare:** 2026-10-22
 
 Limbile interfeței: **Română, English, Français, Italiano, Español, Português (PT), Deutsch, Magyar**
 
@@ -63,3 +63,4 @@ MIT — vezi fișierul `LICENSE` din rădăcina depozitului.
 - 1.0.0 — 2026-10-14: prima versiune.
 - 1.0.1 — 2026-10-22: notă vizibilă nouă în blocul de stare și în raportul exportat: o semnătură validă nu dovedește că imaginea e adevărată, iar un semnatar necunoscut arată la fel de valid; ținte tactile de cel puțin 24 px.
 - 1.0.2 — 2026-10-22: fff-kit 1.1.2: PBKDF2 cu 600.000 de iterații, protecție anti-clickjacking.
+- 1.0.3 — 2026-10-22: fff-kit 1.1.4: ținte tactile și text minim în interfața comună.

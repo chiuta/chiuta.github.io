@@ -2,7 +2,7 @@
 
 [English](README.md) · **Română** · [Français](README.fr.md) · [Italiano](README.it.md) · [Español](README.es.md) · [Português](README.pt.md) · [Deutsch](README.de.md) · [Magyar](README.hu.md)
 
-**Versiune:** 1.0.3 · **Ultima actualizare:** 2026-10-22
+**Versiune:** 1.0.4 · **Ultima actualizare:** 2026-10-22
 
 Limbile interfeței: **Română, English, Français, Italiano, Español, Português (PT), Deutsch, Magyar**
 
@@ -51,6 +51,7 @@ MIT — vezi fișierul `LICENSE` din rădăcina depozitului.
 
 ## Istoric
 
+- 1.0.4 — 2026-10-22: fff-kit 1.1.4: ținte tactile și text minim
 - 1.0.0 — 2026-10-14: prima versiune
 - 1.0.1 — 2026-10-19: panoul se alege doar din partea dinaintea primului „&” a adresei (#panou&from=…), ca linkurile din ETER/INDICATIV să deschidă panoul corect.
 - 1.0.2 — 2026-10-22: previzualizarea foii tipăribile nu mai adaugă titluri H1 suplimentare în pagină (un singur H1 pe pagină; titlul foii e H2 pe ecran și rămâne H1 la tipărire); ținte tactile de cel puțin 24 px; eticheta tehnică (fff-info) listează acum cele 8 limbi reale, nu 2.

@@ -62,9 +62,9 @@ await T('pornire: 0 erori, CSP, fără rețea, meta, versiune, lang', async () =
   const p = await newPage();
   await clean(p, 'start');
   assert.equal(await E(p, () => document.documentElement.lang), 'ro');
-  assert.equal(await E(p, () => document.querySelector('meta[name=application-version]').content), '1.0.2');
+  assert.equal(await E(p, () => document.querySelector('meta[name=application-version]').content), '1.0.3');
   assert.equal(await E(p, () => document.querySelector('meta[name=last-updated]').content), '2026-10-22');
-  assert.equal((await p.textContent('#app-version')).trim(), 'v 1.0.2 · 2026-10-22');
+  assert.equal((await p.textContent('#app-version')).trim(), 'v 1.0.3 · 2026-10-22');
   const csp = await E(p, () => document.querySelector('meta[http-equiv=Content-Security-Policy]').content);
   // script-src: 3 scripturi inline executabile (kit, înregistrare PWA, aplicație), fiecare cu hash; fără unsafe
   assert.match(csp, /^default-src 'none'; script-src ('sha256-[A-Za-z0-9+/=]+' ?){3}; style-src 'unsafe-inline'; /);
@@ -410,7 +410,7 @@ await T('criptare AES-GCM: activare, nimic în clar, blocare, parolă greșită,
 await T('export/import .fff.json (clar și criptat), CSV, șterge tot', async () => {
   const p = await newPage(); await demo(p); const n = (await txs(p)).length;
   const b = await E(p, () => GOSPODAR.bundleObj());
-  assert.equal(b.format, 'fff-bundle'); assert.equal(b.schema, 1); assert.equal(b.app, 'gospodar'); assert.equal(b.version, '1.0.2'); assert.equal(b.updated, '2026-10-22'); assert.ok(typeof b.data['fff.gospodar.data'] === 'string');
+  assert.equal(b.format, 'fff-bundle'); assert.equal(b.schema, 1); assert.equal(b.app, 'gospodar'); assert.equal(b.version, '1.0.3'); assert.equal(b.updated, '2026-10-22'); assert.ok(typeof b.data['fff.gospodar.data'] === 'string');
   await nav(p, 'set');
   const [dl] = await Promise.all([p.waitForEvent('download'), p.click('[data-act=exportjson]')]); assert.match(dl.suggestedFilename(), /^gospodar-2026-10-14\.fff\.json$/);
   const file = path.join(HERE, '.tmp-export.fff.json'); await dl.saveAs(file); const j = JSON.parse(fs.readFileSync(file, 'utf8')); assert.equal(j.app, 'gospodar');

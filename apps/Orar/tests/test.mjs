@@ -545,8 +545,8 @@ await T('pornire: fără erori, fără CSP, fără rețea; meta, versiune, CSP e
   const p = await newPage();
   await expectClean(p);
   assert.equal(await p.getAttribute('html', 'lang'), 'ro');
-  assert.equal(await p.textContent('#app-version'), 'v 1.0.2 · 2026-10-22');
-  assert.equal(await p.getAttribute('meta[name=application-version]', 'content'), '1.0.2');
+  assert.equal(await p.textContent('#app-version'), 'v 1.0.3 · 2026-10-22');
+  assert.equal(await p.getAttribute('meta[name=application-version]', 'content'), '1.0.3');
   assert.equal(await p.getAttribute('meta[name=last-updated]', 'content'), '2026-10-22');
   assert.ok((await p.getAttribute('meta[name=description]', 'content')).length > 40);
   assert.equal(await p.title(), 'Orar');
@@ -970,7 +970,7 @@ await T('copie de siguranță .fff.json: format, export, import cu confirmare, �
   const [dl] = await Promise.all([p.waitForEvent('download'), p.click('#d-bk-exp')]);
   const f = path.join(TMP, 'backup.fff.json'); await dl.saveAs(f);
   const b = JSON.parse(fs.readFileSync(f, 'utf8'));
-  assert.equal(b.format, 'fff-bundle'); assert.equal(b.schema, 1); assert.equal(b.app, 'orar'); assert.equal(b.version, '1.0.2'); assert.equal(b.updated, '2026-10-22');
+  assert.equal(b.format, 'fff-bundle'); assert.equal(b.schema, 1); assert.equal(b.app, 'orar'); assert.equal(b.version, '1.0.3'); assert.equal(b.updated, '2026-10-22');
   assert.ok(b.exported && Object.keys(b.data).every(k => k.startsWith('fff.orar.')));
   assert.ok(JSON.parse(b.data['fff.orar.events']).length >= 10);
   const n = await p.evaluate(() => ORAR.S.events.length);

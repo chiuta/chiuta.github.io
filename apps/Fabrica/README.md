@@ -2,7 +2,7 @@
 
 **English** · [Română](README.ro.md) · [Français](README.fr.md) · [Italiano](README.it.md) · [Español](README.es.md) · [Português](README.pt.md) · [Deutsch](README.de.md) · [Magyar](README.hu.md)
 
-**Version:** 1.1.2 · **Last updated:** 2026-10-22
+**Version:** 1.1.3 · **Last updated:** 2026-10-22
 
 Interface languages: **Română, English, Français, Italiano, Español, Português (PT), Deutsch, Magyar**
 
@@ -78,3 +78,4 @@ Licence: MIT — see the `LICENSE` file in the repository root.
 - 1.1.0 — 2026-10-19: "Quiz for Undava (.json)" export and import from Undava files (.json) through the CSV import button; only questions with an equivalent are transferred (single choice, true/false, short answer, fill-in with a single blank).
 - 1.1.1 — 2026-10-22: no more window.confirm / window.prompt: resetting course progress in the player, wiping the draft and the image alt-text prompt use in-page dialogs translated into the 8 languages; touch targets of at least 24 px for check boxes and radio buttons; the technical label no longer reports the CSP token about:srcdoc as a network host.
 - 1.1.2 — 2026-10-22: fff-kit 1.1.2: PBKDF2 with 600,000 iterations, anti-clickjacking protection.
+- 1.1.3 — 2026-10-22: fff-kit 1.1.4: touch targets and minimum text size in the shared interface.

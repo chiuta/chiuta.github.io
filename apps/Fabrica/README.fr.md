@@ -2,7 +2,7 @@
 
 [English](README.md) · [Română](README.ro.md) · **Français** · [Italiano](README.it.md) · [Español](README.es.md) · [Português](README.pt.md) · [Deutsch](README.de.md) · [Magyar](README.hu.md)
 
-**Version :** 1.1.2 · **Dernière mise à jour :** 2026-10-22
+**Version :** 1.1.3 · **Dernière mise à jour :** 2026-10-22
 
 Langues de l'interface : **Română, English, Français, Italiano, Español, Português (PT), Deutsch, Magyar**
 
@@ -78,3 +78,4 @@ Licence : MIT — voir le fichier `LICENSE` à la racine du dépôt.
 - 1.1.0 — 2026-10-19 : export « Quiz pour Undava (.json) » et import depuis des fichiers Undava (.json) via le bouton d'import CSV ; seules les questions ayant un équivalent sont transférées (choix unique, vrai/faux, réponse courte, texte à trous avec un seul blanc).
 - 1.1.1 — 2026-10-22 : plus de window.confirm / window.prompt : la réinitialisation de la progression dans le lecteur, l’effacement du brouillon et la demande de texte alternatif d’image utilisent des boîtes de dialogue de la page, traduites en 8 langues ; cibles tactiles d’au moins 24 px pour les cases à cocher et boutons radio ; l’étiquette technique ne signale plus le jeton CSP about:srcdoc comme hôte réseau.
 - 1.1.2 — 2026-10-22 : fff-kit 1.1.2 : PBKDF2 à 600 000 itérations, protection anti-clickjacking.
+- 1.1.3 — 2026-10-22 : fff-kit 1.1.4 : cibles tactiles et taille minimale du texte dans l’interface commune.

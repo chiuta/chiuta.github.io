@@ -2,7 +2,7 @@
 
 **English** · [Română](README.ro.md) · [Français](README.fr.md) · [Italiano](README.it.md) · [Español](README.es.md) · [Português](README.pt.md) · [Deutsch](README.de.md) · [Magyar](README.hu.md)
 
-**Version:** 1.1.4 · **Last updated:** 2026-10-22
+**Version:** 1.1.5 · **Last updated:** 2026-10-22
 
 Interface languages: **Română, English, Français, Italiano, Español, Português (PT), Deutsch, Magyar**
 
@@ -134,6 +134,7 @@ MIT — see the `LICENSE` file at the root of the repository. The third-party co
 - **1.0.0 — 2026-10-14:** first version.
 - **1.1.3 — 2026-10-22:** touch targets of at least 24 px for the check boxes and radio buttons of the sky and places panels; the technical label (fff-info) now lists the real 8 languages instead of 2. The “Back to Field Observer” bridge (#sky&t=…&ll=…&from=fieldobserver) is unchanged.
 - **1.1.4 — 2026-10-22:** fff-kit 1.1.2: PBKDF2 with 600,000 iterations, anti-clickjacking protection.
+- **1.1.5 — 2026-10-22:** fff-kit 1.1.4: touch targets and minimum text size in the shared interface.
 
 ## Deep links
 

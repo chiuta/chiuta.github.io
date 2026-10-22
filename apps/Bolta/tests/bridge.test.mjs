@@ -1,4 +1,4 @@
-// Bolta 1.1.4 — legături de intrare (#sky&t=&ll=&from=). Se copiază în apps/Bolta/tests/bridge.test.mjs
+// Bolta 1.1.5 — legături de intrare (#sky&t=&ll=&from=). Se copiază în apps/Bolta/tests/bridge.test.mjs
 // Rulare: node apps/Bolta/tests/bridge.test.mjs
 import {createRequire} from 'module';
 import path from 'node:path';

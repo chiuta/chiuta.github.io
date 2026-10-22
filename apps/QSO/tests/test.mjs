@@ -42,8 +42,8 @@ sect('Pornire');
 let p=await newPage();
 await p.waitForTimeout(3600);
 eq(p.__errs,[],'0 erori pageerror/CSP la pornire'); eq(p.__reqs,[],'0 cereri de rețea');
-ok(/^v 1\.0\.3 · 2026-10-22$/.test(await p.$eval('#app-version',e=>e.textContent)),'#app-version');
-ok(await p.$eval('meta[name=application-version]',e=>e.content)==='1.0.3','meta application-version');
+ok(/^v 1\.0\.4 · 2026-10-22$/.test(await p.$eval('#app-version',e=>e.textContent)),'#app-version');
+ok(await p.$eval('meta[name=application-version]',e=>e.content)==='1.0.4','meta application-version');
 ok(await p.$eval('meta[name=last-updated]',e=>e.content)==='2026-10-22','meta last-updated');
 const csp=await p.$eval('meta[http-equiv=Content-Security-Policy]',e=>e.content);
 ok(/default-src 'none'/.test(csp)&&/connect-src 'none'/.test(csp)&&!/unsafe-eval/.test(csp)&&!/script-src[^;]*unsafe-inline/.test(csp),'CSP strict');
@@ -224,7 +224,7 @@ for(const [btn,ext] of [['#exAdx','adx'],['#exCsv','csv'],['#exJson','json']]){
   ok(names.includes('Ștefan Țurcanu-Șoimaru'),'diacritice păstrate în '+ext); await q.__ctx.close(); }
 // .fff.json
 const [d2]=await Promise.all([p.waitForEvent('download'),p.click('#bkExport')]); const bfile=path.join(tmp,'b.fff.json'); fs.copyFileSync(await d2.path(),bfile);
-const bj=JSON.parse(fs.readFileSync(bfile,'utf8')); eq([bj.format,bj.schema,bj.app,bj.version,bj.updated],['fff-bundle',1,'qso','1.0.3','2026-10-22'],'antet .fff.json'); ok(typeof bj.data['fff.qso.data']==='string','date în bundle');
+const bj=JSON.parse(fs.readFileSync(bfile,'utf8')); eq([bj.format,bj.schema,bj.app,bj.version,bj.updated],['fff-bundle',1,'qso','1.0.4','2026-10-22'],'antet .fff.json'); ok(typeof bj.data['fff.qso.data']==='string','date în bundle');
 const q=await newPage(); await q.click('#tb-io'); await q.setInputFiles('#bkFile',bfile); await q.waitForSelector('#dlgConfirm[open]'); await q.click('#dcYes'); await q.waitForTimeout(300);
 eq(await q.evaluate(()=>window.__qso.APP.S.records.length),3,'restaurare .fff.json'); 
 // bundle de altă aplicație respins

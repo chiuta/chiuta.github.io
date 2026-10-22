@@ -2,7 +2,7 @@
 
 [English](README.md) · **Română** · [Français](README.fr.md) · [Italiano](README.it.md) · [Español](README.es.md) · [Português](README.pt.md) · [Deutsch](README.de.md) · [Magyar](README.hu.md)
 
-**Versiune:** 1.0.2 · **Ultima actualizare:** 2026-10-22
+**Versiune:** 1.0.3 · **Ultima actualizare:** 2026-10-22
 
 Limbile interfeței: **Română, English, Français, Italiano, Español, Português (PT), Deutsch, Magyar**
 
@@ -68,3 +68,4 @@ MIT — vezi fișierul `LICENSE` din rădăcina depozitului.
 - 1.0.0 — 2026-10-14: prima versiune.
 - 1.0.1 — 2026-10-22: o căutare fără rezultat spune acum explicit că setul inclus e doar demonstrativ (când setul demo e activ); exportul CSV neutralizează celulele care încep cu = + - @ împotriva injecției de formule, iar importul TSV/CSV scoate din nou apostroful; ținte tactile de cel puțin 24 px; eticheta tehnică listează cele 8 limbi.
 - 1.0.2 — 2026-10-22: fff-kit 1.1.2: PBKDF2 cu 600.000 de iterații, protecție anti-clickjacking.
+- 1.0.3 — 2026-10-22: fff-kit 1.1.4: ținte tactile și text minim în interfața comună.

@@ -2,7 +2,7 @@
 
 [English](README.md) · [Română](README.ro.md) · [Français](README.fr.md) · [Italiano](README.it.md) · **Español** · [Português](README.pt.md) · [Deutsch](README.de.md) · [Magyar](README.hu.md)
 
-**Versión:** 1.0.2 · **Última actualización:** 2026-10-22
+**Versión:** 1.0.3 · **Última actualización:** 2026-10-22
 
 Idiomas de la interfaz: **Română, English, Français, Italiano, Español, Português (PT), Deutsch, Magyar**
 
@@ -76,3 +76,4 @@ MIT — véase el archivo `LICENSE` en la raíz del repositorio.
 - 1.0.0 — 2026-10-14: primera versión.
 - 1.0.1 — 2026-10-22: áreas táctiles de al menos 24 px para casillas y botones de opción; la etiqueta técnica (fff-info) lista ahora los 8 idiomas de la interfaz. El origen compartido con otras aplicaciones sigue siendo una cuestión de infraestructura (subdominio separado) y no se cambia aquí.
 - 1.0.2 — 2026-10-22: fff-kit 1.1.2: PBKDF2 con 600.000 iteraciones, protección anti-clickjacking.
+- 1.0.3 — 2026-10-22: fff-kit 1.1.4: áreas táctiles y tamaño mínimo del texto en la interfaz común.
