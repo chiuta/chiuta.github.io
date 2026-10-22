@@ -1,4 +1,4 @@
-// Teste kit 1.1.3 (întărire): restaurare vs. salvare la pagehide, chei la import, rollback, parolă/iterații, date sensibile la export,
+// Teste kit 1.1.3–1.1.4 (întărire, dimensiuni minime): restaurare vs. salvare la pagehide, chei la import, rollback, parolă/iterații, date sensibile la export,
 // anti-clickjacking cu mesaj, politici CSP în `check`, derivă a blocului kit, candidate ICE, plafon lockstep, tools/.
 // Rulare: node test/hardening.test.mjs
 import fs from 'node:fs';
@@ -19,8 +19,8 @@ const bundleOf = (data, app = 'demo-fff') => JSON.stringify({format: 'fff-bundle
 
 /* ====================================================================== versiune */
 console.log('versiune');
-check('KIT_VERSION = 1.1.3 (core.js, build.mjs)', kitVersion() === '1.1.3' && /KIT_VERSION = '1\.1\.3'/.test(fs.readFileSync(path.join(KIT, 'src/core.js'), 'utf8')));
-check('README: Versiune 1.1.3', /\*\*Versiune:\*\* 1\.1\.3/.test(fs.readFileSync(path.join(KIT, 'README.md'), 'utf8')));
+check('KIT_VERSION = 1.1.4 (core.js, build.mjs)', kitVersion() === '1.1.4' && /KIT_VERSION = '1\.1\.4'/.test(fs.readFileSync(path.join(KIT, 'src/core.js'), 'utf8')));
+check('README: Versiune 1.1.4', /\*\*Versiune:\*\* 1\.1\.4/.test(fs.readFileSync(path.join(KIT, 'README.md'), 'utf8')));
 
 /* ====================================================================== D3: iterații în texte */
 console.log('D3: textele din label.json derivă din constantă');
@@ -83,7 +83,7 @@ console.log('F11: derivă a blocului kit față de sursă');
   const h = rf(d);
   fs.writeFileSync(path.join(d, 'index.html'), h.replace("var SCHEMA = 1,", "var SCHEMA = 1, /* editat de mână */"));
   const o = run(['check', d, '--lax']);
-  check('modificare manuală a bundle.js în pagină → avertisment „derivă” cu modulul', /avert\.  derivă: blocul kit din pagină diferă de sursa kitului v1\.1\.3 \(bundle\)/.test(o.stdout), o.stdout);
+  check('modificare manuală a bundle.js în pagină → avertisment „derivă” cu modulul', /avert\.  derivă: blocul kit din pagină diferă de sursa kitului v1\.1\.4 \(bundle\)/.test(o.stdout), o.stdout);
   fs.writeFileSync(path.join(d, 'index.html'), h.replace('.fff-dlg-sm{', '.fff-dlg-sm{/*x*/'));
   check('modificare în CSS → „derivă (css)”', /derivă: .*\(css\)/.test(run(['check', d, '--lax']).stdout));
   run(['apply', d, '--slug', 'demo-fff', '--modules', 'core,label,bundle']);
@@ -340,6 +340,7 @@ console.log('M4: export necriptat cu date sensibile cere confirmare și propune 
   await A.page.waitForSelector('dialog.fff-dlg-sm');
   check('UI „Exportă” trece prin aceeași confirmare', /date sensibile necriptate/.test(await A.page.evaluate(() => document.querySelector('dialog.fff-dlg-sm').innerText)));
   await A.page.click('dialog.fff-dlg-sm button:has-text("Anulează")');
+  await A.page.waitForTimeout(200);
   check('UI: anularea afișează „Anulat.”', /Anulat/.test(await A.page.evaluate(() => [...document.querySelectorAll('dialog [role=status].fff-res')].pop().textContent)));
   // cu redactor: valorile sensibile sunt golite → fără dialog
   const B = await newPage(browser);

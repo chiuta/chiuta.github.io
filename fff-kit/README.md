@@ -1,6 +1,6 @@
 # fff-kit
 
-**Versiune:** 1.1.3 · **Ultima actualizare:** 22 octombrie 2026
+**Versiune:** 1.1.4 · **Ultima actualizare:** 22 octombrie 2026
 
 Module comune pentru aplicațiile „fără frontiere”, **lipite în fiecare `index.html`** de un pas de build. Aplicația rămâne un fișier care funcționează descărcat, offline, fără server. Nimic din kit nu face cereri de rețea.
 
@@ -50,6 +50,13 @@ Toate modulele sunt IIFE care definesc `window.FFF`; singura variabilă globală
 
 **Redactare (kit 1.1.0, întărită în 1.1.1; 1.1.2: PBKDF2 la 600 000 de iterații și protecție anti-clickjacking).** `FFF.bundle.redact(function (cheie, valoare) { … return valoareCurățată; })` înregistrează un redactor pentru secrete (chei API etc.). Redactorii se aplică doar exportului **necriptat** (`export()` fără `encrypt`); un redactor care aruncă excepție sau întoarce altceva decât un șir golește valoarea (eșuează închis; pentru a păstra o valoare, întoarce-o). `export({encrypt:true, password})` (copie criptată) păstrează totul, iar `export({secrets:true})` dezactivează explicit redactarea. `build()` rămâne complet (neredactat), pentru apelurile existente. La restaurarea unei copii necriptate, valorile redactate trebuie reintroduse manual.
 
+**Dimensiuni minime în 1.1.4 (re-audit dinamic: ținte tactile < 24 px în 69 de aplicații, text < 12 px în 43).** Din cele 112 depistări, singurele elemente generate de kit erau `#app-version` (transformat în buton de `FFF.label`) și rezerva `.fff-chip`; restul aparțin aplicațiilor.
+
+* `#app-version[data-fff-label]` primește `min-height`/`min-width` de 24 px (CSS, fără a-i schimba `display`). Dacă elementul e `display:inline` (de obicei un `<span>`, a cărui casetă are doar ~15 px), `FFF.label` îi pune `data-fff-inl` și devine `inline-flex` cu `align-items:center`; blocurile (`div`, `p`) rămân blocuri. Nicio altă proprietate de layout nu e atinsă.
+* Text ≥ 12 px: `FFF.label` marchează cu `data-fff-fs` doar nodurile din `#app-version` al căror font calculat e < 12 px (inclusiv descendenții și valorile puse inline) și le ridică la 12 px; fonturile deja ≥ 12 px nu se schimbă. Măsurarea se repetă la `load` și la `resize` (breakpoint-urile aplicației).
+* `.fff-chip`: `font-size:max(12px,.85em)`. Dialogurile kitului: pe `pointer:coarse`, butoanele, câmpurile și `summary` au minimum 44 px.
+* Ce NU face kitul: nu atinge butoane, linkuri, casete de bifat sau text ale aplicației (subsol, bare de unelte, glisoare etc.) — acestea se corectează în fiecare aplicație.
+
 **Întărire în 1.1.3.**
 
 * **Restaurarea nu mai e suprascrisă (M2).** Aplicațiile care își salvează starea din memorie la `pagehide`/`beforeunload` rescriau datele tocmai importate (sau șterse) în timpul `location.reload()`. Acum, cu `reload: true` (cazul dialogului „Transparență”), kitul **îngheață scrierile** după ce a scris cheile și înainte de reload: `Storage.prototype.setItem/removeItem/clear` devin no-op (inclusiv `sessionStorage`), `IDBObjectStore.put/add/delete/clear` nu mai scriu, iar `FFF.store.set/remove` și `FFF.store.raw.set/remove` sunt blocate (`FFF.store.freeze()`, `FFF.store.frozen()`). `bundle:imported` / `bundle:wiped` se emit **sincron, după înghețare**. Atribuirea directă `localStorage.cheie = valoare` nu poate fi interceptată și rămâne în afara protecției. Fără `reload`, nu se îngheață nimic.
@@ -96,7 +103,7 @@ LC_ALL=C sed -E 's/data-fff-hash="[0-9a-f]*"/data-fff-hash=""/g; s/"sha256":"[0-
 ```
 node fff-kit/test/all.mjs [--timeout=900] [--only=core,bundle] [--skip=ephem] [--list] [--fail-fast]   # TOATE testele autonome, pe rând
 node fff-kit/test/core.test.mjs      # 34 verificări
-node fff-kit/test/label.test.mjs     # 47 (inclusiv axe în dialog, luminos/întunecat, 360 px)
+node fff-kit/test/label.test.mjs     # 57 (inclusiv axe în dialog, luminos/întunecat, 360 px, dimensiuni minime 1.1.4)
 node fff-kit/test/bundle.test.mjs    # 53 (export/import/ștergere, criptare, rollback, UI)
 node fff-kit/test/build.test.mjs     # 68 (apply/idempotență/remove/check/info, politici CSP)
 node fff-kit/test/hardening.test.mjs # kit 1.1.3: pagehide vs. restaurare, chei la import, rollback, parolă/iterații, export sensibil, anti-clickjacking, politici CSP, derivă, ICE/lockstep, tools/

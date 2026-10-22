@@ -368,17 +368,36 @@
     for (var i = 0; i < fs.length; i++) if (fs[i].getClientRects().length && getComputedStyle(fs[i]).visibility !== 'hidden') return fs[i];
     return null;
   }
+  /* Dimensiuni minime (WCAG 2.2 · 2.5.8 țintă ≥ 24 px; text ≥ 12 px) fără a atinge layoutul aplicației:
+     inline → inline-flex doar dacă elementul e într-adevăr inline; fontul se ridică la 12 px doar acolo unde e mai mic. */
+  function fit(el) {
+    try {
+      var all = [el].concat([].slice.call(el.querySelectorAll('*'))), i, n;
+      for (i = 0; i < all.length; i++) { all[i].removeAttribute('data-fff-fs'); }
+      el.removeAttribute('data-fff-inl');
+      if (getComputedStyle(el).display === 'inline') el.setAttribute('data-fff-inl', '1');
+      for (i = 0; i < all.length; i++) {
+        n = all[i];
+        var has = false, c;
+        for (c = n.firstChild; c; c = c.nextSibling) if (c.nodeType === 3 && c.nodeValue.trim()) { has = true; break; }
+        if (has && parseFloat(getComputedStyle(n).fontSize) < 12) n.setAttribute('data-fff-fs', '1');
+      }
+    } catch (e) {}
+  }
+  var fitT = 0, fitEl = null;
+  function fitSoon() { if (fitT) return; fitT = setTimeout(function () { fitT = 0; var e = doc.querySelector('#app-version[data-fff-label]'); if (e) fit(e); }, 150); }
   function decorate() {
     var el = doc.getElementById('app-version');
     if (el) {
       if (fallback) { fallback.remove(); fallback = null; }
-      if (el.getAttribute('data-fff-label')) { api.state = 'button'; return; }
+      if (el.getAttribute('data-fff-label')) { if (fitEl !== el) { fitEl = el; fit(el); } api.state = 'button'; return; }
       if (el.closest('a,button,[role="button"],[role="link"],summary,label,input,select,textarea')) { api.state = 'nested'; return; }
       el.setAttribute('data-fff-label', '1');
       el.setAttribute('role', 'button');
       el.setAttribute('tabindex', '0');
       el.setAttribute('aria-haspopup', 'dialog');
       el.setAttribute('title', T('open_hint'));
+      fitEl = el; fit(el);
       api.state = 'button';
       return;
     }
@@ -417,7 +436,8 @@
         setTimeout(function () { pend = false; decorate(); }, 200);
       }).observe(doc.body || doc.documentElement, {childList: true, subtree: true});
     }
-    window.addEventListener('load', function () { setTimeout(decorate, 800); });
+    window.addEventListener('load', function () { setTimeout(decorate, 800); setTimeout(fitSoon, 900); });
+    window.addEventListener('resize', fitSoon);
     F.onLang(function () {
       var el = doc.querySelector('#app-version[data-fff-label]');
       if (el) el.setAttribute('title', T('open_hint'));

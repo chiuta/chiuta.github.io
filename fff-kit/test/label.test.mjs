@@ -23,7 +23,7 @@ check('stocare: chei + octeți', /fx\.count\s+\d+ B/.test(txt) && txt.includes('
 check('permisiuni: localStorage listat', txt.includes('localStorage'));
 check('fișier: SHA-256 declarat + dimensiune', txt.includes(await page.evaluate(() => document.documentElement.getAttribute('data-fff-hash'))) && /Dimensiune: [\d.]+ KB/.test(txt));
 check('selfModifying din fff.config.json → avertisment în dialog', txt.includes('își poate salva propria copie'));
-check('kit: versiune și module', txt.includes('fff-kit v1.1.3') && txt.includes('core, label, bundle'));
+check('kit: versiune și module', txt.includes('fff-kit v1.1.4') && txt.includes('core, label, bundle'));
 await page.keyboard.press('Escape'); await page.waitForTimeout(150);
 check('Esc închide și elimină dialogul din DOM', await page.evaluate(() => document.querySelectorAll('dialog').length === 0));
 check('focusul revine pe #app-version', await page.evaluate(() => document.activeElement && document.activeElement.id === 'app-version'));
@@ -146,6 +146,27 @@ check('element #app-version creat târziu: devine buton (MutationObserver) și f
 const nest = makeApp(FIXTURE.replace('<span id="app-version">v 1.2.3 · 2026-10-14</span>', '<button type="button" id="about"><span id="app-version">v 1.2.3</span></button>'), {info: false});
 const n4 = await newPage(browser); await n4.page.goto(nest.url); await n4.page.waitForTimeout(600);
 check('#app-version în interiorul unui buton: nu se transformă (fără interactive imbricate)', await n4.page.evaluate(() => document.getElementById('app-version').getAttribute('role') === null && FFF.label.state === 'nested'));
+console.log('1.1.4: dimensiuni minime (țintă ≥ 24 px, text ≥ 12 px)');
+const AV = '<span id="app-version">v 1.2.3 · 2026-10-14</span>';
+const dimOf = async (html, vp, info = true) => {
+  const a = makeApp(html, {info}); const q = await newPage(browser, vp); await q.page.goto(a.url); await q.page.waitForTimeout(1300);
+  const r = await q.page.evaluate(() => { const e = document.getElementById('app-version'), b = e && e.getBoundingClientRect(), cs = e && getComputedStyle(e); return e ? {h: b.height, w: b.width, disp: cs.display, fs: parseFloat(cs.fontSize), sw: document.documentElement.scrollWidth, cw: document.documentElement.clientWidth, chip: !!document.querySelector('.fff-chip')} : {chip: !!document.querySelector('.fff-chip'), cf: (() => { const c = document.querySelector('.fff-chip'); return c ? parseFloat(getComputedStyle(c).fontSize) : 0; })(), sw: document.documentElement.scrollWidth, cw: document.documentElement.clientWidth}; });
+  q.errors.length && console.log(q.errors); return r;
+};
+for (const vp of [{w: 360, h: 740}, {w: 1366, h: 850}]) {
+  const tag = vp.w + ' px: ';
+  const i1 = await dimOf(FIXTURE.replace(AV, '<span id="app-version" style="font-size:9px">v 1.2.3 · 2026-10-14</span>'), vp);
+  check(tag + 'span inline 9 px → ≥ 24 px înălțime, font ≥ 12 px, inline-flex', i1.h >= 24 && i1.w >= 24 && i1.fs >= 12 && i1.disp === 'inline-flex' && i1.sw <= i1.cw, i1);
+  const i2 = await dimOf(FIXTURE.replace(AV, '<p id="app-version" style="font-size:10px;margin:0">v 1.2.3 · 2026-10-14</p>'), vp);
+  check(tag + 'bloc (p) rămâne bloc; ≥ 24 px, font ≥ 12 px', i2.h >= 24 && i2.disp === 'block' && i2.fs >= 12 && i2.sw <= i2.cw, i2);
+  const i3 = await dimOf(FIXTURE.replace(AV, '<span id="app-version" style="font-size:18px;display:block">v 1.2.3 · 2026-10-14</span>'), vp);
+  check(tag + 'display:block al aplicației păstrat, font 18 px neschimbat', i3.disp === 'block' && i3.fs === 18 && i3.h >= 24, i3);
+  const i4 = await dimOf(FIXTURE.replace(AV, '<span id="app-version">v 1.2.3 <small style="font-size:8px">beta</small></span>'), vp);
+  const sm = await (async () => { const a = makeApp(FIXTURE.replace(AV, '<span id="app-version">v 1.2.3 <small style="font-size:8px">beta</small></span>')); const q = await newPage(browser, vp); await q.page.goto(a.url); await q.page.waitForTimeout(1300); return q.page.evaluate(() => parseFloat(getComputedStyle(document.querySelector('#app-version small')).fontSize)); })();
+  check(tag + 'descendent cu font 8 px în #app-version → 12 px', sm >= 12 && i4.h >= 24, {sm, i4});
+  const i5 = await dimOf(noav.replace('footer{margin-top:24px', 'footer{font-size:10px;margin-top:24px'), vp, false);
+  check(tag + 'buton de rezervă .fff-chip: font ≥ 12 px, fără depășire orizontală', i5.chip && i5.cf >= 12 && i5.sw <= i5.cw, i5);
+}
 const cleanErrs = [...errors, ...n1.errors, ...n2.errors, ...n3.errors, ...n4.errors, ...mob.errors];
 check('0 pageerror/CSP în toate scenariile', cleanErrs.length === 0, cleanErrs);
 check('0 cereri de rețea', net.length === 0 && mob.net.length === 0, net);
