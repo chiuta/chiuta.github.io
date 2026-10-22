@@ -1,6 +1,6 @@
 # fff-kit
 
-**Versiune:** 1.1.1 · **Ultima actualizare:** 19 octombrie 2026
+**Versiune:** 1.1.2 · **Ultima actualizare:** 22 octombrie 2026
 
 Module comune pentru aplicațiile „fără frontiere”, **lipite în fiecare `index.html`** de un pas de build. Aplicația rămâne un fișier care funcționează descărcat, offline, fără server. Nimic din kit nu face cereri de rețea.
 
@@ -46,7 +46,7 @@ Toate modulele sunt IIFE care definesc `window.FFF`; singura variabilă globală
 
 **`FFF.bundle`** — `export({encrypt, password, filename})`, `inspect(file, {password})`, `import(file, {password, confirm, reload})`, `wipe({confirm, reload})`, `build()`, `redact(fn)`; erorile au `.code` (`format, schema, app, password_required, bad_password, pw_short, nocrypto, read, too_big, quota, key`) și mesaj tradus în limba curentă. Confirmările folosesc un `<dialog>` propriu (nu `window.confirm`).
 
-**Redactare (kit 1.1.0, întărită în 1.1.1).** `FFF.bundle.redact(function (cheie, valoare) { … return valoareCurățată; })` înregistrează un redactor pentru secrete (chei API etc.). Redactorii se aplică doar exportului **necriptat** (`export()` fără `encrypt`); un redactor care aruncă excepție sau întoarce altceva decât un șir golește valoarea (eșuează închis; pentru a păstra o valoare, întoarce-o). `export({encrypt:true, password})` (copie criptată) păstrează totul, iar `export({secrets:true})` dezactivează explicit redactarea. `build()` rămâne complet (neredactat), pentru apelurile existente. La restaurarea unei copii necriptate, valorile redactate trebuie reintroduse manual.
+**Redactare (kit 1.1.0, întărită în 1.1.1; 1.1.2: PBKDF2 la 600 000 de iterații și protecție anti-clickjacking).** `FFF.bundle.redact(function (cheie, valoare) { … return valoareCurățată; })` înregistrează un redactor pentru secrete (chei API etc.). Redactorii se aplică doar exportului **necriptat** (`export()` fără `encrypt`); un redactor care aruncă excepție sau întoarce altceva decât un șir golește valoarea (eșuează închis; pentru a păstra o valoare, întoarce-o). `export({encrypt:true, password})` (copie criptată) păstrează totul, iar `export({secrets:true})` dezactivează explicit redactarea. `build()` rămâne complet (neredactat), pentru apelurile existente. La restaurarea unei copii necriptate, valorile redactate trebuie reintroduse manual.
 
 ## Formatul `.fff.json`
 
@@ -57,10 +57,10 @@ Toate modulele sunt IIFE care definesc `window.FFF`; singura variabilă globală
 Criptat (parolă ≥ 8 caractere, normalizată NFC):
 
 ```json
-{"format":"fff-bundle-enc","schema":1,"app":"<slug>","kdf":"PBKDF2-SHA256","iter":310000,"salt":"<b64, 16 B>","iv":"<b64, 12 B>","ct":"<b64>"}
+{"format":"fff-bundle-enc","schema":1,"app":"<slug>","kdf":"PBKDF2-SHA256","iter":600000,"salt":"<b64, 16 B>","iv":"<b64, 12 B>","ct":"<b64>"}
 ```
 
-Cheie AES-GCM 256 derivată cu PBKDF2-SHA256 (310 000 iterații); textul clar este JSON-ul bundle-ului de mai sus; datele autentificate suplimentar (AAD) sunt `fff-bundle-enc|1|<slug>`, deci schimbarea antetului (`app`) sau a numărului de iterații face decriptarea să eșueze. Parola nu poate fi recuperată.
+Cheie AES-GCM 256 derivată cu PBKDF2-SHA256 (600 000 iterații); textul clar este JSON-ul bundle-ului de mai sus; datele autentificate suplimentar (AAD) sunt `fff-bundle-enc|1|<slug>`, deci schimbarea antetului (`app`) sau a numărului de iterații face decriptarea să eșueze. Parola nu poate fi recuperată.
 
 Reguli la import: `format`/`schema`/`app` trebuie să corespundă; toate valorile sunt șiruri; cheile `fff.*` sunt acceptate doar în spațiul `fff.<slug>.`; indexul `__keys` nu poate fi importat; fișier maximum 64 MB. Se cere confirmare (număr de chei, versiune, dată). Se scriu **doar** cheile din bundle (îmbinare: nu șterge restul); dacă scrierea eșuează (cotă plină), valorile anterioare sunt restaurate. **Ștergerea** înlătură doar cheile indexate ale aplicației (inclusiv `fff.<slug>.*`), cu confirmare.
 

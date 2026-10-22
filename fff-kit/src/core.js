@@ -1,7 +1,18 @@
-/* fff-kit · core · v1.1.1 — fără rețea, fără dependențe. Definește window.FFF. */
+/* fff-kit · core · v1.1.2 — fără rețea, fără dependențe. Definește window.FFF. */
 (function () {
   'use strict';
-  var KIT_VERSION = '1.1.1';
+  /* anti-clickjacking: GitHub Pages nu trimite X-Frame-Options; dacă pagina e încadrată de o origine străină, o ascundem. */
+  try {
+    if (window.top !== window.self) {
+      var __cross = false;
+      try { void window.top.location.href; } catch (e) { __cross = true; }
+      if (__cross) {
+        document.documentElement.style.display = 'none';
+        try { window.top.location = window.self.location.href; } catch (e2) {}
+      }
+    }
+  } catch (e3) {}
+  var KIT_VERSION = '1.1.2';
   var F = (window.FFF = window.FFF || {});
   if (F.core && F.core.version) return; // idempotent la dublă încărcare
   var SUP = ['ro', 'en', 'fr', 'it', 'es', 'pt', 'hu', 'de'];

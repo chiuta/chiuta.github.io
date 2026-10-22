@@ -4,7 +4,7 @@
   var F = window.FFF;
   if (!F || F.bundle) return;
   var doc = document;
-  var SCHEMA = 1, ITER = 310000, MAX_BYTES = 64 * 1048576, MAX_KEYS = 20000;
+  var SCHEMA = 1, ITER = 600000, MAX_BYTES = 64 * 1048576, MAX_KEYS = 20000;
   function T(k, v) { return F.t('bundle', k, v); }
 
   function BErr(code, vars) {

@@ -78,7 +78,7 @@ const enc = await A.page.evaluate(() => FFF.bundle.export({encrypt: true, passwo
 void enc;
 const ee = await exportVia(A.page, () => FFF.bundle.export({encrypt: true, password: 'parola-secreta'}));
 const E = JSON.parse(ee.text);
-check('plic criptat: format, schema, app, kdf, iter 310000, salt/iv/ct base64', E.format === 'fff-bundle-enc' && E.schema === 1 && E.app === 'demo-fff' && E.kdf === 'PBKDF2-SHA256' && E.iter === 310000 && /^[A-Za-z0-9+/=]+$/.test(E.salt + E.iv + E.ct) && Buffer.from(E.iv, 'base64').length === 12 && Buffer.from(E.salt, 'base64').length === 16 && !('data' in E), Object.keys(E));
+check('plic criptat: format, schema, app, kdf, iter 600000, salt/iv/ct base64', E.format === 'fff-bundle-enc' && E.schema === 1 && E.app === 'demo-fff' && E.kdf === 'PBKDF2-SHA256' && E.iter === 600000 && /^[A-Za-z0-9+/=]+$/.test(E.salt + E.iv + E.ct) && Buffer.from(E.iv, 'base64').length === 12 && Buffer.from(E.salt, 'base64').length === 16 && !('data' in E), Object.keys(E));
 check('textul criptat nu conține valorile în clar', !ee.text.includes('ghilimele') && !ee.text.includes('fx.count'));
 const ee2 = await exportVia(A.page, () => FFF.bundle.export({encrypt: true, password: 'parola-secreta'}));
 const E2 = JSON.parse(ee2.text);

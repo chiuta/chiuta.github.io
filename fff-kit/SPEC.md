@@ -32,7 +32,7 @@ Scop: module comune pentru aplicațiile „fără frontiere”, **lipite în fie
 
 ## FFF.bundle (export/import unitar)
 - Format `.fff.json`: `{"format":"fff-bundle","schema":1,"app":"<slug>","version":"X.Y.Z","updated":"YYYY-MM-DD","exported":"ISO","data":{"<cheie>":"<șir>"…}}` (valori exact ca în `localStorage`).
-- Criptat: `{"format":"fff-bundle-enc","schema":1,"app":…,"kdf":"PBKDF2-SHA256","iter":310000,"salt":b64,"iv":b64,"ct":b64}` cu AES-GCM 256 (Web Crypto).
+- Criptat: `{"format":"fff-bundle-enc","schema":1,"app":…,"kdf":"PBKDF2-SHA256","iter":600000,"salt":b64,"iv":b64,"ct":b64}` cu AES-GCM 256 (Web Crypto).
 - `FFF.bundle.export({encrypt})`, `FFF.bundle.import(file,{password})` (validează schema și `app`; cere confirmare; scrie doar chei din bundle; apoi `location.reload()` opțional), `FFF.bundle.wipe()` (șterge doar cheile indexate ale aplicației, cu confirmare).
 
 ## FFF.qr
