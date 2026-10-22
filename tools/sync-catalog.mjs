@@ -15,6 +15,10 @@
 //   3. „offline” în descrieri (cele 8 limbi): doar dacă aplicația chiar funcționează offline: sw.js există,
 //      fff-info declară serviceWorker:true și egress-ul e gol. Excepții calificate în text: OFFLINE_QUALIFIED.
 //   4. data din subsol (8 limbi) = cea mai recentă dată de actualizare; contorul de aplicații = numărul de carduri.
+//   4b. atributele pentru căutarea/filtrarea din catalog, pe fiecare card: data-cat (secțiunea), data-langs (limbile interfeței din
+//      app.json → features.i18n) și data-off (full = service worker + nicio cerere externă · part = service worker, dar unele funcții
+//      cer internet · no = fără service worker). Gazda declarată în fff.config.json → cspSelfTest.host (autotest CSP intenționat,
+//      ex. ACORDAJ → example.com) nu se numără ca dependență externă.
 //   5. recalculează hash-urile CSP ale scripturilor inline și regenerează sw.js al hub-ului (precache index + manifest + icoane;
 //      NU interceptează nimic altceva, deci linkurile către aplicații și către depozite rămân neatinse).
 import fs from 'node:fs';
@@ -31,6 +35,7 @@ const ri = argv.indexOf('--root');
 const ROOT = path.resolve(ri >= 0 ? argv[ri + 1] : path.join(HUB, '..'));
 
 // Aplicații cu „offline” calificat în text („nu e complet offline”, „snapshot învechit offline”): nu sunt oprite de regulă.
+const LANG_ORDER = ['en', 'ro', 'fr', 'it', 'es', 'pt', 'de', 'hu'];
 const OFFLINE_QUALIFIED = new Set(['TerRa', 'VietAR']);
 const OFFLINE_RE = /offline|fără conexiune|hors ligne|hors-ligne|senza connessione|sin conexión|sem ligação|sem conexão|ohne verbindung|internet nélkül/i;
 
@@ -72,23 +77,35 @@ function truth(key) {
   const version = metaOf(h, 'application-version') || info.version || '';
   const updated = metaOf(h, 'last-updated') || info.updated || '';
   if (app && app.version && version && app.version !== version) warn(`${key}: app.json spune v${app.version}, index.html v${version} (rulează fff-kit/build.mjs info)`);
-  const eg = (info.egress || []).map((e) => (typeof e === 'string' ? e : e.host));
+  let cfg = {};
+  try { cfg = JSON.parse(read(path.join(loc.dir, 'fff.config.json'))); } catch { /* fără fff.config.json */ }
+  const selfTest = new Set([cfg.cspSelfTest, info.cspSelfTest].filter((x) => x && x.intentional && x.host).map((x) => x.host));
+  const eg = (info.egress || []).map((e) => (typeof e === 'string' ? e : e.host)).filter((h) => !selfTest.has(h));
+  const langs = (info.features && Array.isArray(info.features.i18n) ? info.features.i18n : []).filter((l) => LANG_ORDER.includes(l));
   const swFile = fs.existsSync(path.join(loc.pub, 'sw.js'));
   const swDecl = !!(info.features && info.features.pwa && info.features.pwa.serviceWorker);
-  return {key, ...loc, version, updated, egress: eg, swFile, swDecl, readme: fs.existsSync(path.join(loc.dir, 'README.md')), hasApp: !!app};
+  const off = swFile && swDecl ? (eg.length ? 'part' : 'full') : 'no';
+  return {key, ...loc, version, updated, egress: eg, langs, off, swFile, swDecl, readme: fs.existsSync(path.join(loc.dir, 'README.md')), hasApp: !!app};
 }
 
 /* ---- carduri ---- */
 const parts = html.split('<div class="app-card"');
 const keys = [];
+const lastSec = (txt, prev) => { const m = [...txt.matchAll(/<div class="sec-head[^"]*" id="([^"]+)"/g)]; return m.length ? m[m.length - 1][1] : prev; };
+let curSec = lastSec(parts[0], '');
 for (let i = 1; i < parts.length; i++) {
   const km = parts[i].match(/data-c="apps\|([^|"]+)\|title"/);
   if (!km) { warn(`card #${i} fără data-c="apps|…|title"`); continue; }
   const key = km[1];
   keys.push(key);
+  const sec = curSec;
+  curSec = lastSec(parts[i], curSec);   // secțiunea următoare începe după coada acestui card
   const t = truth(key);
   if (t.missing) { warn(`${key}: nu există ${ROOT}/${key}/index.html și nici apps/${key}/index.html`); continue; }
   if (!t.version) { warn(`${key}: fără versiune în index.html`); continue; }
+  // 0. atribute de filtrare (idempotent)
+  const attrs = ` data-cat="${sec}" data-langs="${t.langs.join(',')}" data-off="${t.off}"`;
+  parts[i] = parts[i].replace(/^( data-cat="[^"]*")?( data-langs="[^"]*")?( data-off="[^"]*")?/, (m) => { if (m !== attrs) changes.push(`${key}: filtre${m ? '' : ' (nou)'} → ${sec} · ${t.langs.length} limbi · offline ${t.off}`); return attrs; });
   // 1. versiune + dată
   const want = `<span class="card-ver" data-ver="${t.version}" data-upd="${t.updated}">v${t.version} · ${t.updated}</span>`;
   parts[i] = parts[i].replace(/<span class="card-ver"[^>]*>[^<]*<\/span>/, (m) => { if (m !== want) changes.push(`${key}: ${m.replace(/<[^>]+>/g, '')} → v${t.version} · ${t.updated}`); return want; });
@@ -135,13 +152,13 @@ const sha = (s) => createHash('sha256').update(s).digest('hex');
 
 function swSource(version) {
   return `/* fff-hub sw · generat de tools/sync-catalog.mjs · fără cereri externe, fără importScripts.
-   Atinge DOAR pagina principală a hub-ului (index, manifest, icoane). Orice alt URL (/apps/…, depozitele, linkurile externe)
+   Atinge DOAR pagina principală a hub-ului și pagina de transparență (index, transparenta.html, manifest, icoane). Orice alt URL (/apps/…, depozitele, linkurile externe)
    trece neatins către rețea / către service worker-ul propriu al aplicației. */
 'use strict';
 var VERSION = ${JSON.stringify(version)};
 var PREFIX = 'fff-chiuta-hub-', CACHE = PREFIX + VERSION;
 var SCOPE = new URL(self.registration.scope);
-var SHELL = ['./', './index.html', './manifest.webmanifest', './icon-192.png', './icon-512.png', './icon-maskable-512.png'];
+var SHELL = ['./', './index.html', './transparenta.html', './manifest.webmanifest', './icon-192.png', './icon-512.png', './icon-maskable-512.png'];
 var OWN = SHELL.map(function (u) { return new URL(u, SCOPE).pathname; });
 OWN.push(new URL('./index.html', SCOPE).pathname);
 
@@ -172,9 +189,10 @@ self.addEventListener('fetch', function (e) {
   var u = new URL(r.url);
   if (u.origin !== self.location.origin || OWN.indexOf(u.pathname) < 0) return;
   var nav = r.mode === 'navigate';
-  var key = nav ? new Request(new URL('./index.html', SCOPE).href) : r;
+  var pageUrl = new URL(u.pathname === new URL('./transparenta.html', SCOPE).pathname ? './transparenta.html' : './index.html', SCOPE).href;
+  var key = nav ? new Request(pageUrl) : r;
   function update() {
-    return fetch(nav ? new URL('./index.html', SCOPE).href : r, {cache: 'no-cache'}).then(function (res) {
+    return fetch(nav ? pageUrl : r, {cache: 'no-cache'}).then(function (res) {
       if (res && res.status === 200 && res.type === 'basic' && !res.redirected) {
         var cp = res.clone();
         return caches.open(CACHE).then(function (c) { return c.put(key, cp); }).then(function () { return res; });

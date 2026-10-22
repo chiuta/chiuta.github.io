@@ -1,4 +1,4 @@
-// Bolta 1.1.5 — legături de intrare (#sky&t=&ll=&from=). Se copiază în apps/Bolta/tests/bridge.test.mjs
+// Bolta 1.1.6 — legături de intrare (#sky&t=&ll=&from=). Se copiază în apps/Bolta/tests/bridge.test.mjs
 // Rulare: node apps/Bolta/tests/bridge.test.mjs
 import {createRequire} from 'module';
 import path from 'node:path';
@@ -14,7 +14,7 @@ async function open(hash, locale = 'ro-RO') {
   await ctx.route(/^https?:/, r => r.abort());
   const page = await ctx.newPage(); const errs = [];
   page.on('pageerror', e => errs.push(String(e))); page.on('console', m => { if (m.type() === 'error') errs.push(m.text()); });
-  await page.goto(APP + hash); await page.waitForTimeout(1200);
+  await page.goto(APP + hash); await page.waitForFunction(() => window.__bolta ? window.__bolta.FR.ok : typeof S !== 'undefined' && S.place && document.readyState === 'complete', null, {timeout: 30000}); await page.evaluate(() => new Promise(r => requestAnimationFrame(() => requestAnimationFrame(r))));
   return {page, ctx, errs};
 }
 const st = p => p.evaluate(() => ({lat: S.place.lat, lon: S.place.lon, tz: S.place.tz, iso: new Date(S.ms).toISOString(), live: S.live, back: (document.getElementById('fff-back') || {}).textContent || null, href: (document.getElementById('fff-back') || {}).href || null}));
@@ -26,7 +26,7 @@ check('0 erori', r.errs.length === 0, r.errs); await r.ctx.close();
 r = await open('#sky&ll=44.43,26.10&from=orarium', 'en-US');
 s = await st(r.page);
 check('fără t: Bolta rămâne live', s.live === true, s);
-await r.page.selectOption('#langSel', 'de'); await r.page.waitForTimeout(200);
+await r.page.selectOption('#langSel', 'de'); await r.page.waitForFunction(() => (document.getElementById('fff-back') || {}).textContent === '← zurück zu ORARIUM', null, {timeout: 30000}).catch(() => { });
 check('schimbarea limbii (de) retraduce butonul', (await st(r.page)).back === '← zurück zu ORARIUM', (await st(r.page)).back);
 await r.ctx.close();
 r = await open('#sky&ll=44.43,26.10&from=evil.example'); s = await st(r.page);

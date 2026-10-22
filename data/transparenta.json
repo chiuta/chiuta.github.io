@@ -1,0 +1,1250 @@
+{
+ "schema": 1,
+ "snapshot": "2026-10-22",
+ "a1": {
+  "date": "2026-10-21",
+  "apps": 110,
+  "mean": 7.3,
+  "inj": 580,
+  "fld": 301,
+  "uploads": 360,
+  "clicks": 2001,
+  "offline": 92,
+  "verDesync": 101,
+  "verTotal": 109
+ },
+ "a2": {
+  "date": "2026-10-22",
+  "apps": 109,
+  "mean": 8.7,
+  "codes": [
+   {
+    "c": "cspstyle",
+    "n": 108
+   },
+   {
+    "c": "targets",
+    "n": 69
+   },
+   {
+    "c": "lskeys",
+    "n": 49
+   },
+   {
+    "c": "small",
+    "n": 43
+   },
+   {
+    "c": "overflow",
+    "n": 37
+   },
+   {
+    "c": "kbd",
+    "n": 28
+   },
+   {
+    "c": "cspx",
+    "n": 28
+   },
+   {
+    "c": "stress",
+    "n": 13
+   },
+   {
+    "c": "load",
+    "n": 10
+   },
+   {
+    "c": "axe",
+    "n": 8
+   },
+   {
+    "c": "fuzzerr",
+    "n": 8
+   },
+   {
+    "c": "lssize",
+    "n": 6
+   },
+   {
+    "c": "focus",
+    "n": 5
+   },
+   {
+    "c": "size",
+    "n": 5
+   },
+   {
+    "c": "secret",
+    "n": 3
+   },
+   {
+    "c": "inject",
+    "n": 2
+   },
+   {
+    "c": "brick",
+    "n": 2
+   },
+   {
+    "c": "ext",
+    "n": 2
+   },
+   {
+    "c": "h1",
+    "n": 2
+   },
+   {
+    "c": "offline",
+    "n": 2
+   },
+   {
+    "c": "perf",
+    "n": 1
+   },
+   {
+    "c": "names",
+    "n": 1
+   },
+   {
+    "c": "uperr",
+    "n": 1
+   },
+   {
+    "c": "monkeyerr",
+    "n": 1
+   }
+  ],
+  "offlineGap": 2,
+  "fakeSw": 5,
+  "emptyI18n": 11,
+  "badHost": 1,
+  "bands": {
+   "b9": 56,
+   "b8": 37,
+   "b7": 8,
+   "b6": 8
+  }
+ },
+ "a4": {
+  "total": 110,
+  "touchBase": 69,
+  "touchNew": 35,
+  "smallBase": 43,
+  "smallNew": 41
+ },
+ "live": {
+  "apps": 110,
+  "sw": 109,
+  "noSw": 1,
+  "fakeSw": 0,
+  "emptyI18n": 0,
+  "badHost": 21,
+  "kitGe114": 109,
+  "kitCount": 109,
+  "cnames": 97,
+  "syncOk": true
+ },
+ "apps": [
+  {
+   "key": "AcademiSearch",
+   "ver": "4.3.10",
+   "off": "part",
+   "langs": 8,
+   "hosts": 14,
+   "score": 7.6,
+   "hm": 2,
+   "l": 4
+  },
+  {
+   "key": "ACORDAJ",
+   "ver": "2.3.10",
+   "off": "full",
+   "langs": 8,
+   "hosts": 0,
+   "score": 9.4,
+   "hm": 0,
+   "l": 3
+  },
+  {
+   "key": "Afrodisiace-fara-frontiere",
+   "ver": "1.2.4",
+   "off": "full",
+   "langs": 8,
+   "hosts": 0,
+   "score": 9.2,
+   "hm": 0,
+   "l": 3
+  },
+  {
+   "key": "AGORA",
+   "ver": "1.2.5",
+   "off": "full",
+   "langs": 8,
+   "hosts": 0,
+   "score": 8.6,
+   "hm": 0,
+   "l": 4
+  },
+  {
+   "key": "AI-Liber",
+   "ver": "1.4.7",
+   "off": "part",
+   "langs": 8,
+   "hosts": 16,
+   "score": 9.1,
+   "hm": 0,
+   "l": 4
+  },
+  {
+   "key": "Akasha",
+   "ver": "1.1.6",
+   "off": "full",
+   "langs": 8,
+   "hosts": 0,
+   "score": 8.9,
+   "hm": 0,
+   "l": 3
+  },
+  {
+   "key": "Alfabete",
+   "ver": "1.0.4",
+   "off": "full",
+   "langs": 8,
+   "hosts": 0,
+   "score": null,
+   "hm": null,
+   "l": null
+  },
+  {
+   "key": "API-fara-frontiere",
+   "ver": "1.2.4",
+   "off": "part",
+   "langs": 8,
+   "hosts": 67,
+   "score": 8.8,
+   "hm": 0,
+   "l": 5
+  },
+  {
+   "key": "Arbore",
+   "ver": "1.0.3",
+   "off": "full",
+   "langs": 8,
+   "hosts": 0,
+   "score": null,
+   "hm": null,
+   "l": null
+  },
+  {
+   "key": "ARENA",
+   "ver": "1.3.6",
+   "off": "part",
+   "langs": 8,
+   "hosts": 4,
+   "score": 9.2,
+   "hm": 0,
+   "l": 3
+  },
+  {
+   "key": "Arhiva-fara-frontiere",
+   "ver": "1.2.3",
+   "off": "part",
+   "langs": 8,
+   "hosts": 2,
+   "score": 9.1,
+   "hm": 0,
+   "l": 3
+  },
+  {
+   "key": "Arhiva-LinkedIn",
+   "ver": "1.2.3",
+   "off": "part",
+   "langs": 8,
+   "hosts": 1,
+   "score": 8.8,
+   "hm": 0,
+   "l": 4
+  },
+  {
+   "key": "ASMR",
+   "ver": "1.2.3",
+   "off": "full",
+   "langs": 8,
+   "hosts": 0,
+   "score": 9.6,
+   "hm": 0,
+   "l": 2
+  },
+  {
+   "key": "ATINGERE",
+   "ver": "1.2.7",
+   "off": "part",
+   "langs": 8,
+   "hosts": 5,
+   "score": 8.8,
+   "hm": 0,
+   "l": 3
+  },
+  {
+   "key": "Aurora",
+   "ver": "1.3.5",
+   "off": "full",
+   "langs": 8,
+   "hosts": 0,
+   "score": 8.7,
+   "hm": 0,
+   "l": 6
+  },
+  {
+   "key": "Belot-fara-frontiere",
+   "ver": "1.2.5",
+   "off": "full",
+   "langs": 8,
+   "hosts": 0,
+   "score": 9.2,
+   "hm": 0,
+   "l": 3
+  },
+  {
+   "key": "Bioenergoterapie",
+   "ver": "1.3.4",
+   "off": "full",
+   "langs": 8,
+   "hosts": 0,
+   "score": 9.3,
+   "hm": 0,
+   "l": 3
+  },
+  {
+   "key": "Bolta",
+   "ver": "1.1.6",
+   "off": "full",
+   "langs": 8,
+   "hosts": 0,
+   "score": null,
+   "hm": null,
+   "l": null
+  },
+  {
+   "key": "BorderlessMelodies",
+   "ver": "1.2.6",
+   "off": "full",
+   "langs": 8,
+   "hosts": 0,
+   "score": 9.2,
+   "hm": 0,
+   "l": 3
+  },
+  {
+   "key": "Cadraj",
+   "ver": "1.2.4",
+   "off": "part",
+   "langs": 8,
+   "hosts": 1,
+   "score": 9.1,
+   "hm": 0,
+   "l": 3
+  },
+  {
+   "key": "CalmWaves",
+   "ver": "1.2.5",
+   "off": "full",
+   "langs": 8,
+   "hosts": 0,
+   "score": 9.2,
+   "hm": 0,
+   "l": 3
+  },
+  {
+   "key": "Carti-de-joc-fara-frontiere",
+   "ver": "1.2.6",
+   "off": "full",
+   "langs": 8,
+   "hosts": 0,
+   "score": 9.3,
+   "hm": 0,
+   "l": 3
+  },
+  {
+   "key": "CLEPSIDRA",
+   "ver": "1.2.3",
+   "off": "full",
+   "langs": 8,
+   "hosts": 0,
+   "score": 9.9,
+   "hm": 0,
+   "l": 2
+  },
+  {
+   "key": "Clopotel",
+   "ver": "1.2.3",
+   "off": "full",
+   "langs": 8,
+   "hosts": 0,
+   "score": 8.3,
+   "hm": 0,
+   "l": 7
+  },
+  {
+   "key": "Constelar",
+   "ver": "1.3.6",
+   "off": "part",
+   "langs": 8,
+   "hosts": 3,
+   "score": 6.7,
+   "hm": 1,
+   "l": 5
+  },
+  {
+   "key": "Cupa-Mondiala-2026",
+   "ver": "7.6.3",
+   "off": "full",
+   "langs": 8,
+   "hosts": 0,
+   "score": 7.4,
+   "hm": 1,
+   "l": 5
+  },
+  {
+   "key": "Curatitor",
+   "ver": "1.0.3",
+   "off": "full",
+   "langs": 8,
+   "hosts": 0,
+   "score": null,
+   "hm": null,
+   "l": null
+  },
+  {
+   "key": "Dame-fara-frontiere",
+   "ver": "1.2.5",
+   "off": "full",
+   "langs": 8,
+   "hosts": 0,
+   "score": 8.7,
+   "hm": 0,
+   "l": 4
+  },
+  {
+   "key": "DataWeave",
+   "ver": "7.3.5",
+   "off": "full",
+   "langs": 8,
+   "hosts": 0,
+   "score": 9.6,
+   "hm": 0,
+   "l": 2
+  },
+  {
+   "key": "Decibel",
+   "ver": "1.0.3",
+   "off": "full",
+   "langs": 8,
+   "hosts": 0,
+   "score": null,
+   "hm": null,
+   "l": null
+  },
+  {
+   "key": "Domino-fara-frontiere",
+   "ver": "1.2.5",
+   "off": "full",
+   "langs": 8,
+   "hosts": 0,
+   "score": 9.2,
+   "hm": 0,
+   "l": 3
+  },
+  {
+   "key": "ECLIPSA",
+   "ver": "1.3.4",
+   "off": "full",
+   "langs": 8,
+   "hosts": 0,
+   "score": 9.9,
+   "hm": 0,
+   "l": 2
+  },
+  {
+   "key": "Eclipsa-2027",
+   "ver": "1.3.5",
+   "off": "full",
+   "langs": 8,
+   "hosts": 0,
+   "score": 7.7,
+   "hm": 1,
+   "l": 4
+  },
+  {
+   "key": "EcoulSpectral",
+   "ver": "1.2.3",
+   "off": "full",
+   "langs": 8,
+   "hosts": 0,
+   "score": 9.9,
+   "hm": 0,
+   "l": 1
+  },
+  {
+   "key": "ETER",
+   "ver": "4.7.6",
+   "off": "full",
+   "langs": 8,
+   "hosts": 0,
+   "score": 8.5,
+   "hm": 0,
+   "l": 6
+  },
+  {
+   "key": "ExploratoriiEco",
+   "ver": "1.2.6",
+   "off": "full",
+   "langs": 8,
+   "hosts": 0,
+   "score": 8.2,
+   "hm": 0,
+   "l": 5
+  },
+  {
+   "key": "Fabrica",
+   "ver": "1.1.3",
+   "off": "full",
+   "langs": 8,
+   "hosts": 0,
+   "score": null,
+   "hm": null,
+   "l": null
+  },
+  {
+   "key": "FASCICUL",
+   "ver": "1.2.5",
+   "off": "part",
+   "langs": 8,
+   "hosts": 2,
+   "score": 8.8,
+   "hm": 0,
+   "l": 4
+  },
+  {
+   "key": "FieldObserver",
+   "ver": "1.3.4",
+   "off": "full",
+   "langs": 8,
+   "hosts": 0,
+   "score": 8.4,
+   "hm": 1,
+   "l": 4
+  },
+  {
+   "key": "FreeDetect",
+   "ver": "1.3.5",
+   "off": "part",
+   "langs": 8,
+   "hosts": 2,
+   "score": 8.3,
+   "hm": 0,
+   "l": 6
+  },
+  {
+   "key": "FrequencyLaboratory",
+   "ver": "4.3.9",
+   "off": "full",
+   "langs": 8,
+   "hosts": 0,
+   "score": 6.7,
+   "hm": 1,
+   "l": 7
+  },
+  {
+   "key": "generator-frecvente",
+   "ver": "2.2.7",
+   "off": "full",
+   "langs": 8,
+   "hosts": 0,
+   "score": 7.4,
+   "hm": 1,
+   "l": 6
+  },
+  {
+   "key": "Go-fara-frontiere",
+   "ver": "1.2.6",
+   "off": "full",
+   "langs": 8,
+   "hosts": 0,
+   "score": 8.9,
+   "hm": 0,
+   "l": 4
+  },
+  {
+   "key": "Gospodar",
+   "ver": "1.0.3",
+   "off": "full",
+   "langs": 8,
+   "hosts": 0,
+   "score": null,
+   "hm": null,
+   "l": null
+  },
+  {
+   "key": "Horizons.BeyondLimits",
+   "ver": "1.3.4",
+   "off": "full",
+   "langs": 8,
+   "hosts": 0,
+   "score": 8.9,
+   "hm": 0,
+   "l": 4
+  },
+  {
+   "key": "HoroScop",
+   "ver": "1.3.7",
+   "off": "full",
+   "langs": 8,
+   "hosts": 0,
+   "score": 9.5,
+   "hm": 0,
+   "l": 3
+  },
+  {
+   "key": "Hyper4D",
+   "ver": "1.2.5",
+   "off": "full",
+   "langs": 8,
+   "hosts": 0,
+   "score": 9.3,
+   "hm": 0,
+   "l": 3
+  },
+  {
+   "key": "IncredibleCosmos",
+   "ver": "1.2.4",
+   "off": "full",
+   "langs": 8,
+   "hosts": 0,
+   "score": 9.2,
+   "hm": 0,
+   "l": 3
+  },
+  {
+   "key": "INDICATIV",
+   "ver": "1.3.6",
+   "off": "full",
+   "langs": 8,
+   "hosts": 0,
+   "score": 9.6,
+   "hm": 0,
+   "l": 2
+  },
+  {
+   "key": "Inforenergetica",
+   "ver": "1.2.4",
+   "off": "full",
+   "langs": 8,
+   "hosts": 0,
+   "score": 9.6,
+   "hm": 0,
+   "l": 2
+  },
+  {
+   "key": "Lexicon",
+   "ver": "1.0.3",
+   "off": "full",
+   "langs": 8,
+   "hosts": 0,
+   "score": null,
+   "hm": null,
+   "l": null
+  },
+  {
+   "key": "Limpezimea",
+   "ver": "1.2.7",
+   "off": "full",
+   "langs": 8,
+   "hosts": 0,
+   "score": 9.2,
+   "hm": 0,
+   "l": 3
+  },
+  {
+   "key": "LocalMind",
+   "ver": "120.2.10",
+   "off": "part",
+   "langs": 8,
+   "hosts": 7,
+   "score": 3.6,
+   "hm": 3,
+   "l": 7
+  },
+  {
+   "key": "Mahjong-fara-frontiere",
+   "ver": "1.2.5",
+   "off": "full",
+   "langs": 8,
+   "hosts": 0,
+   "score": 9.5,
+   "hm": 0,
+   "l": 3
+  },
+  {
+   "key": "MarkdownAtelier",
+   "ver": "1.2.6",
+   "off": "full",
+   "langs": 8,
+   "hosts": 0,
+   "score": 8.8,
+   "hm": 0,
+   "l": 5
+  },
+  {
+   "key": "Nemurirea",
+   "ver": "1.2.4",
+   "off": "full",
+   "langs": 8,
+   "hosts": 0,
+   "score": 8.9,
+   "hm": 0,
+   "l": 3
+  },
+  {
+   "key": "Nexus-fara-frontiere",
+   "ver": "1.2.5",
+   "off": "part",
+   "langs": 8,
+   "hosts": 5,
+   "score": 8.5,
+   "hm": 0,
+   "l": 5
+  },
+  {
+   "key": "NOMIA",
+   "ver": "0.10.14",
+   "off": "full",
+   "langs": 8,
+   "hosts": 0,
+   "score": 6.1,
+   "hm": 1,
+   "l": 7
+  },
+  {
+   "key": "Nota-Zero",
+   "ver": "1.4.5",
+   "off": "full",
+   "langs": 8,
+   "hosts": 0,
+   "score": 7,
+   "hm": 1,
+   "l": 5
+  },
+  {
+   "key": "NumeroLogIA",
+   "ver": "1.2.5",
+   "off": "part",
+   "langs": 8,
+   "hosts": 2,
+   "score": 8.5,
+   "hm": 0,
+   "l": 6
+  },
+  {
+   "key": "Numerologie",
+   "ver": "1.3.4",
+   "off": "full",
+   "langs": 8,
+   "hosts": 0,
+   "score": 9.3,
+   "hm": 0,
+   "l": 3
+  },
+  {
+   "key": "OAZA",
+   "ver": "1.2.6",
+   "off": "full",
+   "langs": 8,
+   "hosts": 0,
+   "score": 8.4,
+   "hm": 1,
+   "l": 1
+  },
+  {
+   "key": "OmniHost",
+   "ver": "1.3.9",
+   "off": "no",
+   "langs": 8,
+   "hosts": 4,
+   "score": 2.6,
+   "hm": 3,
+   "l": 10
+  },
+  {
+   "key": "Orar",
+   "ver": "1.0.4",
+   "off": "full",
+   "langs": 8,
+   "hosts": 0,
+   "score": null,
+   "hm": null,
+   "l": null
+  },
+  {
+   "key": "orarium",
+   "ver": "1.2.5",
+   "off": "full",
+   "langs": 8,
+   "hosts": 0,
+   "score": 9.2,
+   "hm": 0,
+   "l": 2
+  },
+  {
+   "key": "Origami",
+   "ver": "1.2.4",
+   "off": "full",
+   "langs": 8,
+   "hosts": 0,
+   "score": 9.3,
+   "hm": 0,
+   "l": 3
+  },
+  {
+   "key": "OUTPOST",
+   "ver": "1.2.4",
+   "off": "part",
+   "langs": 8,
+   "hosts": 3,
+   "score": 9.2,
+   "hm": 0,
+   "l": 4
+  },
+  {
+   "key": "Pendulul",
+   "ver": "1.0.1",
+   "off": "no",
+   "langs": 0,
+   "hosts": 0,
+   "score": null,
+   "hm": null,
+   "l": null
+  },
+  {
+   "key": "Poteca",
+   "ver": "1.0.3",
+   "off": "full",
+   "langs": 8,
+   "hosts": 0,
+   "score": null,
+   "hm": null,
+   "l": null
+  },
+  {
+   "key": "PrintreInteligente",
+   "ver": "1.2.7",
+   "off": "part",
+   "langs": 8,
+   "hosts": 4,
+   "score": 6.1,
+   "hm": 1,
+   "l": 9
+  },
+  {
+   "key": "Profund",
+   "ver": "1.2.4",
+   "off": "full",
+   "langs": 8,
+   "hosts": 0,
+   "score": 9.9,
+   "hm": 0,
+   "l": 1
+  },
+  {
+   "key": "PromptVault",
+   "ver": "1.2.5",
+   "off": "full",
+   "langs": 8,
+   "hosts": 0,
+   "score": 8.9,
+   "hm": 0,
+   "l": 5
+  },
+  {
+   "key": "Provenienta",
+   "ver": "1.0.3",
+   "off": "full",
+   "langs": 8,
+   "hosts": 0,
+   "score": null,
+   "hm": null,
+   "l": null
+  },
+  {
+   "key": "PULS",
+   "ver": "2.3.5",
+   "off": "full",
+   "langs": 8,
+   "hosts": 0,
+   "score": 8.5,
+   "hm": 0,
+   "l": 5
+  },
+  {
+   "key": "QSO",
+   "ver": "1.0.4",
+   "off": "full",
+   "langs": 8,
+   "hosts": 0,
+   "score": null,
+   "hm": null,
+   "l": null
+  },
+  {
+   "key": "Radiestezie",
+   "ver": "1.2.4",
+   "off": "full",
+   "langs": 8,
+   "hosts": 0,
+   "score": 9,
+   "hm": 0,
+   "l": 4
+  },
+  {
+   "key": "RegexLab",
+   "ver": "1.2.6",
+   "off": "full",
+   "langs": 8,
+   "hosts": 0,
+   "score": 8.8,
+   "hm": 0,
+   "l": 5
+  },
+  {
+   "key": "Reiki",
+   "ver": "1.2.5",
+   "off": "full",
+   "langs": 8,
+   "hosts": 0,
+   "score": 9.6,
+   "hm": 0,
+   "l": 2
+  },
+  {
+   "key": "Remi-fara-frontiere",
+   "ver": "1.2.5",
+   "off": "full",
+   "langs": 8,
+   "hosts": 0,
+   "score": 9.5,
+   "hm": 0,
+   "l": 2
+  },
+  {
+   "key": "Sah-fara-frontiere",
+   "ver": "14.6.10",
+   "off": "full",
+   "langs": 8,
+   "hosts": 0,
+   "score": 6,
+   "hm": 1,
+   "l": 8
+  },
+  {
+   "key": "Scopone-fara-frontiere",
+   "ver": "1.2.3",
+   "off": "full",
+   "langs": 8,
+   "hosts": 0,
+   "score": 8.3,
+   "hm": 0,
+   "l": 5
+  },
+  {
+   "key": "ScryVeil",
+   "ver": "1.3.3",
+   "off": "part",
+   "langs": 8,
+   "hosts": 7,
+   "score": 8.9,
+   "hm": 0,
+   "l": 4
+  },
+  {
+   "key": "SEOptimum",
+   "ver": "1.3.5",
+   "off": "part",
+   "langs": 8,
+   "hosts": 3,
+   "score": 8.5,
+   "hm": 0,
+   "l": 5
+  },
+  {
+   "key": "SEVA",
+   "ver": "1.6.7",
+   "off": "full",
+   "langs": 8,
+   "hosts": 0,
+   "score": 8,
+   "hm": 1,
+   "l": 6
+  },
+  {
+   "key": "Solitaire-fara-frontiere",
+   "ver": "1.2.3",
+   "off": "full",
+   "langs": 8,
+   "hosts": 0,
+   "score": 9.2,
+   "hm": 0,
+   "l": 3
+  },
+  {
+   "key": "Sudoku-fara-frontiere",
+   "ver": "1.6.4",
+   "off": "full",
+   "langs": 8,
+   "hosts": 0,
+   "score": 9.2,
+   "hm": 0,
+   "l": 3
+  },
+  {
+   "key": "Surveyor",
+   "ver": "1.2.4",
+   "off": "part",
+   "langs": 8,
+   "hosts": 2,
+   "score": 9.5,
+   "hm": 0,
+   "l": 2
+  },
+  {
+   "key": "Table-fara-frontiere",
+   "ver": "1.2.3",
+   "off": "full",
+   "langs": 8,
+   "hosts": 0,
+   "score": 8.9,
+   "hm": 0,
+   "l": 4
+  },
+  {
+   "key": "Tarot",
+   "ver": "1.2.4",
+   "off": "full",
+   "langs": 8,
+   "hosts": 0,
+   "score": 9.3,
+   "hm": 0,
+   "l": 3
+  },
+  {
+   "key": "TerRa",
+   "ver": "1.7.8",
+   "off": "part",
+   "langs": 8,
+   "hosts": 1,
+   "score": 7.5,
+   "hm": 0,
+   "l": 5
+  },
+  {
+   "key": "Threads-fara-cont",
+   "ver": "1.2.3",
+   "off": "part",
+   "langs": 8,
+   "hosts": 5,
+   "score": 9.1,
+   "hm": 0,
+   "l": 3
+  },
+  {
+   "key": "Trade-Free-Link-Guardian",
+   "ver": "1.36.2",
+   "off": "full",
+   "langs": 8,
+   "hosts": 0,
+   "score": 9.6,
+   "hm": 0,
+   "l": 2
+  },
+  {
+   "key": "TranslateHub",
+   "ver": "1.3.7",
+   "off": "part",
+   "langs": 8,
+   "hosts": 1,
+   "score": 7.3,
+   "hm": 2,
+   "l": 5
+  },
+  {
+   "key": "Trusa-fara-frontiere",
+   "ver": "1.2.4",
+   "off": "full",
+   "langs": 8,
+   "hosts": 0,
+   "score": 9.5,
+   "hm": 0,
+   "l": 2
+  },
+  {
+   "key": "Undava",
+   "ver": "1.2.4",
+   "off": "full",
+   "langs": 8,
+   "hosts": 0,
+   "score": 9.2,
+   "hm": 0,
+   "l": 3
+  },
+  {
+   "key": "Universul-Observabil",
+   "ver": "1.2.5",
+   "off": "full",
+   "langs": 8,
+   "hosts": 0,
+   "score": 8.2,
+   "hm": 0,
+   "l": 5
+  },
+  {
+   "key": "Universul-Observabil-1D",
+   "ver": "1.3.6",
+   "off": "full",
+   "langs": 8,
+   "hosts": 0,
+   "score": 8.9,
+   "hm": 0,
+   "l": 4
+  },
+  {
+   "key": "Universul-Observabil-2D",
+   "ver": "5.12.7",
+   "off": "full",
+   "langs": 8,
+   "hosts": 0,
+   "score": 7.9,
+   "hm": 0,
+   "l": 6
+  },
+  {
+   "key": "Universul-Observabil-3D",
+   "ver": "1.4.8",
+   "off": "full",
+   "langs": 8,
+   "hosts": 0,
+   "score": 6.4,
+   "hm": 1,
+   "l": 7
+  },
+  {
+   "key": "URME",
+   "ver": "1.2.4",
+   "off": "full",
+   "langs": 8,
+   "hosts": 0,
+   "score": 9,
+   "hm": 0,
+   "l": 5
+  },
+  {
+   "key": "ValeaPlopului1972",
+   "ver": "1.3.5",
+   "off": "full",
+   "langs": 8,
+   "hosts": 0,
+   "score": 8.5,
+   "hm": 0,
+   "l": 4
+  },
+  {
+   "key": "VATRA",
+   "ver": "1.3.7",
+   "off": "full",
+   "langs": 8,
+   "hosts": 0,
+   "score": 8.1,
+   "hm": 1,
+   "l": 5
+  },
+  {
+   "key": "VaultCrypt",
+   "ver": "2.2.5",
+   "off": "full",
+   "langs": 8,
+   "hosts": 0,
+   "score": 9.3,
+   "hm": 0,
+   "l": 3
+  },
+  {
+   "key": "VietAR",
+   "ver": "19.2.4",
+   "off": "part",
+   "langs": 8,
+   "hosts": 10,
+   "score": 8.3,
+   "hm": 0,
+   "l": 7
+  },
+  {
+   "key": "Vitrina",
+   "ver": "1.2.3",
+   "off": "part",
+   "langs": 8,
+   "hosts": 2,
+   "score": 9.5,
+   "hm": 0,
+   "l": 2
+  },
+  {
+   "key": "VNTV",
+   "ver": "2.5.6",
+   "off": "part",
+   "langs": 8,
+   "hosts": 2,
+   "score": 8.9,
+   "hm": 0,
+   "l": 4
+  },
+  {
+   "key": "VoiceAtelier",
+   "ver": "1.3.5",
+   "off": "part",
+   "langs": 8,
+   "hosts": 1,
+   "score": 8.5,
+   "hm": 0,
+   "l": 5
+  },
+  {
+   "key": "X-fara-cont",
+   "ver": "1.2.4",
+   "off": "part",
+   "langs": 8,
+   "hosts": 3,
+   "score": 9.5,
+   "hm": 0,
+   "l": 2
+  },
+  {
+   "key": "Zaruri-fara-frontiere",
+   "ver": "1.2.5",
+   "off": "full",
+   "langs": 8,
+   "hosts": 0,
+   "score": 8.9,
+   "hm": 0,
+   "l": 4
+  },
+  {
+   "key": "Zicala",
+   "ver": "1.2.5",
+   "off": "full",
+   "langs": 8,
+   "hosts": 0,
+   "score": 9,
+   "hm": 0,
+   "l": 4
+  }
+ ]
+}

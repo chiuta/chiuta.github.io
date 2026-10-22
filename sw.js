@@ -1,11 +1,11 @@
 /* fff-hub sw · generat de tools/sync-catalog.mjs · fără cereri externe, fără importScripts.
-   Atinge DOAR pagina principală a hub-ului (index, manifest, icoane). Orice alt URL (/apps/…, depozitele, linkurile externe)
+   Atinge DOAR pagina principală a hub-ului și pagina de transparență (index, transparenta.html, manifest, icoane). Orice alt URL (/apps/…, depozitele, linkurile externe)
    trece neatins către rețea / către service worker-ul propriu al aplicației. */
 'use strict';
-var VERSION = "h7e00f260";
+var VERSION = "hce6d74a8";
 var PREFIX = 'fff-chiuta-hub-', CACHE = PREFIX + VERSION;
 var SCOPE = new URL(self.registration.scope);
-var SHELL = ['./', './index.html', './manifest.webmanifest', './icon-192.png', './icon-512.png', './icon-maskable-512.png'];
+var SHELL = ['./', './index.html', './transparenta.html', './manifest.webmanifest', './icon-192.png', './icon-512.png', './icon-maskable-512.png'];
 var OWN = SHELL.map(function (u) { return new URL(u, SCOPE).pathname; });
 OWN.push(new URL('./index.html', SCOPE).pathname);
 
@@ -36,9 +36,10 @@ self.addEventListener('fetch', function (e) {
   var u = new URL(r.url);
   if (u.origin !== self.location.origin || OWN.indexOf(u.pathname) < 0) return;
   var nav = r.mode === 'navigate';
-  var key = nav ? new Request(new URL('./index.html', SCOPE).href) : r;
+  var pageUrl = new URL(u.pathname === new URL('./transparenta.html', SCOPE).pathname ? './transparenta.html' : './index.html', SCOPE).href;
+  var key = nav ? new Request(pageUrl) : r;
   function update() {
-    return fetch(nav ? new URL('./index.html', SCOPE).href : r, {cache: 'no-cache'}).then(function (res) {
+    return fetch(nav ? pageUrl : r, {cache: 'no-cache'}).then(function (res) {
       if (res && res.status === 200 && res.type === 'basic' && !res.redirected) {
         var cp = res.clone();
         return caches.open(CACHE).then(function (c) { return c.put(key, cp); }).then(function () { return res; });

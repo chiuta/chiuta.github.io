@@ -2,7 +2,7 @@
 
 [English](README.md) · **Română** · [Français](README.fr.md) · [Italiano](README.it.md) · [Español](README.es.md) · [Português](README.pt.md) · [Deutsch](README.de.md) · [Magyar](README.hu.md)
 
-**Versiune:** 1.0.3 · **Ultima actualizare:** 2026-10-22
+**Versiune:** 1.0.4 · **Ultima actualizare:** 2026-10-22
 
 Limbile interfeței: **Română, English, Français, Italiano, Español, Português (PT), Deutsch, Magyar**
 
@@ -71,4 +71,5 @@ Licență: MIT — vezi fișierul `LICENSE` din rădăcina depozitului.
 - 1.0.0 — 2026-10-14: prima versiune.
 - 1.0.1 — 2026-10-22: text de cel puțin 12 px în vizualizările lună și săptămână pe telefon; notificările folosesc și service worker-ul acolo unde constructorul Notification nu e permis (Chrome Android); ținte tactile de cel puțin 24 px; eticheta tehnică listează cele 8 limbi. Cheile clepsidra.* sunt doar citite, la importul explicit din CLEPSIDRA; Orar scrie doar fff.orar.*.
 - 1.0.2 — 2026-10-22: fff-kit 1.1.2: PBKDF2 cu 600.000 de iterații, protecție anti-clickjacking.
+- 1.0.4 — 2026-10-22: Teste: așteptări pe condiții în loc de timp real, deci suitele trec stabil sub încărcare. Comportamentul aplicației nu se schimbă. Verificarea kitului: excepție documentată pentru importul (doar citire) din CLEPSIDRA.
 - 1.0.3 — 2026-10-22: fff-kit 1.1.4: ținte tactile și text minim în interfața comună.

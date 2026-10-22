@@ -2,7 +2,7 @@
 
 [English](README.md) · **Română** · [Français](README.fr.md) · [Italiano](README.it.md) · [Español](README.es.md) · [Português](README.pt.md) · [Deutsch](README.de.md) · [Magyar](README.hu.md)
 
-**Versiune:** 1.1.5 · **Ultima actualizare:** 2026-10-22
+**Versiune:** 1.1.6 · **Ultima actualizare:** 2026-10-22
 
 Limbile interfeței: **Română, English, Français, Italiano, Español, Português (PT), Deutsch, Magyar**
 
@@ -134,6 +134,7 @@ MIT — vezi fișierul `LICENSE` din rădăcina depozitului. Componentele terțe
 - **1.0.0 — 2026-10-14:** prima versiune.
 - **1.1.3 — 2026-10-22:** ținte tactile de cel puțin 24 px pentru casetele și butoanele radio din panourile cer și locuri; eticheta tehnică (fff-info) listează acum cele 8 limbi reale, nu 2. Puntea „Înapoi la Field Observer” (#sky&t=…&ll=…&from=fieldobserver) rămâne neschimbată.
 - **1.1.4 — 2026-10-22:** fff-kit 1.1.2: PBKDF2 cu 600.000 de iterații, protecție anti-clickjacking.
+- **1.1.6 — 2026-10-22:** Teste: așteptări pe condiții în loc de timp real, deci suitele trec stabil sub încărcare. Comportamentul aplicației nu se schimbă.
 - **1.1.5 — 2026-10-22:** fff-kit 1.1.4: ținte tactile și text minim în interfața comună.
 
 ## Linkuri adânci

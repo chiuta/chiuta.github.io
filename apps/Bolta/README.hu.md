@@ -2,7 +2,7 @@
 
 [English](README.md) · [Română](README.ro.md) · [Français](README.fr.md) · [Italiano](README.it.md) · [Español](README.es.md) · [Português](README.pt.md) · [Deutsch](README.de.md) · **Magyar**
 
-**Verzió:** 1.1.5 · **Utolsó frissítés:** 2026-10-22
+**Verzió:** 1.1.6 · **Utolsó frissítés:** 2026-10-22
 
 A felület nyelvei: **Română, English, Français, Italiano, Español, Português (PT), Deutsch, Magyar**
 
@@ -134,6 +134,7 @@ MIT — lásd a `LICENSE` fájlt a tároló gyökerében. A harmadik felek kompo
 - **1.0.0 — 2026-10-14:** első verzió.
 - **1.1.3 — 2026-10-22:** legalább 24 px-es érintési célok az Ég és a Helyek panel jelölőnégyzeteinél és rádiógombjainál; a műszaki címke (fff-info) most a valós 8 nyelvet sorolja fel 2 helyett. A „Vissza a Field Observerhez” híd (#sky&t=…&ll=…&from=fieldobserver) változatlan.
 - **1.1.4 — 2026-10-22:** fff-kit 1.1.2: PBKDF2 600 000 iterációval, clickjacking elleni védelem.
+- **1.1.6 — 2026-10-22:** Tesztek: valós idő helyett feltételekre várakoznak, így a tesztcsomagok terhelés alatt is megbízhatóan lefutnak. Az alkalmazás viselkedése nem változik.
 - **1.1.5 — 2026-10-22:** fff-kit 1.1.4: érintési célok és minimális szövegméret a közös felületen.
 
 ## Mély hivatkozások

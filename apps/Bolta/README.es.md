@@ -2,7 +2,7 @@
 
 [English](README.md) · [Română](README.ro.md) · [Français](README.fr.md) · [Italiano](README.it.md) · **Español** · [Português](README.pt.md) · [Deutsch](README.de.md) · [Magyar](README.hu.md)
 
-**Versión:** 1.1.5 · **Última actualización:** 2026-10-22
+**Versión:** 1.1.6 · **Última actualización:** 2026-10-22
 
 Idiomas de la interfaz: **Română, English, Français, Italiano, Español, Português (PT), Deutsch, Magyar**
 
@@ -134,6 +134,7 @@ MIT — consulta el archivo `LICENSE` en la raíz del repositorio. Los component
 - **1.0.0 — 2026-10-14:** primera versión.
 - **1.1.3 — 2026-10-22:** áreas táctiles de al menos 24 px para las casillas y botones de opción de los paneles cielo y lugares; la etiqueta técnica (fff-info) lista ahora los 8 idiomas reales en lugar de 2. El puente «Volver a Field Observer» (#sky&t=…&ll=…&from=fieldobserver) no cambia.
 - **1.1.4 — 2026-10-22:** fff-kit 1.1.2: PBKDF2 con 600.000 iteraciones, protección anti-clickjacking.
+- **1.1.6 — 2026-10-22:** Pruebas: esperas basadas en condiciones en lugar de tiempo real, para que las suites pasen de forma estable bajo carga. Sin cambios en el comportamiento de la aplicación.
 - **1.1.5 — 2026-10-22:** fff-kit 1.1.4: áreas táctiles y tamaño mínimo del texto en la interfaz común.
 
 ## Enlaces profundos

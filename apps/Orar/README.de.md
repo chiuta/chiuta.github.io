@@ -2,7 +2,7 @@
 
 [English](README.md) · [Română](README.ro.md) · [Français](README.fr.md) · [Italiano](README.it.md) · [Español](README.es.md) · [Português](README.pt.md) · **Deutsch** · [Magyar](README.hu.md)
 
-**Version:** 1.0.3 · **Zuletzt aktualisiert:** 2026-10-22
+**Version:** 1.0.4 · **Zuletzt aktualisiert:** 2026-10-22
 
 Oberflächensprachen: **Română, English, Français, Italiano, Español, Português (PT), Deutsch, Magyar**
 
@@ -71,4 +71,5 @@ Lizenz: MIT — siehe die Datei `LICENSE` im Stammverzeichnis des Repositorys.
 - 1.0.0 — 2026-10-14: erste Version.
 - 1.0.1 — 2026-10-22: Text von mindestens 12 px in der Monats- und Wochenansicht auf dem Telefon; Benachrichtigungen nutzen auch den Service Worker, wo der Notification-Konstruktor nicht erlaubt ist (Chrome Android); Touch-Ziele von mindestens 24 px; das technische Label listet alle 8 Sprachen. Die Schlüssel clepsidra.* werden nur gelesen, bei einem ausdrücklichen Import aus CLEPSIDRA; Orar schreibt nur fff.orar.*.
 - 1.0.2 — 2026-10-22: fff-kit 1.1.2: PBKDF2 mit 600.000 Iterationen, Schutz vor Clickjacking.
+- 1.0.4 — 2026-10-22: Tests: Warten auf Bedingungen statt auf Echtzeit, damit die Suiten unter Last zuverlässig durchlaufen. Das Verhalten der App ändert sich nicht. Kit-Prüfung: dokumentierte Ausnahme für den schreibgeschützten Import aus CLEPSIDRA.
 - 1.0.3 — 2026-10-22: fff-kit 1.1.4: Touch-Ziele und Mindestschriftgröße in der gemeinsamen Oberfläche.

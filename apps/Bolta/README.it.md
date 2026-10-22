@@ -2,7 +2,7 @@
 
 [English](README.md) · [Română](README.ro.md) · [Français](README.fr.md) · **Italiano** · [Español](README.es.md) · [Português](README.pt.md) · [Deutsch](README.de.md) · [Magyar](README.hu.md)
 
-**Versione:** 1.1.5 · **Ultimo aggiornamento:** 2026-10-22
+**Versione:** 1.1.6 · **Ultimo aggiornamento:** 2026-10-22
 
 Lingue dell'interfaccia: **Română, English, Français, Italiano, Español, Português (PT), Deutsch, Magyar**
 
@@ -134,6 +134,7 @@ MIT — vedi il file `LICENSE` nella radice del repository. I componenti di terz
 - **1.0.0 — 2026-10-14:** prima versione.
 - **1.1.3 — 2026-10-22:** aree tattili di almeno 24 px per le caselle e i pulsanti radio dei pannelli cielo e luoghi; l’etichetta tecnica (fff-info) elenca ora le 8 lingue reali invece di 2. Il ponte «Torna a Field Observer» (#sky&t=…&ll=…&from=fieldobserver) è invariato.
 - **1.1.4 — 2026-10-22:** fff-kit 1.1.2: PBKDF2 con 600.000 iterazioni, protezione anti-clickjacking.
+- **1.1.6 — 2026-10-22:** Test: attese su condizioni invece del tempo reale, così le suite passano in modo stabile sotto carico. Nessuna modifica al comportamento dell’app.
 - **1.1.5 — 2026-10-22:** fff-kit 1.1.4: aree tattili e dimensione minima del testo nell’interfaccia comune.
 
 ## Link profondi

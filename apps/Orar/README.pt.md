@@ -2,7 +2,7 @@
 
 [English](README.md) · [Română](README.ro.md) · [Français](README.fr.md) · [Italiano](README.it.md) · [Español](README.es.md) · **Português** · [Deutsch](README.de.md) · [Magyar](README.hu.md)
 
-**Versão:** 1.0.3 · **Última atualização:** 2026-10-22
+**Versão:** 1.0.4 · **Última atualização:** 2026-10-22
 
 Idiomas da interface: **Română, English, Français, Italiano, Español, Português (PT), Deutsch, Magyar**
 
@@ -71,4 +71,5 @@ Licença: MIT — consulte o ficheiro `LICENSE` na raiz do repositório.
 - 1.0.0 — 2026-10-14: primeira versão.
 - 1.0.1 — 2026-10-22: texto de pelo menos 12 px nas vistas de mês e semana no telemóvel; as notificações usam também o service worker onde o construtor Notification não é permitido (Chrome Android); áreas táteis de pelo menos 24 px; a etiqueta técnica lista os 8 idiomas. As chaves clepsidra.* são apenas lidas, numa importação explícita do CLEPSIDRA; o Orar só escreve fff.orar.*.
 - 1.0.2 — 2026-10-22: fff-kit 1.1.2: PBKDF2 com 600.000 iterações, proteção anti-clickjacking.
+- 1.0.4 — 2026-10-22: Testes: esperas por condições em vez de tempo real, para que as suites passem de forma estável sob carga. Sem alterações no comportamento da aplicação. Verificação do kit: exceção documentada para a importação só de leitura a partir de CLEPSIDRA.
 - 1.0.3 — 2026-10-22: fff-kit 1.1.4: áreas de toque e tamanho mínimo do texto na interface comum.

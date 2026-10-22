@@ -54,6 +54,37 @@ async function newPage(o = {}) {
   return page;
 }
 async function closePage(p) { await p.ctx.close(); }
+
+/* ---------- așteptări pe CONDIȚII (nu pe timp real) ----------
+   Suita trebuie să treacă stabil și sub încărcare: nicio așteptare nu depinde de câte milisecunde reale au trecut.
+   - idle(p): golește temporizatoarele scurte ale aplicației (debounce, tranziții) cu ceasul virtual Playwright (page.clock),
+     apoi așteaptă două cadre de randare; dacă pagina nu are ceas instalat, așteaptă doar cadrele.
+   - esc(p): Escape + așteaptă condiția „niciun dialog deschis”.
+   - toastGone(p): avansează ceasul virtual peste durata notificării și așteaptă condiția „notificarea ascunsă”.
+   - SLOW: factor de încărcare al mașinii, măsurat la pornire cu o sarcină fixă; bugetele de performanță se înmulțesc cu el. */
+const frames = (p) => p.evaluate(() => new Promise((r) => requestAnimationFrame(() => requestAnimationFrame(r))));
+async function idle(p, ms = 400) {
+  try { await p.clock.runFor(ms); await p.clock.resume(); } catch (e) { /* fără ceas virtual pe această pagină */ }
+  await frames(p);
+}
+async function esc(p) {
+  await p.keyboard.press('Escape');
+  await p.waitForFunction(() => !document.querySelector('dialog[open]'), null, {timeout: 20000});
+  await frames(p);
+}
+async function toastGone(p) {
+  try { await p.clock.runFor(10000); await p.clock.resume(); } catch (e) { /* */ }
+  await p.waitForFunction(() => !document.getElementById('toast').classList.contains('on'), null, {timeout: 20000});
+}
+const SLOW = await (async () => {
+  const pg = await browser.newPage();
+  const ms = await pg.evaluate(() => { const t = performance.now(); let a = 0; for (let i = 0; i < 4e6; i++) a += Math.sqrt(i) % 7; const o = []; for (let i = 0; i < 2e4; i++) o.push({i, s: 'x' + i}); JSON.parse(JSON.stringify(o)); return performance.now() - t + (a < 0 ? 1 : 0); });
+  await pg.close();
+  const f = Math.min(20, Math.max(1, ms / 60));
+  console.log(`       (factor de încărcare al mașinii: ${f.toFixed(1)}×, sarcină de referință ${ms.toFixed(0)} ms)`);
+  return f;
+})();
+const budget = (ms) => Math.round(ms * SLOW);
 const dn = (p, y, m, d) => p.evaluate(a => ORAR.dnOf(...a), [y, m, d]);
 async function expectClean(p, label = '') {
   const csp = await p.evaluate(() => window.__csp);
@@ -424,7 +455,7 @@ await T('ics: export valid (parser independent), UID stabil, pliere corectă, VT
     await p.selectOption('#imp-cal', '__new');
     await p.click('#imp-go');
     await p.waitForSelector('#d-prev p[role=status]');
-    await p.keyboard.press('Escape'); await p.waitForTimeout(90);
+    await esc(p);
   }
   const cal = await p.evaluate(() => ({n: ORAR.S.events.length, cals: ORAR.S.cals.map(c => [c.id, c.name, ORAR.S.events.filter(e => e.cal === c.id).length])}));
   assert.equal(cal.cals.length, 4);
@@ -497,7 +528,7 @@ await T('ics: verificare cu python icalendar + dateutil (VTIMEZONE vs zoneinfo, 
 await T('ics: detectare duplicate (omite / suprascrie / importă oricum) și import per calendar', async () => {
   const p = await newPage({clock: false});
   const f = path.join(TMP, 'dup.ics'); fs.writeFileSync(f, fixtureGoogle());
-  const imp = async (mode) => { await p.click('#b-data'); await p.setInputFiles('#d-file', f); await p.waitForSelector('#imp-go'); if (mode) await p.check(`input[name=imp-dup][value=${mode}]`); const warn = await p.locator('#d-prev .warn').count(); await p.click('#imp-go'); await p.waitForSelector('#d-prev p[role=status]'); const msg = await p.textContent('#d-prev p[role=status]'); await p.keyboard.press('Escape'); await p.waitForTimeout(90); return {warn, msg}; };
+  const imp = async (mode) => { await p.click('#b-data'); await p.setInputFiles('#d-file', f); await p.waitForSelector('#imp-go'); if (mode) await p.check(`input[name=imp-dup][value=${mode}]`); const warn = await p.locator('#d-prev .warn').count(); await p.click('#imp-go'); await p.waitForSelector('#d-prev p[role=status]'); const msg = await p.textContent('#d-prev p[role=status]'); await esc(p); return {warn, msg}; };
   const a = await imp('skip');
   assert.equal(a.warn, 0);
   const n1 = await p.evaluate(() => ORAR.S.events.length); assert.equal(n1, 4);
@@ -545,8 +576,8 @@ await T('pornire: fără erori, fără CSP, fără rețea; meta, versiune, CSP e
   const p = await newPage();
   await expectClean(p);
   assert.equal(await p.getAttribute('html', 'lang'), 'ro');
-  assert.equal(await p.textContent('#app-version'), 'v 1.0.3 · 2026-10-22');
-  assert.equal(await p.getAttribute('meta[name=application-version]', 'content'), '1.0.3');
+  assert.equal(await p.textContent('#app-version'), 'v 1.0.4 · 2026-10-22');
+  assert.equal(await p.getAttribute('meta[name=application-version]', 'content'), '1.0.4');
   assert.equal(await p.getAttribute('meta[name=last-updated]', 'content'), '2026-10-22');
   assert.ok((await p.getAttribute('meta[name=description]', 'content')).length > 40);
   assert.equal(await p.title(), 'Orar');
@@ -603,7 +634,7 @@ await T('sărbători legale în grilă (1 iunie 2026 = Copil + Rusalii, Vinerea 
   assert.match(h, /Ziua Copilului \/ A doua zi de Rusalii/);
   await p.fill('#goto', '2026-04-10'); await p.dispatchEvent('#goto', 'change');
   assert.ok((await p.locator('.hol').allTextContents()).some(t => /Vinerea Mare/.test(t)));
-  await p.click('#b-set'); await p.check('#s-orth'); await p.keyboard.press('Escape'); await p.waitForTimeout(90);
+  await p.click('#b-set'); await p.check('#s-orth'); await esc(p);
   assert.ok((await p.locator('.hol.orth').allTextContents()).some(t => /Floriile|Joia Mare|Sâmbăta Mare/.test(t)));
   await p.fill('#goto', '2025-05-01'); await p.dispatchEvent('#goto', 'change');
   assert.ok((await p.locator('.hol.bridge').allTextContents()).some(t => /punte/.test(t)), 'punte 2 mai 2025');
@@ -611,13 +642,13 @@ await T('sărbători legale în grilă (1 iunie 2026 = Copil + Rusalii, Vinerea 
 });
 await T('prima zi a săptămânii configurabilă (luni/duminică/sâmbătă) și persistență', async () => {
   const p = await newPage();
-  await p.click('#b-set'); await p.selectOption('#s-ws', '0'); await p.keyboard.press('Escape'); await p.waitForTimeout(90);
+  await p.click('#b-set'); await p.selectOption('#s-ws', '0'); await esc(p);
   assert.equal(await p.locator('table.month thead th').nth(1).getAttribute('aria-label'), 'duminică');
   const r1 = await p.locator('table.month tbody tr:nth-child(3) th.wk').textContent();
   assert.equal(r1, '42', 'rândul duminică 11 – sâmbătă 17 oct are joi 15 → săpt. 42');
   await p.click('[data-view=week]');
   assert.match(await p.textContent('#rangeLabel'), /11 oct\. – 17 oct\. 2026/);
-  await p.click('#b-set'); await p.selectOption('#s-ws', '6'); await p.keyboard.press('Escape'); await p.waitForTimeout(90);
+  await p.click('#b-set'); await p.selectOption('#s-ws', '6'); await esc(p);
   assert.equal(await p.locator('.tg-head > div').nth(1).locator('.daybtn').textContent(), 'sâm. 10');
   await p.evaluate(() => ORAR.flushEvents());
   await p.reload(); await p.waitForSelector('#view > *');
@@ -646,7 +677,7 @@ await T('navigare cu tastatura: săgeți, Home/End, PageUp/PageDown, t, n, m/w/d
   await p.keyboard.press('m'); assert.equal(await p.getAttribute('[data-view=month]', 'aria-pressed'), 'true');
   await p.keyboard.press('n'); assert.equal(await p.locator('#dlgEv[open]').count(), 1);
   assert.equal(await p.evaluate(() => document.activeElement.id), 'ev-title');
-  await p.keyboard.press('Escape'); await p.waitForTimeout(90); assert.equal(await p.locator('#dlgEv[open]').count(), 0);
+  await esc(p); assert.equal(await p.locator('#dlgEv[open]').count(), 0);
   await p.keyboard.press('Enter'); // Enter pe butonul focalizat deschide ziua (focus revine pe elementul anterior)
   // Tab nu rămâne blocat: ordinea ajunge la sidebar
   await p.focus('#b-today'); for (let i = 0; i < 40; i++) await p.keyboard.press('Tab');
@@ -679,13 +710,13 @@ await T('creare, editare, ștergere și anulare eveniment prin interfață', asy
   await p.click('#view-foot .btn.primary');
   await p.fill('#ev-title', 'Întâlnire cu Ana (mutată)'); await p.fill('#ev-st', '14:00');
   assert.equal(await p.inputValue('#ev-et'), '14:45', 'durata de 45 min se păstrează la mutarea începutului');
-  await p.click('#evForm button[type=submit]'); await p.waitForTimeout(90);
+  await p.click('#evForm button[type=submit]'); await idle(p);
   assert.equal(await p.locator('.chip', {hasText: '14:00 Întâlnire cu Ana (mutată)'}).count(), 1);
   // ștergere + anulare
   await p.locator('.chip', {hasText: 'mutată'}).click(); await p.click('#view-foot .btn.danger');
-  await p.click('#ask-foot .btn.danger'); await p.waitForTimeout(90);
+  await p.click('#ask-foot .btn.danger'); await idle(p);
   assert.equal(await p.locator('.chip', {hasText: 'mutată'}).count(), 0);
-  await p.click('#toastBtn'); await p.waitForTimeout(90);
+  await p.click('#toastBtn'); await idle(p);
   assert.equal(await p.locator('.chip', {hasText: 'mutată'}).count(), 1, 'anulare restaurează evenimentul');
   await expectClean(p);
   await closePage(p);
@@ -705,9 +736,9 @@ await T('eveniment toată ziua, mai multe zile; loc, descriere; fus orar cu conv
   await p.click('#b-new'); await p.fill('#ev-title', 'Apel NY');
   await p.fill('#ev-sd', '2026-11-02'); await p.fill('#ev-st', '10:00');
   await p.selectOption('#ev-tz', 'America/New_York');
-  await p.waitForTimeout(250);
+  await idle(p);
   assert.match(await p.textContent('#ev-tzinfo'), /= 2026-11-02 17:00 în Europe\/Bucharest/, 'decalaj 7 h după 1 nov (SUA ora de iarnă)');
-  await p.fill('#ev-sd', '2026-10-28'); await p.waitForTimeout(250);
+  await p.fill('#ev-sd', '2026-10-28'); await idle(p);
   assert.match(await p.textContent('#ev-tzinfo'), /= 2026-10-28 16:00 în Europe\/Bucharest/, 'între 25 oct (RO) și 1 nov (SUA) decalajul e de 6 h');
   await closePage(p);
 });
@@ -720,12 +751,12 @@ await T('recurență în editor: săptămânal L+Mi cu număr de apariții, prev
   await p.locator('#rc-wdays label', {hasText: 'lun.'}).click();
   await p.locator('#rc-wdays label', {hasText: 'mie.'}).click();
   await p.locator('#rc-wdays label', {hasText: 'vin.'}).click().catch(() => {});
-  await p.waitForTimeout(250);
+  await idle(p);
   const rule = await p.inputValue('#rc-raw');
   assert.match(rule, /^FREQ=WEEKLY;BYDAY=(MO,WE|MO,WE,FR|WE,FR|MO,FR)/);
   await p.locator('#rc-wdays label', {hasText: 'vin.'}).click().catch(() => {});
   await p.check('input[name=rc-end][value=count]'); await p.fill('#rc-count', '6');
-  await p.waitForTimeout(250);
+  await idle(p);
   const items = await p.locator('#rc-pv li').allTextContents();
   assert.equal(items.length, 6, JSON.stringify(items));
   assert.match(items[0], /18:00/);
@@ -741,7 +772,7 @@ await T('recurență în editor: săptămânal L+Mi cu număr de apariții, prev
 });
 await T('recurență în editor: lunar (a 2-a marți, ultima vineri, ultima zi), anual, interval, UNTIL, RDATE', async () => {
   const p = await newPage();
-  const build = async (fn) => { await p.click('#b-new'); await p.fill('#ev-title', 'R'); await p.fill('#ev-sd', '2026-11-10'); await fn(); await p.waitForTimeout(250); const r = await p.inputValue('#rc-raw'); const pv = await p.locator('#rc-pv li').allTextContents(); await p.keyboard.press('Escape'); await p.waitForTimeout(90); return {r, pv}; };
+  const build = async (fn) => { await p.click('#b-new'); await p.fill('#ev-title', 'R'); await p.fill('#ev-sd', '2026-11-10'); await fn(); await idle(p); const r = await p.inputValue('#rc-raw'); const pv = await p.locator('#rc-pv li').allTextContents(); await esc(p); return {r, pv}; };
   let x = await build(async () => { await p.selectOption('#rc-type', 'MONTHLY'); await p.check('input[name=rc-mm][value=nth]'); });
   assert.equal(x.r, 'FREQ=MONTHLY;BYDAY=+2TU'.replace('+2', '2'), 'a doua marți: 10 nov 2026');
   assert.match(x.pv[0], /10 nov/); assert.match(x.pv[1], /8 dec/); assert.match(x.pv[2], /12 ian/);
@@ -761,7 +792,7 @@ await T('recurență în editor: lunar (a 2-a marți, ultima vineri, ultima zi),
   // erori
   await p.click('#b-new'); await p.fill('#ev-title', 'R'); await p.selectOption('#rc-type', 'custom'); await p.fill('#rc-raw', 'FREQ=NOPE'); await p.click('#evForm button[type=submit]');
   assert.match(await p.textContent('#err-rec'), /RRULE nu este validă/);
-  await p.fill('#rc-raw', 'FREQ=WEEKLY;BYDAY=MO;BYHOUR=9'); await p.waitForTimeout(250);
+  await p.fill('#rc-raw', 'FREQ=WEEKLY;BYDAY=MO;BYHOUR=9'); await idle(p);
   assert.ok(await p.locator('#rc-unsup').isVisible(), 'avertisment părți neacceptate');
   await closePage(p);
 });
@@ -769,56 +800,56 @@ await T('serie: modificarea unei singure apariții, ștergerea uneia (EXDATE), �
   const p = await newPage();
   const seed = () => p.evaluate(() => { ORAR.S.events.length = 0; const e = ORAR.newEvent({title: 'Yoga', start: '2026-10-05T18:00', end: '2026-10-05T19:00', rrule: 'FREQ=WEEKLY;BYDAY=MO;COUNT=6'}); ORAR.S.events.push(e); ORAR.render(); return e.id; });
   await seed();
-  const openOcc = async (d) => { await p.click('[data-view=month]'); await p.fill('#goto', d); await p.dispatchEvent('#goto', 'change'); await p.waitForTimeout(100); const [yy, mm, dd] = d.split('-').map(Number); const dnum = await dn(p, yy, mm, dd); await p.locator(`td.day:has(.daybtn[data-d="${dnum}"]) .chip`, {hasText: 'Yoga'}).first().click(); };
+  const openOcc = async (d) => { await p.click('[data-view=month]'); await p.fill('#goto', d); await p.dispatchEvent('#goto', 'change'); await idle(p); const [yy, mm, dd] = d.split('-').map(Number); const dnum = await dn(p, yy, mm, dd); await p.locator(`td.day:has(.daybtn[data-d="${dnum}"]) .chip`, {hasText: 'Yoga'}).first().click(); };
   // o singură apariție
   await openOcc('2026-10-19'); await p.click('#view-foot .btn.primary');
-  await p.locator('#ask-body input[value=one]').check(); await p.click('#ask-foot .btn.primary'); await p.waitForTimeout(100);
+  await p.locator('#ask-body input[value=one]').check(); await p.click('#ask-foot .btn.primary'); await idle(p);
   assert.match(await p.textContent('#ev-scopeNote'), /doar această apariție/i);
   assert.equal(await p.locator('#fs-rec').isVisible(), false);
   await p.fill('#ev-title', 'Yoga (specială)'); await p.fill('#ev-st', '19:30');
-  await p.click('#evForm button[type=submit]'); await p.waitForTimeout(100);
+  await p.click('#evForm button[type=submit]'); await idle(p);
   let ev = await p.evaluate(() => ORAR.S.events[0]);
   assert.deepEqual(Object.keys(ev.over), ['2026-10-19T18:00']); assert.equal(ev.over['2026-10-19T18:00'].start, '2026-10-19T19:30');
   assert.equal(ev.title, 'Yoga'); assert.equal(ev.rrule, 'FREQ=WEEKLY;BYDAY=MO;COUNT=6');
   assert.equal(await p.locator('.chip', {hasText: '19:30 Yoga (specială)'}).count(), 1);
   // șterge o apariție
   await openOcc('2026-10-26'); await p.click('#view-foot .btn.danger');
-  await p.locator('#ask-body input[value=one]').check(); await p.click('#ask-foot .btn.primary'); await p.waitForTimeout(100);
+  await p.locator('#ask-body input[value=one]').check(); await p.click('#ask-foot .btn.primary'); await idle(p);
   ev = await p.evaluate(() => ORAR.S.events[0]); assert.deepEqual(ev.ex, ['2026-10-26T18:00']);
-  await p.click('#toastBtn'); await p.waitForTimeout(100); ev = await p.evaluate(() => ORAR.S.events[0]); assert.deepEqual(ev.ex || [], [], 'anulare');
+  await p.click('#toastBtn'); await idle(p); ev = await p.evaluate(() => ORAR.S.events[0]); assert.deepEqual(ev.ex || [], [], 'anulare');
   // aceasta și următoarele (modifică titlul din 2 noiembrie încolo)
   await openOcc('2026-11-02'); await p.click('#view-foot .btn.primary');
-  await p.locator('#ask-body input[value=future]').check(); await p.click('#ask-foot .btn.primary'); await p.waitForTimeout(100);
-  await p.fill('#ev-title', 'Pilates'); await p.click('#evForm button[type=submit]'); await p.waitForTimeout(100);
+  await p.locator('#ask-body input[value=future]').check(); await p.click('#ask-foot .btn.primary'); await idle(p);
+  await p.fill('#ev-title', 'Pilates'); await p.click('#evForm button[type=submit]'); await idle(p);
   const evs = await p.evaluate(() => ORAR.S.events.map(e => [e.title, e.start, e.rrule]));
   assert.equal(evs.length, 2);
   assert.deepEqual(evs[0], ['Yoga', '2026-10-05T18:00', 'FREQ=WEEKLY;BYDAY=MO;COUNT=4'], 'seria veche taie la 4 apariții');
   assert.deepEqual(evs[1], ['Pilates', '2026-11-02T18:00', 'FREQ=WEEKLY;BYDAY=MO;COUNT=2'], 'seria nouă primește restul de 2');
   await p.click('[data-view=agenda]'); await p.fill('#goto', '2026-10-01'); await p.dispatchEvent('#goto', 'change');
   assert.equal(await p.locator('.ag-item', {hasText: 'Yoga'}).count(), 4 + 0 - 0, 'Yoga: 5, 12, 19(specială), 26 oct');
-  await p.fill('#goto', '2026-11-01'); await p.dispatchEvent('#goto', 'change'); await p.waitForTimeout(100);
+  await p.fill('#goto', '2026-11-01'); await p.dispatchEvent('#goto', 'change'); await idle(p);
   assert.equal(await p.locator('.ag-item', {hasText: 'Pilates'}).count(), 2);
-  await p.click('#toastBtn'); await p.waitForTimeout(100); // anulează separarea
+  await p.click('#toastBtn'); await idle(p); // anulează separarea
   assert.equal(await p.evaluate(() => ORAR.S.events.length), 1);
   assert.equal(await p.evaluate(() => ORAR.S.events[0].rrule), 'FREQ=WEEKLY;BYDAY=MO;COUNT=6');
   // toată seria: mută ora (cheile excluderilor/modificărilor se deplasează odată cu ea)
-  await openOcc('2026-10-05'); await p.click('#view-foot .btn.primary'); await p.locator('#ask-body input[value=all]').check(); await p.click('#ask-foot .btn.primary'); await p.waitForTimeout(100);
-  await p.fill('#ev-st', '17:00'); await p.click('#evForm button[type=submit]'); await p.waitForTimeout(100);
+  await openOcc('2026-10-05'); await p.click('#view-foot .btn.primary'); await p.locator('#ask-body input[value=all]').check(); await p.click('#ask-foot .btn.primary'); await idle(p);
+  await p.fill('#ev-st', '17:00'); await p.click('#evForm button[type=submit]'); await idle(p);
   const e3 = await p.evaluate(() => ORAR.S.events[0]);
   assert.equal(e3.start, '2026-10-05T17:00'); assert.deepEqual(Object.keys(e3.over), ['2026-10-19T17:00']); assert.equal(e3.over['2026-10-19T17:00'].start, '2026-10-19T18:30', 'ora mutată a apariției speciale se deplasează cu seria');
   // șterge toată seria
-  await openOcc('2026-10-12'); await p.click('#view-foot .btn.danger'); await p.locator('#ask-body input[value=all]').check(); await p.click('#ask-foot .btn.primary'); await p.waitForTimeout(100);
+  await openOcc('2026-10-12'); await p.click('#view-foot .btn.danger'); await p.locator('#ask-body input[value=all]').check(); await p.click('#ask-foot .btn.primary'); await idle(p);
   assert.equal(await p.evaluate(() => ORAR.S.events.length), 0);
   await expectClean(p);
   await closePage(p);
 });
 await T('calendare: activare/dezactivare, culori și categorii cu contrast AA, ștergere cu anulare', async () => {
   const p = await newPage();
-  await p.click('#b-data'); await p.click('#d-sample'); await p.waitForTimeout(200);
+  await p.click('#b-data'); await p.click('#d-sample'); await idle(p);
   const nCh = await p.locator('.chip').count(); assert.ok(nCh > 8);
   const cals = await p.evaluate(() => ORAR.S.cals.map(c => c.name || c.key));
   assert.equal(cals.length, 3);
-  await p.locator('#calList label', {hasText: 'Serviciu'}).locator('input').uncheck(); await p.waitForTimeout(100);
+  await p.locator('#calList label', {hasText: 'Serviciu'}).locator('input').uncheck(); await idle(p);
   assert.ok(await p.locator('.chip').count() < nCh);
   assert.equal(await p.locator('.chip', {hasText: 'Ședință de echipă'}).count(), 0);
   await p.locator('#calList label', {hasText: 'Serviciu'}).locator('input').check();
@@ -848,8 +879,8 @@ await T('alarme: sunet WebAudio + notificare doar cu acord explicit, doar cât f
   assert.equal(await p.evaluate(() => ORAR.S.beeps), 1, 'sunet redat o dată');
   assert.equal(await p.evaluate(() => window.__notifs.length), 0, 'fără notificare: utilizatorul nu a acceptat');
   // acceptă explicit notificările
-  await p.click('#b-set'); await p.click('#s-notif'); await p.waitForTimeout(100);
-  assert.match(await p.textContent('#s-notifst'), /active/); await p.keyboard.press('Escape'); await p.waitForTimeout(90);
+  await p.click('#b-set'); await p.click('#s-notif'); await idle(p);
+  assert.match(await p.textContent('#s-notifst'), /active/); await esc(p);
   await p.clock.runFor(10 * 60000); await p.clock.resume(); // 09:55 -> alarma de 5 min
   assert.equal(await p.evaluate(() => ORAR.S.beeps), 2);
   assert.equal(await p.evaluate(() => window.__notifs.filter(n => n[0] === 'Ședința de la 10').length), 1);
@@ -863,7 +894,7 @@ await T('alarme: sunet WebAudio + notificare doar cu acord explicit, doar cât f
   await p.clock.runFor(60000); await p.clock.resume();
   assert.equal(await p.evaluate(() => ORAR.S.beeps), 3);
   // sunetul poate fi dezactivat
-  await p.click('#b-set'); await p.uncheck('#s-sound'); await p.keyboard.press('Escape'); await p.waitForTimeout(90);
+  await p.click('#b-set'); await p.uncheck('#s-sound'); await esc(p);
   assert.equal(await p.evaluate(() => ORAR.S.settings.sound), false);
   // textul onest despre alarme există în aplicație
   assert.match(await p.textContent('#alarmNote'), /doar cât timp această filă este deschisă/);
@@ -889,7 +920,7 @@ await T('alarme ratate cât aplicația era închisă: bandă informativă la rep
 });
 await T('șabloane: ture 2-2-4 (zi, noapte, liber), 3 schimburi rotative, curs/laborator pe săptămâni pare/impare', async () => {
   const p = await newPage();
-  const gen = async (type, fn) => { await p.evaluate(() => { ORAR.S.events.length = 0; }); await p.click('#b-tpl'); await p.selectOption('#t-type', type); if (fn) await fn(); await p.click('#t-go'); await p.waitForTimeout(100); };
+  const gen = async (type, fn) => { await p.evaluate(() => { ORAR.S.events.length = 0; }); await p.click('#b-tpl'); await p.selectOption('#t-type', type); if (fn) await fn(); await p.click('#t-go'); await idle(p); };
   const days = (ds) => p.evaluate(a => { ORAR.setViewTz('Europe/Bucharest'); const out = {}; for (const e of ORAR.S.events) for (const i of ORAR.instancesIn(e, ORAR.pw(a[0]).d, ORAR.pw(a[1]).d)) { const k = ORAR.dstr(i.vs.d); (out[k] = out[k] || []).push(e.title + ' ' + String(Math.floor(i.vs.min / 60)).padStart(2, '0') + ':' + String(i.vs.min % 60).padStart(2, '0') + '→' + String(Math.floor(i.ve.min / 60)).padStart(2, '0')); } return Object.fromEntries(Object.entries(out).sort()); }, ds);
   await gen('s224', async () => { await p.fill('#t-start', '2026-11-02'); await p.fill('#t-end', '2026-12-31'); });
   const d = await days(['2026-11-01', '2026-11-18']);
@@ -944,7 +975,7 @@ await T('calculator de intervale: zile calendaristice, lucrătoare fără sărb�
   a = await add('2026-10-14', 0); assert.equal(a.d, '2026-10-14');
   await p.fill('#c-n', '9999'); assert.match(await p.evaluate(() => { ORAR.calcAdd(); return document.getElementById('c-err2').textContent; }), /între -5000 și 5000/);
   // zile libere proprii
-  await p.keyboard.press('Escape'); await p.waitForTimeout(90); await p.click('#b-hol'); await p.fill('#h-xd', '2026-05-04'); await p.fill('#h-xn', 'Punte stabilită de angajator'); await p.click('#h-xadd'); await p.keyboard.press('Escape'); await p.waitForTimeout(90);
+  await esc(p); await p.click('#b-hol'); await p.fill('#h-xd', '2026-05-04'); await p.fill('#h-xn', 'Punte stabilită de angajator'); await p.click('#h-xadd'); await esc(p);
   await p.click('#b-calc'); await p.fill('#c-s', '2026-04-30'); await p.fill('#c-n', '1'); await p.setChecked('#c-extra', true);
   a = await p.evaluate(() => { const r = ORAR.calcAdd(); return ORAR.dstr(r.d); }); assert.equal(a, '2026-05-05', '1 mai (vineri) sărbătoare, 4 mai zi liberă proprie');
   await closePage(p);
@@ -965,12 +996,12 @@ await T('sărbători: tabel anual, sumar, punți, export; avertisment oficial vi
 await T('copie de siguranță .fff.json: format, export, import cu confirmare, ștergere totală', async () => {
   const p = await newPage();
   const openData = async () => { if (!(await p.locator('#dlgData[open]').count())) await p.click('#b-data'); };
-  await p.click('#b-data'); await p.click('#d-sample'); await p.waitForTimeout(200);
+  await p.click('#b-data'); await p.click('#d-sample'); await idle(p);
   await openData();
   const [dl] = await Promise.all([p.waitForEvent('download'), p.click('#d-bk-exp')]);
   const f = path.join(TMP, 'backup.fff.json'); await dl.saveAs(f);
   const b = JSON.parse(fs.readFileSync(f, 'utf8'));
-  assert.equal(b.format, 'fff-bundle'); assert.equal(b.schema, 1); assert.equal(b.app, 'orar'); assert.equal(b.version, '1.0.3'); assert.equal(b.updated, '2026-10-22');
+  assert.equal(b.format, 'fff-bundle'); assert.equal(b.schema, 1); assert.equal(b.app, 'orar'); assert.equal(b.version, '1.0.4'); assert.equal(b.updated, '2026-10-22');
   assert.ok(b.exported && Object.keys(b.data).every(k => k.startsWith('fff.orar.')));
   assert.ok(JSON.parse(b.data['fff.orar.events']).length >= 10);
   const n = await p.evaluate(() => ORAR.S.events.length);
@@ -978,16 +1009,16 @@ await T('copie de siguranță .fff.json: format, export, import cu confirmare, �
   assert.equal(await p.evaluate(() => ORAR.S.events.length), 0);
   assert.equal(await p.evaluate(() => Object.keys(localStorage).filter(k => k.startsWith('fff.orar.') && k !== 'fff.orar.lang' && k !== 'fff.orar.seen' && k !== 'fff.orar.fired' && k !== 'fff.orar.settings' && k !== 'fff.orar.cals').length), 0);
   await openData(); await p.setInputFiles('#d-bk-file', f);
-  await p.click('#ask-foot .btn.danger'); await p.waitForTimeout(200);
+  await p.click('#ask-foot .btn.danger'); await idle(p);
   assert.equal(await p.evaluate(() => ORAR.S.events.length), n);
   // fișiere greșite
   const bad = path.join(TMP, 'bad.json');
   fs.writeFileSync(bad, JSON.stringify({format: 'fff-bundle', schema: 1, app: 'altceva', data: {}}));
-  await openData(); await p.setInputFiles('#d-bk-file', bad); await p.waitForTimeout(200);
+  await openData(); await p.setInputFiles('#d-bk-file', bad); await idle(p);
   assert.match(await p.textContent('#d-bk-err'), /altei aplicații/);
-  fs.writeFileSync(bad, 'nu e json'); await p.setInputFiles('#d-bk-file', bad); await p.waitForTimeout(200);
+  fs.writeFileSync(bad, 'nu e json'); await p.setInputFiles('#d-bk-file', bad); await idle(p);
   assert.match(await p.textContent('#d-bk-err'), /JSON valid/);
-  fs.writeFileSync(bad, JSON.stringify({a: 1})); await p.setInputFiles('#d-bk-file', bad); await p.waitForTimeout(200);
+  fs.writeFileSync(bad, JSON.stringify({a: 1})); await p.setInputFiles('#d-bk-file', bad); await idle(p);
   assert.match(await p.textContent('#d-bk-err'), /fff-bundle/);
   // date corupte în stocare nu strică pornirea
   await p.evaluate(() => { localStorage.setItem('fff.orar.events', '[{"start":"nu"},{"title":1},null,{"start":"2026-10-14T10:00","title":"ok","allDay":false}]'); localStorage.setItem('fff.orar.settings', '{"weekStart":9}'); localStorage.setItem('fff.orar.cals', 'x'); });
@@ -1001,7 +1032,7 @@ await T('import din CLEPSIDRA (format documentat): program săptămânal + numă
   const json = JSON.stringify({schedule: {weekday: [{start: '23:00', end: '07:00', cat: 'somn'}, {start: '09:00', end: '17:00', cat: 'serviciu'}, {start: 'x', end: '1', cat: 'somn'}, {start: '12:00', end: '13:00', cat: 'necunoscut'}], weekend: [{start: '00:00', end: '09:00', cat: 'somn'}]}, events: [{name: 'Concediu', ts: Date.parse('2026-12-20T08:00:00+02:00')}, {name: 1, ts: 5}]});
   await p.click('#b-data'); await p.fill('#d-clep-txt', json); await p.click('#d-clep-go');
   assert.match(await p.textContent('#d-clep-prev'), /3 blocuri de program și 1 numărători/);
-  await p.click('#clep-go'); await p.waitForTimeout(150);
+  await p.click('#clep-go'); await idle(p);
   const r = await p.evaluate(() => ORAR.S.events.map(e => [e.title, e.start, e.end, e.rrule, e.cal === ORAR.S.cals.at(-1).id]));
   assert.equal(r.length, 4);
   assert.deepEqual(r[0], ['Somn', '2026-10-12T23:00', '2026-10-13T07:00', 'FREQ=WEEKLY;BYDAY=MO,TU,WE,TH,FR', true]);
@@ -1026,9 +1057,9 @@ await T('interfață în 8 limbi: selector, persistență, html[lang], fără ch
     assert.ok(!/\b(next_events|v_month|new_event|f_title|rc_none)\b/.test(txt), 'chei vizibile în ' + l);
     const lab = await p.textContent('#b-new'); assert.ok(lab.length > 3);
     // dialoguri se redau în limba aleasă fără chei
-    for (const b of ['#b-set', '#b-calc', '#b-hol', '#b-cals', '#b-data', '#b-tpl', '#b-help']) { await p.click(b); const t = await p.evaluate(() => document.querySelector('dialog[open]').innerText); assert.ok(!/\b[a-z]+_[a-z0-9_]+\b/.test(t.replace(/[a-z]+_[a-z]+\.(?:fff|ics)/g, '').replace(/clepsidra\.\w+/g, '').replace(/\w+_\w+@/g, '').replace(/(STATUS|RRULE)[:_A-Z]*/g, '')), 'chei în dialog ' + b + ' ' + l + ': ' + (t.match(/\b[a-z]+_[a-z0-9_]+\b/) || [''])[0]); await p.keyboard.press('Escape'); await p.waitForTimeout(90); }
+    for (const b of ['#b-set', '#b-calc', '#b-hol', '#b-cals', '#b-data', '#b-tpl', '#b-help']) { await p.click(b); const t = await p.evaluate(() => document.querySelector('dialog[open]').innerText); assert.ok(!/\b[a-z]+_[a-z0-9_]+\b/.test(t.replace(/[a-z]+_[a-z]+\.(?:fff|ics)/g, '').replace(/clepsidra\.\w+/g, '').replace(/\w+_\w+@/g, '').replace(/(STATUS|RRULE)[:_A-Z]*/g, '')), 'chei în dialog ' + b + ' ' + l + ': ' + (t.match(/\b[a-z]+_[a-z0-9_]+\b/) || [''])[0]); await esc(p); }
     await p.click('#b-new'); await p.waitForSelector('#dlgEv[open]');
-    const t2 = await p.evaluate(() => document.querySelector('#dlgEv').innerText); assert.ok(!/\b[a-z]+_[a-z0-9_]+\b/.test(t2), 'chei în editor ' + l); await p.keyboard.press('Escape'); await p.waitForTimeout(90);
+    const t2 = await p.evaluate(() => document.querySelector('#dlgEv').innerText); assert.ok(!/\b[a-z]+_[a-z0-9_]+\b/.test(t2), 'chei în editor ' + l); await esc(p);
   }
   await p.selectOption('#lang', 'hu'); await p.reload(); await p.waitForSelector('#view > *');
   assert.equal(await p.getAttribute('html', 'lang'), 'hu'); assert.equal(await p.inputValue('#lang'), 'hu');
@@ -1070,17 +1101,17 @@ await T('performanță: import de 5000 de evenimente, randări, reîncărcare', 
   assert.equal(await p.evaluate(() => ORAR.S.events.length), 5000);
   const timing = await p.evaluate(() => { const r = {}; const t = (n, fn) => { const a = performance.now(); fn(); r[n] = Math.round(performance.now() - a); }; ORAR.S.sel = ORAR.dnOf(2026, 10, 14); t('month', () => { ORAR.S.view = 'month'; ORAR.render(); }); t('week', () => { ORAR.S.view = 'week'; ORAR.render(); }); t('day', () => { ORAR.S.view = 'day'; ORAR.render(); }); t('agenda', () => { ORAR.S.view = 'agenda'; ORAR.render(); }); t('alarms', () => ORAR.rebuildAlarms()); t('save', () => ORAR.flushEvents()); ORAR.S.view = 'month'; ORAR.render(); return r; });
   console.log(`       fișier ${(size / 1024).toFixed(0)} KiB: parsare ${tParse} ms, import ${tImport} ms, randări ${JSON.stringify(timing)}`);
-  assert.ok(tParse < 6000, 'parsare ' + tParse); assert.ok(tImport < 6000, 'import ' + tImport);
-  for (const k of ['month', 'week', 'day', 'agenda']) assert.ok(timing[k] < 500, `randare ${k}: ${timing[k]} ms`);
-  assert.ok(timing.save < 600, 'salvare ' + timing.save);
+  assert.ok(tParse < budget(6000), 'parsare ' + tParse); assert.ok(tImport < budget(6000), 'import ' + tImport);
+  for (const k of ['month', 'week', 'day', 'agenda']) assert.ok(timing[k] < budget(500), `randare ${k}: ${timing[k]} ms`);
+  assert.ok(timing.save < budget(600), 'salvare ' + timing.save);
   await p.evaluate(() => ORAR.flushEvents());
   const t2 = Date.now(); await p.reload(); await p.waitForSelector('#view table.month'); const tLoad = Date.now() - t2;
   assert.equal(await p.evaluate(() => ORAR.S.events.length), 5000);
   console.log(`       reîncărcare cu 5000 de evenimente: ${tLoad} ms`);
-  assert.ok(tLoad < 3000, 'încărcare ' + tLoad);
+  assert.ok(tLoad < budget(3000), 'încărcare ' + tLoad);
   // filtrare în agendă
-  await p.click('[data-view=agenda]'); const t3 = Date.now(); await p.fill('#ag-q', 'Eveniment 4999'); await p.waitForTimeout(50); const tq = Date.now() - t3;
-  assert.ok(tq < 1500, 'filtru ' + tq);
+  await p.click('[data-view=agenda]'); const t3 = Date.now(); await p.fill('#ag-q', 'Eveniment 4999'); await idle(p); const tq = Date.now() - t3;
+  assert.ok(tq < budget(1500), 'filtru ' + tq);
   await expectClean(p);
   await closePage(p);
 });
@@ -1097,31 +1128,31 @@ await T('axe-core: 0 violări în luminos/întunecat, toate vizualizările și d
   if (!axeSrc) { console.log('       (sărit: axe-core indisponibil, setează AXE_PATH)'); return; }
   for (const scheme of ['light', 'dark']) {
     const p = await newPage({bypassCSP: true, colorScheme: scheme});
-    await p.click('#b-data'); await p.click('#d-sample'); await p.waitForTimeout(200); await p.keyboard.press('Escape').catch(() => {});
-    await p.waitForTimeout(3600);
-    await p.evaluate(() => ORAR.S.settings.orth = true); await p.click('#b-set'); await p.check('#s-orth').catch(() => {}); await p.keyboard.press('Escape'); await p.waitForTimeout(90);
+    await p.click('#b-data'); await p.click('#d-sample'); await idle(p); await esc(p).catch(() => {});
+    await toastGone(p);
+    await p.evaluate(() => ORAR.S.settings.orth = true); await p.click('#b-set'); await p.check('#s-orth').catch(() => {}); await esc(p);
     for (const v of ['month', 'week', 'day', 'agenda']) { await p.click(`[data-view=${v}]`); await axeRun(p, `${scheme}/${v}`); }
     await p.click('[data-view=month]');
-    for (const b of ['#b-set', '#b-calc', '#b-hol', '#b-cals', '#b-data', '#b-tpl', '#b-help', '#b-new']) { await p.click(b); await p.waitForTimeout(150); await axeRun(p, `${scheme}/${b}`); await p.keyboard.press('Escape'); await p.waitForTimeout(90); }
+    for (const b of ['#b-set', '#b-calc', '#b-hol', '#b-cals', '#b-data', '#b-tpl', '#b-help', '#b-new']) { await p.click(b); await idle(p); await axeRun(p, `${scheme}/${b}`); await esc(p); }
     await p.selectOption('#t-type', 'x').catch(() => {});
-    await p.click('#b-tpl'); for (const ty of ['s224', 's3', 'course']) { await p.selectOption('#t-type', ty); await axeRun(p, `${scheme}/tpl-${ty}`); } await p.keyboard.press('Escape'); await p.waitForTimeout(90);
-    await p.click('#b-new'); await p.selectOption('#rc-type', 'MONTHLY'); await p.check('input[name=rc-mm][value=nth]'); await axeRun(p, `${scheme}/editor-monthly`); await p.selectOption('#rc-type', 'YEARLY'); await axeRun(p, `${scheme}/editor-yearly`); await p.selectOption('#rc-type', 'custom'); await axeRun(p, `${scheme}/editor-custom`); await p.keyboard.press('Escape'); await p.waitForTimeout(90);
-    await p.locator('.chip').first().click(); await axeRun(p, `${scheme}/view`); await p.keyboard.press('Escape'); await p.waitForTimeout(90);
+    await p.click('#b-tpl'); for (const ty of ['s224', 's3', 'course']) { await p.selectOption('#t-type', ty); await axeRun(p, `${scheme}/tpl-${ty}`); } await esc(p);
+    await p.click('#b-new'); await p.selectOption('#rc-type', 'MONTHLY'); await p.check('input[name=rc-mm][value=nth]'); await axeRun(p, `${scheme}/editor-monthly`); await p.selectOption('#rc-type', 'YEARLY'); await axeRun(p, `${scheme}/editor-yearly`); await p.selectOption('#rc-type', 'custom'); await axeRun(p, `${scheme}/editor-custom`); await esc(p);
+    await p.locator('.chip').first().click(); await axeRun(p, `${scheme}/view`); await esc(p);
     await closePage(p);
   }
 });
 await T('fără depășire orizontală la 360×740 și 1280×800 (vizualizări și dialoguri); ținte tactile', async () => {
   for (const vp of [{width: 360, height: 740}, {width: 1280, height: 800}]) {
     const p = await newPage({viewport: vp});
-    await p.click('#b-data'); await p.click('#d-sample'); await p.waitForTimeout(200); await p.keyboard.press('Escape').catch(() => {});
+    await p.click('#b-data'); await p.click('#d-sample'); await idle(p); await p.keyboard.press('Escape').catch(() => {});
     for (const v of ['month', 'week', 'day', 'agenda']) { await p.click(`[data-view=${v}]`); await noOverflow(p, `${vp.width}/${v}`); }
     for (const b of ['#b-set', '#b-calc', '#b-hol', '#b-cals', '#b-data', '#b-tpl', '#b-help', '#b-new']) {
-      await p.click(b); await p.waitForTimeout(100); await noOverflow(p, `${vp.width}/${b}`);
+      await p.click(b); await idle(p); await noOverflow(p, `${vp.width}/${b}`);
       const dw = await p.evaluate(() => { const d = document.querySelector('dialog[open]'); const r = d.getBoundingClientRect(); const inner = d.querySelector('.body'); return {l: r.left, r: r.right, w: innerWidth, sw: inner ? inner.scrollWidth - inner.clientWidth : 0}; });
       assert.ok(dw.l >= -1 && dw.r <= dw.w + 1, `dialog ${b} depășește la ${vp.width}`); assert.ok(dw.sw <= 1, `scroll orizontal în ${b} la ${vp.width}: ${dw.sw}`);
-      await p.keyboard.press('Escape'); await p.waitForTimeout(90);
+      await esc(p);
     }
-    await p.click('#b-tpl'); await p.selectOption('#t-type', 'course'); await noOverflow(p, 'curs'); await p.keyboard.press('Escape'); await p.waitForTimeout(90);
+    await p.click('#b-tpl'); await p.selectOption('#t-type', 'course'); await noOverflow(p, 'curs'); await esc(p);
     if (vp.width === 360) { // ținte ≥ 24 px la butoanele principale
       const small = await p.evaluate(() => [...document.querySelectorAll('.top button,.toolbar button,.toolbar select,.daybtn')].filter(e => { const r = e.getBoundingClientRect(); return r.width && (r.height < 24 || r.width < 24); }).map(e => e.id || e.className));
       assert.deepEqual(small, []);
@@ -1131,7 +1162,7 @@ await T('fără depășire orizontală la 360×740 și 1280×800 (vizualizări �
 });
 await T('tipărire: CSS print ascunde panourile și păstrează grila (lună, săptămână, agendă) + PDF generat', async () => {
   const p = await newPage();
-  await p.click('#b-data'); await p.click('#d-sample'); await p.waitForTimeout(200); await p.keyboard.press('Escape').catch(() => {});
+  await p.click('#b-data'); await p.click('#d-sample'); await idle(p); await p.keyboard.press('Escape').catch(() => {});
   await p.emulateMedia({media: 'print'});
   for (const v of ['month', 'week', 'agenda']) {
     await p.click(`[data-view=${v}]`, {force: true}).catch(async () => { await p.evaluate(x => { ORAR.S.view = x; ORAR.render(); }, v); });
