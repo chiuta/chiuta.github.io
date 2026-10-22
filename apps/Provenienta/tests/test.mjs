@@ -81,7 +81,7 @@ const page = await openApp();
 
 await test('pornire: 0 erori, 0 CSP, 0 rețea, meta și versiune', async () => {
   const info = await page.evaluate(() => ({ csp: window.__csp, ver: document.querySelector('#app-version').textContent, mv: document.querySelector('meta[name=application-version]').content, up: document.querySelector('meta[name=last-updated]').content, lang: document.documentElement.lang, t: document.title, desc: !!document.querySelector('meta[name=description]').content, h1: document.querySelectorAll('h1').length, inline: document.querySelectorAll('[onclick],[onchange]').length }));
-  eq(info.csp, []); eq(info.mv, '1.0.0'); eq(info.up, '2026-10-14'); assert(/v 1\.0\.0 · 2026-10-14/.test(info.ver)); eq(info.lang, 'ro'); eq(info.h1, 1); eq(info.inline, 0); assert(info.desc);
+  eq(info.csp, []); eq(info.mv, '1.0.1'); eq(info.up, '2026-10-22'); assert(/v 1\.0\.1 · 2026-10-22/.test(info.ver)); eq(info.lang, 'ro'); eq(info.h1, 1); eq(info.inline, 0); assert(info.desc);
   const html = fs.readFileSync(APP_FILE, 'utf8');
   // CSP din meta (nu din tot fișierul: #fff-info descrie CSP-ul în JSON și ar da potriviri false pe „script-src … unsafe-inline”)
   const csp = /http-equiv="Content-Security-Policy"\s+content="([^"]*)"/.exec(html)[1]; const ss = /script-src([^;]*)/.exec(csp)[1];

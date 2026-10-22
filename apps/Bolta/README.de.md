@@ -2,7 +2,7 @@
 
 [English](README.md) · [Română](README.ro.md) · [Français](README.fr.md) · [Italiano](README.it.md) · [Español](README.es.md) · [Português](README.pt.md) · **Deutsch** · [Magyar](README.hu.md)
 
-**Version:** 1.1.2 · **Zuletzt aktualisiert:** 2026-10-19
+**Version:** 1.1.3 · **Zuletzt aktualisiert:** 2026-10-22
 
 Oberflächensprachen: **Română, English, Français, Italiano, Español, Português (PT), Deutsch, Magyar**
 
@@ -132,6 +132,7 @@ MIT — siehe Datei `LICENSE` im Stammverzeichnis des Repositorys. Die Komponent
 - **1.1.1 — 2026-10-18:** der Ort aus dem Link gilt nur für die Sitzung, `#t&ll` ohne Tab, echte Datumsvalidierung.
 - **1.1.0 — 2026-10-18:** Deep-Link `#sky&t=&ll=`.
 - **1.0.0 — 2026-10-14:** erste Version.
+- **1.1.3 — 2026-10-22:** Touch-Ziele von mindestens 24 px für die Kontrollkästchen und Optionsfelder der Panels Himmel und Orte; das technische Label (fff-info) listet jetzt die tatsächlichen 8 Sprachen statt 2. Die Brücke „Zurück zu Field Observer“ (#sky&t=…&ll=…&from=fieldobserver) bleibt unverändert.
 
 ## Deep-Links
 

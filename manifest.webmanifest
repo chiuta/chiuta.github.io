@@ -1,0 +1,37 @@
+{
+  "name": "A.I. Chiuță",
+  "short_name": "Chiuță",
+  "description": "Alexandru-Ionuț Chiuță: 110 free, open, single-file HTML tools for education and source checking. Mostly offline, no account, no tracking on this page. Each tool lists any request it makes to third parties.",
+  "id": "./",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "lang": "en",
+  "background_color": "#07060f",
+  "theme_color": "#07060f",
+  "categories": [
+    "utilities",
+    "education"
+  ],
+  "icons": [
+    {
+      "src": "icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icon-maskable-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ],
+  "x_fff_pwa": 1
+}

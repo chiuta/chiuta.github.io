@@ -2,7 +2,7 @@
 
 [English](README.md) · [Română](README.ro.md) · [Français](README.fr.md) · **Italiano** · [Español](README.es.md) · [Português](README.pt.md) · [Deutsch](README.de.md) · [Magyar](README.hu.md)
 
-**Versione:** 1.1.2 · **Ultimo aggiornamento:** 2026-10-19
+**Versione:** 1.1.3 · **Ultimo aggiornamento:** 2026-10-22
 
 Lingue dell'interfaccia: **Română, English, Français, Italiano, Español, Português (PT), Deutsch, Magyar**
 
@@ -132,6 +132,7 @@ MIT — vedi il file `LICENSE` nella radice del repository. I componenti di terz
 - **1.1.1 — 2026-10-18:** il luogo del link vale solo per la sessione, `#t&ll` senza scheda, vera validazione della data.
 - **1.1.0 — 2026-10-18:** link profondo `#sky&t=&ll=`.
 - **1.0.0 — 2026-10-14:** prima versione.
+- **1.1.3 — 2026-10-22:** aree tattili di almeno 24 px per le caselle e i pulsanti radio dei pannelli cielo e luoghi; l’etichetta tecnica (fff-info) elenca ora le 8 lingue reali invece di 2. Il ponte «Torna a Field Observer» (#sky&t=…&ll=…&from=fieldobserver) è invariato.
 
 ## Link profondi
 

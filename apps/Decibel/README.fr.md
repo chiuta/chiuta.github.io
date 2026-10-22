@@ -2,7 +2,7 @@
 
 [English](README.md) · [Română](README.ro.md) · **Français** · [Italiano](README.it.md) · [Español](README.es.md) · [Português](README.pt.md) · [Deutsch](README.de.md) · [Magyar](README.hu.md)
 
-**Version :** 1.0.0 · **Dernière mise à jour :** 2026-10-14
+**Version :** 1.0.1 · **Dernière mise à jour :** 2026-10-22
 
 Langues de l'interface : **Română, English, Français, Italiano, Español, Português (PT), Deutsch, Magyar**
 
@@ -63,3 +63,4 @@ Licence : MIT — voir le fichier `LICENSE` à la racine du dépôt
 ## Historique
 
 - 1.0.0 — 2026-10-14 : première version
+- 1.0.1 — 2026-10-22 : les exports CSV (journal, session, audiogramme) neutralisent les cellules de texte commençant par = + - @ (et tabulation/CR) contre l’injection de formules ; cibles tactiles d’au moins 24 px pour les cases à cocher et boutons radio.

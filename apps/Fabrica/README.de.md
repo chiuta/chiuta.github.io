@@ -2,7 +2,7 @@
 
 [English](README.md) · [Română](README.ro.md) · [Français](README.fr.md) · [Italiano](README.it.md) · [Español](README.es.md) · [Português](README.pt.md) · **Deutsch** · [Magyar](README.hu.md)
 
-**Version:** 1.1.0 · **Zuletzt aktualisiert:** 2026-10-19
+**Version:** 1.1.1 · **Zuletzt aktualisiert:** 2026-10-22
 
 Oberflächensprachen: **Română, English, Français, Italiano, Español, Português (PT), Deutsch, Magyar**
 
@@ -76,3 +76,4 @@ Lizenz: MIT — siehe die Datei `LICENSE` im Stammverzeichnis des Repositorys.
 
 - 1.0.0 — 2026-10-14: erste Version.
 - 1.1.0 — 2026-10-19: Export „Quiz für Undava (.json)“ und Import aus Undava-Dateien (.json) über die Schaltfläche für den CSV-Import; übertragen werden nur Fragen mit Entsprechung (Einzelauswahl, Wahr/Falsch, Kurzantwort, Lückentext mit einer Lücke).
+- 1.1.1 — 2026-10-22: kein window.confirm / window.prompt mehr: das Zurücksetzen des Fortschritts im Player, das Löschen des Entwurfs und die Abfrage des Bild-Alternativtexts nutzen Dialoge der Seite, übersetzt in 8 Sprachen; Touch-Ziele von mindestens 24 px für Kontrollkästchen und Optionsfelder; das technische Label meldet das CSP-Token about:srcdoc nicht mehr als Netzwerk-Host.

@@ -2,7 +2,7 @@
 
 **English** · [Română](README.ro.md) · [Français](README.fr.md) · [Italiano](README.it.md) · [Español](README.es.md) · [Português](README.pt.md) · [Deutsch](README.de.md) · [Magyar](README.hu.md)
 
-**Version:** 1.0.0 · **Last updated:** 2026-10-14
+**Version:** 1.0.1 · **Last updated:** 2026-10-22
 
 Interface languages: **Română, English, Français, Italiano, Español, Português (PT), Deutsch, Magyar**
 
@@ -35,7 +35,7 @@ Arbore is a genealogy program that runs entirely in the browser: persons (multip
 
 ## Privacy
 
-Family data is sensitive. The application runs locally and sends nothing: it has no server, accounts, analytics or network requests (CSP with `connect-src 'none'`), and the banner at the top says so. The tree is saved only in your browser, optionally encrypted with AES-GCM 256 using a key derived through PBKDF2-SHA256 (310,000 iterations, random salt and IV). Exports (GEDCOM, JSON, CSV, report) mask living persons by default (or remove them entirely; optionally also those born in the last N years); an unmasked export requires explicit confirmation. A person is considered living if they have no death record and were not born more than 110 years ago, unless marked manually.
+Family data is sensitive. The application runs locally and sends nothing: it has no server, accounts, analytics or network requests (CSP with `connect-src 'none'`), and the banner at the top says so. The tree is saved only in your browser, optionally encrypted with AES-GCM 256 using a key derived through PBKDF2-SHA256 (600,000 iterations, random salt and IV). Exports (GEDCOM, JSON, CSV, report) mask living persons by default (or remove them entirely; optionally also those born in the last N years); an unmasked export requires explicit confirmation. A person is considered living if they have no death record and were not born more than 110 years ago, unless marked manually.
 
 ## Supported formats
 
@@ -65,3 +65,4 @@ MIT — see the `LICENSE` file at the root of the repository.
 ## History
 
 - 1.0.0 — 2026-10-14: first version.
+- 1.0.1 — 2026-10-22: password encryption now derives the key with PBKDF2-SHA256 at 600,000 iterations (OWASP); existing copies at 310,000 still open and are upgraded on the next save after unlocking; reminder (with an Export now button) when there has been no JSON/GEDCOM backup for 30 days; CSV export neutralises text cells starting with = + - @ (and tab/CR); touch targets of at least 24 px.

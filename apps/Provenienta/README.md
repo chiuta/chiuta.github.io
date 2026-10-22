@@ -2,7 +2,7 @@
 
 **English** · [Română](README.ro.md) · [Français](README.fr.md) · [Italiano](README.it.md) · [Español](README.es.md) · [Português](README.pt.md) · [Deutsch](README.de.md) · [Magyar](README.hu.md)
 
-**Version:** 1.0.0 · **Last updated:** 2026-10-14
+**Version:** 1.0.1 · **Last updated:** 2026-10-22
 
 Interface languages: **Română, English, Français, Italiano, Español, Português (PT), Deutsch, Magyar**
 
@@ -61,3 +61,4 @@ MIT — see the `LICENSE` file at the repository root.
 ## History
 
 - 1.0.0 — 2026-10-14: first release.
+- 1.0.1 — 2026-10-22: new prominent note in the status block and in the exported report: a valid signature does not prove the image is true, and an unknown signer looks just as valid; touch targets of at least 24 px.

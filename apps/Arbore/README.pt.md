@@ -2,7 +2,7 @@
 
 [English](README.md) · [Română](README.ro.md) · [Français](README.fr.md) · [Italiano](README.it.md) · [Español](README.es.md) · **Português** · [Deutsch](README.de.md) · [Magyar](README.hu.md)
 
-**Versão:** 1.0.0 · **Última atualização:** 2026-10-14
+**Versão:** 1.0.1 · **Última atualização:** 2026-10-22
 
 Idiomas da interface: **Română, English, Français, Italiano, Español, Português (PT), Deutsch, Magyar**
 
@@ -35,7 +35,7 @@ O Arbore é um programa de genealogia que funciona inteiramente no navegador: pe
 
 ## Privacidade
 
-Os dados de família são sensíveis. A aplicação funciona localmente e não envia nada: não tem servidor, contas, análise nem pedidos de rede (CSP com `connect-src 'none'`), e a faixa no topo di-lo. A árvore é guardada apenas no seu navegador, opcionalmente cifrada com AES-GCM 256 com uma chave derivada por PBKDF2-SHA256 (310 000 iterações, sal e IV aleatórios). As exportações (GEDCOM, JSON, CSV, relatório) ocultam por predefinição as pessoas vivas (ou removem-nas por completo; opcionalmente também as nascidas nos últimos N anos); uma exportação sem ocultação exige confirmação explícita. Uma pessoa é considerada viva se não tiver óbito registado e não tiver nascido há mais de 110 anos, a menos que seja marcada manualmente.
+Os dados de família são sensíveis. A aplicação funciona localmente e não envia nada: não tem servidor, contas, análise nem pedidos de rede (CSP com `connect-src 'none'`), e a faixa no topo di-lo. A árvore é guardada apenas no seu navegador, opcionalmente cifrada com AES-GCM 256 com uma chave derivada por PBKDF2-SHA256 (600 000 iterações, sal e IV aleatórios). As exportações (GEDCOM, JSON, CSV, relatório) ocultam por predefinição as pessoas vivas (ou removem-nas por completo; opcionalmente também as nascidas nos últimos N anos); uma exportação sem ocultação exige confirmação explícita. Uma pessoa é considerada viva se não tiver óbito registado e não tiver nascido há mais de 110 anos, a menos que seja marcada manualmente.
 
 ## Formatos suportados
 
@@ -65,3 +65,4 @@ MIT — veja o ficheiro `LICENSE` na raiz do repositório.
 ## Histórico
 
 - 1.0.0 — 2026-10-14: primeira versão.
+- 1.0.1 — 2026-10-22: a cifragem com palavra-passe deriva agora a chave com PBKDF2-SHA256 a 600.000 iterações (OWASP); as cópias existentes a 310.000 continuam a abrir-se e são atualizadas na gravação seguinte após o desbloqueio; lembrete (com botão «Exportar agora») quando há 30 dias sem cópia JSON/GEDCOM; a exportação CSV neutraliza as células de texto que começam por = + - @ (e tabulação/CR); áreas táteis de pelo menos 24 px.

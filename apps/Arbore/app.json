@@ -2,8 +2,8 @@
   "schema": 1,
   "slug": "arbore",
   "name": "Arbore",
-  "version": "1.0.0",
-  "updated": "2026-10-14",
+  "version": "1.0.1",
+  "updated": "2026-10-22",
   "description": "Arbore: genealogie locală cu import și export GEDCOM 5.5.1, diagrame (pedigree, descendenți, clepsidră, evantai), calculator de rudenie cu denumiri românești, verificări de date și criptare opțională. Rulează local, nu trimite nimic.",
   "egress": [],
   "permissions": [
@@ -15,8 +15,8 @@
   "storageKeys": [
     "nodup"
   ],
-  "sizeBytes": 448119,
-  "sha256": "cb087b3ce5dfc4f77b48dde8d586417d779f13297c462063467f7301ccca4de4",
+  "sizeBytes": 450302,
+  "sha256": "3ca40a2f232a48b90ceaa1f69838b96749bf271e208db9b36180cdfc5b996391",
   "csp": {
     "present": true,
     "directives": {

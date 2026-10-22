@@ -2,7 +2,7 @@
 
 [English](README.md) · [Română](README.ro.md) · [Français](README.fr.md) · [Italiano](README.it.md) · [Español](README.es.md) · **Português** · [Deutsch](README.de.md) · [Magyar](README.hu.md)
 
-**Versão:** 1.0.0 · **Última atualização:** 2026-10-14
+**Versão:** 1.0.1 · **Última atualização:** 2026-10-22
 
 Idiomas da interface: **Română, English, Français, Italiano, Español, Português (PT), Deutsch, Magyar**
 
@@ -66,3 +66,4 @@ MIT — ver o ficheiro `LICENSE` na raiz do repositório.
 
 ## Histórico
 - 1.0.0 — 2026-10-14: primeira versão.
+- 1.0.1 — 2026-10-22: uma pesquisa sem resultados diz agora explicitamente que o conjunto incluído é apenas uma demonstração (quando o conjunto de demonstração está ativo); a exportação CSV neutraliza as células que começam por = + - @ contra a injeção de fórmulas e a importação TSV/CSV volta a remover o apóstrofo; áreas táteis de pelo menos 24 px; a etiqueta técnica lista os 8 idiomas.

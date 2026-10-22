@@ -2,7 +2,7 @@
 
 [English](README.md) · [Română](README.ro.md) · [Français](README.fr.md) · [Italiano](README.it.md) · [Español](README.es.md) · [Português](README.pt.md) · **Deutsch** · [Magyar](README.hu.md)
 
-**Version:** 1.0.0 · **Zuletzt aktualisiert:** 2026-10-14
+**Version:** 1.0.1 · **Zuletzt aktualisiert:** 2026-10-22
 
 Oberflächensprachen: **Română, English, Français, Italiano, Español, Português (PT), Deutsch, Magyar**
 
@@ -35,7 +35,7 @@ Arbore ist ein Genealogieprogramm, das vollständig im Browser läuft: Personen 
 
 ## Datenschutz
 
-Familiendaten sind sensibel. Die Anwendung läuft lokal und sendet nichts: Sie hat keinen Server, keine Konten, keine Analyse und keine Netzwerkanfragen (CSP mit `connect-src 'none'`), und das Banner oben weist darauf hin. Der Stammbaum wird nur in deinem Browser gespeichert, optional mit AES-GCM 256 verschlüsselt, mit einem per PBKDF2-SHA256 abgeleiteten Schlüssel (310.000 Iterationen, zufälliger Salt und IV). Exporte (GEDCOM, JSON, CSV, Bericht) maskieren lebende Personen standardmäßig (oder entfernen sie vollständig; optional auch die in den letzten N Jahren Geborenen); ein unmaskierter Export erfordert eine ausdrückliche Bestätigung. Eine Person gilt als lebend, wenn sie keinen Sterbeeintrag hat und nicht vor mehr als 110 Jahren geboren wurde, sofern sie nicht manuell markiert ist.
+Familiendaten sind sensibel. Die Anwendung läuft lokal und sendet nichts: Sie hat keinen Server, keine Konten, keine Analyse und keine Netzwerkanfragen (CSP mit `connect-src 'none'`), und das Banner oben weist darauf hin. Der Stammbaum wird nur in deinem Browser gespeichert, optional mit AES-GCM 256 verschlüsselt, mit einem per PBKDF2-SHA256 abgeleiteten Schlüssel (600.000 Iterationen, zufälliger Salt und IV). Exporte (GEDCOM, JSON, CSV, Bericht) maskieren lebende Personen standardmäßig (oder entfernen sie vollständig; optional auch die in den letzten N Jahren Geborenen); ein unmaskierter Export erfordert eine ausdrückliche Bestätigung. Eine Person gilt als lebend, wenn sie keinen Sterbeeintrag hat und nicht vor mehr als 110 Jahren geboren wurde, sofern sie nicht manuell markiert ist.
 
 ## Unterstützte Formate
 
@@ -65,3 +65,4 @@ MIT — siehe die Datei `LICENSE` im Stammverzeichnis des Repositorys.
 ## Verlauf
 
 - 1.0.0 — 2026-10-14: erste Version.
+- 1.0.1 — 2026-10-22: die Passwortverschlüsselung leitet den Schlüssel jetzt mit PBKDF2-SHA256 bei 600.000 Iterationen ab (OWASP); vorhandene Kopien mit 310.000 lassen sich weiterhin öffnen und werden beim nächsten Speichern nach dem Entsperren aktualisiert; Erinnerung (mit Schaltfläche „Jetzt exportieren“), wenn seit 30 Tagen keine JSON/GEDCOM-Sicherung existiert; der CSV-Export entschärft Textzellen, die mit = + - @ (und Tab/CR) beginnen; Touch-Ziele von mindestens 24 px.

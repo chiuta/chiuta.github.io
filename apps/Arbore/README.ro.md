@@ -2,7 +2,7 @@
 
 [English](README.md) · **Română** · [Français](README.fr.md) · [Italiano](README.it.md) · [Español](README.es.md) · [Português](README.pt.md) · [Deutsch](README.de.md) · [Magyar](README.hu.md)
 
-**Versiune:** 1.0.0 · **Ultima actualizare:** 2026-10-14
+**Versiune:** 1.0.1 · **Ultima actualizare:** 2026-10-22
 
 Limbile interfeței: **Română, English, Français, Italiano, Español, Português (PT), Deutsch, Magyar**
 
@@ -35,7 +35,7 @@ Arbore este un program de genealogie care rulează integral în browser: persoan
 
 ## Confidențialitate
 
-Datele de familie sunt sensibile. Aplicația rulează local și nu trimite nimic: nu are server, conturi, analiză sau cereri de rețea (CSP cu `connect-src 'none'`), iar bannerul din partea de sus spune acest lucru. Arborele este salvat doar în browserul tău, opțional criptat AES-GCM 256 cu cheie derivată prin PBKDF2-SHA256 (310 000 iterații, sare și IV aleatorii). Exporturile (GEDCOM, JSON, CSV, raport) maschează implicit persoanele în viață (sau le elimină complet; opțional și cele născute în ultimii N ani); exportul nemascat cere confirmare explicită. O persoană este considerată în viață dacă nu are deces și nu a fost născută cu mai mult de 110 de ani în urmă, dacă nu este marcată manual.
+Datele de familie sunt sensibile. Aplicația rulează local și nu trimite nimic: nu are server, conturi, analiză sau cereri de rețea (CSP cu `connect-src 'none'`), iar bannerul din partea de sus spune acest lucru. Arborele este salvat doar în browserul tău, opțional criptat AES-GCM 256 cu cheie derivată prin PBKDF2-SHA256 (600 000 iterații, sare și IV aleatorii). Exporturile (GEDCOM, JSON, CSV, raport) maschează implicit persoanele în viață (sau le elimină complet; opțional și cele născute în ultimii N ani); exportul nemascat cere confirmare explicită. O persoană este considerată în viață dacă nu are deces și nu a fost născută cu mai mult de 110 de ani în urmă, dacă nu este marcată manual.
 
 ## Formate acceptate
 
@@ -65,3 +65,4 @@ MIT — vezi fișierul `LICENSE` din rădăcina depozitului.
 ## Istoric
 
 - 1.0.0 — 2026-10-14: prima versiune.
+- 1.0.1 — 2026-10-22: criptarea cu parolă derivă acum cheia cu PBKDF2-SHA256 la 600.000 de iterații (OWASP); copiile existente la 310.000 se deschid în continuare și sunt actualizate la prima salvare după deblocare; memento (cu buton „Exportă acum”) când nu există o copie JSON/GEDCOM de 30 de zile; exportul CSV neutralizează celulele text care încep cu = + - @ (și tab/CR); ținte tactile de cel puțin 24 px.

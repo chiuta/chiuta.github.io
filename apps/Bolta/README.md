@@ -2,7 +2,7 @@
 
 **English** · [Română](README.ro.md) · [Français](README.fr.md) · [Italiano](README.it.md) · [Español](README.es.md) · [Português](README.pt.md) · [Deutsch](README.de.md) · [Magyar](README.hu.md)
 
-**Version:** 1.1.2 · **Last updated:** 2026-10-19
+**Version:** 1.1.3 · **Last updated:** 2026-10-22
 
 Interface languages: **Română, English, Français, Italiano, Español, Português (PT), Deutsch, Magyar**
 
@@ -132,6 +132,7 @@ MIT — see the `LICENSE` file at the root of the repository. The third-party co
 - **1.1.1 — 2026-10-18:** the place from the link is for the session only, `#t&ll` without a tab, real date validation.
 - **1.1.0 — 2026-10-18:** deep link `#sky&t=&ll=`.
 - **1.0.0 — 2026-10-14:** first version.
+- **1.1.3 — 2026-10-22:** touch targets of at least 24 px for the check boxes and radio buttons of the sky and places panels; the technical label (fff-info) now lists the real 8 languages instead of 2. The “Back to Field Observer” bridge (#sky&t=…&ll=…&from=fieldobserver) is unchanged.
 
 ## Deep links
 

@@ -241,9 +241,46 @@ function checkKit(dirArg, opt = {}) {
     const calc = sha256hex(Buffer.from(canonicalize(html), 'utf8'));
     if (declared !== calc) errors.push(`SHA-256 din fff-info învechit (declarat ${declared.slice(0, 12) || '∅'}…, calculat ${calc.slice(0, 12)}…): rulează info`);
     const im = html.match(/<script type="application\/json" id="fff-info">([\s\S]*?)<\/script>/);
-    try { JSON.parse(im[1]); } catch { errors.push('fff-info nu este JSON valid'); }
+    let parsed = null;
+    try { parsed = JSON.parse(im[1]); } catch { errors.push('fff-info nu este JSON valid'); }
+    if (parsed) for (const e of validateInfo(parsed, html, path.dirname(file))) errors.push('fff-info: ' + e);
   }
   return {file, ok: errors.length === 0, errors, warns};
+}
+
+/* ---------------- validări fff-info (pică la nepotrivire) ---------------- */
+/** Verifică un obiect fff-info față de pagina reală. Întoarce lista de erori (goală = ok).
+ *  (a) serviceWorker:true ⇒ sw.js există lângă pagină (și nu este înregistrat dintr-un blob:);
+ *  (b) gazdele din egress sunt hostname-uri valide (fără ${…}, fără scheme goale);
+ *  (c) i18n din fff-info acoperă limbile găsite în dicționarele paginii (declarat ⊇ detectat);
+ *  (d) versiunea din fff-info = <meta name="application-version">. */
+function validateInfo(info, html, dir) {
+  const errs = [];
+  const src = html.replace(BLOCK_RE, '').replace(INFO_RE, '');
+  // (a)
+  if (info.features && info.features.pwa && info.features.pwa.serviceWorker) {
+    const reg = src.match(/serviceWorker\s*\.\s*register\(\s*([^,)]*)/);
+    const lit = reg && reg[1].trim().match(/^(["'`])([^"'`$]+)\1$/);
+    if (reg && !lit && /createObjectURL|^blob:/.test(reg[1])) errs.push('serviceWorker:true dar înregistrarea folosește un blob: URL (browserele îl refuză)');
+    else {
+      const rel = (lit ? lit[2] : 'sw.js').split(/[?#]/)[0];
+      if (/^(?:[a-z]+:)?\/\//i.test(rel)) errs.push(`serviceWorker:true dar scriptul SW este extern (${rel})`);
+      else if (!fs.existsSync(path.join(dir, rel))) errs.push(`serviceWorker:true dar lipsește ${rel} lângă pagină`);
+    }
+  }
+  // (b)
+  for (const e of info.egress || []) {
+    const h = typeof e === 'string' ? e : e && e.host;
+    if (!isValidHost(h)) errs.push(`egress: gazdă invalidă „${h}”`);
+  }
+  // (c)
+  const real = detectLangs(src), declared = (info.features && info.features.i18n) || [];
+  const miss = real.filter((l) => !declared.includes(l));
+  if (miss.length) errs.push(`i18n din fff-info [${declared.join(',')}] nu acoperă limbile găsite în dicționare (lipsesc: ${miss.join(',')})`);
+  // (d)
+  const mv = metaContent(src, 'application-version');
+  if (mv && info.version !== mv) errs.push(`versiune fff-info „${info.version}” ≠ meta application-version „${mv}”`);
+  return errs;
 }
 
 /* ---------------- info ---------------- */
@@ -268,9 +305,14 @@ const PERMS = [
 const NS_SKIP = /^\/(?:1999|2000|1998)\//;
 const URLTAIL = '[^\\s\'"`)<>\\\\]*';
 
+/** Hostname valid pentru `egress`: DNS (cu cel puțin un punct), `localhost`, IPv4, sau sablon CSP `*.exemplu.ro`. Respinge `${…}`, spații, `about`, etc. */
+const HOST_RE = /^(?:\*\.)?(?:[a-z0-9_](?:[a-z0-9_-]{0,61}[a-z0-9_])?\.)+[a-z][a-z0-9-]{0,61}[a-z0-9]$|^localhost$|^(?:\d{1,3}\.){3}\d{1,3}$/i;
+const WILDCARD_RE = /^(?:\*|https?:|wss?:)\(orice gazdă\)$/;
+const isValidHost = (h) => typeof h === 'string' && h.length <= 253 && (HOST_RE.test(h) || WILDCARD_RE.test(h));
 function hostOf(u) {
   try {
     const x = new URL(u);
+    if (!isValidHost(x.hostname) && x.hostname !== 'localhost') return null;
     if (!/^(https?|wss?):$/.test(x.protocol)) return null;
     if (x.hostname === 'www.w3.org' && NS_SKIP.test(x.pathname)) return null;
     if (!x.hostname.includes('.') && x.hostname !== 'localhost') return null;
@@ -310,8 +352,9 @@ function detectEgress(src, html) {
         if (tok.startsWith("'")) continue;
         if (/^(data|blob|mediastream|filesystem):$/i.test(tok)) continue;
         if (/^(https?|wss?):$/i.test(tok) || tok === '*') { add(`${tok === '*' ? '*' : tok}(orice gazdă)`, 'csp:' + d); continue; }
+        if (/^[a-z][a-z0-9+.-]*:(?!\/\/)/i.test(tok)) continue;   // scheme fără gazdă (about:srcdoc, mailto: …) nu este egress
         const host = tok.replace(/^[a-z]+:\/\//i, '').replace(/[/:?#].*$/, '');
-        if (host) add(host, 'csp:' + d);
+        if (host && isValidHost(host)) add(host, 'csp:' + d);
       }
     }
   }
@@ -331,10 +374,22 @@ function detectStorageKeys(src) {
   }
   return [...keys].sort();
 }
+const LANG_SUP = ['ro', 'en', 'fr', 'it', 'es', 'pt', 'hu', 'de'];
+const LANG_ENDONYM = {ro: 'Rom[aâ]n[aă]', en: 'English', fr: 'Fran[cç]ais', it: 'Italiano', es: 'Espa[nñ]ol', pt: 'Portugu[eê]s', hu: 'Magyar', de: 'Deutsch'};
+/** Limbile din interfață, deduse din: <option value>/data-lang, dicționare `cod:{…}`, liste de coduri (`LANGS=['ro','en',…]`) și tabele de endonime (`ro:'Română'`). */
 function detectLangs(src) {
-  const SUP = ['ro', 'en', 'fr', 'it', 'es', 'pt', 'hu', 'de'];
-  const got = SUP.filter((c) => new RegExp(`<option[^>]*value=["']${c}["']|data-lang=["']${c}["']|(?:^|[{,\\s])["']?${c}["']?\\s*:\\s*\\{`, 'm').test(src));
-  return got.length >= 2 ? got : [];
+  const got = new Set();
+  const q = `["'\`]`;
+  for (const c of LANG_SUP) {
+    if (new RegExp(`<option[^>]*value=["']${c}["']|data-lang=["']${c}["']|(?:^|[{,\\s])["']?${c}["']?\\s*:\\s*\\{`, 'm').test(src)) got.add(c);
+    if (new RegExp(`(?:^|[{,\\s])${q}?${c}${q}?\\s*:\\s*${q}${LANG_ENDONYM[c]}${q}`, 'm').test(src)) got.add(c);
+  }
+  // liste de coduri de limbă: ['ro','en','fr',…] (cel puțin 3 coduri, toate valide)
+  for (const m of src.matchAll(/\[\s*((?:["'](?:ro|en|fr|it|es|pt|hu|de)["']\s*,\s*){2,}["'](?:ro|en|fr|it|es|pt|hu|de)["'])\s*,?\s*\]/g)) {
+    for (const c of m[1].match(/ro|en|fr|it|es|pt|hu|de/g)) got.add(c);
+  }
+  const out = LANG_SUP.filter((c) => got.has(c));
+  return out.length >= 2 ? out : [];
 }
 function cspSummary(html) {
   const p = cspParts(html);
@@ -437,7 +492,7 @@ function runInfo(dirArg, opt = {}, extra = {}) {
   if (sha256hex(Buffer.from(canonicalize(final), 'utf8')) !== hash) throw new Error('inconsecvență hash (canonicalizare)');
   writeIfChanged(file, final);
   writeIfChanged(path.join(dir, 'app.json'), JSON.stringify(info, null, 2) + '\n');
-  return {file, info};
+  return {file, info, validation: validateInfo(info, final, dir)};
 }
 
 /* ---------------- CLI ---------------- */
@@ -449,7 +504,7 @@ function usage() {
   node build.mjs info <dir> [--slug S] [--probe]
 Module: ${ORDER.join(', ')}`);
 }
-export {applyKit, removeKit, checkKit, runInfo, canonicalize, sha256hex, ORDER, kitVersion};
+export {applyKit, removeKit, checkKit, runInfo, validateInfo, detectLangs, isValidHost, canonicalize, sha256hex, ORDER, kitVersion};
 
 if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
   const {pos, opt} = parseArgs(process.argv.slice(2));
@@ -469,6 +524,7 @@ if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.me
         if (opt.probe) { const {file} = resolveTarget(dir); const pr = await probe(file); extra.probeHosts = pr.hosts; extra.probeKeys = pr.keys; }
         const r = runInfo(dir, opt, extra);
         console.log(`info ok: ${r.file} · sha256=${r.info.sha256.slice(0, 16)}… · ${r.info.sizeBytes} B · egress=${r.info.egress.length} · permisiuni=${r.info.permissions.length}`);
+        if (r.validation.length) { r.validation.forEach((e) => console.log('EROARE  fff-info: ' + e)); console.log('info EȘUAT (validare): ' + r.file); process.exit(1); }
       } else { usage(); process.exit(2); }
     } catch (e) { console.error('EROARE: ' + e.message); process.exit(1); }
   })();

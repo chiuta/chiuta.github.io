@@ -2,7 +2,7 @@
 
 [English](README.md) · [Română](README.ro.md) · [Français](README.fr.md) · [Italiano](README.it.md) · [Español](README.es.md) · **Português** · [Deutsch](README.de.md) · [Magyar](README.hu.md)
 
-**Versão:** 1.0.0 · **Última atualização:** 2026-10-14
+**Versão:** 1.0.1 · **Última atualização:** 2026-10-22
 
 Idiomas da interface: **Română, English, Français, Italiano, Español, Português (PT), Deutsch, Magyar**
 
@@ -74,3 +74,4 @@ MIT — ver o ficheiro `LICENSE` na raiz do repositório.
 ## Histórico
 
 - 1.0.0 — 2026-10-14: primeira versão.
+- 1.0.1 — 2026-10-22: áreas táteis de pelo menos 24 px para caixas de seleção e botões de opção; a etiqueta técnica (fff-info) lista agora os 8 idiomas da interface. A origem partilhada com outras aplicações continua a ser uma questão de infraestrutura (subdomínio separado) e não é alterada aqui.

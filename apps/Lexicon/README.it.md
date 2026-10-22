@@ -2,7 +2,7 @@
 
 [English](README.md) · [Română](README.ro.md) · [Français](README.fr.md) · **Italiano** · [Español](README.es.md) · [Português](README.pt.md) · [Deutsch](README.de.md) · [Magyar](README.hu.md)
 
-**Versione:** 1.0.0 · **Ultimo aggiornamento:** 2026-10-14
+**Versione:** 1.0.1 · **Ultimo aggiornamento:** 2026-10-22
 
 Lingue dell'interfaccia: **Română, English, Français, Italiano, Español, Português (PT), Deutsch, Magyar**
 
@@ -66,3 +66,4 @@ MIT — vedi il file `LICENSE` nella radice del repository.
 
 ## Cronologia
 - 1.0.0 — 2026-10-14: prima versione.
+- 1.0.1 — 2026-10-22: una ricerca senza risultati dice ora esplicitamente che il set incluso è solo dimostrativo (quando il set demo è attivo); l’esportazione CSV neutralizza le celle che iniziano con = + - @ contro l’iniezione di formule e l’importazione TSV/CSV rimuove di nuovo l’apostrofo; aree tattili di almeno 24 px; l’etichetta tecnica elenca le 8 lingue.

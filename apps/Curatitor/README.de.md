@@ -2,7 +2,7 @@
 
 [English](README.md) · [Română](README.ro.md) · [Français](README.fr.md) · [Italiano](README.it.md) · [Español](README.es.md) · [Português](README.pt.md) · **Deutsch** · [Magyar](README.hu.md)
 
-**Version:** 1.0.0 · **Zuletzt aktualisiert:** 2026-10-14
+**Version:** 1.0.1 · **Zuletzt aktualisiert:** 2026-10-22
 
 Oberflächensprachen: **Română, English, Français, Italiano, Español, Português (PT), Deutsch, Magyar**
 
@@ -75,3 +75,4 @@ MIT — siehe Datei `LICENSE` im Wurzelverzeichnis des Repositorys.
 ## Verlauf
 
 - 1.0.0 — 2026-10-14: erste Version
+- 1.0.1 — 2026-10-22: „Alles löschen“ nutzt den Bestätigungsdialog der Seite statt window.confirm; Kontrollkästchen und Optionsfelder haben Touch-Ziele von mindestens 24 px; das technische Label (fff-info) listet jetzt alle 8 Oberflächensprachen.

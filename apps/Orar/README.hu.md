@@ -2,7 +2,7 @@
 
 [English](README.md) · [Română](README.ro.md) · [Français](README.fr.md) · [Italiano](README.it.md) · [Español](README.es.md) · [Português](README.pt.md) · [Deutsch](README.de.md) · **Magyar**
 
-**Verzió:** 1.0.0 · **Utolsó frissítés:** 2026-10-14
+**Verzió:** 1.0.1 · **Utolsó frissítés:** 2026-10-22
 
 A felület nyelvei: **Română, English, Français, Italiano, Español, Português (PT), Deutsch, Magyar**
 
@@ -69,3 +69,4 @@ Licenc: MIT — lásd a `LICENSE` fájlt az adattár gyökérkönyvtárában.
 ## Előzmények
 
 - 1.0.0 — 2026-10-14: első verzió.
+- 1.0.1 — 2026-10-22: legalább 12 px-es szöveg a hónap- és hétnézetben telefonon; az értesítések ott is működnek a service workeren át, ahol a Notification konstruktor tiltott (Android Chrome); legalább 24 px-es érintési célok; a műszaki címke mind a 8 nyelvet felsorolja. A clepsidra.* kulcsokat csak olvassa, a CLEPSIDRA-ból végzett kifejezett importkor; az Orar csak az fff.orar.* kulcsokat írja.

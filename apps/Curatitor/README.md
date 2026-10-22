@@ -2,7 +2,7 @@
 
 **English** · [Română](README.ro.md) · [Français](README.fr.md) · [Italiano](README.it.md) · [Español](README.es.md) · [Português](README.pt.md) · [Deutsch](README.de.md) · [Magyar](README.hu.md)
 
-**Version:** 1.0.0 · **Last updated:** 2026-10-14
+**Version:** 1.0.1 · **Last updated:** 2026-10-22
 
 Interface languages: **Română, English, Français, Italiano, Español, Português (PT), Deutsch, Magyar**
 
@@ -75,3 +75,4 @@ MIT — see the `LICENSE` file in the repository root.
 ## History
 
 - 1.0.0 — 2026-10-14: first version
+- 1.0.1 — 2026-10-22: "Delete everything" uses the in-page confirmation dialog instead of window.confirm; check boxes and radio buttons have touch targets of at least 24 px; the technical label (fff-info) now lists all 8 interface languages.

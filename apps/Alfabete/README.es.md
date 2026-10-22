@@ -2,7 +2,7 @@
 
 [English](README.md) · [Română](README.ro.md) · [Français](README.fr.md) · [Italiano](README.it.md) · **Español** · [Português](README.pt.md) · [Deutsch](README.de.md) · [Magyar](README.hu.md)
 
-**Versión:** 1.0.1 · **Última actualización:** 2026-10-19
+**Versión:** 1.0.2 · **Última actualización:** 2026-10-22
 
 Idiomas de la interfaz: **Română, English, Français, Italiano, Español, Português (PT), Deutsch, Magyar**
 
@@ -53,3 +53,4 @@ MIT — véase el archivo `LICENSE` en la raíz del repositorio.
 
 - 1.0.0 — 2026-10-14: primera versión
 - 1.0.1 — 2026-10-19: el panel se elige solo a partir de la parte de la dirección anterior al primer «&» (#panel&from=…), para que los enlaces desde ETER/INDICATIV abran el panel correcto.
+- 1.0.2 — 2026-10-22: la vista previa de la ficha imprimible ya no añade encabezados H1 adicionales a la página (un solo H1 por página; el título de la ficha es un H2 en pantalla y sigue siendo un H1 al imprimir); áreas táctiles de al menos 24 px; la etiqueta técnica (fff-info) lista ahora los 8 idiomas reales en lugar de 2.

@@ -2,7 +2,7 @@
 
 [English](README.md) · [Română](README.ro.md) · [Français](README.fr.md) · [Italiano](README.it.md) · [Español](README.es.md) · **Português** · [Deutsch](README.de.md) · [Magyar](README.hu.md)
 
-**Versão:** 1.1.2 · **Última atualização:** 2026-10-19
+**Versão:** 1.1.3 · **Última atualização:** 2026-10-22
 
 Idiomas da interface: **Română, English, Français, Italiano, Español, Português (PT), Deutsch, Magyar**
 
@@ -132,6 +132,7 @@ MIT — ver o ficheiro `LICENSE` na raiz do repositório. Os componentes de terc
 - **1.1.1 — 2026-10-18:** o local da ligação vale só para a sessão, `#t&ll` sem separador, validação real da data.
 - **1.1.0 — 2026-10-18:** ligação profunda `#sky&t=&ll=`.
 - **1.0.0 — 2026-10-14:** primeira versão.
+- **1.1.3 — 2026-10-22:** áreas táteis de pelo menos 24 px para as caixas de seleção e botões de opção dos painéis céu e locais; a etiqueta técnica (fff-info) lista agora os 8 idiomas reais em vez de 2. A ponte «Voltar ao Field Observer» (#sky&t=…&ll=…&from=fieldobserver) não muda.
 
 ## Ligações profundas
 

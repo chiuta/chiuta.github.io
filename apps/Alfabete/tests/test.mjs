@@ -1,4 +1,4 @@
-// Teste Playwright pentru Alfabete 1.0.1 — funcționalitate reală, round-trip, vectori cunoscuți, sincronizare audio/clipire/vibrații, axe.
+// Teste Playwright pentru Alfabete 1.0.2 — funcționalitate reală, round-trip, vectori cunoscuți, sincronizare audio/clipire/vibrații, axe.
 // Rulare: node tests/test.mjs   (rețeaua este blocată în context; file:// este permis)
 import {createRequire} from 'module';
 import fs from 'node:fs';
@@ -55,7 +55,7 @@ await test('pornire: 0 erori, 0 rețea, 0 CSP, meta, versiune, lang', async () =
   const info = await E(page, () => ({csp: window.__csp, ver: document.querySelector('#app-version').textContent, lang: document.documentElement.lang, title: document.title,
     mv: document.querySelector('meta[name=application-version]').content, lu: document.querySelector('meta[name=last-updated]').content, desc: document.querySelector('meta[name=description]').content.length, navs: document.querySelectorAll('#nav a').length}));
   eq(errors, []); eq(requests, []); eq(info.csp, 0);
-  eq(info.ver, 'v 1.0.1 · 2026-10-19'); eq(info.lang, 'ro'); eq(info.title, 'Alfabete'); eq(info.mv, '1.0.1'); eq(info.lu, '2026-10-19'); ok(info.desc > 40); eq(info.navs, 12);
+  eq(info.ver, 'v 1.0.2 · 2026-10-22'); eq(info.lang, 'ro'); eq(info.title, 'Alfabete'); eq(info.mv, '1.0.2'); eq(info.lu, '2026-10-22'); ok(info.desc > 40); eq(info.navs, 12);
   ok(CSP.checkCspHashes(html).ok, 'hash-uri CSP');
   ok(!/\son(click|load|error|input|change|submit)\s*=/i.test(html), 'fără handlere inline');
   ok(!/\beval\s*\(|new Function\(/.test(html), 'fără eval');
@@ -558,7 +558,7 @@ await test('Date: export .fff.json, import, validare, ștergere totală', async 
   await go(Q, 'data');
   const [dl] = await Promise.all([Q.waitForEvent('download'), Q.click('#data-export')]); eq(dl.suggestedFilename(), 'alfabete.fff.json');
   const bundle = JSON.parse(fs.readFileSync(await dl.path(), 'utf8'));
-  eq([bundle.format, bundle.schema, bundle.app, bundle.version, bundle.updated], ['fff-bundle', 1, 'alfabete', '1.0.1', '2026-10-19']); ok(bundle.exported && bundle.data['fff.alfabete.stats']);
+  eq([bundle.format, bundle.schema, bundle.app, bundle.version, bundle.updated], ['fff-bundle', 1, 'alfabete', '1.0.2', '2026-10-22']); ok(bundle.exported && bundle.data['fff.alfabete.stats']);
   ok(Object.keys(bundle.data).every(k => k.startsWith('fff.alfabete.')));
   // ștergere cu confirmare
   await Q.click('#data-wipe'); await Q.click('#dlg-no'); ok(await E(Q, () => ALF.store.get('stats', null)) !== null, 'anulat → rămâne');
@@ -612,7 +612,7 @@ await test('Temă: comutator (auto/luminos/întunecat) și persistență', async
 await test('Fișe tipăribile: conținut generat și vizibil doar la tipărire', async () => {
   const c = await open(); const Q = c.page;
   for (const [id, needle] of [['morse', 'Fișă Morse'], ['braille', 'Fișă braille'], ['phonetic', 'Fișă alfabete'], ['semaphore', 'Fișă semafor'], ['pigpen', 'Fișă pigpen'], ['baudot', 'Fișă Baudot'], ['text', 'Fișă ASCII'], ['ciphers', 'Fișă cifruri']]) {
-    await go(Q, id); await sub(Q, 'sheet'); ok((await Q.textContent('#main .sheet h1')).includes(needle.split(' ')[0]), id);
+    await go(Q, id); await sub(Q, 'sheet'); ok((await Q.textContent('#main .sheet h2.sh1')).includes(needle.split(' ')[0]), id);
     const before = await E(Q, () => window.__printed); await Q.click('[data-sheet]'); eq(await E(Q, () => window.__printed), before + 1);
     ok((await Q.innerHTML('#printSheet')).includes(needle), id + ' în #printSheet');
     await Q.emulateMedia({media: 'print'});

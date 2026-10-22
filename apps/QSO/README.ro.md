@@ -2,7 +2,7 @@
 
 [English](README.md) · **Română** · [Français](README.fr.md) · [Italiano](README.it.md) · [Español](README.es.md) · [Português](README.pt.md) · [Deutsch](README.de.md) · [Magyar](README.hu.md)
 
-**Versiune:** 1.0.1 · **Ultima actualizare:** 2026-10-19
+**Versiune:** 1.0.2 · **Ultima actualizare:** 2026-10-22
 
 Limbile interfeței: **Română, English, Français, Italiano, Español, Português (PT), Deutsch, Magyar**
 
@@ -66,3 +66,4 @@ MIT — vezi fișierul `LICENSE` din rădăcina depozitului.
 
 - **1.0.0 — 2026-10-14:** prima versiune.
 - **1.0.1 — 2026-10-19:** buton „Vezi în TerRa” în dialogul Detalii QSO (locatorul corespondentului + ora QSO, fără cereri de rețea).
+- **1.0.2 — 2026-10-22:** mesaj în subsol și notificare „Gata pentru offline” după ce service worker-ul a pus aplicația în cache (prima încărcare); exportul CSV neutralizează celulele care încep cu = + - @ (și tab/CR) împotriva injecției de formule în foi de calcul, iar importul CSV scoate din nou apostroful; text de cel puțin 12 px; ținte tactile de cel puțin 24 px; eticheta tehnică listează cele 8 limbi.

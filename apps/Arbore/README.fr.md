@@ -2,7 +2,7 @@
 
 [English](README.md) · [Română](README.ro.md) · **Français** · [Italiano](README.it.md) · [Español](README.es.md) · [Português](README.pt.md) · [Deutsch](README.de.md) · [Magyar](README.hu.md)
 
-**Version :** 1.0.0 · **Dernière mise à jour :** 2026-10-14
+**Version :** 1.0.1 · **Dernière mise à jour :** 2026-10-22
 
 Langues de l'interface : **Română, English, Français, Italiano, Español, Português (PT), Deutsch, Magyar**
 
@@ -35,7 +35,7 @@ Arbore est un logiciel de généalogie qui fonctionne entièrement dans le navig
 
 ## Confidentialité
 
-Les données familiales sont sensibles. L'application fonctionne en local et n'envoie rien : elle n'a ni serveur, ni comptes, ni analyse d'audience, ni requêtes réseau (CSP avec `connect-src 'none'`), et le bandeau en haut de la page le dit. L'arbre est enregistré uniquement dans votre navigateur, éventuellement chiffré en AES-GCM 256 avec une clé dérivée par PBKDF2-SHA256 (310 000 itérations, sel et IV aléatoires). Les exports (GEDCOM, JSON, CSV, rapport) masquent par défaut les personnes vivantes (ou les suppriment complètement ; en option, aussi celles nées au cours des N dernières années) ; un export non masqué demande une confirmation explicite. Une personne est considérée comme vivante si elle n'a pas de décès enregistré et n'est pas née il y a plus de 110 ans, sauf marquage manuel.
+Les données familiales sont sensibles. L'application fonctionne en local et n'envoie rien : elle n'a ni serveur, ni comptes, ni analyse d'audience, ni requêtes réseau (CSP avec `connect-src 'none'`), et le bandeau en haut de la page le dit. L'arbre est enregistré uniquement dans votre navigateur, éventuellement chiffré en AES-GCM 256 avec une clé dérivée par PBKDF2-SHA256 (600 000 itérations, sel et IV aléatoires). Les exports (GEDCOM, JSON, CSV, rapport) masquent par défaut les personnes vivantes (ou les suppriment complètement ; en option, aussi celles nées au cours des N dernières années) ; un export non masqué demande une confirmation explicite. Une personne est considérée comme vivante si elle n'a pas de décès enregistré et n'est pas née il y a plus de 110 ans, sauf marquage manuel.
 
 ## Formats pris en charge
 
@@ -65,3 +65,4 @@ MIT — voir le fichier `LICENSE` à la racine du dépôt.
 ## Historique
 
 - 1.0.0 — 2026-10-14 : première version.
+- 1.0.1 — 2026-10-22 : le chiffrement par mot de passe dérive désormais la clé avec PBKDF2-SHA256 à 600 000 itérations (OWASP) ; les copies existantes à 310 000 s’ouvrent toujours et sont mises à niveau à la prochaine sauvegarde après déverrouillage ; rappel (avec un bouton « Exporter maintenant ») sans sauvegarde JSON/GEDCOM depuis 30 jours ; l’export CSV neutralise les cellules de texte commençant par = + - @ (et tabulation/CR) ; cibles tactiles d’au moins 24 px.

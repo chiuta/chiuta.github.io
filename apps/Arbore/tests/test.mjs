@@ -58,10 +58,10 @@ console.log('1. Pornire, meta, CSP, rețea');
     manifest: document.querySelector('link[rel="manifest"]')?.getAttribute('href') || '',
     inline: document.querySelectorAll('[onclick],[onchange],[oninput],[onload]').length
   }));
-  ok('application-version 1.0.0', info.ver === '1.0.0', info.ver);
-  ok('last-updated 2026-10-14', info.upd === '2026-10-14', info.upd);
+  ok('application-version 1.0.1', info.ver === '1.0.1', info.ver);
+  ok('last-updated 2026-10-22', info.upd === '2026-10-22', info.upd);
   ok('meta description', info.desc);
-  ok('#app-version vizibil', info.vis === 'v 1.0.0 · 2026-10-14', info.vis);
+  ok('#app-version vizibil', info.vis === 'v 1.0.1 · 2026-10-22', info.vis);
   ok('html[lang]=ro implicit', info.lang === 'ro', info.lang);
   ok('CSP: default-src none, connect-src none, hash script', /default-src 'none'/.test(info.csp) && /connect-src 'none'/.test(info.csp) && /script-src 'sha256-/.test(info.csp) && !/unsafe-eval/.test(info.csp) && !/script-src[^;]*unsafe-inline/.test(info.csp), info.csp);
   // PWA adăugat ulterior: manifestul trebuie să fie exact cel generat (nu o a doua sursă), iar handlerele inline rămân interzise
@@ -637,7 +637,7 @@ console.log('9. UI: diagrame, tastatură, limbi, ștergere');
   await p.click('#t-data');
   const [dj] = await Promise.all([p.waitForEvent('download'), p.click('#x-json')]);
   const bundle = JSON.parse(fs.readFileSync(await dj.path(), 'utf8'));
-  ok('export .fff.json: format fff-bundle', bundle.format === 'fff-bundle' && bundle.schema === 1 && bundle.app === 'arbore' && bundle.version === '1.0.0' && bundle.updated === '2026-10-14' && bundle.data, Object.keys(bundle));
+  ok('export .fff.json: format fff-bundle', bundle.format === 'fff-bundle' && bundle.schema === 1 && bundle.app === 'arbore' && bundle.version === '1.0.1' && bundle.updated === '2026-10-22' && bundle.data, Object.keys(bundle));
   ok('.fff.json: persoanele vii sunt mascate (implicit)', !JSON.stringify(bundle).includes('Alexandru'));
   // import JSON (copie completă) după ștergere
   await p.uncheck('#x-mask');

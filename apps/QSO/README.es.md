@@ -2,7 +2,7 @@
 
 [English](README.md) · [Română](README.ro.md) · [Français](README.fr.md) · [Italiano](README.it.md) · **Español** · [Português](README.pt.md) · [Deutsch](README.de.md) · [Magyar](README.hu.md)
 
-**Versión:** 1.0.1 · **Última actualización:** 2026-10-19
+**Versión:** 1.0.2 · **Última actualización:** 2026-10-22
 
 Idiomas de la interfaz: **Română, English, Français, Italiano, Español, Português (PT), Deutsch, Magyar**
 
@@ -66,3 +66,4 @@ MIT — consulta el archivo `LICENSE` en la raíz del repositorio.
 
 - **1.0.0 — 2026-10-14:** primera versión.
 - **1.0.1 — 2026-10-19:** botón «Ver en TerRa» en el diálogo Detalles del QSO (locator del corresponsal + hora del QSO, sin peticiones de red).
+- **1.0.2 — 2026-10-22:** mensaje en el pie y aviso «Listo para usar sin conexión» cuando el service worker ha guardado la aplicación en caché (primera carga); la exportación CSV neutraliza las celdas que empiezan por = + - @ (y tabulación/CR) contra la inyección de fórmulas, y la importación CSV vuelve a quitar el apóstrofo; texto de al menos 12 px; áreas táctiles de al menos 24 px; la etiqueta técnica lista los 8 idiomas.

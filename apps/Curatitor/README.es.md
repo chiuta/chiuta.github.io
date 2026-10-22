@@ -2,7 +2,7 @@
 
 [English](README.md) · [Română](README.ro.md) · [Français](README.fr.md) · [Italiano](README.it.md) · **Español** · [Português](README.pt.md) · [Deutsch](README.de.md) · [Magyar](README.hu.md)
 
-**Versión:** 1.0.0 · **Última actualización:** 2026-10-14
+**Versión:** 1.0.1 · **Última actualización:** 2026-10-22
 
 Idiomas de la interfaz: **Română, English, Français, Italiano, Español, Português (PT), Deutsch, Magyar**
 
@@ -75,3 +75,4 @@ MIT — véase el archivo `LICENSE` en la raíz del repositorio.
 ## Historial
 
 - 1.0.0 — 2026-10-14: primera versión
+- 1.0.1 — 2026-10-22: «Borrar todo» usa el cuadro de confirmación de la página en lugar de window.confirm; las casillas y los botones de opción tienen áreas táctiles de al menos 24 px; la etiqueta técnica (fff-info) lista ahora los 8 idiomas de la interfaz.

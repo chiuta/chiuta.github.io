@@ -2,7 +2,7 @@
 
 [English](README.md) · [Română](README.ro.md) · [Français](README.fr.md) · [Italiano](README.it.md) · [Español](README.es.md) · [Português](README.pt.md) · [Deutsch](README.de.md) · **Magyar**
 
-**Verzió:** 1.0.1 · **Utolsó frissítés:** 2026-10-19
+**Verzió:** 1.0.2 · **Utolsó frissítés:** 2026-10-22
 
 A felület nyelvei: **Română, English, Français, Italiano, Español, Português (PT), Deutsch, Magyar**
 
@@ -53,3 +53,4 @@ MIT — lásd a `LICENSE` fájlt a tároló gyökerében.
 
 - 1.0.0 — 2026-10-14: első verzió
 - 1.0.1 — 2026-10-19: a panelt csak a cím első „&” előtti részéből választja ki (#panel&from=…), hogy az ETER/INDICATIV hivatkozásai a megfelelő panelt nyissák meg.
+- 1.0.2 — 2026-10-22: a nyomtatható lap előnézete már nem ad az oldalhoz további H1 címsorokat (oldalanként egy H1; a lap címe a képernyőn H2, nyomtatáskor H1 marad); legalább 24 px-es érintési célok; a műszaki címke (fff-info) most a valós 8 nyelvet sorolja fel 2 helyett.

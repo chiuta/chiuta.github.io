@@ -2,7 +2,7 @@
 
 [English](README.md) · [Română](README.ro.md) · [Français](README.fr.md) · [Italiano](README.it.md) · [Español](README.es.md) · [Português](README.pt.md) · [Deutsch](README.de.md) · **Magyar**
 
-**Verzió:** 1.0.0 · **Utolsó frissítés:** 2026-10-14
+**Verzió:** 1.0.1 · **Utolsó frissítés:** 2026-10-22
 
 A felület nyelvei: **Română, English, Français, Italiano, Español, Português (PT), Deutsch, Magyar**
 
@@ -35,7 +35,7 @@ Az Arbore egy teljes egészében a böngészőben futó családfakutató program
 
 ## Adatvédelem
 
-A családi adatok érzékenyek. Az alkalmazás helyben fut, és semmit sem küld el: nincs szervere, fiókja, elemzése vagy hálózati kérése (CSP `connect-src 'none'` beállítással), és ezt a felső szalag is közli. A családfa csak a böngésződben tárolódik, opcionálisan AES-GCM 256 titkosítással, PBKDF2-SHA256-tal származtatott kulccsal (310 000 iteráció, véletlen só és IV). Az exportok (GEDCOM, JSON, CSV, jelentés) alapértelmezés szerint elfedik az élő személyeket (vagy teljesen eltávolítják őket; opcionálisan az elmúlt N évben születetteket is); az elfedés nélküli export kifejezett megerősítést igényel. Egy személy élőnek minősül, ha nincs halálozási adata, és nem született több mint 110 évvel ezelőtt, hacsak kézzel nem jelölik meg.
+A családi adatok érzékenyek. Az alkalmazás helyben fut, és semmit sem küld el: nincs szervere, fiókja, elemzése vagy hálózati kérése (CSP `connect-src 'none'` beállítással), és ezt a felső szalag is közli. A családfa csak a böngésződben tárolódik, opcionálisan AES-GCM 256 titkosítással, PBKDF2-SHA256-tal származtatott kulccsal (600 000 iteráció, véletlen só és IV). Az exportok (GEDCOM, JSON, CSV, jelentés) alapértelmezés szerint elfedik az élő személyeket (vagy teljesen eltávolítják őket; opcionálisan az elmúlt N évben születetteket is); az elfedés nélküli export kifejezett megerősítést igényel. Egy személy élőnek minősül, ha nincs halálozási adata, és nem született több mint 110 évvel ezelőtt, hacsak kézzel nem jelölik meg.
 
 ## Támogatott formátumok
 
@@ -65,3 +65,4 @@ MIT — lásd a `LICENSE` fájlt a tároló gyökerében.
 ## Előzmények
 
 - 1.0.0 — 2026-10-14: első verzió.
+- 1.0.1 — 2026-10-22: a jelszavas titkosítás mostantól PBKDF2-SHA256-tal, 600 000 iterációval származtatja a kulcsot (OWASP); a meglévő, 310 000 iterációs másolatok továbbra is megnyithatók, és a feloldás utáni következő mentéskor frissülnek; emlékeztető („Exportálás most” gombbal), ha 30 napja nincs JSON/GEDCOM-mentés; a CSV-export semlegesíti a = + - @ (és tab/CR) karakterrel kezdődő szövegcellákat; legalább 24 px-es érintési célok.

@@ -2,7 +2,7 @@
 
 [English](README.md) · [Română](README.ro.md) · [Français](README.fr.md) · **Italiano** · [Español](README.es.md) · [Português](README.pt.md) · [Deutsch](README.de.md) · [Magyar](README.hu.md)
 
-**Versione:** 1.0.0 · **Ultimo aggiornamento:** 2026-10-14
+**Versione:** 1.0.1 · **Ultimo aggiornamento:** 2026-10-22
 
 Lingue dell'interfaccia: **Română, English, Français, Italiano, Español, Português (PT), Deutsch, Magyar**
 
@@ -35,7 +35,7 @@ Arbore è un programma di genealogia che funziona interamente nel browser: perso
 
 ## Riservatezza
 
-I dati di famiglia sono sensibili. L'applicazione funziona in locale e non invia nulla: non ha server, account, analisi o richieste di rete (CSP con `connect-src 'none'`), e il banner in alto lo dichiara. L'albero viene salvato solo nel tuo browser, facoltativamente cifrato con AES-GCM 256 con una chiave derivata tramite PBKDF2-SHA256 (310.000 iterazioni, sale e IV casuali). Le esportazioni (GEDCOM, JSON, CSV, rapporto) oscurano per impostazione predefinita le persone viventi (o le eliminano del tutto; facoltativamente anche quelle nate negli ultimi N anni); un'esportazione non oscurata richiede una conferma esplicita. Una persona è considerata vivente se non ha un decesso registrato e non è nata più di 110 anni fa, salvo marcatura manuale.
+I dati di famiglia sono sensibili. L'applicazione funziona in locale e non invia nulla: non ha server, account, analisi o richieste di rete (CSP con `connect-src 'none'`), e il banner in alto lo dichiara. L'albero viene salvato solo nel tuo browser, facoltativamente cifrato con AES-GCM 256 con una chiave derivata tramite PBKDF2-SHA256 (600.000 iterazioni, sale e IV casuali). Le esportazioni (GEDCOM, JSON, CSV, rapporto) oscurano per impostazione predefinita le persone viventi (o le eliminano del tutto; facoltativamente anche quelle nate negli ultimi N anni); un'esportazione non oscurata richiede una conferma esplicita. Una persona è considerata vivente se non ha un decesso registrato e non è nata più di 110 anni fa, salvo marcatura manuale.
 
 ## Formati supportati
 
@@ -65,3 +65,4 @@ MIT — vedi il file `LICENSE` nella radice del repository.
 ## Cronologia
 
 - 1.0.0 — 2026-10-14: prima versione.
+- 1.0.1 — 2026-10-22: la cifratura con password deriva ora la chiave con PBKDF2-SHA256 a 600.000 iterazioni (OWASP); le copie esistenti a 310.000 si aprono ancora e vengono aggiornate al salvataggio successivo dopo lo sblocco; promemoria (con pulsante «Esporta ora») se non c’è un backup JSON/GEDCOM da 30 giorni; l’esportazione CSV neutralizza le celle di testo che iniziano con = + - @ (e tab/CR); aree tattili di almeno 24 px.

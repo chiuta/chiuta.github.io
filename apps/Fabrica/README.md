@@ -2,7 +2,7 @@
 
 **English** · [Română](README.ro.md) · [Français](README.fr.md) · [Italiano](README.it.md) · [Español](README.es.md) · [Português](README.pt.md) · [Deutsch](README.de.md) · [Magyar](README.hu.md)
 
-**Version:** 1.1.0 · **Last updated:** 2026-10-19
+**Version:** 1.1.1 · **Last updated:** 2026-10-22
 
 Interface languages: **Română, English, Français, Italiano, Español, Português (PT), Deutsch, Magyar**
 
@@ -76,3 +76,4 @@ Licence: MIT — see the `LICENSE` file in the repository root.
 
 - 1.0.0 — 2026-10-14: first release.
 - 1.1.0 — 2026-10-19: "Quiz for Undava (.json)" export and import from Undava files (.json) through the CSV import button; only questions with an equivalent are transferred (single choice, true/false, short answer, fill-in with a single blank).
+- 1.1.1 — 2026-10-22: no more window.confirm / window.prompt: resetting course progress in the player, wiping the draft and the image alt-text prompt use in-page dialogs translated into the 8 languages; touch targets of at least 24 px for check boxes and radio buttons; the technical label no longer reports the CSP token about:srcdoc as a network host.

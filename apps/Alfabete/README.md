@@ -2,7 +2,7 @@
 
 **English** · [Română](README.ro.md) · [Français](README.fr.md) · [Italiano](README.it.md) · [Español](README.es.md) · [Português](README.pt.md) · [Deutsch](README.de.md) · [Magyar](README.hu.md)
 
-**Version:** 1.0.1 · **Last updated:** 2026-10-19
+**Version:** 1.0.2 · **Last updated:** 2026-10-22
 
 Interface languages: **Română, English, Français, Italiano, Español, Português (PT), Deutsch, Magyar**
 
@@ -53,3 +53,4 @@ MIT — see the `LICENSE` file at the repository root.
 
 - 1.0.0 — 2026-10-14: first release
 - 1.0.1 — 2026-10-19: the panel is chosen only from the part of the address before the first "&" (#panel&from=…), so that links from ETER/INDICATIV open the correct panel.
+- 1.0.2 — 2026-10-22: the printable-sheet preview no longer adds extra H1 headings to the page (one H1 per page; the sheet title is an H2 on screen and stays an H1 when printed); touch targets of at least 24 px; the technical label (fff-info) now lists the real 8 languages instead of 2.

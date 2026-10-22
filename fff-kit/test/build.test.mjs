@@ -169,6 +169,47 @@ fs.writeFileSync(path.join(dd, 'fff.config.json'), JSON.stringify({disable: 'din
 run(['apply', dd, '--slug', 'demo-fff']);
 check('disable din fff.config.json', rf(dd).includes('content="din config"'));
 
+console.log('validări fff-info (pică la nepotrivire)');
+{
+  const V = (patch, files = {}) => {
+    const dv = mk(ORIG); run(['apply', dv, '--slug', 'demo-fff']);
+    let h = rf(dv).replace(/<\/head>/i, (patch.head || '') + '</head>');
+    if (patch.version) h = h.replace(/(<meta name="application-version" content=")[^"]*/, '$1' + patch.version);
+    fs.writeFileSync(path.join(dv, 'index.html'), recomputeCspHashes(h).html);
+    for (const [n, c] of Object.entries(files)) fs.writeFileSync(path.join(dv, n), c);
+    const ri = run(['info', dv, '--slug', 'demo-fff']);
+    return {dv, ri, rc: run(['check', dv, '--lax'])};
+  };
+  const REG = '<script>navigator.serviceWorker.register("sw.js")</script>';
+  let v = V({head: REG});
+  check('(a) serviceWorker:true fără sw.js: info și check pică', v.ri.status === 1 && /lipsește sw\.js/.test(v.ri.stdout) && v.rc.status === 1 && /lipsește sw\.js/.test(v.rc.stdout), v.ri.stdout + v.rc.stdout);
+  v = V({head: REG}, {'sw.js': '// sw'});
+  check('(a) cu sw.js lângă pagină: ok', v.ri.status === 0 && v.rc.status === 0, v.ri.stdout + v.rc.stdout);
+  v = V({head: '<script>navigator.serviceWorker.register(URL.createObjectURL(new Blob(["x"])))</script>'}, {'sw.js': '// sw'});
+  check('(a) SW înregistrat din blob: respins', v.ri.status === 1 && /blob/.test(v.ri.stdout), v.ri.stdout);
+  // (b) egress
+  v = V({}); const aj = path.join(v.dv, 'app.json');
+  const editInfo = (dv, fn) => { const h = rf(dv); fs.writeFileSync(path.join(dv, 'index.html'), h.replace(/(<script type="application\/json" id="fff-info">)([\s\S]*?)(<\/script>)/, (m, a, j, c) => { const o = JSON.parse(j); fn(o); return a + JSON.stringify(o) + c; })); };
+  editInfo(v.dv, (o) => { o.egress = [{host: '${it._h', via: ['fetch']}]; });
+  let hh;
+  r = run(['check', v.dv, '--lax']);
+  check('(b) egress cu „${…}” sau fără punct: check pică', r.status === 1 && /gazdă invalidă/.test(r.stdout), r.stdout);
+  v = V({head: '<meta http-equiv="x" content="about:srcdoc">'});
+  check('(b) tokenul CSP „about:” nu devine gazdă', v.ri.status === 0);
+  // (c) i18n
+  const LANGS8 = '<script>const LANGS = ["ro","en","fr","it","es","pt","hu","de"];</script>';
+  v = V({head: LANGS8});
+  check('(c) info detectează limbile din lista de coduri', JSON.parse(fs.readFileSync(path.join(v.dv, 'app.json'), 'utf8')).features.i18n.length === 8 && v.rc.status === 0);
+  editInfo(v.dv, (o) => { o.features.i18n = ['ro']; });
+  r = run(['check', v.dv, '--lax']);
+  check('(c) i18n declarat mai mic decât cel real: check pică', r.status === 1 && /i18n din fff-info/.test(r.stdout), r.stdout);
+  // (d) versiune
+  v = V({version: '1.2.3'});
+  fs.writeFileSync(path.join(v.dv, 'index.html'), rf(v.dv).replace(/(<meta name="application-version" content=")[^"]*/, '$19.9.9'));
+  r = run(['check', v.dv, '--lax']);
+  check('(d) versiune fff-info ≠ meta application-version: check pică', r.status === 1 && /versiune fff-info/.test(r.stdout), r.stdout);
+}
+
 console.log('integrare: pagina rezultată rulează curat');
 const b = await launch(); const p = await newPage(b);
 await p.page.goto('file://' + path.join(d, 'index.html')); await p.page.waitForTimeout(300);

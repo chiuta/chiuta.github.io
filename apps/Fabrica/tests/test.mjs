@@ -42,8 +42,8 @@ let ed=await mk(APP); await ed.waitForFunction(()=>window.__fabrica);
 const edHtml=fs.readFileSync(path.resolve(__dir,'..','index.html'),'utf8');
 ok(cspHashOK(edHtml),'hash-urile CSP ale editorului corespund scripturilor inline');
 ok(!/ on\w+=/.test(edHtml.replace(/<script[\s\S]*?<\/script>/g,'')),'fără handlere inline în editor');
-ok(/<meta name="application-version" content="1.1.0">/.test(edHtml)&&/<meta name="last-updated" content="2026-10-19">/.test(edHtml),'meta versiune');
-eq(await ed.textContent('#app-version'),'v1.1.0 · 2026-10-19','#app-version');
+ok(/<meta name="application-version" content="1.1.1">/.test(edHtml)&&/<meta name="last-updated" content="2026-10-22">/.test(edHtml),'meta versiune');
+eq(await ed.textContent('#app-version'),'v1.1.1 · 2026-10-22','#app-version');
 eq(ed.__errs,[],'0 pageerror/CSP la pornire'); eq(ed.__reqs,[],'0 cereri de rețea');
 eq(await ed.evaluate(()=>document.documentElement.lang),'ro','html[lang]=ro implicit');
 await axe(ed,'editor, panou Curs');
@@ -196,7 +196,7 @@ await ed.evaluate(()=>window.__fabrica.setCourse({title:'altceva',levels:[]})); 
 eq(await ed.evaluate(()=>window.__fabrica.course.levels.length),2,'import din HTML exportat');
 // .fff.json
 const fBundle=await dl('[data-act="exp-bundle"]'); const bj=JSON.parse(fs.readFileSync(fBundle,'utf8'));
-eq([bj.format,bj.schema,bj.app,bj.version,bj.updated],['fff-bundle',1,'fabrica','1.1.0','2026-10-19'],'bundle .fff.json');
+eq([bj.format,bj.schema,bj.app,bj.version,bj.updated],['fff-bundle',1,'fabrica','1.1.1','2026-10-22'],'bundle .fff.json');
 await ed.evaluate(()=>window.__fabrica.setCourse({title:'altceva',levels:[]})); await ed.setInputFiles('#filef',fBundle); await ed.waitForTimeout(200);
 eq(await ed.evaluate(()=>window.__fabrica.course.title),'Cum citești o etichetă nutrițională','import bundle .fff.json');
 // fișier invalid
@@ -227,7 +227,7 @@ eq(det,[true,true,true,8],'ordine determinată de seed + extragere 8 din bancă'
 await ed.click('#tab-content'); await ed.click('#tree .tn >> nth=1');
 const png=path.join(tmp,'i.png'); fs.writeFileSync(png,Buffer.from('iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mP8z8BQDwAEhQGAhKmMIQAAAABJRU5ErkJggg==','base64'));
 const nAssets=await ed.evaluate(()=>Object.keys(window.__fabrica.course.assets).length);
-const [fc2]=await Promise.all([ed.waitForEvent('filechooser'),ed.click('[data-act="md"][data-md="img"]')]); await fc2.setFiles(png); await ed.waitForTimeout(600);
+const [fc2]=await Promise.all([ed.waitForEvent('filechooser'),ed.click('[data-act="md"][data-md="img"]')]); await fc2.setFiles(png); await ed.waitForSelector('dialog .ask-in'); await ed.fill('dialog .ask-in','Text alternativ de test'); await ed.click('dialog[open] .ask-row .pri'); await ed.waitForTimeout(600);
 ok((await ed.evaluate(()=>Object.keys(window.__fabrica.course.assets).length))===nAssets+1,'imagine adăugată în resurse');
 ok((await ed.inputValue('#f-levels-0-lessons-0-body')).includes('![Text alternativ de test](img:'),'referință imagine inserată cu alt');
 // previzualizare
@@ -369,7 +369,7 @@ await axe(g,'generat, certificat');
 await g.evaluate(()=>location.hash='#/settings'); await g.waitForTimeout(80);
 const [pd]=await Promise.all([g.waitForEvent('download'),g.click('[data-act="exp-progress"]')]); const pf=path.join(tmp,'progres.fff.json'); await pd.saveAs(pf); const pj=JSON.parse(fs.readFileSync(pf,'utf8')); eq([pj.format,pj.schema,pj.app],['fff-bundle',1,'course:eticheta-nutritionala'],'export progres (.fff.json)');
 g.removeAllListeners('dialog'); g.on('dialog',d=>d.accept());
-await g.click('[data-act="reset"]'); await g.waitForTimeout(100); ok(await g.evaluate(()=>JSON.parse(localStorage.getItem('fff.course.eticheta-nutritionala.progress')).done&&Object.keys(JSON.parse(localStorage.getItem('fff.course.eticheta-nutritionala.progress')).done).length===0),'resetare progres');
+await g.click('[data-act="reset"]'); await g.click('dialog.fb-ask .pri'); await g.waitForTimeout(100); ok(await g.evaluate(()=>JSON.parse(localStorage.getItem('fff.course.eticheta-nutritionala.progress')).done&&Object.keys(JSON.parse(localStorage.getItem('fff.course.eticheta-nutritionala.progress')).done).length===0),'resetare progres');
 await g.setInputFiles('#impf',pf); await g.waitForTimeout(150); ok(await g.evaluate(()=>Object.keys(JSON.parse(localStorage.getItem('fff.course.eticheta-nutritionala.progress')).done).length===5),'import progres');
 fs.writeFileSync(path.join(tmp,'rau.json'),'{"format":"fff-bundle","app":"altul","data":{}}'); await g.setInputFiles('#impf',path.join(tmp,'rau.json')); await g.waitForTimeout(100); ok((await g.textContent('#setmsg')).includes('invalid'),'import progres de la alt curs respins');
 await axe(g,'generat, setări');

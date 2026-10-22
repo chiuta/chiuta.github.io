@@ -2,7 +2,7 @@
 
 [English](README.md) · [Română](README.ro.md) · [Français](README.fr.md) · [Italiano](README.it.md) · **Español** · [Português](README.pt.md) · [Deutsch](README.de.md) · [Magyar](README.hu.md)
 
-**Versión:** 1.0.0 · **Última actualización:** 2026-10-14
+**Versión:** 1.0.1 · **Última actualización:** 2026-10-22
 
 Idiomas de la interfaz: **Română, English, Français, Italiano, Español, Português (PT), Deutsch, Magyar**
 
@@ -67,3 +67,4 @@ MIT — véase el archivo `LICENSE` en la raíz del repositorio.
 ## Historial
 
 - 1.0.0 — 2026-10-14: primera versión.
+- 1.0.1 — 2026-10-22: la exportación CSV neutraliza los nombres de rutas que empiezan por = + - @ (y tabulación/CR) contra la inyección de fórmulas, y la importación CSV vuelve a quitar el apóstrofo; la etiqueta técnica se regenera (8 idiomas, versión).

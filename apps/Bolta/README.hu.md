@@ -2,7 +2,7 @@
 
 [English](README.md) · [Română](README.ro.md) · [Français](README.fr.md) · [Italiano](README.it.md) · [Español](README.es.md) · [Português](README.pt.md) · [Deutsch](README.de.md) · **Magyar**
 
-**Verzió:** 1.1.2 · **Utolsó frissítés:** 2026-10-19
+**Verzió:** 1.1.3 · **Utolsó frissítés:** 2026-10-22
 
 A felület nyelvei: **Română, English, Français, Italiano, Español, Português (PT), Deutsch, Magyar**
 
@@ -132,6 +132,7 @@ MIT — lásd a `LICENSE` fájlt a tároló gyökerében. A harmadik felek kompo
 - **1.1.1 — 2026-10-18:** a hivatkozásban lévő hely csak a munkamenetre érvényes, `#t&ll` fül nélkül, valódi dátumellenőrzés.
 - **1.1.0 — 2026-10-18:** mély hivatkozás `#sky&t=&ll=`.
 - **1.0.0 — 2026-10-14:** első verzió.
+- **1.1.3 — 2026-10-22:** legalább 24 px-es érintési célok az Ég és a Helyek panel jelölőnégyzeteinél és rádiógombjainál; a műszaki címke (fff-info) most a valós 8 nyelvet sorolja fel 2 helyett. A „Vissza a Field Observerhez” híd (#sky&t=…&ll=…&from=fieldobserver) változatlan.
 
 ## Mély hivatkozások
 
