@@ -2,7 +2,7 @@
 
 [English](README.md) · [Română](README.ro.md) · [Français](README.fr.md) · [Italiano](README.it.md) · [Español](README.es.md) · [Português](README.pt.md) · [Deutsch](README.de.md) · **Magyar**
 
-**Verzió:** 1.0.2 · **Utolsó frissítés:** 2026-10-22
+**Verzió:** 1.0.3 · **Utolsó frissítés:** 2026-10-22
 
 A felület nyelvei: **Română, English, Français, Italiano, Español, Português (PT), Deutsch, Magyar**
 
@@ -67,3 +67,4 @@ MIT — lásd a tároló gyökerében lévő `LICENSE` fájlt.
 - **1.0.0 — 2026-10-14:** első verzió.
 - **1.0.1 — 2026-10-19:** „Megnézem a TerRában” gomb a QSO-részletek párbeszédablakban (a levelező fél lokátora + a QSO ideje, hálózati kérések nélkül).
 - **1.0.2 — 2026-10-22:** lábléc-üzenet és „Offline használatra kész” értesítés, miután a service worker gyorsítótárba tette az alkalmazást (első betöltés); a CSV-export semlegesíti a = + - @ (és tab/CR) karakterrel kezdődő cellákat a táblázatkezelő-képletek befecskendezése ellen, a CSV-import pedig ismét eltávolítja az aposztrófot; legalább 12 px-es szöveg; legalább 24 px-es érintési célok; a műszaki címke mind a 8 nyelvet felsorolja.
+- **1.0.3 — 2026-10-22:** fff-kit 1.1.2: PBKDF2 600 000 iterációval, clickjacking elleni védelem.

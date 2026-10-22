@@ -2,7 +2,7 @@
 
 [English](README.md) · [Română](README.ro.md) · [Français](README.fr.md) · [Italiano](README.it.md) · [Español](README.es.md) · [Português](README.pt.md) · **Deutsch** · [Magyar](README.hu.md)
 
-**Version:** 1.0.2 · **Zuletzt aktualisiert:** 2026-10-22
+**Version:** 1.0.3 · **Zuletzt aktualisiert:** 2026-10-22
 
 Oberflächensprachen: **Română, English, Français, Italiano, Español, Português (PT), Deutsch, Magyar**
 
@@ -54,3 +54,4 @@ MIT — siehe die Datei `LICENSE` im Stammverzeichnis des Repositorys.
 - 1.0.0 — 2026-10-14: erste Version
 - 1.0.1 — 2026-10-19: Das Feld wird nur aus dem Teil der Adresse vor dem ersten „&“ gewählt (#feld&from=…), damit Links aus ETER/INDICATIV das richtige Feld öffnen.
 - 1.0.2 — 2026-10-22: die Vorschau des druckbaren Blatts fügt der Seite keine zusätzlichen H1-Überschriften mehr hinzu (ein H1 pro Seite; der Blatttitel ist am Bildschirm ein H2 und bleibt beim Drucken ein H1); Touch-Ziele von mindestens 24 px; das technische Label (fff-info) listet jetzt die tatsächlichen 8 Sprachen statt 2.
+- 1.0.3 — 2026-10-22: fff-kit 1.1.2: PBKDF2 mit 600.000 Iterationen, Schutz vor Clickjacking.

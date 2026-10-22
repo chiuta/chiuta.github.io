@@ -2,7 +2,7 @@
 
 **English** · [Română](README.ro.md) · [Français](README.fr.md) · [Italiano](README.it.md) · [Español](README.es.md) · [Português](README.pt.md) · [Deutsch](README.de.md) · [Magyar](README.hu.md)
 
-**Version:** 1.0.1 · **Last updated:** 2026-10-22
+**Version:** 1.0.2 · **Last updated:** 2026-10-22
 
 Interface languages: **Română, English, Français, Italiano, Español, Português (PT), Deutsch, Magyar**
 
@@ -75,3 +75,4 @@ MIT — see the `LICENSE` file at the repository root.
 
 - 1.0.0 — 2026-10-14: first release.
 - 1.0.1 — 2026-10-22: touch targets of at least 24 px for check boxes and radio buttons; the technical label (fff-info) now lists all 8 interface languages. The origin shared with other apps remains an infrastructure matter (separate sub-domain), not changed here.
+- 1.0.2 — 2026-10-22: fff-kit 1.1.2: PBKDF2 with 600,000 iterations, anti-clickjacking protection.

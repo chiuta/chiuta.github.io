@@ -90,9 +90,9 @@ await test('pornire: 0 erori, 0 violări CSP, 0 cereri de rețea, meta de versiu
   const p = await openApp();
   eq(await p.evaluate(() => window.__csp), [], 'violări CSP');
   eq(await p.title(), 'Curatitor');
-  eq(await p.evaluate(() => document.querySelector('meta[name=application-version]').content), '1.0.1');
+  eq(await p.evaluate(() => document.querySelector('meta[name=application-version]').content), '1.0.2');
   eq(await p.evaluate(() => document.querySelector('meta[name=last-updated]').content), '2026-10-22');
-  eq(await p.textContent('#app-version'), 'v 1.0.1 · 2026-10-22');
+  eq(await p.textContent('#app-version'), 'v 1.0.2 · 2026-10-22');
   eq(await p.evaluate(() => document.documentElement.lang), 'ro');
   const csp = await p.evaluate(() => document.querySelector('meta[http-equiv=Content-Security-Policy]').content);
   assert(/default-src 'none'/.test(csp) && /connect-src 'none'/.test(csp) && /worker-src 'self' blob:/.test(csp) && /manifest-src 'self'/.test(csp) && !/unsafe-eval/.test(csp) && !/script-src[^;]*unsafe-inline/.test(csp), 'CSP: ' + csp);
@@ -480,7 +480,7 @@ await test('8 limbi: selector, html[lang], persistență, texte traduse, export/
   eq(seen.size, 8, 'texte distincte pe limbă'); await p.selectOption('#lang', 'de'); await p.reload(); await p.waitForSelector('#list',{state:'attached'}); eq(await p.evaluate(() => document.documentElement.lang), 'de'); assert((await p.textContent('#pickBtn')) === 'Dateien auswählen');
   await p.check('input[name=prof][value=max]'); await p.click('#themeBtn'); eq(await p.evaluate(() => document.documentElement.dataset.theme), 'light');
   await p.locator('footer summary').click(); const [d] = await Promise.all([p.waitForEvent('download'), p.click('#setExport')]); const sp = path.join(W, 'curatitor.fff.json'); await d.saveAs(sp); const b = JSON.parse(fs.readFileSync(sp, 'utf8'));
-  eq([b.format, b.schema, b.app, b.version, b.updated], ['fff-bundle', 1, 'curatitor', '1.0.1', '2026-10-22']); eq(b.data.lang, 'de'); eq(b.data.profile, 'max'); eq(b.data.theme, 'light');
+  eq([b.format, b.schema, b.app, b.version, b.updated], ['fff-bundle', 1, 'curatitor', '1.0.2', '2026-10-22']); eq(b.data.lang, 'de'); eq(b.data.profile, 'max'); eq(b.data.theme, 'light');
   await p.selectOption('#lang', 'ro'); await p.check('input[name=prof][value=keep]'); await p.setInputFiles('#setImportInput', sp); await p.waitForTimeout(300); eq(await p.evaluate(() => document.documentElement.lang), 'de'); assert(await p.isChecked('input[name=prof][value=max]'), 'profil importat');
   const bad = wr('bad.fff.json', JSON.stringify({ format: 'fff-bundle', schema: 1, app: 'altceva', data: {} })); await p.setInputFiles('#setImportInput', bad); await p.waitForTimeout(200); assert((await p.textContent('#status')).length > 0 || (await p.textContent('#setMsg')).length > 0, 'mesaj de eroare la import');
   await p.click('#setWipe'); await p.click('dialog.fff-dlg .fff-primary'); await p.waitForTimeout(200); eq(await p.evaluate(() => Object.keys(localStorage).filter((k) => k.startsWith('fff.curatitor.')).length), 0, 'chei rămase'); eq(await p.evaluate(() => document.documentElement.dataset.theme || 'auto'), 'auto'); await p.close();

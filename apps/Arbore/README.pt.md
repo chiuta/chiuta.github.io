@@ -2,7 +2,7 @@
 
 [English](README.md) · [Română](README.ro.md) · [Français](README.fr.md) · [Italiano](README.it.md) · [Español](README.es.md) · **Português** · [Deutsch](README.de.md) · [Magyar](README.hu.md)
 
-**Versão:** 1.0.1 · **Última atualização:** 2026-10-22
+**Versão:** 1.0.2 · **Última atualização:** 2026-10-22
 
 Idiomas da interface: **Română, English, Français, Italiano, Español, Português (PT), Deutsch, Magyar**
 
@@ -66,3 +66,4 @@ MIT — veja o ficheiro `LICENSE` na raiz do repositório.
 
 - 1.0.0 — 2026-10-14: primeira versão.
 - 1.0.1 — 2026-10-22: a cifragem com palavra-passe deriva agora a chave com PBKDF2-SHA256 a 600.000 iterações (OWASP); as cópias existentes a 310.000 continuam a abrir-se e são atualizadas na gravação seguinte após o desbloqueio; lembrete (com botão «Exportar agora») quando há 30 dias sem cópia JSON/GEDCOM; a exportação CSV neutraliza as células de texto que começam por = + - @ (e tabulação/CR); áreas táteis de pelo menos 24 px.
+- 1.0.2 — 2026-10-22: fff-kit 1.1.2: PBKDF2 com 600.000 iterações, proteção anti-clickjacking.

@@ -2,7 +2,7 @@
 
 [English](README.md) · **Română** · [Français](README.fr.md) · [Italiano](README.it.md) · [Español](README.es.md) · [Português](README.pt.md) · [Deutsch](README.de.md) · [Magyar](README.hu.md)
 
-**Versiune:** 1.1.1 · **Ultima actualizare:** 2026-10-22
+**Versiune:** 1.1.2 · **Ultima actualizare:** 2026-10-22
 
 Limbile interfeței: **Română, English, Français, Italiano, Español, Português (PT), Deutsch, Magyar**
 
@@ -77,3 +77,4 @@ Licență: MIT — vezi fișierul `LICENSE` din rădăcina depozitului.
 - 1.0.0 — 2026-10-14: prima versiune.
 - 1.1.0 — 2026-10-19: export „Quiz pentru Undava (.json)” și import din fișiere Undava (.json) prin butonul de import CSV; se transferă doar întrebările cu echivalent (alegere unică, adevărat/fals, răspuns scurt, completare cu un gol).
 - 1.1.1 — 2026-10-22: fără window.confirm / window.prompt: resetarea progresului din player, ștergerea ciornei și cererea textului alternativ al imaginii folosesc dialoguri din pagină, traduse în 8 limbi; ținte tactile de cel puțin 24 px pentru casete și butoane radio; eticheta tehnică nu mai raportează tokenul CSP about:srcdoc ca gazdă de rețea.
+- 1.1.2 — 2026-10-22: fff-kit 1.1.2: PBKDF2 cu 600.000 de iterații, protecție anti-clickjacking.

@@ -2,7 +2,7 @@
   "schema": 1,
   "slug": "lexicon",
   "name": "Lexicon",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "updated": "2026-10-22",
   "description": "Lexicon: motor de dicționar offline cu date aduse de utilizator (TSV/CSV, JSON, StarDict, dictd, XDXF), căutare rapidă insensibilă la diacritice, fuzzy, wildcard, flashcards. Include doar un set demonstrativ.",
   "egress": [],
@@ -13,8 +13,8 @@
     "localStorage"
   ],
   "storageKeys": [],
-  "sizeBytes": 365797,
-  "sha256": "f9dbe089020e129ff3091a671a6e12eefa86e7a74191ce625e5123fc51e2a15f",
+  "sizeBytes": 366265,
+  "sha256": "81aafa29b01722d10f0125025f9d122685b6331a60c05b2e7b0b28dd5762e710",
   "csp": {
     "present": true,
     "directives": {
@@ -60,7 +60,7 @@
     ]
   },
   "kit": {
-    "version": "1.1.1",
+    "version": "1.1.2",
     "modules": [
       "core",
       "label",

@@ -1,5 +1,5 @@
 {
- "ok": 44,
+ "ok": 43,
  "total": 44,
  "results": [
   {
@@ -40,7 +40,8 @@
   },
   {
    "name": "Morse: clipire — durate măsurate pe elementul vizual",
-   "ok": true
+   "ok": false,
+   "err": "linie 360 ms: 461.9000000022352 vs 360 (±90)"
   },
   {
    "name": "Morse: vibrații — tiparul trimis la navigator.vibrate",

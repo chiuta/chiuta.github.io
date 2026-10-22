@@ -2,7 +2,7 @@
   "schema": 1,
   "slug": "poteca",
   "name": "Poteca",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "updated": "2026-10-22",
   "description": "Poteca: vizualizator și editor de trasee GPX, GeoJSON, KML și CSV, offline, fără hartă de bază și fără rețea. Statistici, profil de altitudine, editare, comparație și export.",
   "egress": [],
@@ -12,8 +12,8 @@
     "localStorage"
   ],
   "storageKeys": [],
-  "sizeBytes": 380741,
-  "sha256": "bae41d0abd5d98d3fcd2e59f90b24b825a8bd37425956d8e5c41ffad2152a090",
+  "sizeBytes": 381209,
+  "sha256": "5a8d12640073fe2979357bab661f37fb8047d376877b8e98bf834b8e2f3b34d0",
   "csp": {
     "present": true,
     "directives": {
@@ -58,7 +58,7 @@
     ]
   },
   "kit": {
-    "version": "1.1.1",
+    "version": "1.1.2",
     "modules": [
       "core",
       "label",

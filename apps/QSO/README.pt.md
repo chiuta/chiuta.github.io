@@ -2,7 +2,7 @@
 
 [English](README.md) · [Română](README.ro.md) · [Français](README.fr.md) · [Italiano](README.it.md) · [Español](README.es.md) · **Português** · [Deutsch](README.de.md) · [Magyar](README.hu.md)
 
-**Versão:** 1.0.2 · **Última atualização:** 2026-10-22
+**Versão:** 1.0.3 · **Última atualização:** 2026-10-22
 
 Idiomas da interface: **Română, English, Français, Italiano, Español, Português (PT), Deutsch, Magyar**
 
@@ -67,3 +67,4 @@ MIT — consulte o ficheiro `LICENSE` na raiz do repositório.
 - **1.0.0 — 2026-10-14:** primeira versão.
 - **1.0.1 — 2026-10-19:** botão «Ver no TerRa» na caixa de diálogo Detalhes do QSO (locator do correspondente + hora do QSO, sem pedidos de rede).
 - **1.0.2 — 2026-10-22:** mensagem no rodapé e aviso «Pronto para uso offline» quando o service worker guardou a aplicação em cache (primeiro carregamento); a exportação CSV neutraliza as células que começam por = + - @ (e tabulação/CR) contra a injeção de fórmulas, e a importação CSV volta a remover o apóstrofo; texto de pelo menos 12 px; áreas táteis de pelo menos 24 px; a etiqueta técnica lista os 8 idiomas.
+- **1.0.3 — 2026-10-22:** fff-kit 1.1.2: PBKDF2 com 600.000 iterações, proteção anti-clickjacking.

@@ -2,7 +2,7 @@
 
 [English](README.md) · [Română](README.ro.md) · [Français](README.fr.md) · [Italiano](README.it.md) · [Español](README.es.md) · [Português](README.pt.md) · **Deutsch** · [Magyar](README.hu.md)
 
-**Version:** 1.0.2 · **Zuletzt aktualisiert:** 2026-10-22
+**Version:** 1.0.3 · **Zuletzt aktualisiert:** 2026-10-22
 
 Oberflächensprachen: **Română, English, Français, Italiano, Español, Português (PT), Deutsch, Magyar**
 
@@ -67,3 +67,4 @@ MIT — siehe Datei `LICENSE` im Stammverzeichnis des Repositorys.
 - **1.0.0 — 2026-10-14:** erste Version.
 - **1.0.1 — 2026-10-19:** Schaltfläche „In TerRa ansehen“ im Dialog QSO-Details (Locator der Gegenstation + QSO-Zeit, ohne Netzwerkanfragen).
 - **1.0.2 — 2026-10-22:** Meldung in der Fußzeile und Hinweis „Bereit für die Offline-Nutzung“, sobald der Service Worker die App zwischengespeichert hat (erster Aufruf); der CSV-Export entschärft Zellen, die mit = + - @ (und Tab/CR) beginnen, gegen Formelinjektion, und der CSV-Import entfernt das Apostroph wieder; Text von mindestens 12 px; Touch-Ziele von mindestens 24 px; das technische Label listet alle 8 Sprachen.
+- **1.0.3 — 2026-10-22:** fff-kit 1.1.2: PBKDF2 mit 600.000 Iterationen, Schutz vor Clickjacking.

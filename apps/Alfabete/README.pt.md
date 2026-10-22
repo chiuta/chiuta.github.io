@@ -2,7 +2,7 @@
 
 [English](README.md) · [Română](README.ro.md) · [Français](README.fr.md) · [Italiano](README.it.md) · [Español](README.es.md) · **Português** · [Deutsch](README.de.md) · [Magyar](README.hu.md)
 
-**Versão:** 1.0.2 · **Última atualização:** 2026-10-22
+**Versão:** 1.0.3 · **Última atualização:** 2026-10-22
 
 Idiomas da interface: **Română, English, Français, Italiano, Español, Português (PT), Deutsch, Magyar**
 
@@ -54,3 +54,4 @@ MIT — ver o ficheiro `LICENSE` na raiz do repositório.
 - 1.0.0 — 2026-10-14: primeira versão
 - 1.0.1 — 2026-10-19: o painel é escolhido apenas a partir da parte do endereço anterior ao primeiro «&» (#painel&from=…), para que as ligações a partir de ETER/INDICATIV abram o painel correto.
 - 1.0.2 — 2026-10-22: a pré-visualização da ficha imprimível já não acrescenta cabeçalhos H1 extra à página (um único H1 por página; o título da ficha é um H2 no ecrã e continua H1 na impressão); áreas táteis de pelo menos 24 px; a etiqueta técnica (fff-info) lista agora os 8 idiomas reais em vez de 2.
+- 1.0.3 — 2026-10-22: fff-kit 1.1.2: PBKDF2 com 600.000 iterações, proteção anti-clickjacking.

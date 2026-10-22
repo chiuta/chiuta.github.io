@@ -2,7 +2,7 @@
 
 [English](README.md) · [Română](README.ro.md) · [Français](README.fr.md) · [Italiano](README.it.md) · [Español](README.es.md) · [Português](README.pt.md) · [Deutsch](README.de.md) · **Magyar**
 
-**Verzió:** 1.1.1 · **Utolsó frissítés:** 2026-10-22
+**Verzió:** 1.1.2 · **Utolsó frissítés:** 2026-10-22
 
 A felület nyelvei: **Română, English, Français, Italiano, Español, Português (PT), Deutsch, Magyar**
 
@@ -77,3 +77,4 @@ Licenc: MIT — lásd a `LICENSE` fájlt a tároló gyökerében.
 - 1.0.0 — 2026-10-14: első verzió.
 - 1.1.0 — 2026-10-19: „Kvíz az Undavához (.json)” exportálás és importálás Undava-fájlokból (.json) a CSV-importgombon keresztül; csak a megfelelővel rendelkező kérdések kerülnek át (egyszeres választás, igaz/hamis, rövid válasz, egyetlen üres helyes kitöltés).
 - 1.1.1 — 2026-10-22: nincs többé window.confirm / window.prompt: a haladás visszaállítása a lejátszóban, a vázlat törlése és a kép alternatív szövegének bekérése az oldalon belüli, 8 nyelvre lefordított párbeszédablakot használja; a jelölőnégyzetek és rádiógombok érintési célja legalább 24 px; a műszaki címke már nem jelenti az about:srcdoc CSP-tokent hálózati gazdaként.
+- 1.1.2 — 2026-10-22: fff-kit 1.1.2: PBKDF2 600 000 iterációval, clickjacking elleni védelem.

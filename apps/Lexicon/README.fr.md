@@ -2,7 +2,7 @@
 
 [English](README.md) · [Română](README.ro.md) · **Français** · [Italiano](README.it.md) · [Español](README.es.md) · [Português](README.pt.md) · [Deutsch](README.de.md) · [Magyar](README.hu.md)
 
-**Version :** 1.0.1 · **Dernière mise à jour :** 2026-10-22
+**Version :** 1.0.2 · **Dernière mise à jour :** 2026-10-22
 
 Langues de l'interface : **Română, English, Français, Italiano, Español, Português (PT), Deutsch, Magyar**
 
@@ -67,3 +67,4 @@ MIT — voir le fichier `LICENSE` à la racine du dépôt.
 ## Historique
 - 1.0.0 — 2026-10-14 : première version.
 - 1.0.1 — 2026-10-22 : une recherche sans résultat indique désormais explicitement que le jeu inclus n’est qu’une démonstration (lorsque le jeu de démonstration est actif) ; l’export CSV neutralise les cellules commençant par = + - @ contre l’injection de formules et l’import TSV/CSV retire de nouveau l’apostrophe ; cibles tactiles d’au moins 24 px ; l’étiquette technique liste les 8 langues.
+- 1.0.2 — 2026-10-22 : fff-kit 1.1.2 : PBKDF2 à 600 000 itérations, protection anti-clickjacking.

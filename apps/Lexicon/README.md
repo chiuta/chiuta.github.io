@@ -2,7 +2,7 @@
 
 **English** · [Română](README.ro.md) · [Français](README.fr.md) · [Italiano](README.it.md) · [Español](README.es.md) · [Português](README.pt.md) · [Deutsch](README.de.md) · [Magyar](README.hu.md)
 
-**Version:** 1.0.1 · **Last updated:** 2026-10-22
+**Version:** 1.0.2 · **Last updated:** 2026-10-22
 
 Interface languages: **Română, English, Français, Italiano, Español, Português (PT), Deutsch, Magyar**
 
@@ -67,3 +67,4 @@ MIT — see the `LICENSE` file in the repository root.
 ## History
 - 1.0.0 — 2026-10-14: first release.
 - 1.0.1 — 2026-10-22: a failed search now says explicitly that the bundled set is only a demonstration (when the demo set is active); CSV export neutralises cells starting with = + - @ against spreadsheet formula injection and TSV/CSV import removes that apostrophe again; touch targets of at least 24 px; the technical label lists all 8 languages.
+- 1.0.2 — 2026-10-22: fff-kit 1.1.2: PBKDF2 with 600,000 iterations, anti-clickjacking protection.

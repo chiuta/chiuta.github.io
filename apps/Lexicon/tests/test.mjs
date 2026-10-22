@@ -154,10 +154,10 @@ console.log('1. Pornire, meta, CSP, rețea, set demonstrativ');
     leak: [...document.querySelectorAll('[data-i18n]')].filter(e => e.textContent.trim() === e.dataset.i18n).map(e => e.dataset.i18n),
     i18n: Lexicon.i18nCheck()
   }));
-  ok('application-version 1.0.1', info.ver === '1.0.1', info.ver);
+  ok('application-version 1.0.2', info.ver === '1.0.2', info.ver);
   ok('last-updated 2026-10-22', info.upd === '2026-10-22', info.upd);
   ok('meta description', info.desc);
-  ok('#app-version vizibil', info.vis === 'v 1.0.1 · 2026-10-22', info.vis);
+  ok('#app-version vizibil', info.vis === 'v 1.0.2 · 2026-10-22', info.vis);
   ok('html[lang]=ro implicit', info.lang === 'ro', info.lang);
   ok('CSP: default-src none, fără unsafe-eval, script-src doar hash', /default-src 'none'/.test(info.csp) && !/unsafe-eval/.test(info.csp) && /script-src 'sha256-[A-Za-z0-9+\/=]+'/.test(info.csp) && !/script-src[^;]*unsafe-inline/.test(info.csp) && /connect-src 'none'/.test(info.csp) && /base-uri 'none'/.test(info.csp) && /form-action 'none'/.test(info.csp), info.csp);
   ok('0 violări CSP', info.viol.length === 0, info.viol);
@@ -862,7 +862,7 @@ console.log('8. Flashcards, export (CSV/JSON/Markdown), verificare ortografie, c
   await tab(p, 'tools');
   const ub = await grab('#u-exp');
   const bundle = JSON.parse(ub.text);
-  ok('copie de rezervă .fff.json: format fff-bundle, app, versiune, chei cu prefix', bundle.format === 'fff-bundle' && bundle.schema === 1 && bundle.app === 'lexicon' && bundle.version === '1.0.1' && bundle.updated === '2026-10-22' && Object.keys(bundle.data).every(k => k.startsWith('fff.lexicon.')) && 'fff.lexicon.fav' in bundle.data && 'fff.lexicon.srs' in bundle.data && /\.fff\.json$/.test(ub.name), Object.keys(bundle.data));
+  ok('copie de rezervă .fff.json: format fff-bundle, app, versiune, chei cu prefix', bundle.format === 'fff-bundle' && bundle.schema === 1 && bundle.app === 'lexicon' && bundle.version === '1.0.2' && bundle.updated === '2026-10-22' && Object.keys(bundle.data).every(k => k.startsWith('fff.lexicon.')) && 'fff.lexicon.fav' in bundle.data && 'fff.lexicon.srs' in bundle.data && /\.fff\.json$/.test(ub.name), Object.keys(bundle.data));
   await tab(p, 'search');
   while (await p.locator('#favlist [data-rm]').count()) await p.locator('#favlist [data-rm]').first().click();
   ok('favorite golite', (await p.locator('#favlist .ritem').count()) === 0);
