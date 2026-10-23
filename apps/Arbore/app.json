@@ -13,8 +13,8 @@
     "Web Crypto"
   ],
   "storageKeys": [],
-  "sizeBytes": 508351,
-  "sha256": "1284fc8e71205136e87013b87d0f76453e639576787b314358eb053a4114b97e",
+  "sizeBytes": 508838,
+  "sha256": "50819dc397ad5d7e17528126f1db48be9b0eba8a3991a5b237db2146dbec87e2",
   "csp": {
     "present": true,
     "directives": {
@@ -70,5 +70,11 @@
       "bundle"
     ]
   },
-  "selfSerializing": false
+  "selfSerializing": false,
+  "exceptions": [
+    {
+      "rule": "unprefixed-storage",
+      "reason": "Fals pozitiv: cheia „nodup” este numele relativ transmis helperelor lsGet/lsSet/lsDel, care adaugă prefixul „fff.arbore.” (cheia stocată este fff.arbore.nodup). Redenumirea ar rupe datele existente ale utilizatorilor."
+    }
+  ]
 }

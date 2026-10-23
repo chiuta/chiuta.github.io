@@ -74,3 +74,4 @@ Licence: MIT — see the `LICENSE` file in the repository root.
 - 1.0.2 — 2026-10-22: fff-kit 1.1.2: PBKDF2 with 600,000 iterations, anti-clickjacking protection.
 - 1.0.4 — 2026-10-22: Tests: waits on conditions instead of real time, so the suites pass reliably under load. No change in app behavior. Kit check: a documented exception for the read-only CLEPSIDRA import.
 - 1.0.3 — 2026-10-22: fff-kit 1.1.4: touch targets and minimum text size in the shared interface.
+- 1.0.6 — 2026-10-23: fallback message when JavaScript is disabled (noscript).

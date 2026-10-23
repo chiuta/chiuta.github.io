@@ -70,3 +70,4 @@ MIT — lásd a `LICENSE` fájlt a tároló gyökerében.
 - 1.0.2 — 2026-10-22: fff-kit 1.1.2: PBKDF2 600 000 iterációval, clickjacking elleni védelem.
 - 1.0.3 — 2026-10-22: fff-kit 1.1.4: érintési célok és minimális szövegméret a közös felületen.
 - 1.0.5 — 2026-10-23: a helyi adatok (kedvencek, előzmények, kártyák, beállítások) olvasáskor és biztonsági mentés importálásakor ellenőrzést kapnak, így egy sérült érték többé nem akadályozza az indulást; az olyan szavak, mint a „constructor” vagy a „toString”, felvehetők a kártyák közé; figyelmeztetés, ha a helyi tárhely megtelt; a sikertelen import nem hagy félig írt szótárat; a belső verzió igazítva.
+- 1.0.5 — 2026-10-23: tartalék üzenet kikapcsolt JavaScript esetén (noscript).

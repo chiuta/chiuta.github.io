@@ -137,6 +137,7 @@ MIT — siehe Datei `LICENSE` im Stammverzeichnis des Repositorys. Die Komponent
 - **1.1.6 — 2026-10-22:** Tests: Warten auf Bedingungen statt auf Echtzeit, damit die Suiten unter Last zuverlässig durchlaufen. Das Verhalten der App ändert sich nicht.
 - **1.1.5 — 2026-10-22:** fff-kit 1.1.4: Touch-Ziele und Mindestschriftgröße in der gemeinsamen Oberfläche.
 - **1.1.8 — 2026-10-23:** Adversarial-Audit: die `.ics` lässt sich nicht mehr über CR/Steuerzeichen im Ortsnamen manipulieren; Orte mit lat/lon `null`/leer/boolesch werden nicht mehr zu (0, 0); ein fehlgeschlagenes Speichern der Orte (Speicher voll/gesperrt) wird gemeldet statt „Ort gespeichert.“; die Skriptversion stimmt mit den Metadaten überein; dokumentierte Ausnahme (`fff.config.json`) für die i18n-parity-Prüfung am Sternbildkatalog.
+- **1.1.8 — 2026-10-23:** der Link `#toWords` hat jetzt ein Touch-Ziel von mindestens 24 px.
 
 ## Deep-Links
 

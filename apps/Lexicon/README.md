@@ -70,3 +70,4 @@ MIT — see the `LICENSE` file in the repository root.
 - 1.0.2 — 2026-10-22: fff-kit 1.1.2: PBKDF2 with 600,000 iterations, anti-clickjacking protection.
 - 1.0.3 — 2026-10-22: fff-kit 1.1.4: touch targets and minimum text size in the shared interface.
 - 1.0.5 — 2026-10-23: local data (favorites, history, flashcards, settings) is validated when read and when a backup is imported, so a corrupt value no longer blocks start-up; words such as “constructor” or “toString” can be added to the flashcards; a notice appears when local storage is full; a failed import leaves no half-written dictionary; the internal version is aligned.
+- 1.0.5 — 2026-10-23: fallback message when JavaScript is disabled (noscript).

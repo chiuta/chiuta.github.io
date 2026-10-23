@@ -65,3 +65,4 @@ MIT — lásd a `LICENSE` fájlt a tároló gyökerében.
 - 1.0.2 — 2026-10-22: fff-kit 1.1.2: PBKDF2 600 000 iterációval, clickjacking elleni védelem.
 - 1.0.3 — 2026-10-22: fff-kit 1.1.4: érintési célok és minimális szövegméret a közös felületen.
 - 1.0.5 — 2026-10-23: audit: az a kötés, amelynek kizárásai kilógnak a jegyzékből, már nem állítja, hogy „a fájl változatlan” (helyette „nem ellenőrizhető”); a Markdown-jelentés semlegesíti a fájlból származó szövegeket (nincs hamis sor, hivatkozás vagy HTML), és a „Fájlnév belefoglalása” a címre is érvényes; legfeljebb 100 jegyzéket elemez; egy lecserélt fájl késői eredménye már nem írja felül az újat; a __proto__ kulcs megmarad a JSON-jelentésben; érintési célok ≥44 px.
+- 1.0.5 — 2026-10-23: tartalék üzenet kikapcsolt JavaScript esetén (noscript).

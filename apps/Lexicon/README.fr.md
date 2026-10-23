@@ -70,3 +70,4 @@ MIT — voir le fichier `LICENSE` à la racine du dépôt.
 - 1.0.2 — 2026-10-22 : fff-kit 1.1.2 : PBKDF2 à 600 000 itérations, protection anti-clickjacking.
 - 1.0.3 — 2026-10-22 : fff-kit 1.1.4 : cibles tactiles et taille minimale du texte dans l’interface commune.
 - 1.0.5 — 2026-10-23 : les données locales (favoris, historique, cartes, réglages) sont validées à la lecture et à l’import d’une sauvegarde : une valeur corrompue ne bloque plus le démarrage ; des mots comme « constructor » ou « toString » peuvent être ajoutés aux cartes ; avertissement quand le stockage local est plein ; un import échoué ne laisse pas de dictionnaire à moitié écrit ; version interne alignée.
+- 1.0.5 — 2026-10-23 : message de repli lorsque JavaScript est désactivé (noscript).

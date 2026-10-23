@@ -80,3 +80,4 @@ Lizenz: MIT — siehe die Datei `LICENSE` im Stammverzeichnis des Repositorys.
 - 1.1.2 — 2026-10-22: fff-kit 1.1.2: PBKDF2 mit 600.000 Iterationen, Schutz vor Clickjacking.
 - 1.1.3 — 2026-10-22: fff-kit 1.1.4: Touch-Ziele und Mindestschriftgröße in der gemeinsamen Oberfläche.
 - 1.1.5 — 2026-10-23: audit: Fortschritt aus localStorage oder einer importierten Datei wird beim Laden normalisiert (er zerstört keine Lektionen mehr und kann kein HTML einschleusen); in Optionen, Rückmeldungen und Belegen verwendete Bilder werden exportiert; der ZIP-Import begrenzt die Dekompression (ZIP-Bombe) und entpackt nur die benötigten Einträge; das `last-updated`-Datum der erzeugten Datei; Touch-Ziele ≥44 px und kein horizontaler Überlauf bei 360 px (Editor und erzeugter Kurs).
+- 1.1.5 — 2026-10-23: Hinweistext bei deaktiviertem JavaScript (noscript).

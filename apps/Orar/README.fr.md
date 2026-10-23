@@ -74,3 +74,4 @@ Licence : MIT — voir le fichier `LICENSE` à la racine du dépôt.
 - 1.0.2 — 2026-10-22 : fff-kit 1.1.2 : PBKDF2 à 600 000 itérations, protection anti-clickjacking.
 - 1.0.4 — 2026-10-22 : Tests : attentes sur des conditions au lieu du temps réel, donc les suites passent de façon stable sous charge. Aucun changement du comportement de l’application. Vérification du kit : exception documentée pour l’import en lecture seule depuis CLEPSIDRA.
 - 1.0.3 — 2026-10-22 : fff-kit 1.1.4 : cibles tactiles et taille minimale du texte dans l’interface commune.
+- 1.0.6 — 2026-10-23 : message de repli lorsque JavaScript est désactivé (noscript).

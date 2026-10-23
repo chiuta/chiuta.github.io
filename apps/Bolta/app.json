@@ -12,8 +12,8 @@
     "localStorage"
   ],
   "storageKeys": [],
-  "sizeBytes": 746667,
-  "sha256": "e4c209b030190a9e645c7a2446975359c83fc26cd4a521a94508ddc0449ee52f",
+  "sizeBytes": 746679,
+  "sha256": "14b0b9bf4be2be387c7fc2a7d6a10af96cef412c316fc6b3349656b10ec0a648",
   "csp": {
     "present": true,
     "directives": {
@@ -73,7 +73,7 @@
   "exceptions": [
     {
       "rule": "i18n-parity",
-      "reason": "Tabelul brut CON_ROWS (ephem-stars) este un catalog de constelații (cod, nume latin, genitiv, nume en, nume ro, RA, Dec, poligoane de stele), nu un tabel de traduceri: numărul de coloane variază legitim. Traducerile interfeței (DICT) au paritate verificată de teste."
+      "reason": "Fals pozitiv: CON_ROWS nu este un tabel de traduceri, ci date astronomice (88 de constelații × 8 câmpuri separate prin „~”, rânduri separate prin \\n), verificate la construire; toate rândurile au 8 coloane."
     }
   ]
 }

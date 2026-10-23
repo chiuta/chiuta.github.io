@@ -74,3 +74,4 @@ Licenc: MIT — lásd a `LICENSE` fájlt az adattár gyökérkönyvtárában.
 - 1.0.2 — 2026-10-22: fff-kit 1.1.2: PBKDF2 600 000 iterációval, clickjacking elleni védelem.
 - 1.0.4 — 2026-10-22: Tesztek: valós idő helyett feltételekre várakoznak, így a tesztcsomagok terhelés alatt is megbízhatóan lefutnak. Az alkalmazás viselkedése nem változik. Kit-ellenőrzés: dokumentált kivétel a CLEPSIDRA csak olvasható importjára.
 - 1.0.3 — 2026-10-22: fff-kit 1.1.4: érintési célok és minimális szövegméret a közös felületen.
+- 1.0.6 — 2026-10-23: tartalék üzenet kikapcsolt JavaScript esetén (noscript).

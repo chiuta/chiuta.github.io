@@ -79,3 +79,4 @@ MIT — voir le fichier `LICENSE` à la racine du dépôt.
 - 1.0.2 — 2026-10-22 : fff-kit 1.1.2 : PBKDF2 à 600 000 itérations, protection anti-clickjacking.
 - 1.0.3 — 2026-10-22 : fff-kit 1.1.4 : cibles tactiles et taille minimale du texte dans l’interface commune.
 - 1.0.5 — 2026-10-23 : audit : un PDF dont la table xref n’a pas de « trailer » ne bloque plus la page (boucle infinie) ; le profil « Maximum » supprime désormais aussi les boîtes MP4 de premier niveau inconnues (XMP_, junk), les chunks WebP inconnus (JUNK), les extensions GIF inconnues, le sPLT des PNG et la queue de l’APP14 Adobe des JPEG ; les caractères de contrôle bidi dans les noms et métadonnées sont neutralisés ; cibles tactiles ≥44 px ; « Tout supprimer » ne peut plus retomber sur window.confirm.
+- 1.0.5 — 2026-10-23 : message de repli lorsque JavaScript est désactivé (noscript).

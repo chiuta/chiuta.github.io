@@ -67,3 +67,4 @@ Licença: MIT — ver o ficheiro `LICENSE` na raiz do repositório
 - 1.0.2 — 2026-10-22: fff-kit 1.1.2: PBKDF2 com 600.000 iterações, proteção anti-clickjacking.
 - 1.0.3 — 2026-10-22: fff-kit 1.1.4: áreas de toque e tamanho mínimo do texto na interface comum.
 - 1.0.5 — 2026-10-23: os dados locais (registo, perfis, audiogramas, auscultadores, definições, calibração) são validados na leitura e a importação .fff.json só aceita chaves e formas conhecidas; uma sessão já não se perde em silêncio quando o armazenamento local está cheio (aviso); os parâmetros da dose ficam limitados aos intervalos dos campos; NaN/Infinito num WAV float já não envenenam os filtros; taxas de amostragem absurdas são recusadas; o microfone é libertado se o AudioContext falhar depois de dada a permissão; os campos CSV com CR ficam entre aspas; versão interna alinhada.
+- 1.0.5 — 2026-10-23: mensagem alternativa quando o JavaScript está desativado (noscript).

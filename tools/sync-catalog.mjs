@@ -39,7 +39,7 @@ const ROOT = path.resolve(ri >= 0 ? argv[ri + 1] : path.join(HUB, '..'));
 
 // Aplicații cu „offline” calificat în text („nu e complet offline”, „snapshot învechit offline”): nu sunt oprite de regulă.
 const LANG_ORDER = ['en', 'ro', 'fr', 'it', 'es', 'pt', 'de', 'hu'];
-const OFFLINE_QUALIFIED = new Set(['TerRa', 'VietAR']);
+const OFFLINE_QUALIFIED = new Set(['TerRa', 'VietAR', 'Pendulul']);   // Pendulul: fișierul salvat se citește offline; aplicația nu înregistrează service worker
 const OFFLINE_RE = /offline|fără conexiune|hors ligne|hors-ligne|senza connessione|sin conexión|sem ligação|sem conexão|ohne verbindung|internet nélkül/i;
 
 const read = (p) => fs.readFileSync(p, 'utf8');

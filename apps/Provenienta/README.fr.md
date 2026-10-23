@@ -65,3 +65,4 @@ MIT — voir le fichier `LICENSE` à la racine du dépôt.
 - 1.0.2 — 2026-10-22 : fff-kit 1.1.2 : PBKDF2 à 600 000 itérations, protection anti-clickjacking.
 - 1.0.3 — 2026-10-22 : fff-kit 1.1.4 : cibles tactiles et taille minimale du texte dans l’interface commune.
 - 1.0.5 — 2026-10-23 : audit : une liaison dont les exclusions dépassent le manifeste n’affirme plus « fichier inchangé » (elle devient « non vérifiable ») ; le rapport Markdown neutralise les textes issus du fichier (pas de fausses lignes, liens ou HTML) et respecte « Inclure le nom du fichier » aussi pour le titre ; 100 manifestes au plus sont analysés ; le résultat tardif d’un fichier remplacé n’écrase plus le nouveau fichier ; la clé __proto__ reste dans le rapport JSON ; cibles tactiles ≥44 px.
+- 1.0.5 — 2026-10-23 : message de repli lorsque JavaScript est désactivé (noscript).

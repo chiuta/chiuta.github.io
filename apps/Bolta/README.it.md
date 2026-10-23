@@ -137,6 +137,7 @@ MIT — vedi il file `LICENSE` nella radice del repository. I componenti di terz
 - **1.1.6 — 2026-10-22:** Test: attese su condizioni invece del tempo reale, così le suite passano in modo stabile sotto carico. Nessuna modifica al comportamento dell’app.
 - **1.1.5 — 2026-10-22:** fff-kit 1.1.4: aree tattili e dimensione minima del testo nell’interfaccia comune.
 - **1.1.8 — 2026-10-23:** audit avversariale: il `.ics` non può più essere iniettato tramite CR/caratteri di controllo nel nome del luogo; i luoghi con lat/lon `null`/vuoto/booleano non diventano più (0, 0); il salvataggio dei luoghi non riuscito (archivio pieno/bloccato) viene segnalato invece di «Luogo salvato.»; la versione nello script coincide con i metadati; eccezione documentata (`fff.config.json`) per il controllo i18n-parity sul catalogo delle costellazioni.
+- **1.1.8 — 2026-10-23:** il link `#toWords` ha ora un'area tattile di almeno 24 px.
 
 ## Link profondi
 

@@ -65,3 +65,4 @@ MIT — vezi fișierul `LICENSE` din rădăcina depozitului.
 - 1.0.2 — 2026-10-22: fff-kit 1.1.2: PBKDF2 cu 600.000 de iterații, protecție anti-clickjacking.
 - 1.0.3 — 2026-10-22: fff-kit 1.1.4: ținte tactile și text minim în interfața comună.
 - 1.0.5 — 2026-10-23: audit: o legare cu excluderi în afara manifestului nu mai afirmă „fișier nemodificat” (devine „neverificabilă”); raportul Markdown neutralizează textele din fișier (fără rânduri false, link-uri sau HTML) și respectă „Include numele” și pentru titlu; se analizează cel mult 100 de manifeste; rezultatul întârziat al unui fișier înlocuit nu mai suprascrie fișierul nou; cheia __proto__ rămâne în raportul JSON; ținte tactile ≥44 px.
+- 1.0.5 — 2026-10-23: mesaj de rezervă când JavaScript este dezactivat (noscript).

@@ -79,3 +79,4 @@ MIT — vedi il file `LICENSE` nella radice del repository.
 - 1.0.2 — 2026-10-22: fff-kit 1.1.2: PBKDF2 con 600.000 iterazioni, protezione anti-clickjacking.
 - 1.0.3 — 2026-10-22: fff-kit 1.1.4: aree tattili e dimensione minima del testo nell’interfaccia comune.
 - 1.0.5 — 2026-10-23: audit: un PDF con tabella xref senza «trailer» non blocca più la pagina (ciclo infinito); il profilo «Massimo» rimuove ora anche i box MP4 di primo livello sconosciuti (XMP_, junk), i chunk WebP sconosciuti (JUNK), le estensioni GIF sconosciute, lo sPLT dei PNG e la coda dell’APP14 Adobe dei JPEG; i caratteri di controllo bidi in nomi e metadati sono neutralizzati; aree tattili ≥44 px; «Elimina tutto» non può più ricadere su window.confirm.
+- 1.0.5 — 2026-10-23: messaggio alternativo quando JavaScript è disattivato (noscript).

@@ -79,3 +79,4 @@ MIT — see the `LICENSE` file in the repository root.
 - 1.0.2 — 2026-10-22: fff-kit 1.1.2: PBKDF2 with 600,000 iterations, anti-clickjacking protection.
 - 1.0.3 — 2026-10-22: fff-kit 1.1.4: touch targets and minimum text size in the shared interface.
 - 1.0.5 — 2026-10-23: audit: a PDF whose xref table has no “trailer” no longer freezes the page (endless loop); the “Maximum” profile now also removes unknown top-level MP4 boxes (XMP_, junk), unknown WebP chunks (JUNK), unknown GIF extensions, PNG sPLT and the trailing bytes of a JPEG Adobe APP14; bidi control characters in names and metadata are neutralised; touch targets ≥44 px; “Delete everything” can no longer fall back to window.confirm.
+- 1.0.5 — 2026-10-23: fallback message when JavaScript is disabled (noscript).

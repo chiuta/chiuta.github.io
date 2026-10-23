@@ -80,3 +80,4 @@ Licence : MIT — voir le fichier `LICENSE` à la racine du dépôt.
 - 1.1.2 — 2026-10-22 : fff-kit 1.1.2 : PBKDF2 à 600 000 itérations, protection anti-clickjacking.
 - 1.1.3 — 2026-10-22 : fff-kit 1.1.4 : cibles tactiles et taille minimale du texte dans l’interface commune.
 - 1.1.5 — 2026-10-23 : audit : la progression issue de localStorage ou d’un fichier importé est normalisée au chargement (elle ne casse plus les leçons et ne peut plus injecter de HTML) ; les images utilisées dans les options, le retour et les preuves sont exportées ; l’import ZIP plafonne la décompression (bombe ZIP) et ne décompresse que les entrées nécessaires ; la date `last-updated` du fichier généré ; cibles tactiles ≥44 px et pas de débordement horizontal à 360 px (éditeur et cours généré).
+- 1.1.5 — 2026-10-23 : message de repli lorsque JavaScript est désactivé (noscript).

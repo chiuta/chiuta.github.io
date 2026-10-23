@@ -65,3 +65,4 @@ MIT — siehe die Datei `LICENSE` im Stammverzeichnis des Repositorys.
 - 1.0.2 — 2026-10-22: fff-kit 1.1.2: PBKDF2 mit 600.000 Iterationen, Schutz vor Clickjacking.
 - 1.0.3 — 2026-10-22: fff-kit 1.1.4: Touch-Ziele und Mindestschriftgröße in der gemeinsamen Oberfläche.
 - 1.0.5 — 2026-10-23: audit: Eine Bindung, deren Ausschlüsse über das Manifest hinausgehen, behauptet nicht mehr „Datei unverändert“ (sie wird „nicht prüfbar“); der Markdown-Bericht neutralisiert Texte aus der Datei (keine falschen Zeilen, Links oder HTML) und beachtet „Dateiname einschließen“ auch für den Titel; höchstens 100 Manifeste werden analysiert; das späte Ergebnis einer ersetzten Datei überschreibt die neue Datei nicht mehr; der Schlüssel __proto__ bleibt im JSON-Bericht; Touch-Ziele ≥44 px.
+- 1.0.5 — 2026-10-23: Hinweistext bei deaktiviertem JavaScript (noscript).

@@ -71,3 +71,4 @@ MIT — ver o ficheiro `LICENSE` na raiz do repositório.
 - 1.0.2 — 2026-10-22: fff-kit 1.1.2: PBKDF2 com 600.000 iterações, proteção anti-clickjacking.
 - 1.0.3 — 2026-10-22: fff-kit 1.1.4: áreas de toque e tamanho mínimo do texto na interface comum.
 - 1.0.5 — 2026-10-23: auditoria adversarial: as cópias de segurança e a sessão restaurada são validadas (cores, URL de imagens, tipos, definições dentro de intervalos; bomba gzip limitada a 256 MiB); o SVG exportado já não pode receber atributos injetados; a leitura de GPX/KML malformados deixou de ser quadrática (~80 000 etiquetas por fechar bloqueavam ~8 s); a versão do script coincide com os metadados.
+- 1.0.5 — 2026-10-23: mensagem alternativa quando o JavaScript está desativado (noscript).
