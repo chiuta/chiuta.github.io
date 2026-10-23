@@ -2,7 +2,7 @@
 
 [English](README.md) · [Română](README.ro.md) · [Français](README.fr.md) · [Italiano](README.it.md) · [Español](README.es.md) · **Português** · [Deutsch](README.de.md) · [Magyar](README.hu.md)
 
-**Versão:** 1.0.5 · **Última atualização:** 2026-10-23
+**Versão:** 1.0.6 · **Última atualização:** 2026-10-23
 
 Idiomas da interface: **Română, English, Français, Italiano, Español, Português (PT), Deutsch, Magyar**
 
@@ -48,7 +48,7 @@ Corre localmente e não envia nada pela rede (CSP com `connect-src 'none'`; 0 pe
 
 ## Técnica
 
-Um único `index.html` (HTML + CSS + JS em linha, sem bibliotecas, sem tipos de letra externos), ~165 KB. CSP: `default-src 'none'; script-src 'sha256-…'; style-src 'unsafe-inline'; img-src data: blob:; …; connect-src 'none'; worker-src blob:` — `style-src 'unsafe-inline'` e `blob:` são necessários para os estilos em linha e para a transferência de ficheiros gerados localmente (Blob). Sem manipuladores em linha, sem `eval`. Os registos são imutáveis, o que torna barato anular/refazer (100 passos). A tabela é paginada (100 linhas/página); a pesquisa usa uma cache de texto normalizado; os duplicados são comparados apenas dentro do mesmo indicativo. Testes: `node tests/test.mjs` (Playwright, rede bloqueada; o axe-core é lido de um caminho local do ambiente de desenvolvimento): indicativos positivos/negativos, distâncias face a uma implementação independente (lei dos cossenos, descodificação separada dos locators), ida e volta ADIF/ADX/CSV/JSON/`.fff.json` com diacríticos e comprimentos em bytes, 3000 QSO para desempenho, modo de campo pelo teclado, 8 idiomas, axe 0 violações a 360 px e 1280 px nos dois temas.
+Um único `index.html` (HTML + CSS + JS em linha, sem bibliotecas, sem tipos de letra externos), ~310 KB. CSP: `default-src 'none'; script-src 'sha256-…'; style-src 'unsafe-inline'; img-src data: blob:; …; connect-src 'none'; worker-src blob:` — `style-src 'unsafe-inline'` e `blob:` são necessários para os estilos em linha e para a transferência de ficheiros gerados localmente (Blob). Sem manipuladores em linha, sem `eval`. Os registos são imutáveis, o que torna barato anular/refazer (100 passos). A tabela é paginada (100 linhas/página); a pesquisa usa uma cache de texto normalizado; os duplicados são comparados apenas dentro do mesmo indicativo. Testes: `node tests/test.mjs` (Playwright, rede bloqueada; o axe-core é lido de um caminho local do ambiente de desenvolvimento): indicativos positivos/negativos, distâncias face a uma implementação independente (lei dos cossenos, descodificação separada dos locators), ida e volta ADIF/ADX/CSV/JSON/`.fff.json` com diacríticos e comprimentos em bytes, 3000 QSO para desempenho, modo de campo pelo teclado, 8 idiomas, axe 0 violações a 360 px e 1280 px nos dois temas.
 
 ## Terceiros
 
@@ -69,3 +69,4 @@ MIT — consulte o ficheiro `LICENSE` na raiz do repositório.
 - **1.0.2 — 2026-10-22:** mensagem no rodapé e aviso «Pronto para uso offline» quando o service worker guardou a aplicação em cache (primeiro carregamento); a exportação CSV neutraliza as células que começam por = + - @ (e tabulação/CR) contra a injeção de fórmulas, e a importação CSV volta a remover o apóstrofo; texto de pelo menos 12 px; áreas táteis de pelo menos 24 px; a etiqueta técnica lista os 8 idiomas.
 - **1.0.3 — 2026-10-22:** fff-kit 1.1.2: PBKDF2 com 600.000 iterações, proteção anti-clickjacking.
 - **1.0.4 — 2026-10-22:** fff-kit 1.1.4: áreas de toque e tamanho mínimo do texto na interface comum.
+- **1.0.6 — 2026-10-23:** auditoria adversária: a importação ADIF com comprimentos em caracteres (diacríticos) deixa de ser quadrática (dezenas de segundos para alguns milhares de QSO); um `_id` hostil de uma cópia/localStorage já não pode injetar HTML e é normalizado; os dados guardados ilegíveis ficam em `fff.qso.data.bak` (antes eram substituídos ao fechar a página) e o utilizador é avisado; editar um QSO antigo já não substitui indicativo/operador/localizador da estação pelos do perfil atual; a importação JSON aceita valores numéricos; carregar centenas de milhares de registos já não estoira a pilha; o ADX continua válido mesmo com nomes de campo inválidos ou caracteres de controlo; o cabeçalho ADIF/ADX/Cabrillo e o `.fff.json` levam a versão real; alvos táteis de 44 px em ecrãs táteis.

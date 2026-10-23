@@ -2,7 +2,7 @@
 
 [English](README.md) · [Română](README.ro.md) · **Français** · [Italiano](README.it.md) · [Español](README.es.md) · [Português](README.pt.md) · [Deutsch](README.de.md) · [Magyar](README.hu.md)
 
-**Version :** 1.0.4 · **Dernière mise à jour :** 2026-10-23
+**Version :** 1.0.5 · **Dernière mise à jour :** 2026-10-23
 
 Langues de l'interface : **Română, English, Français, Italiano, Español, Português (PT), Deutsch, Magyar**
 
@@ -68,3 +68,4 @@ MIT — voir le fichier `LICENSE` à la racine du dépôt.
 - 1.0.1 — 2026-10-22 : le chiffrement par mot de passe dérive désormais la clé avec PBKDF2-SHA256 à 600 000 itérations (OWASP) ; les copies existantes à 310 000 s’ouvrent toujours et sont mises à niveau à la prochaine sauvegarde après déverrouillage ; rappel (avec un bouton « Exporter maintenant ») sans sauvegarde JSON/GEDCOM depuis 30 jours ; l’export CSV neutralise les cellules de texte commençant par = + - @ (et tabulation/CR) ; cibles tactiles d’au moins 24 px.
 - 1.0.2 — 2026-10-22 : fff-kit 1.1.2 : PBKDF2 à 600 000 itérations, protection anti-clickjacking.
 - 1.0.3 — 2026-10-22 : fff-kit 1.1.4 : cibles tactiles et taille minimale du texte dans l’interface commune.
+- 1.0.5 — 2026-10-23 : audit adverse : les identifiants GEDCOM comme « constructor »/« __proto__ » ne sont plus rejetés comme doublons ; la fusion d’un ancêtre avec son descendant (p. ex. grand-père et petit-fils de même nom) est refusée et n’est plus proposée comme doublon ; les jours impossibles (30 FEB, 31 APR, 29 FEB hors années bissextiles) sont traités comme date non reconnue ; nouvelle vérification des naissances/décès dans le futur ; les données illisibles sont conservées dans `fff.arbore.tree.bak` et un arbre IndexedDB illisible n’est plus supprimé à la première sauvegarde ; l’import JSON refuse les identifiants hostiles et les photos qui ne sont pas `data:image/` ; un GEDCOM à imbrication énorme ne fait plus déborder la pile ; traduction portugaise manquante de « lim5 » ; cibles tactiles de 44 px sur écran tactile ; constante de version du code et `sw.js` alignées sur la version de l’application.

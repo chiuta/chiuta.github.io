@@ -2,7 +2,7 @@
 
 [English](README.md) · **Română** · [Français](README.fr.md) · [Italiano](README.it.md) · [Español](README.es.md) · [Português](README.pt.md) · [Deutsch](README.de.md) · [Magyar](README.hu.md)
 
-**Versiune:** 1.0.4 · **Ultima actualizare:** 2026-10-23
+**Versiune:** 1.0.5 · **Ultima actualizare:** 2026-10-23
 
 Limbile interfeței: **Română, English, Français, Italiano, Español, Português (PT), Deutsch, Magyar**
 
@@ -68,3 +68,4 @@ MIT — vezi fișierul `LICENSE` din rădăcina depozitului.
 - 1.0.1 — 2026-10-22: criptarea cu parolă derivă acum cheia cu PBKDF2-SHA256 la 600.000 de iterații (OWASP); copiile existente la 310.000 se deschid în continuare și sunt actualizate la prima salvare după deblocare; memento (cu buton „Exportă acum”) când nu există o copie JSON/GEDCOM de 30 de zile; exportul CSV neutralizează celulele text care încep cu = + - @ (și tab/CR); ținte tactile de cel puțin 24 px.
 - 1.0.2 — 2026-10-22: fff-kit 1.1.2: PBKDF2 cu 600.000 de iterații, protecție anti-clickjacking.
 - 1.0.3 — 2026-10-22: fff-kit 1.1.4: ținte tactile și text minim în interfața comună.
+- 1.0.5 — 2026-10-23: audit adversarial: ID-uri GEDCOM precum «constructor»/«__proto__» nu mai sunt respinse ca duplicate; îmbinarea unui strămoș cu descendentul lui (ex. bunic și nepot cu același nume) este refuzată și nu mai este propusă ca duplicat; zile imposibile (30 FEB, 31 APR, 29 FEB în ani nebisecți) sunt tratate ca dată nerecunoscută; verificare nouă pentru nașteri/decese în viitor; date stocate ilizibile se păstrează în `fff.arbore.tree.bak`, iar un arbore din IndexedDB care nu poate fi citit nu mai este șters la prima salvare; importul JSON respinge ID-uri ostile și fotografii care nu sunt `data:image/`; GEDCOM cu imbricare uriașă nu mai depășește stiva; traducerea portugheză lipsă pentru «lim5»; ținte tactile de 44 px pe ecrane tactile; constanta de versiune din cod și `sw.js` aliniate la versiunea aplicației.

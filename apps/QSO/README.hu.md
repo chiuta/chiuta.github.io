@@ -2,7 +2,7 @@
 
 [English](README.md) · [Română](README.ro.md) · [Français](README.fr.md) · [Italiano](README.it.md) · [Español](README.es.md) · [Português](README.pt.md) · [Deutsch](README.de.md) · **Magyar**
 
-**Verzió:** 1.0.5 · **Utolsó frissítés:** 2026-10-23
+**Verzió:** 1.0.6 · **Utolsó frissítés:** 2026-10-23
 
 A felület nyelvei: **Română, English, Français, Italiano, Español, Português (PT), Deutsch, Magyar**
 
@@ -48,7 +48,7 @@ Helyben fut, és semmit nem küld a hálózaton (CSP `connect-src 'none'`-nal; 0
 
 ## Műszaki adatok
 
-Egyetlen `index.html` (beágyazott HTML + CSS + JS, könyvtárak és külső betűtípusok nélkül), ~165 KB. CSP: `default-src 'none'; script-src 'sha256-…'; style-src 'unsafe-inline'; img-src data: blob:; …; connect-src 'none'; worker-src blob:` — a `style-src 'unsafe-inline'` és a `blob:` a beágyazott stílusokhoz és a helyben generált fájlok (Blob) letöltéséhez szükséges. Nincsenek beágyazott eseménykezelők, nincs `eval`. A rekordok megváltoztathatatlanok, ami olcsóvá teszi a visszavonást/újrát (100 lépés). A táblázat lapozott (100 sor/oldal); a keresés normalizált szöveg gyorsítótárat használ; a duplikátumokat csak ugyanazon hívójelen belül hasonlítja össze. Tesztek: `node tests/test.mjs` (Playwright, letiltott hálózat; az axe-core a fejlesztői környezet egy helyi útvonaláról töltődik be): pozitív/negatív hívójelek, távolságok egy független megvalósítással összevetve (koszinusztétel, külön lokátordekódolás), ADIF/ADX/CSV/JSON/`.fff.json` körút ékezetekkel és bájthosszakkal, 3000 QSO a teljesítményhez, terepi mód billentyűzetről, 8 nyelv, axe 0 szabálysértés 360 px és 1280 px mellett mindkét témában.
+Egyetlen `index.html` (beágyazott HTML + CSS + JS, könyvtárak és külső betűtípusok nélkül), ~310 KB. CSP: `default-src 'none'; script-src 'sha256-…'; style-src 'unsafe-inline'; img-src data: blob:; …; connect-src 'none'; worker-src blob:` — a `style-src 'unsafe-inline'` és a `blob:` a beágyazott stílusokhoz és a helyben generált fájlok (Blob) letöltéséhez szükséges. Nincsenek beágyazott eseménykezelők, nincs `eval`. A rekordok megváltoztathatatlanok, ami olcsóvá teszi a visszavonást/újrát (100 lépés). A táblázat lapozott (100 sor/oldal); a keresés normalizált szöveg gyorsítótárat használ; a duplikátumokat csak ugyanazon hívójelen belül hasonlítja össze. Tesztek: `node tests/test.mjs` (Playwright, letiltott hálózat; az axe-core a fejlesztői környezet egy helyi útvonaláról töltődik be): pozitív/negatív hívójelek, távolságok egy független megvalósítással összevetve (koszinusztétel, külön lokátordekódolás), ADIF/ADX/CSV/JSON/`.fff.json` körút ékezetekkel és bájthosszakkal, 3000 QSO a teljesítményhez, terepi mód billentyűzetről, 8 nyelv, axe 0 szabálysértés 360 px és 1280 px mellett mindkét témában.
 
 ## Harmadik felek
 
@@ -69,3 +69,4 @@ MIT — lásd a tároló gyökerében lévő `LICENSE` fájlt.
 - **1.0.2 — 2026-10-22:** lábléc-üzenet és „Offline használatra kész” értesítés, miután a service worker gyorsítótárba tette az alkalmazást (első betöltés); a CSV-export semlegesíti a = + - @ (és tab/CR) karakterrel kezdődő cellákat a táblázatkezelő-képletek befecskendezése ellen, a CSV-import pedig ismét eltávolítja az aposztrófot; legalább 12 px-es szöveg; legalább 24 px-es érintési célok; a műszaki címke mind a 8 nyelvet felsorolja.
 - **1.0.3 — 2026-10-22:** fff-kit 1.1.2: PBKDF2 600 000 iterációval, clickjacking elleni védelem.
 - **1.0.4 — 2026-10-22:** fff-kit 1.1.4: érintési célok és minimális szövegméret a közös felületen.
+- **1.0.6 — 2026-10-23:** ellenséges auditálás: a karakterhosszú (ékezetes) ADIF-import már nem négyzetes (néhány ezer QSO-nál tízmásodpercek); a mentésből/localStorage-ból származó ellenséges `_id` már nem injektálhat HTML-t, és normalizálódik; az olvashatatlan mentett adatok az `fff.qso.data.bak` kulcsban maradnak (korábban az oldal bezárásakor felülíródtak), és a felhasználó értesül; régi QSO szerkesztése már nem cseréli le az állomás hívójelét/operátorát/lokátorát az aktuális profiléra; a JSON-import elfogad számértékeket; több százezer rekord betöltése már nem csordítja túl a vermet; az ADX érvénytelen mezőnevek vagy vezérlőkarakterek esetén is érvényes marad; az ADIF/ADX/Cabrillo fejléc és az `.fff.json` a valós verziót hordozza; 44 px-es érintési célok érintőképernyőn.

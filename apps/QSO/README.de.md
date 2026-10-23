@@ -2,7 +2,7 @@
 
 [English](README.md) · [Română](README.ro.md) · [Français](README.fr.md) · [Italiano](README.it.md) · [Español](README.es.md) · [Português](README.pt.md) · **Deutsch** · [Magyar](README.hu.md)
 
-**Version:** 1.0.5 · **Zuletzt aktualisiert:** 2026-10-23
+**Version:** 1.0.6 · **Zuletzt aktualisiert:** 2026-10-23
 
 Oberflächensprachen: **Română, English, Français, Italiano, Español, Português (PT), Deutsch, Magyar**
 
@@ -48,7 +48,7 @@ Läuft lokal und sendet nichts über das Netzwerk (CSP mit `connect-src 'none'`;
 
 ## Technik
 
-Eine einzige `index.html` (Inline-HTML + CSS + JS, ohne Bibliotheken, ohne externe Schriften), ~165 KB. CSP: `default-src 'none'; script-src 'sha256-…'; style-src 'unsafe-inline'; img-src data: blob:; …; connect-src 'none'; worker-src blob:` — `style-src 'unsafe-inline'` und `blob:` sind für die Inline-Stile und für das Herunterladen lokal erzeugter Dateien (Blob) nötig. Keine Inline-Handler, kein `eval`. Datensätze sind unveränderlich, was Rückgängig/Wiederholen billig macht (100 Schritte). Die Tabelle ist paginiert (100 Zeilen/Seite); die Suche nutzt einen Cache mit normalisiertem Text; Dupes werden nur innerhalb desselben Rufzeichens verglichen. Tests: `node tests/test.mjs` (Playwright, Netzwerk blockiert; axe-core wird aus einem lokalen Pfad der Entwicklungsumgebung gelesen): positive/negative Rufzeichen, Entfernungen gegen eine unabhängige Implementierung (Kosinussatz, separate Locator-Dekodierung), ADIF/ADX/CSV/JSON/`.fff.json`-Rundläufe mit Diakritika und Bytelängen, 3000 QSOs für die Performance, Feldmodus per Tastatur, 8 Sprachen, axe 0 Verstöße bei 360 px und 1280 px in beiden Designs.
+Eine einzige `index.html` (Inline-HTML + CSS + JS, ohne Bibliotheken, ohne externe Schriften), ~310 KB. CSP: `default-src 'none'; script-src 'sha256-…'; style-src 'unsafe-inline'; img-src data: blob:; …; connect-src 'none'; worker-src blob:` — `style-src 'unsafe-inline'` und `blob:` sind für die Inline-Stile und für das Herunterladen lokal erzeugter Dateien (Blob) nötig. Keine Inline-Handler, kein `eval`. Datensätze sind unveränderlich, was Rückgängig/Wiederholen billig macht (100 Schritte). Die Tabelle ist paginiert (100 Zeilen/Seite); die Suche nutzt einen Cache mit normalisiertem Text; Dupes werden nur innerhalb desselben Rufzeichens verglichen. Tests: `node tests/test.mjs` (Playwright, Netzwerk blockiert; axe-core wird aus einem lokalen Pfad der Entwicklungsumgebung gelesen): positive/negative Rufzeichen, Entfernungen gegen eine unabhängige Implementierung (Kosinussatz, separate Locator-Dekodierung), ADIF/ADX/CSV/JSON/`.fff.json`-Rundläufe mit Diakritika und Bytelängen, 3000 QSOs für die Performance, Feldmodus per Tastatur, 8 Sprachen, axe 0 Verstöße bei 360 px und 1280 px in beiden Designs.
 
 ## Drittanbieter
 
@@ -69,3 +69,4 @@ MIT — siehe Datei `LICENSE` im Stammverzeichnis des Repositorys.
 - **1.0.2 — 2026-10-22:** Meldung in der Fußzeile und Hinweis „Bereit für die Offline-Nutzung“, sobald der Service Worker die App zwischengespeichert hat (erster Aufruf); der CSV-Export entschärft Zellen, die mit = + - @ (und Tab/CR) beginnen, gegen Formelinjektion, und der CSV-Import entfernt das Apostroph wieder; Text von mindestens 12 px; Touch-Ziele von mindestens 24 px; das technische Label listet alle 8 Sprachen.
 - **1.0.3 — 2026-10-22:** fff-kit 1.1.2: PBKDF2 mit 600.000 Iterationen, Schutz vor Clickjacking.
 - **1.0.4 — 2026-10-22:** fff-kit 1.1.4: Touch-Ziele und Mindestschriftgröße in der gemeinsamen Oberfläche.
+- **1.0.6 — 2026-10-23:** Adversarial-Audit: ADIF-Import mit Zeichenlängen (Diakritika) ist nicht mehr quadratisch (Dutzende Sekunden bei einigen tausend QSOs); eine feindliche `_id` aus einer Sicherung/localStorage kann kein HTML mehr einschleusen und wird normalisiert; unlesbare gespeicherte Daten bleiben in `fff.qso.data.bak` erhalten (früher wurden sie beim Schließen der Seite überschrieben) und der Nutzer wird informiert; das Bearbeiten eines alten QSO ersetzt Rufzeichen/Operator/Locator der Station nicht mehr durch die des aktuellen Profils; der JSON-Import akzeptiert numerische Werte; das Laden von Hunderttausenden Datensätzen lässt den Stack nicht mehr überlaufen; ADX bleibt auch bei ungültigen Feldnamen oder Steuerzeichen gültig; Kopfzeile von ADIF/ADX/Cabrillo und `.fff.json` tragen die echte App-Version; 44-px-Touch-Ziele auf Touchscreens.

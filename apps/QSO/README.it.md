@@ -2,7 +2,7 @@
 
 [English](README.md) · [Română](README.ro.md) · [Français](README.fr.md) · **Italiano** · [Español](README.es.md) · [Português](README.pt.md) · [Deutsch](README.de.md) · [Magyar](README.hu.md)
 
-**Versione:** 1.0.5 · **Ultimo aggiornamento:** 2026-10-23
+**Versione:** 1.0.6 · **Ultimo aggiornamento:** 2026-10-23
 
 Lingue dell'interfaccia: **Română, English, Français, Italiano, Español, Português (PT), Deutsch, Magyar**
 
@@ -48,7 +48,7 @@ Funziona in locale e non invia nulla sulla rete (CSP con `connect-src 'none'`; 0
 
 ## Aspetti tecnici
 
-Un unico `index.html` (HTML + CSS + JS inline, senza librerie, senza font esterni), ~165 KB. CSP: `default-src 'none'; script-src 'sha256-…'; style-src 'unsafe-inline'; img-src data: blob:; …; connect-src 'none'; worker-src blob:` — `style-src 'unsafe-inline'` e `blob:` sono necessari per gli stili inline e per lo scaricamento dei file generati in locale (Blob). Nessun gestore inline, nessun `eval`. I record sono immutabili, il che rende economici annulla/ripeti (100 passi). La tabella è paginata (100 righe/pagina); la ricerca usa una cache di testo normalizzato; i duplicati si confrontano solo all'interno dello stesso nominativo. Test: `node tests/test.mjs` (Playwright, rete bloccata; axe-core viene letto da un percorso locale dell'ambiente di sviluppo): nominativi positivi/negativi, distanze rispetto a un'implementazione indipendente (legge dei coseni, decodifica separata dei locatori), round trip ADIF/ADX/CSV/JSON/`.fff.json` con diacritici e lunghezze in byte, 3000 QSO per le prestazioni, modalità campo da tastiera, 8 lingue, axe 0 violazioni a 360 px e 1280 px in entrambi i temi.
+Un unico `index.html` (HTML + CSS + JS inline, senza librerie, senza font esterni), ~310 KB. CSP: `default-src 'none'; script-src 'sha256-…'; style-src 'unsafe-inline'; img-src data: blob:; …; connect-src 'none'; worker-src blob:` — `style-src 'unsafe-inline'` e `blob:` sono necessari per gli stili inline e per lo scaricamento dei file generati in locale (Blob). Nessun gestore inline, nessun `eval`. I record sono immutabili, il che rende economici annulla/ripeti (100 passi). La tabella è paginata (100 righe/pagina); la ricerca usa una cache di testo normalizzato; i duplicati si confrontano solo all'interno dello stesso nominativo. Test: `node tests/test.mjs` (Playwright, rete bloccata; axe-core viene letto da un percorso locale dell'ambiente di sviluppo): nominativi positivi/negativi, distanze rispetto a un'implementazione indipendente (legge dei coseni, decodifica separata dei locatori), round trip ADIF/ADX/CSV/JSON/`.fff.json` con diacritici e lunghezze in byte, 3000 QSO per le prestazioni, modalità campo da tastiera, 8 lingue, axe 0 violazioni a 360 px e 1280 px in entrambi i temi.
 
 ## Terze parti
 
@@ -69,3 +69,4 @@ MIT — vedi il file `LICENSE` nella radice del repository.
 - **1.0.2 — 2026-10-22:** messaggio a piè di pagina e avviso «Pronto per l’uso offline» quando il service worker ha messo l’app in cache (primo caricamento); l’esportazione CSV neutralizza le celle che iniziano con = + - @ (e tab/CR) contro l’iniezione di formule, e l’importazione CSV rimuove di nuovo l’apostrofo; testo di almeno 12 px; aree tattili di almeno 24 px; l’etichetta tecnica elenca le 8 lingue.
 - **1.0.3 — 2026-10-22:** fff-kit 1.1.2: PBKDF2 con 600.000 iterazioni, protezione anti-clickjacking.
 - **1.0.4 — 2026-10-22:** fff-kit 1.1.4: aree tattili e dimensione minima del testo nell’interfaccia comune.
+- **1.0.6 — 2026-10-23:** audit avversario: l’importazione ADIF con lunghezze in caratteri (diacritici) non è più quadratica (decine di secondi per qualche migliaio di QSO); un `_id` ostile da un backup/localStorage non può più iniettare HTML ed è normalizzato; i dati salvati illeggibili sono conservati in `fff.qso.data.bak` (prima venivano sovrascritti alla chiusura della pagina) e l’utente viene avvisato; la modifica di un vecchio QSO non sostituisce più nominativo/operatore/locatore della stazione con quelli del profilo corrente; l’importazione JSON accetta valori numerici; il caricamento di centinaia di migliaia di record non manda più in overflow lo stack; l’ADX resta valido anche con nomi di campo non validi o caratteri di controllo; l’intestazione ADIF/ADX/Cabrillo e il `.fff.json` riportano la versione reale; bersagli touch da 44 px sugli schermi tattili.

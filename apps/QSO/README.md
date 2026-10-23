@@ -2,7 +2,7 @@
 
 **English** · [Română](README.ro.md) · [Français](README.fr.md) · [Italiano](README.it.md) · [Español](README.es.md) · [Português](README.pt.md) · [Deutsch](README.de.md) · [Magyar](README.hu.md)
 
-**Version:** 1.0.5 · **Last updated:** 2026-10-23
+**Version:** 1.0.6 · **Last updated:** 2026-10-23
 
 Interface languages: **Română, English, Français, Italiano, Español, Português (PT), Deutsch, Magyar**
 
@@ -48,7 +48,7 @@ It runs locally and sends nothing over the network (CSP with `connect-src 'none'
 
 ## Technical
 
-A single `index.html` (inline HTML + CSS + JS, no libraries, no external fonts), ~165 KB. CSP: `default-src 'none'; script-src 'sha256-…'; style-src 'unsafe-inline'; img-src data: blob:; …; connect-src 'none'; worker-src blob:` — `style-src 'unsafe-inline'` and `blob:` are needed for the inline styles and for downloading locally generated files (Blob). No inline handlers, no `eval`. Records are immutable, which makes undo/redo cheap (100 steps). The table is paginated (100 rows/page); search uses a normalized-text cache; duplicates are compared only within the same callsign. Tests: `node tests/test.mjs` (Playwright, network blocked; axe-core is read from a local path of the development environment): positive/negative callsigns, distances against an independent implementation (law of cosines, separate locator decoding), ADIF/ADX/CSV/JSON/`.fff.json` round trips with diacritics and byte lengths, 3000 QSOs for performance, field mode from the keyboard, 8 languages, axe 0 violations at 360 px and 1280 px in both themes.
+A single `index.html` (inline HTML + CSS + JS, no libraries, no external fonts), ~310 KB. CSP: `default-src 'none'; script-src 'sha256-…'; style-src 'unsafe-inline'; img-src data: blob:; …; connect-src 'none'; worker-src blob:` — `style-src 'unsafe-inline'` and `blob:` are needed for the inline styles and for downloading locally generated files (Blob). No inline handlers, no `eval`. Records are immutable, which makes undo/redo cheap (100 steps). The table is paginated (100 rows/page); search uses a normalized-text cache; duplicates are compared only within the same callsign. Tests: `node tests/test.mjs` (Playwright, network blocked; axe-core is read from a local path of the development environment): positive/negative callsigns, distances against an independent implementation (law of cosines, separate locator decoding), ADIF/ADX/CSV/JSON/`.fff.json` round trips with diacritics and byte lengths, 3000 QSOs for performance, field mode from the keyboard, 8 languages, axe 0 violations at 360 px and 1280 px in both themes.
 
 ## Third parties
 
@@ -69,3 +69,4 @@ MIT — see the `LICENSE` file at the root of the repository.
 - **1.0.2 — 2026-10-22:** footer message and notice “Ready for offline use” once the service worker has precached the app (first load); CSV export neutralises cells starting with = + - @ (and tab/CR) against spreadsheet formula injection, and CSV import removes that apostrophe again; text of at least 12 px; touch targets of at least 24 px; the technical label lists all 8 languages.
 - **1.0.3 — 2026-10-22:** fff-kit 1.1.2: PBKDF2 with 600,000 iterations, anti-clickjacking protection.
 - **1.0.4 — 2026-10-22:** fff-kit 1.1.4: touch targets and minimum text size in the shared interface.
+- **1.0.6 — 2026-10-23:** adversarial audit: ADIF import with character-based lengths (diacritics) is no longer quadratic (tens of seconds for a few thousand QSOs); a hostile `_id` from a backup/localStorage can no longer inject HTML and is normalised; unreadable stored data is kept in `fff.qso.data.bak` (it used to be overwritten when the page closed) and the user is told; editing an old QSO no longer replaces the station callsign/operator/locator with those of the current profile; JSON import accepts numeric values; loading hundreds of thousands of records no longer overflows the stack; ADX stays valid even with invalid field names or control characters; the ADIF/ADX/Cabrillo header and `.fff.json` carry the real app version; 44 px touch targets on touch screens.

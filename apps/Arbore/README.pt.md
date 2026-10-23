@@ -2,7 +2,7 @@
 
 [English](README.md) · [Română](README.ro.md) · [Français](README.fr.md) · [Italiano](README.it.md) · [Español](README.es.md) · **Português** · [Deutsch](README.de.md) · [Magyar](README.hu.md)
 
-**Versão:** 1.0.4 · **Última atualização:** 2026-10-23
+**Versão:** 1.0.5 · **Última atualização:** 2026-10-23
 
 Idiomas da interface: **Română, English, Français, Italiano, Español, Português (PT), Deutsch, Magyar**
 
@@ -68,3 +68,4 @@ MIT — veja o ficheiro `LICENSE` na raiz do repositório.
 - 1.0.1 — 2026-10-22: a cifragem com palavra-passe deriva agora a chave com PBKDF2-SHA256 a 600.000 iterações (OWASP); as cópias existentes a 310.000 continuam a abrir-se e são atualizadas na gravação seguinte após o desbloqueio; lembrete (com botão «Exportar agora») quando há 30 dias sem cópia JSON/GEDCOM; a exportação CSV neutraliza as células de texto que começam por = + - @ (e tabulação/CR); áreas táteis de pelo menos 24 px.
 - 1.0.2 — 2026-10-22: fff-kit 1.1.2: PBKDF2 com 600.000 iterações, proteção anti-clickjacking.
 - 1.0.3 — 2026-10-22: fff-kit 1.1.4: áreas de toque e tamanho mínimo do texto na interface comum.
+- 1.0.5 — 2026-10-23: auditoria adversária: os ID GEDCOM como «constructor»/«__proto__» deixam de ser rejeitados como duplicados; a união de um antepassado com o seu descendente (p. ex. avô e neto com o mesmo nome) é recusada e deixa de ser sugerida como duplicado; os dias impossíveis (30 FEB, 31 APR, 29 FEB em anos não bissextos) são tratados como data não reconhecida; nova verificação de nascimentos/óbitos no futuro; os dados ilegíveis ficam guardados em `fff.arbore.tree.bak` e uma árvore do IndexedDB ilegível deixa de ser apagada na primeira gravação; a importação JSON recusa ID hostis e fotografias que não sejam `data:image/`; um GEDCOM com aninhamento enorme deixa de estourar a pilha; tradução portuguesa em falta de «lim5»; alvos táteis de 44 px em ecrãs táteis; constante de versão do código e `sw.js` alinhadas com a versão da aplicação.
