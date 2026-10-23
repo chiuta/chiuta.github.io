@@ -5,8 +5,8 @@ const require=createRequire("/opt/node-tools/package.json");
 const {chromium}=require("playwright");
 const __dir=path.dirname(fileURLToPath(import.meta.url));
 const APP='file://'+path.resolve(__dir,'..','index.html');
-const AXE='/tmp/claude-0/-home-claude/78529928-3825-51c3-b9bd-0e81655ab6bc/scratchpad/sweep/node_modules/axe-core/axe.min.js';
-const AXE_SRC=fs.readFileSync(AXE,'utf8');
+const AXE=process.env.AXE_PATH||'/tmp/claude-0/-home-claude/78529928-3825-51c3-b9bd-0e81655ab6bc/scratchpad/sweep/node_modules/axe-core/axe.min.js';
+const AXE_SRC=fs.existsSync(AXE)?fs.readFileSync(AXE,'utf8'):null; if(!AXE_SRC) console.log('(axe-core lipsește la '+AXE+' — setează AXE_PATH; verificările axe sunt sărite)');
 let pass=0, fail=0; const failures=[];
 const ok=(c,m)=>{ if(c)pass++; else {fail++; failures.push(m); console.log('  FAIL:',m);} };
 const eq=(a,b,m)=>{ const A=JSON.stringify(a),B=JSON.stringify(b); ok(A===B,m+' (obtained '+A+', expected '+B+')'); };
@@ -23,6 +23,7 @@ async function mk(url,opts){
   await p.goto(url); return p;
 }
 async function axe(p,label){
+  if(!AXE_SRC) return;
   await p.waitForTimeout(3600);
   if(!(await p.evaluate(()=>!!window.axe))){ const cdp=await p.context().newCDPSession(p); await cdp.send('Runtime.evaluate',{expression:AXE_SRC}); await cdp.detach(); }
   const r=await p.evaluate(async()=>{const x=await axe.run(document,{resultTypes:['violations']}); return x.violations.map(v=>v.id+': '+v.nodes.slice(0,2).map(n=>n.target.join(' ')).join(' | '));});
