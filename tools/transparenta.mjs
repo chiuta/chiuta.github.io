@@ -24,6 +24,7 @@ const ri = argv.indexOf('--root');
 const ROOT = path.resolve(ri >= 0 ? argv[ri + 1] : path.join(HUB, '..'));
 const A1 = process.env.AUDIT1 || '/tmp/audit/audit.txt', A2 = process.env.AUDIT2 || '/tmp/audit2/summary.md', A4 = process.env.AUDIT4 || '/tmp/audit4';
 const DATA = path.join(HUB, 'data', 'transparenta.json'), OUT = path.join(HUB, 'transparenta.html');
+const EXTERNAL = new Set(['ARMATURA']);   // la fel ca în tools/sync-catalog.mjs
 const read = (p) => fs.readFileSync(p, 'utf8');
 const MONTHS = {ianuarie: 1, februarie: 2, martie: 3, aprilie: 4, mai: 5, iunie: 6, iulie: 7, august: 8, septembrie: 9, octombrie: 10, noiembrie: 11, decembrie: 12};
 const num = (s) => parseFloat(String(s).replace(',', '.'));
@@ -86,6 +87,8 @@ function collect() {
     const ver = (c.match(/data-ver="([^"]*)"/) || [])[1] || '';
     const off = (c.match(/data-off="([^"]*)"/) || [])[1] || 'no';
     const langs = ((c.match(/data-langs="([^"]*)"/) || [])[1] || '').split(',').filter(Boolean);
+    // Intrări externe (ex. ARMATURA, motor Rust): nu fac parte din audituri și nu intră în cifrele agregate; rând marcat `ext`.
+    if (EXTERNAL.has(key)) { apps.push({key, ver, off, langs: langs.length, hosts: 0, score: null, hm: null, l: null, ext: true}); continue; }
     let app = null, swFile = false;
     for (const d of [path.join(ROOT, key), path.join(ROOT, key, 'docs'), path.join(HUB, 'apps', key)]) {
       if (!fs.existsSync(path.join(d, 'index.html'))) continue;
@@ -192,7 +195,7 @@ function renderSrc(D, UI, CODES, CODE_KIND) {
     D.apps.forEach(function (a) {
       h.push('<tr><th scope="row">' + E(a.key) + '</th><td>' + E(a.ver) + '</td><td>' + E(t('off_' + a.off)) + '</td><td class="n">' + a.langs + '/8</td><td class="n">' + a.hosts + '</td><td class="n">' + (a.score == null ? '—' : N(a.score.toFixed(1))) + '</td><td class="n">' + (a.hm == null ? '—' : a.hm) + '</td><td class="n">' + (a.l == null ? '—' : a.l) + '</td></tr>');
     });
-    h.push('</tbody></table></div><p class="note">' + E(t('tbl_note')) + '</p></section>');
+    h.push('</tbody></table></div><p class="note">' + E(t('tbl_note')) + '</p>' + (D.apps.some(function (a) { return a.ext; }) ? '<p class="note">' + E(t('tbl_ext')) + '</p>' : '') + '</section>');
     h.push('<section aria-labelledby="s-repro"><h2 id="s-repro">' + E(t('h_repro')) + '</h2><pre>' + E(t('repro')) + '</pre></section>');
     h.push('<p class="foot">' + F('foot', {date: D.snapshot}) + '</p>');
     return h.join('\n');

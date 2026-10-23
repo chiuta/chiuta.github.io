@@ -35,6 +35,10 @@ const ri = argv.indexOf('--root');
 const ROOT = path.resolve(ri >= 0 ? argv[ri + 1] : path.join(HUB, '..'));
 
 // Aplicații cu „offline” calificat în text („nu e complet offline”, „snapshot învechit offline”): nu sunt oprite de regulă.
+// Intrări EXTERNE: proiecte care nu sunt aplicații HTML dintr-un singur fișier (fără app.json / index.html de verificat aici).
+// Cardul lor se întreține de mână (versiune, dată, linkuri); sunt numărate în contor, dar nu sunt verificate ca aplicațiile fff.
+// ARMATURA: motor Rust (CLI + studio + WASM), site propriu https://armatura.chiuta.ro/, cod în github.com/chiuta/armatura.
+const EXTERNAL = new Set(['ARMATURA']);
 const LANG_ORDER = ['en', 'ro', 'fr', 'it', 'es', 'pt', 'de', 'hu'];
 const OFFLINE_QUALIFIED = new Set(['TerRa', 'VietAR', 'Pendulul']);   // Pendulul: fișierul salvat se citește offline; aplicația nu înregistrează service worker
 const OFFLINE_RE = /offline|fără conexiune|hors ligne|hors-ligne|senza connessione|sin conexión|sem ligação|sem conexão|ohne verbindung|internet nélkül/i;
@@ -100,6 +104,7 @@ for (let i = 1; i < parts.length; i++) {
   keys.push(key);
   const sec = curSec;
   curSec = lastSec(parts[i], curSec);   // secțiunea următoare începe după coada acestui card
+  if (EXTERNAL.has(key)) { if (!/<span class="card-ver"/.test(parts[i])) warn(`${key}: cardul nu are <span class="card-ver">`); continue; }
   const t = truth(key);
   if (t.missing) { warn(`${key}: nu există ${ROOT}/${key}/index.html și nici apps/${key}/index.html`); continue; }
   if (!t.version) { warn(`${key}: fără versiune în index.html`); continue; }

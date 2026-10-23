@@ -267,6 +267,17 @@
    "l": 4
   },
   {
+   "key": "ARMATURA",
+   "ver": "0.1.0-alpha",
+   "off": "no",
+   "langs": 1,
+   "hosts": 0,
+   "score": null,
+   "hm": null,
+   "l": null,
+   "ext": true
+  },
+  {
    "key": "ASMR",
    "ver": "1.2.3",
    "off": "full",

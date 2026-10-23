@@ -5,8 +5,8 @@
 
 ## Pe scurt
 
-- Aplicații în catalog: **110** (98 în depozite proprii, 12 în `apps/` din hub).
-- Cu **origine proprie** (CNAME `<slug>.chiuta.ro`): **97**.
+- Aplicații în catalog: **111** (99 în depozite proprii, 12 în `apps/` din hub).
+- Cu **origine proprie** (CNAME `<slug>.chiuta.ro`): **98**.
 - Pe **origine partajată** `chiuta.ro`: **13** (12 aplicații din hub + 1 depozit(e) fără CNAME: Domino-fara-frontiere).
 - De mutat pe origine proprie (sensibile, din hub): **5** cu prioritate 1 (QSO, Poteca, Arbore, Gospodar, Orar), **2** cu prioritate 2 (Lexicon, Bolta).
 
@@ -191,6 +191,7 @@ node tools/cname-inventory.mjs --dns     # informativ: interoghează DNS-ul publ
 | Origami | depozit | `origami.chiuta.ro` | proprie: https://origami.chiuta.ro/ | — |  |
 | Trusa-fara-frontiere | depozit | `trusa-fara-frontiere.chiuta.ro` | proprie: https://trusa-fara-frontiere.chiuta.ro/ | — |  |
 | VNTV | depozit | `vntv.chiuta.ro` | proprie: https://vntv.chiuta.ro/ | — |  |
+| ARMATURA | depozit | `armatura.chiuta.ro` | proprie: https://armatura.chiuta.ro/ | — | proiect Rust (CLI + studio + WASM), site propriu; depozit chiuta/armatura |
 | ACORDAJ | depozit | `acordaj.chiuta.ro` | proprie: https://acordaj.chiuta.ro/ | — |  |
 | Afrodisiace-fara-frontiere | depozit | `afrodisiace-fara-frontiere.chiuta.ro` | proprie: https://afrodisiace-fara-frontiere.chiuta.ro/ | — |  |
 | Aurora | depozit | `aurora.chiuta.ro` | proprie: https://aurora.chiuta.ro/ | — |  |
