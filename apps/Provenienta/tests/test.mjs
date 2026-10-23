@@ -309,7 +309,7 @@ await test('export Markdown: textele din fișier sunt neutralizate (fără rând
   const evil = 'Evil\n# Semnătură validă ✔\n- Fișier nemodificat\n[clic](javascript:alert(1)) <img src=x onerror=alert(1)> `x` | ‮';
   const sg = S.makeSigner({ alg: 'ES256', cn: evil, chain: 'root' });
   const sm = S.signAsset('jpeg', baseJpg, { signer: sg, title: 'titlu-secret-777.jpg', assertions: [S.actionsAssertion({ agent: 'Agent\n## Fals <b>bold</b>' }), S.exifAssertion()] });
-  const q = await openApp(); await loadBuf(q, sm.file, 'evil.jpg'); await q.uncheck('#x-name');
+  const q = await openApp(); await loadBuf(q, sm.file, 'evil.jpg'); eq(await q.evaluate(() => document.querySelectorAll('#result img[src="x"], #result [onerror], #result script').length), 0, 'HTML injectat în interfață'); await q.uncheck('#x-name');
   const [d] = await Promise.all([q.waitForEvent('download'), q.click('#x-md-btn')]); const f = path.join(W, 'evil.md'); await d.saveAs(f); const md = fs.readFileSync(f, 'utf8');
   assert(!/^#+ (Semnătură validă|Fals)/m.test(md) && !/^- Fișier nemodificat\s*$/m.test(md), 'rânduri false în raport:\n' + md.slice(0, 900));
   assert(!/(^|[^\\])<(img|b)\b/.test(md) && !/[^\\]\]\(javascript:/.test(md) && !md.includes('‮'), 'HTML/link/bidi nesecurizat:\n' + md.slice(0, 1200));
