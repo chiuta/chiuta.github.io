@@ -12,8 +12,8 @@
     "localStorage"
   ],
   "storageKeys": [],
-  "sizeBytes": 745025,
-  "sha256": "99dc0484b911c0f57c2a2f967a8b5af0d79e6beb93d095dec5b390c61695061f",
+  "sizeBytes": 745291,
+  "sha256": "34a556956d8d9a43c38b96578f13c0375183fb17f2491c17baca06d12301d9eb",
   "csp": {
     "present": true,
     "directives": {
@@ -69,5 +69,11 @@
       "bundle"
     ]
   },
-  "selfSerializing": false
+  "selfSerializing": false,
+  "exceptions": [
+    {
+      "rule": "i18n-parity",
+      "reason": "Fals pozitiv: CON_ROWS nu este un tabel de traduceri, ci date astronomice (88 de constelații × 8 câmpuri separate prin „~”, rânduri separate prin \\n), verificate la construire; toate rândurile au 8 coloane."
+    }
+  ]
 }

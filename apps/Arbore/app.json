@@ -15,8 +15,8 @@
   "storageKeys": [
     "nodup"
   ],
-  "sizeBytes": 503240,
-  "sha256": "c52aadbaa9776018075443fd5090b3bc6ee3f272064ad93dd3863382b9456267",
+  "sizeBytes": 503524,
+  "sha256": "3e758fe1932017e35cfa063116181bba7131bea16dae169b3daf86457f51bb8c",
   "csp": {
     "present": true,
     "directives": {
@@ -72,5 +72,11 @@
       "bundle"
     ]
   },
-  "selfSerializing": false
+  "selfSerializing": false,
+  "exceptions": [
+    {
+      "rule": "unprefixed-storage",
+      "reason": "Fals pozitiv: cheia „nodup” este numele relativ transmis helperelor lsGet/lsSet/lsDel, care adaugă prefixul „fff.arbore.” (cheia stocată este fff.arbore.nodup). Redenumirea ar rupe datele existente ale utilizatorilor."
+    }
+  ]
 }
