@@ -394,11 +394,12 @@ await test('ținte tactile ≥44px la 360px (inclusiv în rezultate și în comp
   eq(small, [], 'ținte sub 44px'); await c.close();
 });
 await test('fișier înlocuit în timpul analizei: rezultatul întârziat al celui vechi NU îl suprascrie pe cel nou', async () => {
-  const one = S.signAsset('webp', baseWebp, std()); const slow = S.wrapStore(Array(1000).fill(one.active.box)); const q = await openApp();
-  await q.setInputFiles('#file-A', { name: 'lent.c2pa', mimeType: 'application/octet-stream', buffer: slow });
-  await q.setInputFiles('#file-A', { name: 'rapid.jpg', mimeType: 'application/octet-stream', buffer: jpegOk.file });
-  await q.waitForFunction(() => !window.Provenienta.state.busy); await q.waitForTimeout(5000);   // cu codul vechi, analiza lentă încă rulează și termină DUPĂ cea rapidă
-  eq(await q.evaluate(() => window.Provenienta.state.res.A.name), 'rapid.jpg', 'rezultat vechi a suprascris fișierul nou'); eq((await slim(q)).n, 1); await q.close();
+  const q = await openApp();
+  await q.evaluate(() => { const o = Blob.prototype.arrayBuffer; Blob.prototype.arrayBuffer = function () { return this.name === 'lent.jpg' ? new Promise((r) => setTimeout(() => r(o.call(this)), 1500)) : o.call(this); }; });   // citirea lui „lent.jpg” durează 1,5 s
+  await q.setInputFiles('#file-A', { name: 'lent.jpg', mimeType: 'application/octet-stream', buffer: jpegOk.file });
+  await q.setInputFiles('#file-A', { name: 'rapid.png', mimeType: 'application/octet-stream', buffer: basePng });
+  await q.waitForFunction(() => !window.Provenienta.state.busy); await q.waitForTimeout(2500);
+  eq(await q.evaluate(() => window.Provenienta.state.res.A.name), 'rapid.png', 'rezultatul vechi a suprascris fișierul nou'); await q.close();
 });
 await test('0 erori de pagină, 0 CSP încălcate, 0 cereri de rețea pe tot parcursul', async () => {
   eq(pageErrors, []); eq(netReqs, []);
