@@ -39,6 +39,12 @@ const LANG_ORDER = ['en', 'ro', 'fr', 'it', 'es', 'pt', 'de', 'hu'];
 const OFFLINE_QUALIFIED = new Set(['TerRa', 'VietAR', 'Pendulul']);   // Pendulul: fișierul salvat se citește offline; aplicația nu înregistrează service worker
 const OFFLINE_RE = /offline|fără conexiune|hors ligne|hors-ligne|senza connessione|sin conexión|sem ligação|sem conexão|ohne verbindung|internet nélkül/i;
 
+// Proiecte fără aplicație găzduită cu <meta application-version> (ex. motorul Rust ARMATURA: pagina lui este doar o prezentare, iar studioul rulează local).
+// Valorile de mai jos sunt introduse manual: actualizează-le la fiecare lansare (versiunea din Cargo.toml, data ultimului commit relevant).
+const EXTERNAL = {
+  armatura: {version: '0.1.0', updated: '2026-10-24', langs: LANG_ORDER.slice(), off: 'no'},
+};
+
 const read = (p) => fs.readFileSync(p, 'utf8');
 const esc = (s) => s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 const problems = [], changes = [];
@@ -68,6 +74,8 @@ function locate(key) {
   return null;
 }
 function truth(key) {
+  const ext = EXTERNAL[key];
+  if (ext) return {key, dir: path.join(ROOT, key), pub: path.join(ROOT, key), hub: false, version: ext.version, updated: ext.updated, egress: [], langs: ext.langs, off: ext.off, swFile: false, swDecl: false, readme: true, hasApp: false};
   const loc = locate(key);
   if (!loc) return {key, missing: true};
   const h = read(path.join(loc.pub, 'index.html'));

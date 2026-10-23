@@ -134,9 +134,9 @@
   "smallNew": 41
  },
  "live": {
-  "apps": 110,
+  "apps": 111,
   "sw": 109,
-  "noSw": 1,
+  "noSw": 2,
   "fakeSw": 0,
   "emptyI18n": 0,
   "badHost": 21,
@@ -265,6 +265,16 @@
    "score": 8.8,
    "hm": 0,
    "l": 4
+  },
+  {
+   "key": "armatura",
+   "ver": "0.1.0",
+   "off": "no",
+   "langs": 8,
+   "hosts": 0,
+   "score": null,
+   "hm": null,
+   "l": null
   },
   {
    "key": "ASMR",
