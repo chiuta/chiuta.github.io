@@ -53,7 +53,7 @@ Synthetic set of 300,000 entries (32.8 MB TSV, 100,000 with forms):
 - reload with the 300,000 set in IndexedDB: 150–250 ms; heap about 141 MB.
 
 ## Technical
-A single `index.html`, inline script with a hash in the CSP (`script-src 'sha256-…'`, `default-src 'none'`, `connect-src 'none'`, no inline handlers, no `eval`; `worker-src blob:` is inherited from the template). In-memory index (sorted normalised keys, binary search), IndexedDB for entries and full text. HTML content goes through a custom parser and is built with `createElement`/`textContent`. Optionally detects `window.FFF`; it works fully without it. Tests: `node tests/test.mjs` (Playwright; 292 checks: StarDict/dictd parsing with files generated in the test, queries, 28 XSS payloads, persistence, 300,000 entries, axe 0, overflow at 360×740 and 1280×800). The `LEXICON_SKIP_PERF=1` variable skips the large test.
+A single `index.html`, inline script with a hash in the CSP (`script-src 'sha256-…'`, `default-src 'none'`, `connect-src 'none'`, no inline handlers, no `eval`; `worker-src blob:` is inherited from the template). In-memory index (sorted normalised keys, binary search), IndexedDB for entries and full text. HTML content goes through a custom parser and is built with `createElement`/`textContent`. Optionally detects `window.FFF`; it works fully without it. Tests: `node tests/test.mjs` (Playwright; 324 checks: StarDict/dictd parsing with files generated in the test, queries, 28 XSS payloads, persistence, 300,000 entries, axe 0, overflow at 360×740 and 1280×800). The `LEXICON_SKIP_PERF=1` variable skips the large test.
 
 ## Third parties
 There is no third-party code in the app (axe-core is used only in tests).

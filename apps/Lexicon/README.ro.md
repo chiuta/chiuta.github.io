@@ -53,7 +53,7 @@ Set sintetic de 300.000 de intrări (32,8 MB TSV, 100.000 cu forme):
 - reîncărcare cu setul de 300.000 în IndexedDB: 150–250 ms; heap aproximativ 141 MB.
 
 ## Tehnic
-Un singur `index.html`, script inline cu hash în CSP (`script-src 'sha256-…'`, `default-src 'none'`, `connect-src 'none'`, fără handlere inline, fără `eval`; `worker-src blob:` este moștenit din șablon). Index în memorie (chei normalizate sortate, căutare binară), IndexedDB pentru intrări și text integral. Conținutul HTML trece printr-un parser propriu și se construiește cu `createElement`/`textContent`. Detectează opțional `window.FFF`; funcționează complet și fără. Teste: `node tests/test.mjs` (Playwright; 292 de verificări: parsare StarDict/dictd cu fișiere generate în test, interogări, 28 de payload-uri XSS, persistență, 300.000 de intrări, axe 0, depășire 360×740 și 1280×800). Variabila `LEXICON_SKIP_PERF=1` omite testul mare.
+Un singur `index.html`, script inline cu hash în CSP (`script-src 'sha256-…'`, `default-src 'none'`, `connect-src 'none'`, fără handlere inline, fără `eval`; `worker-src blob:` este moștenit din șablon). Index în memorie (chei normalizate sortate, căutare binară), IndexedDB pentru intrări și text integral. Conținutul HTML trece printr-un parser propriu și se construiește cu `createElement`/`textContent`. Detectează opțional `window.FFF`; funcționează complet și fără. Teste: `node tests/test.mjs` (Playwright; 324 de verificări: parsare StarDict/dictd cu fișiere generate în test, interogări, 28 de payload-uri XSS, persistență, 300.000 de intrări, axe 0, depășire 360×740 și 1280×800). Variabila `LEXICON_SKIP_PERF=1` omite testul mare.
 
 ## Terți
 Nu există cod terț în aplicație (axe-core este folosit doar în teste).
