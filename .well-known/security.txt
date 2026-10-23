@@ -1,0 +1,4 @@
+Contact: mailto:alexio@trom.tf
+Expires: 2027-10-23T00:00:00.000Z
+Preferred-Languages: ro, en
+Canonical: https://chiuta.ro/.well-known/security.txt

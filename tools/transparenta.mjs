@@ -133,7 +133,9 @@ function renderSrc(D, UI, CODES, CODE_KIND) {
     h.push(card(t('g_xss'), E(t('g_xss_v'))));
     h.push(card(t('g_proto'), E(t('g_xss_v'))));
     h.push(card(t('g_off'), F('g_off_v', {n: lv.sw, m: lv.apps})));
-    h.push(card(t('g_open'), E(t('g_open_v'))));
+    var codes = a2.codes.map(function (c) { return c.c === 'targets' ? {c: c.c, n: a4.touchNew} : c.c === 'small' ? {c: c.c, n: a4.smallNew} : c; });
+    var openTotal = codes.reduce(function (s, c) { return s + c.n; }, 0);
+    h.push(card(t('g_open'), F('g_open_v', {n: openTotal})));
     h.push('</ul></section>');
     // ce s-a verificat
     h.push('<section aria-labelledby="s-checked"><h2 id="s-checked">' + E(t('h_checked')) + '</h2><ul class="plain">');
@@ -163,7 +165,6 @@ function renderSrc(D, UI, CODES, CODE_KIND) {
     fx('f_nosw', F('x_before_n', {n: a1.apps - a1.offline, m: a1.apps}), F('x_now_n', {n: lv.noSw, m: lv.apps}), 'how_label');
     fx('f_fakesw', ap(a2.fakeSw), ap(lv.fakeSw), 'how_label');
     fx('f_i18n', ap(a2.emptyI18n), ap(lv.emptyI18n), 'how_label');
-    fx('f_host', ap(a2.badHost), ap(lv.badHost), 'how_label');
     fx('f_kit', E(t('v_none')), ap(lv.kitGe114), 'how_kit');
     fx('f_touch', ap(a4.touchBase), ap(a4.touchNew), 'how_a4');
     fx('f_small', ap(a4.smallBase), ap(a4.smallNew), 'how_a4');
@@ -178,9 +179,10 @@ function renderSrc(D, UI, CODES, CODE_KIND) {
     h.push('<li>' + E(t('o_merge')) + kind('k_author') + '</li>');
     h.push('<li>' + E(t('o_headers')) + kind('k_limit') + '</li>');
     h.push('<li>' + E(t('o_devices')) + kind('k_limit') + '</li>');
+    h.push('<li>' + F('o_host', {n: lv.badHost, m: a2.badHost}) + kind('k_tech') + '</li>');
     h.push('<li>' + F('o_docs', {d1: '<a href="' + DOCS + 'DOMENII.md">docs/DOMENII.md</a>', d2: '<a href="' + DOCS + 'DECIZII-AUTOR.md">docs/DECIZII-AUTOR.md</a>'}) + '</li></ul>');
     h.push('<div class="tw"><table><thead><tr>' + th('th_code') + th('th_apps', 'n') + th('th_kind') + '</tr></thead><tbody>');
-    a2.codes.forEach(function (c) {
+    codes.forEach(function (c) {
       var lab = (CODES[c.c] && (CODES[c.c][L] || CODES[c.c].en)) || c.c;
       h.push('<tr><th scope="row">' + E(lab) + '</th><td class="n">' + c.n + '</td><td>' + E(t(CODE_KIND[c.c] || 'k_tech')) + '</td></tr>');
     });
@@ -239,7 +241,7 @@ function setLang(l){
   root.lang=l;var T=UI[l];
   main.innerHTML=render(l);
   document.getElementById('ttl').textContent=T.title;
-  document.title=T.title+' · chiuta.github.io';
+  document.title=T.title+' · chiuta.ro';
   document.getElementById('back').textContent=T.back;
   document.getElementById('lang-l').textContent=T.langLabel;
   sel.value=l;
@@ -263,8 +265,9 @@ function build(data) {
 <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self' 'sha256-AAAA'; style-src 'unsafe-inline'; img-src 'self' data:; connect-src 'none'; font-src 'none'; manifest-src 'self'; base-uri 'none'; form-action 'none'">
 <meta name="referrer" content="no-referrer">
 <meta name="robots" content="index,follow">
-<title>${UI.en.title} · chiuta.github.io</title>
+<title>${UI.en.title} · chiuta.ro</title>
 <meta name="description" content="${UI.en.lead.replace(/"/g, '&quot;')}">
+<link rel="canonical" href="https://chiuta.ro/transparenta.html">
 <link rel="icon" href="icon-192.png">
 <!-- GENERAT de tools/transparenta.mjs din data/transparenta.json — nu edita de mână. -->
 <style>${CSS}</style>
