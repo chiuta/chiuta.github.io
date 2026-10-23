@@ -1,11 +1,11 @@
 // Teste QSO — Playwright, rețea blocată. Rulare: node tests/test.mjs
 import {createRequire} from "module";
-import path from "path"; import {fileURLToPath} from "url"; import fs from "fs"; import os from "os";
+import path from "path"; import {fileURLToPath,pathToFileURL} from "url"; import fs from "fs"; import os from "os";
 const require=createRequire("/opt/node-tools/package.json");
 const {chromium}=require("playwright");
 const __dir=path.dirname(fileURLToPath(import.meta.url));
 const URL='file://'+path.resolve(__dir,'..','index.html');
-const AXE='/tmp/claude-0/-home-claude/78529928-3825-51c3-b9bd-0e81655ab6bc/scratchpad/sweep/node_modules/axe-core/axe.min.js';
+const AXE=process.env.AXE_PATH||'/tmp/claude-0/ax/node_modules/axe-core/axe.min.js';
 let pass=0, fail=0; const failures=[];
 function ok(c,msg){ if(c){pass++;} else {fail++; failures.push(msg); console.log('  FAIL:',msg);} }
 function eq(a,b,msg){ const A=JSON.stringify(a),B=JSON.stringify(b); ok(A===B,msg+' (obtained '+A+', expected '+B+')'); }
@@ -42,14 +42,14 @@ sect('Pornire');
 let p=await newPage();
 await p.waitForTimeout(3600);
 eq(p.__errs,[],'0 erori pageerror/CSP la pornire'); eq(p.__reqs,[],'0 cereri de rețea');
-ok(/^v 1\.0\.5 · 2026-10-23$/.test(await p.$eval('#app-version',e=>e.textContent)),'#app-version');
-ok(await p.$eval('meta[name=application-version]',e=>e.content)==='1.0.5','meta application-version');
+ok(/^v 1\.0\.6 · 2026-10-23$/.test(await p.$eval('#app-version',e=>e.textContent)),'#app-version');
+ok(await p.$eval('meta[name=application-version]',e=>e.content)==='1.0.6','meta application-version');
 ok(await p.$eval('meta[name=last-updated]',e=>e.content)==='2026-10-23','meta last-updated');
 const csp=await p.$eval('meta[http-equiv=Content-Security-Policy]',e=>e.content);
 ok(/default-src 'none'/.test(csp)&&/connect-src 'none'/.test(csp)&&!/unsafe-eval/.test(csp)&&!/script-src[^;]*unsafe-inline/.test(csp),'CSP strict');
 const html0=fs.readFileSync(path.resolve(__dir,'..','index.html'),'utf8');
 ok(!/\son(click|change|input|submit|load)\s*=/i.test(html0),'fără handlere inline');
-{ const {checkCspHashes}=await import('/home/claude/chiuta.github.io/fff-kit/lib/csp.mjs'); ok(checkCspHashes(html0).ok,'hash-uri CSP corecte'); }
+{ const {checkCspHashes}=await import(pathToFileURL(path.resolve(__dir,'..','..','..','fff-kit','lib','csp.mjs')).href); ok(checkCspHashes(html0).ok,'hash-uri CSP corecte'); }
 
 /* ================== 2. Indicative ================== */
 sect('Validatori indicative');
@@ -224,7 +224,7 @@ for(const [btn,ext] of [['#exAdx','adx'],['#exCsv','csv'],['#exJson','json']]){
   ok(names.includes('Ștefan Țurcanu-Șoimaru'),'diacritice păstrate în '+ext); await q.__ctx.close(); }
 // .fff.json
 const [d2]=await Promise.all([p.waitForEvent('download'),p.click('#bkExport')]); const bfile=path.join(tmp,'b.fff.json'); fs.copyFileSync(await d2.path(),bfile);
-const bj=JSON.parse(fs.readFileSync(bfile,'utf8')); eq([bj.format,bj.schema,bj.app,bj.version,bj.updated],['fff-bundle',1,'qso','1.0.5','2026-10-23'],'antet .fff.json'); ok(typeof bj.data['fff.qso.data']==='string','date în bundle');
+const bj=JSON.parse(fs.readFileSync(bfile,'utf8')); eq([bj.format,bj.schema,bj.app,bj.version,bj.updated],['fff-bundle',1,'qso','1.0.6','2026-10-23'],'antet .fff.json'); ok(typeof bj.data['fff.qso.data']==='string','date în bundle');
 const q=await newPage(); await q.click('#tb-io'); await q.setInputFiles('#bkFile',bfile); await q.waitForSelector('#dlgConfirm[open]'); await q.click('#dcYes'); await q.waitForTimeout(300);
 eq(await q.evaluate(()=>window.__qso.APP.S.records.length),3,'restaurare .fff.json'); 
 // bundle de altă aplicație respins
@@ -337,6 +337,69 @@ for(const vp of [{width:1280,height:800},{width:360,height:740}]){
 { p=await newPage(); await p.focus('#tb-log'); await p.keyboard.press('ArrowRight'); ok(await p.evaluate(()=>document.activeElement.id==='tb-calc'&&document.getElementById('tab-calc').hidden===false),'săgeți navighează taburile'); await p.__ctx.close(); }
 // reduced motion
 { const c=await browser.newContext({reducedMotion:'reduce'}); const q=await c.newPage(); await q.goto(URL); ok(await q.evaluate(()=>getComputedStyle(document.querySelector('.btn')).transitionDuration==='0s'),'prefers-reduced-motion: fără tranziții'); await c.close(); }
+
+/* ================== 14. Audit adversarial (regresii) ================== */
+sect('Audit adversarial');
+{ // 14.1 ADIF cu lungimi în caractere (diacritice): parsare liniară, nu pătratică
+  p=await newPage();
+  const r=await p.evaluate(()=>{ const {Fmt}=window.__qso; let big='<ADIF_VER:5>3.1.0\n<EOH>\n'; for(let i=0;i<3000;i++) big+='<CALL:6>YO6ABC <QSO_DATE:8>20261023 <TIME_ON:4>1234 <NAME:6>Ștefan <QTH:7>Brașov <EOR>\n';
+    const t0=performance.now(); const pb=Fmt.parseAdi(big); return {ms:performance.now()-t0,n:pb.records.length,cf:pb.charFallback,name:pb.records[2999].NAME,qth:pb.records[2999].QTH,w:pb.warnings.length}; });
+  ok(r.n===3000&&r.name==='Ștefan'&&r.qth==='Brașov'&&r.cf===3000&&r.w===0,'ADIF cu lungimi în caractere: 3000 QSO corecte ('+JSON.stringify(r)+')');
+  ok(r.ms<2500,'ADIF cu lungimi în caractere: parsare rapidă ('+Math.round(r.ms)+' ms pentru 3000 QSO)');
+  const r2=await p.evaluate(()=>{ const {Fmt}=window.__qso; const a=Fmt.parseAdi('<NAME:4>Jörg <CALL:5>DL1AB <EOR>').records[0]; const b=Fmt.parseAdi('<NAME:5>Jörg <CALL:5>DL1AB <EOR>').records[0]; const c=Fmt.parseAdi('<NAME:9>Jörg <CALL:5>DL1AB <EOR>'); return [a,b,c.warnings.length]; });
+  eq(r2[0],{NAME:'Jörg',CALL:'DL1AB'},'lungime în caractere (4 chr = 5 octeți): rezerva o acceptă'); eq(r2[1],{NAME:'Jörg',CALL:'DL1AB'},'lungime în octeți'); ok(r2[2]>=1,'lungime falsă: avertisment');
+  // antet cu versiunea aplicației
+  const v=await p.evaluate(()=>{ const {Fmt,APP}=window.__qso; return [Fmt.toAdi([]).match(/<PROGRAMVERSION:\d+>([^ \r\n<]+)/)[1],Fmt.toCabrillo([],{callsign:'YO6ABC'}).match(/CREATED-BY: QSO (\S+)/)[1],Fmt.toAdx([]).match(/<PROGRAMVERSION>([^<]+)/)[1],APP.VERSION,document.querySelector('meta[name=application-version]').content]; });
+  ok(v[0]===v[3]&&v[1]===v[3]&&v[2]===v[3]&&v[3]===v[4],'versiunea din ADIF/ADX/Cabrillo = versiunea aplicației ('+v.join(',')+')');
+  const bj=await p.evaluate(()=>window.__qso.bundleObj()); ok(bj.version===v[4],'versiunea din .fff.json = meta');
+  await p.__ctx.close(); }
+{ // 14.2 _id ostil în localStorage / copie de siguranță: fără XSS, id-uri normalizate
+  const ctx=await browser.newContext(); const q=await ctx.newPage(); const errs=[]; q.on('pageerror',e=>errs.push(e.message));
+  await q.route(/^https?:/,r=>r.abort());
+  await q.addInitScript(()=>{ if(!localStorage.getItem('fff.qso.data')) localStorage.setItem('fff.qso.data',JSON.stringify({v:1,nextId:'x',records:[
+    {_id:'"><img src=x onerror="window.__x=1">',CALL:'YO6ABC',QSO_DATE:'20261023',TIME_ON:'1200'},{_id:3,CALL:'DL1AB',QSO_DATE:'20261023',TIME_ON:'1201'},{_id:3,CALL:'W1AW',QSO_DATE:'20261023',TIME_ON:'1202'},
+    {_id:{a:1},CALL:'K1ABC',QSO_DATE:'20261023',TIME_ON:'1203'},{CALL:'<svg onload=window.__x=2>',QSO_DATE:'20261023',TIME_ON:'1204'},[1,2],null]})); });
+  await q.goto(URL); await q.waitForFunction(()=>window.__qso); await q.waitForTimeout(300);
+  const r=await q.evaluate(()=>{ const S=window.__qso.APP.S; return {x:window.__x,ids:S.records.map(r=>r._id),next:S.nextId,rows:document.querySelectorAll('#tbody tr').length,sel:[...document.querySelectorAll('[data-sel]')].map(e=>e.dataset.sel)}; });
+  ok(r.x===undefined,'_id ostil: niciun script executat'); ok(r.ids.every(i=>Number.isSafeInteger(i)&&i>0)&&new Set(r.ids).size===r.ids.length&&r.ids.length===5,'_id normalizate: întregi pozitive, unice ('+r.ids+')'); ok(r.next>Math.max(...r.ids),'nextId > max(_id)');
+  ok(r.sel.every(x=>/^\d+$/.test(x)),'atribute data-sel numerice'); eq(errs,[],'fără erori de pagină (date ostile)'); await ctx.close(); }
+{ // 14.3 stocare coruptă: copia se păstrează, pagehide nu o suprascrie cu un jurnal gol
+  const ctx=await browser.newContext(); const q=await ctx.newPage(); await q.route(/^https?:/,r=>r.abort());
+  await q.addInitScript(()=>{ if(!sessionStorage.getItem('seeded')){ sessionStorage.setItem('seeded','1'); localStorage.setItem('fff.qso.data','{"v":1,"records":[{"CALL":"YO6ABC"'); } });
+  await q.goto(URL); await q.waitForFunction(()=>window.__qso); await q.waitForTimeout(600);
+  const toast=await q.$eval('#toast',e=>e.hidden?'':e.textContent);
+  await q.evaluate(()=>window.dispatchEvent(new Event('pagehide')));
+  const st=await q.evaluate(()=>({bak:localStorage.getItem('fff.qso.data.bak'),cur:localStorage.getItem('fff.qso.data')}));
+  eq(st.bak,'{"v":1,"records":[{"CALL":"YO6ABC"','date corupte: copia originală păstrată în fff.qso.data.bak'); ok(/fff\.qso\.data\.bak/.test(toast),'date corupte: utilizatorul este anunțat ('+toast.slice(0,60)+')');
+  ok(JSON.parse(st.cur).records.length===0,'după pagehide jurnalul gol nu a șters copia'); await ctx.close(); }
+{ // 14.4 editarea unui QSO vechi păstrează stația lui; JSON cu valori numerice; 150k înregistrări la încărcare
+  p=await newPage();
+  await p.evaluate(()=>{ const {APP}=window.__qso; APP.S.records=[{_id:1,CALL:'DL1AB',QSO_DATE:'20200101',TIME_ON:'120000',BAND:'20m',MODE:'SSB',STATION_CALLSIGN:'YO9OLD',OPERATOR:'YO9OP',MY_GRIDSQUARE:'KN45aa'}]; APP.S.nextId=2; });
+  await p.click('#tb-station'); await p.fill('#pf_call','yo3new'); await p.fill('#pf_grid','KN34ln'); await p.click('#pfSave'); await p.click('#tb-log');
+  await p.evaluate(()=>{ const {APP}=window.__qso; APP.renderAll(); APP.loadIntoForm(APP.S.records[0]); });
+  await p.fill('#f_name','Jörg'); await p.click('#saveBtn'); await p.waitForTimeout(200);
+  const rec=await p.evaluate(()=>window.__qso.APP.S.records[0]);
+  eq([rec.STATION_CALLSIGN,rec.OPERATOR,rec.MY_GRIDSQUARE,rec.NAME],['YO9OLD','YO9OP','KN45aa','Jörg'],'editare QSO vechi: stația originală nu e înlocuită de profilul curent');
+  const jf=path.join(tmp,'num.json'); fs.writeFileSync(jf,JSON.stringify([{CALL:'DL2XY',QSO_DATE:'20261023',TIME_ON:'1200',FREQ:14.2,TX_PWR:5,STX:7,BAND:'20m',MODE:'SSB',X:{a:1},Y:null,Z:true}]));
+  await p.click('#tb-io'); await p.setInputFiles('#impFile',jf); await p.waitForTimeout(300);
+  const nr=await p.evaluate(()=>window.__qso.APP.S.records.find(r=>r.CALL==='DL2XY'));
+  ok(nr&&nr.FREQ==='14.2'&&nr.TX_PWR==='5'&&nr.STX==='7'&&nr.X===undefined&&nr.Y===undefined,'import JSON cu valori numerice/obiecte: acceptat, valorile devin text ('+JSON.stringify(nr)+')');
+  const big=await p.evaluate(()=>{ const {APP}=window.__qso; try{ const recs=[]; for(let i=1;i<=150000;i++) recs.push({_id:i,CALL:'YO6ABC'}); APP.loadFrom({records:recs,nextId:1}); return [APP.S.records.length,APP.S.nextId]; }catch(e){ return 'ERR '+e.message; } });
+  eq(big,[150000,150001],'150000 înregistrări se încarcă fără depășirea stivei');
+  eq(p.__errs,[],'fără erori (14.4)'); await p.__ctx.close(); }
+
+{ // 14.6 ADX: nume de câmp invalide și caractere de control nu strică XML-ul exportat
+  p=await newPage();
+  const r=await p.evaluate(()=>{ const {Fmt}=window.__qso; const x=Fmt.toAdx([{CALL:'YO6ABC',QSO_DATE:'20261023',TIME_ON:'1200',NAME:'A\u0001B<&>',COMMENT:'ok','MY FIELD':'v','1X':'v','A>B':'v',APP_FFF_Z:'q'}]); try{ return [true,Fmt.parseAdx(x).records[0]]; }catch(e){ return [false,e.message]; } });
+  ok(r[0],'ADX cu nume de câmp invalide/caractere de control rămâne XML valid ('+JSON.stringify(r[1])+')'); if(r[0]) eq([r[1].NAME,r[1].COMMENT,r[1].APP_FFF_Z,r[1]['MY FIELD']],['AB<&>','ok','q',undefined],'ADX: câmpuri valide păstrate, cele invalide omise');
+  await p.__ctx.close(); }
+
+{ // 14.5 ținte tactile ≥44 px (pointer: coarse, 360 px)
+  const ctx=await browser.newContext({viewport:{width:360,height:740},hasTouch:true,isMobile:true}); await ctx.route(/^https?:/,r=>r.abort()); const q=await ctx.newPage(); await q.goto(URL); await q.waitForFunction(()=>window.__qso);
+  await q.click('#sampleBtn'); await q.waitForTimeout(300); const small=[];
+  for(const tb of ['tb-log','tb-calc','tb-stats','tb-io','tb-station']){ await q.click('#'+tb); await q.waitForTimeout(150);
+    small.push(...await q.evaluate(()=>[...document.querySelectorAll('button,select,input:not([type=checkbox]):not([type=radio]),textarea,[role=tab]')].filter(e=>{ const b=e.getBoundingClientRect(); return b.width&&b.height&&!e.closest('[hidden],dialog:not([open]),#tf-donate,.sr')&&getComputedStyle(e).visibility!=='hidden'&&(b.height<43.5||b.width<43.5); }).map(e=>(e.id||e.className||e.tagName)+' '+Math.round(e.getBoundingClientRect().width)+'x'+Math.round(e.getBoundingClientRect().height)))); }
+  ok('mobil (pointer: coarse): butoane/câmpuri/taburi ≥44×44 px ('+[...new Set(small)].slice(0,8).join('; ')+')',small.length===0); await ctx.close(); }
 
 await browser.close(); fs.rmSync(tmp,{recursive:true,force:true});
 console.log(`\n==== ${pass} verificări reușite, ${fail} eșuate ====`);

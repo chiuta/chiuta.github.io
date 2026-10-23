@@ -2,7 +2,7 @@
 
 [English](README.md) · **Română** · [Français](README.fr.md) · [Italiano](README.it.md) · [Español](README.es.md) · [Português](README.pt.md) · [Deutsch](README.de.md) · [Magyar](README.hu.md)
 
-**Versiune:** 1.0.4 · **Ultima actualizare:** 2026-10-23
+**Versiune:** 1.0.5 · **Ultima actualizare:** 2026-10-23
 
 Limbile interfeței: **Română, English, Français, Italiano, Español, Português (PT), Deutsch, Magyar**
 
@@ -66,3 +66,4 @@ Licență: MIT — vezi fișierul `LICENSE` din rădăcina depozitului
 - 1.0.1 — 2026-10-22: exporturile CSV (jurnal, sesiune, audiogramă) neutralizează celulele text care încep cu = + - @ (și tab/CR) împotriva injecției de formule în foi de calcul; ținte tactile de cel puțin 24 px pentru casete și butoane radio.
 - 1.0.2 — 2026-10-22: fff-kit 1.1.2: PBKDF2 cu 600.000 de iterații, protecție anti-clickjacking.
 - 1.0.3 — 2026-10-22: fff-kit 1.1.4: ținte tactile și text minim în interfața comună.
+- 1.0.5 — 2026-10-23: datele locale (jurnal, profiluri, audiograme, căști, setări, calibrare) sunt validate la citire, iar importul .fff.json acceptă doar cheile și formele cunoscute; o sesiune nu se mai pierde tăcut când stocarea locală este plină (anunț); parametrii dozei sunt limitați la intervalele câmpurilor; NaN/Infinit dintr-un WAV float nu mai otrăvesc filtrele; frecvențe de eșantionare absurde sunt refuzate; microfonul se oprește dacă AudioContext eșuează după acordarea permisiunii; câmpurile CSV cu CR sunt puse între ghilimele; versiunea internă este aliniată.

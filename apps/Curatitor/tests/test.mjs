@@ -90,9 +90,9 @@ await test('pornire: 0 erori, 0 violări CSP, 0 cereri de rețea, meta de versiu
   const p = await openApp();
   eq(await p.evaluate(() => window.__csp), [], 'violări CSP');
   eq(await p.title(), 'Curatitor');
-  eq(await p.evaluate(() => document.querySelector('meta[name=application-version]').content), '1.0.4');
+  eq(await p.evaluate(() => document.querySelector('meta[name=application-version]').content), '1.0.5');
   eq(await p.evaluate(() => document.querySelector('meta[name=last-updated]').content), '2026-10-23');
-  eq(await p.textContent('#app-version'), 'v 1.0.4 · 2026-10-23');
+  eq(await p.textContent('#app-version'), 'v 1.0.5 · 2026-10-23');
   eq(await p.evaluate(() => document.documentElement.lang), 'ro');
   const csp = await p.evaluate(() => document.querySelector('meta[http-equiv=Content-Security-Policy]').content);
   assert(/default-src 'none'/.test(csp) && /connect-src 'none'/.test(csp) && /worker-src 'self' blob:/.test(csp) && /manifest-src 'self'/.test(csp) && !/unsafe-eval/.test(csp) && !/script-src[^;]*unsafe-inline/.test(csp), 'CSP: ' + csp);
@@ -480,7 +480,7 @@ await test('8 limbi: selector, html[lang], persistență, texte traduse, export/
   eq(seen.size, 8, 'texte distincte pe limbă'); await p.selectOption('#lang', 'de'); await p.reload(); await p.waitForSelector('#list',{state:'attached'}); eq(await p.evaluate(() => document.documentElement.lang), 'de'); assert((await p.textContent('#pickBtn')) === 'Dateien auswählen');
   await p.check('input[name=prof][value=max]'); await p.click('#themeBtn'); eq(await p.evaluate(() => document.documentElement.dataset.theme), 'light');
   await p.locator('footer summary').click(); const [d] = await Promise.all([p.waitForEvent('download'), p.click('#setExport')]); const sp = path.join(W, 'curatitor.fff.json'); await d.saveAs(sp); const b = JSON.parse(fs.readFileSync(sp, 'utf8'));
-  eq([b.format, b.schema, b.app, b.version, b.updated], ['fff-bundle', 1, 'curatitor', '1.0.4', '2026-10-23']); eq(b.data.lang, 'de'); eq(b.data.profile, 'max'); eq(b.data.theme, 'light');
+  eq([b.format, b.schema, b.app, b.version, b.updated], ['fff-bundle', 1, 'curatitor', '1.0.5', '2026-10-23']); eq(b.data.lang, 'de'); eq(b.data.profile, 'max'); eq(b.data.theme, 'light');
   await p.selectOption('#lang', 'ro'); await p.check('input[name=prof][value=keep]'); await p.setInputFiles('#setImportInput', sp); await p.waitForTimeout(300); eq(await p.evaluate(() => document.documentElement.lang), 'de'); assert(await p.isChecked('input[name=prof][value=max]'), 'profil importat');
   const bad = wr('bad.fff.json', JSON.stringify({ format: 'fff-bundle', schema: 1, app: 'altceva', data: {} })); await p.setInputFiles('#setImportInput', bad); await p.waitForTimeout(200); assert((await p.textContent('#status')).length > 0 || (await p.textContent('#setMsg')).length > 0, 'mesaj de eroare la import');
   await p.click('#setWipe'); await p.click('dialog.fff-dlg .fff-primary'); await p.waitForTimeout(200); eq(await p.evaluate(() => Object.keys(localStorage).filter((k) => k.startsWith('fff.curatitor.')).length), 0, 'chei rămase'); eq(await p.evaluate(() => document.documentElement.dataset.theme || 'auto'), 'auto'); await p.close();
@@ -545,6 +545,7 @@ function bigPdf(content) {
 
 /* ===================== 13. Calitate: axe, depășire, tastatură, mișcare redusă ===================== */
 await test('axe-core: 0 violări (stare goală, cu date, panou detaliu, setări deschise) în modul luminos și întunecat', async () => {
+  if (!fs.existsSync(AXE)) { console.log('       (axe-core lipsește la ' + AXE + ' — setează AXE_PATH; partea axe e sărită)'); return; }
   const c = await mkCtx({ bypassCSP: true }); const axeSrc = fs.readFileSync(AXE, 'utf8');
   for (const scheme of ['light', 'dark']) {
     const p = await c.newPage(); await p.emulateMedia({ colorScheme: scheme }); await p.goto(APP); await p.waitForSelector('#list',{state:'attached'});
@@ -581,6 +582,64 @@ await test('mișcare redusă și mod întunecat: tranziții dezactivate; teme: c
   eq(await p.evaluate(() => getComputedStyle(document.querySelector('#drop')).transitionDuration), '0s'); const bg = await p.evaluate(() => getComputedStyle(document.body).backgroundColor); assert(bg === 'rgb(14, 18, 23)', 'fundal întunecat: ' + bg);
   await p.click('#themeBtn'); eq(await p.evaluate(() => document.documentElement.dataset.theme), 'light'); assert((await p.evaluate(() => getComputedStyle(document.body).backgroundColor)) === 'rgb(244, 246, 247)');
   await p.click('#themeBtn'); eq(await p.evaluate(() => document.documentElement.dataset.theme), 'dark'); await p.click('#themeBtn'); eq(await p.evaluate(() => document.documentElement.dataset.theme || 'auto'), 'auto'); await c.close();
+});
+/* ===================== 14. Audit adversarial (reziduuri după curățare, bucle infinite) ===================== */
+await test('PDF: tabel xref fără „trailer”/tokeni nevalizi nu blochează firul (bucla xref avansa la nesfârșit) — refuz curat', async () => {
+  const pdf = F.buildPdf({ extraInfoUpdate: true }); const txt = pdf.toString('latin1');
+  assert(txt.includes('xref\n8 1\n'), 'fixture');
+  const bad = Buffer.from(txt.replace('xref\n8 1\n', 'xref\n8(1\n'), 'latin1');
+  const p = await openApp(); await load(p, [wr('hang.pdf', bad)]);   // `settled` ar expira dacă pagina ar rămâne blocată
+  const st = (await stateOf(p))[0]; assert(st.state === 'refused' || st.state === 'error', 'stare: ' + JSON.stringify(st));
+  const trunc = Buffer.from(txt.slice(0, txt.indexOf('xref\n8 1\n') + 9) + '\nstartxref\n' + txt.indexOf('xref\n8 1\n') + '\n%%EOF\n', 'latin1');
+  await load(p, [wr('hang2.pdf', trunc)]); assert((await stateOf(p)).every((x) => x.state !== 'work'), 'rămas în lucru'); await p.close();
+});
+await test('WebP: chunk-uri necunoscute/JUNK (pot ascunde date) sunt eliminate; decodare identică', async () => {
+  const base = await canvasImage('webp', 64, 48, 0.8);
+  const mk = (t, d) => { const b = Buffer.alloc(8); b.write(t, 0, 'latin1'); b.writeUInt32LE(d.length, 4); return Buffer.concat([b, d, d.length & 1 ? Buffer.from([0]) : Buffer.alloc(0)]); };
+  const body = Buffer.concat([base.subarray(12), mk('JUNK', Buffer.from('Ascuns-JUNK-Secret')), mk('ZZZZ', Buffer.from('Ascuns-ZZZZ-Secret!'))]);
+  const hdr = Buffer.alloc(12); hdr.write('RIFF'); hdr.writeUInt32LE(4 + body.length, 4); hdr.write('WEBP', 8); const fx = Buffer.concat([hdr, body]);
+  const p = await openApp(); await load(p, [wr('junk.webp', fx)]); assert((await p.textContent('#detailBody')).includes('JUNK'), 'panoul listează chunk-ul');
+  await cleanAll(p); const out = await download(p, 'junk.webp', path.join(W, 'junk.out.webp'));
+  assert(!contains(out, 'Ascuns-JUNK') && !contains(out, 'Ascuns-ZZZZ'), 'rămas'); eq(F.webpChunks(out).map((c) => c.t).filter((t) => t === 'JUNK' || t === 'ZZZZ'), []);
+  eq(out.readUInt32LE(4) + 8, out.length); eq(await pixels(out, 'image/webp'), await pixels(base, 'image/webp')); await p.close();
+});
+await test('PNG: sPLT (nume de paletă liber) eliminat; GIF: extensie necunoscută eliminată; pixeli identici', async () => {
+  const png = await canvasImage('png', 40, 30); const idat = png.indexOf('IDAT') - 4;
+  const fx = Buffer.concat([png.subarray(0, idat), F.pngChunk('sPLT', Buffer.from('Paleta-Secret\0\x08')), png.subarray(idat)]);
+  const p = await openApp(); await load(p, [wr('splt.png', fx)]); await cleanAll(p); const out = await download(p, 'splt.png', path.join(W, 'splt.out.png'));
+  assert(!contains(out, 'Paleta-Secret') && !F.pngChunks(out).some((c) => c.type === 'sPLT'), 'sPLT rămas'); eq(await pixels(out, 'image/png'), await pixels(png, 'image/png'));
+  if (have('convert')) {
+    sh('convert', ['-size', '30x20', 'xc:red', path.join(W, 'g0.gif')]); const g = fs.readFileSync(path.join(W, 'g0.gif')); const tr = g.lastIndexOf(0x3b);
+    const gx = Buffer.concat([g.subarray(0, tr), Buffer.from([0x21, 0x77, 14]), Buffer.from('Extensie-Secret'.slice(0, 14)), Buffer.from([0]), g.subarray(tr)]);
+    await load(p, [wr('ext.gif', gx)]); await cleanAll(p); const o2 = await download(p, 'ext.gif', path.join(W, 'ext.out.gif'));
+    assert(!contains(o2, 'Extensie-Secre'), 'extensie GIF rămasă'); eq(sh('convert', [path.join(W, 'ext.out.gif'), 'rgba:-']).toString('latin1'), sh('convert', [path.join(W, 'g0.gif'), 'rgba:-']).toString('latin1'));
+  }
+  await p.close();
+});
+await test('JPEG: APP14 „Adobe” cu coadă ascunsă este redus la cei 12 octeți standard; pixeli identici', async () => {
+  const jpg = await canvasImage('jpeg', 64, 48); const seg = (m, d) => Buffer.concat([Buffer.from([0xFF, m, (d.length + 2) >> 8, (d.length + 2) & 255]), d]);
+  const std = Buffer.concat([Buffer.from('Adobe'), Buffer.from([0, 100, 0, 0, 0, 0, 1])]); eq(std.length, 12);
+  const fx = Buffer.concat([jpg.subarray(0, 2), seg(0xEE, Buffer.concat([std, Buffer.from('Ascuns-Adobe-Secret')])), jpg.subarray(2)]);
+  const p = await openApp(); await load(p, [wr('adobe.jpg', fx)]); await p.check('input[name=prof][value=max]'); await settled(p); await cleanAll(p);
+  eq((await stateOf(p))[0].state, 'clean'); const out = await download(p, 'adobe.jpg', path.join(W, 'adobe.out.jpg'));
+  assert(!contains(out, 'Ascuns-Adobe'), 'coada APP14 a rămas'); assert(contains(out, 'Adobe'), 'APP14 standard păstrat (transform de culoare)');
+  eq(await pixels(out, 'image/jpeg'), await pixels(fx, 'image/jpeg')); await p.close();
+});
+await test('MP4: cutii de nivel superior necunoscute/XMP_/junk sunt eliminate (listă albă); redare identică', async () => {
+  if (!have('ffmpeg')) return;
+  const src = path.join(W, 'top.mp4'); ff(['-f', 'lavfi', '-i', 'testsrc=size=64x48:rate=10:duration=1', '-c:v', 'mpeg4', '-movflags', '+faststart', src]);
+  const box = (t, d) => { const b = Buffer.alloc(8); b.writeUInt32BE(8 + d.length, 0); b.write(t, 4, 'latin1'); return Buffer.concat([b, d]); };
+  const fx = Buffer.concat([fs.readFileSync(src), box('XMP_', Buffer.from('<x:xmpmeta xmlns:x="adobe:ns:meta/"><rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"><rdf:Description xmlns:dc="http://purl.org/dc/elements/1.1/"><dc:creator><rdf:Seq><rdf:li>Autor-XMP-Secret</rdf:li></rdf:Seq></dc:creator></rdf:Description></rdf:RDF></x:xmpmeta>')), box('junk', Buffer.from('Ascuns-junk-Secret'))]);
+  const p = await openApp(); await load(p, [wr('top2.mp4', fx)]); assert((await p.textContent('#detailBody')).includes('Autor-XMP-Secret'), 'panoul arată XMP_');
+  await cleanAll(p); eq((await stateOf(p))[0].state, 'clean'); const out = await download(p, 'top2.mp4', path.join(W, 'top.out.mp4'));
+  assert(!contains(out, 'Autor-XMP-Secret') && !contains(out, 'Ascuns-junk'), 'rămas');
+  const pm = (f) => sh('ffmpeg', ['-loglevel', 'error', '-i', f, '-map', '0', '-c', 'copy', '-f', 'streamhash', '-hash', 'md5', '-']).toString().trim(); eq(pm(path.join(W, 'top.out.mp4')), pm(src), 'hash pachete'); await p.close();
+});
+
+await test('ținte tactile ≥44px la 360px (butoane, select, summary, opțiuni, etichetă versiune)', async () => {
+  const c = await mkCtx({ viewport: { width: 360, height: 740 }, hasTouch: true }); const p = await openApp(c); await p.click('#customOpts > summary'); await p.waitForTimeout(100);
+  const small = await p.evaluate(() => { const res = []; for (const el of document.querySelectorAll('button,select,summary,#app-version,label.opt,label.chk')) { const cs = getComputedStyle(el); if (cs.display === 'none' || cs.visibility === 'hidden') continue; const r = el.getBoundingClientRect(); if (r.width && r.height && r.height < 43.5) res.push((el.id || el.className || el.tagName) + ' ' + Math.round(r.width) + 'x' + Math.round(r.height)); } return res; });
+  eq(small, [], 'ținte sub 44px'); await c.close();
 });
 await test('final: 0 pageerror, 0 violări CSP, 0 cereri de rețea pe toată rularea', async () => { assert(pageErrors.length === 0, pageErrors.join('\n')); assert(netReqs.length === 0, 'rețea: ' + netReqs.join(', ')); });
 

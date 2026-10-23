@@ -2,7 +2,7 @@
 
 [English](README.md) · [Română](README.ro.md) · [Français](README.fr.md) · [Italiano](README.it.md) · **Español** · [Português](README.pt.md) · [Deutsch](README.de.md) · [Magyar](README.hu.md)
 
-**Versión:** 1.0.4 · **Última actualización:** 2026-10-23
+**Versión:** 1.0.5 · **Última actualización:** 2026-10-23
 
 Idiomas de la interfaz: **Română, English, Français, Italiano, Español, Português (PT), Deutsch, Magyar**
 
@@ -66,3 +66,4 @@ Licencia: MIT — véase el archivo `LICENSE` en la raíz del repositorio
 - 1.0.1 — 2026-10-22: las exportaciones CSV (registro, sesión, audiograma) neutralizan las celdas de texto que empiezan por = + - @ (y tabulación/CR) contra la inyección de fórmulas; áreas táctiles de al menos 24 px para casillas y botones de opción.
 - 1.0.2 — 2026-10-22: fff-kit 1.1.2: PBKDF2 con 600.000 iteraciones, protección anti-clickjacking.
 - 1.0.3 — 2026-10-22: fff-kit 1.1.4: áreas táctiles y tamaño mínimo del texto en la interfaz común.
+- 1.0.5 — 2026-10-23: los datos locales (registro, perfiles, audiogramas, auriculares, ajustes, calibración) se validan al leerlos y la importación .fff.json solo acepta claves y formas conocidas; una sesión ya no se pierde en silencio cuando el almacenamiento local está lleno (aviso); los parámetros de la dosis se limitan a los rangos de los campos; NaN/Infinito en un WAV float ya no envenenan los filtros; se rechazan frecuencias de muestreo absurdas; el micrófono se libera si AudioContext falla tras conceder el permiso; los campos CSV con CR van entre comillas; versión interna alineada.

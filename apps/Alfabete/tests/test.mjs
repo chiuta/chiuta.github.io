@@ -1,4 +1,4 @@
-// Teste Playwright pentru Alfabete 1.0.5 — funcționalitate reală, round-trip, vectori cunoscuți, sincronizare audio/clipire/vibrații, axe.
+// Teste Playwright pentru Alfabete 1.0.6 — funcționalitate reală, round-trip, vectori cunoscuți, sincronizare audio/clipire/vibrații, axe.
 // Rulare: node tests/test.mjs   (rețeaua este blocată în context; file:// este permis)
 import {createRequire} from 'module';
 import fs from 'node:fs';
@@ -11,8 +11,8 @@ const {chromium} = require('playwright');
 const HERE = path.dirname(fileURLToPath(import.meta.url));
 const APP = path.resolve(HERE, '..', 'index.html');
 const URL_ = pathToFileURL(APP).href;
-const AXE = '/tmp/claude-0/-home-claude/78529928-3825-51c3-b9bd-0e81655ab6bc/scratchpad/sweep/node_modules/axe-core/axe.min.js';
-const CSP = await import('file:///home/claude/chiuta.github.io/fff-kit/lib/csp.mjs');
+const AXE = process.env.AXE_PATH || '/tmp/claude-0/-home-claude/78529928-3825-51c3-b9bd-0e81655ab6bc/scratchpad/sweep/node_modules/axe-core/axe.min.js';
+const CSP = await import(pathToFileURL(path.resolve(HERE, '..', '..', '..', 'fff-kit', 'lib', 'csp.mjs')).href);
 
 const browser = await chromium.launch({executablePath: '/opt/pw-browsers/chromium', args: ['--autoplay-policy=no-user-gesture-required']});
 const results = []; let failed = 0;
@@ -55,7 +55,7 @@ await test('pornire: 0 erori, 0 rețea, 0 CSP, meta, versiune, lang', async () =
   const info = await E(page, () => ({csp: window.__csp, ver: document.querySelector('#app-version').textContent, lang: document.documentElement.lang, title: document.title,
     mv: document.querySelector('meta[name=application-version]').content, lu: document.querySelector('meta[name=last-updated]').content, desc: document.querySelector('meta[name=description]').content.length, navs: document.querySelectorAll('#nav a').length}));
   eq(errors, []); eq(requests, []); eq(info.csp, 0);
-  eq(info.ver, 'v 1.0.5 · 2026-10-23'); eq(info.lang, 'ro'); eq(info.title, 'Alfabete'); eq(info.mv, '1.0.5'); eq(info.lu, '2026-10-23'); ok(info.desc > 40); eq(info.navs, 12);
+  eq(info.ver, 'v 1.0.6 · 2026-10-23'); eq(info.lang, 'ro'); eq(info.title, 'Alfabete'); eq(info.mv, '1.0.6'); eq(info.lu, '2026-10-23'); ok(info.desc > 40); eq(info.navs, 12);
   ok(CSP.checkCspHashes(html).ok, 'hash-uri CSP');
   ok(!/\son(click|load|error|input|change|submit)\s*=/i.test(html), 'fără handlere inline');
   ok(!/\beval\s*\(|new Function\(/.test(html), 'fără eval');
@@ -558,7 +558,7 @@ await test('Date: export .fff.json, import, validare, ștergere totală', async 
   await go(Q, 'data');
   const [dl] = await Promise.all([Q.waitForEvent('download'), Q.click('#data-export')]); eq(dl.suggestedFilename(), 'alfabete.fff.json');
   const bundle = JSON.parse(fs.readFileSync(await dl.path(), 'utf8'));
-  eq([bundle.format, bundle.schema, bundle.app, bundle.version, bundle.updated], ['fff-bundle', 1, 'alfabete', '1.0.5', '2026-10-23']); ok(bundle.exported && bundle.data['fff.alfabete.stats']);
+  eq([bundle.format, bundle.schema, bundle.app, bundle.version, bundle.updated], ['fff-bundle', 1, 'alfabete', '1.0.6', '2026-10-23']); ok(bundle.exported && bundle.data['fff.alfabete.stats']);
   ok(Object.keys(bundle.data).every(k => k.startsWith('fff.alfabete.')));
   // ștergere cu confirmare
   await Q.click('#data-wipe'); await Q.click('#dlg-no'); ok(await E(Q, () => ALF.store.get('stats', null)) !== null, 'anulat → rămâne');
@@ -681,6 +681,54 @@ await test('tastatură: ordine de focus, Enter în câmpuri, focus vizibil, miș
   // butoane sub-tab accesibile din tastatură
   await Q.focus('.subtabs button[data-id="ref"]'); await Q.keyboard.press('Enter'); eq(await Q.getAttribute('.subtabs button[data-id="ref"]', 'aria-pressed'), 'true');
   await go(Q, 'cards'); await Q.focus('#srs-show'); await Q.keyboard.press('Enter'); ok(await Q.isVisible('#srs-grades')); await Q.keyboard.press('Tab');
+  eq(c.errors, []); await c.ctx.close();
+});
+/* ---------------------------------------------------------------- date locale corupte / copie ostilă / text uriaș */
+await test('date locale corupte (null, tipuri greșite, structuri parțiale): niciun panou nu aruncă, aplicația rămâne utilizabilă', async () => {
+  const bad = {stats: ['null', '5', '{"x":null}', '{"x":"s"}'], settings: ['null', '{"morse":null}', '{"morse":{"wpm":"x","eff":1e9,"freq":null}}'], koch: ['null', '{"level":"x","best":null}'],
+    brRo: ['5', '{"mode":"custom","custom":null}', '{"mode":"zzz"}'], daily: ['null', '{"2026-10-23":null}', '{"2026-10-23":{"ok":null,"ans":5}}'],
+    srs: ['null', '5', '{}', '{"cards":null}', '{"cards":{"a":null,"morse:A":{"due":"x","ef":null}},"decks":null}', '{"decks":{"morse":true},"cards":[]}', '{"limit":"x","newCount":null}']};
+  for (const k of Object.keys(bad)) for (const v of bad[k]) {
+    const c = await open();
+    await E(c.page, ([kk, vv]) => { localStorage.setItem('fff.alfabete.' + kk, vv); }, [k, v]);
+    await c.page.reload(); await c.page.waitForSelector('#nav a');
+    for (const id of ['morse', 'braille', 'ciphers', 'cards']) {
+      await go(c.page, id);
+      const n = await c.page.locator('.subtabs button').count();
+      for (let i = 0; i < n; i++) { await c.page.locator('.subtabs button').nth(i).click(); }
+    }
+    await go(c.page, 'cards'); ok(await c.page.locator('#srs-area').count() === 1, 'cards ' + k + '=' + v);
+    eq(c.errors, [], k + '=' + v); await c.ctx.close();
+  }
+});
+await test('import .fff.json ostil: chei invalide/limbă/temă nevalide sunt ignorate, nu rămâne temă arbitrară', async () => {
+  const c = await open(); const Q = c.page;
+  await go(Q, 'data');
+  const f = path.join(HERE, '.tmp_bad.json');
+  fs.writeFileSync(f, JSON.stringify({format: 'fff-bundle', schema: 1, app: 'alfabete', data: {'fff.alfabete.theme': 'x" onload="y', 'fff.alfabete.lang': 'xx', 'fff.alfabete.stats': 'nu e json', 'fff.alfabete.koch': '{"level":4,"best":{}}', 'altceva.cheie': '1', '__proto__': 'x'}}));
+  await Q.setInputFiles('#imp-file', f); await Q.click('#dlg-yes'); await Q.waitForFunction(() => document.querySelector('#data-status').textContent.includes('Importat'));
+  eq(await E(Q, () => Object.keys(localStorage).filter(k => k.startsWith('fff.alfabete.')).sort()), ['fff.alfabete.koch']);
+  eq(await E(Q, () => document.documentElement.getAttribute('data-theme')), 'auto');
+  fs.unlinkSync(f); eq(c.errors, []); await c.ctx.close();
+});
+await test('localStorage plin: utilizatorul este anunțat (o dată), progresul rămâne în sesiune, 0 erori', async () => {
+  const c = await open(); const Q = c.page;
+  await E(Q, () => { const o = Storage.prototype.setItem; Storage.prototype.setItem = function (k, v) { if (String(k).startsWith('fff.alfabete.')) { const e = new Error('full'); e.name = 'QuotaExceededError'; throw e; } return o.call(this, k, v); }; });
+  await E(Q, () => { ALF.store.set('stats', {a: {n: 1, ok: 1}}); ALF.store.set('koch', {level: 3, best: {}}); });
+  await Q.waitForSelector('[data-fff-toasts] .fff-toast, .fff-toast', {timeout: 3000});
+  eq(await Q.locator('.fff-toast').count(), 1, 'un singur anunț');
+  eq(await E(Q, () => ALF.store.get('stats')), {a: {n: 1, ok: 1}}, 'valoarea rămâne în memorie');
+  eq(c.errors, []); await c.ctx.close();
+});
+await test('Morse: text uriaș nu alocă gigaocteți — redarea / WAV sunt refuzate cu mesaj, nu blochează pagina', async () => {
+  const c = await open(); const Q = c.page;
+  await go(Q, 'morse'); await sub(Q, 'conv');
+  await E(Q, () => { document.querySelector('#m-wpm').value = '5'; document.querySelector('#m-wpm').dispatchEvent(new Event('input', {bubbles: true})); });
+  await Q.fill('#m-text', 'PARIS '.repeat(2000)); await Q.waitForTimeout(150);
+  const t0 = Date.now(); await Q.click('#m-play'); await Q.waitForTimeout(100);
+  ok(Date.now() - t0 < 3000, 'fără blocare');
+  ok(!(await E(Q, () => ALF.MPLAY && ALF.MPLAY.playing)) , 'nu pornește');
+  ok((await Q.textContent('#m-status')).includes('prea lung'), await Q.textContent('#m-status'));
   eq(c.errors, []); await c.ctx.close();
 });
 await test('fără erori, rețea, CSP după utilizare intensă', async () => {

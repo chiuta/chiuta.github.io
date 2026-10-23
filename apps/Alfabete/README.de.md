@@ -2,7 +2,7 @@
 
 [English](README.md) · [Română](README.ro.md) · [Français](README.fr.md) · [Italiano](README.it.md) · [Español](README.es.md) · [Português](README.pt.md) · **Deutsch** · [Magyar](README.hu.md)
 
-**Version:** 1.0.5 · **Zuletzt aktualisiert:** 2026-10-23
+**Version:** 1.0.6 · **Zuletzt aktualisiert:** 2026-10-23
 
 Oberflächensprachen: **Română, English, Français, Italiano, Español, Português (PT), Deutsch, Magyar**
 
@@ -35,7 +35,7 @@ Datenexport/-import: `.fff.json` (Format `fff-bundle`, Schema 1). Ausgaben: WAV 
 
 ## Technik
 
-Eine einzige Datei `index.html`, JS und CSS inline, strenge CSP mit Hash, keine externen Ressourcen. Tests: `node tests/test.mjs` (Playwright; 44 Tests: bekannte Vektoren, Hin- und Rückweg für jeden Code, Morse-Dauern berechnet und am gerenderten Audio/Blinken gemessen, axe 0 in beiden Designs, Layout bei 360 und 1280 px).
+Eine einzige Datei `index.html`, JS und CSS inline, strenge CSP mit Hash, keine externen Ressourcen. Tests: `node tests/test.mjs` (Playwright; 48 Tests: bekannte Vektoren, Hin- und Rückweg für jeden Code, Morse-Dauern berechnet und am gerenderten Audio/Blinken gemessen, axe 0 in beiden Designs, Layout bei 360 und 1280 px).
 
 ## Drittanbieter
 
@@ -56,3 +56,4 @@ MIT — siehe die Datei `LICENSE` im Stammverzeichnis des Repositorys.
 - 1.0.1 — 2026-10-19: Das Feld wird nur aus dem Teil der Adresse vor dem ersten „&“ gewählt (#feld&from=…), damit Links aus ETER/INDICATIV das richtige Feld öffnen.
 - 1.0.2 — 2026-10-22: die Vorschau des druckbaren Blatts fügt der Seite keine zusätzlichen H1-Überschriften mehr hinzu (ein H1 pro Seite; der Blatttitel ist am Bildschirm ein H2 und bleibt beim Drucken ein H1); Touch-Ziele von mindestens 24 px; das technische Label (fff-info) listet jetzt die tatsächlichen 8 Sprachen statt 2.
 - 1.0.3 — 2026-10-22: fff-kit 1.1.2: PBKDF2 mit 600.000 Iterationen, Schutz vor Clickjacking.
+- 1.0.6 — 2026-10-23: beschädigte lokale Daten (SRS, Tagesübung, Koch, Braille-RO-Profil, Statistik, Morse-Einstellungen) blockieren die Bereiche nicht mehr; der .fff.json-Import prüft Schlüssel, Sprache und Design; Hinweis, wenn der lokale Speicher voll ist; Morse-Wiedergabe und WAV-Export sind auf 15 Minuten begrenzt (ein riesiger Text reserviert keine Gigabytes mehr); interne Version angeglichen.

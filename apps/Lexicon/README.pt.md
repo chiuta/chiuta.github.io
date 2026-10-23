@@ -2,7 +2,7 @@
 
 [English](README.md) · [Română](README.ro.md) · [Français](README.fr.md) · [Italiano](README.it.md) · [Español](README.es.md) · **Português** · [Deutsch](README.de.md) · [Magyar](README.hu.md)
 
-**Versão:** 1.0.4 · **Última atualização:** 2026-10-23
+**Versão:** 1.0.5 · **Última atualização:** 2026-10-23
 
 Idiomas da interface: **Română, English, Français, Italiano, Español, Português (PT), Deutsch, Magyar**
 
@@ -69,3 +69,4 @@ MIT — ver o ficheiro `LICENSE` na raiz do repositório.
 - 1.0.1 — 2026-10-22: uma pesquisa sem resultados diz agora explicitamente que o conjunto incluído é apenas uma demonstração (quando o conjunto de demonstração está ativo); a exportação CSV neutraliza as células que começam por = + - @ contra a injeção de fórmulas e a importação TSV/CSV volta a remover o apóstrofo; áreas táteis de pelo menos 24 px; a etiqueta técnica lista os 8 idiomas.
 - 1.0.2 — 2026-10-22: fff-kit 1.1.2: PBKDF2 com 600.000 iterações, proteção anti-clickjacking.
 - 1.0.3 — 2026-10-22: fff-kit 1.1.4: áreas de toque e tamanho mínimo do texto na interface comum.
+- 1.0.5 — 2026-10-23: os dados locais (favoritos, histórico, cartões, definições) são validados na leitura e ao importar uma cópia de segurança: um valor corrompido já não bloqueia o arranque; palavras como «constructor» ou «toString» podem ser adicionadas aos cartões; aviso quando o armazenamento local está cheio; uma importação falhada não deixa um dicionário escrito a meio; versão interna alinhada.

@@ -2,7 +2,7 @@
 
 **English** · [Română](README.ro.md) · [Français](README.fr.md) · [Italiano](README.it.md) · [Español](README.es.md) · [Português](README.pt.md) · [Deutsch](README.de.md) · [Magyar](README.hu.md)
 
-**Version:** 1.0.5 · **Last updated:** 2026-10-23
+**Version:** 1.0.6 · **Last updated:** 2026-10-23
 
 Interface languages: **Română, English, Français, Italiano, Español, Português (PT), Deutsch, Magyar**
 
@@ -35,7 +35,7 @@ Data export/import: `.fff.json` (`fff-bundle` format, schema 1). Outputs: WAV (M
 
 ## Technical
 
-A single `index.html` file, inline JS and CSS, strict CSP with a hash, no external resources. Tests: `node tests/test.mjs` (Playwright; 44 tests: known vectors, round trip for every code, Morse durations computed and measured on rendered audio/blinking, axe 0 in both themes, layout at 360 and 1280 px).
+A single `index.html` file, inline JS and CSS, strict CSP with a hash, no external resources. Tests: `node tests/test.mjs` (Playwright; 48 tests: known vectors, round trip for every code, Morse durations computed and measured on rendered audio/blinking, axe 0 in both themes, layout at 360 and 1280 px).
 
 ## Third parties
 
@@ -56,3 +56,4 @@ MIT — see the `LICENSE` file at the repository root.
 - 1.0.1 — 2026-10-19: the panel is chosen only from the part of the address before the first "&" (#panel&from=…), so that links from ETER/INDICATIV open the correct panel.
 - 1.0.2 — 2026-10-22: the printable-sheet preview no longer adds extra H1 headings to the page (one H1 per page; the sheet title is an H2 on screen and stays an H1 when printed); touch targets of at least 24 px; the technical label (fff-info) now lists the real 8 languages instead of 2.
 - 1.0.3 — 2026-10-22: fff-kit 1.1.2: PBKDF2 600,000 iterations, anti-clickjacking protection.
+- 1.0.6 — 2026-10-23: corrupt local data (SRS, daily exercise, Koch, Braille RO profile, statistics, Morse settings) no longer blocks the panels; .fff.json import validates keys, language and theme; a notice appears when local storage is full; Morse playback and WAV export are limited to 15 minutes (a huge text no longer allocates gigabytes); the internal version is aligned.

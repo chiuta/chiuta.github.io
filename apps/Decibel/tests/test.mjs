@@ -87,9 +87,9 @@ const browser = await launch();
 /* =================== 1. pornire, meta, CSP, limbi =================== */
 await T('pornire curată: 0 erori, 0 CSP, 0 rețea, meta și versiune', async () => {
   const p = await open(browser); await p.waitForTimeout(800); await clean(p, 'start');
-  assert.equal(await p.getAttribute('meta[name=application-version]', 'content'), '1.0.4');
+  assert.equal(await p.getAttribute('meta[name=application-version]', 'content'), '1.0.5');
   assert.equal(await p.getAttribute('meta[name=last-updated]', 'content'), '2026-10-23');
-  assert.equal((await p.textContent('#app-version')).trim(), 'v 1.0.4 · 2026-10-23');
+  assert.equal((await p.textContent('#app-version')).trim(), 'v 1.0.5 · 2026-10-23');
   assert.equal(await p.evaluate(() => document.documentElement.lang), 'ro');
   const csp = await p.getAttribute('meta[http-equiv=Content-Security-Policy]', 'content');
   assert.ok(/default-src 'none'/.test(csp) && /connect-src 'none'/.test(csp) && /script-src 'sha256-/.test(csp) && !/unsafe-eval|script-src[^;]*unsafe-inline/.test(csp));
@@ -414,7 +414,7 @@ await T('jurnal: CSV, .fff.json, import (round-trip), ștergere, „Șterge tot�
   let dl = p.waitForEvent('download'); await p.click('#btnCsv'); let f = await (await dl).path(); const csv = fs.readFileSync(f, 'utf8');
   assert.match(csv, /^\ufeffid,start,durata_s/); assert.equal(csv.trim().split(/\r?\n/).length, 3);
   dl = p.waitForEvent('download'); await p.click('#btnJson'); f = await (await dl).path(); const j = JSON.parse(fs.readFileSync(f, 'utf8'));
-  assert.deepEqual([j.format, j.schema, j.app, j.version, j.updated], ['fff-bundle', 1, 'decibel', '1.0.4', '2026-10-23']); assert.ok(j.data['fff.decibel.sessions']);
+  assert.deepEqual([j.format, j.schema, j.app, j.version, j.updated], ['fff-bundle', 1, 'decibel', '1.0.5', '2026-10-23']); assert.ok(j.data['fff.decibel.sessions']);
   dl = p.waitForEvent('download'); await p.click('#btnSesCsv'); f = await (await dl).path(); const sc = fs.readFileSync(f, 'utf8'); assert.match(sc, /t_s,LAeq_1s,LCeq_1s,LZeq_1s,LAF,LAS/);
   const row = sc.split(/\r?\n/)[2].split(','); near(+row[1], 20 * Math.log10(0.05 / Math.SQRT2) + 1.2, 0.3, 'CSV sesiune LAeq,1s');
   // import invalid
@@ -511,6 +511,84 @@ await T('fișier nevalid / WAV float / 24 biți / mono-stereo: mesaje clare și 
   for (let i = 0; i < m; i++) { const v = Math.round(0.3 * 8388607 * Math.sin(2 * Math.PI * 500 * i / 48000)); c.writeIntLE(v, 44 + 3 * i, 3); }
   const f24 = path.join(TMP, 'm24.wav'); fs.writeFileSync(f24, c); await loadFile(p, f24);
   near(await p.evaluate(() => Decibel.state().sess.leq(2, 0)), 20 * Math.log10(0.3 / Math.SQRT2), 0.1); await p.ctx.close();
+});
+
+
+/* =================== date locale corupte / import ostil / stocare plină / fișiere ostile =================== */
+await T('date locale corupte (null, tipuri greșite): aplicația pornește și toate filele se deschid fără erori', async () => {
+  const bad = {sessions: ['null', '5', '{}', '[null]', '[{"start":"x","laeq":null,"dur":"q"}]'], profiles: ['null', '{}', '[null]', '[{"id":1}]'], audio: ['null', '"s"', '[null]'],
+    hp: ['{"spl":null,"ret":null}', '{"spl":5,"ret":5}', '5'], settings: ['null', '{"dose":null,"spec":5}', '{"w":9,"tw":5,"view":"zz","interval":-5}'], cal: ['null', '{"on":true,"offset":"x"}', '{"on":true,"offset":1e999}']};
+  for (const k of Object.keys(bad)) for (const v of bad[k]) {
+    const p = await open(browser, {goto: false});
+    await p.addInitScript(([kk, vv]) => { try { if (!sessionStorage.__s) { localStorage.setItem('fff.decibel.' + kk, vv); sessionStorage.__s = 1; } } catch (e) {} }, [k, v]);
+    await p.goto(URL_APP); await p.waitForTimeout(200);
+    for (const t of ['spec', 'cal', 'aud', 'log', 'about', 'meas']) await p.click('#t-' + t);
+    assert.deepEqual(p.errs, [], k + '=' + v);
+    const cs = await p.evaluate(() => Decibel.cal()); assert.ok(Number.isFinite(cs.offset), 'offset finit ' + k + '=' + v);
+    await p.ctx.close();
+  }
+});
+await T('import .fff.json ostil: chei străine/forme greșite ignorate; tema nevalidă nu ajunge în atribut', async () => {
+  const p = await open(browser);
+  const f = path.join(TMP, 'rau.fff.json');
+  fs.writeFileSync(f, JSON.stringify({format: 'fff-bundle', schema: 1, app: 'decibel', data: {'fff.decibel.sessions': '5', 'fff.decibel.profiles': '[{"id":"p1","name":"<img src=x onerror=window.__pwn=1>","offset":3,"mic":"m","browser":"Chrome"}]', 'fff.decibel.theme': 'x" onload="y', 'fff.decibel.lang': 'xx', 'altceva.cheie': '1', 'fff.decibel.cal': 'nu e json'}}));
+  await p.click('#t-log');
+  await p.setInputFiles('#impIn', f);
+  await p.waitForSelector('#dlgYes', {state: 'visible', timeout: 3000}); await p.click('#dlgYes');
+  await p.waitForTimeout(300);
+  const st = await p.evaluate(() => ({keys: Object.keys(localStorage).filter(k => k.startsWith('fff.decibel.')).sort(), lang: localStorage.getItem('fff.decibel.lang'), pwn: window.__pwn, th: document.documentElement.getAttribute('data-theme')}));
+  assert.ok(!st.keys.includes('fff.decibel.sessions') && !st.keys.includes('fff.decibel.theme') && !st.keys.includes('fff.decibel.cal') && st.lang !== 'xx' && st.keys.includes('fff.decibel.profiles'), JSON.stringify(st));
+  assert.equal(st.th, null);
+  assert.equal(st.pwn, undefined);
+  assert.deepEqual(p.errs, []);
+  await p.ctx.close();
+});
+await T('localStorage plin: sesiunea salvată rămâne vizibilă în jurnal, utilizatorul e anunțat', async () => {
+  const p = await open(browser, {init: () => { const o = Storage.prototype.setItem; Storage.prototype.setItem = function (k, v) { if (String(k).startsWith('fff.decibel.sessions') && window.__full) { const e = new Error('full'); e.name = 'QuotaExceededError'; throw e; } return o.call(this, k, v); }; }});
+  await p.evaluate(() => { window.__full = true; });
+  const w = path.join(TMP, 'plin.wav'); writeWav(w, sine(1000, 0.1, 8));
+  await loadFile(p, w); await p.waitForTimeout(300); await p.click('#t-log');
+  assert.equal(await p.locator('#logTbl tbody tr').count(), 1, 'sesiunea apare în jurnal chiar dacă localStorage e plin');
+  assert.ok(await p.locator('.fff-toast, #logMsg.bad').count() >= 1, 'anunț vizibil');
+  await p.ctx.close();
+});
+await T('WAV ostil: NaN/Inf în float, frecvență de eșantionare 0 / 1 Hz — fără blocaj, niveluri finite', async () => {
+  const p = await open(browser);
+  const n = 48000 * 3, b = Buffer.alloc(44 + n * 4); b.write('RIFF', 0); b.writeUInt32LE(36 + n * 4, 4); b.write('WAVEfmt ', 8); b.writeUInt32LE(16, 16); b.writeUInt16LE(3, 20); b.writeUInt16LE(1, 22);
+  b.writeUInt32LE(48000, 24); b.writeUInt32LE(48000 * 4, 28); b.writeUInt16LE(4, 32); b.writeUInt16LE(32, 34); b.write('data', 36); b.writeUInt32LE(n * 4, 40);
+  for (let i = 0; i < n; i++) b.writeFloatLE(i === 20000 ? NaN : i === 30000 ? Infinity : 0.2 * Math.sin(2 * Math.PI * 1000 * i / 48000), 44 + 4 * i);
+  const f = path.join(TMP, 'nan.wav'); fs.writeFileSync(f, b); await loadFile(p, f);
+  const lz = await p.evaluate(() => Decibel.state().sess.leq(2, 0)); assert.ok(Number.isFinite(lz), 'Leq finit: ' + lz); near(lz, 20 * Math.log10(0.2 / Math.SQRT2), 0.3);
+  for (const fsx of [0, 1, 100]) {
+    const c = Buffer.from(b.subarray(0, 44 + 4800 * 4)); c.writeUInt32LE(fsx, 24);
+    const g = path.join(TMP, 'fs' + fsx + '.wav'); fs.writeFileSync(g, c);
+    await p.evaluate(() => { Decibel.state().sess = null; document.getElementById('micStatus').textContent = ''; });
+    await p.setInputFiles('#fileIn', g); await p.waitForTimeout(400);
+    assert.match(await p.textContent('#micStatus'), /nu a putut fi citit/, 'fs=' + fsx);
+  }
+  assert.deepEqual(p.errs, []); await p.ctx.close();
+});
+await T('microfon: eșec după acordarea permisiunii (ScriptProcessor indisponibil) → pistele se opresc, mesaj elegant, fără excepție', async () => {
+  const w = writeWav(path.join(TMP, 'mic-fail.wav'), sine(1000, 0.1, 3)); const b = await launch(FAKE(w));
+  const p = await open(b, {init: () => { window.__ended = 0; const o = MediaStreamTrack.prototype.stop; MediaStreamTrack.prototype.stop = function () { window.__ended++; return o.call(this); }; AudioContext.prototype.createScriptProcessor = function () { throw new DOMException('no sp', 'NotSupportedError'); }; }});
+  await p.click('#btnMic'); await p.waitForTimeout(800);
+  assert.ok(await p.evaluate(() => window.__ended) >= 1, 'pista microfonului a fost oprită');
+  assert.equal(await p.evaluate(() => Decibel.state().running), false);
+  assert.match(await p.textContent('#micStatus'), /nu a putut fi pornit/);
+  assert.deepEqual(p.errs, []); await p.ctx.close(); await b.close();
+});
+await T('doză: parametri personalizați absurzi (q ≤ 0, Tc = 0, câmp gol) sunt limitați, fără Infinity/NaN în doză', async () => {
+  const p = await open(browser);
+  const w = path.join(TMP, 'doza.wav'); writeWav(w, pinkNode(48000 * 6, 5, 0.05)); await loadFile(p, w);
+  await p.evaluate(() => { const set = Decibel.set(); set.dose = {pre: 'custom', Lc: '', Tc: 0, q: -3, thr: 'x'}; });
+  const d = await p.evaluate(() => { const s = Decibel.state().sess; return Decibel.dsp.doseOf(s, 100, {Lc: 85, Tc: 8, q: 3, thr: -Infinity}); });
+  assert.ok(Number.isFinite(d) && d > 0);
+  await p.click('#t-cal'); await p.fill('#offIn', '94'); await p.click('#btnOffApply');
+  await p.click('#t-meas'); await p.fill('#doseQ', '0'); await p.fill('#doseTc', '0'); await p.waitForTimeout(150);
+  assert.ok(await p.evaluate(() => Decibel.cal().on), 'calibrat');
+  const txt = await p.evaluate(() => ['v-dose', 'v-doseExt', 'v-doseAllowed'].map(i => document.getElementById(i).textContent));
+  assert.ok(txt.every(x => !/Infinity|NaN|∞/.test(x)) && /\d/.test(txt[0]), txt.join('|'));
+  assert.deepEqual(p.errs, []); await p.ctx.close();
 });
 
 await browser.close();

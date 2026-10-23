@@ -2,7 +2,7 @@
 
 [English](README.md) · [Română](README.ro.md) · [Français](README.fr.md) · [Italiano](README.it.md) · [Español](README.es.md) · [Português](README.pt.md) · [Deutsch](README.de.md) · **Magyar**
 
-**Verzió:** 1.0.4 · **Utolsó frissítés:** 2026-10-23
+**Verzió:** 1.0.5 · **Utolsó frissítés:** 2026-10-23
 
 A felület nyelvei: **Română, English, Français, Italiano, Español, Português (PT), Deutsch, Magyar**
 
@@ -66,3 +66,4 @@ Licenc: MIT — lásd a `LICENSE` fájlt a tároló gyökerében
 - 1.0.1 — 2026-10-22: a CSV-exportok (napló, munkamenet, audiogram) semlegesítik a = + - @ (és tab/CR) karakterrel kezdődő szövegcellákat a képletbefecskendezés ellen; legalább 24 px-es érintési célok a jelölőnégyzeteknél és rádiógomboknál.
 - 1.0.2 — 2026-10-22: fff-kit 1.1.2: PBKDF2 600 000 iterációval, clickjacking elleni védelem.
 - 1.0.3 — 2026-10-22: fff-kit 1.1.4: érintési célok és minimális szövegméret a közös felületen.
+- 1.0.5 — 2026-10-23: a helyi adatok (napló, profilok, audiogramok, fejhallgató, beállítások, kalibráció) olvasáskor ellenőrzést kapnak, a .fff.json import csak ismert kulcsokat és szerkezeteket fogad el; egy munkamenet többé nem vész el csendben, ha a helyi tárhely megtelt (figyelmeztetés); a dózisparaméterek a mezők tartományaira korlátozottak; a lebegőpontos WAV NaN/végtelen értékei már nem mérgezik meg a szűrőket; az abszurd mintavételi frekvenciákat elutasítja; a mikrofon felszabadul, ha az AudioContext az engedély után hibázik; a CR-t tartalmazó CSV-mezők idézőjelbe kerülnek; a belső verzió igazítva.

@@ -2,7 +2,7 @@
 
 [English](README.md) · [Română](README.ro.md) · **Français** · [Italiano](README.it.md) · [Español](README.es.md) · [Português](README.pt.md) · [Deutsch](README.de.md) · [Magyar](README.hu.md)
 
-**Version :** 1.0.4 · **Dernière mise à jour :** 2026-10-23
+**Version :** 1.0.5 · **Dernière mise à jour :** 2026-10-23
 
 Langues de l'interface : **Română, English, Français, Italiano, Español, Português (PT), Deutsch, Magyar**
 
@@ -66,3 +66,4 @@ Licence : MIT — voir le fichier `LICENSE` à la racine du dépôt
 - 1.0.1 — 2026-10-22 : les exports CSV (journal, session, audiogramme) neutralisent les cellules de texte commençant par = + - @ (et tabulation/CR) contre l’injection de formules ; cibles tactiles d’au moins 24 px pour les cases à cocher et boutons radio.
 - 1.0.2 — 2026-10-22 : fff-kit 1.1.2 : PBKDF2 à 600 000 itérations, protection anti-clickjacking.
 - 1.0.3 — 2026-10-22 : fff-kit 1.1.4 : cibles tactiles et taille minimale du texte dans l’interface commune.
+- 1.0.5 — 2026-10-23 : les données locales (journal, profils, audiogrammes, casque, réglages, étalonnage) sont validées à la lecture et l’import .fff.json n’accepte que les clés et formes connues ; une session ne se perd plus silencieusement quand le stockage local est plein (avertissement) ; les paramètres de dose sont limités aux plages des champs ; NaN/Infini dans un WAV flottant n’empoisonnent plus les filtres ; les fréquences d’échantillonnage absurdes sont refusées ; le microphone est libéré si AudioContext échoue après l’autorisation ; les champs CSV contenant CR sont entre guillemets ; version interne alignée.

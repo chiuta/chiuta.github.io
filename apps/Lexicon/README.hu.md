@@ -2,7 +2,7 @@
 
 [English](README.md) · [Română](README.ro.md) · [Français](README.fr.md) · [Italiano](README.it.md) · [Español](README.es.md) · [Português](README.pt.md) · [Deutsch](README.de.md) · **Magyar**
 
-**Verzió:** 1.0.4 · **Utolsó frissítés:** 2026-10-23
+**Verzió:** 1.0.5 · **Utolsó frissítés:** 2026-10-23
 
 A felület nyelvei: **Română, English, Français, Italiano, Español, Português (PT), Deutsch, Magyar**
 
@@ -69,3 +69,4 @@ MIT — lásd a `LICENSE` fájlt a tároló gyökerében.
 - 1.0.1 — 2026-10-22: az eredménytelen keresés most kifejezetten jelzi, hogy a mellékelt készlet csak bemutató (ha a demókészlet aktív); a CSV-export semlegesíti a = + - @ karakterrel kezdődő cellákat a képletbefecskendezés ellen, a TSV/CSV-import pedig ismét eltávolítja az aposztrófot; legalább 24 px-es érintési célok; a műszaki címke mind a 8 nyelvet felsorolja.
 - 1.0.2 — 2026-10-22: fff-kit 1.1.2: PBKDF2 600 000 iterációval, clickjacking elleni védelem.
 - 1.0.3 — 2026-10-22: fff-kit 1.1.4: érintési célok és minimális szövegméret a közös felületen.
+- 1.0.5 — 2026-10-23: a helyi adatok (kedvencek, előzmények, kártyák, beállítások) olvasáskor és biztonsági mentés importálásakor ellenőrzést kapnak, így egy sérült érték többé nem akadályozza az indulást; az olyan szavak, mint a „constructor” vagy a „toString”, felvehetők a kártyák közé; figyelmeztetés, ha a helyi tárhely megtelt; a sikertelen import nem hagy félig írt szótárat; a belső verzió igazítva.
