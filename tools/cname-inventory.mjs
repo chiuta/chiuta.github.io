@@ -162,8 +162,19 @@ function render() {
 
 const md = render();
 if (argv.includes('--check')) {
-  if (!exists(OUT) || read(OUT) !== md) { console.error('docs/DOMENII.md nu corespunde depozitelor (rulează `node tools/cname-inventory.mjs`)'); process.exit(1); }
-  console.log(`DOMENII.md ok · ${rows.length} aplicații · ${own.length} cu domeniu propriu · ${hubApps.length + noCname.length} pe origine partajată`);
+  if (argv.includes('--allow-missing') && missing.length && exists(OUT)) {
+    // Fără celelalte depozite documentul nu se poate regenera integral: verificăm doar rândurile din inventar ale aplicațiilor prezente
+    // și că toate cardurile din catalog apar în inventar. Cu toate depozitele pe disc, verificarea este cea strictă.
+    const have = read(OUT).split('\n'), want = md.split('\n');
+    const rowOf = (lines, k) => lines.find((l) => l.startsWith(`| ${k} | `));
+    const bad = rows.filter((r) => r.where !== 'LIPSĂ' && rowOf(have, r.key) !== rowOf(want, r.key)).map((r) => r.key);
+    const absent = rows.filter((r) => !rowOf(have, r.key)).map((r) => r.key);
+    if (bad.length || absent.length) { console.error(`docs/DOMENII.md nu corespunde (rânduri diferite: ${bad.join(', ') || '—'}; lipsă din inventar: ${absent.join(', ') || '—'}); rulează \`node tools/cname-inventory.mjs\``); process.exit(1); }
+    console.log(`DOMENII.md ok (parțial) · ${rows.length - missing.length} aplicații verificate, ${missing.length} omise (depozite absente de pe disc)`);
+  } else {
+    if (!exists(OUT) || read(OUT) !== md) { console.error('docs/DOMENII.md nu corespunde depozitelor (rulează `node tools/cname-inventory.mjs`)'); process.exit(1); }
+    console.log(`DOMENII.md ok · ${rows.length} aplicații · ${own.length} cu domeniu propriu · ${hubApps.length + noCname.length} pe origine partajată`);
+  }
 } else {
   fs.mkdirSync(path.dirname(OUT), {recursive: true});
   fs.writeFileSync(OUT, md);
