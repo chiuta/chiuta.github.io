@@ -2,7 +2,7 @@
 
 [English](README.md) · [Română](README.ro.md) · [Français](README.fr.md) · [Italiano](README.it.md) · [Español](README.es.md) · [Português](README.pt.md) · [Deutsch](README.de.md) · **Magyar**
 
-**Verzió:** 1.1.7 · **Utolsó frissítés:** 2026-10-23
+**Verzió:** 1.1.8 · **Utolsó frissítés:** 2026-10-23
 
 A felület nyelvei: **Română, English, Français, Italiano, Español, Português (PT), Deutsch, Magyar**
 
@@ -136,6 +136,7 @@ MIT — lásd a `LICENSE` fájlt a tároló gyökerében. A harmadik felek kompo
 - **1.1.4 — 2026-10-22:** fff-kit 1.1.2: PBKDF2 600 000 iterációval, clickjacking elleni védelem.
 - **1.1.6 — 2026-10-22:** Tesztek: valós idő helyett feltételekre várakoznak, így a tesztcsomagok terhelés alatt is megbízhatóan lefutnak. Az alkalmazás viselkedése nem változik.
 - **1.1.5 — 2026-10-22:** fff-kit 1.1.4: érintési célok és minimális szövegméret a közös felületen.
+- **1.1.8 — 2026-10-23:** a `#toWords` hivatkozás érintési célja mostantól legalább 24 px.
 
 ## Mély hivatkozások
 

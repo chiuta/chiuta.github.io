@@ -2,7 +2,7 @@
 
 [English](README.md) · [Română](README.ro.md) · [Français](README.fr.md) · **Italiano** · [Español](README.es.md) · [Português](README.pt.md) · [Deutsch](README.de.md) · [Magyar](README.hu.md)
 
-**Versione:** 1.0.4 · **Ultimo aggiornamento:** 2026-10-23
+**Versione:** 1.0.5 · **Ultimo aggiornamento:** 2026-10-23
 
 Lingue dell'interfaccia: **Română, English, Français, Italiano, Español, Português (PT), Deutsch, Magyar**
 
@@ -69,3 +69,4 @@ MIT — vedi il file `LICENSE` nella radice del repository.
 - 1.0.1 — 2026-10-22: una ricerca senza risultati dice ora esplicitamente che il set incluso è solo dimostrativo (quando il set demo è attivo); l’esportazione CSV neutralizza le celle che iniziano con = + - @ contro l’iniezione di formule e l’importazione TSV/CSV rimuove di nuovo l’apostrofo; aree tattili di almeno 24 px; l’etichetta tecnica elenca le 8 lingue.
 - 1.0.2 — 2026-10-22: fff-kit 1.1.2: PBKDF2 con 600.000 iterazioni, protezione anti-clickjacking.
 - 1.0.3 — 2026-10-22: fff-kit 1.1.4: aree tattili e dimensione minima del testo nell’interfaccia comune.
+- 1.0.5 — 2026-10-23: messaggio alternativo quando JavaScript è disattivato (noscript).

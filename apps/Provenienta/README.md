@@ -2,7 +2,7 @@
 
 **English** · [Română](README.ro.md) · [Français](README.fr.md) · [Italiano](README.it.md) · [Español](README.es.md) · [Português](README.pt.md) · [Deutsch](README.de.md) · [Magyar](README.hu.md)
 
-**Version:** 1.0.4 · **Last updated:** 2026-10-23
+**Version:** 1.0.5 · **Last updated:** 2026-10-23
 
 Interface languages: **Română, English, Français, Italiano, Español, Português (PT), Deutsch, Magyar**
 
@@ -64,3 +64,4 @@ MIT — see the `LICENSE` file at the repository root.
 - 1.0.1 — 2026-10-22: new prominent note in the status block and in the exported report: a valid signature does not prove the image is true, and an unknown signer looks just as valid; touch targets of at least 24 px.
 - 1.0.2 — 2026-10-22: fff-kit 1.1.2: PBKDF2 with 600,000 iterations, anti-clickjacking protection.
 - 1.0.3 — 2026-10-22: fff-kit 1.1.4: touch targets and minimum text size in the shared interface.
+- 1.0.5 — 2026-10-23: fallback message when JavaScript is disabled (noscript).

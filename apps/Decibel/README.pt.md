@@ -2,7 +2,7 @@
 
 [English](README.md) · [Română](README.ro.md) · [Français](README.fr.md) · [Italiano](README.it.md) · [Español](README.es.md) · **Português** · [Deutsch](README.de.md) · [Magyar](README.hu.md)
 
-**Versão:** 1.0.4 · **Última atualização:** 2026-10-23
+**Versão:** 1.0.5 · **Última atualização:** 2026-10-23
 
 Idiomas da interface: **Română, English, Français, Italiano, Español, Português (PT), Deutsch, Magyar**
 
@@ -66,3 +66,4 @@ Licença: MIT — ver o ficheiro `LICENSE` na raiz do repositório
 - 1.0.1 — 2026-10-22: as exportações CSV (registo, sessão, audiograma) neutralizam as células de texto que começam por = + - @ (e tabulação/CR) contra a injeção de fórmulas; áreas táteis de pelo menos 24 px para caixas de seleção e botões de opção.
 - 1.0.2 — 2026-10-22: fff-kit 1.1.2: PBKDF2 com 600.000 iterações, proteção anti-clickjacking.
 - 1.0.3 — 2026-10-22: fff-kit 1.1.4: áreas de toque e tamanho mínimo do texto na interface comum.
+- 1.0.5 — 2026-10-23: mensagem alternativa quando o JavaScript está desativado (noscript).

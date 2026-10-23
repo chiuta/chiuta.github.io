@@ -2,7 +2,7 @@
 
 **English** · [Română](README.ro.md) · [Français](README.fr.md) · [Italiano](README.it.md) · [Español](README.es.md) · [Português](README.pt.md) · [Deutsch](README.de.md) · [Magyar](README.hu.md)
 
-**Version:** 1.0.4 · **Last updated:** 2026-10-23
+**Version:** 1.0.5 · **Last updated:** 2026-10-23
 
 Interface languages: **Română, English, Français, Italiano, Español, Português (PT), Deutsch, Magyar**
 
@@ -66,3 +66,4 @@ License: MIT — see the `LICENSE` file in the repository root
 - 1.0.1 — 2026-10-22: CSV exports (log, session, audiogram) neutralise text cells starting with = + - @ (and tab/CR) against spreadsheet formula injection; touch targets of at least 24 px for check boxes and radio buttons.
 - 1.0.2 — 2026-10-22: fff-kit 1.1.2: PBKDF2 with 600,000 iterations, anti-clickjacking protection.
 - 1.0.3 — 2026-10-22: fff-kit 1.1.4: touch targets and minimum text size in the shared interface.
+- 1.0.5 — 2026-10-23: fallback message when JavaScript is disabled (noscript).

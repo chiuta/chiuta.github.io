@@ -2,7 +2,7 @@
 
 [English](README.md) · **Română** · [Français](README.fr.md) · [Italiano](README.it.md) · [Español](README.es.md) · [Português](README.pt.md) · [Deutsch](README.de.md) · [Magyar](README.hu.md)
 
-**Versiune:** 1.0.5 · **Ultima actualizare:** 2026-10-23
+**Versiune:** 1.0.6 · **Ultima actualizare:** 2026-10-23
 
 Limbile interfeței: **Română, English, Français, Italiano, Español, Português (PT), Deutsch, Magyar**
 
@@ -69,3 +69,4 @@ MIT — vezi fișierul `LICENSE` din rădăcina depozitului.
 - **1.0.2 — 2026-10-22:** mesaj în subsol și notificare „Gata pentru offline” după ce service worker-ul a pus aplicația în cache (prima încărcare); exportul CSV neutralizează celulele care încep cu = + - @ (și tab/CR) împotriva injecției de formule în foi de calcul, iar importul CSV scoate din nou apostroful; text de cel puțin 12 px; ținte tactile de cel puțin 24 px; eticheta tehnică listează cele 8 limbi.
 - **1.0.3 — 2026-10-22:** fff-kit 1.1.2: PBKDF2 cu 600.000 de iterații, protecție anti-clickjacking.
 - **1.0.4 — 2026-10-22:** fff-kit 1.1.4: ținte tactile și text minim în interfața comună.
+- **1.0.6 — 2026-10-23:** mesaj de rezervă când JavaScript este dezactivat (noscript).

@@ -2,7 +2,7 @@
 
 [English](README.md) · [Română](README.ro.md) · [Français](README.fr.md) · [Italiano](README.it.md) · [Español](README.es.md) · **Português** · [Deutsch](README.de.md) · [Magyar](README.hu.md)
 
-**Versão:** 1.1.7 · **Última atualização:** 2026-10-23
+**Versão:** 1.1.8 · **Última atualização:** 2026-10-23
 
 Idiomas da interface: **Română, English, Français, Italiano, Español, Português (PT), Deutsch, Magyar**
 
@@ -136,6 +136,7 @@ MIT — ver o ficheiro `LICENSE` na raiz do repositório. Os componentes de terc
 - **1.1.4 — 2026-10-22:** fff-kit 1.1.2: PBKDF2 com 600.000 iterações, proteção anti-clickjacking.
 - **1.1.6 — 2026-10-22:** Testes: esperas por condições em vez de tempo real, para que as suites passem de forma estável sob carga. Sem alterações no comportamento da aplicação.
 - **1.1.5 — 2026-10-22:** fff-kit 1.1.4: áreas de toque e tamanho mínimo do texto na interface comum.
+- **1.1.8 — 2026-10-23:** a ligação `#toWords` tem agora uma área de toque de pelo menos 24 px.
 
 ## Ligações profundas
 

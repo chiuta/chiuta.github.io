@@ -2,7 +2,7 @@
 
 [English](README.md) · [Română](README.ro.md) · [Français](README.fr.md) · [Italiano](README.it.md) · [Español](README.es.md) · [Português](README.pt.md) · [Deutsch](README.de.md) · **Magyar**
 
-**Verzió:** 1.0.4 · **Utolsó frissítés:** 2026-10-23
+**Verzió:** 1.0.5 · **Utolsó frissítés:** 2026-10-23
 
 A felület nyelvei: **Română, English, Français, Italiano, Español, Português (PT), Deutsch, Magyar**
 
@@ -68,3 +68,4 @@ MIT — lásd a `LICENSE` fájlt a tároló gyökerében.
 - 1.0.1 — 2026-10-22: a jelszavas titkosítás mostantól PBKDF2-SHA256-tal, 600 000 iterációval származtatja a kulcsot (OWASP); a meglévő, 310 000 iterációs másolatok továbbra is megnyithatók, és a feloldás utáni következő mentéskor frissülnek; emlékeztető („Exportálás most” gombbal), ha 30 napja nincs JSON/GEDCOM-mentés; a CSV-export semlegesíti a = + - @ (és tab/CR) karakterrel kezdődő szövegcellákat; legalább 24 px-es érintési célok.
 - 1.0.2 — 2026-10-22: fff-kit 1.1.2: PBKDF2 600 000 iterációval, clickjacking elleni védelem.
 - 1.0.3 — 2026-10-22: fff-kit 1.1.4: érintési célok és minimális szövegméret a közös felületen.
+- 1.0.5 — 2026-10-23: tartalék üzenet kikapcsolt JavaScript esetén (noscript).

@@ -2,7 +2,7 @@
 
 [English](README.md) · [Română](README.ro.md) · [Français](README.fr.md) · **Italiano** · [Español](README.es.md) · [Português](README.pt.md) · [Deutsch](README.de.md) · [Magyar](README.hu.md)
 
-**Versione:** 1.0.4 · **Ultimo aggiornamento:** 2026-10-23
+**Versione:** 1.0.5 · **Ultimo aggiornamento:** 2026-10-23
 
 Lingue dell'interfaccia: **Română, English, Français, Italiano, Español, Português (PT), Deutsch, Magyar**
 
@@ -68,3 +68,4 @@ MIT — vedi il file `LICENSE` nella radice del repository.
 - 1.0.1 — 2026-10-22: la cifratura con password deriva ora la chiave con PBKDF2-SHA256 a 600.000 iterazioni (OWASP); le copie esistenti a 310.000 si aprono ancora e vengono aggiornate al salvataggio successivo dopo lo sblocco; promemoria (con pulsante «Esporta ora») se non c’è un backup JSON/GEDCOM da 30 giorni; l’esportazione CSV neutralizza le celle di testo che iniziano con = + - @ (e tab/CR); aree tattili di almeno 24 px.
 - 1.0.2 — 2026-10-22: fff-kit 1.1.2: PBKDF2 con 600.000 iterazioni, protezione anti-clickjacking.
 - 1.0.3 — 2026-10-22: fff-kit 1.1.4: aree tattili e dimensione minima del testo nell’interfaccia comune.
+- 1.0.5 — 2026-10-23: messaggio alternativo quando JavaScript è disattivato (noscript).

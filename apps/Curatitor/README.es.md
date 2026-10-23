@@ -2,7 +2,7 @@
 
 [English](README.md) · [Română](README.ro.md) · [Français](README.fr.md) · [Italiano](README.it.md) · **Español** · [Português](README.pt.md) · [Deutsch](README.de.md) · [Magyar](README.hu.md)
 
-**Versión:** 1.0.4 · **Última actualización:** 2026-10-23
+**Versión:** 1.0.5 · **Última actualización:** 2026-10-23
 
 Idiomas de la interfaz: **Română, English, Français, Italiano, Español, Português (PT), Deutsch, Magyar**
 
@@ -78,3 +78,4 @@ MIT — véase el archivo `LICENSE` en la raíz del repositorio.
 - 1.0.1 — 2026-10-22: «Borrar todo» usa el cuadro de confirmación de la página en lugar de window.confirm; las casillas y los botones de opción tienen áreas táctiles de al menos 24 px; la etiqueta técnica (fff-info) lista ahora los 8 idiomas de la interfaz.
 - 1.0.2 — 2026-10-22: fff-kit 1.1.2: PBKDF2 con 600.000 iteraciones, protección anti-clickjacking.
 - 1.0.3 — 2026-10-22: fff-kit 1.1.4: áreas táctiles y tamaño mínimo del texto en la interfaz común.
+- 1.0.5 — 2026-10-23: mensaje alternativo cuando JavaScript está desactivado (noscript).

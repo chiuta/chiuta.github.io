@@ -2,7 +2,7 @@
 
 [English](README.md) · [Română](README.ro.md) · [Français](README.fr.md) · [Italiano](README.it.md) · [Español](README.es.md) · [Português](README.pt.md) · [Deutsch](README.de.md) · **Magyar**
 
-**Verzió:** 1.1.4 · **Utolsó frissítés:** 2026-10-23
+**Verzió:** 1.1.5 · **Utolsó frissítés:** 2026-10-23
 
 A felület nyelvei: **Română, English, Français, Italiano, Español, Português (PT), Deutsch, Magyar**
 
@@ -79,3 +79,4 @@ Licenc: MIT — lásd a `LICENSE` fájlt a tároló gyökerében.
 - 1.1.1 — 2026-10-22: nincs többé window.confirm / window.prompt: a haladás visszaállítása a lejátszóban, a vázlat törlése és a kép alternatív szövegének bekérése az oldalon belüli, 8 nyelvre lefordított párbeszédablakot használja; a jelölőnégyzetek és rádiógombok érintési célja legalább 24 px; a műszaki címke már nem jelenti az about:srcdoc CSP-tokent hálózati gazdaként.
 - 1.1.2 — 2026-10-22: fff-kit 1.1.2: PBKDF2 600 000 iterációval, clickjacking elleni védelem.
 - 1.1.3 — 2026-10-22: fff-kit 1.1.4: érintési célok és minimális szövegméret a közös felületen.
+- 1.1.5 — 2026-10-23: tartalék üzenet kikapcsolt JavaScript esetén (noscript).

@@ -2,7 +2,7 @@
 
 [English](README.md) · [Română](README.ro.md) · [Français](README.fr.md) · [Italiano](README.it.md) · **Español** · [Português](README.pt.md) · [Deutsch](README.de.md) · [Magyar](README.hu.md)
 
-**Versión:** 1.0.5 · **Última actualización:** 2026-10-23
+**Versión:** 1.0.6 · **Última actualización:** 2026-10-23
 
 Idiomas de la interfaz: **Română, English, Français, Italiano, Español, Português (PT), Deutsch, Magyar**
 
@@ -69,3 +69,4 @@ MIT — consulta el archivo `LICENSE` en la raíz del repositorio.
 - **1.0.2 — 2026-10-22:** mensaje en el pie y aviso «Listo para usar sin conexión» cuando el service worker ha guardado la aplicación en caché (primera carga); la exportación CSV neutraliza las celdas que empiezan por = + - @ (y tabulación/CR) contra la inyección de fórmulas, y la importación CSV vuelve a quitar el apóstrofo; texto de al menos 12 px; áreas táctiles de al menos 24 px; la etiqueta técnica lista los 8 idiomas.
 - **1.0.3 — 2026-10-22:** fff-kit 1.1.2: PBKDF2 con 600.000 iteraciones, protección anti-clickjacking.
 - **1.0.4 — 2026-10-22:** fff-kit 1.1.4: áreas táctiles y tamaño mínimo del texto en la interfaz común.
+- **1.0.6 — 2026-10-23:** mensaje alternativo cuando JavaScript está desactivado (noscript).

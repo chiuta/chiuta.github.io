@@ -2,7 +2,7 @@
 
 [English](README.md) · [Română](README.ro.md) · [Français](README.fr.md) · **Italiano** · [Español](README.es.md) · [Português](README.pt.md) · [Deutsch](README.de.md) · [Magyar](README.hu.md)
 
-**Versione:** 1.1.4 · **Ultimo aggiornamento:** 2026-10-23
+**Versione:** 1.1.5 · **Ultimo aggiornamento:** 2026-10-23
 
 Lingue dell'interfaccia: **Română, English, Français, Italiano, Español, Português (PT), Deutsch, Magyar**
 
@@ -79,3 +79,4 @@ Licenza: MIT — vedi il file `LICENSE` nella radice del repository.
 - 1.1.1 — 2026-10-22: niente più window.confirm / window.prompt: il ripristino dei progressi nel player, la cancellazione della bozza e la richiesta del testo alternativo dell’immagine usano finestre di dialogo della pagina, tradotte in 8 lingue; aree tattili di almeno 24 px per caselle e pulsanti radio; l’etichetta tecnica non segnala più il token CSP about:srcdoc come host di rete.
 - 1.1.2 — 2026-10-22: fff-kit 1.1.2: PBKDF2 con 600.000 iterazioni, protezione anti-clickjacking.
 - 1.1.3 — 2026-10-22: fff-kit 1.1.4: aree tattili e dimensione minima del testo nell’interfaccia comune.
+- 1.1.5 — 2026-10-23: messaggio alternativo quando JavaScript è disattivato (noscript).

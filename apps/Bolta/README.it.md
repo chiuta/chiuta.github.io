@@ -2,7 +2,7 @@
 
 [English](README.md) · [Română](README.ro.md) · [Français](README.fr.md) · **Italiano** · [Español](README.es.md) · [Português](README.pt.md) · [Deutsch](README.de.md) · [Magyar](README.hu.md)
 
-**Versione:** 1.1.7 · **Ultimo aggiornamento:** 2026-10-23
+**Versione:** 1.1.8 · **Ultimo aggiornamento:** 2026-10-23
 
 Lingue dell'interfaccia: **Română, English, Français, Italiano, Español, Português (PT), Deutsch, Magyar**
 
@@ -136,6 +136,7 @@ MIT — vedi il file `LICENSE` nella radice del repository. I componenti di terz
 - **1.1.4 — 2026-10-22:** fff-kit 1.1.2: PBKDF2 con 600.000 iterazioni, protezione anti-clickjacking.
 - **1.1.6 — 2026-10-22:** Test: attese su condizioni invece del tempo reale, così le suite passano in modo stabile sotto carico. Nessuna modifica al comportamento dell’app.
 - **1.1.5 — 2026-10-22:** fff-kit 1.1.4: aree tattili e dimensione minima del testo nell’interfaccia comune.
+- **1.1.8 — 2026-10-23:** il link `#toWords` ha ora un'area tattile di almeno 24 px.
 
 ## Link profondi
 

@@ -2,7 +2,7 @@
 
 **English** · [Română](README.ro.md) · [Français](README.fr.md) · [Italiano](README.it.md) · [Español](README.es.md) · [Português](README.pt.md) · [Deutsch](README.de.md) · [Magyar](README.hu.md)
 
-**Version:** 1.1.7 · **Last updated:** 2026-10-23
+**Version:** 1.1.8 · **Last updated:** 2026-10-23
 
 Interface languages: **Română, English, Français, Italiano, Español, Português (PT), Deutsch, Magyar**
 
@@ -136,6 +136,7 @@ MIT — see the `LICENSE` file at the root of the repository. The third-party co
 - **1.1.4 — 2026-10-22:** fff-kit 1.1.2: PBKDF2 with 600,000 iterations, anti-clickjacking protection.
 - **1.1.6 — 2026-10-22:** Tests: waits on conditions instead of real time, so the suites pass reliably under load. No change in app behavior.
 - **1.1.5 — 2026-10-22:** fff-kit 1.1.4: touch targets and minimum text size in the shared interface.
+- **1.1.8 — 2026-10-23:** the `#toWords` link now has a touch target of at least 24 px.
 
 ## Deep links
 
