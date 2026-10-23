@@ -2,7 +2,7 @@
 
 **English** · [Română](README.ro.md) · [Français](README.fr.md) · [Italiano](README.it.md) · [Español](README.es.md) · [Português](README.pt.md) · [Deutsch](README.de.md) · [Magyar](README.hu.md)
 
-**Version:** 1.1.4 · **Last updated:** 2026-10-23
+**Version:** 1.1.5 · **Last updated:** 2026-10-23
 
 Interface languages: **Română, English, Français, Italiano, Español, Português (PT), Deutsch, Magyar**
 
@@ -79,3 +79,4 @@ Licence: MIT — see the `LICENSE` file in the repository root.
 - 1.1.1 — 2026-10-22: no more window.confirm / window.prompt: resetting course progress in the player, wiping the draft and the image alt-text prompt use in-page dialogs translated into the 8 languages; touch targets of at least 24 px for check boxes and radio buttons; the technical label no longer reports the CSP token about:srcdoc as a network host.
 - 1.1.2 — 2026-10-22: fff-kit 1.1.2: PBKDF2 with 600,000 iterations, anti-clickjacking protection.
 - 1.1.3 — 2026-10-22: fff-kit 1.1.4: touch targets and minimum text size in the shared interface.
+- 1.1.5 — 2026-10-23: audit: progress from localStorage or an imported file is normalised on load (it no longer breaks lessons or injects HTML); images used in options, feedback and evidence are exported; ZIP import caps decompression (ZIP bomb) and only inflates the entries it needs; the `last-updated` date of the generated file; touch targets ≥44 px and no horizontal overflow at 360 px (editor and generated course).

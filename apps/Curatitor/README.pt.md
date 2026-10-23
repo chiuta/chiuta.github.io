@@ -78,3 +78,4 @@ MIT — veja o ficheiro `LICENSE` na raiz do repositório.
 - 1.0.1 — 2026-10-22: «Apagar tudo» usa a caixa de confirmação da página em vez de window.confirm; as caixas de seleção e os botões de opção têm áreas táteis de pelo menos 24 px; a etiqueta técnica (fff-info) lista agora os 8 idiomas da interface.
 - 1.0.2 — 2026-10-22: fff-kit 1.1.2: PBKDF2 com 600.000 iterações, proteção anti-clickjacking.
 - 1.0.3 — 2026-10-22: fff-kit 1.1.4: áreas de toque e tamanho mínimo do texto na interface comum.
+- 1.0.5 — 2026-10-23: audit: um PDF cuja tabela xref não tem «trailer» já não bloqueia a página (ciclo infinito); o perfil «Máximo» remove agora também as caixas MP4 de nível superior desconhecidas (XMP_, junk), os chunks WebP desconhecidos (JUNK), as extensões GIF desconhecidas, o sPLT dos PNG e a cauda do APP14 Adobe dos JPEG; os caracteres de controlo bidi em nomes e metadados são neutralizados; áreas de toque ≥44 px; «Apagar tudo» já não pode recorrer a window.confirm.

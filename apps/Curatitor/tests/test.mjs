@@ -636,6 +636,15 @@ await test('MP4: cutii de nivel superior necunoscute/XMP_/junk sunt eliminate (l
   const pm = (f) => sh('ffmpeg', ['-loglevel', 'error', '-i', f, '-map', '0', '-c', 'copy', '-f', 'streamhash', '-hash', 'md5', '-']).toString().trim(); eq(pm(path.join(W, 'top.out.mp4')), pm(src), 'hash pachete'); await p.close();
 });
 
+await test('controale bidi (U+202E) din numele fișierului și din metadate nu inversează vizual textul afișat', async () => {
+  const png = await canvasImage('png', 20, 20); const idat = png.indexOf('IDAT') - 4;
+  const fx = Buffer.concat([png.subarray(0, idat), F.pngChunk('tEXt', Buffer.from('Author\0Ion ‮elbuod⁦x', 'utf8')), png.subarray(idat)]);
+  const p = await openApp(); await p.setInputFiles('#fileInput', { name: 'poza‮gpj.png', mimeType: 'image/png', buffer: fx }); await settled(p);
+  await p.click('li.file button[data-act=view]'); await p.waitForTimeout(150);
+  const txt = await p.evaluate(() => document.querySelector('#list').innerText + document.querySelector('#detailBody').innerText);
+  assert(!/[‪-‮⁦-⁩‎‏]/.test(txt), 'caractere bidi rămase în interfață'); assert(txt.includes('poza') && txt.includes('Ion'), 'textul rămâne vizibil');
+  await cleanAll(p); const [d] = await Promise.all([p.waitForEvent('download'), p.locator('li.file button[data-act=dl]').click()]); assert(d.suggestedFilename().endsWith('.png'), 'nume descărcat: ' + d.suggestedFilename()); await p.close();
+});
 await test('ținte tactile ≥44px la 360px (butoane, select, summary, opțiuni, etichetă versiune)', async () => {
   const c = await mkCtx({ viewport: { width: 360, height: 740 }, hasTouch: true }); const p = await openApp(c); await p.click('#customOpts > summary'); await p.waitForTimeout(100);
   const small = await p.evaluate(() => { const res = []; for (const el of document.querySelectorAll('button,select,summary,#app-version,label.opt,label.chk')) { const cs = getComputedStyle(el); if (cs.display === 'none' || cs.visibility === 'hidden') continue; const r = el.getBoundingClientRect(); if (r.width && r.height && r.height < 43.5) res.push((el.id || el.className || el.tagName) + ' ' + Math.round(r.width) + 'x' + Math.round(r.height)); } return res; });

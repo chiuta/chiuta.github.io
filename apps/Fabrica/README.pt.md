@@ -2,7 +2,7 @@
 
 [English](README.md) · [Română](README.ro.md) · [Français](README.fr.md) · [Italiano](README.it.md) · [Español](README.es.md) · **Português** · [Deutsch](README.de.md) · [Magyar](README.hu.md)
 
-**Versão:** 1.1.4 · **Última atualização:** 2026-10-23
+**Versão:** 1.1.5 · **Última atualização:** 2026-10-23
 
 Idiomas da interface: **Română, English, Français, Italiano, Español, Português (PT), Deutsch, Magyar**
 
@@ -79,3 +79,4 @@ Licença: MIT — ver o ficheiro `LICENSE` na raiz do repositório.
 - 1.1.1 — 2026-10-22: sem window.confirm / window.prompt: a reposição do progresso no leitor, a eliminação do rascunho e o pedido do texto alternativo da imagem usam caixas de diálogo da página, traduzidas em 8 idiomas; áreas táteis de pelo menos 24 px para caixas de seleção e botões de opção; a etiqueta técnica deixa de indicar o token CSP about:srcdoc como anfitrião de rede.
 - 1.1.2 — 2026-10-22: fff-kit 1.1.2: PBKDF2 com 600.000 iterações, proteção anti-clickjacking.
 - 1.1.3 — 2026-10-22: fff-kit 1.1.4: áreas de toque e tamanho mínimo do texto na interface comum.
+- 1.1.5 — 2026-10-23: audit: o progresso do localStorage ou de um ficheiro importado é normalizado ao carregar (já não estraga as lições nem pode injetar HTML); as imagens usadas em opções, comentários e provas são exportadas; a importação ZIP limita a descompressão (bomba ZIP) e só descomprime as entradas necessárias; a data `last-updated` do ficheiro gerado; áreas de toque ≥44 px e sem transbordo horizontal a 360 px (editor e curso gerado).

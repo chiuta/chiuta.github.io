@@ -64,3 +64,4 @@ MIT — ver o ficheiro `LICENSE` na raiz do repositório.
 - 1.0.1 — 2026-10-22: nova nota em destaque no bloco de estado e no relatório exportado: uma assinatura válida não prova que a imagem seja verdadeira e um signatário desconhecido parece igualmente válido; áreas táteis de pelo menos 24 px.
 - 1.0.2 — 2026-10-22: fff-kit 1.1.2: PBKDF2 com 600.000 iterações, proteção anti-clickjacking.
 - 1.0.3 — 2026-10-22: fff-kit 1.1.4: áreas de toque e tamanho mínimo do texto na interface comum.
+- 1.0.5 — 2026-10-23: audit: um vínculo cujas exclusões saem do manifesto já não afirma «ficheiro inalterado» (passa a «não verificável»); o relatório Markdown neutraliza os textos vindos do ficheiro (sem linhas falsas, ligações nem HTML) e respeita «Incluir o nome do ficheiro» também para o título; analisam-se no máximo 100 manifestos; o resultado tardio de um ficheiro substituído já não sobrescreve o novo ficheiro; a chave __proto__ permanece no relatório JSON; áreas de toque ≥44 px.
