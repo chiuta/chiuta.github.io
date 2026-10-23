@@ -2,7 +2,7 @@
 
 **English** · [Română](README.ro.md) · [Français](README.fr.md) · [Italiano](README.it.md) · [Español](README.es.md) · [Português](README.pt.md) · [Deutsch](README.de.md) · [Magyar](README.hu.md)
 
-**Version:** 1.0.4 · **Last updated:** 2026-10-23
+**Version:** 1.0.5 · **Last updated:** 2026-10-23
 
 Interface languages: **Română, English, Français, Italiano, Español, Português (PT), Deutsch, Magyar**
 
@@ -34,7 +34,8 @@ Gospodar is a household budget that runs locally, in a single HTML file, with no
 - Income/expense is determined by the nature of the category (uncategorised ones, by sign); refunds within an expense category reduce that category's expense. Transfers are excluded.
 - Amounts are integers in subunits (cents), with `BigInt` for products and conversions; rounding is "half up" and is done only once per operation (for loans/interest, at each period, as displayed). Currencies with a precision other than 2 decimals are known only for JPY, KRW (0) and BHD, KWD (3).
 - Date formats with month names in letters are not recognised on import. A CSV with several accounts or currencies in one file is imported into a single chosen account.
-- Regular expressions are filtered: back-references, lookahead/lookbehind, repeated groups containing repetitions or alternations (e.g. `(a+)+`) and expressions over 200 characters are rejected; then each expression is tested in a Worker with a 300 ms limit. When applied, the computation has a 3 s budget and stops with a warning. The heuristic may also reject harmless expressions of the form `(foo|bar)+`; you can rewrite them as `(?:…)` without repetition or with several rules.
+- Regular expressions are filtered: back-references, lookahead/lookbehind, repeated groups containing repetitions or alternations (e.g. `(a+)+`) and expressions over 200 characters are rejected; then each expression is tested in a Worker with a 300 ms limit. When applied, the computation has a 3 s budget and stops with a warning. The heuristic may also reject harmless expressions of the form `(foo|bar)+`; you can rewrite them as `(?:…)` without repetition or with several rules. Expressions with more than 3 large or unbounded repetitions (`.*`, `+`, `{20,}`) are also rejected, since they can freeze the tab on long descriptions (e.g. `.*a.*a.*a.*b`).
+- Amounts and calculators: an amount can be at most 10^13 minor units (100 billion in that currency); the calculators accept rates in the range (−100 %, 10000 %] and refuse results beyond exact precision (2^53 minor units) instead of showing inexact figures.
 - The top merchants are grouped heuristically by the first words of the description: approximate.
 - Storage is `localStorage` (limit of a few MB; 20,000 transactions take up ≈ 1.6 MB). If space runs out or storage is blocked, the app visibly warns that the latest changes were not saved. Clearing the site's data or a lost password means lost data: keep exports.
 - Importing a `.fff.json` replaces the current set (it does not merge it).

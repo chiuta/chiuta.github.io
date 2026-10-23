@@ -576,8 +576,8 @@ await T('pornire: fără erori, fără CSP, fără rețea; meta, versiune, CSP e
   const p = await newPage();
   await expectClean(p);
   assert.equal(await p.getAttribute('html', 'lang'), 'ro');
-  assert.equal(await p.textContent('#app-version'), 'v 1.0.5 · 2026-10-23');
-  assert.equal(await p.getAttribute('meta[name=application-version]', 'content'), '1.0.5');
+  assert.equal(await p.textContent('#app-version'), 'v 1.0.6 · 2026-10-23');
+  assert.equal(await p.getAttribute('meta[name=application-version]', 'content'), '1.0.6');
   assert.equal(await p.getAttribute('meta[name=last-updated]', 'content'), '2026-10-23');
   assert.ok((await p.getAttribute('meta[name=description]', 'content')).length > 40);
   assert.equal(await p.title(), 'Orar');
@@ -1001,7 +1001,7 @@ await T('copie de siguranță .fff.json: format, export, import cu confirmare, �
   const [dl] = await Promise.all([p.waitForEvent('download'), p.click('#d-bk-exp')]);
   const f = path.join(TMP, 'backup.fff.json'); await dl.saveAs(f);
   const b = JSON.parse(fs.readFileSync(f, 'utf8'));
-  assert.equal(b.format, 'fff-bundle'); assert.equal(b.schema, 1); assert.equal(b.app, 'orar'); assert.equal(b.version, '1.0.5'); assert.equal(b.updated, '2026-10-23');
+  assert.equal(b.format, 'fff-bundle'); assert.equal(b.schema, 1); assert.equal(b.app, 'orar'); assert.equal(b.version, '1.0.6'); assert.equal(b.updated, '2026-10-23');
   assert.ok(b.exported && Object.keys(b.data).every(k => k.startsWith('fff.orar.')));
   assert.ok(JSON.parse(b.data['fff.orar.events']).length >= 10);
   const n = await p.evaluate(() => ORAR.S.events.length);
@@ -1183,6 +1183,78 @@ await T('mod luminos/întunecat: comutator și respectarea preferinței sistemul
   await p.click('#b-theme'); assert.equal(await p.getAttribute('html', 'data-theme'), 'dark');
   await p.click('#b-theme'); assert.equal(await p.getAttribute('html', 'data-theme'), null);
   const css = fs.readFileSync(INDEX, 'utf8'); assert.match(css, /prefers-reduced-motion:reduce/);
+  await closePage(p);
+});
+
+/* ---------- audit adversarial (1.0.6): regresii ---------- */
+await T('versiune: constanta JS = meta = app.json = sw.js (nu se mai dezaliniază)', async () => {
+  const p = await newPage();
+  const v = await p.evaluate(() => ({js: ORAR.VERSION, meta: document.querySelector('meta[name=application-version]').content, txt: document.getElementById('app-version').textContent.trim(), mu: document.querySelector('meta[name=last-updated]').content}));
+  assert.equal(v.js, v.meta); assert.equal(v.txt, 'v ' + v.meta + ' · ' + v.mu);
+  assert.equal(JSON.parse(fs.readFileSync(path.join(HERE, '..', 'app.json'), 'utf8')).version, v.meta);
+  assert.match(fs.readFileSync(path.join(HERE, '..', 'sw.js'), 'utf8'), new RegExp('VERSION = "' + v.meta.replace(/\./g, '\\.') + '"'));
+  await closePage(p);
+});
+
+await T('ics: TZID cu nume din Object.prototype (toString, constructor, __proto__, hasOwnProperty) nu strică importul și dă fus necunoscut', async () => {
+  const p = await newPage({clock: false});
+  for (const z of ['toString', 'constructor', '__proto__', 'hasOwnProperty', 'valueOf']) {
+    const txt = `BEGIN:VCALENDAR\r\nVERSION:2.0\r\nBEGIN:VEVENT\r\nUID:z-${z}\r\nDTSTART;TZID=${z}:20261020T100000\r\nDTEND;TZID=${z}:20261020T110000\r\nSUMMARY:fus ${z}\r\nEND:VEVENT\r\nEND:VCALENDAR\r\n`;
+    const r = await parseIn(p, Buffer.from(txt));
+    assert.equal(r.masters.length, 1, z); assert.equal(r.masters[0].tz, null, z); assert.ok(r.warnings.some(w => w.k === 'w_tz_unknown'), z);
+  }
+  // același lucru prin interfață: fișierul se previzualizează și se importă (înainte: excepție în parser, fără niciun mesaj)
+  const f = path.join(TMP, 'tz-proto.ics'); fs.writeFileSync(f, 'BEGIN:VCALENDAR\r\nVERSION:2.0\r\nBEGIN:VTIMEZONE\r\nTZID:__proto__\r\nBEGIN:STANDARD\r\nDTSTART:19701025T040000\r\nTZOFFSETFROM:+0300\r\nTZOFFSETTO:+0200\r\nEND:STANDARD\r\nEND:VTIMEZONE\r\nBEGIN:VEVENT\r\nUID:a\r\nDTSTART;TZID=toString:20261020T100000\r\nDTEND;TZID=hasOwnProperty:20261020T110000\r\nSUMMARY:a\r\nEND:VEVENT\r\nEND:VCALENDAR\r\n');
+  await p.click('#b-data'); await p.setInputFiles('#d-file', f); await p.waitForSelector('#imp-go'); await p.click('#imp-go'); await p.waitForSelector('#d-prev p[role=status]');
+  assert.equal(await p.evaluate(() => ORAR.S.events.length), 1); assert.deepEqual(p.errs, []);
+  await closePage(p);
+});
+
+await T('serii cu durată absurdă (an 1901 → 9999) sunt plafonate la 366 zile: randarea nu îngheață, importul nu strică pornirea', async () => {
+  const p = await newPage({clock: false});
+  const r = await p.evaluate(() => {
+    const out = {};
+    for (const [k, ev] of Object.entries({daily: {start: '1901-01-01T00:00', end: '9999-12-31T23:59', rrule: 'FREQ=DAILY'}, allDay: {allDay: true, start: '1901-01-01', end: '9999-12-31', rrule: 'FREQ=DAILY'}, rdate: {start: '1901-01-01T00:00', end: '9999-12-31T23:59', rd: ['2026-10-05T00:00']}, single: {start: '1901-01-01T00:00', end: '9999-12-31T23:59'}})) {
+      const e = ORAR.sanitizeEvent(Object.assign({id: 'a', uid: 'u', cal: 'c1', title: 't'}, ev), 'c1'); const t0 = performance.now();
+      const ins = ORAR.instancesIn(e, ORAR.pw('2026-10-01').d, ORAR.pw('2026-11-30').d); out[k] = {end: e.end, n: ins.length, ms: Math.round(performance.now() - t0)};
+    }
+    return out; });
+  assert.ok(r.daily.n <= 61 + 366 && r.daily.ms < 1500, JSON.stringify(r.daily)); assert.equal(r.daily.end, '1902-01-02T00:00');
+  assert.ok(r.allDay.n <= 61 + 366, JSON.stringify(r.allDay)); assert.equal(r.allDay.end, '1902-01-02');
+  assert.ok(r.rdate.n <= 2 && r.rdate.end <= '1902-01-02T00:00', JSON.stringify(r.rdate));
+  assert.equal(r.single.end, '9999-12-31T23:59', 'un eveniment singular poate rămâne lung (o singură instanță)');
+  // import .ics + randarea tuturor vizualizărilor, apoi reîncărcare: pagina rămâne utilizabilă
+  const f = path.join(TMP, 'year1.ics'); fs.writeFileSync(f, 'BEGIN:VCALENDAR\r\nVERSION:2.0\r\nBEGIN:VEVENT\r\nUID:y1\r\nDTSTART:00010101T000000Z\r\nDTEND:99991231T235959Z\r\nSUMMARY:an 1\r\nRRULE:FREQ=DAILY\r\nEND:VEVENT\r\nEND:VCALENDAR\r\n');
+  await p.click('#b-data'); await p.setInputFiles('#d-file', f); await p.waitForSelector('#imp-go'); await p.click('#imp-go'); await p.waitForSelector('#d-prev p[role=status]');
+  await p.keyboard.press('Escape');
+  for (const v of ['month', 'week', 'day', 'agenda']) { await p.click(`[data-view=${v}]`); await p.waitForFunction(() => document.querySelector('#view > *'), null, {timeout: 20000}); }
+  await p.evaluate(() => ORAR.flushEvents());
+  const t0 = Date.now(); await p.reload(); await p.waitForSelector('#view > *', {timeout: 20000}); assert.ok(Date.now() - t0 < 15000);
+  assert.equal(await p.evaluate(() => ORAR.S.events.length), 1); assert.deepEqual(p.errs, []);
+  await closePage(p);
+});
+
+await T('import .ics nu depășește limita de 50.000 de evenimente (altfel cele în plus s-ar pierde la repornire)', async () => {
+  const p = await newPage({clock: false});
+  const r = await p.evaluate(() => {
+    const masters = Array.from({length: 50100}, (_, i) => ({uid: 'm' + i + '@t', title: 'e' + i, start: '2026-10-20T10:00', end: '2026-10-20T11:00', tz: 'UTC', tags: [], alarms: [], ex: [], rd: [], loc: '', desc: '', seq: 0}));
+    const res = ORAR.applyImport({masters, overrides: []}, {mode: 'both', cal: ORAR.S.cals[0].id});
+    ORAR.S.dirty = true; const ok = ORAR.flushEvents(); return {n: ORAR.S.events.length, added: res.added.length, skipped: res.skipped, ok, toast: document.getElementById('toastMsg').textContent}; });
+  assert.equal(r.n, 50000); assert.equal(r.added, 50000); assert.equal(r.skipped, 100);
+  // 50.000 de evenimente pot depăși cota localStorage: atunci utilizatorul trebuie anunțat (nu pierdere tăcută); altfel toate se păstrează la repornire
+  if (!r.ok) assert.match(r.toast, /salv|stoc|memor/i, 'cota depășită trebuie anunțată: ' + r.toast);
+  else { await p.reload(); await p.waitForSelector('#view > *', {timeout: 30000}); assert.equal(await p.evaluate(() => ORAR.S.events.length), 50000, 'nimic pierdut la repornire'); }
+  await closePage(p);
+});
+
+await T('copie de siguranță: conținut ilizibil (JSON invalid în evenimente) este refuzat înainte de confirmare, fără a goli calendarul', async () => {
+  const p = await newPage();
+  await p.click('#b-data'); await p.click('#d-sample'); await idle(p);
+  const n = await p.evaluate(() => ORAR.S.events.length); assert.ok(n >= 10);
+  for (const data of [{'fff.orar.events': 'nu e json'}, {'fff.orar.events': '{"a":1}'}, {'fff.orar.cals': '[1,2]'}, {'fff.orar.settings': '"x"'}]) {
+    const r = await p.evaluate(async d => { const f = new File([JSON.stringify({format: 'fff-bundle', schema: 1, app: 'orar', data: d})], 'b.fff.json'); const ok = await ORAR.importBackup(f); return {ok, err: document.getElementById('d-bk-err').textContent, n: ORAR.S.events.length, dlg: !!document.querySelector('#ask-foot .btn.danger') && document.querySelector('dialog[open]#dlgAsk') !== null}; }, data);
+    assert.equal(r.ok, false, JSON.stringify(data)); assert.ok(r.err.length > 3); assert.equal(r.n, n);
+  }
   await closePage(p);
 });
 

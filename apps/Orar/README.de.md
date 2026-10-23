@@ -2,7 +2,7 @@
 
 [English](README.md) · [Română](README.ro.md) · [Français](README.fr.md) · [Italiano](README.it.md) · [Español](README.es.md) · [Português](README.pt.md) · **Deutsch** · [Magyar](README.hu.md)
 
-**Version:** 1.0.5 · **Zuletzt aktualisiert:** 2026-10-23
+**Version:** 1.0.6 · **Zuletzt aktualisiert:** 2026-10-23
 
 Oberflächensprachen: **Română, English, Français, Italiano, Español, Português (PT), Deutsch, Magyar**
 
@@ -37,6 +37,7 @@ Orar ist ein Kalender und Wochenplan, der in einer einzigen HTML-Datei läuft, o
 - Zeitzonen aus `VTIMEZONE`, die keine IANA-Namen sind, werden über Regeln einer IANA-Zone zugeordnet, andernfalls werden sie zu einem festen Versatz. Der Export erzeugt `VTIMEZONE` aus den Übergängen des Browsers (gültig für den Zeitraum der Termine).
 - Import aus CLEPSIDRA: Er akzeptiert den Plan (Schlüssel `clepsidra.schedule`: `{"weekday":[{"start":"HH:MM","end":"HH:MM","cat":"somn"}],"weekend":[…]}`) und die Countdowns (`clepsidra.events`: `[{"name":"…","ts":ms}]`). Das direkte Lesen aus dem Browser funktioniert nur, wenn CLEPSIDRA auf demselben Origin gelaufen ist; andernfalls wird das JSON in den Dialog eingefügt. CLEPSIDRA wird nicht verändert.
 - Gemessene Leistung: Eine 1,2 MB große `.ics`-Datei mit 5000 Terminen wird in wenigen Sekunden importiert, und das Rendern dauert weniger als 150 ms; jenseits einiger Zehntausend Termine wird `localStorage` (≈5 MB) zur Grenze.
+- Sicherheitsgrenzen: höchstens 50.000 Ereignisse (der Import überspringt den Rest und zählt ihn unter „übersprungen“); die Dauer eines Einzeltermins einer Serie (RRULE/RDATE) ist auf 366 Tage begrenzt; eine unbekannte `TZID` wird zur schwebenden Zeit, mit Warnung.
 
 ## Datenschutz
 

@@ -2,7 +2,7 @@
 
 [English](README.md) · [Română](README.ro.md) · [Français](README.fr.md) · [Italiano](README.it.md) · [Español](README.es.md) · **Português** · [Deutsch](README.de.md) · [Magyar](README.hu.md)
 
-**Versão:** 1.0.4 · **Última atualização:** 2026-10-23
+**Versão:** 1.0.5 · **Última atualização:** 2026-10-23
 
 Idiomas da interface: **Română, English, Français, Italiano, Español, Português (PT), Deutsch, Magyar**
 
@@ -34,7 +34,8 @@ O Gospodar é um orçamento doméstico que funciona localmente, num único fiche
 - Receita/despesa determinam-se pela natureza da categoria (as não categorizadas, pelo sinal); os reembolsos numa categoria de despesa diminuem a despesa dessa categoria. As transferências são excluídas.
 - Os montantes são números inteiros em subunidades (cêntimos), com `BigInt` nos produtos e conversões; o arredondamento é «meio para cima» e faz-se uma única vez por operação (em empréstimo/juro, a cada período, tal como apresentado). As moedas com precisão diferente de 2 casas decimais só são conhecidas para JPY, KRW (0) e BHD, KWD (3).
 - Os formatos de data com nomes de meses por extenso não são reconhecidos na importação. Um CSV com várias contas ou moedas num único ficheiro é importado para uma única conta escolhida.
-- As expressões regulares são filtradas: são rejeitadas as referências anteriores, lookahead/lookbehind, os grupos repetidos que contêm repetições ou alternâncias (p. ex. `(a+)+`) e as expressões com mais de 200 carateres; depois cada expressão é testada num Worker com um limite de 300 ms. Na aplicação, o cálculo tem um orçamento de 3 s e pára com um aviso. A heurística pode também rejeitar expressões inofensivas da forma `(foo|bar)+`; pode reescrevê-las como `(?:…)` sem repetição ou com várias regras.
+- As expressões regulares são filtradas: são rejeitadas as referências anteriores, lookahead/lookbehind, os grupos repetidos que contêm repetições ou alternâncias (p. ex. `(a+)+`) e as expressões com mais de 200 carateres; depois cada expressão é testada num Worker com um limite de 300 ms. Na aplicação, o cálculo tem um orçamento de 3 s e pára com um aviso. A heurística pode também rejeitar expressões inofensivas da forma `(foo|bar)+`; pode reescrevê-las como `(?:…)` sem repetição ou com várias regras. São também rejeitadas as expressões com mais de 3 repetições grandes ou ilimitadas (`.*`, `+`, `{20,}`), que podem bloquear o separador em descrições longas (p. ex. `.*a.*a.*a.*b`).
+- Montantes e calculadoras: um montante pode ter no máximo 10^13 subunidades (100 mil milhões nessa moeda); as calculadoras aceitam taxas no intervalo (−100 %, 10000 %] e recusam resultados que excedam a precisão exata (2^53 subunidades) em vez de mostrar valores inexatos.
 - Os principais comerciantes são agrupados heuristicamente pelas primeiras palavras da descrição: aproximado.
 - O armazenamento é `localStorage` (limite de alguns MB; 20 000 transações ocupam ≈ 1,6 MB). Se o espaço se esgotar ou o armazenamento estiver bloqueado, a aplicação avisa de forma visível que as últimas alterações não foram guardadas. Apagar os dados do sítio ou perder a palavra-passe significa perder os dados: mantenha exportações.
 - A importação de um `.fff.json` substitui o conjunto atual (não o funde).

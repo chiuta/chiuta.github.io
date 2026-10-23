@@ -2,7 +2,7 @@
 
 [English](README.md) · [Română](README.ro.md) · **Français** · [Italiano](README.it.md) · [Español](README.es.md) · [Português](README.pt.md) · [Deutsch](README.de.md) · [Magyar](README.hu.md)
 
-**Version :** 1.0.5 · **Dernière mise à jour :** 2026-10-23
+**Version :** 1.0.6 · **Dernière mise à jour :** 2026-10-23
 
 Langues de l'interface : **Română, English, Français, Italiano, Español, Português (PT), Deutsch, Magyar**
 
@@ -37,6 +37,7 @@ Orar est un calendrier et un emploi du temps hebdomadaire qui fonctionnent dans 
 - Les fuseaux de `VTIMEZONE` qui ne sont pas des noms IANA sont associés par des règles à une zone IANA, sinon ils deviennent un décalage fixe. L'export génère `VTIMEZONE` à partir des transitions du navigateur (valable pour l'intervalle des événements).
 - Import depuis CLEPSIDRA : il accepte l'emploi du temps (clé `clepsidra.schedule` : `{"weekday":[{"start":"HH:MM","end":"HH:MM","cat":"somn"}],"weekend":[…]}`) et les comptes à rebours (`clepsidra.events` : `[{"name":"…","ts":ms}]`). La lecture directe depuis le navigateur ne fonctionne que si CLEPSIDRA a été exécutée sur la même origine ; sinon on colle le JSON dans la boîte de dialogue. CLEPSIDRA n'est pas modifiée.
 - Performances mesurées : un fichier `.ics` de 1,2 Mo contenant 5000 événements s'importe en quelques secondes, et les rendus prennent moins de 150 ms ; au-delà de quelques dizaines de milliers d'événements, `localStorage` (≈5 Mo) devient la limite.
+- Plafonds de sécurité : 50 000 événements au plus (l'import ignore le reste et le compte parmi les « ignorés ») ; la durée d'une occurrence d'une série récurrente (RRULE/RDATE) est plafonnée à 366 jours ; un `TZID` inconnu devient une heure flottante, avec un avertissement.
 
 ## Confidentialité
 
