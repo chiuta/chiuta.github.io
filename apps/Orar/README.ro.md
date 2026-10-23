@@ -37,6 +37,7 @@ Orar este un calendar și un program săptămânal care rulează într-un singur
 - Fusurile din `VTIMEZONE` care nu sunt nume IANA se potrivesc după reguli cu o zonă IANA, altfel devin decalaj fix. Exportul generează `VTIMEZONE` din tranzițiile browserului (valabil pentru intervalul evenimentelor).
 - Import din CLEPSIDRA: acceptă programul (cheia `clepsidra.schedule`: `{"weekday":[{"start":"HH:MM","end":"HH:MM","cat":"somn"}],"weekend":[…]}`) și numărătorile (`clepsidra.events`: `[{"name":"…","ts":ms}]`). Citirea directă din browser merge doar dacă CLEPSIDRA a rulat pe aceeași origine; altfel se lipește JSON-ul în dialog. CLEPSIDRA nu este modificată.
 - Performanță măsurată: un fișier `.ics` de 1,2 MB cu 5000 de evenimente se importă în câteva secunde, iar randările durează sub 150 ms; dincolo de câteva zeci de mii de evenimente `localStorage` (≈5 MB) devine limita.
+- Plafoane de siguranță: cel mult 50.000 de evenimente (importul omite restul și le numără la „omise”); durata unei apariții dintr-o serie recurentă (RRULE/RDATE) este plafonată la 366 de zile; un `TZID` necunoscut devine oră flotantă, cu avertisment.
 
 ## Confidențialitate
 

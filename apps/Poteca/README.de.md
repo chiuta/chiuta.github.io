@@ -70,4 +70,5 @@ MIT — siehe die Datei `LICENSE` im Wurzelverzeichnis des Repositorys.
 - 1.0.1 — 2026-10-22: der CSV-Export entschärft Streckennamen, die mit = + - @ (und Tab/CR) beginnen, gegen Formelinjektion, und der CSV-Import entfernt das Apostroph wieder; das technische Label wird neu erzeugt (8 Sprachen, Version).
 - 1.0.2 — 2026-10-22: fff-kit 1.1.2: PBKDF2 mit 600.000 Iterationen, Schutz vor Clickjacking.
 - 1.0.3 — 2026-10-22: fff-kit 1.1.4: Touch-Ziele und Mindestschriftgröße in der gemeinsamen Oberfläche.
+- 1.0.5 — 2026-10-23: Adversarial-Audit: Sicherungen und die wiederhergestellte Sitzung werden validiert (Farben, Bild-URLs, Typen, Einstellungen innerhalb von Bereichen; gzip-Bombe auf 256 MiB begrenzt); das exportierte SVG kann keine eingeschleusten Attribute mehr erhalten; das Lesen fehlerhafter GPX/KML ist nicht mehr quadratisch (~80.000 ungeschlossene Tags blockierten ~8 s); die Skriptversion stimmt mit den Metadaten überein.
 - 1.0.5 — 2026-10-23: Hinweistext bei deaktiviertem JavaScript (noscript).

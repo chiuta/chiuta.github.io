@@ -2,7 +2,7 @@
 
 [English](README.md) · **Română** · [Français](README.fr.md) · [Italiano](README.it.md) · [Español](README.es.md) · [Português](README.pt.md) · [Deutsch](README.de.md) · [Magyar](README.hu.md)
 
-**Versiune:** 1.0.4 · **Ultima actualizare:** 2026-10-23
+**Versiune:** 1.0.5 · **Ultima actualizare:** 2026-10-23
 
 Limbile interfeței: **Română, English, Français, Italiano, Español, Português (PT), Deutsch, Magyar**
 
@@ -34,7 +34,8 @@ Gospodar este un buget de gospodărie care rulează local, într-un singur fiși
 - Venit/cheltuială se stabilesc după natura categoriei (cele necategorizate, după semn); rambursările dintr-o categorie de cheltuieli scad cheltuiala acelei categorii. Transferurile sunt excluse.
 - Sumele sunt numere întregi în subunități (bani), cu `BigInt` la produse și conversii; rotunjirea este „jumătate în sus” și se face o singură dată per operație (la credit/dobândă, la fiecare perioadă, așa cum e afișat). Monedele cu altă precizie decât 2 zecimale sunt cunoscute doar pentru JPY, KRW (0) și BHD, KWD (3).
 - Formatele de dată cu nume de lună în litere nu sunt recunoscute la import. Un CSV cu mai multe conturi sau monede într-un singur fișier se importă într-un singur cont ales.
-- Expresiile regulate sunt filtrate: sunt respinse referințele înapoi, lookahead/lookbehind, grupurile repetate care conțin repetiții sau alternanțe (ex. `(a+)+`) și expresiile peste 200 de caractere; apoi fiecare expresie este testată într-un Worker cu limită de 300 ms. La aplicare, calculul are un buget de 3 s și se oprește cu avertisment. Euristica poate respinge și expresii inofensive de forma `(foo|bar)+`; poți rescrie ca `(?:…)` fără repetiție sau cu mai multe reguli.
+- Expresiile regulate sunt filtrate: sunt respinse referințele înapoi, lookahead/lookbehind, grupurile repetate care conțin repetiții sau alternanțe (ex. `(a+)+`) și expresiile peste 200 de caractere; apoi fiecare expresie este testată într-un Worker cu limită de 300 ms. La aplicare, calculul are un buget de 3 s și se oprește cu avertisment. Euristica poate respinge și expresii inofensive de forma `(foo|bar)+`; poți rescrie ca `(?:…)` fără repetiție sau cu mai multe reguli. Sunt respinse și expresiile cu mai mult de 3 repetiții mari sau nemărginite (`.*`, `+`, `{20,}`), care pot bloca fila pe descrieri lungi (ex. `.*a.*a.*a.*b`).
+- Sume și calculatoare: o sumă poate avea cel mult 10^13 subunități (100 de miliarde în moneda respectivă); calculatoarele acceptă rate în intervalul (−100 %, 10000 %] și refuză rezultatele care depășesc precizia exactă (2^53 subunități) în loc să afișeze cifre inexacte.
 - Comercianții din top sunt grupați euristic după primele cuvinte ale descrierii: aproximativ.
 - Stocarea este `localStorage` (limită de câțiva MB; 20.000 de tranzacții ocupă ≈ 1,6 MB). Dacă spațiul se umple sau stocarea e blocată, aplicația avertizează vizibil că ultimele modificări nu s-au salvat. Ștergerea datelor site-ului sau o parolă pierdută înseamnă date pierdute: păstrează exporturi.
 - Importul `.fff.json` înlocuiește setul curent (nu îl îmbină).

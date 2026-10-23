@@ -2,7 +2,7 @@
 
 [English](README.md) · [Română](README.ro.md) · [Français](README.fr.md) · **Italiano** · [Español](README.es.md) · [Português](README.pt.md) · [Deutsch](README.de.md) · [Magyar](README.hu.md)
 
-**Versione:** 1.0.5 · **Ultimo aggiornamento:** 2026-10-23
+**Versione:** 1.0.6 · **Ultimo aggiornamento:** 2026-10-23
 
 Lingue dell'interfaccia: **Română, English, Français, Italiano, Español, Português (PT), Deutsch, Magyar**
 
@@ -35,7 +35,7 @@ Esportazione/importazione dei dati: `.fff.json` (formato `fff-bundle`, schema 1)
 
 ## Tecnica
 
-Un unico file `index.html`, JS e CSS inline, CSP rigorosa con hash, nessuna risorsa esterna. Test: `node tests/test.mjs` (Playwright; 44 test: vettori noti, andata e ritorno per ogni codice, durate Morse calcolate e misurate sull'audio renderizzato/sul lampeggio, axe 0 in entrambi i temi, layout a 360 e 1280 px).
+Un unico file `index.html`, JS e CSS inline, CSP rigorosa con hash, nessuna risorsa esterna. Test: `node tests/test.mjs` (Playwright; 48 test: vettori noti, andata e ritorno per ogni codice, durate Morse calcolate e misurate sull'audio renderizzato/sul lampeggio, axe 0 in entrambi i temi, layout a 360 e 1280 px).
 
 ## Terze parti
 
@@ -56,3 +56,4 @@ MIT — vedi il file `LICENSE` nella radice del repository.
 - 1.0.1 — 2026-10-19: il pannello viene scelto solo dalla parte dell'indirizzo che precede la prima «&» (#pannello&from=…), così i link da ETER/INDICATIV aprono il pannello corretto.
 - 1.0.2 — 2026-10-22: l’anteprima della scheda stampabile non aggiunge più titoli H1 extra alla pagina (un solo H1 per pagina; il titolo della scheda è un H2 a schermo e resta un H1 in stampa); aree tattili di almeno 24 px; l’etichetta tecnica (fff-info) elenca ora le 8 lingue reali invece di 2.
 - 1.0.3 — 2026-10-22: fff-kit 1.1.2: PBKDF2 a 600.000 iterazioni, protezione anti-clickjacking.
+- 1.0.6 — 2026-10-23: dati locali corrotti (SRS, esercizio giornaliero, Koch, profilo Braille RO, statistiche, impostazioni Morse) non bloccano più i pannelli; l’importazione .fff.json convalida chiavi, lingua e tema; avviso quando l’archiviazione locale è piena; riproduzione ed esportazione WAV del Morse limitate a 15 minuti (un testo enorme non alloca più gigabyte); versione interna allineata.

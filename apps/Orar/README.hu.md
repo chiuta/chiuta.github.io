@@ -37,6 +37,7 @@ Az Orar egy naptár és heti órarend, amely egyetlen HTML-fájlban fut, szerver
 - A `VTIMEZONE` azon időzónáit, amelyek nem IANA-nevek, szabályok alapján egy IANA-zónához illeszti, különben fix eltolássá válnak. Az export a böngésző átmeneteiből generálja a `VTIMEZONE`-t (az események tartományára érvényes).
 - Import a CLEPSIDRA-ból: elfogadja az órarendet (`clepsidra.schedule` kulcs: `{"weekday":[{"start":"HH:MM","end":"HH:MM","cat":"somn"}],"weekend":[…]}`) és a visszaszámlálókat (`clepsidra.events`: `[{"name":"…","ts":ms}]`). A böngészőből való közvetlen olvasás csak akkor működik, ha a CLEPSIDRA ugyanazon az origin-en futott; különben a JSON-t be kell illeszteni a párbeszédablakba. A CLEPSIDRA nem módosul.
 - Mért teljesítmény: egy 1,2 MB-os, 5000 eseményt tartalmazó `.ics` fájl néhány másodperc alatt importálható, a megjelenítés 150 ms alatt van; néhány tízezer esemény fölött a `localStorage` (≈5 MB) válik korláttá.
+- Biztonsági korlátok: legfeljebb 50 000 esemény (az import a többit kihagyja, és a „kihagyott” számlálóban tünteti fel); egy ismétlődő sorozat (RRULE/RDATE) egy előfordulásának hossza legfeljebb 366 nap; az ismeretlen `TZID` lebegő idővé válik, figyelmeztetéssel.
 
 ## Adatvédelem
 

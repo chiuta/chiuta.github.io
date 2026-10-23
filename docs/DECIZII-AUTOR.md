@@ -187,3 +187,12 @@ Fiecare punct de mai jos nu poate fi „reparat” tehnic fără o hotărâre a 
 3. În `src/`, adaugă `index.json` din aceeași origine în lanțul de surse și rulează `node build.mjs`.
 4. Testele VNTV (mock) acoperă deja ordinea surselor; adaugă un caz pentru noua sursă.
 5. Documentează în README (8 limbi) de unde vine catalogul.
+
+
+## Constatări ale auditului adversarial rămase pentru decizia autorului
+
+- **Ținte tactile la 44 px.** Aplicațiile respectă minimul WCAG 2.2 AA (24 px); Arbore, QSO, Curatitor, Fabrica și Provenienta au primit 44 px pe `pointer: coarse`. Lexicon, Alfabete, Decibel, Poteca, Bolta și linkul de donație (Buy Me a Coffee) au încă controale de 28–40 px la 360 px: ajustarea cere o decizie de design în CSS-ul comun/kit.
+- **`app.json` → `storageKeys` gol** la aplicațiile care folosesc chei construite din constante (`fff.<slug>.*`): `fff-kit/build.mjs info` detectează doar chei literale. Corecția ține de kit.
+- **Verificarea de paritate i18n din kit** nu detectează lipsa unei limbi în formatul `K('cheie', …)` cu 7 elemente (cum a fost `lim5` în Arbore); merită o regulă nouă în kit.
+- **Origine partajată.** Măsurile din interior (prefixe de chei, scope SW, CSP) sunt aplicate; izolarea reală a aplicațiilor sensibile cere subdomenii (DNS/GitHub Pages), vezi `docs/DOMENII.md`.
+- Link-ul TerRa din QSO (`chiuta.github.io/TerRa/`) vs. `terra.chiuta.ro` din `docs/DOMENII.md`: de confirmat.

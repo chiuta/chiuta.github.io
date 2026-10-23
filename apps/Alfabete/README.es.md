@@ -2,7 +2,7 @@
 
 [English](README.md) · [Română](README.ro.md) · [Français](README.fr.md) · [Italiano](README.it.md) · **Español** · [Português](README.pt.md) · [Deutsch](README.de.md) · [Magyar](README.hu.md)
 
-**Versión:** 1.0.5 · **Última actualización:** 2026-10-23
+**Versión:** 1.0.6 · **Última actualización:** 2026-10-23
 
 Idiomas de la interfaz: **Română, English, Français, Italiano, Español, Português (PT), Deutsch, Magyar**
 
@@ -35,7 +35,7 @@ Exportación/importación de datos: `.fff.json` (formato `fff-bundle`, esquema 1
 
 ## Técnica
 
-Un único archivo `index.html`, JS y CSS en línea, CSP estricta con hash, sin recursos externos. Pruebas: `node tests/test.mjs` (Playwright; 44 pruebas: vectores conocidos, ida y vuelta para cada código, duraciones Morse calculadas y medidas sobre el audio renderizado/el parpadeo, axe 0 en ambos temas, diseño a 360 y 1280 px).
+Un único archivo `index.html`, JS y CSS en línea, CSP estricta con hash, sin recursos externos. Pruebas: `node tests/test.mjs` (Playwright; 48 pruebas: vectores conocidos, ida y vuelta para cada código, duraciones Morse calculadas y medidas sobre el audio renderizado/el parpadeo, axe 0 en ambos temas, diseño a 360 y 1280 px).
 
 ## Terceros
 
@@ -56,3 +56,4 @@ MIT — véase el archivo `LICENSE` en la raíz del repositorio.
 - 1.0.1 — 2026-10-19: el panel se elige solo a partir de la parte de la dirección anterior al primer «&» (#panel&from=…), para que los enlaces desde ETER/INDICATIV abran el panel correcto.
 - 1.0.2 — 2026-10-22: la vista previa de la ficha imprimible ya no añade encabezados H1 adicionales a la página (un solo H1 por página; el título de la ficha es un H2 en pantalla y sigue siendo un H1 al imprimir); áreas táctiles de al menos 24 px; la etiqueta técnica (fff-info) lista ahora los 8 idiomas reales en lugar de 2.
 - 1.0.3 — 2026-10-22: fff-kit 1.1.2: PBKDF2 con 600.000 iteraciones, protección anti-clickjacking.
+- 1.0.6 — 2026-10-23: los datos locales corruptos (SRS, ejercicio diario, Koch, perfil Braille RO, estadísticas, ajustes Morse) ya no bloquean los paneles; la importación .fff.json valida claves, idioma y tema; aviso cuando el almacenamiento local está lleno; la reproducción y la exportación WAV del Morse se limitan a 15 minutos (un texto enorme ya no reserva gigabytes); versión interna alineada.

@@ -53,7 +53,7 @@ Set sintetic de 300.000 de intrări (32,8 MB TSV, 100.000 cu forme):
 - reîncărcare cu setul de 300.000 în IndexedDB: 150–250 ms; heap aproximativ 141 MB.
 
 ## Tehnic
-Un singur `index.html`, script inline cu hash în CSP (`script-src 'sha256-…'`, `default-src 'none'`, `connect-src 'none'`, fără handlere inline, fără `eval`; `worker-src blob:` este moștenit din șablon). Index în memorie (chei normalizate sortate, căutare binară), IndexedDB pentru intrări și text integral. Conținutul HTML trece printr-un parser propriu și se construiește cu `createElement`/`textContent`. Detectează opțional `window.FFF`; funcționează complet și fără. Teste: `node tests/test.mjs` (Playwright; 292 de verificări: parsare StarDict/dictd cu fișiere generate în test, interogări, 28 de payload-uri XSS, persistență, 300.000 de intrări, axe 0, depășire 360×740 și 1280×800). Variabila `LEXICON_SKIP_PERF=1` omite testul mare.
+Un singur `index.html`, script inline cu hash în CSP (`script-src 'sha256-…'`, `default-src 'none'`, `connect-src 'none'`, fără handlere inline, fără `eval`; `worker-src blob:` este moștenit din șablon). Index în memorie (chei normalizate sortate, căutare binară), IndexedDB pentru intrări și text integral. Conținutul HTML trece printr-un parser propriu și se construiește cu `createElement`/`textContent`. Detectează opțional `window.FFF`; funcționează complet și fără. Teste: `node tests/test.mjs` (Playwright; 324 de verificări: parsare StarDict/dictd cu fișiere generate în test, interogări, 28 de payload-uri XSS, persistență, 300.000 de intrări, axe 0, depășire 360×740 și 1280×800). Variabila `LEXICON_SKIP_PERF=1` omite testul mare.
 
 ## Terți
 Nu există cod terț în aplicație (axe-core este folosit doar în teste).
@@ -69,4 +69,5 @@ MIT — vezi fișierul `LICENSE` din rădăcina depozitului.
 - 1.0.1 — 2026-10-22: o căutare fără rezultat spune acum explicit că setul inclus e doar demonstrativ (când setul demo e activ); exportul CSV neutralizează celulele care încep cu = + - @ împotriva injecției de formule, iar importul TSV/CSV scoate din nou apostroful; ținte tactile de cel puțin 24 px; eticheta tehnică listează cele 8 limbi.
 - 1.0.2 — 2026-10-22: fff-kit 1.1.2: PBKDF2 cu 600.000 de iterații, protecție anti-clickjacking.
 - 1.0.3 — 2026-10-22: fff-kit 1.1.4: ținte tactile și text minim în interfața comună.
+- 1.0.5 — 2026-10-23: datele locale (favorite, istoric, flashcards, configurare) sunt validate la citire și la importul copiei de siguranță, deci o valoare coruptă nu mai blochează pornirea; cuvinte precum „constructor” sau „toString” pot fi adăugate în flashcards; anunț când stocarea locală este plină; un import eșuat nu lasă un dicționar pe jumătate scris; versiunea internă este aliniată.
 - 1.0.5 — 2026-10-23: mesaj de rezervă când JavaScript este dezactivat (noscript).

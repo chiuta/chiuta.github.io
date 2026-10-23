@@ -2,7 +2,7 @@
 
 [English](README.md) · [Română](README.ro.md) · [Français](README.fr.md) · [Italiano](README.it.md) · [Español](README.es.md) · [Português](README.pt.md) · **Deutsch** · [Magyar](README.hu.md)
 
-**Version:** 1.0.4 · **Zuletzt aktualisiert:** 2026-10-23
+**Version:** 1.0.5 · **Zuletzt aktualisiert:** 2026-10-23
 
 Oberflächensprachen: **Română, English, Français, Italiano, Español, Português (PT), Deutsch, Magyar**
 
@@ -34,7 +34,8 @@ Gospodar ist ein Haushaltsbuch, das lokal in einer einzigen HTML-Datei läuft, o
 - Einnahme/Ausgabe werden nach der Art der Kategorie bestimmt (bei nicht kategorisierten nach dem Vorzeichen); Erstattungen innerhalb einer Ausgabenkategorie verringern die Ausgabe dieser Kategorie. Überweisungen sind ausgeschlossen.
 - Beträge sind ganze Zahlen in Untereinheiten (Cent), mit `BigInt` bei Produkten und Umrechnungen; die Rundung ist „kaufmännisch aufrunden“ und erfolgt nur einmal je Operation (bei Kredit/Zinsen in jeder Periode, wie angezeigt). Währungen mit einer anderen Genauigkeit als 2 Dezimalstellen sind nur für JPY, KRW (0) und BHD, KWD (3) bekannt.
 - Datumsformate mit ausgeschriebenen Monatsnamen werden beim Import nicht erkannt. Eine CSV mit mehreren Konten oder Währungen in einer Datei wird in ein einziges gewähltes Konto importiert.
-- Reguläre Ausdrücke werden gefiltert: Zurückverweise, Lookahead/Lookbehind, wiederholte Gruppen, die Wiederholungen oder Alternativen enthalten (z. B. `(a+)+`), und Ausdrücke über 200 Zeichen werden abgelehnt; anschließend wird jeder Ausdruck in einem Worker mit einem Limit von 300 ms getestet. Bei der Anwendung hat die Berechnung ein Budget von 3 s und stoppt mit einer Warnung. Die Heuristik kann auch harmlose Ausdrücke der Form `(foo|bar)+` ablehnen; du kannst sie als `(?:…)` ohne Wiederholung oder mit mehreren Regeln umschreiben.
+- Reguläre Ausdrücke werden gefiltert: Zurückverweise, Lookahead/Lookbehind, wiederholte Gruppen, die Wiederholungen oder Alternativen enthalten (z. B. `(a+)+`), und Ausdrücke über 200 Zeichen werden abgelehnt; anschließend wird jeder Ausdruck in einem Worker mit einem Limit von 300 ms getestet. Bei der Anwendung hat die Berechnung ein Budget von 3 s und stoppt mit einer Warnung. Die Heuristik kann auch harmlose Ausdrücke der Form `(foo|bar)+` ablehnen; du kannst sie als `(?:…)` ohne Wiederholung oder mit mehreren Regeln umschreiben. Abgelehnt werden auch Ausdrücke mit mehr als 3 großen oder unbegrenzten Wiederholungen (`.*`, `+`, `{20,}`), die den Tab bei langen Beschreibungen einfrieren können (z. B. `.*a.*a.*a.*b`).
+- Beträge und Rechner: Ein Betrag darf höchstens 10^13 Untereinheiten betragen (100 Milliarden in der jeweiligen Währung); die Rechner akzeptieren Sätze im Bereich (−100 %, 10000 %] und lehnen Ergebnisse jenseits der exakten Genauigkeit (2^53 Untereinheiten) ab, statt ungenaue Zahlen anzuzeigen.
 - Die Top-Händler werden heuristisch nach den ersten Wörtern der Beschreibung gruppiert: näherungsweise.
 - Die Speicherung erfolgt in `localStorage` (Limit von einigen MB; 20.000 Transaktionen belegen ≈ 1,6 MB). Wenn der Speicher voll oder gesperrt ist, warnt die Anwendung sichtbar, dass die letzten Änderungen nicht gespeichert wurden. Das Löschen der Websitedaten oder ein verlorenes Passwort bedeutet verlorene Daten: Bewahre Exporte auf.
 - Der Import einer `.fff.json` ersetzt den aktuellen Datensatz (er wird nicht zusammengeführt).

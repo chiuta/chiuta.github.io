@@ -2,7 +2,7 @@
 
 [English](README.md) · [Română](README.ro.md) · [Français](README.fr.md) · **Italiano** · [Español](README.es.md) · [Português](README.pt.md) · [Deutsch](README.de.md) · [Magyar](README.hu.md)
 
-**Versione:** 1.0.4 · **Ultimo aggiornamento:** 2026-10-23
+**Versione:** 1.0.5 · **Ultimo aggiornamento:** 2026-10-23
 
 Lingue dell'interfaccia: **Română, English, Français, Italiano, Español, Português (PT), Deutsch, Magyar**
 
@@ -34,7 +34,8 @@ Gospodar è un budget familiare che funziona in locale, in un unico file HTML, s
 - Entrata/spesa si stabiliscono in base alla natura della categoria (per quelle non categorizzate, in base al segno); i rimborsi in una categoria di spesa riducono la spesa di quella categoria. I trasferimenti sono esclusi.
 - Gli importi sono numeri interi in sottounità (centesimi), con `BigInt` per i prodotti e le conversioni; l'arrotondamento è «metà verso l'alto» e viene effettuato una sola volta per operazione (per prestito/interessi, a ogni periodo, come mostrato). Le valute con precisione diversa da 2 decimali sono note solo per JPY, KRW (0) e BHD, KWD (3).
 - I formati di data con i nomi dei mesi in lettere non sono riconosciuti all'importazione. Un CSV con più conti o valute in un solo file viene importato in un unico conto scelto.
-- Le espressioni regolari sono filtrate: vengono respinti i riferimenti all'indietro, lookahead/lookbehind, i gruppi ripetuti che contengono ripetizioni o alternanze (ad es. `(a+)+`) e le espressioni oltre i 200 caratteri; poi ogni espressione viene testata in un Worker con un limite di 300 ms. In fase di applicazione il calcolo ha un budget di 3 s e si ferma con un avviso. L'euristica può respingere anche espressioni innocue della forma `(foo|bar)+`; puoi riscriverle come `(?:…)` senza ripetizione o con più regole.
+- Le espressioni regolari sono filtrate: vengono respinti i riferimenti all'indietro, lookahead/lookbehind, i gruppi ripetuti che contengono ripetizioni o alternanze (ad es. `(a+)+`) e le espressioni oltre i 200 caratteri; poi ogni espressione viene testata in un Worker con un limite di 300 ms. In fase di applicazione il calcolo ha un budget di 3 s e si ferma con un avviso. L'euristica può respingere anche espressioni innocue della forma `(foo|bar)+`; puoi riscriverle come `(?:…)` senza ripetizione o con più regole. Vengono respinte anche le espressioni con più di 3 ripetizioni grandi o illimitate (`.*`, `+`, `{20,}`), che possono bloccare la scheda su descrizioni lunghe (ad es. `.*a.*a.*a.*b`).
+- Importi e calcolatori: un importo può arrivare al massimo a 10^13 sottounità (100 miliardi nella valuta); i calcolatori accettano tassi nell'intervallo (−100 %, 10000 %] e rifiutano i risultati oltre la precisione esatta (2^53 sottounità) invece di mostrare cifre inesatte.
 - I principali esercenti sono raggruppati in modo euristico in base alle prime parole della descrizione: approssimativo.
 - L'archiviazione è `localStorage` (limite di alcuni MB; 20.000 transazioni occupano ≈ 1,6 MB). Se lo spazio si esaurisce o l'archiviazione è bloccata, l'applicazione avverte in modo visibile che le ultime modifiche non sono state salvate. La cancellazione dei dati del sito o una password persa significa dati persi: conserva delle esportazioni.
 - L'importazione di un `.fff.json` sostituisce il set corrente (non lo unisce).

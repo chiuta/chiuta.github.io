@@ -62,9 +62,9 @@ await T('pornire: 0 erori, CSP, fără rețea, meta, versiune, lang', async () =
   const p = await newPage();
   await clean(p, 'start');
   assert.equal(await E(p, () => document.documentElement.lang), 'ro');
-  assert.equal(await E(p, () => document.querySelector('meta[name=application-version]').content), '1.0.4');
+  assert.equal(await E(p, () => document.querySelector('meta[name=application-version]').content), '1.0.5');
   assert.equal(await E(p, () => document.querySelector('meta[name=last-updated]').content), '2026-10-23');
-  assert.equal((await p.textContent('#app-version')).trim(), 'v 1.0.4 · 2026-10-23');
+  assert.equal((await p.textContent('#app-version')).trim(), 'v 1.0.5 · 2026-10-23');
   const csp = await E(p, () => document.querySelector('meta[http-equiv=Content-Security-Policy]').content);
   // script-src: 3 scripturi inline executabile (kit, înregistrare PWA, aplicație), fiecare cu hash; fără unsafe
   assert.match(csp, /^default-src 'none'; script-src ('sha256-[A-Za-z0-9+/=]+' ?){3}; style-src 'unsafe-inline'; /);
@@ -248,7 +248,7 @@ await T('reguli: conține (diacritice), regex, sumă, cont, previzualizare, apli
   await p.fill('#ru-name', 'rea'); await p.selectOption('#ru-mode', 'regex'); await p.fill('#ru-pat', '(a+)+$'); await pickCat(p, '#ru-cat', 'Salariu'); await p.click('dialog [data-dk=ok]'); await p.waitForTimeout(150);
   assert.match(await p.textContent('dialog .derr'), /risc de blocare/);
   await p.fill('#ru-pat', 'a*a*a*a*a*a*a*a*a*a*b'); await p.click('dialog [data-dk=ok]'); await p.waitForTimeout(900);
-  assert.match(await p.textContent('dialog .derr'), /limita de timp/);
+  assert.match(await p.textContent('dialog .derr'), /limita de timp|Prea multe repetiții/);
   await p.fill('#ru-pat', '(abc'); await p.click('dialog [data-dk=ok]'); await p.waitForTimeout(300);
   assert.match(await p.textContent('dialog .derr'), /invalidă|risc|nu sunt permise/i);
   await p.fill('#ru-pat', 'cafenea\\s+mare'); await p.click('dialog [data-dk=ok]'); await p.waitForTimeout(400);
@@ -410,7 +410,7 @@ await T('criptare AES-GCM: activare, nimic în clar, blocare, parolă greșită,
 await T('export/import .fff.json (clar și criptat), CSV, șterge tot', async () => {
   const p = await newPage(); await demo(p); const n = (await txs(p)).length;
   const b = await E(p, () => GOSPODAR.bundleObj());
-  assert.equal(b.format, 'fff-bundle'); assert.equal(b.schema, 1); assert.equal(b.app, 'gospodar'); assert.equal(b.version, '1.0.4'); assert.equal(b.updated, '2026-10-23'); assert.ok(typeof b.data['fff.gospodar.data'] === 'string');
+  assert.equal(b.format, 'fff-bundle'); assert.equal(b.schema, 1); assert.equal(b.app, 'gospodar'); assert.equal(b.version, '1.0.5'); assert.equal(b.updated, '2026-10-23'); assert.ok(typeof b.data['fff.gospodar.data'] === 'string');
   await nav(p, 'set');
   const [dl] = await Promise.all([p.waitForEvent('download'), p.click('[data-act=exportjson]')]); assert.match(dl.suggestedFilename(), /^gospodar-2026-10-14\.fff\.json$/);
   const file = path.join(HERE, '.tmp-export.fff.json'); await dl.saveAs(file); const j = JSON.parse(fs.readFileSync(file, 'utf8')); assert.equal(j.app, 'gospodar');
@@ -554,6 +554,105 @@ await T('persistență: reîncărcare păstrează datele; fără cereri de rețe
   const p = await newPage(); await demo(p); const n = (await txs(p)).length; await E(p, () => GOSPODAR.S.whenSaved());
   await p.reload(); await p.waitForSelector('#view h2'); assert.equal((await txs(p)).length, n);
   assert.match(await p.textContent('main'), /octombrie 2026/i); await clean(p); await close(p);
+});
+
+/* ---------- audit adversarial (1.0.5): regresii ---------- */
+await T('versiune: constantele JS = meta = app.json = sw.js (nu se mai dezaliniază)', async () => {
+  const p = await newPage();
+  const v = await E(p, () => ({js: GOSPODAR.version, meta: document.querySelector('meta[name=application-version]').content, upd: GOSPODAR.G.UPDATED, mu: document.querySelector('meta[name=last-updated]').content, txt: document.getElementById('app-version').textContent.trim()}));
+  assert.equal(v.js, v.meta); assert.equal(v.upd, v.mu); assert.equal(v.txt, 'v ' + v.meta + ' · ' + v.mu);
+  assert.equal(JSON.parse(fs.readFileSync(path.join(HERE, '..', 'app.json'), 'utf8')).version, v.meta);
+  assert.match(fs.readFileSync(path.join(HERE, '..', 'sw.js'), 'utf8'), new RegExp('VERSION = "' + v.meta.replace(/\./g, '\\.') + '"'));
+  await close(p);
+});
+
+const PAY = n => `"><img src=x onerror="window.__x=(window.__x||[]).concat('${n}')"><svg onload="window.__x=(window.__x||[]).concat('${n}s')">`;
+await T('XSS: id-uri/monede/chei de curs ostile din localStorage nu injectează HTML (CSP dezactivat intenționat)', async () => {
+  const d = {v: 1, settings: {base: 'RON', rates: {[PAY('rk')]: '1', EUR: PAY('rv'), constructor: '2'}, autolock: 0, lastAcc: PAY('last')},
+    accounts: [{id: PAY('aid'), name: PAY('aname'), type: PAY('atype'), cur: PAY('acur'), open: 0, archived: false}, {id: 'a2', name: 'ok', type: 'current', cur: 'toString', open: 0, archived: false}],
+    cats: [{id: PAY('cid'), name: PAY('cname'), parent: '', kind: PAY('kind')}, {id: 'c2', name: 'x', parent: '', kind: 'inc'}],
+    txs: [['t1', '2026-10-01', -1000, 'a2', 'c2', PAY('desc'), [PAY('tag')], PAY('note'), 0, 0, PAY('batch')], ['t2', '2026-10-02', 500, 'a2', PAY('cid'), PAY('d2'), 0], ['t3', '2026-02-30', 5, 'a2', '', 'data invalidă', 0], ['t4', '2026-10-02', 1.5, 'a2', '', 'sumă fracționară', 0]],
+    rules: [{id: PAY('rid'), name: PAY('rn'), pat: PAY('rp'), mode: PAY('mode'), cat: 'c2', on: true, tags: [PAY('rt')]}],
+    recs: [{id: PAY('recid'), name: PAY('recn'), acc: 'a2', cat: 'c2', amt: -100, freq: PAY('freq'), interval: 1, start: '2026-01-01'}],
+    budgets: {[PAY('bk')]: 1000, c2: 5000}, profiles: [{id: PAY('pid'), name: PAY('pn'), cfg: {dateFmt: PAY('df'), numFmt: PAY('nf'), enc: PAY('enc'), sep: PAY('sep'), map: {date: 0}}}, {id: 'p2', name: 'fără cfg'}],
+    batches: [{id: PAY('bid'), date: '2026-10-01', name: PAY('bn'), count: 1, acc: 'a2'}], seq: 1000};
+  const raw = JSON.stringify(d).replace('"v":1,', '"v":1,"__proto__":{"polluted":1},');
+  const p = await newPage({bypassCSP: true, goto: false});
+  await p.addInitScript(r => { if (!localStorage.getItem('fff.gospodar.data')) localStorage.setItem('fff.gospodar.data', r); }, raw);
+  await p.goto(URL_APP); await p.waitForSelector('#view h2');
+  for (const v of ['dash', 'tx', 'imp', 'setup', 'rules', 'rec', 'bud', 'rep', 'calc', 'set']) { await E(p, v => GOSPODAR.U.go(v, false), v); await p.waitForTimeout(120); }
+  assert.deepEqual(await E(p, () => window.__x || []), [], 'cod executat din date ostile');
+  assert.equal(await E(p, () => document.querySelectorAll('#view img[src=x], #view svg[onload], #nav img, #toast img').length), 0);
+  assert.equal(await E(p, () => ({}).polluted), undefined);
+  const dd = await E(p, () => { const x = GOSPODAR.S.data(); return {txs: x.txs.length, ids: x.accounts.map(a => a.id).concat(x.cats.map(c => c.id), x.txs.map(t => t.id + t.batch), x.rules.map(r => r.id), x.batches.map(b => b.id), Object.keys(x.budgets)), curs: x.accounts.map(a => a.cur), rates: Object.keys(x.settings.rates), kinds: x.cats.map(c => c.kind), freq: x.recs.map(r => r.freq), mode: x.rules.map(r => r.mode), profiles: x.profiles.length, proto: Object.getPrototypeOf(x) === Object.prototype}; });
+  assert.ok(dd.ids.every(i => /^[A-Za-z0-9_.:@-]*$/.test(i)), 'id-uri curate: ' + dd.ids.join(','));
+  assert.ok(dd.curs.every(c => /^[A-Z]{3}$/.test(c)), 'monede = 3 litere: ' + dd.curs);
+  assert.deepEqual(dd.rates, ['EUR']);  // PAY('rk') și 'constructor' (minuscule) respinse
+  assert.ok(dd.kinds.every(k => k === 'exp' || k === 'inc')); assert.deepEqual(dd.freq, ['monthly']); assert.deepEqual(dd.mode, ['contains']);
+  assert.equal(dd.txs, 2, 'tranzacțiile cu dată invalidă / sumă fracționară sunt omise'); assert.equal(dd.profiles, 1); assert.ok(dd.proto);
+  assert.equal(await E(p, () => GOSPODAR.G.dec('toString') + GOSPODAR.G.dec('constructor') + GOSPODAR.G.dec('__proto__')), 6);
+  assert.deepEqual(p.net, []); await close(p);
+});
+
+await T('XSS: copie de siguranță .fff.json ostilă (importBundleText) este curățată înainte de înlocuire', async () => {
+  const p = await newPage({bypassCSP: true});
+  const bad = {format: 'fff-bundle', schema: 1, app: 'gospodar', data: {'fff.gospodar.data': JSON.stringify({v: 1, accounts: [{id: PAY('a'), name: 'n', type: 'current', cur: 'ron', open: 5, archived: false}], txs: [['t1', '2026-10-01', -5, PAY('a'), '', 'x']]})}};
+  const r = await E(p, async b => { const o = await GOSPODAR.importBundleText(JSON.stringify(b)); return {id: o.nd.accounts[0].id, cur: o.nd.accounts[0].cur, acc: o.nd.txs[0].acc}; }, bad);
+  assert.match(r.id, /^[A-Za-z0-9_.:@-]+$/); assert.equal(r.cur, 'RON'); assert.equal(r.acc, r.id, 'referințele rămân consecvente după curățare');
+  await E(p, async b => { const o = await GOSPODAR.importBundleText(JSON.stringify(b)); GOSPODAR.S.replaceData(o.nd); GOSPODAR.U.go('tx', false); GOSPODAR.U.go('setup', false); }, bad);
+  assert.deepEqual(await E(p, () => window.__x || []), []); await close(p);
+});
+
+await T('calculatoare: rate/sume absurde dau mesaj, nu excepție sau cifre inexacte (−100 %, > 10000 %, depășire 2^53)', async () => {
+  const p = await newPage();
+  const r = await E(p, () => { const G = GOSPODAR.G, o = {};
+    o.infl100 = G.inflationRows({amount: 100000, ratePct: '-100', years: 2}); o.infl150 = G.inflationRows({amount: 100000, ratePct: '-150', years: 2});
+    o.inflOk = G.inflationRows({amount: 100000, ratePct: '100', years: 1})[1].nominal;
+    o.loanNeg = G.loanSchedule({principal: 100000, ratePct: '-1200', months: 12, type: 'annuity'}); o.loanHuge = G.loanSchedule({principal: 100000, ratePct: '10001', months: 12, type: 'annuity'});
+    o.loanOver = G.loanSchedule({principal: 9e15, ratePct: '50', months: 1200, type: 'annuity'}); o.loanOk = G.loanSchedule({principal: 10000000, ratePct: '7,5', months: 300, type: 'annuity'}).payment;
+    o.compOver = G.compoundRun({initial: 1e13, deposit: 0, ratePct: '10000', months: 1200, timing: 'end'}); o.goalOver = G.goalDeposit({target: 9.1e15, current: 0, ratePct: '0', months: 1});
+    o.vatHuge = G.vatCalc({amount: 100, ratePct: '10001', mode: 'add'}); o.vatOk = G.vatCalc({amount: 10000, ratePct: '21', mode: 'add'}).gross;
+    o.fxOver = G.fxCalc({amount: 1e13, rateStr: '1000000', from: 'RON', to: 'RON', mode: 'mul'});
+    o.cap = [G.parseTyped('100000000000,00', 'RON'), G.parseTyped('100000000000,01', 'RON')]; o.conv = G.convertMinor(1e13, 'EUR', 'RON', 'RON', {EUR: '99999999999'});
+    return o; });
+  assert.equal(r.infl100, null); assert.equal(r.infl150, null); assert.equal(r.inflOk, 200000);
+  assert.equal(r.loanNeg, null); assert.equal(r.loanHuge, null); assert.equal(r.loanOver, null); assert.ok(Number.isSafeInteger(r.loanOk) && r.loanOk > 70000 && r.loanOk < 80000, 'rată anuitate ' + r.loanOk);
+  assert.equal(r.compOver, null); assert.equal(r.goalOver, null); assert.equal(r.vatHuge, null); assert.equal(r.vatOk, 12100); assert.equal(r.fxOver, null);
+  assert.deepEqual(r.cap, [1e13, null]); assert.equal(r.conv, null);
+  // UI: mesaje traduse, fără pageerror
+  await nav(p, 'calc'); await p.click('[data-act=calctab][data-k=inflation]'); await p.fill('#c-r', '-100'); await p.waitForTimeout(250);
+  assert.match(await p.textContent('#calcOut'), /între −100 %/); assert.ok(!/Division/.test(await p.textContent('#calcOut')));
+  await p.click('[data-act=calctab][data-k=loan]'); await p.fill('#c-P', '99999999999'); await p.fill('#c-r', '9999'); await p.fill('#c-n', '1200'); await p.waitForTimeout(250);
+  assert.match(await p.textContent('#calcOut'), /depășește limita calculului exact/);
+  await clean(p); await close(p);
+});
+
+await T('reguli: regex cu risc polinomial/exponențial respins static (nu îngheață fila), regexuri uzuale rămân permise', async () => {
+  const p = await newPage();
+  const r = await E(p, () => { const G = GOSPODAR.G, o = {}; for (const x of ['.*a.*a.*a.*b', 'a*a*a*a*b', '(a{1,30}){1,30}b', '(a|a?){20}b', '(a+){1,40}b', '(.{0,10}){10}x', '(\\w{1,5}){1,10}!', '(a+)+$']) o[x] = G.regexStatic(x);
+    for (const x of ['(restaurant|cafenea|pizzeria)', 'ENERGIE|GAZE', '^(mega|kaufland)\\s+\\d+', '.*foo.*bar.*baz', '(lidl|auchan)?\\s*(card)?', '[0-9]{4}-[0-9]{2}']) o['ok ' + x] = G.regexStatic(x); return o; });
+  for (const k of Object.keys(r)) assert.equal(r[k] !== null, !k.startsWith('ok '), k + ' → ' + r[k]);
+  // un set de reguli importat cu un tipar periculos nu se compilează și nu blochează aplicarea
+  const ms = await E(p, () => { const S = GOSPODAR.S; S.addAccount({name: 'c', cur: 'RON'}); const a = S.data().accounts[0].id; for (let i = 0; i < 50; i++) S.addTx({date: '2026-10-01', amt: -100, acc: a, desc: 'a'.repeat(300)}, true);
+    S.data().rules.push({id: 'rx', name: 'rea', pat: '.*a.*a.*a.*a.*b', mode: 'regex', cat: S.data().cats[1].id, tags: [], on: true, acc: '', min: null, max: null, sign: ''}); const t0 = performance.now(); const pl = S.planRules('all', 3000); return {ms: performance.now() - t0, n: pl.changes.length}; });
+  assert.ok(ms.ms < 1500 && ms.n === 0, JSON.stringify(ms)); await close(p);
+});
+
+await T('criptare: dacă varianta criptată nu încape (cotă) datele în clar NU se șterg; dezactivarea nu șterge varianta criptată', async () => {
+  const p = await newPage(); await demo(p); await E(p, () => GOSPODAR.S.whenSaved());
+  const n0 = await E(p, () => localStorage.getItem('fff.gospodar.data').length); assert.ok(n0 > 1000);
+  await E(p, () => { window.__orig = Storage.prototype.setItem; Storage.prototype.setItem = function (k, v) { if (/\.enc$/.test(k)) throw new DOMException('quota', 'QuotaExceededError'); return window.__orig.call(this, k, v); }; });
+  const r = await E(p, async () => { try { await GOSPODAR.S.enableEncryption('parola-lunga-123'); return 'ok'; } catch (e) { return 'err:' + e.message; } });
+  assert.equal(r, 'err:quota');
+  assert.equal(await E(p, () => localStorage.getItem('fff.gospodar.data') !== null && localStorage.getItem('fff.gospodar.data').length), n0, 'datele în clar păstrate');
+  assert.equal(await E(p, () => GOSPODAR.S.isEncrypted()), false); assert.equal(await E(p, () => GOSPODAR.S.isUnlockedEnc()), false);
+  // activare reușită, apoi dezactivare cu cota depășită pe varianta clară
+  await E(p, () => { Storage.prototype.setItem = window.__orig; }); await E(p, () => GOSPODAR.S.enableEncryption('parola-lunga-123'));
+  assert.equal(await E(p, () => localStorage.getItem('fff.gospodar.data')), null); const enc0 = await E(p, () => localStorage.getItem('fff.gospodar.enc')); assert.ok(enc0);
+  await E(p, () => { Storage.prototype.setItem = function (k, v) { if (/\.data$/.test(k)) throw new DOMException('quota', 'QuotaExceededError'); return window.__orig.call(this, k, v); }; });
+  const r2 = await E(p, async () => { try { await GOSPODAR.S.disableEncryption(); return 'ok'; } catch (e) { return 'err:' + e.message; } });
+  assert.equal(r2, 'err:quota'); assert.equal(await E(p, () => localStorage.getItem('fff.gospodar.enc')), enc0, 'varianta criptată păstrată'); assert.equal(await E(p, () => GOSPODAR.S.isUnlockedEnc()), true);
+  await close(p);
 });
 
 await browser.close();

@@ -2,7 +2,7 @@
 
 [English](README.md) · [Română](README.ro.md) · [Français](README.fr.md) · [Italiano](README.it.md) · [Español](README.es.md) · **Português** · [Deutsch](README.de.md) · [Magyar](README.hu.md)
 
-**Versão:** 1.0.5 · **Última atualização:** 2026-10-23
+**Versão:** 1.0.6 · **Última atualização:** 2026-10-23
 
 Idiomas da interface: **Română, English, Français, Italiano, Español, Português (PT), Deutsch, Magyar**
 
@@ -35,7 +35,7 @@ Exportação/importação de dados: `.fff.json` (formato `fff-bundle`, esquema 1
 
 ## Técnica
 
-Um único ficheiro `index.html`, JS e CSS inline, CSP estrita com hash, sem recursos externos. Testes: `node tests/test.mjs` (Playwright; 44 testes: vetores conhecidos, ida e volta para cada código, durações Morse calculadas e medidas no áudio renderizado/na intermitência, axe 0 nos dois temas, disposição a 360 e 1280 px).
+Um único ficheiro `index.html`, JS e CSS inline, CSP estrita com hash, sem recursos externos. Testes: `node tests/test.mjs` (Playwright; 48 testes: vetores conhecidos, ida e volta para cada código, durações Morse calculadas e medidas no áudio renderizado/na intermitência, axe 0 nos dois temas, disposição a 360 e 1280 px).
 
 ## Terceiros
 
@@ -56,3 +56,4 @@ MIT — ver o ficheiro `LICENSE` na raiz do repositório.
 - 1.0.1 — 2026-10-19: o painel é escolhido apenas a partir da parte do endereço anterior ao primeiro «&» (#painel&from=…), para que as ligações a partir de ETER/INDICATIV abram o painel correto.
 - 1.0.2 — 2026-10-22: a pré-visualização da ficha imprimível já não acrescenta cabeçalhos H1 extra à página (um único H1 por página; o título da ficha é um H2 no ecrã e continua H1 na impressão); áreas táteis de pelo menos 24 px; a etiqueta técnica (fff-info) lista agora os 8 idiomas reais em vez de 2.
 - 1.0.3 — 2026-10-22: fff-kit 1.1.2: PBKDF2 com 600.000 iterações, proteção anti-clickjacking.
+- 1.0.6 — 2026-10-23: dados locais corrompidos (SRS, exercício diário, Koch, perfil Braille RO, estatísticas, definições Morse) já não bloqueiam os painéis; a importação .fff.json valida chaves, idioma e tema; aviso quando o armazenamento local está cheio; a reprodução e a exportação WAV do Morse ficam limitadas a 15 minutos (um texto enorme já não aloca gigabytes); versão interna alinhada.

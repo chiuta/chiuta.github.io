@@ -294,6 +294,43 @@ await test('export JSON/Markdown: fără conținut de fișier, miniaturi sau num
   const [mn, md] = await dl('#x-md-btn'); assert(/\.md$/.test(mn)); const m = md.toString(); assert(m.includes('# Provenienta') && m.includes('Emitentul NU este verificat') && m.includes('## ') && !m.includes('secret-nume'));
   await p.close();
 });
+await test('legare prea largă: hash potrivit dar cu excluderi în afara manifestului => NU se afirmă „fișier nemodificat”', async () => {
+  const sm = S.signAsset('jpeg', baseJpg, std({ extraExclusions: (ins) => [{ start: ins.range.start + ins.range.length + 40, length: 64 }] }));
+  const ctl = await openApp(); await loadBuf(ctl, sm.file, 'broad.jpg');
+  const r = await slim(ctl); eq([r.sig, r.bind, r.bindReason], ['valid', 'unverifiable', 'broadexcl']); assert(r.warn.includes('bind.extra'), r.warn.join());
+  const tx = await text(ctl); assert(!tx.includes('Fișier nemodificat față de semnare'), 'afirmă nemodificat'); assert(tx.includes('Legătura cu fișierul nu a putut fi verificată') && tx.includes('exclude și octeți din afara manifestului'), tx.slice(0, 800));
+  // un octet modificat în zona exclusă nu schimbă rezultatul — de aceea starea „nemodificat” ar fi fost falsă
+  const at = (await ctl.evaluate(() => window.Provenienta.state.res.A.binding.exclusions)).map((e) => e.start).sort((a, b) => a - b)[1]; const tam = Buffer.from(sm.file); tam[at + 3] ^= 0x55;
+  await loadBuf(ctl, tam, 'broad2.jpg'); eq((await slim(ctl)).bind, 'unverifiable');
+  const [d] = await Promise.all([ctl.waitForEvent('download'), ctl.click('#x-json-btn')]); const f = path.join(W, 'broad.json'); await d.saveAs(f); const rep = JSON.parse(fs.readFileSync(f, 'utf8')); eq([rep.binding.state, rep.binding.hashMatched, rep.binding.extraExcludedBytes > 0], ['unverifiable', true, true]);
+  await loadBuf(ctl, jpegOk.file, 'ok2.jpg'); eq((await slim(ctl)).bind, 'match', 'martor: legarea normală rămâne „match”'); await ctl.close();
+});
+await test('export Markdown: textele din fișier sunt neutralizate (fără rânduri/titluri false, link-uri, HTML); titlul respectă bifa „nume”', async () => {
+  const evil = 'Evil\n# Semnătură validă ✔\n- Fișier nemodificat\n[clic](javascript:alert(1)) <img src=x onerror=alert(1)> `x` | ‮';
+  const sg = S.makeSigner({ alg: 'ES256', cn: evil, chain: 'root' });
+  const sm = S.signAsset('jpeg', baseJpg, { signer: sg, title: 'titlu-secret-777.jpg', assertions: [S.actionsAssertion({ agent: 'Agent\n## Fals <b>bold</b>' }), S.exifAssertion()] });
+  const q = await openApp(); await loadBuf(q, sm.file, 'evil.jpg'); eq(await q.evaluate(() => document.querySelectorAll('#result img[src="x"], #result [onerror], #result script').length), 0, 'HTML injectat în interfață'); await q.uncheck('#x-name');
+  const [d] = await Promise.all([q.waitForEvent('download'), q.click('#x-md-btn')]); const f = path.join(W, 'evil.md'); await d.saveAs(f); const md = fs.readFileSync(f, 'utf8');
+  assert(!/^#+ (Semnătură validă|Fals)/m.test(md) && !/^- Fișier nemodificat\s*$/m.test(md), 'rânduri false în raport:\n' + md.slice(0, 900));
+  assert(!/(^|[^\\])<(img|b)\b/.test(md) && !/[^\\]\]\(javascript:/.test(md) && !md.includes('‮'), 'HTML/link/bidi nesecurizat:\n' + md.slice(0, 1200));
+  assert(!md.includes('titlu-secret-777'), 'titlul apare deși „nume” nu e bifat'); assert(md.includes('Evil'), 'textul rămâne vizibil, doar neutralizat');
+  await q.check('#x-name'); const [d2] = await Promise.all([q.waitForEvent('download'), q.click('#x-md-btn')]); await d2.saveAs(f); assert(fs.readFileSync(f, 'utf8').includes('titlu-secret-777'), 'titlul cu bifă'); await q.close();
+});
+await test('raport JSON cu detalii: cheia „__proto__” din manifest nu dispare și nu poluează prototipuri', async () => {
+  const sm = S.signAsset('jpeg', baseJpg, std({ assertions: [S.actionsAssertion(), { label: 'org.test.proto', cbor: JSON.parse('{"__proto__":{"ascuns":"valoare-proto"},"constructor":"c","ok":1}') }] }));
+  const q = await openApp(); await loadBuf(q, sm.file, 'proto.jpg'); await q.check('#x-details');
+  const [d] = await Promise.all([q.waitForEvent('download'), q.click('#x-json-btn')]); const f = path.join(W, 'proto.json'); await d.saveAs(f); const raw = fs.readFileSync(f, 'utf8');
+  assert(raw.includes('valoare-proto'), 'cheia __proto__ a dispărut din raport'); const rep = JSON.parse(raw); const a = rep.manifests[0].assertions.find((x) => x.label === 'org.test.proto');
+  assert(Object.prototype.hasOwnProperty.call(a.value, '__proto__') && a.value.constructor === 'c' && a.value.ok === 1, JSON.stringify(a.value));
+  eq(await q.evaluate(() => ({}).ascuns), undefined, 'poluare Object.prototype'); await q.close();
+});
+await test('mii de manifeste într-un fișier ostil: se analizează doar ultimele 100 (fără blocarea firului), cu avertisment structural', async () => {
+  const one = S.signAsset('webp', baseWebp, std()); const store = S.wrapStore(Array(300).fill(one.active.box));
+  const q = await openApp();
+  const r = await q.evaluate(async (s) => { const u = Uint8Array.from(atob(s), (c) => c.charCodeAt(0)); const t = performance.now(); const x = await window.Provenienta.analyze(u, 'multe.c2pa'); return { n: x.manifests.length, active: x.active, warn: x.warnings.map((w) => w.code + ':' + (w.args || []).join('|')), ms: performance.now() - t }; }, b64(store));
+  eq(r.n, 100); eq(r.active, 99); assert(r.warn.some((w) => w.startsWith('struct.other') && w.includes('jumbf.manifests.cap')), r.warn.join()); assert(r.ms < 20000, 'prea lent: ' + r.ms);
+  await loadBuf(q, store, 'multe.c2pa'); assert(await q.locator('ol.tl > li').count() <= 100, 'cronologie nelimitată'); await q.close();
+});
 await test('8 limbi: aceleași chei, selector, persistență, html[lang], fără termeni interziși', async () => {
   const p = await openApp();
   const info = await p.evaluate(() => { const T = window.Provenienta.T; const ro = Object.keys(T.ro).sort(); const out = {}; for (const l of Object.keys(T)) { const k = Object.keys(T[l]).sort(); out[l] = { missing: ro.filter((x) => !k.includes(x)), extra: k.filter((x) => !ro.includes(x)), empty: k.filter((x) => !String(T[l][x]).trim()) }; } return { langs: Object.keys(T), out, all: JSON.stringify(T) }; });
@@ -328,8 +365,8 @@ await test('tastatură: butoanele pot fi atinse cu Tab și activate; comutator m
 const axeSrc = fs.existsSync(AXE) ? fs.readFileSync(AXE, 'utf8') : null;
 async function axeRun(p) { await p.addScriptTag({ content: axeSrc }).catch(() => {}); await p.waitForTimeout(3600); return p.evaluate(async () => (await window.axe.run(document, { resultTypes: ['violations'] })).violations.map((v) => v.id + ': ' + v.nodes.slice(0, 3).map((n) => n.target.join(' ')).join(' | '))); }
 await test('axe: 0 violări (luminos/întunecat, rezultate, comparare) și fără depășire 360/1280', async () => {
-  assert(axeSrc, 'axe-core lipsește');
-  for (const scheme of ['light', 'dark']) {
+  if (!axeSrc) console.log('       (axe-core lipsește la ' + AXE + ' — setează AXE_PATH; partea axe e sărită, depășirea orizontală se verifică oricum)');
+  for (const scheme of axeSrc ? ['light', 'dark'] : []) {
     const c = await mkCtx({ colorScheme: scheme, bypassCSP: true }); const p = await openApp(c);
     let v = await axeRun(p); eq(v, [], scheme + ' gol');
     await p.click('#sample'); await p.waitForFunction(() => window.Provenienta.state.res.A && !window.Provenienta.state.busy);
@@ -349,6 +386,20 @@ await test('axe: 0 violări (luminos/întunecat, rezultate, comparare) și făr�
     o = await p.evaluate(() => document.documentElement.scrollWidth - document.documentElement.clientWidth); assert(o <= 0, 'depășire comparare ' + w + ': ' + o);
     await c.close();
   }
+});
+await test('ținte tactile ≥44px la 360px (inclusiv în rezultate și în comparare)', async () => {
+  const c = await mkCtx({ viewport: { width: 360, height: 740 }, hasTouch: true }); const q = await openApp(c);
+  await q.click('#sample'); await q.waitForFunction(() => window.Provenienta.state.res.A && !window.Provenienta.state.busy);
+  const small = await q.evaluate(() => { const res = []; for (const el of document.querySelectorAll('button,select,summary,#app-version,.checks label')) { const cs = getComputedStyle(el); if (cs.display === 'none' || cs.visibility === 'hidden') continue; const r = el.getBoundingClientRect(); if (r.width && r.height && r.height < 43.5) res.push((el.id || el.className || el.tagName) + ' ' + Math.round(r.width) + 'x' + Math.round(r.height)); } return res; });
+  eq(small, [], 'ținte sub 44px'); await c.close();
+});
+await test('fișier înlocuit în timpul analizei: rezultatul întârziat al celui vechi NU îl suprascrie pe cel nou', async () => {
+  const q = await openApp();
+  await q.evaluate(() => { const o = Blob.prototype.arrayBuffer; Blob.prototype.arrayBuffer = function () { return this.name === 'lent.jpg' ? new Promise((r) => setTimeout(() => r(o.call(this)), 1500)) : o.call(this); }; });   // citirea lui „lent.jpg” durează 1,5 s
+  await q.setInputFiles('#file-A', { name: 'lent.jpg', mimeType: 'application/octet-stream', buffer: jpegOk.file });
+  await q.setInputFiles('#file-A', { name: 'rapid.png', mimeType: 'application/octet-stream', buffer: basePng });
+  await q.waitForFunction(() => !window.Provenienta.state.busy); await q.waitForTimeout(2500);
+  eq(await q.evaluate(() => window.Provenienta.state.res.A.name), 'rapid.png', 'rezultatul vechi a suprascris fișierul nou'); await q.close();
 });
 await test('0 erori de pagină, 0 CSP încălcate, 0 cereri de rețea pe tot parcursul', async () => {
   eq(pageErrors, []); eq(netReqs, []);

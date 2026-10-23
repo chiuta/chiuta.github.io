@@ -3,6 +3,7 @@
 import {createRequire} from 'node:module';
 import fs from 'node:fs';
 import path from 'node:path';
+import os from 'node:os';
 import {fileURLToPath, pathToFileURL} from 'node:url';
 import crypto from 'node:crypto';
 import {spawnSync} from 'node:child_process';
@@ -11,7 +12,7 @@ const require = createRequire('/opt/node-tools/package.json');
 const {chromium} = require('playwright');
 const here = path.dirname(fileURLToPath(import.meta.url));
 const URL_APP = pathToFileURL(path.join(here, '..', 'index.html')).href;
-const AXE = process.env.AXE_PATH || '/tmp/claude-0/-home-claude/78529928-3825-51c3-b9bd-0e81655ab6bc/scratchpad/sweep/node_modules/axe-core/axe.min.js';
+const AXE = [process.env.AXE_PATH, '/tmp/claude-0/ax/node_modules/axe-core/axe.min.js', '/tmp/claude-0/-home-claude/78529928-3825-51c3-b9bd-0e81655ab6bc/scratchpad/sweep/node_modules/axe-core/axe.min.js'].find(x => x && fs.existsSync(x)) || process.env.AXE_PATH;   // axe-core nu face parte din depozit: AXE_PATH=…/axe.min.js
 const fx = n => fs.readFileSync(path.join(here, 'fixtures', n));
 const SAMPLE = fx('sample.ged').toString('utf8');
 const POPESCU = fx('familia-popescu.ged').toString('utf8');
@@ -731,6 +732,126 @@ console.log('11. Accesibilitate (axe), overflow, teme, mișcare redusă, print')
   const hid = await p.evaluate(() => { document.body.classList.add('printing'); const d = getComputedStyle(document.querySelector('header.top')).display; document.body.classList.remove('printing'); return d; });
   ok('în print (body.printing) restul paginii este ascuns', hid === 'none', hid);
   await t.ctx.close();
+}
+
+/* 11b. Ținte tactile ≥44 px (pointer: coarse, 360 px) */
+console.log('11b. Ținte tactile 44 px pe mobil');
+{
+  const ctx = await browser.newContext({viewport: {width: 360, height: 740}, hasTouch: true, isMobile: true});
+  await ctx.route(/^https?:/, r => r.abort());
+  const p = await ctx.newPage();
+  await p.goto(URL_APP); await p.waitForFunction(() => document.documentElement.dataset.ready === '1');
+  await p.click('#b-sample'); await p.waitForTimeout(3600);
+  const small = [];
+  for (const tab of ['people', 'chart', 'rel', 'quality', 'places', 'data']) {
+    await p.click('#t-' + tab); await p.waitForTimeout(300);
+    small.push(...await p.evaluate(() => [...document.querySelectorAll('button:not(.link),select,input[type=text],input[type=search],input[type=number],input[type=password],textarea,[role=tab]')].filter(e => { const b = e.getBoundingClientRect(); return b.width && b.height && !e.closest('[hidden],dialog:not([open]),.tf-donate,#tf-donate') && getComputedStyle(e).visibility !== 'hidden' && (b.height < 43.5 || b.width < 43.5); }).map(e => (e.id || e.className || e.tagName) + ' ' + Math.round(e.getBoundingClientRect().width) + 'x' + Math.round(e.getBoundingClientRect().height))));
+  }
+  ok('mobil (pointer: coarse): butoane/câmpuri/taburi ≥44×44 px', small.length === 0, [...new Set(small)].slice(0, 12));
+  await ctx.close();
+}
+
+/* ---------------------------------------------------------------- 12. Audit adversarial (regresii) */
+console.log('12. Audit adversarial: ID-uri ostile, date imposibile, îmbinare ciclică, stocare coruptă, i18n');
+{
+  const t = await newPage();
+  const p = t.page;
+  const r = await p.evaluate(async () => {
+    const A = window.Arbore, out = {};
+    // 12.1 ID-uri GEDCOM care coincid cu proprietăți din Object.prototype
+    const g = '0 HEAD\n1 CHAR UTF-8\n0 @constructor@ INDI\n1 NAME Ion /Test/\n1 FAMS @toString@\n0 @__proto__@ INDI\n1 NAME Ana /Test/\n1 FAMS @toString@\n1 NOTE @valueOf@\n0 @toString@ FAM\n1 HUSB @constructor@\n1 WIFE @__proto__@\n0 TRLR';
+    const x = await A.parseGedcom(g);
+    out.protoKeys = Object.keys(x.db.persons).sort();
+    out.protoDup = x.report.errors.filter(e => e.code === 'dup_xref').length;
+    out.protoFam = Object.keys(x.db.families);
+    out.protoMissing = x.report.errors.filter(e => e.code === 'missing_ref').length;
+    out.protoNote = x.report.errors.filter(e => e.code === 'missing_note').length;   // @valueOf@ nu este o NOTE reală → trebuie raportat
+    out.protoClean = Object.getPrototypeOf(x.db.persons) === Object.prototype && Object.getPrototypeOf(x.db.families) === Object.prototype;
+    // 12.2 date imposibile
+    out.d = ['30 FEB 1800', '31 APR 1900', '29 FEB 1900', '29 FEB 1904', '29 FEB 1500', '31 DEC 1900', '5 JAN 1700'].map(d => A.parseGedDate(d).kind);
+    out.nd = [A.normalizeDateInput('30.02.1800').ok, A.normalizeDateInput('29.02.1904').ok, A.normalizeDateInput('31.04.1900').ok];
+    // 12.3 îmbinare bunic-nepot cu același nume
+    const g2 = '0 HEAD\n0 @I1@ INDI\n1 NAME Ion /Popescu/\n1 SEX M\n1 FAMS @F1@\n0 @I2@ INDI\n1 NAME Vasile /Popescu/\n1 SEX M\n1 FAMC @F1@\n1 FAMS @F2@\n0 @I3@ INDI\n1 NAME Ion /Popescu/\n1 SEX M\n1 FAMC @F2@\n0 @F1@ FAM\n1 HUSB @I1@\n1 CHIL @I2@\n0 @F2@ FAM\n1 HUSB @I2@\n1 CHIL @I3@\n0 TRLR';
+    const y = await A.parseGedcom(g2);
+    out.dupPairs = (await A.findDuplicates(y.db)).length;
+    out.merge = A.mergePersons(y.db, 'I1', 'I3');
+    out.mergeCycles = (await A.checkConsistency(y.db, 2026)).filter(i => i.code === 'cycle').length;
+    out.persons = Object.keys(y.db.persons).length;
+    return out;
+  });
+  eqAll: {
+    ok('ID-uri @constructor@/@__proto__@/@toString@ sunt păstrate (redenumite), nu respinse ca duplicate', r.protoKeys.length === 2 && r.protoDup === 0 && r.protoFam.length === 1, r);
+    ok('ID-uri ostile: nicio referință lipsă falsă și prototipurile rămân intacte', r.protoMissing === 0 && r.protoNote === 1 && r.protoClean, r);
+  }
+  ok('date imposibile (30 FEB, 31 APR, 29 FEB 1900) sunt „invalid”, cele valide rămân', JSON.stringify(r.d) === JSON.stringify(['invalid', 'invalid', 'invalid', 'exact', 'exact', 'exact', 'exact']), r.d);
+  ok('normalizeDateInput respinge 30.02.1800 și 31.04.1900, acceptă 29.02.1904', JSON.stringify(r.nd) === JSON.stringify([false, true, false]), r.nd);
+  ok('bunic și nepot cu același nume nu mai sunt propuși ca duplicate', r.dupPairs === 0, r.dupPairs);
+  ok('îmbinarea strămoș-descendent este refuzată (fără ciclu)', r.merge && r.merge.ok === false && r.merge.error === 'ancestor' && r.mergeCycles === 0 && r.persons === 3, r);
+  const deep = await p.evaluate(async () => { let d = '0 HEAD\n0 @I1@ INDI\n1 NAME A /B/\n'; for (let i = 2; i < 30000; i++) d += i + ' _X' + i + ' v\n'; try { const r = await window.Arbore.parseGedcom(d + '0 TRLR'); return [r.ok, Object.keys(r.db.persons).length]; } catch (e) { return 'THROW ' + e.message; } });
+  ok('GEDCOM cu 30000 niveluri de imbricare: fără depășirea stivei', Array.isArray(deep) && deep[0] === true && deep[1] === 1, deep);
+  const fut = await p.evaluate(async () => { const A = window.Arbore; A.setNow(new Date(2026, 9, 23)); const r = await A.parseGedcom('0 HEAD\n0 @I1@ INDI\n1 NAME A /B/\n1 BIRT\n2 DATE 2090\n0 @I2@ INDI\n1 NAME C /D/\n1 BIRT\n2 DATE 1990\n0 @I3@ INDI\n1 NAME E /F/\n1 BIRT\n2 DATE 2026\n0 TRLR'); const c = await A.checkConsistency(r.db, 2026.8); return c.filter(i => i.code === 'future_date').map(i => i.ids[0]); });
+  ok('verificare: naștere în viitor este semnalată (doar I1)', JSON.stringify(fut) === '["I1"]', fut);
+  ok('0 pageerror (audit 12.a)', t.errors.length === 0, t.errors);
+  await t.ctx.close();
+}
+{
+  // 12.4 stocare coruptă: copie de siguranță, nu se pierde la prima salvare
+  const t = await newPage();
+  const p = t.page;
+  await p.evaluate(() => { localStorage.setItem('fff.arbore.tree', '{"persons":{"I1":{"id":"I1"'); });
+  await p.reload(); await p.waitForFunction(() => document.documentElement.dataset.ready === '1');
+  await p.click('#b-addp'); await p.waitForSelector('#dlg-edit[open]');
+  const ids = await p.evaluate(() => [...document.querySelectorAll('#dlg-edit input')].map(e => e.id).filter(Boolean));
+  await p.fill('#' + ids.find(i => /given/i.test(i)), 'Nou'); await p.click('#dlg-edit button[type="submit"]'); await p.waitForTimeout(1200);
+  const st = await p.evaluate(() => ({tree: localStorage.getItem('fff.arbore.tree'), bak: localStorage.getItem('fff.arbore.tree.bak')}));
+  ok('date corupte: copia originală este păstrată în fff.arbore.tree.bak', st.bak === '{"persons":{"I1":{"id":"I1"', st.bak);
+  ok('date corupte: arborele nou se salvează separat', st.tree && st.tree.includes('Nou'), st.tree && st.tree.slice(0, 80));
+  // IndexedDB indisponibil/gol cu indicator '@idb': înregistrarea IDB nu se șterge la salvare
+  await p.evaluate(async () => {
+    const d = await new Promise((res, rej) => { const q = indexedDB.open('fff.arbore', 1); q.onupgradeneeded = () => q.result.createObjectStore('kv'); q.onsuccess = () => res(q.result); q.onerror = () => rej(q.error); });
+    await new Promise(res => { const tx = d.transaction('kv', 'readwrite'); tx.objectStore('kv').put('IDB-ORIGINAL', 'tree'); tx.oncomplete = res; }); d.close();
+    localStorage.setItem('fff.arbore.tree', '@idb');
+  });
+  await p.addInitScript(() => { const o = IDBObjectStore.prototype.get; IDBObjectStore.prototype.get = function () { throw new Error('idb-off'); }; });
+  await p.reload(); await p.waitForFunction(() => document.documentElement.dataset.ready === '1');
+  await p.click('#b-addp'); await p.waitForSelector('#dlg-edit[open]');
+  await p.fill('#' + (await p.evaluate(() => [...document.querySelectorAll('#dlg-edit input')].map(e => e.id).find(i => /given/i.test(i)))), 'Y'); await p.click('#dlg-edit button[type="submit"]'); await p.waitForTimeout(1200);
+  const idbVal = await p.evaluate(async () => { const d = await new Promise((res, rej) => { const q = indexedDB.open('fff.arbore', 1); q.onsuccess = () => res(q.result); q.onerror = () => rej(q.error); }); return new Promise(res => { const tx = d.transaction('kv'); const rq = IDBObjectStore.prototype.getAll ? tx.objectStore('kv').getAll() : null; rq.onsuccess = () => { d.close(); res(rq.result); }; }); });
+  ok('IDB ilizibil: înregistrarea din IndexedDB nu este ștearsă la prima salvare', Array.isArray(idbVal) && idbVal.includes('IDB-ORIGINAL'), idbVal);
+  await t.ctx.close();
+}
+{
+  // 12.5 import .fff.json ostil: __proto__, ID-uri ostile, fotografie non-data:
+  const t = await newPage();
+  const p = t.page;
+  const bad = JSON.stringify({format: 'fff-bundle', schema: 1, app: 'arbore', data: {'fff.arbore.tree': '{"__proto__":{"_ix":{"x":1}},"persons":{"I1":{"id":"I1","names":[{"given":"A","surname":"B"}],"photo":"javascript:window.__x=1","events":[],"notes":[],"sours":[],"tags":[],"assoc":[],"extra":[]}},"families":{}}'}});
+  const bad2 = JSON.stringify({format: 'fff-bundle', schema: 1, app: 'arbore', data: {'fff.arbore.tree': '{"persons":{"constructor":{"id":"constructor"}},"families":{}}'}});
+  fs.writeFileSync(path.join(os.tmpdir(), 'arb-bad.fff.json'), bad); fs.writeFileSync(path.join(os.tmpdir(), 'arb-bad2.fff.json'), bad2);
+  await p.setInputFiles('#in-json', path.join(os.tmpdir(), 'arb-bad.fff.json')); await p.waitForTimeout(900);
+  const r = await p.evaluate(() => { const A = window.Arbore, db = A.db; return {n: A.order.length, photo: Object.values(db.persons)[0] && Object.values(db.persons)[0].photo, hasIx: Object.prototype.hasOwnProperty.call(db, '_ix'), protoOk: Object.getPrototypeOf(db) === Object.getPrototypeOf({})}; });
+  ok('import JSON: __proto__ ignorat, fotografie non-data: eliminată', r.n === 1 && r.photo === '' && r.protoOk, r);
+  await p.setInputFiles('#in-json', path.join(os.tmpdir(), 'arb-bad2.fff.json')); await p.waitForTimeout(900);
+  ok('import JSON cu ID «constructor» este respins (arborele existent rămâne)', await p.evaluate(() => window.Arbore.order.length) === 1);
+  ok('0 încălcări CSP/erori (audit 12.c)', t.errors.filter(e => !/violates the following Content Security/.test(e)).length === 0 && t.net.length === 0, [t.errors, t.net]);
+  await t.ctx.close();
+}
+{
+  // 12.6 i18n: fiecare cheie K(...) are 8 traduceri nevide, cu aceleași {variabile}
+  const html = fs.readFileSync(path.join(here, '..', 'index.html'), 'utf8');
+  const bad = []; let n = 0;
+  for (const m of html.matchAll(/^K\('([^']+)',(.*)\);?$/gm)) {
+    n++; let arr; try { arr = (0, eval)('[' + m[2] + ']'); } catch (e) { bad.push(m[1] + ' sintaxă'); continue; }
+    const ph = s => (String(s).match(/\{\w+\}/g) || []).sort().join(',');
+    if (arr.length !== 8) bad.push(m[1] + ' are ' + arr.length + ' traduceri');
+    arr.forEach((s, i) => { if (typeof s !== 'string' || !s.trim()) bad.push(m[1] + '[' + i + '] gol'); else if (ph(s) !== ph(arr[0])) bad.push(m[1] + '[' + i + '] variabile diferite'); });
+  }
+  ok('i18n: ' + n + ' chei K(), toate cu 8 limbi și variabile consecvente', n > 400 && bad.length === 0, bad.slice(0, 10));
+  // constanta VERSION din script = meta application-version = #app-version
+  const metaV = (html.match(/<meta name="application-version" content="([^"]+)"/) || [])[1];
+  const metaU = (html.match(/<meta name="last-updated" content="([^"]+)"/) || [])[1];
+  const jsV = (html.match(/const VERSION = '([^']+)', UPDATED = '([^']+)'/) || []);
+  ok('versiunea din script (VERSION/UPDATED) coincide cu meta și cu #app-version', metaV === jsV[1] && metaU === jsV[2] && html.includes('v ' + metaV + ' · ' + metaU), [metaV, metaU, jsV.slice(1)]);
+  ok('sw.js: VERSION = versiunea aplicației', fs.readFileSync(path.join(here, '..', 'sw.js'), 'utf8').includes('VERSION = "' + metaV + '"'));
 }
 
 await browser.close();

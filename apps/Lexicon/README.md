@@ -53,7 +53,7 @@ Synthetic set of 300,000 entries (32.8 MB TSV, 100,000 with forms):
 - reload with the 300,000 set in IndexedDB: 150–250 ms; heap about 141 MB.
 
 ## Technical
-A single `index.html`, inline script with a hash in the CSP (`script-src 'sha256-…'`, `default-src 'none'`, `connect-src 'none'`, no inline handlers, no `eval`; `worker-src blob:` is inherited from the template). In-memory index (sorted normalised keys, binary search), IndexedDB for entries and full text. HTML content goes through a custom parser and is built with `createElement`/`textContent`. Optionally detects `window.FFF`; it works fully without it. Tests: `node tests/test.mjs` (Playwright; 292 checks: StarDict/dictd parsing with files generated in the test, queries, 28 XSS payloads, persistence, 300,000 entries, axe 0, overflow at 360×740 and 1280×800). The `LEXICON_SKIP_PERF=1` variable skips the large test.
+A single `index.html`, inline script with a hash in the CSP (`script-src 'sha256-…'`, `default-src 'none'`, `connect-src 'none'`, no inline handlers, no `eval`; `worker-src blob:` is inherited from the template). In-memory index (sorted normalised keys, binary search), IndexedDB for entries and full text. HTML content goes through a custom parser and is built with `createElement`/`textContent`. Optionally detects `window.FFF`; it works fully without it. Tests: `node tests/test.mjs` (Playwright; 324 checks: StarDict/dictd parsing with files generated in the test, queries, 28 XSS payloads, persistence, 300,000 entries, axe 0, overflow at 360×740 and 1280×800). The `LEXICON_SKIP_PERF=1` variable skips the large test.
 
 ## Third parties
 There is no third-party code in the app (axe-core is used only in tests).
@@ -69,4 +69,5 @@ MIT — see the `LICENSE` file in the repository root.
 - 1.0.1 — 2026-10-22: a failed search now says explicitly that the bundled set is only a demonstration (when the demo set is active); CSV export neutralises cells starting with = + - @ against spreadsheet formula injection and TSV/CSV import removes that apostrophe again; touch targets of at least 24 px; the technical label lists all 8 languages.
 - 1.0.2 — 2026-10-22: fff-kit 1.1.2: PBKDF2 with 600,000 iterations, anti-clickjacking protection.
 - 1.0.3 — 2026-10-22: fff-kit 1.1.4: touch targets and minimum text size in the shared interface.
+- 1.0.5 — 2026-10-23: local data (favorites, history, flashcards, settings) is validated when read and when a backup is imported, so a corrupt value no longer blocks start-up; words such as “constructor” or “toString” can be added to the flashcards; a notice appears when local storage is full; a failed import leaves no half-written dictionary; the internal version is aligned.
 - 1.0.5 — 2026-10-23: fallback message when JavaScript is disabled (noscript).

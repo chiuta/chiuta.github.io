@@ -2,7 +2,7 @@
 
 [English](README.md) · **Română** · [Français](README.fr.md) · [Italiano](README.it.md) · [Español](README.es.md) · [Português](README.pt.md) · [Deutsch](README.de.md) · [Magyar](README.hu.md)
 
-**Versiune:** 1.0.5 · **Ultima actualizare:** 2026-10-23
+**Versiune:** 1.0.6 · **Ultima actualizare:** 2026-10-23
 
 Limbile interfeței: **Română, English, Français, Italiano, Español, Português (PT), Deutsch, Magyar**
 
@@ -35,7 +35,7 @@ Export/import de date: `.fff.json` (format `fff-bundle`, schema 1). Ieșiri: WAV
 
 ## Tehnic
 
-Un singur fișier `index.html`, JS și CSS inline, CSP strict cu hash, fără resurse externe. Teste: `node tests/test.mjs` (Playwright; 44 de teste: vectori cunoscuți, dus-întors pentru fiecare cod, durate Morse calculate și măsurate pe audio randat/clipire, axe 0 în ambele teme, layout la 360 și 1280 px).
+Un singur fișier `index.html`, JS și CSS inline, CSP strict cu hash, fără resurse externe. Teste: `node tests/test.mjs` (Playwright; 48 de teste: vectori cunoscuți, dus-întors pentru fiecare cod, durate Morse calculate și măsurate pe audio randat/clipire, axe 0 în ambele teme, layout la 360 și 1280 px).
 
 ## Terți
 
@@ -56,3 +56,4 @@ MIT — vezi fișierul `LICENSE` din rădăcina depozitului.
 - 1.0.1 — 2026-10-19: panoul se alege doar din partea dinaintea primului „&” a adresei (#panou&from=…), ca linkurile din ETER/INDICATIV să deschidă panoul corect.
 - 1.0.2 — 2026-10-22: previzualizarea foii tipăribile nu mai adaugă titluri H1 suplimentare în pagină (un singur H1 pe pagină; titlul foii e H2 pe ecran și rămâne H1 la tipărire); ținte tactile de cel puțin 24 px; eticheta tehnică (fff-info) listează acum cele 8 limbi reale, nu 2.
 - 1.0.3 — 2026-10-22: fff-kit 1.1.2: PBKDF2 600 000 de iterații, protecție anti-clickjacking.
+- 1.0.6 — 2026-10-23: datele locale corupte (SRS, exercițiul zilnic, Koch, profilul Braille RO, statistici, setări Morse) nu mai blochează panourile; importul .fff.json validează cheile, limba și tema; anunț când stocarea locală este plină; redarea și exportul WAV Morse sunt limitate la 15 minute (un text uriaș nu mai alocă gigaocteți); versiunea internă este aliniată.

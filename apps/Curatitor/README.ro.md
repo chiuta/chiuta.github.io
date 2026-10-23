@@ -78,4 +78,5 @@ MIT — vezi fișierul `LICENSE` din rădăcina depozitului.
 - 1.0.1 — 2026-10-22: „Șterge tot” folosește dialogul de confirmare din pagină, nu window.confirm; casetele și butoanele radio au ținte tactile de cel puțin 24 px; eticheta tehnică (fff-info) listează acum cele 8 limbi ale interfeței.
 - 1.0.2 — 2026-10-22: fff-kit 1.1.2: PBKDF2 cu 600.000 de iterații, protecție anti-clickjacking.
 - 1.0.3 — 2026-10-22: fff-kit 1.1.4: ținte tactile și text minim în interfața comună.
+- 1.0.5 — 2026-10-23: audit: un PDF cu tabel xref fără „trailer” nu mai blochează pagina (buclă infinită); profilul „Maxim” elimină acum și cutiile MP4 de nivel superior necunoscute (XMP_, junk), chunk-urile WebP necunoscute (JUNK), extensiile GIF necunoscute, sPLT din PNG și coada APP14 Adobe din JPEG; controalele bidi din nume și metadate sunt neutralizate; ținte tactile ≥44 px; „Șterge tot” nu mai poate cădea pe window.confirm.
 - 1.0.5 — 2026-10-23: mesaj de rezervă când JavaScript este dezactivat (noscript).

@@ -1220,6 +1220,85 @@ console.log('12. Limbi (8), tipărire, integrare progresivă window.FFF, fără 
   await wp.ctx.close();
 }
 
+/* ============================================================ 12b. date locale corupte / copie de siguranță ostilă */
+console.log('12b. Date locale corupte, copie de siguranță ostilă, chei prototip, cotă depășită');
+{
+  const seed = (k, v) => ({init: `try{if(!sessionStorage.__seed){localStorage.setItem('fff.lexicon.${k}', ${JSON.stringify(v)});sessionStorage.__seed='1'}}catch(e){}`});
+  for (const [k, v] of [['cfg', 'null'], ['cfg', '[1]'], ['fav', '[null]'], ['hist', '[null,3,{"n":5}]'], ['srs', '{"cards":{"a":null}}'], ['srs', '5'], ['srs', '{"cards":{"a":{"n":"a","due":"x","ease":null,"def":7}}}']]) {
+    const c = await newPage(seed(k, v));
+    ok(`valoare coruptă ${k}=${v}: aplicația pornește (ready=1), 0 erori`, (await c.page.evaluate(() => document.documentElement.dataset.ready)) === '1' && c.errors.length === 0, c.errors);
+    await tab(c.page, 'cards'); await c.page.waitForTimeout(100);
+    ok(`valoare coruptă ${k}=${v}: fila flashcards nu aruncă erori`, c.errors.length === 0, c.errors);
+    await c.ctx.close();
+  }
+  // copie de siguranță cu structuri greșite: se normalizează, aplicația rămâne utilizabilă după reîncărcare
+  const bad = {format: 'fff-bundle', schema: 1, app: 'lexicon', version: '1.0.5', data: {'fff.lexicon.fav': '[null,{"n":"apa","h":"apă"},{"n":"apa","h":"dublura"}]', 'fff.lexicon.hist': '"nu-o-lista"', 'fff.lexicon.srs': '{"cards":{"__proto__":{"h":"x"},"apa":{"h":"apă","due":1e999,"ease":-4}}}', 'fff.lexicon.cfg': 'null'}};
+  const bp = await newPage();
+  const b = bp.page;
+  await tab(b, 'tools');
+  await b.setInputFiles('#u-imp', {name: 'rau.fff.json', mimeType: 'application/json', buffer: Buffer.from(JSON.stringify(bad))});
+  await b.click('#conf-yes');
+  await b.waitForTimeout(300);
+  const stored = await b.evaluate(() => ({fav: localStorage.getItem('fff.lexicon.fav'), hist: localStorage.getItem('fff.lexicon.hist'), srs: JSON.parse(localStorage.getItem('fff.lexicon.srs')), cfg: localStorage.getItem('fff.lexicon.cfg'), pol: ({}).x === undefined && !('h' in Object.prototype)}));
+  ok('import ostil: lista de favorite deduplicată și curățată', JSON.parse(stored.fav).length === 1 && JSON.parse(stored.fav)[0].n === 'apa', stored.fav);
+  ok('import ostil: istoric ne-listă devine listă goală; cfg devine obiect', stored.hist === '[]' && stored.cfg === '{}', stored);
+  ok('import ostil: carduri normalizate (ease în [1.3,5], due finit), fără poluarea prototipului', stored.srs.cards.apa && stored.srs.cards.apa.ease === 1.3 && Number.isFinite(stored.srs.cards.apa.due) && stored.pol, stored.srs);
+  await b.reload(); await b.waitForFunction(() => document.documentElement.dataset.ready);
+  ok('după importul ostil și reîncărcare aplicația pornește', (await b.evaluate(() => document.documentElement.dataset.ready)) === '1' && bp.errors.length === 0, bp.errors);
+  await bp.ctx.close();
+
+  // cuvinte care sunt nume de proprietăți Object.prototype pot intra în flashcards
+  const pp = await newPage();
+  const q = pp.page;
+  await doImport(q, [F('proto.tsv', 'headword\tdefinition\nconstructor\tPersoană care construiește\ntoString\tx\nvalueOf\ty\n')], {title: 'Proto', license: 'test'});
+  for (const w of ['constructor', 'toString', 'valueOf']) {
+    await openWord(q, w); await q.click('#art-card'); await q.waitForTimeout(80);
+    ok(`„${w}” se adaugă în flashcards (nu „deja în pachet”)`, !/deja|already/i.test(await q.locator('#toast').innerText()), await q.locator('#toast').innerText());
+  }
+  const cardKeys = await q.evaluate(() => Object.keys(JSON.parse(localStorage.getItem('fff.lexicon.srs')).cards).sort());
+  ok('flashcards: cele 3 cuvinte-prototip sunt salvate', cardKeys.join() === 'constructor,tostring,valueof', cardKeys);
+  await pp.ctx.close();
+
+  // sanitizare / stripTags: timp liniar pe intrări ostile (înainte: ~6 s pentru 90 KB de «<a », >15 s pentru 360 KB de «<div title="»)
+  const sp = await newPage();
+  const sq = sp.page;
+  const ts = await sq.evaluate(() => { const o = {}; for (const [k, h] of [['a', '<a '.repeat(30000)], ['q', '<a "'.repeat(30000)], ['t', '<div title="'.repeat(30000)], ['d', '<style '.repeat(20000)]]) { const t0 = performance.now(); Lexicon.sanitize('<b>x</b>' + h); o[k] = Math.round(performance.now() - t0); } return o; });
+  ok('sanitizare: 4 intrări ostile mari se termină rapid (< 1,5 s fiecare)', Object.values(ts).every(v => v < 1500), ts);
+  ok('sanitizare: conținutul legitim rămâne', (await sq.evaluate(() => Lexicon.sanitize('<b>x</b> <a href="#cuvânt">l</a> <script>alert(1)</script> y'))) === '<b>x</b> <a href="#" class="ilink" data-w="cuvânt">l</a>  y');
+  await doImport(sq, [F('lt.tsv', 'headword\tdefinition\nlt\t<b>ok</b>' + '<a '.repeat(40000) + '\nsc\t' + '<script>'.repeat(30000) + 'z\n')], {title: 'Lt', license: 'test', timeout: 20000});
+  ok('import cu definiții cu zeci de mii de «<» fără «>»: terminat, 0 erori', sp.errors.length === 0 && (await st(sq)).dicts.some(d => d.title === 'Lt'), sp.errors);
+  await sp.ctx.close();
+
+  // wildcard cu multe «*»: timp liniar (înainte, regex cu backtracking exponențial îngheța pagina)
+  const wp = await newPage();
+  const wq = wp.page;
+  let tsvw = 'headword\tdefinition\n'; for (let i = 0; i < 300; i++) tsvw += 'a'.repeat(40 + (i % 40)) + '\tx\n';
+  tsvw += 'abcab\ty\naxxbxxc\tz\n';
+  await doImport(wq, [F('aaa.tsv', tsvw)], {title: 'Aaa', license: 'test'});
+  const tw = await wq.evaluate(async () => { const t0 = performance.now(); const r1 = await Lexicon.search('a*a*a*a*a*a*a*a*a*a*b'); const r2 = await Lexicon.search('*a*a*a*a*a*a*a*a*a*a*b*c'); const r3 = await Lexicon.search('a?c*b'); const r4 = await Lexicon.search('a*b*c'); return {ms: performance.now() - t0, n1: r1.rows.length, n2: r2.rows.length, r3: r3.rows.map(r => r.n), r4: r4.rows.map(r => r.n).sort()}; });
+  ok('wildcard cu 10 «*» pe chei lungi repetitive: sub 1,5 s (fără ReDoS)', tw.ms < 1500, tw);
+  ok('wildcard: rezultate corecte (?, * multiple)', tw.n1 === 0 && tw.n2 === 0 && tw.r3.join() === 'abcab' && tw.r4.join() === 'axxbxxc', tw);
+  await wp.ctx.close();
+
+  // localStorage plin: anunț (o singură dată), datele rămân în sesiune
+  const qc = await newPage({init: () => { const o = Storage.prototype.setItem; Storage.prototype.setItem = function (k, v) { if (String(k).startsWith('fff.lexicon.') && window.__full) { const e = new Error('full'); e.name = 'QuotaExceededError'; throw e; } return o.call(this, k, v); }; }});
+  const z = qc.page;
+  await z.evaluate(() => { window.__full = true; });
+  await openWord(z, 'apă'); await z.click('#art-fav');
+  await z.waitForTimeout(100);
+  ok('localStorage plin: utilizatorul este anunțat și favoritul rămâne în sesiune', (await z.locator('#toast').innerText()).length > 20 && (await z.locator('#favlist .ritem').count()) === 1 && qc.errors.length === 0, [await z.locator('#toast').innerText(), qc.errors]);
+  await qc.ctx.close();
+
+  // IndexedDB plin la import: eroare clară, niciun dicționar rămas pe jumătate
+  const qi = await newPage({init: () => { const o = IDBObjectStore.prototype.put; IDBObjectStore.prototype.put = function (v, k) { if (window.__idbfull && this.name === 'ent') { const e = new DOMException('full', 'QuotaExceededError'); throw e; } return o.apply(this, arguments); }; }});
+  const y = qi.page;
+  await y.evaluate(() => { window.__idbfull = true; });
+  const t = await doImport(y, [F('q.tsv', 'headword\tdefinition\nalfa\tbeta\n')], {title: 'Plin', license: 'test'});
+  await y.evaluate(() => { window.__idbfull = false; });
+  ok('IndexedDB plin: import eșuat cu mesaj, dicționarul nu apare în listă', !/Importat|Imported/.test(t) && !(await st(y)).dicts.some(d => d.title === 'Plin'), t);
+  await qi.ctx.close();
+}
+
 /* ============================================================ 13. captură de ecran (stare cu date reale) */
 console.log('13. Captură de ecran 1280×800');
 {

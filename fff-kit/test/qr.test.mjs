@@ -2,15 +2,17 @@
 // Rulare: node fff-kit/test/qr.test.mjs   (cere `npm i jsqr` într-un director temporar și JSQR=<cale>/node_modules/jsqr/dist/jsQR.js; jsQR e Apache-2.0, folosit doar în test)
 import {createRequire} from 'module';
 import fs from 'fs';
+import os from 'os';
 import path from 'path';
 import {fileURLToPath} from 'url';
 const require = createRequire('/opt/node-tools/package.json');
 const {chromium} = require('playwright');
 const here = path.dirname(fileURLToPath(import.meta.url)), K = path.resolve(here, '..') + '/';
-const S = process.env.S || '/tmp/claude-0/-home-claude/78529928-3825-51c3-b9bd-0e81655ab6bc/scratchpad/';
-const JSQR = process.env.JSQR || S + 'tmp_k2/node_modules/jsqr/dist/jsQR.js';
+const S = process.env.S || path.join(os.tmpdir(), 'fff-kit-test') + '/';
+fs.mkdirSync(S, {recursive: true});
+const JSQR = process.env.JSQR || S + 'node_modules/jsqr/dist/jsQR.js';
 if (!fs.existsSync(JSQR)) { console.error('Lipsește decodorul de referință jsQR (doar pentru test). Rulează `npm i jsqr` într-un director temporar și setează JSQR=<cale>/node_modules/jsqr/dist/jsQR.js'); process.exit(2); }
-const OUT = process.env.QR_OUT || S + 'tmp_k2/qr.results.json';
+const OUT = process.env.QR_OUT || S + 'qr.results.json';
 
 let pass = 0, fail = 0; const results = {};
 const ok = (cond, name, info) => { if (cond) pass++; else { fail++; console.log('FAIL', name, info === undefined ? '' : JSON.stringify(info)); } };

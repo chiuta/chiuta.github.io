@@ -29,7 +29,7 @@ const APEX = (() => { try { return read(path.join(HUB, 'CNAME')).trim(); } catch
 const SENSITIVE = {
   Gospodar: {prio: 1, why: 'buget de gospodărie: conturi, tranzacții, categorii (date financiare personale)'},
   Arbore: {prio: 1, why: 'genealogie: persoane reale, relații de rudenie, date de naștere (IndexedDB)'},
-  Orar: {prio: 1, why: 'calendar și program: evenimente personale; cheile `clepsidra.events/schedule` sunt comune cu CLEPSIDRA (coliziune confirmată la audit)'},
+  Orar: {prio: 1, why: 'calendar și program: evenimente personale; datele proprii sunt sub `fff.orar.*`; citește (doar la cererea utilizatorului, la import) cheile `clepsidra.*` ale CLEPSIDRA, aflată pe aceeași origine'},
   QSO: {prio: 1, why: 'jurnal de stație radioamator: indicative, locatori Maidenhead (loc aproximativ)'},
   Poteca: {prio: 1, why: 'trasee GPX/KML/GeoJSON: locuri frecventate (IndexedDB)'},
   Bolta: {prio: 2, why: 'folosește geolocația și păstrează locul ales'},
@@ -84,7 +84,7 @@ function render() {
   P();
   P('## De ce contează originea');
   P();
-  P('Pentru browser, o origine este protocol + domeniu + port; **calea nu contează**. `localStorage`, `IndexedDB`, cookie-urile și service worker-ele sunt separate pe origine, nu pe aplicație. Orice aplicație de pe aceeași origine poate citi și scrie datele celorlalte, iar o singură aplicație compromisă (sau un pachet extern încărcat de ea) le expune pe toate. Un CSP strict într-o aplicație nu ajută dacă alta, de pe aceeași origine, este slabă. La auditul din 22 octombrie s-au demonstrat și coliziuni reale de chei (`clepsidra.*` între CLEPSIDRA și Orar).');
+  P('Pentru browser, o origine este protocol + domeniu + port; **calea nu contează**. `localStorage`, `IndexedDB`, cookie-urile și service worker-ele sunt separate pe origine, nu pe aplicație. Orice aplicație de pe aceeași origine poate citi și scrie datele celorlalte, iar o singură aplicație compromisă (sau un pachet extern încărcat de ea) le expune pe toate. Un CSP strict într-o aplicație nu ajută dacă alta, de pe aceeași origine, este slabă.');
   P();
   P('Rezolvarea gratuită pe GitHub Pages: fiecare depozit își primește propriul subdomeniu (`<slug>.' + APEX + '`) prin fișierul `CNAME`. Pentru browser, `gospodar.' + APEX + '` și `' + APEX + '` sunt origini diferite.');
   P();
@@ -162,8 +162,19 @@ function render() {
 
 const md = render();
 if (argv.includes('--check')) {
-  if (!exists(OUT) || read(OUT) !== md) { console.error('docs/DOMENII.md nu corespunde depozitelor (rulează `node tools/cname-inventory.mjs`)'); process.exit(1); }
-  console.log(`DOMENII.md ok · ${rows.length} aplicații · ${own.length} cu domeniu propriu · ${hubApps.length + noCname.length} pe origine partajată`);
+  if (argv.includes('--allow-missing') && missing.length && exists(OUT)) {
+    // Fără celelalte depozite documentul nu se poate regenera integral: verificăm doar rândurile din inventar ale aplicațiilor prezente
+    // (tabelul „Inventar complet”, ultimul din document) și că toate cardurile din catalog apar în inventar. Cu toate depozitele pe disc, verificarea este cea strictă.
+    const have = read(OUT).split('\n'), want = md.split('\n');
+    const rowOf = (lines, k) => lines.findLast((l) => l.startsWith(`| ${k} | `));
+    const bad = rows.filter((r) => r.where !== 'LIPSĂ' && rowOf(have, r.key) !== rowOf(want, r.key)).map((r) => r.key);
+    const absent = rows.filter((r) => !rowOf(have, r.key)).map((r) => r.key);
+    if (bad.length || absent.length) { console.error(`docs/DOMENII.md nu corespunde (rânduri diferite: ${bad.join(', ') || '—'}; lipsă din inventar: ${absent.join(', ') || '—'}); rulează \`node tools/cname-inventory.mjs\``); process.exit(1); }
+    console.log(`DOMENII.md ok (parțial) · ${rows.length - missing.length} aplicații verificate, ${missing.length} omise (depozite absente de pe disc)`);
+  } else {
+    if (!exists(OUT) || read(OUT) !== md) { console.error('docs/DOMENII.md nu corespunde depozitelor (rulează `node tools/cname-inventory.mjs`)'); process.exit(1); }
+    console.log(`DOMENII.md ok · ${rows.length} aplicații · ${own.length} cu domeniu propriu · ${hubApps.length + noCname.length} pe origine partajată`);
+  }
 } else {
   fs.mkdirSync(path.dirname(OUT), {recursive: true});
   fs.writeFileSync(OUT, md);

@@ -37,6 +37,7 @@ Orar is a calendar and weekly schedule that runs in a single HTML file, with no 
 - Time zones in `VTIMEZONE` that are not IANA names are matched by rules with an IANA zone, otherwise they become a fixed offset. The export generates `VTIMEZONE` from the browser's transitions (valid for the range of the events).
 - Import from CLEPSIDRA: it accepts the schedule (key `clepsidra.schedule`: `{"weekday":[{"start":"HH:MM","end":"HH:MM","cat":"somn"}],"weekend":[…]}`) and the countdowns (`clepsidra.events`: `[{"name":"…","ts":ms}]`). Direct reading from the browser works only if CLEPSIDRA has run on the same origin; otherwise the JSON is pasted into the dialog. CLEPSIDRA is not modified.
 - Measured performance: a 1.2 MB `.ics` file with 5000 events is imported in a few seconds, and renders take under 150 ms; beyond a few tens of thousands of events, `localStorage` (≈5 MB) becomes the limit.
+- Safety caps: at most 50,000 events (an import skips the rest and counts them under “skipped”); the duration of one occurrence of a recurring series (RRULE/RDATE) is capped at 366 days; an unknown `TZID` becomes floating time, with a warning.
 
 ## Privacy
 

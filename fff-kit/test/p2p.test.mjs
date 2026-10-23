@@ -9,9 +9,10 @@ import {fileURLToPath, pathToFileURL} from 'url';
 const require = createRequire('/opt/node-tools/package.json');
 const {chromium} = require('playwright');
 const here = path.dirname(fileURLToPath(import.meta.url)), K = path.resolve(here, '..') + '/';
-const S = process.env.S || '/tmp/claude-0/-home-claude/78529928-3825-51c3-b9bd-0e81655ab6bc/scratchpad/';
-const AXE = S + 'sweep/node_modules/axe-core/axe.min.js';
-const OUT = process.env.P2P_OUT || S + 'tmp_k2/p2p.results.json';
+const S = process.env.S || path.join(os.tmpdir(), 'fff-kit-test') + '/';
+fs.mkdirSync(S, {recursive: true});
+const AXE = (await import('./_axe.mjs')).AXE;   // FFF_AXE / AXE_PATH / pachetul axe-core
+const OUT = process.env.P2P_OUT || S + 'p2p.results.json';
 const DEMO = pathToFileURL(K + 'test/p2p-demo.html').href;
 const I18N = {p2p: JSON.parse(fs.readFileSync(K + 'i18n/p2p.json', 'utf8')), qr: JSON.parse(fs.readFileSync(K + 'i18n/qr.json', 'utf8'))};
 const tmp = fs.mkdtempSync(path.join(os.tmpdir(), 'fffp2p-'));
@@ -126,13 +127,13 @@ async function rasterDecode(p, selector) {              // decodifică QR-ul SVG
     out.empty = await tryJoin(''); out.garbage = await tryJoin('abc'); out.prefixOnly = await tryJoin('FFF1.o.z.'); out.badB64 = await tryJoin('FFF1.o.z.@@@@');
     out.wrongKindJoinWithAnswer = await tryJoin(off.replace('FFF1.o.', 'FFF1.a.'));
     // coruperea unui caracter → eșec (suma de control zlib), nu SDP greșit acceptat
-    let rejected = 0, accepted = 0;
+    let rejected = 0, accepted = 0, harmless = 0;   // «harmless»: biții de umplutură base64 din ultimul caracter nu schimbă conținutul decodat
     const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-_';
     for (let k = 0; k < 40; k++) {
       const i = 12 + Math.floor((off.length - 12) * (k + 0.5) / 40), ch = off[i], repl = alphabet[(alphabet.indexOf(ch) + 7) % 64];
-      try { const d = await FFF.p2p.decodeSignal(off.slice(0, i) + repl + off.slice(i + 1)); if (d.sdp === (await FFF.p2p.decodeSignal(off)).sdp) accepted++; else accepted++; } catch (e) { if (e.code === 'bad-code') rejected++; }
+      try { const d = await FFF.p2p.decodeSignal(off.slice(0, i) + repl + off.slice(i + 1)); if (d.sdp === (await FFF.p2p.decodeSignal(off)).sdp) harmless++; else accepted++; } catch (e) { if (e.code === 'bad-code') rejected++; }
     }
-    out.corrupt = {rejected, accepted};
+    out.corrupt = {rejected, accepted, harmless};
     // spații, linii noi și ghilimele în jurul codului sunt tolerate
     out.tolerant = (await FFF.p2p.decodeSignal('  "' + off.slice(0, 40) + '\n' + off.slice(40) + '"  ')).kind;
     // accept() cu ofertă în loc de răspuns
@@ -147,7 +148,7 @@ async function rasterDecode(p, selector) {              // decodifică QR-ul SVG
   });
   ok(['empty', 'garbage', 'prefixOnly', 'badB64'].every(k => /^bad-code:/.test(r[k]) && !/^bad-code:badCode$/.test(r[k])), 'coduri invalide → bad-code cu mesaj tradus', r);
   ok(/^wrong-kind:/.test(r.wrongKindJoinWithAnswer) || /^bad-code:/.test(r.wrongKindJoinWithAnswer), 'join() cu cod de tip răspuns este refuzat', r.wrongKindJoinWithAnswer);
-  ok(r.corrupt.rejected === 40 && r.corrupt.accepted === 0, 'un caracter corupt este întotdeauna detectat (40/40)', r.corrupt);
+  ok(r.corrupt.rejected + r.corrupt.harmless === 40 && r.corrupt.accepted === 0 && r.corrupt.harmless <= 1, 'un caracter corupt este întotdeauna detectat (40/40; cel mult un caracter de umplutură base64 inofensiv)', r.corrupt);
   ok(r.tolerant === 'offer', 'spații/linii noi/ghilimele tolerate la lipire', r.tolerant);
   ok(r.acceptOffer === 'wrong-kind', 'accept(ofertă) refuzat', r.acceptOffer);
   ok(JSON.stringify(r.stun.ok) === '["stun:stun.example.org:3478","stun:example.net"]' && r.stun.none.length === 0 && r.stun.v6.length === 1, 'parseStun: formate valide', r.stun);

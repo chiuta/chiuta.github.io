@@ -2,7 +2,7 @@
 
 [English](README.md) · [Română](README.ro.md) · [Français](README.fr.md) · [Italiano](README.it.md) · [Español](README.es.md) · [Português](README.pt.md) · [Deutsch](README.de.md) · **Magyar**
 
-**Verzió:** 1.0.5 · **Utolsó frissítés:** 2026-10-23
+**Verzió:** 1.0.6 · **Utolsó frissítés:** 2026-10-23
 
 A felület nyelvei: **Română, English, Français, Italiano, Español, Português (PT), Deutsch, Magyar**
 
@@ -35,7 +35,7 @@ Adatok exportja/importja: `.fff.json` (`fff-bundle` formátum, 1. séma). Kimene
 
 ## Technikai részletek
 
-Egyetlen `index.html` fájl, beágyazott JS és CSS, szigorú CSP hash-sel, külső erőforrások nélkül. Tesztek: `node tests/test.mjs` (Playwright; 44 teszt: ismert vektorok, oda-vissza átalakítás minden kódnál, kiszámított és a renderelt hangon/villogáson megmért Morse-időtartamok, axe 0 mindkét témában, elrendezés 360 és 1280 px-en).
+Egyetlen `index.html` fájl, beágyazott JS és CSS, szigorú CSP hash-sel, külső erőforrások nélkül. Tesztek: `node tests/test.mjs` (Playwright; 48 teszt: ismert vektorok, oda-vissza átalakítás minden kódnál, kiszámított és a renderelt hangon/villogáson megmért Morse-időtartamok, axe 0 mindkét témában, elrendezés 360 és 1280 px-en).
 
 ## Harmadik felek
 
@@ -56,3 +56,4 @@ MIT — lásd a `LICENSE` fájlt a tároló gyökerében.
 - 1.0.1 — 2026-10-19: a panelt csak a cím első „&” előtti részéből választja ki (#panel&from=…), hogy az ETER/INDICATIV hivatkozásai a megfelelő panelt nyissák meg.
 - 1.0.2 — 2026-10-22: a nyomtatható lap előnézete már nem ad az oldalhoz további H1 címsorokat (oldalanként egy H1; a lap címe a képernyőn H2, nyomtatáskor H1 marad); legalább 24 px-es érintési célok; a műszaki címke (fff-info) most a valós 8 nyelvet sorolja fel 2 helyett.
 - 1.0.3 — 2026-10-22: fff-kit 1.1.2: PBKDF2 600 000 iterációval, clickjacking elleni védelem.
+- 1.0.6 — 2026-10-23: a sérült helyi adatok (SRS, napi feladat, Koch, Braille RO profil, statisztika, Morse-beállítások) többé nem blokkolják a paneleket; a .fff.json import ellenőrzi a kulcsokat, a nyelvet és a témát; figyelmeztetés, ha a helyi tárhely megtelt; a Morse lejátszás és a WAV-export 15 percre korlátozott (egy óriási szöveg nem foglal le gigabájtokat); a belső verzió igazítva.

@@ -555,6 +555,56 @@ test('link: date/coordonate invalide sunt respinse (2026-02-31, T24:00, 2100+, l
   for (const ll of ['91,0', '0,181', 'NaN,0', '1e999,0', 'a,b']) { const r = await mk('#sky&ll=' + ll); ok(!/^Link/.test(r.name), 'respins ll=' + ll); }
 });
 
+/* ---------- 12. audit adversarial: regresii ---------- */
+test('audit: .ics — un nume de loc cu CR/LF/control nu poate injecta linii (X-WR-CALNAME, DESCRIPTION)', async () => {
+  const p = await newPage();
+  const ics = await p.evaluate(async () => { const b = window.__bolta, E = b.E; b.applyPlace({name: 'Rau\rATTENDEE:mailto:x@y\rBEGIN:VEVENT\r\nSUMMARY:pwn\u0007', lat: 44, lon: 26, elev: 0, tz: 'UTC'}); const ev = await b.scanEvents(E.jdFromCalendar(2027, 7, 1, 0, 0, 0), E.jdFromCalendar(2027, 8, 1, 0, 0, 0), {phase: 1, moonp: 0, pp: 0, opp: 0, season: 0, ecl: 0, thrMP: 5, thrPP: 3}); return b.buildIcs(ev, 0); });
+  ok(!/\r(?!\n)/.test(ics), 'niciun CR izolat în .ics');
+  ok(!/\u0007/.test(ics), 'fără caractere de control');
+  const unfolded = ics.replace(/\r\n[ \t]/g, '').split('\r\n');
+  ok(!unfolded.some(l => /^(ATTENDEE|SUMMARY:pwn)/.test(l)), 'nicio linie injectată');
+  const vev = unfolded.filter(l => l === 'BEGIN:VEVENT').length, vend = unfolded.filter(l => l === 'END:VEVENT').length;
+  ok(vev === vend && vev >= 3, 'VEVENT echilibrate: ' + vev + '/' + vend);
+  await close(p);
+});
+test('audit: loc invalid (lat/lon null, "", true, []) nu devine (0,0) la import/stocare; NaN/Infinity respinse', async () => {
+  const p = await newPage();
+  const r = await p.evaluate(() => {
+    const b = window.__bolta; const bad = [{lat: null, lon: 5}, {lat: 5, lon: null}, {lat: '', lon: 5}, {lat: true, lon: 5}, {lat: [], lon: 5}, {lat: ' ', lon: 1}, {lat: 91, lon: 0}, {lat: 0, lon: 181}, {lat: '1e400', lon: 0}];
+    const res = b.importBundle(JSON.stringify({format: 'fff-bundle', schema: 1, app: 'bolta', data: {places: bad.map((x, i) => Object.assign({name: 'b' + i, tz: 'UTC'}, x)).concat([{name: 'bun', lat: '44.5', lon: 26, tz: 'UTC'}])}}));
+    return {res, saved: b.saved.map(x => x.name)};
+  });
+  eq(r.res.added, 1, 'doar locul valid importat'); eq(JSON.stringify(r.saved), '["bun"]', 'locuri păstrate');
+  await close(p);
+});
+test('audit: salvare locuri eșuată (QuotaExceeded) — utilizatorul e anunțat, nu „Loc salvat.”; fără pageerror', async () => {
+  const p = await newPage();
+  await p.evaluate(() => { Storage.prototype.setItem = function () { throw new DOMException('full', 'QuotaExceededError'); }; });
+  await p.evaluate(() => window.__bolta.applyPlace({name: 'Plin', lat: 45, lon: 25, elev: 0, tz: 'UTC'}));
+  await p.click('#savePlace');
+  await until(p, () => document.getElementById('toast').textContent.length > 3);
+  const msg = await p.textContent('#toast');
+  ok(!/^Loc salvat\.?$/.test(msg.trim()), 'nu minte: ' + msg); ok(/browser|spa[țt]iu|stocare/i.test(msg), 'mesaj despre stocare: ' + msg);
+  eq(await p.evaluate(() => window.__bolta.saved.length), 1, 'locul rămâne în sesiune');
+  await close(p);
+});
+test('audit: setări/locuri corupte în localStorage nu strică pornirea (tipuri greșite, fus invalid)', async () => {
+  const ctx = await browser.newContext({viewport: {width: 1280, height: 800}});
+  await ctx.addInitScript(() => { localStorage.setItem('fff.bolta.settings', JSON.stringify({opts: [1, 2], place: {name: {a: 1}, lat: '45', lon: '26', tz: 'Nope/Zone'}, view: {A: 'x', a: 1e999, fov: {}}})); localStorage.setItem('fff.bolta.places', '{"a":1}'); });
+  const q = await ctx.newPage(); const errs = []; q.on('pageerror', e => errs.push(e.message));
+  await q.goto(APP); await q.waitForFunction(() => window.__bolta && window.__bolta.FR.ok);
+  const v = await q.evaluate(() => ({p: window.__bolta.S.place, V: window.__bolta.V, saved: window.__bolta.saved.length}));
+  ok(isFinite(v.V.A) && isFinite(v.V.a) && isFinite(v.V.fov), 'vedere finită'); eq(v.saved, 0, 'locuri corupte ignorate'); eq(errs.length, 0, 'fără erori: ' + errs.join('|'));
+  await ctx.close();
+});
+test('audit: versiune coerentă (VERSION din script = meta = #app-version = app.json = sw.js)', async () => {
+  const p = await newPage();
+  const v = await p.evaluate(() => ({s: window.__bolta.VERSION, u: window.__bolta.UPDATED, m: document.querySelector('meta[name=application-version]').content, d: document.querySelector('meta[name=last-updated]').content}));
+  eq(v.s, v.m, 'VERSION vs meta'); eq(v.u, v.d, 'UPDATED vs meta');
+  const aj = JSON.parse(fs.readFileSync(path.resolve(HERE, '..', 'app.json'), 'utf8')); eq(aj.version, v.m, 'app.json'); const sw = fs.readFileSync(path.resolve(HERE, '..', 'sw.js'), 'utf8'); ok(sw.includes('VERSION = "' + v.m + '"'), 'sw.js');
+  await close(p);
+});
+
 /* ---------- rulare ---------- */
 browser = await chromium.launch();
 await calibrate();

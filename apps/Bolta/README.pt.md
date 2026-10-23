@@ -136,6 +136,7 @@ MIT — ver o ficheiro `LICENSE` na raiz do repositório. Os componentes de terc
 - **1.1.4 — 2026-10-22:** fff-kit 1.1.2: PBKDF2 com 600.000 iterações, proteção anti-clickjacking.
 - **1.1.6 — 2026-10-22:** Testes: esperas por condições em vez de tempo real, para que as suites passem de forma estável sob carga. Sem alterações no comportamento da aplicação.
 - **1.1.5 — 2026-10-22:** fff-kit 1.1.4: áreas de toque e tamanho mínimo do texto na interface comum.
+- **1.1.8 — 2026-10-23:** auditoria adversarial: o `.ics` já não pode ser injetado através de CR/caracteres de controlo no nome do local; locais com lat/lon `null`/vazio/booleano já não passam a (0, 0); a falha ao guardar locais (armazenamento cheio/bloqueado) é avisada em vez de «Local guardado.»; a versão do script coincide com os metadados; exceção documentada (`fff.config.json`) para a verificação i18n-parity no catálogo de constelações.
 - **1.1.8 — 2026-10-23:** a ligação `#toWords` tem agora uma área de toque de pelo menos 24 px.
 
 ## Ligações profundas

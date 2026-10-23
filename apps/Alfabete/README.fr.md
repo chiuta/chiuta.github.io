@@ -2,7 +2,7 @@
 
 [English](README.md) · [Română](README.ro.md) · **Français** · [Italiano](README.it.md) · [Español](README.es.md) · [Português](README.pt.md) · [Deutsch](README.de.md) · [Magyar](README.hu.md)
 
-**Version :** 1.0.5 · **Dernière mise à jour :** 2026-10-23
+**Version :** 1.0.6 · **Dernière mise à jour :** 2026-10-23
 
 Langues de l'interface : **Română, English, Français, Italiano, Español, Português (PT), Deutsch, Magyar**
 
@@ -35,7 +35,7 @@ Export/import de données : `.fff.json` (format `fff-bundle`, schéma 1). Sortie
 
 ## Technique
 
-Un seul fichier `index.html`, JS et CSS en ligne, CSP stricte avec hachage, aucune ressource externe. Tests : `node tests/test.mjs` (Playwright ; 44 tests : vecteurs connus, aller-retour pour chaque code, durées Morse calculées et mesurées sur l'audio rendu/le clignotement, axe 0 dans les deux thèmes, mise en page à 360 et 1280 px).
+Un seul fichier `index.html`, JS et CSS en ligne, CSP stricte avec hachage, aucune ressource externe. Tests : `node tests/test.mjs` (Playwright ; 48 tests : vecteurs connus, aller-retour pour chaque code, durées Morse calculées et mesurées sur l'audio rendu/le clignotement, axe 0 dans les deux thèmes, mise en page à 360 et 1280 px).
 
 ## Tiers
 
@@ -56,3 +56,4 @@ MIT — voir le fichier `LICENSE` à la racine du dépôt.
 - 1.0.1 — 2026-10-19 : le panneau est choisi uniquement à partir de la partie de l'adresse située avant le premier « & » (#panneau&from=…), afin que les liens depuis ETER/INDICATIV ouvrent le bon panneau.
 - 1.0.2 — 2026-10-22 : l’aperçu de la fiche imprimable n’ajoute plus de titres H1 supplémentaires à la page (un seul H1 par page ; le titre de la fiche est un H2 à l’écran et reste un H1 à l’impression) ; cibles tactiles d’au moins 24 px ; l’étiquette technique (fff-info) liste désormais les 8 langues réelles au lieu de 2.
 - 1.0.3 — 2026-10-22 : fff-kit 1.1.2 : PBKDF2 à 600 000 itérations, protection anti-clickjacking.
+- 1.0.6 — 2026-10-23 : des données locales corrompues (SRS, exercice du jour, Koch, profil braille RO, statistiques, réglages Morse) ne bloquent plus les panneaux ; l’import .fff.json valide les clés, la langue et le thème ; avertissement quand le stockage local est plein ; la lecture et l’export WAV du Morse sont limités à 15 minutes (un texte énorme n’alloue plus des gigaoctets) ; version interne alignée.

@@ -70,4 +70,5 @@ MIT — lásd a `LICENSE` fájlt a tároló gyökérkönyvtárában.
 - 1.0.1 — 2026-10-22: a CSV-export semlegesíti a = + - @ (és tab/CR) karakterrel kezdődő útvonalneveket a képletbefecskendezés ellen, a CSV-import pedig ismét eltávolítja az aposztrófot; a műszaki címke újragenerálva (8 nyelv, verzió).
 - 1.0.2 — 2026-10-22: fff-kit 1.1.2: PBKDF2 600 000 iterációval, clickjacking elleni védelem.
 - 1.0.3 — 2026-10-22: fff-kit 1.1.4: érintési célok és minimális szövegméret a közös felületen.
+- 1.0.5 — 2026-10-23: ellenséges auditálás: a biztonsági mentések és a visszaállított munkamenet ellenőrzöttek (színek, képcímek, típusok, tartományon belüli beállítások; a gzip-bomba 256 MiB-nál korlátozott); az exportált SVG már nem kaphat beinjektált attribútumokat; a hibás GPX/KML olvasása már nem négyzetes (~80 000 lezáratlan címke ~8 s-ra blokkolt); a szkript verziója egyezik a metaadatokkal.
 - 1.0.5 — 2026-10-23: tartalék üzenet kikapcsolt JavaScript esetén (noscript).

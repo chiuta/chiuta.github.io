@@ -136,6 +136,7 @@ MIT — see the `LICENSE` file at the root of the repository. The third-party co
 - **1.1.4 — 2026-10-22:** fff-kit 1.1.2: PBKDF2 with 600,000 iterations, anti-clickjacking protection.
 - **1.1.6 — 2026-10-22:** Tests: waits on conditions instead of real time, so the suites pass reliably under load. No change in app behavior.
 - **1.1.5 — 2026-10-22:** fff-kit 1.1.4: touch targets and minimum text size in the shared interface.
+- **1.1.8 — 2026-10-23:** adversarial audit: `.ics` can no longer be injected through CR/control characters in the place name; places with lat/lon `null`/empty/boolean no longer become (0, 0); a failed save of places (storage full/blocked) is reported instead of “Place saved.”; the script version matches the metadata; documented exception (`fff.config.json`) for the i18n-parity check on the constellation catalogue.
 - **1.1.8 — 2026-10-23:** the `#toWords` link now has a touch target of at least 24 px.
 
 ## Deep links

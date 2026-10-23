@@ -64,4 +64,5 @@ MIT — see the `LICENSE` file at the repository root.
 - 1.0.1 — 2026-10-22: new prominent note in the status block and in the exported report: a valid signature does not prove the image is true, and an unknown signer looks just as valid; touch targets of at least 24 px.
 - 1.0.2 — 2026-10-22: fff-kit 1.1.2: PBKDF2 with 600,000 iterations, anti-clickjacking protection.
 - 1.0.3 — 2026-10-22: fff-kit 1.1.4: touch targets and minimum text size in the shared interface.
+- 1.0.5 — 2026-10-23: audit: a binding whose exclusions reach outside the manifest no longer claims “file unchanged” (it becomes “not verifiable”); the Markdown report neutralises text coming from the file (no fake lines, links or HTML) and honours “Include the file name” for the title as well; at most 100 manifests are analysed; the late result of a replaced file no longer overwrites the new file; a __proto__ key stays in the JSON report; touch targets ≥44 px.
 - 1.0.5 — 2026-10-23: fallback message when JavaScript is disabled (noscript).

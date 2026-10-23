@@ -136,6 +136,7 @@ MIT — lásd a `LICENSE` fájlt a tároló gyökerében. A harmadik felek kompo
 - **1.1.4 — 2026-10-22:** fff-kit 1.1.2: PBKDF2 600 000 iterációval, clickjacking elleni védelem.
 - **1.1.6 — 2026-10-22:** Tesztek: valós idő helyett feltételekre várakoznak, így a tesztcsomagok terhelés alatt is megbízhatóan lefutnak. Az alkalmazás viselkedése nem változik.
 - **1.1.5 — 2026-10-22:** fff-kit 1.1.4: érintési célok és minimális szövegméret a közös felületen.
+- **1.1.8 — 2026-10-23:** ellenséges auditálás: a `.ics` már nem injektálható a helynév CR/vezérlőkarakterein át; a `null`/üres/logikai szélességű vagy hosszúságú helyek már nem lesznek (0, 0); a helyek sikertelen mentése (tele/letiltott tárhely) jelzést kap a „Hely mentve.” helyett; a szkript verziója egyezik a metaadatokkal; dokumentált kivétel (`fff.config.json`) az i18n-parity ellenőrzésre a csillagképkatalóguson.
 - **1.1.8 — 2026-10-23:** a `#toWords` hivatkozás érintési célja mostantól legalább 24 px.
 
 ## Mély hivatkozások

@@ -79,4 +79,5 @@ Licență: MIT — vezi fișierul `LICENSE` din rădăcina depozitului.
 - 1.1.1 — 2026-10-22: fără window.confirm / window.prompt: resetarea progresului din player, ștergerea ciornei și cererea textului alternativ al imaginii folosesc dialoguri din pagină, traduse în 8 limbi; ținte tactile de cel puțin 24 px pentru casete și butoane radio; eticheta tehnică nu mai raportează tokenul CSP about:srcdoc ca gazdă de rețea.
 - 1.1.2 — 2026-10-22: fff-kit 1.1.2: PBKDF2 cu 600.000 de iterații, protecție anti-clickjacking.
 - 1.1.3 — 2026-10-22: fff-kit 1.1.4: ținte tactile și text minim în interfața comună.
+- 1.1.5 — 2026-10-23: audit: progresul din localStorage sau importat este normalizat la încărcare (nu mai strică lecțiile și nu mai poate injecta HTML); imaginile folosite în opțiuni, feedback și dovezi sunt exportate; importul ZIP are plafon la decomprimare (bombă ZIP) și decomprimă doar intrările necesare; data `last-updated` din fișierul generat; ținte tactile ≥44 px și fără depășire orizontală la 360 px (editor și curs generat).
 - 1.1.5 — 2026-10-23: mesaj de rezervă când JavaScript este dezactivat (noscript).

@@ -53,7 +53,7 @@ Set sintetico di 300.000 voci (TSV da 32,8 MB, 100.000 con forme):
 - ricaricamento con il set da 300.000 in IndexedDB: 150–250 ms; heap di circa 141 MB.
 
 ## Aspetti tecnici
-Un unico `index.html`, script inline con hash nella CSP (`script-src 'sha256-…'`, `default-src 'none'`, `connect-src 'none'`, senza gestori inline, senza `eval`; `worker-src blob:` è ereditato dal modello). Indice in memoria (chiavi normalizzate ordinate, ricerca binaria), IndexedDB per le voci e il testo integrale. Il contenuto HTML passa attraverso un parser proprio e viene costruito con `createElement`/`textContent`. Rileva facoltativamente `window.FFF`; funziona pienamente anche senza. Test: `node tests/test.mjs` (Playwright; 292 verifiche: parsing StarDict/dictd con file generati nel test, interrogazioni, 28 payload XSS, persistenza, 300.000 voci, axe 0, overflow a 360×740 e 1280×800). La variabile `LEXICON_SKIP_PERF=1` salta il test grande.
+Un unico `index.html`, script inline con hash nella CSP (`script-src 'sha256-…'`, `default-src 'none'`, `connect-src 'none'`, senza gestori inline, senza `eval`; `worker-src blob:` è ereditato dal modello). Indice in memoria (chiavi normalizzate ordinate, ricerca binaria), IndexedDB per le voci e il testo integrale. Il contenuto HTML passa attraverso un parser proprio e viene costruito con `createElement`/`textContent`. Rileva facoltativamente `window.FFF`; funziona pienamente anche senza. Test: `node tests/test.mjs` (Playwright; 324 verifiche: parsing StarDict/dictd con file generati nel test, interrogazioni, 28 payload XSS, persistenza, 300.000 voci, axe 0, overflow a 360×740 e 1280×800). La variabile `LEXICON_SKIP_PERF=1` salta il test grande.
 
 ## Terze parti
 Non c'è codice di terze parti nell'app (axe-core è usato solo nei test).
@@ -69,4 +69,5 @@ MIT — vedi il file `LICENSE` nella radice del repository.
 - 1.0.1 — 2026-10-22: una ricerca senza risultati dice ora esplicitamente che il set incluso è solo dimostrativo (quando il set demo è attivo); l’esportazione CSV neutralizza le celle che iniziano con = + - @ contro l’iniezione di formule e l’importazione TSV/CSV rimuove di nuovo l’apostrofo; aree tattili di almeno 24 px; l’etichetta tecnica elenca le 8 lingue.
 - 1.0.2 — 2026-10-22: fff-kit 1.1.2: PBKDF2 con 600.000 iterazioni, protezione anti-clickjacking.
 - 1.0.3 — 2026-10-22: fff-kit 1.1.4: aree tattili e dimensione minima del testo nell’interfaccia comune.
+- 1.0.5 — 2026-10-23: i dati locali (preferiti, cronologia, schede, impostazioni) vengono validati alla lettura e all’importazione di un backup: un valore corrotto non blocca più l’avvio; parole come «constructor» o «toString» si possono aggiungere alle schede; avviso quando l’archiviazione locale è piena; un’importazione fallita non lascia un dizionario scritto a metà; versione interna allineata.
 - 1.0.5 — 2026-10-23: messaggio alternativo quando JavaScript è disattivato (noscript).

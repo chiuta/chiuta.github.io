@@ -6,6 +6,8 @@
 //   --root DIR   directorul care conține depozitele <Nume>/ (implicit: părintele hub-ului, adică ..)
 //   --check      nu scrie nimic; cod de ieșire 1 dacă catalogul e desincronizat sau are probleme
 //   --no-sw      nu regenerează sw.js
+//   --allow-missing  un depozit absent de pe disc nu e problemă (cardul rămâne neatins, se raportează „omise”); pentru medii cu doar hub-ul clonat.
+//                    Orice altă problemă rămâne eroare; cu toate depozitele prezente verificarea e identică cu cea strictă.
 //
 // Ce face (pentru fiecare card `data-c="apps|<Nume>|title"`):
 //   1. versiunea și data de pe card = cele REALE din index.html-ul aplicației (<meta application-version> / <meta last-updated>);
@@ -30,7 +32,8 @@ import {recomputeCspHashes} from '../fff-kit/lib/csp.mjs';
 
 const HUB = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const argv = process.argv.slice(2);
-const opt = {check: argv.includes('--check'), noSw: argv.includes('--no-sw')};
+const opt = {check: argv.includes('--check'), noSw: argv.includes('--no-sw'), allowMissing: argv.includes('--allow-missing')};
+const skipped = [];
 const ri = argv.indexOf('--root');
 const ROOT = path.resolve(ri >= 0 ? argv[ri + 1] : path.join(HUB, '..'));
 
@@ -101,7 +104,7 @@ for (let i = 1; i < parts.length; i++) {
   const sec = curSec;
   curSec = lastSec(parts[i], curSec);   // secțiunea următoare începe după coada acestui card
   const t = truth(key);
-  if (t.missing) { warn(`${key}: nu există ${ROOT}/${key}/index.html și nici apps/${key}/index.html`); continue; }
+  if (t.missing) { if (opt.allowMissing) skipped.push(key); else warn(`${key}: nu există ${ROOT}/${key}/index.html și nici apps/${key}/index.html`); continue; }
   if (!t.version) { warn(`${key}: fără versiune în index.html`); continue; }
   // 0. atribute de filtrare (idempotent)
   const attrs = ` data-cat="${sec}" data-langs="${t.langs.join(',')}" data-off="${t.off}"`;
@@ -219,6 +222,7 @@ if (!/rel="manifest"/.test(html)) warn('index.html nu leagă manifestul');
 changes.forEach((c) => console.log('schimbare  ' + c));
 problems.forEach((p) => console.log('PROBLEMĂ    ' + p));
 console.log(`${nCards} carduri · ${changes.length} schimbări · ${problems.length} probleme · cea mai recentă dată ${latest}`);
+if (skipped.length) console.log(`OMISE      ${skipped.length} carduri fără depozit pe disc (--allow-missing): verificarea lor cere celelalte depozite lângă hub`);
 if (opt.check) process.exit(changes.length || problems.length ? 1 : 0);
 if (html !== orig) fs.writeFileSync(indexPath, html);
 if (!opt.noSw) fs.writeFileSync(swPath, swNew);

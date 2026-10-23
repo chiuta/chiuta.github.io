@@ -136,6 +136,7 @@ MIT — voir le fichier `LICENSE` à la racine du dépôt. Les composants tiers 
 - **1.1.4 — 2026-10-22:** fff-kit 1.1.2 : PBKDF2 à 600 000 itérations, protection anti-clickjacking.
 - **1.1.6 — 2026-10-22:** Tests : attentes sur des conditions au lieu du temps réel, donc les suites passent de façon stable sous charge. Aucun changement du comportement de l’application.
 - **1.1.5 — 2026-10-22:** fff-kit 1.1.4 : cibles tactiles et taille minimale du texte dans l’interface commune.
+- **1.1.8 — 2026-10-23 :** audit adversarial : le `.ics` ne peut plus être injecté via CR/caractères de contrôle dans le nom du lieu ; les lieux avec lat/lon `null`/vide/booléen ne deviennent plus (0, 0) ; l’échec d’enregistrement des lieux (stockage plein/bloqué) est signalé au lieu de « Lieu enregistré. » ; la version du script correspond aux métadonnées ; exception documentée (`fff.config.json`) pour la vérification i18n-parity sur le catalogue de constellations.
 - **1.1.8 — 2026-10-23:** le lien `#toWords` a désormais une cible tactile d'au moins 24 px.
 
 ## Liens profonds

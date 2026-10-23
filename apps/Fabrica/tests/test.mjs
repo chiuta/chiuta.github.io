@@ -5,8 +5,8 @@ const require=createRequire("/opt/node-tools/package.json");
 const {chromium}=require("playwright");
 const __dir=path.dirname(fileURLToPath(import.meta.url));
 const APP='file://'+path.resolve(__dir,'..','index.html');
-const AXE='/tmp/claude-0/-home-claude/78529928-3825-51c3-b9bd-0e81655ab6bc/scratchpad/sweep/node_modules/axe-core/axe.min.js';
-const AXE_SRC=fs.readFileSync(AXE,'utf8');
+const AXE=process.env.AXE_PATH||'/tmp/claude-0/-home-claude/78529928-3825-51c3-b9bd-0e81655ab6bc/scratchpad/sweep/node_modules/axe-core/axe.min.js';
+const AXE_SRC=fs.existsSync(AXE)?fs.readFileSync(AXE,'utf8'):null; if(!AXE_SRC) console.log('(axe-core lipsește la '+AXE+' — setează AXE_PATH; verificările axe sunt sărite)');
 let pass=0, fail=0; const failures=[];
 const ok=(c,m)=>{ if(c)pass++; else {fail++; failures.push(m); console.log('  FAIL:',m);} };
 const eq=(a,b,m)=>{ const A=JSON.stringify(a),B=JSON.stringify(b); ok(A===B,m+' (obtained '+A+', expected '+B+')'); };
@@ -23,6 +23,7 @@ async function mk(url,opts){
   await p.goto(url); return p;
 }
 async function axe(p,label){
+  if(!AXE_SRC) return;
   await p.waitForTimeout(3600);
   if(!(await p.evaluate(()=>!!window.axe))){ const cdp=await p.context().newCDPSession(p); await cdp.send('Runtime.evaluate',{expression:AXE_SRC}); await cdp.detach(); }
   const r=await p.evaluate(async()=>{const x=await axe.run(document,{resultTypes:['violations']}); return x.violations.map(v=>v.id+': '+v.nodes.slice(0,2).map(n=>n.target.join(' ')).join(' | '));});
@@ -425,6 +426,74 @@ await m.locator('.q >> nth=1 >> input').fill('tara mare'); await m.locator('.q >
 await m.locator('.q >> nth=0').getByLabel('Nu',{exact:true}).check(); await m.locator('.q >> nth=0 >> [data-act="check"]').click(); eq(await m.locator('.q >> nth=0 >> .fb .res').textContent(),'Corect!','single corect (editor→generat)');
 await m.locator('.q >> nth=2 >> input').fill('patru'); await m.locator('.q >> nth=2 >> [data-act="check"]').click(); eq(await m.locator('.q >> nth=2 >> .fb .res').textContent(),'Corect!','completare (editor→generat)');
 await axe(m,'curs manual'); await m.close();
+
+/* ================= 7. Audit adversarial: progres ostil/corupt, imagini în opțiuni, ZIP „bombă” ================= */
+sect('7. Audit adversarial — progres corupt/ostil, active în opțiuni, ZIP bombă');
+{
+  const ea=await mk(APP); await ea.waitForFunction(()=>window.__fabrica);
+  const PNG='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg==';
+  const evilCourse={id:'audit-progres',title:'Audit',lang:'ro',levels:[{id:'n1',title:'N',lessons:[{id:'l1',title:'L1',body:'Text',questions:[
+    {id:'qo',type:'order',text:'Ordine?',items:['unu','doi','trei']},
+    {id:'qm',type:'match',text:'Potrivire?',pairs:[{l:'a',r:'1'},{l:'b',r:'2'}]},
+    {id:'qs',type:'single',text:'Unic?',options:[{id:'o1',text:'Da ![x](img:pic)',correct:true},{id:'o2',text:'Nu',correct:false}],okMsg:'Bine ![y](img:pic2)'},
+    {id:'qf',type:'fill',text:'Doi plus [[doi]].'}]}]}],
+    glossary:[{id:'g1',term:'Termen',def:'def'}],evidence:[{id:'e1',claim:'Pretenție ![z](img:pic3)',level:'none',sources:'',note:''}],
+    finalTest:{enabled:true,threshold:50,count:2,seed:'s',bank:[{id:'qb',type:'tf',text:'Adevărat?',answer:true},{id:'qb2',type:'tf',text:'Fals?',answer:false}]},
+    settings:{accent:'teal',srs:true,certificate:true},assets:{pic:PNG,pic2:PNG,pic3:PNG,nefolosit:PNG}};
+  // (B) imaginile referite din opțiuni / feedback / dovezi trebuie să ajungă în fișierul exportat; cele nefolosite nu
+  const exp=await ea.evaluate(async(c)=>{const F=window.__fabrica; F.setCourse(c); const r=await F.buildHtml(F.course); const d=F.courseFromHtml(r.html).course; return {html:r.html, assets:Object.keys(d.assets).sort()};},evilCourse);
+  eq(exp.assets,['pic','pic2','pic3'],'asset-uri referite din opțiuni/feedback/dovezi sunt exportate (nefolosite — nu)');
+  const fEvil=path.join(tmp,'evil-progress.html'); fs.writeFileSync(fEvil,exp.html);
+  const X='"><img src=x onerror="window.__pwn=1"><b id=inj>';
+  const variants={
+    'order exact + injecție':{ans:{qo:{s:0,resp:[X,X,X]}}},
+    'match în afara intervalului':{ans:{qm:{s:0,resp:[99,-7]}}},
+    'match cu șiruri':{ans:{qm:{s:0,resp:['constructor','__proto__']}}},
+    'fill obiecte':{ans:{qf:{s:0,resp:[{a:1}]}}},
+    'srs null / șir / HTML':{srs:{qo:null,qm:'x',qs:{due:X,ef:X,interval:X,reps:X},qf:{due:0}}},
+    'test.best HTML':{test:{attempts:X,best:{pct:X,passed:true},last:{pct:X}}},
+    'tipuri greșite':{done:'x',ans:[1,2],srs:5,test:'x',name:{a:1},certDate:X},
+    'nume + dată HTML':{name:X,certDate:X,done:{l1:1},test:{attempts:1,best:{pct:100,passed:true}}}
+  };
+  for(const [label,prog] of Object.entries(variants)){
+    const ctx=await browser.newContext({viewport:{width:1000,height:800}}); await ctx.route(/^https?:/,r=>r.abort());
+    await ctx.addInitScript(([k,v])=>{ window.__pwn=0; try{localStorage.setItem(k,v);}catch(e){} },['fff.course.audit-progres.progress',JSON.stringify(Object.assign({v:1},prog))]);
+    const pg=await ctx.newPage(); const errs=[]; pg.on('pageerror',e=>errs.push(e.message)); pg.on('console',m=>{const t=m.text(); if(m.type()==='error'||/Content Security Policy|Refused/i.test(t)) errs.push('console: '+t);});
+    await pg.goto('file://'+fEvil); await pg.waitForSelector('#main h1');
+    for(const r of ['/','/l/l1','/test','/review','/glossary','/evidence','/cert','/settings']){ await pg.evaluate(r=>location.hash='#'+r,r); await pg.waitForTimeout(60); }
+    const inj=await pg.evaluate(()=>({img:document.querySelectorAll('img[src="x"]').length,b:document.querySelectorAll('#inj').length,pwn:window.__pwn,h1:!!document.querySelector('#main h1')}));
+    eq(errs,[],'progres ostil «'+label+'»: 0 erori/CSP'); eq([inj.img,inj.b,inj.pwn,inj.h1],[0,0,0,true],'progres ostil «'+label+'»: fără HTML injectat, pagina se randează');
+    await ctx.close();
+  }
+  // progresul valid supraviețuiește normalizării
+  const ctx2=await browser.newContext(); await ctx2.route(/^https?:/,r=>r.abort());
+  await ctx2.addInitScript(([k,v])=>{ try{localStorage.setItem(k,v);}catch(e){} },['fff.course.audit-progres.progress',JSON.stringify({v:1,done:{l1:1},ans:{qo:{s:1,resp:[2,0,1]},qm:{s:0.5,resp:[1,-1]},qs:{s:1,resp:'o1'},qf:{s:1,resp:['doi']}},srs:{qo:{ef:2.1,reps:2,interval:6,due:50,lapses:1}},test:{attempts:2,best:{pct:80,passed:true,ts:'x',attempt:1},last:null},name:'Ana',certDate:'2026-10-20'})]);
+  const pv=await ctx2.newPage(); await pv.goto('file://'+fEvil); await pv.waitForSelector('#main h1');
+  const st=await pv.evaluate(()=>window.FabricaPlayer.state().P); eq([st.done,st.ans.qo.resp,st.ans.qm.resp,st.ans.qs.resp,st.ans.qf.resp,st.srs.qo,st.test.attempts,st.test.best.pct,st.name,st.certDate],[{l1:1},[2,0,1],[1,-1],'o1',['doi'],{ef:2.1,reps:2,interval:6,due:50,lapses:1},2,80,'Ana','2026-10-20'],'progres valid păstrat după normalizare'); await ctx2.close();
+  // (C) ZIP bombă: o intrare index.html care se decomprimă la >128 MB e refuzată (mesaj, fără blocaj); intrările irelevante uriașe nu se decomprimă
+  const zb=path.join(tmp,'bomb.zip'), zok=path.join(tmp,'bigother.zip');
+  execFileSync('python3',['-I','-c','import zipfile,sys;z=zipfile.ZipFile(sys.argv[1],"w",zipfile.ZIP_DEFLATED);z.writestr("index.html","A"*(200*1024*1024));z.close()',zb]);
+  const goodJson=await ea.evaluate(()=>window.__fabrica.courseToJson(window.__fabrica.course)); fs.writeFileSync(path.join(tmp,'good.course.json'),goodJson);
+  execFileSync('python3',['-I','-c','import zipfile,sys;z=zipfile.ZipFile(sys.argv[1],"w",zipfile.ZIP_DEFLATED);z.writestr("zzz-mare.bin","B"*(200*1024*1024));z.writestr("curs.course.json",open(sys.argv[2],encoding="utf8").read());z.close()',zok,path.join(tmp,'good.course.json')]);
+  await ea.click('#tab-export'); await ea.evaluate(()=>window.__fabrica.setCourse({title:'altceva',levels:[]}));
+  let t0=Date.now(); await ea.setInputFiles('#filef',zb); await ea.waitForSelector('#toast',{timeout:20000}); await ea.waitForTimeout(300);
+  eq(await ea.evaluate(()=>window.__fabrica.course.title),'altceva','ZIP bombă: cursul curent nu e înlocuit'); ok(Date.now()-t0<15000,'ZIP bombă: refuzat repede ('+(Date.now()-t0)+' ms)');
+  await ea.evaluate(()=>window.__fabrica.setCourse({title:'altceva',levels:[]})); t0=Date.now(); await ea.setInputFiles('#filef',zok); await ea.waitForTimeout(1500);
+  eq(await ea.evaluate(()=>window.__fabrica.course.title),'Audit','ZIP cu intrare irelevantă uriașă + curs valid: se importă fără a decomprima intrarea irelevantă'); ok(Date.now()-t0<10000,'ZIP cu intrare irelevantă: rapid');
+  eq(ea.__errs.filter(e=>!/Failed to load resource/.test(e)),[],'import ZIP: 0 erori de pagină'); await ea.close();
+}
+
+sect('8. Ținte tactile ≥44px și fără depășire la 360px (editor + curs generat)');
+{
+  const small=()=>{ const res=[]; for(const el of document.querySelectorAll('button,select,summary,textarea,input:not([type=hidden]):not([type=file])')){ if(el.closest('#tf-donate')) continue; const cs=getComputedStyle(el); if(cs.display==='none'||cs.visibility==='hidden') continue; let r=el.getBoundingClientRect(); if(!r.width||!r.height) continue; if((el.type==='checkbox'||el.type==='radio')&&el.labels&&el.labels[0]){ const l=el.labels[0].getBoundingClientRect(); if(l.width*l.height>r.width*r.height) r=l; } if(r.height<43.5||r.width<43.5) res.push((el.id||el.className||el.tagName)+' '+Math.round(r.width)+'x'+Math.round(r.height)); } return res; };
+  const e8=await mk(APP,{viewport:{width:360,height:740},hasTouch:true}); await e8.waitForFunction(()=>window.__fabrica);
+  await e8.evaluate(()=>window.__fabrica.setCourse(window.__fabrica.templates('demo','ro')));
+  for(const t of ['meta','content','glossary','evidence','test','check','export']){ await e8.click('#tab-'+t); await e8.waitForTimeout(120); eq(await e8.evaluate(small),[],'editor 360 px, panou '+t+': ținte ≥44px'); ok(await overflow(e8)<=0,'editor 360 px, panou '+t+': fără depășire orizontală'); }
+  await e8.close();
+  const g8=await mk(GEN,{viewport:{width:360,height:740},hasTouch:true}); await g8.waitForSelector('#main h1');
+  for(const r of ['/','/l/l1','/l/l3','/test','/glossary','/evidence','/settings']){ await g8.evaluate(r=>location.hash='#'+r,r); await g8.waitForTimeout(100); eq(await g8.evaluate(small),[],'curs generat 360 px '+r+': ținte ≥44px'); }
+  await g8.close();
+}
 
 await browser.close(); fs.rmSync(tmp,{recursive:true,force:true});
 console.log(`\n${pass} teste reușite, ${fail} eșuate`); if(fail){ console.log(failures.join('\n')); process.exit(1); }

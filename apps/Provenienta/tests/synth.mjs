@@ -225,12 +225,13 @@ export function topBoxes(buf) { const out = []; let p = 0; while (p + 8 <= buf.l
 export function signAsset(kind, base, opts) {
   const alg = opts.hashAlg || 'sha256';
   const bmff = kind === 'mp4';
+  let extraCur = []; // opts.extraExclusions(ins): excluderi SUPLIMENTARE (în afara manifestului) — pentru teste de legare prea largă
   let excl = { start: 0, length: 0 }; let hash = Buffer.alloc(sha(alg, Buffer.alloc(0)).length);
   const hdName = bmff ? (opts.version === 2 ? 'c2pa.hash.bmff.v2' : 'c2pa.hash.bmff') : 'c2pa.hash.data';
   for (let it = 0; it < 8; it++) {
     const hashAssertion = bmff
       ? { label: hdName, cbor: { exclusions: [{ xpath: '/uuid', length: null, data: [{ offset: 8, value: C2PA_BMFF_UUID }], subset: null, version: null, flags: null, exact: null }, { xpath: '/ftyp', length: null, data: null, subset: null, version: null, flags: null, exact: null }, { xpath: '/mfra', length: null, data: null, subset: null, version: null, flags: null, exact: null }], alg, hash, name: 'jumbf manifest' } }
-      : { label: hdName, cbor: { exclusions: [{ start: excl.start, length: excl.length }], name: 'jumbf manifest', alg, hash, pad: Buffer.alloc(0) } };
+      : { label: hdName, cbor: { exclusions: [{ start: excl.start, length: excl.length }, ...extraCur], name: 'jumbf manifest', alg, hash, pad: Buffer.alloc(0) } };
     const active = makeManifest({ ...opts, hashAssertion, format: opts.format || ({ jpeg: 'image/jpeg', png: 'image/png', webp: 'image/webp', svg: 'image/svg+xml', mp4: 'video/mp4' })[kind] });
     const store = wrapStore([...(opts.prior || []), active.box]);
     const ins = INSERT[kind](base, store);
@@ -241,9 +242,10 @@ export function signAsset(kind, base, opts) {
       if (h.equals(hash)) return { file: ins.file, store, active, range: ins.range };
       hash = h; continue;
     }
-    h = hashExcl(alg, ins.file, [ins.range]);
-    if (excl.start === ins.range.start && excl.length === ins.range.length && h.equals(hash)) return { file: ins.file, store, active, range: ins.range };
-    excl = { start: ins.range.start, length: ins.range.length }; hash = h;
+    const extraNext = opts.extraExclusions ? opts.extraExclusions(ins) : [];
+    h = hashExcl(alg, ins.file, [ins.range, ...extraNext]);
+    if (excl.start === ins.range.start && excl.length === ins.range.length && h.equals(hash) && JSON.stringify(extraNext) === JSON.stringify(extraCur)) return { file: ins.file, store, active, range: ins.range };
+    excl = { start: ins.range.start, length: ins.range.length }; hash = h; extraCur = extraNext;
   }
   throw new Error('nu converge');
 }

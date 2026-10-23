@@ -2,7 +2,7 @@
 
 [English](README.md) · [Română](README.ro.md) · [Français](README.fr.md) · [Italiano](README.it.md) · [Español](README.es.md) · [Português](README.pt.md) · [Deutsch](README.de.md) · **Magyar**
 
-**Verzió:** 1.0.4 · **Utolsó frissítés:** 2026-10-23
+**Verzió:** 1.0.5 · **Utolsó frissítés:** 2026-10-23
 
 A felület nyelvei: **Română, English, Français, Italiano, Español, Português (PT), Deutsch, Magyar**
 
@@ -34,7 +34,8 @@ A Gospodar egy háztartási költségvetés, amely helyben fut, egyetlen HTML-f�
 - A bevétel/kiadás a kategória természete szerint dől el (a nem kategorizáltaknál az előjel szerint); egy kiadási kategórián belüli visszatérítések csökkentik annak a kategóriának a kiadását. Az átutalások kizártak.
 - Az összegek egész számok az alegységekben (fillér), szorzatoknál és átváltásoknál `BigInt`-tel; a kerekítés „fél felfelé”, és műveletenként csak egyszer történik (hitelnél/kamatnál minden időszakban, ahogyan megjelenik). A 2 tizedesjegytől eltérő pontosságú pénznemeket csak a JPY, KRW (0) és a BHD, KWD (3) esetében ismeri.
 - A betűvel írt hónapnevet tartalmazó dátumformátumokat az import nem ismeri fel. Egy több számlát vagy pénznemet tartalmazó CSV egyetlen kiválasztott számlára importálódik.
-- A reguláris kifejezések szűrve vannak: elutasítja a visszahivatkozásokat, a lookahead/lookbehind szerkezeteket, az ismétléseket vagy alternációkat tartalmazó ismételt csoportokat (pl. `(a+)+`) és a 200 karakternél hosszabb kifejezéseket; ezután minden kifejezést egy Workerben tesztel 300 ms-os korláttal. Alkalmazáskor a számításnak 3 s a kerete, és figyelmeztetéssel leáll. A heurisztika ártalmatlan, `(foo|bar)+` alakú kifejezéseket is elutasíthat; átírhatod őket `(?:…)` alakra ismétlés nélkül, vagy több szabállyal.
+- A reguláris kifejezések szűrve vannak: elutasítja a visszahivatkozásokat, a lookahead/lookbehind szerkezeteket, az ismétléseket vagy alternációkat tartalmazó ismételt csoportokat (pl. `(a+)+`) és a 200 karakternél hosszabb kifejezéseket; ezután minden kifejezést egy Workerben tesztel 300 ms-os korláttal. Alkalmazáskor a számításnak 3 s a kerete, és figyelmeztetéssel leáll. A heurisztika ártalmatlan, `(foo|bar)+` alakú kifejezéseket is elutasíthat; átírhatod őket `(?:…)` alakra ismétlés nélkül, vagy több szabállyal. Elutasítja a 3-nál több nagy vagy korlátlan ismétlést (`.*`, `+`, `{20,}`) tartalmazó kifejezéseket is, mert hosszú leírásoknál lefagyaszthatják a lapot (pl. `.*a.*a.*a.*b`).
+- Összegek és számológépek: egy összeg legfeljebb 10^13 alegység lehet (az adott pénznemben 100 milliárd); a számológépek a (−100 %, 10000 %] tartományba eső kamatlábat fogadnak el, és a pontos számítás határát (2^53 alegység) meghaladó eredmény helyett hibaüzenetet adnak, nem pontatlan számokat.
 - A legnagyobb kereskedőket heurisztikusan, a leírás első szavai szerint csoportosítja: közelítő.
 - A tárolás `localStorage` (néhány MB korlát; 20 000 tranzakció ≈ 1,6 MB-ot foglal). Ha elfogy a hely vagy a tárolás blokkolva van, az alkalmazás szembetűnően figyelmeztet, hogy az utolsó módosítások nem lettek mentve. A webhelyadatok törlése vagy az elveszett jelszó adatvesztést jelent: őrizz meg exportokat.
 - Egy `.fff.json` importálása felváltja az aktuális adatkészletet (nem fésüli össze).

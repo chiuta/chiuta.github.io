@@ -1,6 +1,6 @@
 {
- "ok": 44,
- "total": 44,
+ "ok": 48,
+ "total": 48,
  "results": [
   {
    "name": "pornire: 0 erori, 0 rețea, 0 CSP, meta, versiune, lang",
@@ -172,6 +172,22 @@
   },
   {
    "name": "tastatură: ordine de focus, Enter în câmpuri, focus vizibil, mișcare redusă",
+   "ok": true
+  },
+  {
+   "name": "date locale corupte (null, tipuri greșite, structuri parțiale): niciun panou nu aruncă, aplicația rămâne utilizabilă",
+   "ok": true
+  },
+  {
+   "name": "import .fff.json ostil: chei invalide/limbă/temă nevalide sunt ignorate, nu rămâne temă arbitrară",
+   "ok": true
+  },
+  {
+   "name": "localStorage plin: utilizatorul este anunțat (o dată), progresul rămâne în sesiune, 0 erori",
+   "ok": true
+  },
+  {
+   "name": "Morse: text uriaș nu alocă gigaocteți — redarea / WAV sunt refuzate cu mesaj, nu blochează pagina",
    "ok": true
   },
   {
