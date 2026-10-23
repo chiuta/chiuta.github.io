@@ -2,7 +2,7 @@
 
 [English](README.md) · **Română** · [Français](README.fr.md) · [Italiano](README.it.md) · [Español](README.es.md) · [Português](README.pt.md) · [Deutsch](README.de.md) · [Magyar](README.hu.md)
 
-**Versiune:** 1.0.4 · **Ultima actualizare:** 2026-10-23
+**Versiune:** 1.0.5 · **Ultima actualizare:** 2026-10-23
 
 Limbile interfeței: **Română, English, Français, Italiano, Español, Português (PT), Deutsch, Magyar**
 
@@ -70,3 +70,4 @@ MIT — vezi fișierul `LICENSE` din rădăcina depozitului.
 - 1.0.1 — 2026-10-22: exportul CSV neutralizează numele de trasee care încep cu = + - @ (și tab/CR) împotriva injecției de formule în foi de calcul, iar importul CSV scoate din nou apostroful; eticheta tehnică este regenerată (8 limbi, versiune).
 - 1.0.2 — 2026-10-22: fff-kit 1.1.2: PBKDF2 cu 600.000 de iterații, protecție anti-clickjacking.
 - 1.0.3 — 2026-10-22: fff-kit 1.1.4: ținte tactile și text minim în interfața comună.
+- 1.0.5 — 2026-10-23: audit adversarial: copia de siguranță/sesiunea restaurată sunt validate (culori, URL-uri de imagine, tipuri, setări în intervale; bombă gzip limitată la 256 MiB); SVG-ul exportat nu mai poate primi atribute injectate; citirea GPX/KML malformat nu mai este pătratică (≈80.000 de etichete neînchise blocau ~8 s); versiunea din script coincide cu metadatele.

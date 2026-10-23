@@ -762,7 +762,7 @@ test('E2 copie de siguranță .fff.json: export, ștergere totală, import', asy
   const f = await download(page, '#s-export');
   ok(/\.fff\.json$/.test(f), 'extensie .fff.json');
   const j = JSON.parse(fileTxt(f));
-  eq(j.format, 'fff-bundle', 'format'); eq(j.schema, 1, 'schema'); eq(j.app, 'poteca', 'app'); eq(j.version, '1.0.4', 'versiune'); eq(j.updated, '2026-10-23', 'updated'); ok(j.data['fff.poteca.session'].startsWith('P1:'), 'sesiune în bundle');
+  eq(j.format, 'fff-bundle', 'format'); eq(j.schema, 1, 'schema'); eq(j.app, 'poteca', 'app'); eq(j.version, '1.0.5', 'versiune'); eq(j.updated, '2026-10-23', 'updated'); ok(j.data['fff.poteca.session'].startsWith('P1:'), 'sesiune în bundle');
   await page.click('#s-wipe'); await page.click('#dc-ok');
   eq(await g(page, () => window.Poteca.S.tracks.length), 0, 'șters');
   const keys = await page.evaluate(() => Object.keys(localStorage).filter(k => k.startsWith('fff.poteca.session')));
@@ -975,15 +975,15 @@ test('G3 CSP strict, meta/versiune, fără rețea la pornire, fără erori', asy
   ok(/script-src 'sha256-[A-Za-z0-9+/=]+'/.test(csp), 'script-src cu hash');
   ok(!/\son(click|load|error|input|change)=/i.test(html), 'fără handlere inline');
   ok(!/\beval\(|new Function\(/.test(html.match(/<script>([\s\S]*)<\/script>/)[1]), 'fără eval');
-  ok(/<meta name="application-version" content="1\.0\.4">/.test(html) && /<meta name="last-updated" content="2026-10-23">/.test(html) && /<meta name="description" content="[^"]{20,}">/.test(html), 'meta versiune');
-  ok(/id="app-version">v 1\.0\.4 · 2026-10-23</.test(html), '#app-version');
+  ok(/<meta name="application-version" content="1\.0\.5">/.test(html) && /<meta name="last-updated" content="2026-10-23">/.test(html) && /<meta name="description" content="[^"]{20,}">/.test(html), 'meta versiune');
+  ok(/id="app-version">v 1\.0\.5 · 2026-10-23</.test(html), '#app-version');
   ok(!/https?:\/\/(?!www\.topografix|www\.garmin|www\.w3\.org|www\.opengis|www\.google\.com\/kml|buymeacoffee\.com)/.test(html.replace(/<meta[^>]*>/g, '')), 'fără URL-uri externe în cod în afară de spații de nume XML');
   const page = await newPage();
   eq((await cspViolations(page)).length, 0, 'zero violări CSP la pornire');
   await page.click('#btn-demo'); await page.waitForTimeout(300);
   for (const t of ['stats', 'edit', 'wpt', 'layers', 'export', 'session']) await tab(page, t);
   eq((await cspViolations(page)).length, 0, 'zero violări CSP după utilizare');
-  eq(await page.evaluate(() => document.getElementById('app-version').textContent), 'v 1.0.4 · 2026-10-23', 'text #app-version');
+  eq(await page.evaluate(() => document.getElementById('app-version').textContent), 'v 1.0.5 · 2026-10-23', 'text #app-version');
   await closeAll(page);
 });
 test('G4 axe-core: 0 violări (inițial, cu date, taburi, dialoguri; luminos și întunecat)', async () => {
@@ -1093,6 +1093,111 @@ test('H1 performanță: 200.000 puncte (import, statistici, desen, simplificare,
   eq(sv.n, N, 'despachetat'); ok(sv.d < 1e-7, 'precizie coordonate'); ok(sv.size < N * 40 * 0.3, 'compresie efectivă');
   const gaps = await page.evaluate(() => { clearInterval(window.__iv); return window.__gaps; });
   const worst = Math.max(...gaps); console.log(`   cel mai lung bloc al firului principal în tot testul (după import): ${Math.round(worst)} ms`); ok(worst < 3000, 'fără blocaje > 3 s: ' + worst);
+  await closeAll(page);
+});
+
+/* ---------- I. audit adversarial: regresii ---------- */
+test('I1 XSS: nume/descrieri ostile din GPX/KML/GeoJSON/CSV sunt text (nicio execuție, niciun element injectat), export cu escapare XML', async () => {
+  const page = await newPage();
+  const dialogs = []; page.on('dialog', d => { dialogs.push(d.message()); d.dismiss(); });
+  const X = '<img src=x onerror=alert(1)>"><svg onload=alert(2)>&amp;';
+  const gpx = `<?xml version="1.0"?><gpx version="1.1" xmlns="http://www.topografix.com/GPX/1/1"><wpt lat="45" lon="26"><name>&lt;img src=x onerror=alert(1)&gt;</name><desc><![CDATA[${X}]]></desc><sym>&lt;svg onload=alert(3)&gt;</sym></wpt><trk><name><![CDATA[${X}]]></name><trkseg><trkpt lat="45" lon="26"><ele>1</ele></trkpt><trkpt lat="45.001" lon="26.001"><ele>2</ele></trkpt></trkseg></trk></gpx>`;
+  const kml = `<?xml version="1.0"?><kml xmlns="http://www.opengis.net/kml/2.2"><Document><Placemark><name>${X.replace(/&amp;$/, '')}&amp;</name><description>&lt;img src=x onerror=alert(5)&gt;</description><Point><coordinates>26,45,0</coordinates></Point></Placemark></Document></kml>`;
+  const gj = JSON.stringify({type: 'Feature', properties: {name: X, __proto__: {polluted: 1}, constructor: {prototype: {p3: 1}}}, geometry: {type: 'LineString', coordinates: [[26, 45], [26.1, 45.1]]}});
+  const gjp = '{"__proto__":{"polluted":1},"type":"FeatureCollection","features":[{"type":"Feature","properties":{"name":"p"},"geometry":{"type":"LineString","coordinates":[[26,45],[26.1,45.1]]}}]}';
+  const csv = 'track,lat,lon\n"' + X.replace(/"/g, '""') + '",45,26\n"' + X.replace(/"/g, '""') + '",45.1,26\n';
+  await upload(page, [{name: '<img src=x onerror=alert(9)>.gpx', data: gpx}, {name: 'k.kml', data: kml}, {name: 'g.geojson', data: gj}, {name: 'h.geojson', data: gjp}, {name: 'c.csv', data: csv}]);
+  for (const id of ['tracks', 'stats', 'edit', 'wpt', 'layers', 'export', 'session']) await tab(page, id);
+  await tab(page, 'wpt'); await page.waitForTimeout(100);
+  const r = await page.evaluate(() => ({inj: document.querySelectorAll('img[src="x"], svg[onload], [onerror], [onload]').length, polluted: ({}).polluted, p3: ({}).p3, n: window.Poteca.S.tracks.length, names: window.Poteca.S.tracks.map(t => t.name), w: window.Poteca.S.wpts.map(w => w.name)}));
+  eq(r.inj, 0, 'niciun element injectat'); ok(r.polluted === undefined && r.p3 === undefined, 'fără poluare de prototip'); ok(r.n >= 4, 'trasee importate: ' + r.n);
+  ok(r.names.includes(X) && r.w.some(n => n === '<img src=x onerror=alert(1)>'), 'numele rămân text literal');
+  // export: toate formatele rămân bine-formate cu nume ostile; GPX/KML se re-parsează la aceleași nume
+  await page.evaluate(() => window.Poteca.setSetting('xscope', 'vis'));
+  const out = await page.evaluate(() => { const P = window.Poteca, S = P.S; const ex = S.tracks.filter(t => t.visible); return {gpx: P.buildGPX(ex, S.wpts), kml: P.buildKML(ex, S.wpts)}; });
+  for (const [k, txt] of Object.entries(out)) {
+    const bad = await page.evaluate(t => { const d = new DOMParser().parseFromString(t, 'application/xml'); return d.getElementsByTagName('parsererror').length; }, txt);
+    eq(bad, 0, k + ' bine-format'); ok(!/<img|<svg onload/i.test(txt), k + ': etichete ostile escapate');
+  }
+  const back = await page.evaluate(t => window.Poteca.parseAny(t, 'rt.gpx').tracks.map(x => x.name), out.gpx);
+  ok(back.includes(X), 'GPX round-trip păstrează numele ostil: ' + JSON.stringify(back));
+  eq(dialogs.length, 0, 'fără alert(): ' + dialogs.join('|'));
+  await closeAll(page);
+});
+test('I2 copie de siguranță ostilă: culori/URL/tipuri greșite nu ajung în SVG, vederea rămâne finită, fără cereri externe', async () => {
+  const page = await newPage();
+  const dialogs = []; page.on('dialog', d => { dialogs.push(d.message()); d.dismiss(); });
+  const bundle = await page.evaluate(async () => {
+    const P = window.Poteca, tr = P.mkTrack({name: 'a', lat: Float64Array.from([45, 45.001]), lon: Float64Array.from([26, 26.001])});
+    const meta = {v: 1, tracks: [{id: 't1', name: 'a', color: 'red" onload="alert(1)" x="', kind: 'trk', n: 2, visible: true}],
+      wpts: [{id: 'w1', lat: 45, lon: 26, name: {toString: 1}, sym: '<b>'}, null, {lat: 'x', lon: 1}],
+      layers: [{id: 'l1', name: 'L', color: '"/><script>alert(1)</script>', visible: true, src: '{"type":"LineString","coordinates":[[26,45],[26.1,45.1]]}'}],
+      images: [{id: 'i1', name: 'I', url: 'https://evil.example/x.png', bbox: {w: 'a', e: 1, s: 2, n: 3}, opacity: 'zz', visible: true}],
+      sel: 't1', cur: 'abc', A: 'x', B: {}, view: {proj: 'merc', cx: 'a', cy: null, scale: 'q', lat0: 'z', lon0: {}}};
+    const u8 = await P.packSession({meta, tracks: [tr]}); let s = ''; for (const c of u8) s += String.fromCharCode(c);
+    return {format: 'fff-bundle', schema: 1, app: 'poteca', data: {'fff.poteca.settings': JSON.stringify({lang: '<img src=x onerror=alert(1)>', theme: '__proto__', proj: 'zzz', unit: 'x', smooth: 1e9, thr: -5, pause: 0, priv: -3, xscope: 'zz', color: '<b>'}), 'fff.poteca.session': 'P1:' + btoa(s)}};
+  });
+  await page.setInputFiles('#file-in', {name: 'ostil.fff.json', mimeType: 'application/json', buffer: Buffer.from(JSON.stringify(bundle))});
+  await page.waitForFunction(() => document.body.getAttribute('aria-busy') === 'false'); await page.waitForTimeout(500);
+  const r = await page.evaluate(() => { const P = window.Poteca, S = P.S, v = P.view(); return {n: S.tracks.length, color: S.tracks[0] && S.tracks[0].color, lcolor: S.layers[0] && S.layers[0].color, imgs: S.images.length, cur: S.cur, A: S.A, B: S.B, view: [v.cx, v.cy, v.scale, v.mpp].every(Number.isFinite), set: S.set, svg: P.mapSvgString(900, 560), wn: S.wpts.map(w => w.name)}; });
+  eq(r.n, 1, 'traseul se încarcă'); ok(/^#[0-9a-f]{6}$/i.test(r.color), 'culoare traseu validată: ' + r.color); ok(r.lcolor === '' || /^#[0-9a-f]{6}$/i.test(r.lcolor), 'culoare strat validată: ' + r.lcolor);
+  eq(r.imgs, 0, 'imagine cu URL extern/casetă invalidă ignorată'); eq(r.cur, 0, 'cursor'); eq(r.A, null, 'A'); eq(r.B, null, 'B'); ok(r.view, 'vedere finită');
+  ok(!/onload=|<script/.test(r.svg), 'SVG fără atribute/etichete injectate'); eq(JSON.stringify(r.wn), '[""]', 'waypoint cu nume non-text devine gol; invalidele sunt omise');
+  eq(r.set.lang, 'ro', 'limba'); eq(r.set.theme, 'auto', 'temă'); eq(r.set.proj, 'merc', 'proj'); eq(r.set.unit, 'metric', 'unități'); eq(r.set.smooth, 30, 'netezire în afara intervalului respinsă'); eq(r.set.thr, 3, 'prag'); eq(r.set.pause, 120, 'pauză'); eq(r.set.priv, 0, 'confidențialitate'); eq(r.set.xscope, 'sel', 'xscope'); eq(r.set.color, 'none', 'culoare profil');
+  eq(dialogs.length, 0, 'fără alert()');
+  await closeAll(page);
+});
+test('I3 setări corupte din localStorage sunt validate (enumerări/intervale), nu persistate ca atare', async () => {
+  const ctx = await newCtx();
+  await ctx.addInitScript(() => { if (!localStorage.getItem('fff.poteca.settings')) localStorage.setItem('fff.poteca.settings', JSON.stringify({theme: '__proto__', proj: 'zzz', unit: 'x', color: '<b>', xaxis: 'q', smooth: 1e9, thr: -5, stop: -1, pause: 0, priv: -3, xscope: 'zz', grid: false})); });
+  const page = await newPage({ctx});
+  const set = await page.evaluate(() => window.Poteca.S.set);
+  eq(set.theme, 'auto', 'theme'); eq(set.unit, 'metric', 'unit'); eq(set.color, 'none', 'color'); eq(set.xaxis, 'dist', 'xaxis'); eq(set.smooth, 30, 'smooth'); eq(set.thr, 3, 'thr'); eq(set.stop, 1, 'stop'); eq(set.pause, 120, 'pause'); eq(set.priv, 0, 'priv'); eq(set.xscope, 'sel', 'xscope'); eq(set.grid, false, 'valorile valide se păstrează');
+  await closeAll(page);
+});
+test('I4 timp liniar pe etichete neînchise (GPX și KML malformat) — fără blocare cvadratică', async () => {
+  const page = await newPage();
+  const r = await page.evaluate(() => {
+    const N = 150000, P = window.Poteca, t1 = performance.now();
+    P.parseAny('<gpx><trk>' + '<name>'.repeat(N) + '<trkseg><trkpt lat="1" lon="1"/></trkseg></trk></gpx>', 'a.gpx');
+    const t2 = performance.now();
+    const k = P.parseAny('<kml><Placemark><name>a</name>' + '<Point>'.repeat(N), 'a.kml');
+    const t3 = performance.now();
+    const ok2 = P.parseAny('<kml><Placemark><name>b</name><Point><coordinates>26,45</coordinates></Point>', 'b.kml');
+    return {gpx: t2 - t1, kml: t3 - t2, wpts: ok2.wpts.length, nm: ok2.wpts[0] && ok2.wpts[0].name};
+  });
+  ok(r.gpx < 4000, 'GPX ' + Math.round(r.gpx) + ' ms'); ok(r.kml < 4000, 'KML ' + Math.round(r.kml) + ' ms');
+  eq(r.wpts, 1, 'KML trunchiat: punctul se recuperează încă'); eq(r.nm, 'b', 'nume');
+  await closeAll(page);
+});
+test('I5 bombă gzip într-o copie de siguranță este respinsă fără a bloca aplicația; datele existente rămân', async () => {
+  const page = await newPage();
+  await page.click('#btn-demo'); await page.waitForTimeout(300);
+  const n0 = await page.evaluate(() => window.Poteca.S.tracks.length);
+  await page.evaluate(() => { window.__gzRead = 0; const o = ReadableStreamDefaultReader.prototype.read; ReadableStreamDefaultReader.prototype.read = function () { return o.call(this).then(r => { if (r.value && r.value.length) window.__gzRead += r.value.length; return r; }); }; });
+  const zlib = await import('node:zlib');
+  const bomb = zlib.gzipSync(Buffer.alloc(300 * 1024 * 1024), {level: 9});
+  const u8 = Buffer.concat([Buffer.from([1]), bomb]);
+  const b = {format: 'fff-bundle', schema: 1, app: 'poteca', data: {'fff.poteca.session': 'P1:' + u8.toString('base64')}};
+  await page.setInputFiles('#file-in', {name: 'bomba.fff.json', mimeType: 'application/json', buffer: Buffer.from(JSON.stringify(b))});
+  await page.waitForSelector('#dc-ok', {state: 'visible', timeout: 10000}); await page.click('#dc-ok');
+  await page.waitForFunction(() => /copie|backup|sauvegarde|bk_bad/i.test(document.getElementById('status').textContent) || document.body.getAttribute('aria-busy') === 'false', null, {timeout: 60000});
+  await page.waitForTimeout(500);
+  const r = await page.evaluate(() => ({n: window.Poteca.S.tracks.length, alive: document.body.getAttribute('aria-busy')}));
+  eq(r.n, n0, 'datele existente nu sunt înlocuite'); eq(r.alive, 'false', 'aplicația nu e blocată');
+  const rd = await page.evaluate(() => window.__gzRead);
+  ok(rd > 1e6 && rd < 290 * 1024 * 1024, 'decomprimarea se oprește la plafon (octeți citiți: ' + rd + ' < 300 MB)');
+  await closeAll(page);
+});
+test('I6 versiune coerentă: VER din script = meta = #app-version = app.json = sw.js; creator GPX', async () => {
+  const page = await newPage();
+  const v = await page.evaluate(() => ({ver: window.Poteca.version, m: document.querySelector('meta[name=application-version]').content, d: document.querySelector('meta[name=last-updated]').content, vis: document.getElementById('app-version').textContent}));
+  eq(v.ver, v.m, 'VER vs meta'); eq(v.vis, 'v ' + v.m + ' · ' + v.d, '#app-version');
+  const aj = JSON.parse(fs.readFileSync(path.resolve(HERE, '..', 'app.json'), 'utf8')); eq(aj.version, v.m, 'app.json');
+  const sw = fs.readFileSync(path.resolve(HERE, '..', 'sw.js'), 'utf8'); ok(sw.includes('VERSION = "' + v.m + '"'), 'sw.js');
+  await page.click('#btn-demo'); await page.waitForTimeout(300);
+  const g = await page.evaluate(() => window.Poteca.buildGPX(window.Poteca.S.tracks.slice(0, 1), []));
+  ok(g.includes('creator="Poteca ' + v.m + '"'), 'creator GPX');
   await closeAll(page);
 });
 

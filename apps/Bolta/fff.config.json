@@ -1,0 +1,8 @@
+{
+  "exceptions": [
+    {
+      "rule": "i18n-parity",
+      "reason": "Tabelul brut CON_ROWS (ephem-stars) este un catalog de constelații (cod, nume latin, genitiv, nume en, nume ro, RA, Dec, poligoane de stele), nu un tabel de traduceri: numărul de coloane variază legitim. Traducerile interfeței (DICT) au paritate verificată de teste."
+    }
+  ]
+}

@@ -2,7 +2,7 @@
 
 [English](README.md) · **Română** · [Français](README.fr.md) · [Italiano](README.it.md) · [Español](README.es.md) · [Português](README.pt.md) · [Deutsch](README.de.md) · [Magyar](README.hu.md)
 
-**Versiune:** 1.1.7 · **Ultima actualizare:** 2026-10-23
+**Versiune:** 1.1.8 · **Ultima actualizare:** 2026-10-23
 
 Limbile interfeței: **Română, English, Français, Italiano, Español, Português (PT), Deutsch, Magyar**
 
@@ -136,6 +136,7 @@ MIT — vezi fișierul `LICENSE` din rădăcina depozitului. Componentele terțe
 - **1.1.4 — 2026-10-22:** fff-kit 1.1.2: PBKDF2 cu 600.000 de iterații, protecție anti-clickjacking.
 - **1.1.6 — 2026-10-22:** Teste: așteptări pe condiții în loc de timp real, deci suitele trec stabil sub încărcare. Comportamentul aplicației nu se schimbă.
 - **1.1.5 — 2026-10-22:** fff-kit 1.1.4: ținte tactile și text minim în interfața comună.
+- **1.1.8 — 2026-10-23:** audit adversarial: `.ics` nu mai poate fi injectat prin CR/caractere de control din numele locului; locurile cu lat/lon `null`/gol/boolean nu mai devin (0, 0); salvarea locurilor eșuată (spațiu plin/stocare blocată) este anunțată în loc de „Loc salvat.”; versiunea din script coincide cu metadatele; excepție documentată (`fff.config.json`) pentru verificarea i18n-parity pe catalogul de constelații.
 
 ## Linkuri adânci
 

@@ -2,7 +2,7 @@
 
 [English](README.md) · [Română](README.ro.md) · [Français](README.fr.md) · **Italiano** · [Español](README.es.md) · [Português](README.pt.md) · [Deutsch](README.de.md) · [Magyar](README.hu.md)
 
-**Versione:** 1.0.4 · **Ultimo aggiornamento:** 2026-10-23
+**Versione:** 1.0.5 · **Ultimo aggiornamento:** 2026-10-23
 
 Lingue dell'interfaccia: **Română, English, Français, Italiano, Español, Português (PT), Deutsch, Magyar**
 
@@ -70,3 +70,4 @@ MIT — vedi il file `LICENSE` nella radice del repository.
 - 1.0.1 — 2026-10-22: l’esportazione CSV neutralizza i nomi di tracce che iniziano con = + - @ (e tab/CR) contro l’iniezione di formule, e l’importazione CSV rimuove di nuovo l’apostrofo; l’etichetta tecnica è rigenerata (8 lingue, versione).
 - 1.0.2 — 2026-10-22: fff-kit 1.1.2: PBKDF2 con 600.000 iterazioni, protezione anti-clickjacking.
 - 1.0.3 — 2026-10-22: fff-kit 1.1.4: aree tattili e dimensione minima del testo nell’interfaccia comune.
+- 1.0.5 — 2026-10-23: audit avversariale: i backup e la sessione ripristinata sono validati (colori, URL di immagini, tipi, impostazioni entro intervalli; bomba gzip limitata a 256 MiB); l’SVG esportato non può più ricevere attributi iniettati; la lettura di GPX/KML malformati non è più quadratica (~80.000 tag non chiusi bloccavano ~8 s); la versione nello script coincide con i metadati.
