@@ -192,7 +192,7 @@ node tools/cname-inventory.mjs --dns     # informativ: interoghează DNS-ul publ
 | Origami | LIPSĂ | — | partajată: https://chiuta.ro/Origami/ (proiect fără CNAME, aceeași origine cu hub-ul) | — | fără CNAME; propus `origami.chiuta.ro` |
 | Trusa-fara-frontiere | LIPSĂ | — | partajată: https://chiuta.ro/Trusa-fara-frontiere/ (proiect fără CNAME, aceeași origine cu hub-ul) | — | fără CNAME; propus `trusa-fara-frontiere.chiuta.ro` |
 | VNTV | LIPSĂ | — | partajată: https://chiuta.ro/VNTV/ (proiect fără CNAME, aceeași origine cu hub-ul) | — | fără CNAME; propus `vntv.chiuta.ro` |
-| OSATURA | depozit | `armatura.chiuta.ro` | proprie: https://armatura.chiuta.ro/ | — | proiect Rust (CLI + studio + WASM), site propriu; depozit chiuta/armatura |
+| OSATURA | depozit | `osatura.chiuta.ro` | proprie: https://osatura.chiuta.ro/ | — | proiect Rust (CLI + studio + WASM), site propriu; depozit chiuta/osatura |
 | ACORDAJ | LIPSĂ | — | partajată: https://chiuta.ro/ACORDAJ/ (proiect fără CNAME, aceeași origine cu hub-ul) | — | fără CNAME; propus `acordaj.chiuta.ro` |
 | Afrodisiace-fara-frontiere | LIPSĂ | — | partajată: https://chiuta.ro/Afrodisiace-fara-frontiere/ (proiect fără CNAME, aceeași origine cu hub-ul) | — | fără CNAME; propus `afrodisiace-fara-frontiere.chiuta.ro` |
 | Aurora | LIPSĂ | — | partajată: https://chiuta.ro/Aurora/ (proiect fără CNAME, aceeași origine cu hub-ul) | — | fără CNAME; propus `aurora.chiuta.ro` |
