@@ -24,7 +24,7 @@ const ri = argv.indexOf('--root');
 const ROOT = path.resolve(ri >= 0 ? argv[ri + 1] : path.join(HUB, '..'));
 const A1 = process.env.AUDIT1 || '/tmp/audit/audit.txt', A2 = process.env.AUDIT2 || '/tmp/audit2/summary.md', A4 = process.env.AUDIT4 || '/tmp/audit4';
 const DATA = path.join(HUB, 'data', 'transparenta.json'), OUT = path.join(HUB, 'transparenta.html');
-const EXTERNAL = new Set(['ARMATURA']);   // la fel ca în tools/sync-catalog.mjs
+const EXTERNAL = new Set(['OSATURA']);   // la fel ca în tools/sync-catalog.mjs
 const read = (p) => fs.readFileSync(p, 'utf8');
 const MONTHS = {ianuarie: 1, februarie: 2, martie: 3, aprilie: 4, mai: 5, iunie: 6, iulie: 7, august: 8, septembrie: 9, octombrie: 10, noiembrie: 11, decembrie: 12};
 const num = (s) => parseFloat(String(s).replace(',', '.'));
@@ -87,7 +87,7 @@ function collect() {
     const ver = (c.match(/data-ver="([^"]*)"/) || [])[1] || '';
     const off = (c.match(/data-off="([^"]*)"/) || [])[1] || 'no';
     const langs = ((c.match(/data-langs="([^"]*)"/) || [])[1] || '').split(',').filter(Boolean);
-    // Intrări externe (ex. ARMATURA, motor Rust): nu fac parte din audituri și nu intră în cifrele agregate; rând marcat `ext`.
+    // Intrări externe (ex. OSATURA, motor Rust): nu fac parte din audituri și nu intră în cifrele agregate; rând marcat `ext`.
     if (EXTERNAL.has(key)) { apps.push({key, ver, off, langs: langs.length, hosts: 0, score: null, hm: null, l: null, ext: true}); continue; }
     let app = null, swFile = false;
     for (const d of [path.join(ROOT, key), path.join(ROOT, key, 'docs'), path.join(HUB, 'apps', key)]) {

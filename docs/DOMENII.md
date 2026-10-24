@@ -6,8 +6,9 @@
 ## Pe scurt
 
 - Aplicații în catalog: **111** (99 în depozite proprii, 12 în `apps/` din hub).
-- Cu **origine proprie** (CNAME `<slug>.chiuta.ro`): **98**.
-- Pe **origine partajată** `chiuta.ro`: **13** (12 aplicații din hub + 1 depozit(e) fără CNAME: Domino-fara-frontiere).
+- Cu **origine proprie** (CNAME `<slug>.chiuta.ro`): **1**.
+- Pe **origine partajată** `chiuta.ro`: **110** (12 aplicații din hub + 98 depozit(e) fără CNAME: AcademiSearch, Arhiva-fara-frontiere, DataWeave, FreeDetect, MarkdownAtelier, OmniHost, TranslateHub, Undava, Arhiva-LinkedIn, Cadraj, Trade-Free-Link-Guardian, OUTPOST, ScryVeil, Surveyor, Threads-fara-cont, Vitrina, X-fara-cont, VaultCrypt, ATINGERE, Clopotel, ETER, FASCICUL, INDICATIV, PULS, RegexLab, SEOptimum, SEVA, Limpezimea, Nota-Zero, Pendulul, PrintreInteligente, Zicala, AGORA, Cupa-Mondiala-2026, Eclipsa-2027, Horizons.BeyondLimits, Hyper4D, IncredibleCosmos, Nemurirea, orarium, TerRa, Universul-Observabil, Universul-Observabil-1D, Universul-Observabil-2D, Universul-Observabil-3D, VietAR, ExploratoriiEco, FieldObserver, URME, VATRA, ASMR, BorderlessMelodies, CalmWaves, EcoulSpectral, FrequencyLaboratory, generator-frecvente, Akasha, CLEPSIDRA, Belot-fara-frontiere, Carti-de-joc-fara-frontiere, Dame-fara-frontiere, Domino-fara-frontiere, Go-fara-frontiere, Mahjong-fara-frontiere, Profund, Remi-fara-frontiere, Sah-fara-frontiere, Scopone-fara-frontiere, Solitaire-fara-frontiere, Sudoku-fara-frontiere, Table-fara-frontiere, Zaruri-fara-frontiere, AI-Liber, ARENA, LocalMind, Nexus-fara-frontiere, PromptVault, VoiceAtelier, API-fara-frontiere, Constelar, OAZA, Origami, Trusa-fara-frontiere, VNTV, ACORDAJ, Afrodisiace-fara-frontiere, Aurora, Bioenergoterapie, ECLIPSA, HoroScop, Inforenergetica, NOMIA, NumeroLogIA, Numerologie, Radiestezie, Reiki, Tarot, ValeaPlopului1972).
+- ATENȚIE, lipsesc de pe disc: AcademiSearch, Arhiva-fara-frontiere, DataWeave, FreeDetect, MarkdownAtelier, OmniHost, TranslateHub, Undava, Arhiva-LinkedIn, Cadraj, Trade-Free-Link-Guardian, OUTPOST, ScryVeil, Surveyor, Threads-fara-cont, Vitrina, X-fara-cont, VaultCrypt, ATINGERE, Clopotel, ETER, FASCICUL, INDICATIV, PULS, RegexLab, SEOptimum, SEVA, Limpezimea, Nota-Zero, Pendulul, PrintreInteligente, Zicala, AGORA, Cupa-Mondiala-2026, Eclipsa-2027, Horizons.BeyondLimits, Hyper4D, IncredibleCosmos, Nemurirea, orarium, TerRa, Universul-Observabil, Universul-Observabil-1D, Universul-Observabil-2D, Universul-Observabil-3D, VietAR, ExploratoriiEco, FieldObserver, URME, VATRA, ASMR, BorderlessMelodies, CalmWaves, EcoulSpectral, FrequencyLaboratory, generator-frecvente, Akasha, CLEPSIDRA, Belot-fara-frontiere, Carti-de-joc-fara-frontiere, Dame-fara-frontiere, Domino-fara-frontiere, Go-fara-frontiere, Mahjong-fara-frontiere, Profund, Remi-fara-frontiere, Sah-fara-frontiere, Scopone-fara-frontiere, Solitaire-fara-frontiere, Sudoku-fara-frontiere, Table-fara-frontiere, Zaruri-fara-frontiere, AI-Liber, ARENA, LocalMind, Nexus-fara-frontiere, PromptVault, VoiceAtelier, API-fara-frontiere, Constelar, OAZA, Origami, Trusa-fara-frontiere, VNTV, ACORDAJ, Afrodisiace-fara-frontiere, Aurora, Bioenergoterapie, ECLIPSA, HoroScop, Inforenergetica, NOMIA, NumeroLogIA, Numerologie, Radiestezie, Reiki, Tarot, ValeaPlopului1972.
 - De mutat pe origine proprie (sensibile, din hub): **5** cu prioritate 1 (QSO, Poteca, Arbore, Gospodar, Orar), **2** cu prioritate 2 (Lexicon, Bolta).
 
 ## De ce contează originea
@@ -32,7 +33,7 @@ Celelalte aplicații din hub (Curatitor, Provenienta, Fabrica, Alfabete, Decibel
 
 Deja pe origine proprie și sensibile (corect): AcademiSearch (cheie în sessionStorage); TranslateHub (cheie în sessionStorage); VaultCrypt (seif criptat); Nexus-fara-frontiere (chei API pentru modele AI); PromptVault (seif de prompturi); Constelar (cheie API în clar în localStorage (confirmat la audit)).
 
-Depozite fără CNAME (origine partajată cu hub-ul, de aliniat la convenție): Domino-fara-frontiere → `domino-fara-frontiere.chiuta.ro`.
+Depozite fără CNAME (origine partajată cu hub-ul, de aliniat la convenție): AcademiSearch → `academisearch.chiuta.ro`, Arhiva-fara-frontiere → `arhiva-fara-frontiere.chiuta.ro`, DataWeave → `dataweave.chiuta.ro`, FreeDetect → `freedetect.chiuta.ro`, MarkdownAtelier → `markdownatelier.chiuta.ro`, OmniHost → `omnihost.chiuta.ro`, TranslateHub → `translatehub.chiuta.ro`, Undava → `undava.chiuta.ro`, Arhiva-LinkedIn → `arhiva-linkedin.chiuta.ro`, Cadraj → `cadraj.chiuta.ro`, Trade-Free-Link-Guardian → `trade-free-link-guardian.chiuta.ro`, OUTPOST → `outpost.chiuta.ro`, ScryVeil → `scryveil.chiuta.ro`, Surveyor → `surveyor.chiuta.ro`, Threads-fara-cont → `threads-fara-cont.chiuta.ro`, Vitrina → `vitrina.chiuta.ro`, X-fara-cont → `x-fara-cont.chiuta.ro`, VaultCrypt → `vaultcrypt.chiuta.ro`, ATINGERE → `atingere.chiuta.ro`, Clopotel → `clopotel.chiuta.ro`, ETER → `eter.chiuta.ro`, FASCICUL → `fascicul.chiuta.ro`, INDICATIV → `indicativ.chiuta.ro`, PULS → `puls.chiuta.ro`, RegexLab → `regexlab.chiuta.ro`, SEOptimum → `seoptimum.chiuta.ro`, SEVA → `seva.chiuta.ro`, Limpezimea → `limpezimea.chiuta.ro`, Nota-Zero → `nota-zero.chiuta.ro`, Pendulul → `pendulul.chiuta.ro`, PrintreInteligente → `printreinteligente.chiuta.ro`, Zicala → `zicala.chiuta.ro`, AGORA → `agora.chiuta.ro`, Cupa-Mondiala-2026 → `cupa-mondiala-2026.chiuta.ro`, Eclipsa-2027 → `eclipsa-2027.chiuta.ro`, Horizons.BeyondLimits → `horizons-beyondlimits.chiuta.ro`, Hyper4D → `hyper4d.chiuta.ro`, IncredibleCosmos → `incrediblecosmos.chiuta.ro`, Nemurirea → `nemurirea.chiuta.ro`, orarium → `orarium.chiuta.ro`, TerRa → `terra.chiuta.ro`, Universul-Observabil → `universul-observabil.chiuta.ro`, Universul-Observabil-1D → `universul-observabil-1d.chiuta.ro`, Universul-Observabil-2D → `universul-observabil-2d.chiuta.ro`, Universul-Observabil-3D → `universul-observabil-3d.chiuta.ro`, VietAR → `vietar.chiuta.ro`, ExploratoriiEco → `exploratoriieco.chiuta.ro`, FieldObserver → `fieldobserver.chiuta.ro`, URME → `urme.chiuta.ro`, VATRA → `vatra.chiuta.ro`, ASMR → `asmr.chiuta.ro`, BorderlessMelodies → `borderlessmelodies.chiuta.ro`, CalmWaves → `calmwaves.chiuta.ro`, EcoulSpectral → `ecoulspectral.chiuta.ro`, FrequencyLaboratory → `frequencylaboratory.chiuta.ro`, generator-frecvente → `generator-frecvente.chiuta.ro`, Akasha → `akasha.chiuta.ro`, CLEPSIDRA → `clepsidra.chiuta.ro`, Belot-fara-frontiere → `belot-fara-frontiere.chiuta.ro`, Carti-de-joc-fara-frontiere → `carti-de-joc-fara-frontiere.chiuta.ro`, Dame-fara-frontiere → `dame-fara-frontiere.chiuta.ro`, Domino-fara-frontiere → `domino-fara-frontiere.chiuta.ro`, Go-fara-frontiere → `go-fara-frontiere.chiuta.ro`, Mahjong-fara-frontiere → `mahjong-fara-frontiere.chiuta.ro`, Profund → `profund.chiuta.ro`, Remi-fara-frontiere → `remi-fara-frontiere.chiuta.ro`, Sah-fara-frontiere → `sah-fara-frontiere.chiuta.ro`, Scopone-fara-frontiere → `scopone-fara-frontiere.chiuta.ro`, Solitaire-fara-frontiere → `solitaire-fara-frontiere.chiuta.ro`, Sudoku-fara-frontiere → `sudoku-fara-frontiere.chiuta.ro`, Table-fara-frontiere → `table-fara-frontiere.chiuta.ro`, Zaruri-fara-frontiere → `zaruri-fara-frontiere.chiuta.ro`, AI-Liber → `ai-liber.chiuta.ro`, ARENA → `arena.chiuta.ro`, LocalMind → `localmind.chiuta.ro`, Nexus-fara-frontiere → `nexus-fara-frontiere.chiuta.ro`, PromptVault → `promptvault.chiuta.ro`, VoiceAtelier → `voiceatelier.chiuta.ro`, API-fara-frontiere → `api-fara-frontiere.chiuta.ro`, Constelar → `constelar.chiuta.ro`, OAZA → `oaza.chiuta.ro`, Origami → `origami.chiuta.ro`, Trusa-fara-frontiere → `trusa-fara-frontiere.chiuta.ro`, VNTV → `vntv.chiuta.ro`, ACORDAJ → `acordaj.chiuta.ro`, Afrodisiace-fara-frontiere → `afrodisiace-fara-frontiere.chiuta.ro`, Aurora → `aurora.chiuta.ro`, Bioenergoterapie → `bioenergoterapie.chiuta.ro`, ECLIPSA → `eclipsa.chiuta.ro`, HoroScop → `horoscop.chiuta.ro`, Inforenergetica → `inforenergetica.chiuta.ro`, NOMIA → `nomia.chiuta.ro`, NumeroLogIA → `numerologia.chiuta.ro`, Numerologie → `numerologie.chiuta.ro`, Radiestezie → `radiestezie.chiuta.ro`, Reiki → `reiki.chiuta.ro`, Tarot → `tarot.chiuta.ro`, ValeaPlopului1972 → `valeaplopului1972.chiuta.ro`.
 
 ## Pași exacți: DNS și verificarea domeniului chiuta.ro
 
@@ -95,114 +96,114 @@ node tools/cname-inventory.mjs --dns     # informativ: interoghează DNS-ul publ
 
 | Aplicație | Loc | CNAME | Origine | Sensibilă | Observații |
 |---|---|---|---|---|---|
-| AcademiSearch | depozit | `academisearch.chiuta.ro` | proprie: https://academisearch.chiuta.ro/ | pe origine proprie (corect) |  |
-| Arhiva-fara-frontiere | depozit | `arhiva-fara-frontiere.chiuta.ro` | proprie: https://arhiva-fara-frontiere.chiuta.ro/ | — |  |
-| DataWeave | depozit | `dataweave.chiuta.ro` | proprie: https://dataweave.chiuta.ro/ | — |  |
-| FreeDetect | depozit | `freedetect.chiuta.ro` | proprie: https://freedetect.chiuta.ro/ | — |  |
-| MarkdownAtelier | depozit | `markdownatelier.chiuta.ro` | proprie: https://markdownatelier.chiuta.ro/ | — |  |
-| OmniHost | depozit | `omnihost.chiuta.ro` | proprie: https://omnihost.chiuta.ro/ | — |  |
-| TranslateHub | depozit | `translatehub.chiuta.ro` | proprie: https://translatehub.chiuta.ro/ | pe origine proprie (corect) |  |
-| Undava | depozit | `undava.chiuta.ro` | proprie: https://undava.chiuta.ro/ | — |  |
-| Arhiva-LinkedIn | depozit | `arhiva-linkedin.chiuta.ro` | proprie: https://arhiva-linkedin.chiuta.ro/ | — |  |
-| Cadraj | depozit | `cadraj.chiuta.ro` | proprie: https://cadraj.chiuta.ro/ | — |  |
-| Trade-Free-Link-Guardian | depozit | `trade-free-link-guardian.chiuta.ro` | proprie: https://trade-free-link-guardian.chiuta.ro/ | — |  |
-| OUTPOST | depozit | `outpost.chiuta.ro` | proprie: https://outpost.chiuta.ro/ | — |  |
-| ScryVeil | depozit | `scryveil.chiuta.ro` | proprie: https://scryveil.chiuta.ro/ | — |  |
-| Surveyor | depozit | `surveyor.chiuta.ro` | proprie: https://surveyor.chiuta.ro/ | — |  |
-| Threads-fara-cont | depozit | `threads-fara-cont.chiuta.ro` | proprie: https://threads-fara-cont.chiuta.ro/ | — |  |
-| Vitrina | depozit | `vitrina.chiuta.ro` | proprie: https://vitrina.chiuta.ro/ | — |  |
-| X-fara-cont | depozit | `x-fara-cont.chiuta.ro` | proprie: https://x-fara-cont.chiuta.ro/ | — |  |
+| AcademiSearch | LIPSĂ | — | partajată: https://chiuta.ro/AcademiSearch/ (proiect fără CNAME, aceeași origine cu hub-ul) | pe origine proprie (corect) | fără CNAME; propus `academisearch.chiuta.ro` |
+| Arhiva-fara-frontiere | LIPSĂ | — | partajată: https://chiuta.ro/Arhiva-fara-frontiere/ (proiect fără CNAME, aceeași origine cu hub-ul) | — | fără CNAME; propus `arhiva-fara-frontiere.chiuta.ro` |
+| DataWeave | LIPSĂ | — | partajată: https://chiuta.ro/DataWeave/ (proiect fără CNAME, aceeași origine cu hub-ul) | — | fără CNAME; propus `dataweave.chiuta.ro` |
+| FreeDetect | LIPSĂ | — | partajată: https://chiuta.ro/FreeDetect/ (proiect fără CNAME, aceeași origine cu hub-ul) | — | fără CNAME; propus `freedetect.chiuta.ro` |
+| MarkdownAtelier | LIPSĂ | — | partajată: https://chiuta.ro/MarkdownAtelier/ (proiect fără CNAME, aceeași origine cu hub-ul) | — | fără CNAME; propus `markdownatelier.chiuta.ro` |
+| OmniHost | LIPSĂ | — | partajată: https://chiuta.ro/OmniHost/ (proiect fără CNAME, aceeași origine cu hub-ul) | — | fără CNAME; propus `omnihost.chiuta.ro` |
+| TranslateHub | LIPSĂ | — | partajată: https://chiuta.ro/TranslateHub/ (proiect fără CNAME, aceeași origine cu hub-ul) | pe origine proprie (corect) | fără CNAME; propus `translatehub.chiuta.ro` |
+| Undava | LIPSĂ | — | partajată: https://chiuta.ro/Undava/ (proiect fără CNAME, aceeași origine cu hub-ul) | — | fără CNAME; propus `undava.chiuta.ro` |
+| Arhiva-LinkedIn | LIPSĂ | — | partajată: https://chiuta.ro/Arhiva-LinkedIn/ (proiect fără CNAME, aceeași origine cu hub-ul) | — | fără CNAME; propus `arhiva-linkedin.chiuta.ro` |
+| Cadraj | LIPSĂ | — | partajată: https://chiuta.ro/Cadraj/ (proiect fără CNAME, aceeași origine cu hub-ul) | — | fără CNAME; propus `cadraj.chiuta.ro` |
+| Trade-Free-Link-Guardian | LIPSĂ | — | partajată: https://chiuta.ro/Trade-Free-Link-Guardian/ (proiect fără CNAME, aceeași origine cu hub-ul) | — | fără CNAME; propus `trade-free-link-guardian.chiuta.ro` |
+| OUTPOST | LIPSĂ | — | partajată: https://chiuta.ro/OUTPOST/ (proiect fără CNAME, aceeași origine cu hub-ul) | — | fără CNAME; propus `outpost.chiuta.ro` |
+| ScryVeil | LIPSĂ | — | partajată: https://chiuta.ro/ScryVeil/ (proiect fără CNAME, aceeași origine cu hub-ul) | — | fără CNAME; propus `scryveil.chiuta.ro` |
+| Surveyor | LIPSĂ | — | partajată: https://chiuta.ro/Surveyor/ (proiect fără CNAME, aceeași origine cu hub-ul) | — | fără CNAME; propus `surveyor.chiuta.ro` |
+| Threads-fara-cont | LIPSĂ | — | partajată: https://chiuta.ro/Threads-fara-cont/ (proiect fără CNAME, aceeași origine cu hub-ul) | — | fără CNAME; propus `threads-fara-cont.chiuta.ro` |
+| Vitrina | LIPSĂ | — | partajată: https://chiuta.ro/Vitrina/ (proiect fără CNAME, aceeași origine cu hub-ul) | — | fără CNAME; propus `vitrina.chiuta.ro` |
+| X-fara-cont | LIPSĂ | — | partajată: https://chiuta.ro/X-fara-cont/ (proiect fără CNAME, aceeași origine cu hub-ul) | — | fără CNAME; propus `x-fara-cont.chiuta.ro` |
 | Curatitor | hub (apps/) | — | partajată: https://chiuta.ro/apps/Curatitor/ (aceeași origine cu hub-ul și cu celelalte aplicații din hub) | — |  |
 | Provenienta | hub (apps/) | — | partajată: https://chiuta.ro/apps/Provenienta/ (aceeași origine cu hub-ul și cu celelalte aplicații din hub) | — |  |
-| VaultCrypt | depozit | `vaultcrypt.chiuta.ro` | proprie: https://vaultcrypt.chiuta.ro/ | pe origine proprie (corect) |  |
-| ATINGERE | depozit | `atingere.chiuta.ro` | proprie: https://atingere.chiuta.ro/ | — |  |
-| Clopotel | depozit | `clopotel.chiuta.ro` | proprie: https://clopotel.chiuta.ro/ | — |  |
-| ETER | depozit | `eter.chiuta.ro` | proprie: https://eter.chiuta.ro/ | — |  |
+| VaultCrypt | LIPSĂ | — | partajată: https://chiuta.ro/VaultCrypt/ (proiect fără CNAME, aceeași origine cu hub-ul) | pe origine proprie (corect) | fără CNAME; propus `vaultcrypt.chiuta.ro` |
+| ATINGERE | LIPSĂ | — | partajată: https://chiuta.ro/ATINGERE/ (proiect fără CNAME, aceeași origine cu hub-ul) | — | fără CNAME; propus `atingere.chiuta.ro` |
+| Clopotel | LIPSĂ | — | partajată: https://chiuta.ro/Clopotel/ (proiect fără CNAME, aceeași origine cu hub-ul) | — | fără CNAME; propus `clopotel.chiuta.ro` |
+| ETER | LIPSĂ | — | partajată: https://chiuta.ro/ETER/ (proiect fără CNAME, aceeași origine cu hub-ul) | — | fără CNAME; propus `eter.chiuta.ro` |
 | Fabrica | hub (apps/) | — | partajată: https://chiuta.ro/apps/Fabrica/ (aceeași origine cu hub-ul și cu celelalte aplicații din hub) | — |  |
-| FASCICUL | depozit | `fascicul.chiuta.ro` | proprie: https://fascicul.chiuta.ro/ | — |  |
-| INDICATIV | depozit | `indicativ.chiuta.ro` | proprie: https://indicativ.chiuta.ro/ | — |  |
-| PULS | depozit | `puls.chiuta.ro` | proprie: https://puls.chiuta.ro/ | — |  |
+| FASCICUL | LIPSĂ | — | partajată: https://chiuta.ro/FASCICUL/ (proiect fără CNAME, aceeași origine cu hub-ul) | — | fără CNAME; propus `fascicul.chiuta.ro` |
+| INDICATIV | LIPSĂ | — | partajată: https://chiuta.ro/INDICATIV/ (proiect fără CNAME, aceeași origine cu hub-ul) | — | fără CNAME; propus `indicativ.chiuta.ro` |
+| PULS | LIPSĂ | — | partajată: https://chiuta.ro/PULS/ (proiect fără CNAME, aceeași origine cu hub-ul) | — | fără CNAME; propus `puls.chiuta.ro` |
 | QSO | hub (apps/) | — | partajată: https://chiuta.ro/apps/QSO/ (aceeași origine cu hub-ul și cu celelalte aplicații din hub) | DA (prio 1) |  |
-| RegexLab | depozit | `regexlab.chiuta.ro` | proprie: https://regexlab.chiuta.ro/ | — |  |
-| SEOptimum | depozit | `seoptimum.chiuta.ro` | proprie: https://seoptimum.chiuta.ro/ | — |  |
-| SEVA | depozit | `seva.chiuta.ro` | proprie: https://seva.chiuta.ro/ | — |  |
+| RegexLab | LIPSĂ | — | partajată: https://chiuta.ro/RegexLab/ (proiect fără CNAME, aceeași origine cu hub-ul) | — | fără CNAME; propus `regexlab.chiuta.ro` |
+| SEOptimum | LIPSĂ | — | partajată: https://chiuta.ro/SEOptimum/ (proiect fără CNAME, aceeași origine cu hub-ul) | — | fără CNAME; propus `seoptimum.chiuta.ro` |
+| SEVA | LIPSĂ | — | partajată: https://chiuta.ro/SEVA/ (proiect fără CNAME, aceeași origine cu hub-ul) | — | fără CNAME; propus `seva.chiuta.ro` |
 | Alfabete | hub (apps/) | — | partajată: https://chiuta.ro/apps/Alfabete/ (aceeași origine cu hub-ul și cu celelalte aplicații din hub) | — |  |
 | Lexicon | hub (apps/) | — | partajată: https://chiuta.ro/apps/Lexicon/ (aceeași origine cu hub-ul și cu celelalte aplicații din hub) | DA (prio 2) |  |
-| Limpezimea | depozit | `limpezimea.chiuta.ro` | proprie: https://limpezimea.chiuta.ro/ | — |  |
-| Nota-Zero | depozit | `nota-zero.chiuta.ro` | proprie: https://nota-zero.chiuta.ro/ | — |  |
-| Pendulul | depozit | `pendulul.chiuta.ro` | proprie: https://pendulul.chiuta.ro/ | — |  |
-| PrintreInteligente | depozit | `printreinteligente.chiuta.ro` | proprie: https://printreinteligente.chiuta.ro/ | — |  |
-| Zicala | depozit | `zicala.chiuta.ro` | proprie: https://zicala.chiuta.ro/ | — |  |
-| AGORA | depozit | `agora.chiuta.ro` | proprie: https://agora.chiuta.ro/ | — |  |
+| Limpezimea | LIPSĂ | — | partajată: https://chiuta.ro/Limpezimea/ (proiect fără CNAME, aceeași origine cu hub-ul) | — | fără CNAME; propus `limpezimea.chiuta.ro` |
+| Nota-Zero | LIPSĂ | — | partajată: https://chiuta.ro/Nota-Zero/ (proiect fără CNAME, aceeași origine cu hub-ul) | — | fără CNAME; propus `nota-zero.chiuta.ro` |
+| Pendulul | LIPSĂ | — | partajată: https://chiuta.ro/Pendulul/ (proiect fără CNAME, aceeași origine cu hub-ul) | — | fără CNAME; propus `pendulul.chiuta.ro` |
+| PrintreInteligente | LIPSĂ | — | partajată: https://chiuta.ro/PrintreInteligente/ (proiect fără CNAME, aceeași origine cu hub-ul) | — | fără CNAME; propus `printreinteligente.chiuta.ro` |
+| Zicala | LIPSĂ | — | partajată: https://chiuta.ro/Zicala/ (proiect fără CNAME, aceeași origine cu hub-ul) | — | fără CNAME; propus `zicala.chiuta.ro` |
+| AGORA | LIPSĂ | — | partajată: https://chiuta.ro/AGORA/ (proiect fără CNAME, aceeași origine cu hub-ul) | — | fără CNAME; propus `agora.chiuta.ro` |
 | Bolta | hub (apps/) | — | partajată: https://chiuta.ro/apps/Bolta/ (aceeași origine cu hub-ul și cu celelalte aplicații din hub) | DA (prio 2) |  |
-| Cupa-Mondiala-2026 | depozit | `cupa-mondiala-2026.chiuta.ro` | proprie: https://cupa-mondiala-2026.chiuta.ro/ | — |  |
-| Eclipsa-2027 | depozit | `eclipsa-2027.chiuta.ro` | proprie: https://eclipsa-2027.chiuta.ro/ | — |  |
-| Horizons.BeyondLimits | depozit | `horizons-beyondlimits.chiuta.ro` | proprie: https://horizons-beyondlimits.chiuta.ro/ | — |  |
-| Hyper4D | depozit | `hyper4d.chiuta.ro` | proprie: https://hyper4d.chiuta.ro/ | — |  |
-| IncredibleCosmos | depozit | `incrediblecosmos.chiuta.ro` | proprie: https://incrediblecosmos.chiuta.ro/ | — |  |
-| Nemurirea | depozit | `nemurirea.chiuta.ro` | proprie: https://nemurirea.chiuta.ro/ | — |  |
-| orarium | depozit | `orarium.chiuta.ro` | proprie: https://orarium.chiuta.ro/ | — |  |
-| TerRa | depozit | `terra.chiuta.ro` | proprie: https://terra.chiuta.ro/ | — |  |
-| Universul-Observabil | depozit | `universul-observabil.chiuta.ro` | proprie: https://universul-observabil.chiuta.ro/ | — |  |
-| Universul-Observabil-1D | depozit | `universul-observabil-1d.chiuta.ro` | proprie: https://universul-observabil-1d.chiuta.ro/ | — |  |
-| Universul-Observabil-2D | depozit | `universul-observabil-2d.chiuta.ro` | proprie: https://universul-observabil-2d.chiuta.ro/ | — |  |
-| Universul-Observabil-3D | depozit | `universul-observabil-3d.chiuta.ro` | proprie: https://universul-observabil-3d.chiuta.ro/ | — |  |
-| VietAR | depozit | `vietar.chiuta.ro` | proprie: https://vietar.chiuta.ro/ | — |  |
-| ExploratoriiEco | depozit | `exploratoriieco.chiuta.ro` | proprie: https://exploratoriieco.chiuta.ro/ | — |  |
-| FieldObserver | depozit | `fieldobserver.chiuta.ro` | proprie: https://fieldobserver.chiuta.ro/ | — |  |
+| Cupa-Mondiala-2026 | LIPSĂ | — | partajată: https://chiuta.ro/Cupa-Mondiala-2026/ (proiect fără CNAME, aceeași origine cu hub-ul) | — | fără CNAME; propus `cupa-mondiala-2026.chiuta.ro` |
+| Eclipsa-2027 | LIPSĂ | — | partajată: https://chiuta.ro/Eclipsa-2027/ (proiect fără CNAME, aceeași origine cu hub-ul) | — | fără CNAME; propus `eclipsa-2027.chiuta.ro` |
+| Horizons.BeyondLimits | LIPSĂ | — | partajată: https://chiuta.ro/Horizons.BeyondLimits/ (proiect fără CNAME, aceeași origine cu hub-ul) | — | fără CNAME; propus `horizons-beyondlimits.chiuta.ro` |
+| Hyper4D | LIPSĂ | — | partajată: https://chiuta.ro/Hyper4D/ (proiect fără CNAME, aceeași origine cu hub-ul) | — | fără CNAME; propus `hyper4d.chiuta.ro` |
+| IncredibleCosmos | LIPSĂ | — | partajată: https://chiuta.ro/IncredibleCosmos/ (proiect fără CNAME, aceeași origine cu hub-ul) | — | fără CNAME; propus `incrediblecosmos.chiuta.ro` |
+| Nemurirea | LIPSĂ | — | partajată: https://chiuta.ro/Nemurirea/ (proiect fără CNAME, aceeași origine cu hub-ul) | — | fără CNAME; propus `nemurirea.chiuta.ro` |
+| orarium | LIPSĂ | — | partajată: https://chiuta.ro/orarium/ (proiect fără CNAME, aceeași origine cu hub-ul) | — | fără CNAME; propus `orarium.chiuta.ro` |
+| TerRa | LIPSĂ | — | partajată: https://chiuta.ro/TerRa/ (proiect fără CNAME, aceeași origine cu hub-ul) | — | fără CNAME; propus `terra.chiuta.ro` |
+| Universul-Observabil | LIPSĂ | — | partajată: https://chiuta.ro/Universul-Observabil/ (proiect fără CNAME, aceeași origine cu hub-ul) | — | fără CNAME; propus `universul-observabil.chiuta.ro` |
+| Universul-Observabil-1D | LIPSĂ | — | partajată: https://chiuta.ro/Universul-Observabil-1D/ (proiect fără CNAME, aceeași origine cu hub-ul) | — | fără CNAME; propus `universul-observabil-1d.chiuta.ro` |
+| Universul-Observabil-2D | LIPSĂ | — | partajată: https://chiuta.ro/Universul-Observabil-2D/ (proiect fără CNAME, aceeași origine cu hub-ul) | — | fără CNAME; propus `universul-observabil-2d.chiuta.ro` |
+| Universul-Observabil-3D | LIPSĂ | — | partajată: https://chiuta.ro/Universul-Observabil-3D/ (proiect fără CNAME, aceeași origine cu hub-ul) | — | fără CNAME; propus `universul-observabil-3d.chiuta.ro` |
+| VietAR | LIPSĂ | — | partajată: https://chiuta.ro/VietAR/ (proiect fără CNAME, aceeași origine cu hub-ul) | — | fără CNAME; propus `vietar.chiuta.ro` |
+| ExploratoriiEco | LIPSĂ | — | partajată: https://chiuta.ro/ExploratoriiEco/ (proiect fără CNAME, aceeași origine cu hub-ul) | — | fără CNAME; propus `exploratoriieco.chiuta.ro` |
+| FieldObserver | LIPSĂ | — | partajată: https://chiuta.ro/FieldObserver/ (proiect fără CNAME, aceeași origine cu hub-ul) | — | fără CNAME; propus `fieldobserver.chiuta.ro` |
 | Poteca | hub (apps/) | — | partajată: https://chiuta.ro/apps/Poteca/ (aceeași origine cu hub-ul și cu celelalte aplicații din hub) | DA (prio 1) |  |
-| URME | depozit | `urme.chiuta.ro` | proprie: https://urme.chiuta.ro/ | — |  |
-| VATRA | depozit | `vatra.chiuta.ro` | proprie: https://vatra.chiuta.ro/ | — |  |
-| ASMR | depozit | `asmr.chiuta.ro` | proprie: https://asmr.chiuta.ro/ | — |  |
-| BorderlessMelodies | depozit | `borderlessmelodies.chiuta.ro` | proprie: https://borderlessmelodies.chiuta.ro/ | — |  |
-| CalmWaves | depozit | `calmwaves.chiuta.ro` | proprie: https://calmwaves.chiuta.ro/ | — |  |
+| URME | LIPSĂ | — | partajată: https://chiuta.ro/URME/ (proiect fără CNAME, aceeași origine cu hub-ul) | — | fără CNAME; propus `urme.chiuta.ro` |
+| VATRA | LIPSĂ | — | partajată: https://chiuta.ro/VATRA/ (proiect fără CNAME, aceeași origine cu hub-ul) | — | fără CNAME; propus `vatra.chiuta.ro` |
+| ASMR | LIPSĂ | — | partajată: https://chiuta.ro/ASMR/ (proiect fără CNAME, aceeași origine cu hub-ul) | — | fără CNAME; propus `asmr.chiuta.ro` |
+| BorderlessMelodies | LIPSĂ | — | partajată: https://chiuta.ro/BorderlessMelodies/ (proiect fără CNAME, aceeași origine cu hub-ul) | — | fără CNAME; propus `borderlessmelodies.chiuta.ro` |
+| CalmWaves | LIPSĂ | — | partajată: https://chiuta.ro/CalmWaves/ (proiect fără CNAME, aceeași origine cu hub-ul) | — | fără CNAME; propus `calmwaves.chiuta.ro` |
 | Decibel | hub (apps/) | — | partajată: https://chiuta.ro/apps/Decibel/ (aceeași origine cu hub-ul și cu celelalte aplicații din hub) | — |  |
-| EcoulSpectral | depozit | `ecoulspectral.chiuta.ro` | proprie: https://ecoulspectral.chiuta.ro/ | — |  |
-| FrequencyLaboratory | depozit | `frequencylaboratory.chiuta.ro` | proprie: https://frequencylaboratory.chiuta.ro/ | — |  |
-| generator-frecvente | depozit | `generator-frecvente.chiuta.ro` | proprie: https://generator-frecvente.chiuta.ro/ | — |  |
-| Akasha | depozit | `akasha.chiuta.ro` | proprie: https://akasha.chiuta.ro/ | — |  |
+| EcoulSpectral | LIPSĂ | — | partajată: https://chiuta.ro/EcoulSpectral/ (proiect fără CNAME, aceeași origine cu hub-ul) | — | fără CNAME; propus `ecoulspectral.chiuta.ro` |
+| FrequencyLaboratory | LIPSĂ | — | partajată: https://chiuta.ro/FrequencyLaboratory/ (proiect fără CNAME, aceeași origine cu hub-ul) | — | fără CNAME; propus `frequencylaboratory.chiuta.ro` |
+| generator-frecvente | LIPSĂ | — | partajată: https://chiuta.ro/generator-frecvente/ (proiect fără CNAME, aceeași origine cu hub-ul) | — | fără CNAME; propus `generator-frecvente.chiuta.ro` |
+| Akasha | LIPSĂ | — | partajată: https://chiuta.ro/Akasha/ (proiect fără CNAME, aceeași origine cu hub-ul) | — | fără CNAME; propus `akasha.chiuta.ro` |
 | Arbore | hub (apps/) | — | partajată: https://chiuta.ro/apps/Arbore/ (aceeași origine cu hub-ul și cu celelalte aplicații din hub) | DA (prio 1) |  |
-| CLEPSIDRA | depozit | `clepsidra.chiuta.ro` | proprie: https://clepsidra.chiuta.ro/ | — |  |
+| CLEPSIDRA | LIPSĂ | — | partajată: https://chiuta.ro/CLEPSIDRA/ (proiect fără CNAME, aceeași origine cu hub-ul) | — | fără CNAME; propus `clepsidra.chiuta.ro` |
 | Gospodar | hub (apps/) | — | partajată: https://chiuta.ro/apps/Gospodar/ (aceeași origine cu hub-ul și cu celelalte aplicații din hub) | DA (prio 1) |  |
 | Orar | hub (apps/) | — | partajată: https://chiuta.ro/apps/Orar/ (aceeași origine cu hub-ul și cu celelalte aplicații din hub) | DA (prio 1) |  |
-| Belot-fara-frontiere | depozit | `belot-fara-frontiere.chiuta.ro` | proprie: https://belot-fara-frontiere.chiuta.ro/ | — |  |
-| Carti-de-joc-fara-frontiere | depozit | `carti-de-joc-fara-frontiere.chiuta.ro` | proprie: https://carti-de-joc-fara-frontiere.chiuta.ro/ | — |  |
-| Dame-fara-frontiere | depozit | `dame-fara-frontiere.chiuta.ro` | proprie: https://dame-fara-frontiere.chiuta.ro/ | — |  |
-| Domino-fara-frontiere | depozit | — | partajată: https://chiuta.ro/Domino-fara-frontiere/ (proiect fără CNAME, aceeași origine cu hub-ul) | — | fără CNAME; propus `domino-fara-frontiere.chiuta.ro` |
-| Go-fara-frontiere | depozit | `go-fara-frontiere.chiuta.ro` | proprie: https://go-fara-frontiere.chiuta.ro/ | — |  |
-| Mahjong-fara-frontiere | depozit | `mahjong-fara-frontiere.chiuta.ro` | proprie: https://mahjong-fara-frontiere.chiuta.ro/ | — |  |
-| Profund | depozit | `profund.chiuta.ro` | proprie: https://profund.chiuta.ro/ | — |  |
-| Remi-fara-frontiere | depozit | `remi-fara-frontiere.chiuta.ro` | proprie: https://remi-fara-frontiere.chiuta.ro/ | — |  |
-| Sah-fara-frontiere | depozit | `sah-fara-frontiere.chiuta.ro` | proprie: https://sah-fara-frontiere.chiuta.ro/ | — |  |
-| Scopone-fara-frontiere | depozit | `scopone-fara-frontiere.chiuta.ro` | proprie: https://scopone-fara-frontiere.chiuta.ro/ | — |  |
-| Solitaire-fara-frontiere | depozit | `solitaire-fara-frontiere.chiuta.ro` | proprie: https://solitaire-fara-frontiere.chiuta.ro/ | — |  |
-| Sudoku-fara-frontiere | depozit | `sudoku-fara-frontiere.chiuta.ro` | proprie: https://sudoku-fara-frontiere.chiuta.ro/ | — |  |
-| Table-fara-frontiere | depozit | `table-fara-frontiere.chiuta.ro` | proprie: https://table-fara-frontiere.chiuta.ro/ | — |  |
-| Zaruri-fara-frontiere | depozit | `zaruri-fara-frontiere.chiuta.ro` | proprie: https://zaruri-fara-frontiere.chiuta.ro/ | — |  |
-| AI-Liber | depozit | `ai-liber.chiuta.ro` | proprie: https://ai-liber.chiuta.ro/ | — |  |
-| ARENA | depozit | `arena.chiuta.ro` | proprie: https://arena.chiuta.ro/ | — |  |
-| LocalMind | depozit | `localmind.chiuta.ro` | proprie: https://localmind.chiuta.ro/ | — |  |
-| Nexus-fara-frontiere | depozit | `nexus-fara-frontiere.chiuta.ro` | proprie: https://nexus-fara-frontiere.chiuta.ro/ | pe origine proprie (corect) |  |
-| PromptVault | depozit | `promptvault.chiuta.ro` | proprie: https://promptvault.chiuta.ro/ | pe origine proprie (corect) |  |
-| VoiceAtelier | depozit | `voiceatelier.chiuta.ro` | proprie: https://voiceatelier.chiuta.ro/ | — |  |
-| API-fara-frontiere | depozit | `api-fara-frontiere.chiuta.ro` | proprie: https://api-fara-frontiere.chiuta.ro/ | — |  |
-| Constelar | depozit | `constelar.chiuta.ro` | proprie: https://constelar.chiuta.ro/ | pe origine proprie (corect) |  |
-| OAZA | depozit | `oaza.chiuta.ro` | proprie: https://oaza.chiuta.ro/ | — |  |
-| Origami | depozit | `origami.chiuta.ro` | proprie: https://origami.chiuta.ro/ | — |  |
-| Trusa-fara-frontiere | depozit | `trusa-fara-frontiere.chiuta.ro` | proprie: https://trusa-fara-frontiere.chiuta.ro/ | — |  |
-| VNTV | depozit | `vntv.chiuta.ro` | proprie: https://vntv.chiuta.ro/ | — |  |
-| ARMATURA | depozit | `armatura.chiuta.ro` | proprie: https://armatura.chiuta.ro/ | — | proiect Rust (CLI + studio + WASM), site propriu; depozit chiuta/armatura |
-| ACORDAJ | depozit | `acordaj.chiuta.ro` | proprie: https://acordaj.chiuta.ro/ | — |  |
-| Afrodisiace-fara-frontiere | depozit | `afrodisiace-fara-frontiere.chiuta.ro` | proprie: https://afrodisiace-fara-frontiere.chiuta.ro/ | — |  |
-| Aurora | depozit | `aurora.chiuta.ro` | proprie: https://aurora.chiuta.ro/ | — |  |
-| Bioenergoterapie | depozit | `bioenergoterapie.chiuta.ro` | proprie: https://bioenergoterapie.chiuta.ro/ | — |  |
-| ECLIPSA | depozit | `eclipsa.chiuta.ro` | proprie: https://eclipsa.chiuta.ro/ | — |  |
-| HoroScop | depozit | `horoscop.chiuta.ro` | proprie: https://horoscop.chiuta.ro/ | — |  |
-| Inforenergetica | depozit | `inforenergetica.chiuta.ro` | proprie: https://inforenergetica.chiuta.ro/ | — |  |
-| NOMIA | depozit | `nomia.chiuta.ro` | proprie: https://nomia.chiuta.ro/ | — |  |
-| NumeroLogIA | depozit | `numerologia.chiuta.ro` | proprie: https://numerologia.chiuta.ro/ | — |  |
-| Numerologie | depozit | `numerologie.chiuta.ro` | proprie: https://numerologie.chiuta.ro/ | — |  |
-| Radiestezie | depozit | `radiestezie.chiuta.ro` | proprie: https://radiestezie.chiuta.ro/ | — |  |
-| Reiki | depozit | `reiki.chiuta.ro` | proprie: https://reiki.chiuta.ro/ | — |  |
-| Tarot | depozit | `tarot.chiuta.ro` | proprie: https://tarot.chiuta.ro/ | — |  |
-| ValeaPlopului1972 | depozit | `valeaplopului1972.chiuta.ro` | proprie: https://valeaplopului1972.chiuta.ro/ | — |  |
+| Belot-fara-frontiere | LIPSĂ | — | partajată: https://chiuta.ro/Belot-fara-frontiere/ (proiect fără CNAME, aceeași origine cu hub-ul) | — | fără CNAME; propus `belot-fara-frontiere.chiuta.ro` |
+| Carti-de-joc-fara-frontiere | LIPSĂ | — | partajată: https://chiuta.ro/Carti-de-joc-fara-frontiere/ (proiect fără CNAME, aceeași origine cu hub-ul) | — | fără CNAME; propus `carti-de-joc-fara-frontiere.chiuta.ro` |
+| Dame-fara-frontiere | LIPSĂ | — | partajată: https://chiuta.ro/Dame-fara-frontiere/ (proiect fără CNAME, aceeași origine cu hub-ul) | — | fără CNAME; propus `dame-fara-frontiere.chiuta.ro` |
+| Domino-fara-frontiere | LIPSĂ | — | partajată: https://chiuta.ro/Domino-fara-frontiere/ (proiect fără CNAME, aceeași origine cu hub-ul) | — | fără CNAME; propus `domino-fara-frontiere.chiuta.ro` |
+| Go-fara-frontiere | LIPSĂ | — | partajată: https://chiuta.ro/Go-fara-frontiere/ (proiect fără CNAME, aceeași origine cu hub-ul) | — | fără CNAME; propus `go-fara-frontiere.chiuta.ro` |
+| Mahjong-fara-frontiere | LIPSĂ | — | partajată: https://chiuta.ro/Mahjong-fara-frontiere/ (proiect fără CNAME, aceeași origine cu hub-ul) | — | fără CNAME; propus `mahjong-fara-frontiere.chiuta.ro` |
+| Profund | LIPSĂ | — | partajată: https://chiuta.ro/Profund/ (proiect fără CNAME, aceeași origine cu hub-ul) | — | fără CNAME; propus `profund.chiuta.ro` |
+| Remi-fara-frontiere | LIPSĂ | — | partajată: https://chiuta.ro/Remi-fara-frontiere/ (proiect fără CNAME, aceeași origine cu hub-ul) | — | fără CNAME; propus `remi-fara-frontiere.chiuta.ro` |
+| Sah-fara-frontiere | LIPSĂ | — | partajată: https://chiuta.ro/Sah-fara-frontiere/ (proiect fără CNAME, aceeași origine cu hub-ul) | — | fără CNAME; propus `sah-fara-frontiere.chiuta.ro` |
+| Scopone-fara-frontiere | LIPSĂ | — | partajată: https://chiuta.ro/Scopone-fara-frontiere/ (proiect fără CNAME, aceeași origine cu hub-ul) | — | fără CNAME; propus `scopone-fara-frontiere.chiuta.ro` |
+| Solitaire-fara-frontiere | LIPSĂ | — | partajată: https://chiuta.ro/Solitaire-fara-frontiere/ (proiect fără CNAME, aceeași origine cu hub-ul) | — | fără CNAME; propus `solitaire-fara-frontiere.chiuta.ro` |
+| Sudoku-fara-frontiere | LIPSĂ | — | partajată: https://chiuta.ro/Sudoku-fara-frontiere/ (proiect fără CNAME, aceeași origine cu hub-ul) | — | fără CNAME; propus `sudoku-fara-frontiere.chiuta.ro` |
+| Table-fara-frontiere | LIPSĂ | — | partajată: https://chiuta.ro/Table-fara-frontiere/ (proiect fără CNAME, aceeași origine cu hub-ul) | — | fără CNAME; propus `table-fara-frontiere.chiuta.ro` |
+| Zaruri-fara-frontiere | LIPSĂ | — | partajată: https://chiuta.ro/Zaruri-fara-frontiere/ (proiect fără CNAME, aceeași origine cu hub-ul) | — | fără CNAME; propus `zaruri-fara-frontiere.chiuta.ro` |
+| AI-Liber | LIPSĂ | — | partajată: https://chiuta.ro/AI-Liber/ (proiect fără CNAME, aceeași origine cu hub-ul) | — | fără CNAME; propus `ai-liber.chiuta.ro` |
+| ARENA | LIPSĂ | — | partajată: https://chiuta.ro/ARENA/ (proiect fără CNAME, aceeași origine cu hub-ul) | — | fără CNAME; propus `arena.chiuta.ro` |
+| LocalMind | LIPSĂ | — | partajată: https://chiuta.ro/LocalMind/ (proiect fără CNAME, aceeași origine cu hub-ul) | — | fără CNAME; propus `localmind.chiuta.ro` |
+| Nexus-fara-frontiere | LIPSĂ | — | partajată: https://chiuta.ro/Nexus-fara-frontiere/ (proiect fără CNAME, aceeași origine cu hub-ul) | pe origine proprie (corect) | fără CNAME; propus `nexus-fara-frontiere.chiuta.ro` |
+| PromptVault | LIPSĂ | — | partajată: https://chiuta.ro/PromptVault/ (proiect fără CNAME, aceeași origine cu hub-ul) | pe origine proprie (corect) | fără CNAME; propus `promptvault.chiuta.ro` |
+| VoiceAtelier | LIPSĂ | — | partajată: https://chiuta.ro/VoiceAtelier/ (proiect fără CNAME, aceeași origine cu hub-ul) | — | fără CNAME; propus `voiceatelier.chiuta.ro` |
+| API-fara-frontiere | LIPSĂ | — | partajată: https://chiuta.ro/API-fara-frontiere/ (proiect fără CNAME, aceeași origine cu hub-ul) | — | fără CNAME; propus `api-fara-frontiere.chiuta.ro` |
+| Constelar | LIPSĂ | — | partajată: https://chiuta.ro/Constelar/ (proiect fără CNAME, aceeași origine cu hub-ul) | pe origine proprie (corect) | fără CNAME; propus `constelar.chiuta.ro` |
+| OAZA | LIPSĂ | — | partajată: https://chiuta.ro/OAZA/ (proiect fără CNAME, aceeași origine cu hub-ul) | — | fără CNAME; propus `oaza.chiuta.ro` |
+| Origami | LIPSĂ | — | partajată: https://chiuta.ro/Origami/ (proiect fără CNAME, aceeași origine cu hub-ul) | — | fără CNAME; propus `origami.chiuta.ro` |
+| Trusa-fara-frontiere | LIPSĂ | — | partajată: https://chiuta.ro/Trusa-fara-frontiere/ (proiect fără CNAME, aceeași origine cu hub-ul) | — | fără CNAME; propus `trusa-fara-frontiere.chiuta.ro` |
+| VNTV | LIPSĂ | — | partajată: https://chiuta.ro/VNTV/ (proiect fără CNAME, aceeași origine cu hub-ul) | — | fără CNAME; propus `vntv.chiuta.ro` |
+| OSATURA | depozit | `armatura.chiuta.ro` | proprie: https://armatura.chiuta.ro/ | — | proiect Rust (CLI + studio + WASM), site propriu; depozit chiuta/armatura |
+| ACORDAJ | LIPSĂ | — | partajată: https://chiuta.ro/ACORDAJ/ (proiect fără CNAME, aceeași origine cu hub-ul) | — | fără CNAME; propus `acordaj.chiuta.ro` |
+| Afrodisiace-fara-frontiere | LIPSĂ | — | partajată: https://chiuta.ro/Afrodisiace-fara-frontiere/ (proiect fără CNAME, aceeași origine cu hub-ul) | — | fără CNAME; propus `afrodisiace-fara-frontiere.chiuta.ro` |
+| Aurora | LIPSĂ | — | partajată: https://chiuta.ro/Aurora/ (proiect fără CNAME, aceeași origine cu hub-ul) | — | fără CNAME; propus `aurora.chiuta.ro` |
+| Bioenergoterapie | LIPSĂ | — | partajată: https://chiuta.ro/Bioenergoterapie/ (proiect fără CNAME, aceeași origine cu hub-ul) | — | fără CNAME; propus `bioenergoterapie.chiuta.ro` |
+| ECLIPSA | LIPSĂ | — | partajată: https://chiuta.ro/ECLIPSA/ (proiect fără CNAME, aceeași origine cu hub-ul) | — | fără CNAME; propus `eclipsa.chiuta.ro` |
+| HoroScop | LIPSĂ | — | partajată: https://chiuta.ro/HoroScop/ (proiect fără CNAME, aceeași origine cu hub-ul) | — | fără CNAME; propus `horoscop.chiuta.ro` |
+| Inforenergetica | LIPSĂ | — | partajată: https://chiuta.ro/Inforenergetica/ (proiect fără CNAME, aceeași origine cu hub-ul) | — | fără CNAME; propus `inforenergetica.chiuta.ro` |
+| NOMIA | LIPSĂ | — | partajată: https://chiuta.ro/NOMIA/ (proiect fără CNAME, aceeași origine cu hub-ul) | — | fără CNAME; propus `nomia.chiuta.ro` |
+| NumeroLogIA | LIPSĂ | — | partajată: https://chiuta.ro/NumeroLogIA/ (proiect fără CNAME, aceeași origine cu hub-ul) | — | fără CNAME; propus `numerologia.chiuta.ro` |
+| Numerologie | LIPSĂ | — | partajată: https://chiuta.ro/Numerologie/ (proiect fără CNAME, aceeași origine cu hub-ul) | — | fără CNAME; propus `numerologie.chiuta.ro` |
+| Radiestezie | LIPSĂ | — | partajată: https://chiuta.ro/Radiestezie/ (proiect fără CNAME, aceeași origine cu hub-ul) | — | fără CNAME; propus `radiestezie.chiuta.ro` |
+| Reiki | LIPSĂ | — | partajată: https://chiuta.ro/Reiki/ (proiect fără CNAME, aceeași origine cu hub-ul) | — | fără CNAME; propus `reiki.chiuta.ro` |
+| Tarot | LIPSĂ | — | partajată: https://chiuta.ro/Tarot/ (proiect fără CNAME, aceeași origine cu hub-ul) | — | fără CNAME; propus `tarot.chiuta.ro` |
+| ValeaPlopului1972 | LIPSĂ | — | partajată: https://chiuta.ro/ValeaPlopului1972/ (proiect fără CNAME, aceeași origine cu hub-ul) | — | fără CNAME; propus `valeaplopului1972.chiuta.ro` |

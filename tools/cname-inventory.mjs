@@ -45,7 +45,7 @@ const keys = html.split('<div class="app-card"').slice(1).map((c) => (c.match(/d
 const slugOf = (k) => k.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
 
 // Intrări EXTERNE (nu sunt aplicații HTML dintr-un singur fișier; vezi tools/sync-catalog.mjs): origine proprie declarată aici, fără verificare pe disc.
-const EXTERNAL = {ARMATURA: 'armatura.chiuta.ro'};
+const EXTERNAL = {OSATURA: 'armatura.chiuta.ro'};
 
 const rows = keys.map((key) => {
   if (EXTERNAL[key]) {

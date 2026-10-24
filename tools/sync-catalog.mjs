@@ -37,8 +37,8 @@ const ROOT = path.resolve(ri >= 0 ? argv[ri + 1] : path.join(HUB, '..'));
 // Aplicații cu „offline” calificat în text („nu e complet offline”, „snapshot învechit offline”): nu sunt oprite de regulă.
 // Intrări EXTERNE: proiecte care nu sunt aplicații HTML dintr-un singur fișier (fără app.json / index.html de verificat aici).
 // Cardul lor se întreține de mână (versiune, dată, linkuri); sunt numărate în contor, dar nu sunt verificate ca aplicațiile fff.
-// ARMATURA: motor Rust (CLI + studio + WASM), site propriu https://armatura.chiuta.ro/, cod în github.com/chiuta/armatura.
-const EXTERNAL = new Set(['ARMATURA']);
+// OSATURA: motor Rust (CLI + studio + WASM), site propriu https://armatura.chiuta.ro/, cod în github.com/chiuta/armatura.
+const EXTERNAL = new Set(['OSATURA']);
 const LANG_ORDER = ['en', 'ro', 'fr', 'it', 'es', 'pt', 'de', 'hu'];
 const OFFLINE_QUALIFIED = new Set(['TerRa', 'VietAR', 'Pendulul']);   // Pendulul: fișierul salvat se citește offline; aplicația nu înregistrează service worker
 const OFFLINE_RE = /offline|fără conexiune|hors ligne|hors-ligne|senza connessione|sin conexión|sem ligação|sem conexão|ohne verbindung|internet nélkül/i;
