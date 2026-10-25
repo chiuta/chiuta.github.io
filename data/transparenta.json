@@ -267,17 +267,6 @@
    "l": 4
   },
   {
-   "key": "OSATURA",
-   "ver": "0.1.0-alpha",
-   "off": "no",
-   "langs": 1,
-   "hosts": 0,
-   "score": null,
-   "hm": null,
-   "l": null,
-   "ext": true
-  },
-  {
    "key": "ASMR",
    "ver": "1.2.3",
    "off": "full",
@@ -708,6 +697,16 @@
    "l": 5
   },
   {
+   "key": "Monstrarium",
+   "ver": "1.7.1",
+   "off": "full",
+   "langs": 8,
+   "hosts": 0,
+   "score": null,
+   "hm": null,
+   "l": null
+  },
+  {
    "key": "Nemurirea",
    "ver": "1.2.4",
    "off": "full",
@@ -816,6 +815,17 @@
    "score": 9.3,
    "hm": 0,
    "l": 3
+  },
+  {
+   "key": "OSATURA",
+   "ver": "0.1.0-alpha",
+   "off": "no",
+   "langs": 1,
+   "hosts": 0,
+   "score": null,
+   "hm": null,
+   "l": null,
+   "ext": true
   },
   {
    "key": "OUTPOST",
