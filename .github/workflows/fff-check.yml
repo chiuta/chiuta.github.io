@@ -48,10 +48,10 @@ on:
         default: '20'
       playwright-version:
         type: string
-        default: '1.49.1'
+        default: '1.63.0'
       axe-version:
         type: string
-        default: '4.10.2'
+        default: '4.14.0'
       test-timeout-minutes:
         type: number
         default: 15
