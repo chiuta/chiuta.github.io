@@ -132,6 +132,7 @@ jobs:
           echo "CHROMIUM_PATH=$CH" >> "$GITHUB_ENV"
           echo "FFF_AXE=$PWD/node_modules/axe-core/axe.min.js" >> "$GITHUB_ENV"
           echo "AXE_PATH=$PWD/node_modules/axe-core/axe.min.js" >> "$GITHUB_ENV"
+          if grep -rqs "pdftotext" "$APP_DIR/tests" 2>/dev/null; then sudo apt-get install -y -qq poppler-utils >/dev/null; fi
           # compatibilitate cu testele încă neportate (căi /opt/…): vezi fff-kit/tools/portable-tests.mjs
           if grep -rqs "/opt/node-tools\|/opt/pw-browsers" "$APP_DIR/tests" 2>/dev/null; then
             sudo mkdir -p /opt/node-tools /opt/pw-browsers
