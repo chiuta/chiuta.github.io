@@ -155,7 +155,11 @@ jobs:
           fail=0
           for f in "${files[@]}"; do
             echo "::group::$f"
-            if ! node "$f"; then echo "::error file=$f::testul a eșuat"; fail=1; fi
+            node "$f" 2>&1 | tee /tmp/test-out.log; rc=${PIPESTATUS[0]}
+            if [ "$rc" -ne 0 ]; then
+              echo "::error file=$f::testul a eșuat"; fail=1
+              grep -E "FAIL|✘|Error|rror:" /tmp/test-out.log | head -4 | cut -c1-300 | while IFS= read -r l; do echo "::error file=$f::${l//%/%25}"; done
+            fi
             echo "::endgroup::"
           done
           exit $fail
