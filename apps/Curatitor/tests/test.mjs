@@ -23,6 +23,7 @@ const HERE = path.dirname(fileURLToPath(import.meta.url));
 const APP = 'https://curatitor.test/index.html';
 const APP_FILE = path.resolve(HERE, '../index.html');
 const AXE = process.env.AXE_PATH || __fffAxe();
+const KIT = [process.env.FFF_KIT, path.resolve(HERE, '../../../fff-kit'), path.resolve(HERE, '../../chiuta.github.io/fff-kit')].find((d) => d && fs.existsSync(path.join(d, 'build.mjs'))) || path.resolve(HERE, '../../../fff-kit'); // [portabil] kitul se găsește și pentru depozitul separat
 const W = process.env.CURATITOR_TMP || fs.mkdtempSync(path.join(os.tmpdir(), 'curatitor-test-'));
 fs.mkdirSync(W, { recursive: true });
 const have = (c) => spawnSync('which', [c]).status === 0;
@@ -119,7 +120,7 @@ await test('hash-uri CSP pentru TOATE scripturile inline (recalculate independen
   eq((ss.match(/sha256-/g) || []).length, scripts.length, 'hash-uri fără script corespunzător');
   assert(!/unsafe-inline|unsafe-eval/.test(ss), 'script-src slăbit');
   eq((html.match(/<script\b[^>]*\bsrc=/g) || []).length, 0, 'script extern');
-  for (const [cmd, args] of [[process.execPath, [path.resolve(HERE, '../../../fff-kit/build.mjs'), 'check', path.resolve(HERE, '..')]], [process.execPath, [path.resolve(HERE, '../../../fff-kit/pwa/pwa.mjs'), 'check', path.resolve(HERE, '..')]]]) { const r = spawnSync(cmd, args, { encoding: 'utf8' }); assert(r.status === 0, args[1].split('/').slice(-2).join('/') + ' check: ' + r.stdout + r.stderr); }
+  for (const [cmd, args] of [[process.execPath, [path.join(KIT, 'build.mjs'), 'check', path.resolve(HERE, '..')]], [process.execPath, [path.join(KIT, 'pwa/pwa.mjs'), 'check', path.resolve(HERE, '..')]]]) { const r = spawnSync(cmd, args, { encoding: 'utf8' }); assert(r.status === 0, args[1].split('/').slice(-2).join('/') + ' check: ' + r.stdout + r.stderr); }
 });
 
 /* ===================== 2. JPEG ===================== */

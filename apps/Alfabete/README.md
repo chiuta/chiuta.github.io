@@ -2,7 +2,7 @@
 
 **English** · [Română](README.ro.md) · [Français](README.fr.md) · [Italiano](README.it.md) · [Español](README.es.md) · [Português](README.pt.md) · [Deutsch](README.de.md) · [Magyar](README.hu.md)
 
-**Version:** 1.0.6 · **Last updated:** 2026-10-26
+**Version:** 2.0.0 · **Last updated:** 2026-10-26
 
 Interface languages: **Română, English, Français, Italiano, Español, Português (PT), Deutsch, Magyar**
 
@@ -11,6 +11,10 @@ Alfabete is an offline app for alphabets and codes: for each code you get a visu
 ![screenshot](screenshot.en.png)
 
 **Live app:** https://chiuta.github.io/apps/Alfabete/
+
+## New in 2.0.0: the Translator
+
+The "Translator" panel turns one message, live, into Morse, braille, semaphore, Baudot, a phonetic alphabet (your choice) and pigpen, with SVG figures, per-code or all-codes copy, Morse playback with sound and flashing, and a **printable message sheet** (every code, generated locally). Characters with no equivalent in a code are reported per code.
 
 ## How to use
 

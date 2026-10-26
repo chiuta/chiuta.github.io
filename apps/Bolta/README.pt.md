@@ -2,7 +2,7 @@
 
 [English](README.md) · [Română](README.ro.md) · [Français](README.fr.md) · [Italiano](README.it.md) · [Español](README.es.md) · **Português** · [Deutsch](README.de.md) · [Magyar](README.hu.md)
 
-**Versão:** 1.1.9 · **Última atualização:** 2026-10-26
+**Versão:** 2.0.0 · **Última atualização:** 2026-10-26
 
 Idiomas da interface: **Română, English, Français, Italiano, Español, Português (PT), Deutsch, Magyar**
 
@@ -141,3 +141,4 @@ MIT — ver o ficheiro `LICENSE` na raiz do repositório. Os componentes de terc
 ## Ligações profundas
 
 `#sky&t=2087-05-17T02:35:00Z&ll=59.9139,10.7522` abre o céu no momento (UTC, 1900–2100) e no local indicados; os parâmetros inválidos (incluindo datas inexistentes como 2026-02-31) são ignorados, com uma mensagem. O local da ligação só é válido para a sessão atual: não é guardado e não substitui o teu local (usa-se o fuso horário do dispositivo). A ligação funciona também sem nome de separador (`#t=…&ll=…`). `#<separador>` (sky, events, etc.) continua válido.
+- **2.0.0 — 2026-10-26:** «O céu no tempo»: separador Previsão (conjunções Lua–planeta/estrela, ocultações, conjunções planeta–planeta, para o local escolhido), trajetória entre as estrelas e botão «Noite» (do pôr ao nascer do Sol).

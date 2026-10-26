@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="ro" data-fff-hash="bac07d0170e041048b5df29d4aace0952134ab213f174851ad1504ac51064356">
+<html lang="ro" data-fff-hash="1b2814e98b9c2b727350219db45541fa79ae74f589913b28f1ff80d7adb48fe4">
 <head>
 <meta charset="utf-8">
-<!--fff:kit:start v=1 modules=core,store,dialog,label,bundle-->
+<!--fff:kit:start v=1 modules=core,label,bundle-->
 <meta name="fff-app" content="arbore">
-<meta name="fff-modules" content="core,store,dialog,label,bundle">
+<meta name="fff-modules" content="core,label,bundle">
 <style id="fff-style">/* fff-kit · stil comun (prefix fff-). Nu modifică stilul aplicației gazdă. */
 [data-fff-label]{cursor:pointer;text-decoration:underline dotted;text-underline-offset:3px}
 [data-fff-label]:focus-visible{outline:2px solid currentColor;outline-offset:2px;border-radius:3px}
@@ -490,454 +490,6 @@
     if (n < 1048576) return (n / 1024).toFixed(1) + ' KB';
     return (n / 1048576).toFixed(2) + ' MB';
   };
-})();
-/* ---- fff-kit/store ---- */
-/* fff-kit · store — stocare cu prefix de slug: <slug>.<cheie> (JSON sigur, cote/erori prinse, migrare idempotentă a cheilor vechi).
-   Extinde FFF.store din core: get/set/remove/keys lucrează acum pe `<slug>.`; datele kitului din `fff.<slug>.*` (srs, tts) rămân citibile (rezervă la citire). */
-(function () {
-  'use strict';
-  var F = window.FFF;
-  if (!F || !F.store || !F.core || F.store.migrate) return;
-  var S = F.store, SLUG = F.core.slug, PFX = SLUG + '.', LEG = S.prefix;   // LEG = 'fff.<slug>.' (spațiul kitului, din core)
-  var old = {get: S.get, set: S.set, remove: S.remove, keys: S.keys, indexKeys: S.indexKeys};
-  var mem = Object.create(null);
-
-  function lsOk() { return S.available(); }
-  function fail(op, key, e) {
-    var q = !!(e && (e.name === 'QuotaExceededError' || e.name === 'NS_ERROR_DOM_QUOTA_REACHED' || e.code === 22 || e.code === 1014));
-    S.lastError = {op: op, key: key, quota: q, message: String(e && e.message || e)};
-    try { F.bus.emit('store:error', S.lastError); } catch (x) { /* ignorat */ }
-    return S.lastError;
-  }
-  function okKey(k) { return k != null && String(k) !== ''; }
-  function parse(raw, d) {
-    if (raw == null) return d;
-    try { return JSON.parse(raw); } catch (e) { return raw; }   // valoare migrată fără JSON (ex. „dark”): se întoarce ca șir
-  }
-
-  S.appPrefix = PFX;
-  S.lastError = null;
-
-  /** get(cheie, implicit): citește `<slug>.<cheie>`, apoi (rezervă) `fff.<slug>.<cheie>`, apoi memoria (dacă stocarea a fost indisponibilă la scriere). */
-  S.get = function (k, d) {
-    if (!okKey(k)) return d;
-    k = String(k);
-    if (lsOk()) {
-      try {
-        var v = S.raw.get(PFX + k);
-        if (v == null) v = S.raw.get(LEG + k);
-        if (v != null) return parse(v, d);
-      } catch (e) { fail('get', k, e); }
-    }
-    return Object.prototype.hasOwnProperty.call(mem, k) ? mem[k] : d;
-  };
-  /** set(cheie, valoare) → true dacă a ajuns în localStorage; false dacă e înghețat, JSON invalid (circular, BigInt…), cotă depășită sau stocare indisponibilă (valoarea rămâne în memorie). `undefined` = remove. */
-  S.set = function (k, v) {
-    if (!okKey(k)) return false;
-    k = String(k);
-    if (S.frozen()) return false;
-    if (v === undefined) { S.remove(k); return true; }
-    var str;
-    try { str = JSON.stringify(v); } catch (e) { fail('set', k, e); return false; }
-    if (str === undefined) { fail('set', k, new Error('valoare neserializabilă')); return false; }
-    if (lsOk()) {
-      try { S.raw.set(PFX + k, str); delete mem[k]; return true; } catch (e) { fail('set', k, e); }
-    }
-    mem[k] = v;
-    return false;
-  };
-  S.remove = function (k) {
-    if (!okKey(k) || S.frozen()) return;
-    k = String(k);
-    if (lsOk()) { try { S.raw.remove(PFX + k); S.raw.remove(LEG + k); } catch (e) { fail('remove', k, e); } }
-    delete mem[k];
-  };
-  S.has = function (k) {
-    if (!okKey(k)) return false;
-    try { if (lsOk() && (S.raw.get(PFX + k) != null || S.raw.get(LEG + k) != null)) return true; } catch (e) { /* ignorat */ }
-    return Object.prototype.hasOwnProperty.call(mem, String(k));
-  };
-  S.keys = function () {
-    var out = Object.create(null);
-    try {
-      var ls = window.localStorage;
-      for (var i = 0; i < ls.length; i++) {
-        var n = ls.key(i);
-        if (n && n.indexOf(PFX) === 0 && n !== S.indexKey) out[n.slice(PFX.length)] = 1;
-      }
-    } catch (e) { /* ignorat */ }
-    old.keys.call(S).forEach(function (k) { if (k !== '__keys') out[k] = 1; });
-    Object.keys(mem).forEach(function (k) { out[k] = 1; });
-    return Object.keys(out).sort();
-  };
-  /** Cheile cu nume complet ale aplicației: indexate, `<slug>.*` și `fff.<slug>.*`. */
-  S.indexKeys = function () {
-    var out = Object.create(null);
-    old.indexKeys.call(S).forEach(function (k) { out[k] = 1; });
-    try {
-      var ls = window.localStorage;
-      for (var i = 0; i < ls.length; i++) { var n = ls.key(i); if (n && n.indexOf(PFX) === 0) out[n] = 1; }
-    } catch (e) { /* ignorat */ }
-    return Object.keys(out).sort();
-  };
-  /** Este `nume` (complet, din localStorage) o cheie a spațiului aplicației? */
-  S.owns = function (name) { name = String(name); return name.indexOf(PFX) === 0 || name.indexOf(LEG) === 0; };
-
-  /**
-   * migrate({'cheieVeche': 'cheieNouă', 'prefix_*': 'nou.*'}, {wrap, dryRun, dropOld}) → {moved, same, conflicts, missing, errors, frozen}.
-   *  - cheia veche = numele brut din localStorage; cheia nouă = relativă la prefix (FFF.store.get('cheieNouă')); dacă începe deja cu `<slug>.` e luată ca atare.
-   *  - copiază valoarea EXACTĂ (șirul brut), verifică citirea înapoi, abia apoi șterge cheia veche. Nu suprascrie niciodată o valoare nouă existentă:
-   *    dacă ambele există și sunt identice → doar șterge cheia veche; dacă diferă → conflict (rămân ambele; `dropOld:true` șterge totuși cheia veche).
-   *  - idempotentă: a doua rulare nu mai găsește nimic de mutat. Un șablon cu `*` (la sfârșit, în ambele chei) mută toate cheile cu acel prefix.
-   *  - wrap: 'keep' (implicit; valoarea brută e copiată, iar get() întoarce JSON-ul parsat sau șirul brut) | 'string' (valoarea veche este împachetată ca șir JSON: get() întoarce exact șirul vechi).
-   *  - nu face nimic cât timp stocarea e înghețată (restaurare în curs). Emite `store:migrated` pe FFF.bus dacă a mutat ceva. */
-  S.migrate = function (map, opt) {
-    opt = opt || {};
-    var rep = {moved: [], same: [], conflicts: [], missing: [], errors: [], frozen: false};
-    if (S.frozen()) { rep.frozen = true; return rep; }
-    if (!lsOk() || !map || typeof map !== 'object') { if (map && typeof map === 'object') rep.errors.push({key: '*', message: 'stocare indisponibilă'}); return rep; }
-    var ls = window.localStorage, names = [];
-    try { for (var i = 0; i < ls.length; i++) names.push(ls.key(i)); } catch (e) { /* ignorat */ }
-    var pairs = [];
-    Object.keys(map).forEach(function (from) {
-      var to = String(map[from]);
-      if (from.charAt(from.length - 1) === '*') {
-        var fp = from.slice(0, -1), tp = to.charAt(to.length - 1) === '*' ? to.slice(0, -1) : to;
-        names.forEach(function (n) { if (n.indexOf(fp) === 0 && n.indexOf('fff.') !== 0) pairs.push([n, tp + n.slice(fp.length)]); });
-      } else pairs.push([from, to]);
-    });
-    pairs.forEach(function (p) {
-      var from = p[0], full = p[1].indexOf(PFX) === 0 ? p[1] : PFX + p[1];
-      if (!from || from === full || from.indexOf('fff.') === 0 || full === PFX) return;
-      try {
-        var oldV = S.raw.get(from);
-        if (oldV == null) { rep.missing.push(from); return; }
-        var cur = S.raw.get(full), val = opt.wrap === 'string' ? JSON.stringify(oldV) : oldV;
-        if (cur != null) {
-          if (cur === val || cur === oldV) { if (!opt.dryRun) { S.raw.remove(from); S.forget(from); } rep.same.push(from); }
-          else if (opt.dropOld) { if (!opt.dryRun) { S.raw.remove(from); S.forget(from); } rep.conflicts.push({key: from, to: full, dropped: true}); }
-          else rep.conflicts.push({key: from, to: full});
-          return;
-        }
-        if (opt.dryRun) { rep.moved.push(from); return; }
-        S.raw.set(full, val);
-        if (S.raw.get(full) !== val) throw new Error('verificarea citirii înapoi a eșuat');
-        S.raw.remove(from); S.forget(from);
-        rep.moved.push(from);
-      } catch (e) { rep.errors.push({key: from, message: fail('migrate', from, e).message, quota: S.lastError.quota}); }
-    });
-    if (rep.moved.length && !opt.dryRun) { try { F.bus.emit('store:migrated', rep); } catch (e) { /* ignorat */ } }
-    return rep;
-  };
-})();
-/* ---- fff-kit/dialog ---- */
-/* fff-kit · dialog — un singur sistem de dialoguri: confirm/alert/prompt (promisiuni), toast/notify (aria-live), <dialog> modal accesibil. */
-(function () {
-  'use strict';
-  var F = window.FFF;
-  if (!F || F.dialog) return;
-  var doc = document;
-  function T(k, v) { return F.t('dialog', k, v); }
-
-  var uid = 0;
-  var stack = [];   // dialogurile deschise (ultimul = cel de sus)
-
-  /* ---------- DOM mic ---------- */
-  function el(tag, cls, text) {
-    var e = doc.createElement(tag);
-    if (cls) e.className = cls;
-    if (text != null) e.textContent = text;
-    return e;
-  }
-  function btn(label, cls) {
-    var b = el('button', 'fff-btn' + (cls ? ' ' + cls : ''), label);
-    b.type = 'button';
-    return b;
-  }
-
-  /* ---------- tema gazdei (la fel ca în label) ---------- */
-  function hostDark() {
-    function rgba(e) {
-      var m = /rgba?\(([^)]+)\)/.exec(getComputedStyle(e).backgroundColor || '');
-      if (!m) return null;
-      var p = m[1].split(/[ ,\/]+/).map(parseFloat);
-      if (p.length > 3 && p[3] === 0) return null;
-      return p;
-    }
-    var p = (doc.body && rgba(doc.body)) || rgba(doc.documentElement);
-    if (!p) return null;
-    function lin(v) { v /= 255; return v <= 0.03928 ? v / 12.92 : Math.pow((v + 0.055) / 1.055, 2.4); }
-    return (0.2126 * lin(p[0]) + 0.7152 * lin(p[1]) + 0.0722 * lin(p[2])) < 0.18;
-  }
-
-  /* ---------- focus ---------- */
-  var FOCUSABLE = 'button:not([disabled]),input:not([disabled]):not([type=hidden]),textarea:not([disabled]),select:not([disabled]),a[href],summary,[tabindex]:not([tabindex="-1"])';
-  function focusables(root) {
-    return Array.prototype.filter.call(root.querySelectorAll(FOCUSABLE), function (n) {
-      return !n.hidden && !n.closest('[hidden]') && (n.offsetWidth || n.offsetHeight || n.getClientRects().length);
-    });
-  }
-
-  /**
-   * Nucleul: construiește și afișează un dialog.
-   * spec: {kind, title (șir|false), message, body(ctx) → {nodes, focus, value, validate}, buttons: [{label, value|fn, primary, danger}], cancel (valoarea la Esc/închidere),
-   *        focus: indexul butonului focalizat implicit (dacă body nu dă un câmp), small}
-   */
-  function open(spec) {
-    return new Promise(function (resolve) {
-      var id = ++uid, prev = doc.activeElement, settled = false;
-      var d = el('dialog', 'fff-dlg fff-dialog' + (spec.wide ? '' : ' fff-dlg-sm'));
-      d.setAttribute('role', 'dialog');
-      d.setAttribute('aria-modal', 'true');
-      d.setAttribute('data-fff-dialog', spec.kind || 'custom');
-      var inner = el('div', 'fff-in');
-      var titleId = 'fff-dt-' + id, msgId = 'fff-dm-' + id;
-      var hasTitle = spec.title !== false && spec.title !== '' && spec.title != null;
-      if (hasTitle) { var h = el('h2', 'fff-dt', String(spec.title)); h.id = titleId; inner.appendChild(h); }
-      var msg = null;
-      if (spec.message != null && spec.message !== '') {
-        msg = el('p', 'fff-msg', String(spec.message)); msg.id = msgId; inner.appendChild(msg);
-      }
-      if (hasTitle) {
-        d.setAttribute('aria-labelledby', titleId);
-        if (msg) d.setAttribute('aria-describedby', msgId);
-      } else if (msg) d.setAttribute('aria-labelledby', msgId);
-      else d.setAttribute('aria-label', T('title_alert'));
-      var ctx = {id: id, msgId: msg ? msgId : titleId, finish: null};
-      var body = spec.body ? spec.body(ctx) : null;
-      if (body && body.nodes) body.nodes.forEach(function (n) { inner.appendChild(n); });
-      var row = el('div', 'fff-row fff-end');
-      var btns = [];
-      function finish(v) {
-        if (settled) return;
-        settled = true;
-        stack = stack.filter(function (x) { return x !== d; });
-        try { if (d.open) d.close(); } catch (e) { /* ignorat */ }
-        d.remove();
-        try { doc.removeEventListener('focusin', trap, true); } catch (e) { /* ignorat */ }
-        if (prev && prev !== doc.body && prev.focus && doc.contains(prev)) { try { prev.focus(); } catch (e) { /* ignorat */ } }
-        resolve(v);
-      }
-      ctx.finish = finish;
-      (spec.buttons || []).forEach(function (b) {
-        var e = btn(b.label, (b.primary ? 'fff-primary' : '') + (b.danger ? ' fff-danger' : ''));
-        e.addEventListener('click', function () {
-          if (b.check) { var r = b.check(); if (r === false) return; }
-          finish(typeof b.value === 'function' ? b.value() : b.value);
-        });
-        row.appendChild(e); btns.push(e);
-      });
-      inner.appendChild(row);
-      d.appendChild(inner);
-      ctx.buttons = btns;
-      /* Esc (nativ: evenimentul cancel; rezervă fără showModal: keydown) + capcana de focus (Tab/Shift+Tab ciclează în dialog) */
-      d.addEventListener('cancel', function (e) { e.preventDefault(); finish(spec.cancel); });
-      d.addEventListener('keydown', function (e) {
-        if (e.key === 'Escape') { e.preventDefault(); e.stopPropagation(); finish(spec.cancel); return; }
-        if (e.key !== 'Tab') return;
-        var f = focusables(d);
-        if (!f.length) { e.preventDefault(); d.focus(); return; }
-        var first = f[0], last = f[f.length - 1], a = doc.activeElement;
-        if (e.shiftKey && (a === first || !d.contains(a))) { e.preventDefault(); last.focus(); }
-        else if (!e.shiftKey && (a === last || !d.contains(a))) { e.preventDefault(); first.focus(); }
-      });
-      function trap(e) {
-        if (stack[stack.length - 1] !== d || d.contains(e.target)) return;
-        var f = focusables(d); if (f.length) f[0].focus();
-      }
-      d.setAttribute('tabindex', '-1');
-      var dark = hostDark();
-      if (dark === true) d.classList.add('fff-dark'); else if (dark === false) d.classList.add('fff-light');
-      (doc.body || doc.documentElement).appendChild(d);
-      stack.push(d);
-      if (typeof d.showModal === 'function') d.showModal(); else d.setAttribute('open', '');
-      doc.addEventListener('focusin', trap, true);
-      raiseToasts();
-      var target = (body && body.focus) || (btns[spec.focus == null ? btns.length - 1 : spec.focus]) || d;
-      try { target.focus(); if (body && body.select && target.select) target.select(); } catch (e) { /* ignorat */ }
-      d._fffClose = function () { finish(spec.cancel); };
-    });
-  }
-
-  function opts(o) { return o && typeof o === 'object' ? o : {}; }
-  function title(o, key) { return o.title === false ? false : (o.title != null ? o.title : T(key)); }
-
-  /* ---------- confirm / alert / prompt / show / choice ---------- */
-  /** confirm(mesaj, {title, yes, no, danger, focus:'yes'|'no'}) → Promise<boolean>. Esc / Anulează → false. Focusul implicit: „Anulează” (acțiunea sigură). */
-  function confirm(message, o) {
-    o = opts(o);
-    return open({
-      kind: 'confirm', title: title(o, 'title_confirm'), message: message, cancel: false,
-      buttons: [{label: o.no || T('cancel'), value: false}, {label: o.yes || T('yes'), value: true, primary: true, danger: !!o.danger}],
-      focus: o.focus === 'yes' ? 1 : 0
-    });
-  }
-  /** alert(mesaj, {title, ok}) → Promise<void>. */
-  function alertDlg(message, o) {
-    o = opts(o);
-    return open({kind: 'alert', title: title(o, 'title_alert'), message: message, cancel: undefined, buttons: [{label: o.ok || T('ok'), value: undefined, primary: true}], focus: 0});
-  }
-  /** prompt(mesaj, valoareImplicită, {title, yes, no, type, multiline, placeholder, maxlength, inputmode, autocomplete, required, validate(v) → șir de eroare|falsy}) → Promise<string|null>. */
-  function prompt(message, def, o) {
-    if (def && typeof def === 'object') { o = def; def = o.value; }
-    o = opts(o);
-    var input, err, ok;
-    return open({
-      kind: 'prompt', title: title(o, 'title_prompt'), message: message, cancel: null,
-      body: function (ctx) {
-        input = o.multiline ? el('textarea', 'fff-input') : el('input', 'fff-input');
-        if (!o.multiline) input.type = o.type || 'text'; else input.rows = o.rows || 4;
-        input.value = def == null ? '' : String(def);
-        input.setAttribute('aria-labelledby', ctx.msgId);
-        if (o.placeholder) input.placeholder = o.placeholder;
-        if (o.maxlength) input.maxLength = o.maxlength;
-        if (o.inputmode) input.setAttribute('inputmode', o.inputmode);
-        input.autocomplete = o.autocomplete || 'off';
-        if (o.required) input.required = true;
-        err = el('p', 'fff-res fff-sm fff-bad');
-        err.id = 'fff-de-' + ctx.id; err.setAttribute('role', 'alert');
-        input.setAttribute('aria-describedby', err.id);
-        input.addEventListener('input', function () { err.textContent = ''; input.removeAttribute('aria-invalid'); });
-        input.addEventListener('keydown', function (e) {
-          if (e.key === 'Enter' && !e.shiftKey && !o.multiline) { e.preventDefault(); if (ok.check() !== false) ctx.finish(input.value); }
-          else if (e.key === 'Enter' && o.multiline && (e.ctrlKey || e.metaKey)) { e.preventDefault(); if (ok.check() !== false) ctx.finish(input.value); }
-        });
-        var wrap = el('div', 'fff-field'); wrap.appendChild(input); wrap.appendChild(err);
-        return {nodes: [wrap], focus: input, select: true};
-      },
-      buttons: [{label: o.no || T('cancel'), value: null}, ok = {
-        label: o.yes || T('ok'), primary: true, value: function () { return input.value; },
-        check: function () {
-          var bad = null;
-          if (o.required && !String(input.value).trim()) bad = T('err_required');
-          else if (typeof o.validate === 'function') { try { bad = o.validate(input.value) || null; } catch (e) { bad = String(e && e.message || e); } }
-          if (bad) { err.textContent = String(bad); input.setAttribute('aria-invalid', 'true'); input.focus(); return false; }
-          return true;
-        }
-      }]
-    });
-  }
-  /** show(mesaj, text, {title, ok}) → Promise<void>: text în citire, selectat (pentru copiere). */
-  function showText(message, text, o) {
-    o = opts(o);
-    return open({
-      kind: 'show', title: title(o, 'title_show'), message: message, cancel: undefined,
-      body: function (ctx) {
-        var ta = el('textarea', 'fff-input fff-ta');
-        ta.readOnly = true; ta.rows = o.rows || 3; ta.value = String(text == null ? '' : text);
-        ta.setAttribute('aria-labelledby', ctx.msgId);
-        return {nodes: [ta], focus: ta, select: true};
-      },
-      buttons: [{label: o.ok || T('ok'), value: undefined, primary: true}]
-    });
-  }
-  /** choice(mesaj, [{label, value, primary, danger}], {title}) → Promise<valoare|null>. Primul buton primește focusul. */
-  function choice(message, buttons, o) {
-    o = opts(o);
-    return open({
-      kind: 'choice', title: title(o, 'title_confirm'), message: message, cancel: null,
-      buttons: (buttons || []).map(function (b) { return {label: b.label, value: b.value, primary: !!b.primary, danger: !!b.danger}; }), focus: 0
-    });
-  }
-
-  /* ---------- toast / notify (regiuni aria-live) ---------- */
-  var regions = null, regTimer = 0, toasts = [], pend = [];
-  function ensureRegions(cb) {
-    if (regions) return cb();
-    F.ready(function () {
-      if (regions) return cb();
-      var wrap = el('div', 'fff-toasts');
-      wrap.setAttribute('data-fff-toasts', '');
-      var pol = el('div', 'fff-toast-reg'); pol.setAttribute('role', 'status'); pol.setAttribute('aria-live', 'polite'); pol.setAttribute('aria-relevant', 'additions');
-      var ass = el('div', 'fff-toast-reg'); ass.setAttribute('role', 'alert'); ass.setAttribute('aria-live', 'assertive'); ass.setAttribute('aria-relevant', 'additions');
-      wrap.appendChild(pol); wrap.appendChild(ass);
-      if (typeof wrap.showPopover === 'function') wrap.setAttribute('popover', 'manual');   // strat superior: vizibil și deasupra unui <dialog> modal
-      (doc.body || doc.documentElement).appendChild(wrap);
-      if (typeof wrap.showPopover === 'function') { try { wrap.showPopover(); } catch (e) { /* ignorat */ } }
-      regions = {wrap: wrap, polite: pol, assertive: ass};
-      setTimeout(cb, 80);   // regiunea trebuie să existe în arborele de accesibilitate înainte de a primi text
-    });
-  }
-  function raiseToasts() {
-    if (!regions || !toasts.length || typeof regions.wrap.showPopover !== 'function') return;
-    try { regions.wrap.hidePopover(); regions.wrap.showPopover(); } catch (e) { /* ignorat */ }
-  }
-  function dropRegionsLater() {
-    clearTimeout(regTimer);
-    regTimer = setTimeout(function () {
-      if (toasts.length || !regions) return;
-      regions.wrap.remove(); regions = null;   // nu rămâne în outerHTML-ul aplicațiilor care își serializează pagina
-    }, 1500);
-  }
-  var TYPES = {info: 1, success: 1, warning: 1, error: 1};
-  /**
-   * toast(mesaj, {type:'info'|'success'|'warning'|'error', timeout (ms; 0 = rămâne până îl închizi), action:{label, onClick}}) → {close(), el}.
-   * error/warning: regiune assertive (role=alert); restul: polite (role=status). Timpul se oprește la hover/focus.
-   */
-  function toast(message, o) {
-    o = opts(o);
-    var type = TYPES[o.type] ? o.type : 'info';
-    var timeout = o.timeout != null ? o.timeout : (type === 'error' ? 8000 : 4500);
-    var handle = {el: null, close: function () { handle._closed = true; if (handle._close) handle._close(); }};
-    pend.push(handle);
-    ensureRegions(function () {
-      pend = pend.filter(function (x) { return x !== handle; });
-      if (handle._closed) { dropRegionsLater(); return; }
-      var t = el('div', 'fff-toast fff-toast-' + type);
-      t.setAttribute('data-type', type);
-      var sr = el('span', 'fff-sr', T('sr_' + type) + ': ');
-      var tx = el('span', 'fff-toast-msg', String(message));
-      t.appendChild(sr); t.appendChild(tx);
-      if (o.action && o.action.label) {
-        var ab = btn(String(o.action.label), 'fff-toast-act');
-        ab.addEventListener('click', function () { try { if (o.action.onClick) o.action.onClick(); } finally { close(); } });
-        t.appendChild(ab);
-      }
-      var xb = btn('×', 'fff-toast-x');
-      xb.setAttribute('aria-label', T('dismiss'));
-      xb.addEventListener('click', function () { close(); });
-      t.appendChild(xb);
-      var reg = (type === 'error' || type === 'warning') ? regions.assertive : regions.polite;
-      while (toasts.length >= 4) toasts[0].close();
-      reg.appendChild(t);
-      var rec = {close: close}, timer = 0, paused = false, left = timeout;
-      toasts.push(rec); handle.el = t;
-      function arm() { clearTimeout(timer); if (timeout > 0 && !paused) { var s = Date.now(); timer = setTimeout(close, left); rec._s = s; } }
-      function pause() { if (paused) return; paused = true; clearTimeout(timer); if (rec._s) left = Math.max(1000, left - (Date.now() - rec._s)); }
-      function resume() { paused = false; arm(); }
-      t.addEventListener('mouseenter', pause); t.addEventListener('mouseleave', resume);
-      t.addEventListener('focusin', pause); t.addEventListener('focusout', resume);
-      function close() {
-        clearTimeout(timer);
-        if (!t.parentNode) return;
-        t.remove();
-        toasts = toasts.filter(function (x) { return x !== rec; });
-        if (!toasts.length) dropRegionsLater();
-      }
-      handle._close = close;
-      arm();
-      raiseToasts();
-    });
-    return handle;
-  }
-  function closeAll() {
-    stack.slice().forEach(function (d) { if (d._fffClose) d._fffClose(); });
-    toasts.slice().forEach(function (t) { t.close(); });
-    pend.slice().forEach(function (h) { h.close(); });
-  }
-
-  F.dialog = {
-    confirm: confirm, alert: alertDlg, prompt: prompt, show: showText, choice: choice,
-    toast: toast, notify: toast, closeAll: closeAll,
-    isOpen: function () { return stack.length > 0; },
-    open: open
-  };
-
-  /* ---------- alias-uri (compatibilitate cu implementările proprii din aplicații: ffAsk/ffShow/ffPrompt) ---------- */
-  function noTitle(o) { o = opts(o); return Object.assign({title: false}, o); }
-  if (!window.ffAsk) window.ffAsk = function (msg, o) { return confirm(String(msg), noTitle(o)); };
-  if (!window.ffShow) window.ffShow = function (msg, text, o) { return showText(String(msg), text, noTitle(o)); };
-  if (!window.ffPrompt) window.ffPrompt = function (msg, def, o) { return prompt(String(msg), def, noTitle(o)); };
 })();
 /* ---- fff-kit/label ---- */
 /* fff-kit · label — dialogul „Transparență”: rețea, stocare, permisiuni, fișier + hash, copie de siguranță. */
@@ -1781,18 +1333,18 @@
   };
 })();
 </script>
-<script type="application/json" id="fff-i18n">{"dialog":{"ro":{"yes":"Da","cancel":"Anulează","ok":"OK","close":"Închide","dismiss":"Închide notificarea","title_confirm":"Confirmare","title_alert":"Atenție","title_prompt":"Introdu o valoare","title_show":"Text","err_required":"Completează acest câmp.","sr_info":"Informație","sr_success":"Reușit","sr_warning":"Avertisment","sr_error":"Eroare"},"en":{"yes":"Yes","cancel":"Cancel","ok":"OK","close":"Close","dismiss":"Dismiss notification","title_confirm":"Confirm","title_alert":"Notice","title_prompt":"Enter a value","title_show":"Text","err_required":"Please fill in this field.","sr_info":"Information","sr_success":"Success","sr_warning":"Warning","sr_error":"Error"},"fr":{"yes":"Oui","cancel":"Annuler","ok":"OK","close":"Fermer","dismiss":"Fermer la notification","title_confirm":"Confirmation","title_alert":"Attention","title_prompt":"Saisissez une valeur","title_show":"Texte","err_required":"Veuillez remplir ce champ.","sr_info":"Information","sr_success":"Réussite","sr_warning":"Avertissement","sr_error":"Erreur"},"it":{"yes":"Sì","cancel":"Annulla","ok":"OK","close":"Chiudi","dismiss":"Chiudi la notifica","title_confirm":"Conferma","title_alert":"Attenzione","title_prompt":"Inserisci un valore","title_show":"Testo","err_required":"Compila questo campo.","sr_info":"Informazione","sr_success":"Operazione riuscita","sr_warning":"Avviso","sr_error":"Errore"},"es":{"yes":"Sí","cancel":"Cancelar","ok":"OK","close":"Cerrar","dismiss":"Cerrar la notificación","title_confirm":"Confirmación","title_alert":"Atención","title_prompt":"Introduce un valor","title_show":"Texto","err_required":"Rellena este campo.","sr_info":"Información","sr_success":"Correcto","sr_warning":"Aviso","sr_error":"Error"},"pt":{"yes":"Sim","cancel":"Cancelar","ok":"OK","close":"Fechar","dismiss":"Fechar a notificação","title_confirm":"Confirmação","title_alert":"Atenção","title_prompt":"Introduza um valor","title_show":"Texto","err_required":"Preencha este campo.","sr_info":"Informação","sr_success":"Sucesso","sr_warning":"Aviso","sr_error":"Erro"},"hu":{"yes":"Igen","cancel":"Mégse","ok":"OK","close":"Bezárás","dismiss":"Értesítés bezárása","title_confirm":"Megerősítés","title_alert":"Figyelem","title_prompt":"Adj meg egy értéket","title_show":"Szöveg","err_required":"Töltsd ki ezt a mezőt.","sr_info":"Információ","sr_success":"Sikeres","sr_warning":"Figyelmeztetés","sr_error":"Hiba"},"de":{"yes":"Ja","cancel":"Abbrechen","ok":"OK","close":"Schließen","dismiss":"Benachrichtigung schließen","title_confirm":"Bestätigung","title_alert":"Hinweis","title_prompt":"Wert eingeben","title_show":"Text","err_required":"Bitte dieses Feld ausfüllen.","sr_info":"Information","sr_success":"Erfolg","sr_warning":"Warnung","sr_error":"Fehler"}},"label":{"ro":{"title":"Transparență","open_hint":"Deschide eticheta de transparență","close":"Închide","disabled":"Funcțiile kitului sunt dezactivate pentru această aplicație: {reason}","self_mod":"Atenție: aplicația își poate salva propria copie (împreună cu datele tale). Suma SHA-256 declarată se aplică doar fișierului distribuit inițial.","net_h":"Rețea","net_none":"0 cereri externe declarate","net_list":"Gazde externe declarate sau permise de politica de securitate (CSP):","net_note":"Declarat la construirea fișierului, prin analiza codului; poți verifica și în fila Rețea a instrumentelor browserului.","net_unknown":"Informații indisponibile: fișierul nu conține descriptorul de transparență.","store_h":"Stocare locală","store_none":"Nicio cheie în localStorage.","store_sum":"{n} chei · {size}","store_key":"Cheie","store_size":"Mărime","store_more":"…și încă {n} chei","store_idb":"Aplicația folosește și IndexedDB, care nu este inclus în copia de siguranță.","store_note":"Datele rămân în acest browser; nimic nu este trimis.","perm_h":"Permisiuni și API-uri folosite","perm_none":"Nu au fost detectate API-uri sensibile.","perm_note":"Detectate static în codul sursă; pentru cele sensibile, browserul îți cere acordul.","perm_cam":"Cameră / microfon","perm_geo":"Locație","perm_rtc":"Conexiuni directe între browsere (WebRTC)","perm_share":"Partajare (Web Share)","perm_notif":"Notificări","perm_tts":"Sinteză vocală","perm_stt":"Recunoaștere vocală","perm_clip":"Clipboard","perm_sw":"Service worker (instalare / offline)","perm_idb":"IndexedDB","perm_ls":"localStorage","perm_crypto":"Criptografie (Web Crypto)","perm_webgl":"WebGL","perm_webgpu":"WebGPU","perm_worker":"Web Worker","perm_bc":"BroadcastChannel","file_h":"Fișier","file_size":"Dimensiune: {size}","file_hash":"SHA-256 declarat:","file_nohash":"Suma de control nu este declarată în acest fișier.","file_how_h":"Cum verifici","file_how":"Alege fișierul descărcat: se calculează SHA-256 după golirea câmpurilor de hash (data-fff-hash și „sha256”) și se compară cu valoarea declarată. Același calcul în terminal:","verify_btn":"Verifică un fișier descărcat…","verify_ok":"Se potrivește: fișierul este identic cu cel declarat.","verify_bad":"Nu se potrivește. Calculat: {got}","verify_err":"Fișierul nu a putut fi citit.","verify_cmd":"Comandă de verificare","bk_h":"Copie de siguranță","bk_hint":"Fișier .fff.json cu datele din localStorage ale aplicației. Varianta criptată folosește AES-GCM 256 cu cheie derivată prin PBKDF2-SHA256 ({iter} de iterații); parola nu poate fi recuperată.","bk_export":"Exportă","bk_export_enc":"Exportă criptat…","bk_import":"Importă…","bk_wipe":"Șterge datele aplicației","bk_pw":"Parolă (min. {n} caractere)","bk_pw2":"Repetă parola","bk_go":"Exportă criptat","bk_pw_file":"Parola fișierului","bk_import_go":"Importă","pw_mismatch":"Parolele nu coincid.","ok_export":"Exportat: {file} ({n} chei).","ok_export_enc":"Exportat criptat: {file} ({n} chei).","ok_import":"Importate {n} chei. Se reîncarcă pagina…","ok_wipe":"Șterse {n} chei. Se reîncarcă pagina…","nothing_to_wipe":"Nu există date de șters.","enter_pw":"Fișierul {file} este criptat: introdu parola.","cancelled":"Anulat.","kit_line":"fff-kit v{v} · module: {mods}","install":"Instalează aplicația"},"en":{"title":"Transparency","open_hint":"Open the transparency label","close":"Close","disabled":"Kit features are disabled for this app: {reason}","self_mod":"Note: this app can save its own copy (together with your data). The declared SHA-256 applies only to the originally distributed file.","net_h":"Network","net_none":"0 external requests declared","net_list":"External hosts declared or allowed by the security policy (CSP):","net_note":"Declared at build time by analysing the code; you can also check the Network tab of your browser tools.","net_unknown":"Information unavailable: the file has no transparency descriptor.","store_h":"Local storage","store_none":"No keys in localStorage.","store_sum":"{n} keys · {size}","store_key":"Key","store_size":"Size","store_more":"…and {n} more keys","store_idb":"The app also uses IndexedDB, which is not included in the backup.","store_note":"Data stays in this browser; nothing is sent.","perm_h":"Permissions and APIs used","perm_none":"No sensitive APIs detected.","perm_note":"Detected statically in the source code; for sensitive ones the browser asks for your consent.","perm_cam":"Camera / microphone","perm_geo":"Location","perm_rtc":"Direct browser-to-browser connections (WebRTC)","perm_share":"Sharing (Web Share)","perm_notif":"Notifications","perm_tts":"Speech synthesis","perm_stt":"Speech recognition","perm_clip":"Clipboard","perm_sw":"Service worker (install / offline)","perm_idb":"IndexedDB","perm_ls":"localStorage","perm_crypto":"Cryptography (Web Crypto)","perm_webgl":"WebGL","perm_webgpu":"WebGPU","perm_worker":"Web Worker","perm_bc":"BroadcastChannel","file_h":"File","file_size":"Size: {size}","file_hash":"Declared SHA-256:","file_nohash":"No checksum is declared in this file.","file_how_h":"How to verify","file_how":"Choose the downloaded file: its SHA-256 is computed after blanking the hash fields (data-fff-hash and \"sha256\") and compared with the declared value. The same computation in a terminal:","verify_btn":"Verify a downloaded file…","verify_ok":"Match: the file is identical to the declared one.","verify_bad":"No match. Computed: {got}","verify_err":"The file could not be read.","verify_cmd":"Verification command","bk_h":"Backup","bk_hint":"A .fff.json file with the app's localStorage data. The encrypted variant uses AES-GCM 256 with a key derived via PBKDF2-SHA256 ({iter} iterations); the password cannot be recovered.","bk_export":"Export","bk_export_enc":"Export encrypted…","bk_import":"Import…","bk_wipe":"Delete app data","bk_pw":"Password (min. {n} characters)","bk_pw2":"Repeat password","bk_go":"Export encrypted","bk_pw_file":"File password","bk_import_go":"Import","pw_mismatch":"Passwords do not match.","ok_export":"Exported: {file} ({n} keys).","ok_export_enc":"Exported encrypted: {file} ({n} keys).","ok_import":"Imported {n} keys. Reloading the page…","ok_wipe":"Deleted {n} keys. Reloading the page…","nothing_to_wipe":"There is no data to delete.","enter_pw":"The file {file} is encrypted: enter the password.","cancelled":"Cancelled.","kit_line":"fff-kit v{v} · modules: {mods}","install":"Install the app"},"fr":{"title":"Transparence","open_hint":"Ouvrir l’étiquette de transparence","close":"Fermer","disabled":"Les fonctions du kit sont désactivées pour cette application : {reason}","self_mod":"Attention : cette application peut enregistrer sa propre copie (avec vos données). Le SHA-256 déclaré ne vaut que pour le fichier distribué à l’origine.","net_h":"Réseau","net_none":"0 requête externe déclarée","net_list":"Hôtes externes déclarés ou autorisés par la politique de sécurité (CSP) :","net_note":"Déclaré à la construction par analyse du code ; vous pouvez aussi vérifier dans l’onglet Réseau des outils du navigateur.","net_unknown":"Informations indisponibles : le fichier ne contient pas de descripteur de transparence.","store_h":"Stockage local","store_none":"Aucune clé dans localStorage.","store_sum":"{n} clés · {size}","store_key":"Clé","store_size":"Taille","store_more":"…et {n} clés de plus","store_idb":"L’application utilise aussi IndexedDB, non inclus dans la sauvegarde.","store_note":"Les données restent dans ce navigateur ; rien n’est envoyé.","perm_h":"Autorisations et API utilisées","perm_none":"Aucune API sensible détectée.","perm_note":"Détectées statiquement dans le code source ; pour les API sensibles, le navigateur demande votre accord.","perm_cam":"Caméra / microphone","perm_geo":"Localisation","perm_rtc":"Connexions directes entre navigateurs (WebRTC)","perm_share":"Partage (Web Share)","perm_notif":"Notifications","perm_tts":"Synthèse vocale","perm_stt":"Reconnaissance vocale","perm_clip":"Presse-papiers","perm_sw":"Service worker (installation / hors ligne)","perm_idb":"IndexedDB","perm_ls":"localStorage","perm_crypto":"Cryptographie (Web Crypto)","perm_webgl":"WebGL","perm_webgpu":"WebGPU","perm_worker":"Web Worker","perm_bc":"BroadcastChannel","file_h":"Fichier","file_size":"Taille : {size}","file_hash":"SHA-256 déclaré :","file_nohash":"Aucune somme de contrôle n’est déclarée dans ce fichier.","file_how_h":"Comment vérifier","file_how":"Choisissez le fichier téléchargé : son SHA-256 est calculé après avoir vidé les champs de hachage (data-fff-hash et « sha256 ») puis comparé à la valeur déclarée. Même calcul dans un terminal :","verify_btn":"Vérifier un fichier téléchargé…","verify_ok":"Concordance : le fichier est identique à celui déclaré.","verify_bad":"Pas de concordance. Calculé : {got}","verify_err":"Le fichier n’a pas pu être lu.","verify_cmd":"Commande de vérification","bk_h":"Sauvegarde","bk_hint":"Un fichier .fff.json avec les données localStorage de l’application. La variante chiffrée utilise AES-GCM 256 avec une clé dérivée par PBKDF2-SHA256 ({iter} itérations) ; le mot de passe est irrécupérable.","bk_export":"Exporter","bk_export_enc":"Exporter chiffré…","bk_import":"Importer…","bk_wipe":"Supprimer les données de l’application","bk_pw":"Mot de passe (min. {n} caractères)","bk_pw2":"Répéter le mot de passe","bk_go":"Exporter chiffré","bk_pw_file":"Mot de passe du fichier","bk_import_go":"Importer","pw_mismatch":"Les mots de passe ne correspondent pas.","ok_export":"Exporté : {file} ({n} clés).","ok_export_enc":"Exporté chiffré : {file} ({n} clés).","ok_import":"{n} clés importées. Rechargement de la page…","ok_wipe":"{n} clés supprimées. Rechargement de la page…","nothing_to_wipe":"Aucune donnée à supprimer.","enter_pw":"Le fichier {file} est chiffré : saisissez le mot de passe.","cancelled":"Annulé.","kit_line":"fff-kit v{v} · modules : {mods}","install":"Installer l’application"},"it":{"title":"Trasparenza","open_hint":"Apri l’etichetta di trasparenza","close":"Chiudi","disabled":"Le funzioni del kit sono disattivate per questa app: {reason}","self_mod":"Attenzione: questa app può salvare una propria copia (insieme ai tuoi dati). Lo SHA-256 dichiarato vale solo per il file distribuito in origine.","net_h":"Rete","net_none":"0 richieste esterne dichiarate","net_list":"Host esterni dichiarati o consentiti dalla politica di sicurezza (CSP):","net_note":"Dichiarato in fase di costruzione tramite analisi del codice; puoi controllare anche nella scheda Rete degli strumenti del browser.","net_unknown":"Informazioni non disponibili: il file non contiene il descrittore di trasparenza.","store_h":"Archiviazione locale","store_none":"Nessuna chiave in localStorage.","store_sum":"{n} chiavi · {size}","store_key":"Chiave","store_size":"Dimensione","store_more":"…e altre {n} chiavi","store_idb":"L’app usa anche IndexedDB, non incluso nel backup.","store_note":"I dati restano in questo browser; non viene inviato nulla.","perm_h":"Permessi e API usati","perm_none":"Nessuna API sensibile rilevata.","perm_note":"Rilevate in modo statico nel codice sorgente; per quelle sensibili il browser chiede il tuo consenso.","perm_cam":"Fotocamera / microfono","perm_geo":"Posizione","perm_rtc":"Connessioni dirette tra browser (WebRTC)","perm_share":"Condivisione (Web Share)","perm_notif":"Notifiche","perm_tts":"Sintesi vocale","perm_stt":"Riconoscimento vocale","perm_clip":"Appunti","perm_sw":"Service worker (installazione / offline)","perm_idb":"IndexedDB","perm_ls":"localStorage","perm_crypto":"Crittografia (Web Crypto)","perm_webgl":"WebGL","perm_webgpu":"WebGPU","perm_worker":"Web Worker","perm_bc":"BroadcastChannel","file_h":"File","file_size":"Dimensione: {size}","file_hash":"SHA-256 dichiarato:","file_nohash":"In questo file non è dichiarata alcuna somma di controllo.","file_how_h":"Come verificare","file_how":"Scegli il file scaricato: ne viene calcolato lo SHA-256 dopo aver svuotato i campi hash (data-fff-hash e «sha256») e confrontato con il valore dichiarato. Lo stesso calcolo da terminale:","verify_btn":"Verifica un file scaricato…","verify_ok":"Corrisponde: il file è identico a quello dichiarato.","verify_bad":"Non corrisponde. Calcolato: {got}","verify_err":"Impossibile leggere il file.","verify_cmd":"Comando di verifica","bk_h":"Copia di sicurezza","bk_hint":"Un file .fff.json con i dati localStorage dell’app. La variante cifrata usa AES-GCM 256 con chiave derivata tramite PBKDF2-SHA256 ({iter} iterazioni); la password non è recuperabile.","bk_export":"Esporta","bk_export_enc":"Esporta cifrato…","bk_import":"Importa…","bk_wipe":"Elimina i dati dell’app","bk_pw":"Password (min. {n} caratteri)","bk_pw2":"Ripeti la password","bk_go":"Esporta cifrato","bk_pw_file":"Password del file","bk_import_go":"Importa","pw_mismatch":"Le password non coincidono.","ok_export":"Esportato: {file} ({n} chiavi).","ok_export_enc":"Esportato cifrato: {file} ({n} chiavi).","ok_import":"Importate {n} chiavi. Ricarico la pagina…","ok_wipe":"Eliminate {n} chiavi. Ricarico la pagina…","nothing_to_wipe":"Non ci sono dati da eliminare.","enter_pw":"Il file {file} è cifrato: inserisci la password.","cancelled":"Annullato.","kit_line":"fff-kit v{v} · moduli: {mods}","install":"Installa l’app"},"es":{"title":"Transparencia","open_hint":"Abrir la etiqueta de transparencia","close":"Cerrar","disabled":"Las funciones del kit están desactivadas para esta aplicación: {reason}","self_mod":"Atención: esta aplicación puede guardar su propia copia (junto con tus datos). El SHA-256 declarado solo vale para el archivo distribuido originalmente.","net_h":"Red","net_none":"0 solicitudes externas declaradas","net_list":"Hosts externos declarados o permitidos por la política de seguridad (CSP):","net_note":"Declarado al construir el archivo mediante análisis del código; también puedes comprobarlo en la pestaña Red de las herramientas del navegador.","net_unknown":"Información no disponible: el archivo no contiene el descriptor de transparencia.","store_h":"Almacenamiento local","store_none":"Ninguna clave en localStorage.","store_sum":"{n} claves · {size}","store_key":"Clave","store_size":"Tamaño","store_more":"…y {n} claves más","store_idb":"La aplicación también usa IndexedDB, que no se incluye en la copia de seguridad.","store_note":"Los datos permanecen en este navegador; no se envía nada.","perm_h":"Permisos y API usadas","perm_none":"No se detectaron API sensibles.","perm_note":"Detectadas de forma estática en el código fuente; para las sensibles, el navegador pide tu consentimiento.","perm_cam":"Cámara / micrófono","perm_geo":"Ubicación","perm_rtc":"Conexiones directas entre navegadores (WebRTC)","perm_share":"Compartir (Web Share)","perm_notif":"Notificaciones","perm_tts":"Síntesis de voz","perm_stt":"Reconocimiento de voz","perm_clip":"Portapapeles","perm_sw":"Service worker (instalación / sin conexión)","perm_idb":"IndexedDB","perm_ls":"localStorage","perm_crypto":"Criptografía (Web Crypto)","perm_webgl":"WebGL","perm_webgpu":"WebGPU","perm_worker":"Web Worker","perm_bc":"BroadcastChannel","file_h":"Archivo","file_size":"Tamaño: {size}","file_hash":"SHA-256 declarado:","file_nohash":"Este archivo no declara ninguna suma de verificación.","file_how_h":"Cómo verificar","file_how":"Elige el archivo descargado: se calcula su SHA-256 tras vaciar los campos de hash (data-fff-hash y «sha256») y se compara con el valor declarado. El mismo cálculo en una terminal:","verify_btn":"Verificar un archivo descargado…","verify_ok":"Coincide: el archivo es idéntico al declarado.","verify_bad":"No coincide. Calculado: {got}","verify_err":"No se pudo leer el archivo.","verify_cmd":"Comando de verificación","bk_h":"Copia de seguridad","bk_hint":"Un archivo .fff.json con los datos de localStorage de la aplicación. La variante cifrada usa AES-GCM 256 con clave derivada mediante PBKDF2-SHA256 ({iter} iteraciones); la contraseña no se puede recuperar.","bk_export":"Exportar","bk_export_enc":"Exportar cifrado…","bk_import":"Importar…","bk_wipe":"Borrar los datos de la aplicación","bk_pw":"Contraseña (mín. {n} caracteres)","bk_pw2":"Repite la contraseña","bk_go":"Exportar cifrado","bk_pw_file":"Contraseña del archivo","bk_import_go":"Importar","pw_mismatch":"Las contraseñas no coinciden.","ok_export":"Exportado: {file} ({n} claves).","ok_export_enc":"Exportado cifrado: {file} ({n} claves).","ok_import":"{n} claves importadas. Recargando la página…","ok_wipe":"{n} claves borradas. Recargando la página…","nothing_to_wipe":"No hay datos que borrar.","enter_pw":"El archivo {file} está cifrado: introduce la contraseña.","cancelled":"Cancelado.","kit_line":"fff-kit v{v} · módulos: {mods}","install":"Instalar la aplicación"},"pt":{"title":"Transparência","open_hint":"Abrir a etiqueta de transparência","close":"Fechar","disabled":"As funções do kit estão desativadas para esta aplicação: {reason}","self_mod":"Atenção: esta aplicação pode guardar a sua própria cópia (juntamente com os seus dados). O SHA-256 declarado aplica-se apenas ao ficheiro distribuído originalmente.","net_h":"Rede","net_none":"0 pedidos externos declarados","net_list":"Anfitriões externos declarados ou permitidos pela política de segurança (CSP):","net_note":"Declarado na construção do ficheiro, por análise do código; pode também verificar no separador Rede das ferramentas do navegador.","net_unknown":"Informação indisponível: o ficheiro não contém o descritor de transparência.","store_h":"Armazenamento local","store_none":"Nenhuma chave em localStorage.","store_sum":"{n} chaves · {size}","store_key":"Chave","store_size":"Tamanho","store_more":"…e mais {n} chaves","store_idb":"A aplicação usa também IndexedDB, que não está incluído na cópia de segurança.","store_note":"Os dados ficam neste navegador; nada é enviado.","perm_h":"Permissões e APIs usadas","perm_none":"Não foram detetadas APIs sensíveis.","perm_note":"Detetadas de forma estática no código-fonte; para as sensíveis, o navegador pede o seu consentimento.","perm_cam":"Câmara / microfone","perm_geo":"Localização","perm_rtc":"Ligações diretas entre navegadores (WebRTC)","perm_share":"Partilha (Web Share)","perm_notif":"Notificações","perm_tts":"Síntese de voz","perm_stt":"Reconhecimento de voz","perm_clip":"Área de transferência","perm_sw":"Service worker (instalação / offline)","perm_idb":"IndexedDB","perm_ls":"localStorage","perm_crypto":"Criptografia (Web Crypto)","perm_webgl":"WebGL","perm_webgpu":"WebGPU","perm_worker":"Web Worker","perm_bc":"BroadcastChannel","file_h":"Ficheiro","file_size":"Tamanho: {size}","file_hash":"SHA-256 declarado:","file_nohash":"Este ficheiro não declara nenhuma soma de verificação.","file_how_h":"Como verificar","file_how":"Escolha o ficheiro descarregado: o seu SHA-256 é calculado após esvaziar os campos de hash (data-fff-hash e «sha256») e comparado com o valor declarado. O mesmo cálculo num terminal:","verify_btn":"Verificar um ficheiro descarregado…","verify_ok":"Coincide: o ficheiro é idêntico ao declarado.","verify_bad":"Não coincide. Calculado: {got}","verify_err":"Não foi possível ler o ficheiro.","verify_cmd":"Comando de verificação","bk_h":"Cópia de segurança","bk_hint":"Um ficheiro .fff.json com os dados de localStorage da aplicação. A variante cifrada usa AES-GCM 256 com chave derivada por PBKDF2-SHA256 ({iter} iterações); a palavra-passe não pode ser recuperada.","bk_export":"Exportar","bk_export_enc":"Exportar cifrado…","bk_import":"Importar…","bk_wipe":"Apagar os dados da aplicação","bk_pw":"Palavra-passe (mín. {n} caracteres)","bk_pw2":"Repita a palavra-passe","bk_go":"Exportar cifrado","bk_pw_file":"Palavra-passe do ficheiro","bk_import_go":"Importar","pw_mismatch":"As palavras-passe não coincidem.","ok_export":"Exportado: {file} ({n} chaves).","ok_export_enc":"Exportado cifrado: {file} ({n} chaves).","ok_import":"{n} chaves importadas. A recarregar a página…","ok_wipe":"{n} chaves apagadas. A recarregar a página…","nothing_to_wipe":"Não há dados para apagar.","enter_pw":"O ficheiro {file} está cifrado: introduza a palavra-passe.","cancelled":"Cancelado.","kit_line":"fff-kit v{v} · módulos: {mods}","install":"Instalar a aplicação"},"hu":{"title":"Átláthatóság","open_hint":"Az átláthatósági címke megnyitása","close":"Bezárás","disabled":"A kit funkciói ki vannak kapcsolva ennél az alkalmazásnál: {reason}","self_mod":"Figyelem: ez az alkalmazás képes saját másolatot menteni (az adataiddal együtt). A megadott SHA-256 csak az eredetileg terjesztett fájlra érvényes.","net_h":"Hálózat","net_none":"0 külső kérés megadva","net_list":"A biztonsági irányelv (CSP) által megadott vagy engedélyezett külső gazdák:","net_note":"Az összeállításkor a kód elemzésével megadva; a böngésző eszközeinek Hálózat lapján is ellenőrizheted.","net_unknown":"Az információ nem érhető el: a fájl nem tartalmaz átláthatósági leírót.","store_h":"Helyi tárolás","store_none":"Nincs kulcs a localStorage-ban.","store_sum":"{n} kulcs · {size}","store_key":"Kulcs","store_size":"Méret","store_more":"…és még {n} kulcs","store_idb":"Az alkalmazás IndexedDB-t is használ, amely nem része a biztonsági mentésnek.","store_note":"Az adatok ebben a böngészőben maradnak; semmi sem kerül elküldésre.","perm_h":"Használt engedélyek és API-k","perm_none":"Nem található érzékeny API.","perm_note":"Statikusan, a forráskódban észlelve; az érzékenyeknél a böngésző a hozzájárulásodat kéri.","perm_cam":"Kamera / mikrofon","perm_geo":"Helyadat","perm_rtc":"Közvetlen böngésző–böngésző kapcsolatok (WebRTC)","perm_share":"Megosztás (Web Share)","perm_notif":"Értesítések","perm_tts":"Beszédszintézis","perm_stt":"Beszédfelismerés","perm_clip":"Vágólap","perm_sw":"Service worker (telepítés / offline)","perm_idb":"IndexedDB","perm_ls":"localStorage","perm_crypto":"Kriptográfia (Web Crypto)","perm_webgl":"WebGL","perm_webgpu":"WebGPU","perm_worker":"Web Worker","perm_bc":"BroadcastChannel","file_h":"Fájl","file_size":"Méret: {size}","file_hash":"Megadott SHA-256:","file_nohash":"Ebben a fájlban nincs megadva ellenőrző összeg.","file_how_h":"Hogyan ellenőrizd","file_how":"Válaszd ki a letöltött fájlt: a program kiszámolja az SHA-256 értéket a hash mezők (data-fff-hash és „sha256”) kiürítése után, és összeveti a megadottal. Ugyanez terminálban:","verify_btn":"Letöltött fájl ellenőrzése…","verify_ok":"Egyezik: a fájl megegyezik a megadottal.","verify_bad":"Nem egyezik. Számított: {got}","verify_err":"A fájlt nem sikerült beolvasni.","verify_cmd":"Ellenőrző parancs","bk_h":"Biztonsági mentés","bk_hint":"Egy .fff.json fájl az alkalmazás localStorage-adataival. A titkosított változat AES-GCM 256-ot használ, PBKDF2-SHA256-tal ({iter} iteráció) származtatott kulccsal; a jelszó nem állítható vissza.","bk_export":"Exportálás","bk_export_enc":"Titkosított exportálás…","bk_import":"Importálás…","bk_wipe":"Az alkalmazás adatainak törlése","bk_pw":"Jelszó (legalább {n} karakter)","bk_pw2":"Jelszó újra","bk_go":"Titkosított exportálás","bk_pw_file":"A fájl jelszava","bk_import_go":"Importálás","pw_mismatch":"A jelszavak nem egyeznek.","ok_export":"Exportálva: {file} ({n} kulcs).","ok_export_enc":"Titkosítva exportálva: {file} ({n} kulcs).","ok_import":"{n} kulcs importálva. Az oldal újratöltése…","ok_wipe":"{n} kulcs törölve. Az oldal újratöltése…","nothing_to_wipe":"Nincs törölhető adat.","enter_pw":"A(z) {file} fájl titkosított: add meg a jelszót.","cancelled":"Megszakítva.","kit_line":"fff-kit v{v} · modulok: {mods}","install":"Alkalmazás telepítése"},"de":{"title":"Transparenz","open_hint":"Transparenz-Etikett öffnen","close":"Schließen","disabled":"Die Kit-Funktionen sind für diese App deaktiviert: {reason}","self_mod":"Hinweis: Diese App kann eine eigene Kopie speichern (samt deiner Daten). Der angegebene SHA-256 gilt nur für die ursprünglich verteilte Datei.","net_h":"Netzwerk","net_none":"0 externe Anfragen angegeben","net_list":"Externe Hosts, die angegeben oder von der Sicherheitsrichtlinie (CSP) erlaubt sind:","net_note":"Beim Erstellen per Code-Analyse angegeben; du kannst es auch im Netzwerk-Tab der Browser-Werkzeuge prüfen.","net_unknown":"Informationen nicht verfügbar: Die Datei enthält keinen Transparenz-Deskriptor.","store_h":"Lokaler Speicher","store_none":"Keine Schlüssel in localStorage.","store_sum":"{n} Schlüssel · {size}","store_key":"Schlüssel","store_size":"Größe","store_more":"…und {n} weitere Schlüssel","store_idb":"Die App nutzt auch IndexedDB, das nicht in der Sicherung enthalten ist.","store_note":"Die Daten bleiben in diesem Browser; nichts wird gesendet.","perm_h":"Verwendete Berechtigungen und APIs","perm_none":"Keine sensiblen APIs erkannt.","perm_note":"Statisch im Quelltext erkannt; bei sensiblen fragt der Browser nach deiner Zustimmung.","perm_cam":"Kamera / Mikrofon","perm_geo":"Standort","perm_rtc":"Direkte Browser-zu-Browser-Verbindungen (WebRTC)","perm_share":"Teilen (Web Share)","perm_notif":"Benachrichtigungen","perm_tts":"Sprachsynthese","perm_stt":"Spracherkennung","perm_clip":"Zwischenablage","perm_sw":"Service Worker (Installation / offline)","perm_idb":"IndexedDB","perm_ls":"localStorage","perm_crypto":"Kryptografie (Web Crypto)","perm_webgl":"WebGL","perm_webgpu":"WebGPU","perm_worker":"Web Worker","perm_bc":"BroadcastChannel","file_h":"Datei","file_size":"Größe: {size}","file_hash":"Angegebener SHA-256:","file_nohash":"In dieser Datei ist keine Prüfsumme angegeben.","file_how_h":"So prüfst du","file_how":"Wähle die heruntergeladene Datei: Ihr SHA-256 wird nach dem Leeren der Hash-Felder (data-fff-hash und „sha256“) berechnet und mit dem angegebenen Wert verglichen. Dieselbe Berechnung im Terminal:","verify_btn":"Heruntergeladene Datei prüfen…","verify_ok":"Übereinstimmung: Die Datei ist identisch mit der angegebenen.","verify_bad":"Keine Übereinstimmung. Berechnet: {got}","verify_err":"Die Datei konnte nicht gelesen werden.","verify_cmd":"Prüfbefehl","bk_h":"Sicherung","bk_hint":"Eine .fff.json-Datei mit den localStorage-Daten der App. Die verschlüsselte Variante nutzt AES-GCM 256 mit einem per PBKDF2-SHA256 ({iter} Iterationen) abgeleiteten Schlüssel; das Passwort ist nicht wiederherstellbar.","bk_export":"Exportieren","bk_export_enc":"Verschlüsselt exportieren…","bk_import":"Importieren…","bk_wipe":"App-Daten löschen","bk_pw":"Passwort (mind. {n} Zeichen)","bk_pw2":"Passwort wiederholen","bk_go":"Verschlüsselt exportieren","bk_pw_file":"Passwort der Datei","bk_import_go":"Importieren","pw_mismatch":"Die Passwörter stimmen nicht überein.","ok_export":"Exportiert: {file} ({n} Schlüssel).","ok_export_enc":"Verschlüsselt exportiert: {file} ({n} Schlüssel).","ok_import":"{n} Schlüssel importiert. Seite wird neu geladen…","ok_wipe":"{n} Schlüssel gelöscht. Seite wird neu geladen…","nothing_to_wipe":"Keine Daten zum Löschen vorhanden.","enter_pw":"Die Datei {file} ist verschlüsselt: Passwort eingeben.","cancelled":"Abgebrochen.","kit_line":"fff-kit v{v} · Module: {mods}","install":"App installieren"}},"bundle":{"ro":{"err_format":"Fișierul nu este o copie de siguranță fff validă.","err_schema":"Schema {v} nu este acceptată (se așteaptă 1).","err_app":"Copia aparține aplicației „{got}”, nu „{want}”.","err_password_required":"Fișierul {file} este criptat: este necesară parola.","err_bad_password":"Parolă greșită sau fișier alterat.","err_pw_short":"Parola trebuie să aibă cel puțin {n} caractere.","err_nocrypto":"Browserul nu oferă Web Crypto (necesită https sau fișier local).","err_read":"Fișierul nu a putut fi citit.","err_too_big":"Fișierul este prea mare.","err_quota":"Spațiul de stocare este plin; nu s-a modificat nimic.","err_key":"Cheie nepermisă în fișier: {k}","yes":"Da","no":"Anulează","wipe_yes":"Șterge","confirm_import":"Imporți {n} chei în „{app}” (versiunea {ver}, exportat la {date})? Valorile existente cu aceleași chei vor fi înlocuite.","confirm_wipe":"Ștergi {n} chei ale acestei aplicații din acest browser? Acțiunea nu poate fi anulată.","err_iter":"Numărul de iterații din fișier este invalid (trebuie să fie un număr întreg între {min} și {max}).","import_keys":"Chei: {list}","import_unknown":"Atenție: {n} chei nu sunt declarate de această aplicație: {list}. Continuă doar dacă ai încredere în fișier.","sens_msg":"Exportul conține date sensibile necriptate (chei: {list}). Îl criptezi cu o parolă? (recomandat)","sens_enc":"Criptează (recomandat)","sens_plain":"Exportă necriptat","pw_prompt":"Alege o parolă pentru fișier (min. {n} caractere). Nu poate fi recuperată dacă o uiți.","pw_label":"Parolă (min. {n} caractere)","pw_label2":"Repetă parola","pw_go":"Exportă criptat","pw_mismatch":"Parolele nu coincid.","pw_weak":"Tărie: slabă","pw_fair":"Tărie: acceptabilă","pw_strong":"Tărie: bună"},"en":{"err_format":"The file is not a valid fff backup.","err_schema":"Schema {v} is not supported (expected 1).","err_app":"This backup belongs to the app \"{got}\", not \"{want}\".","err_password_required":"The file {file} is encrypted: a password is required.","err_bad_password":"Wrong password or altered file.","err_pw_short":"The password must have at least {n} characters.","err_nocrypto":"This browser does not offer Web Crypto (requires https or a local file).","err_read":"The file could not be read.","err_too_big":"The file is too large.","err_quota":"Storage is full; nothing was changed.","err_key":"Key not allowed in file: {k}","yes":"Yes","no":"Cancel","wipe_yes":"Delete","confirm_import":"Import {n} keys into \"{app}\" (version {ver}, exported {date})? Existing values with the same keys will be replaced.","confirm_wipe":"Delete {n} keys of this app from this browser? This cannot be undone.","err_iter":"The number of iterations in the file is invalid (it must be a whole number between {min} and {max}).","import_keys":"Keys: {list}","import_unknown":"Warning: {n} keys are not declared by this app: {list}. Continue only if you trust the file.","sens_msg":"The export contains unencrypted sensitive data (keys: {list}). Encrypt it with a password? (recommended)","sens_enc":"Encrypt (recommended)","sens_plain":"Export unencrypted","pw_prompt":"Choose a password for the file (min. {n} characters). It cannot be recovered if you forget it.","pw_label":"Password (min. {n} characters)","pw_label2":"Repeat password","pw_go":"Export encrypted","pw_mismatch":"Passwords do not match.","pw_weak":"Strength: weak","pw_fair":"Strength: fair","pw_strong":"Strength: good"},"fr":{"err_format":"Le fichier n’est pas une sauvegarde fff valide.","err_schema":"Le schéma {v} n’est pas pris en charge (attendu : 1).","err_app":"Cette sauvegarde appartient à l’application « {got} », pas à « {want} ».","err_password_required":"Le fichier {file} est chiffré : un mot de passe est requis.","err_bad_password":"Mot de passe erroné ou fichier altéré.","err_pw_short":"Le mot de passe doit comporter au moins {n} caractères.","err_nocrypto":"Ce navigateur n’offre pas Web Crypto (https ou fichier local requis).","err_read":"Le fichier n’a pas pu être lu.","err_too_big":"Le fichier est trop volumineux.","err_quota":"Le stockage est plein ; rien n’a été modifié.","err_key":"Clé non autorisée dans le fichier : {k}","yes":"Oui","no":"Annuler","wipe_yes":"Supprimer","confirm_import":"Importer {n} clés dans « {app} » (version {ver}, exporté le {date}) ? Les valeurs existantes ayant les mêmes clés seront remplacées.","confirm_wipe":"Supprimer {n} clés de cette application dans ce navigateur ? Cette action est irréversible.","err_iter":"Le nombre d’itérations du fichier est invalide (il doit être un entier compris entre {min} et {max}).","import_keys":"Clés : {list}","import_unknown":"Attention : {n} clés ne sont pas déclarées par cette application : {list}. Ne continuez que si vous faites confiance au fichier.","sens_msg":"L’export contient des données sensibles non chiffrées (clés : {list}). Le chiffrer avec un mot de passe ? (recommandé)","sens_enc":"Chiffrer (recommandé)","sens_plain":"Exporter sans chiffrement","pw_prompt":"Choisissez un mot de passe pour le fichier (min. {n} caractères). Il est irrécupérable si vous l’oubliez.","pw_label":"Mot de passe (min. {n} caractères)","pw_label2":"Répéter le mot de passe","pw_go":"Exporter chiffré","pw_mismatch":"Les mots de passe ne correspondent pas.","pw_weak":"Robustesse : faible","pw_fair":"Robustesse : correcte","pw_strong":"Robustesse : bonne"},"it":{"err_format":"Il file non è un backup fff valido.","err_schema":"Lo schema {v} non è supportato (atteso: 1).","err_app":"Questo backup appartiene all’app «{got}», non a «{want}».","err_password_required":"Il file {file} è cifrato: serve la password.","err_bad_password":"Password errata o file alterato.","err_pw_short":"La password deve avere almeno {n} caratteri.","err_nocrypto":"Questo browser non offre Web Crypto (serve https o un file locale).","err_read":"Impossibile leggere il file.","err_too_big":"Il file è troppo grande.","err_quota":"Archivio pieno; non è stato modificato nulla.","err_key":"Chiave non consentita nel file: {k}","yes":"Sì","no":"Annulla","wipe_yes":"Elimina","confirm_import":"Importare {n} chiavi in «{app}» (versione {ver}, esportato il {date})? I valori esistenti con le stesse chiavi verranno sostituiti.","confirm_wipe":"Eliminare {n} chiavi di questa app da questo browser? L’azione non è annullabile.","err_iter":"Il numero di iterazioni nel file non è valido (deve essere un intero compreso tra {min} e {max}).","import_keys":"Chiavi: {list}","import_unknown":"Attenzione: {n} chiavi non sono dichiarate da questa app: {list}. Continua solo se ti fidi del file.","sens_msg":"L’esportazione contiene dati sensibili non cifrati (chiavi: {list}). Cifrarla con una password? (consigliato)","sens_enc":"Cifra (consigliato)","sens_plain":"Esporta senza cifratura","pw_prompt":"Scegli una password per il file (min. {n} caratteri). Non è recuperabile se la dimentichi.","pw_label":"Password (min. {n} caratteri)","pw_label2":"Ripeti la password","pw_go":"Esporta cifrato","pw_mismatch":"Le password non coincidono.","pw_weak":"Robustezza: debole","pw_fair":"Robustezza: discreta","pw_strong":"Robustezza: buona"},"es":{"err_format":"El archivo no es una copia de seguridad fff válida.","err_schema":"El esquema {v} no es compatible (se espera 1).","err_app":"Esta copia pertenece a la aplicación «{got}», no a «{want}».","err_password_required":"El archivo {file} está cifrado: se necesita la contraseña.","err_bad_password":"Contraseña incorrecta o archivo alterado.","err_pw_short":"La contraseña debe tener al menos {n} caracteres.","err_nocrypto":"Este navegador no ofrece Web Crypto (requiere https o un archivo local).","err_read":"No se pudo leer el archivo.","err_too_big":"El archivo es demasiado grande.","err_quota":"El almacenamiento está lleno; no se modificó nada.","err_key":"Clave no permitida en el archivo: {k}","yes":"Sí","no":"Cancelar","wipe_yes":"Borrar","confirm_import":"¿Importar {n} claves en «{app}» (versión {ver}, exportado el {date})? Los valores existentes con las mismas claves se sustituirán.","confirm_wipe":"¿Borrar {n} claves de esta aplicación en este navegador? No se puede deshacer.","err_iter":"El número de iteraciones del archivo no es válido (debe ser un entero entre {min} y {max}).","import_keys":"Claves: {list}","import_unknown":"Atención: {n} claves no están declaradas por esta aplicación: {list}. Continúa solo si confías en el archivo.","sens_msg":"La exportación contiene datos sensibles sin cifrar (claves: {list}). ¿Cifrarla con una contraseña? (recomendado)","sens_enc":"Cifrar (recomendado)","sens_plain":"Exportar sin cifrar","pw_prompt":"Elige una contraseña para el archivo (mín. {n} caracteres). No se puede recuperar si la olvidas.","pw_label":"Contraseña (mín. {n} caracteres)","pw_label2":"Repite la contraseña","pw_go":"Exportar cifrado","pw_mismatch":"Las contraseñas no coinciden.","pw_weak":"Seguridad: débil","pw_fair":"Seguridad: aceptable","pw_strong":"Seguridad: buena"},"pt":{"err_format":"O ficheiro não é uma cópia de segurança fff válida.","err_schema":"O esquema {v} não é suportado (esperado: 1).","err_app":"Esta cópia pertence à aplicação «{got}», não a «{want}».","err_password_required":"O ficheiro {file} está cifrado: é necessária a palavra-passe.","err_bad_password":"Palavra-passe errada ou ficheiro alterado.","err_pw_short":"A palavra-passe deve ter pelo menos {n} caracteres.","err_nocrypto":"Este navegador não oferece Web Crypto (requer https ou ficheiro local).","err_read":"Não foi possível ler o ficheiro.","err_too_big":"O ficheiro é demasiado grande.","err_quota":"O armazenamento está cheio; nada foi alterado.","err_key":"Chave não permitida no ficheiro: {k}","yes":"Sim","no":"Cancelar","wipe_yes":"Apagar","confirm_import":"Importar {n} chaves para «{app}» (versão {ver}, exportado em {date})? Os valores existentes com as mesmas chaves serão substituídos.","confirm_wipe":"Apagar {n} chaves desta aplicação neste navegador? Não é possível anular.","err_iter":"O número de iterações do ficheiro é inválido (deve ser um inteiro entre {min} e {max}).","import_keys":"Chaves: {list}","import_unknown":"Atenção: {n} chaves não são declaradas por esta aplicação: {list}. Continue apenas se confiar no ficheiro.","sens_msg":"A exportação contém dados sensíveis não cifrados (chaves: {list}). Cifrá-la com uma palavra-passe? (recomendado)","sens_enc":"Cifrar (recomendado)","sens_plain":"Exportar sem cifrar","pw_prompt":"Escolha uma palavra-passe para o ficheiro (mín. {n} caracteres). Não é recuperável se a esquecer.","pw_label":"Palavra-passe (mín. {n} caracteres)","pw_label2":"Repita a palavra-passe","pw_go":"Exportar cifrado","pw_mismatch":"As palavras-passe não coincidem.","pw_weak":"Robustez: fraca","pw_fair":"Robustez: razoável","pw_strong":"Robustez: boa"},"hu":{"err_format":"A fájl nem érvényes fff biztonsági mentés.","err_schema":"A(z) {v} séma nem támogatott (várt: 1).","err_app":"Ez a mentés a(z) „{got}” alkalmazáshoz tartozik, nem a(z) „{want}” alkalmazáshoz.","err_password_required":"A(z) {file} fájl titkosított: jelszó szükséges.","err_bad_password":"Hibás jelszó vagy módosított fájl.","err_pw_short":"A jelszónak legalább {n} karakter hosszúnak kell lennie.","err_nocrypto":"Ez a böngésző nem kínál Web Crypto-t (https vagy helyi fájl szükséges).","err_read":"A fájlt nem sikerült beolvasni.","err_too_big":"A fájl túl nagy.","err_quota":"A tárhely megtelt; semmi sem változott.","err_key":"Nem engedélyezett kulcs a fájlban: {k}","yes":"Igen","no":"Mégse","wipe_yes":"Törlés","confirm_import":"Importálsz {n} kulcsot a(z) „{app}” alkalmazásba (verzió: {ver}, exportálva: {date})? Az azonos kulcsú meglévő értékek felülíródnak.","confirm_wipe":"Törlöd az alkalmazás {n} kulcsát ebből a böngészőből? Ez nem vonható vissza.","err_iter":"A fájlban szereplő iterációszám érvénytelen (egész számnak kell lennie {min} és {max} között).","import_keys":"Kulcsok: {list}","import_unknown":"Figyelem: {n} kulcsot nem deklarál ez az alkalmazás: {list}. Csak akkor folytasd, ha megbízol a fájlban.","sens_msg":"Az export titkosítatlan érzékeny adatokat tartalmaz (kulcsok: {list}). Titkosítod jelszóval? (ajánlott)","sens_enc":"Titkosítás (ajánlott)","sens_plain":"Exportálás titkosítás nélkül","pw_prompt":"Válassz jelszót a fájlhoz (legalább {n} karakter). Ha elfelejted, nem állítható vissza.","pw_label":"Jelszó (legalább {n} karakter)","pw_label2":"Jelszó ismét","pw_go":"Titkosított exportálás","pw_mismatch":"A jelszavak nem egyeznek.","pw_weak":"Erősség: gyenge","pw_fair":"Erősség: elfogadható","pw_strong":"Erősség: jó"},"de":{"err_format":"Die Datei ist keine gültige fff-Sicherung.","err_schema":"Schema {v} wird nicht unterstützt (erwartet: 1).","err_app":"Diese Sicherung gehört zur App „{got}“, nicht zu „{want}“.","err_password_required":"Die Datei {file} ist verschlüsselt: Passwort erforderlich.","err_bad_password":"Falsches Passwort oder veränderte Datei.","err_pw_short":"Das Passwort muss mindestens {n} Zeichen haben.","err_nocrypto":"Dieser Browser bietet kein Web Crypto (https oder lokale Datei erforderlich).","err_read":"Die Datei konnte nicht gelesen werden.","err_too_big":"Die Datei ist zu groß.","err_quota":"Speicher voll; es wurde nichts geändert.","err_key":"Schlüssel in der Datei nicht erlaubt: {k}","yes":"Ja","no":"Abbrechen","wipe_yes":"Löschen","confirm_import":"{n} Schlüssel in „{app}“ importieren (Version {ver}, exportiert am {date})? Vorhandene Werte mit denselben Schlüsseln werden ersetzt.","confirm_wipe":"{n} Schlüssel dieser App aus diesem Browser löschen? Das kann nicht rückgängig gemacht werden.","err_iter":"Die Anzahl der Iterationen in der Datei ist ungültig (muss eine ganze Zahl zwischen {min} und {max} sein).","import_keys":"Schlüssel: {list}","import_unknown":"Achtung: {n} Schlüssel werden von dieser App nicht deklariert: {list}. Fahre nur fort, wenn du der Datei vertraust.","sens_msg":"Der Export enthält unverschlüsselte sensible Daten (Schlüssel: {list}). Mit einem Passwort verschlüsseln? (empfohlen)","sens_enc":"Verschlüsseln (empfohlen)","sens_plain":"Unverschlüsselt exportieren","pw_prompt":"Wähle ein Passwort für die Datei (mind. {n} Zeichen). Es lässt sich nicht wiederherstellen, wenn du es vergisst.","pw_label":"Passwort (mind. {n} Zeichen)","pw_label2":"Passwort wiederholen","pw_go":"Verschlüsselt exportieren","pw_mismatch":"Die Passwörter stimmen nicht überein.","pw_weak":"Stärke: schwach","pw_fair":"Stärke: ausreichend","pw_strong":"Stärke: gut"}}}</script>
+<script type="application/json" id="fff-i18n">{"label":{"ro":{"title":"Transparență","open_hint":"Deschide eticheta de transparență","close":"Închide","disabled":"Funcțiile kitului sunt dezactivate pentru această aplicație: {reason}","self_mod":"Atenție: aplicația își poate salva propria copie (împreună cu datele tale). Suma SHA-256 declarată se aplică doar fișierului distribuit inițial.","net_h":"Rețea","net_none":"0 cereri externe declarate","net_list":"Gazde externe declarate sau permise de politica de securitate (CSP):","net_note":"Declarat la construirea fișierului, prin analiza codului; poți verifica și în fila Rețea a instrumentelor browserului.","net_unknown":"Informații indisponibile: fișierul nu conține descriptorul de transparență.","store_h":"Stocare locală","store_none":"Nicio cheie în localStorage.","store_sum":"{n} chei · {size}","store_key":"Cheie","store_size":"Mărime","store_more":"…și încă {n} chei","store_idb":"Aplicația folosește și IndexedDB, care nu este inclus în copia de siguranță.","store_note":"Datele rămân în acest browser; nimic nu este trimis.","perm_h":"Permisiuni și API-uri folosite","perm_none":"Nu au fost detectate API-uri sensibile.","perm_note":"Detectate static în codul sursă; pentru cele sensibile, browserul îți cere acordul.","perm_cam":"Cameră / microfon","perm_geo":"Locație","perm_rtc":"Conexiuni directe între browsere (WebRTC)","perm_share":"Partajare (Web Share)","perm_notif":"Notificări","perm_tts":"Sinteză vocală","perm_stt":"Recunoaștere vocală","perm_clip":"Clipboard","perm_sw":"Service worker (instalare / offline)","perm_idb":"IndexedDB","perm_ls":"localStorage","perm_crypto":"Criptografie (Web Crypto)","perm_webgl":"WebGL","perm_webgpu":"WebGPU","perm_worker":"Web Worker","perm_bc":"BroadcastChannel","file_h":"Fișier","file_size":"Dimensiune: {size}","file_hash":"SHA-256 declarat:","file_nohash":"Suma de control nu este declarată în acest fișier.","file_how_h":"Cum verifici","file_how":"Alege fișierul descărcat: se calculează SHA-256 după golirea câmpurilor de hash (data-fff-hash și „sha256”) și se compară cu valoarea declarată. Același calcul în terminal:","verify_btn":"Verifică un fișier descărcat…","verify_ok":"Se potrivește: fișierul este identic cu cel declarat.","verify_bad":"Nu se potrivește. Calculat: {got}","verify_err":"Fișierul nu a putut fi citit.","verify_cmd":"Comandă de verificare","bk_h":"Copie de siguranță","bk_hint":"Fișier .fff.json cu datele din localStorage ale aplicației. Varianta criptată folosește AES-GCM 256 cu cheie derivată prin PBKDF2-SHA256 ({iter} de iterații); parola nu poate fi recuperată.","bk_export":"Exportă","bk_export_enc":"Exportă criptat…","bk_import":"Importă…","bk_wipe":"Șterge datele aplicației","bk_pw":"Parolă (min. {n} caractere)","bk_pw2":"Repetă parola","bk_go":"Exportă criptat","bk_pw_file":"Parola fișierului","bk_import_go":"Importă","pw_mismatch":"Parolele nu coincid.","ok_export":"Exportat: {file} ({n} chei).","ok_export_enc":"Exportat criptat: {file} ({n} chei).","ok_import":"Importate {n} chei. Se reîncarcă pagina…","ok_wipe":"Șterse {n} chei. Se reîncarcă pagina…","nothing_to_wipe":"Nu există date de șters.","enter_pw":"Fișierul {file} este criptat: introdu parola.","cancelled":"Anulat.","kit_line":"fff-kit v{v} · module: {mods}","install":"Instalează aplicația"},"en":{"title":"Transparency","open_hint":"Open the transparency label","close":"Close","disabled":"Kit features are disabled for this app: {reason}","self_mod":"Note: this app can save its own copy (together with your data). The declared SHA-256 applies only to the originally distributed file.","net_h":"Network","net_none":"0 external requests declared","net_list":"External hosts declared or allowed by the security policy (CSP):","net_note":"Declared at build time by analysing the code; you can also check the Network tab of your browser tools.","net_unknown":"Information unavailable: the file has no transparency descriptor.","store_h":"Local storage","store_none":"No keys in localStorage.","store_sum":"{n} keys · {size}","store_key":"Key","store_size":"Size","store_more":"…and {n} more keys","store_idb":"The app also uses IndexedDB, which is not included in the backup.","store_note":"Data stays in this browser; nothing is sent.","perm_h":"Permissions and APIs used","perm_none":"No sensitive APIs detected.","perm_note":"Detected statically in the source code; for sensitive ones the browser asks for your consent.","perm_cam":"Camera / microphone","perm_geo":"Location","perm_rtc":"Direct browser-to-browser connections (WebRTC)","perm_share":"Sharing (Web Share)","perm_notif":"Notifications","perm_tts":"Speech synthesis","perm_stt":"Speech recognition","perm_clip":"Clipboard","perm_sw":"Service worker (install / offline)","perm_idb":"IndexedDB","perm_ls":"localStorage","perm_crypto":"Cryptography (Web Crypto)","perm_webgl":"WebGL","perm_webgpu":"WebGPU","perm_worker":"Web Worker","perm_bc":"BroadcastChannel","file_h":"File","file_size":"Size: {size}","file_hash":"Declared SHA-256:","file_nohash":"No checksum is declared in this file.","file_how_h":"How to verify","file_how":"Choose the downloaded file: its SHA-256 is computed after blanking the hash fields (data-fff-hash and \"sha256\") and compared with the declared value. The same computation in a terminal:","verify_btn":"Verify a downloaded file…","verify_ok":"Match: the file is identical to the declared one.","verify_bad":"No match. Computed: {got}","verify_err":"The file could not be read.","verify_cmd":"Verification command","bk_h":"Backup","bk_hint":"A .fff.json file with the app's localStorage data. The encrypted variant uses AES-GCM 256 with a key derived via PBKDF2-SHA256 ({iter} iterations); the password cannot be recovered.","bk_export":"Export","bk_export_enc":"Export encrypted…","bk_import":"Import…","bk_wipe":"Delete app data","bk_pw":"Password (min. {n} characters)","bk_pw2":"Repeat password","bk_go":"Export encrypted","bk_pw_file":"File password","bk_import_go":"Import","pw_mismatch":"Passwords do not match.","ok_export":"Exported: {file} ({n} keys).","ok_export_enc":"Exported encrypted: {file} ({n} keys).","ok_import":"Imported {n} keys. Reloading the page…","ok_wipe":"Deleted {n} keys. Reloading the page…","nothing_to_wipe":"There is no data to delete.","enter_pw":"The file {file} is encrypted: enter the password.","cancelled":"Cancelled.","kit_line":"fff-kit v{v} · modules: {mods}","install":"Install the app"},"fr":{"title":"Transparence","open_hint":"Ouvrir l’étiquette de transparence","close":"Fermer","disabled":"Les fonctions du kit sont désactivées pour cette application : {reason}","self_mod":"Attention : cette application peut enregistrer sa propre copie (avec vos données). Le SHA-256 déclaré ne vaut que pour le fichier distribué à l’origine.","net_h":"Réseau","net_none":"0 requête externe déclarée","net_list":"Hôtes externes déclarés ou autorisés par la politique de sécurité (CSP) :","net_note":"Déclaré à la construction par analyse du code ; vous pouvez aussi vérifier dans l’onglet Réseau des outils du navigateur.","net_unknown":"Informations indisponibles : le fichier ne contient pas de descripteur de transparence.","store_h":"Stockage local","store_none":"Aucune clé dans localStorage.","store_sum":"{n} clés · {size}","store_key":"Clé","store_size":"Taille","store_more":"…et {n} clés de plus","store_idb":"L’application utilise aussi IndexedDB, non inclus dans la sauvegarde.","store_note":"Les données restent dans ce navigateur ; rien n’est envoyé.","perm_h":"Autorisations et API utilisées","perm_none":"Aucune API sensible détectée.","perm_note":"Détectées statiquement dans le code source ; pour les API sensibles, le navigateur demande votre accord.","perm_cam":"Caméra / microphone","perm_geo":"Localisation","perm_rtc":"Connexions directes entre navigateurs (WebRTC)","perm_share":"Partage (Web Share)","perm_notif":"Notifications","perm_tts":"Synthèse vocale","perm_stt":"Reconnaissance vocale","perm_clip":"Presse-papiers","perm_sw":"Service worker (installation / hors ligne)","perm_idb":"IndexedDB","perm_ls":"localStorage","perm_crypto":"Cryptographie (Web Crypto)","perm_webgl":"WebGL","perm_webgpu":"WebGPU","perm_worker":"Web Worker","perm_bc":"BroadcastChannel","file_h":"Fichier","file_size":"Taille : {size}","file_hash":"SHA-256 déclaré :","file_nohash":"Aucune somme de contrôle n’est déclarée dans ce fichier.","file_how_h":"Comment vérifier","file_how":"Choisissez le fichier téléchargé : son SHA-256 est calculé après avoir vidé les champs de hachage (data-fff-hash et « sha256 ») puis comparé à la valeur déclarée. Même calcul dans un terminal :","verify_btn":"Vérifier un fichier téléchargé…","verify_ok":"Concordance : le fichier est identique à celui déclaré.","verify_bad":"Pas de concordance. Calculé : {got}","verify_err":"Le fichier n’a pas pu être lu.","verify_cmd":"Commande de vérification","bk_h":"Sauvegarde","bk_hint":"Un fichier .fff.json avec les données localStorage de l’application. La variante chiffrée utilise AES-GCM 256 avec une clé dérivée par PBKDF2-SHA256 ({iter} itérations) ; le mot de passe est irrécupérable.","bk_export":"Exporter","bk_export_enc":"Exporter chiffré…","bk_import":"Importer…","bk_wipe":"Supprimer les données de l’application","bk_pw":"Mot de passe (min. {n} caractères)","bk_pw2":"Répéter le mot de passe","bk_go":"Exporter chiffré","bk_pw_file":"Mot de passe du fichier","bk_import_go":"Importer","pw_mismatch":"Les mots de passe ne correspondent pas.","ok_export":"Exporté : {file} ({n} clés).","ok_export_enc":"Exporté chiffré : {file} ({n} clés).","ok_import":"{n} clés importées. Rechargement de la page…","ok_wipe":"{n} clés supprimées. Rechargement de la page…","nothing_to_wipe":"Aucune donnée à supprimer.","enter_pw":"Le fichier {file} est chiffré : saisissez le mot de passe.","cancelled":"Annulé.","kit_line":"fff-kit v{v} · modules : {mods}","install":"Installer l’application"},"it":{"title":"Trasparenza","open_hint":"Apri l’etichetta di trasparenza","close":"Chiudi","disabled":"Le funzioni del kit sono disattivate per questa app: {reason}","self_mod":"Attenzione: questa app può salvare una propria copia (insieme ai tuoi dati). Lo SHA-256 dichiarato vale solo per il file distribuito in origine.","net_h":"Rete","net_none":"0 richieste esterne dichiarate","net_list":"Host esterni dichiarati o consentiti dalla politica di sicurezza (CSP):","net_note":"Dichiarato in fase di costruzione tramite analisi del codice; puoi controllare anche nella scheda Rete degli strumenti del browser.","net_unknown":"Informazioni non disponibili: il file non contiene il descrittore di trasparenza.","store_h":"Archiviazione locale","store_none":"Nessuna chiave in localStorage.","store_sum":"{n} chiavi · {size}","store_key":"Chiave","store_size":"Dimensione","store_more":"…e altre {n} chiavi","store_idb":"L’app usa anche IndexedDB, non incluso nel backup.","store_note":"I dati restano in questo browser; non viene inviato nulla.","perm_h":"Permessi e API usati","perm_none":"Nessuna API sensibile rilevata.","perm_note":"Rilevate in modo statico nel codice sorgente; per quelle sensibili il browser chiede il tuo consenso.","perm_cam":"Fotocamera / microfono","perm_geo":"Posizione","perm_rtc":"Connessioni dirette tra browser (WebRTC)","perm_share":"Condivisione (Web Share)","perm_notif":"Notifiche","perm_tts":"Sintesi vocale","perm_stt":"Riconoscimento vocale","perm_clip":"Appunti","perm_sw":"Service worker (installazione / offline)","perm_idb":"IndexedDB","perm_ls":"localStorage","perm_crypto":"Crittografia (Web Crypto)","perm_webgl":"WebGL","perm_webgpu":"WebGPU","perm_worker":"Web Worker","perm_bc":"BroadcastChannel","file_h":"File","file_size":"Dimensione: {size}","file_hash":"SHA-256 dichiarato:","file_nohash":"In questo file non è dichiarata alcuna somma di controllo.","file_how_h":"Come verificare","file_how":"Scegli il file scaricato: ne viene calcolato lo SHA-256 dopo aver svuotato i campi hash (data-fff-hash e «sha256») e confrontato con il valore dichiarato. Lo stesso calcolo da terminale:","verify_btn":"Verifica un file scaricato…","verify_ok":"Corrisponde: il file è identico a quello dichiarato.","verify_bad":"Non corrisponde. Calcolato: {got}","verify_err":"Impossibile leggere il file.","verify_cmd":"Comando di verifica","bk_h":"Copia di sicurezza","bk_hint":"Un file .fff.json con i dati localStorage dell’app. La variante cifrata usa AES-GCM 256 con chiave derivata tramite PBKDF2-SHA256 ({iter} iterazioni); la password non è recuperabile.","bk_export":"Esporta","bk_export_enc":"Esporta cifrato…","bk_import":"Importa…","bk_wipe":"Elimina i dati dell’app","bk_pw":"Password (min. {n} caratteri)","bk_pw2":"Ripeti la password","bk_go":"Esporta cifrato","bk_pw_file":"Password del file","bk_import_go":"Importa","pw_mismatch":"Le password non coincidono.","ok_export":"Esportato: {file} ({n} chiavi).","ok_export_enc":"Esportato cifrato: {file} ({n} chiavi).","ok_import":"Importate {n} chiavi. Ricarico la pagina…","ok_wipe":"Eliminate {n} chiavi. Ricarico la pagina…","nothing_to_wipe":"Non ci sono dati da eliminare.","enter_pw":"Il file {file} è cifrato: inserisci la password.","cancelled":"Annullato.","kit_line":"fff-kit v{v} · moduli: {mods}","install":"Installa l’app"},"es":{"title":"Transparencia","open_hint":"Abrir la etiqueta de transparencia","close":"Cerrar","disabled":"Las funciones del kit están desactivadas para esta aplicación: {reason}","self_mod":"Atención: esta aplicación puede guardar su propia copia (junto con tus datos). El SHA-256 declarado solo vale para el archivo distribuido originalmente.","net_h":"Red","net_none":"0 solicitudes externas declaradas","net_list":"Hosts externos declarados o permitidos por la política de seguridad (CSP):","net_note":"Declarado al construir el archivo mediante análisis del código; también puedes comprobarlo en la pestaña Red de las herramientas del navegador.","net_unknown":"Información no disponible: el archivo no contiene el descriptor de transparencia.","store_h":"Almacenamiento local","store_none":"Ninguna clave en localStorage.","store_sum":"{n} claves · {size}","store_key":"Clave","store_size":"Tamaño","store_more":"…y {n} claves más","store_idb":"La aplicación también usa IndexedDB, que no se incluye en la copia de seguridad.","store_note":"Los datos permanecen en este navegador; no se envía nada.","perm_h":"Permisos y API usadas","perm_none":"No se detectaron API sensibles.","perm_note":"Detectadas de forma estática en el código fuente; para las sensibles, el navegador pide tu consentimiento.","perm_cam":"Cámara / micrófono","perm_geo":"Ubicación","perm_rtc":"Conexiones directas entre navegadores (WebRTC)","perm_share":"Compartir (Web Share)","perm_notif":"Notificaciones","perm_tts":"Síntesis de voz","perm_stt":"Reconocimiento de voz","perm_clip":"Portapapeles","perm_sw":"Service worker (instalación / sin conexión)","perm_idb":"IndexedDB","perm_ls":"localStorage","perm_crypto":"Criptografía (Web Crypto)","perm_webgl":"WebGL","perm_webgpu":"WebGPU","perm_worker":"Web Worker","perm_bc":"BroadcastChannel","file_h":"Archivo","file_size":"Tamaño: {size}","file_hash":"SHA-256 declarado:","file_nohash":"Este archivo no declara ninguna suma de verificación.","file_how_h":"Cómo verificar","file_how":"Elige el archivo descargado: se calcula su SHA-256 tras vaciar los campos de hash (data-fff-hash y «sha256») y se compara con el valor declarado. El mismo cálculo en una terminal:","verify_btn":"Verificar un archivo descargado…","verify_ok":"Coincide: el archivo es idéntico al declarado.","verify_bad":"No coincide. Calculado: {got}","verify_err":"No se pudo leer el archivo.","verify_cmd":"Comando de verificación","bk_h":"Copia de seguridad","bk_hint":"Un archivo .fff.json con los datos de localStorage de la aplicación. La variante cifrada usa AES-GCM 256 con clave derivada mediante PBKDF2-SHA256 ({iter} iteraciones); la contraseña no se puede recuperar.","bk_export":"Exportar","bk_export_enc":"Exportar cifrado…","bk_import":"Importar…","bk_wipe":"Borrar los datos de la aplicación","bk_pw":"Contraseña (mín. {n} caracteres)","bk_pw2":"Repite la contraseña","bk_go":"Exportar cifrado","bk_pw_file":"Contraseña del archivo","bk_import_go":"Importar","pw_mismatch":"Las contraseñas no coinciden.","ok_export":"Exportado: {file} ({n} claves).","ok_export_enc":"Exportado cifrado: {file} ({n} claves).","ok_import":"{n} claves importadas. Recargando la página…","ok_wipe":"{n} claves borradas. Recargando la página…","nothing_to_wipe":"No hay datos que borrar.","enter_pw":"El archivo {file} está cifrado: introduce la contraseña.","cancelled":"Cancelado.","kit_line":"fff-kit v{v} · módulos: {mods}","install":"Instalar la aplicación"},"pt":{"title":"Transparência","open_hint":"Abrir a etiqueta de transparência","close":"Fechar","disabled":"As funções do kit estão desativadas para esta aplicação: {reason}","self_mod":"Atenção: esta aplicação pode guardar a sua própria cópia (juntamente com os seus dados). O SHA-256 declarado aplica-se apenas ao ficheiro distribuído originalmente.","net_h":"Rede","net_none":"0 pedidos externos declarados","net_list":"Anfitriões externos declarados ou permitidos pela política de segurança (CSP):","net_note":"Declarado na construção do ficheiro, por análise do código; pode também verificar no separador Rede das ferramentas do navegador.","net_unknown":"Informação indisponível: o ficheiro não contém o descritor de transparência.","store_h":"Armazenamento local","store_none":"Nenhuma chave em localStorage.","store_sum":"{n} chaves · {size}","store_key":"Chave","store_size":"Tamanho","store_more":"…e mais {n} chaves","store_idb":"A aplicação usa também IndexedDB, que não está incluído na cópia de segurança.","store_note":"Os dados ficam neste navegador; nada é enviado.","perm_h":"Permissões e APIs usadas","perm_none":"Não foram detetadas APIs sensíveis.","perm_note":"Detetadas de forma estática no código-fonte; para as sensíveis, o navegador pede o seu consentimento.","perm_cam":"Câmara / microfone","perm_geo":"Localização","perm_rtc":"Ligações diretas entre navegadores (WebRTC)","perm_share":"Partilha (Web Share)","perm_notif":"Notificações","perm_tts":"Síntese de voz","perm_stt":"Reconhecimento de voz","perm_clip":"Área de transferência","perm_sw":"Service worker (instalação / offline)","perm_idb":"IndexedDB","perm_ls":"localStorage","perm_crypto":"Criptografia (Web Crypto)","perm_webgl":"WebGL","perm_webgpu":"WebGPU","perm_worker":"Web Worker","perm_bc":"BroadcastChannel","file_h":"Ficheiro","file_size":"Tamanho: {size}","file_hash":"SHA-256 declarado:","file_nohash":"Este ficheiro não declara nenhuma soma de verificação.","file_how_h":"Como verificar","file_how":"Escolha o ficheiro descarregado: o seu SHA-256 é calculado após esvaziar os campos de hash (data-fff-hash e «sha256») e comparado com o valor declarado. O mesmo cálculo num terminal:","verify_btn":"Verificar um ficheiro descarregado…","verify_ok":"Coincide: o ficheiro é idêntico ao declarado.","verify_bad":"Não coincide. Calculado: {got}","verify_err":"Não foi possível ler o ficheiro.","verify_cmd":"Comando de verificação","bk_h":"Cópia de segurança","bk_hint":"Um ficheiro .fff.json com os dados de localStorage da aplicação. A variante cifrada usa AES-GCM 256 com chave derivada por PBKDF2-SHA256 ({iter} iterações); a palavra-passe não pode ser recuperada.","bk_export":"Exportar","bk_export_enc":"Exportar cifrado…","bk_import":"Importar…","bk_wipe":"Apagar os dados da aplicação","bk_pw":"Palavra-passe (mín. {n} caracteres)","bk_pw2":"Repita a palavra-passe","bk_go":"Exportar cifrado","bk_pw_file":"Palavra-passe do ficheiro","bk_import_go":"Importar","pw_mismatch":"As palavras-passe não coincidem.","ok_export":"Exportado: {file} ({n} chaves).","ok_export_enc":"Exportado cifrado: {file} ({n} chaves).","ok_import":"{n} chaves importadas. A recarregar a página…","ok_wipe":"{n} chaves apagadas. A recarregar a página…","nothing_to_wipe":"Não há dados para apagar.","enter_pw":"O ficheiro {file} está cifrado: introduza a palavra-passe.","cancelled":"Cancelado.","kit_line":"fff-kit v{v} · módulos: {mods}","install":"Instalar a aplicação"},"hu":{"title":"Átláthatóság","open_hint":"Az átláthatósági címke megnyitása","close":"Bezárás","disabled":"A kit funkciói ki vannak kapcsolva ennél az alkalmazásnál: {reason}","self_mod":"Figyelem: ez az alkalmazás képes saját másolatot menteni (az adataiddal együtt). A megadott SHA-256 csak az eredetileg terjesztett fájlra érvényes.","net_h":"Hálózat","net_none":"0 külső kérés megadva","net_list":"A biztonsági irányelv (CSP) által megadott vagy engedélyezett külső gazdák:","net_note":"Az összeállításkor a kód elemzésével megadva; a böngésző eszközeinek Hálózat lapján is ellenőrizheted.","net_unknown":"Az információ nem érhető el: a fájl nem tartalmaz átláthatósági leírót.","store_h":"Helyi tárolás","store_none":"Nincs kulcs a localStorage-ban.","store_sum":"{n} kulcs · {size}","store_key":"Kulcs","store_size":"Méret","store_more":"…és még {n} kulcs","store_idb":"Az alkalmazás IndexedDB-t is használ, amely nem része a biztonsági mentésnek.","store_note":"Az adatok ebben a böngészőben maradnak; semmi sem kerül elküldésre.","perm_h":"Használt engedélyek és API-k","perm_none":"Nem található érzékeny API.","perm_note":"Statikusan, a forráskódban észlelve; az érzékenyeknél a böngésző a hozzájárulásodat kéri.","perm_cam":"Kamera / mikrofon","perm_geo":"Helyadat","perm_rtc":"Közvetlen böngésző–böngésző kapcsolatok (WebRTC)","perm_share":"Megosztás (Web Share)","perm_notif":"Értesítések","perm_tts":"Beszédszintézis","perm_stt":"Beszédfelismerés","perm_clip":"Vágólap","perm_sw":"Service worker (telepítés / offline)","perm_idb":"IndexedDB","perm_ls":"localStorage","perm_crypto":"Kriptográfia (Web Crypto)","perm_webgl":"WebGL","perm_webgpu":"WebGPU","perm_worker":"Web Worker","perm_bc":"BroadcastChannel","file_h":"Fájl","file_size":"Méret: {size}","file_hash":"Megadott SHA-256:","file_nohash":"Ebben a fájlban nincs megadva ellenőrző összeg.","file_how_h":"Hogyan ellenőrizd","file_how":"Válaszd ki a letöltött fájlt: a program kiszámolja az SHA-256 értéket a hash mezők (data-fff-hash és „sha256”) kiürítése után, és összeveti a megadottal. Ugyanez terminálban:","verify_btn":"Letöltött fájl ellenőrzése…","verify_ok":"Egyezik: a fájl megegyezik a megadottal.","verify_bad":"Nem egyezik. Számított: {got}","verify_err":"A fájlt nem sikerült beolvasni.","verify_cmd":"Ellenőrző parancs","bk_h":"Biztonsági mentés","bk_hint":"Egy .fff.json fájl az alkalmazás localStorage-adataival. A titkosított változat AES-GCM 256-ot használ, PBKDF2-SHA256-tal ({iter} iteráció) származtatott kulccsal; a jelszó nem állítható vissza.","bk_export":"Exportálás","bk_export_enc":"Titkosított exportálás…","bk_import":"Importálás…","bk_wipe":"Az alkalmazás adatainak törlése","bk_pw":"Jelszó (legalább {n} karakter)","bk_pw2":"Jelszó újra","bk_go":"Titkosított exportálás","bk_pw_file":"A fájl jelszava","bk_import_go":"Importálás","pw_mismatch":"A jelszavak nem egyeznek.","ok_export":"Exportálva: {file} ({n} kulcs).","ok_export_enc":"Titkosítva exportálva: {file} ({n} kulcs).","ok_import":"{n} kulcs importálva. Az oldal újratöltése…","ok_wipe":"{n} kulcs törölve. Az oldal újratöltése…","nothing_to_wipe":"Nincs törölhető adat.","enter_pw":"A(z) {file} fájl titkosított: add meg a jelszót.","cancelled":"Megszakítva.","kit_line":"fff-kit v{v} · modulok: {mods}","install":"Alkalmazás telepítése"},"de":{"title":"Transparenz","open_hint":"Transparenz-Etikett öffnen","close":"Schließen","disabled":"Die Kit-Funktionen sind für diese App deaktiviert: {reason}","self_mod":"Hinweis: Diese App kann eine eigene Kopie speichern (samt deiner Daten). Der angegebene SHA-256 gilt nur für die ursprünglich verteilte Datei.","net_h":"Netzwerk","net_none":"0 externe Anfragen angegeben","net_list":"Externe Hosts, die angegeben oder von der Sicherheitsrichtlinie (CSP) erlaubt sind:","net_note":"Beim Erstellen per Code-Analyse angegeben; du kannst es auch im Netzwerk-Tab der Browser-Werkzeuge prüfen.","net_unknown":"Informationen nicht verfügbar: Die Datei enthält keinen Transparenz-Deskriptor.","store_h":"Lokaler Speicher","store_none":"Keine Schlüssel in localStorage.","store_sum":"{n} Schlüssel · {size}","store_key":"Schlüssel","store_size":"Größe","store_more":"…und {n} weitere Schlüssel","store_idb":"Die App nutzt auch IndexedDB, das nicht in der Sicherung enthalten ist.","store_note":"Die Daten bleiben in diesem Browser; nichts wird gesendet.","perm_h":"Verwendete Berechtigungen und APIs","perm_none":"Keine sensiblen APIs erkannt.","perm_note":"Statisch im Quelltext erkannt; bei sensiblen fragt der Browser nach deiner Zustimmung.","perm_cam":"Kamera / Mikrofon","perm_geo":"Standort","perm_rtc":"Direkte Browser-zu-Browser-Verbindungen (WebRTC)","perm_share":"Teilen (Web Share)","perm_notif":"Benachrichtigungen","perm_tts":"Sprachsynthese","perm_stt":"Spracherkennung","perm_clip":"Zwischenablage","perm_sw":"Service Worker (Installation / offline)","perm_idb":"IndexedDB","perm_ls":"localStorage","perm_crypto":"Kryptografie (Web Crypto)","perm_webgl":"WebGL","perm_webgpu":"WebGPU","perm_worker":"Web Worker","perm_bc":"BroadcastChannel","file_h":"Datei","file_size":"Größe: {size}","file_hash":"Angegebener SHA-256:","file_nohash":"In dieser Datei ist keine Prüfsumme angegeben.","file_how_h":"So prüfst du","file_how":"Wähle die heruntergeladene Datei: Ihr SHA-256 wird nach dem Leeren der Hash-Felder (data-fff-hash und „sha256“) berechnet und mit dem angegebenen Wert verglichen. Dieselbe Berechnung im Terminal:","verify_btn":"Heruntergeladene Datei prüfen…","verify_ok":"Übereinstimmung: Die Datei ist identisch mit der angegebenen.","verify_bad":"Keine Übereinstimmung. Berechnet: {got}","verify_err":"Die Datei konnte nicht gelesen werden.","verify_cmd":"Prüfbefehl","bk_h":"Sicherung","bk_hint":"Eine .fff.json-Datei mit den localStorage-Daten der App. Die verschlüsselte Variante nutzt AES-GCM 256 mit einem per PBKDF2-SHA256 ({iter} Iterationen) abgeleiteten Schlüssel; das Passwort ist nicht wiederherstellbar.","bk_export":"Exportieren","bk_export_enc":"Verschlüsselt exportieren…","bk_import":"Importieren…","bk_wipe":"App-Daten löschen","bk_pw":"Passwort (mind. {n} Zeichen)","bk_pw2":"Passwort wiederholen","bk_go":"Verschlüsselt exportieren","bk_pw_file":"Passwort der Datei","bk_import_go":"Importieren","pw_mismatch":"Die Passwörter stimmen nicht überein.","ok_export":"Exportiert: {file} ({n} Schlüssel).","ok_export_enc":"Verschlüsselt exportiert: {file} ({n} Schlüssel).","ok_import":"{n} Schlüssel importiert. Seite wird neu geladen…","ok_wipe":"{n} Schlüssel gelöscht. Seite wird neu geladen…","nothing_to_wipe":"Keine Daten zum Löschen vorhanden.","enter_pw":"Die Datei {file} ist verschlüsselt: Passwort eingeben.","cancelled":"Abgebrochen.","kit_line":"fff-kit v{v} · Module: {mods}","install":"App installieren"}},"bundle":{"ro":{"err_format":"Fișierul nu este o copie de siguranță fff validă.","err_schema":"Schema {v} nu este acceptată (se așteaptă 1).","err_app":"Copia aparține aplicației „{got}”, nu „{want}”.","err_password_required":"Fișierul {file} este criptat: este necesară parola.","err_bad_password":"Parolă greșită sau fișier alterat.","err_pw_short":"Parola trebuie să aibă cel puțin {n} caractere.","err_nocrypto":"Browserul nu oferă Web Crypto (necesită https sau fișier local).","err_read":"Fișierul nu a putut fi citit.","err_too_big":"Fișierul este prea mare.","err_quota":"Spațiul de stocare este plin; nu s-a modificat nimic.","err_key":"Cheie nepermisă în fișier: {k}","yes":"Da","no":"Anulează","wipe_yes":"Șterge","confirm_import":"Imporți {n} chei în „{app}” (versiunea {ver}, exportat la {date})? Valorile existente cu aceleași chei vor fi înlocuite.","confirm_wipe":"Ștergi {n} chei ale acestei aplicații din acest browser? Acțiunea nu poate fi anulată.","err_iter":"Numărul de iterații din fișier este invalid (trebuie să fie un număr întreg între {min} și {max}).","import_keys":"Chei: {list}","import_unknown":"Atenție: {n} chei nu sunt declarate de această aplicație: {list}. Continuă doar dacă ai încredere în fișier.","sens_msg":"Exportul conține date sensibile necriptate (chei: {list}). Îl criptezi cu o parolă? (recomandat)","sens_enc":"Criptează (recomandat)","sens_plain":"Exportă necriptat","pw_prompt":"Alege o parolă pentru fișier (min. {n} caractere). Nu poate fi recuperată dacă o uiți.","pw_label":"Parolă (min. {n} caractere)","pw_label2":"Repetă parola","pw_go":"Exportă criptat","pw_mismatch":"Parolele nu coincid.","pw_weak":"Tărie: slabă","pw_fair":"Tărie: acceptabilă","pw_strong":"Tărie: bună"},"en":{"err_format":"The file is not a valid fff backup.","err_schema":"Schema {v} is not supported (expected 1).","err_app":"This backup belongs to the app \"{got}\", not \"{want}\".","err_password_required":"The file {file} is encrypted: a password is required.","err_bad_password":"Wrong password or altered file.","err_pw_short":"The password must have at least {n} characters.","err_nocrypto":"This browser does not offer Web Crypto (requires https or a local file).","err_read":"The file could not be read.","err_too_big":"The file is too large.","err_quota":"Storage is full; nothing was changed.","err_key":"Key not allowed in file: {k}","yes":"Yes","no":"Cancel","wipe_yes":"Delete","confirm_import":"Import {n} keys into \"{app}\" (version {ver}, exported {date})? Existing values with the same keys will be replaced.","confirm_wipe":"Delete {n} keys of this app from this browser? This cannot be undone.","err_iter":"The number of iterations in the file is invalid (it must be a whole number between {min} and {max}).","import_keys":"Keys: {list}","import_unknown":"Warning: {n} keys are not declared by this app: {list}. Continue only if you trust the file.","sens_msg":"The export contains unencrypted sensitive data (keys: {list}). Encrypt it with a password? (recommended)","sens_enc":"Encrypt (recommended)","sens_plain":"Export unencrypted","pw_prompt":"Choose a password for the file (min. {n} characters). It cannot be recovered if you forget it.","pw_label":"Password (min. {n} characters)","pw_label2":"Repeat password","pw_go":"Export encrypted","pw_mismatch":"Passwords do not match.","pw_weak":"Strength: weak","pw_fair":"Strength: fair","pw_strong":"Strength: good"},"fr":{"err_format":"Le fichier n’est pas une sauvegarde fff valide.","err_schema":"Le schéma {v} n’est pas pris en charge (attendu : 1).","err_app":"Cette sauvegarde appartient à l’application « {got} », pas à « {want} ».","err_password_required":"Le fichier {file} est chiffré : un mot de passe est requis.","err_bad_password":"Mot de passe erroné ou fichier altéré.","err_pw_short":"Le mot de passe doit comporter au moins {n} caractères.","err_nocrypto":"Ce navigateur n’offre pas Web Crypto (https ou fichier local requis).","err_read":"Le fichier n’a pas pu être lu.","err_too_big":"Le fichier est trop volumineux.","err_quota":"Le stockage est plein ; rien n’a été modifié.","err_key":"Clé non autorisée dans le fichier : {k}","yes":"Oui","no":"Annuler","wipe_yes":"Supprimer","confirm_import":"Importer {n} clés dans « {app} » (version {ver}, exporté le {date}) ? Les valeurs existantes ayant les mêmes clés seront remplacées.","confirm_wipe":"Supprimer {n} clés de cette application dans ce navigateur ? Cette action est irréversible.","err_iter":"Le nombre d’itérations du fichier est invalide (il doit être un entier compris entre {min} et {max}).","import_keys":"Clés : {list}","import_unknown":"Attention : {n} clés ne sont pas déclarées par cette application : {list}. Ne continuez que si vous faites confiance au fichier.","sens_msg":"L’export contient des données sensibles non chiffrées (clés : {list}). Le chiffrer avec un mot de passe ? (recommandé)","sens_enc":"Chiffrer (recommandé)","sens_plain":"Exporter sans chiffrement","pw_prompt":"Choisissez un mot de passe pour le fichier (min. {n} caractères). Il est irrécupérable si vous l’oubliez.","pw_label":"Mot de passe (min. {n} caractères)","pw_label2":"Répéter le mot de passe","pw_go":"Exporter chiffré","pw_mismatch":"Les mots de passe ne correspondent pas.","pw_weak":"Robustesse : faible","pw_fair":"Robustesse : correcte","pw_strong":"Robustesse : bonne"},"it":{"err_format":"Il file non è un backup fff valido.","err_schema":"Lo schema {v} non è supportato (atteso: 1).","err_app":"Questo backup appartiene all’app «{got}», non a «{want}».","err_password_required":"Il file {file} è cifrato: serve la password.","err_bad_password":"Password errata o file alterato.","err_pw_short":"La password deve avere almeno {n} caratteri.","err_nocrypto":"Questo browser non offre Web Crypto (serve https o un file locale).","err_read":"Impossibile leggere il file.","err_too_big":"Il file è troppo grande.","err_quota":"Archivio pieno; non è stato modificato nulla.","err_key":"Chiave non consentita nel file: {k}","yes":"Sì","no":"Annulla","wipe_yes":"Elimina","confirm_import":"Importare {n} chiavi in «{app}» (versione {ver}, esportato il {date})? I valori esistenti con le stesse chiavi verranno sostituiti.","confirm_wipe":"Eliminare {n} chiavi di questa app da questo browser? L’azione non è annullabile.","err_iter":"Il numero di iterazioni nel file non è valido (deve essere un intero compreso tra {min} e {max}).","import_keys":"Chiavi: {list}","import_unknown":"Attenzione: {n} chiavi non sono dichiarate da questa app: {list}. Continua solo se ti fidi del file.","sens_msg":"L’esportazione contiene dati sensibili non cifrati (chiavi: {list}). Cifrarla con una password? (consigliato)","sens_enc":"Cifra (consigliato)","sens_plain":"Esporta senza cifratura","pw_prompt":"Scegli una password per il file (min. {n} caratteri). Non è recuperabile se la dimentichi.","pw_label":"Password (min. {n} caratteri)","pw_label2":"Ripeti la password","pw_go":"Esporta cifrato","pw_mismatch":"Le password non coincidono.","pw_weak":"Robustezza: debole","pw_fair":"Robustezza: discreta","pw_strong":"Robustezza: buona"},"es":{"err_format":"El archivo no es una copia de seguridad fff válida.","err_schema":"El esquema {v} no es compatible (se espera 1).","err_app":"Esta copia pertenece a la aplicación «{got}», no a «{want}».","err_password_required":"El archivo {file} está cifrado: se necesita la contraseña.","err_bad_password":"Contraseña incorrecta o archivo alterado.","err_pw_short":"La contraseña debe tener al menos {n} caracteres.","err_nocrypto":"Este navegador no ofrece Web Crypto (requiere https o un archivo local).","err_read":"No se pudo leer el archivo.","err_too_big":"El archivo es demasiado grande.","err_quota":"El almacenamiento está lleno; no se modificó nada.","err_key":"Clave no permitida en el archivo: {k}","yes":"Sí","no":"Cancelar","wipe_yes":"Borrar","confirm_import":"¿Importar {n} claves en «{app}» (versión {ver}, exportado el {date})? Los valores existentes con las mismas claves se sustituirán.","confirm_wipe":"¿Borrar {n} claves de esta aplicación en este navegador? No se puede deshacer.","err_iter":"El número de iteraciones del archivo no es válido (debe ser un entero entre {min} y {max}).","import_keys":"Claves: {list}","import_unknown":"Atención: {n} claves no están declaradas por esta aplicación: {list}. Continúa solo si confías en el archivo.","sens_msg":"La exportación contiene datos sensibles sin cifrar (claves: {list}). ¿Cifrarla con una contraseña? (recomendado)","sens_enc":"Cifrar (recomendado)","sens_plain":"Exportar sin cifrar","pw_prompt":"Elige una contraseña para el archivo (mín. {n} caracteres). No se puede recuperar si la olvidas.","pw_label":"Contraseña (mín. {n} caracteres)","pw_label2":"Repite la contraseña","pw_go":"Exportar cifrado","pw_mismatch":"Las contraseñas no coinciden.","pw_weak":"Seguridad: débil","pw_fair":"Seguridad: aceptable","pw_strong":"Seguridad: buena"},"pt":{"err_format":"O ficheiro não é uma cópia de segurança fff válida.","err_schema":"O esquema {v} não é suportado (esperado: 1).","err_app":"Esta cópia pertence à aplicação «{got}», não a «{want}».","err_password_required":"O ficheiro {file} está cifrado: é necessária a palavra-passe.","err_bad_password":"Palavra-passe errada ou ficheiro alterado.","err_pw_short":"A palavra-passe deve ter pelo menos {n} caracteres.","err_nocrypto":"Este navegador não oferece Web Crypto (requer https ou ficheiro local).","err_read":"Não foi possível ler o ficheiro.","err_too_big":"O ficheiro é demasiado grande.","err_quota":"O armazenamento está cheio; nada foi alterado.","err_key":"Chave não permitida no ficheiro: {k}","yes":"Sim","no":"Cancelar","wipe_yes":"Apagar","confirm_import":"Importar {n} chaves para «{app}» (versão {ver}, exportado em {date})? Os valores existentes com as mesmas chaves serão substituídos.","confirm_wipe":"Apagar {n} chaves desta aplicação neste navegador? Não é possível anular.","err_iter":"O número de iterações do ficheiro é inválido (deve ser um inteiro entre {min} e {max}).","import_keys":"Chaves: {list}","import_unknown":"Atenção: {n} chaves não são declaradas por esta aplicação: {list}. Continue apenas se confiar no ficheiro.","sens_msg":"A exportação contém dados sensíveis não cifrados (chaves: {list}). Cifrá-la com uma palavra-passe? (recomendado)","sens_enc":"Cifrar (recomendado)","sens_plain":"Exportar sem cifrar","pw_prompt":"Escolha uma palavra-passe para o ficheiro (mín. {n} caracteres). Não é recuperável se a esquecer.","pw_label":"Palavra-passe (mín. {n} caracteres)","pw_label2":"Repita a palavra-passe","pw_go":"Exportar cifrado","pw_mismatch":"As palavras-passe não coincidem.","pw_weak":"Robustez: fraca","pw_fair":"Robustez: razoável","pw_strong":"Robustez: boa"},"hu":{"err_format":"A fájl nem érvényes fff biztonsági mentés.","err_schema":"A(z) {v} séma nem támogatott (várt: 1).","err_app":"Ez a mentés a(z) „{got}” alkalmazáshoz tartozik, nem a(z) „{want}” alkalmazáshoz.","err_password_required":"A(z) {file} fájl titkosított: jelszó szükséges.","err_bad_password":"Hibás jelszó vagy módosított fájl.","err_pw_short":"A jelszónak legalább {n} karakter hosszúnak kell lennie.","err_nocrypto":"Ez a böngésző nem kínál Web Crypto-t (https vagy helyi fájl szükséges).","err_read":"A fájlt nem sikerült beolvasni.","err_too_big":"A fájl túl nagy.","err_quota":"A tárhely megtelt; semmi sem változott.","err_key":"Nem engedélyezett kulcs a fájlban: {k}","yes":"Igen","no":"Mégse","wipe_yes":"Törlés","confirm_import":"Importálsz {n} kulcsot a(z) „{app}” alkalmazásba (verzió: {ver}, exportálva: {date})? Az azonos kulcsú meglévő értékek felülíródnak.","confirm_wipe":"Törlöd az alkalmazás {n} kulcsát ebből a böngészőből? Ez nem vonható vissza.","err_iter":"A fájlban szereplő iterációszám érvénytelen (egész számnak kell lennie {min} és {max} között).","import_keys":"Kulcsok: {list}","import_unknown":"Figyelem: {n} kulcsot nem deklarál ez az alkalmazás: {list}. Csak akkor folytasd, ha megbízol a fájlban.","sens_msg":"Az export titkosítatlan érzékeny adatokat tartalmaz (kulcsok: {list}). Titkosítod jelszóval? (ajánlott)","sens_enc":"Titkosítás (ajánlott)","sens_plain":"Exportálás titkosítás nélkül","pw_prompt":"Válassz jelszót a fájlhoz (legalább {n} karakter). Ha elfelejted, nem állítható vissza.","pw_label":"Jelszó (legalább {n} karakter)","pw_label2":"Jelszó ismét","pw_go":"Titkosított exportálás","pw_mismatch":"A jelszavak nem egyeznek.","pw_weak":"Erősség: gyenge","pw_fair":"Erősség: elfogadható","pw_strong":"Erősség: jó"},"de":{"err_format":"Die Datei ist keine gültige fff-Sicherung.","err_schema":"Schema {v} wird nicht unterstützt (erwartet: 1).","err_app":"Diese Sicherung gehört zur App „{got}“, nicht zu „{want}“.","err_password_required":"Die Datei {file} ist verschlüsselt: Passwort erforderlich.","err_bad_password":"Falsches Passwort oder veränderte Datei.","err_pw_short":"Das Passwort muss mindestens {n} Zeichen haben.","err_nocrypto":"Dieser Browser bietet kein Web Crypto (https oder lokale Datei erforderlich).","err_read":"Die Datei konnte nicht gelesen werden.","err_too_big":"Die Datei ist zu groß.","err_quota":"Speicher voll; es wurde nichts geändert.","err_key":"Schlüssel in der Datei nicht erlaubt: {k}","yes":"Ja","no":"Abbrechen","wipe_yes":"Löschen","confirm_import":"{n} Schlüssel in „{app}“ importieren (Version {ver}, exportiert am {date})? Vorhandene Werte mit denselben Schlüsseln werden ersetzt.","confirm_wipe":"{n} Schlüssel dieser App aus diesem Browser löschen? Das kann nicht rückgängig gemacht werden.","err_iter":"Die Anzahl der Iterationen in der Datei ist ungültig (muss eine ganze Zahl zwischen {min} und {max} sein).","import_keys":"Schlüssel: {list}","import_unknown":"Achtung: {n} Schlüssel werden von dieser App nicht deklariert: {list}. Fahre nur fort, wenn du der Datei vertraust.","sens_msg":"Der Export enthält unverschlüsselte sensible Daten (Schlüssel: {list}). Mit einem Passwort verschlüsseln? (empfohlen)","sens_enc":"Verschlüsseln (empfohlen)","sens_plain":"Unverschlüsselt exportieren","pw_prompt":"Wähle ein Passwort für die Datei (mind. {n} Zeichen). Es lässt sich nicht wiederherstellen, wenn du es vergisst.","pw_label":"Passwort (mind. {n} Zeichen)","pw_label2":"Passwort wiederholen","pw_go":"Verschlüsselt exportieren","pw_mismatch":"Die Passwörter stimmen nicht überein.","pw_weak":"Stärke: schwach","pw_fair":"Stärke: ausreichend","pw_strong":"Stärke: gut"}}}</script>
 <!--fff:kit:end-->
 <!--fff:info:start-->
-<script type="application/json" id="fff-info">{"schema":1,"slug":"arbore","name":"Arbore","version":"1.0.6","updated":"2026-10-26","description":"Arbore: genealogie locală cu import și export GEDCOM 5.5.1, diagrame (pedigree, descendenți, clepsidră, evantai), calculator de rudenie cu denumiri românești, verificări de date și criptare opțională. Rulează local, nu trimite nimic.","egress":[],"permissions":["serviceWorker","indexedDB","localStorage","Web Crypto"],"storageKeys":["nodup"],"sizeBytes":503524,"sha256":"bac07d0170e041048b5df29d4aace0952134ab213f174851ad1504ac51064356","csp":{"present":true,"directives":{"default-src":"'none'","script-src":"sha256×3","style-src":"'unsafe-inline'","img-src":"'self' data: blob:","media-src":"data: blob:","font-src":"data:","connect-src":"'none'","base-uri":"'none'","form-action":"'none'","frame-src":"'none'","object-src":"'none'","worker-src":"'self' blob:","manifest-src":"'self'"},"scriptInline":"hash","connect":"'none'"},"features":{"export":true,"import":true,"i18n":["ro","en","fr","it","es","pt","hu","de"],"pwa":{"manifest":true,"serviceWorker":true},"modules":["core","store","dialog","label","bundle"]},"kit":{"version":"1.2.0","modules":["core","store","dialog","label","bundle"]},"selfSerializing":false,"exceptions":[{"rule":"unprefixed-storage","reason":"Fals pozitiv: cheia „nodup” este numele relativ transmis helperelor lsGet/lsSet/lsDel, care adaugă prefixul „fff.arbore.” (cheia stocată este fff.arbore.nodup). Redenumirea ar rupe datele existente ale utilizatorilor."}]}</script>
+<script type="application/json" id="fff-info">{"schema":1,"slug":"arbore","name":"Arbore","version":"2.0.0","updated":"2026-10-26","description":"Arbore: genealogie locală cu import și export GEDCOM 5.5.1, diagrame (pedigree, descendenți, clepsidră, evantai), calculator de rudenie cu denumiri românești, verificări de date și criptare opțională. Rulează local, nu trimite nimic.","egress":[],"permissions":["serviceWorker","indexedDB","localStorage","Web Crypto"],"storageKeys":["nodup"],"sizeBytes":514156,"sha256":"1b2814e98b9c2b727350219db45541fa79ae74f589913b28f1ff80d7adb48fe4","csp":{"present":true,"directives":{"default-src":"'none'","script-src":"sha256×3","style-src":"'unsafe-inline'","img-src":"'self' data: blob:","media-src":"data: blob:","font-src":"data:","connect-src":"'none'","base-uri":"'none'","form-action":"'none'","frame-src":"'none'","object-src":"'none'","worker-src":"'self' blob:","manifest-src":"'self'"},"scriptInline":"hash","connect":"'none'"},"features":{"export":true,"import":true,"i18n":["ro","en","fr","it","es","pt","hu","de"],"pwa":{"manifest":true,"serviceWorker":true},"modules":["core","label","bundle"]},"kit":{"version":"1.2.0","modules":["core","label","bundle"]},"selfSerializing":false,"exceptions":[{"rule":"unprefixed-storage","reason":"Cheia „nodup” (perechi de duplicate respinse) este citită prin lsGet/lsSet, care adaugă prefixul fff.arbore.; verificarea statică vede doar litera cheii. Cheia există din versiunea 1.0.0 și nu se redenumește, ca să nu se piardă alegerile utilizatorilor."}]}</script>
 <!--fff:info:end-->
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Arbore</title>
 <meta name="description" content="Arbore: genealogie locală cu import și export GEDCOM 5.5.1, diagrame (pedigree, descendenți, clepsidră, evantai), calculator de rudenie cu denumiri românești, verificări de date și criptare opțională. Rulează local, nu trimite nimic.">
-<meta name="application-version" content="1.0.6">
+<meta name="application-version" content="2.0.0">
 <meta name="last-updated" content="2026-10-26">
 <meta name="color-scheme" content="light dark">
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-V7SIlgjVGmpL1YFiUTLcsbEsgPi4Dx6cTfjva9cD2Vg=' 'sha256-YO40Pa9U54kBXfBS8s7ySLVhwIuT7JC9cMSApha5DIk=' 'sha256-srlwq04yAKBv6abMXcwJXHbY1zvWk7/d4Pv90rpUHn8='; style-src 'unsafe-inline'; img-src 'self' data: blob:; media-src data: blob:; font-src data:; connect-src 'none'; base-uri 'none'; form-action 'none'; frame-src 'none'; object-src 'none'; worker-src 'self' blob:; manifest-src 'self'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-sTltV8ssyCGGux6ILomxKTbfsBikMLYpUSM3oqCwk0U=' 'sha256-YO40Pa9U54kBXfBS8s7ySLVhwIuT7JC9cMSApha5DIk=' 'sha256-Cl0C+r7eQj3g/RmlLjzq2SkKDYH+LTAndadgjK7Jwt8='; style-src 'unsafe-inline'; img-src 'self' data: blob:; media-src data: blob:; font-src data:; connect-src 'none'; base-uri 'none'; form-action 'none'; frame-src 'none'; object-src 'none'; worker-src 'self' blob:; manifest-src 'self'">
 <style>
 :root{
   color-scheme:light dark;
@@ -1935,6 +1487,7 @@ dialog .df{display:flex;flex-wrap:wrap;gap:.5rem;justify-content:flex-end;paddin
 .hint.bad{color:var(--danger)}
 .warnbox{background:var(--warn-bg);color:var(--ink);border:1px solid var(--warn);border-radius:8px;padding:.5rem .75rem;margin:.5rem 0}
 .errbox{background:var(--err-bg);border:1px solid var(--danger);border-radius:8px;padding:.5rem .75rem;margin:.5rem 0}
+.stl{list-style:none;margin:.2rem 0 .6rem;padding:0}.stl li{display:flex;gap:.7rem;padding:.25rem 0;border-bottom:1px solid var(--line);overflow-wrap:anywhere}.std{flex:0 0 7.5rem;font-weight:600;color:var(--ink2)}.str{margin:.2rem 0 .6rem;padding-left:1.6rem;overflow-wrap:anywhere}.stmapw{overflow-x:auto;max-width:100%}.stmap{max-width:100%;height:auto;background:var(--surface);border:1px solid var(--line);border-radius:10px}.crow{display:grid;grid-template-columns:minmax(0,1fr) 8rem 8rem;gap:.4rem;align-items:center;margin:.25rem 0}.cpl{overflow-wrap:anywhere}@media(max-width:560px){.crow{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}.cpl{grid-column:1/-1}.stl li{flex-direction:column;gap:.1rem}.std{flex:none}}
 .stat{display:inline-block;margin:.15rem .6rem .15rem 0}
 .toast{position:fixed;left:50%;bottom:1rem;transform:translateX(-50%);background:var(--ink);color:var(--bg);padding:.5rem 1rem;border-radius:8px;z-index:200;max-width:90vw;display:flex;gap:.8rem;align-items:center}
 .toast button{background:none;border:0;color:inherit;text-decoration:underline;cursor:pointer}
@@ -1954,8 +1507,6 @@ footer{padding:1rem;text-align:center;font-size:.85rem;color:var(--ink2)}
   #printArea .rep p{margin:.15rem 0}
   #printArea svg{max-width:100%}
 }
-
-input[type=checkbox],input[type=radio]{min-width:24px;min-height:24px}
 </style>
 <!--fff:pwa:start v=1 d=eyJjc3AiOnsibWFuaWZlc3Qtc3JjIjoiJ25vbmUnIiwid29ya2VyLXNyYyI6ImJsb2I6IiwiaW1nLXNyYyI6ImRhdGE6IGJsb2I6In0sIm9yaWciOiJkZWZhdWx0LXNyYyAnbm9uZSc7IHNjcmlwdC1zcmMgJ3NoYTI1Ni1hdHRKYjJ2RlU0TkFOLzVFZlVQenNVbDVQaHRPYmMxL0tFNzRXV2thdkVnPSc7IHN0eWxlLXNyYyAndW5zYWZlLWlubGluZSc7IGltZy1zcmMgZGF0YTogYmxvYjo7IG1lZGlhLXNyYyBkYXRhOiBibG9iOjsgZm9udC1zcmMgZGF0YTo7IGNvbm5lY3Qtc3JjICdub25lJzsgYmFzZS11cmkgJ25vbmUnOyBmb3JtLWFjdGlvbiAnbm9uZSc7IGZyYW1lLXNyYyAnbm9uZSc7IG9iamVjdC1zcmMgJ25vbmUnOyB3b3JrZXItc3JjIGJsb2I6OyBtYW5pZmVzdC1zcmMgJ25vbmUnIiwibWFkZSI6WyJtYW5pZmVzdC53ZWJtYW5pZmVzdCIsInN3LmpzIiwiaWNvbi0xOTIucG5nIiwiaWNvbi01MTIucG5nIiwiaWNvbi1tYXNrYWJsZS01MTIucG5nIl19-->
 <link rel="manifest" href="manifest.webmanifest">
@@ -1966,7 +1517,6 @@ input[type=checkbox],input[type=radio]{min-width:24px;min-height:24px}
 <!--fff:pwa:end-->
 </head>
 <body>
-<noscript><p style="padding:1rem">Arbore necesită JavaScript și rulează local, fără cereri către terți. / Arbore requires JavaScript and runs locally, with no third-party requests.</p></noscript>
 <a class="skip" href="#main" data-i18n="skip">Sari la conținut</a>
 <header class="top">
   <div class="brand"><h1>Arbore</h1><span class="tag" data-i18n="tagline">genealogie locală</span></div>
@@ -1984,6 +1534,7 @@ input[type=checkbox],input[type=radio]{min-width:24px;min-height:24px}
   <button type="button" role="tab" id="t-people" aria-controls="p-people" aria-selected="true" data-tab="people" data-i18n="tab_people">Persoane</button>
   <button type="button" role="tab" id="t-chart" aria-controls="p-chart" aria-selected="false" tabindex="-1" data-tab="chart" data-i18n="tab_chart">Diagrame</button>
   <button type="button" role="tab" id="t-rel" aria-controls="p-rel" aria-selected="false" tabindex="-1" data-tab="rel" data-i18n="tab_rel">Rudenie</button>
+  <button type="button" role="tab" id="t-story" aria-controls="p-story" aria-selected="false" tabindex="-1" data-tab="story" data-i18n="tab_story">Poveste</button>
   <button type="button" role="tab" id="t-quality" aria-controls="p-quality" aria-selected="false" tabindex="-1" data-tab="quality" data-i18n="tab_quality">Calitatea datelor</button>
   <button type="button" role="tab" id="t-places" aria-controls="p-places" aria-selected="false" tabindex="-1" data-tab="places" data-i18n="tab_places">Locuri</button>
   <button type="button" role="tab" id="t-data" aria-controls="p-data" aria-selected="false" tabindex="-1" data-tab="data" data-i18n="tab_data">Date și export</button>
@@ -2043,6 +1594,18 @@ input[type=checkbox],input[type=radio]{min-width:24px;min-height:24px}
   <details class="card" style="margin-top:1rem"><summary data-i18n="rel_method">Cum se calculează</summary><div id="rel-method" class="small"></div></details>
 </section>
 
+<section id="p-story" class="panel" role="tabpanel" aria-labelledby="t-story" hidden>
+  <div class="toolbar">
+    <div><span class="muted small" data-i18n="st_person">Persoana</span><br><strong id="st-name">—</strong></div>
+    <button type="button" class="btn sm" id="st-pick" data-i18n="choose">Alege…</button>
+    <button type="button" class="btn sm" id="st-txt" data-i18n="st_txt">Salvează povestea (.txt)</button>
+    <button type="button" class="btn sm" id="st-svg" data-i18n="st_svg">Parcurs (SVG)</button>
+  </div>
+  <p class="warnbox small" data-i18n="st_note">Povestea este asamblată automat din datele din arbore.</p>
+  <div id="st-out" aria-live="polite"></div>
+  <details class="card" id="st-coords" style="margin-top:1rem"><summary data-i18n="st_coords">Coordonate pentru locuri (opțional)</summary><div id="st-cbody"></div></details>
+</section>
+
 <section id="p-quality" class="panel" role="tabpanel" aria-labelledby="t-quality" hidden>
   <div class="toolbar">
     <button type="button" class="btn primary" id="q-run" data-i18n="run_checks">Rulează verificările</button>
@@ -2051,6 +1614,12 @@ input[type=checkbox],input[type=radio]{min-width:24px;min-height:24px}
   </div>
   <div id="q-prog" class="muted small" aria-live="polite"></div>
   <div id="q-out"></div>
+  <div class="card" id="gv" style="margin-top:1.2rem">
+    <h2 data-i18n="gv_title">Verifică și repară un fișier GEDCOM</h2>
+    <p class="small muted" data-i18n="gv_text">Fișierul este citit doar pe acest dispozitiv.</p>
+    <div><label for="gv-file" data-i18n="gv_file">Fișier GEDCOM de verificat (.ged)</label><input type="file" id="gv-file" accept=".ged,.gedcom,text/plain"></div>
+    <div id="gv-out" aria-live="polite"></div>
+  </div>
 </section>
 
 <section id="p-places" class="panel" role="tabpanel" aria-labelledby="t-places" hidden>
@@ -2068,7 +1637,7 @@ input[type=checkbox],input[type=radio]{min-width:24px;min-height:24px}
     <p data-i18n="d_local_text">Datele de familie sunt sensibile. Arborele este păstrat doar în acest browser (localStorage/IndexedDB), nu există conturi, analiză sau trimitere de date. Exporturile se salvează doar pe dispozitivul tău.</p>
     <p id="d-store" class="small muted"></p>
     <h3 data-i18n="d_enc_title">Criptare locală (opțional)</h3>
-    <p class="small" data-i18n="d_enc_text">Cu parolă, arborele salvat în browser este criptat AES-GCM 256 (cheie derivată cu PBKDF2-SHA256, 600 000 iterații).</p>
+    <p class="small" data-i18n="d_enc_text">Cu parolă, arborele salvat în browser este criptat AES-GCM 256 (cheie derivată cu PBKDF2-SHA256, 310 000 iterații).</p>
     <p class="warnbox small" data-i18n="d_enc_warn">Atenție: dacă pierzi parola, datele criptate nu mai pot fi recuperate de nimeni, inclusiv de autor. Păstrează și o copie de rezervă.</p>
     <p id="d-encstate" class="small"></p>
     <div class="row">
@@ -2124,7 +1693,7 @@ input[type=checkbox],input[type=radio]{min-width:24px;min-height:24px}
   </div>
 </section>
 </main>
-<footer><span id="app-version">v 1.0.6 · 2026-10-26</span> · <span data-i18n="footer_note">fără frontiere · rulează local, fără rețea</span></footer>
+<footer><span id="app-version">v 2.0.0 · 2026-10-26</span> · <span data-i18n="footer_note">fără frontiere · rulează local, fără rețea</span></footer>
 
 <dialog id="dlg-edit" aria-labelledby="edit-title"><form id="f-edit" novalidate>
   <div class="dh"><h2 id="edit-title"></h2><button type="button" class="btn sm" data-close="dlg-edit" data-i18n="close">Închide</button></div>
@@ -2182,7 +1751,7 @@ input[type=checkbox],input[type=radio]{min-width:24px;min-height:24px}
 <div id="toast" class="toast" role="status" hidden></div>
 <script>'use strict';
 /* ===== 01 core: utilitare, date GEDCOM (pur, fără DOM) ===== */
-const VERSION = '1.0.6', UPDATED = '2026-10-26', PFX = 'fff.arbore.';
+const VERSION = '2.0.0', UPDATED = '2026-10-26', PFX = 'fff.arbore.';
 const LANGS = ['ro', 'en', 'fr', 'it', 'es', 'pt', 'hu', 'de'];
 const LANGNAMES = {ro: 'Română', en: 'English', fr: 'Français', it: 'Italiano', es: 'Español', pt: 'Português', hu: 'Magyar', de: 'Deutsch'};
 
@@ -2493,7 +2062,7 @@ function findChild(n, tag) { return n.ch.find(c => c.tag === tag); }
 function childVal(n, tag) { const c = findChild(n, tag); return c ? c.val : ''; }
 
 /* ---------- model ---------- */
-function newDb() { return {persons: {}, families: {}, sources: {}, repos: {}, raw: [], seq: {I: 0, F: 0, S: 0, R: 0}, meta: {}}; }
+function newDb() { return {persons: {}, families: {}, sources: {}, repos: {}, raw: [], seq: {I: 0, F: 0, S: 0, R: 0}, meta: {}, coords: {}}; }
 function newPerson(id) { return {id, names: [{given: '', surname: '', nick: '', npfx: '', nsfx: '', spfx: '', type: '', extra: []}], sex: '', events: [], notes: [], sours: [], tags: [], photo: '', assoc: [], living: '', extra: []}; }
 function newFamily(id) { return {id, p1: '', p2: '', children: [], events: [], notes: [], sours: [], utype: 'married', tags: [], extra: []}; }
 function newId(db, kind) {
@@ -3493,9 +3062,10 @@ function renamePlace(db, from, to) {
   const fix = e => { if (e.place === from) { e.place = to; n++; } };
   for (const p of Object.values(db.persons)) p.events.forEach(fix);
   for (const f of Object.values(db.families)) f.events.forEach(fix);
+  if (n && db.coords && ownKey(db.coords, from)) { if (!ownKey(db.coords, to) && to !== '__proto__') db.coords[to] = db.coords[from]; delete db.coords[from]; }
   return n;
 }
-function csvCell(v) { v = String(v == null ? '' : v); if (/^[=+\-@\t\r]/.test(v) && /[^\d.,\s+\-]/.test(v)) v = "'" + v; /* anti „CSV injection” */ return /[",\r\n;]/.test(v) ? '"' + v.replace(/"/g, '""') + '"' : v; }
+function csvCell(v) { v = String(v == null ? '' : v); return /[",\r\n;]/.test(v) || /^[=+\-@\t]/.test(v) ? '"' + v.replace(/"/g, '""') + '"' : v; }
 function csvRow(a) { return a.map(csvCell).join(','); }
 function personsCsv(db) {
   const rows = [csvRow(['id', 'prenume', 'nume', 'sex', 'nastere', 'loc_nastere', 'deces', 'loc_deces', 'ocupatie', 'tata_id', 'mama_id', 'etichete', 'in_viata'])];
@@ -3523,7 +3093,7 @@ function makeBundle(db) {
 }
 
 /* ===== 04 stocare locală + criptare AES-GCM (Web Crypto, PBKDF2) ===== */
-const KEY_TREE = PFX + 'tree', PBKDF_ITER = 600000;
+const KEY_TREE = PFX + 'tree', PBKDF_ITER = 310000;
 function lsGet(k) { try { return localStorage.getItem(PFX + k); } catch (e) { return null; } }
 function lsSet(k, v) { try { localStorage.setItem(PFX + k, v); return true; } catch (e) { return false; } }
 function lsDel(k) { try { localStorage.removeItem(PFX + k); } catch (e) { /* ignorat */ } }
@@ -3710,6 +3280,45 @@ K('tab_people','Persoane','People','Personnes','Persone','Personas','Pessoas','S
 K('tab_chart','Diagrame','Charts','Diagrammes','Diagrammi','Diagramas','Diagramas','Diagramok','Diagramme');
 K('tab_rel','Rudenie','Relationship','Parenté','Parentela','Parentesco','Parentesco','Rokonság','Verwandtschaft');
 K('tab_quality','Calitatea datelor','Data quality','Qualité des données','Qualità dei dati','Calidad de datos','Qualidade dos dados','Adatminőség','Datenqualität');
+K('tab_story','Poveste','Story','Récit','Storia','Historia','História','Történet','Geschichte');
+K('show_story','Povestea persoanei','Person’s story','Récit de la personne','Storia della persona','Historia de la persona','História da pessoa','A személy története','Geschichte der Person');
+K('st_person','Persoana','Person','Personne','Persona','Persona','Pessoa','Személy','Person');
+K('st_txt','Salvează povestea (.txt)','Save the story (.txt)','Enregistrer le récit (.txt)','Salva la storia (.txt)','Guardar la historia (.txt)','Guardar a história (.txt)','Történet mentése (.txt)','Geschichte speichern (.txt)');
+K('st_svg','Parcurs (SVG)','Route (SVG)','Parcours (SVG)','Percorso (SVG)','Recorrido (SVG)','Percurso (SVG)','Útvonal (SVG)','Weg (SVG)');
+K('st_note','Povestea este asamblată automat din datele din arbore; nu adaugă nimic ce nu ai introdus. Locurile nu sunt geocodate: planul folosește doar coordonatele pe care le introduci tu, fără hartă de fundal și fără rețea.','The story is assembled automatically from the data in the tree and adds nothing you did not enter. Places are not geocoded: the plan uses only the coordinates you enter, with no base map and no network.','Le récit est assemblé automatiquement à partir des données de l’arbre et n’ajoute rien que vous n’ayez saisi. Les lieux ne sont pas géocodés : le plan n’utilise que les coordonnées que vous saisissez, sans fond de carte ni réseau.','La storia è composta automaticamente dai dati dell’albero e non aggiunge nulla che non sia stato inserito. I luoghi non sono geocodificati: il piano usa solo le coordinate inserite da te, senza mappa di sfondo e senza rete.','La historia se compone automáticamente con los datos del árbol y no añade nada que no hayas introducido. Los lugares no se geocodifican: el plano usa solo las coordenadas que introduzcas, sin mapa de fondo ni red.','A história é composta automaticamente a partir dos dados da árvore e não acrescenta nada que não tenhas introduzido. Os locais não são geocodificados: o plano usa apenas as coordenadas que introduzires, sem mapa de fundo nem rede.','A történet automatikusan készül a fa adataiból, és semmit nem tesz hozzá, amit nem adtál meg. A helyek nincsenek geokódolva: a vázlat csak az általad megadott koordinátákat használja, háttértérkép és hálózat nélkül.','Die Geschichte wird automatisch aus den Daten des Baums zusammengestellt und fügt nichts hinzu, was nicht eingetragen wurde. Orte werden nicht geokodiert: Der Plan nutzt nur die von dir eingegebenen Koordinaten, ohne Hintergrundkarte und ohne Netz.');
+K('st_empty','Alege o persoană pentru a vedea povestea ei.','Choose a person to see their story.','Choisissez une personne pour voir son récit.','Scegli una persona per vedere la sua storia.','Elige una persona para ver su historia.','Escolhe uma pessoa para ver a sua história.','Válassz egy személyt a története megtekintéséhez.','Wähle eine Person, um ihre Geschichte zu sehen.');
+K('st_parents','Părinți: {x}.','Parents: {x}.','Parents : {x}.','Genitori: {x}.','Progenitores: {x}.','Progenitores: {x}.','Szülők: {x}.','Eltern: {x}.');
+K('st_spouses','Parteneri: {x}.','Partners: {x}.','Partenaires : {x}.','Partner: {x}.','Parejas: {x}.','Parceiros: {x}.','Társak: {x}.','Partner: {x}.');
+K('st_children','Copii ({n}): {x}.','Children ({n}): {x}.','Enfants ({n}) : {x}.','Figli ({n}): {x}.','Hijos ({n}): {x}.','Filhos ({n}): {x}.','Gyermekek ({n}): {x}.','Kinder ({n}): {x}.');
+K('st_age','la {n} ani','age {n}','à {n} ans','a {n} anni','a los {n} años','aos {n} anos','{n} évesen','mit {n} Jahren');
+K('st_undated','Fără dată','Undated','Sans date','Senza data','Sin fecha','Sem data','Dátum nélkül','Ohne Datum');
+K('st_noev','Nu există evenimente înregistrate.','No events recorded.','Aucun événement enregistré.','Nessun evento registrato.','No hay eventos registrados.','Não há eventos registados.','Nincs rögzített esemény.','Keine Ereignisse erfasst.');
+K('st_route','Parcurs între locuri','Route between places','Parcours entre les lieux','Percorso tra i luoghi','Recorrido entre lugares','Percurso entre locais','Útvonal a helyek között','Weg zwischen den Orten');
+K('st_route_none','Sunt necesare cel puțin două evenimente datate, cu loc, în locuri diferite.','At least two dated events with a place, in different places, are needed.','Il faut au moins deux événements datés avec lieu, en des lieux différents.','Servono almeno due eventi datati con luogo, in luoghi diversi.','Hacen falta al menos dos eventos con fecha y lugar, en lugares distintos.','São necessários pelo menos dois eventos datados com local, em locais diferentes.','Legalább két keltezett, helyet megadó esemény kell, különböző helyeken.','Es sind mindestens zwei datierte Ereignisse mit Ort an verschiedenen Orten nötig.');
+K('st_route_skip','{n} evenimente cu loc, dar fără dată, nu intră în parcurs.','{n} events with a place but no date are not part of the route.','{n} événements avec lieu mais sans date ne figurent pas dans le parcours.','{n} eventi con luogo ma senza data non rientrano nel percorso.','{n} eventos con lugar pero sin fecha no entran en el recorrido.','{n} eventos com local mas sem data não entram no percurso.','{n} helyes, de dátum nélküli esemény nem szerepel az útvonalban.','{n} Ereignisse mit Ort, aber ohne Datum sind nicht im Weg enthalten.');
+K('st_map_title','Plan al parcursului (fără hartă de fundal)','Route plan (no base map)','Plan du parcours (sans fond de carte)','Piano del percorso (senza mappa di sfondo)','Plano del recorrido (sin mapa de fondo)','Plano do percurso (sem mapa de fundo)','Az útvonal vázlata (háttértérkép nélkül)','Plan des Wegs (ohne Hintergrundkarte)');
+K('st_map_none','Introdu mai jos coordonatele locurilor pentru a vedea planul parcursului.','Enter the places’ coordinates below to see the route plan.','Saisissez ci-dessous les coordonnées des lieux pour voir le plan du parcours.','Inserisci sotto le coordinate dei luoghi per vedere il piano del percorso.','Introduce abajo las coordenadas de los lugares para ver el plano del recorrido.','Introduz abaixo as coordenadas dos locais para ver o plano do percurso.','Add meg lent a helyek koordinátáit az útvonal vázlatához.','Gib unten die Koordinaten der Orte ein, um den Plan des Wegs zu sehen.');
+K('st_map_part','Planul arată {n} din {t} locuri ale parcursului (restul nu au coordonate).','The plan shows {n} of {t} route places (the others have no coordinates).','Le plan montre {n} lieux sur {t} du parcours (les autres n’ont pas de coordonnées).','Il piano mostra {n} luoghi su {t} del percorso (gli altri non hanno coordinate).','El plano muestra {n} de {t} lugares del recorrido (el resto no tiene coordenadas).','O plano mostra {n} de {t} locais do percurso (os restantes não têm coordenadas).','A vázlat az útvonal {t} helyéből {n}-et mutatja (a többinek nincs koordinátája).','Der Plan zeigt {n} von {t} Orten des Wegs (die übrigen haben keine Koordinaten).');
+K('st_map_aria','Plan al parcursului lui {x}, desenat din coordonatele introduse','Route plan of {x}, drawn from the coordinates entered','Plan du parcours de {x}, dessiné à partir des coordonnées saisies','Piano del percorso di {x}, disegnato dalle coordinate inserite','Plano del recorrido de {x}, dibujado con las coordenadas introducidas','Plano do percurso de {x}, desenhado com as coordenadas introduzidas','{x} útvonalának vázlata a megadott koordinátákból','Plan des Wegs von {x}, gezeichnet aus den eingegebenen Koordinaten');
+K('st_coords','Coordonate pentru locuri (opțional)','Coordinates for places (optional)','Coordonnées des lieux (facultatif)','Coordinate dei luoghi (facoltativo)','Coordenadas de los lugares (opcional)','Coordenadas dos locais (opcional)','A helyek koordinátái (nem kötelező)','Koordinaten der Orte (optional)');
+K('st_coords_hint','Format zecimal, de exemplu 45.64 și 25.59 (latitudine −90…90, longitudine −180…180). Aplicația nu caută coordonate: le iei tu dintr-un atlas sau dintr-o hartă. Câmpurile goale înseamnă fără coordonate.','Decimal format, for example 45.64 and 25.59 (latitude −90…90, longitude −180…180). The app does not look coordinates up: take them from an atlas or a map. Empty fields mean no coordinates.','Format décimal, par exemple 45.64 et 25.59 (latitude −90…90, longitude −180…180). L’application ne cherche pas les coordonnées : prenez-les dans un atlas ou une carte. Champs vides = pas de coordonnées.','Formato decimale, ad esempio 45.64 e 25.59 (latitudine −90…90, longitudine −180…180). L’app non cerca le coordinate: prendile da un atlante o da una mappa. Campi vuoti = nessuna coordinata.','Formato decimal, por ejemplo 45.64 y 25.59 (latitud −90…90, longitud −180…180). La aplicación no busca coordenadas: tómalas de un atlas o un mapa. Campos vacíos = sin coordenadas.','Formato decimal, por exemplo 45.64 e 25.59 (latitude −90…90, longitude −180…180). A aplicação não procura coordenadas: obtém-nas de um atlas ou mapa. Campos vazios = sem coordenadas.','Tizedes formátum, például 45.64 és 25.59 (szélesség −90…90, hosszúság −180…180). Az alkalmazás nem keres koordinátákat: atlaszból vagy térképről vedd. Üres mező = nincs koordináta.','Dezimalformat, z. B. 45.64 und 25.59 (Breite −90…90, Länge −180…180). Die App sucht keine Koordinaten: Nimm sie aus einem Atlas oder einer Karte. Leere Felder = keine Koordinaten.');
+K('st_lat','Latitudine','Latitude','Latitude','Latitudine','Latitud','Latitude','Szélesség','Breitengrad');
+K('st_lon','Longitudine','Longitude','Longitude','Longitudine','Longitud','Longitude','Hosszúság','Längengrad');
+K('st_coords_save','Salvează coordonatele','Save coordinates','Enregistrer les coordonnées','Salva le coordinate','Guardar las coordenadas','Guardar as coordenadas','Koordináták mentése','Koordinaten speichern');
+K('st_coords_err','Coordonate invalide pentru: {x}. Latitudine −90…90, longitudine −180…180; completează ambele câmpuri sau niciunul.','Invalid coordinates for: {x}. Latitude −90…90, longitude −180…180; fill in both fields or neither.','Coordonnées invalides pour : {x}. Latitude −90…90, longitude −180…180 ; remplissez les deux champs ou aucun.','Coordinate non valide per: {x}. Latitudine −90…90, longitudine −180…180; compila entrambi i campi o nessuno.','Coordenadas no válidas para: {x}. Latitud −90…90, longitud −180…180; rellena ambos campos o ninguno.','Coordenadas inválidas para: {x}. Latitude −90…90, longitude −180…180; preenche ambos os campos ou nenhum.','Érvénytelen koordináták: {x}. Szélesség −90…90, hosszúság −180…180; mindkét mezőt töltsd ki, vagy egyiket sem.','Ungültige Koordinaten für: {x}. Breite −90…90, Länge −180…180; beide Felder ausfüllen oder keines.');
+K('st_coords_ok','Coordonate salvate pentru {n} locuri.','Coordinates saved for {n} places.','Coordonnées enregistrées pour {n} lieux.','Coordinate salvate per {n} luoghi.','Coordenadas guardadas para {n} lugares.','Coordenadas guardadas para {n} locais.','Koordináták mentve {n} helyhez.','Koordinaten für {n} Orte gespeichert.');
+K('gv_title','Verifică și repară un fișier GEDCOM','Check and repair a GEDCOM file','Vérifier et réparer un fichier GEDCOM','Verifica e ripara un file GEDCOM','Verificar y reparar un archivo GEDCOM','Verificar e reparar um ficheiro GEDCOM','GEDCOM-fájl ellenőrzése és javítása','GEDCOM-Datei prüfen und reparieren');
+K('gv_text','Fișierul este citit doar pe acest dispozitiv și verificat fără să modifice arborele curent; vezi ce se repară și poți descărca o variantă curățată.','The file is read only on this device and checked without changing the current tree; you see what gets repaired and can download a cleaned version.','Le fichier est lu uniquement sur cet appareil et vérifié sans modifier l’arbre actuel ; vous voyez ce qui est réparé et pouvez télécharger une version nettoyée.','Il file viene letto solo su questo dispositivo e verificato senza modificare l’albero attuale; vedi cosa viene riparato e puoi scaricare una versione pulita.','El archivo se lee solo en este dispositivo y se verifica sin modificar el árbol actual; ves qué se repara y puedes descargar una versión limpia.','O ficheiro é lido apenas neste dispositivo e verificado sem alterar a árvore atual; vês o que é reparado e podes descarregar uma versão limpa.','A fájlt csak ezen az eszközön olvassa be, és a jelenlegi fa módosítása nélkül ellenőrzi; látod, mi javul, és letölthetsz egy megtisztított változatot.','Die Datei wird nur auf diesem Gerät gelesen und geprüft, ohne den aktuellen Baum zu ändern; du siehst, was repariert wird, und kannst eine bereinigte Fassung herunterladen.');
+K('gv_file','Fișier GEDCOM de verificat (.ged)','GEDCOM file to check (.ged)','Fichier GEDCOM à vérifier (.ged)','File GEDCOM da verificare (.ged)','Archivo GEDCOM a verificar (.ged)','Ficheiro GEDCOM a verificar (.ged)','Ellenőrizendő GEDCOM-fájl (.ged)','Zu prüfende GEDCOM-Datei (.ged)');
+K('gv_found','Probleme găsite: {n} ({e} erori, {w} avertismente, {d} date neinterpretabile).','Problems found: {n} ({e} errors, {w} warnings, {d} unparsable dates).','Problèmes trouvés : {n} ({e} erreurs, {w} avertissements, {d} dates illisibles).','Problemi trovati: {n} ({e} errori, {w} avvisi, {d} date non interpretabili).','Problemas encontrados: {n} ({e} errores, {w} avisos, {d} fechas ilegibles).','Problemas encontrados: {n} ({e} erros, {w} avisos, {d} datas ilegíveis).','Talált problémák: {n} ({e} hiba, {w} figyelmeztetés, {d} értelmezhetetlen dátum).','Gefundene Probleme: {n} ({e} Fehler, {w} Warnungen, {d} nicht lesbare Daten).');
+K('gv_clean','Fișierul este curat: nu s-a găsit nimic de reparat.','The file is clean: nothing to repair.','Le fichier est propre : rien à réparer.','Il file è pulito: nulla da riparare.','El archivo está limpio: nada que reparar.','O ficheiro está limpo: nada a reparar.','A fájl rendben van: nincs mit javítani.','Die Datei ist sauber: nichts zu reparieren.');
+K('gv_dates','Datele neinterpretabile devin text liber între paranteze la descărcare (formă acceptată de GEDCOM).','Unparsable dates become free text in parentheses on download (a form GEDCOM allows).','Les dates illisibles deviennent du texte libre entre parenthèses au téléchargement (forme admise par GEDCOM).','Le date non interpretabili diventano testo libero tra parentesi al download (forma ammessa da GEDCOM).','Las fechas ilegibles pasan a texto libre entre paréntesis al descargar (forma admitida por GEDCOM).','As datas ilegíveis passam a texto livre entre parênteses ao descarregar (forma admitida pelo GEDCOM).','A értelmezhetetlen dátumok letöltéskor szabad szöveggé válnak zárójelben (a GEDCOM megengedi).','Nicht lesbare Daten werden beim Download zu freiem Text in Klammern (von GEDCOM erlaubt).');
+K('gv_dl','Descarcă GEDCOM reparat','Download repaired GEDCOM','Télécharger le GEDCOM réparé','Scarica il GEDCOM riparato','Descargar GEDCOM reparado','Descarregar GEDCOM reparado','Javított GEDCOM letöltése','Reparierte GEDCOM herunterladen');
+K('gv_cons','Verificări de coerență pe datele citite: {e} erori, {w} avertismente, {i} informări. Le vezi detaliat după import, în această filă.','Consistency checks on the data read: {e} errors, {w} warnings, {i} notes. See the details after importing, in this tab.','Contrôles de cohérence sur les données lues : {e} erreurs, {w} avertissements, {i} informations. Détails après import, dans cet onglet.','Controlli di coerenza sui dati letti: {e} errori, {w} avvisi, {i} informazioni. Dettagli dopo l’importazione, in questa scheda.','Comprobaciones de coherencia sobre los datos leídos: {e} errores, {w} avisos, {i} informaciones. Detalle tras importar, en esta pestaña.','Verificações de coerência nos dados lidos: {e} erros, {w} avisos, {i} informações. Detalhe após importar, neste separador.','Konzisztenciaellenőrzés a beolvasott adatokon: {e} hiba, {w} figyelmeztetés, {i} megjegyzés. Részletek importálás után, ezen a fülön.','Konsistenzprüfungen der gelesenen Daten: {e} Fehler, {w} Warnungen, {i} Hinweise. Details nach dem Import in diesem Tab.');
+K('gv_note','Arborele curent nu este modificat. Fișierul reparat este regenerat din ce a putut fi citit: etichetele necunoscute se păstrează, dar liniile marcate „ignorat” în raport se pierd. Compară rezultatul cu originalul înainte să îl înlocuiești.','The current tree is not modified. The repaired file is regenerated from what could be read: unknown tags are kept, but lines marked “ignored” in the report are lost. Compare the result with the original before replacing it.','L’arbre actuel n’est pas modifié. Le fichier réparé est régénéré à partir de ce qui a pu être lu : les balises inconnues sont conservées, mais les lignes « ignorées » du rapport sont perdues. Comparez avec l’original avant de le remplacer.','L’albero attuale non viene modificato. Il file riparato è rigenerato da ciò che è stato letto: i tag sconosciuti restano, ma le righe «ignorate» nel rapporto vanno perse. Confronta con l’originale prima di sostituirlo.','El árbol actual no se modifica. El archivo reparado se regenera con lo que se pudo leer: las etiquetas desconocidas se conservan, pero las líneas «ignoradas» del informe se pierden. Compara con el original antes de reemplazarlo.','A árvore atual não é alterada. O ficheiro reparado é regenerado com o que foi possível ler: as etiquetas desconhecidas são mantidas, mas as linhas «ignoradas» no relatório perdem-se. Compara com o original antes de o substituir.','A jelenlegi fa nem módosul. A javított fájl a beolvasható részből készül újra: az ismeretlen címkék megmaradnak, de a jelentésben „figyelmen kívül hagyott” sorok elvesznek. Csere előtt vesd össze az eredetivel.','Der aktuelle Baum wird nicht verändert. Die reparierte Datei wird aus dem Lesbaren neu erzeugt: Unbekannte Tags bleiben erhalten, im Bericht als „ignoriert“ markierte Zeilen gehen verloren. Vergleiche mit dem Original, bevor du es ersetzt.');
+K('rep_bad_date','Dată neinterpretabilă „{d}” ({who}, {ev}).','Unparsable date “{d}” ({who}, {ev}).','Date illisible « {d} » ({who}, {ev}).','Data non interpretabile «{d}» ({who}, {ev}).','Fecha ilegible «{d}» ({who}, {ev}).','Data ilegível «{d}» ({who}, {ev}).','Értelmezhetetlen dátum „{d}” ({who}, {ev}).','Nicht lesbares Datum „{d}“ ({who}, {ev}).');
+K('lim9','Povestea este generată din datele introduse; planul parcursului folosește doar coordonate introduse manual, fără hartă de fundal; reparația GEDCOM regenerează fișierul din ce a putut fi citit.','The story is generated from the data entered; the route plan uses only manually entered coordinates, with no base map; GEDCOM repair regenerates the file from what could be read.','Le récit est généré à partir des données saisies ; le plan du parcours n’utilise que des coordonnées saisies à la main, sans fond de carte ; la réparation GEDCOM régénère le fichier à partir de ce qui a pu être lu.','La storia è generata dai dati inseriti; il piano del percorso usa solo coordinate inserite a mano, senza mappa di sfondo; la riparazione GEDCOM rigenera il file da ciò che è stato letto.','La historia se genera con los datos introducidos; el plano del recorrido usa solo coordenadas introducidas a mano, sin mapa de fondo; la reparación GEDCOM regenera el archivo con lo que se pudo leer.','A história é gerada a partir dos dados introduzidos; o plano do percurso usa apenas coordenadas introduzidas à mão, sem mapa de fundo; a reparação GEDCOM regenera o ficheiro com o que foi possível ler.','A történet a megadott adatokból készül; az útvonal vázlata csak kézzel megadott koordinátákat használ, háttértérkép nélkül; a GEDCOM-javítás a beolvasható részből állítja elő újra a fájlt.','Die Geschichte wird aus den eingegebenen Daten erzeugt; der Wegplan nutzt nur von Hand eingegebene Koordinaten, ohne Hintergrundkarte; die GEDCOM-Reparatur erzeugt die Datei aus dem Lesbaren neu.');
+K('st_masked','Persoana este protejată de setările de confidențialitate (fila Date și export): dezactivează masca pentru a o exporta.','The person is protected by the privacy settings (Data & export tab): turn the mask off to export.','La personne est protégée par les réglages de confidentialité (onglet Données et export) : désactivez le masquage pour l’exporter.','La persona è protetta dalle impostazioni di privacy (scheda Dati ed esportazione): disattiva la maschera per esportarla.','La persona está protegida por los ajustes de privacidad (pestaña Datos y exportación): desactiva el enmascarado para exportarla.','A pessoa está protegida pelas definições de privacidade (separador Dados e exportação): desativa a máscara para exportar.','A személyt az adatvédelmi beállítások védik (Adatok és export fül): az exportáláshoz kapcsold ki a maszkolást.','Die Person ist durch die Datenschutz-Einstellungen geschützt (Tab Daten und Export): Maske ausschalten, um zu exportieren.');
 K('tab_places','Locuri','Places','Lieux','Luoghi','Lugares','Locais','Helyek','Orte');
 K('tab_data','Date și export','Data & export','Données et export','Dati ed esportazione','Datos y exportación','Dados e exportação','Adatok és export','Daten & Export');
 K('search','Caută','Search','Rechercher','Cerca','Buscar','Pesquisar','Keresés','Suchen');
@@ -3947,7 +3556,7 @@ K('iss_cycle','Ciclu în arbore: {a} este propriul strămoș ({n} persoane în c
 K('sort','Sortare','Sort','Tri','Ordina','Ordenar','Ordenar','Rendezés','Sortierung');
 K('by_name','după nume','by name','par nom','per nome','por nombre','por nome','név szerint','nach Name');
 K('by_count','după număr de evenimente','by event count','par nombre d’événements','per numero di eventi','por número de eventos','por número de eventos','események száma szerint','nach Anzahl der Ereignisse');
-K('places_note','Lista este construită din locurile introduse în evenimente. Nu există hartă: nicio cerere către servicii externe.','The list is built from places entered in events. There is no map: no requests to external services.','La liste provient des lieux saisis dans les événements. Pas de carte : aucune requête vers des services externes.','L’elenco deriva dai luoghi inseriti negli eventi. Nessuna mappa: nessuna richiesta a servizi esterni.','La lista procede de los lugares introducidos en eventos. No hay mapa: ninguna petición a servicios externos.','A lista vem dos locais introduzidos nos eventos. Não há mapa: nenhum pedido a serviços externos.','A lista az események helyeiből épül. Nincs térkép: nincs külső szolgáltatáshoz fordulás.','Die Liste stammt aus den in Ereignissen eingetragenen Orten. Keine Karte: keine Anfragen an externe Dienste.');
+K('places_note','Lista este construită din locurile introduse în evenimente. Nu există hartă de fundal: nicio cerere către servicii externe (coordonatele opționale se introduc în fila Poveste).','The list is built from places entered in events. There is no base map: no requests to external services (optional coordinates are entered in the Story tab).','La liste provient des lieux saisis dans les événements. Pas de fond de carte : aucune requête externe (les coordonnées facultatives se saisissent dans l’onglet Récit).','L’elenco deriva dai luoghi inseriti negli eventi. Nessuna mappa di sfondo: nessuna richiesta esterna (le coordinate facoltative si inseriscono nella scheda Storia).','La lista procede de los lugares introducidos en eventos. No hay mapa de fondo: ninguna petición externa (las coordenadas opcionales se introducen en la pestaña Historia).','A lista vem dos locais introduzidos nos eventos. Não há mapa de fundo: nenhum pedido externo (as coordenadas opcionais introduzem-se no separador História).','A lista az események helyeiből épül. Nincs háttértérkép: nincs külső kérés (a nem kötelező koordináták a Történet fülön adhatók meg).','Die Liste stammt aus den in Ereignissen eingetragenen Orten. Keine Hintergrundkarte: keine externen Anfragen (optionale Koordinaten gibst du im Tab Geschichte ein).');
 K('places_empty','Niciun loc înregistrat încă.','No places recorded yet.','Aucun lieu enregistré.','Nessun luogo registrato.','Aún no hay lugares.','Ainda não há locais.','Még nincs rögzített hely.','Noch keine Orte erfasst.');
 K('n_places','{n} locuri','{n} places','{n} lieux','{n} luoghi','{n} lugares','{n} locais','{n} hely','{n} Orte');
 K('rename_place','Redenumește locul','Rename place','Renommer le lieu','Rinomina luogo','Renombrar lugar','Renomear local','Hely átnevezése','Ort umbenennen');
@@ -3957,7 +3566,7 @@ K('renamed','Evenimente actualizate: {n}.','Events updated: {n}.','Événements 
 K('d_local_title','Confidențialitate și stocare','Privacy and storage','Confidentialité et stockage','Privacy e archiviazione','Privacidad y almacenamiento','Privacidade e armazenamento','Adatvédelem és tárolás','Datenschutz und Speicherung');
 K('d_local_text','Datele de familie sunt sensibile. Arborele este păstrat doar în acest browser (localStorage/IndexedDB), nu există conturi, analiză sau trimitere de date. Exporturile se salvează doar pe dispozitivul tău.','Family data is sensitive. The tree is kept only in this browser (localStorage/IndexedDB); there are no accounts, analytics or data uploads. Exports are saved only on your device.','Les données familiales sont sensibles. L’arbre n’est conservé que dans ce navigateur (localStorage/IndexedDB) ; ni comptes, ni analyse, ni envoi de données. Les exports restent sur votre appareil.','I dati di famiglia sono sensibili. L’albero è conservato solo in questo browser (localStorage/IndexedDB); nessun account, analisi o invio di dati. Le esportazioni restano sul tuo dispositivo.','Los datos familiares son sensibles. El árbol se guarda solo en este navegador (localStorage/IndexedDB); sin cuentas, analítica ni envío de datos. Las exportaciones se guardan solo en su dispositivo.','Os dados de família são sensíveis. A árvore é guardada apenas neste navegador (localStorage/IndexedDB); sem contas, análises ou envio de dados. As exportações ficam apenas no seu dispositivo.','A családi adatok érzékenyek. A családfa csak ebben a böngészőben tárolódik (localStorage/IndexedDB); nincs fiók, elemzés vagy adatküldés. Az exportok csak az Ön eszközére kerülnek.','Familiendaten sind sensibel. Der Baum wird nur in diesem Browser gespeichert (localStorage/IndexedDB); keine Konten, Analysen oder Datenübertragung. Exporte bleiben auf Ihrem Gerät.');
 K('d_enc_title','Criptare locală (opțional)','Local encryption (optional)','Chiffrement local (facultatif)','Cifratura locale (facoltativa)','Cifrado local (opcional)','Cifragem local (opcional)','Helyi titkosítás (opcionális)','Lokale Verschlüsselung (optional)');
-K('d_enc_text','Cu parolă, arborele salvat în browser este criptat AES-GCM 256 (cheie derivată cu PBKDF2-SHA256, 600 000 iterații).','With a password, the tree saved in the browser is encrypted with AES-GCM 256 (key derived with PBKDF2-SHA256, 600,000 iterations).','Avec un mot de passe, l’arbre enregistré dans le navigateur est chiffré en AES-GCM 256 (clé dérivée par PBKDF2-SHA256, 600 000 itérations).','Con una password, l’albero salvato nel browser è cifrato con AES-GCM 256 (chiave derivata con PBKDF2-SHA256, 600.000 iterazioni).','Con una contraseña, el árbol guardado en el navegador se cifra con AES-GCM 256 (clave derivada con PBKDF2-SHA256, 600 000 iteraciones).','Com uma palavra-passe, a árvore guardada no navegador é cifrada com AES-GCM 256 (chave derivada com PBKDF2-SHA256, 600 000 iterações).','Jelszóval a böngészőben tárolt családfa AES-GCM 256-tal titkosított (PBKDF2-SHA256 kulcsszármaztatás, 600 000 iteráció).','Mit Passwort wird der im Browser gespeicherte Baum mit AES-GCM 256 verschlüsselt (Schlüssel via PBKDF2-SHA256, 600.000 Iterationen).');
+K('d_enc_text','Cu parolă, arborele salvat în browser este criptat AES-GCM 256 (cheie derivată cu PBKDF2-SHA256, 310 000 iterații).','With a password, the tree saved in the browser is encrypted with AES-GCM 256 (key derived with PBKDF2-SHA256, 310,000 iterations).','Avec un mot de passe, l’arbre enregistré dans le navigateur est chiffré en AES-GCM 256 (clé dérivée par PBKDF2-SHA256, 310 000 itérations).','Con una password, l’albero salvato nel browser è cifrato con AES-GCM 256 (chiave derivata con PBKDF2-SHA256, 310.000 iterazioni).','Con una contraseña, el árbol guardado en el navegador se cifra con AES-GCM 256 (clave derivada con PBKDF2-SHA256, 310 000 iteraciones).','Com uma palavra-passe, a árvore guardada no navegador é cifrada com AES-GCM 256 (chave derivada com PBKDF2-SHA256, 310 000 iterações).','Jelszóval a böngészőben tárolt családfa AES-GCM 256-tal titkosított (PBKDF2-SHA256 kulcsszármaztatás, 310 000 iteráció).','Mit Passwort wird der im Browser gespeicherte Baum mit AES-GCM 256 verschlüsselt (Schlüssel via PBKDF2-SHA256, 310.000 Iterationen).');
 K('d_enc_warn','Atenție: dacă pierzi parola, datele criptate nu mai pot fi recuperate de nimeni, inclusiv de autor. Păstrează și o copie de rezervă.','Warning: if you lose the password, the encrypted data cannot be recovered by anyone, including the author. Keep a backup copy too.','Attention : si vous perdez le mot de passe, les données chiffrées sont irrécupérables par quiconque, y compris l’auteur. Gardez aussi une copie de sauvegarde.','Attenzione: se perdi la password, i dati cifrati non sono recuperabili da nessuno, autore incluso. Conserva anche una copia di backup.','Atención: si pierde la contraseña, nadie podrá recuperar los datos cifrados, ni siquiera el autor. Guarde también una copia de seguridad.','Atenção: se perder a palavra-passe, os dados cifrados não podem ser recuperados por ninguém, incluindo o autor. Guarde também uma cópia de segurança.','Figyelem: ha elveszíti a jelszót, a titkosított adatok senki által – a szerző által sem – nem állíthatók helyre. Készítsen biztonsági másolatot is.','Achtung: Bei Verlust des Passworts sind die verschlüsselten Daten für niemanden wiederherstellbar, auch nicht für den Autor. Bewahren Sie auch eine Sicherungskopie auf.');
 K('enc_enable','Activează criptarea','Enable encryption','Activer le chiffrement','Attiva la cifratura','Activar el cifrado','Ativar a cifragem','Titkosítás bekapcsolása','Verschlüsselung aktivieren');
 K('enc_change','Schimbă parola','Change password','Changer le mot de passe','Cambia password','Cambiar contraseña','Alterar palavra-passe','Jelszó módosítása','Passwort ändern');
@@ -4016,8 +3625,6 @@ K('x_csv_f','CSV familii','CSV families','CSV familles','CSV famiglie','CSV fami
 K('x_report','Raport tipăribil','Printable report','Rapport imprimable','Rapporto stampabile','Informe imprimible','Relatório imprimível','Nyomtatható jelentés','Druckbarer Bericht');
 K('x_report_dl','Descarcă raport (.html)','Download report (.html)','Télécharger le rapport (.html)','Scarica rapporto (.html)','Descargar informe (.html)','Descarregar relatório (.html)','Jelentés letöltése (.html)','Bericht herunterladen (.html)');
 K('exported','Exportat: {x}','Exported: {x}','Exporté : {x}','Esportato: {x}','Exportado: {x}','Exportado: {x}','Exportálva: {x}','Exportiert: {x}');
-K('backup_due','Nu ai o copie de rezervă recentă ({d} zile). Arborele e doar în acest browser: exportă un fișier.','No recent backup ({d} days). The tree lives only in this browser: export a file.','Pas de sauvegarde récente ({d} jours). L’arbre n’existe que dans ce navigateur : exportez un fichier.','Nessun backup recente ({d} giorni). L’albero esiste solo in questo browser: esporta un file.','Sin copia de seguridad reciente ({d} días). El árbol solo existe en este navegador: exporta un archivo.','Sem cópia de segurança recente ({d} dias). A árvore existe apenas neste navegador: exporte um ficheiro.','Nincs friss biztonsági másolat ({d} nap). A családfa csak ebben a böngészőben van: exportálj egy fájlt.','Keine aktuelle Sicherung ({d} Tage). Der Stammbaum existiert nur in diesem Browser: exportiere eine Datei.');
-K('backup_now','Exportă acum','Export now','Exporter maintenant','Esporta ora','Exportar ahora','Exportar agora','Exportálás most','Jetzt exportieren');
 K('nothing_to_export','Nu există date de exportat.','There is no data to export.','Aucune donnée à exporter.','Nessun dato da esportare.','No hay datos que exportar.','Não há dados para exportar.','Nincs exportálható adat.','Keine Daten zum Exportieren.');
 K('report_title','Arbore — raport genealogic','Arbore — genealogy report','Arbore — rapport généalogique','Arbore — rapporto genealogico','Arbore — informe genealógico','Arbore — relatório genealógico','Arbore — genealógiai jelentés','Arbore — Genealogiebericht');
 K('report_sub','{n} persoane, {f} familii · generat la {d}','{n} people, {f} families · generated {d}','{n} personnes, {f} familles · généré le {d}','{n} persone, {f} famiglie · generato il {d}','{n} personas, {f} familias · generado el {d}','{n} pessoas, {f} famílias · gerado em {d}','{n} személy, {f} család · készült: {d}','{n} Personen, {f} Familien · erstellt am {d}');
@@ -4028,7 +3635,7 @@ K('lim3','GEDCOM 5.5.1 UTF-8 complet pentru uz curent; ANSEL/ANSI doar minimal; 
 K('lim4','Datele incomplete sunt acceptate (circa, înainte de, intervale); calendarele non-gregoriene sunt păstrate ca text și tratate aproximativ în verificări.','Incomplete dates are accepted (about, before, ranges); non-Gregorian calendars are kept as text and treated approximately in checks.','Dates incomplètes acceptées (vers, avant, intervalles) ; calendriers non grégoriens conservés en texte et traités approximativement.','Date incomplete accettate (circa, prima di, intervalli); calendari non gregoriani conservati come testo e trattati in modo approssimato.','Fechas incompletas admitidas (hacia, antes de, intervalos); calendarios no gregorianos conservados como texto y tratados de forma aproximada.','Datas incompletas aceites (por volta de, antes de, intervalos); calendários não gregorianos mantidos como texto e tratados de forma aproximada.','Hiányos dátumok elfogadottak (kb., előtt, tartomány); a nem gergely naptárak szövegként maradnak, az ellenőrzések közelítőleg kezelik őket.','Unvollständige Daten werden akzeptiert (etwa, vor, Bereiche); nicht-gregorianische Kalender bleiben als Text erhalten und werden in Prüfungen nur näherungsweise behandelt.');
 K('lim5','Calculatorul de rudenie folosește denumiri românești; cazurile foarte complexe (căsătorii repetate între rude) primesc o descriere aproximativă sau calea cea mai scurtă. Nu este consultanță juridică sau religioasă.','The relationship calculator uses Romanian terms; very complex cases (repeated marriages between relatives) get an approximate description or the shortest path. It is not legal or religious advice.','Le calculateur utilise des termes roumains ; les cas très complexes (mariages répétés entre parents) reçoivent une description approximative ou le chemin le plus court. Ce n’est pas un conseil juridique ou religieux.','Il calcolatore usa termini rumeni; i casi molto complessi (matrimoni ripetuti tra parenti) ricevono una descrizione approssimativa o il percorso più breve. Non è consulenza legale o religiosa.','La calculadora usa términos rumanos; los casos muy complejos (matrimonios repetidos entre parientes) reciben una descripción aproximada o el camino más corto. No es asesoramiento legal ni religioso.','A számoló román megnevezéseket használ; a nagyon bonyolult esetek (rokonok közti ismételt házasságok) közelítő leírást vagy a legrövidebb utat kapják. Nem jogi vagy vallási tanács.','Der Rechner verwendet rumänische Bezeichnungen; sehr komplexe Fälle (wiederholte Heiraten unter Verwandten) erhalten eine Näherung oder den kürzesten Weg. Keine Rechts- oder Religionsberatung.');
 K('lim6','Duplicatele sunt sugestii pe baza numelui și datelor apropiate; verifică întotdeauna înainte de îmbinare (poți anula).','Duplicates are suggestions based on names and close dates; always check before merging (you can undo).','Les doublons sont des suggestions fondées sur les noms et dates proches ; vérifiez avant de fusionner (annulable).','I duplicati sono suggerimenti basati su nomi e date vicine; verifica sempre prima di unire (annullabile).','Los duplicados son sugerencias basadas en nombres y fechas cercanas; compruebe siempre antes de fusionar (se puede deshacer).','Os duplicados são sugestões baseadas em nomes e datas próximas; verifique sempre antes de unir (pode desfazer).','A duplikátumok név- és dátumközelségen alapuló javaslatok; összevonás előtt mindig ellenőrizze (visszavonható).','Duplikate sind Vorschläge anhand von Namen und nahen Daten; vor dem Zusammenführen stets prüfen (rückgängig möglich).');
-K('lim7','Nu există hartă: locurile sunt doar o listă; nu se face geocodare și nu se contactează servicii externe.','There is no map: places are only a list; no geocoding and no external services.','Pas de carte : les lieux ne sont qu’une liste ; pas de géocodage ni de services externes.','Nessuna mappa: i luoghi sono solo un elenco; nessuna geocodifica né servizi esterni.','No hay mapa: los lugares son solo una lista; sin geocodificación ni servicios externos.','Não há mapa: os locais são apenas uma lista; sem geocodificação nem serviços externos.','Nincs térkép: a helyek csak lista; nincs geokódolás és külső szolgáltatás.','Keine Karte: Orte sind nur eine Liste; keine Geokodierung, keine externen Dienste.');
+K('lim7','Nu există hartă de fundal: locurile sunt o listă; nu se face geocodare și nu se contactează servicii externe (planul din „Poveste” folosește doar coordonate introduse de tine).','There is no base map: places are a list; no geocoding and no external services (the plan in “Story” uses only coordinates you enter).','Pas de fond de carte : les lieux sont une liste ; pas de géocodage ni de services externes (le plan de « Récit » n’utilise que vos coordonnées).','Nessuna mappa di sfondo: i luoghi sono un elenco; nessuna geocodifica né servizi esterni (il piano in «Storia» usa solo le coordinate inserite da te).','No hay mapa de fondo: los lugares son una lista; sin geocodificación ni servicios externos (el plano de «Historia» usa solo tus coordenadas).','Não há mapa de fundo: os locais são uma lista; sem geocodificação nem serviços externos (o plano de «História» usa apenas as tuas coordenadas).','Nincs háttértérkép: a helyek lista; nincs geokódolás és külső szolgáltatás (a „Történet” vázlata csak az általad megadott koordinátákat használja).','Keine Hintergrundkarte: Orte sind eine Liste; keine Geokodierung, keine externen Dienste (der Plan unter „Geschichte“ nutzt nur deine Koordinaten).');
 K('lim8','Pe mobil, diagramele mari se navighează prin zoom și deplasare; imprimarea pe mai multe pagini împarte diagrama la scara 1:1.','On mobile, large charts are navigated by zooming and panning; multi-page printing splits the chart at 1:1 scale.','Sur mobile, les grands diagrammes se parcourent par zoom et déplacement ; l’impression multipage découpe le diagramme à l’échelle 1:1.','Su mobile, i diagrammi grandi si navigano con zoom e spostamento; la stampa su più pagine divide il diagramma in scala 1:1.','En móvil, los diagramas grandes se recorren con zoom y desplazamiento; la impresión multipágina divide el diagrama a escala 1:1.','No telemóvel, os diagramas grandes navegam-se com zoom e deslocamento; a impressão em várias páginas divide o diagrama à escala 1:1.','Mobilon a nagy diagramok nagyítással és mozgatással böngészhetők; a többoldalas nyomtatás 1:1 méretarányban darabolja a diagramot.','Auf dem Handy werden große Diagramme per Zoom und Verschieben bedient; der mehrseitige Druck teilt das Diagramm im Maßstab 1:1.');
 K('d_danger','Zonă periculoasă','Danger zone','Zone dangereuse','Zona pericolosa','Zona peligrosa','Zona perigosa','Veszélyes zóna','Gefahrenzone');
 K('wipe_all','Șterge tot','Delete everything','Tout supprimer','Elimina tutto','Eliminar todo','Eliminar tudo','Minden törlése','Alles löschen');
@@ -4404,6 +4011,7 @@ function renderSheet() {
   h += '</p></div></div>';
   h += '<div class="row" style="margin-top:.6rem"><button type="button" class="btn sm primary" data-act="edit">' + esc(T('edit')) + '</button>' +
     '<button type="button" class="btn sm" data-act="chart">' + esc(T('show_chart')) + '</button>' +
+    '<button type="button" class="btn sm" data-act="story">' + esc(T('show_story')) + '</button>' +
     '<button type="button" class="btn sm" data-act="rel-a">' + esc(T('rel_from_here')) + '</button>' +
     '<button type="button" class="btn sm" data-act="addfam">' + esc(T('add_union')) + '</button>' +
     '<button type="button" class="btn sm" data-act="addparents">' + esc(T('add_parents')) + '</button>' +
@@ -5154,6 +4762,228 @@ function initQuality() {
   $('#merge-go').addEventListener('click', doMerge);
 }
 
+/* ---------- povestea familiei (v2.0.0) ---------- */
+const COORD_MAX = 5000;
+function ownKey(o, k) { return Object.prototype.hasOwnProperty.call(o, k); }
+function coordsOf(db) { if (!db.coords || typeof db.coords !== 'object' || Array.isArray(db.coords)) db.coords = {}; return db.coords; }
+function cleanCoords(c) {
+  const out = {}; if (!c || typeof c !== 'object' || Array.isArray(c)) return out;
+  let n = 0;
+  for (const k of Object.keys(c)) {
+    if (k === '__proto__' || n >= COORD_MAX) continue;
+    const v = c[k]; if (!Array.isArray(v) || v.length !== 2) continue;
+    const la = typeof v[0] === 'number' ? v[0] : NaN, lo = typeof v[1] === 'number' ? v[1] : NaN;
+    if (!isFinite(la) || !isFinite(lo) || Math.abs(la) > 90 || Math.abs(lo) > 180) continue;
+    out[String(k).slice(0, 200)] = [la, lo]; n++;
+  }
+  return out;
+}
+function parseCoordNum(s, lim) {
+  const t = String(s == null ? '' : s).trim().replace(',', '.');
+  if (!/^[+-]?\d{1,3}(\.\d+)?$/.test(t)) return null;
+  const v = parseFloat(t); return isFinite(v) && Math.abs(v) <= lim ? v : null;
+}
+function storyModel(db, pid) {
+  const p = db.persons[pid]; if (!p) return null;
+  const nm = id => db.persons[id] ? pName(db.persons[id]) : '?';
+  const uniq = a => [...new Set(a)];
+  const m = {pid, name: pName(p), span: lifeSpan(p),
+    parents: uniq(parentsOf(db, pid).map(x => nm(x.id))),
+    spouses: uniq(spousesOf(db, pid).map(x => nm(x.id))),
+    children: uniq(childrenOf(db, pid).map(x => nm(x.id))), lines: [], route: [], skipped: 0};
+  for (const it of personTimeline(db, pid)) {
+    let label = it.t === 'EVEN' ? (it.type || T('ev_EVEN')) : (TT['ev_' + it.t] ? T('ev_' + it.t) : it.t);
+    if (it.type && it.t !== 'EVEN') label += ' (' + it.type + ')';
+    const val = it.src === 'self' && it.v && String(it.v) !== 'Y' && String(it.v) !== label ? String(it.v) : '';
+    const who = it.other && db.persons[it.other] ? nm(it.other) : '';
+    m.lines.push({y: it.date ? dateYear(it.date) : null, date: it.date || '', label, val, who, place: it.place || '', age: typeof it.age === 'number' && it.age >= 0 ? it.age : null, src: it.src});
+  }
+  let last = '';
+  for (const l of m.lines) if ((l.src === 'self' || l.src === 'fam') && l.place) {
+    if (l.y == null) { m.skipped++; continue; }
+    if (l.place !== last) { m.route.push({place: l.place, y: l.y, date: l.date}); last = l.place; }
+  }
+  return m;
+}
+function storyLineText(l) {
+  return l.label + (l.val ? ': ' + l.val : '') + (l.who ? ' — ' + l.who : '') + (l.place ? ' · ' + l.place : '') + (l.age != null ? ' (' + T('st_age', {n: l.age}) + ')' : '');
+}
+function storyGroups(m) {
+  const g = [];
+  for (const l of m.lines) {
+    const key = l.y == null ? 'u' : String(Math.floor(l.y / 10) * 10);
+    let last = g[g.length - 1];
+    if (!last || last.key !== key) g.push(last = {key, title: key === 'u' ? T('st_undated') : key + '–' + (+key + 9), items: []});
+    last.items.push(l);
+  }
+  return g;
+}
+function storyMapSvg(route, coords, st) {
+  const pts = [];
+  route.forEach((r, i) => { if (ownKey(coords, r.place)) pts.push({i, n: i + 1, place: r.place, y: r.y, lat: coords[r.place][0], lon: coords[r.place][1]}); });
+  if (!pts.length) return {svg: '', n: 0, t: route.length};
+  const W = 720, H = 420, pad = 64;
+  const lats = pts.map(p => p.lat), lons = pts.map(p => p.lon);
+  const la0 = Math.min(...lats), la1 = Math.max(...lats), lo0 = Math.min(...lons), lo1 = Math.max(...lons);
+  const k = Math.max(0.05, Math.cos(((la0 + la1) / 2) * Math.PI / 180));
+  const dx = (lo1 - lo0) * k, dy = la1 - la0;
+  const sc = dx || dy ? Math.min(dx ? (W - 2 * pad) / dx : 1e12, dy ? (H - 2 * pad) / dy : 1e12) : 1;
+  const X = p => (W / 2 + ((p.lon - (lo0 + lo1) / 2) * k) * sc).toFixed(1);
+  const Y = p => (H / 2 - (p.lat - (la0 + la1) / 2) * sc).toFixed(1);
+  let s = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ' + W + ' ' + H + '" width="' + W + '" height="' + H + '" class="stmap" role="img" aria-label="' + esc(st.label) + '">';
+  s += '<defs><marker id="stA" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="' + st.line + '"/></marker></defs>';
+  if (st.bg) s += '<rect width="' + W + '" height="' + H + '" fill="' + st.bg + '"/>';
+  for (let j = 1; j < pts.length; j++) {
+    const a = pts[j - 1], b = pts[j];
+    if (X(a) === X(b) && Y(a) === Y(b)) continue;
+    s += '<line x1="' + X(a) + '" y1="' + Y(a) + '" x2="' + X(b) + '" y2="' + Y(b) + '" stroke="' + st.line + '" stroke-width="2" marker-end="url(#stA)"' + (b.i - a.i > 1 ? ' stroke-dasharray="6 4"' : '') + '/>';
+  }
+  for (const p of pts) {
+    const x = +X(p), y = +Y(p), short = String(p.place).split(',')[0].trim().slice(0, 28), left = x > W - 190;
+    s += '<circle cx="' + x + '" cy="' + y + '" r="11" fill="' + st.node + '" stroke="' + st.line + '" stroke-width="1.5"/>';
+    s += '<text x="' + x + '" y="' + (y + 4) + '" text-anchor="middle" font-size="12" font-weight="700" fill="' + st.nodeInk + '">' + p.n + '</text>';
+    s += '<text x="' + (left ? x - 16 : x + 16) + '" y="' + (y - 10) + '" text-anchor="' + (left ? 'end' : 'start') + '" font-size="13" fill="' + st.ink + '">' + esc(short + ' ' + p.y) + '</text>';
+  }
+  return {svg: s + '</svg>', n: pts.length, t: route.length};
+}
+function storyStyle(m) {
+  const cs = getComputedStyle(document.documentElement);
+  const v = (n, d) => (cs.getPropertyValue(n) || '').trim() || d;
+  return {line: v('--accent', '#2b5fb3'), node: v('--accent-soft', '#e1eaf8'), nodeInk: v('--ink', '#1d1f23'), ink: v('--ink', '#1d1f23'), bg: '', label: T('st_map_aria', {x: m.name})};
+}
+function renderStory() {
+  const out = $('#st-out');
+  if (!S.stP || !DB.persons[S.stP]) S.stP = S.sel && DB.persons[S.sel] ? S.sel : (ORDER[0] || '');
+  const m = S.stP ? storyModel(DB, S.stP) : null;
+  $('#st-name').textContent = m ? m.name : '—';
+  $('#st-txt').disabled = !m; $('#st-svg').disabled = !m || m.route.length < 2;
+  if (!m) { out.innerHTML = '<p class="muted">' + esc(T('st_empty')) + '</p>'; $('#st-cbody').innerHTML = ''; return; }
+  let h = '<div class="card"><h2>' + esc(m.name) + (m.span ? ' <span class="muted">(' + esc(m.span) + ')</span>' : '') + '</h2>';
+  if (m.parents.length) h += '<p>' + esc(T('st_parents', {x: m.parents.join(', ')})) + '</p>';
+  if (m.spouses.length) h += '<p>' + esc(T('st_spouses', {x: m.spouses.join(', ')})) + '</p>';
+  if (m.children.length) h += '<p>' + esc(T('st_children', {n: m.children.length, x: m.children.slice(0, 12).join(', ') + (m.children.length > 12 ? '…' : '')})) + '</p>';
+  h += '</div>';
+  if (!m.lines.length) h += '<p class="muted">' + esc(T('st_noev')) + '</p>';
+  for (const g of storyGroups(m)) {
+    h += '<h3>' + esc(g.title) + '</h3><ul class="stl">' + g.items.map(l => '<li><span class="std">' + esc(l.date ? fmtD(l.date) : '') + '</span><span>' + esc(storyLineText(l)) + '</span></li>').join('') + '</ul>';
+  }
+  h += '<h2>' + esc(T('st_route')) + '</h2>';
+  if (m.route.length < 2) h += '<p class="muted">' + esc(T('st_route_none')) + '</p>';
+  else {
+    h += '<ol class="str">' + m.route.map(r => '<li><strong>' + esc(r.y) + '</strong> — ' + esc(r.place) + '</li>').join('') + '</ol>';
+    const mp = storyMapSvg(m.route, coordsOf(DB), storyStyle(m));
+    if (mp.n) h += '<h3>' + esc(T('st_map_title')) + '</h3><p class="muted small">' + esc(T('st_map_part', {n: mp.n, t: mp.t})) + '</p><div class="stmapw">' + mp.svg + '</div>';
+    else h += '<p class="muted">' + esc(T('st_map_none')) + '</p>';
+  }
+  if (m.skipped) h += '<p class="muted small">' + esc(T('st_route_skip', {n: m.skipped})) + '</p>';
+  out.innerHTML = h;
+  renderStoryCoords(m);
+}
+function renderStoryCoords(m) {
+  const box = $('#st-cbody');
+  const places = [...new Set(m.lines.filter(l => (l.src === 'self' || l.src === 'fam') && l.place).map(l => l.place))].slice(0, 40);
+  const c = coordsOf(DB);
+  let h = '<p class="small muted">' + esc(T('st_coords_hint')) + '</p>';
+  if (!places.length) h += '<p class="muted">' + esc(T('st_noev')) + '</p>';
+  else {
+    h += places.map((pl, i) => {
+      const v = ownKey(c, pl) ? c[pl] : ['', ''];
+      return '<div class="crow"><span class="cpl">' + esc(pl) + '</span><input type="text" inputmode="decimal" autocomplete="off" data-cl="' + i + '" value="' + esc(v[0]) + '" placeholder="' + esc(T('st_lat')) + '" aria-label="' + esc(T('st_lat') + ' — ' + pl) + '">' +
+        '<input type="text" inputmode="decimal" autocomplete="off" data-cn="' + i + '" value="' + esc(v[1]) + '" placeholder="' + esc(T('st_lon')) + '" aria-label="' + esc(T('st_lon') + ' — ' + pl) + '"></div>';
+    }).join('') + '<p><button type="button" class="btn sm primary" id="st-csave">' + esc(T('st_coords_save')) + '</button></p><p id="st-cerr" class="hint bad" role="alert"></p>';
+  }
+  box.innerHTML = h; box._places = places;
+}
+function saveStoryCoords() {
+  const box = $('#st-cbody'), places = box._places || [], c = coordsOf(DB), upd = {}, bad = [];
+  places.forEach((pl, i) => {
+    const a = box.querySelector('[data-cl="' + i + '"]').value.trim(), b = box.querySelector('[data-cn="' + i + '"]').value.trim();
+    if (!a && !b) { upd[pl] = null; return; }
+    const la = parseCoordNum(a, 90), lo = parseCoordNum(b, 180);
+    if (la == null || lo == null) bad.push(pl); else upd[pl] = [la, lo];
+  });
+  if (bad.length) { $('#st-cerr').textContent = T('st_coords_err', {x: bad.slice(0, 5).join('; ')}); return; }
+  snapshot(T('st_coords'));
+  let n = 0;
+  for (const pl of Object.keys(upd)) { if (pl === '__proto__') continue; if (upd[pl]) { c[pl] = upd[pl]; n++; } else delete c[pl]; }
+  markDirty(); renderStory();
+  const d = $('#st-coords'); if (d) d.open = true;
+  toast(T('st_coords_ok', {n}));
+}
+async function exportStory() {
+  if (!S.stP || !DB.persons[S.stP]) return;
+  if (!(await guardPrivacy())) return;
+  const r = privDb(), m = storyModel(r.db, S.stP); if (!m) return;
+  if (!m.lines.length && storyModel(DB, S.stP).lines.length) { toast(T('st_masked')); return; }
+  const L = [m.name + (m.span ? ' (' + m.span + ')' : ''), ''];
+  if (m.parents.length) L.push(T('st_parents', {x: m.parents.join(', ')}));
+  if (m.spouses.length) L.push(T('st_spouses', {x: m.spouses.join(', ')}));
+  if (m.children.length) L.push(T('st_children', {n: m.children.length, x: m.children.join(', ')}));
+  for (const g of storyGroups(m)) { L.push('', g.title); g.items.forEach(l => L.push((l.date ? fmtD(l.date) : '—') + '  ' + storyLineText(l))); }
+  if (m.route.length > 1) { L.push('', T('st_route')); m.route.forEach((x, i) => L.push((i + 1) + '. ' + x.y + ' — ' + x.place)); }
+  L.push('', T('st_note'));
+  dl('poveste-' + stamp() + '.txt', '\ufeff' + L.join('\r\n') + '\r\n', 'text/plain;charset=utf-8');
+  toast(T('exported', {x: 'TXT'}));
+}
+async function exportStoryMap() {
+  if (!S.stP || !DB.persons[S.stP]) return;
+  if (!(await guardPrivacy())) return;
+  const r = privDb(), m = storyModel(r.db, S.stP); if (!m) return;
+  if (m.route.length < 2 && storyModel(DB, S.stP).route.length > 1) { toast(T('st_masked')); return; }
+  if (m.route.length < 2) return;
+  const mp = storyMapSvg(m.route, coordsOf(DB), {line: '#2b5fb3', node: '#e1eaf8', nodeInk: '#1d1f23', ink: '#1d1f23', bg: '#ffffff', label: T('st_map_aria', {x: m.name})});
+  if (!mp.n) { toast(T('st_map_none')); return; }
+  dl('parcurs-' + stamp() + '.svg', mp.svg, 'image/svg+xml');
+  toast(T('exported', {x: 'SVG'}));
+}
+function initStory() {
+  $('#st-pick').addEventListener('click', async () => { const id = await pickPerson({}); if (id) { S.stP = id; renderStory(); } });
+  $('#st-txt').addEventListener('click', exportStory);
+  $('#st-svg').addEventListener('click', exportStoryMap);
+  $('#st-cbody').addEventListener('click', e => { if (e.target.closest('#st-csave')) saveStoryCoords(); });
+}
+
+/* ---------- verificare / reparare GEDCOM (v2.0.0) ---------- */
+let GV = null;
+function gvExtra(db) {
+  const items = [];
+  const chk = (e, who) => { if (e.date && parseGedDate(e.date).kind === 'invalid') items.push({code: 'bad_date', vars: {d: e.date, who, ev: evLabel(e)}, e}); };
+  for (const p of Object.values(db.persons)) p.events.forEach(e => chk(e, pName(p)));
+  for (const f of Object.values(db.families)) f.events.forEach(e => chk(e, f.id));
+  return items;
+}
+async function gvRun(file) {
+  const out = $('#gv-out'); GV = null;
+  out.textContent = T('checking');
+  let r;
+  try { r = await parseGedcom(await fileBytes(file)); } catch (e) { out.innerHTML = '<p class="bad" role="alert">' + esc(T('rep_failed')) + '</p>'; return; }
+  const rep = r.report;
+  if (!r.ok || (!rep.stats.indi && !rep.stats.fam)) { out.innerHTML = importReportHtml(rep, false); return; }
+  const extra = gvExtra(r.db);
+  let cons = [];
+  try { cons = await checkConsistency(r.db); } catch (e) { cons = []; }
+  const cc = {error: 0, warn: 0, info: 0}; cons.forEach(i => { if (cc[i.sev] != null) cc[i.sev]++; });
+  GV = {db: r.db, extra, name: String(file.name || 'arbore').replace(/\.[^.]*$/, '').replace(/[^\w.-]+/g, '_').slice(0, 60) || 'arbore', fixed: false};
+  const total = rep.errors.length + rep.warnings.length + extra.length;
+  let h = '<p><strong>' + esc(total ? T('gv_found', {n: total, e: rep.errors.length, w: rep.warnings.length, d: extra.length}) : T('gv_clean')) + '</strong></p>';
+  h += importReportHtml(rep, true, true);
+  if (extra.length) h += '<h3>' + esc(T('warnings')) + ' (' + extra.length + ')</h3><div class="warnbox"><ul class="plain">' + extra.slice(0, 100).map(repLine).join('') + '</ul>' + (extra.length > 100 ? '<p class="muted">…</p>' : '') + '<p class="small">' + esc(T('gv_dates')) + '</p></div>';
+  h += '<p class="small muted">' + esc(T('gv_cons', {e: cc.error, w: cc.warn, i: cc.info})) + '</p>';
+  h += '<p><button type="button" class="btn primary" id="gv-dl">' + esc(T('gv_dl')) + '</button></p><p class="hint">' + esc(T('gv_note')) + '</p>';
+  out.innerHTML = h;
+}
+function gvDownload() {
+  if (!GV) return;
+  if (!GV.fixed) { GV.extra.forEach(it => { it.e.date = '(' + String(it.e.date).replace(/[()]/g, '') + ')'; }); GV.fixed = true; }
+  const txt = exportGedcom(GV.db, {});
+  dl(GV.name + '-reparat.ged', '\ufeff' + txt, 'text/plain;charset=utf-8');
+  toast(T('exported', {x: 'GEDCOM'}));
+}
+function initGv() {
+  $('#gv-file').addEventListener('change', e => { const f = e.target.files && e.target.files[0]; if (f) gvRun(f); });
+  $('#gv-out').addEventListener('click', e => { if (e.target.closest('#gv-dl')) gvDownload(); });
+}
+
 /* ---------- locuri ---------- */
 function renderPlaces() {
   const m = collectPlaces(DB); const q = norm($('#pl-q').value), sort = $('#pl-sort').value;
@@ -5262,17 +5092,13 @@ async function unlockFlow(raw) {
   document.body.classList.add('locked');
   $('#b-lock').hidden = true;
   const w = JSON.parse(raw);
-  let res = null, r = null;
+  let res = null;
   for (;;) {
-    r = await pwDialog('unlock', {check: async cur => { try { res = await decryptWrapper(w, cur, true); return ''; } catch (e) { return e.code === 'badpass' ? T('pw_wrong') : T('unlock_fail'); } }});
+    const r = await pwDialog('unlock', {check: async cur => { try { res = await decryptWrapper(w, cur, true); return ''; } catch (e) { return e.code === 'badpass' ? T('pw_wrong') : T('unlock_fail'); } }});
     if (r && res) break;
   }
   const data = JSON.parse(res.text);
   ST.key = res.key; ST.salt = res.salt; ST.iter = res.iter; ST.locked = false;
-  if (res.iter < PBKDF_ITER && r && r.cur) {
-    /* copie veche (iterații mai puține): rederivăm cheia cu costul actual; următoarea salvare o criptează cu el */
-    try { const salt2 = crypto.getRandomValues(new Uint8Array(16)); ST.key = await deriveKey(r.cur, salt2, PBKDF_ITER); ST.salt = salt2; ST.iter = PBKDF_ITER; } catch (e) { /* păstrăm cheia veche */ }
-  }
   document.body.classList.remove('locked');
   return data;
 }
@@ -5294,14 +5120,17 @@ function repLine(it, kind) {
   const base = T('rep_' + it.code, Object.assign({}, it.vars || {}));
   return '<li>' + (it.line ? '<span class="muted small">' + esc(T('line_n', {n: it.line})) + ' · </span>' : '') + esc(base) + '</li>';
 }
-function showImportReport(rep, applied) {
-  let h = '<p>' + (applied ? '<strong>' + esc(T('rep_ok')) + '</strong>' : '<strong class="bad" style="color:var(--danger)">' + esc(T('rep_failed')) + '</strong>') + '</p>';
+function importReportHtml(rep, applied, noHead) {
+  let h = noHead ? '' : '<p>' + (applied ? '<strong>' + esc(T('rep_ok')) + '</strong>' : '<strong class="bad" style="color:var(--danger)">' + esc(T('rep_failed')) + '</strong>') + '</p>';
   h += '<p><span class="stat">' + esc(T('persons')) + ': <strong>' + rep.stats.indi + '</strong></span><span class="stat">' + esc(T('families')) + ': <strong>' + rep.stats.fam + '</strong></span><span class="stat">' + esc(T('sources')) + ': <strong>' + rep.stats.sour + '</strong></span><span class="stat">' + esc(T('charset')) + ': <strong>' + esc(rep.info.charset || '') + '</strong></span>' + (rep.info.version ? '<span class="stat">GEDCOM: <strong>' + esc(rep.info.version) + '</strong></span>' : '') + (rep.info.source ? '<span class="stat">' + esc(T('generator')) + ': <strong>' + esc(rep.info.source) + '</strong></span>' : '') + '</p>';
   if (rep.info.unknownTags && rep.info.unknownTags.length) h += '<p class="small">' + esc(T('rep_unknown_tags', {t: rep.info.unknownTags.join(', ')})) + '</p>';
   if (rep.errors.length) h += '<h3>' + esc(T('errors')) + ' (' + rep.errors.length + ')</h3><div class="errbox"><ul class="plain">' + rep.errors.slice(0, 300).map(repLine).join('') + '</ul>' + (rep.errors.length > 300 ? '<p class="muted">…</p>' : '') + '</div>';
   if (rep.warnings.length) h += '<h3>' + esc(T('warnings')) + ' (' + rep.warnings.length + ')</h3><div class="warnbox"><ul class="plain">' + rep.warnings.slice(0, 300).map(repLine).join('') + '</ul>' + (rep.warnings.length > 300 ? '<p class="muted">…</p>' : '') + '</div>';
   if (!rep.errors.length && !rep.warnings.length) h += '<p class="muted">' + esc(T('rep_clean')) + '</p>';
-  $('#rep-body').innerHTML = h;
+  return h;
+}
+function showImportReport(rep, applied) {
+  $('#rep-body').innerHTML = importReportHtml(rep, applied);
   openDlg('dlg-rep');
 }
 function remapDb(src, base) {
@@ -5347,6 +5176,7 @@ function normalizeLoadedDb(d) {
   const db = Object.assign(newDb(), d);
   db.sources = db.sources || {}; db.repos = db.repos || {}; db.raw = db.raw || []; db.seq = db.seq || {I: 0, F: 0, S: 0, R: 0};
   for (const k of ['I', 'F', 'S', 'R']) if (db.seq[k] == null) db.seq[k] = 0;
+  db.coords = cleanCoords(db.coords);
   for (const p of Object.values(db.persons)) { p.names = p.names && p.names.length ? p.names : [{given: '', surname: '', nick: '', npfx: '', nsfx: '', spfx: '', type: '', extra: []}]; p.events = p.events || []; p.notes = p.notes || []; p.sours = p.sours || []; p.tags = p.tags || []; p.assoc = p.assoc || []; p.extra = p.extra || []; p.photo = p.photo || ''; p.living = p.living || ''; p.sex = p.sex || ''; }
   for (const f of Object.values(db.families)) { f.children = f.children || []; f.events = f.events || []; f.notes = f.notes || []; f.sours = f.sours || []; f.tags = f.tags || []; f.extra = f.extra || []; f.p1 = f.p1 || ''; f.p2 = f.p2 || ''; f.utype = f.utype || 'unknown'; }
   return db;
@@ -5393,18 +5223,6 @@ async function guardPrivacy() {
   if (readPrivacy().mask) return true;
   return confirmDlg(T('x_unmasked_title'), T('x_unmasked_q'), true);
 }
-const BACKUP_DAYS = 30;
-function noteBackup() { lsSet('lastbackup', String(Date.now())); }
-function backupReminder() {
-  try {
-    if (!ORDER.length || ST.locked) return;
-    const now = Date.now(), last = +lsGet('lastbackup') || 0;
-    let first = +lsGet('firstseen') || 0; if (!first) { first = now; lsSet('firstseen', String(now)); }
-    const ref = last || first;
-    if (now - ref < BACKUP_DAYS * 86400000) return;
-    toast(T('backup_due', {d: Math.floor((now - ref) / 86400000)}), T('backup_now'), () => exportJson(false));
-  } catch (e) { /* memento opțional */ }
-}
 function stamp() { const d = new Date(); return d.getFullYear() + String(d.getMonth() + 1).padStart(2, '0') + String(d.getDate()).padStart(2, '0'); }
 async function exportGed() {
   if (!ORDER.length) { toast(T('nothing_to_export')); return; }
@@ -5412,19 +5230,19 @@ async function exportGed() {
   const r = privDb();
   const txt = exportGedcom(r.db, {photos: S.x.photos});
   dl('arbore-' + stamp() + '.ged', '﻿' + txt, 'text/plain;charset=utf-8');
-  toast(T('exported', {x: 'GEDCOM'})); noteBackup();
+  toast(T('exported', {x: 'GEDCOM'}));
 }
 async function exportJson(enc) {
   if (!ORDER.length) { toast(T('nothing_to_export')); return; }
   if (!(await guardPrivacy())) return;
   const r = privDb(); const bundle = makeBundle(r.db);
   const json = JSON.stringify(bundle);
-  if (!enc) { dl('arbore-' + stamp() + '.fff.json', json, 'application/json'); toast(T('exported', {x: 'JSON'})); noteBackup(); return; }
+  if (!enc) { dl('arbore-' + stamp() + '.fff.json', json, 'application/json'); toast(T('exported', {x: 'JSON'})); return; }
   const pw = await pwDialog('export'); if (!pw) return;
   $('#pw-err').textContent = '';
   const e = await encryptWithPassword(json, pw.nw, 'bundle');
   dl('arbore-' + stamp() + '.fff.json', JSON.stringify(Object.assign(e.wrapper, {version: VERSION, updated: UPDATED})), 'application/json');
-  toast(T('exported', {x: 'JSON'})); noteBackup();
+  toast(T('exported', {x: 'JSON'}));
 }
 async function exportCsv(which) {
   if (!ORDER.length) { toast(T('nothing_to_export')); return; }
@@ -5504,11 +5322,11 @@ function initData() {
   $('#e-change').addEventListener('click', changePassword);
   $('#e-off').addEventListener('click', disableEncryption);
   $('#b-lock').addEventListener('click', lockNow);
-  $('#limits').innerHTML = [1, 2, 3, 4, 5, 6, 7, 8].map(i => '<li>' + esc(T('lim' + i)) + '</li>').join('');
+  $('#limits').innerHTML = [1, 2, 3, 4, 5, 6, 7, 8, 9].map(i => '<li>' + esc(T('lim' + i)) + '</li>').join('');
 }
 
 /* ===== 06e UI: pornire, file, delegare de evenimente, API de test ===== */
-const TABS = ['people', 'chart', 'rel', 'quality', 'places', 'data'];
+const TABS = ['people', 'chart', 'rel', 'story', 'quality', 'places', 'data'];
 function showTab(tab) {
   if (!TABS.includes(tab)) tab = 'people';
   S.tab = tab; lsSet('tab', tab);
@@ -5519,12 +5337,13 @@ function showTab(tab) {
   if (tab === 'people') { applyFilter(); renderSheet(); }
   else if (tab === 'chart') { if (!S.root && S.sel) S.root = S.sel; $('#c-type').value = S.cType; $('#c-gens').value = S.cGens; renderChart(); }
   else if (tab === 'rel') { if (!S.relA && S.sel) S.relA = S.sel; renderRelNames(); }
+  else if (tab === 'story') renderStory();
   else if (tab === 'quality') renderQuality();
   else if (tab === 'places') renderPlaces();
   else if (tab === 'data') { renderStoreInfo(); updatePrivSummary(); }
 }
 function renderLimits() {
-  $('#limits').innerHTML = [1, 2, 3, 4, 5, 6, 7, 8].map(i => '<li>' + esc(T('lim' + i)) + '</li>').join('');
+  $('#limits').innerHTML = [1, 2, 3, 4, 5, 6, 7, 8, 9].map(i => '<li>' + esc(T('lim' + i)) + '</li>').join('');
   $('#rel-method').innerHTML = '<p>' + esc(T('rel_method_1')) + '</p><p>' + esc(T('rel_method_2')) + '</p><p>' + esc(T('rel_method_3')) + '</p>';
 }
 function renderAll() {
@@ -5532,6 +5351,7 @@ function renderAll() {
   applyFilter(); renderSheet(); updateTagFilter();
   if (S.tab === 'chart') renderChart();
   if (S.tab === 'rel') { renderRelNames(); if ($('#r-out').innerHTML) runRelation(); }
+  if (S.tab === 'story') renderStory();
   if (S.tab === 'quality') renderQuality();
   if (S.tab === 'places') renderPlaces();
   renderStoreInfo(); updatePrivSummary(); renderLimits(); updUndo();
@@ -5568,6 +5388,7 @@ function wireDelegates() {
     const a = b.dataset.act;
     if (a === 'edit') openPersonEdit(id);
     else if (a === 'chart') { S.root = id; lsSet('root', id); showTab('chart'); }
+    else if (a === 'story') { S.stP = id; showTab('story'); }
     else if (a === 'rel-a') { S.relA = id; showTab('rel'); }
     else if (a === 'addfam') openFamilyEdit(null, p.sex === 'F' ? {p2: id} : {p1: id});
     else if (a === 'addparents') openFamilyEdit(null, {children: [{id, rel: 'bio', of: '', extra: []}]});
@@ -5610,7 +5431,7 @@ async function boot() {
   const lg = lsGet('lang'); S.lang = LANGS.includes(lg) ? lg : 'ro';
   const ls = $('#lang'); ls.innerHTML = LANGS.map(l => '<option value="' + l + '">' + LANGNAMES[l] + '</option>').join(''); ls.value = S.lang;
   setLang(S.lang, true); initTheme(); loadStateDefaults();
-  initList(); initPersonEdit(); initFamilyEdit(); initChart(); initRel(); initQuality(); initPlaces(); initPwDialog(); initData(); wireDelegates();
+  initList(); initPersonEdit(); initFamilyEdit(); initChart(); initRel(); initQuality(); initStory(); initGv(); initPlaces(); initPwDialog(); initData(); wireDelegates();
   $('#c-type').value = S.cType; $('#c-gens').value = S.cGens;
   let raw = await storageRead();
   if (raw) {
@@ -5631,7 +5452,6 @@ async function boot() {
   renderAll(); setSaveStat(ST.where !== 'none' && ORDER.length ? 'saved' : '');
   updUndo();
   document.documentElement.dataset.ready = '1';
-  setTimeout(backupReminder, 2500);
 }
 /* ---------- API pentru teste ---------- */
 window.Arbore = {

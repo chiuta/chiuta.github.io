@@ -1,4 +1,4 @@
-// Teste Lexicon (Playwright, Chromium). Rulare: node tests/test.mjs
+// Teste Lexicon 2.0.0 (Playwright, Chromium). Rulare: node tests/test.mjs
 // Rețeaua este blocată; se verifică 0 pageerror, 0 violări CSP, 0 cereri de rețea.
 // Variabile opționale: LEXICON_SKIP_PERF=1 omite testul cu 300.000 de intrări; AXE_PATH, SHOT_PATH.
 // [fff-portable] axe-core: FFF_AXE / AXE_PATH, apoi pachetul `axe-core` (npm i -D axe-core). Dacă lipsește: undefined (testele cu axe pică cu mesaj clar).
@@ -1225,6 +1225,91 @@ console.log('12. Limbi (8), tipărire, integrare progresivă window.FFF, fără 
   const ws = await st(w);
   ok('„Șterge tot”: dicționarele importate și datele locale dispar (rămâne setul demonstrativ reinstalat)', ws.dicts.length === 1 && ws.dicts[0].format === 'demo' && ws.fav === 0 && ws.hist === 0, ws);
   await wp.ctx.close();
+}
+
+/* ============================================================ 12b. v2.0.0 — fișa unificată și indexul unificat */
+console.log('12b. Fișa unificată (mai multe dicționare într-o fișă), sinonime, index unificat persistent');
+{
+  const ROEN = 'word\tdefinition\tsynonyms\texamples\nmasa\ttable; meal\tmăsuță|tejghea\tCina e pe masă.\ncarte\tbook\t\tO carte bună.\n';
+  const ENRO = 'word\tdefinition\texamples\ntable\tmasă; birou; tabel\tThe table is full.\nbook\tcarte\tA good book.\n';
+  const ctx = await newCtx();
+  const u = await newPage({ctx}); const p = u.page;
+  const single = await openWord(p, 'lună');
+  ok('fișa unificată: nu apare când cuvântul există într-un singur dicționar fără sinonime', (await p.locator('#ufiche').count()) === 0, single.slice(0, 120));
+  await tab(p, 'dicts');
+  ok('index unificat: cu un singur dicționar spune că sunt necesare două', /cel puțin două/.test(await p.locator('#uni-stat').innerText()) && await p.locator('#uni-rebuild').isDisabled());
+  await doImport(p, [F('ro-en.tsv', ROEN)], {title: 'RO→EN probă', license: 'test'});
+  await doImport(p, [F('en-ro.tsv', ENRO)], {title: 'EN→RO probă', license: 'test'});
+  const st1 = await p.evaluate(() => Lexicon.state().dicts.map(d => d.title));
+  ok('două dicționare de probă importate', st1.includes('RO→EN probă') && st1.includes('EN→RO probă'), st1);
+  await tab(p, 'search');
+  const art = await openWord(p, 'masa');
+  ok('fișa unificată: apare cu titlu și numărul de dicționare', await p.locator('#ufiche').isVisible() && /în 2 dicționare/.test(await p.locator('#ufiche h3').innerText()), art.slice(0, 200));
+  const per = await p.locator('#uf-per li').allInnerTexts();
+  ok('fișa: câte o linie „pe scurt” pentru fiecare dicționar', per.length === 2 && per.some(x => /RO→EN probă/.test(x) && /table/.test(x)) && per.some(x => /Mobilă/.test(x)), per);
+  const eq = await p.locator('#uf-eq li').allInnerTexts();
+  ok('fișa: echivalente aduse din celălalt dicționar (table → masă; birou; tabel)', eq.some(x => /table/.test(x) && /EN→RO probă/.test(x) && /birou/.test(x)), eq);
+  ok('fișa: sinonime din câmpul importat, ca legături', /tejghea/.test(await p.locator('#uf-syn').innerText()) && (await p.locator('#uf-syn a.ilink').count()) === 2);
+  ok('fișa: exemple din dicționare, cu sursa', /Cina e pe masă\./.test(await p.locator('#uf-ex').innerText()) && /RO→EN probă/.test(await p.locator('#uf-ex').innerText()));
+  ok('articolul păstrează și secțiunile pe dicționar + sinonimele din intrare', (await p.locator('#article .dsec').count()) === 2 && (await p.locator('#article .dsec .syns').count()) === 1);
+  const fa = await p.evaluate(() => Lexicon.fiche('masa'));
+  ok('API fișă: aceleași date ca în pagină', fa.ndict === 2 && fa.syn.length === 2 && fa.equiv.some(e => e.hw === 'table') && /Fișă unificată/.test(fa.text), fa);
+  await p.click('#uf-copy');
+  const lc = await p.evaluate(() => Lexicon.state().lastCopy);
+  ok('„Copiază fișa” pune textul fișei în clipboard', /Fișă unificată/.test(lc) && /table/.test(lc) && /tejghea/.test(lc), lc);
+  await p.locator('#uf-eq a.ilink', {hasText: 'table'}).first().click();
+  await p.waitForFunction(() => document.querySelector('#art-h')?.textContent === 'table');
+  await p.waitForSelector('#ufiche');
+  const back = await p.locator('#uf-eq').innerText();
+  ok('legături între dicționare: din „table” se ajunge înapoi la „masa” (alt dicționar)', /masa/i.test(back) && /RO→EN probă/.test(back), back);
+  // export cu sinonime
+  await tab(p, 'dicts');
+  const [dl] = await Promise.all([p.waitForEvent('download'), p.locator('button[data-act=export]').nth(1).click()]);
+  const exTxt = fs.readFileSync(await dl.path(), 'utf8');
+  ok('export JSON păstrează sinonimele (synonyms)', /"synonyms":\["măsuță","tejghea"\]/.test(exTxt), exTxt.slice(0, 400));
+  // index unificat
+  const un = await p.evaluate(async () => { await Lexicon.ensureUnified(); return Lexicon.unified(); });
+  ok('index unificat: cuvintele-titlu comune sunt calculate (masă comună cu setul demonstrativ)', un.ready && un.shared >= 1 && un.keys.includes('masa'), un);
+  ok('index unificat: starea e afișată în fila Dicționare', /cuvinte-titlu comune în 3 dicționare/.test(await p.locator('#uni-stat').innerText()), await p.locator('#uni-stat').innerText());
+  await p.click('#uni-list-btn');
+  ok('index unificat: lista cuvintelor comune cu legături', (await p.locator('#uni-list li a.ilink').count()) >= 1);
+  const rb = await p.evaluate(async () => { const before = Lexicon.unified().builds; await Lexicon.rebuildUnified(); return [before, Lexicon.unified().builds, Lexicon.unified().fromCache]; });
+  ok('index unificat: reconstruirea forțată crește contorul și nu vine din cache', rb[1] === rb[0] + 1 && rb[2] === false, rb);
+  await u.page.close();
+  // sesiune nouă, același profil: indexul se încarcă din store, fără reconstruire
+  const u2 = await newPage({ctx}); const p2 = u2.page;
+  await p2.waitForFunction(() => Lexicon.unified().ready);
+  const un2 = await p2.evaluate(() => Lexicon.unified());
+  ok('index unificat păstrat: după redeschidere se încarcă din store, nu se reconstruiește', un2.fromCache === true && un2.builds === 0 && un2.shared === un.shared, un2);
+  await tab(p2, 'dicts');
+  ok('index unificat: mesajul arată sursa „încărcat din memoria păstrată”', /încărcat din memoria păstrată/.test(await p2.locator('#uni-stat').innerText()));
+  // ștergerea unui dicționar schimbă semnătura => reconstruire automată
+  await p2.locator('button[data-act=del]').nth(2).click(); await p2.click('#conf-yes');
+  await p2.waitForTimeout(600);
+  const un3 = await p2.evaluate(() => ({n: Lexicon.state().dicts.length, u: Lexicon.unified()}));
+  ok('index unificat: la ștergerea unui dicționar se reconstruiește automat (semnătură nouă)', un3.n === 2 && un3.u.fromCache === false && un3.u.builds >= 1, un3);
+  await u2.ctx.close();
+}
+{
+  // 8 limbi + accesibilitate + mobil pentru fișa unificată
+  const axeSrc = fs.readFileSync(AXE, 'utf8');
+  const ax = await newPage({bypassCSP: true, viewport: {width: 360, height: 800}}); const p = ax.page;
+  await p.addScriptTag({content: axeSrc});
+  await doImport(p, [F('a.tsv', 'word\tdefinition\tsynonyms\nmasa\ttable; meal\tmăsuță\n')], {title: 'A', license: 'test'});
+  await openWord(p, 'masa');
+  ok('fișa unificată (mobil 360): fără depășire orizontală', await p.evaluate(() => document.documentElement.scrollWidth <= document.documentElement.clientWidth + 1));
+  const i18n = await p.evaluate(() => Lexicon.i18nCheck());
+  ok('i18n: toate cheile (inclusiv cele noi) au cele 8 limbi', i18n.bad.length === 0 && (await p.evaluate(() => ['uf_h', 'uf_eq', 'uni_stat', 'syn', 'mp_syn'].every(k => Lexicon.i18nKeys().includes(k)))), i18n);
+  const langs = [];
+  for (const l of ['en', 'fr', 'it', 'es', 'pt', 'hu', 'de', 'ro']) { await p.selectOption('#lang', l); langs.push(await p.locator('#ufiche h3').innerText()); }
+  ok('fișa unificată: titlul se traduce în toate cele 8 limbi', new Set(langs).size >= 7 && langs.every(x => x.length > 5), langs);
+  await p.waitForTimeout(3600);
+  const v = await p.evaluate(async () => (await axe.run(document, {resultTypes: ['violations']})).violations.map(x => x.id + ': ' + x.nodes.slice(0, 2).map(n => n.target.join(' ')).join(' | ')));
+  ok('axe 0 violări — articol cu fișă unificată (luminos)', v.length === 0, v);
+  await tab(p, 'dicts');
+  const v2 = await p.evaluate(async () => (await axe.run(document, {resultTypes: ['violations']})).violations.map(x => x.id + ': ' + x.nodes.slice(0, 2).map(n => n.target.join(' ')).join(' | ')));
+  ok('axe 0 violări — fila Dicționare cu indexul unificat', v2.length === 0, v2);
+  await ax.ctx.close();
 }
 
 /* ============================================================ 13. captură de ecran (stare cu date reale) */

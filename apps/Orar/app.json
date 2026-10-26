@@ -2,7 +2,7 @@
   "schema": 1,
   "slug": "orar",
   "name": "Orar",
-  "version": "1.0.7",
+  "version": "2.0.0",
   "updated": "2026-10-26",
   "description": "Orar: calendar și program cu vizualizări lună/săptămână/zi/agendă, evenimente recurente, fusuri orare, alarme, sărbători legale din România, import și export .ics. Rulează local, nu trimite nimic.",
   "egress": [],
@@ -16,8 +16,8 @@
     "clepsidra.events",
     "clepsidra.schedule"
   ],
-  "sizeBytes": 462465,
-  "sha256": "c5214ddb68d23ef860783243f80e6fb38644a333cb0339cc79d3dbe5fdd34da8",
+  "sizeBytes": 467834,
+  "sha256": "da2ff2b117a27a6b81a437a3663edc56981862cb8f60fa18802eb8c2ea29092f",
   "csp": {
     "present": true,
     "directives": {
@@ -57,8 +57,6 @@
     },
     "modules": [
       "core",
-      "store",
-      "dialog",
       "label",
       "bundle"
     ]
@@ -67,8 +65,6 @@
     "version": "1.2.0",
     "modules": [
       "core",
-      "store",
-      "dialog",
       "label",
       "bundle"
     ]
@@ -77,7 +73,7 @@
   "exceptions": [
     {
       "rule": "unprefixed-storage",
-      "reason": "Importul din CLEPSIDRA citește (doar citire, la cererea utilizatorului) cheile clepsidra.schedule și clepsidra.events ale altei aplicații; Orar nu le scrie. Când cele două aplicații nu mai împart originea, importul se face din fișier (JSON), calea documentată în README."
+      "reason": "Cheile „clepsidra.schedule” și „clepsidra.events” nu sunt chei de stocare ale Orar: sunt nume de câmpuri din copia .fff.json a aplicației CLEPSIDRA, citite doar la importul explicit al unui fișier. Orar își păstrează datele sub fff.orar.*."
     }
   ]
 }

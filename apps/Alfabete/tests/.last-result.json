@@ -1,6 +1,6 @@
 {
- "ok": 44,
- "total": 44,
+ "ok": 53,
+ "total": 53,
  "results": [
   {
    "name": "pornire: 0 erori, 0 rețea, 0 CSP, meta, versiune, lang",
@@ -172,6 +172,42 @@
   },
   {
    "name": "tastatură: ordine de focus, Enter în câmpuri, focus vizibil, mișcare redusă",
+   "ok": true
+  },
+  {
+   "name": "Traducător: vectori — fiecare cod coincide cu motorul propriu",
+   "ok": true
+  },
+  {
+   "name": "Traducător: dus-întors pe fiecare cod (Morse, semafor, Baudot, fonetic)",
+   "ok": true
+  },
+  {
+   "name": "Traducător: caractere necunoscute raportate pe cod, fără blocaj",
+   "ok": true
+  },
+  {
+   "name": "Traducător: scrii o dată, apar toate cele 6 coduri live",
+   "ok": true
+  },
+  {
+   "name": "Traducător: copiere pe cod și „toate codurile”",
+   "ok": true
+  },
+  {
+   "name": "Traducător: redare Morse (sunet + clipire) și oprire",
+   "ok": true
+  },
+  {
+   "name": "Traducător: fișa tipăribilă a mesajului (tipărire, conținut, un singur H1)",
+   "ok": true
+  },
+  {
+   "name": "Traducător: mesajul rămâne la schimbarea limbii; 8 limbi fără chei lipsă; mobil fără derulare orizontală",
+   "ok": true
+  },
+  {
+   "name": "Traducător: axe 0 violări (luminos + întunecat, cu mesaj)",
    "ok": true
   },
   {

@@ -2,7 +2,7 @@
 
 [English](README.md) · **Română** · [Français](README.fr.md) · [Italiano](README.it.md) · [Español](README.es.md) · [Português](README.pt.md) · [Deutsch](README.de.md) · [Magyar](README.hu.md)
 
-**Versiune:** 1.1.9 · **Ultima actualizare:** 2026-10-26
+**Versiune:** 2.0.0 · **Ultima actualizare:** 2026-10-26
 
 Limbile interfeței: **Română, English, Français, Italiano, Español, Português (PT), Deutsch, Magyar**
 
@@ -20,7 +20,9 @@ Captura arată starea reală a aplicației pentru București, 14 octombrie 2026,
 2. **Vederea.** „Cerul întreg” arată tot emisfera (zenitul în centru, nord sus, est la stânga, ca pe o hartă a cerului văzută de jos); altfel vezi o fereastră cu câmp variabil. Proiecție stereografică sau azimutală echidistantă. Roata mouse-ului sau ciupirea măresc, tragerea mută privirea. Secțiunea „Afișare” comută punctele cardinale, orizontul, numele stelelor și constelațiilor, liniile, Calea Lactee, ecliptica, ecuatorul, grilele alt-azimutală și ecuatorială, Neptun/Pluto, atmosfera (cer de zi și crepuscul), refracția și magnitudinea limită.
 3. **Obiecte.** Clic/atingere pe un obiect sau căutare după nume (inclusiv numele românești ale constelațiilor): panou cu ascensie dreaptă și declinație aparente, altitudine, azimut, magnitudine, distanță, elongație, fază, răsărit/trecere/apus; „Arată-mi” centrează vederea, „Urmărește” o menține centrată.
 4. **Evenimente.** Alegi intervalul și categoriile; Bolta calculează în fundal (fără blocarea paginii), arată tabelul în ora locului, „Salt la moment” duce cerul la momentul respectiv, „Exportă .ics” descarcă un calendar RFC 5545.
-5. **Eclipsa 2027.** Avertismentele de siguranță sunt primele; urmează circumstanțele locale (C1, maxim, C4, magnitudine, obscurare, înălțimea Soarelui, iar în banda totalității și C2/C3 cu durata totalității), numărătoarea inversă, simularea discului Lunii peste Soare, schema benzii și tabelul obscurării calculate pentru orașele din România.
+5. **Previziune locală (nou în 2.0).** Pentru locul din fila Cer, Bolta caută în intervalul ales (30 de zile – 2 ani) conjuncțiile Lunii cu planetele și cu stelele luminoase din zodiac, **ocultațiile** (Luna acoperă o planetă sau o stea: momentul dispariției și al reapariției, limbul pe care are loc, altitudinea Lunii și starea cerului) și conjuncțiile planetă–planetă; filtrezi după vizibilitate (Luna deasupra orizontului, Soarele sub −6°), prag și magnitudinea stelelor. „Arată în cer” duce cerul la moment, selectează Luna și o urmărește; „Exportă .ics” descarcă evenimentele. Calculul folosește paralaxa Lunii pentru locul tău, deci diferă de la un oraș la altul.
+5b. **Traiectorie și noaptea derulată (nou în 2.0).** Lângă bara de timp, „Traiectorie” desenează printre stele drumul Soarelui, al Lunii sau al unei planete selectate (±6 h … ±180 de zile, cu ora/data la capete); „Noaptea” sare la apusul Soarelui și derulează automat până la răsărit.
+6. **Eclipsa 2027.** Avertismentele de siguranță sunt primele; urmează circumstanțele locale (C1, maxim, C4, magnitudine, obscurare, înălțimea Soarelui, iar în banda totalității și C2/C3 cu durata totalității), numărătoarea inversă, simularea discului Lunii peste Soare, schema benzii și tabelul obscurării calculate pentru orașele din România.
 6. **Cerul în cuvinte.** Descriere text a cerului și tabel cu obiectele ordonate după altitudine, fiecare cu „Arată în cer”.
 7. **Locuri și date.** Locuri salvate, copie de siguranță `.fff.json`, import, „Șterge tot”.
 8. **Mod roșu de noapte** (selectorul de temă): toate culorile, inclusiv cele din canvas, devin roșii. Există și tema luminoasă și cea întunecată (implicit după sistem).
@@ -29,7 +31,7 @@ Captura arată starea reală a aplicației pentru București, 14 octombrie 2026,
 
 ## Ce NU face și limitele
 
-- **Nu este instrument de navigație** și nu e potrivit pentru astrofotografie de precizie sau pentru ocultații.
+- **Nu este instrument de navigație** și nu e potrivit pentru astrofotografie de precizie sau pentru observații cronometrate de ocultații: momentele din Previziune sunt orientative, la limita benzii de vizibilitate rezultatul depinde de câțiva kilometri și de relieful limbului lunar (evenimentele de acest fel sunt marcate „aproape de limită”), iar altitudinile sunt geometrice, fără refracție.
 - **Precizia** este cea declarată în `fff-kit/docs/ephem.md`: poziții aparente ale Soarelui și planetelor ≤ 3″ (Neptun ≤ 5″), Luna ≤ 1,5″, răsărit/apus ale Soarelui ≤ 6 s și ale Lunii ≤ 25 s față de modelul de referință, faze lunare ≤ 30 s, în 1900–2100. ΔT viitor este nesigur (secunde până în 2035, minute spre 2100). Nu sunt modelate aberația diurnă, paralaxa stelară și relieful local.
 - **Stele:** doar cele cu magnitudinea ≤ 5,0 (1627, din Hipparcos); **nu există obiecte NGC/Messier**, comete, asteroizi sau sateliți. Numele proprii sunt cele IAU (156 de stele ≤ 3,0).
 - **Calea Lactee este stilizată** (model din matricea galactică, nu fotografie) și servește doar la orientare. Culoarea cerului de amurg, strălucirea și magnitudinea limită în funcție de Soare sunt aproximări vizuale, nu un model fotometric. Culoarea stelelor vine din indicele B−V (aproximare).
@@ -141,3 +143,4 @@ MIT — vezi fișierul `LICENSE` din rădăcina depozitului. Componentele terțe
 ## Linkuri adânci
 
 `#sky&t=2087-05-17T02:35:00Z&ll=59.9139,10.7522` deschide cerul la momentul (UTC, 1900–2100) și locul indicate; parametrii invalizi (inclusiv date inexistente precum 2026-02-31) sunt ignorați, cu un mesaj. Locul din link e valabil doar pentru sesiunea curentă: nu se salvează și nu înlocuiește locul tău (se folosește fusul orar al dispozitivului). Linkul merge și fără nume de tab (`#t=…&ll=…`). `#<filă>` (sky, events etc.) rămâne valabil.
+- **2.0.0 — 2026-10-26:** „Cer în timp”: fila Previziune (conjuncții Lună–planetă/stea, ocultații cu dispariție și reapariție, conjuncții planetă–planetă, pentru locul ales, cu paralaxa Lunii), traiectorie printre stele pentru obiectul selectat și butonul „Noaptea” (apus → răsărit derulat automat).

@@ -2,7 +2,7 @@
 
 **English** · [Română](README.ro.md) · [Français](README.fr.md) · [Italiano](README.it.md) · [Español](README.es.md) · [Português](README.pt.md) · [Deutsch](README.de.md) · [Magyar](README.hu.md)
 
-**Version:** 1.1.9 · **Last updated:** 2026-10-26
+**Version:** 2.0.0 · **Last updated:** 2026-10-26
 
 Interface languages: **Română, English, Français, Italiano, Español, Português (PT), Deutsch, Magyar**
 
@@ -20,7 +20,9 @@ The screenshot shows the real state of the app for Bucharest, 14 October 2026, 2
 2. **The view.** "Whole sky" shows the entire hemisphere (zenith in the centre, north up, east on the left, like a sky map seen from below); otherwise you see a window with a variable field. Stereographic or azimuthal equidistant projection. The mouse wheel or pinching zooms, dragging moves the view. The "Display" section toggles the cardinal points, the horizon, star and constellation names, the lines, the Milky Way, the ecliptic, the equator, the alt-azimuth and equatorial grids, Neptune/Pluto, the atmosphere (day sky and twilight), refraction and the limiting magnitude.
 3. **Objects.** Click/tap on an object or search by name (including the Romanian names of the constellations): a panel with apparent right ascension and declination, altitude, azimuth, magnitude, distance, elongation, phase, rise/transit/set; "Show me" centres the view, "Track" keeps it centred.
 4. **Events.** You choose the interval and the categories; Bolta computes in the background (without blocking the page), shows the table in the local time of the place, "Jump to moment" takes the sky to that moment, "Export .ics" downloads an RFC 5545 calendar.
-5. **Eclipse 2027.** The safety warnings come first; then the local circumstances (C1, maximum, C4, magnitude, obscuration, the Sun's altitude, and in the totality band also C2/C3 with the duration of totality), the countdown, the simulation of the Moon's disc over the Sun, the band diagram and the table of the obscuration computed for the cities of Romania.
+5. **Local forecast (new in 2.0).** For the place in the Sky tab, Bolta searches the chosen span (30 days to 2 years) for Moon conjunctions with planets and bright zodiacal stars, **occultations** (the Moon covers a planet or star: disappearance and reappearance times, the limb involved, the Moon’s altitude and the sky condition) and planet–planet conjunctions; filter by visibility (Moon above the horizon, Sun below −6°), threshold and star magnitude. “Show in sky” jumps to the moment, selects the Moon and follows it; “Export .ics” downloads the events. The Moon’s parallax is applied for your location, so results differ from city to city.
+5b. **Path and the night played back (new in 2.0).** Next to the time bar, “Path” draws the track of the selected Sun, Moon or planet among the stars (±6 h … ±180 days, with time/date at both ends and in the middle); “Night” jumps to sunset and plays automatically to sunrise.
+6. **Eclipse 2027.** The safety warnings come first; then the local circumstances (C1, maximum, C4, magnitude, obscuration, the Sun's altitude, and in the totality band also C2/C3 with the duration of totality), the countdown, the simulation of the Moon's disc over the Sun, the band diagram and the table of the obscuration computed for the cities of Romania.
 6. **The sky in words.** A text description of the sky and a table with the objects ordered by altitude, each with "Show in the sky".
 7. **Places and data.** Saved places, `.fff.json` backup, import, "Delete all".
 8. **Red night mode** (the theme selector): all colours, including those in the canvas, turn red. There are also the light theme and the dark one (by default following the system).
@@ -29,7 +31,7 @@ The screenshot shows the real state of the app for Bucharest, 14 October 2026, 2
 
 ## What it does NOT do, and the limits
 
-- **It is not a navigation instrument** and is not suitable for precision astrophotography or for occultations.
+- **It is not a navigation instrument** and is not suitable for precision astrophotography or for timed occultation observations: the Forecast times are indicative, at the edge of the visibility strip the outcome depends on a few kilometres and on the lunar limb profile (such events are flagged “near the limit”), and altitudes are geometric, without refraction.
 - **Precision** is as declared in `fff-kit/docs/ephem.md`: apparent positions of the Sun and planets ≤ 3″ (Neptune ≤ 5″), Moon ≤ 1.5″, sunrise/sunset of the Sun ≤ 6 s and of the Moon ≤ 25 s relative to the reference model, lunar phases ≤ 30 s, in 1900–2100. Future ΔT is uncertain (seconds until 2035, minutes towards 2100). Diurnal aberration, stellar parallax and local terrain are not modelled.
 - **Stars:** only those with magnitude ≤ 5.0 (1627, from Hipparcos); **there are no NGC/Messier objects**, comets, asteroids or satellites. The proper names are the IAU ones (156 stars ≤ 3.0).
 - **The Milky Way is stylized** (a model from the galactic matrix, not a photograph) and serves only for orientation. The colour of the twilight sky, the brightness and the limiting magnitude as a function of the Sun are visual approximations, not a photometric model. The colour of the stars comes from the B−V index (approximation).
@@ -141,3 +143,4 @@ MIT — see the `LICENSE` file at the root of the repository. The third-party co
 ## Deep links
 
 `#sky&t=2087-05-17T02:35:00Z&ll=59.9139,10.7522` opens the sky at the indicated moment (UTC, 1900–2100) and place; invalid parameters (including non-existent dates such as 2026-02-31) are ignored, with a message. The place from the link is valid only for the current session: it is not saved and does not replace your place (the device's time zone is used). The link also works without a tab name (`#t=…&ll=…`). `#<tab>` (sky, events etc.) remains valid.
+- **2.0.0 — 2026-10-26:** “Sky over time”: Forecast tab (Moon–planet/star conjunctions, occultations with disappearance and reappearance, planet–planet conjunctions, for the chosen place, with the Moon’s parallax), a path among the stars for the selected object, and a “Night” button (sunset → sunrise played automatically).

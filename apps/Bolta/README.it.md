@@ -2,7 +2,7 @@
 
 [English](README.md) · [Română](README.ro.md) · [Français](README.fr.md) · **Italiano** · [Español](README.es.md) · [Português](README.pt.md) · [Deutsch](README.de.md) · [Magyar](README.hu.md)
 
-**Versione:** 1.1.9 · **Ultimo aggiornamento:** 2026-10-26
+**Versione:** 2.0.0 · **Ultimo aggiornamento:** 2026-10-26
 
 Lingue dell'interfaccia: **Română, English, Français, Italiano, Español, Português (PT), Deutsch, Magyar**
 
@@ -141,3 +141,4 @@ MIT — vedi il file `LICENSE` nella radice del repository. I componenti di terz
 ## Link profondi
 
 `#sky&t=2087-05-17T02:35:00Z&ll=59.9139,10.7522` apre il cielo al momento (UTC, 1900–2100) e al luogo indicati; i parametri non validi (comprese date inesistenti come 2026-02-31) vengono ignorati, con un messaggio. Il luogo del link vale solo per la sessione corrente: non viene salvato e non sostituisce il tuo luogo (si usa il fuso orario del dispositivo). Il link funziona anche senza nome di scheda (`#t=…&ll=…`). `#<scheda>` (sky, events ecc.) resta valido.
+- **2.0.0 — 2026-10-26:** «Cielo nel tempo»: scheda Previsioni (congiunzioni Luna–pianeta/stella, occultazioni, congiunzioni pianeta–pianeta, per il luogo scelto), traiettoria tra le stelle e pulsante «Notte» (dal tramonto all’alba).

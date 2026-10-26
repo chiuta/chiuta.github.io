@@ -2,7 +2,7 @@
 
 [English](README.md) · **Română** · [Français](README.fr.md) · [Italiano](README.it.md) · [Español](README.es.md) · [Português](README.pt.md) · [Deutsch](README.de.md) · [Magyar](README.hu.md)
 
-**Versiune:** 1.0.6 · **Ultima actualizare:** 2026-10-26
+**Versiune:** 2.0.0 · **Ultima actualizare:** 2026-10-26
 
 Limbile interfeței: **Română, English, Français, Italiano, Español, Português (PT), Deutsch, Magyar**
 
@@ -11,6 +11,10 @@ Lexicon este un motor de dicționar care rulează complet offline, într-un sing
 ![captură](screenshot.ro.png)
 
 **Live:** https://chiuta.github.io/apps/Lexicon/
+
+## Nou în 2.0.0: fișa unificată și indexul unificat
+
+Când un cuvânt apare în mai multe dicționare active (sau are sinonime), articolul începe cu o **fișă unificată**: pe scurt, câte o linie per dicționar; **echivalente din alte dicționare** (sensurile scurte sunt căutate ca și cuvinte-titlu în celelalte dicționare locale, deci un dicționar RO→EN și unul EN→RO se completează reciproc); **sinonime** (câmp nou la import, `synonyms`/`sinonime`, păstrat și la export) și exemple din toate dicționarele, cu buton „Copiază fișa”. În fila **Dicționare**, „Index unificat” calculează o singură dată cuvintele-titlu comune mai multor dicționare și le păstrează în IndexedDB; se reconstruiește automat doar când se schimbă setul de dicționare. Limite: legăturile între dicționare se bazează pe potrivirea exactă a sensurilor scurte (fără analiză lingvistică); căutarea aproximativă (fuzzy) și căutarea simultană în toate dicționarele existau deja, iar exportul de vocabular spre flashcards rămâne cel din versiunile anterioare.
 
 ## Cum se folosește
 1. Deschide fila **Dicționare** și alege fișierele (se pot importa mai multe odată). Pentru TSV/CSV/JSON se arată o previzualizare și maparea coloanelor.

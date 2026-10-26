@@ -2,7 +2,7 @@
 
 [English](README.md) · [Română](README.ro.md) · [Français](README.fr.md) · [Italiano](README.it.md) · **Español** · [Português](README.pt.md) · [Deutsch](README.de.md) · [Magyar](README.hu.md)
 
-**Versión:** 1.1.9 · **Última actualización:** 2026-10-26
+**Versión:** 2.0.0 · **Última actualización:** 2026-10-26
 
 Idiomas de la interfaz: **Română, English, Français, Italiano, Español, Português (PT), Deutsch, Magyar**
 
@@ -141,3 +141,4 @@ MIT — consulta el archivo `LICENSE` en la raíz del repositorio. Los component
 ## Enlaces profundos
 
 `#sky&t=2087-05-17T02:35:00Z&ll=59.9139,10.7522` abre el cielo en el momento (UTC, 1900–2100) y el lugar indicados; los parámetros no válidos (incluidas fechas inexistentes como 2026-02-31) se ignoran, con un mensaje. El lugar del enlace solo es válido para la sesión actual: no se guarda y no sustituye tu lugar (se usa la zona horaria del dispositivo). El enlace funciona también sin nombre de pestaña (`#t=…&ll=…`). `#<pestaña>` (sky, events, etc.) sigue siendo válido.
+- **2.0.0 — 2026-10-26:** «El cielo en el tiempo»: pestaña Previsión (conjunciones Luna–planeta/estrella, ocultaciones, conjunciones planeta–planeta, para el lugar elegido), trayectoria entre las estrellas y botón «Noche» (de la puesta a la salida).

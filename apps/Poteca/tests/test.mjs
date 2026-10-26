@@ -1,23 +1,16 @@
 // Teste Poteca (Playwright). Rulare: node apps/Poteca/tests/test.mjs   (opțional: TEST_ONLY=regex, POTECA_TMP=dir, AXE_PATH=cale/axe.min.js)
-// [fff-portable] axe-core: FFF_AXE / AXE_PATH, apoi pachetul `axe-core` (npm i -D axe-core). Dacă lipsește: undefined (testele cu axe pică cu mesaj clar).
-import {createRequire as __fffCR} from 'node:module';
-const __fffAxe = () => process.env.FFF_AXE || process.env.AXE_PATH || (() => { try { return __fffCR(import.meta.url).resolve('axe-core/axe.min.js'); } catch { return undefined; } })();
-// [fff-portable] versiunea/data/kitul aplicației se citesc din app.json (nu mai sunt hard-codate în teste)
-import {readFileSync as __fffRF} from 'node:fs';
-const __FFF_APP = JSON.parse(__fffRF(new URL('../app.json', import.meta.url), 'utf8'));
-const __fffRe = (s) => String(s).replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 import {createRequire} from 'module';
 import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
 import {fileURLToPath} from 'node:url';
 import {execFileSync} from 'node:child_process';
-const require = createRequire(process.env.PW_ROOT || import.meta.url);
+const require = createRequire('/opt/node-tools/package.json');
 const {chromium} = require('playwright');
 const HERE = path.dirname(fileURLToPath(import.meta.url));
 const APP = 'file://' + path.resolve(HERE, '..', 'index.html');
 const TMP = fs.mkdtempSync(path.join(process.env.POTECA_TMP || os.tmpdir(), 'poteca-test-'));
-const AXE = process.env.AXE_PATH || __fffAxe();
+const AXE = process.env.AXE_PATH || '/tmp/claude-0/-home-claude/78529928-3825-51c3-b9bd-0e81655ab6bc/scratchpad/sweep/node_modules/axe-core/axe.min.js';
 const ONLY = process.env.TEST_ONLY ? new RegExp(process.env.TEST_ONLY, 'i') : null;
 
 /* ---------- harness ---------- */
@@ -769,7 +762,7 @@ test('E2 copie de siguranță .fff.json: export, ștergere totală, import', asy
   const f = await download(page, '#s-export');
   ok(/\.fff\.json$/.test(f), 'extensie .fff.json');
   const j = JSON.parse(fileTxt(f));
-  eq(j.format, 'fff-bundle', 'format'); eq(j.schema, 1, 'schema'); eq(j.app, 'poteca', 'app'); eq(j.version, __FFF_APP.version, 'versiune'); eq(j.updated, __FFF_APP.updated, 'updated'); ok(j.data['fff.poteca.session'].startsWith('P1:'), 'sesiune în bundle');
+  eq(j.format, 'fff-bundle', 'format'); eq(j.schema, 1, 'schema'); eq(j.app, 'poteca', 'app'); eq(j.version, '2.0.0', 'versiune'); eq(j.updated, '2026-10-26', 'updated'); ok(j.data['fff.poteca.session'].startsWith('P1:'), 'sesiune în bundle');
   await page.click('#s-wipe'); await page.click('#dc-ok');
   eq(await g(page, () => window.Poteca.S.tracks.length), 0, 'șters');
   const keys = await page.evaluate(() => Object.keys(localStorage).filter(k => k.startsWith('fff.poteca.session')));
@@ -982,15 +975,15 @@ test('G3 CSP strict, meta/versiune, fără rețea la pornire, fără erori', asy
   ok(/script-src 'sha256-[A-Za-z0-9+/=]+'/.test(csp), 'script-src cu hash');
   ok(!/\son(click|load|error|input|change)=/i.test(html), 'fără handlere inline');
   ok(!/\beval\(|new Function\(/.test(html.match(/<script>([\s\S]*)<\/script>/)[1]), 'fără eval');
-  ok(new RegExp(String.raw`<meta name="application-version" content="${__fffRe(__FFF_APP.version)}">`).test(html) && new RegExp(String.raw`<meta name="last-updated" content="${__fffRe(__FFF_APP.updated)}">`).test(html) && /<meta name="description" content="[^"]{20,}">/.test(html), 'meta versiune');
-  ok(new RegExp(String.raw`id="app-version">v ${__fffRe(__FFF_APP.version)} · ${__fffRe(__FFF_APP.updated)}<`).test(html), '#app-version');
+  ok(/<meta name="application-version" content="2\.0\.0">/.test(html) && /<meta name="last-updated" content="2026-10-26">/.test(html) && /<meta name="description" content="[^"]{20,}">/.test(html), 'meta versiune');
+  ok(/id="app-version">v 2\.0\.0 · 2026-10-26</.test(html), '#app-version');
   ok(!/https?:\/\/(?!www\.topografix|www\.garmin|www\.w3\.org|www\.opengis|www\.google\.com\/kml|buymeacoffee\.com)/.test(html.replace(/<meta[^>]*>/g, '')), 'fără URL-uri externe în cod în afară de spații de nume XML');
   const page = await newPage();
   eq((await cspViolations(page)).length, 0, 'zero violări CSP la pornire');
   await page.click('#btn-demo'); await page.waitForTimeout(300);
   for (const t of ['stats', 'edit', 'wpt', 'layers', 'export', 'session']) await tab(page, t);
   eq((await cspViolations(page)).length, 0, 'zero violări CSP după utilizare');
-  eq(await page.evaluate(() => document.getElementById('app-version').textContent), `v ${__FFF_APP.version} · ${__FFF_APP.updated}`, 'text #app-version');
+  eq(await page.evaluate(() => document.getElementById('app-version').textContent), 'v 2.0.0 · 2026-10-26', 'text #app-version');
   await closeAll(page);
 });
 test('G4 axe-core: 0 violări (inițial, cu date, taburi, dialoguri; luminos și întunecat)', async () => {
@@ -1104,7 +1097,7 @@ test('H1 performanță: 200.000 puncte (import, statistici, desen, simplificare,
 });
 
 /* ---------- rulare ---------- */
-browser = await chromium.launch({executablePath: process.env.CHROMIUM_PATH || undefined});
+browser = await chromium.launch({executablePath: '/opt/pw-browsers/chromium'});
 let failed = 0;
 for (const t of tests) {
   if (ONLY && !ONLY.test(t.name)) continue;

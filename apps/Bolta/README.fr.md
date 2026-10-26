@@ -2,7 +2,7 @@
 
 [English](README.md) · [Română](README.ro.md) · **Français** · [Italiano](README.it.md) · [Español](README.es.md) · [Português](README.pt.md) · [Deutsch](README.de.md) · [Magyar](README.hu.md)
 
-**Version :** 1.1.9 · **Dernière mise à jour :** 2026-10-26
+**Version :** 2.0.0 · **Dernière mise à jour :** 2026-10-26
 
 Langues de l'interface : **Română, English, Français, Italiano, Español, Português (PT), Deutsch, Magyar**
 
@@ -141,3 +141,4 @@ MIT — voir le fichier `LICENSE` à la racine du dépôt. Les composants tiers 
 ## Liens profonds
 
 `#sky&t=2087-05-17T02:35:00Z&ll=59.9139,10.7522` ouvre le ciel au moment (UTC, 1900–2100) et au lieu indiqués ; les paramètres invalides (y compris les dates inexistantes comme 2026-02-31) sont ignorés, avec un message. Le lieu du lien n'est valable que pour la session en cours : il n'est pas enregistré et ne remplace pas votre lieu (le fuseau horaire de l'appareil est utilisé). Le lien fonctionne aussi sans nom d'onglet (`#t=…&ll=…`). `#<onglet>` (sky, events, etc.) reste valable.
+- **2.0.0 — 2026-10-26:** « Le ciel dans le temps » : onglet Prévisions (conjonctions Lune–planète/étoile, occultations, conjonctions planète–planète, pour le lieu choisi), trajectoire parmi les étoiles et bouton « Nuit » (du coucher au lever).

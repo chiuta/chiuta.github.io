@@ -2,7 +2,7 @@
 
 [English](README.md) · [Română](README.ro.md) · [Français](README.fr.md) · [Italiano](README.it.md) · [Español](README.es.md) · [Português](README.pt.md) · **Deutsch** · [Magyar](README.hu.md)
 
-**Version:** 1.1.9 · **Zuletzt aktualisiert:** 2026-10-26
+**Version:** 2.0.0 · **Zuletzt aktualisiert:** 2026-10-26
 
 Oberflächensprachen: **Română, English, Français, Italiano, Español, Português (PT), Deutsch, Magyar**
 
@@ -141,3 +141,4 @@ MIT — siehe Datei `LICENSE` im Stammverzeichnis des Repositorys. Die Komponent
 ## Deep-Links
 
 `#sky&t=2087-05-17T02:35:00Z&ll=59.9139,10.7522` öffnet den Himmel zum angegebenen Zeitpunkt (UTC, 1900–2100) und Ort; ungültige Parameter (auch nicht existierende Daten wie 2026-02-31) werden mit einer Meldung ignoriert. Der Ort aus dem Link gilt nur für die aktuelle Sitzung: Er wird nicht gespeichert und ersetzt nicht deinen Ort (es wird die Zeitzone des Geräts verwendet). Der Link funktioniert auch ohne Tab-Namen (`#t=…&ll=…`). `#<Tab>` (sky, events usw.) bleibt gültig.
+- **2.0.0 — 2026-10-26:** „Himmel in der Zeit“: Reiter Vorschau (Konjunktionen Mond–Planet/Stern, Bedeckungen, Konjunktionen Planet–Planet, für den gewählten Ort), Bahn zwischen den Sternen und Schaltfläche „Nacht“ (Sonnenuntergang bis -aufgang).

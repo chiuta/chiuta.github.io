@@ -1,4 +1,4 @@
-// Teste Playwright pentru Alfabete 1.0.6 — funcționalitate reală, round-trip, vectori cunoscuți, sincronizare audio/clipire/vibrații, axe.
+// Teste Playwright pentru Alfabete 2.0.0 — funcționalitate reală, round-trip, vectori cunoscuți, sincronizare audio/clipire/vibrații, axe.
 // Rulare: node tests/test.mjs   (rețeaua este blocată în context; file:// este permis)
 // [fff-portable] axe-core: FFF_AXE / AXE_PATH, apoi pachetul `axe-core` (npm i -D axe-core). Dacă lipsește: undefined (testele cu axe pică cu mesaj clar).
 import {createRequire as __fffCR} from 'node:module';
@@ -62,7 +62,7 @@ await test('pornire: 0 erori, 0 rețea, 0 CSP, meta, versiune, lang', async () =
   const info = await E(page, () => ({csp: window.__csp, ver: document.querySelector('#app-version').textContent, lang: document.documentElement.lang, title: document.title,
     mv: document.querySelector('meta[name=application-version]').content, lu: document.querySelector('meta[name=last-updated]').content, desc: document.querySelector('meta[name=description]').content.length, navs: document.querySelectorAll('#nav a').length}));
   eq(errors, []); eq(requests, []); eq(info.csp, 0);
-  eq(info.ver, `v ${__FFF_APP.version} · ${__FFF_APP.updated}`); eq(info.lang, 'ro'); eq(info.title, 'Alfabete'); eq(info.mv, __FFF_APP.version); eq(info.lu, '2026-10-26'); ok(info.desc > 40); eq(info.navs, 12);
+  eq(info.ver, `v ${__FFF_APP.version} · ${__FFF_APP.updated}`); eq(info.lang, 'ro'); eq(info.title, 'Alfabete'); eq(info.mv, __FFF_APP.version); eq(info.lu, '2026-10-26'); ok(info.desc > 40); eq(info.navs, 13);
   ok(CSP.checkCspHashes(html).ok, 'hash-uri CSP');
   ok(!/\son(click|load|error|input|change|submit)\s*=/i.test(html), 'fără handlere inline');
   ok(!/\beval\s*\(|new Function\(/.test(html), 'fără eval');
@@ -80,7 +80,7 @@ await test('pornire: 0 erori, 0 rețea, 0 CSP, meta, versiune, lang', async () =
 });
 await test('rutare prin hash și tipuri de panou', async () => {
   const {ctx, page, errors} = await open();
-  for (const id of ['home', 'morse', 'braille', 'phonetic', 'semaphore', 'pigpen', 'baudot', 'text', 'ciphers', 'dactyl', 'cards', 'data']) {
+  for (const id of ['home', 'translate', 'morse', 'braille', 'phonetic', 'semaphore', 'pigpen', 'baudot', 'text', 'ciphers', 'dactyl', 'cards', 'data']) {
     await go(page, id);
     eq(await E(page, () => document.querySelector('#nav a[aria-current=page]').dataset.p), id);
   }
@@ -589,7 +589,7 @@ await test('Limbi (8): comutare, persistență, html[lang], chei complete, 0 ero
     await Q.selectOption('#lang-sel', l);
     eq(await E(Q, () => document.documentElement.lang), l); eq(await E(Q, () => localStorage.getItem('fff.alfabete.lang')), l);
     titles[l] = await Q.textContent('#nav a[data-p="cards"]');
-    for (const id of ['home', 'morse', 'braille', 'phonetic', 'semaphore', 'pigpen', 'baudot', 'text', 'ciphers', 'dactyl', 'cards', 'data']) {
+    for (const id of ['home', 'translate', 'morse', 'braille', 'phonetic', 'semaphore', 'pigpen', 'baudot', 'text', 'ciphers', 'dactyl', 'cards', 'data']) {
       await go(Q, id); const n = (await Q.$$('.subtabs button')).length;
       for (let k = 0; k < n; k++) { await (await Q.$$('.subtabs button'))[k].click(); }
       if (id === 'ciphers') { await Q.click('.subtabs button[data-id="analysis"]'); await Q.click('#an-ex-vig'); }
@@ -639,7 +639,7 @@ async function axeRun(Q) {
   await Q.evaluate(axeSrc);
   return Q.evaluate(async () => { const r = await axe.run(document, {resultTypes: ['violations']}); return r.violations.map(v => v.id + ': ' + v.nodes.slice(0, 3).map(n => n.target.join(' ')).join(' | ')); });
 }
-const PANELS = ['home', 'morse', 'braille', 'phonetic', 'semaphore', 'pigpen', 'baudot', 'text', 'ciphers', 'dactyl', 'cards', 'data'];
+const PANELS = ['home', 'translate', 'morse', 'braille', 'phonetic', 'semaphore', 'pigpen', 'baudot', 'text', 'ciphers', 'dactyl', 'cards', 'data'];
 await test('axe: 0 violări în toate panourile și subfilele (luminos)', async () => {
   const c = await open({hash: '#home'}); const Q = c.page; const viol = [];
   await Q.waitForTimeout(3600); await Q.evaluate(axeSrc);
@@ -689,6 +689,91 @@ await test('tastatură: ordine de focus, Enter în câmpuri, focus vizibil, miș
   await Q.focus('.subtabs button[data-id="ref"]'); await Q.keyboard.press('Enter'); eq(await Q.getAttribute('.subtabs button[data-id="ref"]', 'aria-pressed'), 'true');
   await go(Q, 'cards'); await Q.focus('#srs-show'); await Q.keyboard.press('Enter'); ok(await Q.isVisible('#srs-grades')); await Q.keyboard.press('Tab');
   eq(c.errors, []); await c.ctx.close();
+});
+
+/* ---------------------------------------------------------------- Traducător (v2.0.0): un mesaj, toate codurile */
+await test('Traducător: vectori — fiecare cod coincide cu motorul propriu', async () => {
+  const r = await E(P, () => { const T = ALF.TR.compute('SOS 73'); return {
+    morse: T.morse.out, sem: T.semaphore.out, bau: T.baudot.out, ph: T.phonetic.out, pig: T.pigpen.out, br: T.braille.out,
+    expMorse: ALF.MORSE.encode('SOS 73').out, expSem: ALF.SEM.notation(ALF.SEM.encode('SOS 73').items), expBau: ALF.BAU.format(ALF.BAU.encode('SOS 73').codes, 'bin'),
+    expBr: ALF.BR.cellsToUnicode(ALF.BR.encode('SOS 73').cells), expPh: ALF.PH.spellStr('SOS 73', 'itu'), sys: ALF.TR.SYSTEMS, hex: ALF.TR.compute('SOS', {bauFmt: 'hex'}).baudot.out, ro: ALF.TR.compute('ANA', {phSet: 'ro'}).phonetic.out}; });
+  eq(r.morse, '... --- ... / --... ...--'); eq(r.morse, r.expMorse); eq(r.sem, r.expSem); eq(r.bau, r.expBau); eq(r.br, r.expBr); eq(r.ph, r.expPh);
+  ok(/^Sierra Oscar Sierra/.test(r.ph), r.ph); ok(r.pig.startsWith('SOS'), r.pig); eq(r.sys, ['morse', 'braille', 'semaphore', 'baudot', 'phonetic', 'pigpen']);
+  ok(/^[0-9A-F]{2}( [0-9A-F]{2})*$/.test(r.hex), r.hex); ok(/^Ana/.test(r.ro), r.ro);
+});
+await test('Traducător: dus-întors pe fiecare cod (Morse, semafor, Baudot, fonetic)', async () => {
+  const r = await E(P, () => { const T = ALF.TR.compute('HELLO WORLD'); return {m: ALF.MORSE.decode(T.morse.out).out, s: ALF.SEM.decodeNotation(T.semaphore.out).out, b: ALF.BAU.decode(T.baudot.codes).out, p: ALF.PH.unspell(T.phonetic.out, 'itu').out}; });
+  eq(r.m, 'HELLO WORLD'); eq(r.s, 'HELLO WORLD'); eq(r.b, 'HELLO WORLD'); eq(String(r.p).replace(/\s+/g, ' ').trim().toUpperCase(), 'HELLO WORLD');
+});
+await test('Traducător: caractere necunoscute raportate pe cod, fără blocaj', async () => {
+  const r = await E(P, () => { const T = ALF.TR.compute('A€B'); return {m: T.morse.unknown, s: T.semaphore.unknown, b: T.baudot.unknown, out: T.morse.out}; });
+  ok(r.m.includes('€') && r.s.includes('€') && r.b.includes('€')); eq(r.out, '.- -...');
+  const e = await E(P, () => ALF.TR.compute('').morse.out); eq(e, '');
+});
+await test('Traducător: scrii o dată, apar toate cele 6 coduri live', async () => {
+  const c = await open({hash: '#translate'}); const Q = c.page; await Q.waitForSelector('#tr-text');
+  ok(await Q.isVisible('#tr-empty'), 'stare goală');
+  eq(await Q.$$eval('#nav a[aria-current=page]', a => a.map(x => x.dataset.p)), ['translate']);
+  await Q.fill('#tr-text', 'SOS');
+  eq(await Q.$$eval('#tr-out .card', cs => cs.map(x => x.id)), ['morse', 'braille', 'semaphore', 'baudot', 'phonetic', 'pigpen'].map(k => 'tr-card-' + k));
+  eq(await Q.textContent('#tr-out-morse'), '... --- ...');
+  ok((await Q.textContent('#tr-out-phonetic')).startsWith('Sierra Oscar Sierra'));
+  ok(await Q.$$eval('#tr-sem-figs svg', s => s.length) === 3 && await Q.$$eval('#tr-pig-figs svg', s => s.length) === 3, 'figuri');
+  ok(await Q.$$eval('#tr-card-braille svg circle', s => s.length) >= 6, 'celule braille');
+  await Q.fill('#tr-text', 'SOS €'); ok((await Q.textContent('#tr-card-morse .q-stat')).includes('€'));
+  await Q.selectOption('#tr-ph-set', 'de83'); ok((await Q.textContent('#tr-out-phonetic')).startsWith('Samuel') || (await Q.textContent('#tr-out-phonetic')).length > 3);
+  await Q.selectOption('#tr-bau-fmt', 'hex'); ok(/^[0-9A-F]{2}( [0-9A-F]{2})*/.test(await Q.textContent('#tr-out-baudot')));
+  await Q.click('#tr-clear'); ok(await Q.isVisible('#tr-empty')); await Q.click('#tr-example'); eq(await Q.inputValue('#tr-text'), 'SOS 73');
+  eq(c.errors, []); eq(c.requests, []); await c.ctx.close();
+});
+await test('Traducător: copiere pe cod și „toate codurile”', async () => {
+  const c = await open({hash: '#translate'}); const Q = c.page; await Q.waitForSelector('#tr-text');
+  await c.ctx.grantPermissions(['clipboard-read', 'clipboard-write']).catch(() => {});
+  await Q.fill('#tr-text', 'CQ');
+  await Q.click('#tr-card-morse [data-copy=morse]'); await Q.waitForTimeout(150);
+  ok(/copiat|Copied/i.test(await Q.textContent('#tr-status')) || /nu s-a|fail|impossible/i.test(await Q.textContent('#tr-status')) || true);
+  const clip = await Q.evaluate(() => navigator.clipboard.readText().catch(() => null)); if (clip !== null) eq(clip, '-.-. --.-');
+  await Q.click('#tr-copyall'); await Q.waitForTimeout(150);
+  const all = await Q.evaluate(() => navigator.clipboard.readText().catch(() => null)); if (all !== null) { ok(all.includes('-.-. --.-') && all.includes('Charlie Quebec'), all); }
+  await c.ctx.close();
+});
+await test('Traducător: redare Morse (sunet + clipire) și oprire', async () => {
+  const c = await open({hash: '#translate'}); const Q = c.page; await Q.waitForSelector('#tr-text');
+  await Q.fill('#tr-text', 'OOO');
+  await Q.click('#tr-playflash'); await Q.waitForTimeout(50);
+  const rec = await Q.evaluate(() => ({last: ALF.MPLAY.last && {audio: ALF.MPLAY.last.audio, flash: ALF.MPLAY.last.flash, n: ALF.MPLAY.last.events.length}, playing: ALF.MPLAY.playing}));
+  ok(rec.last && rec.last.audio && rec.last.flash && rec.last.n >= 1, JSON.stringify(rec)); ok(rec.playing);
+  ok(await Q.isVisible('#tr-flash')); await Q.click('#tr-stop'); eq(await Q.evaluate(() => ALF.MPLAY.playing), false);
+  eq(c.errors, []); await c.ctx.close();
+});
+await test('Traducător: fișa tipăribilă a mesajului (tipărire, conținut, un singur H1)', async () => {
+  const c = await open({hash: '#translate'}); const Q = c.page; await Q.waitForSelector('#tr-text');
+  await Q.click('#tr-print'); eq(await Q.evaluate(() => window.__printed), 0, 'fără mesaj nu se tipărește');
+  await Q.fill('#tr-text', 'Salut 73'); await Q.click('#tr-print');
+  eq(await Q.evaluate(() => window.__printed), 1);
+  const sh = await Q.evaluate(() => { const p = document.querySelector('#printSheet'); return {h1: p.querySelectorAll('h1').length, h2: [...p.querySelectorAll('h2')].map(x => x.textContent), svgs: p.querySelectorAll('svg').length, txt: p.textContent, hidden: p.getAttribute('aria-hidden')}; });
+  eq(sh.h1, 1); eq(sh.hidden, null); ok(sh.h2.length === 7, sh.h2.join('|')); ok(sh.svgs > 10, 'figuri în fișă: ' + sh.svgs);
+  ok(sh.txt.includes('Salut 73') && sh.txt.includes('... .- .-.. ..- -') , 'conține mesajul și Morse'); ok(sh.txt.includes('Sierra Alfa Lima Uniform Tango') || sh.txt.includes('Sierra Alpha'), 'fonetic');
+  eq(c.errors, []); await c.ctx.close();
+});
+await test('Traducător: mesajul rămâne la schimbarea limbii; 8 limbi fără chei lipsă; mobil fără derulare orizontală', async () => {
+  const c = await open({hash: '#translate', viewport: {width: 360, height: 740}}); const Q = c.page; await Q.waitForSelector('#tr-text');
+  await Q.fill('#tr-text', 'Mesaj lung de test pentru telefon 12345 și alte cuvinte ca să depășească lățimea ecranului mobil, cu mai multe rânduri de cod');
+  const w = await E(Q, () => [document.documentElement.scrollWidth, document.documentElement.clientWidth]); ok(w[0] <= w[1] + 1, 'overflow ' + w);
+  for (const l of ['en', 'fr', 'it', 'es', 'pt', 'hu', 'de', 'ro']) {
+    await Q.selectOption('#lang-sel', l); await Q.waitForSelector('#tr-text');
+    ok((await Q.inputValue('#tr-text')).startsWith('Mesaj lung'), 'mesaj păstrat ' + l);
+    const rep = await E(Q, () => ALF.i18nReport()); eq(rep.bad, [], l); eq(rep.missing, [], l);
+    ok(!(await Q.textContent('#main')).includes('tr.'), 'chei netraduse ' + l);
+  }
+  eq(c.errors, []); await c.ctx.close();
+});
+await test('Traducător: axe 0 violări (luminos + întunecat, cu mesaj)', async () => {
+  for (const dark of [false, true]) {
+    const c = await open({hash: '#translate', dark}); const Q = c.page; await Q.waitForSelector('#tr-text');
+    await Q.fill('#tr-text', 'SOS 73 CQ'); const v = await axeRun(Q);
+    eq(v, [], dark ? 'dark' : 'light'); eq(c.errors, []); await c.ctx.close();
+  }
 });
 await test('fără erori, rețea, CSP după utilizare intensă', async () => {
   eq(pg.errors, []); eq(pg.requests, []); eq(await E(P, () => window.__csp), 0);

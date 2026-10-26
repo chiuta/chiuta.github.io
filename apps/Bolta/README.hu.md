@@ -2,7 +2,7 @@
 
 [English](README.md) · [Română](README.ro.md) · [Français](README.fr.md) · [Italiano](README.it.md) · [Español](README.es.md) · [Português](README.pt.md) · [Deutsch](README.de.md) · **Magyar**
 
-**Verzió:** 1.1.9 · **Utolsó frissítés:** 2026-10-26
+**Verzió:** 2.0.0 · **Utolsó frissítés:** 2026-10-26
 
 A felület nyelvei: **Română, English, Français, Italiano, Español, Português (PT), Deutsch, Magyar**
 
@@ -141,3 +141,4 @@ MIT — lásd a `LICENSE` fájlt a tároló gyökerében. A harmadik felek kompo
 ## Mély hivatkozások
 
 A `#sky&t=2087-05-17T02:35:00Z&ll=59.9139,10.7522` a megadott időpontban (UTC, 1900–2100) és helyen nyitja meg az eget; az érvénytelen paramétereket (a nem létező dátumokat, például 2026-02-31, is beleértve) üzenettel figyelmen kívül hagyja. A hivatkozásban lévő hely csak az aktuális munkamenetre érvényes: nem mentődik, és nem váltja fel a te helyedet (az eszköz időzónáját használja). A hivatkozás fülnév nélkül is működik (`#t=…&ll=…`). A `#<fül>` (sky, events stb.) továbbra is érvényes.
+- **2.0.0 — 2026-10-26:** „Az ég az időben”: Előrejelzés fül (Hold–bolygó/csillag együttállások, fedések, bolygó–bolygó együttállások a kiválasztott helyre), pálya a csillagok között és „Éjszaka” gomb (naplementétől napkeltéig).

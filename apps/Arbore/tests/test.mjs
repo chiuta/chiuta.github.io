@@ -1,12 +1,5 @@
 // Teste Arbore (Playwright, Chromium). Rulare: node tests/test.mjs
 // Rețeaua este blocată; se verifică 0 pageerror, 0 violări CSP, 0 cereri de rețea.
-// [fff-portable] axe-core: FFF_AXE / AXE_PATH, apoi pachetul `axe-core` (npm i -D axe-core). Dacă lipsește: undefined (testele cu axe pică cu mesaj clar).
-import {createRequire as __fffCR} from 'node:module';
-const __fffAxe = () => process.env.FFF_AXE || process.env.AXE_PATH || (() => { try { return __fffCR(import.meta.url).resolve('axe-core/axe.min.js'); } catch { return undefined; } })();
-// [fff-portable] versiunea/data/kitul aplicației se citesc din app.json (nu mai sunt hard-codate în teste)
-import {readFileSync as __fffRF} from 'node:fs';
-const __FFF_APP = JSON.parse(__fffRF(new URL('../app.json', import.meta.url), 'utf8'));
-const __fffRe = (s) => String(s).replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 import {createRequire} from 'node:module';
 import fs from 'node:fs';
 import path from 'node:path';
@@ -14,11 +7,11 @@ import {fileURLToPath, pathToFileURL} from 'node:url';
 import crypto from 'node:crypto';
 import {spawnSync} from 'node:child_process';
 
-const require = createRequire(process.env.PW_ROOT || import.meta.url);
+const require = createRequire('/opt/node-tools/package.json');
 const {chromium} = require('playwright');
 const here = path.dirname(fileURLToPath(import.meta.url));
 const URL_APP = pathToFileURL(path.join(here, '..', 'index.html')).href;
-const AXE = process.env.AXE_PATH || __fffAxe();
+const AXE = process.env.AXE_PATH || '/tmp/claude-0/-home-claude/78529928-3825-51c3-b9bd-0e81655ab6bc/scratchpad/sweep/node_modules/axe-core/axe.min.js';
 const fx = n => fs.readFileSync(path.join(here, 'fixtures', n));
 const SAMPLE = fx('sample.ged').toString('utf8');
 const POPESCU = fx('familia-popescu.ged').toString('utf8');
@@ -31,7 +24,7 @@ function ok(name, cond, extra) {
   else { fail++; failures.push(name); console.log('  FAIL ' + name + (extra !== undefined ? '  -> ' + JSON.stringify(extra) : '')); }
 }
 
-const browser = await chromium.launch({executablePath: process.env.CHROMIUM_PATH || undefined});
+const browser = await chromium.launch({executablePath: '/opt/pw-browsers/chromium'});
 
 async function newPage(opts = {}) {
   const ctx = await browser.newContext({viewport: opts.viewport || {width: 1280, height: 800}, colorScheme: opts.scheme || 'light', acceptDownloads: true, reducedMotion: opts.reduced ? 'reduce' : 'no-preference', bypassCSP: !!opts.bypassCSP});
@@ -65,10 +58,10 @@ console.log('1. Pornire, meta, CSP, rețea');
     manifest: document.querySelector('link[rel="manifest"]')?.getAttribute('href') || '',
     inline: document.querySelectorAll('[onclick],[onchange],[oninput],[onload]').length
   }));
-  ok(`application-version ${__FFF_APP.version}`, info.ver === __FFF_APP.version, info.ver);
-  ok(`last-updated ${__FFF_APP.updated}`, info.upd === __FFF_APP.updated, info.upd);
+  ok('application-version 2.0.0', info.ver === '2.0.0', info.ver);
+  ok('last-updated 2026-10-26', info.upd === '2026-10-26', info.upd);
   ok('meta description', info.desc);
-  ok('#app-version vizibil', info.vis === `v ${__FFF_APP.version} · ${__FFF_APP.updated}`, info.vis);
+  ok('#app-version vizibil', info.vis === 'v 2.0.0 · 2026-10-26', info.vis);
   ok('html[lang]=ro implicit', info.lang === 'ro', info.lang);
   ok('CSP: default-src none, connect-src none, hash script', /default-src 'none'/.test(info.csp) && /connect-src 'none'/.test(info.csp) && /script-src 'sha256-/.test(info.csp) && !/unsafe-eval/.test(info.csp) && !/script-src[^;]*unsafe-inline/.test(info.csp), info.csp);
   // PWA adăugat ulterior: manifestul trebuie să fie exact cel generat (nu o a doua sursă), iar handlerele inline rămân interzise
@@ -644,7 +637,7 @@ console.log('9. UI: diagrame, tastatură, limbi, ștergere');
   await p.click('#t-data');
   const [dj] = await Promise.all([p.waitForEvent('download'), p.click('#x-json')]);
   const bundle = JSON.parse(fs.readFileSync(await dj.path(), 'utf8'));
-  ok('export .fff.json: format fff-bundle', bundle.format === 'fff-bundle' && bundle.schema === 1 && bundle.app === 'arbore' && bundle.version === __FFF_APP.version && bundle.updated === __FFF_APP.updated && bundle.data, Object.keys(bundle));
+  ok('export .fff.json: format fff-bundle', bundle.format === 'fff-bundle' && bundle.schema === 1 && bundle.app === 'arbore' && bundle.version === '2.0.0' && bundle.updated === '2026-10-26' && bundle.data, Object.keys(bundle));
   ok('.fff.json: persoanele vii sunt mascate (implicit)', !JSON.stringify(bundle).includes('Alexandru'));
   // import JSON (copie completă) după ștergere
   await p.uncheck('#x-mask');

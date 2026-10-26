@@ -23,6 +23,7 @@ const HERE = path.dirname(fileURLToPath(import.meta.url));
 const APP_FILE = path.resolve(HERE, '../index.html');
 const APP = 'https://provenienta.test/index.html';
 const AXE = process.env.AXE_PATH || __fffAxe();
+const KIT = [process.env.FFF_KIT, path.resolve(HERE, '../../../fff-kit'), path.resolve(HERE, '../../chiuta.github.io/fff-kit')].find((d) => d && fs.existsSync(path.join(d, 'build.mjs'))) || path.resolve(HERE, '../../../fff-kit'); // [portabil] kitul se găsește și pentru depozitul separat
 const W = fs.mkdtempSync(path.join(os.tmpdir(), 'provenienta-test-'));
 
 const results = []; let current = '';
@@ -98,7 +99,7 @@ await test('pornire: 0 erori, 0 CSP, 0 rețea, meta și versiune', async () => {
   const scr = [...html.matchAll(/<script\b([^>]*)>([\s\S]*?)<\/script>/g)].filter((m) => !/\bsrc=/.test(m[1]) && !/type="application\/json"/.test(m[1]));
   eq(scr.length, 3, 'kit + pwa + aplicație'); eq((ss.match(/sha256-/g) || []).length, 3, 'hash-uri');
   for (const m of scr) assert(ss.includes("'sha256-" + crypto.createHash('sha256').update(m[2], 'utf8').digest('base64') + "'"), 'hash lipsă: ' + m[2].slice(0, 30));
-  for (const [mod, a] of [['build.mjs', 'check'], ['pwa/pwa.mjs', 'check']]) { const r = spawnSync(process.execPath, [path.resolve(HERE, '../../../fff-kit', mod), a, path.resolve(HERE, '..')], { encoding: 'utf8' }); assert(r.status === 0, mod + ' check: ' + r.stdout + r.stderr); }
+  for (const [mod, a] of [['build.mjs', 'check'], ['pwa/pwa.mjs', 'check']]) { const r = spawnSync(process.execPath, [path.join(KIT, mod), a, path.resolve(HERE, '..')], { encoding: 'utf8' }); assert(r.status === 0, mod + ' check: ' + r.stdout + r.stderr); }
   assert(!/CNRED/i.test(html));
   eq(netReqs, []);
 });

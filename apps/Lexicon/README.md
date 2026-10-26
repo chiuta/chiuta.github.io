@@ -2,7 +2,7 @@
 
 **English** · [Română](README.ro.md) · [Français](README.fr.md) · [Italiano](README.it.md) · [Español](README.es.md) · [Português](README.pt.md) · [Deutsch](README.de.md) · [Magyar](README.hu.md)
 
-**Version:** 1.0.6 · **Last updated:** 2026-10-26
+**Version:** 2.0.0 · **Last updated:** 2026-10-26
 
 Interface languages: **Română, English, Français, Italiano, Español, Português (PT), Deutsch, Magyar**
 
@@ -11,6 +11,10 @@ Lexicon is a dictionary engine that runs entirely offline, in a single HTML file
 ![screenshot](screenshot.en.png)
 
 **Live app:** https://chiuta.github.io/apps/Lexicon/
+
+## New in 2.0.0: unified card and unified index
+
+When a word appears in several active dictionaries (or has synonyms) the article opens with a **unified card**: one summary line per dictionary; **equivalents from other dictionaries** (short senses are looked up as headwords in the other local dictionaries, so an EN→RO and an RO→EN dictionary complete each other); **synonyms** (new import field `synonyms`, kept on export) and examples from all dictionaries, with a "Copy the card" button. In the **Dictionaries** tab the "Unified index" computes the headwords shared by several dictionaries once and keeps them in IndexedDB; it is rebuilt automatically only when the set of dictionaries changes. Limits: cross-dictionary links rely on exact matches of short senses (no linguistic analysis); fuzzy search and simultaneous multi-dictionary search already existed.
 
 ## How to use
 1. Open the **Dictionaries** tab and choose the files (several can be imported at once). For TSV/CSV/JSON a preview and column mapping are shown.

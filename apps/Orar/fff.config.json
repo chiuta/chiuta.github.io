@@ -2,7 +2,7 @@
   "exceptions": [
     {
       "rule": "unprefixed-storage",
-      "reason": "Importul din CLEPSIDRA citește (doar citire, la cererea utilizatorului) cheile clepsidra.schedule și clepsidra.events ale altei aplicații; Orar nu le scrie. Când cele două aplicații nu mai împart originea, importul se face din fișier (JSON), calea documentată în README."
+      "reason": "Cheile „clepsidra.schedule” și „clepsidra.events” nu sunt chei de stocare ale Orar: sunt nume de câmpuri din copia .fff.json a aplicației CLEPSIDRA, citite doar la importul explicit al unui fișier. Orar își păstrează datele sub fff.orar.*."
     }
   ]
 }

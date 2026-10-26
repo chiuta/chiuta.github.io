@@ -2,7 +2,7 @@
   "exceptions": [
     {
       "rule": "unprefixed-storage",
-      "reason": "Fals pozitiv: cheia „nodup” este numele relativ transmis helperelor lsGet/lsSet/lsDel, care adaugă prefixul „fff.arbore.” (cheia stocată este fff.arbore.nodup). Redenumirea ar rupe datele existente ale utilizatorilor."
+      "reason": "Cheia „nodup” (perechi de duplicate respinse) este citită prin lsGet/lsSet, care adaugă prefixul fff.arbore.; verificarea statică vede doar litera cheii. Cheia există din versiunea 1.0.0 și nu se redenumește, ca să nu se piardă alegerile utilizatorilor."
     }
   ]
 }
