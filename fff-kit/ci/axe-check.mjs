@@ -50,7 +50,8 @@ for (const scheme of ['light', 'dark']) for (const [w, h] of [[1366, 800], [360,
   await run('pagina', null);
   const has = await page.evaluate(() => !!document.getElementById('app-version') && document.getElementById('app-version').getAttribute('role') === 'button');
   if (has) {
-    await page.click('#app-version');
+    // clic programatic: dialogurile de bun venit/ghid ale aplicației pot acoperi eticheta la prima deschidere
+    await page.evaluate(() => document.getElementById('app-version').click());
     await page.waitForSelector('dialog[open]', {timeout: 5000}).catch(() => null);
     if (await page.evaluate(() => !!document.querySelector('dialog[open]'))) await run('dialog Transparență', 'dialog[open]');
     await page.keyboard.press('Escape');
