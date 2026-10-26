@@ -1,5 +1,12 @@
 // Teste Gospodar — Playwright (Chromium headless, rețea blocată). Rulare: node tests/test.mjs [filtru]
 // Oracolul numeric (tests/oracle.json) e produs independent de tests/gen_oracle.py (Python, decimal exact).
+// [fff-portable] axe-core: FFF_AXE / AXE_PATH, apoi pachetul `axe-core` (npm i -D axe-core). Dacă lipsește: undefined (testele cu axe pică cu mesaj clar).
+import {createRequire as __fffCR} from 'node:module';
+const __fffAxe = () => process.env.FFF_AXE || process.env.AXE_PATH || (() => { try { return __fffCR(import.meta.url).resolve('axe-core/axe.min.js'); } catch { return undefined; } })();
+// [fff-portable] versiunea/data/kitul aplicației se citesc din app.json (nu mai sunt hard-codate în teste)
+import {readFileSync as __fffRF} from 'node:fs';
+const __FFF_APP = JSON.parse(__fffRF(new URL('../app.json', import.meta.url), 'utf8'));
+const __fffRe = (s) => String(s).replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 import {createRequire} from 'module';
 import fs from 'node:fs';
 import path from 'node:path';
@@ -8,11 +15,11 @@ import {fileURLToPath} from 'node:url';
 import crypto from 'node:crypto';
 import {spawnSync} from 'node:child_process';
 
-const require = createRequire('/opt/node-tools/package.json');
+const require = createRequire(process.env.PW_ROOT || import.meta.url);
 const {chromium} = require('playwright');
 const HERE = path.dirname(fileURLToPath(import.meta.url));
 const URL_APP = 'file://' + path.join(HERE, '..', 'index.html');
-const AXE = process.env.AXE_PATH || '/tmp/claude-0/-home-claude/78529928-3825-51c3-b9bd-0e81655ab6bc/scratchpad/sweep/node_modules/axe-core/axe.min.js';
+const AXE = process.env.AXE_PATH || __fffAxe();
 const ORACLE = JSON.parse(fs.readFileSync(path.join(HERE, 'oracle.json'), 'utf8'));
 const NOW = '2026-10-14T10:00:00+03:00';
 const only = process.argv[2];
@@ -23,7 +30,7 @@ async function T(name, fn) {
   try { await fn(); results.push([name, true]); console.log('ok   ' + name + ' (' + (Date.now() - t0) + ' ms)'); }
   catch (e) { results.push([name, false]); console.log('FAIL ' + name + '\n       ' + String(e.stack || e).split('\n').slice(0, 7).join('\n       ')); }
 }
-const browser = await chromium.launch({executablePath: '/opt/pw-browsers/chromium'});
+const browser = await chromium.launch({executablePath: process.env.CHROMIUM_PATH || undefined});
 
 async function newPage(o = {}) {
   const ctx = o.ctx || await browser.newContext({viewport: o.viewport || {width: 1280, height: 800}, locale: 'ro-RO', timezoneId: 'Europe/Bucharest', bypassCSP: !!o.bypassCSP, acceptDownloads: true, colorScheme: o.colorScheme || 'light'});
@@ -62,9 +69,9 @@ await T('pornire: 0 erori, CSP, fără rețea, meta, versiune, lang', async () =
   const p = await newPage();
   await clean(p, 'start');
   assert.equal(await E(p, () => document.documentElement.lang), 'ro');
-  assert.equal(await E(p, () => document.querySelector('meta[name=application-version]').content), '1.0.5');
-  assert.equal(await E(p, () => document.querySelector('meta[name=last-updated]').content), '2026-10-26');
-  assert.equal((await p.textContent('#app-version')).trim(), 'v 1.0.5 · 2026-10-26');
+  assert.equal(await E(p, () => document.querySelector('meta[name=application-version]').content), __FFF_APP.version);
+  assert.equal(await E(p, () => document.querySelector('meta[name=last-updated]').content), __FFF_APP.updated);
+  assert.equal((await p.textContent('#app-version')).trim(), `v ${__FFF_APP.version} · ${__FFF_APP.updated}`);
   const csp = await E(p, () => document.querySelector('meta[http-equiv=Content-Security-Policy]').content);
   // script-src: 3 scripturi inline executabile (kit, înregistrare PWA, aplicație), fiecare cu hash; fără unsafe
   assert.match(csp, /^default-src 'none'; script-src ('sha256-[A-Za-z0-9+/=]+' ?){3}; style-src 'unsafe-inline'; /);
@@ -410,7 +417,7 @@ await T('criptare AES-GCM: activare, nimic în clar, blocare, parolă greșită,
 await T('export/import .fff.json (clar și criptat), CSV, șterge tot', async () => {
   const p = await newPage(); await demo(p); const n = (await txs(p)).length;
   const b = await E(p, () => GOSPODAR.bundleObj());
-  assert.equal(b.format, 'fff-bundle'); assert.equal(b.schema, 1); assert.equal(b.app, 'gospodar'); assert.equal(b.version, '1.0.5'); assert.equal(b.updated, '2026-10-26'); assert.ok(typeof b.data['fff.gospodar.data'] === 'string');
+  assert.equal(b.format, 'fff-bundle'); assert.equal(b.schema, 1); assert.equal(b.app, 'gospodar'); assert.equal(b.version, __FFF_APP.version); assert.equal(b.updated, __FFF_APP.updated); assert.ok(typeof b.data['fff.gospodar.data'] === 'string');
   await nav(p, 'set');
   const [dl] = await Promise.all([p.waitForEvent('download'), p.click('[data-act=exportjson]')]); assert.match(dl.suggestedFilename(), /^gospodar-2026-10-14\.fff\.json$/);
   const file = path.join(HERE, '.tmp-export.fff.json'); await dl.saveAs(file); const j = JSON.parse(fs.readFileSync(file, 'utf8')); assert.equal(j.app, 'gospodar');

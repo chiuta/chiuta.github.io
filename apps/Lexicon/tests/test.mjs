@@ -1,6 +1,13 @@
 // Teste Lexicon (Playwright, Chromium). Rulare: node tests/test.mjs
 // Rețeaua este blocată; se verifică 0 pageerror, 0 violări CSP, 0 cereri de rețea.
 // Variabile opționale: LEXICON_SKIP_PERF=1 omite testul cu 300.000 de intrări; AXE_PATH, SHOT_PATH.
+// [fff-portable] axe-core: FFF_AXE / AXE_PATH, apoi pachetul `axe-core` (npm i -D axe-core). Dacă lipsește: undefined (testele cu axe pică cu mesaj clar).
+import {createRequire as __fffCR} from 'node:module';
+const __fffAxe = () => process.env.FFF_AXE || process.env.AXE_PATH || (() => { try { return __fffCR(import.meta.url).resolve('axe-core/axe.min.js'); } catch { return undefined; } })();
+// [fff-portable] versiunea/data/kitul aplicației se citesc din app.json (nu mai sunt hard-codate în teste)
+import {readFileSync as __fffRF} from 'node:fs';
+const __FFF_APP = JSON.parse(__fffRF(new URL('../app.json', import.meta.url), 'utf8'));
+const __fffRe = (s) => String(s).replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 import {createRequire} from 'node:module';
 import fs from 'node:fs';
 import os from 'node:os';
@@ -10,12 +17,12 @@ import crypto from 'node:crypto';
 import {spawnSync} from 'node:child_process';
 import {fileURLToPath, pathToFileURL} from 'node:url';
 
-const require = createRequire('/opt/node-tools/package.json');
+const require = createRequire(process.env.PW_ROOT || import.meta.url);
 const {chromium} = require('playwright');
 const here = path.dirname(fileURLToPath(import.meta.url));
 const APP = path.join(here, '..', 'index.html');
 const URL_APP = pathToFileURL(APP).href;
-const AXE = process.env.AXE_PATH || '/tmp/claude-0/-home-claude/78529928-3825-51c3-b9bd-0e81655ab6bc/scratchpad/sweep/node_modules/axe-core/axe.min.js';
+const AXE = process.env.AXE_PATH || __fffAxe();
 const SHOT = process.env.SHOT_PATH || path.join(here, '..', 'screenshot.png');
 const html = fs.readFileSync(APP, 'utf8');
 
@@ -25,7 +32,7 @@ function ok(name, cond, extra) {
   if (cond) { pass++; console.log('  ok   ' + name); }
   else { fail++; failures.push(name); console.log('  FAIL ' + name + (extra !== undefined ? '  -> ' + JSON.stringify(extra).slice(0, 400) : '')); }
 }
-const browser = await chromium.launch({executablePath: '/opt/pw-browsers/chromium'});
+const browser = await chromium.launch({executablePath: process.env.CHROMIUM_PATH || undefined});
 
 async function newCtx(opts = {}) {
   return browser.newContext({viewport: opts.viewport || {width: 1280, height: 800}, colorScheme: opts.scheme || 'light', acceptDownloads: true, bypassCSP: !!opts.bypassCSP, reducedMotion: opts.reduced ? 'reduce' : 'no-preference', locale: opts.locale || 'ro-RO', permissions: opts.permissions || []});
@@ -154,10 +161,10 @@ console.log('1. Pornire, meta, CSP, rețea, set demonstrativ');
     leak: [...document.querySelectorAll('[data-i18n]')].filter(e => e.textContent.trim() === e.dataset.i18n).map(e => e.dataset.i18n),
     i18n: Lexicon.i18nCheck()
   }));
-  ok('application-version 1.0.6', info.ver === '1.0.6', info.ver);
-  ok('last-updated 2026-10-26', info.upd === '2026-10-26', info.upd);
+  ok(`application-version ${__FFF_APP.version}`, info.ver === __FFF_APP.version, info.ver);
+  ok(`last-updated ${__FFF_APP.updated}`, info.upd === __FFF_APP.updated, info.upd);
   ok('meta description', info.desc);
-  ok('#app-version vizibil', info.vis === 'v 1.0.6 · 2026-10-26', info.vis);
+  ok('#app-version vizibil', info.vis === `v ${__FFF_APP.version} · ${__FFF_APP.updated}`, info.vis);
   ok('html[lang]=ro implicit', info.lang === 'ro', info.lang);
   ok('CSP: default-src none, fără unsafe-eval, script-src doar hash', /default-src 'none'/.test(info.csp) && !/unsafe-eval/.test(info.csp) && /script-src 'sha256-[A-Za-z0-9+\/=]+'/.test(info.csp) && !/script-src[^;]*unsafe-inline/.test(info.csp) && /connect-src 'none'/.test(info.csp) && /base-uri 'none'/.test(info.csp) && /form-action 'none'/.test(info.csp), info.csp);
   ok('0 violări CSP', info.viol.length === 0, info.viol);
@@ -862,7 +869,7 @@ console.log('8. Flashcards, export (CSV/JSON/Markdown), verificare ortografie, c
   await tab(p, 'tools');
   const ub = await grab('#u-exp');
   const bundle = JSON.parse(ub.text);
-  ok('copie de rezervă .fff.json: format fff-bundle, app, versiune, chei cu prefix', bundle.format === 'fff-bundle' && bundle.schema === 1 && bundle.app === 'lexicon' && bundle.version === '1.0.6' && bundle.updated === '2026-10-26' && Object.keys(bundle.data).every(k => k.startsWith('fff.lexicon.')) && 'fff.lexicon.fav' in bundle.data && 'fff.lexicon.srs' in bundle.data && /\.fff\.json$/.test(ub.name), Object.keys(bundle.data));
+  ok('copie de rezervă .fff.json: format fff-bundle, app, versiune, chei cu prefix', bundle.format === 'fff-bundle' && bundle.schema === 1 && bundle.app === 'lexicon' && bundle.version === __FFF_APP.version && bundle.updated === __FFF_APP.updated && Object.keys(bundle.data).every(k => k.startsWith('fff.lexicon.')) && 'fff.lexicon.fav' in bundle.data && 'fff.lexicon.srs' in bundle.data && /\.fff\.json$/.test(ub.name), Object.keys(bundle.data));
   await tab(p, 'search');
   while (await p.locator('#favlist [data-rm]').count()) await p.locator('#favlist [data-rm]').first().click();
   ok('favorite golite', (await p.locator('#favlist .ritem').count()) === 0);

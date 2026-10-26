@@ -1,11 +1,18 @@
 // Teste QSO — Playwright, rețea blocată. Rulare: node tests/test.mjs
+// [fff-portable] axe-core: FFF_AXE / AXE_PATH, apoi pachetul `axe-core` (npm i -D axe-core). Dacă lipsește: undefined (testele cu axe pică cu mesaj clar).
+import {createRequire as __fffCR} from 'node:module';
+const __fffAxe = () => process.env.FFF_AXE || process.env.AXE_PATH || (() => { try { return __fffCR(import.meta.url).resolve('axe-core/axe.min.js'); } catch { return undefined; } })();
+// [fff-portable] versiunea/data/kitul aplicației se citesc din app.json (nu mai sunt hard-codate în teste)
+import {readFileSync as __fffRF} from 'node:fs';
+const __FFF_APP = JSON.parse(__fffRF(new globalThis.URL('../app.json', import.meta.url), 'utf8'));
+const __fffRe = (s) => String(s).replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 import {createRequire} from "module";
 import path from "path"; import {fileURLToPath} from "url"; import fs from "fs"; import os from "os";
-const require=createRequire("/opt/node-tools/package.json");
+const require=createRequire(process.env.PW_ROOT || import.meta.url);
 const {chromium}=require("playwright");
 const __dir=path.dirname(fileURLToPath(import.meta.url));
 const URL='file://'+path.resolve(__dir,'..','index.html');
-const AXE='/tmp/claude-0/-home-claude/78529928-3825-51c3-b9bd-0e81655ab6bc/scratchpad/sweep/node_modules/axe-core/axe.min.js';
+const AXE=__fffAxe();
 let pass=0, fail=0; const failures=[];
 function ok(c,msg){ if(c){pass++;} else {fail++; failures.push(msg); console.log('  FAIL:',msg);} }
 function eq(a,b,msg){ const A=JSON.stringify(a),B=JSON.stringify(b); ok(A===B,msg+' (obtained '+A+', expected '+B+')'); }
@@ -26,7 +33,7 @@ function refDist(a,b){ // legea cosinusurilor, R=6371.0088
 function refBearing(a,b){ const [p1,l1]=refGrid(a).map(x=>x*Math.PI/180), [p2,l2]=refGrid(b).map(x=>x*Math.PI/180);
   const y=Math.sin(l2-l1)*Math.cos(p2), x=Math.cos(p1)*Math.sin(p2)-Math.sin(p1)*Math.cos(p2)*Math.cos(l2-l1); return (Math.atan2(y,x)*180/Math.PI+360)%360; }
 
-const browser=await chromium.launch({executablePath:"/opt/pw-browsers/chromium"});
+const browser=await chromium.launch({executablePath:process.env.CHROMIUM_PATH || undefined});
 async function newPage(opts){
   const ctx=await browser.newContext(Object.assign({viewport:{width:1280,height:800},acceptDownloads:true},opts||{}));
   const reqs=[]; await ctx.route(/^https?:/,r=>{reqs.push(r.request().url()); r.abort();});
@@ -42,9 +49,9 @@ sect('Pornire');
 let p=await newPage();
 await p.waitForTimeout(3600);
 eq(p.__errs,[],'0 erori pageerror/CSP la pornire'); eq(p.__reqs,[],'0 cereri de rețea');
-ok(/^v 1\.0\.7 · 2026-10-26$/.test(await p.$eval('#app-version',e=>e.textContent)),'#app-version');
-ok(await p.$eval('meta[name=application-version]',e=>e.content)==='1.0.7','meta application-version');
-ok(await p.$eval('meta[name=last-updated]',e=>e.content)==='2026-10-26','meta last-updated');
+ok(new RegExp(String.raw`^v ${__fffRe(__FFF_APP.version)} · ${__fffRe(__FFF_APP.updated)}$`).test(await p.$eval('#app-version',e=>e.textContent)),'#app-version');
+ok(await p.$eval('meta[name=application-version]',e=>e.content)===__FFF_APP.version,'meta application-version');
+ok(await p.$eval('meta[name=last-updated]',e=>e.content)===__FFF_APP.updated,'meta last-updated');
 const csp=await p.$eval('meta[http-equiv=Content-Security-Policy]',e=>e.content);
 ok(/default-src 'none'/.test(csp)&&/connect-src 'none'/.test(csp)&&!/unsafe-eval/.test(csp)&&!/script-src[^;]*unsafe-inline/.test(csp),'CSP strict');
 const html0=fs.readFileSync(path.resolve(__dir,'..','index.html'),'utf8');
@@ -224,7 +231,7 @@ for(const [btn,ext] of [['#exAdx','adx'],['#exCsv','csv'],['#exJson','json']]){
   ok(names.includes('Ștefan Țurcanu-Șoimaru'),'diacritice păstrate în '+ext); await q.__ctx.close(); }
 // .fff.json
 const [d2]=await Promise.all([p.waitForEvent('download'),p.click('#bkExport')]); const bfile=path.join(tmp,'b.fff.json'); fs.copyFileSync(await d2.path(),bfile);
-const bj=JSON.parse(fs.readFileSync(bfile,'utf8')); eq([bj.format,bj.schema,bj.app,bj.version,bj.updated],['fff-bundle',1,'qso','1.0.7','2026-10-26'],'antet .fff.json'); ok(typeof bj.data['fff.qso.data']==='string','date în bundle');
+const bj=JSON.parse(fs.readFileSync(bfile,'utf8')); eq([bj.format,bj.schema,bj.app,bj.version,bj.updated],['fff-bundle',1,'qso',__FFF_APP.version,__FFF_APP.updated],'antet .fff.json'); ok(typeof bj.data['fff.qso.data']==='string','date în bundle');
 const q=await newPage(); await q.click('#tb-io'); await q.setInputFiles('#bkFile',bfile); await q.waitForSelector('#dlgConfirm[open]'); await q.click('#dcYes'); await q.waitForTimeout(300);
 eq(await q.evaluate(()=>window.__qso.APP.S.records.length),3,'restaurare .fff.json'); 
 // bundle de altă aplicație respins

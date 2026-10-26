@@ -1,20 +1,27 @@
 // Teste Playwright pentru Alfabete 1.0.6 — funcționalitate reală, round-trip, vectori cunoscuți, sincronizare audio/clipire/vibrații, axe.
 // Rulare: node tests/test.mjs   (rețeaua este blocată în context; file:// este permis)
+// [fff-portable] axe-core: FFF_AXE / AXE_PATH, apoi pachetul `axe-core` (npm i -D axe-core). Dacă lipsește: undefined (testele cu axe pică cu mesaj clar).
+import {createRequire as __fffCR} from 'node:module';
+const __fffAxe = () => process.env.FFF_AXE || process.env.AXE_PATH || (() => { try { return __fffCR(import.meta.url).resolve('axe-core/axe.min.js'); } catch { return undefined; } })();
+// [fff-portable] versiunea/data/kitul aplicației se citesc din app.json (nu mai sunt hard-codate în teste)
+import {readFileSync as __fffRF} from 'node:fs';
+const __FFF_APP = JSON.parse(__fffRF(new URL('../app.json', import.meta.url), 'utf8'));
+const __fffRe = (s) => String(s).replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 import {createRequire} from 'module';
 import fs from 'node:fs';
 import path from 'node:path';
 import {fileURLToPath, pathToFileURL} from 'node:url';
 import crypto from 'node:crypto';
 import {spawnSync} from 'node:child_process';
-const require = createRequire('/opt/node-tools/package.json');
+const require = createRequire(process.env.PW_ROOT || import.meta.url);
 const {chromium} = require('playwright');
 const HERE = path.dirname(fileURLToPath(import.meta.url));
 const APP = path.resolve(HERE, '..', 'index.html');
 const URL_ = pathToFileURL(APP).href;
-const AXE = '/tmp/claude-0/-home-claude/78529928-3825-51c3-b9bd-0e81655ab6bc/scratchpad/sweep/node_modules/axe-core/axe.min.js';
+const AXE = process.env.FFF_AXE || process.env.AXE_PATH || __fffAxe();
 const CSP = await import('file:///home/claude/chiuta.github.io/fff-kit/lib/csp.mjs');
 
-const browser = await chromium.launch({executablePath: '/opt/pw-browsers/chromium', args: ['--autoplay-policy=no-user-gesture-required']});
+const browser = await chromium.launch({executablePath: process.env.CHROMIUM_PATH || undefined, args: ['--autoplay-policy=no-user-gesture-required']});
 const results = []; let failed = 0;
 async function test(name, fn) {
   const t0 = Date.now();
@@ -55,7 +62,7 @@ await test('pornire: 0 erori, 0 rețea, 0 CSP, meta, versiune, lang', async () =
   const info = await E(page, () => ({csp: window.__csp, ver: document.querySelector('#app-version').textContent, lang: document.documentElement.lang, title: document.title,
     mv: document.querySelector('meta[name=application-version]').content, lu: document.querySelector('meta[name=last-updated]').content, desc: document.querySelector('meta[name=description]').content.length, navs: document.querySelectorAll('#nav a').length}));
   eq(errors, []); eq(requests, []); eq(info.csp, 0);
-  eq(info.ver, 'v 1.0.6 · 2026-10-26'); eq(info.lang, 'ro'); eq(info.title, 'Alfabete'); eq(info.mv, '1.0.6'); eq(info.lu, '2026-10-26'); ok(info.desc > 40); eq(info.navs, 12);
+  eq(info.ver, `v ${__FFF_APP.version} · ${__FFF_APP.updated}`); eq(info.lang, 'ro'); eq(info.title, 'Alfabete'); eq(info.mv, __FFF_APP.version); eq(info.lu, '2026-10-26'); ok(info.desc > 40); eq(info.navs, 12);
   ok(CSP.checkCspHashes(html).ok, 'hash-uri CSP');
   ok(!/\son(click|load|error|input|change|submit)\s*=/i.test(html), 'fără handlere inline');
   ok(!/\beval\s*\(|new Function\(/.test(html), 'fără eval');
@@ -558,7 +565,7 @@ await test('Date: export .fff.json, import, validare, ștergere totală', async 
   await go(Q, 'data');
   const [dl] = await Promise.all([Q.waitForEvent('download'), Q.click('#data-export')]); eq(dl.suggestedFilename(), 'alfabete.fff.json');
   const bundle = JSON.parse(fs.readFileSync(await dl.path(), 'utf8'));
-  eq([bundle.format, bundle.schema, bundle.app, bundle.version, bundle.updated], ['fff-bundle', 1, 'alfabete', '1.0.6', '2026-10-26']); ok(bundle.exported && bundle.data['fff.alfabete.stats']);
+  eq([bundle.format, bundle.schema, bundle.app, bundle.version, bundle.updated], ['fff-bundle', 1, 'alfabete', __FFF_APP.version, __FFF_APP.updated]); ok(bundle.exported && bundle.data['fff.alfabete.stats']);
   ok(Object.keys(bundle.data).every(k => k.startsWith('fff.alfabete.')));
   // ștergere cu confirmare
   await Q.click('#data-wipe'); await Q.click('#dlg-no'); ok(await E(Q, () => ALF.store.get('stats', null)) !== null, 'anulat → rămâne');

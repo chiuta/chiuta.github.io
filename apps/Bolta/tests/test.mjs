@@ -1,19 +1,26 @@
 // Teste Bolta (Playwright). Rulare: node apps/Bolta/tests/test.mjs
 // Opțional: TEST_ONLY=regex · BOLTA_TMP=dir · AXE_PATH=cale/axe.min.js · ICAL_PY=dir cu pachetul python „icalendar”
+// [fff-portable] axe-core: FFF_AXE / AXE_PATH, apoi pachetul `axe-core` (npm i -D axe-core). Dacă lipsește: undefined (testele cu axe pică cu mesaj clar).
+import {createRequire as __fffCR} from 'node:module';
+const __fffAxe = () => process.env.FFF_AXE || process.env.AXE_PATH || (() => { try { return __fffCR(import.meta.url).resolve('axe-core/axe.min.js'); } catch { return undefined; } })();
+// [fff-portable] versiunea/data/kitul aplicației se citesc din app.json (nu mai sunt hard-codate în teste)
+import {readFileSync as __fffRF} from 'node:fs';
+const __FFF_APP = JSON.parse(__fffRF(new URL('../app.json', import.meta.url), 'utf8'));
+const __fffRe = (s) => String(s).replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 import {createRequire} from 'module';
 import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
 import {fileURLToPath, pathToFileURL} from 'node:url';
 import {execFileSync} from 'node:child_process';
-const require = createRequire('/opt/node-tools/package.json');
+const require = createRequire(process.env.PW_ROOT || import.meta.url);
 const {chromium} = require('playwright');
 const HERE = path.dirname(fileURLToPath(import.meta.url));
 const APP_FILE = path.resolve(HERE, '..', 'index.html');
 const APP = pathToFileURL(APP_FILE).href;
 const {checkCspHashes} = await import(pathToFileURL(path.resolve(HERE, '..', '..', '..', 'fff-kit', 'lib', 'csp.mjs')).href);
 const TMP = fs.mkdtempSync(path.join(process.env.BOLTA_TMP || os.tmpdir(), 'bolta-test-'));
-const AXE = process.env.AXE_PATH || '/tmp/claude-0/-home-claude/78529928-3825-51c3-b9bd-0e81655ab6bc/scratchpad/sweep/node_modules/axe-core/axe.min.js';
+const AXE = process.env.AXE_PATH || __fffAxe();
 const ONLY = process.env.TEST_ONLY ? new RegExp(process.env.TEST_ONLY, 'i') : null;
 
 const tests = [], results = [], issues = [], report = {};
@@ -65,8 +72,8 @@ test('încărcare: fără erori, CSP valid, meta, fără handlere inline / eval 
   ok(!/manifest|serviceWorker/i.test(html.replace(/<!--fff:pwa:start[\s\S]*?<!--fff:pwa:end-->/g,'').replace(/<!--fff:kit:start[\s\S]*?<!--fff:kit:end-->/g,'').replace(/<script[^>]*id="fff-info"[\s\S]*?<\/script>/,'').replace(/(manifest|worker)-src [^;]*/g,'')), 'manifest / SW (în afara blocurilor kit/PWA)');
   ok(!/cnred/i.test(html), 'CNRED');
   const p = await newPage();
-  eq(await p.textContent('#app-version'), 'v 1.1.9 · 2026-10-26', '#app-version');
-  eq(await p.evaluate(() => document.querySelector('meta[name=application-version]').content), '1.1.9', 'versiune');
+  eq(await p.textContent('#app-version'), `v ${__FFF_APP.version} · ${__FFF_APP.updated}`, '#app-version');
+  eq(await p.evaluate(() => document.querySelector('meta[name=application-version]').content), __FFF_APP.version, 'versiune');
   eq((await p.evaluate(() => window.__csp)).length, 0, 'violări CSP');
   eq(await p.evaluate(() => window.__bolta.ST.count), 1627, 'stele în catalog');
   const nl = await p.evaluate(() => Object.keys(localStorage).filter(k => !k.startsWith('fff.bolta.')));

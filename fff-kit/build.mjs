@@ -446,6 +446,8 @@ function detectStorageKeys(src) {
   const re = /(\b[\w$.]+)\s*\.\s*(?:getItem|setItem|removeItem)\(\s*(['"`])([^'"`$\\\n]{1,80})\2/g;
   let m;
   while ((m = re.exec(src))) { if (/sessionStorage$/i.test(m[1])) continue; if (!m[3].startsWith('fff.')) keys.add(m[3]); }
+  const re4 = /\bwindow\.storage\s*\.\s*(?:get|set|delete)\(\s*(['"`])([^'"`$\\\n]{1,80})\1/g;
+  while ((m = re4.exec(src))) if (!m[2].startsWith('fff.')) keys.add(m[2]);
   const re2 = /localStorage\s*\[\s*(['"`])([^'"`$\\\n]{1,80})\1\s*\]/g;
   while ((m = re2.exec(src))) if (!m[2].startsWith('fff.')) keys.add(m[2]);
   // chei declarate ca constante (ex. var STORAGE_KEY = "app_state_v1"), dacă fișierul folosește localStorage
@@ -507,7 +509,7 @@ function computeInfo(html, dir, slug, extra) {
   const eg = detectEgress(src, html);
   for (const h of extra.probeHosts || []) { const e = eg.find((x) => x.host === h); if (e) { if (!e.via.includes('runtime')) e.via.push('runtime'); } else eg.push({host: h, via: ['runtime']}); }
   const perms = PERMS.filter(([, re]) => re.test(src)).map(([n]) => n);
-  const keys = [...new Set([...detectStorageKeys(src), ...(extra.probeKeys || [])])].sort();
+  const keys = [...new Set([...detectStorageKeys(src), ...(extra.probeKeys || []), ...(Array.isArray(cfg.storageKeys) ? cfg.storageKeys.filter((k) => typeof k === 'string' && k && !k.startsWith('fff.')) : [])])].sort();
   const hasBundle = mods.includes('bundle');
   const info = {
     schema: 1,

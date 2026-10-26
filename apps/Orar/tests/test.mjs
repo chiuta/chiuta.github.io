@@ -1,6 +1,13 @@
 // Teste Orar — Playwright (Chromium headless, rețea blocată). Rulare: node tests/test.mjs
 // Cerințe: /opt/node-tools (playwright), /opt/pw-browsers/chromium; opțional python3 + icalendar + python-dateutil
 // (variabila ORAR_PYLIB poate indica un director cu pachetele) pentru verificarea independentă a fișierelor .ics.
+// [fff-portable] axe-core: FFF_AXE / AXE_PATH, apoi pachetul `axe-core` (npm i -D axe-core). Dacă lipsește: undefined (testele cu axe pică cu mesaj clar).
+import {createRequire as __fffCR} from 'node:module';
+const __fffAxe = () => process.env.FFF_AXE || process.env.AXE_PATH || (() => { try { return __fffCR(import.meta.url).resolve('axe-core/axe.min.js'); } catch { return undefined; } })();
+// [fff-portable] versiunea/data/kitul aplicației se citesc din app.json (nu mai sunt hard-codate în teste)
+import {readFileSync as __fffRF} from 'node:fs';
+const __FFF_APP = JSON.parse(__fffRF(new URL('../app.json', import.meta.url), 'utf8'));
+const __fffRe = (s) => String(s).replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 import {createRequire} from 'module';
 import fs from 'node:fs';
 import os from 'node:os';
@@ -10,12 +17,12 @@ import {execFileSync, spawnSync} from 'node:child_process';
 import assert from 'node:assert/strict';
 import {fileURLToPath} from 'node:url';
 
-const require = createRequire('/opt/node-tools/package.json');
+const require = createRequire(process.env.PW_ROOT || import.meta.url);
 const {chromium} = require('playwright');
 const HERE = path.dirname(fileURLToPath(import.meta.url));
 const INDEX = path.join(HERE, '..', 'index.html');
 const URL_APP = 'file://' + INDEX;
-const AXE = process.env.AXE_PATH || '/tmp/claude-0/-home-claude/78529928-3825-51c3-b9bd-0e81655ab6bc/scratchpad/sweep/node_modules/axe-core/axe.min.js';
+const AXE = process.env.AXE_PATH || __fffAxe();
 const TMP = fs.mkdtempSync(path.join(os.tmpdir(), 'orar-test-'));
 const NOW = '2026-10-14T10:00:00+03:00';
 
@@ -28,7 +35,7 @@ async function T(name, fn) {
   catch (e) { results.push([name, false, e]); console.log('FAIL ' + name + '\n       ' + String(e.stack || e).split('\n').slice(0, 6).join('\n       ')); }
 }
 
-const browser = await chromium.launch({executablePath: '/opt/pw-browsers/chromium'});
+const browser = await chromium.launch({executablePath: process.env.CHROMIUM_PATH || undefined});
 
 /* ---------- utilitare ---------- */
 async function newPage(o = {}) {
@@ -576,9 +583,9 @@ await T('pornire: fără erori, fără CSP, fără rețea; meta, versiune, CSP e
   const p = await newPage();
   await expectClean(p);
   assert.equal(await p.getAttribute('html', 'lang'), 'ro');
-  assert.equal(await p.textContent('#app-version'), 'v 1.0.7 · 2026-10-26');
-  assert.equal(await p.getAttribute('meta[name=application-version]', 'content'), '1.0.7');
-  assert.equal(await p.getAttribute('meta[name=last-updated]', 'content'), '2026-10-26');
+  assert.equal(await p.textContent('#app-version'), `v ${__FFF_APP.version} · ${__FFF_APP.updated}`);
+  assert.equal(await p.getAttribute('meta[name=application-version]', 'content'), __FFF_APP.version);
+  assert.equal(await p.getAttribute('meta[name=last-updated]', 'content'), __FFF_APP.updated);
   assert.ok((await p.getAttribute('meta[name=description]', 'content')).length > 40);
   assert.equal(await p.title(), 'Orar');
   const html = fs.readFileSync(INDEX, 'utf8');
@@ -1001,7 +1008,7 @@ await T('copie de siguranță .fff.json: format, export, import cu confirmare, �
   const [dl] = await Promise.all([p.waitForEvent('download'), p.click('#d-bk-exp')]);
   const f = path.join(TMP, 'backup.fff.json'); await dl.saveAs(f);
   const b = JSON.parse(fs.readFileSync(f, 'utf8'));
-  assert.equal(b.format, 'fff-bundle'); assert.equal(b.schema, 1); assert.equal(b.app, 'orar'); assert.equal(b.version, '1.0.7'); assert.equal(b.updated, '2026-10-26');
+  assert.equal(b.format, 'fff-bundle'); assert.equal(b.schema, 1); assert.equal(b.app, 'orar'); assert.equal(b.version, __FFF_APP.version); assert.equal(b.updated, __FFF_APP.updated);
   assert.ok(b.exported && Object.keys(b.data).every(k => k.startsWith('fff.orar.')));
   assert.ok(JSON.parse(b.data['fff.orar.events']).length >= 10);
   const n = await p.evaluate(() => ORAR.S.events.length);

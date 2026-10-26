@@ -1,6 +1,13 @@
 // Teste Playwright pentru Provenienta. Fișierele C2PA sunt SINTETICE, generate aici de tests/synth.mjs (scris de autor).
 // Nu sunt eșantioane oficiale și nu s-a testat pe fișiere reale de la aparate sau servicii.
 // Rulare: node tests/test.mjs
+// [fff-portable] axe-core: FFF_AXE / AXE_PATH, apoi pachetul `axe-core` (npm i -D axe-core). Dacă lipsește: undefined (testele cu axe pică cu mesaj clar).
+import {createRequire as __fffCR} from 'node:module';
+const __fffAxe = () => process.env.FFF_AXE || process.env.AXE_PATH || (() => { try { return __fffCR(import.meta.url).resolve('axe-core/axe.min.js'); } catch { return undefined; } })();
+// [fff-portable] versiunea/data/kitul aplicației se citesc din app.json (nu mai sunt hard-codate în teste)
+import {readFileSync as __fffRF} from 'node:fs';
+const __FFF_APP = JSON.parse(__fffRF(new URL('../app.json', import.meta.url), 'utf8'));
+const __fffRe = (s) => String(s).replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 import { createRequire } from 'module';
 import fs from 'node:fs';
 import os from 'node:os';
@@ -10,12 +17,12 @@ import { spawnSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
 import * as S from './synth.mjs';
 
-const require = createRequire('/opt/node-tools/package.json');
+const require = createRequire(process.env.PW_ROOT || import.meta.url);
 const { chromium } = require('playwright');
 const HERE = path.dirname(fileURLToPath(import.meta.url));
 const APP_FILE = path.resolve(HERE, '../index.html');
 const APP = 'https://provenienta.test/index.html';
-const AXE = process.env.AXE_PATH || '/tmp/claude-0/-home-claude/78529928-3825-51c3-b9bd-0e81655ab6bc/scratchpad/sweep/node_modules/axe-core/axe.min.js';
+const AXE = process.env.AXE_PATH || __fffAxe();
 const W = fs.mkdtempSync(path.join(os.tmpdir(), 'provenienta-test-'));
 
 const results = []; let current = '';
@@ -44,7 +51,7 @@ const std = (extra = {}) => ({ signer, assertions: [S.actionsAssertion(), S.exif
 const jpegOk = S.signAsset('jpeg', baseJpg, std());
 
 // ---------------------------------------------------------------- browser
-const browser = await chromium.launch({ executablePath: '/opt/pw-browsers/chromium', args: ['--no-sandbox'] });
+const browser = await chromium.launch({ executablePath: process.env.CHROMIUM_PATH || undefined, args: ['--no-sandbox'] });
 const netReqs = []; const pageErrors = [];
 async function mkCtx(opts = {}) {
   const ctx = await browser.newContext(Object.assign({ viewport: { width: 1280, height: 800 }, acceptDownloads: true, locale: 'ro-RO', serviceWorkers: 'block' }, opts));
@@ -81,7 +88,7 @@ const page = await openApp();
 
 await test('pornire: 0 erori, 0 CSP, 0 rețea, meta și versiune', async () => {
   const info = await page.evaluate(() => ({ csp: window.__csp, ver: document.querySelector('#app-version').textContent, mv: document.querySelector('meta[name=application-version]').content, up: document.querySelector('meta[name=last-updated]').content, lang: document.documentElement.lang, t: document.title, desc: !!document.querySelector('meta[name=description]').content, h1: document.querySelectorAll('h1').length, inline: document.querySelectorAll('[onclick],[onchange]').length }));
-  eq(info.csp, []); eq(info.mv, '1.0.6'); eq(info.up, '2026-10-26'); assert(/v 1\.0\.6 · 2026-10-26/.test(info.ver)); eq(info.lang, 'ro'); eq(info.h1, 1); eq(info.inline, 0); assert(info.desc);
+  eq(info.csp, []); eq(info.mv, __FFF_APP.version); eq(info.up, '2026-10-26'); assert(new RegExp(String.raw`v ${__fffRe(__FFF_APP.version)} · ${__fffRe(__FFF_APP.updated)}`).test(info.ver)); eq(info.lang, 'ro'); eq(info.h1, 1); eq(info.inline, 0); assert(info.desc);
   const html = fs.readFileSync(APP_FILE, 'utf8');
   // CSP din meta (nu din tot fișierul: #fff-info descrie CSP-ul în JSON și ar da potriviri false pe „script-src … unsafe-inline”)
   const csp = /http-equiv="Content-Security-Policy"\s+content="([^"]*)"/.exec(html)[1]; const ss = /script-src([^;]*)/.exec(csp)[1];

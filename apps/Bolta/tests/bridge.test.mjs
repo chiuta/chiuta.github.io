@@ -3,12 +3,12 @@
 import {createRequire} from 'module';
 import path from 'node:path';
 import {fileURLToPath, pathToFileURL} from 'node:url';
-const require = createRequire('/opt/node-tools/package.json');
+const require = createRequire(process.env.PW_ROOT || import.meta.url);
 const {chromium} = require('playwright');
 const APP = pathToFileURL(path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..', 'index.html')).href;
 let fails = 0, passes = 0;
 const check = (n, c, x) => { if (c) { passes++; console.log('  ok  ' + n); } else { fails++; console.log('FAIL  ' + n + (x !== undefined ? ' :: ' + JSON.stringify(x) : '')); } };
-const browser = await chromium.launch({executablePath: '/opt/pw-browsers/chromium'});
+const browser = await chromium.launch({executablePath: process.env.CHROMIUM_PATH || undefined});
 async function open(hash, locale = 'ro-RO') {
   const ctx = await browser.newContext({viewport: {width: 1100, height: 800}, locale});   // context nou = localStorage curat
   await ctx.route(/^https?:/, r => r.abort());

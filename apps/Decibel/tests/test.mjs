@@ -1,5 +1,12 @@
 // Teste Decibel — Playwright (Chromium headless, rețea blocată, microfon simulat). Rulare: node tests/test.mjs [filtru]
 // Cerințe: /opt/node-tools (playwright), /opt/pw-browsers/chromium; opțional axe-core (variabila AXE_PATH).
+// [fff-portable] axe-core: FFF_AXE / AXE_PATH, apoi pachetul `axe-core` (npm i -D axe-core). Dacă lipsește: undefined (testele cu axe pică cu mesaj clar).
+import {createRequire as __fffCR} from 'node:module';
+const __fffAxe = () => process.env.FFF_AXE || process.env.AXE_PATH || (() => { try { return __fffCR(import.meta.url).resolve('axe-core/axe.min.js'); } catch { return undefined; } })();
+// [fff-portable] versiunea/data/kitul aplicației se citesc din app.json (nu mai sunt hard-codate în teste)
+import {readFileSync as __fffRF} from 'node:fs';
+const __FFF_APP = JSON.parse(__fffRF(new URL('../app.json', import.meta.url), 'utf8'));
+const __fffRe = (s) => String(s).replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 import {createRequire} from 'module';
 import fs from 'node:fs';
 import os from 'node:os';
@@ -7,11 +14,11 @@ import path from 'node:path';
 import assert from 'node:assert/strict';
 import {fileURLToPath} from 'node:url';
 
-const require = createRequire('/opt/node-tools/package.json');
+const require = createRequire(process.env.PW_ROOT || import.meta.url);
 const {chromium} = require('playwright');
 const HERE = path.dirname(fileURLToPath(import.meta.url));
 const URL_APP = 'file://' + path.join(HERE, '..', 'index.html');
-const AXE = process.env.AXE_PATH || '/tmp/claude-0/-home-claude/78529928-3825-51c3-b9bd-0e81655ab6bc/scratchpad/sweep/node_modules/axe-core/axe.min.js';
+const AXE = process.env.AXE_PATH || __fffAxe();
 const TMP = fs.mkdtempSync(path.join(os.tmpdir(), 'decibel-test-'));
 const only = process.argv[2];
 const results = [];
@@ -23,7 +30,7 @@ async function T(name, fn) {
 }
 const near = (a, b, tol, msg) => assert.ok(Math.abs(a - b) <= tol, `${msg || ''} așteptat ${b} ± ${tol}, obținut ${a}`);
 const FAKE = f => ['--use-fake-device-for-media-stream', '--use-fake-ui-for-media-stream', '--use-file-for-fake-audio-capture=' + f, '--autoplay-policy=no-user-gesture-required'];
-const launch = args => chromium.launch({executablePath: '/opt/pw-browsers/chromium', args: args || ['--autoplay-policy=no-user-gesture-required']});
+const launch = args => chromium.launch({executablePath: process.env.CHROMIUM_PATH || undefined, args: args || ['--autoplay-policy=no-user-gesture-required']});
 
 /* ---------- fixture-uri generate în test ---------- */
 function writeWav(file, x, fs_ = 48000) {
@@ -87,9 +94,9 @@ const browser = await launch();
 /* =================== 1. pornire, meta, CSP, limbi =================== */
 await T('pornire curată: 0 erori, 0 CSP, 0 rețea, meta și versiune', async () => {
   const p = await open(browser); await p.waitForTimeout(800); await clean(p, 'start');
-  assert.equal(await p.getAttribute('meta[name=application-version]', 'content'), '1.0.6');
-  assert.equal(await p.getAttribute('meta[name=last-updated]', 'content'), '2026-10-26');
-  assert.equal((await p.textContent('#app-version')).trim(), 'v 1.0.6 · 2026-10-26');
+  assert.equal(await p.getAttribute('meta[name=application-version]', 'content'), __FFF_APP.version);
+  assert.equal(await p.getAttribute('meta[name=last-updated]', 'content'), __FFF_APP.updated);
+  assert.equal((await p.textContent('#app-version')).trim(), `v ${__FFF_APP.version} · ${__FFF_APP.updated}`);
   assert.equal(await p.evaluate(() => document.documentElement.lang), 'ro');
   const csp = await p.getAttribute('meta[http-equiv=Content-Security-Policy]', 'content');
   assert.ok(/default-src 'none'/.test(csp) && /connect-src 'none'/.test(csp) && /script-src 'sha256-/.test(csp) && !/unsafe-eval|script-src[^;]*unsafe-inline/.test(csp));
@@ -414,7 +421,7 @@ await T('jurnal: CSV, .fff.json, import (round-trip), ștergere, „Șterge tot�
   let dl = p.waitForEvent('download'); await p.click('#btnCsv'); let f = await (await dl).path(); const csv = fs.readFileSync(f, 'utf8');
   assert.match(csv, /^\ufeffid,start,durata_s/); assert.equal(csv.trim().split(/\r?\n/).length, 3);
   dl = p.waitForEvent('download'); await p.click('#btnJson'); f = await (await dl).path(); const j = JSON.parse(fs.readFileSync(f, 'utf8'));
-  assert.deepEqual([j.format, j.schema, j.app, j.version, j.updated], ['fff-bundle', 1, 'decibel', '1.0.6', '2026-10-26']); assert.ok(j.data['fff.decibel.sessions']);
+  assert.deepEqual([j.format, j.schema, j.app, j.version, j.updated], ['fff-bundle', 1, 'decibel', __FFF_APP.version, __FFF_APP.updated]); assert.ok(j.data['fff.decibel.sessions']);
   dl = p.waitForEvent('download'); await p.click('#btnSesCsv'); f = await (await dl).path(); const sc = fs.readFileSync(f, 'utf8'); assert.match(sc, /t_s,LAeq_1s,LCeq_1s,LZeq_1s,LAF,LAS/);
   const row = sc.split(/\r?\n/)[2].split(','); near(+row[1], 20 * Math.log10(0.05 / Math.SQRT2) + 1.2, 0.3, 'CSV sesiune LAeq,1s');
   // import invalid
