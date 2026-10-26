@@ -152,10 +152,11 @@ jobs:
           shopt -s nullglob
           files=( $TEST_GLOB )
           if [ ${#files[@]} -eq 0 ]; then echo "::notice::niciun test ($TEST_GLOB)"; exit 0; fi
+          set +e; set +o pipefail
           fail=0
           for f in "${files[@]}"; do
             echo "::group::$f"
-            node "$f" 2>&1 | tee /tmp/test-out.log; rc=${PIPESTATUS[0]}
+            node "$f" > /tmp/test-out.log 2>&1; rc=$?; cat /tmp/test-out.log
             if [ "$rc" -ne 0 ]; then
               echo "::error file=$f::testul a eșuat"; fail=1
               grep -E "FAIL|✘|Error|rror:" /tmp/test-out.log | head -4 | cut -c1-300 | while IFS= read -r l; do echo "::error file=$f::${l//%/%25}"; done
