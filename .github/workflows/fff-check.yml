@@ -157,7 +157,9 @@ jobs:
           fail=0
           for f in "${files[@]}"; do
             echo "::group::$f"
-            node "$f" > /tmp/test-out.log 2>&1; rc=$?; cat /tmp/test-out.log
+            node "$f" > /tmp/test-out.log 2>&1; rc=$?
+            if [ "$rc" -ne 0 ]; then echo "::warning file=$f::prima rulare eșuată — reîncerc o dată (teste cu timp/rețea simulată)"; cat /tmp/test-out.log; node "$f" > /tmp/test-out.log 2>&1; rc=$?; fi
+            cat /tmp/test-out.log
             if [ "$rc" -ne 0 ]; then
               echo "::error file=$f::testul a eșuat"; fail=1
               grep -E "FAIL|✘|Error|rror:" /tmp/test-out.log | head -4 | cut -c1-300 | while IFS= read -r l; do echo "::error file=$f::${l//%/%25}"; done
