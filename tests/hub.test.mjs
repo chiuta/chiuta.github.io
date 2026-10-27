@@ -51,9 +51,9 @@ async function open(lang, urlPath = '', opts = {}) {
   await page.goto(BASE + urlPath);
   return {ctx, page, external, errors};
 }
-const shown = (page) => page.evaluate(() => [...document.querySelectorAll('#apps-grid .app-card')].filter((c) => !c.hidden && c.offsetParent !== null).length);
-const total = (page) => page.evaluate(() => document.querySelectorAll('#apps-grid .app-card').length);
-const countIs = (page, n) => page.waitForFunction((n) => [...document.querySelectorAll('#apps-grid .app-card')].filter((c) => !c.hidden).length === n, n);
+const shown = (page) => page.evaluate(() => [...document.querySelectorAll('#apps-grid .app-card:not([data-variant-of])')].filter((c) => !c.hidden && c.offsetParent !== null).length);
+const total = (page) => page.evaluate(() => document.querySelectorAll('#apps-grid .app-card:not([data-variant-of])').length);
+const countIs = (page, n) => page.waitForFunction((n) => [...document.querySelectorAll('#apps-grid .app-card:not([data-variant-of])')].filter((c) => !c.hidden).length === n, n);
 
 await T('sync-catalog --check: carduri, versiuni, linkuri, hash-uri CSP, sw.js', async () => {
   execFileSync('node', [path.join(HUB, 'tools', 'sync-catalog.mjs'), '--check'], {stdio: 'pipe'});
@@ -62,7 +62,7 @@ await T('sync-catalog --check: carduri, versiuni, linkuri, hash-uri CSP, sw.js',
 await T('catalog: filtrele există, nu scapă chei de traducere, în toate cele 8 limbi', async () => {
   for (const l of LANGS) {
     const {ctx, page, errors, external} = await open(l);
-    await page.waitForSelector('#apps-grid .app-card');
+    await page.waitForSelector('#apps-grid .app-card:not([data-variant-of])');
     await page.waitForFunction((l) => document.documentElement.lang === l, l);
     const info = await page.evaluate(() => ({
       labels: [...document.querySelectorAll('#apps-filter label')].map((x) => x.textContent.trim()),
@@ -73,7 +73,7 @@ await T('catalog: filtrele există, nu scapă chei de traducere, în toate cele 
     const all = [...info.labels, info.ph, info.reset, info.count, ...info.opts];
     ok(all.every((s) => s && !/^(f[A-Z]\w+|searchPh|noRes|nShown)$/.test(s) && !/\{\w+\}|undefined/.test(s)), `${l}: text lipsă/neinterpolat: ${JSON.stringify(all.filter((s) => !s || /^(f[A-Z]|searchPh|noRes|nShown)|\{|undefined/.test(s)))}`);
     ok(info.role === 'search' && info.status === 'status', `${l}: role search/status`);
-    ok(info.labels.length === 4, `${l}: 4 etichete, sunt ${info.labels.length}`);
+    ok(info.labels.length === 5, `${l}: 5 etichete, sunt ${info.labels.length}`);
     ok(/\d/.test(info.count), `${l}: contorul nu arată numere: ${info.count}`);
     ok(!errors.length, `${l}: erori: ${errors.join(' | ')}`);
     ok(!external.length, `${l}: cereri externe: ${external.join(', ')}`);
@@ -83,12 +83,12 @@ await T('catalog: filtrele există, nu scapă chei de traducere, în toate cele 
 
 await T('catalog: căutare text (inclusiv în altă limbă, fără diacritice), categorie, offline, resetare, „fără rezultate”', async () => {
   const {ctx, page} = await open('ro');
-  await page.waitForSelector('#apps-grid .app-card');
+  await page.waitForSelector('#apps-grid .app-card:not([data-variant-of])');
   const N = await total(page);
   ok(N >= 100, 'prea puține carduri: ' + N);
   ok((await shown(page)) === N, 'la început trebuie toate cardurile');
   await page.fill('#q', 'calendar');
-  await page.waitForFunction((N) => [...document.querySelectorAll('#apps-grid .app-card')].filter((c) => !c.hidden).length < N, N);
+  await page.waitForFunction((N) => [...document.querySelectorAll('#apps-grid .app-card:not([data-variant-of])')].filter((c) => !c.hidden).length < N, N);
   const s1 = await shown(page); ok(s1 >= 1 && s1 < N, 'căutarea „calendar” a dat ' + s1);
   await page.fill('#q', 'Çalendár');   // diacritice ignorate
   const s1b = await shown(page); ok(s1b >= 1, 'căutarea nu ignoră diacriticele');
@@ -100,18 +100,85 @@ await T('catalog: căutare text (inclusiv în altă limbă, fără diacritice), 
   const cats = await page.evaluate(() => [...document.getElementById('f-cat').options].map((o) => o.value).filter(Boolean));
   ok(cats.length >= 3, 'categorii: ' + cats.length);
   await page.selectOption('#f-cat', cats[1]);
-  const sc = await page.evaluate(() => [...document.querySelectorAll('#apps-grid .app-card')].filter((c) => !c.hidden).length);
+  const sc = await page.evaluate(() => [...document.querySelectorAll('#apps-grid .app-card:not([data-variant-of])')].filter((c) => !c.hidden).length);
   ok(sc >= 1 && sc < N, 'filtrul de categorie nu restrânge: ' + sc);
-  ok(await page.evaluate((c) => [...document.querySelectorAll('#apps-grid .app-card')].filter((x) => !x.hidden).every((x) => x.dataset.cat === c), cats[1]), 'carduri din altă categorie');
+  ok(await page.evaluate((c) => [...document.querySelectorAll('#apps-grid .app-card:not([data-variant-of])')].filter((x) => !x.hidden).every((x) => x.dataset.cat === c), cats[1]), 'carduri din altă categorie');
   await page.click('#f-reset');
   await countIs(page, N);
   const offOpts = await page.evaluate(() => [...document.getElementById('f-off').options].map((o) => o.value).filter(Boolean));
   ok(offOpts.length === 3, 'filtrul offline are ' + offOpts.length + ' valori');
   await page.selectOption('#f-off', 'full');
-  const nFull = await page.evaluate(() => [...document.querySelectorAll('#apps-grid .app-card')].filter((c) => !c.hidden).every((c) => c.dataset.off === 'full') && [...document.querySelectorAll('#apps-grid .app-card')].filter((c) => !c.hidden).length);
+  const nFull = await page.evaluate(() => [...document.querySelectorAll('#apps-grid .app-card:not([data-variant-of])')].filter((c) => !c.hidden).every((c) => c.dataset.off === 'full') && [...document.querySelectorAll('#apps-grid .app-card:not([data-variant-of])')].filter((c) => !c.hidden).length);
   ok(nFull > 20, 'offline complet: ' + nFull);
   await page.click('#f-reset');
   await ctx.close();
+});
+
+await T('catalog: contoare derivate, stare, offline, fișă, variante Universul Observabil, înrudite, OSATURA separată', async () => {
+  const LIVE = '#apps-grid .app-card:not([data-variant-of])';
+  const {ctx, page, errors, external} = await open('ro');
+  await page.waitForSelector(LIVE);
+  const info = await page.evaluate(() => {
+    const all = [...document.querySelectorAll('#apps-grid .app-card')];
+    const meta = JSON.parse(document.getElementById('catalog-meta').textContent);
+    const key = (c) => c.querySelector('[data-c^="apps|"]').dataset.c.split('|')[1];
+    const live = all.filter((c) => !c.hasAttribute('data-variant-of'));
+    const os = all.find((c) => key(c) === 'OSATURA');
+    let prev = os.previousElementSibling; while (prev && !prev.classList.contains('sec-head')) prev = prev.previousElementSibling;
+    const uo = all.find((c) => key(c) === 'Universul-Observabil');
+    return {
+      nAll: all.length, nLive: live.length, nEngines: Object.values(meta.kinds).filter((k) => k === 'engine').length,
+      statApps: +document.getElementById('stat-repos').textContent, statSec: +document.getElementById('stat-sections').textContent,
+      nSec: document.querySelectorAll('#apps-grid .sec-head').length,
+      variantsVisible: all.filter((c) => c.hasAttribute('data-variant-of') && c.offsetParent !== null).length,
+      noBadges: live.filter((c) => !c.querySelector('.card-badges .bd-stable, .card-badges .bd-experimental, .card-badges .bd-alpha') || !c.querySelector('.card-badges [class*="bd-off-"]') || !c.querySelector('details.fisa')).map(key),
+      osCat: os.dataset.cat, osSection: prev && prev.id, osStatus: os.dataset.status,
+      uoVariantLinks: [...uo.querySelectorAll('.var-list a')].map((a) => a.getAttribute('href')),
+      shots: document.querySelectorAll('.fisa-shot').length,
+      statuses: Object.fromEntries(['stable', 'experimental', 'alpha'].map((s) => [s, live.filter((c) => c.dataset.status === s).map(key)])),
+      verText: live.map((c) => c.querySelector('.card-ver').textContent).filter((x) => /2026-10-26/.test(x)).length,
+    };
+  });
+  ok(info.nAll - info.nEngines === info.statApps, `contor aplicații ${info.statApps} ≠ carduri single-file ${info.nAll - info.nEngines}`);
+  ok(info.statSec === info.nSec, `contor secțiuni ${info.statSec} ≠ ${info.nSec}`);
+  ok(info.variantsVisible === 0 && info.nAll - info.nLive === 3, 'variantele Universului Observabil trebuie ascunse (3)');
+  ok(info.noBadges.length === 0, 'fără insigne/fișă: ' + info.noBadges.join(', '));
+  ok(info.osCat === 'osatura' && info.osSection === 'osatura' && info.osStatus === 'alpha', 'OSATURA nu e în secțiunea ei separată: ' + JSON.stringify([info.osCat, info.osSection, info.osStatus]));
+  ok(info.uoVariantLinks.length === 3 && info.uoVariantLinks.every((u) => /Universul-Observabil-[123]D\/?$/.test(u)), 'fișa hub-ului nu listează cele 3 variante: ' + info.uoVariantLinks.join(','));
+  ok(info.shots === 0, 'nu trebuie să existe capturi dacă nu sunt declarate');
+  ok(info.statuses.alpha.join() === 'OSATURA' && info.statuses.experimental.join() === 'Provenienta' && info.statuses.stable.length > 100, 'stări: ' + JSON.stringify(info.statuses).slice(0, 200));
+  ok(info.verText === 0, 'data de sincronizare în masă nu mai apare pe carduri');
+  // filtru de stare
+  await page.selectOption('#f-status', 'alpha');
+  await countIs(page, 1);
+  await page.selectOption('#f-status', 'experimental');
+  await countIs(page, 1);
+  await page.click('#f-reset');
+  // căutare: hub-ul se găsește după variante; textul fișei se găsește
+  await page.fill('#q', 'universul observabil 3D');
+  ok(await page.evaluate(() => [...document.querySelectorAll('#apps-grid .app-card:not([data-variant-of])')].some((c) => !c.hidden && c.id === 'app-Universul-Observabil')), 'hub-ul nu e găsit după „3D”');
+  await page.fill('#q', 'ANMAP');
+  ok(await page.evaluate(() => { const v = [...document.querySelectorAll('#apps-grid .app-card:not([data-variant-of])')].filter((c) => !c.hidden).map((c) => c.id); return v.includes('app-ExploratoriiEco'); }), 'textul din fișă nu e căutabil');
+  await page.click('#f-reset');
+  // fișă (RO) + înrudite
+  const lim = await page.evaluate(() => { const d = document.querySelector('#app-AGORA details.fisa'); d.open = true; return d.textContent; });
+  ok(/Limite/.test(lim) && /Neoficial/.test(lim) && /Ultima schimbare de fond/.test(lim), 'fișa AGORA nu are „Limite”/„Neoficial”');
+  await page.evaluate(() => { document.querySelector('#app-ASMR details.fisa').open = true; });
+  await page.click('#app-ASMR .rel-chip[data-goto="CalmWaves"]');
+  ok(await page.evaluate(() => { const c = document.getElementById('app-CalmWaves'); return !c.hidden && c.querySelector('details.fisa').open; }), 'chip-ul „înrudite” nu duce la card');
+  ok(!errors.length && !external.length, `erori/cereri externe: ${errors.concat(external).join(' | ')}`);
+  await ctx.close();
+  // alte limbi: fără chei de traducere scăpate, fișa cade pe engleză cu notă
+  for (const l of ['en', 'fr', 'hu']) {
+    const o = await open(l);
+    await o.page.waitForSelector(LIVE);
+    const r = await o.page.evaluate(() => { const c = document.getElementById('app-AGORA'); c.querySelector('details.fisa').open = true; return {txt: c.textContent, bad: [...document.querySelectorAll('.card-badges .bd, details.fisa summary')].map((x) => x.textContent).filter((x) => /^(st|bd|f)[A-Z]\w+$/.test(x.trim()))}; });
+    ok(r.bad.length === 0, `${l}: chei de traducere scăpate: ${r.bad.join(',')}`);
+    ok(l === 'en' ? !/ro și engleză|Romanian and English/.test(r.txt) : true, `${l}: nota „doar RO/EN” apare și în engleză`);
+    if (l !== 'en') ok(/Unofficial/.test(r.txt), `${l}: fișa nu cade pe engleză`);
+    ok(!o.errors.length, `${l}: erori ${o.errors.join('|')}`);
+    await o.ctx.close();
+  }
 });
 
 await T('catalog: tastatură (Tab ajunge la câmpuri), ținte tactile ≥44px pe mobil, fără depășire la 360px', async () => {
@@ -160,16 +227,16 @@ await T('transparenta.html: schimbarea limbii se păstrează; fără date person
 
 await T('offline: hub-ul și transparenta.html se redeschid fără rețea, iar filtrul merge', async () => {
   const {ctx, page} = await open('ro', '', {sw: true});
-  await page.waitForSelector('#apps-grid .app-card');
+  await page.waitForSelector('#apps-grid .app-card:not([data-variant-of])');
   await page.evaluate(async () => { await navigator.serviceWorker.ready; });
   await page.waitForFunction(() => !!navigator.serviceWorker.controller, null, {timeout: 20000}).catch(async () => { await page.reload(); });
   await page.waitForFunction(() => !!navigator.serviceWorker.controller, null, {timeout: 20000});
   await page.goto(BASE + 'transparenta.html'); await page.waitForSelector('table.apps');   // pagina intră în cache la prima vizită
   await page.waitForFunction(async () => { const ks = await caches.keys(); for (const k of ks) { if (await (await caches.open(k)).match('transparenta.html')) return true; } return false; }, null, {timeout: 20000});
   await ctx.setOffline(true);
-  await page.goto(BASE); await page.waitForSelector('#apps-grid .app-card');
+  await page.goto(BASE); await page.waitForSelector('#apps-grid .app-card:not([data-variant-of])');
   await page.fill('#q', 'calendar');
-  await page.waitForFunction(() => [...document.querySelectorAll('#apps-grid .app-card')].some((c) => c.hidden));
+  await page.waitForFunction(() => [...document.querySelectorAll('#apps-grid .app-card:not([data-variant-of])')].some((c) => c.hidden));
   ok((await shown(page)) >= 1, 'filtrul nu merge offline');
   await page.goto(BASE + 'transparenta.html'); await page.waitForSelector('table.apps tbody tr');
   await ctx.close();

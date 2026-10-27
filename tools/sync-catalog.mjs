@@ -19,6 +19,9 @@
 //      app.json → features.i18n) și data-off (full = service worker + nicio cerere externă · part = service worker, dar unele funcții
 //      cer internet · no = fără service worker). Gazda declarată în fff.config.json → cspSelfTest.host (autotest CSP intenționat,
 //      ex. ACORDAJ → example.com) nu se numără ca dependență externă.
+//   4c. data/catalog-meta.json (stare, ultima schimbare de fond, fișe, înrudite, variante, capturi): `data-status` pe fiecare card (stare din meta sau derivată din versiune),
+//      `data-variant-of` + `hidden` pe variantele ascunse în fișa hub-ului (Universul Observabil 1D/2D/3D), textul cardului = versiune (+ ultima schimbare de fond, dacă e cunoscută),
+//      blocul <script type="application/json" id="catalog-meta"> încorporat în pagină, contoarele (aplicații single-file, secțiuni) derivate din lista de carduri.
 //   5. recalculează hash-urile CSP ale scripturilor inline și regenerează sw.js al hub-ului (precache index + manifest + icoane;
 //      NU interceptează nimic altceva, deci linkurile către aplicații și către depozite rămân neatinse).
 import fs from 'node:fs';
@@ -27,6 +30,7 @@ import vm from 'node:vm';
 import {createHash} from 'node:crypto';
 import {fileURLToPath} from 'node:url';
 import {recomputeCspHashes} from '../fff-kit/lib/csp.mjs';
+import {loadMeta, deriveStatus, verText, variantOf, counts, validateMeta} from './catalog-meta-lib.mjs';
 
 const HUB = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const argv = process.argv.slice(2);
@@ -48,6 +52,8 @@ const esc = (s) => s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 const problems = [], changes = [];
 const warn = (m) => problems.push(m);
 
+const meta = loadMeta(HUB);
+const VARIANT = variantOf(meta);
 const indexPath = path.join(HUB, 'index.html');
 let html = read(indexPath);
 const orig = html;
@@ -109,11 +115,12 @@ for (let i = 1; i < parts.length; i++) {
   if (t.missing) { warn(`${key}: nu există ${ROOT}/${key}/index.html și nici apps/${key}/index.html`); continue; }
   if (!t.version) { warn(`${key}: fără versiune în index.html`); continue; }
   // 0. atribute de filtrare (idempotent)
-  const attrs = ` data-cat="${sec}" data-langs="${t.langs.join(',')}" data-off="${t.off}"`;
-  parts[i] = parts[i].replace(/^( data-cat="[^"]*")?( data-langs="[^"]*")?( data-off="[^"]*")?/, (m) => { if (m !== attrs) changes.push(`${key}: filtre${m ? '' : ' (nou)'} → ${sec} · ${t.langs.length} limbi · offline ${t.off}`); return attrs; });
+  const status = deriveStatus(t.version, (meta.apps[key] || {}).status);
+  const attrs = ` data-cat="${sec}" data-langs="${t.langs.join(',')}" data-off="${t.off}" data-status="${status}"` + (VARIANT[key] ? ` data-variant-of="${VARIANT[key]}" hidden` : '');
+  parts[i] = parts[i].replace(/^( data-cat="[^"]*")?( data-langs="[^"]*")?( data-off="[^"]*")?( data-status="[^"]*")?( data-variant-of="[^"]*" hidden)?/, (m) => { if (m !== attrs) changes.push(`${key}: filtre${m ? '' : ' (nou)'} → ${sec} · ${t.langs.length} limbi · offline ${t.off} · ${status}${VARIANT[key] ? ' · variantă' : ''}`); return attrs; });
   // 1. versiune + dată
-  const want = `<span class="card-ver" data-ver="${t.version}" data-upd="${t.updated}">v${t.version} · ${t.updated}</span>`;
-  parts[i] = parts[i].replace(/<span class="card-ver"[^>]*>[^<]*<\/span>/, (m) => { if (m !== want) changes.push(`${key}: ${m.replace(/<[^>]+>/g, '')} → v${t.version} · ${t.updated}`); return want; });
+  const want = `<span class="card-ver" data-ver="${t.version}" data-upd="${t.updated}">${verText(t.version, (meta.apps[key] || {}).substantive)}</span>`;
+  parts[i] = parts[i].replace(/<span class="card-ver"[^>]*>[^<]*<\/span>/, (m) => { if (m !== want) changes.push(`${key}: ${m.replace(/<[^>]+>/g, '')} → ${want.replace(/<[^>]+>/g, '')}`); return want; });
   if (!/<span class="card-ver"/.test(parts[i])) warn(`${key}: cardul nu are <span class="card-ver">`);
   // 2. linkuri
   const live = t.hub ? `/apps/${key}/` : `https://chiuta.github.io/${key}/`;
@@ -148,7 +155,26 @@ if (latest) {
   if (html !== before) changes.push(`subsol: data → ${latest}`);
 }
 const nCards = keys.length;
-html = html.replace(/(id="stat-repos">)\d+(<)/, (m, a, b) => { if (m !== `${a}${nCards}${b}`) changes.push(`contor aplicații → ${nCards}`); return `${a}${nCards}${b}`; });
+const nSections = (html.match(/<div class="sec-head/g) || []).length;
+const cnt = counts(meta, keys, nSections);
+problems.push(...validateMeta(meta, keys));
+for (const [k, v] of Object.entries(meta.apps)) if (v.screenshot && !fs.existsSync(path.join(HUB, v.screenshot))) problems.push(`catalog-meta: ${k}: captura ${v.screenshot} nu există în hub`);
+// Contor „aplicații” = aplicații single-file (inclusiv variantele ascunse în fișa hub-ului); proiectele de alt tip (OSATURA) sunt în secțiunea lor.
+html = html.replace(/(id="stat-repos">)\d+(<)/, (m, a, b) => { if (m !== `${a}${cnt.singleFile}${b}`) changes.push(`contor aplicații → ${cnt.singleFile}`); return `${a}${cnt.singleFile}${b}`; });
+html = html.replace(/(id="stat-sections">)\d+(<)/, (m, a, b) => { if (m !== `${a}${nSections}${b}`) changes.push(`contor secțiuni → ${nSections}`); return `${a}${nSections}${b}`; });
+{
+  // metadatele încorporate (JSON; nu se execută, deci nu intră în hash-urile CSP)
+  const emb = {schema: meta.schema, policy: meta.policy, kinds: meta.kinds, variants: meta.variants, related: meta.related, apps: {}};
+  for (const [k, v] of Object.entries(meta.apps)) {
+    const o = {};
+    for (const f of ['fisa', 'substantive', 'screenshot', 'screenshotAlt']) if (v[f]) o[f] = v[f];
+    if (Object.keys(o).length) emb.apps[k] = o;
+  }
+  const block = `<script type="application/json" id="catalog-meta">${JSON.stringify(emb).replace(/</g, '\\u003c')}</script>`;
+  const re = /<script type="application\/json" id="catalog-meta">[\s\S]*?<\/script>/;
+  if (!re.test(html)) problems.push('index.html nu are blocul #catalog-meta');
+  else html = html.replace(re, (m) => { if (m !== block) changes.push('catalog-meta încorporat actualizat'); return block; });
+}
 for (const m of html.matchAll(/(\d+) free, open, single-file HTML tools/g)) if (+m[1] !== nCards) warn(`meta description spune ${m[1]} unelte, catalogul are ${nCards}`);
 
 /* ---- CSP + sw.js ---- */
