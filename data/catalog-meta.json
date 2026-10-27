@@ -1,0 +1,209 @@
+{
+  "schema": 1,
+  "note": "Metadate de catalog care nu se pot deduce din depozitele aplicațiilor. Sursa de adevăr pentru versiune, dată de sincronizare, limbi și funcționare offline rămâne fiecare aplicație (le citește tools/sync-catalog.mjs). Acest fișier se încorporează în index.html de sync-catalog (bloc <script type=\"application/json\" id=\"catalog-meta\">); pagina nu face nicio cerere de rețea.",
+  "policy": {
+    "semver": "MAJOR.MINOR.PATCH (https://semver.org/lang/ro/). MAJOR: schimbare incompatibilă (format de export, date salvate). MINOR: funcție nouă compatibilă. PATCH: corecturi. Versiunea afișată pe card este cea din <meta name=\"application-version\"> a aplicației; hub-ul nu o schimbă.",
+    "status": "alpha: versiune 0.x sau cu sufix -alpha/-beta. experimental: declarat astfel în README-ul aplicației (în câmpul „status” de mai jos). stabil: tot restul (versiune ≥ 1.0.0, fără declarație de experimental). Statusul este derivat după regulă, nu evaluat individual; autorul îl poate suprascrie aici.",
+    "substantive": "„Ultima schimbare de fond” = data ultimei schimbări de conținut sau funcționalitate (nu o sincronizare în masă a catalogului). Se completează numai când e cunoscută; altfel nu se afișează. Data de sincronizare (data-upd de pe card) rămâne în fișă, ca informație tehnică."
+  },
+  "kinds": {
+    "OSATURA": "engine"
+  },
+  "variants": {
+    "Universul-Observabil": ["Universul-Observabil-1D", "Universul-Observabil-2D", "Universul-Observabil-3D"]
+  },
+  "related": [
+    ["ASMR", "CalmWaves", "Aurora", "BorderlessMelodies"],
+    ["AI-Liber", "Nexus-fara-frontiere"],
+    ["NumeroLogIA", "Numerologie"],
+    ["CLEPSIDRA", "Clopotel", "Orar"]
+  ],
+  "apps": {
+    "Provenienta": {"status": "experimental"},
+    "OSATURA": {"status": "alpha"},
+    "Bolta": {"substantive": "2026-10-19"},
+    "Pendulul": {"substantive": "2026-10-22"},
+    "VNTV": {"substantive": "2026-10-23"},
+
+    "AGORA": {
+      "line": {
+        "ro": "Atlas informativ al Zonei Euro în 59 de secțiuni: de la Maastricht și BCE la România și euro, plus ghid pentru călători. Neoficial, fără valoare juridică.",
+        "en": "Informational atlas of the euro area in 59 sections: from Maastricht and the ECB to Romania and the euro, plus a traveller's guide. Unofficial, no legal value."
+      },
+      "fisa": {
+        "ro": {"limite": "Neoficial, fără valoare juridică; datele (cursuri, tarife, reguli de călătorie) se schimbă, iar unele cifre din secțiunile practice sunt orientative. Pentru decizii, verifică sursele oficiale."},
+        "en": {"limite": "Unofficial, no legal value; data (exchange rates, fares, travel rules) change and some figures in the practical sections are indicative. For decisions, check the official sources."}
+      }
+    },
+    "EcoulSpectral": {
+      "line": {
+        "ro": "Editor local de spectrogramă: marchezi o regiune timp–frecvență și o izolezi sau o elimini; detecție de voce, reducere de zgomot, export WAV.",
+        "en": "Local spectrogram editor: mark a time–frequency region and isolate or remove it; voice detection, noise reduction, WAV export."
+      },
+      "fisa": {
+        "ro": {"limite": "Nu este un model AI antrenat (STFT și scădere spectrală clasică); pe un mix muzical complex rezultatul poate conține artefacte, iar detecția de voce poate confunda alte sunete armonice cu vocea."},
+        "en": {"limite": "Not a trained AI model (STFT and classic spectral subtraction); on a complex music mix the result may contain artefacts, and voice detection can mistake other harmonic sounds for voice."}
+      }
+    },
+    "Carti-de-joc-fara-frontiere": {
+      "line": {
+        "ro": "Atlas interactiv de jocuri de cărți, de la Solitaire și Popa Prostul la poker: 17 jocuri cu fișe de reguli, dintre care 8 jucabile.",
+        "en": "Interactive atlas of card games, from Solitaire and Old Maid to poker: 17 games with rule sheets, 8 of them playable."
+      },
+      "fisa": {
+        "ro": {"limite": "Jocurile cu jetoane (inclusiv Blackjack și Texas Hold'em) sunt simulări educaționale, fără mize reale; adversarii sunt programe locale."},
+        "en": {"limite": "Games with chips (including Blackjack and Texas Hold'em) are educational simulations with no real stakes; opponents are local programs."}
+      }
+    },
+    "Go-fara-frontiere": {
+      "line": {
+        "ro": "Atlas de Go (18 fișe: origine, reguli, aproximări) și joc contra unui AI local (Monte-Carlo, nu LLM), cu SGF și sugestii; fără cereri de rețea.",
+        "en": "Go atlas (18 sheets: origin, rules, approximations) and a game against a local AI (Monte-Carlo, not an LLM), with SGF and hints; no network requests."
+      },
+      "fisa": {
+        "ro": {"limite": "Estimarea teritoriului și sugestia pietrelor moarte sunt statistice și pot greși; ochii din interiorul unui seki nu se detectează."},
+        "en": {"limite": "Territory estimates and dead-stone hints are statistical and can be wrong; eyes inside a seki are not detected."}
+      }
+    },
+    "Trusa-fara-frontiere": {
+      "line": {
+        "ro": "Set de 15 module mici, scrise de la zero (note, foaie de calcul, Markdown, parole, jurnal financiar ș.a.), inspirate de categorii YunoHost; fără afiliere.",
+        "en": "A set of 15 small modules written from scratch (notes, spreadsheet, Markdown, passwords, finance log and more), inspired by YunoHost app categories; not affiliated."
+      },
+      "fisa": {
+        "ro": {"limite": "Datele stau în localStorage și se pierd la ștergerea datelor site-ului; nu păstra parole sau date sensibile în Notebook, foaie sau Vault (sunt stocate în clar în browser)."},
+        "en": {"limite": "Data live in localStorage and are lost if site data is cleared; do not keep passwords or sensitive data in Notebook, spreadsheet or Vault (stored in clear text in the browser)."}
+      }
+    },
+    "Scopone-fara-frontiere": {
+      "line": {
+        "ro": "Atlas Scopone (15 fișe: origine, reguli, diferențe regionale) și joc contra unui AI local (euristic / Monte-Carlo), cu sugestii; semne italiene sau franceze.",
+        "en": "Scopone atlas (15 sheets: origin, rules, regional differences) and a game against a local AI (heuristic / Monte-Carlo), with hints; Italian or French suits."
+      },
+      "fisa": {
+        "ro": {"limite": "Regulile vin din surse publice (Pagat, Wikipedia IT); regulamentul federației italiene nu a putut fi consultat. Cirulla și Rubamazzo sunt aproximări; AI-ul nu e de turneu."},
+        "en": {"limite": "Rules come from public sources (Pagat, Italian Wikipedia); the Italian federation's rulebook could not be consulted. Cirulla and Rubamazzo are approximations; the AI is not tournament-grade."}
+      }
+    },
+    "Remi-fara-frontiere": {
+      "line": {
+        "ro": "Atlas al jocurilor din familia rummy: 19 variante jucabile contra unui AI local, cu statistici; interfață în 8 limbi, cu piese și cărți mari.",
+        "en": "Atlas of the rummy family of games: 19 playable variants against a local AI, with statistics; interface in 8 languages, with large tiles and cards."
+      }
+    },
+    "ASMR": {
+      "line": {
+        "ro": "Mixer de sunete de relaxare generate în timp real (Web Audio): straturi ambient, sunete la atingere, bătăi binaurale și cronometru de adormire; mix partajabil.",
+        "en": "Relaxation sound mixer generated in real time (Web Audio): ambient layers, touch sounds, binaural beats and a sleep timer; shareable mix."
+      },
+      "fisa": {
+        "ro": {"limite": "Conținut de relaxare, nu sfat medical; dovezile științifice privind efectul benzilor binaurale asupra somnului sau concentrării sunt limitate."},
+        "en": {"limite": "Relaxation content, not medical advice; scientific evidence for the effect of binaural bands on sleep or concentration is limited."}
+      }
+    },
+    "Belot-fara-frontiere": {
+      "line": {
+        "ro": "Atlas al familiei belot/bela/klaverjas/jass și joc la masă de 4 (tu și un partener AI contra a doi adversari AI); belotul românesc are prioritate; foaie de scor.",
+        "en": "Atlas of the belote/bela/klaverjas/jass family and a 4-player game (you and an AI partner against two AI opponents); Romanian belot is the priority; score sheet."
+      },
+      "fisa": {
+        "ro": {"limite": "Belotul nu are regulament unic; regulile alese sunt documentate pe fișe și verificate prin pagini publice, nu din regulamente tipărite. AI-ul nu vede cărțile ascunse, dar nu e un expert."},
+        "en": {"limite": "Belote has no single rulebook; the chosen rules are documented on the sheets and were checked against public pages, not printed rulebooks. The AI does not see hidden cards, but it is not an expert."}
+      }
+    },
+    "IncredibleCosmos": {
+      "line": {
+        "ro": "Puzzle gravitațional: plasezi planete și stele ca gravitația lor să ghideze o cometă spre țintă; 108 niveluri în 12 categorii, trei dificultăți, evaluare 1–3 stele, cu căutare.",
+        "en": "Gravity puzzle: place planets and stars so that their gravity guides a comet to the target; 108 levels in 12 categories, three difficulties, 1–3 star rating, with search."
+      }
+    },
+    "Domino-fara-frontiere": {
+      "line": {
+        "ro": "Atlas al dominoului (origine, reguli, aproximări) și masă de joc contra a 1–3 jucători AI, cu trei niveluri; anulare mutare.",
+        "en": "Domino atlas (origin, rules, approximations) and a game table against 1–3 AI players, with three levels; undo move."
+      },
+      "fisa": {
+        "ro": {"limite": "AI-ul nu vede mâinile celorlalți; regulile unor jocuri diferă regional (alegerile sunt marcate cu ⚠); nu e instrument de pariuri; fără multiplayer în rețea."},
+        "en": {"limite": "The AI cannot see other players' hands; the rules of some games vary by region (choices are marked ⚠); not a betting tool; no networked multiplayer."}
+      }
+    },
+    "Table-fara-frontiere": {
+      "line": {
+        "ro": "Atlas jucabil al familiei „table”: backgammon, Tavli, Tavla, Narde, Gul Bara și variante românești; 17 variante contra unui AI didactic; tastatură.",
+        "en": "Playable atlas of the backgammon family: backgammon, Tavli, Tavla, Narde, Gul Bara and Romanian variants; 17 variants against a teaching AI; keyboard play."
+      },
+      "fisa": {
+        "ro": {"limite": "Adversarul AI are rol didactic, nu este un motor de turneu."},
+        "en": {"limite": "The AI opponent is meant for learning, not a tournament-grade engine."}
+      }
+    },
+    "Radiestezie": {
+      "line": {
+        "ro": "Curs în 18 niveluri despre radiestezie, cu glosar, jurnal de practică și anexe internaționale; spune de la început că nu are validare științifică.",
+        "en": "A course in 18 levels on dowsing, with a glossary, a practice log and international appendices; states from the outset that it has no scientific validation."
+      },
+      "fisa": {
+        "ro": {"limite": "Fără validare științifică (efect ideomotor; testele controlate nu arată rezultate peste hazard). Nu o folosi pentru diagnostic, decizii financiare sau lucrări de construcție și săpături."},
+        "en": {"limite": "No scientific validation (ideomotor effect; controlled tests show no better-than-chance results). Do not use it for diagnosis, financial decisions, or construction and digging work."}
+      }
+    },
+    "Solitaire-fara-frontiere": {
+      "line": {
+        "ro": "Atlas de pasiențe (Klondike, FreeCell, Spider și altele) cu motor comun; „Sugestie” de la un solver cu limită de noduri/timp și rezolvare automată opțională.",
+        "en": "Atlas of solitaire games (Klondike, FreeCell, Spider and others) on a shared engine; “Hint” from a solver with a node/time limit and optional auto-solve."
+      },
+      "fisa": {
+        "ro": {"limite": "Solverul vede cărțile ascunse (informație perfectă), deci e un ajutor, nu un jucător corect; la Spider sugestia e doar o mutare euristică, iar rezolvarea automată nu e de încredere."},
+        "en": {"limite": "The solver sees hidden cards (perfect information), so it is an aid, not a fair player; in Spider the hint is only a heuristic move and auto-solve is unreliable."}
+      }
+    },
+    "Hyper4D": {
+      "line": {
+        "ro": "Geometrie 4D în SVG: secțiuni 3D ale corpurilor 4D și politopi cu proiecții 4D→3D→2D rotite în timp real, export SVG.",
+        "en": "4D geometry in SVG: 3D sections of 4D bodies and polytopes with 4D→3D→2D projections rotated in real time, SVG export."
+      }
+    },
+    "DataWeave": {
+      "line": {
+        "ro": "Explorare CSV/TSV/JSON într-un singur fișier: tabel, statistici, grafice, pivot și corelații; datele rămân pe dispozitivul tău.",
+        "en": "Explore CSV/TSV/JSON in a single file: table, statistics, charts, pivot and correlations; your data stays on your device."
+      },
+      "fisa": {
+        "ro": {"pentru": "Jurnaliști, cercetători și profesori (după descrierea din aplicație)."},
+        "en": {"pentru": "Journalists, researchers and teachers (per the app's own description)."}
+      }
+    },
+    "Numerologie": {
+      "line": {
+        "ro": "Curs interactiv despre numerologie ca tradiție simbolică: patru niveluri, exerciții, glosar, jurnal și calculator; prezentată fără validare științifică.",
+        "en": "Interactive course on numerology as a symbolic tradition: four levels, exercises, glossary, journal and calculator; presented without scientific validation."
+      },
+      "fisa": {
+        "ro": {"limite": "Tradiție simbolică și divertisment, fără dovezi științifice; nu există o convenție unică de calcul. Nu lua decizii de sănătate, bani sau relații pe baza unui calcul."},
+        "en": {"limite": "A symbolic tradition and entertainment, with no scientific evidence; there is no single calculation convention. Do not make health, money or relationship decisions based on a calculation."}
+      }
+    },
+    "ExploratoriiEco": {
+      "line": {
+        "ro": "Ghid de teren pentru naturaliști în 20 de secțiuni: clasificarea vieții, semne și urme, biomuri ale României, calculatoare, jurnal, etică, urgențe și glosar.",
+        "en": "Field guide for naturalists in 20 sections: classification of life, signs and tracks, Romanian biomes, calculators, logbook, ethics, emergencies and glossary."
+      },
+      "fisa": {
+        "ro": {"pentru": "Naturaliști (după descrierea din aplicație).", "limite": "Conținut educațional, orientativ: nu înlocuiește cursul de prim ajutor, sfatul medical sau autoritățile (112, Salvamont, ANMAP); plantele și ciupercile nu se consumă pe baza ghidului."},
+        "en": {"pentru": "Naturalists (per the app's own description).", "limite": "Educational, indicative content: it does not replace first-aid training, medical advice or the authorities (112, Salvamont, ANMAP); never eat plants or mushrooms on the basis of the guide."}
+      }
+    },
+    "Cupa-Mondiala-2026": {
+      "fisa": {
+        "ro": {"limite": "Rezultatele sunt inventate de un model simplu (puteri subiective, distribuție Poisson); nu sunt pronosticuri. Numele jucătorilor sunt doar etichete, iar loturile nu sunt cele oficiale."},
+        "en": {"limite": "Results are made up by a simple model (subjective strengths, Poisson distribution); they are not predictions. Player names are only labels, and the squads are not the official ones."}
+      }
+    },
+    "OAZA": {
+      "fisa": {
+        "ro": {"limite": "Servicii terțe, neverificate automat (lista verificată la 16 iunie 2026): pot cere cont, afișa reclame sau dispărea; listarea nu e o recomandare. Nu trimite date sensibile unor servicii publice."},
+        "en": {"limite": "Third-party services, not verified automatically (list checked on 16 June 2026): they may require an account, show ads or disappear; listing is not a recommendation. Do not send sensitive data to public services."}
+      }
+    }
+  }
+}
