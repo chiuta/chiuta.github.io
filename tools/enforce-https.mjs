@@ -5,6 +5,9 @@
 //
 //   fără --repos/--file   toate depozitele publice ale owner-ului (gh api users/<owner>/repos, paginat)
 //   --enable-pages        dacă un depozit nu are Pages, îl activează (ramura main, /) înainte de HTTPS
+//   --reprovision         pentru domeniile cu certificat blocat (bad_authz / errored / bad_authz): scoate domeniul propriu din Pages și îl
+//                         pune la loc, ca GitHub să ceară un certificat nou (necesar când DNS-ul a fost corectat DUPĂ prima încercare).
+//                         Atenție: domeniul e indisponibil câteva secunde, iar GitHub face un commit pe fișierul CNAME al depozitului.
 //   --dry-run             doar raportează ce ar face; nu scrie nimic
 //   --wait SEC            timp maxim de așteptare a certificatului TLS (implicit 90 s; 0 = nu aștepta)
 //
@@ -12,6 +15,7 @@
 // din organizații, rol de admin). Folosește doar REST (/repos/{o}/{r}/pages), nu GraphQL.
 //
 // Ce face, pe fiecare depozit:
+//   (--reprovision: vezi mai sus)
 //   1. GET /pages  → 404 = Pages inactiv (omis, sau activat cu --enable-pages); altfel citește https_enforced,
 //      cname, https_certificate.state.
 //   2. https_enforced deja true → „ok”, nu face nimic.
@@ -25,13 +29,14 @@ import fs from 'node:fs';
 
 const GH = process.env.GH_BIN || 'gh';
 const argv = process.argv.slice(2);
-const opt = {owner: 'chiuta', repos: null, file: null, enablePages: false, dry: false, wait: 90};
+const opt = {owner: 'chiuta', repos: null, file: null, enablePages: false, reprovision: false, dry: false, wait: 90};
 for (let i = 0; i < argv.length; i++) {
   const a = argv[i];
   if (a === '--owner') opt.owner = argv[++i];
   else if (a === '--repos') opt.repos = argv[++i];
   else if (a === '--file') opt.file = argv[++i];
   else if (a === '--enable-pages') opt.enablePages = true;
+  else if (a === '--reprovision') opt.reprovision = true;
   else if (a === '--dry-run') opt.dry = true;
   else if (a === '--wait') opt.wait = Number(argv[++i]);
   else if (a === '-h' || a === '--help') { console.log(fs.readFileSync(new URL(import.meta.url), 'utf8').split('\n').slice(1, 22).map((l) => l.replace(/^\/\/ ?/, '')).join('\n')); process.exit(0); }
@@ -77,6 +82,17 @@ async function one(repo) {
   if (!g.ok || !g.json) return ['EROARE', `citire Pages: ${g.err}`];
   const p = g.json;
   if (p.https_enforced === true) return ['ok', 'HTTPS deja impus'];
+  const STUCK = ['bad_authz', 'errored', 'authorization_revoked', 'dns_changed'];
+  if (opt.reprovision && p.cname && STUCK.includes(p.https_certificate?.state)) {
+    if (opt.dry) return ['de făcut', `ar reface certificatul pentru ${p.cname} (stare: ${p.https_certificate.state}) și apoi ar impune HTTPS`];
+    const off = gh(['api', '-X', 'PUT', base, '-F', 'cname=']);
+    if (!off.ok) return ['EROARE', `scoatere domeniu: ${off.err}`];
+    await sleep(3000);
+    const on = gh(['api', '-X', 'PUT', base, '-f', `cname=${p.cname}`]);
+    if (!on.ok) return ['EROARE', `DOMENIUL ${p.cname} E SCOS și nu l-am putut pune la loc (${on.err}); repune-l din Settings → Pages`];
+    const r2 = gh(['api', base]);
+    if (r2.json) { p.https_certificate = r2.json.https_certificate; p.https_enforced = r2.json.https_enforced; }
+  }
   if (opt.dry) return ['de făcut', `ar impune HTTPS${p.cname ? ` (domeniu ${p.cname}, certificat: ${p.https_certificate?.state || 'necunoscut'})` : ''}`];
 
   // domeniu propriu: certificatul trebuie să fie emis înainte
