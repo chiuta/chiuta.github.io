@@ -78,7 +78,7 @@ function collect() {
   // starea curentă: cardurile hub-ului (verificate de sync-catalog) + app.json din depozite
   const html = read(path.join(HUB, 'index.html'));
   const cards = html.split('<div class="app-card"').slice(1);
-  const live = {apps: 0, sw: 0, noSw: 0, fakeSw: 0, emptyI18n: 0, badHost: 0, kitGe114: 0, kitCount: 0, cnames: 0, syncOk: false};
+  const live = {apps: 0, sw: 0, noSw: 0, fakeSw: 0, emptyI18n: 0, badHost: 0, kitGe114: 0, kitCount: 0, cnames: 0, shared: 0, syncOk: false};
   const apps = [];
   const byName = new Map(rows.map((r) => [r.key.toLowerCase(), r]));
   for (const c of cards) {
@@ -97,6 +97,7 @@ function collect() {
       break;
     }
     if (fs.existsSync(path.join(ROOT, key, 'CNAME'))) live.cnames++;
+    else if (fs.existsSync(path.join(HUB, 'apps', key, 'index.html'))) live.shared++;
     const hosts = app ? (app.egress || []).map((e) => (typeof e === 'string' ? e : e.host)).filter((h) => !(app.cspSelfTest && app.cspSelfTest.intentional && app.cspSelfTest.host === h)) : [];
     live.apps++;
     if (swFile) live.sw++; else live.noSw++;
@@ -176,7 +177,7 @@ function renderSrc(D, UI, CODES, CODE_KIND) {
     // rămâne deschis
     h.push('<section aria-labelledby="s-open"><h2 id="s-open">' + E(t('h_open')) + '</h2><ul class="plain">');
     var kind = function (k) { return ' <span class="kind">' + E(t(k)) + '</span>'; };
-    h.push('<li>' + F('o_origin', {n: lv.cnames}) + kind('k_infra') + '</li>');
+    h.push('<li>' + F('o_origin', {n: lv.cnames, s: lv.shared}) + kind('k_infra') + '</li>');
     h.push('<li>' + E(t('o_lic')) + kind('k_author') + '</li>');
     h.push('<li>' + E(t('o_review')) + kind('k_author') + '</li>');
     h.push('<li>' + E(t('o_merge')) + kind('k_author') + '</li>');
