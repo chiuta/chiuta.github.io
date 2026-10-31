@@ -1281,6 +1281,17 @@
    "l": 6
   },
   {
+   "key": "LegatorOCR",
+   "ver": "0.2.0",
+   "off": "no",
+   "langs": 8,
+   "hosts": 0,
+   "score": null,
+   "hm": null,
+   "l": null,
+   "ext": true
+  },
+  {
    "key": "orarium",
    "ver": "1.2.5",
    "off": "full",

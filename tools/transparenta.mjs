@@ -24,7 +24,7 @@ const ri = argv.indexOf('--root');
 const ROOT = path.resolve(ri >= 0 ? argv[ri + 1] : path.join(HUB, '..'));
 const A1 = process.env.AUDIT1 || '/tmp/audit/audit.txt', A2 = process.env.AUDIT2 || '/tmp/audit2/summary.md', A4 = process.env.AUDIT4 || '/tmp/audit4';
 const DATA = path.join(HUB, 'data', 'transparenta.json'), OUT = path.join(HUB, 'transparenta.html');
-const EXTERNAL = new Set(['OSATURA', 'VERIGA', 'TEZAUR']);   // la fel ca în tools/sync-catalog.mjs
+const EXTERNAL = new Set(['OSATURA', 'VERIGA', 'TEZAUR', 'LegatorOCR']);   // la fel ca în tools/sync-catalog.mjs
 const read = (p) => fs.readFileSync(p, 'utf8');
 const MONTHS = {ianuarie: 1, februarie: 2, martie: 3, aprilie: 4, mai: 5, iunie: 6, iulie: 7, august: 8, septembrie: 9, octombrie: 10, noiembrie: 11, decembrie: 12};
 const num = (s) => parseFloat(String(s).replace(',', '.'));

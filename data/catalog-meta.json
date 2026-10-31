@@ -9,7 +9,8 @@
   "kinds": {
     "OSATURA": "engine",
     "VERIGA": "engine",
-    "TEZAUR": "engine"
+    "TEZAUR": "engine",
+    "LegatorOCR": "engine"
   },
   "variants": {
     "Universul-Observabil": ["Universul-Observabil-1D", "Universul-Observabil-2D", "Universul-Observabil-3D"]

@@ -200,3 +200,4 @@ node tools/cname-inventory.mjs --dns     # informativ: interoghează DNS-ul publ
 | OSATURA | depozit | `osatura.chiuta.ro` | proprie: https://osatura.chiuta.ro/ | — | proiect Rust, site propriu; depozit chiuta/OSATURA |
 | VERIGA | depozit | `veriga.chiuta.ro` | proprie: https://veriga.chiuta.ro/ | — | proiect Rust, site propriu; depozit chiuta/VERIGA |
 | TEZAUR | depozit | `tezaur.chiuta.ro` | proprie: https://tezaur.chiuta.ro/ | — | proiect Rust, site propriu; depozit chiuta/TEZAUR |
+| LegatorOCR | depozit | `legatorocr.chiuta.ro` | proprie: https://legatorocr.chiuta.ro/ | — | proiect Rust, site propriu (docs/); depozit chiuta/LegatorOCR |

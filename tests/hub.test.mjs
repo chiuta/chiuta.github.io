@@ -114,7 +114,7 @@ await T('catalog: căutare text (inclusiv în altă limbă, fără diacritice), 
   await ctx.close();
 });
 
-await T('catalog: contoare derivate, stare, offline, fișă, variante Universul Observabil, înrudite, secțiunea Rust separată (OSATURA, VERIGA, TEZAUR)', async () => {
+await T('catalog: contoare derivate, stare, offline, fișă, variante Universul Observabil, înrudite, secțiunea Rust separată (OSATURA, VERIGA, TEZAUR, LegatorOCR)', async () => {
   const LIVE = '#apps-grid .app-card:not([data-variant-of])';
   const {ctx, page, errors, external} = await open('ro');
   await page.waitForSelector(LIVE);
@@ -145,14 +145,14 @@ await T('catalog: contoare derivate, stare, offline, fișă, variante Universul 
   ok(info.variantsVisible === 0 && info.nAll - info.nLive === 3, 'variantele Universului Observabil trebuie ascunse (3)');
   ok(info.noBadges.length === 0, 'fără insigne/fișă: ' + info.noBadges.join(', '));
   ok(info.osCat === 'rust' && info.osSection === 'rust' && info.osStatus === 'alpha', 'OSATURA nu e în secțiunea Rust: ' + JSON.stringify([info.osCat, info.osSection, info.osStatus]));
-  ok(info.rustCards === 'OSATURA,VERIGA,TEZAUR', 'secțiunea Rust: ' + info.rustCards);
+  ok(info.rustCards === 'OSATURA,VERIGA,TEZAUR,LegatorOCR', 'secțiunea Rust: ' + info.rustCards);
   ok(info.uoVariantLinks.length === 3 && info.uoVariantLinks.every((u) => /Universul-Observabil-[123]D\/?$/.test(u)), 'fișa hub-ului nu listează cele 3 variante: ' + info.uoVariantLinks.join(','));
   ok(info.shots === 0, 'nu trebuie să existe capturi dacă nu sunt declarate');
-  ok(info.statuses.alpha.join() === 'OSATURA,TEZAUR' && info.statuses.experimental.join() === 'Provenienta' && info.statuses.stable.length > 100, 'stări: ' + JSON.stringify(info.statuses).slice(0, 200));
+  ok(info.statuses.alpha.join() === 'OSATURA,TEZAUR,LegatorOCR' && info.statuses.experimental.join() === 'Provenienta' && info.statuses.stable.length > 100, 'stări: ' + JSON.stringify(info.statuses).slice(0, 200));
   ok(info.verText === 0, 'data de sincronizare în masă nu mai apare pe carduri');
   // filtru de stare
   await page.selectOption('#f-status', 'alpha');
-  await countIs(page, 2);
+  await countIs(page, 3);
   await page.selectOption('#f-status', 'experimental');
   await countIs(page, 1);
   await page.click('#f-reset');
