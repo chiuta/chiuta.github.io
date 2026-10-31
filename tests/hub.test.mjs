@@ -114,7 +114,7 @@ await T('catalog: căutare text (inclusiv în altă limbă, fără diacritice), 
   await ctx.close();
 });
 
-await T('catalog: contoare derivate, stare, offline, fișă, variante Universul Observabil, înrudite, OSATURA separată', async () => {
+await T('catalog: contoare derivate, stare, offline, fișă, variante Universul Observabil, înrudite, secțiunea Rust separată (OSATURA, VERIGA, TEZAUR)', async () => {
   const LIVE = '#apps-grid .app-card:not([data-variant-of])';
   const {ctx, page, errors, external} = await open('ro');
   await page.waitForSelector(LIVE);
@@ -133,6 +133,7 @@ await T('catalog: contoare derivate, stare, offline, fișă, variante Universul 
       variantsVisible: all.filter((c) => c.hasAttribute('data-variant-of') && c.offsetParent !== null).length,
       noBadges: live.filter((c) => !c.querySelector('.card-badges .bd-stable, .card-badges .bd-experimental, .card-badges .bd-alpha') || !c.querySelector('.card-badges [class*="bd-off-"]') || !c.querySelector('details.fisa')).map(key),
       osCat: os.dataset.cat, osSection: prev && prev.id, osStatus: os.dataset.status,
+      rustCards: all.filter((c) => c.dataset.cat === 'rust').map(key).join(),
       uoVariantLinks: [...uo.querySelectorAll('.var-list a')].map((a) => a.getAttribute('href')),
       shots: document.querySelectorAll('.fisa-shot').length,
       statuses: Object.fromEntries(['stable', 'experimental', 'alpha'].map((s) => [s, live.filter((c) => c.dataset.status === s).map(key)])),
@@ -143,14 +144,15 @@ await T('catalog: contoare derivate, stare, offline, fișă, variante Universul 
   ok(info.statSec === info.nSec, `contor secțiuni ${info.statSec} ≠ ${info.nSec}`);
   ok(info.variantsVisible === 0 && info.nAll - info.nLive === 3, 'variantele Universului Observabil trebuie ascunse (3)');
   ok(info.noBadges.length === 0, 'fără insigne/fișă: ' + info.noBadges.join(', '));
-  ok(info.osCat === 'osatura' && info.osSection === 'osatura' && info.osStatus === 'alpha', 'OSATURA nu e în secțiunea ei separată: ' + JSON.stringify([info.osCat, info.osSection, info.osStatus]));
+  ok(info.osCat === 'rust' && info.osSection === 'rust' && info.osStatus === 'alpha', 'OSATURA nu e în secțiunea Rust: ' + JSON.stringify([info.osCat, info.osSection, info.osStatus]));
+  ok(info.rustCards === 'OSATURA,VERIGA,TEZAUR', 'secțiunea Rust: ' + info.rustCards);
   ok(info.uoVariantLinks.length === 3 && info.uoVariantLinks.every((u) => /Universul-Observabil-[123]D\/?$/.test(u)), 'fișa hub-ului nu listează cele 3 variante: ' + info.uoVariantLinks.join(','));
   ok(info.shots === 0, 'nu trebuie să existe capturi dacă nu sunt declarate');
-  ok(info.statuses.alpha.join() === 'OSATURA' && info.statuses.experimental.join() === 'Provenienta' && info.statuses.stable.length > 100, 'stări: ' + JSON.stringify(info.statuses).slice(0, 200));
+  ok(info.statuses.alpha.join() === 'OSATURA,TEZAUR' && info.statuses.experimental.join() === 'Provenienta' && info.statuses.stable.length > 100, 'stări: ' + JSON.stringify(info.statuses).slice(0, 200));
   ok(info.verText === 0, 'data de sincronizare în masă nu mai apare pe carduri');
   // filtru de stare
   await page.selectOption('#f-status', 'alpha');
-  await countIs(page, 1);
+  await countIs(page, 2);
   await page.selectOption('#f-status', 'experimental');
   await countIs(page, 1);
   await page.click('#f-reset');
