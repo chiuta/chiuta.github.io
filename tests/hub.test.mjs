@@ -170,14 +170,14 @@ await T('catalog: contoare derivate, stare, offline, fișă, variante Universul 
   ok(await page.evaluate(() => { const c = document.getElementById('app-CalmWaves'); return !c.hidden && c.querySelector('details.fisa').open; }), 'chip-ul „înrudite” nu duce la card');
   ok(!errors.length && !external.length, `erori/cereri externe: ${errors.concat(external).join(' | ')}`);
   await ctx.close();
-  // alte limbi: fără chei de traducere scăpate, fișa cade pe engleză cu notă
+  // alte limbi: fără chei de traducere scăpate; fișa e tradusă în limba curentă (fără cădere pe engleză, fără notă „doar RO/EN”)
   for (const l of ['en', 'fr', 'hu']) {
     const o = await open(l);
     await o.page.waitForSelector(LIVE);
     const r = await o.page.evaluate(() => { const c = document.getElementById('app-AGORA'); c.querySelector('details.fisa').open = true; return {txt: c.textContent, bad: [...document.querySelectorAll('.card-badges .bd, details.fisa summary')].map((x) => x.textContent).filter((x) => /^(st|bd|f)[A-Z]\w+$/.test(x.trim()))}; });
     ok(r.bad.length === 0, `${l}: chei de traducere scăpate: ${r.bad.join(',')}`);
     ok(l === 'en' ? !/ro și engleză|Romanian and English/.test(r.txt) : true, `${l}: nota „doar RO/EN” apare și în engleză`);
-    if (l !== 'en') ok(/Unofficial/.test(r.txt), `${l}: fișa nu cade pe engleză`);
+    if (l !== 'en') ok(!/Unofficial/.test(r.txt) && !/Romanian and English|ro și engleză/i.test(r.txt), `${l}: fișa cade încă pe engleză`);
     ok(!o.errors.length, `${l}: erori ${o.errors.join('|')}`);
     await o.ctx.close();
   }
