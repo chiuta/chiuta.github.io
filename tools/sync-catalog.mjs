@@ -41,8 +41,8 @@ const ROOT = path.resolve(ri >= 0 ? argv[ri + 1] : path.join(HUB, '..'));
 // Aplicații cu „offline” calificat în text („nu e complet offline”, „snapshot învechit offline”): nu sunt oprite de regulă.
 // Intrări EXTERNE: proiecte care nu sunt aplicații HTML dintr-un singur fișier (fără app.json / index.html de verificat aici).
 // Cardul lor se întreține de mână (versiune, dată, linkuri); sunt numărate în contor, dar nu sunt verificate ca aplicațiile fff.
-// OSATURA: motor Rust (CLI + studio + WASM), site propriu https://osatura.chiuta.ro/, cod în github.com/chiuta/osatura.
-const EXTERNAL = new Set(['OSATURA']);
+// Proiecte Rust (nu aplicații HTML single-file), fiecare cu site propriu: OSATURA (osatura.chiuta.ro), VERIGA (veriga.chiuta.ro), TEZAUR (tezaur.chiuta.ro); cod în github.com/chiuta/<Nume>.
+const EXTERNAL = new Set(['OSATURA', 'VERIGA', 'TEZAUR']);
 const LANG_ORDER = ['en', 'ro', 'fr', 'it', 'es', 'pt', 'de', 'hu'];
 const OFFLINE_QUALIFIED = new Set(['TerRa', 'VietAR', 'Pendulul']);   // Pendulul: fișierul salvat se citește offline; aplicația nu înregistrează service worker
 const OFFLINE_RE = /offline|fără conexiune|hors ligne|hors-ligne|senza connessione|sin conexión|sem ligação|sem conexão|ohne verbindung|internet nélkül/i;
@@ -159,7 +159,7 @@ const nSections = (html.match(/<div class="sec-head/g) || []).length;
 const cnt = counts(meta, keys, nSections);
 problems.push(...validateMeta(meta, keys));
 for (const [k, v] of Object.entries(meta.apps)) if (v.screenshot && !fs.existsSync(path.join(HUB, v.screenshot))) problems.push(`catalog-meta: ${k}: captura ${v.screenshot} nu există în hub`);
-// Contor „aplicații” = aplicații single-file (inclusiv variantele ascunse în fișa hub-ului); proiectele de alt tip (OSATURA) sunt în secțiunea lor.
+// Contor „aplicații” = aplicații single-file (inclusiv variantele ascunse în fișa hub-ului); proiectele de alt tip (OSATURA, VERIGA, TEZAUR) sunt în secțiunea lor.
 html = html.replace(/(id="stat-repos">)\d+(<)/, (m, a, b) => { if (m !== `${a}${cnt.singleFile}${b}`) changes.push(`contor aplicații → ${cnt.singleFile}`); return `${a}${cnt.singleFile}${b}`; });
 html = html.replace(/(id="stat-sections">)\d+(<)/, (m, a, b) => { if (m !== `${a}${nSections}${b}`) changes.push(`contor secțiuni → ${nSections}`); return `${a}${nSections}${b}`; });
 {

@@ -7,7 +7,9 @@
     "substantive": "„Ultima schimbare de fond” = data ultimei schimbări de conținut sau funcționalitate (nu o sincronizare în masă a catalogului). Se completează numai când e cunoscută; altfel nu se afișează. Data de sincronizare (data-upd de pe card) rămâne în fișă, ca informație tehnică."
   },
   "kinds": {
-    "OSATURA": "engine"
+    "OSATURA": "engine",
+    "VERIGA": "engine",
+    "TEZAUR": "engine"
   },
   "variants": {
     "Universul-Observabil": ["Universul-Observabil-1D", "Universul-Observabil-2D", "Universul-Observabil-3D"]

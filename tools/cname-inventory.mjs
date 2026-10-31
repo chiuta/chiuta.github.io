@@ -45,16 +45,18 @@ const keys = html.split('<div class="app-card"').slice(1).map((c) => (c.match(/d
 const slugOf = (k) => k.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
 
 // Intrări EXTERNE (nu sunt aplicații HTML dintr-un singur fișier; vezi tools/sync-catalog.mjs): origine proprie declarată aici, fără verificare pe disc.
-const EXTERNAL = {OSATURA: 'osatura.chiuta.ro'};
+const EXTERNAL = {OSATURA: 'osatura.chiuta.ro', VERIGA: 'veriga.chiuta.ro', TEZAUR: 'tezaur.chiuta.ro'};
 
 const rows = keys.map((key) => {
   if (EXTERNAL[key]) {
     const cname = EXTERNAL[key];
-    return {key, where: 'depozit', cname, expected: cname, origin: `proprie: https://${cname}/`, note: 'proiect Rust (CLI + studio + WASM), site propriu; depozit chiuta/osatura', sens: '', inHub: false, inRepo: true, own: true, prio: 0};
+    return {key, where: 'depozit', cname, expected: cname, origin: `proprie: https://${cname}/`, note: `proiect Rust, site propriu; depozit chiuta/${key}`, sens: '', inHub: false, inRepo: true, own: true, prio: 0};
   }
   const repo = path.join(ROOT, key), hubApp = path.join(HUB, 'apps', key);
   const inRepo = exists(path.join(repo, 'index.html')) || exists(path.join(repo, 'docs', 'index.html'));
-  const inHub = exists(path.join(hubApp, 'index.html'));
+  // O pagină din apps/ care e doar stub de redirecționare (migrate-apps.mjs: „s-a mutat”) nu mai înseamnă origine partajată: aplicația e pe domeniul ei.
+  const hubStub = exists(path.join(hubApp, 'index.html')) && /<title>[^<]*s-a mutat/i.test(read(path.join(hubApp, 'index.html')));
+  const inHub = exists(path.join(hubApp, 'index.html')) && !hubStub;
   const where = inRepo ? 'depozit' : inHub ? 'hub (apps/)' : 'LIPSĂ';
   let cname = '';
   if (inRepo && exists(path.join(repo, 'CNAME'))) cname = read(path.join(repo, 'CNAME')).trim().toLowerCase();
