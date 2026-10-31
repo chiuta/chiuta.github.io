@@ -1,8 +1,0 @@
-{
-  "exceptions": [
-    {
-      "rule": "i18n-parity",
-      "reason": "Fals pozitiv: CON_ROWS nu este un tabel de traduceri, ci date astronomice (88 de constelații × 8 câmpuri separate prin „~”, rânduri separate prin \\n), verificate la construire; toate rândurile au 8 coloane."
-    }
-  ]
-}
