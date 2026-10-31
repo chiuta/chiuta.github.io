@@ -142,8 +142,9 @@
   "badHost": 21,
   "kitGe114": 109,
   "kitCount": 109,
-  "cnames": 97,
-  "syncOk": true
+  "cnames": 100,
+  "syncOk": true,
+  "shared": 12
  },
  "apps": [
   {
