@@ -36,6 +36,7 @@
   var present={};data.items.forEach(function(i){present[i.section]=1});
   Object.keys(data.sections||{}).forEach(function(k){if(!present[k])return;var op=document.createElement('option');op.value=k;op.textContent=(data.sections[k]&&data.sections[k][lang])||k;cat.appendChild(op)});cat.value=cur;
   var tv=$('trailer');if(data.trailer){tv.poster=data.trailer.poster;tv.src=data.trailer.video;addTracks(tv,data.trailer.vtt)}
+  try{var sc=new URLSearchParams(location.search).get('sec');if(sc&&data.reels&&data.reels[sc]&&!$('cat').value){$('cat').value=sc}}catch(e){}
   cards();
   if(location.hash){var t=document.getElementById(decodeURIComponent(location.hash.slice(1)));if(t)t.scrollIntoView()}
  }
