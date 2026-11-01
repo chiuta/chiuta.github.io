@@ -36,3 +36,5 @@ video::cue{font-size:1.1em;background:rgba(0,0,0,.72);color:#fff}
 .hdr-right{display:flex;gap:8px;align-items:center}
 .card:target{outline:2px solid var(--acc)}
 .card{scroll-margin-top:72px}
+
+.hero-desc{margin:10px 4px 4px;color:var(--mut);font-size:.92rem}

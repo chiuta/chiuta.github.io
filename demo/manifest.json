@@ -225,24 +225,48 @@
    "title": "Arhiva fără frontiere",
    "section": "recomandate",
    "tags": {
-    "ro": null,
-    "en": null,
-    "fr": null,
-    "it": null,
-    "es": null,
-    "pt": null,
-    "de": null,
-    "hu": null
+    "ro": [
+     "arhive web",
+     "surse"
+    ],
+    "en": [
+     "web archives",
+     "sources"
+    ],
+    "fr": [
+     "archives web",
+     "sources"
+    ],
+    "it": [
+     "archivi web",
+     "fonti"
+    ],
+    "es": [
+     "archivos web",
+     "fuentes"
+    ],
+    "pt": [
+     "arquivos web",
+     "fontes"
+    ],
+    "de": [
+     "Webarchive",
+     "Quellen"
+    ],
+    "hu": [
+     "webarchívumok",
+     "források"
+    ]
    },
    "line": {
-    "ro": null,
-    "en": null,
-    "fr": null,
-    "it": null,
-    "es": null,
-    "pt": null,
-    "de": null,
-    "hu": null
+    "ro": "Răsfoiești colecțiile Internet Archive fără cont: cauți, vezi fișele, previzualizezi și îți păstrezi favoritele. Neoficială; archive.org vede IP-ul și căutările tale.",
+    "en": "Browse the Internet Archive collections without an account: search, view item pages, preview and keep your favorites. Unofficial; archive.org sees your IP and searches.",
+    "fr": "Parcourez les collections d'Internet Archive sans compte : recherche, fiches, aperçu et favoris gardés pour vous. Non officielle ; archive.org voit votre IP et vos recherches.",
+    "it": "Sfogli le raccolte di Internet Archive senza account: cerchi, guardi le schede, vedi le anteprime e conservi i preferiti. Non ufficiale; archive.org vede il tuo IP e le tue ricerche.",
+    "es": "Explora las colecciones de Internet Archive sin cuenta: busca, consulta las fichas, previsualiza y guarda tus favoritos. No oficial; archive.org ve tu IP y tus búsquedas.",
+    "pt": "Navegas pelas coleções do Internet Archive sem conta: pesquisas, vês as fichas, pré-visualizas e guardas os favoritos. Não oficial; o archive.org vê o teu IP e as tuas pesquisas.",
+    "de": "Stöbere ohne Konto in den Sammlungen des Internet Archive: suchen, Einträge ansehen, Vorschau und Favoriten merken. Inoffiziell; archive.org sieht deine IP-Adresse und deine Suchen.",
+    "hu": "Az Internet Archive gyűjteményei fiók nélkül böngészhetők: keresés, adatlapok, előnézet, kedvencek mentése. Nem hivatalos; az archive.org látja az IP-címét és a kereséseit."
    },
    "url": "https://chiuta.github.io/Arhiva-fara-frontiere/",
    "readme": "https://github.com/chiuta/Arhiva-fara-frontiere",
@@ -653,24 +677,40 @@
    "title": "Arhivă LinkedIn",
    "section": "verificare",
    "tags": {
-    "ro": null,
-    "en": null,
-    "fr": null,
-    "it": null,
-    "es": null,
-    "pt": null,
-    "de": null,
-    "hu": null
+    "ro": [
+     "arhivare"
+    ],
+    "en": [
+     "archiving"
+    ],
+    "fr": [
+     "archivage"
+    ],
+    "it": [
+     "archiviazione"
+    ],
+    "es": [
+     "archivado"
+    ],
+    "pt": [
+     "arquivo"
+    ],
+    "de": [
+     "Archivierung"
+    ],
+    "hu": [
+     "archiválás"
+    ]
    },
    "line": {
-    "ro": null,
-    "en": null,
-    "fr": null,
-    "it": null,
-    "es": null,
-    "pt": null,
-    "de": null,
-    "hu": null
+    "ro": "Îți ții într-un loc notele despre postările LinkedIn pe care le-ai lipit tu și le exporți ca text. Galeria folosește încorporarea oficială, deci contactează LinkedIn. Neoficială.",
+    "en": "Keep your notes on LinkedIn posts you pasted yourself in one place and export them as text. The gallery uses the official embed, so it contacts LinkedIn. Unofficial.",
+    "fr": "Gardez au même endroit vos notes sur les publications LinkedIn que vous avez collées vous-même, et exportez-les en texte. La galerie utilise l'intégration officielle, donc contacte LinkedIn. Non officielle.",
+    "it": "Tieni in un unico posto le note sui post LinkedIn che hai incollato tu e le esporti come testo. La galleria usa l'incorporamento ufficiale, quindi contatta LinkedIn. Non ufficiale.",
+    "es": "Guarda en un solo lugar tus notas sobre las publicaciones de LinkedIn que hayas pegado tú y expórtalas como texto. La galería usa la inserción oficial, así que contacta con LinkedIn. No oficial.",
+    "pt": "Guardas num só sítio as tuas notas sobre publicações do LinkedIn que colaste tu e exportas em texto. A galeria usa a incorporação oficial, por isso contacta o LinkedIn. Não oficial.",
+    "de": "Sammle an einem Ort deine Notizen zu LinkedIn-Beiträgen, die du selbst eingefügt hast, und exportiere sie als Text. Die Galerie nutzt die offizielle Einbettung und kontaktiert daher LinkedIn. Inoffiziell.",
+    "hu": "Egy helyen tarthatja a saját maga beillesztett LinkedIn-bejegyzésekhez fűzött jegyzeteit, és szövegként exportálhatja. A galéria a hivatalos beágyazást használja, így kapcsolatba lép a LinkedInnel. Nem hivatalos."
    },
    "url": "https://chiuta.github.io/Arhiva-LinkedIn/",
    "readme": "https://github.com/chiuta/Arhiva-LinkedIn",
@@ -757,24 +797,48 @@
    "title": "Link Guardian",
    "section": "verificare",
    "tags": {
-    "ro": null,
-    "en": null,
-    "fr": null,
-    "it": null,
-    "es": null,
-    "pt": null,
-    "de": null,
-    "hu": null
+    "ro": [
+     "WordPress",
+     "GPL v2"
+    ],
+    "en": [
+     "WordPress",
+     "GPL v2"
+    ],
+    "fr": [
+     "WordPress",
+     "GPL v2"
+    ],
+    "it": [
+     "WordPress",
+     "GPL v2"
+    ],
+    "es": [
+     "WordPress",
+     "GPL v2"
+    ],
+    "pt": [
+     "WordPress",
+     "GPL v2"
+    ],
+    "de": [
+     "WordPress",
+     "GPL v2"
+    ],
+    "hu": [
+     "WordPress",
+     "GPL v2"
+    ]
    },
    "line": {
-    "ro": null,
-    "en": null,
-    "fr": null,
-    "it": null,
-    "es": null,
-    "pt": null,
-    "de": null,
-    "hu": null
+    "ro": "Pentru site-ul tău WordPress: găsește linkurile stricate și le repară, fără serviciu extern. Schimbă conținutul real, deci fă întâi backup. Netestat pe un WordPress real.",
+    "en": "For your WordPress site: finds broken links and fixes them, with no external service. It changes real content, so back up first. Not tested on a real WordPress.",
+    "fr": "Pour votre site WordPress : repère les liens cassés et les répare, sans service externe. Il modifie le contenu réel, faites donc d'abord une sauvegarde. Non testé sur un vrai WordPress.",
+    "it": "Per il tuo sito WordPress: trova i link rotti e li ripara, senza servizi esterni. Modifica il contenuto reale, quindi fai prima un backup. Non testato su un WordPress reale.",
+    "es": "Para tu sitio WordPress: encuentra los enlaces rotos y los repara, sin servicio externo. Modifica el contenido real, así que haz antes una copia de seguridad. No probado en un WordPress real.",
+    "pt": "Para o teu site WordPress: encontra as ligações quebradas e repara-as, sem serviço externo. Altera o conteúdo real, por isso faz primeiro uma cópia de segurança. Não testado num WordPress real.",
+    "de": "Für deine WordPress-Website: findet kaputte Links und repariert sie, ohne externen Dienst. Ändert echte Inhalte, also zuerst ein Backup anlegen. Nicht auf einem echten WordPress getestet.",
+    "hu": "WordPress-oldalához: megkeresi és javítja a hibás hivatkozásokat, külső szolgáltatás nélkül. Valódi tartalmat módosít, ezért előbb készítsen mentést. Valódi WordPressen nem tesztelt."
    },
    "url": "https://chiuta.github.io/Trade-Free-Link-Guardian/",
    "readme": "https://github.com/chiuta/Trade-Free-Link-Guardian",
@@ -997,24 +1061,40 @@
    "title": "Threads fără cont",
    "section": "verificare",
    "tags": {
-    "ro": null,
-    "en": null,
-    "fr": null,
-    "it": null,
-    "es": null,
-    "pt": null,
-    "de": null,
-    "hu": null
+    "ro": [
+     "observare surse"
+    ],
+    "en": [
+     "source monitoring"
+    ],
+    "fr": [
+     "veille des sources"
+    ],
+    "it": [
+     "osservazione fonti"
+    ],
+    "es": [
+     "observación de fuentes"
+    ],
+    "pt": [
+     "observação de fontes"
+    ],
+    "de": [
+     "Quellenbeobachtung"
+    ],
+    "hu": [
+     "forrásfigyelés"
+    ]
    },
    "line": {
-    "ro": null,
-    "en": null,
-    "fr": null,
-    "it": null,
-    "es": null,
-    "pt": null,
-    "de": null,
-    "hu": null
+    "ro": "Citești postări publice Threads fără cont și le poți salva sub formă de text. Neoficială; Meta vede IP-ul tău și uneori e nevoie de un serviciu intermediar.",
+    "en": "Read public Threads posts without an account and save them as text. Unofficial; Meta sees your IP, and sometimes an intermediary service is needed.",
+    "fr": "Lisez des publications Threads publiques sans compte et enregistrez-les sous forme de texte. Non officielle ; Meta voit votre IP et un service intermédiaire est parfois nécessaire.",
+    "it": "Leggi i post pubblici di Threads senza account e puoi salvarli come testo. Non ufficiale; Meta vede il tuo IP e a volte serve un servizio intermedio.",
+    "es": "Lee publicaciones públicas de Threads sin cuenta y puedes guardarlas como texto. No oficial; Meta ve tu IP y a veces hace falta un servicio intermediario.",
+    "pt": "Lês publicações públicas do Threads sem conta e podes guardá-las em texto. Não oficial; a Meta vê o teu IP e por vezes é preciso um serviço intermediário.",
+    "de": "Lies öffentliche Threads-Beiträge ohne Konto und speichere sie als Text. Inoffiziell; Meta sieht deine IP-Adresse, und manchmal ist ein Zwischendienst nötig.",
+    "hu": "Nyilvános Threads-bejegyzéseket olvashat fiók nélkül, és szövegként elmentheti őket. Nem hivatalos; a Meta látja az IP-címét, és olykor köztes szolgáltatás is kell hozzá."
    },
    "url": "https://chiuta.github.io/Threads-fara-cont/",
    "readme": "https://github.com/chiuta/Threads-fara-cont",
@@ -1101,24 +1181,40 @@
    "title": "X fără cont",
    "section": "verificare",
    "tags": {
-    "ro": null,
-    "en": null,
-    "fr": null,
-    "it": null,
-    "es": null,
-    "pt": null,
-    "de": null,
-    "hu": null
+    "ro": [
+     "observare surse"
+    ],
+    "en": [
+     "source monitoring"
+    ],
+    "fr": [
+     "veille des sources"
+    ],
+    "it": [
+     "osservazione fonti"
+    ],
+    "es": [
+     "observación de fuentes"
+    ],
+    "pt": [
+     "observação de fontes"
+    ],
+    "de": [
+     "Quellenbeobachtung"
+    ],
+    "hu": [
+     "forrásfigyelés"
+    ]
    },
    "line": {
-    "ro": null,
-    "en": null,
-    "fr": null,
-    "it": null,
-    "es": null,
-    "pt": null,
-    "de": null,
-    "hu": null
+    "ro": "Ajungi la profilurile și postările publice de pe X fără cont, pe mai multe căi: link direct, arhivă, căutare sau Nitter. Nu citește conținutul; trimite linkul către archive.org.",
+    "en": "Reach public profiles and posts on X without an account, in several ways: direct link, archive, search or Nitter. It doesn't read the content; it sends the link to archive.org.",
+    "fr": "Accédez aux profils et publications publics de X sans compte, par plusieurs voies : lien direct, archive, recherche ou Nitter. Ne lit pas le contenu ; envoie le lien à archive.org.",
+    "it": "Raggiungi i profili e i post pubblici di X senza account, per più strade: link diretto, archivio, ricerca o Nitter. Non legge il contenuto; invia il link ad archive.org.",
+    "es": "Accede a perfiles y publicaciones públicas de X sin cuenta, por varias vías: enlace directo, archivo, búsqueda o Nitter. No lee el contenido; envía el enlace a archive.org.",
+    "pt": "Chegas aos perfis e publicações públicas do X sem conta, por vários caminhos: ligação direta, arquivo, pesquisa ou Nitter. Não lê o conteúdo; envia a ligação para o archive.org.",
+    "de": "Erreiche öffentliche Profile und Beiträge auf X ohne Konto, auf mehreren Wegen: direkter Link, Archiv, Suche oder Nitter. Liest den Inhalt nicht; sendet den Link an archive.org.",
+    "hu": "Fiók nélkül jut el az X nyilvános profiljaihoz és bejegyzéseihez többféle úton: közvetlen hivatkozás, archívum, keresés vagy Nitter. Nem olvassa a tartalmat; a hivatkozást az archive.org-nak küldi."
    },
    "url": "https://chiuta.github.io/X-fara-cont/",
    "readme": "https://github.com/chiuta/X-fara-cont",
@@ -1213,24 +1309,48 @@
    "title": "Proveniență",
    "section": "confidentialitate",
    "tags": {
-    "ro": null,
-    "en": null,
-    "fr": null,
-    "it": null,
-    "es": null,
-    "pt": null,
-    "de": null,
-    "hu": null
+    "ro": [
+     "C2PA",
+     "proveniență"
+    ],
+    "en": [
+     "C2PA",
+     "provenance"
+    ],
+    "fr": [
+     "C2PA",
+     "provenance"
+    ],
+    "it": [
+     "C2PA",
+     "provenienza"
+    ],
+    "es": [
+     "C2PA",
+     "procedencia"
+    ],
+    "pt": [
+     "C2PA",
+     "proveniência"
+    ],
+    "de": [
+     "C2PA",
+     "Herkunft"
+    ],
+    "hu": [
+     "C2PA",
+     "eredet"
+    ]
    },
    "line": {
-    "ro": null,
-    "en": null,
-    "fr": null,
-    "it": null,
-    "es": null,
-    "pt": null,
-    "de": null,
-    "hu": null
+    "ro": "Ai o imagine despre care vrei să știi cine a semnat-o și ce editări declară? Verifică semnătura digitală atașată. Experimental, testat doar pe fișiere de probă.",
+    "en": "Have an image and want to know who signed it and which edits it declares? Check the attached digital signature. Experimental, tested only on sample files.",
+    "fr": "Une image dont vous voulez savoir qui l'a signée et quelles modifications sont déclarées ? Vérifiez la signature numérique jointe. Expérimental, testé uniquement sur des fichiers d'essai.",
+    "it": "Hai un'immagine di cui vuoi sapere chi l'ha firmata e quali modifiche dichiara? Verifica la firma digitale allegata. Sperimentale, provato solo su file di prova.",
+    "es": "¿Tienes una imagen y quieres saber quién la firmó y qué ediciones declara? Comprueba la firma digital adjunta. Experimental, probado solo con archivos de prueba.",
+    "pt": "Tens uma imagem de que queres saber quem a assinou e que edições declara? Verifica a assinatura digital anexada. Experimental, testado apenas com ficheiros de teste.",
+    "de": "Du hast ein Bild und willst wissen, wer es signiert hat und welche Bearbeitungen angegeben sind? Prüfe die angehängte digitale Signatur. Experimentell, nur an Testdateien erprobt.",
+    "hu": "Van egy képe, és tudni szeretné, ki írta alá, és milyen szerkesztéseket jelentettek be? Ellenőrizze a csatolt digitális aláírást. Kísérleti, csak próbafájlokon tesztelve."
    },
    "url": "https://chiuta.github.io/Provenienta/",
    "readme": "https://github.com/chiuta/Provenienta",
@@ -1377,24 +1497,48 @@
    "title": "Clopoțel",
    "section": "educatie",
    "tags": {
-    "ro": null,
-    "en": null,
-    "fr": null,
-    "it": null,
-    "es": null,
-    "pt": null,
-    "de": null,
-    "hu": null
+    "ro": [
+     "evenimente",
+     "MIT"
+    ],
+    "en": [
+     "events",
+     "MIT"
+    ],
+    "fr": [
+     "événements",
+     "MIT"
+    ],
+    "it": [
+     "eventi",
+     "MIT"
+    ],
+    "es": [
+     "eventos",
+     "MIT"
+    ],
+    "pt": [
+     "eventos",
+     "MIT"
+    ],
+    "de": [
+     "Veranstaltungen",
+     "MIT"
+    ],
+    "hu": [
+     "rendezvények",
+     "MIT"
+    ]
    },
    "line": {
-    "ro": null,
-    "en": null,
-    "fr": null,
-    "it": null,
-    "es": null,
-    "pt": null,
-    "de": null,
-    "hu": null
+    "ro": "Ține conferința sau atelierul la timp: un cronometru pentru scenă cu agenda ta și un semnal care avertizează când se apropie sfârșitul. Română și engleză.",
+    "en": "Keep your conference or workshop on time: a stage timer with your agenda and a signal that warns when the end is near. Romanian and English.",
+    "fr": "Tenez votre conférence ou votre atelier dans les temps : un chronomètre de scène avec votre programme et un signal qui prévient quand la fin approche. Roumain et anglais.",
+    "it": "Tieni la conferenza o il laboratorio in orario: un timer da palco con la tua scaletta e un segnale che avvisa quando la fine si avvicina. Romeno e inglese.",
+    "es": "Mantén tu conferencia o taller en hora: un cronómetro de escenario con tu agenda y una señal que avisa cuando se acerca el final. En rumano e inglés.",
+    "pt": "Mantém a conferência ou o workshop a horas: um cronómetro de palco com a tua agenda e um sinal que avisa quando o fim se aproxima. Romeno e inglês.",
+    "de": "Halte Konferenz oder Workshop im Zeitplan: ein Bühnentimer mit deiner Agenda und einem Signal, das vor dem Ende warnt. Rumänisch und Englisch.",
+    "hu": "Tartsa az időt konferencián vagy műhelyen: színpadi időmérő a saját napirenddel és jelzéssel, amely a vég közeledtére figyelmeztet. Román és angol nyelven."
    },
    "url": "https://chiuta.github.io/Clopotel/",
    "readme": "https://github.com/chiuta/Clopotel",
@@ -1421,24 +1565,48 @@
    "title": "MONSTRARIUM",
    "section": "educatie",
    "tags": {
-    "ro": null,
-    "en": null,
-    "fr": null,
-    "it": null,
-    "es": null,
-    "pt": null,
-    "de": null,
-    "hu": null
+    "ro": [
+     "atelier",
+     "MIT"
+    ],
+    "en": [
+     "workshop",
+     "MIT"
+    ],
+    "fr": [
+     "atelier",
+     "MIT"
+    ],
+    "it": [
+     "laboratorio",
+     "MIT"
+    ],
+    "es": [
+     "taller",
+     "MIT"
+    ],
+    "pt": [
+     "oficina",
+     "MIT"
+    ],
+    "de": [
+     "Werkstatt",
+     "MIT"
+    ],
+    "hu": [
+     "műhely",
+     "MIT"
+    ]
    },
    "line": {
-    "ro": null,
-    "en": null,
-    "fr": null,
-    "it": null,
-    "es": null,
-    "pt": null,
-    "de": null,
-    "hu": null
+    "ro": "Organizezi un atelier de monștri din materiale reciclate: aplicația calculează materialele și seriile și oferă 50 de monștri cu sunete, 3D și un joc educativ.",
+    "en": "Plan a workshop making monsters from recycled materials: the app works out materials and sessions and offers 50 monsters with sounds, 3D and an educational game.",
+    "fr": "Organisez un atelier de monstres en matériaux recyclés : l'application calcule les matériaux et les séries, et propose 50 monstres avec sons, 3D et un jeu éducatif.",
+    "it": "Organizzi un laboratorio di mostri con materiali riciclati: l'app calcola i materiali e i turni e propone 50 mostri con suoni, 3D e un gioco educativo.",
+    "es": "Organiza un taller de monstruos con materiales reciclados: la aplicación calcula los materiales y las tandas, y ofrece 50 monstruos con sonidos, 3D y un juego educativo.",
+    "pt": "Organizas uma oficina de monstros com materiais reciclados: a aplicação calcula os materiais e as turmas e oferece 50 monstros com sons, 3D e um jogo educativo.",
+    "de": "Plane einen Monster-Workshop aus Recyclingmaterial: Die App berechnet Material und Durchgänge und bietet 50 Monster mit Klängen, 3D und ein Lernspiel.",
+    "hu": "Szervezzen szörnyműhelyt újrahasznosított anyagokból: az alkalmazás kiszámolja az anyagokat és a turnusokat, és 50 szörnyet kínál hangokkal, 3D-vel és oktatójátékkal."
    },
    "url": "https://chiuta.github.io/Monstrarium/",
    "readme": "https://github.com/chiuta/Monstrarium",
@@ -2241,24 +2409,40 @@
    "title": "Nota Zero",
    "section": "literatura",
    "tags": {
-    "ro": null,
-    "en": null,
-    "fr": null,
-    "it": null,
-    "es": null,
-    "pt": null,
-    "de": null,
-    "hu": null
+    "ro": [
+     "literatură"
+    ],
+    "en": [
+     "literature"
+    ],
+    "fr": [
+     "littérature"
+    ],
+    "it": [
+     "letteratura"
+    ],
+    "es": [
+     "literatura"
+    ],
+    "pt": [
+     "literatura"
+    ],
+    "de": [
+     "Literatur"
+    ],
+    "hu": [
+     "irodalom"
+    ]
    },
    "line": {
-    "ro": null,
-    "en": null,
-    "fr": null,
-    "it": null,
-    "es": null,
-    "pt": null,
-    "de": null,
-    "hu": null
+    "ro": "O povestire de ficțiune speculativă despre teoria corzilor, în română, engleză și franceză, cu note care explică ideile științifice. Este ficțiune, nu sursă academică.",
+    "en": "A speculative fiction story about string theory, in Romanian, English and French, with notes explaining the scientific ideas. It is fiction, not an academic source.",
+    "fr": "Une nouvelle de fiction spéculative sur la théorie des cordes, en roumain, anglais et français, avec des notes qui expliquent les idées scientifiques. C'est de la fiction, pas une source académique.",
+    "it": "Un racconto di narrativa speculativa sulla teoria delle stringhe, in romeno, inglese e francese, con note che spiegano le idee scientifiche. È narrativa, non una fonte accademica.",
+    "es": "Un relato de ficción especulativa sobre la teoría de cuerdas, en rumano, inglés y francés, con notas que explican las ideas científicas. Es ficción, no una fuente académica.",
+    "pt": "Um conto de ficção especulativa sobre a teoria das cordas, em romeno, inglês e francês, com notas que explicam as ideias científicas. É ficção, não fonte académica.",
+    "de": "Eine spekulative Erzählung über die Stringtheorie, auf Rumänisch, Englisch und Französisch, mit Anmerkungen, die die wissenschaftlichen Ideen erklären. Fiktion, keine akademische Quelle.",
+    "hu": "Spekulatív fikciós elbeszélés a húrelméletről románul, angolul és franciául, a tudományos gondolatokat magyarázó jegyzetekkel. Fikció, nem tudományos forrás."
    },
    "url": "https://chiuta.github.io/Nota-Zero/",
    "readme": "https://github.com/chiuta/Nota-Zero",
@@ -2345,24 +2529,40 @@
    "title": "Printre inteligențe",
    "section": "literatura",
    "tags": {
-    "ro": null,
-    "en": null,
-    "fr": null,
-    "it": null,
-    "es": null,
-    "pt": null,
-    "de": null,
-    "hu": null
+    "ro": [
+     "literatură"
+    ],
+    "en": [
+     "literature"
+    ],
+    "fr": [
+     "littérature"
+    ],
+    "it": [
+     "letteratura"
+    ],
+    "es": [
+     "literatura"
+    ],
+    "pt": [
+     "literatura"
+    ],
+    "de": [
+     "Literatur"
+    ],
+    "hu": [
+     "irodalom"
+    ]
    },
    "line": {
-    "ro": null,
-    "en": null,
-    "fr": null,
-    "it": null,
-    "es": null,
-    "pt": null,
-    "de": null,
-    "hu": null
+    "ro": "Intră într-un roman SF interactiv, cu personaje inspirate de echipajul Artemis 2. Recenziile sunt fictive; traducerea, vocea și funcțiile AI folosesc servicii externe.",
+    "en": "Step into an interactive sci-fi novel, with characters inspired by the Artemis 2 crew. The reviews are fictional; translation, voice and AI features use external services.",
+    "fr": "Entrez dans un roman de science-fiction interactif, avec des personnages inspirés de l'équipage d'Artemis 2. Les critiques sont fictives ; la traduction, la voix et les fonctions d'IA utilisent des services externes.",
+    "it": "Entra in un romanzo di fantascienza interattivo, con personaggi ispirati all'equipaggio di Artemis 2. Le recensioni sono fittizie; traduzione, voce e funzioni AI usano servizi esterni.",
+    "es": "Entra en una novela de ciencia ficción interactiva, con personajes inspirados en la tripulación de Artemis 2. Las reseñas son ficticias; la traducción, la voz y las funciones de IA usan servicios externos.",
+    "pt": "Entra num romance de FC interativo, com personagens inspiradas na tripulação da Artemis 2. As críticas são fictícias; a tradução, a voz e as funções de IA usam serviços externos.",
+    "de": "Tritt ein in einen interaktiven Science-Fiction-Roman mit Figuren, die von der Crew von Artemis 2 inspiriert sind. Die Rezensionen sind fiktiv; Übersetzung, Stimme und KI-Funktionen nutzen externe Dienste.",
+    "hu": "Lépjen be egy interaktív sci-fi regénybe, az Artemis 2 legénysége által ihletett szereplőkkel. A recenziók kitaláltak; a fordítás, a hang és az MI-funkciók külső szolgáltatásokat használnak."
    },
    "url": "https://chiuta.github.io/PrintreInteligente/",
    "readme": "https://github.com/chiuta/PrintreInteligente",
@@ -2389,24 +2589,40 @@
    "title": "ZICALA",
    "section": "literatura",
    "tags": {
-    "ro": null,
-    "en": null,
-    "fr": null,
-    "it": null,
-    "es": null,
-    "pt": null,
-    "de": null,
-    "hu": null
+    "ro": [
+     "cultură"
+    ],
+    "en": [
+     "culture"
+    ],
+    "fr": [
+     "culture"
+    ],
+    "it": [
+     "cultura"
+    ],
+    "es": [
+     "cultura"
+    ],
+    "pt": [
+     "cultura"
+    ],
+    "de": [
+     "Kultur"
+    ],
+    "hu": [
+     "kultúra"
+    ]
    },
    "line": {
-    "ro": null,
-    "en": null,
-    "fr": null,
-    "it": null,
-    "es": null,
-    "pt": null,
-    "de": null,
-    "hu": null
+    "ro": "Câte un proverb românesc în fiecare zi, dintr-o colecție de 550. Poți căuta și salva favorite; comentariile au fost scrise cu ajutor AI.",
+    "en": "A Romanian proverb every day, from a collection of 550. You can search and save favorites; the comments were written with AI help.",
+    "fr": "Un proverbe roumain par jour, tiré d'une collection de 550. Vous pouvez chercher et enregistrer vos favoris ; les commentaires ont été rédigés avec l'aide de l'IA.",
+    "it": "Un proverbio romeno al giorno, da una raccolta di 550. Puoi cercare e salvare i preferiti; i commenti sono stati scritti con l'aiuto dell'AI.",
+    "es": "Un proverbio rumano cada día, de una colección de 550. Puedes buscar y guardar favoritos; los comentarios se escribieron con ayuda de IA.",
+    "pt": "Um provérbio romeno por dia, de uma coleção de 550. Podes pesquisar e guardar favoritos; os comentários foram escritos com ajuda de IA.",
+    "de": "Jeden Tag ein rumänisches Sprichwort aus einer Sammlung von 550. Du kannst suchen und Favoriten speichern; die Kommentare entstanden mit KI-Hilfe.",
+    "hu": "Naponta egy román közmondás egy 550 elemű gyűjteményből. Kereshet és kedvenceket menthet; a megjegyzések MI segítségével készültek."
    },
    "url": "https://chiuta.github.io/Zicala/",
    "readme": "https://github.com/chiuta/Zicala",
@@ -2569,24 +2785,48 @@
    "title": "Cupa Mondială 2026",
    "section": "stiinta",
    "tags": {
-    "ro": null,
-    "en": null,
-    "fr": null,
-    "it": null,
-    "es": null,
-    "pt": null,
-    "de": null,
-    "hu": null
+    "ro": [
+     "simulare",
+     "neoficial"
+    ],
+    "en": [
+     "simulation",
+     "unofficial"
+    ],
+    "fr": [
+     "simulation",
+     "non officiel"
+    ],
+    "it": [
+     "simulazione",
+     "non ufficiale"
+    ],
+    "es": [
+     "simulación",
+     "no oficial"
+    ],
+    "pt": [
+     "simulação",
+     "não oficial"
+    ],
+    "de": [
+     "Simulation",
+     "inoffiziell"
+    ],
+    "hu": [
+     "szimuláció",
+     "nem hivatalos"
+    ]
    },
    "line": {
-    "ro": null,
-    "en": null,
-    "fr": null,
-    "it": null,
-    "es": null,
-    "pt": null,
-    "de": null,
-    "hu": null
+    "ro": "Joacă-te de-a Cupa Mondială 2026 și vezi cum se desfășoară un turneu imaginar. Rezultatele sunt la întâmplare, nu pronosticuri; neoficial.",
+    "en": "Play at the 2026 World Cup and watch an imaginary tournament unfold. Results are random, not predictions; unofficial.",
+    "fr": "Jouez à la Coupe du monde 2026 et voyez comment se déroule un tournoi imaginaire. Les résultats sont aléatoires, pas des pronostics ; non officiel.",
+    "it": "Gioca ai Mondiali 2026 e guarda come si svolge un torneo immaginario. I risultati sono casuali, non pronostici; non ufficiale.",
+    "es": "Juega al Mundial 2026 y mira cómo se desarrolla un torneo imaginario. Los resultados son aleatorios, no pronósticos; no oficial.",
+    "pt": "Brinca ao Mundial de 2026 e vê como decorre um torneio imaginário. Os resultados são aleatórios, não prognósticos; não oficial.",
+    "de": "Spiel Weltmeisterschaft 2026 und sieh, wie ein erfundenes Turnier abläuft. Die Ergebnisse sind zufällig, keine Prognosen; inoffiziell.",
+    "hu": "Játsszon a 2026-os világbajnoksággal, és nézze meg, hogyan zajlik egy képzeletbeli torna. Az eredmények véletlenszerűek, nem előrejelzések; nem hivatalos."
    },
    "url": "https://chiuta.github.io/Cupa-Mondiala-2026/",
    "readme": "https://github.com/chiuta/Cupa-Mondiala-2026",
@@ -2613,24 +2853,40 @@
    "title": "Eclipsa din 2 august 2027",
    "section": "stiinta",
    "tags": {
-    "ro": null,
-    "en": null,
-    "fr": null,
-    "it": null,
-    "es": null,
-    "pt": null,
-    "de": null,
-    "hu": null
+    "ro": [
+     "astronomie"
+    ],
+    "en": [
+     "astronomy"
+    ],
+    "fr": [
+     "astronomie"
+    ],
+    "it": [
+     "astronomia"
+    ],
+    "es": [
+     "astronomía"
+    ],
+    "pt": [
+     "astronomia"
+    ],
+    "de": [
+     "Astronomie"
+    ],
+    "hu": [
+     "csillagászat"
+    ]
    },
    "line": {
-    "ro": null,
-    "en": null,
-    "fr": null,
-    "it": null,
-    "es": null,
-    "pt": null,
-    "de": null,
-    "hu": null
+    "ro": "Vezi pe hartă unde și cât durează eclipsa totală de Soare din 2 august 2027, cu orașe și căutare de loc, fără internet. Valori orientative; nu privi Soarele fără filtre.",
+    "en": "See on a map where and for how long the total solar eclipse of 2 August 2027 lasts, with cities and place search, without internet. Approximate values; don't look at the Sun without filters.",
+    "fr": "Voyez sur la carte où l'éclipse totale de Soleil du 2 août 2027 passera et combien de temps elle durera, avec villes et recherche de lieu, sans internet. Valeurs indicatives ; ne regardez pas le Soleil sans filtre.",
+    "it": "Vedi sulla mappa dove e quanto dura l'eclissi totale di Sole del 2 agosto 2027, con città e ricerca di un luogo, senza internet. Valori indicativi; non guardare il Sole senza filtri.",
+    "es": "Mira en el mapa dónde y cuánto dura el eclipse total de Sol del 2 de agosto de 2027, con ciudades y búsqueda de lugares, sin internet. Valores orientativos; no mires al Sol sin filtros.",
+    "pt": "Vê no mapa onde e quanto dura o eclipse total do Sol de 2 de agosto de 2027, com cidades e pesquisa de local, sem internet. Valores indicativos; não olhes para o Sol sem filtros.",
+    "de": "Sieh auf der Karte, wo und wie lange die totale Sonnenfinsternis vom 2. August 2027 dauert, mit Städten und Ortssuche, ohne Internet. Richtwerte; schau nie ohne Filter in die Sonne.",
+    "hu": "Térképen látható, hol és mennyi ideig tart a 2027. augusztus 2-i teljes napfogyatkozás, városokkal és helykereséssel, internet nélkül. Tájékoztató értékek; szűrő nélkül ne nézzen a Napba."
    },
    "url": "https://chiuta.github.io/Eclipsa-2027/",
    "readme": "https://github.com/chiuta/Eclipsa-2027",
@@ -2657,24 +2913,40 @@
    "title": "Horizons",
    "section": "stiinta",
    "tags": {
-    "ro": null,
-    "en": null,
-    "fr": null,
-    "it": null,
-    "es": null,
-    "pt": null,
-    "de": null,
-    "hu": null
+    "ro": [
+     "cosmologie"
+    ],
+    "en": [
+     "cosmology"
+    ],
+    "fr": [
+     "cosmologie"
+    ],
+    "it": [
+     "cosmologia"
+    ],
+    "es": [
+     "cosmología"
+    ],
+    "pt": [
+     "cosmologia"
+    ],
+    "de": [
+     "Kosmologie"
+    ],
+    "hu": [
+     "kozmológia"
+    ]
    },
    "line": {
-    "ro": null,
-    "en": null,
-    "fr": null,
-    "it": null,
-    "es": null,
-    "pt": null,
-    "de": null,
-    "hu": null
+    "ro": "Parcurge istoria universului de la Big Bang până la final, în 91 de repere. Viitorul e speculație științifică, nu predicție sigură.",
+    "en": "Travel through the history of the universe from the Big Bang to the end, in 91 milestones. The future is scientific speculation, not a certain prediction.",
+    "fr": "Parcourez l'histoire de l'univers du Big Bang à sa fin, en 91 repères. L'avenir relève de la spéculation scientifique, pas d'une prédiction sûre.",
+    "it": "Percorri la storia dell'universo dal Big Bang alla fine, in 91 tappe. Il futuro è speculazione scientifica, non una previsione sicura.",
+    "es": "Recorre la historia del universo desde el Big Bang hasta el final, en 91 hitos. El futuro es especulación científica, no una predicción segura.",
+    "pt": "Percorre a história do universo desde o Big Bang até ao fim, em 91 marcos. O futuro é especulação científica, não uma previsão segura.",
+    "de": "Geh durch die Geschichte des Universums vom Urknall bis zum Ende, in 91 Stationen. Die Zukunft ist wissenschaftliche Spekulation, keine sichere Vorhersage.",
+    "hu": "Járja végig az univerzum történetét az Ősrobbanástól a végéig, 91 mérföldkövön át. A jövő tudományos spekuláció, nem biztos előrejelzés."
    },
    "url": "https://chiuta.github.io/Horizons.BeyondLimits/",
    "readme": "https://github.com/chiuta/Horizons.BeyondLimits",
@@ -2889,24 +3161,48 @@
    "title": "ORARIUM",
    "section": "stiinta",
    "tags": {
-    "ro": null,
-    "en": null,
-    "fr": null,
-    "it": null,
-    "es": null,
-    "pt": null,
-    "de": null,
-    "hu": null
+    "ro": [
+     "astronomie",
+     "timp"
+    ],
+    "en": [
+     "astronomy",
+     "time"
+    ],
+    "fr": [
+     "astronomie",
+     "temps"
+    ],
+    "it": [
+     "astronomia",
+     "tempo"
+    ],
+    "es": [
+     "astronomía",
+     "tiempo"
+    ],
+    "pt": [
+     "astronomia",
+     "tempo"
+    ],
+    "de": [
+     "Astronomie",
+     "Zeit"
+    ],
+    "hu": [
+     "csillagászat",
+     "idő"
+    ]
    },
    "line": {
-    "ro": null,
-    "en": null,
-    "fr": null,
-    "it": null,
-    "es": null,
-    "pt": null,
-    "de": null,
-    "hu": null
+    "ro": "Cât e ceasul acum pe Marte, pe Lună sau pe un asteroid? Vezi ora locală în direct pe 45 de corpuri cerești. Model orientativ, fără internet; nu e pentru navigație.",
+    "en": "What time is it now on Mars, on the Moon or on an asteroid? See live local time on 45 celestial bodies. Approximate model, no internet needed; not for navigation.",
+    "fr": "Quelle heure est-il sur Mars, sur la Lune ou sur un astéroïde ? Voyez l'heure locale en direct sur 45 corps célestes. Modèle indicatif, sans internet ; pas pour la navigation.",
+    "it": "Che ora è adesso su Marte, sulla Luna o su un asteroide? Vedi l'ora locale in diretta su 45 corpi celesti. Modello indicativo, senza internet; non per la navigazione.",
+    "es": "¿Qué hora es ahora en Marte, en la Luna o en un asteroide? Consulta la hora local en directo en 45 cuerpos celestes. Modelo orientativo, sin internet; no sirve para navegación.",
+    "pt": "Que horas são agora em Marte, na Lua ou num asteroide? Vê a hora local em direto em 45 corpos celestes. Modelo indicativo, sem internet; não serve para navegação.",
+    "de": "Wie spät ist es gerade auf dem Mars, auf dem Mond oder auf einem Asteroiden? Sieh die Ortszeit live auf 45 Himmelskörpern. Richtwert-Modell, ohne Internet; nicht zur Navigation.",
+    "hu": "Hány óra van most a Marson, a Holdon vagy egy aszteroidán? Élő helyi idő 45 égitesten. Tájékoztató modell, internet nélkül; nem navigációra való."
    },
    "url": "https://chiuta.github.io/orarium/",
    "readme": "https://github.com/chiuta/orarium",
@@ -2993,24 +3289,56 @@
    "title": "Universul Observabil",
    "section": "stiinta",
    "tags": {
-    "ro": null,
-    "en": null,
-    "fr": null,
-    "it": null,
-    "es": null,
-    "pt": null,
-    "de": null,
-    "hu": null
+    "ro": [
+     "astronomie",
+     "cosmologie",
+     "vizualizare"
+    ],
+    "en": [
+     "astronomy",
+     "cosmology",
+     "visualization"
+    ],
+    "fr": [
+     "astronomie",
+     "cosmologie",
+     "visualisation"
+    ],
+    "it": [
+     "astronomia",
+     "cosmologia",
+     "visualizzazione"
+    ],
+    "es": [
+     "astronomía",
+     "cosmología",
+     "visualización"
+    ],
+    "pt": [
+     "astronomia",
+     "cosmologia",
+     "visualização"
+    ],
+    "de": [
+     "Astronomie",
+     "Kosmologie",
+     "Visualisierung"
+    ],
+    "hu": [
+     "csillagászat",
+     "kozmológia",
+     "vizualizáció"
+    ]
    },
    "line": {
-    "ro": null,
-    "en": null,
-    "fr": null,
-    "it": null,
-    "es": null,
-    "pt": null,
-    "de": null,
-    "hu": null
+    "ro": "Cât de mare e Universul pe care îl putem vedea? Compară trei hărți (liniară, plană, în spațiu) și fă calcule cosmologice. Cifrele nu sunt verificate independent.",
+    "en": "How big is the Universe we can see? Compare three maps (linear, flat, in space) and do cosmological calculations. The figures are not independently verified.",
+    "fr": "Quelle est la taille de l'Univers que nous pouvons voir ? Comparez trois cartes (linéaire, plane, en espace) et faites des calculs cosmologiques. Les chiffres ne sont pas vérifiés de façon indépendante.",
+    "it": "Quanto è grande l'Universo che possiamo vedere? Confronta tre mappe (lineare, piana, nello spazio) e fai calcoli cosmologici. Le cifre non sono verificate in modo indipendente.",
+    "es": "¿Qué tamaño tiene el Universo que podemos ver? Compara tres mapas (lineal, plano, en el espacio) y haz cálculos cosmológicos. Las cifras no están verificadas de forma independiente.",
+    "pt": "Que dimensão tem o Universo que podemos ver? Compara três mapas (linear, plano, no espaço) e faz cálculos cosmológicos. Os números não estão verificados de forma independente.",
+    "de": "Wie groß ist das Universum, das wir sehen können? Vergleiche drei Karten (linear, flach, räumlich) und mach kosmologische Berechnungen. Die Zahlen sind nicht unabhängig überprüft.",
+    "hu": "Mekkora a látható Univerzum? Hasonlítson össze három térképet (lineáris, síkbeli, térbeli), és végezzen kozmológiai számításokat. A számokat nem ellenőrizték függetlenül."
    },
    "url": "https://chiuta.github.io/Universul-Observabil/",
    "readme": "https://github.com/chiuta/Universul-Observabil",
@@ -3037,24 +3365,56 @@
    "title": "Universul Observabil 1D",
    "section": "stiinta",
    "tags": {
-    "ro": null,
-    "en": null,
-    "fr": null,
-    "it": null,
-    "es": null,
-    "pt": null,
-    "de": null,
-    "hu": null
+    "ro": [
+     "astronomie",
+     "cosmologie",
+     "vizualizare"
+    ],
+    "en": [
+     "astronomy",
+     "cosmology",
+     "visualization"
+    ],
+    "fr": [
+     "astronomie",
+     "cosmologie",
+     "visualisation"
+    ],
+    "it": [
+     "astronomia",
+     "cosmologia",
+     "visualizzazione"
+    ],
+    "es": [
+     "astronomía",
+     "cosmología",
+     "visualización"
+    ],
+    "pt": [
+     "astronomia",
+     "cosmologia",
+     "visualização"
+    ],
+    "de": [
+     "Astronomie",
+     "Kosmologie",
+     "Visualisierung"
+    ],
+    "hu": [
+     "csillagászat",
+     "kozmológia",
+     "vizualizáció"
+    ]
    },
    "line": {
-    "ro": null,
-    "en": null,
-    "fr": null,
-    "it": null,
-    "es": null,
-    "pt": null,
-    "de": null,
-    "hu": null
+    "ro": "Pornește de la noi și mergi spre marginea Universului vizibil, trecând pe lângă 112 galaxii așezate pe o singură axă. Ton ironic, valori rotunjite, scop educativ.",
+    "en": "Start from us and travel toward the edge of the visible Universe, passing 112 galaxies placed on a single axis. Ironic tone, rounded values, educational purpose.",
+    "fr": "Partez de chez nous et allez vers le bord de l'Univers visible, en passant près de 112 galaxies alignées sur un seul axe. Ton ironique, valeurs arrondies, but éducatif.",
+    "it": "Parti da noi e vai verso il margine dell'Universo visibile, passando accanto a 112 galassie disposte su un solo asse. Tono ironico, valori arrotondati, scopo educativo.",
+    "es": "Parte de nosotros y avanza hacia el borde del Universo visible, pasando junto a 112 galaxias dispuestas sobre un solo eje. Tono irónico, valores redondeados, fin educativo.",
+    "pt": "Parte de nós e vai até à margem do Universo visível, passando por 112 galáxias dispostas num único eixo. Tom irónico, valores arredondados, fim educativo.",
+    "de": "Starte bei uns und geh bis zum Rand des sichtbaren Universums, vorbei an 112 Galaxien auf einer einzigen Achse. Ironischer Ton, gerundete Werte, Bildungszweck.",
+    "hu": "Induljon el tőlünk a látható Univerzum pereme felé, 112 galaxis mellett elhaladva egyetlen tengelyen. Ironikus hangvétel, kerekített értékek, oktatási cél."
    },
    "url": "https://chiuta.github.io/Universul-Observabil-1D/",
    "readme": "https://github.com/chiuta/Universul-Observabil-1D",
@@ -3081,24 +3441,56 @@
    "title": "Universul Observabil 2D",
    "section": "stiinta",
    "tags": {
-    "ro": null,
-    "en": null,
-    "fr": null,
-    "it": null,
-    "es": null,
-    "pt": null,
-    "de": null,
-    "hu": null
+    "ro": [
+     "astronomie",
+     "satiră",
+     "cosmologie"
+    ],
+    "en": [
+     "astronomy",
+     "satire",
+     "cosmology"
+    ],
+    "fr": [
+     "astronomie",
+     "satire",
+     "cosmologie"
+    ],
+    "it": [
+     "astronomia",
+     "satira",
+     "cosmologia"
+    ],
+    "es": [
+     "astronomía",
+     "sátira",
+     "cosmología"
+    ],
+    "pt": [
+     "astronomia",
+     "sátira",
+     "cosmologia"
+    ],
+    "de": [
+     "Astronomie",
+     "Satire",
+     "Kosmologie"
+    ],
+    "hu": [
+     "csillagászat",
+     "szatíra",
+     "kozmológia"
+    ]
    },
    "line": {
-    "ro": null,
-    "en": null,
-    "fr": null,
-    "it": null,
-    "es": null,
-    "pt": null,
-    "de": null,
-    "hu": null
+    "ro": "O hartă a galaxiilor, în varianta satirică „Pământ Plat”: o glumă, Pământul nu este plat. Zoomezi printre 111 galaxii; distanțele sunt aproximative. Offline.",
+    "en": "A map of galaxies in the satirical \"Flat Earth\" edition: a joke, the Earth is not flat. Zoom among 111 galaxies; distances are approximate. Offline.",
+    "fr": "Une carte des galaxies, dans la version satirique « Terre plate » : une blague, la Terre n'est pas plate. Zoomez parmi 111 galaxies ; les distances sont approximatives. Hors ligne.",
+    "it": "Una mappa delle galassie, nella versione satirica «Terra Piatta»: uno scherzo, la Terra non è piatta. Fai zoom tra 111 galassie; le distanze sono approssimative. Offline.",
+    "es": "Un mapa de galaxias en la versión satírica «Tierra Plana»: es una broma, la Tierra no es plana. Haces zoom entre 111 galaxias; las distancias son aproximadas. Sin conexión.",
+    "pt": "Um mapa de galáxias na versão satírica «Terra Plana»: uma piada, a Terra não é plana. Fazes zoom entre 111 galáxias; as distâncias são aproximadas. Offline.",
+    "de": "Eine Karte der Galaxien in der satirischen Variante „Flache Erde“: ein Scherz, die Erde ist nicht flach. Zoome durch 111 Galaxien; die Entfernungen sind ungefähr. Offline.",
+    "hu": "Galaxistérkép a szatirikus „Lapos Föld” változatban: vicc, a Föld nem lapos. Nagyíthat 111 galaxis között; a távolságok hozzávetőlegesek. Offline."
    },
    "url": "https://chiuta.github.io/Universul-Observabil-2D/",
    "readme": "https://github.com/chiuta/Universul-Observabil-2D",
@@ -3125,24 +3517,56 @@
    "title": "Universul Observabil 3D",
    "section": "stiinta",
    "tags": {
-    "ro": null,
-    "en": null,
-    "fr": null,
-    "it": null,
-    "es": null,
-    "pt": null,
-    "de": null,
-    "hu": null
+    "ro": [
+     "astronomie",
+     "cosmologie",
+     "3D"
+    ],
+    "en": [
+     "astronomy",
+     "cosmology",
+     "3D"
+    ],
+    "fr": [
+     "astronomie",
+     "cosmologie",
+     "3D"
+    ],
+    "it": [
+     "astronomia",
+     "cosmologia",
+     "3D"
+    ],
+    "es": [
+     "astronomía",
+     "cosmología",
+     "3D"
+    ],
+    "pt": [
+     "astronomia",
+     "cosmologia",
+     "3D"
+    ],
+    "de": [
+     "Astronomie",
+     "Kosmologie",
+     "3D"
+    ],
+    "hu": [
+     "csillagászat",
+     "kozmológia",
+     "3D"
+    ]
    },
    "line": {
-    "ro": null,
-    "en": null,
-    "fr": null,
-    "it": null,
-    "es": null,
-    "pt": null,
-    "de": null,
-    "hu": null
+    "ro": "Zboară printre peste 115 galaxii într-o hartă 3D, cu tururi ghidate și provocări. Valorile sunt aproximative.",
+    "en": "Fly among over 115 galaxies on a 3D map, with guided tours and challenges. Values are approximate.",
+    "fr": "Volez parmi plus de 115 galaxies sur une carte 3D, avec visites guidées et défis. Les valeurs sont approximatives.",
+    "it": "Vola tra oltre 115 galassie in una mappa 3D, con tour guidati e sfide. I valori sono approssimativi.",
+    "es": "Vuela entre más de 115 galaxias en un mapa 3D, con recorridos guiados y desafíos. Los valores son aproximados.",
+    "pt": "Voa entre mais de 115 galáxias num mapa 3D, com visitas guiadas e desafios. Os valores são aproximados.",
+    "de": "Flieg in einer 3D-Karte durch über 115 Galaxien, mit geführten Touren und Herausforderungen. Die Werte sind ungefähr.",
+    "hu": "Repüljön több mint 115 galaxis között egy 3D-s térképen, vezetett túrákkal és kihívásokkal. Az értékek hozzávetőlegesek."
    },
    "url": "https://chiuta.github.io/Universul-Observabil-3D/",
    "readme": "https://github.com/chiuta/Universul-Observabil-3D",
@@ -3229,24 +3653,40 @@
    "title": "Exploratorii Eco",
    "section": "teren",
    "tags": {
-    "ro": null,
-    "en": null,
-    "fr": null,
-    "it": null,
-    "es": null,
-    "pt": null,
-    "de": null,
-    "hu": null
+    "ro": [
+     "natură"
+    ],
+    "en": [
+     "nature"
+    ],
+    "fr": [
+     "nature"
+    ],
+    "it": [
+     "natura"
+    ],
+    "es": [
+     "naturaleza"
+    ],
+    "pt": [
+     "natureza"
+    ],
+    "de": [
+     "Natur"
+    ],
+    "hu": [
+     "természet"
+    ]
    },
    "line": {
-    "ro": null,
-    "en": null,
-    "fr": null,
-    "it": null,
-    "es": null,
-    "pt": null,
-    "de": null,
-    "hu": null
+    "ro": "Un ghid de teren pentru iubitorii de natură: de la clasificarea viețuitoarelor și urmele lor până la biomurile României, jurnal, etică și urgențe.",
+    "en": "A field guide for nature lovers: from the classification of living things and their traces to Romania's biomes, a logbook, ethics and emergencies.",
+    "fr": "Un guide de terrain pour les amoureux de la nature : de la classification des êtres vivants et de leurs traces aux biomes de Roumanie, avec journal, éthique et urgences.",
+    "it": "Una guida da campo per chi ama la natura: dalla classificazione dei viventi e delle loro tracce ai biomi della Romania, con diario, etica e emergenze.",
+    "es": "Una guía de campo para amantes de la naturaleza: de la clasificación de los seres vivos y sus huellas a los biomas de Rumanía, con diario, ética y urgencias.",
+    "pt": "Um guia de campo para amantes da natureza: da classificação dos seres vivos e dos seus rastos aos biomas da Roménia, diário, ética e emergências.",
+    "de": "Ein Feldführer für Naturfreunde: von der Einteilung der Lebewesen und ihren Spuren bis zu den Biomen Rumäniens, mit Logbuch, Ethik und Notfällen.",
+    "hu": "Terepi útmutató természetbarátoknak: az élőlények osztályozásától és nyomaitól Románia biomjaiig, naplóval, etikával és vészhelyzeti tudnivalókkal."
    },
    "url": "https://chiuta.github.io/ExploratoriiEco/",
    "readme": "https://github.com/chiuta/ExploratoriiEco",
@@ -3273,24 +3713,40 @@
    "title": "Field Observer",
    "section": "teren",
    "tags": {
-    "ro": null,
-    "en": null,
-    "fr": null,
-    "it": null,
-    "es": null,
-    "pt": null,
-    "de": null,
-    "hu": null
+    "ro": [
+     "teren"
+    ],
+    "en": [
+     "fieldwork"
+    ],
+    "fr": [
+     "terrain"
+    ],
+    "it": [
+     "sul campo"
+    ],
+    "es": [
+     "campo"
+    ],
+    "pt": [
+     "terreno"
+    ],
+    "de": [
+     "Feldarbeit"
+    ],
+    "hu": [
+     "terepmunka"
+    ]
    },
    "line": {
-    "ro": null,
-    "en": null,
-    "fr": null,
-    "it": null,
-    "es": null,
-    "pt": null,
-    "de": null,
-    "hu": null
+    "ro": "Notează-ți observațiile din teren, iar telefonul adaugă singur măsurători de la senzorii lui. Păstrezi o arhivă a ieșirilor.",
+    "en": "Note down your field observations, and the phone automatically adds readings from its sensors. You keep an archive of your outings.",
+    "fr": "Notez vos observations de terrain ; le téléphone ajoute tout seul des mesures de ses capteurs. Vous gardez une archive de vos sorties.",
+    "it": "Annota le tue osservazioni sul campo e il telefono aggiunge da solo le misure dei suoi sensori. Conservi un archivio delle uscite.",
+    "es": "Anota tus observaciones de campo y el teléfono añade por sí solo mediciones de sus sensores. Conservas un archivo de tus salidas.",
+    "pt": "Anota as tuas observações no terreno, e o telemóvel junta sozinho medições dos seus sensores. Manténs um arquivo das saídas.",
+    "de": "Notiere deine Beobachtungen im Gelände, und das Handy ergänzt selbst Messwerte seiner Sensoren. Du führst ein Archiv deiner Ausflüge.",
+    "hu": "Jegyezze fel terepi megfigyeléseit, a telefon pedig magától hozzáadja az érzékelői méréseit. A kimenetek archívuma megmarad."
    },
    "url": "https://chiuta.github.io/FieldObserver/",
    "readme": "https://github.com/chiuta/FieldObserver",
@@ -3573,24 +4029,40 @@
    "title": "Borderless Melodies",
    "section": "sunet",
    "tags": {
-    "ro": null,
-    "en": null,
-    "fr": null,
-    "it": null,
-    "es": null,
-    "pt": null,
-    "de": null,
-    "hu": null
+    "ro": [
+     "muzică"
+    ],
+    "en": [
+     "music"
+    ],
+    "fr": [
+     "musique"
+    ],
+    "it": [
+     "musica"
+    ],
+    "es": [
+     "música"
+    ],
+    "pt": [
+     "música"
+    ],
+    "de": [
+     "Musik"
+    ],
+    "hu": [
+     "zene"
+    ]
    },
    "line": {
-    "ro": null,
-    "en": null,
-    "fr": null,
-    "it": null,
-    "es": null,
-    "pt": null,
-    "de": null,
-    "hu": null
+    "ro": "Ascultă muzică ce se compune singură, direct în browser. O poți exporta ca sunet și ai un temporizator pentru somn.",
+    "en": "Listen to music that composes itself, right in the browser. You can export it as audio, and there's a sleep timer.",
+    "fr": "Écoutez une musique qui se compose toute seule, directement dans le navigateur. Vous pouvez l'exporter en audio, et un minuteur de sommeil est prévu.",
+    "it": "Ascolta musica che si compone da sola, direttamente nel browser. Puoi esportarla come audio e c'è un timer per il sonno.",
+    "es": "Escucha música que se compone sola, directamente en el navegador. Puedes exportarla como audio y tienes un temporizador para dormir.",
+    "pt": "Ouve música que se compõe sozinha, diretamente no navegador. Podes exportá-la como som e tens um temporizador para dormir.",
+    "de": "Hör Musik, die sich von selbst komponiert, direkt im Browser. Du kannst sie als Audio exportieren, und es gibt einen Einschlaftimer.",
+    "hu": "Hallgasson magától komponálódó zenét, közvetlenül a böngészőben. Hangként exportálható, és elalvási időzítő is van."
    },
    "url": "https://chiuta.github.io/BorderlessMelodies/",
    "readme": "https://github.com/chiuta/BorderlessMelodies",
@@ -3745,24 +4217,40 @@
    "title": "Ecoul Spectral",
    "section": "sunet",
    "tags": {
-    "ro": null,
-    "en": null,
-    "fr": null,
-    "it": null,
-    "es": null,
-    "pt": null,
-    "de": null,
-    "hu": null
+    "ro": [
+     "audio"
+    ],
+    "en": [
+     "audio"
+    ],
+    "fr": [
+     "audio"
+    ],
+    "it": [
+     "audio"
+    ],
+    "es": [
+     "audio"
+    ],
+    "pt": [
+     "áudio"
+    ],
+    "de": [
+     "Audio"
+    ],
+    "hu": [
+     "audio"
+    ]
    },
    "line": {
-    "ro": null,
-    "en": null,
-    "fr": null,
-    "it": null,
-    "es": null,
-    "pt": null,
-    "de": null,
-    "hu": null
+    "ro": "Vezi sunetul ca imagine, alege porțiunea care te deranjează și izolează-o sau șterge-o. Include reducerea zgomotului, detecția vocii și salvarea în WAV.",
+    "en": "See sound as an image, pick the part that bothers you and isolate or delete it. Includes noise reduction, voice detection and saving to WAV.",
+    "fr": "Voyez le son comme une image, choisissez la partie qui vous gêne et isolez-la ou effacez-la. Avec réduction du bruit, détection de la voix et enregistrement en WAV.",
+    "it": "Vedi il suono come immagine, scegli la porzione che ti disturba e isolala o cancellala. Include riduzione del rumore, rilevamento della voce e salvataggio in WAV.",
+    "es": "Ve el sonido como imagen, elige la parte que te molesta y aíslala o bórrala. Incluye reducción de ruido, detección de voz y guardado en WAV.",
+    "pt": "Vê o som como imagem, escolhe a parte que te incomoda e isola-a ou apaga-a. Inclui redução de ruído, deteção de voz e gravação em WAV.",
+    "de": "Sieh den Klang als Bild, wähle den Teil, der dich stört, und isoliere oder lösche ihn. Mit Rauschminderung, Spracherkennung und Speichern als WAV.",
+    "hu": "Lássa a hangot képként, jelölje ki a zavaró részt, és különítse el vagy törölje. Tartalmaz zajcsökkentést, emberi hang észlelését és WAV-mentést."
    },
    "url": "https://chiuta.github.io/EcoulSpectral/",
    "readme": "https://github.com/chiuta/EcoulSpectral",
@@ -3865,24 +4353,56 @@
    "title": "Generator de frecvențe",
    "section": "sunet",
    "tags": {
-    "ro": null,
-    "en": null,
-    "fr": null,
-    "it": null,
-    "es": null,
-    "pt": null,
-    "de": null,
-    "hu": null
+    "ro": [
+     "audio",
+     "generator",
+     "offline"
+    ],
+    "en": [
+     "audio",
+     "generator",
+     "offline"
+    ],
+    "fr": [
+     "audio",
+     "générateur",
+     "hors ligne"
+    ],
+    "it": [
+     "audio",
+     "generatore",
+     "offline"
+    ],
+    "es": [
+     "audio",
+     "generador",
+     "sin conexión"
+    ],
+    "pt": [
+     "áudio",
+     "gerador",
+     "offline"
+    ],
+    "de": [
+     "Audio",
+     "Generator",
+     "offline"
+    ],
+    "hu": [
+     "audio",
+     "generátor",
+     "offline"
+    ]
    },
    "line": {
-    "ro": null,
-    "en": null,
-    "fr": null,
-    "it": null,
-    "es": null,
-    "pt": null,
-    "de": null,
-    "hu": null
+    "ro": "Creează tonuri pure și sunete duble care pulsează, ascultă presetări cunoscute și verifică orientativ cât de bine auzi. Nu e aparat medical. Offline.",
+    "en": "Create pure tones and pulsing double sounds, listen to well-known presets and get a rough check of how well you hear. Not a medical device. Offline.",
+    "fr": "Créez des tons purs et des sons doubles qui pulsent, écoutez des préréglages connus et vérifiez de façon indicative votre acuité auditive. Ce n'est pas un appareil médical. Hors ligne.",
+    "it": "Crea toni puri e suoni doppi che pulsano, ascolta preset noti e verifica in modo indicativo quanto senti bene. Non è un apparecchio medico. Offline.",
+    "es": "Crea tonos puros y sonidos dobles que pulsan, escucha presets conocidos y comprueba de forma orientativa cuánto oyes. No es un aparato médico. Sin conexión.",
+    "pt": "Cria tons puros e sons duplos que pulsam, ouve predefinições conhecidas e verifica, a título indicativo, como ouves. Não é aparelho médico. Offline.",
+    "de": "Erzeuge reine Töne und pulsierende Doppelklänge, hör bekannte Voreinstellungen und prüfe orientierend, wie gut du hörst. Kein medizinisches Gerät. Offline.",
+    "hu": "Hozzon létre tiszta hangokat és lüktető dupla hangokat, hallgasson ismert előbeállításokat, és tájékoztató jelleggel ellenőrizze, mennyire hall jól. Nem orvosi eszköz. Offline."
    },
    "url": "https://chiuta.github.io/generator-frecvente/",
    "readme": "https://github.com/chiuta/generator-frecvente",
@@ -4037,24 +4557,40 @@
    "title": "Clepsidra",
    "section": "gospodarie",
    "tags": {
-    "ro": null,
-    "en": null,
-    "fr": null,
-    "it": null,
-    "es": null,
-    "pt": null,
-    "de": null,
-    "hu": null
+    "ro": [
+     "timp"
+    ],
+    "en": [
+     "time"
+    ],
+    "fr": [
+     "temps"
+    ],
+    "it": [
+     "tempo"
+    ],
+    "es": [
+     "tiempo"
+    ],
+    "pt": [
+     "tempo"
+    ],
+    "de": [
+     "Zeit"
+    ],
+    "hu": [
+     "idő"
+    ]
    },
    "line": {
-    "ro": null,
-    "en": null,
-    "fr": null,
-    "it": null,
-    "es": null,
-    "pt": null,
-    "de": null,
-    "hu": null
+    "ro": "Ceas care numără invers, alarmă și orare pentru zilele lucrătoare și de weekend. Ține evidența sărbătorilor și a evenimentelor tale.",
+    "en": "A countdown clock, alarm and schedules for weekdays and weekends. It keeps track of holidays and your own events.",
+    "fr": "Horloge à rebours, alarme et horaires pour les jours ouvrables et le week-end. Garde la trace des jours fériés et de vos événements.",
+    "it": "Orologio a rovescio, sveglia e orari per i giorni feriali e per il weekend. Tiene traccia delle festività e dei tuoi eventi.",
+    "es": "Reloj de cuenta atrás, alarma y horarios para días laborables y fines de semana. Lleva el registro de los festivos y de tus eventos.",
+    "pt": "Relógio de contagem decrescente, alarme e horários para dias úteis e fins de semana. Regista os feriados e os teus eventos.",
+    "de": "Rückwärts zählende Uhr, Wecker und Zeitpläne für Werktage und Wochenenden. Führt Buch über Feiertage und deine Termine.",
+    "hu": "Visszaszámláló óra, ébresztő és órarend hétköznapokra és hétvégékre. Nyilvántartja az ünnepnapokat és az Ön eseményeit."
    },
    "url": "https://chiuta.github.io/CLEPSIDRA/",
    "readme": "https://github.com/chiuta/CLEPSIDRA",
@@ -4217,24 +4753,48 @@
    "title": "Belot",
    "section": "jocuri",
    "tags": {
-    "ro": null,
-    "en": null,
-    "fr": null,
-    "it": null,
-    "es": null,
-    "pt": null,
-    "de": null,
-    "hu": null
+    "ro": [
+     "cărți",
+     "AI"
+    ],
+    "en": [
+     "cards",
+     "AI"
+    ],
+    "fr": [
+     "cartes",
+     "IA"
+    ],
+    "it": [
+     "carte",
+     "AI"
+    ],
+    "es": [
+     "cartas",
+     "IA"
+    ],
+    "pt": [
+     "cartas",
+     "IA"
+    ],
+    "de": [
+     "Karten",
+     "KI"
+    ],
+    "hu": [
+     "kártya",
+     "MI"
+    ]
    },
    "line": {
-    "ro": null,
-    "en": null,
-    "fr": null,
-    "it": null,
-    "es": null,
-    "pt": null,
-    "de": null,
-    "hu": null
+    "ro": "Descoperă belotul și rudele lui din alte țări, apoi joacă la masă, tu și un partener AI contra a doi adversari AI. Include foaie de scor.",
+    "en": "Discover belote and its relatives from other countries, then play at the table: you and an AI partner against two AI opponents. Includes a score sheet.",
+    "fr": "Découvrez la belote et ses cousines d'autres pays, puis jouez à table, vous et un partenaire IA contre deux adversaires IA. Avec feuille de score.",
+    "it": "Scopri il belot e i suoi parenti di altri paesi, poi gioca al tavolo, tu e un partner AI contro due avversari AI. Include il foglio punteggi.",
+    "es": "Descubre el belote y sus parientes de otros países, y luego juega a la mesa, tú y una pareja de IA contra dos rivales de IA. Incluye hoja de puntuación.",
+    "pt": "Descobre o belote e os seus parentes de outros países, depois joga à mesa, tu e um parceiro IA contra dois adversários IA. Inclui folha de pontuação.",
+    "de": "Entdecke Belot und seine Verwandten aus anderen Ländern und spiel dann am Tisch, du und ein KI-Partner gegen zwei KI-Gegner. Mit Punkteblatt.",
+    "hu": "Ismerje meg a belote-ot és külföldi rokonait, majd játsszon asztalnál: Ön és egy MI-partner két MI-ellenfél ellen. Pontozólappal."
    },
    "url": "https://chiuta.github.io/Belot-fara-frontiere/",
    "readme": "https://github.com/chiuta/Belot-fara-frontiere",
@@ -4261,24 +4821,40 @@
    "title": "Cărți de joc",
    "section": "jocuri",
    "tags": {
-    "ro": null,
-    "en": null,
-    "fr": null,
-    "it": null,
-    "es": null,
-    "pt": null,
-    "de": null,
-    "hu": null
+    "ro": [
+     "cărți"
+    ],
+    "en": [
+     "cards"
+    ],
+    "fr": [
+     "cartes"
+    ],
+    "it": [
+     "carte"
+    ],
+    "es": [
+     "cartas"
+    ],
+    "pt": [
+     "cartas"
+    ],
+    "de": [
+     "Karten"
+    ],
+    "hu": [
+     "kártya"
+    ]
    },
    "line": {
-    "ro": null,
-    "en": null,
-    "fr": null,
-    "it": null,
-    "es": null,
-    "pt": null,
-    "de": null,
-    "hu": null
+    "ro": "De la Solitaire și Popa Prostul până la poker: 17 jocuri de cărți cu reguli explicate, dintre care 8 le și joci pe loc.",
+    "en": "From Solitaire and Old Maid to poker: 17 card games with explained rules, 8 of which you can also play right away.",
+    "fr": "De la réussite et du Pouilleux jusqu'au poker : 17 jeux de cartes aux règles expliquées, dont 8 auxquels vous jouez sur-le-champ.",
+    "it": "Dal Solitario all'Uomo nero fino al poker: 17 giochi di carte con regole spiegate, di cui 8 si possono anche giocare subito.",
+    "es": "Del Solitario y Popa Prostul al póquer: 17 juegos de cartas con reglas explicadas, 8 de los cuales puedes jugar al momento.",
+    "pt": "De Solitaire e Popa Prostul ao póquer: 17 jogos de cartas com regras explicadas, 8 dos quais podes jogar logo.",
+    "de": "Von Solitaire und Schwarzer Peter bis Poker: 17 Kartenspiele mit erklärten Regeln, von denen du 8 gleich spielen kannst.",
+    "hu": "A pasziánsztól és a Popa Prostultól a pókerig: 17 kártyajáték elmagyarázott szabályokkal, ebből 8-at rögtön játszhat is."
    },
    "url": "https://chiuta.github.io/Carti-de-joc-fara-frontiere/",
    "readme": "https://github.com/chiuta/Carti-de-joc-fara-frontiere",
@@ -4305,24 +4881,40 @@
    "title": "Dame",
    "section": "jocuri",
    "tags": {
-    "ro": null,
-    "en": null,
-    "fr": null,
-    "it": null,
-    "es": null,
-    "pt": null,
-    "de": null,
-    "hu": null
+    "ro": [
+     "dame"
+    ],
+    "en": [
+     "checkers"
+    ],
+    "fr": [
+     "dames"
+    ],
+    "it": [
+     "dama"
+    ],
+    "es": [
+     "damas"
+    ],
+    "pt": [
+     "damas"
+    ],
+    "de": [
+     "Dame"
+    ],
+    "hu": [
+     "dáma"
+    ]
    },
    "line": {
-    "ro": null,
-    "en": null,
-    "fr": null,
-    "it": null,
-    "es": null,
-    "pt": null,
-    "de": null,
-    "hu": null
+    "ro": "Joacă 25 de variante de dame împotriva calculatorului și salvează partida. Regulile a 16 dintre ele sunt doar aproximative, marcate cu ⚠.",
+    "en": "Play 25 draughts variants against the computer and save your game. The rules of 16 of them are only approximate, marked with ⚠.",
+    "fr": "Jouez à 25 variantes de dames contre l'ordinateur et enregistrez la partie. Les règles de 16 d'entre elles ne sont qu'approximatives, marquées d'un ⚠.",
+    "it": "Gioca a 25 varianti di dama contro il computer e salva la partita. Le regole di 16 di esse sono solo approssimative, segnate con ⚠.",
+    "es": "Juega 25 variantes de damas contra el ordenador y guarda la partida. Las reglas de 16 de ellas son solo aproximadas, marcadas con ⚠.",
+    "pt": "Joga 25 variantes de damas contra o computador e guarda a partida. As regras de 16 delas são apenas aproximadas, assinaladas com ⚠.",
+    "de": "Spiel 25 Dame-Varianten gegen den Computer und speichere die Partie. Die Regeln von 16 davon sind nur ungefähr und mit ⚠ markiert.",
+    "hu": "Játsszon 25 dámaváltozatot a számítógép ellen, és mentse el a játszmát. Közülük 16 szabályai csak hozzávetőlegesek, ⚠-lel jelölve."
    },
    "url": "https://chiuta.github.io/Dame-fara-frontiere/",
    "readme": "https://github.com/chiuta/Dame-fara-frontiere",
@@ -4349,24 +4941,48 @@
    "title": "Domino",
    "section": "jocuri",
    "tags": {
-    "ro": null,
-    "en": null,
-    "fr": null,
-    "it": null,
-    "es": null,
-    "pt": null,
-    "de": null,
-    "hu": null
+    "ro": [
+     "domino",
+     "AI"
+    ],
+    "en": [
+     "dominoes",
+     "AI"
+    ],
+    "fr": [
+     "domino",
+     "IA"
+    ],
+    "it": [
+     "domino",
+     "AI"
+    ],
+    "es": [
+     "dominó",
+     "IA"
+    ],
+    "pt": [
+     "dominó",
+     "IA"
+    ],
+    "de": [
+     "Domino",
+     "KI"
+    ],
+    "hu": [
+     "dominó",
+     "MI"
+    ]
    },
    "line": {
-    "ro": null,
-    "en": null,
-    "fr": null,
-    "it": null,
-    "es": null,
-    "pt": null,
-    "de": null,
-    "hu": null
+    "ro": "Învață istoria și regulile dominoului, apoi joacă la masă contra unuia până la trei adversari conduși de calculator. Poți anula o mutare.",
+    "en": "Learn the history and rules of dominoes, then play at the table against one to three computer-controlled opponents. You can undo a move.",
+    "fr": "Apprenez l'histoire et les règles du domino, puis jouez à table contre un à trois adversaires menés par l'ordinateur. Vous pouvez annuler un coup.",
+    "it": "Impara la storia e le regole del domino, poi gioca al tavolo contro da uno a tre avversari guidati dal computer. Puoi annullare una mossa.",
+    "es": "Aprende la historia y las reglas del dominó y luego juega a la mesa contra uno a tres rivales controlados por el ordenador. Puedes deshacer una jugada.",
+    "pt": "Aprende a história e as regras do dominó, depois joga à mesa contra um a três adversários controlados pelo computador. Podes anular uma jogada.",
+    "de": "Lerne Geschichte und Regeln des Dominos und spiel dann am Tisch gegen einen bis drei vom Computer gesteuerte Gegner. Du kannst einen Zug zurücknehmen.",
+    "hu": "Ismerje meg a dominó történetét és szabályait, majd játsszon asztalnál egy–három számítógép-vezérelt ellenfél ellen. Visszavonhat egy lépést."
    },
    "url": "https://chiuta.github.io/Domino-fara-frontiere/",
    "readme": "https://github.com/chiuta/Domino-fara-frontiere",
@@ -4393,24 +5009,48 @@
    "title": "Go",
    "section": "jocuri",
    "tags": {
-    "ro": null,
-    "en": null,
-    "fr": null,
-    "it": null,
-    "es": null,
-    "pt": null,
-    "de": null,
-    "hu": null
+    "ro": [
+     "Go",
+     "AI"
+    ],
+    "en": [
+     "Go",
+     "AI"
+    ],
+    "fr": [
+     "Go",
+     "IA"
+    ],
+    "it": [
+     "Go",
+     "AI"
+    ],
+    "es": [
+     "Go",
+     "IA"
+    ],
+    "pt": [
+     "Go",
+     "IA"
+    ],
+    "de": [
+     "Go",
+     "KI"
+    ],
+    "hu": [
+     "go",
+     "MI"
+    ]
    },
    "line": {
-    "ro": null,
-    "en": null,
-    "fr": null,
-    "it": null,
-    "es": null,
-    "pt": null,
-    "de": null,
-    "hu": null
+    "ro": "Află de unde vine Go-ul și cum se joacă, apoi încearcă-ți mâna împotriva calculatorului, care îți poate da sugestii. Nu trimite date pe internet.",
+    "en": "Find out where Go comes from and how it's played, then try your hand against the computer, which can give you hints. It sends no data over the internet.",
+    "fr": "Découvrez d'où vient le Go et comment on y joue, puis mesurez-vous à l'ordinateur, qui peut vous donner des suggestions. N'envoie aucune donnée sur internet.",
+    "it": "Scopri da dove viene il Go e come si gioca, poi mettiti alla prova contro il computer, che può darti dei suggerimenti. Non invia dati su internet.",
+    "es": "Descubre de dónde viene el Go y cómo se juega, y luego mide tus fuerzas contra el ordenador, que puede darte sugerencias. No envía datos por internet.",
+    "pt": "Fica a saber de onde vem o Go e como se joga, depois experimenta contra o computador, que te pode dar sugestões. Não envia dados pela internet.",
+    "de": "Erfahre, woher Go kommt und wie man es spielt, und versuch dich dann gegen den Computer, der dir Hinweise geben kann. Sendet keine Daten ins Internet.",
+    "hu": "Tudja meg, honnan ered a Go és hogyan játsszák, majd próbálja ki magát a számítógép ellen, amely tippeket is adhat. Nem küld adatot az internetre."
    },
    "url": "https://chiuta.github.io/Go-fara-frontiere/",
    "readme": "https://github.com/chiuta/Go-fara-frontiere",
@@ -4437,24 +5077,48 @@
    "title": "Mahjong",
    "section": "jocuri",
    "tags": {
-    "ro": null,
-    "en": null,
-    "fr": null,
-    "it": null,
-    "es": null,
-    "pt": null,
-    "de": null,
-    "hu": null
+    "ro": [
+     "Mahjong",
+     "AI"
+    ],
+    "en": [
+     "Mahjong",
+     "AI"
+    ],
+    "fr": [
+     "Mahjong",
+     "IA"
+    ],
+    "it": [
+     "Mahjong",
+     "AI"
+    ],
+    "es": [
+     "Mahjong",
+     "IA"
+    ],
+    "pt": [
+     "Mahjong",
+     "IA"
+    ],
+    "de": [
+     "Mahjong",
+     "KI"
+    ],
+    "hu": [
+     "mahjong",
+     "MI"
+    ]
    },
    "line": {
-    "ro": null,
-    "en": null,
-    "fr": null,
-    "it": null,
-    "es": null,
-    "pt": null,
-    "de": null,
-    "hu": null
+    "ro": "Descoperă 8 variante de mahjong și joacă pasiența sau partida în patru, cu trei adversari simpli conduși de calculator. Funcționează offline.",
+    "en": "Discover 8 mahjong variants and play solitaire or the four-player game, with three simple computer-controlled opponents. Works offline.",
+    "fr": "Découvrez 8 variantes du mahjong et jouez la réussite ou la partie à quatre, avec trois adversaires simples menés par l'ordinateur. Fonctionne hors ligne.",
+    "it": "Scopri 8 varianti di mahjong e gioca il solitario o la partita in quattro, con tre semplici avversari guidati dal computer. Funziona offline.",
+    "es": "Descubre 8 variantes de mahjong y juega al solitario o a la partida de cuatro, con tres rivales sencillos controlados por el ordenador. Funciona sin conexión.",
+    "pt": "Descobre 8 variantes de mahjong e joga a paciência ou a partida a quatro, com três adversários simples controlados pelo computador. Funciona offline.",
+    "de": "Entdecke 8 Mahjong-Varianten und spiel Solitär oder die Partie zu viert, mit drei einfachen, vom Computer gesteuerten Gegnern. Funktioniert offline.",
+    "hu": "Ismerjen meg 8 mahjong-változatot, és játsszon pasziánszt vagy négyszemélyes partit három egyszerű, számítógép-vezérelt ellenféllel. Offline is működik."
    },
    "url": "https://chiuta.github.io/Mahjong-fara-frontiere/",
    "readme": "https://github.com/chiuta/Mahjong-fara-frontiere",
@@ -4557,24 +5221,40 @@
    "title": "Remi",
    "section": "jocuri",
    "tags": {
-    "ro": null,
-    "en": null,
-    "fr": null,
-    "it": null,
-    "es": null,
-    "pt": null,
-    "de": null,
-    "hu": null
+    "ro": [
+     "remi"
+    ],
+    "en": [
+     "rummy"
+    ],
+    "fr": [
+     "rami"
+    ],
+    "it": [
+     "ramino"
+    ],
+    "es": [
+     "rummy"
+    ],
+    "pt": [
+     "rummy"
+    ],
+    "de": [
+     "Rommé"
+    ],
+    "hu": [
+     "römi"
+    ]
    },
    "line": {
-    "ro": null,
-    "en": null,
-    "fr": null,
-    "it": null,
-    "es": null,
-    "pt": null,
-    "de": null,
-    "hu": null
+    "ro": "Descoperă familia remiului și joacă 19 variante contra calculatorului, cu statistici. Are 8 limbi și piese sau cărți mari, ușor de văzut.",
+    "en": "Discover the rummy family and play 19 variants against the computer, with statistics. It has 8 languages and large, easy-to-see tiles or cards.",
+    "fr": "Découvrez la famille du rami et jouez à 19 variantes contre l'ordinateur, avec statistiques. Disponible en 8 langues, avec de grandes pièces ou cartes faciles à voir.",
+    "it": "Scopri la famiglia del ramino e gioca 19 varianti contro il computer, con statistiche. Ha 8 lingue e pezzi o carte grandi, facili da vedere.",
+    "es": "Descubre la familia del rummy y juega 19 variantes contra el ordenador, con estadísticas. Tiene 8 idiomas y fichas o cartas grandes, fáciles de ver.",
+    "pt": "Descobre a família do rummy e joga 19 variantes contra o computador, com estatísticas. Tem 8 línguas e peças ou cartas grandes, fáceis de ver.",
+    "de": "Entdecke die Rommé-Familie und spiel 19 Varianten gegen den Computer, mit Statistiken. In 8 Sprachen, mit großen, gut sichtbaren Steinen oder Karten.",
+    "hu": "Ismerje meg a römi családját, és játsszon 19 változatot a számítógép ellen, statisztikákkal. 8 nyelven, nagy, jól látható lapokkal vagy kövekkel."
    },
    "url": "https://chiuta.github.io/Remi-fara-frontiere/",
    "readme": "https://github.com/chiuta/Remi-fara-frontiere",
@@ -4601,24 +5281,40 @@
    "title": "Șah",
    "section": "jocuri",
    "tags": {
-    "ro": null,
-    "en": null,
-    "fr": null,
-    "it": null,
-    "es": null,
-    "pt": null,
-    "de": null,
-    "hu": null
+    "ro": [
+     "șah"
+    ],
+    "en": [
+     "chess"
+    ],
+    "fr": [
+     "échecs"
+    ],
+    "it": [
+     "scacchi"
+    ],
+    "es": [
+     "ajedrez"
+    ],
+    "pt": [
+     "xadrez"
+    ],
+    "de": [
+     "Schach"
+    ],
+    "hu": [
+     "sakk"
+    ]
    },
    "line": {
-    "ro": null,
-    "en": null,
-    "fr": null,
-    "it": null,
-    "es": null,
-    "pt": null,
-    "de": null,
-    "hu": null
+    "ro": "Peste 700 de variante de șah de explorat, cu un mic dicționar de termeni; la multe poți juca împotriva calculatorului. Funcționează offline.",
+    "en": "Over 700 chess variants to explore, with a small dictionary of terms; for many you can play against the computer. Works offline.",
+    "fr": "Plus de 700 variantes d'échecs à explorer, avec un petit lexique de termes ; à beaucoup d'entre elles, vous pouvez jouer contre l'ordinateur. Fonctionne hors ligne.",
+    "it": "Oltre 700 varianti di scacchi da esplorare, con un piccolo dizionario di termini; in molte puoi giocare contro il computer. Funziona offline.",
+    "es": "Más de 700 variantes de ajedrez para explorar, con un pequeño diccionario de términos; en muchas puedes jugar contra el ordenador. Funciona sin conexión.",
+    "pt": "Mais de 700 variantes de xadrez para explorar, com um pequeno dicionário de termos; em muitas podes jogar contra o computador. Funciona offline.",
+    "de": "Über 700 Schachvarianten zum Entdecken, mit einem kleinen Lexikon der Fachbegriffe; viele kannst du gegen den Computer spielen. Funktioniert offline.",
+    "hu": "Több mint 700 sakkváltozat felfedezésre, kis szószedettel; sokukat a számítógép ellen is játszhatja. Offline is működik."
    },
    "url": "https://chiuta.github.io/Sah-fara-frontiere/",
    "readme": "https://github.com/chiuta/Sah-fara-frontiere",
@@ -4645,24 +5341,48 @@
    "title": "Scopone",
    "section": "jocuri",
    "tags": {
-    "ro": null,
-    "en": null,
-    "fr": null,
-    "it": null,
-    "es": null,
-    "pt": null,
-    "de": null,
-    "hu": null
+    "ro": [
+     "cărți",
+     "AI"
+    ],
+    "en": [
+     "cards",
+     "AI"
+    ],
+    "fr": [
+     "cartes",
+     "IA"
+    ],
+    "it": [
+     "carte",
+     "AI"
+    ],
+    "es": [
+     "cartas",
+     "IA"
+    ],
+    "pt": [
+     "cartas",
+     "IA"
+    ],
+    "de": [
+     "Karten",
+     "KI"
+    ],
+    "hu": [
+     "kártya",
+     "MI"
+    ]
    },
    "line": {
-    "ro": null,
-    "en": null,
-    "fr": null,
-    "it": null,
-    "es": null,
-    "pt": null,
-    "de": null,
-    "hu": null
+    "ro": "Află cum s-a născut Scopone, ce reguli are și cum diferă de la o regiune la alta, apoi joacă împotriva calculatorului, care îți poate da sugestii.",
+    "en": "Find out how Scopone was born, what its rules are and how they differ from region to region, then play against the computer, which can give you hints.",
+    "fr": "Apprenez comment est né le Scopone, quelles sont ses règles et en quoi elles varient d'une région à l'autre, puis jouez contre l'ordinateur, qui peut vous donner des suggestions.",
+    "it": "Scopri com'è nato lo Scopone, quali regole ha e come cambia da una regione all'altra, poi gioca contro il computer, che può darti dei suggerimenti.",
+    "es": "Descubre cómo nació el Scopone, qué reglas tiene y cómo cambia de una región a otra, y luego juega contra el ordenador, que puede darte sugerencias.",
+    "pt": "Fica a saber como nasceu o Scopone, que regras tem e como difere de região para região, depois joga contra o computador, que te pode dar sugestões.",
+    "de": "Erfahre, wie Scopone entstand, welche Regeln es hat und wie es sich von Region zu Region unterscheidet, und spiel dann gegen den Computer, der dir Hinweise geben kann.",
+    "hu": "Tudja meg, hogyan született a Scopone, milyen szabályai vannak és hogyan térnek el régiónként, majd játsszon a számítógép ellen, amely tippeket is adhat."
    },
    "url": "https://chiuta.github.io/Scopone-fara-frontiere/",
    "readme": "https://github.com/chiuta/Scopone-fara-frontiere",
@@ -4689,24 +5409,40 @@
    "title": "Solitaire",
    "section": "jocuri",
    "tags": {
-    "ro": null,
-    "en": null,
-    "fr": null,
-    "it": null,
-    "es": null,
-    "pt": null,
-    "de": null,
-    "hu": null
+    "ro": [
+     "cărți"
+    ],
+    "en": [
+     "cards"
+    ],
+    "fr": [
+     "cartes"
+    ],
+    "it": [
+     "carte"
+    ],
+    "es": [
+     "cartas"
+    ],
+    "pt": [
+     "cartas"
+    ],
+    "de": [
+     "Karten"
+    ],
+    "hu": [
+     "kártya"
+    ]
    },
    "line": {
-    "ro": null,
-    "en": null,
-    "fr": null,
-    "it": null,
-    "es": null,
-    "pt": null,
-    "de": null,
-    "hu": null
+    "ro": "Răsfoiește pasiențe precum Klondike, FreeCell sau Spider și joacă-le. Când te blochezi, ceri o sugestie sau lași calculatorul să rezolve.",
+    "en": "Browse solitaire games such as Klondike, FreeCell or Spider and play them. When you get stuck, ask for a hint or let the computer solve it.",
+    "fr": "Parcourez des réussites comme le Klondike, le FreeCell ou le Spider et jouez-y. Quand vous êtes bloqué, demandez une suggestion ou laissez l'ordinateur résoudre.",
+    "it": "Sfoglia solitari come Klondike, FreeCell o Spider e giocali. Quando sei bloccato, chiedi un suggerimento o lascia che sia il computer a risolvere.",
+    "es": "Explora solitarios como Klondike, FreeCell o Spider y juégalos. Cuando te atasques, pides una sugerencia o dejas que el ordenador lo resuelva.",
+    "pt": "Navega por jogos de paciência como Klondike, FreeCell ou Spider e joga-os. Quando ficares preso, pedes uma sugestão ou deixas o computador resolver.",
+    "de": "Stöbere in Patiencen wie Klondike, FreeCell oder Spider und spiel sie. Wenn du feststeckst, hol dir einen Hinweis oder lass den Computer lösen.",
+    "hu": "Böngésszen a pasziánszok között, mint a Klondike, a FreeCell vagy a Spider, és játsszon velük. Ha elakad, kérhet tippet, vagy megoldathatja a számítógéppel."
    },
    "url": "https://chiuta.github.io/Solitaire-fara-frontiere/",
    "readme": "https://github.com/chiuta/Solitaire-fara-frontiere",
@@ -4733,24 +5469,40 @@
    "title": "Sudoku",
    "section": "jocuri",
    "tags": {
-    "ro": null,
-    "en": null,
-    "fr": null,
-    "it": null,
-    "es": null,
-    "pt": null,
-    "de": null,
-    "hu": null
+    "ro": [
+     "puzzle"
+    ],
+    "en": [
+     "puzzle"
+    ],
+    "fr": [
+     "puzzle"
+    ],
+    "it": [
+     "puzzle"
+    ],
+    "es": [
+     "puzzle"
+    ],
+    "pt": [
+     "puzzle"
+    ],
+    "de": [
+     "Rätsel"
+    ],
+    "hu": [
+     "rejtvény"
+    ]
    },
    "line": {
-    "ro": null,
-    "en": null,
-    "fr": null,
-    "it": null,
-    "es": null,
-    "pt": null,
-    "de": null,
-    "hu": null
+    "ro": "136 de feluri de Sudoku, de la clasic la killer sau 3D, de răsfoit și jucat. Te ajută cu explicații pas cu pas și rezolvă puzzle-urile tale.",
+    "en": "136 kinds of Sudoku, from classic to killer or 3D, to browse and play. It helps with step-by-step explanations and solves your own puzzles.",
+    "fr": "136 sortes de Sudoku, du classique au killer ou 3D, à parcourir et à jouer. Des explications pas à pas vous aident, et l'application résout vos propres grilles.",
+    "it": "136 tipi di Sudoku, dal classico al killer o al 3D, da sfogliare e giocare. Ti aiuta con spiegazioni passo passo e risolve i tuoi puzzle.",
+    "es": "136 tipos de Sudoku, del clásico al killer o 3D, para explorar y jugar. Te ayuda con explicaciones paso a paso y resuelve tus propios puzles.",
+    "pt": "136 tipos de Sudoku, do clássico ao killer ou 3D, para explorar e jogar. Ajuda-te com explicações passo a passo e resolve os teus próprios puzzles.",
+    "de": "136 Sudoku-Arten, vom klassischen bis zum Killer- oder 3D-Sudoku, zum Stöbern und Spielen. Hilft dir mit Erklärungen Schritt für Schritt und löst deine Rätsel.",
+    "hu": "136 féle Sudoku a klasszikustól a killerig és a 3D-sig, böngészhető és játszható. Lépésenkénti magyarázattal segít, és megoldja a saját rejtvényeit."
    },
    "url": "https://chiuta.github.io/Sudoku-fara-frontiere/",
    "readme": "https://github.com/chiuta/Sudoku-fara-frontiere",
@@ -4777,24 +5529,40 @@
    "title": "Table",
    "section": "jocuri",
    "tags": {
-    "ro": null,
-    "en": null,
-    "fr": null,
-    "it": null,
-    "es": null,
-    "pt": null,
-    "de": null,
-    "hu": null
+    "ro": [
+     "table"
+    ],
+    "en": [
+     "backgammon"
+    ],
+    "fr": [
+     "jacquet"
+    ],
+    "it": [
+     "tavola reale"
+    ],
+    "es": [
+     "tablas"
+    ],
+    "pt": [
+     "gamão"
+    ],
+    "de": [
+     "Backgammon"
+    ],
+    "hu": [
+     "ostábla"
+    ]
    },
    "line": {
-    "ro": null,
-    "en": null,
-    "fr": null,
-    "it": null,
-    "es": null,
-    "pt": null,
-    "de": null,
-    "hu": null
+    "ro": "Backgammon, Tavli, Narde și variantele românești ale tablei, de citit și de jucat: 17 variante contra calculatorului, cu tastatura sau mouse-ul.",
+    "en": "Backgammon, Tavli, Narde and the Romanian variants of tabla, to read about and play: 17 variants against the computer, with keyboard or mouse.",
+    "fr": "Backgammon, Tavli, Narde et variantes roumaines du jeu de tables, à lire et à jouer : 17 variantes contre l'ordinateur, au clavier ou à la souris.",
+    "it": "Backgammon, Tavli, Narde e le varianti romene della tavola, da leggere e da giocare: 17 varianti contro il computer, con tastiera o mouse.",
+    "es": "Backgammon, Tavli, Narde y las variantes rumanas de las tablas, para leer y jugar: 17 variantes contra el ordenador, con teclado o ratón.",
+    "pt": "Gamão, Tavli, Narde e as variantes romenas da távola, para ler e jogar: 17 variantes contra o computador, com teclado ou rato.",
+    "de": "Backgammon, Tavli, Narde und die rumänischen Tabla-Varianten, zum Lesen und Spielen: 17 Varianten gegen den Computer, mit Tastatur oder Maus.",
+    "hu": "Backgammon, Tavli, Narde és a tábla román változatai, olvasásra és játékra: 17 változat a számítógép ellen, billentyűzettel vagy egérrel."
    },
    "url": "https://chiuta.github.io/Table-fara-frontiere/",
    "readme": "https://github.com/chiuta/Table-fara-frontiere",
@@ -4821,24 +5589,40 @@
    "title": "Zaruri",
    "section": "jocuri",
    "tags": {
-    "ro": null,
-    "en": null,
-    "fr": null,
-    "it": null,
-    "es": null,
-    "pt": null,
-    "de": null,
-    "hu": null
+    "ro": [
+     "zaruri"
+    ],
+    "en": [
+     "dice"
+    ],
+    "fr": [
+     "dés"
+    ],
+    "it": [
+     "dadi"
+    ],
+    "es": [
+     "dados"
+    ],
+    "pt": [
+     "dados"
+    ],
+    "de": [
+     "Würfel"
+    ],
+    "hu": [
+     "kockajáték"
+    ]
    },
    "line": {
-    "ro": null,
-    "en": null,
-    "fr": null,
-    "it": null,
-    "es": null,
-    "pt": null,
-    "de": null,
-    "hu": null
+    "ro": "26 de jocuri cu zaruri de citit, dintre care 12 de jucat contra calculatorului, plus un simulator de aruncări cu probabilități. Fără bani; offline.",
+    "en": "26 dice games to read about, 12 of them playable against the computer, plus a roll simulator with probabilities. No money involved; offline.",
+    "fr": "26 jeux de dés à lire, dont 12 à jouer contre l'ordinateur, plus un simulateur de lancers avec probabilités. Sans argent ; hors ligne.",
+    "it": "26 giochi di dadi da leggere, di cui 12 da giocare contro il computer, più un simulatore di lanci con le probabilità. Senza denaro; offline.",
+    "es": "26 juegos de dados para leer, 12 de ellos para jugar contra el ordenador, y un simulador de tiradas con probabilidades. Sin dinero; sin conexión.",
+    "pt": "26 jogos de dados para ler, 12 deles para jogar contra o computador, mais um simulador de lançamentos com probabilidades. Sem dinheiro; offline.",
+    "de": "26 Würfelspiele zum Lesen, davon 12 zum Spielen gegen den Computer, dazu ein Würfelsimulator mit Wahrscheinlichkeiten. Ohne Geld; offline.",
+    "hu": "26 kockajáték olvasásra, ebből 12 játszható a számítógép ellen, plusz dobásszimulátor valószínűségekkel. Pénz nélkül; offline."
    },
    "url": "https://chiuta.github.io/Zaruri-fara-frontiere/",
    "readme": "https://github.com/chiuta/Zaruri-fara-frontiere",
@@ -5045,24 +5829,40 @@
    "title": "Nexus",
    "section": "ai",
    "tags": {
-    "ro": null,
-    "en": null,
-    "fr": null,
-    "it": null,
-    "es": null,
-    "pt": null,
-    "de": null,
-    "hu": null
+    "ro": [
+     "agenți"
+    ],
+    "en": [
+     "agents"
+    ],
+    "fr": [
+     "agents"
+    ],
+    "it": [
+     "agenti"
+    ],
+    "es": [
+     "agentes"
+    ],
+    "pt": [
+     "agentes"
+    ],
+    "de": [
+     "Agenten"
+    ],
+    "hu": [
+     "ágensek"
+    ]
    },
    "line": {
-    "ro": null,
-    "en": null,
-    "fr": null,
-    "it": null,
-    "es": null,
-    "pt": null,
-    "de": null,
-    "hu": null
+    "ro": "Discută cu asistenți AI de la mai mulți furnizori, cu căutare în conversații și salvare a lor. Ai nevoie de internet și de chei proprii, păstrate necriptat.",
+    "en": "Chat with AI assistants from several providers, with conversation search and saving. You need internet and your own keys, which are stored unencrypted.",
+    "fr": "Discutez avec des assistants IA de plusieurs fournisseurs, avec recherche dans les conversations et sauvegarde. Nécessite internet et vos propres clés, conservées sans chiffrement.",
+    "it": "Parla con assistenti AI di più fornitori, con ricerca nelle conversazioni e salvataggio. Servono internet e chiavi proprie, conservate senza cifratura.",
+    "es": "Conversa con asistentes de IA de varios proveedores, con búsqueda en las conversaciones y opción de guardarlas. Necesitas internet y claves propias, guardadas sin cifrar.",
+    "pt": "Conversa com assistentes de IA de vários fornecedores, com pesquisa nas conversas e possibilidade de as guardar. Precisas de internet e de chaves próprias, guardadas sem cifragem.",
+    "de": "Chatte mit KI-Assistenten mehrerer Anbieter, mit Suche in den Gesprächen und Speichern. Du brauchst Internet und eigene Schlüssel, die unverschlüsselt gespeichert werden.",
+    "hu": "Beszélgessen több szolgáltató MI-asszisztenseivel, a beszélgetések közti kereséssel és mentéssel. Internet és saját kulcsok kellenek, amelyeket titkosítatlanul tárol."
    },
    "url": "https://chiuta.github.io/Nexus-fara-frontiere/",
    "readme": "https://github.com/chiuta/Nexus-fara-frontiere",
@@ -5209,24 +6009,40 @@
    "title": "API",
    "section": "utilitare",
    "tags": {
-    "ro": null,
-    "en": null,
-    "fr": null,
-    "it": null,
-    "es": null,
-    "pt": null,
-    "de": null,
-    "hu": null
+    "ro": [
+     "API"
+    ],
+    "en": [
+     "API"
+    ],
+    "fr": [
+     "API"
+    ],
+    "it": [
+     "API"
+    ],
+    "es": [
+     "API"
+    ],
+    "pt": [
+     "API"
+    ],
+    "de": [
+     "API"
+    ],
+    "hu": [
+     "API"
+    ]
    },
    "line": {
-    "ro": null,
-    "en": null,
-    "fr": null,
-    "it": null,
-    "es": null,
-    "pt": null,
-    "de": null,
-    "hu": null
+    "ro": "Vezi într-un singur loc vremea, imagini NASA, poziția stației ISS și alte zeci de informații live. Are nevoie de internet și nu a fost testată cu serviciile reale.",
+    "en": "See weather, NASA images, the ISS position and dozens of other live details in one place. It needs internet and has not been tested with the real services.",
+    "fr": "Voyez au même endroit la météo, des images de la NASA, la position de la station ISS et des dizaines d'autres informations en direct. Nécessite internet ; n'a pas été testée avec les vrais services.",
+    "it": "Vedi in un unico posto meteo, immagini NASA, posizione della stazione ISS e altre decine di informazioni dal vivo. Richiede internet e non è stata testata con i servizi reali.",
+    "es": "Mira en un solo lugar el tiempo, imágenes de la NASA, la posición de la estación ISS y decenas de datos más en vivo. Necesita internet y no se ha probado con los servicios reales.",
+    "pt": "Vê num só lugar o tempo, imagens da NASA, a posição da estação ISS e dezenas de outras informações em direto. Precisa de internet e não foi testada com os serviços reais.",
+    "de": "Sieh an einem Ort Wetter, NASA-Bilder, die Position der ISS und Dutzende weitere Live-Infos. Braucht Internet und wurde nicht mit den echten Diensten getestet.",
+    "hu": "Egy helyen láthatja az időjárást, a NASA képeit, az ISS helyzetét és tucatnyi további élő adatot. Internetet igényel, és valódi szolgáltatásokkal nem tesztelték."
    },
    "url": "https://chiuta.github.io/API-fara-frontiere/",
    "readme": "https://github.com/chiuta/API-fara-frontiere",
@@ -5313,24 +6129,40 @@
    "title": "OAZĂ",
    "section": "utilitare",
    "tags": {
-    "ro": null,
-    "en": null,
-    "fr": null,
-    "it": null,
-    "es": null,
-    "pt": null,
-    "de": null,
-    "hu": null
+    "ro": [
+     "servicii"
+    ],
+    "en": [
+     "services"
+    ],
+    "fr": [
+     "services"
+    ],
+    "it": [
+     "servizi"
+    ],
+    "es": [
+     "servicios"
+    ],
+    "pt": [
+     "serviços"
+    ],
+    "de": [
+     "Dienste"
+    ],
+    "hu": [
+     "szolgáltatások"
+    ]
    },
    "line": {
-    "ro": null,
-    "en": null,
-    "fr": null,
-    "it": null,
-    "es": null,
-    "pt": null,
-    "de": null,
-    "hu": null
+    "ro": "Răsfoiește 340 de servicii web gratuite, de regulă fără cont, adunate într-un singur catalog. Lista a fost verificată în iunie 2026, dar nu automat.",
+    "en": "Browse 340 free web services, usually without an account, gathered in a single catalog. The list was checked in June 2026, but not automatically.",
+    "fr": "Parcourez 340 services web gratuits, en général sans compte, réunis dans un seul catalogue. La liste a été vérifiée en juin 2026, mais pas automatiquement.",
+    "it": "Sfoglia 340 servizi web gratuiti, di norma senza account, raccolti in un unico catalogo. L'elenco è stato verificato a giugno 2026, ma non in modo automatico.",
+    "es": "Explora 340 servicios web gratuitos, por lo general sin cuenta, reunidos en un único catálogo. La lista se verificó en junio de 2026, pero no de forma automática.",
+    "pt": "Navega por 340 serviços web gratuitos, normalmente sem conta, reunidos num só catálogo. A lista foi verificada em junho de 2026, mas não automaticamente.",
+    "de": "Stöbere in 340 kostenlosen Webdiensten, meist ohne Konto, in einem einzigen Katalog gesammelt. Die Liste wurde im Juni 2026 geprüft, aber nicht automatisch.",
+    "hu": "Böngésszen 340 ingyenes webszolgáltatás között, többnyire fiók nélkül, egyetlen katalógusban. A listát 2026 júniusában ellenőrizték, de nem automatikusan."
    },
    "url": "https://chiuta.github.io/OAZA/",
    "readme": "https://github.com/chiuta/OAZA",
@@ -5357,24 +6189,40 @@
    "title": "ORIGAMI",
    "section": "utilitare",
    "tags": {
-    "ro": null,
-    "en": null,
-    "fr": null,
-    "it": null,
-    "es": null,
-    "pt": null,
-    "de": null,
-    "hu": null
+    "ro": [
+     "artă"
+    ],
+    "en": [
+     "art"
+    ],
+    "fr": [
+     "art"
+    ],
+    "it": [
+     "arte"
+    ],
+    "es": [
+     "arte"
+    ],
+    "pt": [
+     "arte"
+    ],
+    "de": [
+     "Kunst"
+    ],
+    "hu": [
+     "művészet"
+    ]
    },
    "line": {
-    "ro": null,
-    "en": null,
-    "fr": null,
-    "it": null,
-    "es": null,
-    "pt": null,
-    "de": null,
-    "hu": null
+    "ro": "Învață să plieci hârtia pas cu pas: simboluri, tehnici și modele ilustrate. Aplicația își amintește unde ai rămas.",
+    "en": "Learn to fold paper step by step: symbols, techniques and illustrated models. The app remembers where you left off.",
+    "fr": "Apprenez à plier le papier pas à pas : symboles, techniques et modèles illustrés. L'application se souvient de là où vous en étiez.",
+    "it": "Impara a piegare la carta passo dopo passo: simboli, tecniche e modelli illustrati. L'app ricorda a che punto sei rimasto.",
+    "es": "Aprende a plegar papel paso a paso: símbolos, técnicas y modelos ilustrados. La aplicación recuerda dónde te quedaste.",
+    "pt": "Aprende a dobrar papel passo a passo: símbolos, técnicas e modelos ilustrados. A aplicação lembra-se de onde ficaste.",
+    "de": "Lerne Schritt für Schritt, Papier zu falten: Symbole, Techniken und bebilderte Modelle. Die App merkt sich, wo du aufgehört hast.",
+    "hu": "Tanuljon meg lépésről lépésre hajtogatni: jelölések, technikák és illusztrált modellek. Az alkalmazás emlékszik, hol tartott."
    },
    "url": "https://chiuta.github.io/Origami/",
    "readme": "https://github.com/chiuta/Origami",
@@ -5401,24 +6249,40 @@
    "title": "Trusa",
    "section": "utilitare",
    "tags": {
-    "ro": null,
-    "en": null,
-    "fr": null,
-    "it": null,
-    "es": null,
-    "pt": null,
-    "de": null,
-    "hu": null
+    "ro": [
+     "utilitare"
+    ],
+    "en": [
+     "utilities"
+    ],
+    "fr": [
+     "utilitaires"
+    ],
+    "it": [
+     "utilità"
+    ],
+    "es": [
+     "utilidades"
+    ],
+    "pt": [
+     "utilitários"
+    ],
+    "de": [
+     "Hilfsprogramme"
+    ],
+    "hu": [
+     "segédprogramok"
+    ]
    },
    "line": {
-    "ro": null,
-    "en": null,
-    "fr": null,
-    "it": null,
-    "es": null,
-    "pt": null,
-    "de": null,
-    "hu": null
+    "ro": "O trusă cu 15 unelte mici de zi cu zi: note, foaie de calcul, Markdown, parole, jurnal financiar și altele. Nu are legătură oficială cu YunoHost, care i-a inspirat categoriile.",
+    "en": "A kit of 15 small everyday tools: notes, spreadsheet, Markdown, passwords, a finance log and more. It has no official link to YunoHost, which inspired its categories.",
+    "fr": "Une trousse de 15 petits outils du quotidien : notes, tableur, Markdown, mots de passe, journal financier et d'autres. Sans lien officiel avec YunoHost, dont elle a inspiré les catégories.",
+    "it": "Una cassetta con 15 piccoli strumenti di tutti i giorni: note, foglio di calcolo, Markdown, password, diario finanziario e altro. Nessun legame ufficiale con YunoHost, che ne ha ispirato le categorie.",
+    "es": "Un kit de 15 herramientas pequeñas de uso diario: notas, hoja de cálculo, Markdown, contraseñas, diario financiero y más. Sin relación oficial con YunoHost, que inspiró sus categorías.",
+    "pt": "Uma caixa com 15 pequenas ferramentas do dia a dia: notas, folha de cálculo, Markdown, palavras-passe, diário financeiro e outras. Não tem qualquer relação oficial com o YunoHost, que inspirou as categorias.",
+    "de": "Ein Werkzeugkasten mit 15 kleinen Alltagswerkzeugen: Notizen, Tabellenkalkulation, Markdown, Passwörter, Finanztagebuch und mehr. Keine offizielle Verbindung zu YunoHost, das die Kategorien inspiriert hat.",
+    "hu": "Egy 15 kis mindennapi eszközből álló készlet: jegyzetek, táblázat, Markdown, jelszavak, pénzügyi napló és más. Nincs hivatalos kapcsolata a YunoHosttal, amely a kategóriákat ihlette."
    },
    "url": "https://chiuta.github.io/Trusa-fara-frontiere/",
    "readme": "https://github.com/chiuta/Trusa-fara-frontiere",
@@ -5589,24 +6453,40 @@
    "title": "Afrodisiace",
    "section": "cultura",
    "tags": {
-    "ro": null,
-    "en": null,
-    "fr": null,
-    "it": null,
-    "es": null,
-    "pt": null,
-    "de": null,
-    "hu": null
+    "ro": [
+     "cultură"
+    ],
+    "en": [
+     "culture"
+    ],
+    "fr": [
+     "culture"
+    ],
+    "it": [
+     "cultura"
+    ],
+    "es": [
+     "cultura"
+    ],
+    "pt": [
+     "cultura"
+    ],
+    "de": [
+     "Kultur"
+    ],
+    "hu": [
+     "kultúra"
+    ]
    },
    "line": {
-    "ro": null,
-    "en": null,
-    "fr": null,
-    "it": null,
-    "es": null,
-    "pt": null,
-    "de": null,
-    "hu": null
+    "ro": "Citește despre 22 de alimente și plante asociate din tradiție cu dorința, fiecare cu nivelul dovezilor. Ghid cultural pentru adulți, nu sfat medical.",
+    "en": "Read about 22 foods and plants traditionally associated with desire, each with its level of evidence. A cultural guide for adults, not medical advice.",
+    "fr": "Lisez des fiches sur 22 aliments et plantes associés par la tradition au désir, chacune avec son niveau de preuve. Guide culturel pour adultes, pas un avis médical.",
+    "it": "Leggi di 22 alimenti e piante associati per tradizione al desiderio, ciascuno con il livello delle prove. Guida culturale per adulti, non un consiglio medico.",
+    "es": "Lee sobre 22 alimentos y plantas asociados por tradición con el deseo, cada uno con su nivel de evidencia. Guía cultural para adultos, no consejo médico.",
+    "pt": "Lê sobre 22 alimentos e plantas associados pela tradição ao desejo, cada um com o nível de provas. Guia cultural para adultos, não aconselhamento médico.",
+    "de": "Lies über 22 Lebensmittel und Pflanzen, die traditionell mit Verlangen verbunden werden, jeweils mit Evidenzgrad. Kultureller Leitfaden für Erwachsene, keine medizinische Beratung.",
+    "hu": "Olvasson 22 olyan élelmiszerről és növényről, amelyeket a hagyomány a vággyal társít, mindegyiknél a bizonyítékok szintjével. Kulturális útmutató felnőtteknek, nem orvosi tanács."
    },
    "url": "https://chiuta.github.io/Afrodisiace-fara-frontiere/",
    "readme": "https://github.com/chiuta/Afrodisiace-fara-frontiere",
@@ -5905,24 +6785,40 @@
    "title": "Inforenergetică",
    "section": "cultura",
    "tags": {
-    "ro": null,
-    "en": null,
-    "fr": null,
-    "it": null,
-    "es": null,
-    "pt": null,
-    "de": null,
-    "hu": null
+    "ro": [
+     "cultură"
+    ],
+    "en": [
+     "culture"
+    ],
+    "fr": [
+     "culture"
+    ],
+    "it": [
+     "cultura"
+    ],
+    "es": [
+     "cultura"
+    ],
+    "pt": [
+     "cultura"
+    ],
+    "de": [
+     "Kultur"
+    ],
+    "hu": [
+     "kultúra"
+    ]
    },
    "line": {
-    "ro": null,
-    "en": null,
-    "fr": null,
-    "it": null,
-    "es": null,
-    "pt": null,
-    "de": null,
-    "hu": null
+    "ro": "Descoperă ce susține inforenergetica, o practică neconvențională, într-un curs structurat. Nu are validare științifică și nu e sfat medical.",
+    "en": "Discover what inforenergetics, an unconventional practice, claims, in a structured course. It has no scientific validation and is not medical advice.",
+    "fr": "Découvrez ce que défend l'inforénergétique, une pratique non conventionnelle, dans un cours structuré. Sans validation scientifique ; ce n'est pas un avis médical.",
+    "it": "Scopri cosa sostiene l'inforenergetica, una pratica non convenzionale, in un corso strutturato. Non ha validazione scientifica e non è un consiglio medico.",
+    "es": "Descubre qué sostiene la inforenergética, una práctica no convencional, en un curso estructurado. No tiene validación científica y no es consejo médico.",
+    "pt": "Descobre o que defende a inforenergética, uma prática não convencional, num curso estruturado. Não tem validação científica e não é aconselhamento médico.",
+    "de": "Entdecke in einem strukturierten Kurs, was die Inforenergetik vertritt, eine unkonventionelle Praxis. Sie hat keine wissenschaftliche Validierung und ist keine medizinische Beratung.",
+    "hu": "Fedezze fel, mit állít az inforenergetika, egy nem konvencionális gyakorlat, egy strukturált kurzusban. Tudományosan nem validált, és nem orvosi tanács."
    },
    "url": "https://chiuta.github.io/Inforenergetica/",
    "readme": "https://github.com/chiuta/Inforenergetica",
@@ -6341,24 +7237,56 @@
    "title": "Valea Plopului 1972",
    "section": "cultura",
    "tags": {
-    "ro": null,
-    "en": null,
-    "fr": null,
-    "it": null,
-    "es": null,
-    "pt": null,
-    "de": null,
-    "hu": null
+    "ro": [
+     "UAP",
+     "3D",
+     "ficțiune"
+    ],
+    "en": [
+     "UAP",
+     "3D",
+     "fiction"
+    ],
+    "fr": [
+     "UAP",
+     "3D",
+     "fiction"
+    ],
+    "it": [
+     "UAP",
+     "3D",
+     "finzione"
+    ],
+    "es": [
+     "UAP",
+     "3D",
+     "ficción"
+    ],
+    "pt": [
+     "UAP",
+     "3D",
+     "ficção"
+    ],
+    "de": [
+     "UAP",
+     "3D",
+     "Fiktion"
+    ],
+    "hu": [
+     "UAP",
+     "3D",
+     "fikció"
+    ]
    },
    "line": {
-    "ro": null,
-    "en": null,
-    "fr": null,
-    "it": null,
-    "es": null,
-    "pt": null,
-    "de": null,
-    "hu": null
+    "ro": "Privește din exterior, din interior și în simulare un caz de OZN din 1972, reconstruit în 3D. Este o ipoteză imaginată, nu o dovadă.",
+    "en": "View a 1972 UFO case from outside, from inside and in simulation, reconstructed in 3D. It is an imagined hypothesis, not evidence.",
+    "fr": "Observez de l'extérieur, de l'intérieur et en simulation un cas d'OVNI de 1972, reconstitué en 3D. C'est une hypothèse imaginée, pas une preuve.",
+    "it": "Guarda da fuori, da dentro e in simulazione un caso UFO del 1972, ricostruito in 3D. È un'ipotesi immaginata, non una prova.",
+    "es": "Mira desde fuera, desde dentro y en simulación un caso OVNI de 1972, reconstruido en 3D. Es una hipótesis imaginada, no una prueba.",
+    "pt": "Vê por fora, por dentro e em simulação um caso de OVNI de 1972, reconstruído em 3D. É uma hipótese imaginada, não uma prova.",
+    "de": "Betrachte einen UFO-Fall von 1972, in 3D rekonstruiert, von außen, von innen und in der Simulation. Es ist eine erdachte Hypothese, kein Beweis.",
+    "hu": "Nézzen meg kívülről, belülről és szimulációban egy 1972-es UFO-esetet, 3D-ben rekonstruálva. Elképzelt hipotézis, nem bizonyíték."
    },
    "url": "https://chiuta.github.io/ValeaPlopului1972/",
    "readme": "https://github.com/chiuta/ValeaPlopului1972",
@@ -6395,7 +7323,17 @@
    "de": "trailer.de.vtt",
    "hu": "trailer.hu.vtt"
   },
-  "size": 1472135
+  "size": 1472135,
+  "apps": [
+   "AcademiSearch",
+   "Arhiva fără frontiere",
+   "DataWeave",
+   "FreeDetect",
+   "MarkdownAtelier",
+   "OmniHost",
+   "TranslateHub",
+   "Undava"
+  ]
  },
  "reels": {
   "recomandate": {
@@ -6605,6 +7543,148 @@
     "de": "reels/cultura.de.vtt",
     "hu": "reels/cultura.hu.vtt"
    }
+  }
+ },
+ "intros": {
+  "recomandate": {
+   "ro": "Selecție pentru un prim contact cu portofoliul: verificare de surse, traducere, învățare și instrumente de lucru.",
+   "en": "A selection to start with: source checking, translation, learning and working tools.",
+   "fr": "Une sélection pour commencer : vérification des sources, traduction, apprentissage et outils de travail.",
+   "it": "Una selezione per iniziare: verifica delle fonti, traduzione, apprendimento e strumenti di lavoro.",
+   "es": "Una selección para empezar: verificación de fuentes, traducción, aprendizaje y herramientas de trabajo.",
+   "pt": "Uma seleção para começar: verificação de fontes, tradução, aprendizagem e ferramentas de trabalho.",
+   "de": "Eine Auswahl für den Einstieg: Quellenprüfung, Übersetzung, Lern- und Arbeitswerkzeuge.",
+   "hu": "Válogatás az induláshoz: forrásellenőrzés, fordítás, tanulási és munkaeszközök."
+  },
+  "verificare": {
+   "ro": "Instrumente pentru a verifica de unde vine o informație, ce s-a schimbat de la publicare și dacă o legătură mai trăiește. Fiecare declară în README ce cereri face către terți.",
+   "en": "Tools for checking where a piece of information comes from, what changed since publication, and whether a link is still alive. Each one declares in its README which requests it makes to third parties.",
+   "fr": "Des outils pour vérifier d'où vient une information, ce qui a changé depuis sa publication et si un lien est encore actif. Chacun déclare dans son README les requêtes qu'il adresse à des tiers.",
+   "it": "Strumenti per verificare da dove viene un'informazione, che cosa è cambiato dalla pubblicazione e se un link è ancora attivo. Ognuno dichiara nel README quali richieste invia a terzi.",
+   "es": "Herramientas para comprobar de dónde viene una información, qué ha cambiado desde su publicación y si un enlace sigue vivo. Cada una declara en su README qué solicitudes hace a terceros.",
+   "pt": "Ferramentas para verificar de onde vem uma informação, o que mudou desde a publicação e se uma ligação ainda funciona. Cada uma declara no README os pedidos que faz a terceiros.",
+   "de": "Werkzeuge, um zu prüfen, woher eine Information stammt, was sich seit der Veröffentlichung geändert hat und ob ein Link noch funktioniert. Jedes dieser Werkzeuge gibt in seiner README an, welche Anfragen es an Dritte sendet.",
+   "hu": "Eszközök annak ellenőrzésére, honnan származik egy információ, mi változott a megjelenése óta, és él-e még egy hivatkozás. Mindegyik a README-ben jelzi, milyen kéréseket küld harmadik feleknek."
+  },
+  "confidentialitate": {
+   "ro": "Curăță metadatele fișierelor, criptează local și verifică atestări de proveniență. Neauditate independent: nu le folosi ca unică garanție pentru date cu adevărat sensibile.",
+   "en": "Strip file metadata, encrypt locally and check provenance credentials. Not independently audited: do not rely on them as the only safeguard for truly sensitive data.",
+   "fr": "Supprimer les métadonnées des fichiers, chiffrer en local et vérifier des attestations de provenance. Non audités de façon indépendante : ne vous y fiez pas comme seule garantie pour des données vraiment sensibles.",
+   "it": "Rimuovere i metadati dei file, cifrare in locale e verificare attestazioni di provenienza. Non verificati da terzi: non affidarti a essi come unica garanzia per dati davvero sensibili.",
+   "es": "Eliminar metadatos de archivos, cifrar en local y comprobar credenciales de procedencia. Sin auditoría independiente: no los uses como única garantía para datos realmente sensibles.",
+   "pt": "Remover metadados de ficheiros, cifrar localmente e verificar credenciais de proveniência. Sem auditoria independente: não os uses como única garantia para dados realmente sensíveis.",
+   "de": "Dateimetadaten entfernen, lokal verschlüsseln und Herkunftsnachweise prüfen. Nicht unabhängig geprüft: Verlassen Sie sich bei wirklich sensiblen Daten nicht allein darauf.",
+   "hu": "Fájlmetaadatok eltávolítása, helyi titkosítás és eredethitelesítő adatok ellenőrzése. Nem függetlenül auditáltak: ne támaszkodjon rájuk egyedüli védelemként valóban érzékeny adatok esetén."
+  },
+  "educatie": {
+   "ro": "Material de învățare și instrumente de lucru pentru radioamatorism, accesibilitate, organizarea de evenimente și lucrul cu texte și date. Unelte neoficiale: nu înlocuiesc nicio autoritate.",
+   "en": "Learning material and working tools for amateur radio, accessibility, event organization and working with text and data. Unofficial tools: they do not replace any authority.",
+   "fr": "Matériel d'apprentissage et outils de travail pour le radioamateurisme, l'accessibilité, l'organisation d'événements et le travail sur les textes et les données. Outils non officiels : ils ne remplacent aucune autorité.",
+   "it": "Materiale di apprendimento e strumenti di lavoro per la radioamatoria, l'accessibilità, l'organizzazione di eventi e il lavoro su testi e dati. Strumenti non ufficiali: non sostituiscono alcuna autorità.",
+   "es": "Material de aprendizaje y herramientas de trabajo para la radioafición, la accesibilidad, la organización de eventos y el trabajo con textos y datos. Herramientas no oficiales: no sustituyen a ninguna autoridad.",
+   "pt": "Material de aprendizagem e ferramentas de trabalho para radioamadorismo, acessibilidade, organização de eventos e trabalho com textos e dados. Ferramentas não oficiais: não substituem nenhuma autoridade.",
+   "de": "Lernmaterial und Arbeitswerkzeuge für Amateurfunk, Barrierefreiheit, Veranstaltungsorganisation sowie die Arbeit mit Text und Daten. Inoffizielle Werkzeuge: Sie ersetzen keine Behörde.",
+   "hu": "Tanulási anyagok és munkaeszközök a rádióamatőrséghez, az akadálymentességhez, a rendezvényszervezéshez, valamint a szövegek és adatok kezeléséhez. Nem hivatalos eszközök: egyetlen hatóságot sem helyettesítenek."
+  },
+  "literatura": {
+   "ro": "Dicționare, alfabete și coduri, proverbe și proză originală: unelte pentru cuvinte, scriere și lectură. Sunt ajutoare didactice, nu referințe normative.",
+   "en": "Dictionaries, alphabets and codes, proverbs and original fiction: tools for words, writing and reading. They are teaching aids, not normative references.",
+   "fr": "Dictionnaires, alphabets et codes, proverbes et fiction originale : des outils pour les mots, l’écriture et la lecture. Ce sont des aides pédagogiques, pas des références normatives.",
+   "it": "Dizionari, alfabeti e codici, proverbi e narrativa originale: strumenti per parole, scrittura e lettura. Sono sussidi didattici, non riferimenti normativi.",
+   "es": "Diccionarios, alfabetos y códigos, refranes y ficción original: herramientas para palabras, escritura y lectura. Son apoyos didácticos, no referencias normativas.",
+   "pt": "Dicionários, alfabetos e códigos, provérbios e ficção original: ferramentas para palavras, escrita e leitura. São apoios didáticos, não referências normativas.",
+   "de": "Wörterbücher, Alphabete und Codes, Sprichwörter und Originalprosa: Werkzeuge für Wörter, Schreiben und Lesen. Sie sind Lernhilfen, keine normativen Nachschlagewerke.",
+   "hu": "Szótárak, ábécék és kódok, közmondások és eredeti szépirodalom: eszközök a szavakhoz, az íráshoz és az olvasáshoz. Tanulássegédletek, nem normatív referenciák."
+  },
+  "stiinta": {
+   "ro": "Vizualizări și enciclopedii construite pe date publice. Acolo unde datele sunt aproximative, aplicația spune asta.",
+   "en": "Visualizations and encyclopedias built on public data. Where the data is approximate, the app says so.",
+   "fr": "Visualisations et encyclopédies construites sur des données publiques. Lorsque les données sont approximatives, l'application le dit.",
+   "it": "Visualizzazioni ed enciclopedie costruite su dati pubblici. Dove i dati sono approssimativi, l'applicazione lo dichiara.",
+   "es": "Visualizaciones y enciclopedias construidas sobre datos públicos. Cuando los datos son aproximados, la aplicación lo indica.",
+   "pt": "Visualizações e enciclopédias construídas sobre dados públicos. Quando os dados são aproximados, a aplicação di-lo.",
+   "de": "Visualisierungen und Enzyklopädien auf Grundlage öffentlicher Daten. Wo die Daten nur näherungsweise gelten, weist die App darauf hin.",
+   "hu": "Nyilvános adatokra épülő vizualizációk és enciklopédiák. Ahol az adatok közelítők, az alkalmazás jelzi ezt."
+  },
+  "teren": {
+   "ro": "Trasee GPS, jurnale de teren, ghiduri de drumeție și de supraviețuire. Totul rulează local; nimic nu înlocuiește harta, ghidul sau autoritățile locale și nimic nu este dispozitiv de navigație sau de siguranță.",
+   "en": "GPS tracks, field journals, hiking and survival guides. Everything runs locally; nothing replaces a map, a guide or local authorities, and nothing here is a navigation or safety device.",
+   "fr": "Traces GPS, carnets de terrain, guides de randonnée et de survie. Tout fonctionne en local ; rien ne remplace une carte, un guide ou les autorités locales, et rien n’est un dispositif de navigation ou de sécurité.",
+   "it": "Tracce GPS, diari di campo, guide di escursionismo e sopravvivenza. Tutto funziona in locale; nulla sostituisce una mappa, una guida o le autorità locali, e nulla è un dispositivo di navigazione o di sicurezza.",
+   "es": "Rutas GPS, diarios de campo, guías de senderismo y supervivencia. Todo funciona en local; nada sustituye a un mapa, un guía o las autoridades locales, y nada es un dispositivo de navegación o seguridad.",
+   "pt": "Trajetos GPS, diários de campo, guias de caminhada e sobrevivência. Tudo corre localmente; nada substitui um mapa, um guia ou as autoridades locais, e nada é um dispositivo de navegação ou de segurança.",
+   "de": "GPS-Tracks, Feldtagebücher, Wander- und Überlebensführer. Alles läuft lokal; nichts ersetzt eine Karte, einen Führer oder die örtlichen Behörden, und nichts hier ist ein Navigations- oder Sicherheitsgerät.",
+   "hu": "GPS-nyomvonalak, terepnaplók, túra- és túlélési útmutatók. Minden helyben fut; semmi sem helyettesíti a térképet, a vezetőt vagy a helyi hatóságokat, és semmi sem navigációs vagy biztonsági eszköz."
+  },
+  "sunet": {
+   "ro": "Măsurare, generare și analiză de sunet, plus muzică și ambianță generate în browser. Sonometrul și testele auditive sunt orientative, nu dispozitive certificate sau medicale.",
+   "en": "Measuring, generating and analysing sound, plus music and ambience generated in the browser. The sound-level meter and hearing tests are indicative, not certified or medical devices.",
+   "fr": "Mesure, génération et analyse du son, plus musique et ambiances générées dans le navigateur. Le sonomètre et les tests auditifs sont indicatifs, pas des dispositifs certifiés ou médicaux.",
+   "it": "Misura, generazione e analisi del suono, più musica e ambienti generati nel browser. Il fonometro e i test dell’udito sono indicativi, non dispositivi certificati o medici.",
+   "es": "Medición, generación y análisis de sonido, además de música y ambientes generados en el navegador. El sonómetro y las pruebas auditivas son orientativos, no dispositivos certificados ni médicos.",
+   "pt": "Medição, geração e análise de som, além de música e ambientes gerados no navegador. O sonómetro e os testes auditivos são indicativos, não dispositivos certificados nem médicos.",
+   "de": "Schall messen, erzeugen und analysieren sowie im Browser erzeugte Musik und Atmosphären. Schallpegelmesser und Hörtests sind Richtwerte, keine zertifizierten oder medizinischen Geräte.",
+   "hu": "Hang mérése, előállítása és elemzése, valamint a böngészőben generált zene és hangulat. A hangszintmérő és a halláspróbák tájékoztató jellegűek, nem hitelesített vagy orvosi eszközök."
+  },
+  "gospodarie": {
+   "ro": "Calendar, buget, arbore genealogic, notițe și timp: unelte pentru treburile de zi cu zi, cu datele păstrate în acest browser, fără cont. Nu sunt consultanță financiară, juridică sau fiscală.",
+   "en": "Calendar, budget, family tree, notes and time: tools for everyday matters, with data kept in this browser, no account. Not financial, legal or tax advice.",
+   "fr": "Agenda, budget, arbre généalogique, notes et temps : des outils pour le quotidien, avec des données conservées dans ce navigateur, sans compte. Pas de conseil financier, juridique ou fiscal.",
+   "it": "Calendario, bilancio, albero genealogico, appunti e tempo: strumenti per la vita quotidiana, con dati conservati in questo browser, senza account. Non sono consulenza finanziaria, legale o fiscale.",
+   "es": "Calendario, presupuesto, árbol genealógico, notas y tiempo: herramientas para el día a día, con los datos guardados en este navegador, sin cuenta. No son asesoramiento financiero, jurídico ni fiscal.",
+   "pt": "Calendário, orçamento, árvore genealógica, notas e tempo: ferramentas para o dia a dia, com os dados guardados neste navegador, sem conta. Não são aconselhamento financeiro, jurídico ou fiscal.",
+   "de": "Kalender, Budget, Stammbaum, Notizen und Zeit: Werkzeuge für den Alltag, mit Daten in diesem Browser, ohne Konto. Keine Finanz-, Rechts- oder Steuerberatung.",
+   "hu": "Naptár, költségvetés, családfa, jegyzetek és idő: eszközök a mindennapi ügyekhez, az adatok ebben a böngészőben maradnak, fiók nélkül. Nem pénzügyi, jogi vagy adótanács."
+  },
+  "jocuri": {
+   "ro": "Fiecare joc are motor separat de interfață, adversar AI euristic fără acces la informația ascunsă și suite de teste proprii (de pildă, Belot: peste 450.000 de verificări automate).",
+   "en": "Each game has an engine separate from the interface, a heuristic AI opponent with no access to hidden information, and its own test suites (for example, Belot: over 450,000 automated checks).",
+   "fr": "Chaque jeu a un moteur séparé de l'interface, un adversaire IA heuristique sans accès à l'information cachée et ses propres suites de tests (par exemple, Belot : plus de 450 000 vérifications automatiques).",
+   "it": "Ogni gioco ha un motore separato dall'interfaccia, un avversario AI euristico senza accesso alle informazioni nascoste e suite di test proprie (ad esempio, Belot: oltre 450.000 verifiche automatiche).",
+   "es": "Cada juego tiene el motor separado de la interfaz, un adversario de IA heurístico sin acceso a la información oculta y suites de pruebas propias (por ejemplo, Belot: más de 450.000 verificaciones automáticas).",
+   "pt": "Cada jogo tem o motor separado da interface, um adversário de IA heurístico sem acesso à informação oculta e conjuntos de testes próprios (por exemplo, Belot: mais de 450 000 verificações automáticas).",
+   "de": "Jedes Spiel hat eine von der Oberfläche getrennte Engine, einen heuristischen KI-Gegner ohne Zugriff auf verdeckte Informationen und eigene Testsuiten (zum Beispiel Belot: über 450.000 automatisierte Prüfungen).",
+   "hu": "Minden játék motorja külön van választva a felülettől, heurisztikus MI-ellenfele nem fér hozzá rejtett információhoz, és saját tesztcsomagokkal rendelkezik (például a Belot esetében több mint 450 000 automatizált ellenőrzés)."
+  },
+  "ai": {
+   "ro": "Interfețe care lasă utilizatorul să decidă ce pleacă și unde. Cheile API rămân în browser, doar „obscurizate”, nu criptate: citește README-ul înainte să le folosești.",
+   "en": "Interfaces that let the user decide what leaves and where it goes. API keys stay in the browser, only \"obscured\", not encrypted: read the README before using them.",
+   "fr": "Des interfaces qui laissent l'utilisateur décider de ce qui part et vers où. Les clés API restent dans le navigateur, simplement « obscurcies », non chiffrées : lisez le README avant de les utiliser.",
+   "it": "Interfacce che lasciano all'utente la decisione su cosa parte e dove. Le chiavi API restano nel browser, solo «offuscate», non cifrate: leggi il README prima di usarle.",
+   "es": "Interfaces que dejan al usuario decidir qué sale y adónde. Las claves de API permanecen en el navegador, solo «ofuscadas», no cifradas: lee el README antes de usarlas.",
+   "pt": "Interfaces que deixam o utilizador decidir o que sai e para onde. As chaves de API ficam no navegador, apenas «ofuscadas», não encriptadas: leia o README antes de as utilizar.",
+   "de": "Oberflächen, die den Nutzer entscheiden lassen, was das Gerät verlässt und wohin es geht. API-Schlüssel bleiben im Browser, nur „verschleiert“, nicht verschlüsselt: Lesen Sie vor der Nutzung die README.",
+   "hu": "Olyan felületek, amelyek a felhasználóra bízzák, mi hagyja el az eszközét, és hová kerül. Az API-kulcsok a böngészőben maradnak, csupán „elfedve”, nem titkosítva: használat előtt olvassa el a README-t."
+  },
+  "utilitare": {
+   "ro": "Unelte mici, făcute să dureze: un fișier, fără cont.",
+   "en": "Small tools, built to last: one file, no account.",
+   "fr": "De petits outils, conçus pour durer : un fichier, sans compte.",
+   "it": "Piccoli strumenti, fatti per durare: un solo file, nessun account.",
+   "es": "Herramientas pequeñas, hechas para durar: un archivo, sin cuenta.",
+   "pt": "Ferramentas pequenas, feitas para durar: um ficheiro, sem conta.",
+   "de": "Kleine, auf Langlebigkeit ausgelegte Werkzeuge: eine Datei, kein Konto.",
+   "hu": "Kis, tartósra épített eszközök: egyetlen fájl, fiók nélkül."
+  },
+  "cultura": {
+   "ro": "Aceste aplicații descriu practici fără dovezi științifice de eficacitate (astrologie, tarot, numerologie, reiki, radiestezie ș.a.) ca obiect de studiu cultural, nu ca recomandare. Nu înlocuiesc sfatul medical, juridic sau financiar.",
+   "en": "These apps describe practices without scientific evidence of efficacy (astrology, tarot, numerology, reiki, dowsing, etc.) as an object of cultural study, not as a recommendation. They do not replace medical, legal or financial advice.",
+   "fr": "Ces applications décrivent des pratiques sans preuve scientifique d'efficacité (astrologie, tarot, numérologie, reiki, radiesthésie, etc.) comme objet d'étude culturelle, et non comme recommandation. Elles ne remplacent pas un avis médical, juridique ou financier.",
+   "it": "Queste applicazioni descrivono pratiche senza prove scientifiche di efficacia (astrologia, tarocchi, numerologia, reiki, rabdomanzia e altre) come oggetto di studio culturale, non come raccomandazione. Non sostituiscono il parere medico, legale o finanziario.",
+   "es": "Estas aplicaciones describen prácticas sin pruebas científicas de eficacia (astrología, tarot, numerología, reiki, radiestesia, etc.) como objeto de estudio cultural, no como recomendación. No sustituyen el consejo médico, jurídico o financiero.",
+   "pt": "Estas aplicações descrevem práticas sem provas científicas de eficácia (astrologia, tarot, numerologia, reiki, radiestesia, entre outras) como objeto de estudo cultural, não como recomendação. Não substituem o aconselhamento médico, jurídico ou financeiro.",
+   "de": "Diese Apps beschreiben Praktiken ohne wissenschaftlichen Wirksamkeitsnachweis (Astrologie, Tarot, Numerologie, Reiki, Radiästhesie usw.) als Gegenstand der Kulturforschung, nicht als Empfehlung. Sie ersetzen keine medizinische, rechtliche oder finanzielle Beratung.",
+   "hu": "Ezek az alkalmazások a hatásosságra tudományos bizonyítékkal nem rendelkező gyakorlatokat (asztrológia, tarot, numerológia, reiki, radiesztézia stb.) kulturális tanulmányozás tárgyaként írják le, nem ajánlásként. Nem helyettesítik az orvosi, jogi vagy pénzügyi tanácsadást."
+  },
+  "rust": {
+   "ro": "Proiecte scrise în Rust, care nu sunt aplicații HTML dintr-un singur fișier: OSATURA (motor de animație, alpha), VERIGA (verificator de linkuri), TEZAUR (asistent de cercetare pentru teză, versiune 0.x) și LegatorOCR (scanări → PDF cu text căutabil, versiune 0.x).",
+   "en": "Projects written in Rust that are not single-file HTML apps: OSATURA (animation engine, alpha), VERIGA (link checker), TEZAUR (thesis research assistant, version 0.x) and LegatorOCR (scans → searchable PDF, version 0.x).",
+   "fr": "Projets écrits en Rust qui ne sont pas des applications HTML en un seul fichier : OSATURA (moteur d'animation, alpha), VERIGA (vérificateur de liens), TEZAUR (assistant de recherche pour la thèse, version 0.x) et LegatorOCR (numérisations → PDF interrogeable, version 0.x).",
+   "it": "Progetti scritti in Rust che non sono app HTML in un solo file: OSATURA (motore di animazione, alpha), VERIGA (verifica dei link), TEZAUR (assistente di ricerca per la tesi, versione 0.x) e LegatorOCR (scansioni → PDF ricercabile, versione 0.x).",
+   "es": "Proyectos escritos en Rust que no son apps HTML de un solo archivo: OSATURA (motor de animación, alfa), VERIGA (verificador de enlaces), TEZAUR (asistente de investigación para la tesis, versión 0.x) y LegatorOCR (escaneos → PDF con texto buscable, versión 0.x).",
+   "pt": "Projetos escritos em Rust que não são apps HTML de um só ficheiro: OSATURA (motor de animação, alfa), VERIGA (verificador de ligações), TEZAUR (assistente de investigação para a tese, versão 0.x) e LegatorOCR (digitalizações → PDF pesquisável, versão 0.x).",
+   "de": "In Rust geschriebene Projekte, die keine Ein-Datei-HTML-Apps sind: OSATURA (Animations-Engine, Alpha), VERIGA (Linkprüfer), TEZAUR (Recherche-Assistent für die Abschlussarbeit, Version 0.x) und LegatorOCR (Scans → durchsuchbares PDF, Version 0.x).",
+   "hu": "Rustban írt projektek, amelyek nem egyfájlos HTML-alkalmazások: OSATURA (animációs motor, alfa), VERIGA (hivatkozás-ellenőrző), TEZAUR (kutatási segéd a szakdolgozathoz, 0.x verzió) és LegatorOCR (szkennelésből kereshető PDF, 0.x verzió)."
   }
  }
 }
