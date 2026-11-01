@@ -1,0 +1,66 @@
+{
+ "en": [
+  "Paste your text once.",
+  "Browse 42 external tools by level and topic.",
+  "Search tools by name or category.",
+  "Generate citations from a DOI.",
+  "The app itself detects nothing; it points to external tools.",
+  "Free and open source — chiuta.ro"
+ ],
+ "ro": [
+  "Lipești textul o singură dată.",
+  "Răsfoiește 42 de instrumente externe după nivel și temă.",
+  "Caută unelte după nume sau categorie.",
+  "Generează citări dintr-un DOI.",
+  "Aplicația nu detectează nimic singură; te trimite la unelte externe.",
+  "Gratuit și open source — chiuta.ro"
+ ],
+ "fr": [
+  "Collez votre texte une seule fois.",
+  "Parcourez 42 outils externes par niveau et par thème.",
+  "Cherchez des outils par nom ou catégorie.",
+  "Générez des citations à partir d'un DOI.",
+  "L'application ne détecte rien elle-même ; elle oriente vers des outils externes.",
+  "Gratuit et open source — chiuta.ro"
+ ],
+ "it": [
+  "Incolla il testo una sola volta.",
+  "Sfoglia 42 strumenti esterni per livello e argomento.",
+  "Cerca gli strumenti per nome o categoria.",
+  "Genera citazioni da un DOI.",
+  "L'app non rileva nulla da sola; rimanda a strumenti esterni.",
+  "Gratuito e open source — chiuta.ro"
+ ],
+ "es": [
+  "Pega tu texto una sola vez.",
+  "Explora 42 herramientas externas por nivel y tema.",
+  "Busca herramientas por nombre o categoría.",
+  "Genera citas a partir de un DOI.",
+  "La app no detecta nada por sí sola; remite a herramientas externas.",
+  "Gratis y de código abierto — chiuta.ro"
+ ],
+ "pt": [
+  "Cole o texto uma única vez.",
+  "Explore 42 ferramentas externas por nível e tema.",
+  "Pesquise ferramentas por nome ou categoria.",
+  "Gere citações a partir de um DOI.",
+  "A aplicação não deteta nada sozinha; encaminha para ferramentas externas.",
+  "Grátis e de código aberto — chiuta.ro"
+ ],
+ "de": [
+  "Text nur einmal einfügen.",
+  "42 externe Werkzeuge nach Niveau und Thema durchsuchen.",
+  "Werkzeuge nach Name oder Kategorie suchen.",
+  "Zitate aus einer DOI erzeugen.",
+  "Die App erkennt selbst nichts; sie verweist auf externe Werkzeuge.",
+  "Kostenlos und Open Source — chiuta.ro"
+ ],
+ "hu": [
+  "Illeszd be a szöveget egyetlen alkalommal.",
+  "Böngészd a 42 külső eszközt szint és téma szerint.",
+  "Keress eszközöket név vagy kategória szerint.",
+  "Készíts hivatkozást DOI alapján.",
+  "Az alkalmazás maga semmit nem észlel; külső eszközökre irányít.",
+  "Ingyenes és nyílt forráskódú — chiuta.ro"
+ ]
+}
