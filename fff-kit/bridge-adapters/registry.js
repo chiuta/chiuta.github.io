@@ -2,6 +2,8 @@
 var FFF_REG = [
  {slug:'academisearch',name:'AcademiSearch',url:'https://academisearch.chiuta.ro/',accepts:['citation/csl'],produces:['citation/csl']},
  {slug:'markdownatelier',name:'MarkdownAtelier',url:'https://markdownatelier.chiuta.ro/',accepts:['text/markdown','text/plain','citation/csl','note/akasha'],produces:['text/markdown']},
+ {slug:'undava',name:'Undava',url:'https://undava.chiuta.ro/',accepts:['quiz/undava','cards/qa'],produces:[]},
+ {slug:'seva',name:'SEVA',url:'https://seva.chiuta.ro/',accepts:[],produces:['quiz/undava']},
  {slug:'akasha',name:'Akasha',url:'https://akasha.chiuta.ro/',accepts:['note/akasha','text/markdown','text/plain','citation/csl'],produces:['note/akasha']}
 ];
 function fffCslToMd(items){

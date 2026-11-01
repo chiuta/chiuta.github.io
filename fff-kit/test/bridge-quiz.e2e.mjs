@@ -1,0 +1,31 @@
+import {createRequire} from 'node:module'; import fs from 'node:fs'; import path from 'node:path';
+const {chromium}=createRequire(process.env.PW_ROOT||import.meta.url)('playwright');
+// Cere depozitele SEVA și Undava cu bridge aplicat (APPS_ROOT, implicit ../../..).
+const ROOT=process.env.APPS_ROOT||path.resolve(path.dirname(new URL(import.meta.url).pathname),'../../..');const MAP={'seva.chiuta.ro':'SEVA','undava.chiuta.ro':'Undava'};
+let ok=0,fail=0;const t=(n,c)=>{console.log((c?'OK  ':'FAIL')+' '+n);c?ok++:fail++};
+(async()=>{const b=await chromium.launch();const ctx=await b.newContext({serviceWorkers:'block'});const errs=[];
+ await ctx.route(/.*/,r=>{const u=new URL(r.request().url());const d=MAP[u.hostname];if(!d)return r.abort();const f=path.join(ROOT,d,u.pathname==='/'?'index.html':u.pathname.slice(1));if(!fs.existsSync(f))return r.fulfill({status:404,body:''});r.fulfill({contentType:f.endsWith('.html')?'text/html':'text/plain',body:fs.readFileSync(f)})});
+ const watch=p=>p.on('pageerror',e=>errs.push(e.message.slice(0,120)));
+ const S=await ctx.newPage();watch(S);await S.goto('https://seva.chiuta.ro/');await S.waitForSelector('#fffSend',{state:'attached'});
+ const n=await S.evaluate(()=>__seva.quizBank().length);
+ await S.evaluate(()=>document.getElementById('fffSend').click());
+ const items=await S.$$eval('[role=menuitem]',x=>x.map(e=>e.textContent));
+ t('SEVA: meniu cu Undava',items.some(x=>/Undava/.test(x))&&!items.some(x=>/SEVA/.test(x)));
+ const [U]=await Promise.all([ctx.waitForEvent('page'),S.evaluate(()=>[...document.querySelectorAll('[role=menuitem]')].find(e=>/Undava/.test(e.textContent)).click())]);
+ watch(U);await U.waitForSelector('[role=alertdialog]',{timeout:8000});
+ const before=await U.evaluate(()=>state.quizzes.length);
+ t('Undava: nimic importat înainte de acord',before===await U.evaluate(()=>state.quizzes.length));
+ await U.click('[role=alertdialog] button >> nth=0');
+ await U.waitForTimeout(500);
+ const after=await U.evaluate(()=>({n:state.quizzes.length,q:state.quizzes[state.quizzes.length-1]}));
+ t('Undava: quiz SEVA importat',after.n===before+1&&after.q.title==='SEVA'&&after.q.questions.length===Math.min(100,n));
+ const q0=after.q.questions[0];
+ t('întrebare cu 4 variante, una corectă',q0.answers.length===4&&q0.answers.filter(a=>a.correct).length===1&&/ceas central/.test(q0.text));
+ // cards/qa
+ const link=await U.evaluate(()=>FFF.bridge.toLink(FFF.bridge.make({type:'cards/qa',title:'Capitale',data:[{q:'Capitala României?',a:'București'},{q:'Capitala Franței?',a:'Paris'}]}),'https://undava.chiuta.ro/'));
+ const U2=await ctx.newPage();watch(U2);await U2.goto(link);await U2.waitForSelector('[role=alertdialog]');
+ const b2=await U2.evaluate(()=>state.quizzes.length);await U2.click('[role=alertdialog] button >> nth=0');await U2.waitForTimeout(400);
+ const cq=await U2.evaluate(()=>state.quizzes[state.quizzes.length-1]);
+ t('Undava: cards/qa -> quiz cu răspuns scris',cq.title==='Capitale'&&cq.questions.length===2&&cq.questions[0].type==='type');
+ t('fără erori JS',errs.length===0);if(errs.length)console.log(errs);
+ console.log(ok+' ok, '+fail+' fail');await b.close();process.exit(fail?1:0)})().catch(e=>{console.error(e);process.exit(2)});

@@ -23,11 +23,11 @@ UI: `sendButton({slug, registry, getEnv, className})`, `sendMenu`, `banner(env, 
 node fff-kit/tools/add-bridge.mjs <dirAplicație> <slug> <versiune> "<notă de changelog>"
 ```
 Adaugă modulul (păstrând modulele existente), inserează `bridge-adapters/registry.js` + `bridge-adapters/<slug>.js` ca `<script id="fff-bridge-adapter">`, recalculează hash-urile CSP (`fixcsp`), `app.json` (`info`), ridică versiunea (index.html, sw.js, manifest) și scrie în `CHANGELOG.md`.
-Adaptorul decide ce înseamnă „trimite” și „primește” pentru aplicație (`mount({accepts, onReceive})`; `onReceive` aruncă o eroare dacă importul eșuează). Adaptoarele existente: `akasha`, `markdownatelier`, `academisearch`.
+Adaptorul decide ce înseamnă „trimite” și „primește” pentru aplicație (`mount({accepts, onReceive})`; `onReceive` aruncă o eroare dacă importul eșuează). Adaptoare existente: `akasha`, `markdownatelier`, `academisearch`, `undava` (primește `quiz/undava`, `cards/qa`), `seva` (trimite quiz-ul către Undava).
 Registrul de capabilități e în `bridge-adapters/registry.js`; extinde-l când adaugi aplicații.
 
 ## Fluxuri active
-AcademiSearch (bibliotecă → CSL) → MarkdownAtelier (bibliografie în editor) · Akasha (notă cu tag `fff`) ; MarkdownAtelier (text) → Akasha (notă) ; Akasha (notă) → MarkdownAtelier (document).
+SEVA (quiz) → Undava · AcademiSearch (bibliotecă → CSL) → MarkdownAtelier (bibliografie în editor) · Akasha (notă cu tag `fff`) ; MarkdownAtelier (text) → Akasha (notă) ; Akasha (notă) → MarkdownAtelier (document).
 
 ## Testare
 `node test/bridge.test.mjs` (29 verificări: dus-întors cu Unicode, link prea mare, plicuri invalide, poluare de prototip, ținte, fișier, paritate i18n). Test end-to-end cu trei origini în Chromium: `fff-kit/test/bridge.e2e.mjs`.
