@@ -11,7 +11,8 @@
   "done": "Importat.",
   "bad": "Plic invalid.",
   "copied": "Copiat.",
-  "label": "Trimite la…"
+  "label": "Trimite la…",
+  "armed": "Fișier pregătit — apasă Import în aplicație."
  },
  "en": {
   "btn": "Send to…",
@@ -25,7 +26,8 @@
   "done": "Imported.",
   "bad": "Invalid envelope.",
   "copied": "Copied.",
-  "label": "Send to…"
+  "label": "Send to…",
+  "armed": "File ready — press Import in the app."
  },
  "fr": {
   "btn": "Envoyer à…",
@@ -39,7 +41,8 @@
   "done": "Importé.",
   "bad": "Enveloppe invalide.",
   "copied": "Copié.",
-  "label": "Envoyer à…"
+  "label": "Envoyer à…",
+  "armed": "Fichier prêt — appuyez sur Importer dans l’application."
  },
  "it": {
   "btn": "Invia a…",
@@ -53,7 +56,8 @@
   "done": "Importato.",
   "bad": "Busta non valida.",
   "copied": "Copiato.",
-  "label": "Invia a…"
+  "label": "Invia a…",
+  "armed": "File pronto — premi Importa nell’app."
  },
  "es": {
   "btn": "Enviar a…",
@@ -67,7 +71,8 @@
   "done": "Importado.",
   "bad": "Sobre no válido.",
   "copied": "Copiado.",
-  "label": "Enviar a…"
+  "label": "Enviar a…",
+  "armed": "Archivo listo — pulsa Importar en la app."
  },
  "pt": {
   "btn": "Enviar para…",
@@ -81,7 +86,8 @@
   "done": "Importado.",
   "bad": "Envelope inválido.",
   "copied": "Copiado.",
-  "label": "Enviar para…"
+  "label": "Enviar para…",
+  "armed": "Ficheiro pronto — prima Importar na app."
  },
  "de": {
   "btn": "Senden an…",
@@ -95,7 +101,8 @@
   "done": "Importiert.",
   "bad": "Ungültiger Umschlag.",
   "copied": "Kopiert.",
-  "label": "Senden an…"
+  "label": "Senden an…",
+  "armed": "Datei bereit — tippe in der App auf Importieren."
  },
  "hu": {
   "btn": "Küldés ide…",
@@ -109,6 +116,7 @@
   "done": "Importálva.",
   "bad": "Érvénytelen boríték.",
   "copied": "Másolva.",
-  "label": "Küldés ide…"
+  "label": "Küldés ide…",
+  "armed": "A fájl kész — nyomd meg az Importálás gombot az alkalmazásban."
  }
 }

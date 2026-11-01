@@ -114,7 +114,7 @@
     d.style.cssText = 'position:fixed;left:8px;right:8px;bottom:8px;z-index:2147483000;background:#1b2a3a;color:#fff;padding:12px 14px;border-radius:10px;font:15px system-ui;display:flex;gap:10px;flex-wrap:wrap;align-items:center;box-shadow:0 4px 20px #0008';
     var m = document.createElement('span'); m.style.flex = '1 1 220px';
     m.textContent = tr('inc', { src: env.src || '?', title: String(env.title || env.type).slice(0, 80) }); d.appendChild(m);
-    var ok = btn(tr('ok'), function () { d.remove(); try { var r = onAccept(env); toast(typeof r === 'string' ? r : tr('done')); } catch (e) { toast(tr('bad')); } });
+    var ok = btn(tr('ok'), function () { d.remove(); try { var r = onAccept(env); toast(typeof r === 'string' && r ? r : tr('done')); } catch (e) { toast(tr('bad')); } });
     d.appendChild(ok); d.appendChild(btn(tr('no'), function () { d.remove(); }));
     document.body.appendChild(d); try { ok.focus(); } catch (e) {} return d;
   }
@@ -161,7 +161,77 @@
     if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', go); else go();
   }
 
-  F.bridge = { VERSION: VERSION, TYPES: TYPES, make: make, valid: valid, parse: parse, toLink: toLink, fromHash: fromHash,
+
+  /* ---------- strat universal: orice export de fișier devine "Trimite la…", orice import de fișier primește plicuri ---------- */
+  var EXT_TYPE = { gpx: 'geo/gpx', ics: 'events/ics', csv: 'table/csv', tsv: 'table/csv', md: 'text/markdown', markdown: 'text/markdown' };
+  var TYPE_EXT = { 'geo/gpx': 'gpx', 'events/ics': 'ics', 'table/csv': 'csv', 'text/markdown': 'md' };
+  var TYPE_MIME = { 'geo/gpx': 'application/gpx+xml', 'events/ics': 'text/calendar', 'table/csv': 'text/csv', 'text/markdown': 'text/markdown' };
+  var MAX_AUTO = 1024 * 1024;
+
+  function extOf(name) { var m = /\.([a-z0-9]+)$/i.exec(String(name || '')); return m ? m[1].toLowerCase() : ''; }
+
+  function auto(o) {   // {slug, registry, accepts:[tipuri]} — apelat o singură dată
+    var blobs = new Map(), pending = null, chip = null;
+    registry = o.registry || registry;
+    var slug = o.slug || (F.app && F.app.slug);
+
+    /* --- trimitere: observăm exporturile (URL.createObjectURL + clic pe <a download>) --- */
+    var origCreate = URL.createObjectURL;
+    URL.createObjectURL = function (b) {
+      var u = origCreate.apply(URL, arguments);
+      try { if (b instanceof Blob && b.size <= MAX_AUTO) { blobs.set(u, b); if (blobs.size > 20) blobs.delete(blobs.keys().next().value); } } catch (e) {}
+      return u;
+    };
+    function seen(a) {
+      try {
+        if (!a || !a.hasAttribute || !a.hasAttribute('download')) return;
+        var name = a.getAttribute('download') || '', ext = extOf(name), type = EXT_TYPE[ext], blob = blobs.get(a.href);
+        if (!type || !blob) return;
+        if (!targetsFor({ type: type }, registry, slug).length) return;
+        blob.text().then(function (txt) {
+          offer(make({ type: type, src: (F.app && F.app.name) || slug, title: name.replace(/\.[^.]+$/, ''), data: txt }));
+        });
+      } catch (e) {}
+    }
+    var origClick = HTMLAnchorElement.prototype.click;
+    HTMLAnchorElement.prototype.click = function () { seen(this); return origClick.apply(this, arguments); };
+    document.addEventListener('click', function (ev) { var a = ev.target && ev.target.closest && ev.target.closest('a[download]'); if (a) seen(a); }, true);
+
+    function offer(env) {
+      if (chip) chip.remove();
+      chip = sendButton({ slug: slug, registry: registry, getEnv: function () { return env; }, text: '↗ ' + tr('btn') });
+      chip.style.cssText = 'position:fixed;right:12px;bottom:12px;z-index:2147483000;min-height:44px;min-width:44px;padding:8px 16px;border-radius:22px;border:1px solid #fff8;background:#1b2a3a;color:#fff;font:15px system-ui;cursor:pointer;box-shadow:0 4px 16px #0006';
+      document.body.appendChild(chip);
+      var c = chip; setTimeout(function () { if (c.parentNode) c.remove(); }, 12000);
+    }
+
+    /* --- primire: prin câmpul de import al aplicației --- */
+    function matches(inp, ext) {
+      var acc = (inp.getAttribute('accept') || '').toLowerCase();
+      return acc.split(',').some(function (p) { p = p.trim(); return p === '.' + ext || (ext === 'csv' && p === 'text/csv') || (ext === 'ics' && p === 'text/calendar') || (ext === 'md' && p === 'text/markdown'); });
+    }
+    function feed(inp, file) {
+      var dt = new DataTransfer(); dt.items.add(file); inp.files = dt.files;
+      inp.dispatchEvent(new Event('input', { bubbles: true })); inp.dispatchEvent(new Event('change', { bubbles: true }));
+    }
+    var origInputClick = HTMLInputElement.prototype.click;
+    HTMLInputElement.prototype.click = function () {          // câmpuri create dinamic (FFF.pickFile etc.)
+      if (pending && this.type === 'file' && matches(this, pending.ext)) { var f = pending.file; pending = null; feed(this, f); return; }
+      return origInputClick.apply(this, arguments);
+    };
+    function receive(env) {
+      var ext = TYPE_EXT[env.type], file = new File([String(env.data)], (env.title || 'import').replace(/[^\w\-]+/g, '_').slice(0, 40) + '.' + ext, { type: TYPE_MIME[env.type] });
+      var inps = [].slice.call(document.querySelectorAll('input[type=file]')).filter(function (i) { return matches(i, ext); });
+      if (inps.length) { feed(inps[0], file); return ''; }
+      pending = { ext: ext, file: file };
+      return tr('armed');
+    }
+    var types = (o.accepts || []).filter(function (t) { return TYPE_EXT[t]; });
+    if (types.length) mount({ accepts: types, onReceive: receive });
+    return { receive: receive };
+  }
+
+  F.bridge = { auto: auto, VERSION: VERSION, TYPES: TYPES, make: make, valid: valid, parse: parse, toLink: toLink, fromHash: fromHash,
     receiveFromLocation: receiveFromLocation, toFile: toFile, download: download, fromFile: fromFile, acceptDrop: acceptDrop,
     toClipboard: toClipboard, setRegistry: setRegistry, targetsFor: targetsFor, openIn: openIn, toast: toast, banner: banner,
     sendMenu: sendMenu, sendButton: sendButton, mount: mount };

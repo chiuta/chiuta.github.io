@@ -31,3 +31,11 @@ SEVA (quiz) → Undava · AcademiSearch (bibliotecă → CSL) → MarkdownAtelie
 
 ## Testare
 `node test/bridge.test.mjs` (29 verificări: dus-întors cu Unicode, link prea mare, plicuri invalide, poluare de prototip, ținte, fișier, paritate i18n). Test end-to-end cu trei origini în Chromium: `fff-kit/test/bridge.e2e.mjs`.
+
+## Strat universal (`FFF.bridge.auto`, `bridge-adapters/auto.js`)
+Fără adaptor scris de mână, orice aplicație cu kitul poate:
+* **trimite**: după orice export de fișier `.gpx`, `.ics`, `.csv`, `.tsv`, `.md` (detectat prin `URL.createObjectURL` + clic pe `<a download>`) apare, 12 secunde, butonul „↗ Trimite la…”, dacă există aplicații compatibile în registru;
+* **primi**: plicul acceptat se transformă într-un `File` și este dat câmpului `<input type=file>` al aplicației care acceptă extensia (se declanșează `change`), deci aplicația își folosește propriul import; dacă câmpul se creează dinamic, fișierul rămâne „pregătit” și e dat la următoarea deschidere a selectorului de fișiere.
+Tipuri: `geo/gpx`, `events/ics`, `table/csv`, `text/markdown`; datele sunt întotdeauna textul fișierului.
+Registrul (`bridge-adapters/registry.js`) e generat din `app.json`, `CNAME` și atributele `accept` ale aplicațiilor; `rollout.json` listează cele 33 de aplicații conectate. `test/bridge-auto.e2e.mjs`: FieldObserver (CSV) → DataWeave.
+Limite cunoscute: LocalMind are un ecran de bun-venit care acoperă banda de confirmare la prima pornire; în Gospodar importul rămâne „pregătit” până apeși Import.

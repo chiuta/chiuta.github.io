@@ -13,7 +13,8 @@ const list = [...new Set([...mods.split(','), 'bridge'])];
 const oldVer = JSON.parse(rd(path.join(dir, 'app.json'))).version;
 run('apply', dir, '--slug', slug, '--modules', list.join(','));
 html = rd(idx).replace(/<script id="fff-bridge-adapter">[\s\S]*?<\/script>\n?/, '');
-const adapter = '\n' + rd(path.join(kit, 'bridge-adapters/registry.js')) + '\n' + rd(path.join(kit, `bridge-adapters/${slug}.js`)) + '\n';
+const customPath = path.join(kit, `bridge-adapters/${slug}.js`), custom = fs.existsSync(customPath);
+const adapter = '\n' + rd(path.join(kit, 'bridge-adapters/registry.js')) + '\n' + (custom ? rd(customPath) + '\n' : '') + rd(path.join(kit, 'bridge-adapters/auto.js')).replace('__FFF_CUSTOM__', String(custom)) + '\n';
 if (/<\/script/i.test(adapter)) throw new Error('adaptor cu </script');
 const i = html.lastIndexOf('</body>'); html = html.slice(0, i) + `<script id="fff-bridge-adapter">${adapter}</script>\n` + html.slice(i);
 // versiune (literal între ghilimele, ca în fișierele existente)
