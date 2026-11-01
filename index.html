@@ -35,7 +35,7 @@
 </style>
 
 <meta charset="UTF-8">
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data: blob:; style-src 'self' 'unsafe-inline'; font-src 'self' data:; media-src 'self' blob: data:; object-src 'none'; base-uri 'self'; form-action 'self'; worker-src 'self' blob:; script-src 'self' 'sha256-CLz9ky8c+CI8yax80HOx/XKzzI+0llJZxdBKUKIqejE=' 'sha256-YO40Pa9U54kBXfBS8s7ySLVhwIuT7JC9cMSApha5DIk=' 'sha256-ra5On8pYATzd73eaXtoiHJLItmH9Iwc7aJQlNyJNcK0='; connect-src 'none'; manifest-src 'self'">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data: blob:; style-src 'self' 'unsafe-inline'; font-src 'self' data:; media-src 'self' blob: data:; object-src 'none'; base-uri 'self'; form-action 'self'; worker-src 'self' blob:; script-src 'self' 'sha256-CLz9ky8c+CI8yax80HOx/XKzzI+0llJZxdBKUKIqejE=' 'sha256-YO40Pa9U54kBXfBS8s7ySLVhwIuT7JC9cMSApha5DIk=' 'sha256-Kt7pORmc6OKCYzbQZB6Tf7w0roKCjAJOYfj2nOMHxkg='; connect-src 'none'; manifest-src 'self'">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <meta name="color-scheme" content="dark light">
 <meta name="theme-color" id="theme-color-meta" content="#07060f">
@@ -473,6 +473,7 @@ html[lang^="hu"] .app-card.is-new .card-name::after{content:"ÚJ"}
   <div class="wrap nav-inner">
     <a href="#" class="nav-logo" id="nav-top">chiuta.ro</a>
     <div class="nav-links">
+      <a href="demo/" data-i18n="demoLink">Demo videos</a>
       <a href="https://chiuta.github.io/OmniHost/" target="_blank" rel="noopener noreferrer">OmniHost</a>
       <a href="https://github.com/chiuta" target="_blank" rel="noopener noreferrer">GitHub</a>
       <!-- ANIM BTN -->
@@ -573,6 +574,7 @@ html[lang^="hu"] .app-card.is-new .card-name::after{content:"ÚJ"}
       <a href="https://orcid.org/0009-0008-6858-4299" target="_blank" rel="noopener noreferrer" class="orcid-link">
         <span class="orcid-icon">iD</span> ORCID
       </a>
+      <a href="demo/" data-i18n="demoLink">Demo videos</a>
       <a href="transparenta.html" data-i18n="transpLink">Transparency</a>
       <a href="https://github.com/chiuta" target="_blank" rel="noopener noreferrer">GitHub</a>
       <a href="https://chiuta.ro" target="_blank" rel="noopener noreferrer">chiuta.ro</a>
@@ -597,7 +599,7 @@ const T = {
     projects:'Projects', loading:'Fetching from GitHub…',
     nProjects: n => `${n} projects`,
     darkThemes:'Dark themes', lightThemes:'Light themes',
-    fSearch:'Search', searchPh:'Name, topic or word…', fCat:'Category', fCatAll:'All categories', fLang:'App language', fLangAll:'Any language', fOff:'Offline use', fOffAny:'Any', fOffFull:'Works fully offline', fOffPart:'Works offline, some features need internet', fOffNo:'No offline support', fReset:'Reset filters', fForm:'Filter the catalog', noRes:'No project matches these filters.', transpLink:'Transparency', nShown:n=>m=>`${n} of ${m} projects`,
+    fSearch:'Search', searchPh:'Name, topic or word…', fCat:'Category', fCatAll:'All categories', fLang:'App language', fLangAll:'Any language', fOff:'Offline use', fOffAny:'Any', fOffFull:'Works fully offline', fOffPart:'Works offline, some features need internet', fOffNo:'No offline support', fReset:'Reset filters', fForm:'Filter the catalog', noRes:'No project matches these filters.', demoLink:'Demo videos', transpLink:'Transparency', nShown:n=>m=>`${n} of ${m} projects`,
     aboutLine:'Alexandru-Ionuț Chiuță (Alexio): Romanian engineer and science-fiction author. Independent personal projects — not services of any institution and not official sources. Questions, corrections or removal requests:',
     copyright:'© 2026 Alexandru-Ionuț Chiuță · updated 31 Oct 2026',
   },
@@ -613,7 +615,7 @@ const T = {
     projects:'Proiecte', loading:'Se încarcă din GitHub…',
     nProjects: n => `${n} proiecte`,
     darkThemes:'Teme întunecate', lightThemes:'Teme luminoase',
-    fSearch:'Caută', searchPh:'Nume, temă sau cuvânt…', fCat:'Categorie', fCatAll:'Toate categoriile', fLang:'Limba aplicației', fLangAll:'Orice limbă', fOff:'Folosire offline', fOffAny:'Oricare', fOffFull:'Funcționează complet offline', fOffPart:'Funcționează offline, unele funcții cer internet', fOffNo:'Fără suport offline', fReset:'Resetează filtrele', fForm:'Filtrează catalogul', noRes:'Niciun proiect nu corespunde filtrelor.', transpLink:'Transparență', nShown:n=>m=>`${n} din ${m} proiecte`,
+    fSearch:'Caută', searchPh:'Nume, temă sau cuvânt…', fCat:'Categorie', fCatAll:'Toate categoriile', fLang:'Limba aplicației', fLangAll:'Orice limbă', fOff:'Folosire offline', fOffAny:'Oricare', fOffFull:'Funcționează complet offline', fOffPart:'Funcționează offline, unele funcții cer internet', fOffNo:'Fără suport offline', fReset:'Resetează filtrele', fForm:'Filtrează catalogul', noRes:'Niciun proiect nu corespunde filtrelor.', demoLink:'Filmulețe demo', transpLink:'Transparență', nShown:n=>m=>`${n} din ${m} proiecte`,
     aboutLine:'Alexandru-Ionuț Chiuță (Alexio): inginer și autor român de science fiction. Proiecte personale independente — nu sunt servicii ale vreunei instituții și nu sunt surse oficiale. Întrebări, corecturi sau cereri de eliminare:',
     copyright:'© 2026 Alexandru-Ionuț Chiuță · actualizat 31.10.2026',
   },
@@ -629,7 +631,7 @@ const T = {
     projects:'Projets', loading:'Chargement depuis GitHub…',
     nProjects: n => `${n} projets`,
     darkThemes:'Thèmes sombres', lightThemes:'Thèmes clairs',
-    fSearch:'Rechercher', searchPh:'Nom, thème ou mot…', fCat:'Catégorie', fCatAll:'Toutes les catégories', fLang:'Langue de l\'application', fLangAll:'Toutes les langues', fOff:'Usage hors ligne', fOffAny:'Indifférent', fOffFull:'Fonctionne entièrement hors ligne', fOffPart:'Fonctionne hors ligne, certaines fonctions exigent internet', fOffNo:'Sans mode hors ligne', fReset:'Réinitialiser les filtres', fForm:'Filtrer le catalogue', noRes:'Aucun projet ne correspond à ces filtres.', transpLink:'Transparence', nShown:n=>m=>`${n} sur ${m} projets`,
+    fSearch:'Rechercher', searchPh:'Nom, thème ou mot…', fCat:'Catégorie', fCatAll:'Toutes les catégories', fLang:'Langue de l\'application', fLangAll:'Toutes les langues', fOff:'Usage hors ligne', fOffAny:'Indifférent', fOffFull:'Fonctionne entièrement hors ligne', fOffPart:'Fonctionne hors ligne, certaines fonctions exigent internet', fOffNo:'Sans mode hors ligne', fReset:'Réinitialiser les filtres', fForm:'Filtrer le catalogue', noRes:'Aucun projet ne correspond à ces filtres.', demoLink:'Vidéos démo', transpLink:'Transparence', nShown:n=>m=>`${n} sur ${m} projets`,
     aboutLine:'Alexandru-Ionuț Chiuță (Alexio) : ingénieur et auteur roumain de science-fiction. Projets personnels indépendants — ils ne sont ni des services d\'une institution ni des sources officielles. Questions, corrections ou demandes de retrait :',
     copyright:'© 2026 Alexandru-Ionuț Chiuță · mis à jour le 31.10.2026',
   },
@@ -645,7 +647,7 @@ const T = {
     projects:'Progetti', loading:'Caricamento da GitHub…',
     nProjects: n => `${n} progetti`,
     darkThemes:'Temi scuri', lightThemes:'Temi chiari',
-    fSearch:'Cerca', searchPh:'Nome, tema o parola…', fCat:'Categoria', fCatAll:'Tutte le categorie', fLang:'Lingua dell\'app', fLangAll:'Qualsiasi lingua', fOff:'Uso offline', fOffAny:'Qualsiasi', fOffFull:'Funziona del tutto offline', fOffPart:'Funziona offline, alcune funzioni richiedono internet', fOffNo:'Senza supporto offline', fReset:'Azzera i filtri', fForm:'Filtra il catalogo', noRes:'Nessun progetto corrisponde a questi filtri.', transpLink:'Trasparenza', nShown:n=>m=>`${n} di ${m} progetti`,
+    fSearch:'Cerca', searchPh:'Nome, tema o parola…', fCat:'Categoria', fCatAll:'Tutte le categorie', fLang:'Lingua dell\'app', fLangAll:'Qualsiasi lingua', fOff:'Uso offline', fOffAny:'Qualsiasi', fOffFull:'Funziona del tutto offline', fOffPart:'Funziona offline, alcune funzioni richiedono internet', fOffNo:'Senza supporto offline', fReset:'Azzera i filtri', fForm:'Filtra il catalogo', noRes:'Nessun progetto corrisponde a questi filtri.', demoLink:'Video demo', transpLink:'Trasparenza', nShown:n=>m=>`${n} di ${m} progetti`,
     aboutLine:'Alexandru-Ionuț Chiuță (Alexio): ingegnere e autore romeno di fantascienza. Progetti personali indipendenti: non sono servizi di alcuna istituzione né fonti ufficiali. Domande, correzioni o richieste di rimozione:',
     copyright:'© 2026 Alexandru-Ionuț Chiuță · aggiornato il 31.10.2026',
   },
@@ -661,7 +663,7 @@ const T = {
     projects:'Proyectos', loading:'Cargando desde GitHub…',
     nProjects: n => `${n} proyectos`,
     darkThemes:'Temas oscuros', lightThemes:'Temas claros',
-    fSearch:'Buscar', searchPh:'Nombre, tema o palabra…', fCat:'Categoría', fCatAll:'Todas las categorías', fLang:'Idioma de la app', fLangAll:'Cualquier idioma', fOff:'Uso sin conexión', fOffAny:'Cualquiera', fOffFull:'Funciona totalmente sin conexión', fOffPart:'Funciona sin conexión, algunas funciones requieren internet', fOffNo:'Sin soporte sin conexión', fReset:'Restablecer filtros', fForm:'Filtrar el catálogo', noRes:'Ningún proyecto coincide con estos filtros.', transpLink:'Transparencia', nShown:n=>m=>`${n} de ${m} proyectos`,
+    fSearch:'Buscar', searchPh:'Nombre, tema o palabra…', fCat:'Categoría', fCatAll:'Todas las categorías', fLang:'Idioma de la app', fLangAll:'Cualquier idioma', fOff:'Uso sin conexión', fOffAny:'Cualquiera', fOffFull:'Funciona totalmente sin conexión', fOffPart:'Funciona sin conexión, algunas funciones requieren internet', fOffNo:'Sin soporte sin conexión', fReset:'Restablecer filtros', fForm:'Filtrar el catálogo', noRes:'Ningún proyecto coincide con estos filtros.', demoLink:'Vídeos demo', transpLink:'Transparencia', nShown:n=>m=>`${n} de ${m} proyectos`,
     aboutLine:'Alexandru-Ionuț Chiuță (Alexio): ingeniero y autor rumano de ciencia ficción. Proyectos personales independientes: no son servicios de ninguna institución ni fuentes oficiales. Preguntas, correcciones o solicitudes de retirada:',
     copyright:'© 2026 Alexandru-Ionuț Chiuță · actualizado el 31.10.2026',
   },
@@ -677,7 +679,7 @@ const T = {
     projects:'Projetos', loading:'A carregar do GitHub…',
     nProjects: n => `${n} projetos`,
     darkThemes:'Temas escuros', lightThemes:'Temas claros',
-    fSearch:'Pesquisar', searchPh:'Nome, tema ou palavra…', fCat:'Categoria', fCatAll:'Todas as categorias', fLang:'Idioma da app', fLangAll:'Qualquer idioma', fOff:'Uso offline', fOffAny:'Qualquer', fOffFull:'Funciona totalmente offline', fOffPart:'Funciona offline, algumas funções exigem internet', fOffNo:'Sem suporte offline', fReset:'Repor filtros', fForm:'Filtrar o catálogo', noRes:'Nenhum projeto corresponde a estes filtros.', transpLink:'Transparência', nShown:n=>m=>`${n} de ${m} projetos`,
+    fSearch:'Pesquisar', searchPh:'Nome, tema ou palavra…', fCat:'Categoria', fCatAll:'Todas as categorias', fLang:'Idioma da app', fLangAll:'Qualquer idioma', fOff:'Uso offline', fOffAny:'Qualquer', fOffFull:'Funciona totalmente offline', fOffPart:'Funciona offline, algumas funções exigem internet', fOffNo:'Sem suporte offline', fReset:'Repor filtros', fForm:'Filtrar o catálogo', noRes:'Nenhum projeto corresponde a estes filtros.', demoLink:'Vídeos demo', transpLink:'Transparência', nShown:n=>m=>`${n} de ${m} projetos`,
     aboutLine:'Alexandru-Ionuț Chiuță (Alexio): engenheiro e autor romeno de ficção científica. Projetos pessoais independentes: não são serviços de nenhuma instituição nem fontes oficiais. Perguntas, correções ou pedidos de remoção:',
     copyright:'© 2026 Alexandru-Ionuț Chiuță · atualizado em 31.10.2026',
   },
@@ -692,7 +694,7 @@ const T = {
     projects:'Projekte', loading:'Wird von GitHub geladen…',
     nProjects: n => `${n} Projekte`,
     darkThemes:'Dunkle Designs', lightThemes:'Helle Designs',
-    fSearch:'Suchen', searchPh:'Name, Thema oder Wort …', fCat:'Kategorie', fCatAll:'Alle Kategorien', fLang:'Sprache der App', fLangAll:'Jede Sprache', fOff:'Offline-Nutzung', fOffAny:'Beliebig', fOffFull:'Funktioniert komplett offline', fOffPart:'Funktioniert offline, einige Funktionen brauchen Internet', fOffNo:'Ohne Offline-Unterstützung', fReset:'Filter zurücksetzen', fForm:'Katalog filtern', noRes:'Kein Projekt entspricht diesen Filtern.', transpLink:'Transparenz', nShown:n=>m=>`${n} von ${m} Projekten`,
+    fSearch:'Suchen', searchPh:'Name, Thema oder Wort …', fCat:'Kategorie', fCatAll:'Alle Kategorien', fLang:'Sprache der App', fLangAll:'Jede Sprache', fOff:'Offline-Nutzung', fOffAny:'Beliebig', fOffFull:'Funktioniert komplett offline', fOffPart:'Funktioniert offline, einige Funktionen brauchen Internet', fOffNo:'Ohne Offline-Unterstützung', fReset:'Filter zurücksetzen', fForm:'Katalog filtern', noRes:'Kein Projekt entspricht diesen Filtern.', demoLink:'Demo-Videos', transpLink:'Transparenz', nShown:n=>m=>`${n} von ${m} Projekten`,
     aboutLine:'Alexandru-Ionuț Chiuță (Alexio): rumänischer Ingenieur und Science-Fiction-Autor. Unabhängige private Projekte – keine Dienste einer Institution und keine offiziellen Quellen. Fragen, Korrekturen oder Löschanfragen:',
     copyright:'© 2026 Alexandru-Ionuț Chiuță · aktualisiert am 31.10.2026',
   },
@@ -707,7 +709,7 @@ const T = {
     projects:'Projektek', loading:'Betöltés a GitHubról…',
     nProjects: n => `${n} projekt`,
     darkThemes:'Sötét témák', lightThemes:'Világos témák',
-    fSearch:'Keresés', searchPh:'Név, téma vagy szó…', fCat:'Kategória', fCatAll:'Minden kategória', fLang:'Az app nyelve', fLangAll:'Bármely nyelv', fOff:'Offline használat', fOffAny:'Bármelyik', fOffFull:'Teljesen offline működik', fOffPart:'Offline is működik, egyes funkciókhoz internet kell', fOffNo:'Offline támogatás nélkül', fReset:'Szűrők törlése', fForm:'Katalógus szűrése', noRes:'Egyetlen projekt sem felel meg a szűrőknek.', transpLink:'Átláthatóság', nShown:n=>m=>`${n} / ${m} projekt`,
+    fSearch:'Keresés', searchPh:'Név, téma vagy szó…', fCat:'Kategória', fCatAll:'Minden kategória', fLang:'Az app nyelve', fLangAll:'Bármely nyelv', fOff:'Offline használat', fOffAny:'Bármelyik', fOffFull:'Teljesen offline működik', fOffPart:'Offline is működik, egyes funkciókhoz internet kell', fOffNo:'Offline támogatás nélkül', fReset:'Szűrők törlése', fForm:'Katalógus szűrése', noRes:'Egyetlen projekt sem felel meg a szűrőknek.', demoLink:'Bemutató videók', transpLink:'Átláthatóság', nShown:n=>m=>`${n} / ${m} projekt`,
     aboutLine:'Alexandru-Ionuț Chiuță (Alexio): román mérnök és sci-fi szerző. Független személyes projektek – nem valamely intézmény szolgáltatásai és nem hivatalos források. Kérdések, javítások vagy eltávolítási kérések:',
     copyright:'© 2026 Alexandru-Ionuț Chiuță · frissítve: 2026. 10. 31.',
   },

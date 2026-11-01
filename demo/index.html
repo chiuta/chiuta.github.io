@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="ro">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Demo — A.I. Chiuță</title>
+<meta name="description" content="Short GUI demo videos with subtitles in 8 languages for the free single-file apps on chiuta.ro. No tracking, self-hosted.">
+<meta name="color-scheme" content="dark light">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; media-src 'self'; style-src 'self'; script-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'none'">
+<meta name="robots" content="index, follow">
+<link rel="icon" href="data:,">
+<link rel="stylesheet" href="demo.css">
+</head>
+<body>
+<header><div class="wrap">
+ <a class="brand" href="../">chiuta.ro</a>
+ <div class="hdr-right">
+  <label for="lang" class="meta" id="lblLang">Limbă</label>
+  <select id="lang" aria-labelledby="lblLang"></select>
+  <button id="theme" type="button" aria-label="Theme">◐</button>
+ </div>
+</div></header>
+
+<main class="wrap">
+ <h1 id="h1"></h1>
+ <p class="lead" id="lead"></p>
+
+ <section class="hero" aria-labelledby="tt">
+  <h2 id="tt"></h2>
+  <video id="trailer" controls preload="none" playsinline></video>
+ </section>
+
+ <section class="hero" id="reelBox" aria-labelledby="rt" hidden>
+  <h2 id="rt"></h2>
+  <video id="reel" controls preload="none" playsinline></video>
+ </section>
+
+ <div class="bar" role="search">
+  <input id="q" type="search" autocomplete="off">
+  <select id="cat" aria-label="Category"></select>
+ </div>
+ <div class="grid" id="grid"></div>
+</main>
+
+<footer><div class="wrap">
+ <span id="foot"></span> · <a href="../">chiuta.ro</a> · <a href="https://github.com/chiuta" rel="noopener noreferrer">GitHub</a>
+</div></footer>
+
+<script src="demo.js" defer></script>
+</body>
+</html>
