@@ -11,7 +11,7 @@ import {blankBlocks} from './lib/jsscan.mjs';
 import {NEW_RULES, nativeDialogIssues, unprefixedStorageIssues, cdnWithoutSriIssues, i18nParityIssues} from './lib/rules.mjs';
 
 const KIT = path.dirname(fileURLToPath(import.meta.url));
-const ORDER = ['core', 'store', 'dialog', 'label', 'bundle', 'qr', 'p2p', 'srs', 'tts', 'pii', 'search', 'ephem', 'ephem-stars'];
+const ORDER = ['core', 'store', 'dialog', 'label', 'bundle', 'qr', 'p2p', 'bridge', 'srs', 'tts', 'pii', 'search', 'ephem', 'ephem-stars'];
 const BLOCK_RE = /\n<!--fff:kit:start[^>]*-->[\s\S]*?<!--fff:kit:end-->/;
 const INFO_RE = /\n<!--fff:info:start-->[\s\S]*?<!--fff:info:end-->/;
 const FORMAT_V = 1;
@@ -581,7 +581,7 @@ function runInfo(dirArg, opt = {}, extra = {}) {
 /* ---------------- CLI ---------------- */
 function usage() {
   console.log(`fff-kit build
-  node build.mjs apply <dir> --slug S --modules core,label,bundle[,qr,p2p,srs,tts,pii,search,ephem] [--disable "motiv"]
+  node build.mjs apply <dir> --slug S --modules core,label,bundle[,qr,p2p,bridge,srs,tts,pii,search,ephem] [--disable "motiv"]
   node build.mjs remove <dir>
   node build.mjs check <dir> [--lax] [--json]   (strict: politicile CSP sunt erori; --lax: avertismente; excepții: fff.config.json → cspExceptions)
   node build.mjs fixcsp <dir>                    (recalculează hash-urile CSP ale scripturilor inline)
