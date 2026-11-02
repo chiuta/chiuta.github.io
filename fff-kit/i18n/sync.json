@@ -1,0 +1,98 @@
+{
+ "ro": {
+  "title": "Sincronizează cu alt dispozitiv",
+  "err_closed": "Conexiunea s-a închis înainte de finalizarea sincronizării.",
+  "err_timeout": "Sincronizarea a durat prea mult și a fost oprită.",
+  "err_app": "Celălalt dispozitiv rulează altă aplicație ({got}, nu {want}).",
+  "err_proto": "Mesaj de sincronizare invalid.",
+  "err_big": "Datele primite depășesc limita permisă.",
+  "err_send": "Nu s-a putut trimite pe canal.",
+  "err_nop2p": "Acest browser nu suportă conexiunea directă (WebRTC).",
+  "result": "Sincronizat: {adopted} chei preluate, {same} identice, {conflicts} conflicte (s-a păstrat valoarea locală).",
+  "btn": "Sincronizează între dispozitive"
+ },
+ "en": {
+  "title": "Sync with another device",
+  "err_closed": "The connection closed before the sync finished.",
+  "err_timeout": "The sync took too long and was stopped.",
+  "err_app": "The other device is running a different app ({got}, not {want}).",
+  "err_proto": "Invalid sync message.",
+  "err_big": "The received data exceeds the allowed limit.",
+  "err_send": "Could not send over the channel.",
+  "err_nop2p": "This browser does not support direct connections (WebRTC).",
+  "result": "Synced: {adopted} keys taken, {same} identical, {conflicts} conflicts (local value kept).",
+  "btn": "Sync between devices"
+ },
+ "fr": {
+  "title": "Synchroniser avec un autre appareil",
+  "err_closed": "La connexion s’est fermée avant la fin de la synchronisation.",
+  "err_timeout": "La synchronisation a pris trop de temps et a été arrêtée.",
+  "err_app": "L’autre appareil exécute une autre application ({got}, et non {want}).",
+  "err_proto": "Message de synchronisation invalide.",
+  "err_big": "Les données reçues dépassent la limite autorisée.",
+  "err_send": "Envoi impossible sur le canal.",
+  "err_nop2p": "Ce navigateur ne prend pas en charge les connexions directes (WebRTC).",
+  "result": "Synchronisé : {adopted} clés reprises, {same} identiques, {conflicts} conflits (valeur locale conservée).",
+  "btn": "Synchroniser entre appareils"
+ },
+ "it": {
+  "title": "Sincronizza con un altro dispositivo",
+  "err_closed": "La connessione si è chiusa prima del termine della sincronizzazione.",
+  "err_timeout": "La sincronizzazione ha richiesto troppo tempo ed è stata interrotta.",
+  "err_app": "L’altro dispositivo esegue un’altra app ({got}, non {want}).",
+  "err_proto": "Messaggio di sincronizzazione non valido.",
+  "err_big": "I dati ricevuti superano il limite consentito.",
+  "err_send": "Impossibile inviare sul canale.",
+  "err_nop2p": "Questo browser non supporta le connessioni dirette (WebRTC).",
+  "result": "Sincronizzato: {adopted} chiavi acquisite, {same} identiche, {conflicts} conflitti (mantenuto il valore locale).",
+  "btn": "Sincronizza tra dispositivi"
+ },
+ "es": {
+  "title": "Sincronizar con otro dispositivo",
+  "err_closed": "La conexión se cerró antes de terminar la sincronización.",
+  "err_timeout": "La sincronización tardó demasiado y se detuvo.",
+  "err_app": "El otro dispositivo ejecuta otra aplicación ({got}, no {want}).",
+  "err_proto": "Mensaje de sincronización no válido.",
+  "err_big": "Los datos recibidos superan el límite permitido.",
+  "err_send": "No se pudo enviar por el canal.",
+  "err_nop2p": "Este navegador no admite conexiones directas (WebRTC).",
+  "result": "Sincronizado: {adopted} claves tomadas, {same} idénticas, {conflicts} conflictos (se mantuvo el valor local).",
+  "btn": "Sincronizar entre dispositivos"
+ },
+ "pt": {
+  "title": "Sincronizar com outro dispositivo",
+  "err_closed": "A ligação fechou antes de a sincronização terminar.",
+  "err_timeout": "A sincronização demorou demasiado e foi interrompida.",
+  "err_app": "O outro dispositivo executa outra aplicação ({got}, e não {want}).",
+  "err_proto": "Mensagem de sincronização inválida.",
+  "err_big": "Os dados recebidos excedem o limite permitido.",
+  "err_send": "Não foi possível enviar pelo canal.",
+  "err_nop2p": "Este navegador não suporta ligações diretas (WebRTC).",
+  "result": "Sincronizado: {adopted} chaves recebidas, {same} idênticas, {conflicts} conflitos (valor local mantido).",
+  "btn": "Sincronizar entre dispositivos"
+ },
+ "hu": {
+  "title": "Szinkronizálás másik eszközzel",
+  "err_closed": "A kapcsolat a szinkronizálás vége előtt megszakadt.",
+  "err_timeout": "A szinkronizálás túl sokáig tartott, ezért leállt.",
+  "err_app": "A másik eszköz másik alkalmazást futtat ({got}, nem {want}).",
+  "err_proto": "Érvénytelen szinkronizálási üzenet.",
+  "err_big": "A kapott adatok meghaladják a megengedett méretet.",
+  "err_send": "Nem sikerült küldeni a csatornán.",
+  "err_nop2p": "Ez a böngésző nem támogatja a közvetlen kapcsolatot (WebRTC).",
+  "result": "Szinkronizálva: {adopted} kulcs átvéve, {same} azonos, {conflicts} ütközés (a helyi érték megmaradt).",
+  "btn": "Szinkronizálás eszközök között"
+ },
+ "de": {
+  "title": "Mit anderem Gerät synchronisieren",
+  "err_closed": "Die Verbindung wurde vor Abschluss der Synchronisierung geschlossen.",
+  "err_timeout": "Die Synchronisierung dauerte zu lange und wurde abgebrochen.",
+  "err_app": "Das andere Gerät führt eine andere App aus ({got}, nicht {want}).",
+  "err_proto": "Ungültige Synchronisierungsnachricht.",
+  "err_big": "Die empfangenen Daten überschreiten das zulässige Limit.",
+  "err_send": "Senden über den Kanal nicht möglich.",
+  "err_nop2p": "Dieser Browser unterstützt keine direkten Verbindungen (WebRTC).",
+  "result": "Synchronisiert: {adopted} Schlüssel übernommen, {same} identisch, {conflicts} Konflikte (lokaler Wert behalten).",
+  "btn": "Zwischen Geräten synchronisieren"
+ }
+}

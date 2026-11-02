@@ -68,7 +68,9 @@
   "enter_pw": "Fișierul {file} este criptat: introdu parola.",
   "cancelled": "Anulat.",
   "kit_line": "fff-kit v{v} · module: {mods}",
-  "install": "Instalează aplicația"
+  "install": "Instalează aplicația",
+  "bk_sync": "Sincronizează între dispozitive",
+  "bk_history": "Istoric (mașina timpului)"
  },
  "en": {
   "title": "Transparency",
@@ -139,7 +141,9 @@
   "enter_pw": "The file {file} is encrypted: enter the password.",
   "cancelled": "Cancelled.",
   "kit_line": "fff-kit v{v} · modules: {mods}",
-  "install": "Install the app"
+  "install": "Install the app",
+  "bk_sync": "Sync between devices",
+  "bk_history": "History (time machine)"
  },
  "fr": {
   "title": "Transparence",
@@ -210,7 +214,9 @@
   "enter_pw": "Le fichier {file} est chiffré : saisissez le mot de passe.",
   "cancelled": "Annulé.",
   "kit_line": "fff-kit v{v} · modules : {mods}",
-  "install": "Installer l’application"
+  "install": "Installer l’application",
+  "bk_sync": "Synchroniser entre appareils",
+  "bk_history": "Historique (machine à remonter le temps)"
  },
  "it": {
   "title": "Trasparenza",
@@ -281,7 +287,9 @@
   "enter_pw": "Il file {file} è cifrato: inserisci la password.",
   "cancelled": "Annullato.",
   "kit_line": "fff-kit v{v} · moduli: {mods}",
-  "install": "Installa l’app"
+  "install": "Installa l’app",
+  "bk_sync": "Sincronizza tra dispositivi",
+  "bk_history": "Cronologia (macchina del tempo)"
  },
  "es": {
   "title": "Transparencia",
@@ -352,7 +360,9 @@
   "enter_pw": "El archivo {file} está cifrado: introduce la contraseña.",
   "cancelled": "Cancelado.",
   "kit_line": "fff-kit v{v} · módulos: {mods}",
-  "install": "Instalar la aplicación"
+  "install": "Instalar la aplicación",
+  "bk_sync": "Sincronizar entre dispositivos",
+  "bk_history": "Historial (máquina del tiempo)"
  },
  "pt": {
   "title": "Transparência",
@@ -423,7 +433,9 @@
   "enter_pw": "O ficheiro {file} está cifrado: introduza a palavra-passe.",
   "cancelled": "Cancelado.",
   "kit_line": "fff-kit v{v} · módulos: {mods}",
-  "install": "Instalar a aplicação"
+  "install": "Instalar a aplicação",
+  "bk_sync": "Sincronizar entre dispositivos",
+  "bk_history": "Histórico (máquina do tempo)"
  },
  "hu": {
   "title": "Átláthatóság",
@@ -494,7 +506,9 @@
   "enter_pw": "A(z) {file} fájl titkosított: add meg a jelszót.",
   "cancelled": "Megszakítva.",
   "kit_line": "fff-kit v{v} · modulok: {mods}",
-  "install": "Alkalmazás telepítése"
+  "install": "Alkalmazás telepítése",
+  "bk_sync": "Szinkronizálás eszközök között",
+  "bk_history": "Előzmények (időgép)"
  },
  "de": {
   "title": "Transparenz",
@@ -565,6 +579,8 @@
   "enter_pw": "Die Datei {file} ist verschlüsselt: Passwort eingeben.",
   "cancelled": "Abgebrochen.",
   "kit_line": "fff-kit v{v} · Module: {mods}",
-  "install": "App installieren"
+  "install": "App installieren",
+  "bk_sync": "Zwischen Geräten synchronisieren",
+  "bk_history": "Verlauf (Zeitmaschine)"
  }
 }

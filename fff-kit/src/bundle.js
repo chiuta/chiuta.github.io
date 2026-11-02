@@ -381,6 +381,7 @@
         if (!ok) return {keys: 0, cancelled: true};
         keys.forEach(function (k) { try { F.store.raw.remove(k); } catch (e) { /* ignorat */ } F.store.forget(k); });
         try { F.store.raw.remove(F.store.indexKey); } catch (e) { /* ignorat */ }
+        try { if (F.mtimeClear) F.mtimeClear(); } catch (e) { /* ignorat */ }
         if (opt.reload === true) F.store.freeze();
         F.bus.emit('bundle:wiped', {keys: keys.length});
         if (opt.reload === true) setTimeout(function () { location.reload(); }, opt.delay == null ? 900 : opt.delay);

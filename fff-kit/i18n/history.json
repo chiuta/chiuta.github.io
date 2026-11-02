@@ -1,0 +1,98 @@
+{
+ "ro": {
+  "title": "Istoric (mașina timpului)",
+  "empty": "Încă nu există instantanee. Se fac automat la închiderea paginii.",
+  "nkeys": "{n} chei",
+  "before_restore": "înainte de restaurare",
+  "cancel": "Anulează",
+  "pick": "Alege un instantaneu de restaurat:",
+  "summary": "Instantaneu din {date}: {added} chei lipsă ar fi readuse, {changed} ar fi suprascrise, {same} sunt identice. Înainte de restaurare se face un instantaneu al stării curente.",
+  "restore": "Restaurează",
+  "err_missing": "Instantaneul nu mai există.",
+  "btn": "Istoric (mașina timpului)"
+ },
+ "en": {
+  "title": "History (time machine)",
+  "empty": "No snapshots yet. They are taken automatically when the page closes.",
+  "nkeys": "{n} keys",
+  "before_restore": "before restore",
+  "cancel": "Cancel",
+  "pick": "Choose a snapshot to restore:",
+  "summary": "Snapshot from {date}: {added} missing keys would be brought back, {changed} would be overwritten, {same} are identical. A snapshot of the current state is taken before restoring.",
+  "restore": "Restore",
+  "err_missing": "The snapshot no longer exists.",
+  "btn": "History (time machine)"
+ },
+ "fr": {
+  "title": "Historique (machine à remonter le temps)",
+  "empty": "Aucun instantané pour l’instant. Ils sont pris automatiquement à la fermeture de la page.",
+  "nkeys": "{n} clés",
+  "before_restore": "avant restauration",
+  "cancel": "Annuler",
+  "pick": "Choisissez un instantané à restaurer :",
+  "summary": "Instantané du {date} : {added} clés manquantes seraient rétablies, {changed} seraient écrasées, {same} sont identiques. Un instantané de l’état actuel est pris avant la restauration.",
+  "restore": "Restaurer",
+  "err_missing": "L’instantané n’existe plus.",
+  "btn": "Historique (machine à remonter le temps)"
+ },
+ "it": {
+  "title": "Cronologia (macchina del tempo)",
+  "empty": "Ancora nessuna istantanea. Vengono create automaticamente alla chiusura della pagina.",
+  "nkeys": "{n} chiavi",
+  "before_restore": "prima del ripristino",
+  "cancel": "Annulla",
+  "pick": "Scegli un’istantanea da ripristinare:",
+  "summary": "Istantanea del {date}: {added} chiavi mancanti verrebbero ripristinate, {changed} verrebbero sovrascritte, {same} sono identiche. Prima del ripristino viene creata un’istantanea dello stato attuale.",
+  "restore": "Ripristina",
+  "err_missing": "L’istantanea non esiste più.",
+  "btn": "Cronologia (macchina del tempo)"
+ },
+ "es": {
+  "title": "Historial (máquina del tiempo)",
+  "empty": "Aún no hay instantáneas. Se crean automáticamente al cerrar la página.",
+  "nkeys": "{n} claves",
+  "before_restore": "antes de restaurar",
+  "cancel": "Cancelar",
+  "pick": "Elige una instantánea para restaurar:",
+  "summary": "Instantánea del {date}: se recuperarían {added} claves ausentes, se sobrescribirían {changed} y {same} son idénticas. Antes de restaurar se guarda una instantánea del estado actual.",
+  "restore": "Restaurar",
+  "err_missing": "La instantánea ya no existe.",
+  "btn": "Historial (máquina del tiempo)"
+ },
+ "pt": {
+  "title": "Histórico (máquina do tempo)",
+  "empty": "Ainda não há instantâneos. São criados automaticamente ao fechar a página.",
+  "nkeys": "{n} chaves",
+  "before_restore": "antes de restaurar",
+  "cancel": "Cancelar",
+  "pick": "Escolha um instantâneo para restaurar:",
+  "summary": "Instantâneo de {date}: {added} chaves em falta seriam repostas, {changed} seriam substituídas, {same} são idênticas. Antes de restaurar é criado um instantâneo do estado atual.",
+  "restore": "Restaurar",
+  "err_missing": "O instantâneo já não existe.",
+  "btn": "Histórico (máquina do tempo)"
+ },
+ "hu": {
+  "title": "Előzmények (időgép)",
+  "empty": "Még nincs pillanatkép. Az oldal bezárásakor automatikusan készülnek.",
+  "nkeys": "{n} kulcs",
+  "before_restore": "visszaállítás előtt",
+  "cancel": "Mégse",
+  "pick": "Válassz visszaállítandó pillanatképet:",
+  "summary": "{date} pillanatképe: {added} hiányzó kulcs kerülne vissza, {changed} felülíródna, {same} azonos. Visszaállítás előtt pillanatkép készül a jelenlegi állapotról.",
+  "restore": "Visszaállítás",
+  "err_missing": "A pillanatkép már nem létezik.",
+  "btn": "Előzmények (időgép)"
+ },
+ "de": {
+  "title": "Verlauf (Zeitmaschine)",
+  "empty": "Noch keine Schnappschüsse. Sie entstehen automatisch beim Schließen der Seite.",
+  "nkeys": "{n} Schlüssel",
+  "before_restore": "vor Wiederherstellung",
+  "cancel": "Abbrechen",
+  "pick": "Schnappschuss zur Wiederherstellung wählen:",
+  "summary": "Schnappschuss vom {date}: {added} fehlende Schlüssel würden zurückgeholt, {changed} überschrieben, {same} sind identisch. Vor der Wiederherstellung wird ein Schnappschuss des aktuellen Zustands erstellt.",
+  "restore": "Wiederherstellen",
+  "err_missing": "Der Schnappschuss existiert nicht mehr.",
+  "btn": "Verlauf (Zeitmaschine)"
+ }
+}

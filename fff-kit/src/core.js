@@ -176,6 +176,29 @@
   function saveIdx() {
     try { if (LS && origSet) origSet.call(LS, INDEX_KEY, JSON.stringify(Array.from(idx).sort())); } catch (e) { /* plin: ignorat */ }
   }
+  /* momentul ultimei scrieri pe cheie (folosit de FFF.sync): {cheie: ms}, în «fffmt.<slug>» (în afara spațiului fff.<slug>.*, ca să nu apară în chei/export), scris cu amânare */
+  var MT_KEY = 'fffmt.' + SLUG, mt = null, mtTimer = 0;
+  function loadMt() {
+    if (mt) return mt;
+    mt = Object.create(null);
+    try {
+      var raw = origGet && LS ? origGet.call(LS, MT_KEY) : null;
+      if (raw) { var o = JSON.parse(raw); Object.keys(o).forEach(function (k) { if (typeof o[k] === 'number') mt[k] = o[k]; }); }
+    } catch (e) { /* corupt: se reface */ }
+    return mt;
+  }
+  function touch(k) {
+    k = String(k);
+    if (k.indexOf('fff.') === 0) return;
+    loadMt()[k] = Date.now();
+    if (mtTimer) return;
+    mtTimer = setTimeout(function () {
+      mtTimer = 0;
+      try { if (LS && origSet) origSet.call(LS, MT_KEY, JSON.stringify(mt)); } catch (e) { /* plin: ignorat */ }
+    }, 400);
+  }
+  F.mtime = function (k) { return loadMt()[String(k)] || 0; };
+  F.mtimeClear = function () { mt = Object.create(null); clearTimeout(mtTimer); mtTimer = 0; try { if (LS && origRem) origRem.call(LS, MT_KEY); } catch (e) { /* ignorat */ } };
   function track(k) {
     k = String(k);
     if (k.indexOf('fff.') === 0) return;
@@ -197,7 +220,7 @@
       };
       P.setItem = function setItem(k, v) {
         var r = origSet.apply(this, arguments);
-        if (this === LS) { try { track(k); } catch (e) { /* idem */ } }
+        if (this === LS) { try { track(k); touch(k); } catch (e) { /* idem */ } }
         return r;
       };
       P.removeItem = function removeItem(k) {

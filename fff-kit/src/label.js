@@ -291,7 +291,20 @@
         say(r.keys ? T('ok_wipe', {n: r.keys}) : T('nothing_to_wipe'), 'ok');
       }).catch(fail);
     });
+    var syncB = null;
+    if (F.sync && F.sync.supported()) {
+      syncB = btn(T('bk_sync'), '', function () {
+        F.sync.dialog({reload: true}).then(function (r) {
+          say(F.t('sync', 'result', {adopted: r.adopted, same: r.same, conflicts: r.conflicts}), 'ok');
+        }).catch(fail);
+      });
+    }
     bk.appendChild(h('div', {class: 'fff-row'}, expB, encBtn, impBtn, wipeB));
+    var histB = null;
+    if (F.history && F.history.supported()) {
+      histB = btn(T('bk_history'), '', function () { F.history.dialog({reload: true}).catch(fail); });
+    }
+    if (syncB || histB) bk.appendChild(h('div', {class: 'fff-row'}, syncB, histB));
     bk.appendChild(encRow); bk.appendChild(impRow); bk.appendChild(status);
     return bk;
   }
