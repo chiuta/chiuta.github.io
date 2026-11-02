@@ -177,3 +177,9 @@ Căutare pe web făcută la data de mai sus. Ce n-a putut fi citit direct (pagin
   - `anthropic-version` din Nexus: `2023-06-01` încă valid, versiunea curentă `2026-10-21`;
   - ADIF: QSO exportă 3.1.4, specificația curentă e 3.1.8 (de verificat câmpurile înainte de schimbare);
   - populații AGORA pentru 10 țări fără cifră oficială 1.1.2026.
+
+### 8.1 Adăugiri din 2 noiembrie 2026 (seara)
+- **Recenzie adversarială automată** pe 110 aplicații (monkey + date corupte în localStorage + 320 px + CSP + rețea): 0 XSS, 0 poluare de prototip, 0 blocări; reparate: Alfabete (stocare coruptă), Orar (editor), OUTPOST și VietAR (depășire la 320 px), plus 3 CI-uri care picau pe `main` (ACORDAJ, NOMIA, Sah — în Sah piesele afișau „[object Object]").
+- **Funcții noi la nivel de kit, în 110 aplicații**: `FFF.sync` (sincronizare directă între dispozitive, fără server/cont) și `FFF.history` (istoric local cu restaurare reversibilă). VaultCrypt rămâne fără ele (păstrează secrete).
+- **De decis**: dacă sincronizarea să trimită și ștergerile (acum nu); verificarea traducerilor noi de către vorbitori nativi; dimensiunea (+140 KB/aplicație).
+

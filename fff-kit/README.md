@@ -69,6 +69,14 @@ Toate modulele sunt IIFE care definesc `window.FFF`; singura variabilă globală
 * **Texte.** „600 000 de iterații” provine din constanta din `bundle.js` (`{iter}` în `label.json`); un test pică dacă diferă. `.fff-msg{white-space:pre-line}`.
 * **Unelte (F9).** `tools/fixcsp.py`, `tools/ver.py`, `tools/lang.py` (vezi „Unelte” mai jos); `test/all.mjs` rulează toate testele.
 
+## Sincronizare și istoric (modulele `sync` și `history`, 2 noiembrie 2026)
+
+**`FFF.sync`** — sincronizare între dispozitivele tale, fără server și fără cont. Folosește `FFF.p2p` (WebRTC cu semnalizare manuală, cod/QR) pentru canal și `FFF.bundle.import` pentru aplicare (confirmare, chei permise, rollback). Fiecare parte trimite un manifest `{cheie: {hash, mtime, lungime}}`, cere ce îi lipsește sau ce e mai nou și primește valorile în bucăți de ≤ 40 KiB, verificate cu hash-ul din manifest. Reguli: cheie doar la celălalt → se adoptă; identică → nimic; diferită → câștigă cea mai recentă (`FFF.mtime(k)`, ținut în `fff.<slug>.__mt`), iar la egalitate/necunoscut rămâne valoarea locală și se numără ca „conflict”. **Nu** se sincronizează ștergerile și cheile cu nume de secret (`api key`, `token`, `parolă`…), decât cu `{secrets:true}`. Limite oneste: ceasurile trebuie să fie aproximativ corecte; identitatea celuilalt dispozitiv nu e verificată dincolo de canalul prin care ai transmis codul (de aceea se afișează lista cheilor înainte de aplicare); NAT simetric fără STUN nu se conectează (vezi `docs/p2p.md`). API: `FFF.sync.dialog(opt)`, `run(session, opt)`, `plan(mine, theirs)`, `manifest(data)`, `supported()`. Buton: dialogul «Transparență» → Copie de siguranță → „Sincronizează între dispozitive”. Test: `test/sync.test.mjs` (două contexte Chromium, cheie de 130 KB în bucăți, conflict, secrete, pornire asincronă).
+
+**`FFF.history`** — „mașina timpului” locală: instantanee automate (IndexedDB `fffhist.<slug>`) la ascunderea paginii și la pornire, fără secrete; retenție ultimele 8 + unul pe zi 14 zile, plafon 8 MiB; `diff(id)` arată ce ar readuce/suprascrie o restaurare; `restore(id)` trece prin `FFF.bundle.import` și își face întâi un instantaneu „înainte de restaurare” (deci se poate anula). „Șterge datele aplicației” șterge și istoricul (`clear()`). Aplicațiile care păstrează secrete (ex. VaultCrypt) nu activează modulul. Test: `test/history.test.mjs`.
+
+Ambele adaugă ≈ 140 KB (cu `qr` + `p2p`) și sunt activate în 110 aplicații; texte în 8 limbi (fr/it/es/pt/hu/de: traduceri automate, neverificate nativ).
+
 ## Formatul `.fff.json`
 
 ```json
