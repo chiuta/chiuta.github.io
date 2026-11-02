@@ -1,4 +1,4 @@
-# Roadmap chiuta.ro · fff-kit și cele 111 aplicații „fără frontiere”
+# Roadmap chiuta.ro · fff-kit și cele 113 aplicații „fără frontiere”
 
 Stare la 2 noiembrie 2026 · autor: Alexandru-Ionuț Chiuță (Alexio) · licență MIT · fără cont, fără telemetrie, fără reclame, offline.
 

@@ -1,0 +1,30 @@
+WEBVTT
+
+1
+00:00:01.530 --> 00:00:08.217
+18 teszt 6 területen: IQ, EQ, CQ, RQ, végrehajtó funkciók és érzékek.
+
+2
+00:00:08.447 --> 00:00:16.319
+Minden teszt egy rövid, időzített feladat, saját útmutatóval.
+
+3
+00:00:16.549 --> 00:00:21.332
+Az eredmények az eszközödön maradnak; JSON-ban exportálhatod és importálhatod.
+
+4
+00:00:21.562 --> 00:00:27.308
+A konstruktumok atlasza, mérésenként az objektivitás szerint rendezve.
+
+5
+00:00:27.538 --> 00:00:33.537
+Őszinte korlátok: ideiglenes normák, megbízhatósági intervallumok, nem diagnózis.
+
+6
+00:00:33.767 --> 00:00:42.810
+Nyolc nyelv, követés nélkül.
+
+7
+00:00:43.040 --> 00:00:47.040
+Ingyenes és nyílt forráskódú — chiuta.ro
+

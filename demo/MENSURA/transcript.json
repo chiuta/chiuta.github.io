@@ -1,0 +1,74 @@
+{
+ "en": [
+  "18 tests in 6 domains: IQ, EQ, CQ, RQ, executive functions and senses.",
+  "Each test is a short timed task with its own instructions.",
+  "Results stay on your device; export and import them as JSON.",
+  "An atlas of constructs, ranked by how objective each measure is.",
+  "Honest limits: provisional norms, confidence intervals, not a diagnosis.",
+  "Eight languages and no tracking.",
+  "Free and open source — chiuta.ro"
+ ],
+ "ro": [
+  "18 teste în 6 domenii: IQ, EQ, CQ, RQ, funcții executive și simțuri.",
+  "Fiecare test e o sarcină scurtă, cronometrată, cu instrucțiunile ei.",
+  "Rezultatele rămân pe dispozitivul tău; le exporți și importi ca JSON.",
+  "Un atlas al construcților, ordonat după cât de obiectivă e fiecare măsurare.",
+  "Limite oneste: norme provizorii, intervale de încredere, nu e diagnostic.",
+  "Opt limbi și fără urmărire.",
+  "Gratuit și open source — chiuta.ro"
+ ],
+ "fr": [
+  "18 tests dans 6 domaines : QI, QE, QC, QR, fonctions exécutives et sens.",
+  "Chaque test est une courte tâche chronométrée, avec ses consignes.",
+  "Les résultats restent sur votre appareil ; exportez-les et importez-les en JSON.",
+  "Un atlas des construits, classés selon l'objectivité de chaque mesure.",
+  "Limites honnêtes : normes provisoires, intervalles de confiance, pas un diagnostic.",
+  "Huit langues, aucun pistage.",
+  "Gratuit et open source — chiuta.ro"
+ ],
+ "it": [
+  "18 test in 6 ambiti: QI, QE, QC, QR, funzioni esecutive e sensi.",
+  "Ogni test è un breve compito a tempo, con le sue istruzioni.",
+  "I risultati restano sul tuo dispositivo; esportali e importali come JSON.",
+  "Un atlante dei costrutti, ordinati in base all'oggettività di ogni misura.",
+  "Limiti onesti: norme provvisorie, intervalli di confidenza, non una diagnosi.",
+  "Otto lingue e nessun tracciamento.",
+  "Gratuito e open source — chiuta.ro"
+ ],
+ "es": [
+  "18 pruebas en 6 áreas: CI, CE, CC, CR, funciones ejecutivas y sentidos.",
+  "Cada prueba es una tarea breve y cronometrada, con sus instrucciones.",
+  "Los resultados se quedan en tu dispositivo; expórtalos e impórtalos como JSON.",
+  "Un atlas de constructos, ordenados según la objetividad de cada medida.",
+  "Límites honestos: normas provisionales, intervalos de confianza, no es un diagnóstico.",
+  "Ocho idiomas y sin rastreo.",
+  "Gratis y de código abierto — chiuta.ro"
+ ],
+ "pt": [
+  "18 testes em 6 domínios: QI, QE, QC, QR, funções executivas e sentidos.",
+  "Cada teste é uma tarefa curta e cronometrada, com as suas instruções.",
+  "Os resultados ficam no seu dispositivo; exporte-os e importe-os em JSON.",
+  "Um atlas de construtos, ordenados pela objetividade de cada medida.",
+  "Limites honestos: normas provisórias, intervalos de confiança, não é um diagnóstico.",
+  "Oito idiomas e sem rastreamento.",
+  "Grátis e de código aberto — chiuta.ro"
+ ],
+ "de": [
+  "18 Tests in 6 Bereichen: IQ, EQ, CQ, RQ, exekutive Funktionen und Sinne.",
+  "Jeder Test ist eine kurze Zeitaufgabe mit eigener Anleitung.",
+  "Die Ergebnisse bleiben auf deinem Gerät; Export und Import als JSON.",
+  "Ein Atlas der Konstrukte, geordnet nach der Objektivität jeder Messung.",
+  "Ehrliche Grenzen: vorläufige Normen, Konfidenzintervalle, keine Diagnose.",
+  "Acht Sprachen, kein Tracking.",
+  "Kostenlos und Open Source — chiuta.ro"
+ ],
+ "hu": [
+  "18 teszt 6 területen: IQ, EQ, CQ, RQ, végrehajtó funkciók és érzékek.",
+  "Minden teszt egy rövid, időzített feladat, saját útmutatóval.",
+  "Az eredmények az eszközödön maradnak; JSON-ban exportálhatod és importálhatod.",
+  "A konstruktumok atlasza, mérésenként az objektivitás szerint rendezve.",
+  "Őszinte korlátok: ideiglenes normák, megbízhatósági intervallumok, nem diagnózis.",
+  "Nyolc nyelv, követés nélkül.",
+  "Ingyenes és nyílt forráskódú — chiuta.ro"
+ ]
+}

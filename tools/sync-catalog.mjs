@@ -42,7 +42,8 @@ const ROOT = path.resolve(ri >= 0 ? argv[ri + 1] : path.join(HUB, '..'));
 // Intrări EXTERNE: proiecte care nu sunt aplicații HTML dintr-un singur fișier (fără app.json / index.html de verificat aici).
 // Cardul lor se întreține de mână (versiune, dată, linkuri); sunt numărate în contor, dar nu sunt verificate ca aplicațiile fff.
 // Proiecte Rust (nu aplicații HTML single-file), fiecare cu site propriu: OSATURA (osatura.chiuta.ro), VERIGA (veriga.chiuta.ro), TEZAUR (tezaur.chiuta.ro), LegatorOCR (legatorocr.chiuta.ro); cod în github.com/chiuta/<Nume>.
-const EXTERNAL = new Set(['OSATURA', 'VERIGA', 'TEZAUR', 'LegatorOCR']);
+// FENARIUM și MENSURA: aplicații single-file încă fără app.json/meta de versiune (versiunea se ține pe card); după ce primesc metadatele kitului, se scot de aici.
+const EXTERNAL = new Set(['OSATURA', 'VERIGA', 'TEZAUR', 'LegatorOCR', 'Fenarium', 'MENSURA']);
 const LANG_ORDER = ['en', 'ro', 'fr', 'it', 'es', 'pt', 'de', 'hu'];
 const OFFLINE_QUALIFIED = new Set(['TerRa', 'VietAR', 'Pendulul']);   // Pendulul: fișierul salvat se citește offline; aplicația nu înregistrează service worker
 const OFFLINE_RE = /offline|fără conexiune|hors ligne|hors-ligne|senza connessione|sin conexión|sem ligação|sem conexão|ohne verbindung|internet nélkül/i;

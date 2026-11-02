@@ -3617,6 +3617,118 @@
    }
   },
   {
+   "slug": "MENSURA",
+   "title": "MENSURA",
+   "section": "educatie",
+   "tags": {
+    "ro": [
+     "teste",
+     "MIT"
+    ],
+    "en": [
+     "tests",
+     "MIT"
+    ],
+    "fr": [
+     "tests",
+     "MIT"
+    ],
+    "it": [
+     "test",
+     "MIT"
+    ],
+    "es": [
+     "pruebas",
+     "MIT"
+    ],
+    "pt": [
+     "testes",
+     "MIT"
+    ],
+    "de": [
+     "Tests",
+     "MIT"
+    ],
+    "hu": [
+     "tesztek",
+     "MIT"
+    ]
+   },
+   "line": {
+    "ro": "Măsoară-ți IQ-ul, EQ-ul, CQ-ul, RQ-ul, funcțiile executive și simțurile cu 18 teste în 6 domenii, cu indici compuși și intervale de încredere de 95%. Norme provizorii, orientative, nu diagnostic.",
+    "en": "Measure your IQ, EQ, CQ, RQ, executive functions and senses with 18 tests in 6 domains, with composite indices and 95% confidence intervals. Provisional norms, indicative only, not a diagnosis.",
+    "fr": "Mesurez votre QI, QE, QC, QR, vos fonctions exécutives et vos sens avec 18 tests dans 6 domaines, avec des indices composites et des intervalles de confiance à 95 %. Normes provisoires, indicatives, pas un diagnostic.",
+    "it": "Misura QI, QE, QC, QR, funzioni esecutive e sensi con 18 test in 6 ambiti, con indici compositi e intervalli di confidenza al 95%. Norme provvisorie, indicative, non una diagnosi.",
+    "es": "Mide tu CI, CE, CC, CR, las funciones ejecutivas y los sentidos con 18 pruebas en 6 áreas, con índices compuestos e intervalos de confianza del 95 %. Normas provisionales, orientativas, no es un diagnóstico.",
+    "pt": "Mede o teu QI, QE, QC, QR, as funções executivas e os sentidos com 18 testes em 6 domínios, com índices compostos e intervalos de confiança de 95%. Normas provisórias, indicativas, não é um diagnóstico.",
+    "de": "Miss IQ, EQ, CQ, RQ, exekutive Funktionen und Sinne mit 18 Tests in 6 Bereichen, mit Gesamtindizes und 95-%-Konfidenzintervallen. Vorläufige Normen, nur Orientierung, keine Diagnose.",
+    "hu": "Mérd meg az IQ-d, EQ-d, CQ-d, RQ-d, a végrehajtó funkciókat és az érzékeket 18 teszttel 6 területen, összetett indexekkel és 95%-os megbízhatósági intervallumokkal. Ideiglenes normák, tájékoztató jellegű, nem diagnózis."
+   },
+   "url": "https://chiuta.github.io/MENSURA/",
+   "readme": "https://github.com/chiuta/MENSURA",
+   "off": "no",
+   "status": "stable",
+   "video": "MENSURA/video.mp4",
+   "poster": "MENSURA/poster.jpg",
+   "duration": 47.1,
+   "size": 1990014,
+   "vtt": {
+    "en": "MENSURA/en.vtt",
+    "ro": "MENSURA/ro.vtt",
+    "fr": "MENSURA/fr.vtt",
+    "it": "MENSURA/it.vtt",
+    "es": "MENSURA/es.vtt",
+    "pt": "MENSURA/pt.vtt",
+    "de": "MENSURA/de.vtt",
+    "hu": "MENSURA/hu.vtt"
+   },
+   "transcript": "MENSURA/transcript.json",
+   "videos": {
+    "ro": {
+     "video": "MENSURA/loc/ro/video.mp4",
+     "vtt": "MENSURA/loc/ro/ro.vtt",
+     "duration": 48.7,
+     "size": 1293404
+    },
+    "fr": {
+     "video": "MENSURA/loc/fr/video.mp4",
+     "vtt": "MENSURA/loc/fr/fr.vtt",
+     "duration": 49.9,
+     "size": 1489656
+    },
+    "it": {
+     "video": "MENSURA/loc/it/video.mp4",
+     "vtt": "MENSURA/loc/it/it.vtt",
+     "duration": 49.4,
+     "size": 1422030
+    },
+    "es": {
+     "video": "MENSURA/loc/es/video.mp4",
+     "vtt": "MENSURA/loc/es/es.vtt",
+     "duration": 48.7,
+     "size": 1389988
+    },
+    "pt": {
+     "video": "MENSURA/loc/pt/video.mp4",
+     "vtt": "MENSURA/loc/pt/pt.vtt",
+     "duration": 48.1,
+     "size": 1619099
+    },
+    "de": {
+     "video": "MENSURA/loc/de/video.mp4",
+     "vtt": "MENSURA/loc/de/de.vtt",
+     "duration": 48.2,
+     "size": 1474720
+    },
+    "hu": {
+     "video": "MENSURA/loc/hu/video.mp4",
+     "vtt": "MENSURA/loc/hu/hu.vtt",
+     "duration": 49,
+     "size": 1522834
+    }
+   }
+  },
+  {
    "slug": "Alfabete",
    "title": "Alfabete",
    "section": "literatura",
@@ -12146,6 +12258,118 @@
      "vtt": "ValeaPlopului1972/loc/ro/ro.vtt",
      "duration": 55,
      "size": 512331
+    }
+   }
+  },
+  {
+   "slug": "Fenarium",
+   "title": "FENARIUM",
+   "section": "cultura",
+   "tags": {
+    "ro": [
+     "percepție",
+     "MIT"
+    ],
+    "en": [
+     "perception",
+     "MIT"
+    ],
+    "fr": [
+     "perception",
+     "MIT"
+    ],
+    "it": [
+     "percezione",
+     "MIT"
+    ],
+    "es": [
+     "percepción",
+     "MIT"
+    ],
+    "pt": [
+     "perceção",
+     "MIT"
+    ],
+    "de": [
+     "Wahrnehmung",
+     "MIT"
+    ],
+    "hu": [
+     "észlelés",
+     "MIT"
+    ]
+   },
+   "line": {
+    "ro": "Atlas și atelier al percepțiilor subiective în toate simțurile, pornind de la Fosfenism: curs în 13 module, experimente ghidate, simulator vizual și autoexperiment A/B randomizat. Material educativ, nu dispozitiv medical.",
+    "en": "An atlas and workshop of subjective perceptions across all the senses, starting from Phosphenism: a 13-module course, guided experiments, a visual simulator and a randomized A/B self-experiment lab. Educational, not a medical device.",
+    "fr": "Atlas et atelier des perceptions subjectives dans tous les sens, à partir du Phosphénisme : cours en 13 modules, expériences guidées, simulateur visuel et auto-expérimentation A/B randomisée. Éducatif, pas un dispositif médical.",
+    "it": "Atlante e laboratorio delle percezioni soggettive in tutti i sensi, a partire dal Fosfenismo: corso in 13 moduli, esperimenti guidati, simulatore visivo e auto-esperimento A/B randomizzato. Didattico, non un dispositivo medico.",
+    "es": "Atlas y taller de las percepciones subjetivas en todos los sentidos, a partir del Fosfenismo: curso de 13 módulos, experimentos guiados, simulador visual y autoexperimento A/B aleatorizado. Educativo, no es un dispositivo médico.",
+    "pt": "Atlas e oficina das perceções subjetivas em todos os sentidos, a partir do Fosfenismo: curso de 13 módulos, experiências guiadas, simulador visual e autoexperiência A/B aleatorizada. Educativo, não é um dispositivo médico.",
+    "de": "Atlas und Werkstatt subjektiver Wahrnehmungen in allen Sinnen, ausgehend vom Phosphenismus: Kurs mit 13 Modulen, geführte Experimente, visueller Simulator und randomisiertes A/B-Selbstexperiment. Lehrmaterial, kein Medizinprodukt.",
+    "hu": "A szubjektív észlelések atlasza és műhelye minden érzékszervben, a foszfenizmusból kiindulva: 13 modulos kurzus, vezetett kísérletek, vizuális szimulátor és randomizált A/B önkísérlet. Oktatási anyag, nem orvosi eszköz."
+   },
+   "url": "https://chiuta.github.io/Fenarium/",
+   "readme": "https://github.com/chiuta/Fenarium",
+   "off": "no",
+   "status": "stable",
+   "video": "Fenarium/video.mp4",
+   "poster": "Fenarium/poster.jpg",
+   "duration": 52.9,
+   "size": 2288274,
+   "vtt": {
+    "en": "Fenarium/en.vtt",
+    "ro": "Fenarium/ro.vtt",
+    "fr": "Fenarium/fr.vtt",
+    "it": "Fenarium/it.vtt",
+    "es": "Fenarium/es.vtt",
+    "pt": "Fenarium/pt.vtt",
+    "de": "Fenarium/de.vtt",
+    "hu": "Fenarium/hu.vtt"
+   },
+   "transcript": "Fenarium/transcript.json",
+   "videos": {
+    "ro": {
+     "video": "Fenarium/loc/ro/video.mp4",
+     "vtt": "Fenarium/loc/ro/ro.vtt",
+     "duration": 55.3,
+     "size": 1628597
+    },
+    "fr": {
+     "video": "Fenarium/loc/fr/video.mp4",
+     "vtt": "Fenarium/loc/fr/fr.vtt",
+     "duration": 55.5,
+     "size": 1872041
+    },
+    "it": {
+     "video": "Fenarium/loc/it/video.mp4",
+     "vtt": "Fenarium/loc/it/it.vtt",
+     "duration": 55.2,
+     "size": 1715151
+    },
+    "es": {
+     "video": "Fenarium/loc/es/video.mp4",
+     "vtt": "Fenarium/loc/es/es.vtt",
+     "duration": 54.6,
+     "size": 1829881
+    },
+    "pt": {
+     "video": "Fenarium/loc/pt/video.mp4",
+     "vtt": "Fenarium/loc/pt/pt.vtt",
+     "duration": 54.2,
+     "size": 1791323
+    },
+    "de": {
+     "video": "Fenarium/loc/de/video.mp4",
+     "vtt": "Fenarium/loc/de/de.vtt",
+     "duration": 53.8,
+     "size": 1911603
+    },
+    "hu": {
+     "video": "Fenarium/loc/hu/video.mp4",
+     "vtt": "Fenarium/loc/hu/hu.vtt",
+     "duration": 53.8,
+     "size": 1806998
     }
    }
   }
