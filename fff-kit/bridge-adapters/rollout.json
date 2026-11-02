@@ -169,7 +169,7 @@
  },
  {
   "slug": "localmind",
-  "name": "LocalMind v2.2.0",
+  "name": "LocalMind",
   "url": "https://localmind.chiuta.ro/",
   "accepts": [
    "table/csv",
@@ -375,5 +375,35 @@
    "events/ics"
   ],
   "dir": "orarium"
+ },
+ {
+  "slug": "indicativ",
+  "name": "INDICATIV",
+  "url": "https://indicativ.chiuta.ro/",
+  "accepts": [],
+  "produces": [
+   "quiz/undava"
+  ],
+  "dir": "INDICATIV"
+ },
+ {
+  "slug": "eter",
+  "name": "ETER",
+  "url": "https://eter.chiuta.ro/",
+  "accepts": [],
+  "produces": [
+   "quiz/undava"
+  ],
+  "dir": "ETER"
+ },
+ {
+  "slug": "puls",
+  "name": "PULS",
+  "url": "https://puls.chiuta.ro/",
+  "accepts": [],
+  "produces": [
+   "quiz/undava"
+  ],
+  "dir": "PULS"
  }
 ]

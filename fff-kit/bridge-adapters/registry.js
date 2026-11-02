@@ -14,7 +14,7 @@ var FFF_REG = [
  {"slug":"freedetect","name":"FreeDetect Hub","url":"https://freedetect.chiuta.ro/","accepts":["text/markdown"],"produces":["text/markdown"]},
  {"slug":"gospodar","name":"Gospodar","url":"https://gospodar.chiuta.ro/","accepts":["table/csv"],"produces":["table/csv"]},
  {"slug":"lexicon","name":"Lexicon","url":"https://lexicon.chiuta.ro/","accepts":["table/csv"],"produces":[]},
- {"slug":"localmind","name":"LocalMind v2.2.0","url":"https://localmind.chiuta.ro/","accepts":["table/csv","text/markdown"],"produces":["table/csv","text/markdown"]},
+ {"slug":"localmind","name":"LocalMind","url":"https://localmind.chiuta.ro/","accepts":["table/csv","text/markdown"],"produces":["table/csv","text/markdown"]},
  {"slug":"omnihost","name":"OmniHost","url":"https://omnihost.chiuta.ro/","accepts":["table/csv"],"produces":["text/markdown"]},
  {"slug":"orar","name":"Orar","url":"https://orar.chiuta.ro/","accepts":["events/ics"],"produces":["events/ics"]},
  {"slug":"poteca","name":"Poteca","url":"https://poteca.chiuta.ro/","accepts":["geo/gpx","table/csv"],"produces":["table/csv"]},
@@ -32,7 +32,10 @@ var FFF_REG = [
  {"slug":"generator-frecvente","name":"Laborator de Frecvențe","url":"https://generator-frecvente.chiuta.ro/","accepts":[],"produces":["table/csv"]},
  {"slug":"monstrarium","name":"MONSTRARIUM","url":"https://monstrarium.chiuta.ro/","accepts":[],"produces":["table/csv"]},
  {"slug":"surveyor","name":"SURVEYOR","url":"https://surveyor.chiuta.ro/","accepts":[],"produces":["table/csv"]},
- {"slug":"orarium","name":"ORARIUM","url":"https://orarium.chiuta.ro/","accepts":[],"produces":["events/ics"]}
+ {"slug":"orarium","name":"ORARIUM","url":"https://orarium.chiuta.ro/","accepts":[],"produces":["events/ics"]},
+ {"slug":"indicativ","name":"INDICATIV","url":"https://indicativ.chiuta.ro/","accepts":[],"produces":["quiz/undava"]},
+ {"slug":"eter","name":"ETER","url":"https://eter.chiuta.ro/","accepts":[],"produces":["quiz/undava"]},
+ {"slug":"puls","name":"PULS","url":"https://puls.chiuta.ro/","accepts":[],"produces":["quiz/undava"]}
 ];
 function fffCslToMd(items){
   return items.map(function(c){

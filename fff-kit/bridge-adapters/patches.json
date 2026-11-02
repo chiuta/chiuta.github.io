@@ -1,0 +1,42 @@
+{
+ "akasha": [
+  {
+   "replace": {
+    "find": "function r8Extras(node,r){\n  var foot=node.querySelector(\".pfoot\"); if(!foot) return;",
+    "with": "function r8Extras(node,r){\n  var foot=node.querySelector(\".pfoot\"); if(!foot) return;\n  if(window.__akasha && typeof window.__akasha.extraFoot===\"function\"){ try{ window.__akasha.extraFoot(foot,r); }catch(e){} }"
+   }
+  },
+  {
+   "replace": {
+    "find": "del:del, openEditor:openEditor, openDetail:openDetail, filtered:filtered, uid:uid, markDirty:markDirty };",
+    "with": "del:del, openEditor:openEditor, openDetail:openDetail, filtered:filtered, uid:uid, markDirty:markDirty };\n/* punct de legătură pentru FFF.bridge (adaptor extern): adaugă o înregistrare validată, expune limba curentă */\nwindow.__akasha.addRecord=function(raw){ var rec=sanitizeRecord(raw); if(!rec) return null; state.records.unshift(rec); markDirty(); render(); return rec; };\nwindow.__akasha.lang=function(){ return ui.lang; };"
+   }
+  }
+ ],
+ "seva": [
+  {
+   "replace": {
+    "find": "  initAll(); applyHashSec();\n}\n\n})();\n</script>",
+    "with": "  initAll(); applyHashSec();\n}\n\n/* punct de legătură pentru FFF.bridge (adaptor extern): banca de quiz și filtrul de categorii */\nwindow.__seva=Object.assign(window.__seva||{},{quizBank:function(){return QUIZ_BANK;},quizFilter:function(){return quizCatFilter;}});\n\n})();\n</script>"
+   }
+  }
+ ],
+ "eter": [
+  {
+   "afterBlockEnd": {
+    "marker": "const QUIZ = [",
+    "end": "\n];",
+    "insert": "/* punct de legătură pentru FFF.bridge (adaptor extern): banca de quiz */\nwindow.__fffQuiz={bank:function(){return QUIZ;}};"
+   }
+  }
+ ],
+ "puls": [
+  {
+   "afterBlockEnd": {
+    "marker": "const QUIZ = [",
+    "end": "\n];",
+    "insert": "/* punct de legătură pentru FFF.bridge (adaptor extern): banca de quiz */\nwindow.__fffQuiz={bank:function(){return QUIZ;}};"
+   }
+  }
+ ]
+}
