@@ -164,3 +164,16 @@ Căutare pe web făcută la data de mai sus. Ce n-a putut fi citit direct (pagin
 | Standarde de învățare (3.2) | cmi5 și xAPI sunt prezentate ca succesori ai SCORM, cu adoptare încă inegală. Surse: [ADL cmi5](https://adlnet.gov/working-groups/cmi5), [eLearning Industry](https://elearningindustry.com/advertise/elearning-marketing-resources/blog/scorm-vs-xapi-dying-long-live) | Se păstrează SCORM 2004 ca ieșire sigură și cmi5 ca țintă de viitor. |
 | File System Access / OPFS (2.1, 5.1) | Paginile consultate (web.dev, MDN) nu au putut fi citite din sesiune. Sprijinul pentru `showDirectoryPicker` în Firefox și Safari rămâne **neverificat** de noi. | Seiful comun (2.1) trebuie să aibă variantă de rezervă: export/import de pachet .fff când selectorul de folder lipsește. |
 | Traducere locală (4.4) | Pagina Firefox despre traducere locală există ([Mozilla](https://www.mozilla.org/en-GB/firefox/features/translate/)), dar nu a fost citită pentru lista de limbi; acoperirea română și maghiară e neverificată. | 4.4 începe cu un test de calitate pe cele 8 limbi. |
+
+## 8. Stadiu la 2 noiembrie 2026 (după rundele de actualizare)
+
+- **FFF.bridge «Trimite la…»**: 36 de aplicații interconectate, PR-uri deschise pe ramura `fff-bridge-2026-11-01`; PR-urile de surse ale aplicațiilor cu bridge au aceeași bază.
+- **Surse actualizate**: două valuri (aplicații + enciclopedii), PR-uri pe `surse-2026-11-02`; ce nu s-a putut confirma a rămas neschimbat și e listat în PR-uri.
+- **Limbi**: toate cele 110 de aplicații au selector cu cele 8 limbi; lacunele găsite (PromptVault, OAZA, ECLIPSA, NOMIA, TranslateHub-legal, VoiceAtelier-Polly) sunt reparate în PR-uri.
+- **Videoclipuri demo**: 770 de clipuri localizate (8 limbi × 96 de aplicații) în `demo/`, cu subtitrări în limba clipului.
+- **Rămase deschise** (decizii pentru autor):
+  - OpenAlex cere acum chei API gratuite (AcademiSearch are câmp opțional de cheie; de decis dacă același lucru trebuie și în alte aplicații care îl interoghează);
+  - Pollinations: API-ul clasic anonim e limitat pe IP, fără garanție; migrare la `gen.pollinations.ai` (cheie) de decis;
+  - `anthropic-version` din Nexus: `2023-06-01` încă valid, versiunea curentă `2026-10-21`;
+  - ADIF: QSO exportă 3.1.4, specificația curentă e 3.1.8 (de verificat câmpurile înainte de schimbare);
+  - populații AGORA pentru 10 țări fără cifră oficială 1.1.2026.
