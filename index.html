@@ -408,6 +408,29 @@ details.legend>summary:focus-visible{outline:2px solid var(--accent);outline-off
 details.legend p{margin:.25rem 0 0;max-width:90ch}
 #apps-grid .sec-head#rust .sec-title{color:var(--accent)}
 @media (max-width:520px){.fisa-row{grid-template-columns:1fr;gap:.1rem}}
+/* butoane carduri: „Deschide" evident, restul lizibile */
+.card-links{gap:.4rem;margin-top:.5rem;align-items:center}
+.card-link{font-size:.66rem;padding:.38rem .7rem;border-radius:8px;min-height:30px;gap:.3rem;box-sizing:border-box;transition:transform .15s,box-shadow .2s,border-color .2s,color .2s,background .2s,filter .2s}
+.card-link:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.card-link:hover{transform:translateY(-1px);background:var(--accent-lo)}
+a.card-link.live-link{order:-1;flex:1 1 100%;justify-content:center;font-size:.8rem;font-weight:700;letter-spacing:.03em;padding:.62rem 1rem;min-height:40px;border-radius:10px;border:0;color:var(--bg);background:linear-gradient(135deg,var(--accent),color-mix(in srgb,var(--accent) 62%,var(--text)));box-shadow:0 4px 14px color-mix(in srgb,var(--accent) 38%,transparent)}
+a.card-link.live-link::after{content:"\2197";font-size:1em;transition:transform .2s}
+a.card-link.live-link:hover{color:var(--bg);filter:brightness(1.12);box-shadow:0 6px 20px color-mix(in srgb,var(--accent) 55%,transparent);transform:translateY(-2px)}
+a.card-link.live-link:hover::after{transform:translate(2px,-2px)}
+[data-mode="dark"] a.card-link.live-link,[data-mode="dark"] a.card-link.live-link:hover,[data-mode="dark"] .demo-all,[data-mode="dark"] .demo-all:hover{color:#04120a!important;text-shadow:none}
+[data-mode="light"] a.card-link.live-link,[data-mode="light"] a.card-link.live-link:hover,[data-mode="light"] .demo-all,[data-mode="light"] .demo-all:hover{color:#fff!important}
+[data-mode="light"] a.card-link.live-link{background:linear-gradient(135deg,var(--accent),color-mix(in srgb,var(--accent) 75%,#000))}
+[data-mode="light"] .demo-all{background:var(--accent)}
+a.card-link.demo-link{color:var(--accent);border-color:color-mix(in srgb,var(--accent) 45%,transparent);background:transparent;font-weight:600}
+a.card-link.demo-link:hover{background:var(--accent-lo)}
+.card-link.web-link{opacity:.9}
+.card-ver{font-size:.62rem;padding:.2rem .5rem;border-radius:999px;background:var(--bg3);border:1px solid var(--border)}
+.demo-all{padding:.55rem 1rem;font-size:.74rem;font-weight:700;color:var(--bg);background:var(--accent);border:0;border-radius:10px}
+.demo-all:hover{color:var(--bg);filter:brightness(1.12)}
+.sec-demo{padding:.34rem .75rem;border-radius:8px;font-weight:600;border-color:color-mix(in srgb,var(--accent) 45%,transparent);background:transparent}
+.sec-demo:hover{background:var(--accent-lo)}
+@media(prefers-reduced-motion:reduce){.card-link,a.card-link.live-link::after{transition:none}.card-link:hover,a.card-link.live-link:hover{transform:none}}
+@media print{a.card-link.live-link{background:none;color:#000;box-shadow:none;border:1px solid #000}}
 </style>
 <style id="fx-helix-css">
 /* ═══ Helix: cele 110 aplicații ca foi (fișiere) pe o spirală 3D. Doar CSS 3D + puțin JS; se oprește cu butonul de animații. ═══ */
