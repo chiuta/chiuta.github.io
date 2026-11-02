@@ -12374,32 +12374,6 @@
    }
   }
  ],
- "trailer": {
-  "video": "trailer.mp4",
-  "poster": "trailer.jpg",
-  "duration": 84,
-  "vtt": {
-   "en": "trailer.en.vtt",
-   "ro": "trailer.ro.vtt",
-   "fr": "trailer.fr.vtt",
-   "it": "trailer.it.vtt",
-   "es": "trailer.es.vtt",
-   "pt": "trailer.pt.vtt",
-   "de": "trailer.de.vtt",
-   "hu": "trailer.hu.vtt"
-  },
-  "size": 1472135,
-  "apps": [
-   "AcademiSearch",
-   "Arhiva fără frontiere",
-   "DataWeave",
-   "FreeDetect",
-   "MarkdownAtelier",
-   "OmniHost",
-   "TranslateHub",
-   "Undava"
-  ]
- },
  "reels": {
   "recomandate": {
    "video": "reels/recomandate.mp4",

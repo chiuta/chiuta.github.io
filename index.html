@@ -35,7 +35,7 @@
 </style>
 
 <meta charset="UTF-8">
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data: blob:; style-src 'self' 'unsafe-inline'; font-src 'self' data:; media-src 'self' blob: data:; object-src 'none'; base-uri 'self'; form-action 'self'; worker-src 'self' blob:; script-src 'self' 'sha256-CLz9ky8c+CI8yax80HOx/XKzzI+0llJZxdBKUKIqejE=' 'sha256-YO40Pa9U54kBXfBS8s7ySLVhwIuT7JC9cMSApha5DIk=' 'sha256-w/zKEMxzdVXXq0E0bUlbVQxfS17m56d0FT5802XqkXE='; connect-src 'none'; manifest-src 'self'">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data: blob:; style-src 'self' 'unsafe-inline'; font-src 'self' data:; media-src 'self' blob: data:; object-src 'none'; base-uri 'self'; form-action 'self'; worker-src 'self' blob:; script-src 'self' 'sha256-CLz9ky8c+CI8yax80HOx/XKzzI+0llJZxdBKUKIqejE=' 'sha256-YO40Pa9U54kBXfBS8s7ySLVhwIuT7JC9cMSApha5DIk=' 'sha256-d5A0O+5bimiiTvFrX44QdIqvWx6GHcZvhaiohFVsyBM='; connect-src 'none'; manifest-src 'self'">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <meta name="color-scheme" content="dark light">
 <meta name="theme-color" id="theme-color-meta" content="#07060f">
@@ -561,7 +561,6 @@ html[lang^="hu"] .app-card.is-new .card-name::after{content:"ÚJ"}
         <p class="demo-lead" data-i18n="demoLead">Short silent screen recordings of each app, with subtitles in 8 languages. Hosted here, no third-party player.</p>
         <a class="card-link demo-all" href="demo/" data-i18n="demoAll">All demo videos →</a>
       </div>
-      <video id="demo-trailer" class="demo-video" controls preload="none" playsinline poster="demo/trailer.jpg" src="demo/trailer.mp4"><track kind="subtitles" srclang="en" label="English" src="demo/trailer.en.vtt"><track kind="subtitles" srclang="ro" label="Română" src="demo/trailer.ro.vtt"><track kind="subtitles" srclang="fr" label="Français" src="demo/trailer.fr.vtt"><track kind="subtitles" srclang="it" label="Italiano" src="demo/trailer.it.vtt"><track kind="subtitles" srclang="es" label="Español" src="demo/trailer.es.vtt"><track kind="subtitles" srclang="pt" label="Português" src="demo/trailer.pt.vtt"><track kind="subtitles" srclang="de" label="Deutsch" src="demo/trailer.de.vtt"><track kind="subtitles" srclang="hu" label="Magyar" src="demo/trailer.hu.vtt"></video>
     </section>
     <div class="apps-header">
       <h2 class="apps-title" data-i18n="projects">Projects</h2>
@@ -814,11 +813,6 @@ function applyContent(lang){
 }
 
 window.addEventListener('DOMContentLoaded',function(){try{applyContent(curLang)}catch(_){}});
-function demoTracks(lang){
-  const v=document.getElementById('demo-trailer'); if(!v) return;
-  const set=()=>{ for(let i=0;i<v.textTracks.length;i++){ const tt=v.textTracks[i]; tt.mode = tt.language===lang ? 'showing' : 'disabled'; } };
-  set(); if(!v.dataset.tr){ v.dataset.tr='1'; v.addEventListener('loadedmetadata',()=>demoTracks(curLang)); v.addEventListener('play',()=>demoTracks(curLang)); }
-}
 function applyLang(lang){
   curLang = lang;
   document.documentElement.dataset.lang = lang;
@@ -840,7 +834,6 @@ function applyLang(lang){
   const sk=document.querySelector('.skip-link'); if(sk) sk.textContent=ct('skip');
   try{ if(typeof syncDayNight==='function') syncDayNight(); }catch(_){}
   try{ if(typeof syncAnimBtn==='function') syncAnimBtn(); }catch(_){}
-  try{ demoTracks(lang); }catch(_){}
   // re-render cards with new descriptions
   try{ applyContent(lang); }catch(_){}
   try{ if(typeof syncFilter==='function') syncFilter(); }catch(_){}
