@@ -56,7 +56,9 @@ const keep = entries.filter((e) => e.slug === slug || (e.accepts || []).some((t)
 const regOut = regSrc.replace(/var FFF_REG = \[[\s\S]*?\n\];/, 'var FFF_REG = [\n' + keep.map((e) => ' ' + JSON.stringify(e)).join(',\n') + '\n];');
 const customSrc = fs.existsSync(path.join(kit, `bridge-adapters/${slug}.js`)) ? rd(path.join(kit, `bridge-adapters/${slug}.js`)) : '';
 const regFinal = customSrc.includes('fffCslToMd') ? regOut : regOut.slice(0, regOut.indexOf('function fffCslToMd')).trimEnd(); // asistentul CSL doar unde e folosit
-const adapter = '\n' + regFinal + '\n' + (custom ? rd(customPath) + '\n' : '') + rd(path.join(kit, 'bridge-adapters/auto.js')).replace('__FFF_CUSTOM__', String(custom)) + '\n';
+let adapter = '\n' + regFinal + '\n' + (custom ? rd(customPath) + '\n' : '') + rd(path.join(kit, 'bridge-adapters/auto.js')).replace('__FFF_CUSTOM__', String(custom)) + '\n';
+// fără kit (FFF absent) aplicația nu trebuie să arunce erori: fiecare IIFE de la început de rând primește un gardian
+adapter = adapter.replace(/^\(function\(\)\{/gm, '(function(){if(!(window.FFF&&window.FFF.bridge))return;');
 if (/<\/script/i.test(adapter)) throw new Error('adaptor cu </script');
 const i = html.lastIndexOf('</body>'); html = html.slice(0, i) + `<script id="fff-bridge-adapter">${adapter}</script>\n` + html.slice(i);
 fs.writeFileSync(idx, html);
