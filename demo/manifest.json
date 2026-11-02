@@ -218,7 +218,51 @@
     "de": "AcademiSearch/de.vtt",
     "hu": "AcademiSearch/hu.vtt"
    },
-   "transcript": "AcademiSearch/transcript.json"
+   "transcript": "AcademiSearch/transcript.json",
+   "videos": {
+    "de": {
+     "video": "AcademiSearch/loc/de/video.mp4",
+     "vtt": "AcademiSearch/loc/de/de.vtt",
+     "duration": 25.4,
+     "size": 318213
+    },
+    "es": {
+     "video": "AcademiSearch/loc/es/video.mp4",
+     "vtt": "AcademiSearch/loc/es/es.vtt",
+     "duration": 31.9,
+     "size": 306048
+    },
+    "fr": {
+     "video": "AcademiSearch/loc/fr/video.mp4",
+     "vtt": "AcademiSearch/loc/fr/fr.vtt",
+     "duration": 33.6,
+     "size": 302294
+    },
+    "hu": {
+     "video": "AcademiSearch/loc/hu/video.mp4",
+     "vtt": "AcademiSearch/loc/hu/hu.vtt",
+     "duration": 21,
+     "size": 262279
+    },
+    "it": {
+     "video": "AcademiSearch/loc/it/video.mp4",
+     "vtt": "AcademiSearch/loc/it/it.vtt",
+     "duration": 29.9,
+     "size": 272624
+    },
+    "pt": {
+     "video": "AcademiSearch/loc/pt/video.mp4",
+     "vtt": "AcademiSearch/loc/pt/pt.vtt",
+     "duration": 31.6,
+     "size": 309602
+    },
+    "ro": {
+     "video": "AcademiSearch/loc/ro/video.mp4",
+     "vtt": "AcademiSearch/loc/ro/ro.vtt",
+     "duration": 29.4,
+     "size": 305704
+    }
+   }
   },
   {
    "slug": "Arhiva-fara-frontiere",
@@ -286,7 +330,51 @@
     "de": "Arhiva-fara-frontiere/de.vtt",
     "hu": "Arhiva-fara-frontiere/hu.vtt"
    },
-   "transcript": "Arhiva-fara-frontiere/transcript.json"
+   "transcript": "Arhiva-fara-frontiere/transcript.json",
+   "videos": {
+    "de": {
+     "video": "Arhiva-fara-frontiere/loc/de/video.mp4",
+     "vtt": "Arhiva-fara-frontiere/loc/de/de.vtt",
+     "duration": 28.8,
+     "size": 277372
+    },
+    "es": {
+     "video": "Arhiva-fara-frontiere/loc/es/video.mp4",
+     "vtt": "Arhiva-fara-frontiere/loc/es/es.vtt",
+     "duration": 29.1,
+     "size": 280580
+    },
+    "fr": {
+     "video": "Arhiva-fara-frontiere/loc/fr/video.mp4",
+     "vtt": "Arhiva-fara-frontiere/loc/fr/fr.vtt",
+     "duration": 29.5,
+     "size": 263629
+    },
+    "hu": {
+     "video": "Arhiva-fara-frontiere/loc/hu/video.mp4",
+     "vtt": "Arhiva-fara-frontiere/loc/hu/hu.vtt",
+     "duration": 28.5,
+     "size": 350101
+    },
+    "it": {
+     "video": "Arhiva-fara-frontiere/loc/it/video.mp4",
+     "vtt": "Arhiva-fara-frontiere/loc/it/it.vtt",
+     "duration": 29.5,
+     "size": 257639
+    },
+    "pt": {
+     "video": "Arhiva-fara-frontiere/loc/pt/video.mp4",
+     "vtt": "Arhiva-fara-frontiere/loc/pt/pt.vtt",
+     "duration": 30.6,
+     "size": 303513
+    },
+    "ro": {
+     "video": "Arhiva-fara-frontiere/loc/ro/video.mp4",
+     "vtt": "Arhiva-fara-frontiere/loc/ro/ro.vtt",
+     "duration": 28.1,
+     "size": 245763
+    }
+   }
   },
   {
    "slug": "DataWeave",
@@ -346,7 +434,51 @@
     "de": "DataWeave/de.vtt",
     "hu": "DataWeave/hu.vtt"
    },
-   "transcript": "DataWeave/transcript.json"
+   "transcript": "DataWeave/transcript.json",
+   "videos": {
+    "de": {
+     "video": "DataWeave/loc/de/video.mp4",
+     "vtt": "DataWeave/loc/de/de.vtt",
+     "duration": 30.5,
+     "size": 250291
+    },
+    "es": {
+     "video": "DataWeave/loc/es/video.mp4",
+     "vtt": "DataWeave/loc/es/es.vtt",
+     "duration": 29.2,
+     "size": 251138
+    },
+    "fr": {
+     "video": "DataWeave/loc/fr/video.mp4",
+     "vtt": "DataWeave/loc/fr/fr.vtt",
+     "duration": 30.1,
+     "size": 243036
+    },
+    "hu": {
+     "video": "DataWeave/loc/hu/video.mp4",
+     "vtt": "DataWeave/loc/hu/hu.vtt",
+     "duration": 31.3,
+     "size": 260152
+    },
+    "it": {
+     "video": "DataWeave/loc/it/video.mp4",
+     "vtt": "DataWeave/loc/it/it.vtt",
+     "duration": 30.6,
+     "size": 241102
+    },
+    "pt": {
+     "video": "DataWeave/loc/pt/video.mp4",
+     "vtt": "DataWeave/loc/pt/pt.vtt",
+     "duration": 31.7,
+     "size": 273817
+    },
+    "ro": {
+     "video": "DataWeave/loc/ro/video.mp4",
+     "vtt": "DataWeave/loc/ro/ro.vtt",
+     "duration": 31,
+     "size": 223661
+    }
+   }
   },
   {
    "slug": "FreeDetect",
@@ -414,7 +546,51 @@
     "de": "FreeDetect/de.vtt",
     "hu": "FreeDetect/hu.vtt"
    },
-   "transcript": "FreeDetect/transcript.json"
+   "transcript": "FreeDetect/transcript.json",
+   "videos": {
+    "de": {
+     "video": "FreeDetect/loc/de/video.mp4",
+     "vtt": "FreeDetect/loc/de/de.vtt",
+     "duration": 26.8,
+     "size": 282008
+    },
+    "es": {
+     "video": "FreeDetect/loc/es/video.mp4",
+     "vtt": "FreeDetect/loc/es/es.vtt",
+     "duration": 37.8,
+     "size": 376656
+    },
+    "fr": {
+     "video": "FreeDetect/loc/fr/video.mp4",
+     "vtt": "FreeDetect/loc/fr/fr.vtt",
+     "duration": 36.1,
+     "size": 359782
+    },
+    "hu": {
+     "video": "FreeDetect/loc/hu/video.mp4",
+     "vtt": "FreeDetect/loc/hu/hu.vtt",
+     "duration": 36.1,
+     "size": 378864
+    },
+    "it": {
+     "video": "FreeDetect/loc/it/video.mp4",
+     "vtt": "FreeDetect/loc/it/it.vtt",
+     "duration": 31.7,
+     "size": 319721
+    },
+    "pt": {
+     "video": "FreeDetect/loc/pt/video.mp4",
+     "vtt": "FreeDetect/loc/pt/pt.vtt",
+     "duration": 37.9,
+     "size": 359550
+    },
+    "ro": {
+     "video": "FreeDetect/loc/ro/video.mp4",
+     "vtt": "FreeDetect/loc/ro/ro.vtt",
+     "duration": 32.6,
+     "size": 341685
+    }
+   }
   },
   {
    "slug": "MarkdownAtelier",
@@ -474,7 +650,51 @@
     "de": "MarkdownAtelier/de.vtt",
     "hu": "MarkdownAtelier/hu.vtt"
    },
-   "transcript": "MarkdownAtelier/transcript.json"
+   "transcript": "MarkdownAtelier/transcript.json",
+   "videos": {
+    "de": {
+     "video": "MarkdownAtelier/loc/de/video.mp4",
+     "vtt": "MarkdownAtelier/loc/de/de.vtt",
+     "duration": 45.3,
+     "size": 311918
+    },
+    "es": {
+     "video": "MarkdownAtelier/loc/es/video.mp4",
+     "vtt": "MarkdownAtelier/loc/es/es.vtt",
+     "duration": 42.8,
+     "size": 239590
+    },
+    "fr": {
+     "video": "MarkdownAtelier/loc/fr/video.mp4",
+     "vtt": "MarkdownAtelier/loc/fr/fr.vtt",
+     "duration": 40.6,
+     "size": 268740
+    },
+    "hu": {
+     "video": "MarkdownAtelier/loc/hu/video.mp4",
+     "vtt": "MarkdownAtelier/loc/hu/hu.vtt",
+     "duration": 44.6,
+     "size": 290737
+    },
+    "it": {
+     "video": "MarkdownAtelier/loc/it/video.mp4",
+     "vtt": "MarkdownAtelier/loc/it/it.vtt",
+     "duration": 38,
+     "size": 224853
+    },
+    "pt": {
+     "video": "MarkdownAtelier/loc/pt/video.mp4",
+     "vtt": "MarkdownAtelier/loc/pt/pt.vtt",
+     "duration": 42.5,
+     "size": 272155
+    },
+    "ro": {
+     "video": "MarkdownAtelier/loc/ro/video.mp4",
+     "vtt": "MarkdownAtelier/loc/ro/ro.vtt",
+     "duration": 38.3,
+     "size": 202754
+    }
+   }
   },
   {
    "slug": "OmniHost",
@@ -534,7 +754,51 @@
     "de": "OmniHost/de.vtt",
     "hu": "OmniHost/hu.vtt"
    },
-   "transcript": "OmniHost/transcript.json"
+   "transcript": "OmniHost/transcript.json",
+   "videos": {
+    "de": {
+     "video": "OmniHost/loc/de/video.mp4",
+     "vtt": "OmniHost/loc/de/de.vtt",
+     "duration": 37,
+     "size": 304690
+    },
+    "es": {
+     "video": "OmniHost/loc/es/video.mp4",
+     "vtt": "OmniHost/loc/es/es.vtt",
+     "duration": 70.6,
+     "size": 607846
+    },
+    "fr": {
+     "video": "OmniHost/loc/fr/video.mp4",
+     "vtt": "OmniHost/loc/fr/fr.vtt",
+     "duration": 46.4,
+     "size": 367213
+    },
+    "hu": {
+     "video": "OmniHost/loc/hu/video.mp4",
+     "vtt": "OmniHost/loc/hu/hu.vtt",
+     "duration": 33.6,
+     "size": 321195
+    },
+    "it": {
+     "video": "OmniHost/loc/it/video.mp4",
+     "vtt": "OmniHost/loc/it/it.vtt",
+     "duration": 26.5,
+     "size": 236321
+    },
+    "pt": {
+     "video": "OmniHost/loc/pt/video.mp4",
+     "vtt": "OmniHost/loc/pt/pt.vtt",
+     "duration": 36.5,
+     "size": 359589
+    },
+    "ro": {
+     "video": "OmniHost/loc/ro/video.mp4",
+     "vtt": "OmniHost/loc/ro/ro.vtt",
+     "duration": 33,
+     "size": 382562
+    }
+   }
   },
   {
    "slug": "TranslateHub",
@@ -602,7 +866,51 @@
     "de": "TranslateHub/de.vtt",
     "hu": "TranslateHub/hu.vtt"
    },
-   "transcript": "TranslateHub/transcript.json"
+   "transcript": "TranslateHub/transcript.json",
+   "videos": {
+    "de": {
+     "video": "TranslateHub/loc/de/video.mp4",
+     "vtt": "TranslateHub/loc/de/de.vtt",
+     "duration": 36.4,
+     "size": 614918
+    },
+    "es": {
+     "video": "TranslateHub/loc/es/video.mp4",
+     "vtt": "TranslateHub/loc/es/es.vtt",
+     "duration": 41.1,
+     "size": 670134
+    },
+    "fr": {
+     "video": "TranslateHub/loc/fr/video.mp4",
+     "vtt": "TranslateHub/loc/fr/fr.vtt",
+     "duration": 38.3,
+     "size": 838665
+    },
+    "hu": {
+     "video": "TranslateHub/loc/hu/video.mp4",
+     "vtt": "TranslateHub/loc/hu/hu.vtt",
+     "duration": 36.3,
+     "size": 720755
+    },
+    "it": {
+     "video": "TranslateHub/loc/it/video.mp4",
+     "vtt": "TranslateHub/loc/it/it.vtt",
+     "duration": 40.2,
+     "size": 753351
+    },
+    "pt": {
+     "video": "TranslateHub/loc/pt/video.mp4",
+     "vtt": "TranslateHub/loc/pt/pt.vtt",
+     "duration": 38.1,
+     "size": 644532
+    },
+    "ro": {
+     "video": "TranslateHub/loc/ro/video.mp4",
+     "vtt": "TranslateHub/loc/ro/ro.vtt",
+     "duration": 31.6,
+     "size": 666845
+    }
+   }
   },
   {
    "slug": "Undava",
@@ -670,7 +978,51 @@
     "de": "Undava/de.vtt",
     "hu": "Undava/hu.vtt"
    },
-   "transcript": "Undava/transcript.json"
+   "transcript": "Undava/transcript.json",
+   "videos": {
+    "de": {
+     "video": "Undava/loc/de/video.mp4",
+     "vtt": "Undava/loc/de/de.vtt",
+     "duration": 35,
+     "size": 301642
+    },
+    "es": {
+     "video": "Undava/loc/es/video.mp4",
+     "vtt": "Undava/loc/es/es.vtt",
+     "duration": 38,
+     "size": 332729
+    },
+    "fr": {
+     "video": "Undava/loc/fr/video.mp4",
+     "vtt": "Undava/loc/fr/fr.vtt",
+     "duration": 36.4,
+     "size": 307828
+    },
+    "hu": {
+     "video": "Undava/loc/hu/video.mp4",
+     "vtt": "Undava/loc/hu/hu.vtt",
+     "duration": 34.8,
+     "size": 295310
+    },
+    "it": {
+     "video": "Undava/loc/it/video.mp4",
+     "vtt": "Undava/loc/it/it.vtt",
+     "duration": 35.1,
+     "size": 295503
+    },
+    "pt": {
+     "video": "Undava/loc/pt/video.mp4",
+     "vtt": "Undava/loc/pt/pt.vtt",
+     "duration": 35.7,
+     "size": 307222
+    },
+    "ro": {
+     "video": "Undava/loc/ro/video.mp4",
+     "vtt": "Undava/loc/ro/ro.vtt",
+     "duration": 34.3,
+     "size": 264418
+    }
+   }
   },
   {
    "slug": "Arhiva-LinkedIn",
@@ -730,7 +1082,51 @@
     "de": "Arhiva-LinkedIn/de.vtt",
     "hu": "Arhiva-LinkedIn/hu.vtt"
    },
-   "transcript": "Arhiva-LinkedIn/transcript.json"
+   "transcript": "Arhiva-LinkedIn/transcript.json",
+   "videos": {
+    "de": {
+     "video": "Arhiva-LinkedIn/loc/de/video.mp4",
+     "vtt": "Arhiva-LinkedIn/loc/de/de.vtt",
+     "duration": 24.3,
+     "size": 183870
+    },
+    "es": {
+     "video": "Arhiva-LinkedIn/loc/es/video.mp4",
+     "vtt": "Arhiva-LinkedIn/loc/es/es.vtt",
+     "duration": 24.6,
+     "size": 229961
+    },
+    "fr": {
+     "video": "Arhiva-LinkedIn/loc/fr/video.mp4",
+     "vtt": "Arhiva-LinkedIn/loc/fr/fr.vtt",
+     "duration": 25.1,
+     "size": 222758
+    },
+    "hu": {
+     "video": "Arhiva-LinkedIn/loc/hu/video.mp4",
+     "vtt": "Arhiva-LinkedIn/loc/hu/hu.vtt",
+     "duration": 23.3,
+     "size": 177731
+    },
+    "it": {
+     "video": "Arhiva-LinkedIn/loc/it/video.mp4",
+     "vtt": "Arhiva-LinkedIn/loc/it/it.vtt",
+     "duration": 23.5,
+     "size": 182223
+    },
+    "pt": {
+     "video": "Arhiva-LinkedIn/loc/pt/video.mp4",
+     "vtt": "Arhiva-LinkedIn/loc/pt/pt.vtt",
+     "duration": 23.9,
+     "size": 187474
+    },
+    "ro": {
+     "video": "Arhiva-LinkedIn/loc/ro/video.mp4",
+     "vtt": "Arhiva-LinkedIn/loc/ro/ro.vtt",
+     "duration": 24,
+     "size": 167789
+    }
+   }
   },
   {
    "slug": "Cadraj",
@@ -790,7 +1186,51 @@
     "de": "Cadraj/de.vtt",
     "hu": "Cadraj/hu.vtt"
    },
-   "transcript": "Cadraj/transcript.json"
+   "transcript": "Cadraj/transcript.json",
+   "videos": {
+    "de": {
+     "video": "Cadraj/loc/de/video.mp4",
+     "vtt": "Cadraj/loc/de/de.vtt",
+     "duration": 32.3,
+     "size": 243452
+    },
+    "es": {
+     "video": "Cadraj/loc/es/video.mp4",
+     "vtt": "Cadraj/loc/es/es.vtt",
+     "duration": 29.4,
+     "size": 251563
+    },
+    "fr": {
+     "video": "Cadraj/loc/fr/video.mp4",
+     "vtt": "Cadraj/loc/fr/fr.vtt",
+     "duration": 31,
+     "size": 274015
+    },
+    "hu": {
+     "video": "Cadraj/loc/hu/video.mp4",
+     "vtt": "Cadraj/loc/hu/hu.vtt",
+     "duration": 31.5,
+     "size": 256525
+    },
+    "it": {
+     "video": "Cadraj/loc/it/video.mp4",
+     "vtt": "Cadraj/loc/it/it.vtt",
+     "duration": 30.3,
+     "size": 249165
+    },
+    "pt": {
+     "video": "Cadraj/loc/pt/video.mp4",
+     "vtt": "Cadraj/loc/pt/pt.vtt",
+     "duration": 31.3,
+     "size": 242517
+    },
+    "ro": {
+     "video": "Cadraj/loc/ro/video.mp4",
+     "vtt": "Cadraj/loc/ro/ro.vtt",
+     "duration": 31.4,
+     "size": 258024
+    }
+   }
   },
   {
    "slug": "Trade-Free-Link-Guardian",
@@ -858,7 +1298,51 @@
     "de": "Trade-Free-Link-Guardian/de.vtt",
     "hu": "Trade-Free-Link-Guardian/hu.vtt"
    },
-   "transcript": "Trade-Free-Link-Guardian/transcript.json"
+   "transcript": "Trade-Free-Link-Guardian/transcript.json",
+   "videos": {
+    "de": {
+     "video": "Trade-Free-Link-Guardian/loc/de/video.mp4",
+     "vtt": "Trade-Free-Link-Guardian/loc/de/de.vtt",
+     "duration": 27,
+     "size": 319873
+    },
+    "es": {
+     "video": "Trade-Free-Link-Guardian/loc/es/video.mp4",
+     "vtt": "Trade-Free-Link-Guardian/loc/es/es.vtt",
+     "duration": 27.7,
+     "size": 326006
+    },
+    "fr": {
+     "video": "Trade-Free-Link-Guardian/loc/fr/video.mp4",
+     "vtt": "Trade-Free-Link-Guardian/loc/fr/fr.vtt",
+     "duration": 29.3,
+     "size": 288194
+    },
+    "hu": {
+     "video": "Trade-Free-Link-Guardian/loc/hu/video.mp4",
+     "vtt": "Trade-Free-Link-Guardian/loc/hu/hu.vtt",
+     "duration": 28.7,
+     "size": 354316
+    },
+    "it": {
+     "video": "Trade-Free-Link-Guardian/loc/it/video.mp4",
+     "vtt": "Trade-Free-Link-Guardian/loc/it/it.vtt",
+     "duration": 26.5,
+     "size": 321439
+    },
+    "pt": {
+     "video": "Trade-Free-Link-Guardian/loc/pt/video.mp4",
+     "vtt": "Trade-Free-Link-Guardian/loc/pt/pt.vtt",
+     "duration": 29,
+     "size": 283656
+    },
+    "ro": {
+     "video": "Trade-Free-Link-Guardian/loc/ro/video.mp4",
+     "vtt": "Trade-Free-Link-Guardian/loc/ro/ro.vtt",
+     "duration": 26,
+     "size": 277240
+    }
+   }
   },
   {
    "slug": "OUTPOST",
@@ -918,7 +1402,51 @@
     "de": "OUTPOST/de.vtt",
     "hu": "OUTPOST/hu.vtt"
    },
-   "transcript": "OUTPOST/transcript.json"
+   "transcript": "OUTPOST/transcript.json",
+   "videos": {
+    "de": {
+     "video": "OUTPOST/loc/de/video.mp4",
+     "vtt": "OUTPOST/loc/de/de.vtt",
+     "duration": 25.1,
+     "size": 369418
+    },
+    "es": {
+     "video": "OUTPOST/loc/es/video.mp4",
+     "vtt": "OUTPOST/loc/es/es.vtt",
+     "duration": 23.2,
+     "size": 297469
+    },
+    "fr": {
+     "video": "OUTPOST/loc/fr/video.mp4",
+     "vtt": "OUTPOST/loc/fr/fr.vtt",
+     "duration": 27.7,
+     "size": 313865
+    },
+    "hu": {
+     "video": "OUTPOST/loc/hu/video.mp4",
+     "vtt": "OUTPOST/loc/hu/hu.vtt",
+     "duration": 22.6,
+     "size": 325853
+    },
+    "it": {
+     "video": "OUTPOST/loc/it/video.mp4",
+     "vtt": "OUTPOST/loc/it/it.vtt",
+     "duration": 24.2,
+     "size": 322733
+    },
+    "pt": {
+     "video": "OUTPOST/loc/pt/video.mp4",
+     "vtt": "OUTPOST/loc/pt/pt.vtt",
+     "duration": 24.5,
+     "size": 329211
+    },
+    "ro": {
+     "video": "OUTPOST/loc/ro/video.mp4",
+     "vtt": "OUTPOST/loc/ro/ro.vtt",
+     "duration": 22.2,
+     "size": 251054
+    }
+   }
   },
   {
    "slug": "ScryVeil",
@@ -986,7 +1514,51 @@
     "de": "ScryVeil/de.vtt",
     "hu": "ScryVeil/hu.vtt"
    },
-   "transcript": "ScryVeil/transcript.json"
+   "transcript": "ScryVeil/transcript.json",
+   "videos": {
+    "de": {
+     "video": "ScryVeil/loc/de/video.mp4",
+     "vtt": "ScryVeil/loc/de/de.vtt",
+     "duration": 39.1,
+     "size": 486325
+    },
+    "es": {
+     "video": "ScryVeil/loc/es/video.mp4",
+     "vtt": "ScryVeil/loc/es/es.vtt",
+     "duration": 29,
+     "size": 348463
+    },
+    "fr": {
+     "video": "ScryVeil/loc/fr/video.mp4",
+     "vtt": "ScryVeil/loc/fr/fr.vtt",
+     "duration": 32.5,
+     "size": 404602
+    },
+    "hu": {
+     "video": "ScryVeil/loc/hu/video.mp4",
+     "vtt": "ScryVeil/loc/hu/hu.vtt",
+     "duration": 34.6,
+     "size": 459496
+    },
+    "it": {
+     "video": "ScryVeil/loc/it/video.mp4",
+     "vtt": "ScryVeil/loc/it/it.vtt",
+     "duration": 32.5,
+     "size": 304772
+    },
+    "pt": {
+     "video": "ScryVeil/loc/pt/video.mp4",
+     "vtt": "ScryVeil/loc/pt/pt.vtt",
+     "duration": 32.6,
+     "size": 371773
+    },
+    "ro": {
+     "video": "ScryVeil/loc/ro/video.mp4",
+     "vtt": "ScryVeil/loc/ro/ro.vtt",
+     "duration": 27.8,
+     "size": 431319
+    }
+   }
   },
   {
    "slug": "Surveyor",
@@ -1054,7 +1626,51 @@
     "de": "Surveyor/de.vtt",
     "hu": "Surveyor/hu.vtt"
    },
-   "transcript": "Surveyor/transcript.json"
+   "transcript": "Surveyor/transcript.json",
+   "videos": {
+    "de": {
+     "video": "Surveyor/loc/de/video.mp4",
+     "vtt": "Surveyor/loc/de/de.vtt",
+     "duration": 20.4,
+     "size": 333603
+    },
+    "es": {
+     "video": "Surveyor/loc/es/video.mp4",
+     "vtt": "Surveyor/loc/es/es.vtt",
+     "duration": 19.5,
+     "size": 395225
+    },
+    "fr": {
+     "video": "Surveyor/loc/fr/video.mp4",
+     "vtt": "Surveyor/loc/fr/fr.vtt",
+     "duration": 19.4,
+     "size": 334121
+    },
+    "hu": {
+     "video": "Surveyor/loc/hu/video.mp4",
+     "vtt": "Surveyor/loc/hu/hu.vtt",
+     "duration": 19.2,
+     "size": 300918
+    },
+    "it": {
+     "video": "Surveyor/loc/it/video.mp4",
+     "vtt": "Surveyor/loc/it/it.vtt",
+     "duration": 18.3,
+     "size": 319926
+    },
+    "pt": {
+     "video": "Surveyor/loc/pt/video.mp4",
+     "vtt": "Surveyor/loc/pt/pt.vtt",
+     "duration": 20.4,
+     "size": 337038
+    },
+    "ro": {
+     "video": "Surveyor/loc/ro/video.mp4",
+     "vtt": "Surveyor/loc/ro/ro.vtt",
+     "duration": 20.9,
+     "size": 300776
+    }
+   }
   },
   {
    "slug": "Threads-fara-cont",
@@ -1114,7 +1730,51 @@
     "de": "Threads-fara-cont/de.vtt",
     "hu": "Threads-fara-cont/hu.vtt"
    },
-   "transcript": "Threads-fara-cont/transcript.json"
+   "transcript": "Threads-fara-cont/transcript.json",
+   "videos": {
+    "de": {
+     "video": "Threads-fara-cont/loc/de/video.mp4",
+     "vtt": "Threads-fara-cont/loc/de/de.vtt",
+     "duration": 22.4,
+     "size": 169361
+    },
+    "es": {
+     "video": "Threads-fara-cont/loc/es/video.mp4",
+     "vtt": "Threads-fara-cont/loc/es/es.vtt",
+     "duration": 22.7,
+     "size": 188573
+    },
+    "fr": {
+     "video": "Threads-fara-cont/loc/fr/video.mp4",
+     "vtt": "Threads-fara-cont/loc/fr/fr.vtt",
+     "duration": 22.9,
+     "size": 185081
+    },
+    "hu": {
+     "video": "Threads-fara-cont/loc/hu/video.mp4",
+     "vtt": "Threads-fara-cont/loc/hu/hu.vtt",
+     "duration": 22.3,
+     "size": 189215
+    },
+    "it": {
+     "video": "Threads-fara-cont/loc/it/video.mp4",
+     "vtt": "Threads-fara-cont/loc/it/it.vtt",
+     "duration": 23.2,
+     "size": 188385
+    },
+    "pt": {
+     "video": "Threads-fara-cont/loc/pt/video.mp4",
+     "vtt": "Threads-fara-cont/loc/pt/pt.vtt",
+     "duration": 23,
+     "size": 182688
+    },
+    "ro": {
+     "video": "Threads-fara-cont/loc/ro/video.mp4",
+     "vtt": "Threads-fara-cont/loc/ro/ro.vtt",
+     "duration": 23.1,
+     "size": 176689
+    }
+   }
   },
   {
    "slug": "Vitrina",
@@ -1174,7 +1834,51 @@
     "de": "Vitrina/de.vtt",
     "hu": "Vitrina/hu.vtt"
    },
-   "transcript": "Vitrina/transcript.json"
+   "transcript": "Vitrina/transcript.json",
+   "videos": {
+    "de": {
+     "video": "Vitrina/loc/de/video.mp4",
+     "vtt": "Vitrina/loc/de/de.vtt",
+     "duration": 27.4,
+     "size": 234555
+    },
+    "es": {
+     "video": "Vitrina/loc/es/video.mp4",
+     "vtt": "Vitrina/loc/es/es.vtt",
+     "duration": 27.8,
+     "size": 241850
+    },
+    "fr": {
+     "video": "Vitrina/loc/fr/video.mp4",
+     "vtt": "Vitrina/loc/fr/fr.vtt",
+     "duration": 26.6,
+     "size": 222889
+    },
+    "hu": {
+     "video": "Vitrina/loc/hu/video.mp4",
+     "vtt": "Vitrina/loc/hu/hu.vtt",
+     "duration": 27.7,
+     "size": 235802
+    },
+    "it": {
+     "video": "Vitrina/loc/it/video.mp4",
+     "vtt": "Vitrina/loc/it/it.vtt",
+     "duration": 28.3,
+     "size": 228497
+    },
+    "pt": {
+     "video": "Vitrina/loc/pt/video.mp4",
+     "vtt": "Vitrina/loc/pt/pt.vtt",
+     "duration": 27,
+     "size": 240713
+    },
+    "ro": {
+     "video": "Vitrina/loc/ro/video.mp4",
+     "vtt": "Vitrina/loc/ro/ro.vtt",
+     "duration": 26.9,
+     "size": 245045
+    }
+   }
   },
   {
    "slug": "X-fara-cont",
@@ -1234,7 +1938,51 @@
     "de": "X-fara-cont/de.vtt",
     "hu": "X-fara-cont/hu.vtt"
    },
-   "transcript": "X-fara-cont/transcript.json"
+   "transcript": "X-fara-cont/transcript.json",
+   "videos": {
+    "de": {
+     "video": "X-fara-cont/loc/de/video.mp4",
+     "vtt": "X-fara-cont/loc/de/de.vtt",
+     "duration": 30.5,
+     "size": 294806
+    },
+    "es": {
+     "video": "X-fara-cont/loc/es/video.mp4",
+     "vtt": "X-fara-cont/loc/es/es.vtt",
+     "duration": 31.9,
+     "size": 322280
+    },
+    "fr": {
+     "video": "X-fara-cont/loc/fr/video.mp4",
+     "vtt": "X-fara-cont/loc/fr/fr.vtt",
+     "duration": 30.7,
+     "size": 296485
+    },
+    "hu": {
+     "video": "X-fara-cont/loc/hu/video.mp4",
+     "vtt": "X-fara-cont/loc/hu/hu.vtt",
+     "duration": 31.4,
+     "size": 333930
+    },
+    "it": {
+     "video": "X-fara-cont/loc/it/video.mp4",
+     "vtt": "X-fara-cont/loc/it/it.vtt",
+     "duration": 31.3,
+     "size": 343748
+    },
+    "pt": {
+     "video": "X-fara-cont/loc/pt/video.mp4",
+     "vtt": "X-fara-cont/loc/pt/pt.vtt",
+     "duration": 31.4,
+     "size": 363612
+    },
+    "ro": {
+     "video": "X-fara-cont/loc/ro/video.mp4",
+     "vtt": "X-fara-cont/loc/ro/ro.vtt",
+     "duration": 31.6,
+     "size": 321855
+    }
+   }
   },
   {
    "slug": "Curatitor",
@@ -1302,7 +2050,51 @@
     "de": "Curatitor/de.vtt",
     "hu": "Curatitor/hu.vtt"
    },
-   "transcript": "Curatitor/transcript.json"
+   "transcript": "Curatitor/transcript.json",
+   "videos": {
+    "de": {
+     "video": "Curatitor/loc/de/video.mp4",
+     "vtt": "Curatitor/loc/de/de.vtt",
+     "duration": 27.8,
+     "size": 444694
+    },
+    "es": {
+     "video": "Curatitor/loc/es/video.mp4",
+     "vtt": "Curatitor/loc/es/es.vtt",
+     "duration": 29.7,
+     "size": 439544
+    },
+    "fr": {
+     "video": "Curatitor/loc/fr/video.mp4",
+     "vtt": "Curatitor/loc/fr/fr.vtt",
+     "duration": 30,
+     "size": 438163
+    },
+    "hu": {
+     "video": "Curatitor/loc/hu/video.mp4",
+     "vtt": "Curatitor/loc/hu/hu.vtt",
+     "duration": 29.2,
+     "size": 423131
+    },
+    "it": {
+     "video": "Curatitor/loc/it/video.mp4",
+     "vtt": "Curatitor/loc/it/it.vtt",
+     "duration": 28.5,
+     "size": 433500
+    },
+    "pt": {
+     "video": "Curatitor/loc/pt/video.mp4",
+     "vtt": "Curatitor/loc/pt/pt.vtt",
+     "duration": 29.9,
+     "size": 441764
+    },
+    "ro": {
+     "video": "Curatitor/loc/ro/video.mp4",
+     "vtt": "Curatitor/loc/ro/ro.vtt",
+     "duration": 26.1,
+     "size": 265089
+    }
+   }
   },
   {
    "slug": "Provenienta",
@@ -1370,7 +2162,51 @@
     "de": "Provenienta/de.vtt",
     "hu": "Provenienta/hu.vtt"
    },
-   "transcript": "Provenienta/transcript.json"
+   "transcript": "Provenienta/transcript.json",
+   "videos": {
+    "de": {
+     "video": "Provenienta/loc/de/video.mp4",
+     "vtt": "Provenienta/loc/de/de.vtt",
+     "duration": 27.6,
+     "size": 444464
+    },
+    "es": {
+     "video": "Provenienta/loc/es/video.mp4",
+     "vtt": "Provenienta/loc/es/es.vtt",
+     "duration": 26.5,
+     "size": 443507
+    },
+    "fr": {
+     "video": "Provenienta/loc/fr/video.mp4",
+     "vtt": "Provenienta/loc/fr/fr.vtt",
+     "duration": 27.7,
+     "size": 403113
+    },
+    "hu": {
+     "video": "Provenienta/loc/hu/video.mp4",
+     "vtt": "Provenienta/loc/hu/hu.vtt",
+     "duration": 28,
+     "size": 449681
+    },
+    "it": {
+     "video": "Provenienta/loc/it/video.mp4",
+     "vtt": "Provenienta/loc/it/it.vtt",
+     "duration": 29.7,
+     "size": 419604
+    },
+    "pt": {
+     "video": "Provenienta/loc/pt/video.mp4",
+     "vtt": "Provenienta/loc/pt/pt.vtt",
+     "duration": 29.2,
+     "size": 440877
+    },
+    "ro": {
+     "video": "Provenienta/loc/ro/video.mp4",
+     "vtt": "Provenienta/loc/ro/ro.vtt",
+     "duration": 27.9,
+     "size": 432167
+    }
+   }
   },
   {
    "slug": "VaultCrypt",
@@ -1430,7 +2266,51 @@
     "de": "VaultCrypt/de.vtt",
     "hu": "VaultCrypt/hu.vtt"
    },
-   "transcript": "VaultCrypt/transcript.json"
+   "transcript": "VaultCrypt/transcript.json",
+   "videos": {
+    "de": {
+     "video": "VaultCrypt/loc/de/video.mp4",
+     "vtt": "VaultCrypt/loc/de/de.vtt",
+     "duration": 29.7,
+     "size": 299945
+    },
+    "es": {
+     "video": "VaultCrypt/loc/es/video.mp4",
+     "vtt": "VaultCrypt/loc/es/es.vtt",
+     "duration": 34.4,
+     "size": 307840
+    },
+    "fr": {
+     "video": "VaultCrypt/loc/fr/video.mp4",
+     "vtt": "VaultCrypt/loc/fr/fr.vtt",
+     "duration": 35,
+     "size": 280390
+    },
+    "hu": {
+     "video": "VaultCrypt/loc/hu/video.mp4",
+     "vtt": "VaultCrypt/loc/hu/hu.vtt",
+     "duration": 33.5,
+     "size": 292381
+    },
+    "it": {
+     "video": "VaultCrypt/loc/it/video.mp4",
+     "vtt": "VaultCrypt/loc/it/it.vtt",
+     "duration": 35.4,
+     "size": 308875
+    },
+    "pt": {
+     "video": "VaultCrypt/loc/pt/video.mp4",
+     "vtt": "VaultCrypt/loc/pt/pt.vtt",
+     "duration": 31.9,
+     "size": 289599
+    },
+    "ro": {
+     "video": "VaultCrypt/loc/ro/video.mp4",
+     "vtt": "VaultCrypt/loc/ro/ro.vtt",
+     "duration": 31.3,
+     "size": 288131
+    }
+   }
   },
   {
    "slug": "ATINGERE",
@@ -1490,7 +2370,51 @@
     "de": "ATINGERE/de.vtt",
     "hu": "ATINGERE/hu.vtt"
    },
-   "transcript": "ATINGERE/transcript.json"
+   "transcript": "ATINGERE/transcript.json",
+   "videos": {
+    "de": {
+     "video": "ATINGERE/loc/de/video.mp4",
+     "vtt": "ATINGERE/loc/de/de.vtt",
+     "duration": 26.9,
+     "size": 338111
+    },
+    "es": {
+     "video": "ATINGERE/loc/es/video.mp4",
+     "vtt": "ATINGERE/loc/es/es.vtt",
+     "duration": 25.4,
+     "size": 248045
+    },
+    "fr": {
+     "video": "ATINGERE/loc/fr/video.mp4",
+     "vtt": "ATINGERE/loc/fr/fr.vtt",
+     "duration": 27,
+     "size": 254172
+    },
+    "hu": {
+     "video": "ATINGERE/loc/hu/video.mp4",
+     "vtt": "ATINGERE/loc/hu/hu.vtt",
+     "duration": 26.6,
+     "size": 260536
+    },
+    "it": {
+     "video": "ATINGERE/loc/it/video.mp4",
+     "vtt": "ATINGERE/loc/it/it.vtt",
+     "duration": 28.5,
+     "size": 314384
+    },
+    "pt": {
+     "video": "ATINGERE/loc/pt/video.mp4",
+     "vtt": "ATINGERE/loc/pt/pt.vtt",
+     "duration": 26.8,
+     "size": 249031
+    },
+    "ro": {
+     "video": "ATINGERE/loc/ro/video.mp4",
+     "vtt": "ATINGERE/loc/ro/ro.vtt",
+     "duration": 30.1,
+     "size": 309936
+    }
+   }
   },
   {
    "slug": "Clopotel",
@@ -1558,7 +2482,51 @@
     "de": "Clopotel/de.vtt",
     "hu": "Clopotel/hu.vtt"
    },
-   "transcript": "Clopotel/transcript.json"
+   "transcript": "Clopotel/transcript.json",
+   "videos": {
+    "de": {
+     "video": "Clopotel/loc/de/video.mp4",
+     "vtt": "Clopotel/loc/de/de.vtt",
+     "duration": 32,
+     "size": 215924
+    },
+    "es": {
+     "video": "Clopotel/loc/es/video.mp4",
+     "vtt": "Clopotel/loc/es/es.vtt",
+     "duration": 39.3,
+     "size": 252972
+    },
+    "fr": {
+     "video": "Clopotel/loc/fr/video.mp4",
+     "vtt": "Clopotel/loc/fr/fr.vtt",
+     "duration": 32.4,
+     "size": 275684
+    },
+    "hu": {
+     "video": "Clopotel/loc/hu/video.mp4",
+     "vtt": "Clopotel/loc/hu/hu.vtt",
+     "duration": 31.3,
+     "size": 249341
+    },
+    "it": {
+     "video": "Clopotel/loc/it/video.mp4",
+     "vtt": "Clopotel/loc/it/it.vtt",
+     "duration": 30.6,
+     "size": 248179
+    },
+    "pt": {
+     "video": "Clopotel/loc/pt/video.mp4",
+     "vtt": "Clopotel/loc/pt/pt.vtt",
+     "duration": 32.2,
+     "size": 234197
+    },
+    "ro": {
+     "video": "Clopotel/loc/ro/video.mp4",
+     "vtt": "Clopotel/loc/ro/ro.vtt",
+     "duration": 31.2,
+     "size": 215172
+    }
+   }
   },
   {
    "slug": "Monstrarium",
@@ -1626,7 +2594,51 @@
     "de": "Monstrarium/de.vtt",
     "hu": "Monstrarium/hu.vtt"
    },
-   "transcript": "Monstrarium/transcript.json"
+   "transcript": "Monstrarium/transcript.json",
+   "videos": {
+    "de": {
+     "video": "Monstrarium/loc/de/video.mp4",
+     "vtt": "Monstrarium/loc/de/de.vtt",
+     "duration": 42.8,
+     "size": 1215976
+    },
+    "es": {
+     "video": "Monstrarium/loc/es/video.mp4",
+     "vtt": "Monstrarium/loc/es/es.vtt",
+     "duration": 39,
+     "size": 1188227
+    },
+    "fr": {
+     "video": "Monstrarium/loc/fr/video.mp4",
+     "vtt": "Monstrarium/loc/fr/fr.vtt",
+     "duration": 53.3,
+     "size": 1518477
+    },
+    "hu": {
+     "video": "Monstrarium/loc/hu/video.mp4",
+     "vtt": "Monstrarium/loc/hu/hu.vtt",
+     "duration": 44.4,
+     "size": 1211496
+    },
+    "it": {
+     "video": "Monstrarium/loc/it/video.mp4",
+     "vtt": "Monstrarium/loc/it/it.vtt",
+     "duration": 40,
+     "size": 1163375
+    },
+    "pt": {
+     "video": "Monstrarium/loc/pt/video.mp4",
+     "vtt": "Monstrarium/loc/pt/pt.vtt",
+     "duration": 57.8,
+     "size": 1432845
+    },
+    "ro": {
+     "video": "Monstrarium/loc/ro/video.mp4",
+     "vtt": "Monstrarium/loc/ro/ro.vtt",
+     "duration": 42.4,
+     "size": 1203659
+    }
+   }
   },
   {
    "slug": "ETER",
@@ -1694,7 +2706,51 @@
     "de": "ETER/de.vtt",
     "hu": "ETER/hu.vtt"
    },
-   "transcript": "ETER/transcript.json"
+   "transcript": "ETER/transcript.json",
+   "videos": {
+    "de": {
+     "video": "ETER/loc/de/video.mp4",
+     "vtt": "ETER/loc/de/de.vtt",
+     "duration": 60.5,
+     "size": 706954
+    },
+    "es": {
+     "video": "ETER/loc/es/video.mp4",
+     "vtt": "ETER/loc/es/es.vtt",
+     "duration": 61.1,
+     "size": 684046
+    },
+    "fr": {
+     "video": "ETER/loc/fr/video.mp4",
+     "vtt": "ETER/loc/fr/fr.vtt",
+     "duration": 60.8,
+     "size": 733022
+    },
+    "hu": {
+     "video": "ETER/loc/hu/video.mp4",
+     "vtt": "ETER/loc/hu/hu.vtt",
+     "duration": 54.8,
+     "size": 572201
+    },
+    "it": {
+     "video": "ETER/loc/it/video.mp4",
+     "vtt": "ETER/loc/it/it.vtt",
+     "duration": 58.3,
+     "size": 744114
+    },
+    "pt": {
+     "video": "ETER/loc/pt/video.mp4",
+     "vtt": "ETER/loc/pt/pt.vtt",
+     "duration": 65.5,
+     "size": 706578
+    },
+    "ro": {
+     "video": "ETER/loc/ro/video.mp4",
+     "vtt": "ETER/loc/ro/ro.vtt",
+     "duration": 61.8,
+     "size": 704635
+    }
+   }
   },
   {
    "slug": "Fabrica",
@@ -1762,7 +2818,51 @@
     "de": "Fabrica/de.vtt",
     "hu": "Fabrica/hu.vtt"
    },
-   "transcript": "Fabrica/transcript.json"
+   "transcript": "Fabrica/transcript.json",
+   "videos": {
+    "de": {
+     "video": "Fabrica/loc/de/video.mp4",
+     "vtt": "Fabrica/loc/de/de.vtt",
+     "duration": 36.4,
+     "size": 367753
+    },
+    "es": {
+     "video": "Fabrica/loc/es/video.mp4",
+     "vtt": "Fabrica/loc/es/es.vtt",
+     "duration": 36,
+     "size": 367008
+    },
+    "fr": {
+     "video": "Fabrica/loc/fr/video.mp4",
+     "vtt": "Fabrica/loc/fr/fr.vtt",
+     "duration": 35.6,
+     "size": 365528
+    },
+    "hu": {
+     "video": "Fabrica/loc/hu/video.mp4",
+     "vtt": "Fabrica/loc/hu/hu.vtt",
+     "duration": 36.8,
+     "size": 387885
+    },
+    "it": {
+     "video": "Fabrica/loc/it/video.mp4",
+     "vtt": "Fabrica/loc/it/it.vtt",
+     "duration": 35.6,
+     "size": 344613
+    },
+    "pt": {
+     "video": "Fabrica/loc/pt/video.mp4",
+     "vtt": "Fabrica/loc/pt/pt.vtt",
+     "duration": 36.3,
+     "size": 391828
+    },
+    "ro": {
+     "video": "Fabrica/loc/ro/video.mp4",
+     "vtt": "Fabrica/loc/ro/ro.vtt",
+     "duration": 36,
+     "size": 354238
+    }
+   }
   },
   {
    "slug": "FASCICUL",
@@ -1822,7 +2922,51 @@
     "de": "FASCICUL/de.vtt",
     "hu": "FASCICUL/hu.vtt"
    },
-   "transcript": "FASCICUL/transcript.json"
+   "transcript": "FASCICUL/transcript.json",
+   "videos": {
+    "de": {
+     "video": "FASCICUL/loc/de/video.mp4",
+     "vtt": "FASCICUL/loc/de/de.vtt",
+     "duration": 24.1,
+     "size": 439115
+    },
+    "es": {
+     "video": "FASCICUL/loc/es/video.mp4",
+     "vtt": "FASCICUL/loc/es/es.vtt",
+     "duration": 24.7,
+     "size": 389623
+    },
+    "fr": {
+     "video": "FASCICUL/loc/fr/video.mp4",
+     "vtt": "FASCICUL/loc/fr/fr.vtt",
+     "duration": 24.4,
+     "size": 493754
+    },
+    "hu": {
+     "video": "FASCICUL/loc/hu/video.mp4",
+     "vtt": "FASCICUL/loc/hu/hu.vtt",
+     "duration": 23.5,
+     "size": 444855
+    },
+    "it": {
+     "video": "FASCICUL/loc/it/video.mp4",
+     "vtt": "FASCICUL/loc/it/it.vtt",
+     "duration": 23.9,
+     "size": 368298
+    },
+    "pt": {
+     "video": "FASCICUL/loc/pt/video.mp4",
+     "vtt": "FASCICUL/loc/pt/pt.vtt",
+     "duration": 24.5,
+     "size": 405992
+    },
+    "ro": {
+     "video": "FASCICUL/loc/ro/video.mp4",
+     "vtt": "FASCICUL/loc/ro/ro.vtt",
+     "duration": 24.5,
+     "size": 362840
+    }
+   }
   },
   {
    "slug": "INDICATIV",
@@ -1890,7 +3034,51 @@
     "de": "INDICATIV/de.vtt",
     "hu": "INDICATIV/hu.vtt"
    },
-   "transcript": "INDICATIV/transcript.json"
+   "transcript": "INDICATIV/transcript.json",
+   "videos": {
+    "de": {
+     "video": "INDICATIV/loc/de/video.mp4",
+     "vtt": "INDICATIV/loc/de/de.vtt",
+     "duration": 35.7,
+     "size": 228982
+    },
+    "es": {
+     "video": "INDICATIV/loc/es/video.mp4",
+     "vtt": "INDICATIV/loc/es/es.vtt",
+     "duration": 33.6,
+     "size": 212516
+    },
+    "fr": {
+     "video": "INDICATIV/loc/fr/video.mp4",
+     "vtt": "INDICATIV/loc/fr/fr.vtt",
+     "duration": 38,
+     "size": 244676
+    },
+    "hu": {
+     "video": "INDICATIV/loc/hu/video.mp4",
+     "vtt": "INDICATIV/loc/hu/hu.vtt",
+     "duration": 34,
+     "size": 232696
+    },
+    "it": {
+     "video": "INDICATIV/loc/it/video.mp4",
+     "vtt": "INDICATIV/loc/it/it.vtt",
+     "duration": 34,
+     "size": 216220
+    },
+    "pt": {
+     "video": "INDICATIV/loc/pt/video.mp4",
+     "vtt": "INDICATIV/loc/pt/pt.vtt",
+     "duration": 32.1,
+     "size": 230654
+    },
+    "ro": {
+     "video": "INDICATIV/loc/ro/video.mp4",
+     "vtt": "INDICATIV/loc/ro/ro.vtt",
+     "duration": 33.6,
+     "size": 220298
+    }
+   }
   },
   {
    "slug": "PULS",
@@ -1958,7 +3146,51 @@
     "de": "PULS/de.vtt",
     "hu": "PULS/hu.vtt"
    },
-   "transcript": "PULS/transcript.json"
+   "transcript": "PULS/transcript.json",
+   "videos": {
+    "de": {
+     "video": "PULS/loc/de/video.mp4",
+     "vtt": "PULS/loc/de/de.vtt",
+     "duration": 50,
+     "size": 626298
+    },
+    "es": {
+     "video": "PULS/loc/es/video.mp4",
+     "vtt": "PULS/loc/es/es.vtt",
+     "duration": 44.2,
+     "size": 555588
+    },
+    "fr": {
+     "video": "PULS/loc/fr/video.mp4",
+     "vtt": "PULS/loc/fr/fr.vtt",
+     "duration": 34.5,
+     "size": 530200
+    },
+    "hu": {
+     "video": "PULS/loc/hu/video.mp4",
+     "vtt": "PULS/loc/hu/hu.vtt",
+     "duration": 31.6,
+     "size": 376317
+    },
+    "it": {
+     "video": "PULS/loc/it/video.mp4",
+     "vtt": "PULS/loc/it/it.vtt",
+     "duration": 33.3,
+     "size": 430838
+    },
+    "pt": {
+     "video": "PULS/loc/pt/video.mp4",
+     "vtt": "PULS/loc/pt/pt.vtt",
+     "duration": 33,
+     "size": 565117
+    },
+    "ro": {
+     "video": "PULS/loc/ro/video.mp4",
+     "vtt": "PULS/loc/ro/ro.vtt",
+     "duration": 28,
+     "size": 378812
+    }
+   }
   },
   {
    "slug": "QSO",
@@ -2026,7 +3258,51 @@
     "de": "QSO/de.vtt",
     "hu": "QSO/hu.vtt"
    },
-   "transcript": "QSO/transcript.json"
+   "transcript": "QSO/transcript.json",
+   "videos": {
+    "de": {
+     "video": "QSO/loc/de/video.mp4",
+     "vtt": "QSO/loc/de/de.vtt",
+     "duration": 32.7,
+     "size": 287837
+    },
+    "es": {
+     "video": "QSO/loc/es/video.mp4",
+     "vtt": "QSO/loc/es/es.vtt",
+     "duration": 33.1,
+     "size": 309279
+    },
+    "fr": {
+     "video": "QSO/loc/fr/video.mp4",
+     "vtt": "QSO/loc/fr/fr.vtt",
+     "duration": 35.5,
+     "size": 339970
+    },
+    "hu": {
+     "video": "QSO/loc/hu/video.mp4",
+     "vtt": "QSO/loc/hu/hu.vtt",
+     "duration": 36.1,
+     "size": 318057
+    },
+    "it": {
+     "video": "QSO/loc/it/video.mp4",
+     "vtt": "QSO/loc/it/it.vtt",
+     "duration": 34.5,
+     "size": 308170
+    },
+    "pt": {
+     "video": "QSO/loc/pt/video.mp4",
+     "vtt": "QSO/loc/pt/pt.vtt",
+     "duration": 34.8,
+     "size": 319569
+    },
+    "ro": {
+     "video": "QSO/loc/ro/video.mp4",
+     "vtt": "QSO/loc/ro/ro.vtt",
+     "duration": 33.5,
+     "size": 312663
+    }
+   }
   },
   {
    "slug": "RegexLab",
@@ -2086,7 +3362,51 @@
     "de": "RegexLab/de.vtt",
     "hu": "RegexLab/hu.vtt"
    },
-   "transcript": "RegexLab/transcript.json"
+   "transcript": "RegexLab/transcript.json",
+   "videos": {
+    "de": {
+     "video": "RegexLab/loc/de/video.mp4",
+     "vtt": "RegexLab/loc/de/de.vtt",
+     "duration": 54.8,
+     "size": 394730
+    },
+    "es": {
+     "video": "RegexLab/loc/es/video.mp4",
+     "vtt": "RegexLab/loc/es/es.vtt",
+     "duration": 50,
+     "size": 384401
+    },
+    "fr": {
+     "video": "RegexLab/loc/fr/video.mp4",
+     "vtt": "RegexLab/loc/fr/fr.vtt",
+     "duration": 45.4,
+     "size": 357945
+    },
+    "hu": {
+     "video": "RegexLab/loc/hu/video.mp4",
+     "vtt": "RegexLab/loc/hu/hu.vtt",
+     "duration": 55.2,
+     "size": 335601
+    },
+    "it": {
+     "video": "RegexLab/loc/it/video.mp4",
+     "vtt": "RegexLab/loc/it/it.vtt",
+     "duration": 49.6,
+     "size": 373181
+    },
+    "pt": {
+     "video": "RegexLab/loc/pt/video.mp4",
+     "vtt": "RegexLab/loc/pt/pt.vtt",
+     "duration": 50.9,
+     "size": 370680
+    },
+    "ro": {
+     "video": "RegexLab/loc/ro/video.mp4",
+     "vtt": "RegexLab/loc/ro/ro.vtt",
+     "duration": 55,
+     "size": 344584
+    }
+   }
   },
   {
    "slug": "SEOptimum",
@@ -2146,7 +3466,51 @@
     "de": "SEOptimum/de.vtt",
     "hu": "SEOptimum/hu.vtt"
    },
-   "transcript": "SEOptimum/transcript.json"
+   "transcript": "SEOptimum/transcript.json",
+   "videos": {
+    "de": {
+     "video": "SEOptimum/loc/de/video.mp4",
+     "vtt": "SEOptimum/loc/de/de.vtt",
+     "duration": 22.3,
+     "size": 265198
+    },
+    "es": {
+     "video": "SEOptimum/loc/es/video.mp4",
+     "vtt": "SEOptimum/loc/es/es.vtt",
+     "duration": 21.5,
+     "size": 290243
+    },
+    "fr": {
+     "video": "SEOptimum/loc/fr/video.mp4",
+     "vtt": "SEOptimum/loc/fr/fr.vtt",
+     "duration": 19.5,
+     "size": 260748
+    },
+    "hu": {
+     "video": "SEOptimum/loc/hu/video.mp4",
+     "vtt": "SEOptimum/loc/hu/hu.vtt",
+     "duration": 21.5,
+     "size": 288344
+    },
+    "it": {
+     "video": "SEOptimum/loc/it/video.mp4",
+     "vtt": "SEOptimum/loc/it/it.vtt",
+     "duration": 21.5,
+     "size": 282149
+    },
+    "pt": {
+     "video": "SEOptimum/loc/pt/video.mp4",
+     "vtt": "SEOptimum/loc/pt/pt.vtt",
+     "duration": 20.5,
+     "size": 282680
+    },
+    "ro": {
+     "video": "SEOptimum/loc/ro/video.mp4",
+     "vtt": "SEOptimum/loc/ro/ro.vtt",
+     "duration": 19,
+     "size": 266312
+    }
+   }
   },
   {
    "slug": "SEVA",
@@ -2206,7 +3570,51 @@
     "de": "SEVA/de.vtt",
     "hu": "SEVA/hu.vtt"
    },
-   "transcript": "SEVA/transcript.json"
+   "transcript": "SEVA/transcript.json",
+   "videos": {
+    "de": {
+     "video": "SEVA/loc/de/video.mp4",
+     "vtt": "SEVA/loc/de/de.vtt",
+     "duration": 46.9,
+     "size": 683759
+    },
+    "es": {
+     "video": "SEVA/loc/es/video.mp4",
+     "vtt": "SEVA/loc/es/es.vtt",
+     "duration": 58.3,
+     "size": 593544
+    },
+    "fr": {
+     "video": "SEVA/loc/fr/video.mp4",
+     "vtt": "SEVA/loc/fr/fr.vtt",
+     "duration": 46.7,
+     "size": 627680
+    },
+    "hu": {
+     "video": "SEVA/loc/hu/video.mp4",
+     "vtt": "SEVA/loc/hu/hu.vtt",
+     "duration": 55.5,
+     "size": 639985
+    },
+    "it": {
+     "video": "SEVA/loc/it/video.mp4",
+     "vtt": "SEVA/loc/it/it.vtt",
+     "duration": 56.9,
+     "size": 545414
+    },
+    "pt": {
+     "video": "SEVA/loc/pt/video.mp4",
+     "vtt": "SEVA/loc/pt/pt.vtt",
+     "duration": 60,
+     "size": 629642
+    },
+    "ro": {
+     "video": "SEVA/loc/ro/video.mp4",
+     "vtt": "SEVA/loc/ro/ro.vtt",
+     "duration": 73.7,
+     "size": 765712
+    }
+   }
   },
   {
    "slug": "Alfabete",
@@ -2274,7 +3682,51 @@
     "de": "Alfabete/de.vtt",
     "hu": "Alfabete/hu.vtt"
    },
-   "transcript": "Alfabete/transcript.json"
+   "transcript": "Alfabete/transcript.json",
+   "videos": {
+    "de": {
+     "video": "Alfabete/loc/de/video.mp4",
+     "vtt": "Alfabete/loc/de/de.vtt",
+     "duration": 31.3,
+     "size": 414527
+    },
+    "es": {
+     "video": "Alfabete/loc/es/video.mp4",
+     "vtt": "Alfabete/loc/es/es.vtt",
+     "duration": 31.6,
+     "size": 402277
+    },
+    "fr": {
+     "video": "Alfabete/loc/fr/video.mp4",
+     "vtt": "Alfabete/loc/fr/fr.vtt",
+     "duration": 33.5,
+     "size": 394121
+    },
+    "hu": {
+     "video": "Alfabete/loc/hu/video.mp4",
+     "vtt": "Alfabete/loc/hu/hu.vtt",
+     "duration": 32.2,
+     "size": 416717
+    },
+    "it": {
+     "video": "Alfabete/loc/it/video.mp4",
+     "vtt": "Alfabete/loc/it/it.vtt",
+     "duration": 31,
+     "size": 362601
+    },
+    "pt": {
+     "video": "Alfabete/loc/pt/video.mp4",
+     "vtt": "Alfabete/loc/pt/pt.vtt",
+     "duration": 33.6,
+     "size": 389048
+    },
+    "ro": {
+     "video": "Alfabete/loc/ro/video.mp4",
+     "vtt": "Alfabete/loc/ro/ro.vtt",
+     "duration": 30.3,
+     "size": 349993
+    }
+   }
   },
   {
    "slug": "Lexicon",
@@ -2342,7 +3794,51 @@
     "de": "Lexicon/de.vtt",
     "hu": "Lexicon/hu.vtt"
    },
-   "transcript": "Lexicon/transcript.json"
+   "transcript": "Lexicon/transcript.json",
+   "videos": {
+    "de": {
+     "video": "Lexicon/loc/de/video.mp4",
+     "vtt": "Lexicon/loc/de/de.vtt",
+     "duration": 33.4,
+     "size": 357450
+    },
+    "es": {
+     "video": "Lexicon/loc/es/video.mp4",
+     "vtt": "Lexicon/loc/es/es.vtt",
+     "duration": 32.2,
+     "size": 350955
+    },
+    "fr": {
+     "video": "Lexicon/loc/fr/video.mp4",
+     "vtt": "Lexicon/loc/fr/fr.vtt",
+     "duration": 33.8,
+     "size": 346494
+    },
+    "hu": {
+     "video": "Lexicon/loc/hu/video.mp4",
+     "vtt": "Lexicon/loc/hu/hu.vtt",
+     "duration": 32.7,
+     "size": 322316
+    },
+    "it": {
+     "video": "Lexicon/loc/it/video.mp4",
+     "vtt": "Lexicon/loc/it/it.vtt",
+     "duration": 33.8,
+     "size": 327346
+    },
+    "pt": {
+     "video": "Lexicon/loc/pt/video.mp4",
+     "vtt": "Lexicon/loc/pt/pt.vtt",
+     "duration": 34,
+     "size": 361329
+    },
+    "ro": {
+     "video": "Lexicon/loc/ro/video.mp4",
+     "vtt": "Lexicon/loc/ro/ro.vtt",
+     "duration": 33.4,
+     "size": 292303
+    }
+   }
   },
   {
    "slug": "Limpezimea",
@@ -2402,7 +3898,51 @@
     "de": "Limpezimea/de.vtt",
     "hu": "Limpezimea/hu.vtt"
    },
-   "transcript": "Limpezimea/transcript.json"
+   "transcript": "Limpezimea/transcript.json",
+   "videos": {
+    "de": {
+     "video": "Limpezimea/loc/de/video.mp4",
+     "vtt": "Limpezimea/loc/de/de.vtt",
+     "duration": 54.7,
+     "size": 287793
+    },
+    "es": {
+     "video": "Limpezimea/loc/es/video.mp4",
+     "vtt": "Limpezimea/loc/es/es.vtt",
+     "duration": 46.8,
+     "size": 273029
+    },
+    "fr": {
+     "video": "Limpezimea/loc/fr/video.mp4",
+     "vtt": "Limpezimea/loc/fr/fr.vtt",
+     "duration": 46.6,
+     "size": 258683
+    },
+    "hu": {
+     "video": "Limpezimea/loc/hu/video.mp4",
+     "vtt": "Limpezimea/loc/hu/hu.vtt",
+     "duration": 58.2,
+     "size": 293951
+    },
+    "it": {
+     "video": "Limpezimea/loc/it/video.mp4",
+     "vtt": "Limpezimea/loc/it/it.vtt",
+     "duration": 44.4,
+     "size": 235173
+    },
+    "pt": {
+     "video": "Limpezimea/loc/pt/video.mp4",
+     "vtt": "Limpezimea/loc/pt/pt.vtt",
+     "duration": 49.6,
+     "size": 290098
+    },
+    "ro": {
+     "video": "Limpezimea/loc/ro/video.mp4",
+     "vtt": "Limpezimea/loc/ro/ro.vtt",
+     "duration": 53,
+     "size": 255114
+    }
+   }
   },
   {
    "slug": "Nota-Zero",
@@ -2462,7 +4002,51 @@
     "de": "Nota-Zero/de.vtt",
     "hu": "Nota-Zero/hu.vtt"
    },
-   "transcript": "Nota-Zero/transcript.json"
+   "transcript": "Nota-Zero/transcript.json",
+   "videos": {
+    "de": {
+     "video": "Nota-Zero/loc/de/video.mp4",
+     "vtt": "Nota-Zero/loc/de/de.vtt",
+     "duration": 43.4,
+     "size": 220487
+    },
+    "es": {
+     "video": "Nota-Zero/loc/es/video.mp4",
+     "vtt": "Nota-Zero/loc/es/es.vtt",
+     "duration": 59.3,
+     "size": 272345
+    },
+    "fr": {
+     "video": "Nota-Zero/loc/fr/video.mp4",
+     "vtt": "Nota-Zero/loc/fr/fr.vtt",
+     "duration": 53.1,
+     "size": 243201
+    },
+    "hu": {
+     "video": "Nota-Zero/loc/hu/video.mp4",
+     "vtt": "Nota-Zero/loc/hu/hu.vtt",
+     "duration": 45.3,
+     "size": 231071
+    },
+    "it": {
+     "video": "Nota-Zero/loc/it/video.mp4",
+     "vtt": "Nota-Zero/loc/it/it.vtt",
+     "duration": 63.1,
+     "size": 287381
+    },
+    "pt": {
+     "video": "Nota-Zero/loc/pt/video.mp4",
+     "vtt": "Nota-Zero/loc/pt/pt.vtt",
+     "duration": 45.3,
+     "size": 206085
+    },
+    "ro": {
+     "video": "Nota-Zero/loc/ro/video.mp4",
+     "vtt": "Nota-Zero/loc/ro/ro.vtt",
+     "duration": 39.7,
+     "size": 229393
+    }
+   }
   },
   {
    "slug": "Pendulul",
@@ -2522,7 +4106,8 @@
     "de": "Pendulul/de.vtt",
     "hu": "Pendulul/hu.vtt"
    },
-   "transcript": "Pendulul/transcript.json"
+   "transcript": "Pendulul/transcript.json",
+   "videos": {}
   },
   {
    "slug": "PrintreInteligente",
@@ -2582,7 +4167,51 @@
     "de": "PrintreInteligente/de.vtt",
     "hu": "PrintreInteligente/hu.vtt"
    },
-   "transcript": "PrintreInteligente/transcript.json"
+   "transcript": "PrintreInteligente/transcript.json",
+   "videos": {
+    "de": {
+     "video": "PrintreInteligente/loc/de/video.mp4",
+     "vtt": "PrintreInteligente/loc/de/de.vtt",
+     "duration": 45.5,
+     "size": 341613
+    },
+    "es": {
+     "video": "PrintreInteligente/loc/es/video.mp4",
+     "vtt": "PrintreInteligente/loc/es/es.vtt",
+     "duration": 47.3,
+     "size": 369359
+    },
+    "fr": {
+     "video": "PrintreInteligente/loc/fr/video.mp4",
+     "vtt": "PrintreInteligente/loc/fr/fr.vtt",
+     "duration": 43,
+     "size": 386308
+    },
+    "hu": {
+     "video": "PrintreInteligente/loc/hu/video.mp4",
+     "vtt": "PrintreInteligente/loc/hu/hu.vtt",
+     "duration": 47,
+     "size": 372692
+    },
+    "it": {
+     "video": "PrintreInteligente/loc/it/video.mp4",
+     "vtt": "PrintreInteligente/loc/it/it.vtt",
+     "duration": 34.3,
+     "size": 289524
+    },
+    "pt": {
+     "video": "PrintreInteligente/loc/pt/video.mp4",
+     "vtt": "PrintreInteligente/loc/pt/pt.vtt",
+     "duration": 48.3,
+     "size": 382435
+    },
+    "ro": {
+     "video": "PrintreInteligente/loc/ro/video.mp4",
+     "vtt": "PrintreInteligente/loc/ro/ro.vtt",
+     "duration": 28.8,
+     "size": 281845
+    }
+   }
   },
   {
    "slug": "Zicala",
@@ -2642,7 +4271,51 @@
     "de": "Zicala/de.vtt",
     "hu": "Zicala/hu.vtt"
    },
-   "transcript": "Zicala/transcript.json"
+   "transcript": "Zicala/transcript.json",
+   "videos": {
+    "de": {
+     "video": "Zicala/loc/de/video.mp4",
+     "vtt": "Zicala/loc/de/de.vtt",
+     "duration": 24,
+     "size": 219239
+    },
+    "es": {
+     "video": "Zicala/loc/es/video.mp4",
+     "vtt": "Zicala/loc/es/es.vtt",
+     "duration": 22.6,
+     "size": 212346
+    },
+    "fr": {
+     "video": "Zicala/loc/fr/video.mp4",
+     "vtt": "Zicala/loc/fr/fr.vtt",
+     "duration": 22.8,
+     "size": 221286
+    },
+    "hu": {
+     "video": "Zicala/loc/hu/video.mp4",
+     "vtt": "Zicala/loc/hu/hu.vtt",
+     "duration": 22.3,
+     "size": 222416
+    },
+    "it": {
+     "video": "Zicala/loc/it/video.mp4",
+     "vtt": "Zicala/loc/it/it.vtt",
+     "duration": 24.8,
+     "size": 209836
+    },
+    "pt": {
+     "video": "Zicala/loc/pt/video.mp4",
+     "vtt": "Zicala/loc/pt/pt.vtt",
+     "duration": 25.4,
+     "size": 213581
+    },
+    "ro": {
+     "video": "Zicala/loc/ro/video.mp4",
+     "vtt": "Zicala/loc/ro/ro.vtt",
+     "duration": 23.2,
+     "size": 198589
+    }
+   }
   },
   {
    "slug": "AGORA",
@@ -2710,7 +4383,51 @@
     "de": "AGORA/de.vtt",
     "hu": "AGORA/hu.vtt"
    },
-   "transcript": "AGORA/transcript.json"
+   "transcript": "AGORA/transcript.json",
+   "videos": {
+    "de": {
+     "video": "AGORA/loc/de/video.mp4",
+     "vtt": "AGORA/loc/de/de.vtt",
+     "duration": 30.3,
+     "size": 430768
+    },
+    "es": {
+     "video": "AGORA/loc/es/video.mp4",
+     "vtt": "AGORA/loc/es/es.vtt",
+     "duration": 31,
+     "size": 468514
+    },
+    "fr": {
+     "video": "AGORA/loc/fr/video.mp4",
+     "vtt": "AGORA/loc/fr/fr.vtt",
+     "duration": 28.6,
+     "size": 518849
+    },
+    "hu": {
+     "video": "AGORA/loc/hu/video.mp4",
+     "vtt": "AGORA/loc/hu/hu.vtt",
+     "duration": 27.2,
+     "size": 458054
+    },
+    "it": {
+     "video": "AGORA/loc/it/video.mp4",
+     "vtt": "AGORA/loc/it/it.vtt",
+     "duration": 29.6,
+     "size": 370229
+    },
+    "pt": {
+     "video": "AGORA/loc/pt/video.mp4",
+     "vtt": "AGORA/loc/pt/pt.vtt",
+     "duration": 27.9,
+     "size": 384421
+    },
+    "ro": {
+     "video": "AGORA/loc/ro/video.mp4",
+     "vtt": "AGORA/loc/ro/ro.vtt",
+     "duration": 28.4,
+     "size": 348382
+    }
+   }
   },
   {
    "slug": "Bolta",
@@ -2778,7 +4495,51 @@
     "de": "Bolta/de.vtt",
     "hu": "Bolta/hu.vtt"
    },
-   "transcript": "Bolta/transcript.json"
+   "transcript": "Bolta/transcript.json",
+   "videos": {
+    "de": {
+     "video": "Bolta/loc/de/video.mp4",
+     "vtt": "Bolta/loc/de/de.vtt",
+     "duration": 33.6,
+     "size": 572083
+    },
+    "es": {
+     "video": "Bolta/loc/es/video.mp4",
+     "vtt": "Bolta/loc/es/es.vtt",
+     "duration": 29.9,
+     "size": 471930
+    },
+    "fr": {
+     "video": "Bolta/loc/fr/video.mp4",
+     "vtt": "Bolta/loc/fr/fr.vtt",
+     "duration": 29.8,
+     "size": 442837
+    },
+    "hu": {
+     "video": "Bolta/loc/hu/video.mp4",
+     "vtt": "Bolta/loc/hu/hu.vtt",
+     "duration": 31.1,
+     "size": 460288
+    },
+    "it": {
+     "video": "Bolta/loc/it/video.mp4",
+     "vtt": "Bolta/loc/it/it.vtt",
+     "duration": 28.1,
+     "size": 433945
+    },
+    "pt": {
+     "video": "Bolta/loc/pt/video.mp4",
+     "vtt": "Bolta/loc/pt/pt.vtt",
+     "duration": 35.4,
+     "size": 502442
+    },
+    "ro": {
+     "video": "Bolta/loc/ro/video.mp4",
+     "vtt": "Bolta/loc/ro/ro.vtt",
+     "duration": 28,
+     "size": 412146
+    }
+   }
   },
   {
    "slug": "Cupa-Mondiala-2026",
@@ -2846,7 +4607,51 @@
     "de": "Cupa-Mondiala-2026/de.vtt",
     "hu": "Cupa-Mondiala-2026/hu.vtt"
    },
-   "transcript": "Cupa-Mondiala-2026/transcript.json"
+   "transcript": "Cupa-Mondiala-2026/transcript.json",
+   "videos": {
+    "de": {
+     "video": "Cupa-Mondiala-2026/loc/de/video.mp4",
+     "vtt": "Cupa-Mondiala-2026/loc/de/de.vtt",
+     "duration": 30.7,
+     "size": 390473
+    },
+    "es": {
+     "video": "Cupa-Mondiala-2026/loc/es/video.mp4",
+     "vtt": "Cupa-Mondiala-2026/loc/es/es.vtt",
+     "duration": 32,
+     "size": 465860
+    },
+    "fr": {
+     "video": "Cupa-Mondiala-2026/loc/fr/video.mp4",
+     "vtt": "Cupa-Mondiala-2026/loc/fr/fr.vtt",
+     "duration": 38,
+     "size": 542016
+    },
+    "hu": {
+     "video": "Cupa-Mondiala-2026/loc/hu/video.mp4",
+     "vtt": "Cupa-Mondiala-2026/loc/hu/hu.vtt",
+     "duration": 36,
+     "size": 505135
+    },
+    "it": {
+     "video": "Cupa-Mondiala-2026/loc/it/video.mp4",
+     "vtt": "Cupa-Mondiala-2026/loc/it/it.vtt",
+     "duration": 27.6,
+     "size": 472054
+    },
+    "pt": {
+     "video": "Cupa-Mondiala-2026/loc/pt/video.mp4",
+     "vtt": "Cupa-Mondiala-2026/loc/pt/pt.vtt",
+     "duration": 31.4,
+     "size": 467767
+    },
+    "ro": {
+     "video": "Cupa-Mondiala-2026/loc/ro/video.mp4",
+     "vtt": "Cupa-Mondiala-2026/loc/ro/ro.vtt",
+     "duration": 37.5,
+     "size": 520619
+    }
+   }
   },
   {
    "slug": "Eclipsa-2027",
@@ -2906,7 +4711,51 @@
     "de": "Eclipsa-2027/de.vtt",
     "hu": "Eclipsa-2027/hu.vtt"
    },
-   "transcript": "Eclipsa-2027/transcript.json"
+   "transcript": "Eclipsa-2027/transcript.json",
+   "videos": {
+    "de": {
+     "video": "Eclipsa-2027/loc/de/video.mp4",
+     "vtt": "Eclipsa-2027/loc/de/de.vtt",
+     "duration": 55.6,
+     "size": 372573
+    },
+    "es": {
+     "video": "Eclipsa-2027/loc/es/video.mp4",
+     "vtt": "Eclipsa-2027/loc/es/es.vtt",
+     "duration": 38,
+     "size": 361984
+    },
+    "fr": {
+     "video": "Eclipsa-2027/loc/fr/video.mp4",
+     "vtt": "Eclipsa-2027/loc/fr/fr.vtt",
+     "duration": 32.8,
+     "size": 249967
+    },
+    "hu": {
+     "video": "Eclipsa-2027/loc/hu/video.mp4",
+     "vtt": "Eclipsa-2027/loc/hu/hu.vtt",
+     "duration": 42.5,
+     "size": 330105
+    },
+    "it": {
+     "video": "Eclipsa-2027/loc/it/video.mp4",
+     "vtt": "Eclipsa-2027/loc/it/it.vtt",
+     "duration": 56,
+     "size": 400100
+    },
+    "pt": {
+     "video": "Eclipsa-2027/loc/pt/video.mp4",
+     "vtt": "Eclipsa-2027/loc/pt/pt.vtt",
+     "duration": 40.5,
+     "size": 302250
+    },
+    "ro": {
+     "video": "Eclipsa-2027/loc/ro/video.mp4",
+     "vtt": "Eclipsa-2027/loc/ro/ro.vtt",
+     "duration": 43.5,
+     "size": 331432
+    }
+   }
   },
   {
    "slug": "Horizons.BeyondLimits",
@@ -2966,7 +4815,51 @@
     "de": "Horizons.BeyondLimits/de.vtt",
     "hu": "Horizons.BeyondLimits/hu.vtt"
    },
-   "transcript": "Horizons.BeyondLimits/transcript.json"
+   "transcript": "Horizons.BeyondLimits/transcript.json",
+   "videos": {
+    "de": {
+     "video": "Horizons.BeyondLimits/loc/de/video.mp4",
+     "vtt": "Horizons.BeyondLimits/loc/de/de.vtt",
+     "duration": 28.4,
+     "size": 413928
+    },
+    "es": {
+     "video": "Horizons.BeyondLimits/loc/es/video.mp4",
+     "vtt": "Horizons.BeyondLimits/loc/es/es.vtt",
+     "duration": 32.4,
+     "size": 546071
+    },
+    "fr": {
+     "video": "Horizons.BeyondLimits/loc/fr/video.mp4",
+     "vtt": "Horizons.BeyondLimits/loc/fr/fr.vtt",
+     "duration": 39.5,
+     "size": 325262
+    },
+    "hu": {
+     "video": "Horizons.BeyondLimits/loc/hu/video.mp4",
+     "vtt": "Horizons.BeyondLimits/loc/hu/hu.vtt",
+     "duration": 32.5,
+     "size": 501742
+    },
+    "it": {
+     "video": "Horizons.BeyondLimits/loc/it/video.mp4",
+     "vtt": "Horizons.BeyondLimits/loc/it/it.vtt",
+     "duration": 24.5,
+     "size": 259664
+    },
+    "pt": {
+     "video": "Horizons.BeyondLimits/loc/pt/video.mp4",
+     "vtt": "Horizons.BeyondLimits/loc/pt/pt.vtt",
+     "duration": 25.4,
+     "size": 277121
+    },
+    "ro": {
+     "video": "Horizons.BeyondLimits/loc/ro/video.mp4",
+     "vtt": "Horizons.BeyondLimits/loc/ro/ro.vtt",
+     "duration": 34,
+     "size": 432790
+    }
+   }
   },
   {
    "slug": "Hyper4D",
@@ -3026,7 +4919,51 @@
     "de": "Hyper4D/de.vtt",
     "hu": "Hyper4D/hu.vtt"
    },
-   "transcript": "Hyper4D/transcript.json"
+   "transcript": "Hyper4D/transcript.json",
+   "videos": {
+    "de": {
+     "video": "Hyper4D/loc/de/video.mp4",
+     "vtt": "Hyper4D/loc/de/de.vtt",
+     "duration": 27.3,
+     "size": 221545
+    },
+    "es": {
+     "video": "Hyper4D/loc/es/video.mp4",
+     "vtt": "Hyper4D/loc/es/es.vtt",
+     "duration": 22.5,
+     "size": 168996
+    },
+    "fr": {
+     "video": "Hyper4D/loc/fr/video.mp4",
+     "vtt": "Hyper4D/loc/fr/fr.vtt",
+     "duration": 26.8,
+     "size": 228940
+    },
+    "hu": {
+     "video": "Hyper4D/loc/hu/video.mp4",
+     "vtt": "Hyper4D/loc/hu/hu.vtt",
+     "duration": 25.7,
+     "size": 236134
+    },
+    "it": {
+     "video": "Hyper4D/loc/it/video.mp4",
+     "vtt": "Hyper4D/loc/it/it.vtt",
+     "duration": 25.1,
+     "size": 219887
+    },
+    "pt": {
+     "video": "Hyper4D/loc/pt/video.mp4",
+     "vtt": "Hyper4D/loc/pt/pt.vtt",
+     "duration": 25.1,
+     "size": 204126
+    },
+    "ro": {
+     "video": "Hyper4D/loc/ro/video.mp4",
+     "vtt": "Hyper4D/loc/ro/ro.vtt",
+     "duration": 24.5,
+     "size": 217288
+    }
+   }
   },
   {
    "slug": "IncredibleCosmos",
@@ -3094,7 +5031,51 @@
     "de": "IncredibleCosmos/de.vtt",
     "hu": "IncredibleCosmos/hu.vtt"
    },
-   "transcript": "IncredibleCosmos/transcript.json"
+   "transcript": "IncredibleCosmos/transcript.json",
+   "videos": {
+    "de": {
+     "video": "IncredibleCosmos/loc/de/video.mp4",
+     "vtt": "IncredibleCosmos/loc/de/de.vtt",
+     "duration": 42.2,
+     "size": 424212
+    },
+    "es": {
+     "video": "IncredibleCosmos/loc/es/video.mp4",
+     "vtt": "IncredibleCosmos/loc/es/es.vtt",
+     "duration": 36.7,
+     "size": 339379
+    },
+    "fr": {
+     "video": "IncredibleCosmos/loc/fr/video.mp4",
+     "vtt": "IncredibleCosmos/loc/fr/fr.vtt",
+     "duration": 44,
+     "size": 443924
+    },
+    "hu": {
+     "video": "IncredibleCosmos/loc/hu/video.mp4",
+     "vtt": "IncredibleCosmos/loc/hu/hu.vtt",
+     "duration": 41.1,
+     "size": 442986
+    },
+    "it": {
+     "video": "IncredibleCosmos/loc/it/video.mp4",
+     "vtt": "IncredibleCosmos/loc/it/it.vtt",
+     "duration": 38.3,
+     "size": 413547
+    },
+    "pt": {
+     "video": "IncredibleCosmos/loc/pt/video.mp4",
+     "vtt": "IncredibleCosmos/loc/pt/pt.vtt",
+     "duration": 45.9,
+     "size": 425196
+    },
+    "ro": {
+     "video": "IncredibleCosmos/loc/ro/video.mp4",
+     "vtt": "IncredibleCosmos/loc/ro/ro.vtt",
+     "duration": 36.8,
+     "size": 404963
+    }
+   }
   },
   {
    "slug": "Nemurirea",
@@ -3154,7 +5135,51 @@
     "de": "Nemurirea/de.vtt",
     "hu": "Nemurirea/hu.vtt"
    },
-   "transcript": "Nemurirea/transcript.json"
+   "transcript": "Nemurirea/transcript.json",
+   "videos": {
+    "de": {
+     "video": "Nemurirea/loc/de/video.mp4",
+     "vtt": "Nemurirea/loc/de/de.vtt",
+     "duration": 36,
+     "size": 564827
+    },
+    "es": {
+     "video": "Nemurirea/loc/es/video.mp4",
+     "vtt": "Nemurirea/loc/es/es.vtt",
+     "duration": 33.3,
+     "size": 582862
+    },
+    "fr": {
+     "video": "Nemurirea/loc/fr/video.mp4",
+     "vtt": "Nemurirea/loc/fr/fr.vtt",
+     "duration": 39.2,
+     "size": 556880
+    },
+    "hu": {
+     "video": "Nemurirea/loc/hu/video.mp4",
+     "vtt": "Nemurirea/loc/hu/hu.vtt",
+     "duration": 35.9,
+     "size": 614104
+    },
+    "it": {
+     "video": "Nemurirea/loc/it/video.mp4",
+     "vtt": "Nemurirea/loc/it/it.vtt",
+     "duration": 37.9,
+     "size": 601387
+    },
+    "pt": {
+     "video": "Nemurirea/loc/pt/video.mp4",
+     "vtt": "Nemurirea/loc/pt/pt.vtt",
+     "duration": 39.8,
+     "size": 737833
+    },
+    "ro": {
+     "video": "Nemurirea/loc/ro/video.mp4",
+     "vtt": "Nemurirea/loc/ro/ro.vtt",
+     "duration": 39.5,
+     "size": 509136
+    }
+   }
   },
   {
    "slug": "orarium",
@@ -3222,7 +5247,51 @@
     "de": "orarium/de.vtt",
     "hu": "orarium/hu.vtt"
    },
-   "transcript": "orarium/transcript.json"
+   "transcript": "orarium/transcript.json",
+   "videos": {
+    "de": {
+     "video": "orarium/loc/de/video.mp4",
+     "vtt": "orarium/loc/de/de.vtt",
+     "duration": 35.2,
+     "size": 365157
+    },
+    "es": {
+     "video": "orarium/loc/es/video.mp4",
+     "vtt": "orarium/loc/es/es.vtt",
+     "duration": 29.8,
+     "size": 314846
+    },
+    "fr": {
+     "video": "orarium/loc/fr/video.mp4",
+     "vtt": "orarium/loc/fr/fr.vtt",
+     "duration": 30.1,
+     "size": 339599
+    },
+    "hu": {
+     "video": "orarium/loc/hu/video.mp4",
+     "vtt": "orarium/loc/hu/hu.vtt",
+     "duration": 30.8,
+     "size": 361289
+    },
+    "it": {
+     "video": "orarium/loc/it/video.mp4",
+     "vtt": "orarium/loc/it/it.vtt",
+     "duration": 29.1,
+     "size": 353418
+    },
+    "pt": {
+     "video": "orarium/loc/pt/video.mp4",
+     "vtt": "orarium/loc/pt/pt.vtt",
+     "duration": 31.5,
+     "size": 433787
+    },
+    "ro": {
+     "video": "orarium/loc/ro/video.mp4",
+     "vtt": "orarium/loc/ro/ro.vtt",
+     "duration": 29.3,
+     "size": 340829
+    }
+   }
   },
   {
    "slug": "TerRa",
@@ -3282,7 +5351,51 @@
     "de": "TerRa/de.vtt",
     "hu": "TerRa/hu.vtt"
    },
-   "transcript": "TerRa/transcript.json"
+   "transcript": "TerRa/transcript.json",
+   "videos": {
+    "de": {
+     "video": "TerRa/loc/de/video.mp4",
+     "vtt": "TerRa/loc/de/de.vtt",
+     "duration": 24.2,
+     "size": 472829
+    },
+    "es": {
+     "video": "TerRa/loc/es/video.mp4",
+     "vtt": "TerRa/loc/es/es.vtt",
+     "duration": 40.5,
+     "size": 543243
+    },
+    "fr": {
+     "video": "TerRa/loc/fr/video.mp4",
+     "vtt": "TerRa/loc/fr/fr.vtt",
+     "duration": 93.5,
+     "size": 1265722
+    },
+    "hu": {
+     "video": "TerRa/loc/hu/video.mp4",
+     "vtt": "TerRa/loc/hu/hu.vtt",
+     "duration": 44.1,
+     "size": 836229
+    },
+    "it": {
+     "video": "TerRa/loc/it/video.mp4",
+     "vtt": "TerRa/loc/it/it.vtt",
+     "duration": 110.9,
+     "size": 1285258
+    },
+    "pt": {
+     "video": "TerRa/loc/pt/video.mp4",
+     "vtt": "TerRa/loc/pt/pt.vtt",
+     "duration": 119,
+     "size": 1425803
+    },
+    "ro": {
+     "video": "TerRa/loc/ro/video.mp4",
+     "vtt": "TerRa/loc/ro/ro.vtt",
+     "duration": 97.8,
+     "size": 1299233
+    }
+   }
   },
   {
    "slug": "Universul-Observabil",
@@ -3358,7 +5471,51 @@
     "de": "Universul-Observabil/de.vtt",
     "hu": "Universul-Observabil/hu.vtt"
    },
-   "transcript": "Universul-Observabil/transcript.json"
+   "transcript": "Universul-Observabil/transcript.json",
+   "videos": {
+    "de": {
+     "video": "Universul-Observabil/loc/de/video.mp4",
+     "vtt": "Universul-Observabil/loc/de/de.vtt",
+     "duration": 32.3,
+     "size": 315420
+    },
+    "es": {
+     "video": "Universul-Observabil/loc/es/video.mp4",
+     "vtt": "Universul-Observabil/loc/es/es.vtt",
+     "duration": 27,
+     "size": 309934
+    },
+    "fr": {
+     "video": "Universul-Observabil/loc/fr/video.mp4",
+     "vtt": "Universul-Observabil/loc/fr/fr.vtt",
+     "duration": 27.3,
+     "size": 291065
+    },
+    "hu": {
+     "video": "Universul-Observabil/loc/hu/video.mp4",
+     "vtt": "Universul-Observabil/loc/hu/hu.vtt",
+     "duration": 32.3,
+     "size": 316920
+    },
+    "it": {
+     "video": "Universul-Observabil/loc/it/video.mp4",
+     "vtt": "Universul-Observabil/loc/it/it.vtt",
+     "duration": 27.4,
+     "size": 274660
+    },
+    "pt": {
+     "video": "Universul-Observabil/loc/pt/video.mp4",
+     "vtt": "Universul-Observabil/loc/pt/pt.vtt",
+     "duration": 27.6,
+     "size": 306011
+    },
+    "ro": {
+     "video": "Universul-Observabil/loc/ro/video.mp4",
+     "vtt": "Universul-Observabil/loc/ro/ro.vtt",
+     "duration": 36.4,
+     "size": 338293
+    }
+   }
   },
   {
    "slug": "Universul-Observabil-1D",
@@ -3434,7 +5591,51 @@
     "de": "Universul-Observabil-1D/de.vtt",
     "hu": "Universul-Observabil-1D/hu.vtt"
    },
-   "transcript": "Universul-Observabil-1D/transcript.json"
+   "transcript": "Universul-Observabil-1D/transcript.json",
+   "videos": {
+    "de": {
+     "video": "Universul-Observabil-1D/loc/de/video.mp4",
+     "vtt": "Universul-Observabil-1D/loc/de/de.vtt",
+     "duration": 41.1,
+     "size": 173107
+    },
+    "es": {
+     "video": "Universul-Observabil-1D/loc/es/video.mp4",
+     "vtt": "Universul-Observabil-1D/loc/es/es.vtt",
+     "duration": 45.4,
+     "size": 190348
+    },
+    "fr": {
+     "video": "Universul-Observabil-1D/loc/fr/video.mp4",
+     "vtt": "Universul-Observabil-1D/loc/fr/fr.vtt",
+     "duration": 46.6,
+     "size": 206005
+    },
+    "hu": {
+     "video": "Universul-Observabil-1D/loc/hu/video.mp4",
+     "vtt": "Universul-Observabil-1D/loc/hu/hu.vtt",
+     "duration": 47.1,
+     "size": 185592
+    },
+    "it": {
+     "video": "Universul-Observabil-1D/loc/it/video.mp4",
+     "vtt": "Universul-Observabil-1D/loc/it/it.vtt",
+     "duration": 43.3,
+     "size": 170329
+    },
+    "pt": {
+     "video": "Universul-Observabil-1D/loc/pt/video.mp4",
+     "vtt": "Universul-Observabil-1D/loc/pt/pt.vtt",
+     "duration": 43.5,
+     "size": 182288
+    },
+    "ro": {
+     "video": "Universul-Observabil-1D/loc/ro/video.mp4",
+     "vtt": "Universul-Observabil-1D/loc/ro/ro.vtt",
+     "duration": 40,
+     "size": 158698
+    }
+   }
   },
   {
    "slug": "Universul-Observabil-2D",
@@ -3510,7 +5711,51 @@
     "de": "Universul-Observabil-2D/de.vtt",
     "hu": "Universul-Observabil-2D/hu.vtt"
    },
-   "transcript": "Universul-Observabil-2D/transcript.json"
+   "transcript": "Universul-Observabil-2D/transcript.json",
+   "videos": {
+    "de": {
+     "video": "Universul-Observabil-2D/loc/de/video.mp4",
+     "vtt": "Universul-Observabil-2D/loc/de/de.vtt",
+     "duration": 85.6,
+     "size": 458837
+    },
+    "es": {
+     "video": "Universul-Observabil-2D/loc/es/video.mp4",
+     "vtt": "Universul-Observabil-2D/loc/es/es.vtt",
+     "duration": 96.5,
+     "size": 468591
+    },
+    "fr": {
+     "video": "Universul-Observabil-2D/loc/fr/video.mp4",
+     "vtt": "Universul-Observabil-2D/loc/fr/fr.vtt",
+     "duration": 80.1,
+     "size": 423175
+    },
+    "hu": {
+     "video": "Universul-Observabil-2D/loc/hu/video.mp4",
+     "vtt": "Universul-Observabil-2D/loc/hu/hu.vtt",
+     "duration": 84.8,
+     "size": 468584
+    },
+    "it": {
+     "video": "Universul-Observabil-2D/loc/it/video.mp4",
+     "vtt": "Universul-Observabil-2D/loc/it/it.vtt",
+     "duration": 79.8,
+     "size": 397347
+    },
+    "pt": {
+     "video": "Universul-Observabil-2D/loc/pt/video.mp4",
+     "vtt": "Universul-Observabil-2D/loc/pt/pt.vtt",
+     "duration": 77.8,
+     "size": 381992
+    },
+    "ro": {
+     "video": "Universul-Observabil-2D/loc/ro/video.mp4",
+     "vtt": "Universul-Observabil-2D/loc/ro/ro.vtt",
+     "duration": 84.8,
+     "size": 405418
+    }
+   }
   },
   {
    "slug": "Universul-Observabil-3D",
@@ -3586,7 +5831,51 @@
     "de": "Universul-Observabil-3D/de.vtt",
     "hu": "Universul-Observabil-3D/hu.vtt"
    },
-   "transcript": "Universul-Observabil-3D/transcript.json"
+   "transcript": "Universul-Observabil-3D/transcript.json",
+   "videos": {
+    "de": {
+     "video": "Universul-Observabil-3D/loc/de/video.mp4",
+     "vtt": "Universul-Observabil-3D/loc/de/de.vtt",
+     "duration": 122,
+     "size": 797227
+    },
+    "es": {
+     "video": "Universul-Observabil-3D/loc/es/video.mp4",
+     "vtt": "Universul-Observabil-3D/loc/es/es.vtt",
+     "duration": 153.8,
+     "size": 879558
+    },
+    "fr": {
+     "video": "Universul-Observabil-3D/loc/fr/video.mp4",
+     "vtt": "Universul-Observabil-3D/loc/fr/fr.vtt",
+     "duration": 142.3,
+     "size": 945852
+    },
+    "hu": {
+     "video": "Universul-Observabil-3D/loc/hu/video.mp4",
+     "vtt": "Universul-Observabil-3D/loc/hu/hu.vtt",
+     "duration": 115.5,
+     "size": 694945
+    },
+    "it": {
+     "video": "Universul-Observabil-3D/loc/it/video.mp4",
+     "vtt": "Universul-Observabil-3D/loc/it/it.vtt",
+     "duration": 138.5,
+     "size": 864095
+    },
+    "pt": {
+     "video": "Universul-Observabil-3D/loc/pt/video.mp4",
+     "vtt": "Universul-Observabil-3D/loc/pt/pt.vtt",
+     "duration": 158.9,
+     "size": 1053006
+    },
+    "ro": {
+     "video": "Universul-Observabil-3D/loc/ro/video.mp4",
+     "vtt": "Universul-Observabil-3D/loc/ro/ro.vtt",
+     "duration": 135.4,
+     "size": 782709
+    }
+   }
   },
   {
    "slug": "VietAR",
@@ -3646,7 +5935,51 @@
     "de": "VietAR/de.vtt",
     "hu": "VietAR/hu.vtt"
    },
-   "transcript": "VietAR/transcript.json"
+   "transcript": "VietAR/transcript.json",
+   "videos": {
+    "de": {
+     "video": "VietAR/loc/de/video.mp4",
+     "vtt": "VietAR/loc/de/de.vtt",
+     "duration": 23.1,
+     "size": 147083
+    },
+    "es": {
+     "video": "VietAR/loc/es/video.mp4",
+     "vtt": "VietAR/loc/es/es.vtt",
+     "duration": 20.6,
+     "size": 195884
+    },
+    "fr": {
+     "video": "VietAR/loc/fr/video.mp4",
+     "vtt": "VietAR/loc/fr/fr.vtt",
+     "duration": 20.3,
+     "size": 194737
+    },
+    "hu": {
+     "video": "VietAR/loc/hu/video.mp4",
+     "vtt": "VietAR/loc/hu/hu.vtt",
+     "duration": 24,
+     "size": 179865
+    },
+    "it": {
+     "video": "VietAR/loc/it/video.mp4",
+     "vtt": "VietAR/loc/it/it.vtt",
+     "duration": 22.4,
+     "size": 176404
+    },
+    "pt": {
+     "video": "VietAR/loc/pt/video.mp4",
+     "vtt": "VietAR/loc/pt/pt.vtt",
+     "duration": 22,
+     "size": 209049
+    },
+    "ro": {
+     "video": "VietAR/loc/ro/video.mp4",
+     "vtt": "VietAR/loc/ro/ro.vtt",
+     "duration": 21.2,
+     "size": 183596
+    }
+   }
   },
   {
    "slug": "ExploratoriiEco",
@@ -3706,7 +6039,51 @@
     "de": "ExploratoriiEco/de.vtt",
     "hu": "ExploratoriiEco/hu.vtt"
    },
-   "transcript": "ExploratoriiEco/transcript.json"
+   "transcript": "ExploratoriiEco/transcript.json",
+   "videos": {
+    "de": {
+     "video": "ExploratoriiEco/loc/de/video.mp4",
+     "vtt": "ExploratoriiEco/loc/de/de.vtt",
+     "duration": 64.5,
+     "size": 767480
+    },
+    "es": {
+     "video": "ExploratoriiEco/loc/es/video.mp4",
+     "vtt": "ExploratoriiEco/loc/es/es.vtt",
+     "duration": 59.6,
+     "size": 627278
+    },
+    "fr": {
+     "video": "ExploratoriiEco/loc/fr/video.mp4",
+     "vtt": "ExploratoriiEco/loc/fr/fr.vtt",
+     "duration": 57.6,
+     "size": 604438
+    },
+    "hu": {
+     "video": "ExploratoriiEco/loc/hu/video.mp4",
+     "vtt": "ExploratoriiEco/loc/hu/hu.vtt",
+     "duration": 66.4,
+     "size": 745217
+    },
+    "it": {
+     "video": "ExploratoriiEco/loc/it/video.mp4",
+     "vtt": "ExploratoriiEco/loc/it/it.vtt",
+     "duration": 61.8,
+     "size": 618232
+    },
+    "pt": {
+     "video": "ExploratoriiEco/loc/pt/video.mp4",
+     "vtt": "ExploratoriiEco/loc/pt/pt.vtt",
+     "duration": 73.7,
+     "size": 865892
+    },
+    "ro": {
+     "video": "ExploratoriiEco/loc/ro/video.mp4",
+     "vtt": "ExploratoriiEco/loc/ro/ro.vtt",
+     "duration": 59.8,
+     "size": 675495
+    }
+   }
   },
   {
    "slug": "FieldObserver",
@@ -3766,7 +6143,51 @@
     "de": "FieldObserver/de.vtt",
     "hu": "FieldObserver/hu.vtt"
    },
-   "transcript": "FieldObserver/transcript.json"
+   "transcript": "FieldObserver/transcript.json",
+   "videos": {
+    "de": {
+     "video": "FieldObserver/loc/de/video.mp4",
+     "vtt": "FieldObserver/loc/de/de.vtt",
+     "duration": 30.8,
+     "size": 135426
+    },
+    "es": {
+     "video": "FieldObserver/loc/es/video.mp4",
+     "vtt": "FieldObserver/loc/es/es.vtt",
+     "duration": 33.1,
+     "size": 130505
+    },
+    "fr": {
+     "video": "FieldObserver/loc/fr/video.mp4",
+     "vtt": "FieldObserver/loc/fr/fr.vtt",
+     "duration": 39.1,
+     "size": 213506
+    },
+    "hu": {
+     "video": "FieldObserver/loc/hu/video.mp4",
+     "vtt": "FieldObserver/loc/hu/hu.vtt",
+     "duration": 42.5,
+     "size": 216135
+    },
+    "it": {
+     "video": "FieldObserver/loc/it/video.mp4",
+     "vtt": "FieldObserver/loc/it/it.vtt",
+     "duration": 24.4,
+     "size": 61269
+    },
+    "pt": {
+     "video": "FieldObserver/loc/pt/video.mp4",
+     "vtt": "FieldObserver/loc/pt/pt.vtt",
+     "duration": 39.9,
+     "size": 164568
+    },
+    "ro": {
+     "video": "FieldObserver/loc/ro/video.mp4",
+     "vtt": "FieldObserver/loc/ro/ro.vtt",
+     "duration": 29.6,
+     "size": 64338
+    }
+   }
   },
   {
    "slug": "Poteca",
@@ -3834,7 +6255,51 @@
     "de": "Poteca/de.vtt",
     "hu": "Poteca/hu.vtt"
    },
-   "transcript": "Poteca/transcript.json"
+   "transcript": "Poteca/transcript.json",
+   "videos": {
+    "de": {
+     "video": "Poteca/loc/de/video.mp4",
+     "vtt": "Poteca/loc/de/de.vtt",
+     "duration": 37.1,
+     "size": 344651
+    },
+    "es": {
+     "video": "Poteca/loc/es/video.mp4",
+     "vtt": "Poteca/loc/es/es.vtt",
+     "duration": 32.4,
+     "size": 366487
+    },
+    "fr": {
+     "video": "Poteca/loc/fr/video.mp4",
+     "vtt": "Poteca/loc/fr/fr.vtt",
+     "duration": 29.8,
+     "size": 324511
+    },
+    "hu": {
+     "video": "Poteca/loc/hu/video.mp4",
+     "vtt": "Poteca/loc/hu/hu.vtt",
+     "duration": 32.5,
+     "size": 343441
+    },
+    "it": {
+     "video": "Poteca/loc/it/video.mp4",
+     "vtt": "Poteca/loc/it/it.vtt",
+     "duration": 34,
+     "size": 334949
+    },
+    "pt": {
+     "video": "Poteca/loc/pt/video.mp4",
+     "vtt": "Poteca/loc/pt/pt.vtt",
+     "duration": 29.4,
+     "size": 273998
+    },
+    "ro": {
+     "video": "Poteca/loc/ro/video.mp4",
+     "vtt": "Poteca/loc/ro/ro.vtt",
+     "duration": 28.7,
+     "size": 252372
+    }
+   }
   },
   {
    "slug": "URME",
@@ -3902,7 +6367,51 @@
     "de": "URME/de.vtt",
     "hu": "URME/hu.vtt"
    },
-   "transcript": "URME/transcript.json"
+   "transcript": "URME/transcript.json",
+   "videos": {
+    "de": {
+     "video": "URME/loc/de/video.mp4",
+     "vtt": "URME/loc/de/de.vtt",
+     "duration": 38,
+     "size": 346547
+    },
+    "es": {
+     "video": "URME/loc/es/video.mp4",
+     "vtt": "URME/loc/es/es.vtt",
+     "duration": 50.7,
+     "size": 506019
+    },
+    "fr": {
+     "video": "URME/loc/fr/video.mp4",
+     "vtt": "URME/loc/fr/fr.vtt",
+     "duration": 51.1,
+     "size": 470353
+    },
+    "hu": {
+     "video": "URME/loc/hu/video.mp4",
+     "vtt": "URME/loc/hu/hu.vtt",
+     "duration": 44.2,
+     "size": 444710
+    },
+    "it": {
+     "video": "URME/loc/it/video.mp4",
+     "vtt": "URME/loc/it/it.vtt",
+     "duration": 46.1,
+     "size": 430717
+    },
+    "pt": {
+     "video": "URME/loc/pt/video.mp4",
+     "vtt": "URME/loc/pt/pt.vtt",
+     "duration": 39.9,
+     "size": 359323
+    },
+    "ro": {
+     "video": "URME/loc/ro/video.mp4",
+     "vtt": "URME/loc/ro/ro.vtt",
+     "duration": 50.1,
+     "size": 437971
+    }
+   }
   },
   {
    "slug": "VATRA",
@@ -3962,7 +6471,51 @@
     "de": "VATRA/de.vtt",
     "hu": "VATRA/hu.vtt"
    },
-   "transcript": "VATRA/transcript.json"
+   "transcript": "VATRA/transcript.json",
+   "videos": {
+    "de": {
+     "video": "VATRA/loc/de/video.mp4",
+     "vtt": "VATRA/loc/de/de.vtt",
+     "duration": 58.1,
+     "size": 683615
+    },
+    "es": {
+     "video": "VATRA/loc/es/video.mp4",
+     "vtt": "VATRA/loc/es/es.vtt",
+     "duration": 42.8,
+     "size": 396378
+    },
+    "fr": {
+     "video": "VATRA/loc/fr/video.mp4",
+     "vtt": "VATRA/loc/fr/fr.vtt",
+     "duration": 60.8,
+     "size": 650696
+    },
+    "hu": {
+     "video": "VATRA/loc/hu/video.mp4",
+     "vtt": "VATRA/loc/hu/hu.vtt",
+     "duration": 65.3,
+     "size": 693737
+    },
+    "it": {
+     "video": "VATRA/loc/it/video.mp4",
+     "vtt": "VATRA/loc/it/it.vtt",
+     "duration": 68.9,
+     "size": 711117
+    },
+    "pt": {
+     "video": "VATRA/loc/pt/video.mp4",
+     "vtt": "VATRA/loc/pt/pt.vtt",
+     "duration": 60.1,
+     "size": 617821
+    },
+    "ro": {
+     "video": "VATRA/loc/ro/video.mp4",
+     "vtt": "VATRA/loc/ro/ro.vtt",
+     "duration": 73.8,
+     "size": 704862
+    }
+   }
   },
   {
    "slug": "ASMR",
@@ -4022,7 +6575,51 @@
     "de": "ASMR/de.vtt",
     "hu": "ASMR/hu.vtt"
    },
-   "transcript": "ASMR/transcript.json"
+   "transcript": "ASMR/transcript.json",
+   "videos": {
+    "de": {
+     "video": "ASMR/loc/de/video.mp4",
+     "vtt": "ASMR/loc/de/de.vtt",
+     "duration": 21.6,
+     "size": 196994
+    },
+    "es": {
+     "video": "ASMR/loc/es/video.mp4",
+     "vtt": "ASMR/loc/es/es.vtt",
+     "duration": 21.9,
+     "size": 180569
+    },
+    "fr": {
+     "video": "ASMR/loc/fr/video.mp4",
+     "vtt": "ASMR/loc/fr/fr.vtt",
+     "duration": 21.8,
+     "size": 181756
+    },
+    "hu": {
+     "video": "ASMR/loc/hu/video.mp4",
+     "vtt": "ASMR/loc/hu/hu.vtt",
+     "duration": 21.9,
+     "size": 214750
+    },
+    "it": {
+     "video": "ASMR/loc/it/video.mp4",
+     "vtt": "ASMR/loc/it/it.vtt",
+     "duration": 27.8,
+     "size": 222701
+    },
+    "pt": {
+     "video": "ASMR/loc/pt/video.mp4",
+     "vtt": "ASMR/loc/pt/pt.vtt",
+     "duration": 26,
+     "size": 180675
+    },
+    "ro": {
+     "video": "ASMR/loc/ro/video.mp4",
+     "vtt": "ASMR/loc/ro/ro.vtt",
+     "duration": 22.2,
+     "size": 163335
+    }
+   }
   },
   {
    "slug": "BorderlessMelodies",
@@ -4082,7 +6679,51 @@
     "de": "BorderlessMelodies/de.vtt",
     "hu": "BorderlessMelodies/hu.vtt"
    },
-   "transcript": "BorderlessMelodies/transcript.json"
+   "transcript": "BorderlessMelodies/transcript.json",
+   "videos": {
+    "de": {
+     "video": "BorderlessMelodies/loc/de/video.mp4",
+     "vtt": "BorderlessMelodies/loc/de/de.vtt",
+     "duration": 41.6,
+     "size": 354337
+    },
+    "es": {
+     "video": "BorderlessMelodies/loc/es/video.mp4",
+     "vtt": "BorderlessMelodies/loc/es/es.vtt",
+     "duration": 56,
+     "size": 509647
+    },
+    "fr": {
+     "video": "BorderlessMelodies/loc/fr/video.mp4",
+     "vtt": "BorderlessMelodies/loc/fr/fr.vtt",
+     "duration": 45.2,
+     "size": 421881
+    },
+    "hu": {
+     "video": "BorderlessMelodies/loc/hu/video.mp4",
+     "vtt": "BorderlessMelodies/loc/hu/hu.vtt",
+     "duration": 50.3,
+     "size": 476028
+    },
+    "it": {
+     "video": "BorderlessMelodies/loc/it/video.mp4",
+     "vtt": "BorderlessMelodies/loc/it/it.vtt",
+     "duration": 47,
+     "size": 469345
+    },
+    "pt": {
+     "video": "BorderlessMelodies/loc/pt/video.mp4",
+     "vtt": "BorderlessMelodies/loc/pt/pt.vtt",
+     "duration": 48.7,
+     "size": 448211
+    },
+    "ro": {
+     "video": "BorderlessMelodies/loc/ro/video.mp4",
+     "vtt": "BorderlessMelodies/loc/ro/ro.vtt",
+     "duration": 45.7,
+     "size": 441201
+    }
+   }
   },
   {
    "slug": "CalmWaves",
@@ -4142,7 +6783,51 @@
     "de": "CalmWaves/de.vtt",
     "hu": "CalmWaves/hu.vtt"
    },
-   "transcript": "CalmWaves/transcript.json"
+   "transcript": "CalmWaves/transcript.json",
+   "videos": {
+    "de": {
+     "video": "CalmWaves/loc/de/video.mp4",
+     "vtt": "CalmWaves/loc/de/de.vtt",
+     "duration": 63.4,
+     "size": 455144
+    },
+    "es": {
+     "video": "CalmWaves/loc/es/video.mp4",
+     "vtt": "CalmWaves/loc/es/es.vtt",
+     "duration": 57.1,
+     "size": 424709
+    },
+    "fr": {
+     "video": "CalmWaves/loc/fr/video.mp4",
+     "vtt": "CalmWaves/loc/fr/fr.vtt",
+     "duration": 35.3,
+     "size": 261915
+    },
+    "hu": {
+     "video": "CalmWaves/loc/hu/video.mp4",
+     "vtt": "CalmWaves/loc/hu/hu.vtt",
+     "duration": 30.3,
+     "size": 283620
+    },
+    "it": {
+     "video": "CalmWaves/loc/it/video.mp4",
+     "vtt": "CalmWaves/loc/it/it.vtt",
+     "duration": 38.3,
+     "size": 311648
+    },
+    "pt": {
+     "video": "CalmWaves/loc/pt/video.mp4",
+     "vtt": "CalmWaves/loc/pt/pt.vtt",
+     "duration": 37.1,
+     "size": 260616
+    },
+    "ro": {
+     "video": "CalmWaves/loc/ro/video.mp4",
+     "vtt": "CalmWaves/loc/ro/ro.vtt",
+     "duration": 34.1,
+     "size": 248518
+    }
+   }
   },
   {
    "slug": "Decibel",
@@ -4210,7 +6895,51 @@
     "de": "Decibel/de.vtt",
     "hu": "Decibel/hu.vtt"
    },
-   "transcript": "Decibel/transcript.json"
+   "transcript": "Decibel/transcript.json",
+   "videos": {
+    "de": {
+     "video": "Decibel/loc/de/video.mp4",
+     "vtt": "Decibel/loc/de/de.vtt",
+     "duration": 36.8,
+     "size": 586239
+    },
+    "es": {
+     "video": "Decibel/loc/es/video.mp4",
+     "vtt": "Decibel/loc/es/es.vtt",
+     "duration": 34.2,
+     "size": 420158
+    },
+    "fr": {
+     "video": "Decibel/loc/fr/video.mp4",
+     "vtt": "Decibel/loc/fr/fr.vtt",
+     "duration": 36.3,
+     "size": 439066
+    },
+    "hu": {
+     "video": "Decibel/loc/hu/video.mp4",
+     "vtt": "Decibel/loc/hu/hu.vtt",
+     "duration": 34.2,
+     "size": 414784
+    },
+    "it": {
+     "video": "Decibel/loc/it/video.mp4",
+     "vtt": "Decibel/loc/it/it.vtt",
+     "duration": 38.8,
+     "size": 429880
+    },
+    "pt": {
+     "video": "Decibel/loc/pt/video.mp4",
+     "vtt": "Decibel/loc/pt/pt.vtt",
+     "duration": 32.6,
+     "size": 418314
+    },
+    "ro": {
+     "video": "Decibel/loc/ro/video.mp4",
+     "vtt": "Decibel/loc/ro/ro.vtt",
+     "duration": 33,
+     "size": 370659
+    }
+   }
   },
   {
    "slug": "EcoulSpectral",
@@ -4270,7 +6999,51 @@
     "de": "EcoulSpectral/de.vtt",
     "hu": "EcoulSpectral/hu.vtt"
    },
-   "transcript": "EcoulSpectral/transcript.json"
+   "transcript": "EcoulSpectral/transcript.json",
+   "videos": {
+    "de": {
+     "video": "EcoulSpectral/loc/de/video.mp4",
+     "vtt": "EcoulSpectral/loc/de/de.vtt",
+     "duration": 20.8,
+     "size": 252136
+    },
+    "es": {
+     "video": "EcoulSpectral/loc/es/video.mp4",
+     "vtt": "EcoulSpectral/loc/es/es.vtt",
+     "duration": 23,
+     "size": 271001
+    },
+    "fr": {
+     "video": "EcoulSpectral/loc/fr/video.mp4",
+     "vtt": "EcoulSpectral/loc/fr/fr.vtt",
+     "duration": 20.4,
+     "size": 291187
+    },
+    "hu": {
+     "video": "EcoulSpectral/loc/hu/video.mp4",
+     "vtt": "EcoulSpectral/loc/hu/hu.vtt",
+     "duration": 21.4,
+     "size": 257243
+    },
+    "it": {
+     "video": "EcoulSpectral/loc/it/video.mp4",
+     "vtt": "EcoulSpectral/loc/it/it.vtt",
+     "duration": 20.2,
+     "size": 311840
+    },
+    "pt": {
+     "video": "EcoulSpectral/loc/pt/video.mp4",
+     "vtt": "EcoulSpectral/loc/pt/pt.vtt",
+     "duration": 20.8,
+     "size": 243480
+    },
+    "ro": {
+     "video": "EcoulSpectral/loc/ro/video.mp4",
+     "vtt": "EcoulSpectral/loc/ro/ro.vtt",
+     "duration": 20.2,
+     "size": 251461
+    }
+   }
   },
   {
    "slug": "FrequencyLaboratory",
@@ -4346,7 +7119,51 @@
     "de": "FrequencyLaboratory/de.vtt",
     "hu": "FrequencyLaboratory/hu.vtt"
    },
-   "transcript": "FrequencyLaboratory/transcript.json"
+   "transcript": "FrequencyLaboratory/transcript.json",
+   "videos": {
+    "de": {
+     "video": "FrequencyLaboratory/loc/de/video.mp4",
+     "vtt": "FrequencyLaboratory/loc/de/de.vtt",
+     "duration": 53,
+     "size": 463477
+    },
+    "es": {
+     "video": "FrequencyLaboratory/loc/es/video.mp4",
+     "vtt": "FrequencyLaboratory/loc/es/es.vtt",
+     "duration": 60.3,
+     "size": 524887
+    },
+    "fr": {
+     "video": "FrequencyLaboratory/loc/fr/video.mp4",
+     "vtt": "FrequencyLaboratory/loc/fr/fr.vtt",
+     "duration": 58.1,
+     "size": 526939
+    },
+    "hu": {
+     "video": "FrequencyLaboratory/loc/hu/video.mp4",
+     "vtt": "FrequencyLaboratory/loc/hu/hu.vtt",
+     "duration": 44.3,
+     "size": 321399
+    },
+    "it": {
+     "video": "FrequencyLaboratory/loc/it/video.mp4",
+     "vtt": "FrequencyLaboratory/loc/it/it.vtt",
+     "duration": 41.6,
+     "size": 278981
+    },
+    "pt": {
+     "video": "FrequencyLaboratory/loc/pt/video.mp4",
+     "vtt": "FrequencyLaboratory/loc/pt/pt.vtt",
+     "duration": 65.9,
+     "size": 522778
+    },
+    "ro": {
+     "video": "FrequencyLaboratory/loc/ro/video.mp4",
+     "vtt": "FrequencyLaboratory/loc/ro/ro.vtt",
+     "duration": 37.8,
+     "size": 252379
+    }
+   }
   },
   {
    "slug": "generator-frecvente",
@@ -4422,7 +7239,51 @@
     "de": "generator-frecvente/de.vtt",
     "hu": "generator-frecvente/hu.vtt"
    },
-   "transcript": "generator-frecvente/transcript.json"
+   "transcript": "generator-frecvente/transcript.json",
+   "videos": {
+    "de": {
+     "video": "generator-frecvente/loc/de/video.mp4",
+     "vtt": "generator-frecvente/loc/de/de.vtt",
+     "duration": 38.6,
+     "size": 336635
+    },
+    "es": {
+     "video": "generator-frecvente/loc/es/video.mp4",
+     "vtt": "generator-frecvente/loc/es/es.vtt",
+     "duration": 41.2,
+     "size": 336418
+    },
+    "fr": {
+     "video": "generator-frecvente/loc/fr/video.mp4",
+     "vtt": "generator-frecvente/loc/fr/fr.vtt",
+     "duration": 41.1,
+     "size": 326362
+    },
+    "hu": {
+     "video": "generator-frecvente/loc/hu/video.mp4",
+     "vtt": "generator-frecvente/loc/hu/hu.vtt",
+     "duration": 46.5,
+     "size": 442200
+    },
+    "it": {
+     "video": "generator-frecvente/loc/it/video.mp4",
+     "vtt": "generator-frecvente/loc/it/it.vtt",
+     "duration": 42.3,
+     "size": 380488
+    },
+    "pt": {
+     "video": "generator-frecvente/loc/pt/video.mp4",
+     "vtt": "generator-frecvente/loc/pt/pt.vtt",
+     "duration": 63.5,
+     "size": 570117
+    },
+    "ro": {
+     "video": "generator-frecvente/loc/ro/video.mp4",
+     "vtt": "generator-frecvente/loc/ro/ro.vtt",
+     "duration": 28.2,
+     "size": 235878
+    }
+   }
   },
   {
    "slug": "Akasha",
@@ -4482,7 +7343,51 @@
     "de": "Akasha/de.vtt",
     "hu": "Akasha/hu.vtt"
    },
-   "transcript": "Akasha/transcript.json"
+   "transcript": "Akasha/transcript.json",
+   "videos": {
+    "de": {
+     "video": "Akasha/loc/de/video.mp4",
+     "vtt": "Akasha/loc/de/de.vtt",
+     "duration": 79.9,
+     "size": 434786
+    },
+    "es": {
+     "video": "Akasha/loc/es/video.mp4",
+     "vtt": "Akasha/loc/es/es.vtt",
+     "duration": 59.9,
+     "size": 461798
+    },
+    "fr": {
+     "video": "Akasha/loc/fr/video.mp4",
+     "vtt": "Akasha/loc/fr/fr.vtt",
+     "duration": 58.1,
+     "size": 514507
+    },
+    "hu": {
+     "video": "Akasha/loc/hu/video.mp4",
+     "vtt": "Akasha/loc/hu/hu.vtt",
+     "duration": 72.4,
+     "size": 395883
+    },
+    "it": {
+     "video": "Akasha/loc/it/video.mp4",
+     "vtt": "Akasha/loc/it/it.vtt",
+     "duration": 83.3,
+     "size": 414145
+    },
+    "pt": {
+     "video": "Akasha/loc/pt/video.mp4",
+     "vtt": "Akasha/loc/pt/pt.vtt",
+     "duration": 41.9,
+     "size": 385697
+    },
+    "ro": {
+     "video": "Akasha/loc/ro/video.mp4",
+     "vtt": "Akasha/loc/ro/ro.vtt",
+     "duration": 73.6,
+     "size": 419209
+    }
+   }
   },
   {
    "slug": "Arbore",
@@ -4550,7 +7455,51 @@
     "de": "Arbore/de.vtt",
     "hu": "Arbore/hu.vtt"
    },
-   "transcript": "Arbore/transcript.json"
+   "transcript": "Arbore/transcript.json",
+   "videos": {
+    "de": {
+     "video": "Arbore/loc/de/video.mp4",
+     "vtt": "Arbore/loc/de/de.vtt",
+     "duration": 33.2,
+     "size": 224303
+    },
+    "es": {
+     "video": "Arbore/loc/es/video.mp4",
+     "vtt": "Arbore/loc/es/es.vtt",
+     "duration": 32.6,
+     "size": 197919
+    },
+    "fr": {
+     "video": "Arbore/loc/fr/video.mp4",
+     "vtt": "Arbore/loc/fr/fr.vtt",
+     "duration": 32,
+     "size": 229662
+    },
+    "hu": {
+     "video": "Arbore/loc/hu/video.mp4",
+     "vtt": "Arbore/loc/hu/hu.vtt",
+     "duration": 32.5,
+     "size": 241966
+    },
+    "it": {
+     "video": "Arbore/loc/it/video.mp4",
+     "vtt": "Arbore/loc/it/it.vtt",
+     "duration": 33,
+     "size": 210865
+    },
+    "pt": {
+     "video": "Arbore/loc/pt/video.mp4",
+     "vtt": "Arbore/loc/pt/pt.vtt",
+     "duration": 32.4,
+     "size": 234325
+    },
+    "ro": {
+     "video": "Arbore/loc/ro/video.mp4",
+     "vtt": "Arbore/loc/ro/ro.vtt",
+     "duration": 31.5,
+     "size": 213602
+    }
+   }
   },
   {
    "slug": "CLEPSIDRA",
@@ -4610,7 +7559,51 @@
     "de": "CLEPSIDRA/de.vtt",
     "hu": "CLEPSIDRA/hu.vtt"
    },
-   "transcript": "CLEPSIDRA/transcript.json"
+   "transcript": "CLEPSIDRA/transcript.json",
+   "videos": {
+    "de": {
+     "video": "CLEPSIDRA/loc/de/video.mp4",
+     "vtt": "CLEPSIDRA/loc/de/de.vtt",
+     "duration": 25.5,
+     "size": 206751
+    },
+    "es": {
+     "video": "CLEPSIDRA/loc/es/video.mp4",
+     "vtt": "CLEPSIDRA/loc/es/es.vtt",
+     "duration": 23,
+     "size": 191762
+    },
+    "fr": {
+     "video": "CLEPSIDRA/loc/fr/video.mp4",
+     "vtt": "CLEPSIDRA/loc/fr/fr.vtt",
+     "duration": 24.4,
+     "size": 262315
+    },
+    "hu": {
+     "video": "CLEPSIDRA/loc/hu/video.mp4",
+     "vtt": "CLEPSIDRA/loc/hu/hu.vtt",
+     "duration": 28.9,
+     "size": 241292
+    },
+    "it": {
+     "video": "CLEPSIDRA/loc/it/video.mp4",
+     "vtt": "CLEPSIDRA/loc/it/it.vtt",
+     "duration": 26,
+     "size": 292790
+    },
+    "pt": {
+     "video": "CLEPSIDRA/loc/pt/video.mp4",
+     "vtt": "CLEPSIDRA/loc/pt/pt.vtt",
+     "duration": 22.7,
+     "size": 256629
+    },
+    "ro": {
+     "video": "CLEPSIDRA/loc/ro/video.mp4",
+     "vtt": "CLEPSIDRA/loc/ro/ro.vtt",
+     "duration": 27.1,
+     "size": 243724
+    }
+   }
   },
   {
    "slug": "Gospodar",
@@ -4678,7 +7671,51 @@
     "de": "Gospodar/de.vtt",
     "hu": "Gospodar/hu.vtt"
    },
-   "transcript": "Gospodar/transcript.json"
+   "transcript": "Gospodar/transcript.json",
+   "videos": {
+    "de": {
+     "video": "Gospodar/loc/de/video.mp4",
+     "vtt": "Gospodar/loc/de/de.vtt",
+     "duration": 27.3,
+     "size": 221531
+    },
+    "es": {
+     "video": "Gospodar/loc/es/video.mp4",
+     "vtt": "Gospodar/loc/es/es.vtt",
+     "duration": 28.6,
+     "size": 215089
+    },
+    "fr": {
+     "video": "Gospodar/loc/fr/video.mp4",
+     "vtt": "Gospodar/loc/fr/fr.vtt",
+     "duration": 28,
+     "size": 221100
+    },
+    "hu": {
+     "video": "Gospodar/loc/hu/video.mp4",
+     "vtt": "Gospodar/loc/hu/hu.vtt",
+     "duration": 27.9,
+     "size": 198559
+    },
+    "it": {
+     "video": "Gospodar/loc/it/video.mp4",
+     "vtt": "Gospodar/loc/it/it.vtt",
+     "duration": 27.1,
+     "size": 205549
+    },
+    "pt": {
+     "video": "Gospodar/loc/pt/video.mp4",
+     "vtt": "Gospodar/loc/pt/pt.vtt",
+     "duration": 28.7,
+     "size": 215795
+    },
+    "ro": {
+     "video": "Gospodar/loc/ro/video.mp4",
+     "vtt": "Gospodar/loc/ro/ro.vtt",
+     "duration": 26.9,
+     "size": 194877
+    }
+   }
   },
   {
    "slug": "Orar",
@@ -4746,7 +7783,51 @@
     "de": "Orar/de.vtt",
     "hu": "Orar/hu.vtt"
    },
-   "transcript": "Orar/transcript.json"
+   "transcript": "Orar/transcript.json",
+   "videos": {
+    "de": {
+     "video": "Orar/loc/de/video.mp4",
+     "vtt": "Orar/loc/de/de.vtt",
+     "duration": 30.2,
+     "size": 276279
+    },
+    "es": {
+     "video": "Orar/loc/es/video.mp4",
+     "vtt": "Orar/loc/es/es.vtt",
+     "duration": 32,
+     "size": 310676
+    },
+    "fr": {
+     "video": "Orar/loc/fr/video.mp4",
+     "vtt": "Orar/loc/fr/fr.vtt",
+     "duration": 31.5,
+     "size": 296623
+    },
+    "hu": {
+     "video": "Orar/loc/hu/video.mp4",
+     "vtt": "Orar/loc/hu/hu.vtt",
+     "duration": 30.8,
+     "size": 286694
+    },
+    "it": {
+     "video": "Orar/loc/it/video.mp4",
+     "vtt": "Orar/loc/it/it.vtt",
+     "duration": 29.5,
+     "size": 290022
+    },
+    "pt": {
+     "video": "Orar/loc/pt/video.mp4",
+     "vtt": "Orar/loc/pt/pt.vtt",
+     "duration": 29.5,
+     "size": 310323
+    },
+    "ro": {
+     "video": "Orar/loc/ro/video.mp4",
+     "vtt": "Orar/loc/ro/ro.vtt",
+     "duration": 28.8,
+     "size": 249221
+    }
+   }
   },
   {
    "slug": "Belot-fara-frontiere",
@@ -4814,7 +7895,51 @@
     "de": "Belot-fara-frontiere/de.vtt",
     "hu": "Belot-fara-frontiere/hu.vtt"
    },
-   "transcript": "Belot-fara-frontiere/transcript.json"
+   "transcript": "Belot-fara-frontiere/transcript.json",
+   "videos": {
+    "de": {
+     "video": "Belot-fara-frontiere/loc/de/video.mp4",
+     "vtt": "Belot-fara-frontiere/loc/de/de.vtt",
+     "duration": 32.5,
+     "size": 422928
+    },
+    "es": {
+     "video": "Belot-fara-frontiere/loc/es/video.mp4",
+     "vtt": "Belot-fara-frontiere/loc/es/es.vtt",
+     "duration": 33.8,
+     "size": 488271
+    },
+    "fr": {
+     "video": "Belot-fara-frontiere/loc/fr/video.mp4",
+     "vtt": "Belot-fara-frontiere/loc/fr/fr.vtt",
+     "duration": 32.7,
+     "size": 471830
+    },
+    "hu": {
+     "video": "Belot-fara-frontiere/loc/hu/video.mp4",
+     "vtt": "Belot-fara-frontiere/loc/hu/hu.vtt",
+     "duration": 32,
+     "size": 327366
+    },
+    "it": {
+     "video": "Belot-fara-frontiere/loc/it/video.mp4",
+     "vtt": "Belot-fara-frontiere/loc/it/it.vtt",
+     "duration": 33.7,
+     "size": 471613
+    },
+    "pt": {
+     "video": "Belot-fara-frontiere/loc/pt/video.mp4",
+     "vtt": "Belot-fara-frontiere/loc/pt/pt.vtt",
+     "duration": 32.7,
+     "size": 449266
+    },
+    "ro": {
+     "video": "Belot-fara-frontiere/loc/ro/video.mp4",
+     "vtt": "Belot-fara-frontiere/loc/ro/ro.vtt",
+     "duration": 32.5,
+     "size": 445554
+    }
+   }
   },
   {
    "slug": "Carti-de-joc-fara-frontiere",
@@ -4874,7 +7999,51 @@
     "de": "Carti-de-joc-fara-frontiere/de.vtt",
     "hu": "Carti-de-joc-fara-frontiere/hu.vtt"
    },
-   "transcript": "Carti-de-joc-fara-frontiere/transcript.json"
+   "transcript": "Carti-de-joc-fara-frontiere/transcript.json",
+   "videos": {
+    "de": {
+     "video": "Carti-de-joc-fara-frontiere/loc/de/video.mp4",
+     "vtt": "Carti-de-joc-fara-frontiere/loc/de/de.vtt",
+     "duration": 26.2,
+     "size": 300970
+    },
+    "es": {
+     "video": "Carti-de-joc-fara-frontiere/loc/es/video.mp4",
+     "vtt": "Carti-de-joc-fara-frontiere/loc/es/es.vtt",
+     "duration": 25.9,
+     "size": 282227
+    },
+    "fr": {
+     "video": "Carti-de-joc-fara-frontiere/loc/fr/video.mp4",
+     "vtt": "Carti-de-joc-fara-frontiere/loc/fr/fr.vtt",
+     "duration": 27.5,
+     "size": 309745
+    },
+    "hu": {
+     "video": "Carti-de-joc-fara-frontiere/loc/hu/video.mp4",
+     "vtt": "Carti-de-joc-fara-frontiere/loc/hu/hu.vtt",
+     "duration": 26.1,
+     "size": 339645
+    },
+    "it": {
+     "video": "Carti-de-joc-fara-frontiere/loc/it/video.mp4",
+     "vtt": "Carti-de-joc-fara-frontiere/loc/it/it.vtt",
+     "duration": 25.8,
+     "size": 329861
+    },
+    "pt": {
+     "video": "Carti-de-joc-fara-frontiere/loc/pt/video.mp4",
+     "vtt": "Carti-de-joc-fara-frontiere/loc/pt/pt.vtt",
+     "duration": 27.7,
+     "size": 295264
+    },
+    "ro": {
+     "video": "Carti-de-joc-fara-frontiere/loc/ro/video.mp4",
+     "vtt": "Carti-de-joc-fara-frontiere/loc/ro/ro.vtt",
+     "duration": 28.4,
+     "size": 283228
+    }
+   }
   },
   {
    "slug": "Dame-fara-frontiere",
@@ -4934,7 +8103,51 @@
     "de": "Dame-fara-frontiere/de.vtt",
     "hu": "Dame-fara-frontiere/hu.vtt"
    },
-   "transcript": "Dame-fara-frontiere/transcript.json"
+   "transcript": "Dame-fara-frontiere/transcript.json",
+   "videos": {
+    "de": {
+     "video": "Dame-fara-frontiere/loc/de/video.mp4",
+     "vtt": "Dame-fara-frontiere/loc/de/de.vtt",
+     "duration": 135.5,
+     "size": 910458
+    },
+    "es": {
+     "video": "Dame-fara-frontiere/loc/es/video.mp4",
+     "vtt": "Dame-fara-frontiere/loc/es/es.vtt",
+     "duration": 128,
+     "size": 881040
+    },
+    "fr": {
+     "video": "Dame-fara-frontiere/loc/fr/video.mp4",
+     "vtt": "Dame-fara-frontiere/loc/fr/fr.vtt",
+     "duration": 138,
+     "size": 848969
+    },
+    "hu": {
+     "video": "Dame-fara-frontiere/loc/hu/video.mp4",
+     "vtt": "Dame-fara-frontiere/loc/hu/hu.vtt",
+     "duration": 130.7,
+     "size": 844618
+    },
+    "it": {
+     "video": "Dame-fara-frontiere/loc/it/video.mp4",
+     "vtt": "Dame-fara-frontiere/loc/it/it.vtt",
+     "duration": 141.1,
+     "size": 994162
+    },
+    "pt": {
+     "video": "Dame-fara-frontiere/loc/pt/video.mp4",
+     "vtt": "Dame-fara-frontiere/loc/pt/pt.vtt",
+     "duration": 131.1,
+     "size": 860433
+    },
+    "ro": {
+     "video": "Dame-fara-frontiere/loc/ro/video.mp4",
+     "vtt": "Dame-fara-frontiere/loc/ro/ro.vtt",
+     "duration": 141.6,
+     "size": 996618
+    }
+   }
   },
   {
    "slug": "Domino-fara-frontiere",
@@ -5002,7 +8215,51 @@
     "de": "Domino-fara-frontiere/de.vtt",
     "hu": "Domino-fara-frontiere/hu.vtt"
    },
-   "transcript": "Domino-fara-frontiere/transcript.json"
+   "transcript": "Domino-fara-frontiere/transcript.json",
+   "videos": {
+    "de": {
+     "video": "Domino-fara-frontiere/loc/de/video.mp4",
+     "vtt": "Domino-fara-frontiere/loc/de/de.vtt",
+     "duration": 32,
+     "size": 398073
+    },
+    "es": {
+     "video": "Domino-fara-frontiere/loc/es/video.mp4",
+     "vtt": "Domino-fara-frontiere/loc/es/es.vtt",
+     "duration": 30,
+     "size": 374819
+    },
+    "fr": {
+     "video": "Domino-fara-frontiere/loc/fr/video.mp4",
+     "vtt": "Domino-fara-frontiere/loc/fr/fr.vtt",
+     "duration": 30.3,
+     "size": 369413
+    },
+    "hu": {
+     "video": "Domino-fara-frontiere/loc/hu/video.mp4",
+     "vtt": "Domino-fara-frontiere/loc/hu/hu.vtt",
+     "duration": 30,
+     "size": 368141
+    },
+    "it": {
+     "video": "Domino-fara-frontiere/loc/it/video.mp4",
+     "vtt": "Domino-fara-frontiere/loc/it/it.vtt",
+     "duration": 31.2,
+     "size": 402086
+    },
+    "pt": {
+     "video": "Domino-fara-frontiere/loc/pt/video.mp4",
+     "vtt": "Domino-fara-frontiere/loc/pt/pt.vtt",
+     "duration": 30.8,
+     "size": 411928
+    },
+    "ro": {
+     "video": "Domino-fara-frontiere/loc/ro/video.mp4",
+     "vtt": "Domino-fara-frontiere/loc/ro/ro.vtt",
+     "duration": 31.4,
+     "size": 410180
+    }
+   }
   },
   {
    "slug": "Go-fara-frontiere",
@@ -5070,7 +8327,51 @@
     "de": "Go-fara-frontiere/de.vtt",
     "hu": "Go-fara-frontiere/hu.vtt"
    },
-   "transcript": "Go-fara-frontiere/transcript.json"
+   "transcript": "Go-fara-frontiere/transcript.json",
+   "videos": {
+    "de": {
+     "video": "Go-fara-frontiere/loc/de/video.mp4",
+     "vtt": "Go-fara-frontiere/loc/de/de.vtt",
+     "duration": 118.5,
+     "size": 831247
+    },
+    "es": {
+     "video": "Go-fara-frontiere/loc/es/video.mp4",
+     "vtt": "Go-fara-frontiere/loc/es/es.vtt",
+     "duration": 115.9,
+     "size": 803662
+    },
+    "fr": {
+     "video": "Go-fara-frontiere/loc/fr/video.mp4",
+     "vtt": "Go-fara-frontiere/loc/fr/fr.vtt",
+     "duration": 115.4,
+     "size": 808973
+    },
+    "hu": {
+     "video": "Go-fara-frontiere/loc/hu/video.mp4",
+     "vtt": "Go-fara-frontiere/loc/hu/hu.vtt",
+     "duration": 115.4,
+     "size": 794263
+    },
+    "it": {
+     "video": "Go-fara-frontiere/loc/it/video.mp4",
+     "vtt": "Go-fara-frontiere/loc/it/it.vtt",
+     "duration": 117.1,
+     "size": 770395
+    },
+    "pt": {
+     "video": "Go-fara-frontiere/loc/pt/video.mp4",
+     "vtt": "Go-fara-frontiere/loc/pt/pt.vtt",
+     "duration": 119.3,
+     "size": 813267
+    },
+    "ro": {
+     "video": "Go-fara-frontiere/loc/ro/video.mp4",
+     "vtt": "Go-fara-frontiere/loc/ro/ro.vtt",
+     "duration": 115.3,
+     "size": 804474
+    }
+   }
   },
   {
    "slug": "Mahjong-fara-frontiere",
@@ -5138,7 +8439,51 @@
     "de": "Mahjong-fara-frontiere/de.vtt",
     "hu": "Mahjong-fara-frontiere/hu.vtt"
    },
-   "transcript": "Mahjong-fara-frontiere/transcript.json"
+   "transcript": "Mahjong-fara-frontiere/transcript.json",
+   "videos": {
+    "de": {
+     "video": "Mahjong-fara-frontiere/loc/de/video.mp4",
+     "vtt": "Mahjong-fara-frontiere/loc/de/de.vtt",
+     "duration": 31.2,
+     "size": 412568
+    },
+    "es": {
+     "video": "Mahjong-fara-frontiere/loc/es/video.mp4",
+     "vtt": "Mahjong-fara-frontiere/loc/es/es.vtt",
+     "duration": 31.8,
+     "size": 394235
+    },
+    "fr": {
+     "video": "Mahjong-fara-frontiere/loc/fr/video.mp4",
+     "vtt": "Mahjong-fara-frontiere/loc/fr/fr.vtt",
+     "duration": 34.6,
+     "size": 410798
+    },
+    "hu": {
+     "video": "Mahjong-fara-frontiere/loc/hu/video.mp4",
+     "vtt": "Mahjong-fara-frontiere/loc/hu/hu.vtt",
+     "duration": 32.2,
+     "size": 390321
+    },
+    "it": {
+     "video": "Mahjong-fara-frontiere/loc/it/video.mp4",
+     "vtt": "Mahjong-fara-frontiere/loc/it/it.vtt",
+     "duration": 30.3,
+     "size": 377608
+    },
+    "pt": {
+     "video": "Mahjong-fara-frontiere/loc/pt/video.mp4",
+     "vtt": "Mahjong-fara-frontiere/loc/pt/pt.vtt",
+     "duration": 30.5,
+     "size": 412372
+    },
+    "ro": {
+     "video": "Mahjong-fara-frontiere/loc/ro/video.mp4",
+     "vtt": "Mahjong-fara-frontiere/loc/ro/ro.vtt",
+     "duration": 30.9,
+     "size": 395718
+    }
+   }
   },
   {
    "slug": "Profund",
@@ -5214,7 +8559,51 @@
     "de": "Profund/de.vtt",
     "hu": "Profund/hu.vtt"
    },
-   "transcript": "Profund/transcript.json"
+   "transcript": "Profund/transcript.json",
+   "videos": {
+    "de": {
+     "video": "Profund/loc/de/video.mp4",
+     "vtt": "Profund/loc/de/de.vtt",
+     "duration": 54,
+     "size": 353731
+    },
+    "es": {
+     "video": "Profund/loc/es/video.mp4",
+     "vtt": "Profund/loc/es/es.vtt",
+     "duration": 30.8,
+     "size": 286090
+    },
+    "fr": {
+     "video": "Profund/loc/fr/video.mp4",
+     "vtt": "Profund/loc/fr/fr.vtt",
+     "duration": 30,
+     "size": 287074
+    },
+    "hu": {
+     "video": "Profund/loc/hu/video.mp4",
+     "vtt": "Profund/loc/hu/hu.vtt",
+     "duration": 29.8,
+     "size": 287003
+    },
+    "it": {
+     "video": "Profund/loc/it/video.mp4",
+     "vtt": "Profund/loc/it/it.vtt",
+     "duration": 41.5,
+     "size": 347285
+    },
+    "pt": {
+     "video": "Profund/loc/pt/video.mp4",
+     "vtt": "Profund/loc/pt/pt.vtt",
+     "duration": 51.1,
+     "size": 390680
+    },
+    "ro": {
+     "video": "Profund/loc/ro/video.mp4",
+     "vtt": "Profund/loc/ro/ro.vtt",
+     "duration": 38,
+     "size": 312101
+    }
+   }
   },
   {
    "slug": "Remi-fara-frontiere",
@@ -5274,7 +8663,51 @@
     "de": "Remi-fara-frontiere/de.vtt",
     "hu": "Remi-fara-frontiere/hu.vtt"
    },
-   "transcript": "Remi-fara-frontiere/transcript.json"
+   "transcript": "Remi-fara-frontiere/transcript.json",
+   "videos": {
+    "de": {
+     "video": "Remi-fara-frontiere/loc/de/video.mp4",
+     "vtt": "Remi-fara-frontiere/loc/de/de.vtt",
+     "duration": 22,
+     "size": 321144
+    },
+    "es": {
+     "video": "Remi-fara-frontiere/loc/es/video.mp4",
+     "vtt": "Remi-fara-frontiere/loc/es/es.vtt",
+     "duration": 22.7,
+     "size": 328152
+    },
+    "fr": {
+     "video": "Remi-fara-frontiere/loc/fr/video.mp4",
+     "vtt": "Remi-fara-frontiere/loc/fr/fr.vtt",
+     "duration": 24.8,
+     "size": 386406
+    },
+    "hu": {
+     "video": "Remi-fara-frontiere/loc/hu/video.mp4",
+     "vtt": "Remi-fara-frontiere/loc/hu/hu.vtt",
+     "duration": 23.8,
+     "size": 317011
+    },
+    "it": {
+     "video": "Remi-fara-frontiere/loc/it/video.mp4",
+     "vtt": "Remi-fara-frontiere/loc/it/it.vtt",
+     "duration": 22.5,
+     "size": 287138
+    },
+    "pt": {
+     "video": "Remi-fara-frontiere/loc/pt/video.mp4",
+     "vtt": "Remi-fara-frontiere/loc/pt/pt.vtt",
+     "duration": 22,
+     "size": 389167
+    },
+    "ro": {
+     "video": "Remi-fara-frontiere/loc/ro/video.mp4",
+     "vtt": "Remi-fara-frontiere/loc/ro/ro.vtt",
+     "duration": 22.8,
+     "size": 357099
+    }
+   }
   },
   {
    "slug": "Sah-fara-frontiere",
@@ -5334,7 +8767,51 @@
     "de": "Sah-fara-frontiere/de.vtt",
     "hu": "Sah-fara-frontiere/hu.vtt"
    },
-   "transcript": "Sah-fara-frontiere/transcript.json"
+   "transcript": "Sah-fara-frontiere/transcript.json",
+   "videos": {
+    "de": {
+     "video": "Sah-fara-frontiere/loc/de/video.mp4",
+     "vtt": "Sah-fara-frontiere/loc/de/de.vtt",
+     "duration": 42.3,
+     "size": 494681
+    },
+    "es": {
+     "video": "Sah-fara-frontiere/loc/es/video.mp4",
+     "vtt": "Sah-fara-frontiere/loc/es/es.vtt",
+     "duration": 35.4,
+     "size": 439401
+    },
+    "fr": {
+     "video": "Sah-fara-frontiere/loc/fr/video.mp4",
+     "vtt": "Sah-fara-frontiere/loc/fr/fr.vtt",
+     "duration": 72.7,
+     "size": 619344
+    },
+    "hu": {
+     "video": "Sah-fara-frontiere/loc/hu/video.mp4",
+     "vtt": "Sah-fara-frontiere/loc/hu/hu.vtt",
+     "duration": 50.8,
+     "size": 517390
+    },
+    "it": {
+     "video": "Sah-fara-frontiere/loc/it/video.mp4",
+     "vtt": "Sah-fara-frontiere/loc/it/it.vtt",
+     "duration": 43.5,
+     "size": 493274
+    },
+    "pt": {
+     "video": "Sah-fara-frontiere/loc/pt/video.mp4",
+     "vtt": "Sah-fara-frontiere/loc/pt/pt.vtt",
+     "duration": 43.4,
+     "size": 509002
+    },
+    "ro": {
+     "video": "Sah-fara-frontiere/loc/ro/video.mp4",
+     "vtt": "Sah-fara-frontiere/loc/ro/ro.vtt",
+     "duration": 41.4,
+     "size": 513622
+    }
+   }
   },
   {
    "slug": "Scopone-fara-frontiere",
@@ -5402,7 +8879,51 @@
     "de": "Scopone-fara-frontiere/de.vtt",
     "hu": "Scopone-fara-frontiere/hu.vtt"
    },
-   "transcript": "Scopone-fara-frontiere/transcript.json"
+   "transcript": "Scopone-fara-frontiere/transcript.json",
+   "videos": {
+    "de": {
+     "video": "Scopone-fara-frontiere/loc/de/video.mp4",
+     "vtt": "Scopone-fara-frontiere/loc/de/de.vtt",
+     "duration": 27.9,
+     "size": 303659
+    },
+    "es": {
+     "video": "Scopone-fara-frontiere/loc/es/video.mp4",
+     "vtt": "Scopone-fara-frontiere/loc/es/es.vtt",
+     "duration": 27.6,
+     "size": 313642
+    },
+    "fr": {
+     "video": "Scopone-fara-frontiere/loc/fr/video.mp4",
+     "vtt": "Scopone-fara-frontiere/loc/fr/fr.vtt",
+     "duration": 27.8,
+     "size": 294947
+    },
+    "hu": {
+     "video": "Scopone-fara-frontiere/loc/hu/video.mp4",
+     "vtt": "Scopone-fara-frontiere/loc/hu/hu.vtt",
+     "duration": 27.2,
+     "size": 352577
+    },
+    "it": {
+     "video": "Scopone-fara-frontiere/loc/it/video.mp4",
+     "vtt": "Scopone-fara-frontiere/loc/it/it.vtt",
+     "duration": 29.2,
+     "size": 282905
+    },
+    "pt": {
+     "video": "Scopone-fara-frontiere/loc/pt/video.mp4",
+     "vtt": "Scopone-fara-frontiere/loc/pt/pt.vtt",
+     "duration": 27.8,
+     "size": 291122
+    },
+    "ro": {
+     "video": "Scopone-fara-frontiere/loc/ro/video.mp4",
+     "vtt": "Scopone-fara-frontiere/loc/ro/ro.vtt",
+     "duration": 27.9,
+     "size": 329067
+    }
+   }
   },
   {
    "slug": "Solitaire-fara-frontiere",
@@ -5462,7 +8983,51 @@
     "de": "Solitaire-fara-frontiere/de.vtt",
     "hu": "Solitaire-fara-frontiere/hu.vtt"
    },
-   "transcript": "Solitaire-fara-frontiere/transcript.json"
+   "transcript": "Solitaire-fara-frontiere/transcript.json",
+   "videos": {
+    "de": {
+     "video": "Solitaire-fara-frontiere/loc/de/video.mp4",
+     "vtt": "Solitaire-fara-frontiere/loc/de/de.vtt",
+     "duration": 27.9,
+     "size": 476665
+    },
+    "es": {
+     "video": "Solitaire-fara-frontiere/loc/es/video.mp4",
+     "vtt": "Solitaire-fara-frontiere/loc/es/es.vtt",
+     "duration": 29.8,
+     "size": 499205
+    },
+    "fr": {
+     "video": "Solitaire-fara-frontiere/loc/fr/video.mp4",
+     "vtt": "Solitaire-fara-frontiere/loc/fr/fr.vtt",
+     "duration": 29.8,
+     "size": 548905
+    },
+    "hu": {
+     "video": "Solitaire-fara-frontiere/loc/hu/video.mp4",
+     "vtt": "Solitaire-fara-frontiere/loc/hu/hu.vtt",
+     "duration": 31.9,
+     "size": 516554
+    },
+    "it": {
+     "video": "Solitaire-fara-frontiere/loc/it/video.mp4",
+     "vtt": "Solitaire-fara-frontiere/loc/it/it.vtt",
+     "duration": 28.9,
+     "size": 485448
+    },
+    "pt": {
+     "video": "Solitaire-fara-frontiere/loc/pt/video.mp4",
+     "vtt": "Solitaire-fara-frontiere/loc/pt/pt.vtt",
+     "duration": 29.6,
+     "size": 544353
+    },
+    "ro": {
+     "video": "Solitaire-fara-frontiere/loc/ro/video.mp4",
+     "vtt": "Solitaire-fara-frontiere/loc/ro/ro.vtt",
+     "duration": 28.8,
+     "size": 492382
+    }
+   }
   },
   {
    "slug": "Sudoku-fara-frontiere",
@@ -5522,7 +9087,51 @@
     "de": "Sudoku-fara-frontiere/de.vtt",
     "hu": "Sudoku-fara-frontiere/hu.vtt"
    },
-   "transcript": "Sudoku-fara-frontiere/transcript.json"
+   "transcript": "Sudoku-fara-frontiere/transcript.json",
+   "videos": {
+    "de": {
+     "video": "Sudoku-fara-frontiere/loc/de/video.mp4",
+     "vtt": "Sudoku-fara-frontiere/loc/de/de.vtt",
+     "duration": 25.4,
+     "size": 311484
+    },
+    "es": {
+     "video": "Sudoku-fara-frontiere/loc/es/video.mp4",
+     "vtt": "Sudoku-fara-frontiere/loc/es/es.vtt",
+     "duration": 22.8,
+     "size": 303733
+    },
+    "fr": {
+     "video": "Sudoku-fara-frontiere/loc/fr/video.mp4",
+     "vtt": "Sudoku-fara-frontiere/loc/fr/fr.vtt",
+     "duration": 24,
+     "size": 301998
+    },
+    "hu": {
+     "video": "Sudoku-fara-frontiere/loc/hu/video.mp4",
+     "vtt": "Sudoku-fara-frontiere/loc/hu/hu.vtt",
+     "duration": 25,
+     "size": 362483
+    },
+    "it": {
+     "video": "Sudoku-fara-frontiere/loc/it/video.mp4",
+     "vtt": "Sudoku-fara-frontiere/loc/it/it.vtt",
+     "duration": 28.3,
+     "size": 375312
+    },
+    "pt": {
+     "video": "Sudoku-fara-frontiere/loc/pt/video.mp4",
+     "vtt": "Sudoku-fara-frontiere/loc/pt/pt.vtt",
+     "duration": 24.8,
+     "size": 361975
+    },
+    "ro": {
+     "video": "Sudoku-fara-frontiere/loc/ro/video.mp4",
+     "vtt": "Sudoku-fara-frontiere/loc/ro/ro.vtt",
+     "duration": 23.7,
+     "size": 281249
+    }
+   }
   },
   {
    "slug": "Table-fara-frontiere",
@@ -5582,7 +9191,51 @@
     "de": "Table-fara-frontiere/de.vtt",
     "hu": "Table-fara-frontiere/hu.vtt"
    },
-   "transcript": "Table-fara-frontiere/transcript.json"
+   "transcript": "Table-fara-frontiere/transcript.json",
+   "videos": {
+    "de": {
+     "video": "Table-fara-frontiere/loc/de/video.mp4",
+     "vtt": "Table-fara-frontiere/loc/de/de.vtt",
+     "duration": 40.4,
+     "size": 524349
+    },
+    "es": {
+     "video": "Table-fara-frontiere/loc/es/video.mp4",
+     "vtt": "Table-fara-frontiere/loc/es/es.vtt",
+     "duration": 35.6,
+     "size": 535261
+    },
+    "fr": {
+     "video": "Table-fara-frontiere/loc/fr/video.mp4",
+     "vtt": "Table-fara-frontiere/loc/fr/fr.vtt",
+     "duration": 34.5,
+     "size": 545292
+    },
+    "hu": {
+     "video": "Table-fara-frontiere/loc/hu/video.mp4",
+     "vtt": "Table-fara-frontiere/loc/hu/hu.vtt",
+     "duration": 35.6,
+     "size": 510664
+    },
+    "it": {
+     "video": "Table-fara-frontiere/loc/it/video.mp4",
+     "vtt": "Table-fara-frontiere/loc/it/it.vtt",
+     "duration": 36,
+     "size": 594557
+    },
+    "pt": {
+     "video": "Table-fara-frontiere/loc/pt/video.mp4",
+     "vtt": "Table-fara-frontiere/loc/pt/pt.vtt",
+     "duration": 40.5,
+     "size": 539038
+    },
+    "ro": {
+     "video": "Table-fara-frontiere/loc/ro/video.mp4",
+     "vtt": "Table-fara-frontiere/loc/ro/ro.vtt",
+     "duration": 35.4,
+     "size": 566150
+    }
+   }
   },
   {
    "slug": "Zaruri-fara-frontiere",
@@ -5642,7 +9295,51 @@
     "de": "Zaruri-fara-frontiere/de.vtt",
     "hu": "Zaruri-fara-frontiere/hu.vtt"
    },
-   "transcript": "Zaruri-fara-frontiere/transcript.json"
+   "transcript": "Zaruri-fara-frontiere/transcript.json",
+   "videos": {
+    "de": {
+     "video": "Zaruri-fara-frontiere/loc/de/video.mp4",
+     "vtt": "Zaruri-fara-frontiere/loc/de/de.vtt",
+     "duration": 32.6,
+     "size": 344240
+    },
+    "es": {
+     "video": "Zaruri-fara-frontiere/loc/es/video.mp4",
+     "vtt": "Zaruri-fara-frontiere/loc/es/es.vtt",
+     "duration": 34.9,
+     "size": 345670
+    },
+    "fr": {
+     "video": "Zaruri-fara-frontiere/loc/fr/video.mp4",
+     "vtt": "Zaruri-fara-frontiere/loc/fr/fr.vtt",
+     "duration": 35,
+     "size": 398060
+    },
+    "hu": {
+     "video": "Zaruri-fara-frontiere/loc/hu/video.mp4",
+     "vtt": "Zaruri-fara-frontiere/loc/hu/hu.vtt",
+     "duration": 33.4,
+     "size": 358939
+    },
+    "it": {
+     "video": "Zaruri-fara-frontiere/loc/it/video.mp4",
+     "vtt": "Zaruri-fara-frontiere/loc/it/it.vtt",
+     "duration": 31.5,
+     "size": 362408
+    },
+    "pt": {
+     "video": "Zaruri-fara-frontiere/loc/pt/video.mp4",
+     "vtt": "Zaruri-fara-frontiere/loc/pt/pt.vtt",
+     "duration": 32.4,
+     "size": 369284
+    },
+    "ro": {
+     "video": "Zaruri-fara-frontiere/loc/ro/video.mp4",
+     "vtt": "Zaruri-fara-frontiere/loc/ro/ro.vtt",
+     "duration": 32,
+     "size": 356487
+    }
+   }
   },
   {
    "slug": "AI-Liber",
@@ -5702,7 +9399,51 @@
     "de": "AI-Liber/de.vtt",
     "hu": "AI-Liber/hu.vtt"
    },
-   "transcript": "AI-Liber/transcript.json"
+   "transcript": "AI-Liber/transcript.json",
+   "videos": {
+    "de": {
+     "video": "AI-Liber/loc/de/video.mp4",
+     "vtt": "AI-Liber/loc/de/de.vtt",
+     "duration": 32.4,
+     "size": 371797
+    },
+    "es": {
+     "video": "AI-Liber/loc/es/video.mp4",
+     "vtt": "AI-Liber/loc/es/es.vtt",
+     "duration": 30.4,
+     "size": 366739
+    },
+    "fr": {
+     "video": "AI-Liber/loc/fr/video.mp4",
+     "vtt": "AI-Liber/loc/fr/fr.vtt",
+     "duration": 28.5,
+     "size": 377799
+    },
+    "hu": {
+     "video": "AI-Liber/loc/hu/video.mp4",
+     "vtt": "AI-Liber/loc/hu/hu.vtt",
+     "duration": 28.5,
+     "size": 363679
+    },
+    "it": {
+     "video": "AI-Liber/loc/it/video.mp4",
+     "vtt": "AI-Liber/loc/it/it.vtt",
+     "duration": 33.3,
+     "size": 340697
+    },
+    "pt": {
+     "video": "AI-Liber/loc/pt/video.mp4",
+     "vtt": "AI-Liber/loc/pt/pt.vtt",
+     "duration": 35.5,
+     "size": 370870
+    },
+    "ro": {
+     "video": "AI-Liber/loc/ro/video.mp4",
+     "vtt": "AI-Liber/loc/ro/ro.vtt",
+     "duration": 32.2,
+     "size": 342356
+    }
+   }
   },
   {
    "slug": "ARENA",
@@ -5762,7 +9503,51 @@
     "de": "ARENA/de.vtt",
     "hu": "ARENA/hu.vtt"
    },
-   "transcript": "ARENA/transcript.json"
+   "transcript": "ARENA/transcript.json",
+   "videos": {
+    "de": {
+     "video": "ARENA/loc/de/video.mp4",
+     "vtt": "ARENA/loc/de/de.vtt",
+     "duration": 27.8,
+     "size": 213667
+    },
+    "es": {
+     "video": "ARENA/loc/es/video.mp4",
+     "vtt": "ARENA/loc/es/es.vtt",
+     "duration": 29.2,
+     "size": 217234
+    },
+    "fr": {
+     "video": "ARENA/loc/fr/video.mp4",
+     "vtt": "ARENA/loc/fr/fr.vtt",
+     "duration": 28.8,
+     "size": 226814
+    },
+    "hu": {
+     "video": "ARENA/loc/hu/video.mp4",
+     "vtt": "ARENA/loc/hu/hu.vtt",
+     "duration": 29.1,
+     "size": 190240
+    },
+    "it": {
+     "video": "ARENA/loc/it/video.mp4",
+     "vtt": "ARENA/loc/it/it.vtt",
+     "duration": 29,
+     "size": 207171
+    },
+    "pt": {
+     "video": "ARENA/loc/pt/video.mp4",
+     "vtt": "ARENA/loc/pt/pt.vtt",
+     "duration": 28.5,
+     "size": 186161
+    },
+    "ro": {
+     "video": "ARENA/loc/ro/video.mp4",
+     "vtt": "ARENA/loc/ro/ro.vtt",
+     "duration": 29.8,
+     "size": 193755
+    }
+   }
   },
   {
    "slug": "LocalMind",
@@ -5822,7 +9607,51 @@
     "de": "LocalMind/de.vtt",
     "hu": "LocalMind/hu.vtt"
    },
-   "transcript": "LocalMind/transcript.json"
+   "transcript": "LocalMind/transcript.json",
+   "videos": {
+    "de": {
+     "video": "LocalMind/loc/de/video.mp4",
+     "vtt": "LocalMind/loc/de/de.vtt",
+     "duration": 32.9,
+     "size": 213819
+    },
+    "es": {
+     "video": "LocalMind/loc/es/video.mp4",
+     "vtt": "LocalMind/loc/es/es.vtt",
+     "duration": 26.9,
+     "size": 203296
+    },
+    "fr": {
+     "video": "LocalMind/loc/fr/video.mp4",
+     "vtt": "LocalMind/loc/fr/fr.vtt",
+     "duration": 37.3,
+     "size": 273364
+    },
+    "hu": {
+     "video": "LocalMind/loc/hu/video.mp4",
+     "vtt": "LocalMind/loc/hu/hu.vtt",
+     "duration": 39.8,
+     "size": 242578
+    },
+    "it": {
+     "video": "LocalMind/loc/it/video.mp4",
+     "vtt": "LocalMind/loc/it/it.vtt",
+     "duration": 38.4,
+     "size": 271452
+    },
+    "pt": {
+     "video": "LocalMind/loc/pt/video.mp4",
+     "vtt": "LocalMind/loc/pt/pt.vtt",
+     "duration": 41,
+     "size": 278358
+    },
+    "ro": {
+     "video": "LocalMind/loc/ro/video.mp4",
+     "vtt": "LocalMind/loc/ro/ro.vtt",
+     "duration": 35.6,
+     "size": 247112
+    }
+   }
   },
   {
    "slug": "Nexus-fara-frontiere",
@@ -5882,7 +9711,51 @@
     "de": "Nexus-fara-frontiere/de.vtt",
     "hu": "Nexus-fara-frontiere/hu.vtt"
    },
-   "transcript": "Nexus-fara-frontiere/transcript.json"
+   "transcript": "Nexus-fara-frontiere/transcript.json",
+   "videos": {
+    "de": {
+     "video": "Nexus-fara-frontiere/loc/de/video.mp4",
+     "vtt": "Nexus-fara-frontiere/loc/de/de.vtt",
+     "duration": 49.8,
+     "size": 410445
+    },
+    "es": {
+     "video": "Nexus-fara-frontiere/loc/es/video.mp4",
+     "vtt": "Nexus-fara-frontiere/loc/es/es.vtt",
+     "duration": 40.5,
+     "size": 329999
+    },
+    "fr": {
+     "video": "Nexus-fara-frontiere/loc/fr/video.mp4",
+     "vtt": "Nexus-fara-frontiere/loc/fr/fr.vtt",
+     "duration": 39.8,
+     "size": 322446
+    },
+    "hu": {
+     "video": "Nexus-fara-frontiere/loc/hu/video.mp4",
+     "vtt": "Nexus-fara-frontiere/loc/hu/hu.vtt",
+     "duration": 46.1,
+     "size": 380374
+    },
+    "it": {
+     "video": "Nexus-fara-frontiere/loc/it/video.mp4",
+     "vtt": "Nexus-fara-frontiere/loc/it/it.vtt",
+     "duration": 51,
+     "size": 408419
+    },
+    "pt": {
+     "video": "Nexus-fara-frontiere/loc/pt/video.mp4",
+     "vtt": "Nexus-fara-frontiere/loc/pt/pt.vtt",
+     "duration": 40.8,
+     "size": 331724
+    },
+    "ro": {
+     "video": "Nexus-fara-frontiere/loc/ro/video.mp4",
+     "vtt": "Nexus-fara-frontiere/loc/ro/ro.vtt",
+     "duration": 33.7,
+     "size": 348257
+    }
+   }
   },
   {
    "slug": "PromptVault",
@@ -5942,7 +9815,51 @@
     "de": "PromptVault/de.vtt",
     "hu": "PromptVault/hu.vtt"
    },
-   "transcript": "PromptVault/transcript.json"
+   "transcript": "PromptVault/transcript.json",
+   "videos": {
+    "de": {
+     "video": "PromptVault/loc/de/video.mp4",
+     "vtt": "PromptVault/loc/de/de.vtt",
+     "duration": 40.3,
+     "size": 677617
+    },
+    "es": {
+     "video": "PromptVault/loc/es/video.mp4",
+     "vtt": "PromptVault/loc/es/es.vtt",
+     "duration": 34.6,
+     "size": 594096
+    },
+    "fr": {
+     "video": "PromptVault/loc/fr/video.mp4",
+     "vtt": "PromptVault/loc/fr/fr.vtt",
+     "duration": 35.3,
+     "size": 662817
+    },
+    "hu": {
+     "video": "PromptVault/loc/hu/video.mp4",
+     "vtt": "PromptVault/loc/hu/hu.vtt",
+     "duration": 34.3,
+     "size": 650936
+    },
+    "it": {
+     "video": "PromptVault/loc/it/video.mp4",
+     "vtt": "PromptVault/loc/it/it.vtt",
+     "duration": 40.8,
+     "size": 701987
+    },
+    "pt": {
+     "video": "PromptVault/loc/pt/video.mp4",
+     "vtt": "PromptVault/loc/pt/pt.vtt",
+     "duration": 39.8,
+     "size": 585182
+    },
+    "ro": {
+     "video": "PromptVault/loc/ro/video.mp4",
+     "vtt": "PromptVault/loc/ro/ro.vtt",
+     "duration": 35.3,
+     "size": 582592
+    }
+   }
   },
   {
    "slug": "VoiceAtelier",
@@ -6002,7 +9919,51 @@
     "de": "VoiceAtelier/de.vtt",
     "hu": "VoiceAtelier/hu.vtt"
    },
-   "transcript": "VoiceAtelier/transcript.json"
+   "transcript": "VoiceAtelier/transcript.json",
+   "videos": {
+    "de": {
+     "video": "VoiceAtelier/loc/de/video.mp4",
+     "vtt": "VoiceAtelier/loc/de/de.vtt",
+     "duration": 30,
+     "size": 336052
+    },
+    "es": {
+     "video": "VoiceAtelier/loc/es/video.mp4",
+     "vtt": "VoiceAtelier/loc/es/es.vtt",
+     "duration": 32.4,
+     "size": 391766
+    },
+    "fr": {
+     "video": "VoiceAtelier/loc/fr/video.mp4",
+     "vtt": "VoiceAtelier/loc/fr/fr.vtt",
+     "duration": 32.5,
+     "size": 374152
+    },
+    "hu": {
+     "video": "VoiceAtelier/loc/hu/video.mp4",
+     "vtt": "VoiceAtelier/loc/hu/hu.vtt",
+     "duration": 30.5,
+     "size": 349373
+    },
+    "it": {
+     "video": "VoiceAtelier/loc/it/video.mp4",
+     "vtt": "VoiceAtelier/loc/it/it.vtt",
+     "duration": 32.3,
+     "size": 313769
+    },
+    "pt": {
+     "video": "VoiceAtelier/loc/pt/video.mp4",
+     "vtt": "VoiceAtelier/loc/pt/pt.vtt",
+     "duration": 27.4,
+     "size": 343676
+    },
+    "ro": {
+     "video": "VoiceAtelier/loc/ro/video.mp4",
+     "vtt": "VoiceAtelier/loc/ro/ro.vtt",
+     "duration": 27.5,
+     "size": 337763
+    }
+   }
   },
   {
    "slug": "API-fara-frontiere",
@@ -6062,7 +10023,51 @@
     "de": "API-fara-frontiere/de.vtt",
     "hu": "API-fara-frontiere/hu.vtt"
    },
-   "transcript": "API-fara-frontiere/transcript.json"
+   "transcript": "API-fara-frontiere/transcript.json",
+   "videos": {
+    "de": {
+     "video": "API-fara-frontiere/loc/de/video.mp4",
+     "vtt": "API-fara-frontiere/loc/de/de.vtt",
+     "duration": 43,
+     "size": 408682
+    },
+    "es": {
+     "video": "API-fara-frontiere/loc/es/video.mp4",
+     "vtt": "API-fara-frontiere/loc/es/es.vtt",
+     "duration": 33.1,
+     "size": 326203
+    },
+    "fr": {
+     "video": "API-fara-frontiere/loc/fr/video.mp4",
+     "vtt": "API-fara-frontiere/loc/fr/fr.vtt",
+     "duration": 36.5,
+     "size": 429131
+    },
+    "hu": {
+     "video": "API-fara-frontiere/loc/hu/video.mp4",
+     "vtt": "API-fara-frontiere/loc/hu/hu.vtt",
+     "duration": 32.3,
+     "size": 335096
+    },
+    "it": {
+     "video": "API-fara-frontiere/loc/it/video.mp4",
+     "vtt": "API-fara-frontiere/loc/it/it.vtt",
+     "duration": 44.3,
+     "size": 444586
+    },
+    "pt": {
+     "video": "API-fara-frontiere/loc/pt/video.mp4",
+     "vtt": "API-fara-frontiere/loc/pt/pt.vtt",
+     "duration": 42.2,
+     "size": 378783
+    },
+    "ro": {
+     "video": "API-fara-frontiere/loc/ro/video.mp4",
+     "vtt": "API-fara-frontiere/loc/ro/ro.vtt",
+     "duration": 32.9,
+     "size": 370562
+    }
+   }
   },
   {
    "slug": "Constelar",
@@ -6122,7 +10127,51 @@
     "de": "Constelar/de.vtt",
     "hu": "Constelar/hu.vtt"
    },
-   "transcript": "Constelar/transcript.json"
+   "transcript": "Constelar/transcript.json",
+   "videos": {
+    "de": {
+     "video": "Constelar/loc/de/video.mp4",
+     "vtt": "Constelar/loc/de/de.vtt",
+     "duration": 37.8,
+     "size": 221085
+    },
+    "es": {
+     "video": "Constelar/loc/es/video.mp4",
+     "vtt": "Constelar/loc/es/es.vtt",
+     "duration": 36.4,
+     "size": 257030
+    },
+    "fr": {
+     "video": "Constelar/loc/fr/video.mp4",
+     "vtt": "Constelar/loc/fr/fr.vtt",
+     "duration": 36.6,
+     "size": 254580
+    },
+    "hu": {
+     "video": "Constelar/loc/hu/video.mp4",
+     "vtt": "Constelar/loc/hu/hu.vtt",
+     "duration": 30.7,
+     "size": 188617
+    },
+    "it": {
+     "video": "Constelar/loc/it/video.mp4",
+     "vtt": "Constelar/loc/it/it.vtt",
+     "duration": 41.7,
+     "size": 295854
+    },
+    "pt": {
+     "video": "Constelar/loc/pt/video.mp4",
+     "vtt": "Constelar/loc/pt/pt.vtt",
+     "duration": 32.5,
+     "size": 194203
+    },
+    "ro": {
+     "video": "Constelar/loc/ro/video.mp4",
+     "vtt": "Constelar/loc/ro/ro.vtt",
+     "duration": 34.8,
+     "size": 246573
+    }
+   }
   },
   {
    "slug": "OAZA",
@@ -6182,7 +10231,51 @@
     "de": "OAZA/de.vtt",
     "hu": "OAZA/hu.vtt"
    },
-   "transcript": "OAZA/transcript.json"
+   "transcript": "OAZA/transcript.json",
+   "videos": {
+    "de": {
+     "video": "OAZA/loc/de/video.mp4",
+     "vtt": "OAZA/loc/de/de.vtt",
+     "duration": 31.7,
+     "size": 401663
+    },
+    "es": {
+     "video": "OAZA/loc/es/video.mp4",
+     "vtt": "OAZA/loc/es/es.vtt",
+     "duration": 32.4,
+     "size": 405013
+    },
+    "fr": {
+     "video": "OAZA/loc/fr/video.mp4",
+     "vtt": "OAZA/loc/fr/fr.vtt",
+     "duration": 29.9,
+     "size": 396975
+    },
+    "hu": {
+     "video": "OAZA/loc/hu/video.mp4",
+     "vtt": "OAZA/loc/hu/hu.vtt",
+     "duration": 30.4,
+     "size": 468510
+    },
+    "it": {
+     "video": "OAZA/loc/it/video.mp4",
+     "vtt": "OAZA/loc/it/it.vtt",
+     "duration": 32.5,
+     "size": 366439
+    },
+    "pt": {
+     "video": "OAZA/loc/pt/video.mp4",
+     "vtt": "OAZA/loc/pt/pt.vtt",
+     "duration": 33.5,
+     "size": 413176
+    },
+    "ro": {
+     "video": "OAZA/loc/ro/video.mp4",
+     "vtt": "OAZA/loc/ro/ro.vtt",
+     "duration": 31.9,
+     "size": 311836
+    }
+   }
   },
   {
    "slug": "Origami",
@@ -6242,7 +10335,51 @@
     "de": "Origami/de.vtt",
     "hu": "Origami/hu.vtt"
    },
-   "transcript": "Origami/transcript.json"
+   "transcript": "Origami/transcript.json",
+   "videos": {
+    "de": {
+     "video": "Origami/loc/de/video.mp4",
+     "vtt": "Origami/loc/de/de.vtt",
+     "duration": 31.5,
+     "size": 594850
+    },
+    "es": {
+     "video": "Origami/loc/es/video.mp4",
+     "vtt": "Origami/loc/es/es.vtt",
+     "duration": 28.7,
+     "size": 588207
+    },
+    "fr": {
+     "video": "Origami/loc/fr/video.mp4",
+     "vtt": "Origami/loc/fr/fr.vtt",
+     "duration": 28.8,
+     "size": 594724
+    },
+    "hu": {
+     "video": "Origami/loc/hu/video.mp4",
+     "vtt": "Origami/loc/hu/hu.vtt",
+     "duration": 30.5,
+     "size": 556424
+    },
+    "it": {
+     "video": "Origami/loc/it/video.mp4",
+     "vtt": "Origami/loc/it/it.vtt",
+     "duration": 27.5,
+     "size": 545141
+    },
+    "pt": {
+     "video": "Origami/loc/pt/video.mp4",
+     "vtt": "Origami/loc/pt/pt.vtt",
+     "duration": 32.3,
+     "size": 520108
+    },
+    "ro": {
+     "video": "Origami/loc/ro/video.mp4",
+     "vtt": "Origami/loc/ro/ro.vtt",
+     "duration": 30.2,
+     "size": 513403
+    }
+   }
   },
   {
    "slug": "Trusa-fara-frontiere",
@@ -6302,7 +10439,51 @@
     "de": "Trusa-fara-frontiere/de.vtt",
     "hu": "Trusa-fara-frontiere/hu.vtt"
    },
-   "transcript": "Trusa-fara-frontiere/transcript.json"
+   "transcript": "Trusa-fara-frontiere/transcript.json",
+   "videos": {
+    "de": {
+     "video": "Trusa-fara-frontiere/loc/de/video.mp4",
+     "vtt": "Trusa-fara-frontiere/loc/de/de.vtt",
+     "duration": 35.3,
+     "size": 548643
+    },
+    "es": {
+     "video": "Trusa-fara-frontiere/loc/es/video.mp4",
+     "vtt": "Trusa-fara-frontiere/loc/es/es.vtt",
+     "duration": 37.5,
+     "size": 625994
+    },
+    "fr": {
+     "video": "Trusa-fara-frontiere/loc/fr/video.mp4",
+     "vtt": "Trusa-fara-frontiere/loc/fr/fr.vtt",
+     "duration": 37.8,
+     "size": 603580
+    },
+    "hu": {
+     "video": "Trusa-fara-frontiere/loc/hu/video.mp4",
+     "vtt": "Trusa-fara-frontiere/loc/hu/hu.vtt",
+     "duration": 37,
+     "size": 601981
+    },
+    "it": {
+     "video": "Trusa-fara-frontiere/loc/it/video.mp4",
+     "vtt": "Trusa-fara-frontiere/loc/it/it.vtt",
+     "duration": 35.5,
+     "size": 571186
+    },
+    "pt": {
+     "video": "Trusa-fara-frontiere/loc/pt/video.mp4",
+     "vtt": "Trusa-fara-frontiere/loc/pt/pt.vtt",
+     "duration": 35.5,
+     "size": 538765
+    },
+    "ro": {
+     "video": "Trusa-fara-frontiere/loc/ro/video.mp4",
+     "vtt": "Trusa-fara-frontiere/loc/ro/ro.vtt",
+     "duration": 35.9,
+     "size": 512968
+    }
+   }
   },
   {
    "slug": "VNTV",
@@ -6370,7 +10551,51 @@
     "de": "VNTV/de.vtt",
     "hu": "VNTV/hu.vtt"
    },
-   "transcript": "VNTV/transcript.json"
+   "transcript": "VNTV/transcript.json",
+   "videos": {
+    "de": {
+     "video": "VNTV/loc/de/video.mp4",
+     "vtt": "VNTV/loc/de/de.vtt",
+     "duration": 22.4,
+     "size": 245758
+    },
+    "es": {
+     "video": "VNTV/loc/es/video.mp4",
+     "vtt": "VNTV/loc/es/es.vtt",
+     "duration": 22.1,
+     "size": 262515
+    },
+    "fr": {
+     "video": "VNTV/loc/fr/video.mp4",
+     "vtt": "VNTV/loc/fr/fr.vtt",
+     "duration": 20.6,
+     "size": 261827
+    },
+    "hu": {
+     "video": "VNTV/loc/hu/video.mp4",
+     "vtt": "VNTV/loc/hu/hu.vtt",
+     "duration": 20.5,
+     "size": 269911
+    },
+    "it": {
+     "video": "VNTV/loc/it/video.mp4",
+     "vtt": "VNTV/loc/it/it.vtt",
+     "duration": 24.5,
+     "size": 261481
+    },
+    "pt": {
+     "video": "VNTV/loc/pt/video.mp4",
+     "vtt": "VNTV/loc/pt/pt.vtt",
+     "duration": 25,
+     "size": 245199
+    },
+    "ro": {
+     "video": "VNTV/loc/ro/video.mp4",
+     "vtt": "VNTV/loc/ro/ro.vtt",
+     "duration": 22.5,
+     "size": 246265
+    }
+   }
   },
   {
    "slug": "ACORDAJ",
@@ -6446,7 +10671,51 @@
     "de": "ACORDAJ/de.vtt",
     "hu": "ACORDAJ/hu.vtt"
    },
-   "transcript": "ACORDAJ/transcript.json"
+   "transcript": "ACORDAJ/transcript.json",
+   "videos": {
+    "de": {
+     "video": "ACORDAJ/loc/de/video.mp4",
+     "vtt": "ACORDAJ/loc/de/de.vtt",
+     "duration": 34.8,
+     "size": 343531
+    },
+    "es": {
+     "video": "ACORDAJ/loc/es/video.mp4",
+     "vtt": "ACORDAJ/loc/es/es.vtt",
+     "duration": 32.3,
+     "size": 353804
+    },
+    "fr": {
+     "video": "ACORDAJ/loc/fr/video.mp4",
+     "vtt": "ACORDAJ/loc/fr/fr.vtt",
+     "duration": 33.5,
+     "size": 349674
+    },
+    "hu": {
+     "video": "ACORDAJ/loc/hu/video.mp4",
+     "vtt": "ACORDAJ/loc/hu/hu.vtt",
+     "duration": 36.9,
+     "size": 380956
+    },
+    "it": {
+     "video": "ACORDAJ/loc/it/video.mp4",
+     "vtt": "ACORDAJ/loc/it/it.vtt",
+     "duration": 34.8,
+     "size": 345448
+    },
+    "pt": {
+     "video": "ACORDAJ/loc/pt/video.mp4",
+     "vtt": "ACORDAJ/loc/pt/pt.vtt",
+     "duration": 32.9,
+     "size": 316646
+    },
+    "ro": {
+     "video": "ACORDAJ/loc/ro/video.mp4",
+     "vtt": "ACORDAJ/loc/ro/ro.vtt",
+     "duration": 30.4,
+     "size": 307478
+    }
+   }
   },
   {
    "slug": "Afrodisiace-fara-frontiere",
@@ -6506,7 +10775,51 @@
     "de": "Afrodisiace-fara-frontiere/de.vtt",
     "hu": "Afrodisiace-fara-frontiere/hu.vtt"
    },
-   "transcript": "Afrodisiace-fara-frontiere/transcript.json"
+   "transcript": "Afrodisiace-fara-frontiere/transcript.json",
+   "videos": {
+    "de": {
+     "video": "Afrodisiace-fara-frontiere/loc/de/video.mp4",
+     "vtt": "Afrodisiace-fara-frontiere/loc/de/de.vtt",
+     "duration": 27.5,
+     "size": 510016
+    },
+    "es": {
+     "video": "Afrodisiace-fara-frontiere/loc/es/video.mp4",
+     "vtt": "Afrodisiace-fara-frontiere/loc/es/es.vtt",
+     "duration": 27.1,
+     "size": 452268
+    },
+    "fr": {
+     "video": "Afrodisiace-fara-frontiere/loc/fr/video.mp4",
+     "vtt": "Afrodisiace-fara-frontiere/loc/fr/fr.vtt",
+     "duration": 27.2,
+     "size": 437045
+    },
+    "hu": {
+     "video": "Afrodisiace-fara-frontiere/loc/hu/video.mp4",
+     "vtt": "Afrodisiace-fara-frontiere/loc/hu/hu.vtt",
+     "duration": 26.8,
+     "size": 542713
+    },
+    "it": {
+     "video": "Afrodisiace-fara-frontiere/loc/it/video.mp4",
+     "vtt": "Afrodisiace-fara-frontiere/loc/it/it.vtt",
+     "duration": 27,
+     "size": 481181
+    },
+    "pt": {
+     "video": "Afrodisiace-fara-frontiere/loc/pt/video.mp4",
+     "vtt": "Afrodisiace-fara-frontiere/loc/pt/pt.vtt",
+     "duration": 25.5,
+     "size": 433960
+    },
+    "ro": {
+     "video": "Afrodisiace-fara-frontiere/loc/ro/video.mp4",
+     "vtt": "Afrodisiace-fara-frontiere/loc/ro/ro.vtt",
+     "duration": 26.8,
+     "size": 463551
+    }
+   }
   },
   {
    "slug": "Aurora",
@@ -6582,7 +10895,51 @@
     "de": "Aurora/de.vtt",
     "hu": "Aurora/hu.vtt"
    },
-   "transcript": "Aurora/transcript.json"
+   "transcript": "Aurora/transcript.json",
+   "videos": {
+    "de": {
+     "video": "Aurora/loc/de/video.mp4",
+     "vtt": "Aurora/loc/de/de.vtt",
+     "duration": 36.8,
+     "size": 265489
+    },
+    "es": {
+     "video": "Aurora/loc/es/video.mp4",
+     "vtt": "Aurora/loc/es/es.vtt",
+     "duration": 56.9,
+     "size": 518613
+    },
+    "fr": {
+     "video": "Aurora/loc/fr/video.mp4",
+     "vtt": "Aurora/loc/fr/fr.vtt",
+     "duration": 75.6,
+     "size": 623628
+    },
+    "hu": {
+     "video": "Aurora/loc/hu/video.mp4",
+     "vtt": "Aurora/loc/hu/hu.vtt",
+     "duration": 57.3,
+     "size": 525428
+    },
+    "it": {
+     "video": "Aurora/loc/it/video.mp4",
+     "vtt": "Aurora/loc/it/it.vtt",
+     "duration": 64,
+     "size": 546292
+    },
+    "pt": {
+     "video": "Aurora/loc/pt/video.mp4",
+     "vtt": "Aurora/loc/pt/pt.vtt",
+     "duration": 71.6,
+     "size": 631943
+    },
+    "ro": {
+     "video": "Aurora/loc/ro/video.mp4",
+     "vtt": "Aurora/loc/ro/ro.vtt",
+     "duration": 34.1,
+     "size": 271444
+    }
+   }
   },
   {
    "slug": "Bioenergoterapie",
@@ -6642,7 +10999,51 @@
     "de": "Bioenergoterapie/de.vtt",
     "hu": "Bioenergoterapie/hu.vtt"
    },
-   "transcript": "Bioenergoterapie/transcript.json"
+   "transcript": "Bioenergoterapie/transcript.json",
+   "videos": {
+    "de": {
+     "video": "Bioenergoterapie/loc/de/video.mp4",
+     "vtt": "Bioenergoterapie/loc/de/de.vtt",
+     "duration": 27.6,
+     "size": 450064
+    },
+    "es": {
+     "video": "Bioenergoterapie/loc/es/video.mp4",
+     "vtt": "Bioenergoterapie/loc/es/es.vtt",
+     "duration": 27.5,
+     "size": 421921
+    },
+    "fr": {
+     "video": "Bioenergoterapie/loc/fr/video.mp4",
+     "vtt": "Bioenergoterapie/loc/fr/fr.vtt",
+     "duration": 28.2,
+     "size": 444457
+    },
+    "hu": {
+     "video": "Bioenergoterapie/loc/hu/video.mp4",
+     "vtt": "Bioenergoterapie/loc/hu/hu.vtt",
+     "duration": 26.6,
+     "size": 438737
+    },
+    "it": {
+     "video": "Bioenergoterapie/loc/it/video.mp4",
+     "vtt": "Bioenergoterapie/loc/it/it.vtt",
+     "duration": 28.3,
+     "size": 461530
+    },
+    "pt": {
+     "video": "Bioenergoterapie/loc/pt/video.mp4",
+     "vtt": "Bioenergoterapie/loc/pt/pt.vtt",
+     "duration": 28.9,
+     "size": 446525
+    },
+    "ro": {
+     "video": "Bioenergoterapie/loc/ro/video.mp4",
+     "vtt": "Bioenergoterapie/loc/ro/ro.vtt",
+     "duration": 24.1,
+     "size": 458471
+    }
+   }
   },
   {
    "slug": "ECLIPSA",
@@ -6702,7 +11103,51 @@
     "de": "ECLIPSA/de.vtt",
     "hu": "ECLIPSA/hu.vtt"
    },
-   "transcript": "ECLIPSA/transcript.json"
+   "transcript": "ECLIPSA/transcript.json",
+   "videos": {
+    "de": {
+     "video": "ECLIPSA/loc/de/video.mp4",
+     "vtt": "ECLIPSA/loc/de/de.vtt",
+     "duration": 29.8,
+     "size": 393922
+    },
+    "es": {
+     "video": "ECLIPSA/loc/es/video.mp4",
+     "vtt": "ECLIPSA/loc/es/es.vtt",
+     "duration": 29.5,
+     "size": 416750
+    },
+    "fr": {
+     "video": "ECLIPSA/loc/fr/video.mp4",
+     "vtt": "ECLIPSA/loc/fr/fr.vtt",
+     "duration": 28,
+     "size": 400830
+    },
+    "hu": {
+     "video": "ECLIPSA/loc/hu/video.mp4",
+     "vtt": "ECLIPSA/loc/hu/hu.vtt",
+     "duration": 27.7,
+     "size": 468191
+    },
+    "it": {
+     "video": "ECLIPSA/loc/it/video.mp4",
+     "vtt": "ECLIPSA/loc/it/it.vtt",
+     "duration": 27.9,
+     "size": 447163
+    },
+    "pt": {
+     "video": "ECLIPSA/loc/pt/video.mp4",
+     "vtt": "ECLIPSA/loc/pt/pt.vtt",
+     "duration": 29.5,
+     "size": 425297
+    },
+    "ro": {
+     "video": "ECLIPSA/loc/ro/video.mp4",
+     "vtt": "ECLIPSA/loc/ro/ro.vtt",
+     "duration": 26.4,
+     "size": 365554
+    }
+   }
   },
   {
    "slug": "HoroScop",
@@ -6778,7 +11223,51 @@
     "de": "HoroScop/de.vtt",
     "hu": "HoroScop/hu.vtt"
    },
-   "transcript": "HoroScop/transcript.json"
+   "transcript": "HoroScop/transcript.json",
+   "videos": {
+    "de": {
+     "video": "HoroScop/loc/de/video.mp4",
+     "vtt": "HoroScop/loc/de/de.vtt",
+     "duration": 25.5,
+     "size": 264094
+    },
+    "es": {
+     "video": "HoroScop/loc/es/video.mp4",
+     "vtt": "HoroScop/loc/es/es.vtt",
+     "duration": 26.1,
+     "size": 262774
+    },
+    "fr": {
+     "video": "HoroScop/loc/fr/video.mp4",
+     "vtt": "HoroScop/loc/fr/fr.vtt",
+     "duration": 26.5,
+     "size": 295821
+    },
+    "hu": {
+     "video": "HoroScop/loc/hu/video.mp4",
+     "vtt": "HoroScop/loc/hu/hu.vtt",
+     "duration": 29.8,
+     "size": 269343
+    },
+    "it": {
+     "video": "HoroScop/loc/it/video.mp4",
+     "vtt": "HoroScop/loc/it/it.vtt",
+     "duration": 28,
+     "size": 278773
+    },
+    "pt": {
+     "video": "HoroScop/loc/pt/video.mp4",
+     "vtt": "HoroScop/loc/pt/pt.vtt",
+     "duration": 25.5,
+     "size": 230646
+    },
+    "ro": {
+     "video": "HoroScop/loc/ro/video.mp4",
+     "vtt": "HoroScop/loc/ro/ro.vtt",
+     "duration": 26.5,
+     "size": 263136
+    }
+   }
   },
   {
    "slug": "Inforenergetica",
@@ -6838,7 +11327,51 @@
     "de": "Inforenergetica/de.vtt",
     "hu": "Inforenergetica/hu.vtt"
    },
-   "transcript": "Inforenergetica/transcript.json"
+   "transcript": "Inforenergetica/transcript.json",
+   "videos": {
+    "de": {
+     "video": "Inforenergetica/loc/de/video.mp4",
+     "vtt": "Inforenergetica/loc/de/de.vtt",
+     "duration": 35,
+     "size": 672607
+    },
+    "es": {
+     "video": "Inforenergetica/loc/es/video.mp4",
+     "vtt": "Inforenergetica/loc/es/es.vtt",
+     "duration": 40.3,
+     "size": 639006
+    },
+    "fr": {
+     "video": "Inforenergetica/loc/fr/video.mp4",
+     "vtt": "Inforenergetica/loc/fr/fr.vtt",
+     "duration": 38,
+     "size": 695280
+    },
+    "hu": {
+     "video": "Inforenergetica/loc/hu/video.mp4",
+     "vtt": "Inforenergetica/loc/hu/hu.vtt",
+     "duration": 47.4,
+     "size": 812293
+    },
+    "it": {
+     "video": "Inforenergetica/loc/it/video.mp4",
+     "vtt": "Inforenergetica/loc/it/it.vtt",
+     "duration": 42.3,
+     "size": 702630
+    },
+    "pt": {
+     "video": "Inforenergetica/loc/pt/video.mp4",
+     "vtt": "Inforenergetica/loc/pt/pt.vtt",
+     "duration": 41.5,
+     "size": 703917
+    },
+    "ro": {
+     "video": "Inforenergetica/loc/ro/video.mp4",
+     "vtt": "Inforenergetica/loc/ro/ro.vtt",
+     "duration": 44.3,
+     "size": 822022
+    }
+   }
   },
   {
    "slug": "NOMIA",
@@ -6914,7 +11447,51 @@
     "de": "NOMIA/de.vtt",
     "hu": "NOMIA/hu.vtt"
    },
-   "transcript": "NOMIA/transcript.json"
+   "transcript": "NOMIA/transcript.json",
+   "videos": {
+    "de": {
+     "video": "NOMIA/loc/de/video.mp4",
+     "vtt": "NOMIA/loc/de/de.vtt",
+     "duration": 44.7,
+     "size": 433972
+    },
+    "es": {
+     "video": "NOMIA/loc/es/video.mp4",
+     "vtt": "NOMIA/loc/es/es.vtt",
+     "duration": 42.4,
+     "size": 415805
+    },
+    "fr": {
+     "video": "NOMIA/loc/fr/video.mp4",
+     "vtt": "NOMIA/loc/fr/fr.vtt",
+     "duration": 43,
+     "size": 327685
+    },
+    "hu": {
+     "video": "NOMIA/loc/hu/video.mp4",
+     "vtt": "NOMIA/loc/hu/hu.vtt",
+     "duration": 41.1,
+     "size": 395820
+    },
+    "it": {
+     "video": "NOMIA/loc/it/video.mp4",
+     "vtt": "NOMIA/loc/it/it.vtt",
+     "duration": 42.2,
+     "size": 402945
+    },
+    "pt": {
+     "video": "NOMIA/loc/pt/video.mp4",
+     "vtt": "NOMIA/loc/pt/pt.vtt",
+     "duration": 39.7,
+     "size": 393033
+    },
+    "ro": {
+     "video": "NOMIA/loc/ro/video.mp4",
+     "vtt": "NOMIA/loc/ro/ro.vtt",
+     "duration": 39.3,
+     "size": 411135
+    }
+   }
   },
   {
    "slug": "NumeroLogIA",
@@ -6990,7 +11567,51 @@
     "de": "NumeroLogIA/de.vtt",
     "hu": "NumeroLogIA/hu.vtt"
    },
-   "transcript": "NumeroLogIA/transcript.json"
+   "transcript": "NumeroLogIA/transcript.json",
+   "videos": {
+    "de": {
+     "video": "NumeroLogIA/loc/de/video.mp4",
+     "vtt": "NumeroLogIA/loc/de/de.vtt",
+     "duration": 30.2,
+     "size": 340189
+    },
+    "es": {
+     "video": "NumeroLogIA/loc/es/video.mp4",
+     "vtt": "NumeroLogIA/loc/es/es.vtt",
+     "duration": 31.5,
+     "size": 331569
+    },
+    "fr": {
+     "video": "NumeroLogIA/loc/fr/video.mp4",
+     "vtt": "NumeroLogIA/loc/fr/fr.vtt",
+     "duration": 34,
+     "size": 359757
+    },
+    "hu": {
+     "video": "NumeroLogIA/loc/hu/video.mp4",
+     "vtt": "NumeroLogIA/loc/hu/hu.vtt",
+     "duration": 36.8,
+     "size": 334781
+    },
+    "it": {
+     "video": "NumeroLogIA/loc/it/video.mp4",
+     "vtt": "NumeroLogIA/loc/it/it.vtt",
+     "duration": 31.5,
+     "size": 320045
+    },
+    "pt": {
+     "video": "NumeroLogIA/loc/pt/video.mp4",
+     "vtt": "NumeroLogIA/loc/pt/pt.vtt",
+     "duration": 31.4,
+     "size": 351857
+    },
+    "ro": {
+     "video": "NumeroLogIA/loc/ro/video.mp4",
+     "vtt": "NumeroLogIA/loc/ro/ro.vtt",
+     "duration": 32,
+     "size": 286640
+    }
+   }
   },
   {
    "slug": "Numerologie",
@@ -7050,7 +11671,51 @@
     "de": "Numerologie/de.vtt",
     "hu": "Numerologie/hu.vtt"
    },
-   "transcript": "Numerologie/transcript.json"
+   "transcript": "Numerologie/transcript.json",
+   "videos": {
+    "de": {
+     "video": "Numerologie/loc/de/video.mp4",
+     "vtt": "Numerologie/loc/de/de.vtt",
+     "duration": 34.2,
+     "size": 647001
+    },
+    "es": {
+     "video": "Numerologie/loc/es/video.mp4",
+     "vtt": "Numerologie/loc/es/es.vtt",
+     "duration": 31.6,
+     "size": 633689
+    },
+    "fr": {
+     "video": "Numerologie/loc/fr/video.mp4",
+     "vtt": "Numerologie/loc/fr/fr.vtt",
+     "duration": 31.3,
+     "size": 642040
+    },
+    "hu": {
+     "video": "Numerologie/loc/hu/video.mp4",
+     "vtt": "Numerologie/loc/hu/hu.vtt",
+     "duration": 31.6,
+     "size": 666876
+    },
+    "it": {
+     "video": "Numerologie/loc/it/video.mp4",
+     "vtt": "Numerologie/loc/it/it.vtt",
+     "duration": 33.5,
+     "size": 697506
+    },
+    "pt": {
+     "video": "Numerologie/loc/pt/video.mp4",
+     "vtt": "Numerologie/loc/pt/pt.vtt",
+     "duration": 32.4,
+     "size": 691527
+    },
+    "ro": {
+     "video": "Numerologie/loc/ro/video.mp4",
+     "vtt": "Numerologie/loc/ro/ro.vtt",
+     "duration": 34.3,
+     "size": 590194
+    }
+   }
   },
   {
    "slug": "Radiestezie",
@@ -7110,7 +11775,51 @@
     "de": "Radiestezie/de.vtt",
     "hu": "Radiestezie/hu.vtt"
    },
-   "transcript": "Radiestezie/transcript.json"
+   "transcript": "Radiestezie/transcript.json",
+   "videos": {
+    "de": {
+     "video": "Radiestezie/loc/de/video.mp4",
+     "vtt": "Radiestezie/loc/de/de.vtt",
+     "duration": 23.1,
+     "size": 286016
+    },
+    "es": {
+     "video": "Radiestezie/loc/es/video.mp4",
+     "vtt": "Radiestezie/loc/es/es.vtt",
+     "duration": 26.1,
+     "size": 323332
+    },
+    "fr": {
+     "video": "Radiestezie/loc/fr/video.mp4",
+     "vtt": "Radiestezie/loc/fr/fr.vtt",
+     "duration": 21.4,
+     "size": 292108
+    },
+    "hu": {
+     "video": "Radiestezie/loc/hu/video.mp4",
+     "vtt": "Radiestezie/loc/hu/hu.vtt",
+     "duration": 26.1,
+     "size": 438610
+    },
+    "it": {
+     "video": "Radiestezie/loc/it/video.mp4",
+     "vtt": "Radiestezie/loc/it/it.vtt",
+     "duration": 28.1,
+     "size": 370760
+    },
+    "pt": {
+     "video": "Radiestezie/loc/pt/video.mp4",
+     "vtt": "Radiestezie/loc/pt/pt.vtt",
+     "duration": 29.3,
+     "size": 406595
+    },
+    "ro": {
+     "video": "Radiestezie/loc/ro/video.mp4",
+     "vtt": "Radiestezie/loc/ro/ro.vtt",
+     "duration": 28,
+     "size": 403764
+    }
+   }
   },
   {
    "slug": "Reiki",
@@ -7170,7 +11879,51 @@
     "de": "Reiki/de.vtt",
     "hu": "Reiki/hu.vtt"
    },
-   "transcript": "Reiki/transcript.json"
+   "transcript": "Reiki/transcript.json",
+   "videos": {
+    "de": {
+     "video": "Reiki/loc/de/video.mp4",
+     "vtt": "Reiki/loc/de/de.vtt",
+     "duration": 37.4,
+     "size": 709733
+    },
+    "es": {
+     "video": "Reiki/loc/es/video.mp4",
+     "vtt": "Reiki/loc/es/es.vtt",
+     "duration": 37.2,
+     "size": 615877
+    },
+    "fr": {
+     "video": "Reiki/loc/fr/video.mp4",
+     "vtt": "Reiki/loc/fr/fr.vtt",
+     "duration": 36.3,
+     "size": 659063
+    },
+    "hu": {
+     "video": "Reiki/loc/hu/video.mp4",
+     "vtt": "Reiki/loc/hu/hu.vtt",
+     "duration": 36.3,
+     "size": 745436
+    },
+    "it": {
+     "video": "Reiki/loc/it/video.mp4",
+     "vtt": "Reiki/loc/it/it.vtt",
+     "duration": 35.4,
+     "size": 652648
+    },
+    "pt": {
+     "video": "Reiki/loc/pt/video.mp4",
+     "vtt": "Reiki/loc/pt/pt.vtt",
+     "duration": 40.8,
+     "size": 724591
+    },
+    "ro": {
+     "video": "Reiki/loc/ro/video.mp4",
+     "vtt": "Reiki/loc/ro/ro.vtt",
+     "duration": 38.5,
+     "size": 660009
+    }
+   }
   },
   {
    "slug": "Tarot",
@@ -7230,7 +11983,51 @@
     "de": "Tarot/de.vtt",
     "hu": "Tarot/hu.vtt"
    },
-   "transcript": "Tarot/transcript.json"
+   "transcript": "Tarot/transcript.json",
+   "videos": {
+    "de": {
+     "video": "Tarot/loc/de/video.mp4",
+     "vtt": "Tarot/loc/de/de.vtt",
+     "duration": 34,
+     "size": 692805
+    },
+    "es": {
+     "video": "Tarot/loc/es/video.mp4",
+     "vtt": "Tarot/loc/es/es.vtt",
+     "duration": 35.5,
+     "size": 598959
+    },
+    "fr": {
+     "video": "Tarot/loc/fr/video.mp4",
+     "vtt": "Tarot/loc/fr/fr.vtt",
+     "duration": 33.9,
+     "size": 625198
+    },
+    "hu": {
+     "video": "Tarot/loc/hu/video.mp4",
+     "vtt": "Tarot/loc/hu/hu.vtt",
+     "duration": 35.2,
+     "size": 664029
+    },
+    "it": {
+     "video": "Tarot/loc/it/video.mp4",
+     "vtt": "Tarot/loc/it/it.vtt",
+     "duration": 33.6,
+     "size": 636673
+    },
+    "pt": {
+     "video": "Tarot/loc/pt/video.mp4",
+     "vtt": "Tarot/loc/pt/pt.vtt",
+     "duration": 34.2,
+     "size": 637678
+    },
+    "ro": {
+     "video": "Tarot/loc/ro/video.mp4",
+     "vtt": "Tarot/loc/ro/ro.vtt",
+     "duration": 34.6,
+     "size": 637394
+    }
+   }
   },
   {
    "slug": "ValeaPlopului1972",
@@ -7306,7 +12103,51 @@
     "de": "ValeaPlopului1972/de.vtt",
     "hu": "ValeaPlopului1972/hu.vtt"
    },
-   "transcript": "ValeaPlopului1972/transcript.json"
+   "transcript": "ValeaPlopului1972/transcript.json",
+   "videos": {
+    "de": {
+     "video": "ValeaPlopului1972/loc/de/video.mp4",
+     "vtt": "ValeaPlopului1972/loc/de/de.vtt",
+     "duration": 43.8,
+     "size": 467563
+    },
+    "es": {
+     "video": "ValeaPlopului1972/loc/es/video.mp4",
+     "vtt": "ValeaPlopului1972/loc/es/es.vtt",
+     "duration": 38.1,
+     "size": 442428
+    },
+    "fr": {
+     "video": "ValeaPlopului1972/loc/fr/video.mp4",
+     "vtt": "ValeaPlopului1972/loc/fr/fr.vtt",
+     "duration": 45.7,
+     "size": 449347
+    },
+    "hu": {
+     "video": "ValeaPlopului1972/loc/hu/video.mp4",
+     "vtt": "ValeaPlopului1972/loc/hu/hu.vtt",
+     "duration": 36.5,
+     "size": 462744
+    },
+    "it": {
+     "video": "ValeaPlopului1972/loc/it/video.mp4",
+     "vtt": "ValeaPlopului1972/loc/it/it.vtt",
+     "duration": 60.3,
+     "size": 552536
+    },
+    "pt": {
+     "video": "ValeaPlopului1972/loc/pt/video.mp4",
+     "vtt": "ValeaPlopului1972/loc/pt/pt.vtt",
+     "duration": 45.9,
+     "size": 505609
+    },
+    "ro": {
+     "video": "ValeaPlopului1972/loc/ro/video.mp4",
+     "vtt": "ValeaPlopului1972/loc/ro/ro.vtt",
+     "duration": 55,
+     "size": 512331
+    }
+   }
   }
  ],
  "trailer": {

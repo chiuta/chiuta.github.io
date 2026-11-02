@@ -21,6 +21,7 @@
  function addTracks(v,vtt){
   while(v.firstChild)v.removeChild(v.firstChild);
   Object.keys(LANGS).forEach(function(l){
+   if(!vtt[l])return;
    var t=document.createElement('track');t.kind='subtitles';t.srclang=l;t.label=LANGS[l];t.src=vtt[l];
    if(l===lang)t.default=true;v.appendChild(t);
   });
@@ -49,7 +50,7 @@
   list.forEach(function(i){
    var a=document.createElement('article');a.className='card';a.id=i.slug;
    var h=document.createElement('h3');h.innerHTML='<span></span><span class="tag"></span>';h.firstChild.textContent=i.title;h.lastChild.textContent=(i.tags&&i.tags[lang]&&i.tags[lang][0])||i.section;a.appendChild(h);
-   var v=document.createElement('video');v.controls=true;v.preload='none';v.playsInline=true;v.poster=i.poster;v.src=i.video;v.setAttribute('aria-label',i.title);v.addEventListener('play',function(){addTracks(v,i.vtt)},{once:true});a.appendChild(v);
+   var v=document.createElement('video');v.controls=true;v.preload='none';v.playsInline=true;var lv=i.videos&&i.videos[lang];v.poster=i.poster;v.src=lv?lv.video:i.video;v.setAttribute('aria-label',i.title);var tv0={};if(lv){tv0[lang]=lv.vtt}else{tv0=i.vtt}v.addEventListener('play',function(){addTracks(v,tv0)},{once:true});a.appendChild(v);
    var ds=document.createElement('p');ds.className='desc';ds.textContent=(i.line&&i.line[lang])||'';a.appendChild(ds);
    var m=document.createElement('div');m.className='meta';m.textContent=Math.round(i.duration)+' '+u.dur+' · '+(i.size/1048576).toFixed(1)+' MB';a.appendChild(m);
    var d=document.createElement('details');var s=document.createElement('summary');s.textContent=u.transcript;d.appendChild(s);
