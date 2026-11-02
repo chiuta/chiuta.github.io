@@ -167,8 +167,8 @@ Căutare pe web făcută la data de mai sus. Ce n-a putut fi citit direct (pagin
 
 ## 8. Stadiu la 2 noiembrie 2026 (după rundele de actualizare)
 
-- **FFF.bridge «Trimite la…»**: 36 de aplicații interconectate, PR-uri deschise pe ramura `fff-bridge-2026-11-01`; PR-urile de surse ale aplicațiilor cu bridge au aceeași bază.
-- **Surse actualizate**: două valuri (aplicații + enciclopedii), PR-uri pe `surse-2026-11-02`; ce nu s-a putut confirma a rămas neschimbat și e listat în PR-uri.
+- **FFF.bridge «Trimite la…»**: 36 de aplicații interconectate; PR-urile sunt îmbinate în `main` (2 noiembrie 2026), cu gardian pentru lipsa kitului, CI verde.
+- **Surse actualizate**: două valuri (aplicații + enciclopedii), 26 de PR-uri îmbinate în `main`; ce nu s-a putut confirma a rămas neschimbat și e listat în PR-uri.
 - **Limbi**: toate cele 110 de aplicații au selector cu cele 8 limbi; lacunele găsite (PromptVault, OAZA, ECLIPSA, NOMIA, TranslateHub-legal, VoiceAtelier-Polly) sunt reparate în PR-uri.
 - **Videoclipuri demo**: 770 de clipuri localizate (8 limbi × 96 de aplicații) în `demo/`, cu subtitrări în limba clipului.
 - **Rămase deschise** (decizii pentru autor):
