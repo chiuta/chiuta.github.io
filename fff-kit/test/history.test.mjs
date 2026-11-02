@@ -32,6 +32,11 @@ ok(labels.includes('before-restore'), 'înainte de restaurare s-a făcut instant
 await p.evaluate(async () => { for (let i = 0; i < 14; i++) { localStorage.setItem('n', String(i)); await FFF.history.snapshot('x' + i, {force: true}); } });
 const n = await p.evaluate(async () => (await FFF.history.list()).length);
 ok(n >= 8 && n <= 12, 'retenție: ~8 recente păstrate', n);
+// ștergerea datelor aplicației șterge și istoricul
+await p.evaluate(async () => { await FFF.bundle.wipe({confirm: false, reload: false}); });
+await p.waitForTimeout(300);
+const afterWipe = await p.evaluate(async () => (await FFF.history.list()).length);
+ok(afterWipe === 0, 'după „Șterge datele” istoricul e gol', afterWipe);
 // UI
 await p.click('#app-version'); await p.waitForSelector('dialog');
 ok(await p.locator('dialog button', {hasText: 'Istoric (mașina timpului)'}).count() === 1, 'buton Istoric în dialogul kitului');

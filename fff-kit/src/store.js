@@ -69,10 +69,10 @@
       var ls = window.localStorage;
       for (var i = 0; i < ls.length; i++) {
         var n = ls.key(i);
-        if (n && n.indexOf(PFX) === 0 && n !== S.indexKey) out[n.slice(PFX.length)] = 1;
+        if (n && n.indexOf(PFX) === 0 && n !== S.indexKey && n !== S.mtKey) out[n.slice(PFX.length)] = 1;
       }
     } catch (e) { /* ignorat */ }
-    old.keys.call(S).forEach(function (k) { if (k !== '__keys') out[k] = 1; });
+    old.keys.call(S).forEach(function (k) { if (k !== '__keys' && k !== '__mt') out[k] = 1; });
     Object.keys(mem).forEach(function (k) { out[k] = 1; });
     return Object.keys(out).sort();
   };
@@ -82,7 +82,7 @@
     old.indexKeys.call(S).forEach(function (k) { out[k] = 1; });
     try {
       var ls = window.localStorage;
-      for (var i = 0; i < ls.length; i++) { var n = ls.key(i); if (n && n.indexOf(PFX) === 0) out[n] = 1; }
+      for (var i = 0; i < ls.length; i++) { var n = ls.key(i); if (n && n.indexOf(PFX) === 0 && n !== S.mtKey) out[n] = 1; }
     } catch (e) { /* ignorat */ }
     return Object.keys(out).sort();
   };

@@ -172,6 +172,16 @@
     });
   }
 
+  /** Șterge tot istoricul (se apelează automat după «Șterge datele aplicației»: instantaneele nu trebuie să supraviețuiască ștergerii). */
+  function clear() {
+    return db().then(function (d) {
+      mem = [];
+      if (!d) return;
+      return new Promise(function (res) { var t = d.transaction('s', 'readwrite'); t.objectStore('s').clear(); t.oncomplete = res; t.onerror = t.onabort = res; });
+    });
+  }
+  if (F.bus && F.bus.on) F.bus.on('bundle:wiped', function () { autoOn = false; clear(); });
+
   /* ---------- automat ---------- */
   var autoOn = true;
   function auto() { if (autoOn && F.bundle) snapshot('auto', {minGap: MIN_GAP}).catch(function () { }); }
@@ -179,7 +189,7 @@
   window.addEventListener('pagehide', auto);
   setTimeout(function () { if (autoOn && F.bundle) snapshot('start', {minGap: MIN_GAP}).catch(function () { }); }, 3000);
 
-  F.history = {snapshot: snapshot, list: list, get: get, diff: diff, restore: restore, dialog: dialog, prune: prune,
+  F.history = {snapshot: snapshot, list: list, get: get, diff: diff, restore: restore, dialog: dialog, prune: prune, clear: clear,
     auto: function (on) { autoOn = on !== false; }, supported: function () { return !!(F.bundle && window.File); },
     _limits: {keepLast: KEEP_LAST, keepDays: KEEP_DAYS, maxBytes: MAX_BYTES}};
 })();

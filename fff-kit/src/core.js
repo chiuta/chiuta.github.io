@@ -176,8 +176,8 @@
   function saveIdx() {
     try { if (LS && origSet) origSet.call(LS, INDEX_KEY, JSON.stringify(Array.from(idx).sort())); } catch (e) { /* plin: ignorat */ }
   }
-  /* momentul ultimei scrieri pe cheie (folosit de FFF.sync): {cheie: ms}, în «fffmt.<slug>» (în afara spațiului fff.<slug>.*, ca să nu apară în chei/export), scris cu amânare */
-  var MT_KEY = 'fffmt.' + SLUG, mt = null, mtTimer = 0;
+  /* momentul ultimei scrieri pe cheie (folosit de FFF.sync): {cheie: ms}, în fff.<slug>.__mt (exclus din chei/export, ca __keys), scris cu amânare */
+  var MT_KEY = 'fff.' + SLUG + '.__mt', mt = null, mtTimer = 0;
   function loadMt() {
     if (mt) return mt;
     mt = Object.create(null);
@@ -264,7 +264,7 @@
       try {
         if (LS) for (var i = 0; i < LS.length; i++) {
           var n = LS.key(i);
-          if (n && n.indexOf(PFX) === 0 && n !== INDEX_KEY) out.push(n.slice(PFX.length));
+          if (n && n.indexOf(PFX) === 0 && n !== INDEX_KEY && n !== MT_KEY) out.push(n.slice(PFX.length));
         }
       } catch (e) { /* ignorat */ }
       Object.keys(mem).forEach(function (k) { if (out.indexOf(k) < 0) out.push(k); });
@@ -276,7 +276,7 @@
       var present = Object.create(null);
       try { if (LS) for (var i = 0; i < LS.length; i++) present[LS.key(i)] = 1; } catch (e) { /* ignorat */ }
       loadIdx().forEach(function (k) { if (present[k]) out.add(k); });
-      Object.keys(present).forEach(function (n) { if (n.indexOf(PFX) === 0 && n !== INDEX_KEY) out.add(n); });
+      Object.keys(present).forEach(function (n) { if (n.indexOf(PFX) === 0 && n !== INDEX_KEY && n !== MT_KEY) out.add(n); });
       return Array.from(out).sort();
     },
     /** Citire/scriere brută pentru modulele kitului (ocolește observatorul). */
@@ -287,6 +287,7 @@
     },
     prefix: PFX,
     indexKey: INDEX_KEY,
+    mtKey: MT_KEY,
     /** Blochează orice scriere în stocare până la reîncărcare (restaurare/ștergere): handlerele pagehide/beforeunload ale aplicației
      *  nu mai pot suprascrie datele tocmai scrise. Înlocuiește Storage.prototype.setItem/removeItem/clear cu no-op, oprește put/add/delete/clear
      *  din IndexedDB și blochează scrierile FFF.store. NU poate opri atribuirea directă localStorage.cheie = valoare. Ireversibil (până la reload). */
