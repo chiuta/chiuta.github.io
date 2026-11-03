@@ -90,6 +90,7 @@ if (cmd === 'check') {
     const sc = spawnSync(process.execPath, ['tools/sync-catalog.mjs', ...(APPS ? ['--root', APPS] : [])], {cwd: HUB, encoding: 'utf8'});
     console.log(sc.stdout.split('\n').filter((l) => /^(schimbare|\d+ carduri)/.test(l)).join('\n'));
     if (sc.status !== 0 && !/^\d+ carduri/m.test(sc.stdout)) { console.error(sc.stdout + sc.stderr); process.exit(1); }
+    node(['tools/transparenta.mjs', 'health']); // tabloul de sănătate depinde de a8 (surse) și de a7 (audit)
     node(['tools/transparenta.mjs', 'build']);
     node(['fff-kit/build.mjs', 'fixcsp', 'index.html']);
   }
