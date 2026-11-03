@@ -1,0 +1,13 @@
+# TEMPORAR (Etapa 7): sondă de structură pentru ACORDAJ. Tipărește scheletul mascat (litere → „a”) al paginilor sursei; se șterge după reparația parserului.
+name: acordaj-probe
+on: workflow_dispatch
+permissions:
+  contents: read
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: {node-version: '20'}
+      - run: node tools/refresh/probe-acordaj.mjs
