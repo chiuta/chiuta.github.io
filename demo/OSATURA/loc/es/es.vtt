@@ -1,0 +1,26 @@
+WEBVTT
+
+1
+00:00:02.254 --> 00:00:07.643
+El motor real de OSATURA, compilado a WebAssembly, funciona directamente en el navegador.
+
+2
+00:00:07.873 --> 00:00:12.298
+Cada fotograma se dibuja en local; no se sube nada a ningún servidor.
+
+3
+00:00:12.528 --> 00:00:19.958
+Pausa y arrastra el control deslizante para examinar cualquier fotograma.
+
+4
+00:00:20.188 --> 00:00:24.411
+Muestra los huesos: el esqueleto que mueve al personaje.
+
+5
+00:00:24.641 --> 00:00:29.124
+Abre tu propio proyecto: toda la animación es un solo archivo JSON.
+
+6
+00:00:29.354 --> 00:00:32.212
+Gratis y de código abierto — chiuta.ro
+

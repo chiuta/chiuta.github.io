@@ -12440,7 +12440,50 @@
     "hu": "OSATURA/hu.vtt"
    },
    "transcript": "OSATURA/transcript.json",
-   "videos": {}
+   "videos": {
+    "ro": {
+     "video": "OSATURA/loc/ro/video.mp4",
+     "vtt": "OSATURA/loc/ro/ro.vtt",
+     "duration": 31.6,
+     "size": 429259
+    },
+    "fr": {
+     "video": "OSATURA/loc/fr/video.mp4",
+     "vtt": "OSATURA/loc/fr/fr.vtt",
+     "duration": 29.5,
+     "size": 442521
+    },
+    "it": {
+     "video": "OSATURA/loc/it/video.mp4",
+     "vtt": "OSATURA/loc/it/it.vtt",
+     "duration": 30.5,
+     "size": 388260
+    },
+    "es": {
+     "video": "OSATURA/loc/es/video.mp4",
+     "vtt": "OSATURA/loc/es/es.vtt",
+     "duration": 32.3,
+     "size": 437186
+    },
+    "pt": {
+     "video": "OSATURA/loc/pt/video.mp4",
+     "vtt": "OSATURA/loc/pt/pt.vtt",
+     "duration": 31.5,
+     "size": 419298
+    },
+    "de": {
+     "video": "OSATURA/loc/de/video.mp4",
+     "vtt": "OSATURA/loc/de/de.vtt",
+     "duration": 29.7,
+     "size": 379391
+    },
+    "hu": {
+     "video": "OSATURA/loc/hu/video.mp4",
+     "vtt": "OSATURA/loc/hu/hu.vtt",
+     "duration": 30.7,
+     "size": 437725
+    }
+   }
   },
   {
    "slug": "VERIGA",
@@ -12515,6 +12558,42 @@
      "vtt": "VERIGA/loc/ro/ro.vtt",
      "duration": 36.3,
      "size": 210907
+    },
+    "fr": {
+     "video": "VERIGA/loc/fr/video.mp4",
+     "vtt": "VERIGA/loc/fr/fr.vtt",
+     "duration": 26,
+     "size": 372477
+    },
+    "it": {
+     "video": "VERIGA/loc/it/video.mp4",
+     "vtt": "VERIGA/loc/it/it.vtt",
+     "duration": 26.2,
+     "size": 339936
+    },
+    "es": {
+     "video": "VERIGA/loc/es/video.mp4",
+     "vtt": "VERIGA/loc/es/es.vtt",
+     "duration": 27.3,
+     "size": 319203
+    },
+    "pt": {
+     "video": "VERIGA/loc/pt/video.mp4",
+     "vtt": "VERIGA/loc/pt/pt.vtt",
+     "duration": 26.9,
+     "size": 320280
+    },
+    "de": {
+     "video": "VERIGA/loc/de/video.mp4",
+     "vtt": "VERIGA/loc/de/de.vtt",
+     "duration": 25.5,
+     "size": 361930
+    },
+    "hu": {
+     "video": "VERIGA/loc/hu/video.mp4",
+     "vtt": "VERIGA/loc/hu/hu.vtt",
+     "duration": 26.6,
+     "size": 379908
     }
    }
   },
@@ -12641,7 +12720,7 @@
    "status": "alpha",
    "video": "LegatorOCR/video.mp4",
    "poster": "LegatorOCR/poster.jpg",
-   "duration": 70.0,
+   "duration": 70,
    "size": 895763,
    "vtt": {
     "en": "LegatorOCR/en.vtt",
@@ -12654,7 +12733,50 @@
     "hu": "LegatorOCR/hu.vtt"
    },
    "transcript": "LegatorOCR/transcript.json",
-   "videos": {}
+   "videos": {
+    "ro": {
+     "video": "LegatorOCR/loc/ro/video.mp4",
+     "vtt": "LegatorOCR/loc/ro/ro.vtt",
+     "duration": 27.3,
+     "size": 241600
+    },
+    "fr": {
+     "video": "LegatorOCR/loc/fr/video.mp4",
+     "vtt": "LegatorOCR/loc/fr/fr.vtt",
+     "duration": 26.6,
+     "size": 233681
+    },
+    "it": {
+     "video": "LegatorOCR/loc/it/video.mp4",
+     "vtt": "LegatorOCR/loc/it/it.vtt",
+     "duration": 25.9,
+     "size": 243086
+    },
+    "es": {
+     "video": "LegatorOCR/loc/es/video.mp4",
+     "vtt": "LegatorOCR/loc/es/es.vtt",
+     "duration": 25.8,
+     "size": 258297
+    },
+    "pt": {
+     "video": "LegatorOCR/loc/pt/video.mp4",
+     "vtt": "LegatorOCR/loc/pt/pt.vtt",
+     "duration": 26.4,
+     "size": 286793
+    },
+    "de": {
+     "video": "LegatorOCR/loc/de/video.mp4",
+     "vtt": "LegatorOCR/loc/de/de.vtt",
+     "duration": 27.1,
+     "size": 309967
+    },
+    "hu": {
+     "video": "LegatorOCR/loc/hu/video.mp4",
+     "vtt": "LegatorOCR/loc/hu/hu.vtt",
+     "duration": 26,
+     "size": 254602
+    }
+   }
   }
  ],
  "reels": {

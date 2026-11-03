@@ -1,0 +1,26 @@
+WEBVTT
+
+1
+00:00:02.360 --> 00:00:07.648
+Die echte OSATURA-Engine, nach WebAssembly kompiliert, läuft direkt im Browser.
+
+2
+00:00:07.878 --> 00:00:12.314
+Jedes Bild wird lokal gezeichnet; nichts wird auf einen Server hochgeladen.
+
+3
+00:00:12.544 --> 00:00:17.628
+Pausieren und den Regler ziehen, um jedes Bild zu prüfen.
+
+4
+00:00:17.858 --> 00:00:21.935
+Knochen anzeigen: das Skelett, das die Figur bewegt.
+
+5
+00:00:22.165 --> 00:00:26.647
+Öffne dein eigenes Projekt: die ganze Animation ist eine einzige JSON-Datei.
+
+6
+00:00:26.877 --> 00:00:29.587
+Kostenlos und Open Source — chiuta.ro
+

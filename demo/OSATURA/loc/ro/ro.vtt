@@ -1,0 +1,26 @@
+WEBVTT
+
+1
+00:00:03.096 --> 00:00:08.389
+Motorul real OSATURA, compilat în WebAssembly, rulează chiar în browser.
+
+2
+00:00:08.619 --> 00:00:13.108
+Fiecare cadru e desenat local; nu se trimite nimic pe vreun server.
+
+3
+00:00:13.338 --> 00:00:20.446
+Pune pauză, apoi trage cursorul ca să examinezi orice cadru.
+
+4
+00:00:20.676 --> 00:00:24.555
+Arată oasele: scheletul care mișcă personajul.
+
+5
+00:00:24.785 --> 00:00:29.271
+Deschide propriul proiect: toată animația e un singur fișier JSON.
+
+6
+00:00:29.501 --> 00:00:31.545
+Gratuit și open source — chiuta.ro
+

@@ -1,0 +1,26 @@
+WEBVTT
+
+1
+00:00:01.802 --> 00:00:07.109
+Il vero motore OSATURA, compilato in WebAssembly, funziona direttamente nel browser.
+
+2
+00:00:07.339 --> 00:00:11.759
+Ogni fotogramma è disegnato in locale; nulla viene caricato su un server.
+
+3
+00:00:11.989 --> 00:00:18.076
+Metti in pausa, poi trascina il cursore per esaminare un fotogramma.
+
+4
+00:00:18.306 --> 00:00:22.564
+Mostra le ossa: lo scheletro che muove il personaggio.
+
+5
+00:00:22.794 --> 00:00:27.279
+Apri il tuo progetto: l'intera animazione è un unico file JSON.
+
+6
+00:00:27.509 --> 00:00:30.420
+Gratuito e open source — chiuta.ro
+
