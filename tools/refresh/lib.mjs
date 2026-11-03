@@ -6,7 +6,7 @@ import path from 'node:path';
 import {createHash} from 'node:crypto';
 import {fileURLToPath} from 'node:url';
 
-export const HUB = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..', '..');
+export const HUB = process.env.REFRESH_HUB ? path.resolve(process.env.REFRESH_HUB) : path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..', '..');
 export const paths = (root = HUB) => ({
   root,
   sources: path.join(root, 'data', 'sources.json'),

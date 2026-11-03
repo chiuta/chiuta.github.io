@@ -1,0 +1,141 @@
+# Reîmprospătarea periodică a surselor externe (Etapa 8). Aplicațiile rămân offline; rețeaua se folosește DOAR aici, în runner.
+#   • viu → luni (săptămânal) · lent → ziua 3 a lunii · înghețat → trimestrial (verificare de integritate a intrărilor fixate)
+#   • workflow_dispatch: alege cadența sau id-uri de surse; „dry_run” arată diferența fără să comită nimic
+# Ce face fiecare job (câte unul pe cadență, pe rând): tools/refresh/run.mjs (HTTP politicos, robots.txt, praguri, arhivă)
+#   → tools/refresh/publish.mjs (PR pe data-refresh/<id>, auto-fuziune doar pentru diferențe mici validate, issue la respingere,
+#   commit direct pe main doar pentru sănătatea surselor) cu poarta: schemă, sync-catalog --check, fixcsp, transparenta --check, teste.
+# Necesită, în Settings → Actions → General: „Allow GitHub Actions to create and approve pull requests”.
+name: refresh
+
+on:
+  schedule:
+    - cron: '17 5 * * 1'
+    - cron: '41 4 3 * *'
+    - cron: '23 3 1 1,4,7,10 *'
+  workflow_dispatch:
+    inputs:
+      cadence:
+        description: 'Ce cadență se rulează'
+        type: choice
+        default: viu
+        options: [viu, lent, inghetat, toate]
+      only:
+        description: 'Doar aceste id-uri de surse (separate prin virgulă; ignoră cadența)'
+        type: string
+        default: ''
+      dry_run:
+        description: 'Doar arată diferența: nu se creează PR/issue și nu se comite nimic'
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+  pull-requests: write
+  issues: write
+
+concurrency:
+  group: refresh
+  cancel-in-progress: false
+
+jobs:
+  plan:
+    runs-on: ubuntu-latest
+    outputs:
+      cadences: ${{ steps.p.outputs.cadences }}
+    steps:
+      - id: p
+        shell: bash
+        env:
+          SCHEDULE: ${{ github.event.schedule }}
+          CADENCE: ${{ inputs.cadence }}
+          ONLY: ${{ inputs.only }}
+        run: |
+          set -euo pipefail
+          if [ -n "${ONLY:-}" ]; then L='["manual"]'
+          elif [ -n "${SCHEDULE:-}" ]; then
+            case "$SCHEDULE" in
+              '17 5 * * 1') L='["viu"]' ;;
+              '41 4 3 * *') L='["lent"]' ;;
+              '23 3 1 1,4,7,10 *') L='["inghetat"]' ;;
+              *) echo "::error::cron necunoscut: $SCHEDULE"; exit 1 ;;
+            esac
+          else
+            case "${CADENCE:-viu}" in
+              toate) L='["viu","lent","inghetat"]' ;;
+              viu|lent|inghetat) L="[\"$CADENCE\"]" ;;
+              *) echo "::error::cadență necunoscută: $CADENCE"; exit 1 ;;
+            esac
+          fi
+          echo "cadences=$L" >> "$GITHUB_OUTPUT"
+          echo "Cadențe: $L" >> "$GITHUB_STEP_SUMMARY"
+
+  refresh:
+    needs: plan
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    strategy:
+      fail-fast: false
+      max-parallel: 1
+      matrix:
+        cadence: ${{ fromJSON(needs.plan.outputs.cadences) }}
+    env:
+      CAD: ${{ matrix.cadence }}
+      ONLY: ${{ inputs.only }}
+      DRY: ${{ inputs.dry_run }}
+      GH_TOKEN: ${{ github.token }}
+      PLAYWRIGHT_BROWSERS_PATH: ${{ github.workspace }}/.pw-browsers
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Rulează alergătorul
+        id: run
+        shell: bash
+        run: |
+          set -uo pipefail
+          ARGS=()
+          if [ -n "${ONLY:-}" ]; then ARGS+=(--only "$ONLY")
+          else ARGS+=(--cadence "${CAD/inghetat/înghețat}"); fi
+          if [ "${DRY:-false}" = "true" ]; then ARGS+=(--dry-run); fi
+          node tools/refresh/run.mjs "${ARGS[@]}" --record .refresh-rec --out .refresh-out
+          rc=$?
+          [ -f .refresh-out/summary.md ] && cat .refresh-out/summary.md >> "$GITHUB_STEP_SUMMARY"
+          if [ "${DRY:-false}" = "true" ]; then echo "publish=false" >> "$GITHUB_OUTPUT"; else echo "publish=true" >> "$GITHUB_OUTPUT"; fi
+          exit $rc
+
+      - name: Înregistrările răspunsurilor (pentru fixturi)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: refresh-recordings-${{ matrix.cadence }}
+          path: |
+            .refresh-rec
+            .refresh-out/result.json
+          if-no-files-found: ignore
+          retention-days: 14
+
+      - name: Playwright + Chromium (pentru testele hubului)
+        if: steps.run.outputs.publish == 'true'
+        shell: bash
+        run: |
+          set -euo pipefail
+          npm install --no-save --no-package-lock --no-audit --no-fund playwright@1.63.0
+          npx playwright install --with-deps chromium
+          CH=$(node -e "console.log(require('playwright').chromium.executablePath())")
+          echo "CHROMIUM_PATH=$CH" >> "$GITHUB_ENV"
+          sudo mkdir -p /opt/node-tools
+          echo '{"name":"ci-node-tools","private":true}' | sudo tee /opt/node-tools/package.json >/dev/null
+          sudo ln -sfn "$PWD/node_modules" /opt/node-tools/node_modules
+
+      - name: Publică (PR-uri, issue-uri, sănătatea surselor)
+        if: steps.run.outputs.publish == 'true'
+        shell: bash
+        env:
+          REFRESH_GIT_NAME: github-actions[bot]
+          REFRESH_GIT_EMAIL: 41898282+github-actions[bot]@users.noreply.github.com
+        run: node tools/refresh/publish.mjs --gate-tests --out .refresh-out

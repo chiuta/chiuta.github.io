@@ -1,0 +1,33 @@
+# Testele alergătorului de reîmprospătare (fără rețea, pe fixturi sintetice) — la fiecare modificare a lui sau a inventarului.
+name: refresh-test
+
+on:
+  push:
+    paths: ['tools/refresh/**', 'data/sources.json', 'data/source-health.json', 'data/refresh/**', '.github/workflows/refresh*.yml']
+  pull_request:
+    paths: ['tools/refresh/**', 'data/sources.json', 'data/source-health.json', 'data/refresh/**', '.github/workflows/refresh*.yml']
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Teste (node --test)
+        run: node --test tools/refresh/test.mjs
+      - name: Fixturile sunt la zi cu generatorul
+        run: |
+          node tools/refresh/fixtures/make.mjs
+          git diff --exit-code --stat -- tools/refresh/fixtures
+      - name: Poarta (schemă, sync-catalog --check fără probleme noi, fixcsp, transparenta --check, meta)
+        run: |
+          git fetch --depth=1 origin main
+          node tools/refresh/gate.mjs --base origin/main
+          node tools/refresh/meta.mjs check

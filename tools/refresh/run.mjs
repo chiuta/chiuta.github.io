@@ -50,7 +50,8 @@ const labelsOf = (ids, labels) => ids.slice(0, 25).map((k) => (labels && labels[
 for (const src of sel) {
   const t0 = Date.now();
   const http = new Http({ua: S.defaults.userAgent, uaToken: 'chiuta-refresh', fixtures: opt.fixtures ? path.join(PP.fixtures, src.id, opt.fixtures) : null,
-    record: opt.record ? path.join(path.resolve(opt.record), src.id) : null, minIntervalMs: src.minIntervalMs ?? S.defaults.minIntervalMs,
+    record: opt.record && !src.noRecord ? path.join(path.resolve(opt.record), src.id) : null,   // noRecord: conținut cu drepturi neclarificate (ACORDAJ) sau prea mare (tessdata)
+    minIntervalMs: src.minIntervalMs ?? S.defaults.minIntervalMs,
     timeoutMs: src.timeoutMs ?? S.defaults.timeoutMs, maxBytes: src.maxBytes ?? S.defaults.maxBytes, retries: S.defaults.retries});
   const out = {id: src.id, app: src.app, kind: src.kind, cadence: src.cadenta, status: 'ok', errorType: null, reasons: [], summary: {}, requests: 0};
   try {
@@ -77,7 +78,7 @@ for (const src of sel) {
           sha256: sha256(stable(r.records)), count: r.records.length, structure: r.structure, records: r.records};
         staged[path.relative(opt.root, PP.snap(src.id))] = JSON.stringify(snap, null, 1) + '\n';
         out.sha256 = snap.sha256;
-        if (prev) { const ap = path.relative(opt.root, PP.archive(day, src.id)); if (!fs.existsSync(PP.archive(day, src.id))) staged[ap] = JSON.stringify(prev, null, 1) + '\n'; out.archive = ap; }
+        if (prev) { const ap = path.relative(opt.root, PP.archive(day, src.id)); if (!fs.existsSync(PP.archive(day, src.id))) { staged[ap] = JSON.stringify(prev, null, 1) + '\n'; out.archive = ap; } else out.archiveNote = 'arhiva zilei există deja (se păstrează prima stare a zilei)'; }
       } else out.sha256 = prev.sha256;
     }
   } catch (e) {
@@ -114,7 +115,7 @@ const summaryMd = ['## Reîmprospătarea surselor · ' + day, '', '| sursă | ca
 if (opt.dry) { console.log('\n--dry-run: nu se scrie nimic.'); }
 else {
   const base = opt.apply ? opt.root : opt.out;
-  if (!opt.apply) fs.rmSync(opt.out, {recursive: true, force: true});
+  fs.rmSync(opt.out, {recursive: true, force: true});   // directorul de pregătire e mereu proaspăt (nu amestecă rulări)
   for (const [rel, content] of Object.entries(staged)) { const f = path.join(base, rel); fs.mkdirSync(path.dirname(f), {recursive: true}); fs.writeFileSync(f, content); }
   fs.mkdirSync(opt.out, {recursive: true});
   fs.writeFileSync(path.join(opt.out, 'result.json'), JSON.stringify({date: day, apply: opt.apply, files: Object.keys(staged), results}, null, 1) + '\n');

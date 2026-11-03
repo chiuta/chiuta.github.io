@@ -79,7 +79,9 @@
     "robots.txt al sursei (nu poate fi citit din mediul de lucru; se aplică la rulare)",
     "termeni de utilizare/consimțământul autorului listei"
    ],
-   "note": "Pilot „lent” (8.4). Dacă autorul listei refuză sau robots.txt interzice, se trece stare:\"oprit\"."
+   "note": "Pilot „lent” (8.4). Dacă autorul listei refuză sau robots.txt interzice, se trece stare:\"oprit\".",
+   "card": true,
+   "noRecord": true
   },
   {
    "id": "VNTV",
@@ -123,7 +125,8 @@
     "forma reală a răspunsului în producție (verificată doar după codul pluginului)",
     "permisiunea pentru afișarea trailerelor (NOTICE.md)"
    ],
-   "note": "Pilot „viu” (8.4). Instantaneu = catalogul compact; aplicația citește indexul direct la rulare, instantaneul servește monitorizării și auto-fuziunii diferențelor mici."
+   "note": "Pilot „viu” (8.4). Instantaneu = catalogul compact; aplicația citește indexul direct la rulare, instantaneul servește monitorizării și auto-fuziunii diferențelor mici.",
+   "card": true
   },
   {
    "id": "AGORA-populatii",
@@ -157,7 +160,8 @@
    "deConfirmat": [
     "URL-ul exact al API-ului și parametrul sinceTimePeriod (verificate doar după documentația cunoscută; shell-ul nu iese spre ec.europa.eu)"
    ],
-   "note": "Raportează diferențele față de populațiile din aplicație (ex. Franța ~69,1 mil. în copia locală față de ~68,6 mil. Eurostat). Modificarea aplicației rămâne manuală."
+   "note": "Raportează diferențele față de populațiile din aplicație (ex. Franța ~69,1 mil. în copia locală față de ~68,6 mil. Eurostat). Modificarea aplicației rămâne manuală.",
+   "card": true
   },
   {
    "id": "AGORA-BCE-Bulgaria",
@@ -237,7 +241,8 @@
     "paginile Wikipedia exacte (nume) din care s-au transcris datele",
     "dacă mai există corecturi ulterioare (grupele cu <2 surse)"
    ],
-   "note": "Cadența „înghețat”: plan inițial îl numea „viu”, dar turneul s-a încheiat; pilotul „viu” este VNTV."
+   "note": "Cadența „înghețat”: plan inițial îl numea „viu”, dar turneul s-a încheiat; pilotul „viu” este VNTV.",
+   "card": true
   },
   {
    "id": "Eclipse-NASA-GSFC",
@@ -266,7 +271,8 @@
    "deConfirmat": [
     "URL-urile exacte ale cataloagelor folosite",
     "condițiile de reutilizare"
-   ]
+   ],
+   "card": true
   },
   {
    "id": "IERS-DeltaT",
@@ -297,7 +303,8 @@
    "deConfirmat": [
     "fișierul IERS exact din care provine tabelul",
     "procedura de actualizare a fff-kit"
-   ]
+   ],
+   "card": true
   },
   {
    "id": "JPL-Horizons",
@@ -345,7 +352,8 @@
    ],
    "deConfirmat": [
     "URL-ul exact al tabelului Standish folosit"
-   ]
+   ],
+   "card": true
   },
   {
    "id": "UniversulObservabil-NED-SIMBAD",
@@ -380,7 +388,8 @@
    "deConfirmat": [
     "interogările exacte NED/SIMBAD",
     "dacă recordul de z a fost depășit"
-   ]
+   ],
+   "card": true
   },
   {
    "id": "INDICATIV-ANCOM",
@@ -409,7 +418,8 @@
    "deConfirmat": [
     "URL-ul exact al paginii Radioamatori",
     "modificări ulterioare ale deciziei"
-   ]
+   ],
+   "card": true
   },
   {
    "id": "Nexus-modele-Anthropic",
@@ -449,7 +459,8 @@
    ],
    "deConfirmat": [
     "conținutul real al paginii (server-side vs JS)"
-   ]
+   ],
+   "card": true
   },
   {
    "id": "Nexus-modele-OpenAI",
@@ -599,7 +610,8 @@
    ],
    "deConfirmat": [
     "rularea reală (huggingface.co nu e accesibil din mediul de lucru; verificată doar pe fixturi)"
-   ]
+   ],
+   "card": true
   },
   {
    "id": "ATINGERE-tessdata",
@@ -724,7 +736,9 @@
    "asOf": null,
    "dovada": [
     "ATINGERE/index.html (TESS_COMMIT, TESS_SHA)"
-   ]
+   ],
+   "card": true,
+   "noRecord": true
   },
   {
    "id": "fff-kit-astronomia",

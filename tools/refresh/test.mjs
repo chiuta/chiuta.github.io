@@ -174,3 +174,96 @@ test('fixturile lipsă sunt eroare de rețea, nu date (și rularea reală nu e d
   const r = run(root, 'VNTV', 'nu-exista'); assert.equal(r.out.status, 'error'); assert.equal(r.out.errorType, 'robots', 'robots.txt indisponibil → nu se continuă');
   fs.rmSync(root, {recursive: true, force: true});
 });
+
+/* ---------- publish.mjs cu un `gh` simulat și un depozit git real (origin local) ---------- */
+function mkGit() {
+  const base = fs.mkdtempSync(path.join(os.tmpdir(), 'refresh-pub-'));
+  const git = (cwd, ...a) => execFileSync('git', ['-c', 'user.name=T', '-c', 'user.email=t@t.invalid', ...a], {cwd, encoding: 'utf8', stdio: ['ignore', 'pipe', 'pipe']});
+  git(base, 'init', '-q', '--bare', '-b', 'main', 'origin.git');
+  const work = path.join(base, 'work'); git(base, 'clone', '-q', 'origin.git', 'work');
+  fs.mkdirSync(path.join(work, 'data'), {recursive: true});
+  writeJson(path.join(work, 'data/sources.json'), readJson(path.join(HUB, 'data/sources.json')));
+  git(work, 'add', '-A'); git(work, 'commit', '-q', '-m', 'init'); git(work, 'push', '-q', 'origin', 'HEAD:main');
+  const bin = path.join(base, 'bin'); fs.mkdirSync(bin);
+  const log = path.join(base, 'gh.log'), openIssues = path.join(base, 'open-issues.json'); fs.writeFileSync(openIssues, '[]'); fs.writeFileSync(log, '');
+  fs.writeFileSync(path.join(bin, 'gh'), `#!${process.execPath}
+const fs=require('fs');const a=process.argv.slice(2);let stdin='';try{stdin=fs.readFileSync(0,'utf8')}catch(e){}
+fs.appendFileSync(${JSON.stringify(log)},JSON.stringify({args:a,body:stdin?JSON.parse(stdin):null})+'\\n');
+const m=a[a.indexOf('-X')+1],route=a[a.indexOf('-X')+2];
+let out='{}';
+if(m==='GET'&&/\\/pulls\\?/.test(route))out='[]';
+else if(m==='GET'&&/\\/issues\\?/.test(route))out=fs.readFileSync(${JSON.stringify(openIssues)},'utf8');
+else if(m==='POST'&&/\\/pulls$/.test(route))out=JSON.stringify({number:7,html_url:'https://x.invalid/pull/7'});
+else if(m==='POST'&&/\\/issues$/.test(route))out=JSON.stringify({number:9,html_url:'https://x.invalid/issues/9'});
+else if(m==='PUT')out=JSON.stringify({merged:true});
+process.stdout.write(out);`, {mode: 0o755});
+  return {base, work, bin, log, openIssues, git, calls: () => fs.readFileSync(log, 'utf8').split('\n').filter(Boolean).map((l) => JSON.parse(l)), reset: () => fs.writeFileSync(log, '')};
+}
+function pub(g, id, scenario, extra = []) {
+  const out = path.join(g.work, '.refresh-out');
+  let r = spawnSync(process.execPath, [RUN, '--root', g.work, '--out', out, '--only', id, '--fixtures', scenario], {encoding: 'utf8'}); assert.equal(r.status, 0, r.stderr);
+  r = spawnSync(process.execPath, [path.join(HUB, 'tools/refresh/publish.mjs'), '--out', out, '--work', g.work, '--skip-gate', '--no-health', ...extra], {encoding: 'utf8', env: {...process.env, PATH: g.bin + path.delimiter + process.env.PATH, GITHUB_REPOSITORY: 'chiuta/test', REFRESH_GIT_NAME: 'T', REFRESH_GIT_EMAIL: 't@t.invalid'}});
+  assert.equal(r.status, 0, 'publish.mjs: ' + r.stderr + r.stdout);
+  return r.stdout;
+}
+const routes = (g) => g.calls().map((c) => { const i = c.args.indexOf('-X'); return `${c.args[i + 1]} ${c.args[i + 2]}`; });
+
+test('publish: prima captură → ramura data-refresh/VNTV + PR cu eticheta needs-human, fără fuziune; diferență mică → fuziune automată; arhiva ajunge în PR', () => {
+  const g = mkGit();
+  pub(g, 'VNTV', 'ok');
+  let rs = routes(g);
+  assert.ok(rs.includes('POST repos/chiuta/test/pulls'), rs.join('\n')); assert.ok(!rs.some((r) => r.startsWith('PUT ')), 'nicio fuziune automată la prima captură');
+  const lab = g.calls().find((c) => /issues\/7\/labels/.test(c.args.join(' ')));
+  assert.deepEqual(lab.body.labels, ['data-refresh', 'needs-human']);
+  assert.match(g.git(g.work, 'ls-remote', '--heads', 'origin'), /refs\/heads\/data-refresh\/VNTV/);
+  assert.equal(g.git(g.work, 'rev-parse', '--abbrev-ref', 'HEAD').trim(), 'main', 'arborele de lucru revine pe main');
+  assert.equal(fs.existsSync(path.join(g.work, 'data/refresh/VNTV.json')), false, 'main nu primește datele până la fuziune');
+  // fuzionează PR-ul „de mână” și continuă cu o diferență mică
+  g.git(g.work, 'fetch', '-q', 'origin'); g.git(g.work, 'merge', '-q', '--ff-only', 'origin/data-refresh/VNTV'); g.git(g.work, 'push', '-q', 'origin', 'HEAD:main');
+  g.reset(); pub(g, 'VNTV', 'changed-small');
+  rs = routes(g); assert.ok(rs.includes('PUT repos/chiuta/test/pulls/7/merge'), rs.join('\n'));
+  assert.deepEqual(g.calls().find((c) => /issues\/7\/labels/.test(c.args.join(' '))).body.labels, ['data-refresh']);
+  const files = g.git(g.work, 'diff', '--name-only', 'origin/main', 'origin/data-refresh/VNTV').trim().split('\n');
+  assert.ok(files.includes('data/refresh/VNTV.json') && files.some((f) => /^data\/archive\/\d{4}-\d\d-\d\d\/VNTV\.json$/.test(f)), files.join());
+  // diferență mare → rămâne deschis
+  g.git(g.work, 'fetch', '-q', 'origin'); g.git(g.work, 'merge', '-q', '--ff-only', 'origin/data-refresh/VNTV'); g.git(g.work, 'push', '-q', 'origin', 'HEAD:main');
+  g.reset(); pub(g, 'VNTV', 'changed-big'); assert.ok(!routes(g).some((r) => r.startsWith('PUT ')));
+  fs.rmSync(g.base, {recursive: true, force: true});
+});
+
+test('publish: issue la respingere (o singură dată pentru același mesaj), eroare tehnică abia la a doua, închidere la refacere; nimic nu se comite', () => {
+  const g = mkGit();
+  pub(g, 'VNTV', 'ok');
+  g.git(g.work, 'fetch', '-q', 'origin'); g.git(g.work, 'merge', '-q', '--ff-only', 'origin/data-refresh/VNTV'); g.git(g.work, 'push', '-q', 'origin', 'HEAD:main');
+  g.reset(); pub(g, 'VNTV', 'drop');
+  const post = g.calls().find((c) => c.args.includes('-X') && c.args[c.args.indexOf('-X') + 1] === 'POST' && /\/issues$/.test(c.args[c.args.indexOf('-X') + 2]));
+  assert.ok(post, routes(g).join('\n')); assert.equal(post.body.title, '[refresh] VNTV: threshold'); assert.deepEqual(post.body.labels, ['refresh-alert']); assert.match(post.body.body, /scăzut cu 50\.0%/); assert.match(post.body.body, /Datele din depozit au rămas neschimbate/);
+  assert.ok(!routes(g).some((r) => /pulls$/.test(r)), 'respingerea nu deschide PR');
+  // același mesaj, issue deja deschis → fără al doilea issue
+  fs.writeFileSync(g.openIssues, JSON.stringify([{number: 9, body: post.body.body}])); g.reset(); pub(g, 'VNTV', 'drop');
+  assert.ok(!routes(g).some((r) => r === 'POST repos/chiuta/test/issues'), 'fără issue duplicat');
+  // refacere → comentariu + închidere
+  g.reset(); pub(g, 'VNTV', 'ok');
+  assert.ok(routes(g).includes('PATCH repos/chiuta/test/issues/9') && g.calls().some((c) => c.body && c.body.state === 'closed'));
+  // eroare HTTP: prima nu deschide issue; a doua consecutivă da (sănătatea e păstrată în --apply)
+  fs.writeFileSync(g.openIssues, '[]');
+  const runApply = (scen) => { const r = spawnSync(process.execPath, [RUN, '--root', g.work, '--out', path.join(g.work, '.refresh-out'), '--only', 'AGORA-populatii', '--fixtures', scen, '--apply'], {encoding: 'utf8'}); assert.equal(r.status, 0); };
+  g.reset(); runApply('http-500');
+  spawnSync(process.execPath, [path.join(HUB, 'tools/refresh/publish.mjs'), '--out', path.join(g.work, '.refresh-out'), '--work', g.work, '--skip-gate', '--no-health'], {encoding: 'utf8', env: {...process.env, PATH: g.bin + path.delimiter + process.env.PATH, GITHUB_REPOSITORY: 'chiuta/test'}});
+  assert.ok(!routes(g).includes('POST repos/chiuta/test/issues'), 'prima eroare HTTP: fără issue');
+  runApply('http-500');
+  spawnSync(process.execPath, [path.join(HUB, 'tools/refresh/publish.mjs'), '--out', path.join(g.work, '.refresh-out'), '--work', g.work, '--skip-gate', '--no-health'], {encoding: 'utf8', env: {...process.env, PATH: g.bin + path.delimiter + process.env.PATH, GITHUB_REPOSITORY: 'chiuta/test'}});
+  assert.ok(routes(g).includes('POST repos/chiuta/test/issues'), 'a doua eroare consecutivă: issue');
+  fs.rmSync(g.base, {recursive: true, force: true});
+});
+
+test('publish --dry-run: nu atinge git și nu face apeluri de scriere', () => {
+  const g = mkGit();
+  const out = path.join(g.work, '.refresh-out');
+  spawnSync(process.execPath, [RUN, '--root', g.work, '--out', out, '--only', 'VNTV', '--fixtures', 'ok'], {encoding: 'utf8'});
+  const r = spawnSync(process.execPath, [path.join(HUB, 'tools/refresh/publish.mjs'), '--out', out, '--work', g.work, '--dry-run'], {encoding: 'utf8', env: {...process.env, PATH: g.bin + path.delimiter + process.env.PATH, GITHUB_REPOSITORY: 'chiuta/test'}});
+  assert.equal(r.status, 0, r.stderr); assert.match(r.stdout, /\[dry-run\]/);
+  assert.deepEqual(routes(g).filter((x) => !x.startsWith('GET')), []);
+  assert.equal(g.git(g.work, 'ls-remote', '--heads', 'origin').includes('data-refresh'), false);
+  fs.rmSync(g.base, {recursive: true, force: true});
+});
