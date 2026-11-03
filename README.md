@@ -12,7 +12,7 @@ Hubul adună **117 aplicații** (113 pagini HTML unice, offline, plus 4 programe
 | `transparenta.html` | rezultatele auditurilor, **sănătatea portofoliului**, **auditul măsurat** (scor pe aplicație), sănătatea surselor externe; 8 limbi |
 | `fff-kit/` | kitul comun (CSP, dialogul „Transparență”, copie de siguranță, i18n, p2p, sync, bridge…) și `build.mjs` |
 | `tools/` | sincronizarea catalogului, motoarele comune `fff-*.js`, injectorul de plic, auditul (`audit-run.mjs`), tabloul de sănătate (`portfolio-health.mjs`), reîmprospătarea surselor (`refresh/`) |
-| `data/` | `catalog-meta.json` (fișe, relații, acoperire, scor), `flows.json` (fluxuri), `sources.json` + `source-health.json` (surse externe), `transparenta.json` (audit + sănătate) |
+| `data/` | `catalog-meta.json` (fișe, relații, acoperire, stare), `score-legacy.json` (arhiva scorului manual depreciat), `flows.json` (fluxuri), `sources.json` + `source-health.json` (surse externe), `transparenta.json` (audit + sănătate) |
 | `docs/` | specificația plicului, descoperire, fluxuri, suita cer–timp, domenii, **ghidul autorilor**, **retrospectiva** |
 | `tests/` | testele hubului (Node + Chromium, rețea blocată) |
 | `ROADMAP.md` | ce urmează |

@@ -12,7 +12,27 @@ export const STATUSES = ['stable', 'experimental', 'alpha', 'lab'];
 export function loadMeta(hub) {
   const meta = JSON.parse(fs.readFileSync(path.join(hub, 'data', 'catalog-meta.json'), 'utf8'));
   meta.apps ||= {}; meta.kinds ||= {}; meta.variants ||= {}; meta.related ||= []; meta.topics ||= []; meta.extraRelations ||= []; meta.dataSources ||= {};
+  // Scorul MĂSURAT vine dintr-o singură sursă: data/transparenta.json → a7.apps (tools/audit-run.mjs + `transparenta.mjs audit`). Nu mai e copiat în catalog-meta.json.
+  const m = measuredScores(hub);
+  for (const [k, x] of Object.entries(m)) (meta.apps[k] ||= {}).measured = x;
   return meta;
+}
+
+/** Scorurile măsurate din data/transparenta.json (a7): {Nume: {score, date[, tests: 0]}}. Aplicațiile fără scor (incomplete sau nemăsurate) lipsesc. */
+export function measuredScores(hub) {
+  const f = path.join(hub, 'data', 'transparenta.json');
+  if (!fs.existsSync(f)) return {};
+  const a7 = JSON.parse(fs.readFileSync(f, 'utf8')).a7;
+  const out = {};
+  if (a7 && Array.isArray(a7.apps)) for (const r of a7.apps) if (r && r.key && typeof r.score === 'number') out[r.key] = {score: r.score, date: a7.date, ...(r.tests === 0 ? {tests: 0} : {})};
+  return out;
+}
+
+/** Scorul folosit la ordonare și praguri: cel MĂSURAT; `score` (manual, depreciat) doar ca rezervă pentru o aplicație fără scor măsurat. null dacă nu are niciunul. */
+export function scoreOf(app) {
+  if (app && app.measured && typeof app.measured.score === 'number') return app.measured.score;
+  if (app && typeof app.score === 'number') return app.score;
+  return null;
 }
 
 /** Stare: suprascrierea din meta (dacă există), altfel regula: 0.x sau sufix -alpha/-beta/-rc → alpha; restul → stable. */
@@ -102,13 +122,11 @@ export function validateMeta(meta, keys, bySection = null) {
   for (const [list, field] of [['evidenceRequired', 'evidence'], ['healthRequired', 'health'], ['fragileRequired', 'fragile']]) {
     for (const k of pol[list] || []) if (!meta.apps[k] || meta.apps[k][field] === undefined) out.push(`catalog-meta: ${k} trebuie să aibă „${field}” (policy.${list})`);
   }
-  // scor de audit + stare „laborator” + ordinea din „Recomandate”
-  const thr = meta.policy && Number.isFinite(meta.policy.labThreshold) ? meta.policy.labThreshold : 5;
+  // scor MĂSURAT (data/transparenta.json) + `score` manual depreciat (rezervă) + stare „laborator” declarată explicit, independentă de scor
   for (const [k, v] of Object.entries(meta.apps)) {
     if (v.score !== undefined && !(typeof v.score === 'number' && v.score >= 0 && v.score <= 10)) out.push(`catalog-meta: ${k}: „score” trebuie să fie un număr între 0 și 10`);
-    if (typeof v.score === 'number' && v.score < thr && v.status !== 'lab') out.push(`catalog-meta: ${k}: scor ${v.score} sub pragul ${thr}, dar starea nu e „lab” (laborator)`);
+    if (v.score !== undefined && v.measured && typeof v.measured.score === 'number') out.push(`catalog-meta: ${k}: „score” manual (depreciat) pe o aplicație cu scor măsurat; scoate-l (rezerva e doar pentru aplicațiile nemăsurate)`);
     if (v.measured !== undefined && !(v.measured && typeof v.measured.score === 'number' && v.measured.score >= 0 && v.measured.score <= 10 && /^\d{4}-\d\d-\d\d$/.test(v.measured.date || ''))) out.push(`catalog-meta: ${k}: „measured” trebuie să fie {score 0–10, date AAAA-LL-ZZ}`);
-    if (v.status === 'lab' && typeof v.score !== 'number') out.push(`catalog-meta: ${k}: starea „lab” cere un „score” de audit`);
   }
   // Etapa 8.6: sursele externe ale aplicațiilor (derivate din data/sources.json de tools/refresh/meta.mjs)
   for (const [k, list] of Object.entries(meta.dataSources)) {
@@ -121,14 +139,17 @@ export function validateMeta(meta, keys, bySection = null) {
     if (list.filter((e) => e.card).length > 1) out.push(`catalog-meta: dataSources.${k}: cel mult o sursă „card” (cea afișată pe card)`);
   }
   if (bySection && bySection.recomandate) {
+    // pragul nu mai decide „laborator” (aceea e câmpul `status`); doar interzice scoruri slabe în „Recomandate”
+    const thr = meta.policy && Number.isFinite(meta.policy.labThreshold) ? meta.policy.labThreshold : 5;
     let prev = Infinity;
     for (const k of bySection.recomandate) {
       const a = meta.apps[k] || {};
       if (a.status === 'lab') out.push(`Recomandate: ${k} e în laborator și nu are ce căuta în „Recomandate”`);
-      if (typeof a.score !== 'number') { out.push(`Recomandate: ${k} nu are scor de audit în catalog-meta`); continue; }
-      if (a.score < thr) out.push(`Recomandate: ${k} are scor ${a.score}, sub pragul ${thr}`);
-      if (a.score > prev) out.push(`Recomandate: ordinea nu e descrescătoare după scor (${k}, ${a.score}, vine după un scor ${prev})`);
-      prev = a.score;
+      const sc = scoreOf(a);
+      if (sc === null) { out.push(`Recomandate: ${k} nu are scor măsurat (data/transparenta.json) și nici rezerva „score”`); continue; }
+      if (sc < thr) out.push(`Recomandate: ${k} are scor ${sc}, sub pragul ${thr}`);
+      if (sc > prev) out.push(`Recomandate: ordinea nu e descrescătoare după scorul măsurat (${k}, ${sc}, vine după un scor ${prev})`);
+      prev = sc;
     }
   }
   return out;

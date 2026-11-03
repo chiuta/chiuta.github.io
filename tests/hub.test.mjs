@@ -146,7 +146,7 @@ await T('catalog: contoare derivate, stare, offline, fișă, variante Universul 
       rustCards: all.filter((c) => c.dataset.cat === 'rust').map(key).join(),
       uoVariantLinks: [...uo.querySelectorAll('.var-list a')].map((a) => a.getAttribute('href')),
       shots: document.querySelectorAll('.fisa-shot').length,
-      recom: live.filter((c) => c.dataset.cat === 'recomandate').map((c) => [key(c), meta.apps[key(c)].score, c.dataset.status]),
+      recom: live.filter((c) => c.dataset.cat === 'recomandate').map((c) => [key(c), (meta.apps[key(c)].measured || meta.apps[key(c)]).score, c.dataset.status]),
       statuses: Object.fromEntries(['stable', 'experimental', 'alpha', 'lab'].map((s) => [s, live.filter((c) => c.dataset.status === s).map(key)])),
       verText: live.map((c) => c.querySelector('.card-ver').textContent).filter((x) => /2026-10-26/.test(x)).length,
     };
@@ -161,7 +161,7 @@ await T('catalog: contoare derivate, stare, offline, fișă, variante Universul 
   ok(info.shots === 0, 'nu trebuie să existe capturi dacă nu sunt declarate');
   ok(info.statuses.alpha.join() === 'OSATURA,TEZAUR,LegatorOCR' && info.statuses.experimental.join() === 'Provenienta' && info.statuses.stable.length > 100, 'stări: ' + JSON.stringify(info.statuses).slice(0, 200));
   ok(info.statuses.lab.join() === 'LocalMind,OmniHost', 'laborator: ' + info.statuses.lab.join());
-  ok(info.recom.length >= 5 && info.recom.every((r, i) => r[2] !== 'lab' && r[1] >= 5 && (i === 0 || info.recom[i - 1][1] >= r[1])), 'Recomandate nu e ordonată după scor / conține laborator: ' + JSON.stringify(info.recom));
+  ok(info.recom.length >= 5 && info.recom.every((r, i) => r[2] !== 'lab' && r[1] >= 5 && (i === 0 || info.recom[i - 1][1] >= r[1])), 'Recomandate nu e ordonată după scorul măsurat / conține laborator: ' + JSON.stringify(info.recom));
   ok(info.verText === 0, 'data de sincronizare în masă nu mai apare pe carduri');
   // filtru de stare
   await page.selectOption('#f-status', 'alpha');

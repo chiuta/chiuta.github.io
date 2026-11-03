@@ -163,26 +163,7 @@ function audit() {
     incomplete: rows.filter((x) => x.incomplete).length, weights: {build: 2, axe: 2, tests: 2, csp: 1.5, offline: 1, langs: 1, size: 0.5}, apps_: undefined, apps: rows.sort((a, b) => a.key.toLowerCase().localeCompare(b.key.toLowerCase()))};
   delete data.a7.apps_;
   fs.writeFileSync(DATA, JSON.stringify(data, null, 1) + '\n');
-  // scorul măsurat apare în fișa fiecărui card (catalog-meta → apps[X].measured); „score” (auditul din 22.10) rămâne pentru ordinea din „Recomandate”
-  const CM = path.join(HUB, 'data', 'catalog-meta.json');
-  let cmt = read(CM);
-  const POL = '    "measured": ' + JSON.stringify('„measured” = scorul MĂSURAT (0–10) din tools/audit-run.mjs + `transparenta.mjs audit`: verificare build 2, axe-core 2, teste proprii 2, CSP 1,5, offline 1, limbi 1, dimensiune 0,5; doar din comenzi rulate, fără estimări (metoda completă: docs/GHID-AUTORI.md și transparenta.html). Nu schimbă ordinea din „Recomandate” (aceea urmează „score”). Lipsește când măsurătoarea e incompletă.') + ',\n';
-  cmt = cmt.replace(/^    "measured": .*\n/m, '');
-  cmt = cmt.replace(/^(    "score": .*\n)/m, (m0) => m0 + POL);
-  const lines = cmt.split('\n'), out = []; let inApps = false;
-  const byKey = new Map(rows.map((r) => [r.key, r]));
-  for (let k = 0; k < lines.length; k++) {
-    const l = lines[k], m = l.match(/^    "([^"]+)": \{$/);
-    if (/^  "[^"]+": /.test(l)) inApps = /^  "apps": /.test(l);
-    if (/^      "measured": /.test(l)) continue;            // se rescrie mai jos
-    out.push(l);
-    if (m && lines[k - 1] !== undefined && byKey.has(m[1]) && inApps) {
-      const r = byKey.get(m[1]);
-      if (typeof r.score === 'number') out.push('      "measured": ' + JSON.stringify({score: r.score, date: data.a7.date, ...(r.tests === 0 ? {tests: 0} : {})}) .replace(/":/g, '": ').replace(/,"/g, ', "') + ',');
-    }
-  }
-  fs.writeFileSync(CM, out.join('\n'));
-  JSON.parse(read(CM));   // validare
+  // Scorul măsurat trăiește DOAR aici (data/transparenta.json → a7.apps): loadMeta (tools/catalog-meta-lib.mjs) îl pune în fișa fiecărui card; nu mai e copiat în catalog-meta.json.
   console.log(`a7: ${rows.length} aplicații · ${sc.length} cu scor · media ${data.a7.mean} · mediana ${data.a7.median} · incomplete ${data.a7.incomplete}`);
   health();
 }

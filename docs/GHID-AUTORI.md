@@ -110,7 +110,7 @@ Reguli pentru teste: să ruleze din depozitul autonom (cale către kit prin `FFF
 | Limbi | 1 | n/8 |
 | Dimensiune | 0,5 | ≤ 1 MB = 0,5; ≤ 2 MB = 0,35; ≤ 4 MB = 0,2; mai mare = 0,1 |
 
-Dacă build-ul, axe sau testele nu au putut fi rulate (timeout, lipsă), scorul e **gol** și rândul e marcat incomplet; nu se completează cu estimări. Scorul din 22.10.2026 (`score`) rămâne pentru ordinea din „Recomandate” până când autorul decide trecerea la cel măsurat (vezi [RETROSPECTIVA.md](RETROSPECTIVA.md)).
+Dacă build-ul, axe sau testele nu au putut fi rulate (timeout, lipsă), scorul e **gol** și rândul e marcat incomplet; nu se completează cu estimări. **Scorul măsurat este singurul scor al catalogului**: trăiește doar în `data/transparenta.json` (a7), `loadMeta` îl pune în fișa fiecărui card și el ordonează „Recomandate” (descrescător; la egalitate rămâne ordinea editorială). Câmpul manual `score` din `catalog-meta.json` este **depreciat**: se acceptă doar ca rezervă pentru o aplicație fără scor măsurat și este respins pe una măsurată (arhiva scorurilor din 22.10.2026: `data/score-legacy.json`). Starea „laborator” nu se mai deduce din niciun scor: se declară în `apps.<Nume>.status: "lab"`. `node tools/score-compare.mjs --check` (rulat în CI și în `tests/retro.test.mjs`) verifică că mulțimea „laborator” și ordinea din „Recomandate” coincid cu cele așteptate. Dacă adaugi o aplicație în „Recomandate”, pune-o la locul dat de scorul măsurat; `sync-catalog --check` spune unde greșește ordinea.
 
 ## 9. Lista de verificare înainte de push
 

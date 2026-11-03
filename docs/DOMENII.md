@@ -90,8 +90,8 @@ node tools/cname-inventory.mjs --dns     # informativ: interoghează DNS-ul publ
 |---|---|---|---|---|---|
 | DataWeave | depozit | `dataweave.chiuta.ro` | proprie: https://dataweave.chiuta.ro/ | — |  |
 | Undava | depozit | `undava.chiuta.ro` | proprie: https://undava.chiuta.ro/ | — |  |
-| Arhiva-fara-frontiere | depozit | `arhiva-fara-frontiere.chiuta.ro` | proprie: https://arhiva-fara-frontiere.chiuta.ro/ | — |  |
 | MarkdownAtelier | depozit | `markdownatelier.chiuta.ro` | proprie: https://markdownatelier.chiuta.ro/ | — |  |
+| Arhiva-fara-frontiere | depozit | `arhiva-fara-frontiere.chiuta.ro` | proprie: https://arhiva-fara-frontiere.chiuta.ro/ | — |  |
 | FreeDetect | depozit | `freedetect.chiuta.ro` | proprie: https://freedetect.chiuta.ro/ | — |  |
 | AcademiSearch | depozit | `academisearch.chiuta.ro` | proprie: https://academisearch.chiuta.ro/ | pe origine proprie (corect) |  |
 | TranslateHub | depozit | `translatehub.chiuta.ro` | proprie: https://translatehub.chiuta.ro/ | pe origine proprie (corect) |  |
