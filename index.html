@@ -35,7 +35,7 @@
 </style>
 
 <meta charset="UTF-8">
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data: blob:; style-src 'self' 'unsafe-inline'; font-src 'self' data:; media-src 'self' blob: data:; object-src 'none'; base-uri 'self'; form-action 'self'; worker-src 'self' blob:; script-src 'self' 'sha256-CLz9ky8c+CI8yax80HOx/XKzzI+0llJZxdBKUKIqejE=' 'sha256-YO40Pa9U54kBXfBS8s7ySLVhwIuT7JC9cMSApha5DIk=' 'sha256-daM7rzEjLGTdTK28VORmVL6SsNw0ijrTjgdatKwFBc4='; connect-src 'none'; manifest-src 'self'">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data: blob:; style-src 'self' 'unsafe-inline'; font-src 'self' data:; media-src 'self' blob: data:; object-src 'none'; base-uri 'self'; form-action 'self'; worker-src 'self' blob:; script-src 'self' 'sha256-CLz9ky8c+CI8yax80HOx/XKzzI+0llJZxdBKUKIqejE=' 'sha256-YO40Pa9U54kBXfBS8s7ySLVhwIuT7JC9cMSApha5DIk=' 'sha256-HPEWRrOshuRmc7mQEzd1tM95T9UjvS5Bt5mwGyZKWco='; connect-src 'none'; manifest-src 'self'">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <meta name="color-scheme" content="dark light">
 <meta name="theme-color" id="theme-color-meta" content="#07060f">
@@ -435,6 +435,13 @@ a.card-link.demo-link:hover{background:var(--accent-lo)}
 .card-links>details.fisa[open]>summary{display:inline-flex}
 .card-top .card-ver{margin-left:auto;flex:0 0 auto}
 .card-top{flex-wrap:wrap}
+.desc-wrap{font-family:var(--mono);flex:1;min-height:0}
+.desc-wrap>.card-desc{display:inline!important;-webkit-line-clamp:unset;overflow:visible}
+.desc-wrap>details.fisa{display:inline;margin:0}
+.desc-wrap>details.fisa>summary{display:inline-block;margin-left:.35rem;vertical-align:baseline;padding:.08rem .5rem;font-size:.62rem;font-weight:700;color:var(--accent);background:transparent;border-color:color-mix(in srgb,var(--accent) 45%,transparent);border-radius:6px}
+.desc-wrap>details.fisa>summary:hover{background:var(--accent-lo)}
+.desc-wrap>details.fisa>.fisa-dl,.desc-wrap>details.fisa>.fisa-shot{display:grid;margin-top:.5rem}
+.desc-wrap>details.fisa>.fisa-shot{display:block}
 @media(max-width:480px){.card-links{gap:.25rem}.card-link,.card-links>details.fisa>summary{font-size:.6rem;padding:.34rem .4rem;gap:.15rem}a.card-link.live-link{font-size:.64rem;padding:.34rem .55rem}}
 @media(prefers-reduced-motion:reduce){.card-link,a.card-link.live-link::after{transition:none}.card-link:hover,a.card-link.live-link:hover{transform:none}}
 @media print{a.card-link.live-link{background:none;color:#000;box-shadow:none;border:1px solid #000}}
@@ -1468,6 +1475,7 @@ function decorateCards(){
     const body=c.querySelector('.card-body'), old=c.querySelector('details.fisa');
     const wasOpen=!!(old&&old.open);
     c.querySelectorAll('.card-badges,details.fisa').forEach(n=>n.remove());
+    let dwrap=c.querySelector('.desc-wrap'); { const dd=c.querySelector('.card-desc'); if(dd&&!dwrap){ dwrap=el('div','desc-wrap'); dd.before(dwrap); dwrap.appendChild(dd); } }
     const status=c.dataset.status||'stable', off=c.dataset.off||'no';
     const grp=(META.related||[]).find(g=>g.indexOf(key)>-1), others=grp?grp.filter(k=>k!==key):[];
     const vars=(META.variants||{})[key]||[];
@@ -1476,7 +1484,7 @@ function decorateCards(){
     const bo=el('span','bd bd-off-'+off,t(offBadgeKey(off))); bo.title=t('fOff')+': '+bo.textContent; bars.appendChild(bo);
     if(others.length){ const br=el('span','bd bd-rel',t('fRelated')+' · '+others.length); br.title=t('fRelated')+': '+others.map(appTitle).join(', '); bars.appendChild(br); }
     if(vars.length){ bars.appendChild(el('span','bd bd-var',t('fVariants')+' · '+vars.length)); }
-    const desc=c.querySelector('.card-desc'); if(desc) desc.insertAdjacentElement('afterend',bars); else body.appendChild(bars);
+    const desc=c.querySelector('.card-desc'); if(desc) (dwrap||desc).insertAdjacentElement('afterend',bars); else body.appendChild(bars);
 
     /* versiunea: v + (ultima schimbare de fond, dacă e cunoscută); data de sincronizare rămâne în titlu și în fișă */
     const ver=c.querySelector('.card-ver');
@@ -1516,7 +1524,7 @@ function decorateCards(){
     }
     d.appendChild(dl);
     if(m.screenshot){ const fig=el('figure','fisa-shot'); const im=el('img'); im.src=m.screenshot; im.loading='lazy'; im.alt=m.screenshotAlt||(t('fShot')+' — '+appTitle(key)); fig.appendChild(im); d.appendChild(fig); }
-    { const cl=c.querySelector('.card-links'); if(cl) cl.appendChild(d); else body.appendChild(d); }
+    if(dwrap) dwrap.appendChild(d); else body.appendChild(d);
   });
   updateStats();
 }
