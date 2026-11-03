@@ -1,0 +1,7 @@
+{
+ "url": "https://gutendex.com/books/?search=dickens",
+ "status": 200,
+ "headers": {
+  "content-type": "application/json"
+ }
+}

@@ -1,0 +1,7 @@
+{
+ "url": "https://api.dictionaryapi.dev/robots.txt",
+ "status": 200,
+ "headers": {
+  "content-type": "text/plain"
+ }
+}

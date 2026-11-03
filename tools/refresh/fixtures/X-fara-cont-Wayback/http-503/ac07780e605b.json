@@ -1,0 +1,7 @@
+{
+ "url": "https://archive.org/wayback/available?url=example.com",
+ "status": 503,
+ "headers": {
+  "content-type": "text/plain"
+ }
+}

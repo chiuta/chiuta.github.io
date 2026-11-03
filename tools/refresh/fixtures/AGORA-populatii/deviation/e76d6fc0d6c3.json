@@ -1,0 +1,7 @@
+{
+ "url": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/tps00001?format=JSON&lang=EN&geo=AT&geo=BE&geo=BG&geo=CY&geo=DE&geo=EE&geo=EL&geo=ES&geo=FI&geo=FR&geo=HR&geo=IE&geo=IT&geo=LT&geo=LU&geo=LV&geo=MT&geo=NL&geo=PT&geo=SI&geo=SK&sinceTimePeriod=2024",
+ "status": 200,
+ "headers": {
+  "content-type": "application/json"
+ }
+}

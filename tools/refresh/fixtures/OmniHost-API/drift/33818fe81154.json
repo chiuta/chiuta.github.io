@@ -1,0 +1,7 @@
+{
+ "url": "https://geocoding-api.open-meteo.com/v1/search?name=Bucharest&count=1",
+ "status": 200,
+ "headers": {
+  "content-type": "application/json"
+ }
+}

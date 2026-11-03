@@ -1,0 +1,7 @@
+{
+ "url": "https://api.crossref.org/works?rows=1&query=test&mailto=alexio@trom.tf",
+ "status": 200,
+ "headers": {
+  "content-type": "application/json"
+ }
+}

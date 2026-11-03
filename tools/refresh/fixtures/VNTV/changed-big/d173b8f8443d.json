@@ -1,0 +1,7 @@
+{
+ "url": "https://www.videoneat.com/wp-json/videoneat/v1/index",
+ "status": 200,
+ "headers": {
+  "content-type": "application/json"
+ }
+}

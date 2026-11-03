@@ -1,0 +1,7 @@
+{
+ "url": "https://archive.org/advancedsearch.php?q=mediatype%3Atexts&fl%5B%5D=identifier&rows=1&output=json",
+ "status": 200,
+ "headers": {
+  "content-type": "application/json"
+ }
+}

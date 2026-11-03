@@ -1,0 +1,7 @@
+{
+ "url": "https://cloudflare-dns.com/dns-query?name=example.com&type=A",
+ "status": 503,
+ "headers": {
+  "content-type": "text/plain"
+ }
+}

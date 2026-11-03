@@ -1,0 +1,7 @@
+{
+ "url": "https://huggingface.co/robots.txt",
+ "status": 200,
+ "headers": {
+  "content-type": "text/plain"
+ }
+}

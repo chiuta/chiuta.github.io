@@ -1,0 +1,7 @@
+{
+ "url": "https://platform.claude.com/docs/en/models/overview",
+ "status": 200,
+ "headers": {
+  "content-type": "text/html; charset=utf-8"
+ }
+}

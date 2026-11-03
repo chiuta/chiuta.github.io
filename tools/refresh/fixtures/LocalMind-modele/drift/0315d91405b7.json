@@ -1,0 +1,7 @@
+{
+ "url": "https://huggingface.co/api/models/onnx-community/Qwen2.5-1.5B-Instruct",
+ "status": 200,
+ "headers": {
+  "content-type": "application/json"
+ }
+}

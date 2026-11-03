@@ -1,0 +1,7 @@
+{
+ "url": "https://api.mymemory.translated.net/get?q=hello&langpair=en%7Cit",
+ "status": 503,
+ "headers": {
+  "content-type": "text/plain"
+ }
+}

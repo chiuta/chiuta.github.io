@@ -1,0 +1,7 @@
+{
+ "url": "https://huggingface.co/api/models/onnx-community/LFM2-1.2B-ONNX",
+ "status": 200,
+ "headers": {
+  "content-type": "application/json"
+ }
+}

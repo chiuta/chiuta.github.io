@@ -1,0 +1,7 @@
+{
+ "url": "https://api.dictionaryapi.dev/api/v2/entries/en/hello",
+ "status": 200,
+ "headers": {
+  "content-type": "application/json"
+ }
+}

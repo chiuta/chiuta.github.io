@@ -1,0 +1,7 @@
+{
+ "url": "https://geocoding-api.open-meteo.com/robots.txt",
+ "status": 200,
+ "headers": {
+  "content-type": "text/plain"
+ }
+}

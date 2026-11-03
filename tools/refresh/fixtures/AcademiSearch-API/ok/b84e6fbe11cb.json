@@ -1,0 +1,7 @@
+{
+ "url": "https://api.openalex.org/works?per-page=1&search=test&mailto=alexio@trom.tf",
+ "status": 200,
+ "headers": {
+  "content-type": "application/json"
+ }
+}

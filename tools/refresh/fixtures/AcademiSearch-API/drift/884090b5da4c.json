@@ -1,0 +1,7 @@
+{
+ "url": "https://openlibrary.org/search.json?q=test&limit=1&fields=title,key",
+ "status": 200,
+ "headers": {
+  "content-type": "application/json"
+ }
+}

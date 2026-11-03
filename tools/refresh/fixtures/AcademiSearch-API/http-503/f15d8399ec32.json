@@ -1,0 +1,7 @@
+{
+ "url": "https://archive.org/robots.txt",
+ "status": 200,
+ "headers": {
+  "content-type": "text/plain"
+ }
+}
