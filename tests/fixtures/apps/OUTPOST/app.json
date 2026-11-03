@@ -1,0 +1,41 @@
+{
+  "version": "2.2.0",
+  "updated": "2026-10-27",
+  "egress": [
+    {
+      "host": "cloudflare-dns.com",
+      "via": [
+        "fetch"
+      ]
+    },
+    {
+      "host": "http:(orice gazdă)",
+      "via": [
+        "csp:connect-src",
+        "csp:img-src"
+      ]
+    },
+    {
+      "host": "https:(orice gazdă)",
+      "via": [
+        "csp:connect-src",
+        "csp:img-src"
+      ]
+    }
+  ],
+  "features": {
+    "i18n": [
+      "ro",
+      "en",
+      "fr",
+      "it",
+      "es",
+      "pt",
+      "hu",
+      "de"
+    ],
+    "pwa": {
+      "serviceWorker": true
+    }
+  }
+}

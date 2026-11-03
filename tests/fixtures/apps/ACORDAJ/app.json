@@ -1,0 +1,35 @@
+{
+  "version": "3.0.2",
+  "updated": "2026-11-02",
+  "egress": [
+    {
+      "host": "example.com",
+      "via": [
+        "fetch"
+      ]
+    }
+  ],
+  "features": {
+    "i18n": [
+      "ro",
+      "en",
+      "fr",
+      "it",
+      "es",
+      "pt",
+      "hu",
+      "de"
+    ],
+    "pwa": {
+      "serviceWorker": true
+    }
+  },
+  "cspSelfTest": {
+    "host": "example.com",
+    "intentional": true,
+    "via": [
+      "fetch"
+    ],
+    "note": "Butonul din panoul de transparență încearcă, doar la clic, un fetch către https://example.com/ pentru a arăta că CSP-ul îl blochează. Nu trimite date și nu este o dependență."
+  }
+}

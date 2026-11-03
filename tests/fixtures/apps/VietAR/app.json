@@ -1,0 +1,84 @@
+{
+  "version": "20.2.1",
+  "updated": "2026-11-02",
+  "egress": [
+    {
+      "host": "*.hf.co",
+      "via": [
+        "csp:connect-src"
+      ]
+    },
+    {
+      "host": "*.huggingface.co",
+      "via": [
+        "csp:connect-src"
+      ]
+    },
+    {
+      "host": "*.jsdelivr.net",
+      "via": [
+        "csp:connect-src"
+      ]
+    },
+    {
+      "host": "api.anthropic.com",
+      "via": [
+        "csp:connect-src",
+        "fetch"
+      ]
+    },
+    {
+      "host": "api.openai.com",
+      "via": [
+        "csp:connect-src"
+      ]
+    },
+    {
+      "host": "cdn-lfs.huggingface.co",
+      "via": [
+        "csp:connect-src"
+      ]
+    },
+    {
+      "host": "cdn.jsdelivr.net",
+      "via": [
+        "csp:connect-src",
+        "csp:script-src",
+        "csp:worker-src"
+      ]
+    },
+    {
+      "host": "contentcredentials.org",
+      "via": [
+        "csp:connect-src"
+      ]
+    },
+    {
+      "host": "huggingface.co",
+      "via": [
+        "csp:connect-src"
+      ]
+    },
+    {
+      "host": "openrouter.ai",
+      "via": [
+        "csp:connect-src"
+      ]
+    }
+  ],
+  "features": {
+    "i18n": [
+      "ro",
+      "en",
+      "fr",
+      "it",
+      "es",
+      "pt",
+      "hu",
+      "de"
+    ],
+    "pwa": {
+      "serviceWorker": true
+    }
+  }
+}

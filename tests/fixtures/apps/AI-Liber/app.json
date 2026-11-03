@@ -1,0 +1,121 @@
+{
+  "version": "2.3.2",
+  "updated": "2026-11-02",
+  "egress": [
+    {
+      "host": "*.hf.co",
+      "via": [
+        "csp:connect-src"
+      ]
+    },
+    {
+      "host": "*.huggingface.co",
+      "via": [
+        "csp:connect-src"
+      ]
+    },
+    {
+      "host": "aihorde.net",
+      "via": [
+        "csp:connect-src",
+        "fetch"
+      ]
+    },
+    {
+      "host": "api.anthropic.com",
+      "via": [
+        "csp:connect-src",
+        "fetch"
+      ]
+    },
+    {
+      "host": "api.groq.com",
+      "via": [
+        "csp:connect-src"
+      ]
+    },
+    {
+      "host": "api.mistral.ai",
+      "via": [
+        "csp:connect-src"
+      ]
+    },
+    {
+      "host": "api.openai.com",
+      "via": [
+        "csp:connect-src"
+      ]
+    },
+    {
+      "host": "api.perplexity.ai",
+      "via": [
+        "csp:connect-src"
+      ]
+    },
+    {
+      "host": "duckduckgo.com",
+      "via": [
+        "csp:connect-src",
+        "fetch"
+      ]
+    },
+    {
+      "host": "generativelanguage.googleapis.com",
+      "via": [
+        "csp:connect-src"
+      ]
+    },
+    {
+      "host": "huggingface.co",
+      "via": [
+        "csp:connect-src"
+      ]
+    },
+    {
+      "host": "image.pollinations.ai",
+      "via": [
+        "csp:connect-src"
+      ]
+    },
+    {
+      "host": "localhost",
+      "via": [
+        "csp:connect-src"
+      ]
+    },
+    {
+      "host": "openrouter.ai",
+      "via": [
+        "csp:connect-src"
+      ]
+    },
+    {
+      "host": "raw.githubusercontent.com",
+      "via": [
+        "csp:connect-src"
+      ]
+    },
+    {
+      "host": "text.pollinations.ai",
+      "via": [
+        "csp:connect-src",
+        "fetch"
+      ]
+    }
+  ],
+  "features": {
+    "i18n": [
+      "ro",
+      "en",
+      "fr",
+      "it",
+      "es",
+      "pt",
+      "hu",
+      "de"
+    ],
+    "pwa": {
+      "serviceWorker": true
+    }
+  }
+}

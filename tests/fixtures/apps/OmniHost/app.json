@@ -1,0 +1,49 @@
+{
+  "version": "2.3.1",
+  "updated": "2026-11-02",
+  "egress": [
+    {
+      "host": "api.dictionaryapi.dev",
+      "via": [
+        "csp:connect-src",
+        "csp:media-src",
+        "fetch"
+      ]
+    },
+    {
+      "host": "api.mymemory.translated.net",
+      "via": [
+        "csp:connect-src",
+        "fetch"
+      ]
+    },
+    {
+      "host": "api.open-meteo.com",
+      "via": [
+        "csp:connect-src"
+      ]
+    },
+    {
+      "host": "geocoding-api.open-meteo.com",
+      "via": [
+        "csp:connect-src",
+        "fetch"
+      ]
+    }
+  ],
+  "features": {
+    "i18n": [
+      "ro",
+      "en",
+      "fr",
+      "it",
+      "es",
+      "pt",
+      "hu",
+      "de"
+    ],
+    "pwa": {
+      "serviceWorker": false
+    }
+  }
+}

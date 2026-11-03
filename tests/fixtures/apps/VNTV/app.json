@@ -1,0 +1,38 @@
+{
+  "version": "3.0.1",
+  "updated": "2026-10-27",
+  "egress": [
+    {
+      "host": "http:(orice gazdă)",
+      "via": [
+        "csp:connect-src",
+        "csp:img-src",
+        "csp:media-src"
+      ]
+    },
+    {
+      "host": "https:(orice gazdă)",
+      "via": [
+        "csp:connect-src",
+        "csp:frame-src",
+        "csp:img-src",
+        "csp:media-src"
+      ]
+    }
+  ],
+  "features": {
+    "i18n": [
+      "ro",
+      "en",
+      "fr",
+      "it",
+      "es",
+      "pt",
+      "hu",
+      "de"
+    ],
+    "pwa": {
+      "serviceWorker": true
+    }
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "version": "2.3.0",
+  "updated": "2026-11-02",
+  "egress": [
+    {
+      "host": "tile.openstreetmap.org",
+      "via": [
+        "csp:img-src"
+      ]
+    }
+  ],
+  "features": {
+    "i18n": [
+      "ro",
+      "en",
+      "fr",
+      "it",
+      "es",
+      "pt",
+      "hu",
+      "de"
+    ],
+    "pwa": {
+      "serviceWorker": true
+    }
+  }
+}

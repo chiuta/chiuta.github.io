@@ -1,0 +1,59 @@
+{
+  "version": "2.2.1",
+  "updated": "2026-11-02",
+  "egress": [
+    {
+      "host": "*.threads.com",
+      "via": [
+        "csp:frame-src"
+      ]
+    },
+    {
+      "host": "*.threads.net",
+      "via": [
+        "csp:frame-src"
+      ]
+    },
+    {
+      "host": "https:(orice gazdă)",
+      "via": [
+        "csp:connect-src",
+        "csp:font-src",
+        "csp:img-src",
+        "csp:media-src"
+      ]
+    },
+    {
+      "host": "www.threads.com",
+      "via": [
+        "csp:frame-src",
+        "csp:script-src",
+        "csp:worker-src",
+        "src="
+      ]
+    },
+    {
+      "host": "www.threads.net",
+      "via": [
+        "csp:frame-src",
+        "csp:script-src",
+        "csp:worker-src"
+      ]
+    }
+  ],
+  "features": {
+    "i18n": [
+      "ro",
+      "en",
+      "fr",
+      "it",
+      "es",
+      "pt",
+      "hu",
+      "de"
+    ],
+    "pwa": {
+      "serviceWorker": true
+    }
+  }
+}

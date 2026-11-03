@@ -1,0 +1,39 @@
+{
+  "version": "2.2.1",
+  "updated": "2026-11-02",
+  "egress": [
+    {
+      "host": "api.crossref.org",
+      "via": [
+        "csp:connect-src"
+      ]
+    },
+    {
+      "host": "doi.org",
+      "via": [
+        "csp:connect-src"
+      ]
+    },
+    {
+      "host": "openlibrary.org",
+      "via": [
+        "csp:connect-src"
+      ]
+    }
+  ],
+  "features": {
+    "i18n": [
+      "ro",
+      "en",
+      "fr",
+      "it",
+      "es",
+      "pt",
+      "hu",
+      "de"
+    ],
+    "pwa": {
+      "serviceWorker": true
+    }
+  }
+}

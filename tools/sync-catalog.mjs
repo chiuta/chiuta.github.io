@@ -102,6 +102,7 @@ function truth(key) {
 /* ---- carduri ---- */
 const parts = html.split('<div class="app-card"');
 const keys = [];
+const bySection = {};
 const lastSec = (txt, prev) => { const m = [...txt.matchAll(/<div class="sec-head[^"]*" id="([^"]+)"/g)]; return m.length ? m[m.length - 1][1] : prev; };
 let curSec = lastSec(parts[0], '');
 for (let i = 1; i < parts.length; i++) {
@@ -110,6 +111,7 @@ for (let i = 1; i < parts.length; i++) {
   const key = km[1];
   keys.push(key);
   const sec = curSec;
+  (bySection[sec] ||= []).push(key);
   curSec = lastSec(parts[i], curSec);   // secțiunea următoare începe după coada acestui card
   if (EXTERNAL.has(key)) { if (!/<span class="card-ver"/.test(parts[i])) warn(`${key}: cardul nu are <span class="card-ver">`); continue; }
   const t = truth(key);
@@ -158,7 +160,7 @@ if (latest) {
 const nCards = keys.length;
 const nSections = (html.match(/<div class="sec-head/g) || []).length;
 const cnt = counts(meta, keys, nSections);
-problems.push(...validateMeta(meta, keys));
+problems.push(...validateMeta(meta, keys, bySection));
 for (const [k, v] of Object.entries(meta.apps)) if (v.screenshot && !fs.existsSync(path.join(HUB, v.screenshot))) problems.push(`catalog-meta: ${k}: captura ${v.screenshot} nu există în hub`);
 // Contor „aplicații” = aplicații single-file (inclusiv variantele ascunse în fișa hub-ului); proiectele de alt tip (OSATURA, VERIGA, TEZAUR) sunt în secțiunea lor.
 html = html.replace(/(id="stat-repos">)\d+(<)/, (m, a, b) => { if (m !== `${a}${cnt.singleFile}${b}`) changes.push(`contor aplicații → ${cnt.singleFile}`); return `${a}${cnt.singleFile}${b}`; });
@@ -168,7 +170,7 @@ html = html.replace(/(id="stat-sections">)\d+(<)/, (m, a, b) => { if (m !== `${a
   const emb = {schema: meta.schema, policy: meta.policy, kinds: meta.kinds, variants: meta.variants, related: meta.related, apps: {}};
   for (const [k, v] of Object.entries(meta.apps)) {
     const o = {};
-    for (const f of ['fisa', 'substantive', 'screenshot', 'screenshotAlt']) if (v[f]) o[f] = v[f];
+    for (const f of ['fisa', 'substantive', 'screenshot', 'screenshotAlt', 'score']) if (v[f]) o[f] = v[f];
     if (Object.keys(o).length) emb.apps[k] = o;
   }
   const block = `<script type="application/json" id="catalog-meta">${JSON.stringify(emb).replace(/</g, '\\u003c')}</script>`;

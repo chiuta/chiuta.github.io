@@ -1,0 +1,41 @@
+{
+  "version": "2.2.1",
+  "updated": "2026-11-02",
+  "egress": [
+    {
+      "host": "*.archive.org",
+      "via": [
+        "csp:frame-src"
+      ]
+    },
+    {
+      "host": "archive.org",
+      "via": [
+        "csp:connect-src",
+        "fetch"
+      ]
+    },
+    {
+      "host": "web.archive.org",
+      "via": [
+        "csp:connect-src",
+        "csp:frame-src"
+      ]
+    }
+  ],
+  "features": {
+    "i18n": [
+      "ro",
+      "en",
+      "fr",
+      "it",
+      "es",
+      "pt",
+      "hu",
+      "de"
+    ],
+    "pwa": {
+      "serviceWorker": true
+    }
+  }
+}

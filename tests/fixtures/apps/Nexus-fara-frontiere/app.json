@@ -1,0 +1,53 @@
+{
+  "version": "2.2.2",
+  "updated": "2026-11-03",
+  "egress": [
+    {
+      "host": "127.0.0.1",
+      "via": [
+        "csp:connect-src"
+      ]
+    },
+    {
+      "host": "api.anthropic.com",
+      "via": [
+        "csp:connect-src",
+        "fetch"
+      ]
+    },
+    {
+      "host": "api.openai.com",
+      "via": [
+        "csp:connect-src"
+      ]
+    },
+    {
+      "host": "generativelanguage.googleapis.com",
+      "via": [
+        "csp:connect-src",
+        "fetch"
+      ]
+    },
+    {
+      "host": "localhost",
+      "via": [
+        "csp:connect-src"
+      ]
+    }
+  ],
+  "features": {
+    "i18n": [
+      "ro",
+      "en",
+      "fr",
+      "it",
+      "es",
+      "pt",
+      "hu",
+      "de"
+    ],
+    "pwa": {
+      "serviceWorker": true
+    }
+  }
+}

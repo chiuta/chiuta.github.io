@@ -1,5 +1,7 @@
-// Teste hub — catalog (căutare/filtre), transparenta.html, offline, docuri. Rulare: node tests/hub.test.mjs
-// Cerințe: /opt/node-tools (playwright) + Chromium (CHROMIUM_PATH sau /opt/pw-browsers/chromium). Fără rețea externă.
+// Teste hub — catalog (căutare/filtre), transparenta.html, offline, docuri. Rulare: node tests/hub.test.mjs [filtru-nume] [--root DIR]
+// Cerințe: playwright (FFF_NODE_TOOLS = package.json al unui folder cu playwright; implicit /opt/node-tools) + Chromium (CHROMIUM_PATH sau /opt/pw-browsers/chromium). Fără rețea externă.
+// Depozitele aplicațiilor (versiune, dată, CNAME…): --root DIR, sau FFF_ROOT, sau clonele din părintele hub-ului dacă există;
+// altfel fixturile din tests/fixtures/apps (generate de tools/make-fixtures.mjs), deci testele trec și în CI, fără clone locale.
 // Fără așteptări pe timp real: doar condiții (waitForFunction / expect.poll).
 import {createRequire} from 'node:module';
 import fs from 'node:fs';
@@ -8,14 +10,20 @@ import http from 'node:http';
 import {execFileSync} from 'node:child_process';
 import {fileURLToPath} from 'node:url';
 
-const require = createRequire('/opt/node-tools/package.json');
+const require = createRequire(process.env.FFF_NODE_TOOLS || '/opt/node-tools/package.json');
 const {chromium} = require('playwright');
 const HUB = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
+const args = process.argv.slice(2);
+const ri = args.indexOf('--root');
+const rootArg = ri >= 0 ? args.splice(ri, 2)[1] : null;
+const ROOT = path.resolve(rootArg || process.env.FFF_ROOT || (fs.existsSync(path.join(HUB, '..', 'AGORA', 'index.html')) ? path.join(HUB, '..') : path.join(HUB, 'tests', 'fixtures', 'apps')));
+console.log('depozite aplicații: ' + path.relative(HUB, ROOT) + (ROOT.includes('fixtures') ? ' (fixturi)' : ''));
+const tool = (name, ...extra) => execFileSync('node', [path.join(HUB, 'tools', name), ...extra, '--root', ROOT], {stdio: 'pipe'});
 const LANGS = ['en', 'ro', 'fr', 'it', 'es', 'pt', 'de', 'hu'];
 const MIME = {'.html': 'text/html; charset=utf-8', '.js': 'text/javascript', '.json': 'application/json', '.webmanifest': 'application/manifest+json', '.png': 'image/png', '.css': 'text/css'};
 
 const results = [];
-const only = process.argv[2];
+const only = args[0];
 async function T(name, fn) {
   if (only && !name.includes(only)) return;
   const t0 = Date.now();
@@ -47,7 +55,7 @@ async function open(lang, urlPath = '', opts = {}) {
   await ctx.addInitScript((l) => { try { localStorage.setItem('lang', l); } catch { /* fără localStorage */ } }, lang);
   const page = await ctx.newPage();
   page.on('pageerror', (e) => errors.push(e.message));
-  page.on('console', (m) => { if (m.type() === 'error') errors.push(m.text()); });
+  page.on('console', (m) => { if (m.type() === 'error') errors.push(m.text() + (m.location().url ? ' [' + m.location().url + ']' : '')); });
   await page.goto(BASE + urlPath);
   return {ctx, page, external, errors};
 }
@@ -56,7 +64,7 @@ const total = (page) => page.evaluate(() => document.querySelectorAll('#apps-gri
 const countIs = (page, n) => page.waitForFunction((n) => [...document.querySelectorAll('#apps-grid .app-card:not([data-variant-of])')].filter((c) => !c.hidden).length === n, n);
 
 await T('sync-catalog --check: carduri, versiuni, linkuri, hash-uri CSP, sw.js', async () => {
-  execFileSync('node', [path.join(HUB, 'tools', 'sync-catalog.mjs'), '--check'], {stdio: 'pipe'});
+  tool('sync-catalog.mjs', '--check');
 });
 
 await T('catalog: filtrele există, nu scapă chei de traducere, în toate cele 8 limbi', async () => {
@@ -131,12 +139,13 @@ await T('catalog: contoare derivate, stare, offline, fișă, variante Universul 
       statApps: +document.getElementById('stat-repos').textContent, statSec: +document.getElementById('stat-sections').textContent,
       nSec: document.querySelectorAll('#apps-grid .sec-head').length,
       variantsVisible: all.filter((c) => c.hasAttribute('data-variant-of') && c.offsetParent !== null).length,
-      noBadges: live.filter((c) => !c.querySelector('.card-badges .bd-stable, .card-badges .bd-experimental, .card-badges .bd-alpha') || !c.querySelector('.card-badges [class*="bd-off-"]') || !c.querySelector('details.fisa')).map(key),
+      noBadges: live.filter((c) => !c.querySelector('.card-badges .bd-stable, .card-badges .bd-experimental, .card-badges .bd-alpha, .card-badges .bd-lab') || !c.querySelector('.card-badges [class*="bd-off-"]') || !c.querySelector('details.fisa')).map(key),
       osCat: os.dataset.cat, osSection: prev && prev.id, osStatus: os.dataset.status,
       rustCards: all.filter((c) => c.dataset.cat === 'rust').map(key).join(),
       uoVariantLinks: [...uo.querySelectorAll('.var-list a')].map((a) => a.getAttribute('href')),
       shots: document.querySelectorAll('.fisa-shot').length,
-      statuses: Object.fromEntries(['stable', 'experimental', 'alpha'].map((s) => [s, live.filter((c) => c.dataset.status === s).map(key)])),
+      recom: live.filter((c) => c.dataset.cat === 'recomandate').map((c) => [key(c), meta.apps[key(c)].score, c.dataset.status]),
+      statuses: Object.fromEntries(['stable', 'experimental', 'alpha', 'lab'].map((s) => [s, live.filter((c) => c.dataset.status === s).map(key)])),
       verText: live.map((c) => c.querySelector('.card-ver').textContent).filter((x) => /2026-10-26/.test(x)).length,
     };
   });
@@ -149,12 +158,16 @@ await T('catalog: contoare derivate, stare, offline, fișă, variante Universul 
   ok(info.uoVariantLinks.length === 3 && info.uoVariantLinks.every((u) => /Universul-Observabil-[123]D\/?$/.test(u)), 'fișa hub-ului nu listează cele 3 variante: ' + info.uoVariantLinks.join(','));
   ok(info.shots === 0, 'nu trebuie să existe capturi dacă nu sunt declarate');
   ok(info.statuses.alpha.join() === 'OSATURA,TEZAUR,LegatorOCR' && info.statuses.experimental.join() === 'Provenienta' && info.statuses.stable.length > 100, 'stări: ' + JSON.stringify(info.statuses).slice(0, 200));
+  ok(info.statuses.lab.join() === 'LocalMind,OmniHost', 'laborator: ' + info.statuses.lab.join());
+  ok(info.recom.length >= 5 && info.recom.every((r, i) => r[2] !== 'lab' && r[1] >= 5 && (i === 0 || info.recom[i - 1][1] >= r[1])), 'Recomandate nu e ordonată după scor / conține laborator: ' + JSON.stringify(info.recom));
   ok(info.verText === 0, 'data de sincronizare în masă nu mai apare pe carduri');
   // filtru de stare
   await page.selectOption('#f-status', 'alpha');
   await countIs(page, 3);
   await page.selectOption('#f-status', 'experimental');
   await countIs(page, 1);
+  await page.selectOption('#f-status', 'lab');
+  await countIs(page, 2);
   await page.click('#f-reset');
   // căutare: hub-ul se găsește după variante; textul fișei se găsește
   await page.fill('#q', 'universul observabil 3D');
@@ -247,13 +260,13 @@ await T('offline: hub-ul și transparenta.html se redeschid fără rețea, iar f
 await T('docs: DOMENII.md și DECIZII-AUTOR.md există, la zi cu depozitele; șabloanele NOTICE sunt marcate', async () => {
   const dom = path.join(HUB, 'docs', 'DOMENII.md'), dec = path.join(HUB, 'docs', 'DECIZII-AUTOR.md');
   ok(fs.existsSync(dom) && fs.existsSync(dec), 'lipsesc docs/DOMENII.md sau docs/DECIZII-AUTOR.md');
-  execFileSync('node', [path.join(HUB, 'tools', 'cname-inventory.mjs'), '--check'], {stdio: 'pipe'});
+  tool('cname-inventory.mjs', '--check');
   const t = fs.readFileSync(dec, 'utf8');
   for (const w of ['pykakasi', 'NLLB-200', 'NOTICE', 'Valea Plopului', 'maghiar', 'medical', 'Numerologie', 'relaxare', 'VNTV']) ok(t.includes(w), 'DECIZII-AUTOR.md nu menționează „' + w + '”');
   const tpl = fs.readdirSync(path.join(HUB, 'docs', 'notice-sabloane')).filter((f) => f.endsWith('.md'));
   ok(tpl.length >= 1, 'șabloane NOTICE în hub: ' + tpl.length);
   const files = tpl.map((f) => path.join(HUB, 'docs', 'notice-sabloane', f));
-  for (const r of ['TranslateHub', 'Universul-Observabil-2D']) { const f = path.join(HUB, '..', r, 'NOTICE.md'); if (fs.existsSync(f)) files.push(f); }
+  for (const r of ['TranslateHub', 'Universul-Observabil-2D']) { const f = path.join(ROOT, r, 'NOTICE.md'); if (fs.existsSync(f)) files.push(f); }
   for (const f of files) { const t = fs.readFileSync(f, 'utf8'); if (/ȘABLON/.test(t)) ok(/de confirmat de autor/i.test(t), f + ' nu e marcat „de confirmat de autor”'); }
 });
 

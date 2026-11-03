@@ -3,8 +3,11 @@
   "note": "Metadate de catalog care nu se pot deduce din depozitele aplicațiilor. Sursa de adevăr pentru versiune, dată de sincronizare, limbi și funcționare offline rămâne fiecare aplicație (le citește tools/sync-catalog.mjs). Acest fișier se încorporează în index.html de sync-catalog (bloc <script type=\"application/json\" id=\"catalog-meta\">); pagina nu face nicio cerere de rețea.",
   "policy": {
     "semver": "MAJOR.MINOR.PATCH (https://semver.org/lang/ro/). MAJOR: schimbare incompatibilă (format de export, date salvate). MINOR: funcție nouă compatibilă. PATCH: corecturi. Versiunea afișată pe card este cea din <meta name=\"application-version\"> a aplicației; hub-ul nu o schimbă.",
-    "status": "alpha: versiune 0.x sau cu sufix -alpha/-beta. experimental: declarat astfel în README-ul aplicației (în câmpul „status” de mai jos). stabil: tot restul (versiune ≥ 1.0.0, fără declarație de experimental). Statusul este derivat după regulă, nu evaluat individual; autorul îl poate suprascrie aici.",
-    "substantive": "„Ultima schimbare de fond” = data ultimei schimbări de conținut sau funcționalitate (nu o sincronizare în masă a catalogului). Se completează numai când e cunoscută; altfel nu se afișează. Data de sincronizare (data-upd de pe card) rămâne în fișă, ca informație tehnică."
+    "status": "alpha: versiune 0.x sau cu sufix -alpha/-beta. experimental: declarat astfel în README-ul aplicației (în câmpul „status” de mai jos). stabil: tot restul (versiune ≥ 1.0.0, fără declarație de experimental). Statusul este derivat după regulă, nu evaluat individual; autorul îl poate suprascrie aici. laborator: scor de audit intern sub 5; funcționează, dar nu e recomandat pentru uz curent până la remediere (stare declarată aici, nu derivată).",
+    "substantive": "„Ultima schimbare de fond” = data ultimei schimbări de conținut sau funcționalitate (nu o sincronizare în masă a catalogului). Se completează numai când e cunoscută; altfel nu se afișează. Data de sincronizare (data-upd de pe card) rămâne în fișă, ca informație tehnică.",
+    "score": "„score” = scorul auditului intern din 22.10.2026 (0–10; 10 = excelent), calculat din auditul fiecărei aplicații (nu din acest catalog). Pragul de laborator este 5: sub el, aplicația primește starea „laborator” și nu poate sta în „Recomandate”. Ordinea din „Recomandate” este descrescătoare după scor; sync-catalog --check verifică ambele reguli.",
+    "labThreshold": 5,
+    "figures": "„figures: true” = textul cardului conține cifre verificabile (numărări, populații, date). O aplicație marcată astfel trebuie să aibă în fișă, în ro și en, un rând „Cifre și surse” cu cel puțin o dată AAAA-LL-ZZ; sync-catalog --check verifică."
   },
   "kinds": {
     "OSATURA": "engine",
@@ -62,7 +65,6 @@
       }
     },
     "Pendulul": {"substantive": "2026-10-22"},
-
     "VNTV": {
       "substantive": "2026-10-23",
       "fisa": {
@@ -74,7 +76,8 @@
         "pt": {"limite": "Depende da disponibilidade de videoneat.com e videos.trom.tf; sem eles não tem nada para reproduzir. Mostra trailers de documentários, que pertencem aos produtores (PBS, BBC, etc.), com ligação à fonte oficial; o que desaparece do VideoNeat desaparece também do VNTV. As traduções automáticas podem conter erros. O funcionamento em dispositivos reais (TV, iOS, Cast) tem de ser verificado; a disponibilidade de P2P, AirPlay e Cast difere entre navegadores."},
         "de": {"limite": "Hängt von der Verfügbarkeit von videoneat.com und videos.trom.tf ab; ohne sie gibt es nichts abzuspielen. Zeigt Trailer von Dokumentarfilmen, die den Produzenten gehören (PBS, BBC usw.), mit Link zur offiziellen Quelle; was von VideoNeat verschwindet, verschwindet auch aus VNTV. Automatische Übersetzungen können fehlerhaft sein. Der Betrieb auf echten Geräten (TV, iOS, Cast) muss überprüft werden; die Verfügbarkeit von P2P, AirPlay und Cast unterscheidet sich zwischen Browsern."},
         "hu": {"limite": "A videoneat.com és a videos.trom.tf elérhetőségétől függ; nélkülük nincs mit lejátszania. Dokumentumfilmek előzeteseit mutatja, amelyek a gyártókat illetik (PBS, BBC stb.), a hivatalos forrásra mutató hivatkozással; ami eltűnik a VideoNeatről, az a VNTV-ből is eltűnik. Az automatikus fordítások hibázhatnak. A valódi eszközökön (TV, iOS, Cast) való működést ellenőrizni kell; a P2P, az AirPlay és a Cast elérhetősége böngészőnként eltér."}
-      }
+      },
+      "score": 8.9
     },
     "AGORA": {
       "line": {
@@ -82,15 +85,17 @@
         "en": "Informational atlas of the euro area in 59 sections: from Maastricht and the ECB to Romania and the euro, plus a traveller's guide. Unofficial, no legal value."
       },
       "fisa": {
-        "ro": {"limite": "Neoficial, fără valoare juridică; datele (cursuri, tarife, reguli de călătorie) se schimbă, iar unele cifre din secțiunile practice sunt orientative. Pentru decizii, verifică sursele oficiale."},
-        "en": {"limite": "Unofficial, no legal value; data (exchange rates, fares, travel rules) change and some figures in the practical sections are indicative. For decisions, check the official sources."},
-        "fr": {"limite": "Non officiel, sans valeur juridique ; les données (cours, tarifs, règles de voyage) changent, et certains chiffres des sections pratiques sont indicatifs. Pour toute décision, vérifiez les sources officielles."},
-        "it": {"limite": "Non ufficiale, senza valore legale; i dati (tassi di cambio, tariffe, regole di viaggio) cambiano e alcune cifre nelle sezioni pratiche sono indicative. Per prendere decisioni, verifica le fonti ufficiali."},
-        "es": {"limite": "No oficial, sin valor jurídico; los datos (cotizaciones, tarifas, normas de viaje) cambian, y algunas cifras de las secciones prácticas son orientativas. Para tomar decisiones, consulta las fuentes oficiales."},
-        "pt": {"limite": "Não oficial, sem valor jurídico; os dados (taxas de câmbio, tarifas, regras de viagem) mudam, e alguns valores das secções práticas são indicativos. Para tomar decisões, consulta as fontes oficiais."},
-        "de": {"limite": "Inoffiziell, ohne Rechtswirkung; die Daten (Kurse, Tarife, Reiseregeln) ändern sich, und einige Zahlen in den praktischen Abschnitten sind nur Richtwerte. Für Entscheidungen prüfe die offiziellen Quellen."},
-        "hu": {"limite": "Nem hivatalos, jogi érvénye nincs; az adatok (árfolyamok, díjszabások, utazási szabályok) változnak, és a gyakorlati részek egyes számadatai tájékoztató jellegűek. Döntések előtt ellenőrizze a hivatalos forrásokat."}
-      }
+        "ro": {"limite": "Neoficial, fără valoare juridică; datele (cursuri, tarife, reguli de călătorie) se schimbă, iar unele cifre din secțiunile practice sunt orientative. Pentru decizii, verifică sursele oficiale.", "cifre": "„59 de secțiuni”: numărate în fișierul aplicației la 2026-11-03 (60 de elemente <section>: pagina de start plus 59). Populațiile din aplicație: Eurostat, tabelul tps00001, situația la 2025-01-01. Faptele-cheie (membri, cursuri de conversie, rapoartele din 2026): BCE, Comisia Europeană, Eurostat, verificate de autor la 2026-10-08; faptele despre Bulgaria reverificate la 2026-10-27. Suprafețele și ratele TVA nu au fost confruntate cu o singură sursă oficială, iar populația Portugaliei (~11,4 mil.) este de reverificat."},
+        "en": {"limite": "Unofficial, no legal value; data (exchange rates, fares, travel rules) change and some figures in the practical sections are indicative. For decisions, check the official sources.", "cifre": "“59 sections”: counted in the app file on 2026-11-03 (60 <section> elements: the start page plus 59). Populations in the app: Eurostat, table tps00001, situation at 2025-01-01. Key facts (members, conversion rates, the 2026 reports): ECB, European Commission, Eurostat, checked by the author on 2026-10-08; the facts about Bulgaria were re-checked on 2026-10-27. Areas and VAT rates were not checked against a single official source, and the population of Portugal (~11.4 million) still needs re-checking."},
+        "fr": {"limite": "Non officiel, sans valeur juridique ; les données (cours, tarifs, règles de voyage) changent, et certains chiffres des sections pratiques sont indicatifs. Pour toute décision, vérifiez les sources officielles.", "cifre": "« 59 sections » : comptées dans le fichier de l’application le 2026-11-03 (60 éléments <section> : la page d’accueil plus 59). Populations de l’application : Eurostat, tableau tps00001, situation au 2025-01-01. Faits essentiels (membres, taux de conversion, rapports de 2026) : BCE, Commission européenne, Eurostat, vérifiés par l’auteur le 2026-10-08 ; les faits sur la Bulgarie ont été revérifiés le 2026-10-27. Les superficies et les taux de TVA n’ont pas été confrontés à une source officielle unique, et la population du Portugal (~11,4 millions) reste à revérifier."},
+        "it": {"limite": "Non ufficiale, senza valore legale; i dati (tassi di cambio, tariffe, regole di viaggio) cambiano e alcune cifre nelle sezioni pratiche sono indicative. Per prendere decisioni, verifica le fonti ufficiali.", "cifre": "«59 sezioni»: contate nel file dell’applicazione il 2026-11-03 (60 elementi <section>: la pagina iniziale più 59). Popolazioni nell’app: Eurostat, tabella tps00001, situazione al 2025-01-01. Fatti essenziali (membri, tassi di conversione, rapporti del 2026): BCE, Commissione europea, Eurostat, verificati dall’autore il 2026-10-08; i fatti sulla Bulgaria sono stati ricontrollati il 2026-10-27. Superfici e aliquote IVA non sono state confrontate con un’unica fonte ufficiale, e la popolazione del Portogallo (~11,4 milioni) è ancora da ricontrollare."},
+        "es": {"limite": "No oficial, sin valor jurídico; los datos (cotizaciones, tarifas, normas de viaje) cambian, y algunas cifras de las secciones prácticas son orientativas. Para tomar decisiones, consulta las fuentes oficiales.", "cifre": "«59 secciones»: contadas en el archivo de la aplicación el 2026-11-03 (60 elementos <section>: la página de inicio más 59). Poblaciones en la app: Eurostat, tabla tps00001, situación a 2025-01-01. Hechos clave (miembros, tipos de conversión, informes de 2026): BCE, Comisión Europea, Eurostat, verificados por el autor el 2026-10-08; los hechos sobre Bulgaria se reverificaron el 2026-10-27. Las superficies y los tipos de IVA no se contrastaron con una única fuente oficial, y la población de Portugal (~11,4 millones) sigue pendiente de reverificar."},
+        "pt": {"limite": "Não oficial, sem valor jurídico; os dados (taxas de câmbio, tarifas, regras de viagem) mudam, e alguns valores das secções práticas são indicativos. Para tomar decisões, consulta as fontes oficiais.", "cifre": "«59 secções»: contadas no ficheiro da aplicação em 2026-11-03 (60 elementos <section>: a página inicial mais 59). Populações na aplicação: Eurostat, tabela tps00001, situação em 2025-01-01. Factos-chave (membros, taxas de conversão, relatórios de 2026): BCE, Comissão Europeia, Eurostat, verificados pelo autor em 2026-10-08; os factos sobre a Bulgária foram reverificados em 2026-10-27. As áreas e as taxas de IVA não foram confrontadas com uma única fonte oficial, e a população de Portugal (~11,4 milhões) continua por reverificar."},
+        "de": {"limite": "Inoffiziell, ohne Rechtswirkung; die Daten (Kurse, Tarife, Reiseregeln) ändern sich, und einige Zahlen in den praktischen Abschnitten sind nur Richtwerte. Für Entscheidungen prüfe die offiziellen Quellen.", "cifre": "„59 Abschnitte“: am 2026-11-03 in der App-Datei gezählt (60 <section>-Elemente: Startseite plus 59). Bevölkerungszahlen in der App: Eurostat, Tabelle tps00001, Stand 2025-01-01. Kernfakten (Mitglieder, Umrechnungskurse, Berichte von 2026): EZB, Europäische Kommission, Eurostat, vom Autor am 2026-10-08 geprüft; die Fakten zu Bulgarien wurden am 2026-10-27 erneut geprüft. Flächen und Mehrwertsteuersätze wurden nicht mit einer einzigen amtlichen Quelle abgeglichen, und die Einwohnerzahl Portugals (~11,4 Mio.) muss noch einmal geprüft werden."},
+        "hu": {"limite": "Nem hivatalos, jogi érvénye nincs; az adatok (árfolyamok, díjszabások, utazási szabályok) változnak, és a gyakorlati részek egyes számadatai tájékoztató jellegűek. Döntések előtt ellenőrizze a hivatalos forrásokat.", "cifre": "„59 szakasz”: 2026-11-03-án megszámolva az alkalmazás fájljában (60 <section> elem: a kezdőlap plusz 59). Az alkalmazásban szereplő lakosságszámok: Eurostat, tps00001 tábla, 2025-01-01-i állapot. Kulcsfontosságú tények (tagok, átváltási árfolyamok, a 2026-os jelentések): EKB, Európai Bizottság, Eurostat, a szerző 2026-10-08-án ellenőrizte; a Bulgáriára vonatkozó tényeket 2026-10-27-én újra ellenőrizte. A területeket és az áfakulcsokat nem vetették össze egyetlen hivatalos forrással, Portugália lakosságszámát (~11,4 millió) pedig még újra kell ellenőrizni."}
+      },
+      "score": 8.6,
+      "figures": true
     },
     "EcoulSpectral": {
       "line": {
@@ -106,7 +111,8 @@
         "pt": {"limite": "Não é um modelo de IA treinado (STFT e subtração espetral clássica); numa mistura musical complexa o resultado pode conter artefactos, e a deteção de voz pode confundir outros sons harmónicos com a voz."},
         "de": {"limite": "Kein trainiertes KI-Modell (STFT und klassische Spektralsubtraktion); bei einem komplexen Musikmix kann das Ergebnis Artefakte enthalten, und die Stimmerkennung kann andere harmonische Klänge mit der Stimme verwechseln."},
         "hu": {"limite": "Nem betanított MI-modell (STFT és klasszikus spektrális kivonás); összetett zenei keverésen az eredmény műtermékeket tartalmazhat, a hangfelismerés pedig összetéveszthet más harmonikus hangokat az emberi hanggal."}
-      }
+      },
+      "score": 9.9
     },
     "Carti-de-joc-fara-frontiere": {
       "line": {
@@ -122,7 +128,8 @@
         "pt": {"limite": "Os jogos com fichas (incluindo Blackjack e Texas Hold'em) são simulações educativas, sem apostas reais; os adversários são programas locais."},
         "de": {"limite": "Spiele mit Chips (einschließlich Blackjack und Texas Hold'em) sind Lernsimulationen ohne echte Einsätze; die Gegner sind lokale Programme."},
         "hu": {"limite": "A zsetonos játékok (köztük a Blackjack és a Texas Hold'em) oktatási szimulációk, valódi tét nélkül; az ellenfelek helyi programok."}
-      }
+      },
+      "score": 9.3
     },
     "Go-fara-frontiere": {
       "line": {
@@ -138,7 +145,8 @@
         "pt": {"limite": "A estimativa do território e a sugestão de pedras mortas são estatísticas e podem estar erradas; os olhos no interior de um seki não são detetados."},
         "de": {"limite": "Die Gebietsschätzung und der Hinweis auf tote Steine sind statistisch und können falsch sein; Augen innerhalb eines Seki werden nicht erkannt."},
         "hu": {"limite": "A terület becslése és a halott kövekre vonatkozó javaslat statisztikai jellegű, és tévedhet; a szekiben lévő szemeket nem ismeri fel."}
-      }
+      },
+      "score": 8.9
     },
     "Trusa-fara-frontiere": {
       "line": {
@@ -154,7 +162,8 @@
         "pt": {"limite": "Os dados ficam em localStorage e perdem-se se os dados do site forem apagados; não guardes palavras-passe nem dados sensíveis no Notebook, na folha de cálculo ou no Vault (ficam armazenados em texto simples no navegador)."},
         "de": {"limite": "Die Daten liegen in localStorage und gehen verloren, wenn die Websitedaten gelöscht werden; speichere keine Passwörter oder sensiblen Daten in Notebook, Tabelle oder Vault (sie werden im Klartext im Browser gespeichert)."},
         "hu": {"limite": "Az adatok a localStorage-ban vannak, és a webhelyadatok törlésekor elvesznek; ne tároljon jelszavakat vagy érzékeny adatokat a Notebookban, a táblázatban vagy a Vaultban (a böngészőben titkosítatlanul tárolódnak)."}
-      }
+      },
+      "score": 9.5
     },
     "Scopone-fara-frontiere": {
       "line": {
@@ -170,7 +179,8 @@
         "pt": {"limite": "As regras provêm de fontes públicas (Pagat, Wikipedia em italiano); o regulamento da federação italiana não pôde ser consultado. Cirulla e Rubamazzo são aproximações; a IA não tem nível de torneio."},
         "de": {"limite": "Die Regeln stammen aus öffentlichen Quellen (Pagat, italienische Wikipedia); das Regelwerk des italienischen Verbands konnte nicht eingesehen werden. Cirulla und Rubamazzo sind Näherungen; die KI ist nicht turniertauglich."},
         "hu": {"limite": "A szabályok nyilvános forrásokból származnak (Pagat, olasz Wikipedia); az olasz szövetség szabálykönyvét nem sikerült megtekinteni. A Cirulla és a Rubamazzo közelítések; az MI nem versenyszintű."}
-      }
+      },
+      "score": 8.3
     },
     "Remi-fara-frontiere": {
       "line": {
@@ -186,7 +196,8 @@
         "pt": {"limite": "As designações Rummikub, Phase 10, Canasta, Okey, etc. são nomes comerciais ou marcas dos respetivos titulares, usados a título descritivo, sem afiliação nem aprovação. O Okey está implementado de forma simplificada."},
         "de": {"limite": "Die Bezeichnungen Rummikub, Phase 10, Canasta, Okey usw. sind Handelsnamen oder Marken ihrer Inhaber und werden beschreibend verwendet, ohne Zugehörigkeit oder Billigung. Okey ist vereinfacht umgesetzt."},
         "hu": {"limite": "A Rummikub, Phase 10, Canasta, Okey stb. elnevezések a jogtulajdonosok kereskedelmi nevei vagy védjegyei, leíró jelleggel használva, kapcsolat vagy jóváhagyás nélkül. Az Okey egyszerűsítve van megvalósítva."}
-      }
+      },
+      "score": 9.5
     },
     "ASMR": {
       "line": {
@@ -202,7 +213,8 @@
         "pt": {"limite": "Conteúdo de relaxamento, não aconselhamento médico; as provas científicas sobre o efeito das batidas binaurais no sono ou na concentração são limitadas."},
         "de": {"limite": "Entspannungsinhalt, kein medizinischer Rat; die wissenschaftlichen Belege für die Wirkung binauraler Töne auf Schlaf oder Konzentration sind begrenzt."},
         "hu": {"limite": "Relaxációs tartalom, nem orvosi tanács; a binaurális hangok alvásra vagy koncentrációra gyakorolt hatásáról szóló tudományos bizonyítékok korlátozottak."}
-      }
+      },
+      "score": 9.6
     },
     "Belot-fara-frontiere": {
       "line": {
@@ -218,7 +230,8 @@
         "pt": {"limite": "O Belote não tem um regulamento único; as regras escolhidas estão documentadas nas fichas e foram verificadas em páginas públicas, não em regulamentos impressos. A IA não vê as cartas escondidas, mas não é uma especialista."},
         "de": {"limite": "Belote hat kein einheitliches Regelwerk; die gewählten Regeln sind auf den Karteiblättern dokumentiert und anhand öffentlicher Seiten überprüft, nicht anhand gedruckter Regelwerke. Die KI sieht verdeckte Karten nicht, ist aber kein Experte."},
         "hu": {"limite": "A belotnak nincs egységes szabálykönyve; a választott szabályok a lapokon vannak dokumentálva, és nyilvános oldalak alapján ellenőrizték őket, nem nyomtatott szabálykönyvekből. Az MI nem látja a rejtett lapokat, de nem szakértő."}
-      }
+      },
+      "score": 9.2
     },
     "IncredibleCosmos": {
       "line": {
@@ -234,7 +247,8 @@
         "pt": {"limite": "A visualização 3D requer WebGL."},
         "de": {"limite": "Die 3D-Ansicht benötigt WebGL."},
         "hu": {"limite": "A 3D-s megjelenítéshez WebGL szükséges."}
-      }
+      },
+      "score": 9.2
     },
     "Domino-fara-frontiere": {
       "line": {
@@ -250,7 +264,8 @@
         "pt": {"limite": "A IA não vê as mãos dos outros jogadores; as regras de alguns jogos variam consoante a região (as escolhas estão assinaladas com ⚠); não é uma ferramenta de apostas; sem multijogador em rede."},
         "de": {"limite": "Die KI sieht die Hände der anderen nicht; die Regeln mancher Spiele unterscheiden sich regional (die Entscheidungen sind mit ⚠ markiert); kein Wettwerkzeug; kein Netzwerk-Mehrspielermodus."},
         "hu": {"limite": "Az MI nem látja a többi játékos kezét; egyes játékok szabályai régiónként eltérnek (a választásokat ⚠ jelzi); nem fogadási eszköz; hálózati többjátékos mód nincs."}
-      }
+      },
+      "score": 9.2
     },
     "Table-fara-frontiere": {
       "line": {
@@ -266,7 +281,8 @@
         "pt": {"limite": "O adversário de IA tem finalidade didática, não é um motor de nível de torneio."},
         "de": {"limite": "Der KI-Gegner dient dem Lernen und ist keine turniertaugliche Engine."},
         "hu": {"limite": "Az MI-ellenfél tanulási célokat szolgál, nem versenyszintű motor."}
-      }
+      },
+      "score": 8.9
     },
     "Radiestezie": {
       "line": {
@@ -282,7 +298,8 @@
         "pt": {"limite": "Sem validação científica (efeito ideomotor; os testes controlados não mostram resultados acima do acaso). Não a uses para diagnóstico, decisões financeiras nem trabalhos de construção e escavação."},
         "de": {"limite": "Ohne wissenschaftliche Validierung (ideomotorischer Effekt; kontrollierte Tests zeigen keine Ergebnisse über dem Zufall). Verwende sie nicht für Diagnosen, finanzielle Entscheidungen oder Bau- und Grabungsarbeiten."},
         "hu": {"limite": "Tudományos érvényesítés nélkül (ideomotoros hatás; az ellenőrzött tesztek nem mutatnak a véletlennél jobb eredményt). Ne használja diagnózishoz, pénzügyi döntésekhez, illetve építési és ásási munkákhoz."}
-      }
+      },
+      "score": 9
     },
     "Solitaire-fara-frontiere": {
       "line": {
@@ -298,7 +315,8 @@
         "pt": {"limite": "O solucionador vê as cartas escondidas (informação perfeita), pelo que é uma ajuda, não um jogador justo; no Spider a sugestão é apenas um movimento heurístico e a resolução automática não é fiável."},
         "de": {"limite": "Der Solver sieht die verdeckten Karten (perfekte Information), ist also eine Hilfe, kein fairer Spieler; bei Spider ist der Hinweis nur ein heuristischer Zug, und die automatische Lösung ist nicht zuverlässig."},
         "hu": {"limite": "A megoldó látja a rejtett lapokat (tökéletes információ), ezért segédeszköz, nem tisztességes játékos; a Spiderben a tipp csak heurisztikus lépés, az automatikus megoldás pedig nem megbízható."}
-      }
+      },
+      "score": 9.2
     },
     "Hyper4D": {
       "line": {
@@ -314,7 +332,8 @@
         "pt": {"limite": "As novas traduções em fr/it/es/pt/de/hu são automáticas, não verificadas por falantes nativos."},
         "de": {"limite": "Die neuen Übersetzungen in fr/it/es/pt/de/hu sind automatisch und nicht von Muttersprachlern überprüft."},
         "hu": {"limite": "Az új fr/it/es/pt/de/hu fordítások automatikusak, anyanyelvi beszélők nem ellenőrizték őket."}
-      }
+      },
+      "score": 9.3
     },
     "DataWeave": {
       "line": {
@@ -330,7 +349,8 @@
         "pt": {"pentru": "Jornalistas, investigadores e professores (segundo a descrição da própria aplicação)."},
         "de": {"pentru": "Journalisten, Forschende und Lehrkräfte (laut der Beschreibung in der App)."},
         "hu": {"pentru": "Újságírók, kutatók és tanárok (az alkalmazás saját leírása szerint)."}
-      }
+      },
+      "score": 9.6
     },
     "Numerologie": {
       "line": {
@@ -346,7 +366,8 @@
         "pt": {"limite": "Tradição simbólica e entretenimento, sem provas científicas; não existe uma convenção de cálculo única. Não tomes decisões de saúde, dinheiro ou relações com base num cálculo."},
         "de": {"limite": "Symbolische Tradition und Unterhaltung, ohne wissenschaftliche Belege; es gibt keine einheitliche Berechnungskonvention. Triff keine Entscheidungen zu Gesundheit, Geld oder Beziehungen auf Grundlage einer Berechnung."},
         "hu": {"limite": "Szimbolikus hagyomány és szórakozás, tudományos bizonyíték nélkül; nincs egységes számítási konvenció. Ne hozzon egészségügyi, pénzügyi vagy párkapcsolati döntéseket egy számítás alapján."}
-      }
+      },
+      "score": 9.3
     },
     "ExploratoriiEco": {
       "line": {
@@ -362,7 +383,8 @@
         "pt": {"limite": "Conteúdo educativo e indicativo: não substitui o curso de primeiros socorros, o aconselhamento médico nem as autoridades (112, Salvamont, ANMAP); nunca consumas plantas ou cogumelos com base no guia.", "pentru": "Naturalistas (segundo a descrição da própria aplicação)."},
         "de": {"limite": "Bildungsinhalt, nur als Orientierung: ersetzt weder einen Erste-Hilfe-Kurs noch ärztlichen Rat oder die Behörden (112, Salvamont, ANMAP); Pflanzen und Pilze dürfen nicht auf Grundlage des Leitfadens verzehrt werden.", "pentru": "Naturforschende (laut der Beschreibung in der App)."},
         "hu": {"limite": "Oktatási, tájékoztató jellegű tartalom: nem helyettesíti az elsősegélynyújtó tanfolyamot, az orvosi tanácsot és a hatóságokat (112, Salvamont, ANMAP); növényeket és gombákat ne fogyasszon az útmutató alapján.", "pentru": "Természetbúvárok (az alkalmazás saját leírása szerint)."}
-      }
+      },
+      "score": 8.2
     },
     "Cupa-Mondiala-2026": {
       "fisa": {
@@ -374,7 +396,8 @@
         "pt": {"limite": "Os resultados são inventados por um modelo simples (forças subjetivas, distribuição de Poisson); não são prognósticos. Os nomes dos jogadores são apenas etiquetas, e as convocatórias não são as oficiais."},
         "de": {"limite": "Die Ergebnisse werden von einem einfachen Modell erfunden (subjektive Stärken, Poisson-Verteilung); es sind keine Prognosen. Die Spielernamen sind nur Bezeichnungen, und die Kader sind nicht die offiziellen."},
         "hu": {"limite": "Az eredményeket egy egyszerű modell találja ki (szubjektív erősségek, Poisson-eloszlás); nem jóslatok. A játékosnevek csupán címkék, a keretek pedig nem a hivatalosak."}
-      }
+      },
+      "score": 7.4
     },
     "OAZA": {
       "fisa": {
@@ -386,7 +409,8 @@
         "pt": {"limite": "Serviços de terceiros, não verificados automaticamente (lista verificada a 16 de junho de 2026): podem exigir conta, mostrar anúncios ou desaparecer; a inclusão na lista não é uma recomendação. Não envies dados sensíveis para serviços públicos."},
         "de": {"limite": "Dienste Dritter, nicht automatisch überprüft (Liste geprüft am 16. Juni 2026): Sie können ein Konto verlangen, Werbung anzeigen oder verschwinden; die Aufnahme in die Liste ist keine Empfehlung. Sende keine sensiblen Daten an öffentliche Dienste."},
         "hu": {"limite": "Harmadik felek szolgáltatásai, automatikusan nem ellenőrzöttek (a lista ellenőrzésének dátuma: 2026. június 16.): fiókot kérhetnek, hirdetéseket jeleníthetnek meg, vagy megszűnhetnek; a listázás nem ajánlás. Ne küldjön érzékeny adatokat nyilvános szolgáltatásoknak."}
-      }
+      },
+      "score": 8.4
     },
     "AcademiSearch": {
       "fisa": {
@@ -398,7 +422,8 @@
         "pt": {"limite": "Não funciona offline: cada pesquisa envia o termo aos serviços externos ativos. Apenas 11 das 42 fontes devolvem resultados diretamente através de API; as restantes são ligações para portais. As traduções que não sejam para RO e EN não foram verificadas por falantes nativos, e o texto jurídico/RGPD traduzido requer revisão jurídica."},
         "de": {"limite": "Funktioniert nicht offline: Jede Suche sendet den Suchbegriff an die aktiven externen Dienste. Nur 11 der 42 Quellen liefern Ergebnisse direkt über eine API, die übrigen sind Links zu Portalen. Die Übersetzungen außerhalb von RO und EN wurden nicht von Muttersprachlern überprüft, und der übersetzte juristische bzw. DSGVO-Text muss juristisch geprüft werden."},
         "hu": {"limite": "Offline nem működik: minden keresés elküldi a keresett kifejezést az aktív külső szolgáltatásoknak. A 42 forrásból csak 11 ad eredményt közvetlenül API-n keresztül, a többi portálokra mutató hivatkozás. A román és az angol kivételével a fordításokat anyanyelvi beszélők nem ellenőrizték, a lefordított jogi/GDPR-szöveg pedig jogi felülvizsgálatot igényel."}
-      }
+      },
+      "score": 7.6
     },
     "Arhiva-fara-frontiere": {
       "fisa": {
@@ -410,7 +435,8 @@
         "pt": {"limite": "Cliente não oficial, não afiliado ao Internet Archive; não pesquisa em arquivos da web (Wayback Machine, Arquivo.pt). Não funciona sem internet (os dados vêm de archive.org); a pesquisa limita-se aproximadamente aos primeiros 10 000 resultados; a pré-visualização incorporada pode ser bloqueada pelo navegador. Os direitos de autor pertencem aos titulares; verifica o estatuto legal de cada item."},
         "de": {"limite": "Inoffizieller Client, nicht mit dem Internet Archive verbunden; durchsucht keine Webarchive (Wayback Machine, Arquivo.pt). Funktioniert nicht ohne Internet (die Daten kommen von archive.org); die Suche ist auf etwa die ersten 10.000 Ergebnisse begrenzt; die eingebettete Vorschau kann vom Browser blockiert werden. Die Urheberrechte liegen bei den Rechteinhabern; prüfe den rechtlichen Status jedes Elements."},
         "hu": {"limite": "Nem hivatalos kliens, nem áll kapcsolatban az Internet Archive-val; nem keres webarchívumokban (Wayback Machine, Arquivo.pt). Internet nélkül nem működik (az adatok az archive.org-ról érkeznek); a keresés nagyjából az első 10 000 találatra korlátozódik; a beágyazott előnézetet a böngésző blokkolhatja. A szerzői jogok a jogtulajdonosokat illetik; ellenőrizze az egyes elemek jogi státuszát."}
-      }
+      },
+      "score": 9.1
     },
     "FreeDetect": {
       "fisa": {
@@ -422,7 +448,8 @@
         "pt": {"limite": "Não faz a verificação por si próprio: é um catálogo e uma ajuda de fluxo de trabalho. Os resultados de detetores de terceiros podem ser falsos positivos, sobretudo em textos que não estejam em inglês, incluindo o romeno, e não constituem prova. O perfil local do texto contém apenas estatísticas descritivas. O gerador de citações e a análise de DOI requerem internet."},
         "de": {"limite": "Führt die Prüfung nicht selbst durch: Es ist ein Katalog und eine Hilfe für den Arbeitsablauf. Die Ergebnisse von Detektoren Dritter können falsch positiv sein, besonders bei nicht englischen Texten, einschließlich Rumänisch, und sind kein Beweis. Das lokale Textprofil enthält nur beschreibende Statistiken. Der Zitiergenerator und der DOI-Scan benötigen Internet."},
         "hu": {"limite": "Maga nem végzi el az ellenőrzést: katalógus és munkafolyamat-segéd. A harmadik felek detektorainak eredményei lehetnek álpozitívak, különösen nem angol nyelvű szövegeknél, így a románnál is, és nem minősülnek bizonyítéknak. A szöveg helyi profilja csak leíró statisztikákat tartalmaz. Az idézetgenerátorhoz és a DOI-vizsgálathoz internet szükséges."}
-      }
+      },
+      "score": 8.3
     },
     "MarkdownAtelier": {
       "fisa": {
@@ -434,7 +461,8 @@
         "pt": {"limite": "A deteção de dados pessoais é heurística (pode falhar ou assinalar erradamente) e analisa apenas o texto Markdown, não as imagens; não substitui a tua própria verificação. Os documentos não são sincronizados entre dispositivos (para backup, exporta os ficheiros). As traduções automáticas em fr/it/es/pt/de/hu dos textos novos não são verificadas por falantes nativos."},
         "de": {"limite": "Die Erkennung personenbezogener Daten ist heuristisch (sie kann etwas übersehen oder fälschlich markieren) und durchsucht nur den Markdown-Text, nicht die Bilder; sie ersetzt nicht deine eigene Prüfung. Dokumente werden nicht zwischen Geräten synchronisiert (exportiere die Dateien als Backup). Die automatischen Übersetzungen der neuen Texte in fr/it/es/pt/de/hu sind nicht von Muttersprachlern überprüft."},
         "hu": {"limite": "A személyes adatok felismerése heurisztikus (kihagyhat vagy tévesen jelölhet elemeket), és csak a Markdown-szöveget vizsgálja, a képeket nem; nem helyettesíti az Ön saját ellenőrzését. A dokumentumok nem szinkronizálódnak az eszközök között (biztonsági mentéshez exportálja a fájlokat). Az új szövegek fr/it/es/pt/de/hu automatikus fordításait anyanyelvi beszélők nem ellenőrizték."}
-      }
+      },
+      "score": 8.8
     },
     "OmniHost": {
       "fisa": {
@@ -446,7 +474,9 @@
         "pt": {"limite": "Instrumento pessoal de organização, apenas a título informativo: os módulos dos grupos Saúde e Finanças não prestam aconselhamento médico nem financeiro. Os módulos Security/Passwords/TOTP guardam os dados em texto simples no ficheiro e em localStorage; a proteção no navegador é apenas cosmética. O tempo, o dicionário e a tradução requerem internet."},
         "de": {"limite": "Persönliches Organisationswerkzeug, nur zur Information: Die Module der Gruppen Gesundheit und Finanzen bieten keine medizinische oder finanzielle Beratung. Die Module Security/Passwords/TOTP speichern die Daten als einfachen Text in der Datei und in localStorage; der Schutz im Browser ist nur kosmetisch. Wetter, Wörterbuch und Übersetzung benötigen Internet."},
         "hu": {"limite": "Személyes szervezőeszköz, kizárólag tájékoztató jelleggel: az Egészség és a Pénzügyek csoport moduljai nem nyújtanak orvosi vagy pénzügyi tanácsot. A Security/Passwords/TOTP modulok az adatokat egyszerű szövegként tárolják a fájlban és a localStorage-ban; a böngészőbeli védelem csak látszólagos. Az időjáráshoz, a szótárhoz és a fordításhoz internet szükséges."}
-      }
+      },
+      "score": 2.6,
+      "status": "lab"
     },
     "TranslateHub": {
       "fisa": {
@@ -458,7 +488,8 @@
         "pt": {"limite": "A tradução por IA requer internet e a tua própria chave de API da Anthropic; o texto ou ficheiro (máximo 2 MB) e a chave são enviados à Anthropic (EUA). O diretório de ferramentas e a interface nas 20 línguas incorporadas funcionam sem internet."},
         "de": {"limite": "Die KI-Übersetzung benötigt Internet und deinen eigenen Anthropic-API-Schlüssel; der Text oder die Datei (maximal 2 MB) und der Schlüssel werden an Anthropic (USA) gesendet. Das Werkzeugverzeichnis und die Oberfläche in den 20 eingebauten Sprachen funktionieren ohne Internet."},
         "hu": {"limite": "Az MI-fordításhoz internet és saját Anthropic API-kulcs szükséges; a szöveg vagy fájl (legfeljebb 2 MB) és a kulcs az Anthropichoz (USA) kerül elküldésre. Az eszközkatalógus és a 20 beépített nyelvű felület internet nélkül is működik."}
-      }
+      },
+      "score": 7.3
     },
     "Undava": {
       "fisa": {
@@ -470,7 +501,8 @@
         "pt": {"limite": "A página estática não inclui o jogo ao vivo síncrono, o tema autónomo nem as atividades para o público, que o manual atribui à edição de servidor (index.php, PHP 7.4+). A edição de servidor armazena dados no servidor (questionários, feedback)."},
         "de": {"limite": "Die statische Seite enthält nicht das synchrone Live-Spiel, das eigenständige Design und die Aktivitäten für das Publikum, die laut Handbuch zur Serverausgabe gehören (index.php, PHP 7.4+). Die Serverausgabe speichert Daten auf dem Server (Fragebögen, Feedback)."},
         "hu": {"limite": "A statikus oldal nem tartalmazza a szinkron élő játékot, az önálló témát és a közönségnek szóló tevékenységeket, amelyeket a kézikönyv a szerverkiadáshoz sorol (index.php, PHP 7.4+). A szerverkiadás adatokat tárol a szerveren (kérdőívek, visszajelzések)."}
-      }
+      },
+      "score": 9.2
     },
     "Arhiva-LinkedIn": {
       "fisa": {
@@ -482,7 +514,8 @@
         "pt": {"limite": "Não oficial, não afiliado ao LinkedIn. O Arquivo contém apenas o que colas; as notas podem incluir textos e dados pessoais de terceiros, protegidos por direitos de autor, pelo que se destinam apenas a uso pessoal. A Galeria mostra apenas o que o LinkedIn permite incorporar (as publicações eliminadas ou privadas não aparecem); a pré-visualização incorporada não foi testada com uma rede real."},
         "de": {"limite": "Inoffiziell, nicht mit LinkedIn verbunden. Das Archiv enthält nur, was du einfügst; die Notizen können Texte und personenbezogene Daten anderer enthalten, die urheberrechtlich geschützt sind, daher nur für den persönlichen Gebrauch. Die Galerie zeigt nur, was LinkedIn einbetten lässt (gelöschte oder private Beiträge erscheinen nicht); die Vorschau wurde nicht mit einem echten Netzwerk getestet."},
         "hu": {"limite": "Nem hivatalos, nem áll kapcsolatban a LinkedIn-nel. Az archívum csak azt tartalmazza, amit Ön beilleszt; a jegyzetek mások személyes szövegeit és adatait is tartalmazhatják, amelyeket szerzői jog véd, ezért kizárólag személyes használatra valók. A galéria csak azt mutatja, amit a LinkedIn beágyazni enged (a törölt vagy privát bejegyzések nem jelennek meg); a beágyazott előnézetet nem tesztelték valódi hálózaton."}
-      }
+      },
+      "score": 8.8
     },
     "Cadraj": {
       "fisa": {
@@ -494,7 +527,8 @@
         "pt": {"limite": "Não lista automaticamente os clipes de um perfil, não contorna as proteções do TikTok e não descarrega ficheiros de vídeo; as ligações são adicionadas manualmente. Não é totalmente offline: ao visualizar, o leitor oficial do TikTok é carregado num iframe, pelo que o TikTok recebe o pedido. As traduções automáticas em fr/it/es/pt/de/hu dos textos novos não são verificadas por falantes nativos."},
         "de": {"limite": "Listet die Clips eines Profils nicht automatisch auf, umgeht keine TikTok-Schutzmaßnahmen und lädt keine Videodateien herunter; Links werden manuell hinzugefügt. Nicht vollständig offline: Beim Ansehen wird der offizielle TikTok-Player in einem iframe geladen, sodass TikTok die Anfrage erhält. Die automatischen Übersetzungen der neuen Texte in fr/it/es/pt/de/hu sind nicht von Muttersprachlern überprüft."},
         "hu": {"limite": "Nem listázza automatikusan egy profil klipjeit, nem kerüli meg a TikTok védelmeit, és nem tölt le videófájlokat; a hivatkozásokat kézzel kell hozzáadni. Nem teljesen offline: megtekintéskor a hivatalos TikTok-lejátszó töltődik be egy iframe-ben, így a TikTok megkapja a kérést. Az új szövegek fr/it/es/pt/de/hu automatikus fordításait anyanyelvi beszélők nem ellenőrizték."}
-      }
+      },
+      "score": 9.1
     },
     "Trade-Free-Link-Guardian": {
       "fisa": {
@@ -506,7 +540,8 @@
         "pt": {"limite": "A variante web não verifica se as ligações externas respondem (para isso existe o plugin). O plugin WordPress altera conteúdo real (post_content, widgets, menus): faz cópias de segurança; a remoção de uma ligação não é anulada automaticamente. Um 403 significa muitas vezes bloqueio de robôs, não uma ligação morta. O plugin foi verificado apenas por análise de código e php -l, não foi executado num WordPress."},
         "de": {"limite": "Die Webvariante prüft nicht, ob externe Links antworten (dafür ist das Plugin da). Das WordPress-Plugin ändert echte Inhalte (post_content, Widgets, Menüs): Erstelle Backups; das Entfernen eines Links wird nicht automatisch rückgängig gemacht. Ein 403 bedeutet oft das Blockieren von Bots, nicht einen toten Link. Das Plugin wurde nur durch Codeanalyse und php -l geprüft, nicht auf einem WordPress ausgeführt."},
         "hu": {"limite": "A webes változat nem ellenőrzi, hogy a külső hivatkozások válaszolnak-e (ehhez való a bővítmény). A WordPress-bővítmény valódi tartalmat módosít (post_content, widgetek, menük): készítsen biztonsági másolatot; egy hivatkozás törlése nem vonható vissza automatikusan. A 403 gyakran robotblokkolást jelent, nem holt hivatkozást. A bővítményt csak kódelemzéssel és php -l-lel ellenőrizték, WordPressen nem futtatták."}
-      }
+      },
+      "score": 9.6
     },
     "OUTPOST": {
       "fisa": {
@@ -518,7 +553,8 @@
         "pt": {"limite": "“Contact” significa apenas que algo respondeu ao nível da rede: o código HTTP não pode ser lido a partir do navegador, pelo que uma página de erro aparece igualmente como “Contact”. Não verifica o conteúdo da página, o certificado TLS nem a expiração do domínio. Monitoriza apenas enquanto o separador está aberto e não substitui um serviço de monitorização no servidor. A partir de páginas HTTPS não é possível verificar estações http://. As verificações não foram testadas em estações reais."},
         "de": {"limite": "„Kontakt“ bedeutet nur, dass auf Netzwerkebene etwas geantwortet hat: Der HTTP-Code kann vom Browser aus nicht gelesen werden, sodass eine Fehlerseite ebenfalls als „Kontakt“ erscheint. Prüft weder den Seiteninhalt noch das TLS-Zertifikat oder den Ablauf der Domain. Überwacht nur, solange der Tab geöffnet ist, und ersetzt keinen serverseitigen Überwachungsdienst. Von HTTPS-Seiten aus lassen sich keine http://-Stationen prüfen. Die Prüfungen wurden nicht an echten Stationen getestet."},
         "hu": {"limite": "A „Contact” csak azt jelenti, hogy valami válaszolt hálózati szinten: a HTTP-kódot a böngészőből nem lehet kiolvasni, ezért egy hibaoldal is „Contact”-ként jelenik meg. Nem ellenőrzi az oldal tartalmát, a TLS-tanúsítványt és a domain lejáratát. Csak addig figyel, amíg a lap nyitva van, és nem helyettesíti a szerveroldali megfigyelőszolgáltatást. HTTPS-oldalról nem ellenőrizhetők a http:// állomások. Az ellenőrzéseket valódi állomásokon nem tesztelték."}
-      }
+      },
+      "score": 9.2
     },
     "ScryVeil": {
       "fisa": {
@@ -530,7 +566,8 @@
         "pt": {"limite": "Não é uma auditoria de segurança completa: os resultados são informativos, e “bloqueado” significa que o navegador (CORS) não permite a leitura, não que o problema não exista. Não é offline: as verificações contactam terceiros diretamente a partir do navegador. Usa-o apenas em domínios próprios ou com o consentimento do proprietário."},
         "de": {"limite": "Kein vollständiges Sicherheitsaudit: Die Ergebnisse dienen der Information, und „blockiert“ bedeutet, dass der Browser (CORS) das Lesen nicht erlaubt, nicht dass das Problem nicht existiert. Nicht offline: Die Prüfungen kontaktieren Dritte direkt aus dem Browser. Verwende es nur für eigene Domains oder mit Zustimmung des Eigentümers."},
         "hu": {"limite": "Nem teljes biztonsági audit: az eredmények tájékoztató jellegűek, a „blokkolt” pedig azt jelenti, hogy a böngésző (CORS) nem engedi az olvasást, nem azt, hogy a probléma nem létezik. Nem offline: az ellenőrzések közvetlenül a böngészőből veszik fel a kapcsolatot harmadik felekkel. Csak saját doménekhez vagy a tulajdonos beleegyezésével használja."}
-      }
+      },
+      "score": 8.9
     },
     "Surveyor": {
       "fisa": {
@@ -542,7 +579,8 @@
         "pt": {"limite": "As ligações externas não podem ser confirmadas: o navegador oculta o estado HTTP das respostas cross-origin, pelo que uma ligação externa que responde aparece como “Incerto”; “Lavado” pode ser um falso alarme (extensões, VPN, firewall). Lê apenas HTML estático (as ligações geradas por JavaScript não são vistas). Páginas com mais de 5 MB não são percorridas; limites: 200 páginas, 3000 endereços. Fornecido “tal como está”, sem garantias."},
         "de": {"limite": "Externe Links können nicht bestätigt werden: Der Browser verbirgt den HTTP-Status von Cross-Origin-Antworten, sodass ein externer Link, der antwortet, als „Unsicher“ erscheint; „Verwaschen“ kann ein Fehlalarm sein (Erweiterungen, VPN, Firewall). Liest nur statisches HTML (von JavaScript erzeugte Links sind nicht sichtbar). Seiten über 5 MB werden nicht durchlaufen; Grenzen: 200 Seiten, 3000 Adressen. Angeboten „wie besehen“, ohne Gewährleistung."},
         "hu": {"limite": "A külső hivatkozásokat nem lehet megerősíteni: a böngésző elrejti a cross-origin válaszok HTTP-állapotát, így egy válaszoló külső hivatkozás „Bizonytalan”-ként jelenik meg; a „Kimosott” téves riasztás is lehet (bővítmények, VPN, tűzfal). Csak statikus HTML-t olvas (a JavaScript által generált hivatkozások nem láthatók). Az 5 MB-nál nagyobb oldalakat nem járja be; korlátok: 200 oldal, 3000 cím. „Ahogy van” alapon kínálva, garancia nélkül."}
-      }
+      },
+      "score": 9.5
     },
     "Threads-fara-cont": {
       "fisa": {
@@ -554,7 +592,8 @@
         "pt": {"limite": "Não oficial, sem ligação à Meta; mostra apenas publicações públicas através do embed oficial e não consegue listar automaticamente as publicações de um perfil. As publicações privadas, com restrição de idade ou bloqueadas geograficamente não aparecem. O navegador pode bloquear o pedido direto (CORS), caso em que é necessário um proxy, com implicações de privacidade. A Meta recebe o endereço IP e as publicações visualizadas. A lista não é guardada, a menos que marques a gravação local."},
         "de": {"limite": "Inoffiziell, ohne Verbindung zu Meta; zeigt nur öffentliche Beiträge über das offizielle Embed an und kann die Beiträge eines Profils nicht automatisch auflisten. Private, altersbeschränkte oder geoblockierte Beiträge erscheinen nicht. Der Browser kann die direkte Anfrage blockieren (CORS); dann ist ein Proxy nötig, mit Folgen für den Datenschutz. Meta erhält die IP-Adresse und die angesehenen Beiträge. Die Liste wird nur gespeichert, wenn du die lokale Speicherung ankreuzt."},
         "hu": {"limite": "Nem hivatalos, nincs kapcsolata a Metával; csak nyilvános bejegyzéseket jelenít meg a hivatalos beágyazáson keresztül, és nem tudja automatikusan listázni egy profil bejegyzéseit. A privát, korhatáros vagy földrajzilag blokkolt bejegyzések nem jelennek meg. A böngésző blokkolhatja a közvetlen kérést (CORS), ilyenkor proxy szükséges, adatvédelmi következményekkel. A Meta megkapja az IP-címet és a megtekintett bejegyzéseket. A lista csak akkor mentődik, ha bejelöli a helyi mentést."}
-      }
+      },
+      "score": 9.1
     },
     "Vitrina": {
       "fisa": {
@@ -566,7 +605,8 @@
         "pt": {"limite": "Não oficial, sem ligação à Meta. O Facebook pode exigir autenticação ou recusar a apresentação de certos conteúdos; o que vês depende da Meta. Para Grupos e Eventos não existe módulo oficial (as publicações de grupos públicos estão assinaladas como “não confirmadas oficialmente”). A Meta recebe o endereço IP e o URL apresentado. Os conteúdos incorporados não estão isolados com sandbox."},
         "de": {"limite": "Inoffiziell, ohne Verbindung zu Meta. Facebook kann eine Anmeldung verlangen oder die Anzeige mancher Inhalte verweigern; was du siehst, hängt von Meta ab. Für Gruppen und Veranstaltungen gibt es kein offizielles Modul (Beiträge aus öffentlichen Gruppen sind als „offiziell unbestätigt“ markiert). Meta erhält die IP-Adresse und die angezeigte URL. Die Einbettungen sind nicht per Sandbox isoliert."},
         "hu": {"limite": "Nem hivatalos, nincs kapcsolata a Metával. A Facebook bejelentkezést kérhet, vagy megtagadhatja egyes tartalmak megjelenítését; amit lát, az a Metától függ. A Csoportokhoz és az Eseményekhez nincs hivatalos modul (a nyilvános csoportok bejegyzései „hivatalosan nem megerősített” jelöléssel szerepelnek). A Meta megkapja az IP-címet és a megjelenített URL-t. A beágyazások nincsenek sandbox-szal elszigetelve."}
-      }
+      },
+      "score": 9.5
     },
     "X-fara-cont": {
       "fisa": {
@@ -578,7 +618,8 @@
         "pt": {"limite": "Não lê conteúdo do X: gera apenas ligações (direta, arquivo Wayback, pesquisa Google/Bing, Nitter). Nenhum caminho é garantido: o X pode exigir autenticação a qualquer momento, os arquivos podem não existir ou estar desatualizados, e as instâncias Nitter são instáveis. O nome do perfil é enviado para archive.org. Sem afiliação à X Corp., ao Internet Archive, à Google, à Microsoft nem ao projeto Nitter."},
         "de": {"limite": "Liest keine X-Inhalte: Es erzeugt nur Links (direkt, Wayback-Archiv, Google-/Bing-Suche, Nitter). Kein Weg ist garantiert: X kann jederzeit eine Anmeldung verlangen, Archive können fehlen oder veraltet sein, und Nitter-Instanzen sind instabil. Der Profilname wird an archive.org gesendet. Nicht verbunden mit X Corp., Internet Archive, Google, Microsoft oder dem Nitter-Projekt."},
         "hu": {"limite": "Nem olvas X-tartalmat: csak hivatkozásokat állít elő (közvetlen, Wayback-archívum, Google/Bing keresés, Nitter). Egyik útvonal sem garantált: az X bármikor kérhet bejelentkezést, az archívumok hiányozhatnak vagy elavultak lehetnek, a Nitter-példányok pedig instabilak. A profilnév az archive.org-ra kerül elküldésre. Nem áll kapcsolatban az X Corp.-pal, az Internet Archive-val, a Google-lel, a Microsofttal és a Nitter projekttel."}
-      }
+      },
+      "score": 9.5
     },
     "Curatitor": {
       "fisa": {
@@ -602,7 +643,8 @@
         "pt": {"limite": "Sem auditoria independente: código escrito por um único autor, sem auditoria de segurança externa; não o uses como única proteção para dados críticos. Palavra-passe perdida = dados perdidos, sem recuperação. A palavra-passe permanece na memória do navegador durante a sessão, e um dispositivo comprometido (malware, extensões) anula a proteção."},
         "de": {"limite": "Nicht unabhängig geprüft: Der Code stammt von einem einzigen Autor, ohne externes Sicherheitsaudit; verwende es nicht als einzigen Schutz für kritische Daten. Verlorenes Passwort = verlorene Daten, ohne Wiederherstellung. Das Passwort bleibt für die Dauer der Sitzung im Arbeitsspeicher des Browsers, und ein kompromittiertes Gerät (Malware, Erweiterungen) hebt den Schutz auf."},
         "hu": {"limite": "Függetlenül nem auditált: egyetlen szerző által írt kód, külső biztonsági audit nélkül; ne használja kritikus adatok egyetlen védelmeként. Elvesztett jelszó = elveszett adatok, helyreállítás nélkül. A jelszó a munkamenet idejére a böngésző memóriájában marad, a feltört eszköz (kártevő, bővítmények) pedig érvényteleníti a védelmet."}
-      }
+      },
+      "score": 9.3
     },
     "ATINGERE": {
       "fisa": {
@@ -614,7 +656,8 @@
         "pt": {"limite": "As tabelas braille não foram validadas por leitores nativos de braille, e a aplicação não foi testada em dispositivos táteis reais nem com leitores de ecrã. Para chinês, cantonense, japonês e coreano, o braille é obtido de forma aproximada, a partir da pronúncia. Não existe grau 2 normalizado para romeno (usa-se o grau 1). iPhone/iPad não permitem vibração a partir do navegador. O OCR, os comandos de voz e a tradução requerem internet; o ecrã braille de hardware, a voz neuronal offline e a PWA não estão implementados.", "pentru": "Pessoas surdocegas (o livro torna-se braille tátil no ecrã tátil, com vibrações) e pessoas cegas (o livro torna-se audiolivro através da síntese de voz do dispositivo)."},
         "de": {"limite": "Die Brailletabellen wurden nicht von muttersprachlichen Braille-Lesern validiert, und die App wurde weder auf echten Touchgeräten noch mit Screenreadern getestet. Für Chinesisch, Kantonesisch, Japanisch und Koreanisch wird die Brailleschrift näherungsweise aus der Aussprache gewonnen. Für Rumänisch gibt es keine standardisierte Kurzschrift (Grad 2); es wird Grad 1 verwendet. iPhone/iPad erlauben keine Vibration aus dem Browser. OCR, Sprachbefehle und Übersetzung benötigen Internet; Hardware-Braillezeile, neuronale Offline-Stimme und PWA sind nicht umgesetzt.", "pentru": "Taubblinde Menschen (das Buch wird auf dem Touchscreen zu tastbarer Brailleschrift, mit Vibration) und blinde Menschen (das Buch wird über die Sprachsynthese des Geräts zum Hörbuch)."},
         "hu": {"limite": "A braille-táblákat anyanyelvi braille-olvasók nem érvényesítették, az alkalmazást pedig nem tesztelték valódi érintőeszközökön vagy képernyőolvasókkal. A kínai, kantoni, japán és koreai nyelvnél a braille-t hozzávetőlegesen, a kiejtésből állítja elő. A románhoz nincs szabványosított 2. fokozat (az 1. fokozatot használja). Az iPhone/iPad nem engedélyez rezgést a böngészőből. Az OCR-hez, a hangparancsokhoz és a fordításhoz internet szükséges; a hardveres braille-kijelző, az offline neurális hang és a PWA nincs megvalósítva.", "pentru": "Siketvak személyek (a könyv tapintható braille-lá válik az érintőképernyőn, rezgésekkel) és vak személyek (a könyv hangoskönyvvé válik az eszköz beszédszintézisén keresztül)."}
-      }
+      },
+      "score": 8.8
     },
     "Monstrarium": {
       "fisa": {
@@ -638,7 +681,8 @@
         "pt": {"limite": "O descodificador de Morse por microfone funciona bem a cerca de 8–25 WPM, com um tom limpo e constante, numa sala silenciosa; acima de 30 WPM ou com manipulação muito irregular surgem erros; não substitui um descodificador dedicado e foi testado com som sintético, não com sinais reais. O simulador de propagação é um modelo didático simplificado, não uma previsão. O limiar de 75% no modo exame é escolhido pela aplicação, não é o limiar oficial da ANCOM."},
         "de": {"limite": "Der Morse-Decoder über das Mikrofon funktioniert gut bei etwa 8–25 WPM, mit klarem, gleichmäßigem Ton in einem ruhigen Raum; über 30 WPM oder bei sehr unregelmäßigem Tasten treten Fehler auf; er ersetzt keinen speziellen Decoder und wurde mit synthetischem Ton getestet, nicht mit echten Signalen. Der Ausbreitungssimulator ist ein vereinfachtes didaktisches Modell, keine Vorhersage. Die 75-%-Schwelle im Prüfungsmodus wurde von der App gewählt und ist nicht die offizielle ANCOM-Schwelle."},
         "hu": {"limite": "A mikrofonos Morse-dekódoló nagyjából 8–25 WPM között működik jól, tiszta, állandó hanggal, csendes helyiségben; 30 WPM felett vagy nagyon szabálytalan kezelés esetén hibák lépnek fel; nem helyettesít egy dedikált dekódolót, és szintetikus hanggal tesztelték, nem valódi jelekkel. A terjedési szimulátor egyszerűsített oktatási modell, nem előrejelzés. A vizsgamód 75%-os küszöbét az alkalmazás választotta, nem az ANCOM hivatalos küszöbe."}
-      }
+      },
+      "score": 8.5
     },
     "Fabrica": {
       "fisa": {
@@ -662,7 +706,8 @@
         "pt": {"limite": "É um quadro colaborativo sem direitos por autor: os participantes podem apagar ou mover qualquer elemento. Em http://, o tráfego da rede local não é cifrado pelo transporte (o conteúdo do quadro viaja cifrado por WebRTC, os códigos de ligação não). Um iPhone pode ser telemóvel participante ou ecrã, mas não pode executar o relay (Node); Safari/Firefox não têm BarcodeDetector. As redes Wi-Fi com isolamento de clientes (redes de convidados) bloqueiam a ligação direta; sem servidor STUN/TURN, funciona na mesma rede local."},
         "de": {"limite": "Es ist eine kollaborative Tafel ohne Rechte pro Autor: Teilnehmende können jedes Element löschen oder verschieben. Über http:// ist der Datenverkehr im lokalen Netzwerk auf Transportebene nicht verschlüsselt (der Inhalt der Tafel läuft verschlüsselt über WebRTC, die Verbindungscodes nicht). Ein iPhone kann Teilnehmer-Telefon oder Bildschirm sein, aber nicht das Relay (Node) ausführen; Safari/Firefox haben keinen BarcodeDetector. WLAN-Netze mit Client-Isolierung (Gastnetze) blockieren die direkte Verbindung; ohne STUN/TURN-Server funktioniert es im selben lokalen Netzwerk."},
         "hu": {"limite": "Közös tábla szerzőnkénti jogosultságok nélkül: a résztvevők bármelyik elemet törölhetik vagy mozgathatják. http:// esetén a helyi hálózati forgalmat a szállítási réteg nem titkosítja (a tábla tartalma titkosítva halad WebRTC-n keresztül, a csatlakozási kódok nem). Az iPhone lehet résztvevő telefon vagy képernyő, de nem futtathatja a relét (Node); a Safari/Firefox nem rendelkezik BarcodeDetectorral. A kliensizolációs (vendég) Wi-Fi hálózatok blokkolják a közvetlen kapcsolatot; STUN/TURN szerver nélkül ugyanazon a helyi hálózaton működik."}
-      }
+      },
+      "score": 8.8
     },
     "INDICATIV": {
       "fisa": {
@@ -674,7 +719,8 @@
         "pt": {"limite": "Não é material oficial da ANCOM, não é elaborado nem aprovado pela ANCOM e não tem valor jurídico; o exame real pode diferir (perguntas, estrutura, regulamentação atualizada). As frequências de emergência da referência são indicativas, não verificadas como atuais.", "pentru": "Futuros radioamadores na Roménia (projeto pessoal de estudo para o exame da ANCOM)."},
         "de": {"limite": "Kein offizielles ANCOM-Material, nicht von ANCOM erstellt oder gebilligt und ohne Rechtswirkung; die echte Prüfung kann abweichen (Fragen, Aufbau, aktualisierte Vorschriften). Die Notfrequenzen in der Referenz sind Richtwerte und nicht auf Aktualität geprüft.", "pentru": "Künftige Funkamateure in Rumänien (persönliches Lernprojekt für die ANCOM-Prüfung)."},
         "hu": {"limite": "Nem hivatalos ANCOM-anyag, nem az ANCOM készítette vagy hagyta jóvá, és jogi érvénye nincs; a valódi vizsga eltérhet (kérdések, felépítés, frissített szabályozás). A hivatkozásban szereplő segélyhívó frekvenciák tájékoztató jellegűek, aktualitásukat nem ellenőrizték.", "pentru": "Leendő romániai rádióamatőrök (személyes tanulási projekt az ANCOM-vizsgára)."}
-      }
+      },
+      "score": 9.6
     },
     "PULS": {
       "fisa": {
@@ -686,7 +732,8 @@
         "pt": {"limite": "Conteúdo educativo, redigido pelo autor com base nas diretrizes do ERC, AHA/ILCOR e OMS, sem validação clínica por um instrutor ou médico autorizado; não substitui um curso autorizado, o aconselhamento médico nem a intervenção de profissionais. Numa emergência real, liga para o 112. As traduções automáticas não são verificadas. As vibrações não funcionam em iOS/Safari."},
         "de": {"limite": "Bildungsinhalt, vom Autor auf Grundlage der Leitlinien von ERC, AHA/ILCOR und WHO verfasst, ohne klinische Validierung durch eine autorisierte Ausbilderin, einen autorisierten Ausbilder oder einen Arzt; er ersetzt weder einen autorisierten Kurs noch ärztlichen Rat oder das Eingreifen von Fachkräften. Rufe in einem echten Notfall die 112 an. Die Übersetzungen sind automatisch und nicht überprüft. Die Vibration funktioniert unter iOS/Safari nicht."},
         "hu": {"limite": "Oktatási tartalom, amelyet a szerző az ERC, az AHA/ILCOR és a WHO irányelvei alapján írt, hivatalos oktató vagy orvos általi klinikai érvényesítés nélkül; nem helyettesíti a hivatalos tanfolyamot, az orvosi tanácsot és a szakemberek beavatkozását. Valódi vészhelyzetben hívja a 112-t. Az automatikus fordításokat nem ellenőrizték. A rezgés iOS/Safarin nem működik."}
-      }
+      },
+      "score": 8.5
     },
     "QSO": {
       "fisa": {
@@ -710,7 +757,8 @@
         "pt": {"limite": "Para expressões regulares JavaScript; o depurador é um modelo simplificado do motor JavaScript. A avaliação é executada num Web Worker com limite de 1500 ms. A ligação criada com “Copiar ligação” inclui o padrão e o texto de teste no URL: não a partilhes se o texto for sensível. Limites de comprimento: 10 000 caracteres para o padrão, 200 000 para o texto de teste."},
         "de": {"limite": "Für reguläre JavaScript-Ausdrücke; der Debugger ist ein vereinfachtes Modell der JavaScript-Engine. Die Auswertung läuft in einem Web Worker mit einer Grenze von 1500 ms. Der mit „Link kopieren“ erzeugte Link enthält das Muster und den Testtext in der URL: Teile ihn nicht, wenn der Text sensibel ist. Längengrenzen: 10.000 Zeichen für das Muster, 200.000 für den Testtext."},
         "hu": {"limite": "JavaScript reguláris kifejezésekhez; a hibakereső a JavaScript-motor egyszerűsített modellje. Az értékelés Web Workerben fut 1500 ms-os korláttal. A „Hivatkozás másolása” funkcióval készített link az URL-ben tartalmazza a mintát és a tesztszöveget: ne ossza meg, ha a szöveg érzékeny. Hosszkorlátok: 10 000 karakter a mintához, 200 000 a tesztszöveghez."}
-      }
+      },
+      "score": 8.8
     },
     "SEOptimum": {
       "fisa": {
@@ -722,7 +770,8 @@
         "pt": {"limite": "As estimativas de impacto e esforço do plano de ação são regras empíricas, não garantias de classificação. A análise é feita no navegador sobre o texto ou HTML colado; os únicos pedidos de rede ocorrem em ações explícitas (“Try fetch”, pré-visualização de uma imagem og:image indicada por URL)."},
         "de": {"limite": "Die Auswirkungs- und Aufwandsschätzungen im Aktionsplan sind Faustregeln, keine Ranking-Garantien. Die Analyse läuft im Browser auf dem eingefügten Text oder HTML; die einzigen Netzwerkanfragen entstehen bei ausdrücklichen Aktionen („Try fetch“, Vorschau eines per URL angegebenen og:image-Bildes)."},
         "hu": {"limite": "A cselekvési terv hatás- és erőfeszítésbecslései ökölszabályok, nem rangsorolási garanciák. Az elemzés a böngészőben történik a beillesztett szövegen vagy HTML-en; hálózati kérések csak kifejezett műveletekkor jelennek meg („Try fetch”, URL-lel megadott og:image kép előnézete)."}
-      }
+      },
+      "score": 8.5
     },
     "SEVA": {
       "fisa": {
@@ -734,7 +783,8 @@
         "pt": {"limite": "Não substitui os cuidados médicos ou psicológicos; oferece material de referência e ferramentas de autoobservação, não diagnóstico nem tratamento. As traduções automáticas não são verificadas por falantes nativos, e o conteúdo de saúde requer revisão por um especialista."},
         "de": {"limite": "Ersetzt keine medizinische oder psychologische Versorgung; bietet Referenzmaterial und Werkzeuge zur Selbstbeobachtung, keine Diagnose und keine Behandlung. Die automatischen Übersetzungen sind nicht von Muttersprachlern überprüft, und die Gesundheitsinhalte müssen von Fachleuten geprüft werden."},
         "hu": {"limite": "Nem helyettesíti az orvosi vagy pszichológiai ellátást; referenciaanyagot és önmegfigyelési eszközöket kínál, nem diagnózist vagy kezelést. Az automatikus fordításokat anyanyelvi beszélők nem ellenőrizték, az egészségügyi tartalom pedig szakértői felülvizsgálatot igényel."}
-      }
+      },
+      "score": 8
     },
     "Alfabete": {
       "fisa": {
@@ -770,7 +820,8 @@
         "pt": {"limite": "Ficção/especulação: as notas científicas são explicativas e não substituem as fontes académicas. As traduções para italiano, espanhol, português, alemão e húngaro foram produzidas com assistência de IA e não foram verificadas por falantes nativos. A crítica “exaustiva” (recenzie.html) é gerada por um modelo de IA (Claude Sonnet 4.6), não é crítica literária independente, e as notas não foram validadas por um avaliador humano."},
         "de": {"limite": "Fiktion/Spekulation: Die wissenschaftlichen Anmerkungen sind erläuternd und ersetzen keine akademischen Quellen. Die Übersetzungen ins Italienische, Spanische, Portugiesische, Deutsche und Ungarische wurden mit KI-Unterstützung erstellt und nicht von Muttersprachlern überprüft. Die „erschöpfende“ Rezension (recenzie.html) wird von einem KI-Modell (Claude Sonnet 4.6) erzeugt, ist keine unabhängige Literaturkritik, und die Bewertungen wurden nicht von einem Menschen validiert."},
         "hu": {"limite": "Fikció/spekuláció: a tudományos jegyzetek magyarázó jellegűek, és nem helyettesítik az akadémiai forrásokat. Az olasz, spanyol, portugál, német és magyar fordítások MI-támogatással készültek, és anyanyelvi beszélők nem ellenőrizték őket. A „kimerítő” kritika (recenzie.html) egy MI-modell (Claude Sonnet 4.6) által generált, nem független irodalomkritika, a pontszámokat pedig emberi értékelő nem érvényesítette."}
-      }
+      },
+      "score": 7
     },
     "PrintreInteligente": {
       "fisa": {
@@ -782,7 +833,8 @@
         "pt": {"limite": "Ficção/especulação: o romance, os cenários e as 108 críticas são fictícios, e os valores de “leitores ativos” são simulados (assinalados “~simulat”). Usa os nomes reais da tripulação da Artemis 2 como personagens num cenário imaginário; sem afiliação à NASA, CSA, ESA nem à tripulação. Os textos gerados através de “Recenzia ta” / “Finalul tău” são produzidos por um modelo de IA e podem conter erros."},
         "de": {"limite": "Fiktion/Spekulation: Der Roman, die Szenarien und die 108 Rezensionen sind fiktiv, und die Werte für „aktive Leser“ sind simuliert (mit „~simuliert“ markiert). Es verwendet die echten Namen der Artemis-2-Besatzung als Figuren in einem erfundenen Szenario; nicht verbunden mit NASA, CSA, ESA oder der Besatzung. Die über „Deine Rezension“ / „Dein Ende“ erzeugten Texte stammen von einem KI-Modell und können Fehler enthalten."},
         "hu": {"limite": "Fikció/spekuláció: a regény, a forgatókönyvek és a 108 kritika kitalált, az „aktív olvasók” értékei pedig szimuláltak („~szimulált” jelöléssel). Az Artemis 2 legénységének valódi nevét használja szereplőkként egy képzeletbeli forgatókönyvben; nem áll kapcsolatban a NASA-val, a CSA-val, az ESA-val vagy a legénységgel. A „Saját kritikád” / „Saját befejezésed” útján generált szövegeket MI-modell állítja elő, és hibákat tartalmazhatnak."}
-      }
+      },
+      "score": 6.1
     },
     "Zicala": {
       "fisa": {
@@ -794,7 +846,8 @@
         "pt": {"limite": "Os provérbios estão no romeno original; os comentários SWOT/TOWS são interpretações editoriais geradas com assistência de IA, não fontes paremiológicas ou históricas, e o sentido, a origem e as atribuições podem ser inexatos. As suas traduções em 8 línguas são automáticas, não verificadas por falantes nativos; as que dizem respeito a dinheiro, saúde, segurança das crianças ou álcool requerem revisão por um especialista e não substituem o aconselhamento médico, jurídico ou financeiro. A coleção não é exaustiva; na categoria “Alte colecții online” a fonte exata de cada provérbio não está registada. Alguns provérbios antigos contêm estereótipos ou linguagem ultrapassada."},
         "de": {"limite": "Die Sprichwörter stehen im rumänischen Original; die SWOT/TOWS-Kommentare sind redaktionelle Interpretationen, die mit KI-Unterstützung erzeugt wurden, keine paremiologischen oder historischen Quellen, und Bedeutung, Herkunft und Zuschreibungen können ungenau sein. Ihre Übersetzungen in 8 Sprachen sind automatisch und nicht von Muttersprachlern überprüft; die zu Geld, Gesundheit, Kindersicherheit oder Alkohol müssen von Fachleuten geprüft werden und ersetzen keinen medizinischen, rechtlichen oder finanziellen Rat. Die Sammlung ist nicht erschöpfend; für die Kategorie „Weitere Online-Sammlungen“ ist die genaue Quelle jedes Sprichworts nicht erfasst. Manche alten Sprichwörter enthalten Stereotype oder veraltete Sprache."},
         "hu": {"limite": "A közmondások az eredeti románnak megfelelően szerepelnek; a SWOT/TOWS-kommentárok MI-támogatással generált szerkesztői értelmezések, nem paremiológiai vagy történeti források, így a jelentés, az eredet és a tulajdonítások pontatlanok lehetnek. 8 nyelvre készült fordításaik automatikusak, anyanyelvi beszélők nem ellenőrizték őket; a pénzre, egészségre, gyermekbiztonságra vagy alkoholra vonatkozók szakértői felülvizsgálatot igényelnek, és nem helyettesítik az orvosi, jogi vagy pénzügyi tanácsot. A gyűjtemény nem teljes körű; az „Egyéb online gyűjtemények” kategóriánál az egyes közmondások pontos forrása nincs rögzítve. Néhány régi közmondás sztereotípiákat vagy elavult nyelvezetet tartalmaz."}
-      }
+      },
+      "score": 9
     },
     "Eclipsa-2027": {
       "fisa": {
@@ -806,7 +859,8 @@
         "pt": {"limite": "Segurança: não olhes para o Sol sem filtros certificados ISO 12312-2; a olho nu apenas durante a totalidade completa. Valores informativos e aproximados; os locais na margem da faixa são sensíveis à posição exata. Os contactos locais são calculados ao nível do mar (sem relevo); o contador usa o relógio do dispositivo, não uma fonte oficial de hora. Projeto pessoal, não oficial, não é um instrumento de segurança."},
         "de": {"limite": "Sicherheit: Schaue nicht ohne zertifizierte Filter nach ISO 12312-2 in die Sonne; mit bloßem Auge nur während der vollständigen Totalität. Die Werte sind informativ und näherungsweise; Orte am Rand des Streifens reagieren empfindlich auf die genaue Position. Die lokalen Kontakte sind für Meereshöhe berechnet (ohne Gelände); der Countdown verwendet die Uhr des Geräts, nicht eine offizielle Zeitquelle. Persönliches, inoffizielles Projekt, kein Sicherheitsinstrument."},
         "hu": {"limite": "Biztonság: ne nézzen a Napba ISO 12312-2 tanúsítvánnyal rendelkező szűrők nélkül; szabad szemmel csak a teljes totalitás idején. Az értékek tájékoztató jellegűek és közelítők; a sáv szélén lévő helyek érzékenyek a pontos pozícióra. A helyi kontaktusok tengerszintre vannak számítva (domborzat nélkül); a számláló az eszköz óráját használja, nem hivatalos időforrást. Személyes, nem hivatalos projekt, nem biztonsági eszköz."}
-      }
+      },
+      "score": 7.7
     },
     "Horizons.BeyondLimits": {
       "fisa": {
@@ -818,7 +872,8 @@
         "pt": {"limite": "Ficção/especulação: os mapas do futuro são extrapolações, não previsões validadas; os que dizem respeito a milénios são especulativos, e as secções sobre a natureza do Universo e a vida para além da Terra apresentam quadros explicativos concorrentes (física de fronteira, filosofia, teologia, ficção). Conteúdo educativo/informativo; não substitui as fontes científicas de referência."},
         "de": {"limite": "Fiktion/Spekulation: Die Karten der Zukunft sind Extrapolationen, keine validierten Vorhersagen; die für Jahrtausende sind spekulativ, und die Abschnitte über die Natur des Universums und das Leben jenseits der Erde stellen konkurrierende Erklärungsrahmen dar (Grenzphysik, Philosophie, Theologie, Fiktion). Bildungs- bzw. Informationsinhalt; ersetzt nicht die wissenschaftlichen Referenzquellen."},
         "hu": {"limite": "Fikció/spekuláció: a jövő térképei extrapolációk, nem érvényesített előrejelzések; az évezredekre vonatkozók spekulatívak, az Univerzum természetéről és a Földön túli életről szóló szakaszok pedig egymással versengő magyarázó kereteket mutatnak be (határterületi fizika, filozófia, teológia, fikció). Oktatási/tájékoztató tartalom; nem helyettesíti a tudományos referenciaforrásokat."}
-      }
+      },
+      "score": 8.9
     },
     "orarium": {
       "fisa": {
@@ -830,7 +885,8 @@
         "pt": {"limite": "Modelo de primeira ordem do ritmo do relógio (p. ex. ≈488 µs/dia para Marte, face a ≈477 µs/dia nos modelos completos); as horas locais “reais” usam orientações médias da IAU e efemérides keplerianas simplificadas (erro da ordem dos minutos); tempo-luz ≈0,5 %; os mapas são esquemáticos; o índice de colonização é indicativo, não uma avaliação científica. Para navegação real, usa efemérides numéricas completas."},
         "de": {"limite": "Modell erster Ordnung für den Uhrengang (z. B. ≈488 µs/Tag für den Mars, gegenüber ≈477 µs/Tag in vollständigen Modellen); die „echten“ Ortszeiten verwenden mittlere IAU-Orientierungen und vereinfachte Kepler-Ephemeriden (Fehler in der Größenordnung von Minuten); Lichtlaufzeit ≈0,5 %; die Karten sind schematisch; der Kolonisierungsindex ist ein Richtwert, keine wissenschaftliche Bewertung. Für echte Navigation verwende vollständige numerische Ephemeriden."},
         "hu": {"limite": "Az óra ütemének elsőrendű modellje (pl. ≈488 µs/nap a Marsra, szemben a teljes modellek ≈477 µs/napjával); a „valódi” helyi időpontok átlagos IAU-tájolásokat és egyszerűsített Kepler-féle efemeriszeket használnak (percnyi nagyságrendű hiba); fényidő ≈0,5 %; a térképek vázlatosak; a gyarmatosítási index tájékoztató jellegű, nem tudományos értékelés. Valódi navigációhoz használjon teljes numerikus efemeriszeket."}
-      }
+      },
+      "score": 9.2
     },
     "TerRa": {
       "fisa": {
@@ -842,7 +898,8 @@
         "pt": {"limite": "Não é adequado para navegação. As efemérides locais têm a precisão declarada face ao JPL DE421/DE423 (Sol e planetas ≤ 3″, Lua ≤ 1,5″), com as horas arredondadas ao minuto; o nascer/pôr do sol reais diferem em minutos (refração, relevo e altitude não modelados). A posição dos satélites depende da idade dos elementos TLE."},
         "de": {"limite": "Nicht für die Navigation geeignet. Die lokalen Ephemeriden haben die angegebene Genauigkeit gegenüber JPL DE421/DE423 (Sonne und Planeten ≤ 3″, Mond ≤ 1,5″), mit auf die Minute gerundeten Zeiten; der tatsächliche Sonnenauf-/-untergang weicht um Minuten ab (Refraktion, Gelände, Höhe nicht modelliert). Die Position der Satelliten hängt vom Alter der TLE-Elemente ab."},
         "hu": {"limite": "Nem alkalmas navigációra. A helyi efemeriszek pontossága a JPL DE421/DE423-hoz képest a megadott érték (Nap és bolygók ≤ 3″, Hold ≤ 1,5″), az időpontok percre kerekítve; a valódi napkelte/napnyugta percekkel eltér (a refrakció, a domborzat és a magasság nincs modellezve). A műholdak helyzete a TLE-elemek korától függ."}
-      }
+      },
+      "score": 7.5
     },
     "Universul-Observabil": {
       "fisa": {
@@ -854,7 +911,8 @@
         "pt": {"limite": "A página principal não contém as visualizações, apenas uma pequena calculadora cosmológica offline e ligações para elas; as versões lançadas são aplicações separadas. O recorde de distância (MoM-z14, z = 14,44) é válido à data do catálogo (maio de 2026) e pode ser ultrapassado."},
         "de": {"limite": "Die Hub-Seite enthält nicht die Visualisierungen, nur einen kleinen kosmologischen Offline-Rechner und Links zu ihnen; die veröffentlichten Versionen sind eigenständige Anwendungen. Der Entfernungsrekord (MoM-z14, z = 14,44) gilt zum Datum des Katalogs (Mai 2026) und kann übertroffen werden."},
         "hu": {"limite": "A hub oldal nem tartalmazza a vizualizációkat, csak egy kis offline kozmológiai számológépet és hivatkozásokat rájuk; a kiadott változatok önálló alkalmazások. A távolsági rekord (MoM-z14, z = 14,44) a katalógus dátumára (2026. május) érvényes, és túlszárnyalható."}
-      }
+      },
+      "score": 8.2
     },
     "Universul-Observabil-1D": {
       "fisa": {
@@ -866,7 +924,8 @@
         "pt": {"limite": "A projeção num único eixo não tem distorção angular, mas as galáxias situadas na mesma direção sobrepõem-se no mesmo ponto. As fontes de dados (Planck 2018, NASA/IPAC NED, SIMBAD, JWST/JADES) são apenas citadas, não consultadas em tempo de execução."},
         "de": {"limite": "Die Projektion auf eine einzige Achse hat keine Winkelverzerrung, aber Galaxien in derselben Richtung überlagern sich im selben Punkt. Die Datenquellen (Planck 2018, NASA/IPAC NED, SIMBAD, JWST/JADES) werden nur zitiert, nicht zur Laufzeit abgefragt."},
         "hu": {"limite": "Az egyetlen tengelyre vetítésnek nincs szögtorzulása, de az azonos irányban lévő galaxisok ugyanabban a pontban fedik egymást. Az adatforrásokat (Planck 2018, NASA/IPAC NED, SIMBAD, JWST/JADES) csak idézi, futásidőben nem kérdezi le."}
-      }
+      },
+      "score": 8.9
     },
     "Universul-Observabil-2D": {
       "fisa": {
@@ -878,7 +937,8 @@
         "pt": {"limite": "A edição “Flat Earth™” é satírica: a Cúpula Celeste, o Muro de Gelo, a “Conspiração da NASA” e a Tartaruga Cósmica são fictícios; as galáxias e as distâncias são as do catálogo. O recorde (MoM-z14, z = 14,44) é válido à data do catálogo (maio de 2026) e pode ser ultrapassado."},
         "de": {"limite": "Die Ausgabe „Flat Earth™“ ist satirisch: Himmelskuppel, Eiswall, „NASA-Verschwörung“ und Weltraumschildkröte sind erfunden; die Galaxien und Entfernungen stammen aus dem Katalog. Der Rekord (MoM-z14, z = 14,44) gilt zum Datum des Katalogs (Mai 2026) und kann übertroffen werden."},
         "hu": {"limite": "A „Flat Earth™” kiadás szatirikus: az Égi Kupola, a Jégfal, a „NASA-összeesküvés” és a Kozmikus Teknős kitalált; a galaxisok és a távolságok a katalógusból származnak. A rekord (MoM-z14, z = 14,44) a katalógus dátumára (2026. május) érvényes, és túlszárnyalható."}
-      }
+      },
+      "score": 7.9
     },
     "Universul-Observabil-3D": {
       "fisa": {
@@ -890,7 +950,8 @@
         "pt": {"limite": "Em iOS, os gestos de pinça iniciados no canvas ficam reservados à câmara 3D. As citações BibTeX da aplicação não têm campo DOI (a aplicação ainda não tem DOI Zenodo)."},
         "de": {"limite": "Unter iOS sind Pinch-Gesten, die auf dem Canvas beginnen, der 3D-Kamera vorbehalten. Die BibTeX-Zitate der Anwendung haben kein DOI-Feld (die Anwendung hat noch keine Zenodo-DOI)."},
         "hu": {"limite": "iOS-en a vászonon megkezdett csippentéses mozdulatok a 3D-s kamerának vannak fenntartva. Az alkalmazás BibTeX-idézeteinek nincs DOI mezőjük (az alkalmazásnak még nincs Zenodo DOI-ja)."}
-      }
+      },
+      "score": 6.4
     },
     "VietAR": {
       "fisa": {
@@ -902,7 +963,8 @@
         "pt": {"limite": "A identificação automática pode errar: não consumas plantas ou cogumelos com base na aplicação (algumas espécies são tóxicas ou mortais); os resultados são indicativos, não determinações científicas. O motor local compara o aspeto com uma lista e não conhece espécies raras. A verificação C2PA/IA é um sinal indicativo; a ausência de marcas não prova a autenticidade. Funciona offline apenas após a primeira transferência dos modelos (de huggingface.co); o modo opcional “IA online” envia a imagem para api.anthropic.com ou api.openai.com após confirmação."},
         "de": {"limite": "Die automatische Bestimmung kann falsch sein: Verzehre keine Pflanzen oder Pilze auf Grundlage der App (manche Arten sind giftig oder tödlich); die Ergebnisse sind Richtwerte, keine wissenschaftlichen Bestimmungen. Die lokale Engine vergleicht das Aussehen mit einer Liste und kennt seltene Arten nicht. Die C2PA/KI-Prüfung ist ein Richtwert; das Fehlen von Kennzeichnungen beweist keine Echtheit. Offline funktioniert sie erst nach dem ersten Herunterladen der Modelle (von huggingface.co); der optionale Modus „Online-KI“ sendet das Bild nach Bestätigung an api.anthropic.com oder api.openai.com."},
         "hu": {"limite": "Az automatikus azonosítás tévedhet: ne fogyasszon növényeket vagy gombákat az alkalmazás alapján (egyes fajok mérgezőek vagy halálosak); az eredmények tájékoztató jellegűek, nem tudományos meghatározások. A helyi motor a megjelenést egy listához hasonlítja, és nem ismeri a ritka fajokat. A C2PA/MI-ellenőrzés tájékoztató jelzés; a jelölések hiánya nem bizonyítja a hitelességet. Offline csak a modellek első letöltése után működik (a huggingface.co-ról); az opcionális „Online MI” mód megerősítés után elküldi a képet az api.anthropic.com vagy az api.openai.com címre."}
-      }
+      },
+      "score": 8.3
     },
     "FieldObserver": {
       "fisa": {
@@ -914,7 +976,8 @@
         "pt": {"limite": "A câmara não funciona em HTTP não seguro (requer HTTPS ou localhost). O trajeto GPS só é gravado enquanto a página permanece aberta e ativa; as posições com precisão inferior a 100 m são ignoradas. As traduções para além do romeno são automáticas e não verificadas por falantes nativos."},
         "de": {"limite": "Die Kamera funktioniert nicht über ungesichertes HTTP (erfordert HTTPS oder localhost). Der GPS-Track wird nur aufgezeichnet, solange die Seite geöffnet und aktiv bleibt; Positionen mit einer Genauigkeit schlechter als 100 m werden ignoriert. Die Übersetzungen außerhalb des Rumänischen sind automatisch und nicht von Muttersprachlern überprüft."},
         "hu": {"limite": "A kamera nem működik nem biztonságos HTTP-n (HTTPS vagy localhost szükséges). A GPS-nyomvonalat csak addig rögzíti, amíg az oldal nyitva és aktív marad; a 100 m-nél gyengébb pontosságú pozíciókat figyelmen kívül hagyja. A romántól eltérő fordítások automatikusak, anyanyelvi beszélők nem ellenőrizték őket."}
-      }
+      },
+      "score": 8.4
     },
     "Poteca": {
       "fisa": {
@@ -938,7 +1001,8 @@
         "pt": {"limite": "Guia informativo, não oficial, para ler, não uma aplicação de navegação: não garante que o trilho esteja sinalizado, aberto ou transitável e não substitui o mapa topográfico, o guia local nem o Salvamont (emergências: 112). O mapa é esquemático; as distâncias, durações e altitudes são indicativas, não medidas com GPS. As plantas medicinais são apresentadas a partir da tradição popular, não como aconselhamento médico. Na zona protegida entre Colți e Aluniș, a extração de âmbar ou de fósseis é proibida. Os contactos, o horário e as tarifas do organizador podem estar desatualizados."},
         "de": {"limite": "Informativer, inoffizieller Führer zum Lesen, keine Navigations-App: Er garantiert nicht, dass der Weg markiert, geöffnet oder begehbar ist, und ersetzt weder die topografische Karte noch den lokalen Führer oder die Bergrettung Salvamont (Notfälle: 112). Die Karte ist schematisch; Entfernungen, Dauern und Höhen sind Richtwerte und nicht per GPS gemessen. Heilpflanzen werden aus der Volkstradition dargestellt, nicht als medizinischer Rat. Im Schutzgebiet zwischen Colți und Aluniș ist das Entnehmen von Bernstein oder Fossilien verboten. Kontaktdaten, Programm und Tarife des Veranstalters können veraltet sein."},
         "hu": {"limite": "Tájékoztató, nem hivatalos, olvasásra szánt útikalauz, nem navigációs alkalmazás: nem garantálja, hogy az útvonal jelzett, nyitott vagy járható, és nem helyettesíti a topográfiai térképet, a helyi vezetőt vagy a Salvamontot (vészhelyzet: 112). A térkép vázlatos; a távolságok, időtartamok és magasságok tájékoztató jellegűek, GPS-szel nem mértek. A gyógynövényeket a népi hagyomány alapján mutatja be, nem orvosi tanácsként. A Colți és Aluniș közötti védett területen a borostyán vagy a kövületek kinyerése tilos. A szervező elérhetőségei, programja és díjai elavultak lehetnek."}
-      }
+      },
+      "score": 9
     },
     "VATRA": {
       "fisa": {
@@ -950,7 +1014,8 @@
         "pt": {"limite": "Conteúdo educativo geral: não substitui um curso autorizado de primeiros socorros ou sobrevivência, a equipa local de salvamento nem a avaliação médica especializada (na Roménia, liga para o 112). As informações (valores, números de contacto, dados sobre fauna ou legislação) podem ficar desatualizadas; as calculadoras são indicativas. As fontes são citadas apenas parcialmente; o teste de comestibilidade e os procedimentos de primeiros socorros são resumos gerais, não protocolos médicos. As traduções são automáticas."},
         "de": {"limite": "Allgemeiner Bildungsinhalt: ersetzt weder einen autorisierten Erste-Hilfe- oder Überlebenskurs noch das lokale Rettungsteam oder die fachärztliche Untersuchung (in Rumänien rufe die 112 an). Die Informationen (Zahlen, Kontaktnummern, Angaben zu Fauna oder Gesetzgebung) können veralten; die Rechner sind Richtwerte. Die Quellen sind nur teilweise zitiert; der Genießbarkeitstest und die Erste-Hilfe-Verfahren sind allgemeine Zusammenfassungen, keine medizinischen Protokolle. Die Übersetzungen sind automatisch."},
         "hu": {"limite": "Általános oktatási tartalom: nem helyettesíti a hivatalos elsősegély- vagy túlélőtanfolyamot, a helyi mentőcsapatot, sem a szakorvosi vizsgálatot (Romániában hívja a 112-t). Az információk (számadatok, elérhetőségek, a faunára vagy a jogszabályokra vonatkozó adatok) elavulhatnak; a számológépek tájékoztató jellegűek. A forrásokat csak részben idézi; az ehetőségi teszt és az elsősegély-eljárások általános összefoglalók, nem orvosi protokollok. A fordítások automatikusak."}
-      }
+      },
+      "score": 8.1
     },
     "BorderlessMelodies": {
       "fisa": {
@@ -962,7 +1027,8 @@
         "pt": {"limite": "Conteúdo informativo/experiencial. A camada “Relaxation waves” (tons puros, binaurais, isocrónicos) destina-se apenas a relaxamento, não é tratamento médico, e as provas científicas sobre o efeito dos ritmos binaurais/isocrónicos são limitadas. Não recomendado em caso de epilepsia, outra doença neurológica ou gravidez sem o acordo do médico; não ouças ao conduzir; usa um volume baixo."},
         "de": {"limite": "Informativer/erfahrungsbasierter Inhalt. Die Ebene „Relaxation waves“ (reine, binaurale, isochrone Töne) dient nur der Entspannung, ist keine medizinische Behandlung, und die wissenschaftlichen Belege für die Wirkung binauraler/isochroner Rhythmen sind begrenzt. Nicht empfohlen bei Epilepsie, einer anderen neurologischen Erkrankung oder Schwangerschaft ohne Zustimmung des Arztes; höre nicht beim Autofahren; verwende eine niedrige Lautstärke."},
         "hu": {"limite": "Tájékoztató/élményszerű tartalom. A „Relaxation waves” réteg (tiszta, binaurális, izokron hangok) kizárólag relaxációra szolgál, nem orvosi kezelés, a binaurális/izokron ritmusok hatásáról szóló tudományos bizonyítékok pedig korlátozottak. Epilepszia, más neurológiai betegség vagy terhesség esetén orvosi jóváhagyás nélkül nem ajánlott; vezetés közben ne hallgassa; használjon alacsony hangerőt."}
-      }
+      },
+      "score": 9.2
     },
     "CalmWaves": {
       "fisa": {
@@ -974,7 +1040,8 @@
         "pt": {"limite": "Conteúdo informativo e de relaxamento; não é um dispositivo médico e não substitui o aconselhamento ou o tratamento médico. A secção “What the research actually says” resume afirmações sobre estudos (p. ex. batidas binaurais e ansiedade) que não foram verificadas de forma independente; não são promessas terapêuticas. As pessoas com epilepsia ou doenças neurológicas devem pedir aconselhamento ao médico antes de usar batidas binaurais."},
         "de": {"limite": "Informativer und entspannender Inhalt; kein Medizinprodukt und ersetzt nicht ärztlichen Rat oder ärztliche Behandlung. Der Abschnitt „What the research actually says“ fasst Aussagen über Studien zusammen (z. B. binaurale Beats und Angst), die nicht unabhängig überprüft wurden; es sind keine therapeutischen Versprechen. Personen mit Epilepsie oder neurologischen Erkrankungen sollten vor der Nutzung binauraler Beats ärztlichen Rat einholen."},
         "hu": {"limite": "Tájékoztató és relaxációs tartalom; nem orvosi eszköz, és nem helyettesíti az orvosi tanácsot vagy kezelést. A „What the research actually says” szakasz olyan tanulmányokra vonatkozó állításokat foglal össze (pl. binaurális ütemek és szorongás), amelyeket függetlenül nem ellenőriztek; ezek nem terápiás ígéretek. Epilepsziában vagy neurológiai betegségben szenvedők a binaurális ütemek használata előtt kérjenek orvosi tanácsot."}
-      }
+      },
+      "score": 9.2
     },
     "Decibel": {
       "fisa": {
@@ -998,7 +1065,8 @@
         "pt": {"limite": "Conteúdo informativo/educativo; não é um dispositivo médico nem tratamento (incluindo para acufenos, dor ou problemas de audição). As frequências “Solfeggio” e “Schumann”, os ritmos binaurais/isocrónicos e as predefinições “Pain Relief” ou “Peak Performance” não têm validação científica como terapia nem efeito médico comprovado. Usa um volume baixo (abaixo de 20% no início), sobretudo com auscultadores. O audiograma não substitui um audiograma médico. As descrições do catálogo de frequências, traduzidas automaticamente, requerem revisão por um especialista."},
         "de": {"limite": "Informativer/Bildungsinhalt; kein Medizinprodukt und keine Behandlung (auch nicht bei Tinnitus, Schmerzen oder Hörproblemen). Die „Solfeggio“- und „Schumann“-Frequenzen, binaurale/isochrone Rhythmen und die Voreinstellungen „Pain Relief“ oder „Peak Performance“ haben als Therapie keine wissenschaftliche Validierung und keine nachgewiesene medizinische Wirkung. Verwende eine niedrige Lautstärke (zu Beginn unter 20 %), besonders mit Kopfhörern. Das Audiogramm ersetzt kein medizinisches. Die automatisch übersetzten Beschreibungen im Frequenzkatalog müssen von Fachleuten geprüft werden."},
         "hu": {"limite": "Tájékoztató/oktatási tartalom; nem orvosi eszköz vagy kezelés (a fülzúgásra, fájdalomra vagy hallásproblémákra sem). A „Solfeggio” és „Schumann” frekvenciáknak, a binaurális/izokron ritmusoknak, valamint a „Pain Relief” vagy „Peak Performance” előbeállításoknak nincs tudományos érvényesítése terápiaként, és bizonyított orvosi hatásuk sincs. Használjon alacsony hangerőt (kezdetben 20% alatt), különösen fejhallgatóval. Az audiogram nem helyettesíti az orvosi audiogramot. A frekvenciakatalógus automatikusan fordított leírásai szakértői felülvizsgálatot igényelnek."}
-      }
+      },
+      "score": 6.7
     },
     "generator-frecvente": {
       "fisa": {
@@ -1010,7 +1078,8 @@
         "pt": {"limite": "Conteúdo informativo/educativo, não substitui o aconselhamento médico. As categorias “Solfeggio” e “Schumann” provêm de tradições modernas (New Age) e não têm validação científica; não se prometem efeitos terapêuticos. O teste auditivo mostra um limiar relativo e não é um audiograma médico. O comportamento depende do navegador (Web Audio, MIDI, AudioWorklet). Existe uma versão mais recente no portefólio: FrequencyLaboratory."},
         "de": {"limite": "Informativer/Bildungsinhalt, ersetzt nicht ärztlichen Rat. Die Kategorien „Solfeggio“ und „Schumann“ stammen aus modernen (New-Age-)Traditionen und haben keine wissenschaftliche Validierung; es werden keine therapeutischen Wirkungen versprochen. Der Hörtest zeigt eine relative Schwelle und ist kein medizinisches Audiogramm. Das Verhalten hängt vom Browser ab (Web Audio, MIDI, AudioWorklet). Im Portfolio gibt es eine neuere Version: FrequencyLaboratory."},
         "hu": {"limite": "Tájékoztató/oktatási tartalom, nem helyettesíti az orvosi tanácsot. A „Solfeggio” és „Schumann” kategóriák modern (New Age) hagyományokból származnak, és tudományos érvényesítésük nincs; terápiás hatást nem ígér. A hallásteszt relatív küszöböt mutat, és nem orvosi audiogram. A viselkedés a böngészőtől függ (Web Audio, MIDI, AudioWorklet). A portfólióban létezik egy újabb változat: FrequencyLaboratory."}
-      }
+      },
+      "score": 7.4
     },
     "Akasha": {
       "fisa": {
@@ -1022,7 +1091,8 @@
         "pt": {"limite": "O código QR de um registo tem no máximo 1000 bytes: o texto mais longo é truncado, com aviso. As traduções para húngaro e alemão dos textos novos são automáticas e não verificadas; nas restantes línguas, as novas funções aparecem em inglês."},
         "de": {"limite": "Der QR-Code eines Eintrags fasst höchstens 1000 Byte: Längerer Text wird mit einer Warnung gekürzt. Die Übersetzungen der neuen Texte ins Ungarische und Deutsche sind automatisch und nicht überprüft; in den anderen Sprachen erscheinen die neuen Funktionen auf Englisch."},
         "hu": {"limite": "Egy bejegyzés QR-kódja legfeljebb 1000 bájtot tartalmaz: a hosszabb szöveg figyelmeztetéssel csonkolódik. Az új szövegek magyar és német fordításai automatikusak és nem ellenőrzöttek; a többi nyelven az új funkciók angolul jelennek meg."}
-      }
+      },
+      "score": 8.9
     },
     "Arbore": {
       "fisa": {
@@ -1046,7 +1116,8 @@
         "pt": {"limite": "O alarme toca apenas enquanto a página permanece aberta e ativa; com o separador em segundo plano, o ecrã bloqueado ou a página fechada, pode tocar com atraso ou não tocar, por isso não o uses como único alarme para coisas importantes. A lista de feriados segue a legislação à data da verificação e pode ficar desatualizada; os dias de folga concedidos pontualmente (pontes) não estão incluídos. Não foi testado em dispositivos iOS reais."},
         "de": {"limite": "Der Alarm klingelt nur, solange die Seite geöffnet und aktiv bleibt; bei einem Tab im Hintergrund, gesperrtem Bildschirm oder geschlossener Seite kann er verspätet oder gar nicht klingeln, verwende ihn also nicht als einzigen Wecker für wichtige Dinge. Die Feiertagsliste folgt der Gesetzgebung zum Zeitpunkt der Prüfung und kann veralten; einzelne zusätzlich gewährte freie Tage (Brückentage) sind nicht enthalten. Nicht auf echten iOS-Geräten getestet."},
         "hu": {"limite": "Az ébresztő csak addig szól, amíg az oldal nyitva és aktív marad; ha a lap a háttérben van, a képernyő zárolt vagy az oldal be van zárva, késve vagy egyáltalán nem szólalhat meg, ezért fontos dolgokhoz ne használja egyetlen ébresztőként. Az ünnepnapok listája az ellenőrzés időpontjában hatályos jogszabályokat követi, és elavulhat; az alkalmi szabadnapok (áthidaló napok) nincsenek benne. Valódi iOS-eszközökön nem tesztelték."}
-      }
+      },
+      "score": 9.9
     },
     "Gospodar": {
       "fisa": {
@@ -1082,7 +1153,8 @@
         "pt": {"limite": "As variantes implementadas de forma aproximada estão assinaladas com ⚠. A notação dos movimentos exportados é em coordenadas, não PDN oficial. O analisador local tem um limite de tempo de ≈ 0,7 s, pelo que a profundidade depende do dispositivo."},
         "de": {"limite": "Näherungsweise umgesetzte Varianten sind mit ⚠ markiert. Die Notation der exportierten Züge verwendet Koordinaten, nicht das offizielle PDN. Der lokale Analysator hat ein Zeitlimit von ≈ 0,7 s, daher hängt die Tiefe vom Gerät ab."},
         "hu": {"limite": "A hozzávetőlegesen megvalósított változatokat ⚠ jelzi. Az exportált lépések jelölése koordinátás, nem hivatalos PDN. A helyi elemző időkorlátja ≈ 0,7 s, így a mélység az eszköztől függ."}
-      }
+      },
+      "score": 8.7
     },
     "Mahjong-fara-frontiere": {
       "fisa": {
@@ -1094,7 +1166,8 @@
         "pt": {"limite": "Não é um produto de competição completo: cada variante tem aproximações assinaladas com ⚠, e as regras regionais diferem. A IA é de nível fraco a médio, sem modelos dos adversários. As traduções em fr/it/es/pt/de/hu são automáticas; a terminologia (sobretudo hu, de) merece ser revista por um jogador nativo. “Mahjong Shanghai” é uma designação comercial; aqui o jogo chama-se Mahjong solitaire."},
         "de": {"limite": "Kein vollständiges Wettkampfprodukt: Jede Variante hat mit ⚠ markierte Näherungen, und die regionalen Regeln unterscheiden sich. Die KI ist schwach bis mittel, ohne Gegnermodelle. Die Übersetzungen in fr/it/es/pt/de/hu sind automatisch; die Terminologie (besonders hu, de) sollte von einem muttersprachlichen Spieler überprüft werden. „Mahjong Shanghai“ ist ein Handelsname; hier heißt das Spiel Mahjong solitaire."},
         "hu": {"limite": "Nem teljes értékű versenytermék: minden változat ⚠ jelzésű közelítéseket tartalmaz, a regionális szabályok pedig eltérnek. Az MI gyenge–közepes szintű, ellenfélmodellek nélkül. Az fr/it/es/pt/de/hu fordítások automatikusak; a terminológiát (főleg hu, de) érdemes anyanyelvi játékossal átnézetni. A „Mahjong Shanghai” kereskedelmi elnevezés; itt a játék neve Mahjong solitaire."}
-      }
+      },
+      "score": 9.5
     },
     "Profund": {
       "fisa": {
@@ -1106,7 +1179,8 @@
         "pt": {"limite": "As 150 perguntas existem em romeno, inglês e francês; nas outras línguas é apresentada a versão em inglês."},
         "de": {"limite": "Die 150 Fragen gibt es auf Rumänisch, Englisch und Französisch; in den anderen Sprachen wird die englische Fassung angezeigt."},
         "hu": {"limite": "A 150 kérdés románul, angolul és franciául létezik; a többi nyelven az angol változat jelenik meg."}
-      }
+      },
+      "score": 9.9
     },
     "Sah-fara-frontiere": {
       "fisa": {
@@ -1118,7 +1192,8 @@
         "pt": {"limite": "As funções da “mesa de xadrez” (jogo a dois, analisador, explicações) dizem respeito apenas ao xadrez padrão (regras FIDE, motor próprio); as 706 variantes do atlas não são abrangidas e mantêm o modo “▶ Joacă” inalterado."},
         "de": {"limite": "Die Funktionen am „Schachtisch“ (Spiel zu zweit, Analysator, Erklärungen) betreffen nur Standardschach (FIDE-Regeln, eigene Engine); die 706 Varianten im Atlas sind nicht abgedeckt und behalten ihren Modus „▶ Spielen“ unverändert."},
         "hu": {"limite": "A „sakkasztal” funkciói (kétszemélyes játék, elemző, magyarázatok) csak a hagyományos sakkra vonatkoznak (FIDE-szabályok, saját motor); az atlasz 706 változatára nem terjednek ki, azok „▶ Játék” módja változatlan marad."}
-      }
+      },
+      "score": 6
     },
     "Sudoku-fara-frontiere": {
       "fisa": {
@@ -1130,7 +1205,8 @@
         "pt": {"limite": "A dificuldade fácil/média/difícil é apenas o número de pistas mantidas; a medida do esforço do solucionador não avalia as técnicas humanas. Se a geração demorar mais de 12 s, a dificuldade desce automaticamente. Testado em Chromium; Firefox e Safari/iOS não puderam ser testados. O tabuleiro SVG não é uma ferramenta completa para leitores de ecrã. As grelhas compostas têm apenas as regras clássicas, e combinações muito carregadas podem demorar mais ou falhar."},
         "de": {"limite": "Die Schwierigkeit leicht/mittel/schwer ist nur die Anzahl der verbleibenden Hinweise; das Aufwandsmaß des Solvers bewertet keine menschlichen Techniken. Wenn die Erzeugung länger als 12 s dauert, sinkt die Schwierigkeit automatisch. In Chromium getestet; Firefox und Safari/iOS konnten nicht getestet werden. Das SVG-Brett ist kein vollständiges Werkzeug für Screenreader. Zusammengesetzte Raster haben nur die klassischen Regeln, und sehr stark belegte Kombinationen können länger dauern oder scheitern."},
         "hu": {"limite": "A könnyű/közepes/nehéz nehézség csupán a megtartott támpontok száma; a megoldó erőfeszítésének mérőszáma nem értékeli az emberi technikákat. Ha a generálás 12 másodpercnél tovább tart, a nehézség automatikusan csökken. Chromiumban tesztelték; Firefoxban és Safariban/iOS-en nem lehetett tesztelni. Az SVG-tábla nem teljes értékű eszköz képernyőolvasókhoz. Az összetett rácsok csak a klasszikus szabályokat tartalmazzák, a nagyon terhelt kombinációk pedig tovább tarthatnak vagy sikertelenek lehetnek."}
-      }
+      },
+      "score": 9.2
     },
     "Zaruri-fara-frontiere": {
       "fisa": {
@@ -1142,7 +1218,8 @@
         "pt": {"limite": "Não é uma aplicação de jogos de azar a dinheiro real: no Craps, as fichas são virtuais. Apenas 12 das 26 entradas são jogáveis (as restantes são apenas descritas). As variantes assinaladas com ⚠ são aproximações ou escolhas documentadas, não “a regra oficial”. As designações comerciais citadas (Yahtzee®, Perudo®, Pass the Pigs®, Kniffel®) pertencem aos titulares, sem afiliação. Não implementados: símbolos alternativos para daltonismo e o modo “mostrar os dados da IA”."},
         "de": {"limite": "Keine Glücksspiel-App mit echtem Geld: Bei Craps sind die Chips virtuell. Nur 12 von 26 Einträgen sind spielbar (die übrigen sind nur beschrieben). Mit ⚠ markierte Varianten sind Näherungen oder dokumentierte Entscheidungen, nicht „die offizielle Regel“. Die genannten Handelsnamen (Yahtzee®, Perudo®, Pass the Pigs®, Kniffel®) gehören ihren Inhabern, ohne Zugehörigkeit. Nicht umgesetzt: alternative Symbole für Farbenblindheit und der Modus „Würfel der KI zeigen“."},
         "hu": {"limite": "Nem valódi pénzes szerencsejáték-alkalmazás: a Crapsben a zsetonok virtuálisak. A 26 bejegyzésből csak 12 játszható (a többi csak le van írva). A ⚠ jelzésű változatok közelítések vagy dokumentált választások, nem „a hivatalos szabály”. Az idézett kereskedelmi nevek (Yahtzee®, Perudo®, Pass the Pigs®, Kniffel®) a tulajdonosaikat illetik, kapcsolat nélkül. Nincs megvalósítva: alternatív szimbólumok színvaksághoz és az „MI kockáinak megmutatása” mód."}
-      }
+      },
+      "score": 8.9
     },
     "AI-Liber": {
       "fisa": {
@@ -1154,7 +1231,8 @@
         "pt": {"limite": "As respostas da IA podem estar erradas (aviso na aplicação: para informações médicas/jurídicas/financeiras, consulta um especialista). As mensagens são processadas pelos fornecedores escolhidos, de acordo com as respetivas políticas. A deteção de dados pessoais é heurística e não garante a ausência de dados sensíveis; o mascaramento aplica-se ao texto do campo de mensagem, não a ficheiros já carregados. O histórico tem um limite de tamanho: as conversas mais antigas são eliminadas."},
         "de": {"limite": "Die Antworten der KI können falsch sein (Warnung in der App: Bei medizinischen/juristischen/finanziellen Informationen konsultiere eine Fachperson). Die Nachrichten werden von den gewählten Anbietern gemäß deren Richtlinien verarbeitet. Die Erkennung personenbezogener Daten ist heuristisch und garantiert nicht, dass keine sensiblen Daten enthalten sind; die Maskierung gilt für den Text im Nachrichtenfeld, nicht für bereits hochgeladene Dateien. Der Verlauf hat eine Größenbegrenzung: Die ältesten Unterhaltungen werden gelöscht."},
         "hu": {"limite": "Az MI válaszai hibásak lehetnek (az alkalmazásban figyelmeztetés: orvosi/jogi/pénzügyi információkért forduljon szakemberhez). Az üzeneteket a választott szolgáltatók dolgozzák fel, a saját szabályzataik szerint. A személyes adatok felismerése heurisztikus, és nem garantálja az érzékeny adatok hiányát; a maszkolás az üzenetmező szövegére vonatkozik, nem a már feltöltött fájlokra. Az előzménynek mérethatára van: a legrégebbi beszélgetések törlődnek."}
-      }
+      },
+      "score": 9.1
     },
     "ARENA": {
       "fisa": {
@@ -1166,7 +1244,8 @@
         "pt": {"limite": "As chaves de API são guardadas por defeito como texto simples em localStorage (opcionalmente apenas em sessionStorage, com “apenas sessão”). Os modelos de demonstração funcionam offline; os fornecedores na nuvem, a importação dos motores WebLLM/Transformers.js e a sincronização do catálogo requerem internet."},
         "de": {"limite": "API-Schlüssel werden standardmäßig als einfacher Text in localStorage gespeichert (optional nur in sessionStorage, mit „nur Sitzung“). Die Demomodelle funktionieren offline; Cloud-Anbieter, der Import der Engines WebLLM/Transformers.js und die Synchronisierung des Katalogs benötigen Internet."},
         "hu": {"limite": "Az API-kulcsokat alapértelmezés szerint egyszerű szövegként tárolja a localStorage-ban (opcionálisan csak a sessionStorage-ban, a „csak munkamenet” beállítással). A bemutató modellek offline működnek; a felhőszolgáltatókhoz, a WebLLM/Transformers.js motorok importálásához és a katalógus szinkronizálásához internet szükséges."}
-      }
+      },
+      "score": 9.2
     },
     "LocalMind": {
       "fisa": {
@@ -1178,7 +1257,9 @@
         "pt": {"limite": "As respostas dos modelos pequenos podem estar erradas, incompletas ou inventadas: verifica-as; não prestam aconselhamento médico, jurídico nem financeiro. As 8 tarefas de avaliação são um sinal grosseiro, não uma classificação geral (estão em romeno, e os modelos pequenos podem falhar no formato). A velocidade depende do dispositivo e de WebGPU/WASM. A página contacta huggingface.co (transferência de modelos) e cdn.jsdelivr.net (Pyodide, ONNX Runtime); a deteção de dados pessoais é heurística."},
         "de": {"limite": "Die Antworten kleiner Modelle können falsch, unvollständig oder erfunden sein: Überprüfe sie; keine medizinische, juristische oder finanzielle Beratung. Die 8 Bewertungsaufgaben sind ein grobes Signal, keine allgemeine Rangliste (sie sind auf Rumänisch, und kleine Modelle können beim Format scheitern). Die Geschwindigkeit hängt vom Gerät und von WebGPU/WASM ab. Die Seite kontaktiert huggingface.co (Herunterladen der Modelle) und cdn.jsdelivr.net (Pyodide, ONNX Runtime); die Erkennung personenbezogener Daten ist heuristisch."},
         "hu": {"limite": "A kis modellek válaszai hibásak, hiányosak vagy kitaláltak lehetnek: ellenőrizze őket; nem nyújt orvosi, jogi vagy pénzügyi tanácsot. A 8 értékelési feladat durva jelzés, nem általános rangsor (románul vannak, és a kis modellek a formátumot elronthatják). A sebesség az eszköztől és a WebGPU/WASM-tól függ. Az oldal felveszi a kapcsolatot a huggingface.co-val (modellletöltés) és a cdn.jsdelivr.net-tel (Pyodide, ONNX Runtime); a személyes adatok felismerése heurisztikus."}
-      }
+      },
+      "score": 3.6,
+      "status": "lab"
     },
     "Nexus-fara-frontiere": {
       "fisa": {
@@ -1190,7 +1271,8 @@
         "pt": {"limite": "Não é offline: falas diretamente a partir do navegador com o fornecedor escolhido, com as tuas próprias chaves de API, guardadas sem cifragem no navegador; os custos das chamadas são teus, a aplicação não limita os gastos. Não testado com as APIs reais (apenas respostas simuladas); os nomes dos modelos mudam com frequência. Limite fixo de 4096 tokens de saída na Anthropic; sem chamadas de ferramentas, anexos/imagens nem pesquisa na web. Em conversas longas, só são enviadas as últimas mensagens. Fornecido “tal como está”, sem garantias."},
         "de": {"limite": "Nicht offline: Du sprichst direkt aus dem Browser mit dem gewählten Anbieter, mit deinen eigenen API-Schlüsseln, die unverschlüsselt im Browser gespeichert sind; die Kosten der Aufrufe trägst du, und die App begrenzt die Ausgaben nicht. Nicht mit den echten APIs getestet (nur simulierte Antworten); die Modellnamen ändern sich häufig. Feste Grenze von 4096 Ausgabe-Tokens bei Anthropic; keine Tool-Aufrufe, Anhänge/Bilder oder Websuche. Bei langen Unterhaltungen werden nur die letzten Nachrichten gesendet. Angeboten „wie besehen“, ohne Gewährleistung."},
         "hu": {"limite": "Nem offline: közvetlenül a böngészőből beszél a választott szolgáltatóval, saját API-kulcsokkal, amelyeket titkosítatlanul tárol a böngészőben; a hívások költségei az Öné, az alkalmazás nem korlátozza a költést. Valódi API-kkal nem tesztelték (csak szimulált válaszokkal); a modellnevek gyakran változnak. Az Anthropicnál rögzített, 4096 tokenes kimeneti korlát; eszközhívások, mellékletek/képek vagy webes keresés nélkül. Hosszú beszélgetésekben csak az utolsó üzenetek kerülnek elküldésre. „Ahogy van” alapon kínálva, garancia nélkül."}
-      }
+      },
+      "score": 8.5
     },
     "PromptVault": {
       "fisa": {
@@ -1202,19 +1284,22 @@
         "pt": {"limite": "Os prompts são modelos, não aconselhamento. As categorias saúde, saúde mental, medicina, direito, contabilidade/fiscalidade, investimentos/trading e seguros são estritamente informativas e não substituem um especialista; os resultados gerados por IA têm de ser verificados."},
         "de": {"limite": "Die Prompts sind Vorlagen, keine Ratschläge. Die Kategorien Gesundheit, psychische Gesundheit, Medizin, Recht, Buchhaltung/Steuern, Geldanlage/Trading und Versicherungen sind streng informativ und ersetzen keine Fachperson; von der KI erzeugte Ergebnisse müssen überprüft werden."},
         "hu": {"limite": "A promptok sablonok, nem tanácsok. Az egészség, mentális egészség, orvostudomány, jog, számvitel/adózás, befektetés/kereskedés és biztosítás kategóriák szigorúan tájékoztató jellegűek, és nem helyettesítik a szakembert; az MI által generált eredményeket ellenőrizni kell."}
-      }
+      },
+      "score": 8.9
     },
     "VoiceAtelier": {
       "fisa": {
-        "ro": {"limite": "Filele Starter și Storyteller merg fără internet, în limita vocilor instalate în sistem/browser. Vocile din „All languages” trimit textul de probă, numele vocii, viteza și tonul către releul https://alexio.tf/tts (edge-tts, client neoficial al serviciului online Microsoft Edge/Azure TTS), deci textul probabil ajunge și la Microsoft; se redau doar după bifarea consimțământului."},
-        "en": {"limite": "The Starter and Storyteller tabs work without internet, within the limits of the voices installed in the system/browser. Voices from “All languages” send the sample text, voice name, speed and pitch to the relay https://alexio.tf/tts (edge-tts, an unofficial client of the online Microsoft Edge/Azure TTS service), so the text is probably also forwarded to Microsoft; they play only after you tick the consent box."},
-        "fr": {"limite": "Les onglets Starter et Storyteller fonctionnent sans internet, dans la limite des voix installées dans le système/navigateur. Les voix de « All languages » envoient le texte d'essai, le nom de la voix, la vitesse et la hauteur au relais https://alexio.tf/tts (edge-tts, client non officiel du service en ligne Microsoft Edge/Azure TTS) ; le texte parvient donc probablement aussi à Microsoft ; elles ne sont lues qu'après avoir coché la case de consentement."},
-        "it": {"limite": "Le schede Starter e Storyteller funzionano senza internet, nei limiti delle voci installate nel sistema/browser. Le voci di “All languages” inviano il testo di prova, il nome della voce, la velocità e il tono al relay https://alexio.tf/tts (edge-tts, client non ufficiale del servizio online Microsoft Edge/Azure TTS), quindi il testo probabilmente arriva anche a Microsoft; vengono riprodotte solo dopo aver spuntato il consenso."},
-        "es": {"limite": "Las pestañas Starter y Storyteller funcionan sin internet, dentro de los límites de las voces instaladas en el sistema/navegador. Las voces de «All languages» envían el texto de prueba, el nombre de la voz, la velocidad y el tono al relé https://alexio.tf/tts (edge-tts, cliente no oficial del servicio en línea Microsoft Edge/Azure TTS), por lo que es probable que el texto llegue también a Microsoft; solo se reproducen después de marcar el consentimiento."},
-        "pt": {"limite": "Os separadores Starter e Storyteller funcionam sem internet, dentro do limite das vozes instaladas no sistema/navegador. As vozes de “All languages” enviam o texto de amostra, o nome da voz, a velocidade e o tom para o relay https://alexio.tf/tts (edge-tts, cliente não oficial do serviço online Microsoft Edge/Azure TTS), pelo que o texto provavelmente chega também à Microsoft; só são reproduzidas depois de marcares a caixa de consentimento."},
-        "de": {"limite": "Die Tabs Starter und Storyteller funktionieren ohne Internet, im Rahmen der im System/Browser installierten Stimmen. Die Stimmen aus „All languages“ senden den Beispieltext, den Namen der Stimme, die Geschwindigkeit und die Tonhöhe an das Relay https://alexio.tf/tts (edge-tts, ein inoffizieller Client des Online-Dienstes Microsoft Edge/Azure TTS), sodass der Text wahrscheinlich auch an Microsoft gelangt; sie werden erst nach Ankreuzen der Einwilligung wiedergegeben."},
-        "hu": {"limite": "A Starter és a Storyteller fülek internet nélkül működnek, a rendszerben/böngészőben telepített hangok keretein belül. Az „All languages” hangjai a próbaszöveget, a hang nevét, a sebességet és a hangmagasságot elküldik az https://alexio.tf/tts relének (edge-tts, a Microsoft Edge/Azure TTS online szolgáltatás nem hivatalos kliense), így a szöveg valószínűleg a Microsofthoz is eljut; csak a hozzájárulás bejelölése után szólalnak meg."}
-      }
+        "ro": {"limite": "Filele Starter și Storyteller merg fără internet, în limita vocilor instalate în sistem/browser. Vocile din „All languages” trimit textul de probă, numele vocii, viteza și tonul către releul https://alexio.tf/tts (edge-tts, client neoficial al serviciului online Microsoft Edge/Azure TTS), deci textul probabil ajunge și la Microsoft; se redau doar după bifarea consimțământului.", "cifre": "„427 de voci, 141 de localizări”: numărate la 2026-11-03 direct în lista din fișierul aplicației (141 localizări, 427 voci, circa 77 de limbi de bază). Lista a fost modificată ultima dată în depozit la 2026-04-12 (data din istoricul git, fiindcă codul nu declară una) și nu a fost reconfruntată cu lista curentă edge-tts: unele voci pot lipsi sau pot fi retrase. Autorul a verificat numărul și pe pagină la 2026-10-10 (README)."},
+        "en": {"limite": "The Starter and Storyteller tabs work without internet, within the limits of the voices installed in the system/browser. Voices from “All languages” send the sample text, voice name, speed and pitch to the relay https://alexio.tf/tts (edge-tts, an unofficial client of the online Microsoft Edge/Azure TTS service), so the text is probably also forwarded to Microsoft; they play only after you tick the consent box.", "cifre": "“427 voices, 141 locales”: counted on 2026-11-03 directly in the list inside the app file (141 locales, 427 voices, about 77 base languages). The list was last changed in the repository on 2026-04-12 (the date comes from the git history, because the code does not state one) and was not re-checked against the current edge-tts list: some voices may be missing or retired. The author also checked the number on the page on 2026-10-10 (README)."},
+        "fr": {"limite": "Les onglets Starter et Storyteller fonctionnent sans internet, dans la limite des voix installées dans le système/navigateur. Les voix de « All languages » envoient le texte d'essai, le nom de la voix, la vitesse et la hauteur au relais https://alexio.tf/tts (edge-tts, client non officiel du service en ligne Microsoft Edge/Azure TTS) ; le texte parvient donc probablement aussi à Microsoft ; elles ne sont lues qu'après avoir coché la case de consentement.", "cifre": "« 427 voix, 141 paramètres régionaux » : comptés le 2026-11-03 directement dans la liste du fichier de l’application (141 paramètres régionaux, 427 voix, environ 77 langues de base). La liste a été modifiée pour la dernière fois dans le dépôt le 2026-04-12 (date tirée de l’historique git, car le code n’en indique aucune) et n’a pas été revérifiée par rapport à la liste actuelle d’edge-tts : certaines voix peuvent manquer ou être retirées. L’auteur a aussi vérifié le nombre sur la page le 2026-10-10 (README)."},
+        "it": {"limite": "Le schede Starter e Storyteller funzionano senza internet, nei limiti delle voci installate nel sistema/browser. Le voci di “All languages” inviano il testo di prova, il nome della voce, la velocità e il tono al relay https://alexio.tf/tts (edge-tts, client non ufficiale del servizio online Microsoft Edge/Azure TTS), quindi il testo probabilmente arriva anche a Microsoft; vengono riprodotte solo dopo aver spuntato il consenso.", "cifre": "«427 voci, 141 impostazioni locali»: contate il 2026-11-03 direttamente nell’elenco del file dell’applicazione (141 impostazioni locali, 427 voci, circa 77 lingue di base). L’elenco è stato modificato l’ultima volta nel repository il 2026-04-12 (data ricavata dalla cronologia git, perché il codice non ne indica una) e non è stato ricontrollato con l’elenco attuale di edge-tts: alcune voci potrebbero mancare o essere ritirate. L’autore ha verificato il numero anche sulla pagina il 2026-10-10 (README)."},
+        "es": {"limite": "Las pestañas Starter y Storyteller funcionan sin internet, dentro de los límites de las voces instaladas en el sistema/navegador. Las voces de «All languages» envían el texto de prueba, el nombre de la voz, la velocidad y el tono al relé https://alexio.tf/tts (edge-tts, cliente no oficial del servicio en línea Microsoft Edge/Azure TTS), por lo que es probable que el texto llegue también a Microsoft; solo se reproducen después de marcar el consentimiento.", "cifre": "«427 voces, 141 configuraciones regionales»: contadas el 2026-11-03 directamente en la lista del archivo de la aplicación (141 configuraciones regionales, 427 voces, unas 77 lenguas base). La lista se modificó por última vez en el repositorio el 2026-04-12 (fecha tomada del historial de git, porque el código no declara ninguna) y no se recontrastó con la lista actual de edge-tts: pueden faltar voces o haber sido retiradas. El autor también verificó el número en la página el 2026-10-10 (README)."},
+        "pt": {"limite": "Os separadores Starter e Storyteller funcionam sem internet, dentro do limite das vozes instaladas no sistema/navegador. As vozes de “All languages” enviam o texto de amostra, o nome da voz, a velocidade e o tom para o relay https://alexio.tf/tts (edge-tts, cliente não oficial do serviço online Microsoft Edge/Azure TTS), pelo que o texto provavelmente chega também à Microsoft; só são reproduzidas depois de marcares a caixa de consentimento.", "cifre": "«427 vozes, 141 configurações regionais»: contadas em 2026-11-03 diretamente na lista do ficheiro da aplicação (141 configurações regionais, 427 vozes, cerca de 77 línguas de base). A lista foi alterada pela última vez no repositório em 2026-04-12 (data retirada do histórico git, porque o código não declara nenhuma) e não foi reconfrontada com a lista atual do edge-tts: algumas vozes podem faltar ou ter sido retiradas. O autor também verificou o número na página em 2026-10-10 (README)."},
+        "de": {"limite": "Die Tabs Starter und Storyteller funktionieren ohne Internet, im Rahmen der im System/Browser installierten Stimmen. Die Stimmen aus „All languages“ senden den Beispieltext, den Namen der Stimme, die Geschwindigkeit und die Tonhöhe an das Relay https://alexio.tf/tts (edge-tts, ein inoffizieller Client des Online-Dienstes Microsoft Edge/Azure TTS), sodass der Text wahrscheinlich auch an Microsoft gelangt; sie werden erst nach Ankreuzen der Einwilligung wiedergegeben.", "cifre": "„427 Stimmen, 141 Gebietsschemata“: am 2026-11-03 direkt in der Liste in der App-Datei gezählt (141 Gebietsschemata, 427 Stimmen, etwa 77 Basissprachen). Die Liste wurde zuletzt am 2026-04-12 im Repository geändert (das Datum stammt aus der Git-Historie, weil der Code keines nennt) und nicht erneut mit der aktuellen edge-tts-Liste abgeglichen: Einige Stimmen können fehlen oder abgekündigt sein. Der Autor hat die Zahl am 2026-10-10 auch auf der Seite geprüft (README)."},
+        "hu": {"limite": "A Starter és a Storyteller fülek internet nélkül működnek, a rendszerben/böngészőben telepített hangok keretein belül. Az „All languages” hangjai a próbaszöveget, a hang nevét, a sebességet és a hangmagasságot elküldik az https://alexio.tf/tts relének (edge-tts, a Microsoft Edge/Azure TTS online szolgáltatás nem hivatalos kliense), így a szöveg valószínűleg a Microsofthoz is eljut; csak a hozzájárulás bejelölése után szólalnak meg.", "cifre": "„427 hang, 141 területi beállítás”: 2026-11-03-án közvetlenül az alkalmazás fájljában lévő listában megszámolva (141 területi beállítás, 427 hang, kb. 77 alapnyelv). A listát utoljára 2026-04-12-én módosították a tárolóban (a dátum a git-előzményekből származik, mert a kód nem közöl ilyet), és nem vetették össze az edge-tts aktuális listájával: egyes hangok hiányozhatnak vagy megszűnhettek. A szerző a számot az oldalon is ellenőrizte 2026-10-10-én (README)."}
+      },
+      "score": 8.5,
+      "figures": true
     },
     "API-fara-frontiere": {
       "fisa": {
@@ -1226,7 +1311,8 @@
         "pt": {"limite": "Precisa de internet: os 47 widgets consultam APIs públicas que podem falhar, mudar de formato, limitar os pedidos ou devolver dados antigos; a disponibilidade não foi verificada em servidores reais (apenas respostas simuladas). Os dados são informativos: o rótulo do medicamento (FDA) está em inglês e apenas para produtos dos EUA, as taxas de câmbio/criptomoedas/IVA não são aconselhamento financeiro, e a previsão a partir do nome próprio é uma estimativa estatística frequentemente errada. As imagens podem estar sujeitas a direitos de autor ou a licenças próprias."},
         "de": {"limite": "Benötigt Internet: Die 47 Widgets fragen öffentliche APIs ab, die ausfallen, ihr Format ändern, Anfragen begrenzen oder veraltete Daten liefern können; die Verfügbarkeit wurde nicht an echten Servern überprüft (nur simulierte Antworten). Die Daten dienen der Information: Das Medikamentenetikett (FDA) ist auf Englisch und nur für Produkte aus den USA, Wechselkurse/Kryptowährungen/MwSt. sind keine Finanzberatung, und die Vorhersage anhand des Vornamens ist eine statistische Schätzung, die oft falsch liegt. Bilder können urheberrechtlich geschützt sein oder eigenen Lizenzen unterliegen."},
         "hu": {"limite": "Internetre van szüksége: a 47 widget nyilvános API-kat kérdez le, amelyek leállhatnak, megváltoztathatják a formátumot, korlátozhatják a kéréseket vagy elavult adatokat adhatnak vissza; az elérhetőséget valódi szervereken nem ellenőrizték (csak szimulált válaszokkal). Az adatok tájékoztató jellegűek: a gyógyszercímke (FDA) angol nyelvű és csak amerikai termékekre vonatkozik, az árfolyamok/kriptovaluták/áfa nem pénzügyi tanács, a keresztnév alapú előrejelzés pedig statisztikai becslés, amely gyakran téves. A képekre szerzői jog vagy saját licenc vonatkozhat."}
-      }
+      },
+      "score": 8.8
     },
     "Origami": {
       "fisa": {
@@ -1238,7 +1324,8 @@
         "pt": {"limite": "As instruções são reconstruções didáticas e os diagramas são esquemáticos, não desenhos à escala; os 30 modelos não foram verificados fisicamente em papel, e alguns passos são aproximados e podem diferir dos livros. Alguns modelos usam papel que não é um quadrado simples. “Anel de nota”: pratica com papel e verifica a legislação local antes de dobrar dinheiro real."},
         "de": {"limite": "Die Anleitungen sind didaktische Rekonstruktionen, und die Diagramme sind schematisch, keine maßstabsgetreuen Zeichnungen; die 30 Modelle wurden nicht physisch auf Papier überprüft, und einige Schritte sind ungefähr und können von Büchern abweichen. Manche Modelle verwenden Papier, das kein einfaches Quadrat ist. „Ring aus Banknote“: Übe auf Papier und prüfe die örtliche Gesetzgebung, bevor du echtes Geld faltest."},
         "hu": {"limite": "Az útmutatók oktatási célú rekonstrukciók, a diagramok pedig vázlatosak, nem méretarányos rajzok; a 30 modellt nem ellenőrizték fizikailag papíron, egyes lépések hozzávetőlegesek, és eltérhetnek a könyvektől. Egyes modellek nem egyszerű négyzet alakú papírt használnak. „Bankjegygyűrű”: gyakoroljon papíron, és ellenőrizze a helyi jogszabályokat, mielőtt valódi pénzt hajtogat."}
-      }
+      },
+      "score": 9.3
     },
     "ACORDAJ": {
       "fisa": {
@@ -1250,7 +1337,8 @@
         "pt": {"limite": "Conteúdo informativo/educativo, não é aconselhamento médico, jurídico nem financeiro; o Reiki, as iniciações, a astrologia e a numerologia não têm validação científica. As avaliações são quadros de reflexão, não veredictos sobre cursos ou pessoas. As traduções do conteúdo em 8 línguas são automáticas, não verificadas por falantes nativos, e as passagens sobre saúde, segurança e dinheiro requerem revisão por um especialista."},
         "de": {"limite": "Informativer/Bildungsinhalt, kein medizinischer, juristischer oder finanzieller Rat; Reiki, Einweihungen, Astrologie und Numerologie haben keine wissenschaftliche Validierung. Die Bewertungen sind Denkrahmen, keine Urteile über Kurse oder Personen. Die Übersetzungen des Inhalts in 8 Sprachen sind automatisch, nicht von Muttersprachlern überprüft, und die Passagen zu Gesundheit, Sicherheit und Geld müssen von Fachleuten geprüft werden."},
         "hu": {"limite": "Tájékoztató/oktatási tartalom, nem orvosi, jogi vagy pénzügyi tanács; a Reikinek, a beavatásoknak, az asztrológiának és a numerológiának nincs tudományos érvényesítése. Az értékelések gondolkodási keretek, nem ítéletek tanfolyamokról vagy személyekről. A tartalom 8 nyelvre készült fordításai automatikusak, anyanyelvi beszélők nem ellenőrizték őket, az egészségről, biztonságról és pénzről szóló szakaszok pedig szakértői felülvizsgálatot igényelnek."}
-      }
+      },
+      "score": 9.4
     },
     "Afrodisiace-fara-frontiere": {
       "fisa": {
@@ -1262,7 +1350,8 @@
         "pt": {"limite": "Conteúdo educativo e cultural, não aconselhamento médico: não existem provas científicas sólidas de que algum alimento ou planta da lista trate problemas de desejo ou de função sexual. Não adies a consulta médica nem substituas um tratamento prescrito; os suplementos à base de plantas podem interagir com medicamentos e devem ser evitados na gravidez/amamentação sem acordo médico. As afirmações sobre estudos são gerais, sem referências bibliográficas, e não foram verificadas sistematicamente face a fontes primárias.", "pentru": "Adultos (o guia destina-se a adultos)."},
         "de": {"limite": "Bildungs- und Kulturinhalt, kein medizinischer Rat: Es gibt keine soliden wissenschaftlichen Belege dafür, dass irgendein Lebensmittel oder eine Pflanze aus der Liste Probleme mit Verlangen oder Sexualfunktion behandelt. Verschiebe keinen Arztbesuch und ersetze keine verordnete Behandlung; pflanzliche Nahrungsergänzungsmittel können mit Medikamenten wechselwirken und sind in Schwangerschaft/Stillzeit ohne ärztliche Zustimmung zu meiden. Die Aussagen über Studien sind allgemein, ohne Literaturangaben, und wurden nicht systematisch anhand von Primärquellen überprüft.", "pentru": "Erwachsene (der Leitfaden richtet sich an Erwachsene)."},
         "hu": {"limite": "Oktatási és kulturális tartalom, nem orvosi tanács: nincs szilárd tudományos bizonyíték arra, hogy a listán szereplő bármely étel vagy növény a vágy vagy a szexuális funkció problémáit kezelné. Ne halassza el az orvosi konzultációt, és ne helyettesítsen vele felírt kezelést; a gyógynövény-alapú étrend-kiegészítők kölcsönhatásba léphetnek gyógyszerekkel, és terhesség/szoptatás alatt orvosi jóváhagyás nélkül kerülendők. A tanulmányokra vonatkozó állítások általánosak, hivatkozások nélküliek, és elsődleges forrásokkal szisztematikusan nem vetették össze őket.", "pentru": "Felnőttek (az útmutató felnőtteknek szól)."}
-      }
+      },
+      "score": 9.2
     },
     "Aurora": {
       "fisa": {
@@ -1274,7 +1363,8 @@
         "pt": {"limite": "Conteúdo contemplativo/de relaxamento, não médico: os chakras, as frequências associadas e os “sons curativos” provêm de tradições espirituais e não têm validação científica; não existem provas sólidas de que certas frequências tratem doenças ou de que as batidas binaurais alterem de forma fiável o estado do cérebro. Não substitui o aconselhamento médico."},
         "de": {"limite": "Kontemplativer/entspannender Inhalt, nicht medizinisch: Chakren, zugeordnete Frequenzen und „heilende Klänge“ stammen aus spirituellen Traditionen und haben keine wissenschaftliche Validierung; es gibt keine soliden Belege dafür, dass bestimmte Frequenzen Erkrankungen behandeln oder dass binaurale Beats den Zustand des Gehirns zuverlässig verändern. Ersetzt nicht ärztlichen Rat."},
         "hu": {"limite": "Szemlélődő/relaxációs, nem orvosi tartalom: a csakrák, a hozzájuk rendelt frekvenciák és a „gyógyító hangok” spirituális hagyományokból erednek, és tudományos érvényesítésük nincs; nincs szilárd bizonyíték arra, hogy bizonyos frekvenciák betegségeket kezelnek, vagy hogy a binaurális ütemek megbízhatóan megváltoztatják az agy állapotát. Nem helyettesíti az orvosi tanácsot."}
-      }
+      },
+      "score": 8.7
     },
     "Bioenergoterapie": {
       "fisa": {
@@ -1286,7 +1376,8 @@
         "pt": {"limite": "Não é medicina e não trata doenças: o campo energético, a aura e os chakras não estão demonstrados cientificamente, e a investigação controlada sobre práticas afins (p. ex. Therapeutic Touch) não mostra eficácia superior ao placebo. Não adies nem interrompas um tratamento médico; perante qualquer sintoma persistente, consulta o médico. A menção a uma experiência da JAMA (1998) vem da memória do autor e tem de ser verificada; as afirmações sobre o estatuto da prática na Roménia estão assinaladas como não verificadas."},
         "de": {"limite": "Ist keine Medizin und behandelt keine Krankheiten: Energiefeld, Aura und Chakren sind wissenschaftlich nicht nachgewiesen, und kontrollierte Untersuchungen verwandter Praktiken (z. B. Therapeutic Touch) zeigen keine Wirksamkeit über Placebo hinaus. Verschiebe oder unterbrich keine ärztliche Behandlung; bei jedem anhaltenden Symptom gehe zum Arzt. Die Erwähnung eines Experiments aus JAMA (1998) stammt aus dem Gedächtnis des Autors und muss überprüft werden; die Aussagen über den Status der Praxis in Rumänien sind als nicht überprüft markiert."},
         "hu": {"limite": "Nem orvostudomány, és nem gyógyít betegségeket: az energiamező, az aura és a csakrák tudományosan nem bizonyítottak, a rokon gyakorlatokra (pl. Therapeutic Touch) vonatkozó ellenőrzött kutatások pedig nem mutatnak a placebót meghaladó hatékonyságot. Ne halasszon el vagy szakítson meg orvosi kezelést; bármilyen tartós tünet esetén forduljon orvoshoz. Egy JAMA-ban (1998) közölt kísérlet említése a szerző emlékezetéből származik, és ellenőrizni kell; a gyakorlat romániai státuszára vonatkozó állítások ellenőrizetlenként vannak megjelölve."}
-      }
+      },
+      "score": 9.3
     },
     "ECLIPSA": {
       "fisa": {
@@ -1298,7 +1389,8 @@
         "pt": {"limite": "A astrologia não tem validação científica: as interpretações destinam-se a reflexão/entretenimento, não são previsões nem aconselhamento médico, financeiro ou jurídico. Precisão ~0,01° (Sol), ~0,1–0,3° (Lua); o Placidus não está definido acima de ~66° de latitude; verifica manualmente o fuso horário antes de ~1970 e nos dias de mudança de hora; data de nascimento ≥ 1900. As funções de eclipse (contactos) são calculadas ao nível do mar, sem relevo; o contador usa o relógio do dispositivo, não é um instrumento de segurança (os filtros ISO 12312-2 continuam a ser obrigatórios). A lista de cidades não contém locais da faixa de totalidade em África (Luxor, Cádis)."},
         "de": {"limite": "Astrologie hat keine wissenschaftliche Validierung: Die Deutungen dienen der Reflexion/Unterhaltung, sind keine Vorhersagen und kein medizinischer, finanzieller oder juristischer Rat. Genauigkeit ~0,01° (Sonne), ~0,1–0,3° (Mond); Placidus ist über ~66° Breite nicht definiert; prüfe die Zeitzone vor ~1970 und an Tagen der Zeitumstellung manuell; Geburtsdatum ≥ 1900. Die Finsternisfunktionen (Kontakte) werden für Meereshöhe ohne Gelände berechnet; der Countdown verwendet die Uhr des Geräts und ist kein Sicherheitsinstrument (Filter nach ISO 12312-2 bleiben Pflicht). Die Städteliste enthält keine Orte auf dem Totalitätsstreifen in Afrika (Luxor, Cádiz)."},
         "hu": {"limite": "Az asztrológiának nincs tudományos érvényesítése: az értelmezések elmélkedésre/szórakozásra valók, nem jóslatok, és nem orvosi, pénzügyi vagy jogi tanács. Pontosság ~0,01° (Nap), ~0,1–0,3° (Hold); a Placidus nincs értelmezve ~66° földrajzi szélesség felett; ~1970 előtt és az óraátállítás napjain ellenőrizze kézzel az időzónát; születési dátum ≥ 1900. A napfogyatkozás-funkciók (kontaktusok) tengerszintre vannak számítva, domborzat nélkül; a számláló az eszköz óráját használja, nem biztonsági eszköz (az ISO 12312-2 szűrők továbbra is kötelezők). A városlista nem tartalmaz helyeket afrikai totalitássávból (Luxor, Cádiz)."}
-      }
+      },
+      "score": 9.9
     },
     "HoroScop": {
       "fisa": {
@@ -1310,7 +1402,8 @@
         "pt": {"limite": "Conteúdo informativo, simbólico e de entretenimento, não substitui o aconselhamento médico, jurídico ou financeiro. A astrologia não tem validação científica: as posições dos planetas são cálculos astronómicos de baixa precisão (fórmulas do tipo Schlyter/Meeus), mas as “leituras” são tradição cultural, não previsões validadas. Não é adequado para navegação nem para observações astrométricas; as casas astrológicas não são calculadas com FFF.ephem."},
         "de": {"limite": "Informativer, symbolischer und unterhaltender Inhalt, ersetzt nicht ärztlichen, juristischen oder finanziellen Rat. Astrologie hat keine wissenschaftliche Validierung: Die Planetenpositionen sind astronomische Berechnungen geringer Genauigkeit (Formeln vom Typ Schlyter/Meeus), die „Deutungen“ aber kulturelle Tradition, keine validierten Vorhersagen. Nicht geeignet für Navigation oder astrometrische Beobachtungen; die astrologischen Häuser werden nicht mit FFF.ephem berechnet."},
         "hu": {"limite": "Tájékoztató, szimbolikus és szórakoztató tartalom, nem helyettesíti az orvosi, jogi vagy pénzügyi tanácsot. Az asztrológiának nincs tudományos érvényesítése: a bolygók helyzete alacsony pontosságú csillagászati számítás (Schlyter/Meeus-típusú képletek), az „olvasatok” azonban kulturális hagyomány, nem érvényesített előrejelzések. Nem alkalmas navigációra vagy asztrometriai megfigyelésekre; az asztrológiai házakat nem az FFF.ephem számítja."}
-      }
+      },
+      "score": 9.5
     },
     "Inforenergetica": {
       "fisa": {
@@ -1322,7 +1415,8 @@
         "pt": {"limite": "Prática não convencional sem validação científica: os mecanismos descritos não foram confirmados por estudos controlados, e a comunidade científica considera-a pseudociência; a aplicação descreve uma tradição, com fins educativos e culturais. Não é aconselhamento, diagnóstico nem tratamento médico e não substitui o médico; não adies nem interrompas um tratamento prescrito. A “força inforenergética”, o “diagnóstico” e a “teledeterminação” não são medições físicas. As referências históricas não foram verificadas de forma independente."},
         "de": {"limite": "Unkonventionelle Praxis ohne wissenschaftliche Validierung: Die beschriebenen Mechanismen wurden nicht durch kontrollierte Studien bestätigt, und die Wissenschaftsgemeinschaft betrachtet sie als Pseudowissenschaft; die App beschreibt eine Tradition zu Bildungs- und Kulturzwecken. Kein medizinischer Rat, keine Diagnose und keine Behandlung und ersetzt nicht den Arzt; verschiebe oder unterbrich keine verordnete Behandlung. „Inforenergetische Kraft“, „Diagnose“ und „Teledetermination“ sind keine physikalischen Messungen. Die historischen Verweise wurden nicht unabhängig überprüft."},
         "hu": {"limite": "Nem hagyományos gyakorlat tudományos érvényesítés nélkül: a leírt mechanizmusokat ellenőrzött vizsgálatok nem erősítették meg, a tudományos közösség pedig áltudománynak tekinti; az alkalmazás egy hagyományt ír le oktatási és kulturális céllal. Nem orvosi tanács, diagnózis vagy kezelés, és nem helyettesíti az orvost; ne halasszon el vagy szakítson meg felírt kezelést. Az „inforenergetikai erő”, a „diagnózis” és a „teledeterminálás” nem fizikai mérések. A történeti hivatkozásokat függetlenül nem ellenőrizték."}
-      }
+      },
+      "score": 9.6
     },
     "NOMIA": {
       "fisa": {
@@ -1334,7 +1428,8 @@
         "pt": {"limite": "Ficção/especulação: aplicação conceptual, complementar da antologia “Printre inteligențe”; os protocolos, as pontuações e as “sessões” são modelos narrativos, não factos verificados, e os resultados do “protocolo” (gerados a partir de modelos) não são medições. Conteúdo informativo e criativo, não aconselhamento científico, médico nem jurídico; o conteúdo esotérico/religioso não tem validação científica. As traduções são automáticas, não verificadas por falantes nativos; um pequeno resto permanece em romeno."},
         "de": {"limite": "Fiktion/Spekulation: konzeptionelle Begleit-App zur Anthologie „Printre inteligențe“; die Protokolle, Punktzahlen und „Sitzungen“ sind erzählerische Modelle, keine überprüften Fakten, und die Ergebnisse des „Protokolls“ (aus Vorlagen erzeugt) sind keine Messungen. Informativer und kreativer Inhalt, kein wissenschaftlicher, medizinischer oder juristischer Rat; esoterische/religiöse Inhalte haben keine wissenschaftliche Validierung. Die Übersetzungen sind automatisch und nicht von Muttersprachlern überprüft; ein kleiner Rest bleibt auf Rumänisch."},
         "hu": {"limite": "Fikció/spekuláció: koncepcionális alkalmazás, a „Printre inteligențe” antológia társa; a protokollok, a pontszámok és az „ülések” elbeszélő modellek, nem ellenőrzött tények, a „protokoll” (sablonokból generált) eredményei pedig nem mérések. Tájékoztató és kreatív tartalom, nem tudományos, orvosi vagy jogi tanács; az ezoterikus/vallási tartalomnak nincs tudományos érvényesítése. A fordítások automatikusak, anyanyelvi beszélők nem ellenőrizték őket; egy kis maradék románul marad."}
-      }
+      },
+      "score": 6.1
     },
     "NumeroLogIA": {
       "fisa": {
@@ -1346,7 +1441,8 @@
         "pt": {"limite": "Conteúdo informativo/de entretenimento, sem validação científica: a numerologia, o BaZi, a astrologia e o biorritmo são sistemas simbólicos tradicionais ou populares, não ciências, e não oferecem previsões nem aconselhamento médico, financeiro ou jurídico. Os textos gerados por IA podem estar errados ou ser inventados."},
         "de": {"limite": "Informativer/unterhaltender Inhalt ohne wissenschaftliche Validierung: Numerologie, BaZi, Astrologie und Biorhythmus sind traditionelle oder populäre symbolische Systeme, keine Wissenschaften, und bieten weder Vorhersagen noch medizinischen, finanziellen oder juristischen Rat. Von der KI erzeugte Texte können falsch oder erfunden sein."},
         "hu": {"limite": "Tájékoztató/szórakoztató tartalom tudományos érvényesítés nélkül: a numerológia, a BaZi, az asztrológia és a bioritmus hagyományos vagy népszerű szimbolikus rendszerek, nem tudományok, és nem nyújtanak jóslatokat vagy orvosi, pénzügyi, illetve jogi tanácsot. Az MI által generált szövegek hibásak vagy kitaláltak lehetnek."}
-      }
+      },
+      "score": 8.5
     },
     "Reiki": {
       "fisa": {
@@ -1358,7 +1454,8 @@
         "pt": {"limite": "Prática espiritual de relaxamento, não tratamento médico: não existem provas científicas de que cure ou trate qualquer doença, e a “energia ki” não está demonstrada cientificamente; não substitui o diagnóstico ou o tratamento médico, e um tratamento prescrito não deve ser adiado nem interrompido. As provas de eficácia não vão além do relaxamento e do efeito placebo; a referência exata à revisão Cochrane não é citada na aplicação. Alguns relatos ocidentais (sobretudo sobre Takata) são considerados inexatos pelos investigadores."},
         "de": {"limite": "Spirituelle Entspannungspraxis, keine medizinische Behandlung: Es gibt keine wissenschaftlichen Belege dafür, dass sie irgendeine Krankheit heilt oder behandelt, und „Ki-Energie“ ist wissenschaftlich nicht nachgewiesen; sie ersetzt weder ärztliche Diagnose noch Behandlung, und eine verordnete Behandlung darf nicht verschoben oder abgebrochen werden. Die Belege für die Wirksamkeit gehen nicht über Entspannung und den Placebo-Effekt hinaus; der genaue Verweis auf den Cochrane-Review ist in der App nicht zitiert. Manche westlichen Darstellungen (besonders über Takata) werden von Forschenden als ungenau angesehen."},
         "hu": {"limite": "Spirituális relaxációs gyakorlat, nem orvosi kezelés: nincs tudományos bizonyíték arra, hogy bármilyen betegséget gyógyít vagy kezel, a „ki energia” pedig tudományosan nem bizonyított; nem helyettesíti az orvosi diagnózist vagy kezelést, a felírt kezelést pedig nem szabad elhalasztani vagy abbahagyni. A hatékonyság bizonyítékai nem lépik túl a relaxációt és a placebohatást; a pontos Cochrane-hivatkozást az alkalmazás nem idézi. Egyes nyugati beszámolókat (főleg Takatáról) a kutatók pontatlannak tartják."}
-      }
+      },
+      "score": 9.6
     },
     "Tarot": {
       "fisa": {
@@ -1370,7 +1467,8 @@
         "pt": {"limite": "Tradição cultural e instrumento de reflexão/entretenimento: não existem provas científicas de que possa prever o futuro, diagnosticar ou curar. Conteúdo educativo que não substitui o aconselhamento do médico, do psicólogo, do jurista ou do consultor financeiro; não tomes decisões importantes com base numa tiragem. As afirmações sobre certificações e cursos na Roménia estão assinaladas como não verificadas. Não inclui imagens das cartas; a tiragem mostra apenas nomes."},
         "de": {"limite": "Kulturelle Tradition und Werkzeug zur Reflexion/Unterhaltung: Es gibt keine wissenschaftlichen Belege dafür, dass es die Zukunft vorhersagen, diagnostizieren oder heilen kann. Bildungsinhalt, der den Rat von Arzt, Psychologin, Jurist oder Finanzberater nicht ersetzt; triff keine wichtigen Entscheidungen auf Grundlage einer Legung. Die Aussagen über Zertifizierungen und Kurse in Rumänien sind als nicht überprüft markiert. Enthält keine Bilder der Karten; die Legung zeigt nur Namen."},
         "hu": {"limite": "Kulturális hagyomány, az elmélkedés/szórakozás eszköze: nincs tudományos bizonyíték arra, hogy megjósolhatja a jövőt, diagnosztizálhat vagy gyógyíthat. Oktatási tartalom, amely nem helyettesíti az orvos, pszichológus, jogász vagy pénzügyi tanácsadó tanácsát; ne hozzon fontos döntéseket egy húzás alapján. A romániai tanúsítványokra és tanfolyamokra vonatkozó állítások ellenőrizetlenként vannak megjelölve. Nem tartalmaz kártyaképeket; a húzás csak neveket mutat."}
-      }
+      },
+      "score": 9.3
     },
     "ValeaPlopului1972": {
       "fisa": {
@@ -1382,7 +1480,8 @@
         "pt": {"limite": "Ficção/especulação: reconstrução 3D ilustrativa de um caso UAP reportado (Valea Plopului, Prahova, 1972), não é prova científica. O interior do objeto é imaginado; as percentagens associadas às “teorias” são estimativas do autor, sem metodologia publicada. As atribuições e medições relativas a pessoas reais não foram verificadas de forma independente; os casos “comparáveis” são resumidos sem referências; não existe bibliografia na aplicação, e os direitos sobre o esboço e as imagens não estão especificados. O caso continua em disputa."},
         "de": {"limite": "Fiktion/Spekulation: illustrative 3D-Rekonstruktion eines gemeldeten UAP-Falls (Valea Plopului, Prahova, 1972), kein wissenschaftlicher Beweis. Das Innere des Objekts ist erfunden; die den „Theorien“ zugeordneten Prozentsätze sind Schätzungen des Autors, ohne veröffentlichte Methodik. Zuschreibungen und Messungen zu realen Personen wurden nicht unabhängig überprüft; die „vergleichbaren“ Fälle sind ohne Quellenangaben zusammengefasst; in der App gibt es keine Bibliografie, und die Rechte an der Skizze und den Bildern sind nicht angegeben. Der Fall bleibt umstritten."},
         "hu": {"limite": "Fikció/spekuláció: egy bejelentett UAP-eset (Valea Plopului, Prahova, 1972) szemléltető 3D-s rekonstrukciója, nem tudományos bizonyíték. A tárgy belseje elképzelt; az „elméletekhez” csatolt százalékok a szerző becslései, közzétett módszertan nélkül. A valós személyekre vonatkozó tulajdonításokat és méréseket függetlenül nem ellenőrizték; a „hasonló” esetek hivatkozások nélkül vannak összefoglalva; az alkalmazásban nincs bibliográfia, a vázlatra és a képekre vonatkozó jogok pedig nincsenek megadva. Az eset vitatott marad."}
-      }
+      },
+      "score": 8.5
     },
     "Constelar": {
       "fisa": {
@@ -1394,7 +1493,8 @@
         "pt": {"limite": "O motor local por defeito é simples, baseado em regras (não é uma rede neuronal), e a extração de factos das conversas é heurística e limitada. Para um modelo de IA real é necessário um fornecedor: WebLLM (modelo transferido uma só vez, executado no separador, requer WebGPU) ou um fornecedor na nuvem com chave de API e internet. A chave de API é mantida em sessionStorage até o separador ser fechado, e só fica no dispositivo se marcares “Remember on this device”."},
         "de": {"limite": "Die standardmäßige lokale Engine ist einfach und regelbasiert (kein neuronales Netz), und die Extraktion von Fakten aus Unterhaltungen ist heuristisch und begrenzt. Für ein echtes KI-Modell wird ein Anbieter benötigt: WebLLM (ein einmal heruntergeladenes Modell, das im Tab läuft und WebGPU benötigt) oder ein Cloud-Anbieter mit API-Schlüssel und Internet. Der API-Schlüssel wird bis zum Schließen des Tabs in sessionStorage gehalten und bleibt nur dann auf dem Gerät, wenn du „Remember on this device“ ankreuzt."},
         "hu": {"limite": "Az alapértelmezett helyi motor egyszerű, szabályalapú (nem neurális háló), a beszélgetésekből történő tényfeldolgozás pedig heurisztikus és korlátozott. Valódi MI-modellhez szolgáltató szükséges: WebLLM (egyszer letöltött modell, amely a lapon fut, WebGPU szükséges) vagy felhőszolgáltató API-kulccsal és internettel. Az API-kulcs a lap bezárásáig a sessionStorage-ban van, és csak akkor marad meg az eszközön, ha bejelöli a „Remember on this device” opciót."}
-      }
+      },
+      "score": 6.7
     },
     "Limpezimea": {
       "fisa": {
@@ -1406,7 +1506,10 @@
         "pt": {"limite": "O aparato crítico (crónica, estudo crítico) é escrito em parte com assistência de IA (Claude)."},
         "de": {"limite": "Der kritische Apparat (Chronik, kritische Studie) wurde teilweise mit KI-Unterstützung (Claude) verfasst."},
         "hu": {"limite": "A kritikai apparátus (krónika, kritikai tanulmány) részben MI-támogatással (Claude) készült."}
-      }
-    }
+      },
+      "score": 9.2
+    },
+    "Clopotel": {"score": 8.3},
+    "Nemurirea": {"score": 8.9}
   }
 }

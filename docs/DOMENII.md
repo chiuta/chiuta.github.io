@@ -86,14 +86,13 @@ node tools/cname-inventory.mjs --dns     # informativ: interoghează DNS-ul publ
 
 | Aplicație | Loc | CNAME | Origine | Sensibilă | Observații |
 |---|---|---|---|---|---|
-| AcademiSearch | depozit | `academisearch.chiuta.ro` | proprie: https://academisearch.chiuta.ro/ | pe origine proprie (corect) |  |
-| Arhiva-fara-frontiere | depozit | `arhiva-fara-frontiere.chiuta.ro` | proprie: https://arhiva-fara-frontiere.chiuta.ro/ | — |  |
 | DataWeave | depozit | `dataweave.chiuta.ro` | proprie: https://dataweave.chiuta.ro/ | — |  |
-| FreeDetect | depozit | `freedetect.chiuta.ro` | proprie: https://freedetect.chiuta.ro/ | — |  |
-| MarkdownAtelier | depozit | `markdownatelier.chiuta.ro` | proprie: https://markdownatelier.chiuta.ro/ | — |  |
-| OmniHost | depozit | `omnihost.chiuta.ro` | proprie: https://omnihost.chiuta.ro/ | — |  |
-| TranslateHub | depozit | `translatehub.chiuta.ro` | proprie: https://translatehub.chiuta.ro/ | pe origine proprie (corect) |  |
 | Undava | depozit | `undava.chiuta.ro` | proprie: https://undava.chiuta.ro/ | — |  |
+| Arhiva-fara-frontiere | depozit | `arhiva-fara-frontiere.chiuta.ro` | proprie: https://arhiva-fara-frontiere.chiuta.ro/ | — |  |
+| MarkdownAtelier | depozit | `markdownatelier.chiuta.ro` | proprie: https://markdownatelier.chiuta.ro/ | — |  |
+| FreeDetect | depozit | `freedetect.chiuta.ro` | proprie: https://freedetect.chiuta.ro/ | — |  |
+| AcademiSearch | depozit | `academisearch.chiuta.ro` | proprie: https://academisearch.chiuta.ro/ | pe origine proprie (corect) |  |
+| TranslateHub | depozit | `translatehub.chiuta.ro` | proprie: https://translatehub.chiuta.ro/ | pe origine proprie (corect) |  |
 | Arhiva-LinkedIn | depozit | `arhiva-linkedin.chiuta.ro` | proprie: https://arhiva-linkedin.chiuta.ro/ | — |  |
 | Cadraj | depozit | `cadraj.chiuta.ro` | proprie: https://cadraj.chiuta.ro/ | — |  |
 | Trade-Free-Link-Guardian | depozit | `trade-free-link-guardian.chiuta.ro` | proprie: https://trade-free-link-guardian.chiuta.ro/ | — |  |
@@ -181,6 +180,7 @@ node tools/cname-inventory.mjs --dns     # informativ: interoghează DNS-ul publ
 | API-fara-frontiere | depozit | `api-fara-frontiere.chiuta.ro` | proprie: https://api-fara-frontiere.chiuta.ro/ | — |  |
 | Constelar | depozit | `constelar.chiuta.ro` | proprie: https://constelar.chiuta.ro/ | pe origine proprie (corect) |  |
 | OAZA | depozit | `oaza.chiuta.ro` | proprie: https://oaza.chiuta.ro/ | — |  |
+| OmniHost | depozit | `omnihost.chiuta.ro` | proprie: https://omnihost.chiuta.ro/ | — |  |
 | Origami | depozit | `origami.chiuta.ro` | proprie: https://origami.chiuta.ro/ | — |  |
 | Trusa-fara-frontiere | depozit | `trusa-fara-frontiere.chiuta.ro` | proprie: https://trusa-fara-frontiere.chiuta.ro/ | — |  |
 | VNTV | depozit | `vntv.chiuta.ro` | proprie: https://vntv.chiuta.ro/ | — |  |

@@ -1,0 +1,112 @@
+{
+  "version": "5.2.3",
+  "updated": "2026-11-02",
+  "egress": [
+    {
+      "host": "api.allorigins.win",
+      "via": [
+        "csp:connect-src",
+        "fetch"
+      ]
+    },
+    {
+      "host": "api.core.ac.uk",
+      "via": [
+        "csp:connect-src"
+      ]
+    },
+    {
+      "host": "api.crossref.org",
+      "via": [
+        "csp:connect-src",
+        "fetch"
+      ]
+    },
+    {
+      "host": "api.openaire.eu",
+      "via": [
+        "csp:connect-src",
+        "fetch"
+      ]
+    },
+    {
+      "host": "api.openalex.org",
+      "via": [
+        "csp:connect-src"
+      ]
+    },
+    {
+      "host": "api.semanticscholar.org",
+      "via": [
+        "csp:connect-src"
+      ]
+    },
+    {
+      "host": "api.unpaywall.org",
+      "via": [
+        "csp:connect-src",
+        "fetch"
+      ]
+    },
+    {
+      "host": "archive.org",
+      "via": [
+        "csp:connect-src",
+        "fetch"
+      ]
+    },
+    {
+      "host": "doaj.org",
+      "via": [
+        "csp:connect-src"
+      ]
+    },
+    {
+      "host": "export.arxiv.org",
+      "via": [
+        "csp:connect-src"
+      ]
+    },
+    {
+      "host": "gutendex.com",
+      "via": [
+        "csp:connect-src",
+        "fetch"
+      ]
+    },
+    {
+      "host": "openlibrary.org",
+      "via": [
+        "csp:connect-src",
+        "fetch"
+      ]
+    },
+    {
+      "host": "www.ebi.ac.uk",
+      "via": [
+        "csp:connect-src"
+      ]
+    },
+    {
+      "host": "zenodo.org",
+      "via": [
+        "csp:connect-src"
+      ]
+    }
+  ],
+  "features": {
+    "i18n": [
+      "ro",
+      "en",
+      "fr",
+      "it",
+      "es",
+      "pt",
+      "hu",
+      "de"
+    ],
+    "pwa": {
+      "serviceWorker": true
+    }
+  }
+}

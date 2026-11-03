@@ -1,0 +1,46 @@
+# Testele hub-ului (catalog, transparență, offline, docuri) — fără clone locale de aplicații:
+# depozitele aplicațiilor sunt înlocuite de fixturile din tests/fixtures/apps (generate de tools/make-fixtures.mjs).
+name: hub-test
+
+on:
+  push:
+    branches: [main]
+    paths-ignore: ['tools/refresh/**', 'data/sources.json', '.github/workflows/refresh.yml']
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: hub-test-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Verificări fără browser (catalog, transparență, domenii, plic)
+        run: |
+          set -euo pipefail
+          node tools/sync-catalog.mjs --check --root tests/fixtures/apps
+          node tools/transparenta.mjs --check
+          node tools/cname-inventory.mjs --check --root tests/fixtures/apps
+          node fff-kit/build.mjs fixcsp index.html | tee /tmp/fixcsp.txt
+          grep -q "neschimbat" /tmp/fixcsp.txt
+      - name: Playwright + Chromium
+        run: |
+          set -euo pipefail
+          mkdir -p "$RUNNER_TEMP/pw" && cd "$RUNNER_TEMP/pw"
+          echo '{"name":"ci-pw","private":true}' > package.json
+          npm install --no-audit --no-fund playwright@1.63.0
+          npx playwright install --with-deps chromium
+          echo "FFF_NODE_TOOLS=$RUNNER_TEMP/pw/package.json" >> "$GITHUB_ENV"
+          echo "CHROMIUM_PATH=$(node -e "console.log(require('playwright').chromium.executablePath())")" >> "$GITHUB_ENV"
+      - name: Testele hub-ului
+        run: node tests/hub.test.mjs

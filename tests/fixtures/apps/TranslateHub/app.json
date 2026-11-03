@@ -1,0 +1,40 @@
+{
+  "version": "2.2.1",
+  "updated": "2026-11-02",
+  "egress": [
+    {
+      "host": "127.0.0.1",
+      "via": [
+        "csp:connect-src"
+      ]
+    },
+    {
+      "host": "api.anthropic.com",
+      "via": [
+        "csp:connect-src",
+        "fetch"
+      ]
+    },
+    {
+      "host": "localhost",
+      "via": [
+        "csp:connect-src"
+      ]
+    }
+  ],
+  "features": {
+    "i18n": [
+      "ro",
+      "en",
+      "fr",
+      "it",
+      "es",
+      "pt",
+      "hu",
+      "de"
+    ],
+    "pwa": {
+      "serviceWorker": true
+    }
+  }
+}

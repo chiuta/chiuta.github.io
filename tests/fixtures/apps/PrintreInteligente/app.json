@@ -1,0 +1,49 @@
+{
+  "version": "2.2.1",
+  "updated": "2026-11-02",
+  "egress": [
+    {
+      "host": "alexio.tf",
+      "via": [
+        "csp:connect-src",
+        "csp:img-src",
+        "csp:media-src",
+        "img"
+      ]
+    },
+    {
+      "host": "claude-proxy.alexio.workers.dev",
+      "via": [
+        "csp:connect-src"
+      ]
+    },
+    {
+      "host": "translate.googleapis.com",
+      "via": [
+        "csp:connect-src"
+      ]
+    },
+    {
+      "host": "tts-proxy.chiuta.workers.dev",
+      "via": [
+        "csp:connect-src",
+        "csp:media-src"
+      ]
+    }
+  ],
+  "features": {
+    "i18n": [
+      "ro",
+      "en",
+      "fr",
+      "it",
+      "es",
+      "pt",
+      "hu",
+      "de"
+    ],
+    "pwa": {
+      "serviceWorker": true
+    }
+  }
+}

@@ -1,0 +1,434 @@
+{
+  "version": "2.0.3",
+  "updated": "2026-11-02",
+  "egress": [
+    {
+      "host": "*.archive.org",
+      "via": [
+        "csp:img-src"
+      ]
+    },
+    {
+      "host": "*.mzstatic.com",
+      "via": [
+        "csp:img-src"
+      ]
+    },
+    {
+      "host": "air-quality-api.open-meteo.com",
+      "via": [
+        "csp:connect-src"
+      ]
+    },
+    {
+      "host": "api.adviceslip.com",
+      "via": [
+        "csp:connect-src"
+      ]
+    },
+    {
+      "host": "api.agify.io",
+      "via": [
+        "csp:connect-src"
+      ]
+    },
+    {
+      "host": "api.artic.edu",
+      "via": [
+        "csp:connect-src"
+      ]
+    },
+    {
+      "host": "api.chucknorris.io",
+      "via": [
+        "csp:connect-src"
+      ]
+    },
+    {
+      "host": "api.coingecko.com",
+      "via": [
+        "csp:connect-src"
+      ]
+    },
+    {
+      "host": "api.dictionaryapi.dev",
+      "via": [
+        "csp:connect-src"
+      ]
+    },
+    {
+      "host": "api.fda.gov",
+      "via": [
+        "csp:connect-src"
+      ]
+    },
+    {
+      "host": "api.frankfurter.dev",
+      "via": [
+        "csp:connect-src"
+      ]
+    },
+    {
+      "host": "api.genderize.io",
+      "via": [
+        "csp:connect-src"
+      ]
+    },
+    {
+      "host": "api.github.com",
+      "via": [
+        "csp:connect-src"
+      ]
+    },
+    {
+      "host": "api.nasa.gov",
+      "via": [
+        "csp:connect-src"
+      ]
+    },
+    {
+      "host": "api.nationalize.io",
+      "via": [
+        "csp:connect-src"
+      ]
+    },
+    {
+      "host": "api.open-meteo.com",
+      "via": [
+        "csp:connect-src"
+      ]
+    },
+    {
+      "host": "api.open-notify.org",
+      "via": [
+        "csp:connect-src"
+      ]
+    },
+    {
+      "host": "api.pwnedpasswords.com",
+      "via": [
+        "csp:connect-src"
+      ]
+    },
+    {
+      "host": "api.qrserver.com",
+      "via": [
+        "csp:img-src",
+        "img"
+      ]
+    },
+    {
+      "host": "api.spacexdata.com",
+      "via": [
+        "csp:connect-src"
+      ]
+    },
+    {
+      "host": "api.sunrise-sunset.org",
+      "via": [
+        "csp:connect-src"
+      ]
+    },
+    {
+      "host": "api.tvmaze.com",
+      "via": [
+        "csp:connect-src"
+      ]
+    },
+    {
+      "host": "api.vatcomply.com",
+      "via": [
+        "csp:connect-src"
+      ]
+    },
+    {
+      "host": "api.wheretheiss.at",
+      "via": [
+        "csp:connect-src"
+      ]
+    },
+    {
+      "host": "apod.nasa.gov",
+      "via": [
+        "csp:img-src"
+      ]
+    },
+    {
+      "host": "archive.org",
+      "via": [
+        "csp:img-src"
+      ]
+    },
+    {
+      "host": "avatars.githubusercontent.com",
+      "via": [
+        "csp:img-src"
+      ]
+    },
+    {
+      "host": "cataas.com",
+      "via": [
+        "csp:img-src",
+        "img"
+      ]
+    },
+    {
+      "host": "catfact.ninja",
+      "via": [
+        "csp:connect-src"
+      ]
+    },
+    {
+      "host": "collectionapi.metmuseum.org",
+      "via": [
+        "csp:connect-src"
+      ]
+    },
+    {
+      "host": "covers.openlibrary.org",
+      "via": [
+        "csp:img-src",
+        "img"
+      ]
+    },
+    {
+      "host": "date.nager.at",
+      "via": [
+        "csp:connect-src"
+      ]
+    },
+    {
+      "host": "deckofcardsapi.com",
+      "via": [
+        "csp:connect-src",
+        "csp:img-src"
+      ]
+    },
+    {
+      "host": "disease.sh",
+      "via": [
+        "csp:connect-src"
+      ]
+    },
+    {
+      "host": "dog.ceo",
+      "via": [
+        "csp:connect-src"
+      ]
+    },
+    {
+      "host": "en.wikipedia.org",
+      "via": [
+        "csp:connect-src"
+      ]
+    },
+    {
+      "host": "flagcdn.com",
+      "via": [
+        "csp:img-src"
+      ]
+    },
+    {
+      "host": "geocoding-api.open-meteo.com",
+      "via": [
+        "csp:connect-src"
+      ]
+    },
+    {
+      "host": "ghibliapi.vercel.app",
+      "via": [
+        "csp:connect-src",
+        "csp:img-src"
+      ]
+    },
+    {
+      "host": "hacker-news.firebaseio.com",
+      "via": [
+        "csp:connect-src"
+      ]
+    },
+    {
+      "host": "image.tmdb.org",
+      "via": [
+        "csp:img-src"
+      ]
+    },
+    {
+      "host": "images-assets.nasa.gov",
+      "via": [
+        "csp:img-src"
+      ]
+    },
+    {
+      "host": "images.dog.ceo",
+      "via": [
+        "csp:img-src"
+      ]
+    },
+    {
+      "host": "images.metmuseum.org",
+      "via": [
+        "csp:img-src"
+      ]
+    },
+    {
+      "host": "images.openfoodfacts.org",
+      "via": [
+        "csp:img-src"
+      ]
+    },
+    {
+      "host": "ipapi.co",
+      "via": [
+        "csp:connect-src"
+      ]
+    },
+    {
+      "host": "itunes.apple.com",
+      "via": [
+        "csp:connect-src"
+      ]
+    },
+    {
+      "host": "numbersapi.com",
+      "via": [
+        "csp:connect-src"
+      ]
+    },
+    {
+      "host": "openlibrary.org",
+      "via": [
+        "csp:connect-src"
+      ]
+    },
+    {
+      "host": "opentdb.com",
+      "via": [
+        "csp:connect-src"
+      ]
+    },
+    {
+      "host": "pokeapi.co",
+      "via": [
+        "csp:connect-src"
+      ]
+    },
+    {
+      "host": "randomfox.ca",
+      "via": [
+        "csp:connect-src",
+        "csp:img-src"
+      ]
+    },
+    {
+      "host": "randomuser.me",
+      "via": [
+        "csp:connect-src",
+        "csp:img-src"
+      ]
+    },
+    {
+      "host": "raw.githubusercontent.com",
+      "via": [
+        "csp:img-src"
+      ]
+    },
+    {
+      "host": "restcountries.com",
+      "via": [
+        "csp:connect-src"
+      ]
+    },
+    {
+      "host": "rickandmortyapi.com",
+      "via": [
+        "csp:connect-src",
+        "csp:img-src"
+      ]
+    },
+    {
+      "host": "ro.wikipedia.org",
+      "via": [
+        "csp:connect-src"
+      ]
+    },
+    {
+      "host": "static.openfoodfacts.org",
+      "via": [
+        "csp:img-src"
+      ]
+    },
+    {
+      "host": "static.tvmaze.com",
+      "via": [
+        "csp:img-src"
+      ]
+    },
+    {
+      "host": "universities.hipolabs.com",
+      "via": [
+        "csp:connect-src"
+      ]
+    },
+    {
+      "host": "upload.wikimedia.org",
+      "via": [
+        "csp:img-src"
+      ]
+    },
+    {
+      "host": "v2.jokeapi.dev",
+      "via": [
+        "csp:connect-src"
+      ]
+    },
+    {
+      "host": "vpic.nhtsa.dot.gov",
+      "via": [
+        "csp:connect-src"
+      ]
+    },
+    {
+      "host": "world.openfoodfacts.org",
+      "via": [
+        "csp:connect-src"
+      ]
+    },
+    {
+      "host": "www.artic.edu",
+      "via": [
+        "csp:img-src",
+        "img"
+      ]
+    },
+    {
+      "host": "www.thecocktaildb.com",
+      "via": [
+        "csp:connect-src",
+        "csp:img-src"
+      ]
+    },
+    {
+      "host": "www.themealdb.com",
+      "via": [
+        "csp:connect-src",
+        "csp:img-src"
+      ]
+    }
+  ],
+  "features": {
+    "i18n": [
+      "ro",
+      "en",
+      "fr",
+      "it",
+      "es",
+      "pt",
+      "hu",
+      "de"
+    ],
+    "pwa": {
+      "serviceWorker": true
+    }
+  }
+}
