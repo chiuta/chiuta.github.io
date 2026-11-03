@@ -481,6 +481,28 @@ a.card-link.demo-link:hover{background:var(--accent-lo)}
 .vl-x{font-size:1.2rem;padding:.35rem .7rem}
 @media(prefers-reduced-motion:reduce){.card-media img,.card-media .card-play::after,.app-card::before,.app-card:hover .card-media::after{animation:none}.app-card.tilt{transform:none}#vlight[open]{animation:none}}
 @media print{.card-media,#vlight{display:none!important}}
+/* o culoare distinctă pentru fiecare secțiune */
+.app-card[data-cat="literatura"],.sec-head#literatura{--h:10}
+.app-card[data-cat="rust"],.sec-head#rust{--h:38}
+.app-card[data-cat="gospodarie"],.sec-head#gospodarie{--h:62}
+.app-card[data-cat="recomandate"],.sec-head#recomandate{--h:88}
+.app-card[data-cat="teren"],.sec-head#teren{--h:125}
+.app-card[data-cat="educatie"],.sec-head#educatie{--h:150}
+.app-card[data-cat="ai"],.sec-head#ai{--h:175}
+.app-card[data-cat="verificare"],.sec-head#verificare{--h:197}
+.app-card[data-cat="utilitare"],.sec-head#utilitare{--h:225}
+.app-card[data-cat="stiinta"],.sec-head#stiinta{--h:255}
+.app-card[data-cat="cultura"],.sec-head#cultura{--h:280}
+.app-card[data-cat="confidentialitate"],.sec-head#confidentialitate{--h:302}
+.app-card[data-cat="sunet"],.sec-head#sunet{--h:325}
+.app-card[data-cat="jocuri"],.sec-head#jocuri{--h:350}
+.app-card[data-cat],.sec-head[id]{--accent:oklch(.76 .16 var(--h));--bg3:color-mix(in srgb,var(--accent) 12%,var(--bg2));--accent-lo:color-mix(in srgb,var(--accent) 15%,transparent);--border:color-mix(in srgb,var(--accent) 24%,transparent);--border-hi:color-mix(in srgb,var(--accent) 55%,transparent)}
+[data-mode="light"] .app-card[data-cat],[data-mode="light"] .sec-head[id]{--accent:oklch(.52 .17 var(--h))}
+.app-card[data-cat]{background:linear-gradient(160deg,color-mix(in srgb,var(--accent) 9%,var(--bg2)),var(--bg2) 55%);border-top:2px solid color-mix(in srgb,var(--accent) 70%,transparent)}
+.app-card[data-cat] .card-name{color:color-mix(in srgb,var(--accent) 35%,var(--text))}
+.sec-head[id]{position:relative;padding-left:.9rem}
+.sec-head[id]::before{content:"";position:absolute;left:0;top:.2rem;bottom:.2rem;width:5px;border-radius:5px;background:linear-gradient(180deg,var(--accent),color-mix(in srgb,var(--accent) 25%,transparent));box-shadow:0 0 14px color-mix(in srgb,var(--accent) 60%,transparent)}
+.sec-head[id] .sec-title{color:var(--accent)}
 @media(max-width:480px){.card-links{gap:.25rem}.card-link,.card-links>details.fisa>summary{font-size:.6rem;padding:.34rem .4rem;gap:.15rem}a.card-link.live-link{font-size:.64rem;padding:.34rem .55rem}}
 @media(prefers-reduced-motion:reduce){.card-link,a.card-link.live-link::after{transition:none}.card-link:hover,a.card-link.live-link:hover{transform:none}}
 @media print{a.card-link.live-link{background:none;color:#000;box-shadow:none;border:1px solid #000}}
