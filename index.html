@@ -35,7 +35,7 @@
 </style>
 
 <meta charset="UTF-8">
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data: blob:; style-src 'self' 'unsafe-inline'; font-src 'self' data:; media-src 'self' blob: data:; object-src 'none'; base-uri 'self'; form-action 'self'; worker-src 'self' blob:; script-src 'self' 'sha256-CLz9ky8c+CI8yax80HOx/XKzzI+0llJZxdBKUKIqejE=' 'sha256-YO40Pa9U54kBXfBS8s7ySLVhwIuT7JC9cMSApha5DIk=' 'sha256-d5A0O+5bimiiTvFrX44QdIqvWx6GHcZvhaiohFVsyBM='; connect-src 'none'; manifest-src 'self'">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data: blob:; style-src 'self' 'unsafe-inline'; font-src 'self' data:; media-src 'self' blob: data:; object-src 'none'; base-uri 'self'; form-action 'self'; worker-src 'self' blob:; script-src 'self' 'sha256-CLz9ky8c+CI8yax80HOx/XKzzI+0llJZxdBKUKIqejE=' 'sha256-YO40Pa9U54kBXfBS8s7ySLVhwIuT7JC9cMSApha5DIk=' 'sha256-7e7l8xc7ik5hDfmBfjDtyQP7RoYs+V95PcbMIu1IzdY='; connect-src 'none'; manifest-src 'self'">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <meta name="color-scheme" content="dark light">
 <meta name="theme-color" id="theme-color-meta" content="#07060f">
@@ -413,7 +413,7 @@ details.legend p{margin:.25rem 0 0;max-width:90ch}
 .card-link{font-size:.66rem;padding:.38rem .7rem;border-radius:8px;min-height:30px;gap:.3rem;box-sizing:border-box;transition:transform .15s,box-shadow .2s,border-color .2s,color .2s,background .2s,filter .2s}
 .card-link:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
 .card-link:hover{transform:translateY(-1px);background:var(--accent-lo)}
-a.card-link.live-link{order:-1;flex:1 1 100%;justify-content:center;font-size:.8rem;font-weight:700;letter-spacing:.03em;padding:.62rem 1rem;min-height:40px;border-radius:10px;border:0;color:var(--bg);background:linear-gradient(135deg,var(--accent),color-mix(in srgb,var(--accent) 62%,var(--text)));box-shadow:0 4px 14px color-mix(in srgb,var(--accent) 38%,transparent)}
+a.card-link.live-link{order:-1;flex:0 0 auto;justify-content:center;font-size:.72rem;font-weight:700;letter-spacing:.02em;padding:.38rem .85rem;min-height:30px;border-radius:8px;border:0;color:var(--bg);background:linear-gradient(135deg,var(--accent),color-mix(in srgb,var(--accent) 62%,var(--text)));box-shadow:0 4px 14px color-mix(in srgb,var(--accent) 38%,transparent)}
 a.card-link.live-link::after{content:"\2197";font-size:1em;transition:transform .2s}
 a.card-link.live-link:hover{color:var(--bg);filter:brightness(1.12);box-shadow:0 6px 20px color-mix(in srgb,var(--accent) 55%,transparent);transform:translateY(-2px)}
 a.card-link.live-link:hover::after{transform:translate(2px,-2px)}
@@ -429,6 +429,12 @@ a.card-link.demo-link:hover{background:var(--accent-lo)}
 .demo-all:hover{color:var(--bg);filter:brightness(1.12)}
 .sec-demo{padding:.34rem .75rem;border-radius:8px;font-weight:600;border-color:color-mix(in srgb,var(--accent) 45%,transparent);background:transparent}
 .sec-demo:hover{background:var(--accent-lo)}
+.card-links::after{content:"";order:2;flex:0 0 100%;height:0}
+.card-links>details.fisa{margin:0;order:3;flex:0 0 auto}
+.card-links>details.fisa>summary{font-size:.66rem;padding:.38rem .7rem;border-radius:8px;min-height:30px;box-sizing:border-box;display:flex;align-items:center}
+.card-links>details.fisa[open]{order:9;flex:1 1 100%}
+.card-links>details.fisa[open]>summary{display:inline-flex}
+.card-links .card-ver{order:3}
 @media(prefers-reduced-motion:reduce){.card-link,a.card-link.live-link::after{transition:none}.card-link:hover,a.card-link.live-link:hover{transform:none}}
 @media print{a.card-link.live-link{background:none;color:#000;box-shadow:none;border:1px solid #000}}
 </style>
@@ -1508,7 +1514,7 @@ function decorateCards(){
     }
     d.appendChild(dl);
     if(m.screenshot){ const fig=el('figure','fisa-shot'); const im=el('img'); im.src=m.screenshot; im.loading='lazy'; im.alt=m.screenshotAlt||(t('fShot')+' — '+appTitle(key)); fig.appendChild(im); d.appendChild(fig); }
-    body.appendChild(d);
+    { const cl=c.querySelector('.card-links'); if(cl){ cl.insertBefore(d,ver&&ver.parentNode===cl?ver:null); } else body.appendChild(d); }
   });
   updateStats();
 }
