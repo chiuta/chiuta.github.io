@@ -55,5 +55,5 @@ jobs:
         run: node tests/hub.test.mjs
       - name: Teste Descoperire (relații, asistent, constelație, auditor, axe)
         run: node tests/discover.test.mjs
-      - name: Teste înregistrări native (demo/nativ: cast, subtitrări 8 limbi, voce, pagini offline, CSP, axe)
+      - name: Teste înregistrări native (demo/nativ - cast, subtitrări 8 limbi, voce, pagini offline, CSP, axe)
         run: node tests/nativ.test.mjs
