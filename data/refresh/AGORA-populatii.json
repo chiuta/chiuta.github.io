@@ -1,0 +1,119 @@
+{
+ "schema": 1,
+ "id": "AGORA-populatii",
+ "app": "AGORA",
+ "source": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/tps00001?format=JSON&lang=EN&geo=AT&geo=BE&geo=BG&geo=CY&geo=DE&geo=EE&geo=EL&geo=ES&geo=FI&geo=FR&geo=HR&geo=IE&geo=IT&geo=LT&geo=LU&geo=LV&geo=MT&geo=NL&geo=PT&geo=SI&geo=SK&sinceTimePeriod=2024",
+ "parser": "eurostat-population",
+ "parserVersion": 1,
+ "fetched": "2026-11-03",
+ "sha256": "98b509210ebb068e1c6a67184f61ba9401c0225dc62bbeb2d4ef39804093420c",
+ "count": 21,
+ "structure": "jsonstat2|freq,indic_de,geo,time",
+ "records": [
+  {
+   "k": "AT",
+   "time": "2026",
+   "v": 9215956
+  },
+  {
+   "k": "BE",
+   "time": "2026",
+   "v": 11955308
+  },
+  {
+   "k": "BG",
+   "time": "2026",
+   "v": 6423207
+  },
+  {
+   "k": "CY",
+   "time": "2026",
+   "v": 996571
+  },
+  {
+   "k": "DE",
+   "time": "2026",
+   "v": 83467117
+  },
+  {
+   "k": "EE",
+   "time": "2026",
+   "v": 1360745
+  },
+  {
+   "k": "EL",
+   "time": "2026",
+   "v": 10366586
+  },
+  {
+   "k": "ES",
+   "time": "2026",
+   "v": 49590099
+  },
+  {
+   "k": "FI",
+   "time": "2026",
+   "v": 5652881
+  },
+  {
+   "k": "FR",
+   "time": "2026",
+   "v": 69112309
+  },
+  {
+   "k": "HR",
+   "time": "2026",
+   "v": 3876002
+  },
+  {
+   "k": "IE",
+   "time": "2026",
+   "v": 5510565
+  },
+  {
+   "k": "IT",
+   "time": "2026",
+   "v": 58942828
+  },
+  {
+   "k": "LT",
+   "time": "2026",
+   "v": 2887592
+  },
+  {
+   "k": "LU",
+   "time": "2026",
+   "v": 690959
+  },
+  {
+   "k": "LV",
+   "time": "2026",
+   "v": 1845096
+  },
+  {
+   "k": "MT",
+   "time": "2026",
+   "v": 588254
+  },
+  {
+   "k": "NL",
+   "time": "2026",
+   "v": 18130208
+  },
+  {
+   "k": "PT",
+   "time": "2026",
+   "v": 11424031
+  },
+  {
+   "k": "SI",
+   "time": "2026",
+   "v": 2135107
+  },
+  {
+   "k": "SK",
+   "time": "2026",
+   "v": 5409407
+  }
+ ]
+}
