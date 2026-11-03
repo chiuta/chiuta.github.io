@@ -509,6 +509,12 @@ a.card-link.demo-link:hover{background:var(--accent-lo)}
 .card-badges>details.fisa>summary:hover{background:var(--accent-lo)}
 .card-badges>details.fisa[open]{flex:1 1 100%;order:99}
 .card-badges>details.fisa[open]>summary{margin-bottom:.1rem}
+.app-card[data-cat]{background:linear-gradient(150deg,color-mix(in srgb,var(--accent) 22%,var(--bg2)),color-mix(in srgb,var(--accent) 6%,var(--bg2)) 70%);border:1px solid color-mix(in srgb,var(--accent) 55%,transparent);border-top:3px solid var(--accent)}
+.app-card[data-cat] .card-icon{background:linear-gradient(180deg,var(--accent),color-mix(in srgb,var(--accent) 45%,var(--bg2)))}
+.app-card[data-cat] .card-icon canvas{mix-blend-mode:multiply;opacity:.85}
+.sec-head[id]{background:linear-gradient(90deg,color-mix(in srgb,var(--accent) 26%,transparent),transparent 70%);border-radius:12px;padding:.9rem .9rem .7rem 1.2rem;margin-top:1.6rem}
+.sec-head[id]::before{left:.35rem;top:.7rem;bottom:.7rem}
+.sec-head[id] .sec-title{text-shadow:0 0 22px color-mix(in srgb,var(--accent) 45%,transparent)}
 @media(max-width:480px){.card-links{gap:.25rem}.card-link,.card-links>details.fisa>summary{font-size:.6rem;padding:.34rem .4rem;gap:.15rem}a.card-link.live-link{font-size:.64rem;padding:.34rem .55rem}}
 @media(prefers-reduced-motion:reduce){.card-link,a.card-link.live-link::after{transition:none}.card-link:hover,a.card-link.live-link:hover{transform:none}}
 @media print{a.card-link.live-link{background:none;color:#000;box-shadow:none;border:1px solid #000}}
