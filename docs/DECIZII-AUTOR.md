@@ -120,6 +120,8 @@ Fiecare punct de mai jos nu poate fi „reparat” tehnic fără o hotărâre a 
 
 **Pași.** Alege 1–2 aplicații pilot; exportă textele hu/de într-un fișier tabelar (cheie, ro, hu, de) din dicționarul aplicației; trimite revizorului; reintegrează; patch de versiune, README-uri, pipeline. Păstrează o listă „revizuit de, la data” în README.
 
+**Actualizare (3 noiembrie 2026).** Opțiunea 3 (verificare automată de triaj) s-a făcut pentru demonstrațiile native, README-urile MENSURA și Fenarium și TEZAUR (subtitrări, interfața web), în toate cele șase limbi automate, nu doar hu și de: [TRADUCERI-REVIZIE.md](TRADUCERI-REVIZIE.md) (ce verifică, ce s-a corectat, ce așteaptă revizuire) și [TRADUCERI-CONTRIBUTIE.md](TRADUCERI-CONTRIBUTIE.md) (cum corectează și marchează un revizor). Opțiunea 4 (etichetă onestă) există în fiecare unitate și acum se verifică într-un test: marcajul „automat” dispare doar cu o intrare în `data/traduceri-revizuite.json`. Revizorii nativi (opțiunile 1 și 2) rămân de găsit.
+
 ---
 
 ## 3. Revizuire de specialist (medical, juridic, urgențe)

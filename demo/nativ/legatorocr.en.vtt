@@ -1,13 +1,13 @@
 WEBVTT
 
-00:00:00.400 --> 00:00:07.797
+00:00:00.400 --> 00:00:07.796
 LegatorOCR turns scanned pages into a searchable PDF. Here are three images with slightly tilted text.
 
-00:00:11.304 --> 00:00:21.756
+00:00:11.295 --> 00:00:21.757
 One command corrects the tilt, reads the text with OCR, and writes the PDF and a text file. The timing table shows where the time goes.
 
-00:00:24.991 --> 00:00:33.515
+00:00:25.012 --> 00:00:33.536
 The recognised text, page by page. The demo images are generated, so the result is clean; real scans are harder.
 
-00:00:37.762 --> 00:00:45.373
+00:00:37.784 --> 00:00:45.395
 The PDF has a text layer, so it can be searched and copied. The program runs locally, with no account.

@@ -6,11 +6,11 @@ VERIGA verifică legăturile unui site. Aici, un site mic, de cinci fișiere, pe
 00:00:08.963 --> 00:00:18.459
 O singură comandă parcurge site-ul și caută și fișierele orfane. Codul de ieșire 2 spune scripturilor că există legături rupte.
 
-00:00:21.589 --> 00:00:27.536
+00:00:21.651 --> 00:00:27.599
 Raportul text pune întâi legăturile rupte. Aici lipsesc o pagină și o imagine.
 
-00:00:30.624 --> 00:00:39.485
+00:00:30.696 --> 00:00:39.558
 Același rezultat iese și ca tabel CSV, gata de deschis într-o foaie de calcul. Fișierul orfan e și el listat.
 
-00:00:41.537 --> 00:00:48.260
+00:00:41.609 --> 00:00:48.314
 Limba rapoartelor se alege cu opțiunea lang. Aici, aceeași verificare, în engleză.

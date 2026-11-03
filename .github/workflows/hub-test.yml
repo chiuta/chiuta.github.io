@@ -35,6 +35,9 @@ jobs:
           node tests/relations.test.mjs
           node tests/retro.test.mjs
           node tools/score-compare.mjs --check
+          node tests/traduceri.test.mjs
+          node tools/traduceri-control.mjs --check
+          node tools/traduceri-control.mjs --check-report
           node tests/ai.test.mjs
           node tests/anthropic-audit.test.mjs
           node tools/anthropic-audit.mjs

@@ -9,5 +9,5 @@ Comanda check compilează proiectul exact ca randarea și raportează oasele, ci
 00:00:22.519 --> 00:00:29.062
 Randăm un cadru, o dată ca imagine PNG cu oasele desenate și o dată ca vector SVG.
 
-00:00:32.339 --> 00:00:42.488
+00:00:32.350 --> 00:00:42.499
 Exportul scrie o animație GIF. Totul rulează în linia de comandă, fără interfață grafică. Proiectul este în stadiul alpha.

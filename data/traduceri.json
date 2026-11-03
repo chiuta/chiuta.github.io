@@ -1,0 +1,1082 @@
+{
+ "schema": 1,
+ "note": "Registrul controlului traducerilor automate (tools/traduceri-control.mjs, tools/traduceri-lib.mjs). Glosarul e scris de mână, nu de un vorbitor nativ: o abatere e un semnal pentru revizor, nu o greșeală dovedită. Starea revizuirilor trăiește în data/traduceri-revizuite.json.",
+ "limits": {
+  "ratioMax": 1.5,
+  "ratioMin": 0.6,
+  "cueMaxChars": 230,
+  "cps": 21
+ },
+ "invariantWords": [
+  "BibTeX",
+  "CSV",
+  "PNG",
+  "SVG",
+  "GIF",
+  "PDF",
+  "OCR",
+  "JSON"
+ ],
+ "units": [
+  {
+   "id": "nativ",
+   "title": "Demonstrații native (demo/nativ)",
+   "where": "hub",
+   "note": "32 subtitrări .vtt (4 programe × 8 limbi), șirurile interfeței și pistele audio sintetice",
+   "repo": "hub",
+   "ids": [
+    "tezaur",
+    "veriga",
+    "legatorocr",
+    "osatura"
+   ],
+   "files": [
+    "demo/nativ/{id}.{l}.vtt"
+   ],
+   "extra": [
+    "demo/nativ/nativ-data.js (șirurile interfeței, cheia ui.*)",
+    "demo/nativ/audio/{id}.{l}.ogg (voce sintetică: se regenerează din același text cu tools/native-demos/build.py)"
+   ]
+  },
+  {
+   "id": "tezaur-tutoriale",
+   "title": "TEZAUR: tutoriale video (subtitrări)",
+   "where": "tezaur",
+   "note": "13 tutoriale × 8 limbi",
+   "repo": "chiuta/TEZAUR",
+   "ids": [
+    "01-first-question",
+    "02-search-compare-gaps",
+    "03-audit-references",
+    "04-outline-and-draft",
+    "05-cli-ingest-search",
+    "06-cli-ask-receipts",
+    "07-cli-pdf-tables-equations",
+    "08-cli-audit-coverage",
+    "09-cli-bibliography-export",
+    "10-mcp-assistant",
+    "11-server-api",
+    "12-mesh-p2p",
+    "13-install"
+   ],
+   "files": [
+    "assets/tutorials/{id}.{l}.vtt"
+   ],
+   "extra": [
+    "scripts/tutorials/tutorials.py (sursa textelor; se editează aici și în .vtt)"
+   ]
+  },
+  {
+   "id": "tezaur-ui",
+   "title": "TEZAUR: interfața web (tezaur.html, dicționarul I18N)",
+   "where": "tezaur",
+   "note": "105 chei × 7 limbi",
+   "repo": "chiuta/TEZAUR",
+   "ids": [],
+   "files": [
+    "tezaur.html (dicționarul I18N, 105 chei)"
+   ],
+   "extra": []
+  },
+  {
+   "id": "mensura-readme",
+   "title": "MENSURA: README.<limbă>.md",
+   "where": "apps/MENSURA",
+   "note": "6 fișiere",
+   "repo": "chiuta/MENSURA",
+   "ids": [],
+   "files": [
+    "README.{l}.md"
+   ],
+   "extra": []
+  },
+  {
+   "id": "fenarium-readme",
+   "title": "Fenarium: README.<limbă>.md",
+   "where": "apps/Fenarium",
+   "note": "6 fișiere",
+   "repo": "chiuta/Fenarium",
+   "ids": [],
+   "files": [
+    "README.{l}.md"
+   ],
+   "extra": []
+  }
+ ],
+ "glossary": [
+  {
+   "id": "library",
+   "en": "\\blibrary\\b",
+   "forms": {
+    "fr": [
+     "bibliothèque"
+    ],
+    "it": [
+     "bibliotec"
+    ],
+    "es": [
+     "bibliotec"
+    ],
+    "pt": [
+     "bibliotec"
+    ],
+    "de": [
+     "Bibliothek"
+    ],
+    "hu": [
+     "könyvtár"
+    ]
+   },
+   "forbid": {
+    "fr": [
+     "librairie"
+    ],
+    "it": [
+     "libreria"
+    ],
+    "es": [
+     "librería"
+    ],
+    "pt": [
+     "livraria"
+    ],
+    "de": [
+     "Bücherei"
+    ],
+    "hu": []
+   }
+  },
+  {
+   "id": "thesis",
+   "en": "\\bthesis\\b",
+   "forms": {
+    "fr": [
+     "thèse"
+    ],
+    "it": [
+     "tesi"
+    ],
+    "es": [
+     "tesis"
+    ],
+    "pt": [
+     "tese"
+    ],
+    "de": [
+     "Abschlussarbeit",
+     "Dissertation",
+     "Doktorarbeit",
+     "Thesis",
+     "Arbeit"
+    ],
+    "hu": [
+     "szakdolgozat",
+     "dolgozat",
+     "disszertáció",
+     "értekezés"
+    ]
+   },
+   "synonyms": true
+  },
+  {
+   "id": "citation",
+   "en": "\\bcitations?\\b",
+   "forms": {
+    "fr": [
+     "citation"
+    ],
+    "it": [
+     "citazion"
+    ],
+    "es": [
+     "cita"
+    ],
+    "pt": [
+     "cita"
+    ],
+    "de": [
+     "Zitat",
+     "Zitier",
+     "Beleg"
+    ],
+    "hu": [
+     "hivatkozás",
+     "idéz",
+     "citáció"
+    ]
+   }
+  },
+  {
+   "id": "source",
+   "en": "(?<![Tt]he )\\bsources?\\b(?! command)",
+   "forms": {
+    "fr": [
+     "source"
+    ],
+    "it": [
+     "font",
+     "sorgent"
+    ],
+    "es": [
+     "fuente",
+     "código"
+    ],
+    "pt": [
+     "fonte",
+     "código"
+    ],
+    "de": [
+     "Quell"
+    ],
+    "hu": [
+     "forrás"
+    ]
+   },
+   "skipRef": "^(?:sources|refs|ingest|audit|export|declare)\\b|/api/|\\bsources command|source code",
+   "synonyms": true
+  },
+  {
+   "id": "passage",
+   "en": "\\bpassages?\\b",
+   "forms": {
+    "fr": [
+     "passage"
+    ],
+    "it": [
+     "passagg",
+     "brano",
+     "brani"
+    ],
+    "es": [
+     "pasaje"
+    ],
+    "pt": [
+     "passage"
+    ],
+    "de": [
+     "Textstelle",
+     "Passage",
+     "Abschnitt",
+     "Stelle"
+    ],
+    "hu": [
+     "szövegrész",
+     "részlet",
+     "szakasz",
+     "rész"
+    ]
+   },
+   "synonyms": true
+  },
+  {
+   "id": "draft",
+   "en": "\\bdraft\\b",
+   "forms": {
+    "fr": [
+     "brouillon"
+    ],
+    "it": [
+     "bozza"
+    ],
+    "es": [
+     "borrador"
+    ],
+    "pt": [
+     "rascunho"
+    ],
+    "de": [
+     "Entwurf"
+    ],
+    "hu": [
+     "vázlat"
+    ]
+   },
+   "skipRef": "^Draft writes"
+  },
+  {
+   "id": "bibliography",
+   "en": "\\bbibliograph(?:y|ic)\\b",
+   "forms": {
+    "fr": [
+     "bibliograph"
+    ],
+    "it": [
+     "bibliograf"
+    ],
+    "es": [
+     "bibliográf",
+     "bibliograf"
+    ],
+    "pt": [
+     "bibliográf",
+     "bibliograf"
+    ],
+    "de": [
+     "Bibliografie",
+     "Literatur",
+     "bibliografisch"
+    ],
+    "hu": [
+     "irodalom",
+     "irodalmi",
+     "bibliográfi"
+    ]
+   },
+   "synonyms": true
+  },
+  {
+   "id": "language-model",
+   "en": "\\blanguage model\\b",
+   "forms": {
+    "fr": [
+     "modèle de langage",
+     "modèle de langue"
+    ],
+    "it": [
+     "modello linguistico",
+     "modello di linguaggio"
+    ],
+    "es": [
+     "modelo de lenguaje",
+     "modelo de idioma"
+    ],
+    "pt": [
+     "modelo de linguagem"
+    ],
+    "de": [
+     "Sprachmodell"
+    ],
+    "hu": [
+     "nyelvi modell",
+     "nyelvmodell"
+    ]
+   },
+   "synonyms": true
+  },
+  {
+   "id": "offline",
+   "en": "\\boffline\\b",
+   "forms": {
+    "fr": [
+     "hors ligne",
+     "hors-ligne"
+    ],
+    "it": [
+     "offline",
+     "non in linea",
+     "senza connessione"
+    ],
+    "es": [
+     "sin conexión",
+     "fuera de línea",
+     "offline"
+    ],
+    "pt": [
+     "offline",
+     "sem ligação",
+     "sem conexão"
+    ],
+    "de": [
+     "offline",
+     "Offline"
+    ],
+    "hu": [
+     "offline",
+     "kapcsolat nélkül"
+    ]
+   },
+   "synonyms": true
+  },
+  {
+   "id": "broken-link",
+   "en": "\\bbroken links?\\b",
+   "forms": {
+    "fr": [
+     "cass[ée]",
+     "rompu",
+     "brisé",
+     "mort",
+     "invalide",
+     "défectu"
+    ],
+    "it": [
+     "link (?:non funzionant|interrott|rott)",
+     "collegament[io] (?:interrott|rott|non funzionant)",
+     "(?:interrott|rott)"
+    ],
+    "es": [
+     "rot[oa]",
+     "no válid",
+     "muert"
+    ],
+    "pt": [
+     "quebrad",
+     "partid",
+     "inválid"
+    ],
+    "de": [
+     "defekt",
+     "kaputt",
+     "tote",
+     "fehlerhaft",
+     "ungültig",
+     "unterbrochen"
+    ],
+    "hu": [
+     "hibás",
+     "törött",
+     "érvénytelen",
+     "halott"
+    ]
+   },
+   "synonyms": true
+  },
+  {
+   "id": "orphan-file",
+   "en": "\\borphan",
+   "forms": {
+    "fr": [
+     "orphelin"
+    ],
+    "it": [
+     "orfan"
+    ],
+    "es": [
+     "huérfan"
+    ],
+    "pt": [
+     "órf"
+    ],
+    "de": [
+     "verwaist",
+     "Waisen"
+    ],
+    "hu": [
+     "árva"
+    ]
+   }
+  },
+  {
+   "id": "site",
+   "en": "\\b(?:web)?site of\\b|\\bwebsite\\b|\\ba small site\\b",
+   "forms": {
+    "fr": [
+     "site"
+    ],
+    "it": [
+     "sito"
+    ],
+    "es": [
+     "sitio"
+    ],
+    "pt": [
+     "site",
+     "sítio"
+    ],
+    "de": [
+     "Website",
+     "Webseite",
+     "Site",
+     "Seite",
+     "Webauftritt"
+    ],
+    "hu": [
+     "webhely",
+     "weboldal",
+     "honlap",
+     "oldal"
+    ]
+   },
+   "synonyms": true
+  },
+  {
+   "id": "exit-code",
+   "en": "\\bexit code\\b",
+   "forms": {
+    "fr": [
+     "code de sortie",
+     "code de retour"
+    ],
+    "it": [
+     "codice di uscita",
+     "codice di ritorno"
+    ],
+    "es": [
+     "código de salida"
+    ],
+    "pt": [
+     "código de saída"
+    ],
+    "de": [
+     "Exit-Code",
+     "Exitcode",
+     "Rückgabewert",
+     "Beendigungscode",
+     "Fehlercode",
+     "Statuscode"
+    ],
+    "hu": [
+     "kilépési kód"
+    ]
+   },
+   "synonyms": true
+  },
+  {
+   "id": "report",
+   "en": "\\breports?\\b(?! bones)",
+   "forms": {
+    "fr": [
+     "rapport"
+    ],
+    "it": [
+     "rapport"
+    ],
+    "es": [
+     "informe"
+    ],
+    "pt": [
+     "relatório"
+    ],
+    "de": [
+     "Bericht"
+    ],
+    "hu": [
+     "jelentés"
+    ]
+   }
+  },
+  {
+   "id": "spreadsheet",
+   "en": "\\bspreadsheet\\b",
+   "forms": {
+    "fr": [
+     "tableur"
+    ],
+    "it": [
+     "foglio di calcolo",
+     "foglio elettronico"
+    ],
+    "es": [
+     "hoja de cálculo"
+    ],
+    "pt": [
+     "folha de cálculo",
+     "planilha"
+    ],
+    "de": [
+     "Tabellenkalkulation"
+    ],
+    "hu": [
+     "táblázatkezelő"
+    ]
+   },
+   "synonyms": true
+  },
+  {
+   "id": "scanned",
+   "en": "\\bscan(?:ned|s)?\\b",
+   "forms": {
+    "fr": [
+     "numérisé",
+     "scan"
+    ],
+    "it": [
+     "scansion",
+     "scansit",
+     "scan"
+    ],
+    "es": [
+     "escane",
+     "digitaliz",
+     "scan"
+    ],
+    "pt": [
+     "digitaliz",
+     "escane",
+     "scan"
+    ],
+    "de": [
+     "gescannt",
+     "Scan"
+    ],
+    "hu": [
+     "beolvasott",
+     "szkennelt",
+     "szkennel",
+     "beolvas"
+    ]
+   },
+   "synonyms": true
+  },
+  {
+   "id": "text-layer",
+   "en": "\\btext layer\\b",
+   "forms": {
+    "fr": [
+     "couche de texte",
+     "couche texte"
+    ],
+    "it": [
+     "livello di testo",
+     "strato di testo",
+     "layer di testo"
+    ],
+    "es": [
+     "capa de texto"
+    ],
+    "pt": [
+     "camada de texto"
+    ],
+    "de": [
+     "Textebene",
+     "Textschicht"
+    ],
+    "hu": [
+     "szövegréteg"
+    ]
+   },
+   "synonyms": true
+  },
+  {
+   "id": "tilt",
+   "en": "\\btilt",
+   "forms": {
+    "fr": [
+     "inclinaison",
+     "incliné",
+     "penché"
+    ],
+    "it": [
+     "inclinazion",
+     "inclinat"
+    ],
+    "es": [
+     "inclinación",
+     "inclinad"
+    ],
+    "pt": [
+     "inclinaç",
+     "inclinad"
+    ],
+    "de": [
+     "Neigung",
+     "Schräg",
+     "schief",
+     "geneigt",
+     "Schiefstand",
+     "verkippt",
+     "Schieflage"
+    ],
+    "hu": [
+     "dőlés",
+     "dőlt",
+     "ferde",
+     "elferdül"
+    ]
+   },
+   "synonyms": true
+  },
+  {
+   "id": "skeletal",
+   "en": "\\bskeletal\\b",
+   "forms": {
+    "fr": [
+     "squelett"
+    ],
+    "it": [
+     "scheletric",
+     "scheletr"
+    ],
+    "es": [
+     "esquelétic",
+     "esquelet"
+    ],
+    "pt": [
+     "esquelétic",
+     "esquelet"
+    ],
+    "de": [
+     "Skelett"
+    ],
+    "hu": [
+     "csontváz",
+     "váz"
+    ]
+   },
+   "synonyms": true
+  },
+  {
+   "id": "inverse-kinematics",
+   "en": "\\binverse kinematics\\b",
+   "forms": {
+    "fr": [
+     "cinématique inverse"
+    ],
+    "it": [
+     "cinematica inversa"
+    ],
+    "es": [
+     "cinemática inversa"
+    ],
+    "pt": [
+     "cinemática inversa"
+    ],
+    "de": [
+     "inverse Kinematik",
+     "inversen Kinematik"
+    ],
+    "hu": [
+     "inverz kinematik",
+     "fordított kinematik"
+    ]
+   },
+   "synonyms": true
+  },
+  {
+   "id": "command-line",
+   "en": "\\bcommand line\\b",
+   "forms": {
+    "fr": [
+     "ligne de commande"
+    ],
+    "it": [
+     "riga di comando",
+     "linea di comando"
+    ],
+    "es": [
+     "línea de comandos",
+     "línea de comando"
+    ],
+    "pt": [
+     "linha de comandos",
+     "linha de comando"
+    ],
+    "de": [
+     "Kommandozeile"
+    ],
+    "hu": [
+     "parancssor"
+    ]
+   },
+   "synonyms": true
+  },
+  {
+   "id": "graphical-interface",
+   "en": "\\bgraphical interface\\b",
+   "forms": {
+    "fr": [
+     "interface graphique"
+    ],
+    "it": [
+     "interfaccia grafica"
+    ],
+    "es": [
+     "interfaz gráfica"
+    ],
+    "pt": [
+     "interface gráfica"
+    ],
+    "de": [
+     "grafische(?:n)? Oberfläche",
+     "grafische(?:n)? Benutzeroberfläche"
+    ],
+    "hu": [
+     "grafikus"
+    ]
+   },
+   "synonyms": true
+  },
+  {
+   "id": "mechanical",
+   "en": "\\bmechanical\\b",
+   "forms": {
+    "fr": [
+     "mécanique"
+    ],
+    "it": [
+     "meccanic"
+    ],
+    "es": [
+     "mecánic"
+    ],
+    "pt": [
+     "mecânic"
+    ],
+    "de": [
+     "mechanisch"
+    ],
+    "hu": [
+     "mechanikus",
+     "gépi"
+    ]
+   },
+   "synonyms": true
+  },
+  {
+   "id": "vector",
+   "en": "\\bvector\\b",
+   "forms": {
+    "fr": [
+     "vecteur",
+     "vectoriel"
+    ],
+    "it": [
+     "vettor"
+    ],
+    "es": [
+     "vector"
+    ],
+    "pt": [
+     "vetor",
+     "vector"
+    ],
+    "de": [
+     "Vektor"
+    ],
+    "hu": [
+     "vektor"
+    ]
+   },
+   "synonyms": true
+  },
+  {
+   "id": "server",
+   "en": "\\bservers?\\b",
+   "forms": {
+    "fr": [
+     "serveur"
+    ],
+    "it": [
+     "server"
+    ],
+    "es": [
+     "servidor"
+    ],
+    "pt": [
+     "servidor"
+    ],
+    "de": [
+     "Server"
+    ],
+    "hu": [
+     "szerver",
+     "kiszolgáló"
+    ]
+   },
+   "synonyms": true,
+   "skipRef": "^(?:\\w+ )?serve\\b"
+  },
+  {
+   "id": "tab",
+   "en": "\\btabs?\\b",
+   "forms": {
+    "fr": [
+     "onglet"
+    ],
+    "it": [
+     "scheda"
+    ],
+    "es": [
+     "pestaña"
+    ],
+    "pt": [
+     "separador",
+     "aba",
+     "guia"
+    ],
+    "de": [
+     "Reiter",
+     "Registerkarte",
+     "Tab"
+    ],
+    "hu": [
+     "lap",
+     "fül"
+    ]
+   },
+   "synonyms": true
+  },
+  {
+   "id": "voice",
+   "en": "\\bsynthetic voice\\b",
+   "forms": {
+    "fr": [
+     "voix de synthèse",
+     "voix synthétique"
+    ],
+    "it": [
+     "voce sintetica"
+    ],
+    "es": [
+     "voz sintética"
+    ],
+    "pt": [
+     "voz sintética"
+    ],
+    "de": [
+     "synthetisch\\p{L}* Stimme"
+    ],
+    "hu": [
+     "szintetikus hang"
+    ]
+   },
+   "synonyms": true
+  },
+  {
+   "id": "subtitles",
+   "en": "\\bsubtitles?\\b",
+   "forms": {
+    "fr": [
+     "sous-titr"
+    ],
+    "it": [
+     "sottotitol"
+    ],
+    "es": [
+     "subtítulo"
+    ],
+    "pt": [
+     "legenda"
+    ],
+    "de": [
+     "Untertitel"
+    ],
+    "hu": [
+     "felirat"
+    ]
+   }
+  },
+  {
+   "id": "bones",
+   "en": "\\bbones\\b",
+   "forms": {
+    "fr": [
+     "os\\b",
+     "bones",
+     "armature",
+     "squelette"
+    ],
+    "it": [
+     "ossa",
+     "bones",
+     "scheletro"
+    ],
+    "es": [
+     "huesos",
+     "bones"
+    ],
+    "pt": [
+     "ossos",
+     "bones"
+    ],
+    "de": [
+     "Knochen",
+     "Bones"
+    ],
+    "hu": [
+     "csont"
+    ]
+   },
+   "synonyms": true
+  },
+  {
+   "id": "source-code",
+   "en": "\\bsource code\\b",
+   "forms": {
+    "fr": [
+     "code source"
+    ],
+    "it": [
+     "sorgent"
+    ],
+    "es": [
+     "código fuente"
+    ],
+    "pt": [
+     "código-fonte",
+     "código fonte"
+    ],
+    "de": [
+     "Quellcode",
+     "Quelltext"
+    ],
+    "hu": [
+     "forráskód"
+    ]
+   },
+   "synonyms": true
+  }
+ ],
+ "confusions": [
+  {
+   "lang": "pt",
+   "re": "ción\\b|ciones\\b",
+   "msg": "pt: terminație spaniolă (-ción) în loc de -ção"
+  },
+  {
+   "lang": "es",
+   "re": "ção\\b|ções\\b",
+   "msg": "es: terminație portugheză (-ção) în loc de -ción",
+   "sev": "eroare"
+  },
+  {
+   "lang": "es",
+   "re": "\\bcomputadora\\b",
+   "msg": "es: „computadora” (America Latină); restul textelor folosesc „ordenador”"
+  },
+  {
+   "lang": "de",
+   "re": "\\b(?:Datei-Name|e-mail)\\b",
+   "msg": "de: ortografie nerecomandată"
+  },
+  {
+   "lang": "fr",
+   "re": "\\b(?:e-?mail)\\b",
+   "msg": "fr: „courriel” sau „e-mail” – alege una",
+   "sev": "avertisment"
+  },
+  {
+   "lang": "pt",
+   "re": "arquivo|baix(?:e|ar|ando)\\b|\\baba\\b|\\babas\\b|seç(?:ão|ões)|\\btela\\b|usuário|compartilh|\\bsalvar\\b|planilha",
+   "msg": "pt: formă din portugheza braziliană; textele din demo/nativ folosesc varianta europeană (ficheiro, descarregar, separador, secção, ecrã, utilizador, partilhar, guardar, folha de cálculo)"
+  }
+ ],
+ "register": {
+  "fr": {
+   "informal": "tu|ton|ta|tes|toi",
+   "formal": "vous|votre|vos"
+  },
+  "de": {
+   "informal": "du|dein|deine|deinen|deinem|deiner|dich|dir",
+   "formal": "Sie|Ihr|Ihre|Ihren|Ihrem|Ihrer|Ihnen"
+  },
+  "es": {
+   "informal": "tu|tus|tú|contigo",
+   "formal": "usted|ustedes"
+  },
+  "it": {
+   "informal": "tuo|tua|tuoi|tue|tu",
+   "formal": "Lei|Suo|Sua|Suoi|Sue"
+  },
+  "pt": {
+   "informal": "tu|teu|tua|teus|tuas",
+   "formal": "você|vocês"
+  }
+ },
+ "registerNote": "Se compară doar formele cu marcă lexicală clară; maghiara nu e verificată automat (registrul e în sufixe). Mai mult de un registru în aceeași limbă și aceeași unitate = avertisment.",
+ "acronyms": {
+  "IQ": {
+   "fr": "QI",
+   "it": "QI",
+   "es": "CI",
+   "pt": "QI"
+  },
+  "RQ": {
+   "fr": "QR",
+   "it": "QR",
+   "es": "CR",
+   "pt": "QR"
+  }
+ },
+ "acronymsNote": "Siglele localizate acceptate în loc de cele din sursă (QI/CI pentru IQ, QR/CR pentru RQ)."
+}

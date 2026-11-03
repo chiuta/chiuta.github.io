@@ -1,13 +1,13 @@
 WEBVTT
 
-00:00:00.400 --> 00:00:07.795
+00:00:00.400 --> 00:00:07.796
 LegatorOCR transforme des pages numérisées en un PDF interrogeable. Voici trois images au texte légèrement incliné.
 
-00:00:11.304 --> 00:00:19.723
+00:00:11.295 --> 00:00:19.704
 Une seule commande corrige l'inclinaison, lit le texte par OCR et écrit le PDF et un fichier texte. Le tableau des durées montre où passe le temps.
 
-00:00:24.991 --> 00:00:34.040
+00:00:25.012 --> 00:00:34.061
 Le texte reconnu, page par page. Les images de la démonstration sont générées, le résultat est donc propre ; les scans réels sont plus difficiles.
 
-00:00:37.762 --> 00:00:44.589
+00:00:37.784 --> 00:00:44.611
 Le PDF a une couche de texte : on peut y chercher et copier. Le programme fonctionne en local, sans compte.

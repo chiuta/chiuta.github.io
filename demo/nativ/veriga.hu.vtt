@@ -1,16 +1,16 @@
 WEBVTT
 
-00:00:00.400 --> 00:00:07.601
-A VERIGA egy weboldal hivatkozásait ellenőrzi. Itt egy kis, ötfájlos oldal van a lemezen.
+00:00:00.400 --> 00:00:07.530
+A VERIGA egy webhely hivatkozásait ellenőrzi. Itt egy kis, ötfájlos webhely van a lemezen.
 
-00:00:08.963 --> 00:00:20.340
-Egyetlen parancs bejárja az oldalt, és az árva fájlokat is keresi. A 2-es kilépési kód jelzi a szkripteknek, hogy törött hivatkozások vannak.
+00:00:08.963 --> 00:00:20.401
+Egyetlen parancs bejárja a webhelyet, és az árva fájlokat is keresi. A 2-es kilépési kód jelzi a szkripteknek, hogy törött hivatkozások vannak.
 
-00:00:21.589 --> 00:00:29.374
+00:00:21.651 --> 00:00:29.445
 A szöveges jelentés először a törött hivatkozásokat sorolja fel. Itt egy oldal és egy kép hiányzik.
 
-00:00:30.624 --> 00:00:40.287
+00:00:30.696 --> 00:00:40.359
 Ugyanez az eredmény CSV táblázatként is elkészül, táblázatkezelőben megnyitható. Az árva fájl is szerepel benne.
 
-00:00:41.537 --> 00:00:48.390
+00:00:41.609 --> 00:00:48.462
 A jelentések nyelvét a lang kapcsolóval lehet megadni. Itt ugyanez az ellenőrzés angolul.

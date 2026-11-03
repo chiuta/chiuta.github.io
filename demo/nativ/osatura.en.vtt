@@ -9,5 +9,5 @@ The check command compiles the project exactly as the renderer would, and report
 00:00:22.519 --> 00:00:29.162
 We render one frame, once as a PNG image with the bones drawn, and once as an SVG vector.
 
-00:00:32.339 --> 00:00:41.285
+00:00:32.350 --> 00:00:41.306
 Export writes an animated GIF. All of it runs on the command line, with no graphical interface. The project is at alpha stage.

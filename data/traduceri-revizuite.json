@@ -1,0 +1,5 @@
+{
+ "schema": 1,
+ "note": "Revizuirile făcute de vorbitori nativi. Un marcaj „automat” dispare dintr-un fișier doar dacă există aici o intrare pentru unitate și limbă (test: tests/traduceri.test.mjs). Cum se completează: docs/TRADUCERI-CONTRIBUTIE.md.",
+ "reviews": []
+}

@@ -6,11 +6,11 @@ VERIGA checks the links of a website. Here, a small site of five files on disk.
 00:00:08.963 --> 00:00:17.683
 One command crawls the site and also looks for orphan files. Exit code 2 tells scripts that broken links were found.
 
-00:00:21.589 --> 00:00:27.332
+00:00:21.651 --> 00:00:27.394
 The text report lists the broken links first. Here a page and an image are missing.
 
-00:00:30.624 --> 00:00:38.099
+00:00:30.696 --> 00:00:38.162
 The same result also comes out as a CSV table, ready for a spreadsheet. The orphan file is listed too.
 
-00:00:41.537 --> 00:00:47.931
+00:00:41.609 --> 00:00:48.003
 The language of the reports is chosen with the lang option. Here, the same check, in English.

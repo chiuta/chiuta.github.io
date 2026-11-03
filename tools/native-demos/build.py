@@ -14,6 +14,18 @@ OUT = HUB / 'demo' / 'nativ'
 sys.path.insert(0, str(HERE))
 from narration import NARR, TITLES, UI, LANGS
 
+# ---------------------------------------------------------------- starea revizuirii traducerilor (data/traduceri-revizuite.json)
+MT = ['fr', 'it', 'es', 'pt', 'de', 'hu']
+CONJ = {'ro': 'și', 'en': 'and', 'fr': 'et', 'it': 'e', 'es': 'y', 'pt': 'e', 'de': 'und', 'hu': 'és'}
+def _join(lst, conj): return '' if not lst else lst[0] if len(lst) == 1 else ', '.join(lst[:-1]) + ' ' + conj + ' ' + lst[-1]
+REVIEWS = {r['lang']: r for r in json.loads((HUB / 'data' / 'traduceri-revizuite.json').read_text(encoding='utf8'))['reviews'] if r['unit'] == 'nativ'}
+UNREVIEWED = [l for l in MT if l not in REVIEWS]
+for _l in LANGS:
+    UI[_l]['auto'] = UI[_l]['auto'].replace('{langs}', _join(UNREVIEWED, CONJ[_l])) if UNREVIEWED else ''
+    UI[_l]['rev'] = UI[_l]['rev'].replace('{list}', _join([f"{x} ({REVIEWS[x]['by']}, {REVIEWS[x]['date']})" for x in MT if x in REVIEWS], CONJ[_l])) if REVIEWS else ''
+# marcaj citibil de mașină (verificat de tests/traduceri.test.mjs): fr=automat sau hu=revizuit:Nume_Prenume:AAAA-LL-ZZ
+TR_MARK = 'traducere: ' + ' '.join(f"{l}=" + (f"revizuit:{REVIEWS[l]['by'].replace(' ', '_')}:{REVIEWS[l]['date']}" if l in REVIEWS else 'automat') for l in MT)
+
 COLS, ROWS = 100, 26
 SLUGS = ['tezaur', 'veriga', 'legatorocr', 'osatura']
 REPO = {'tezaur': 'TEZAUR', 'veriga': 'VERIGA', 'legatorocr': 'LegatorOCR', 'osatura': 'osatura'}
@@ -257,7 +269,9 @@ def page_html(progs, offline_slug=None, css='', js='', data_js='', hashes=None, 
 <main class="wrap">
  <h1 data-ui="title">{esc(U["title"])}</h1>
  <p class="lead" data-ui="lead">{esc(U["lead"])}</p>
- <p class="note" data-ui="auto">{esc(U["auto"])}</p>
+ <!-- {TR_MARK} -->
+ <p class="note" data-ui="auto"{' hidden' if not U["auto"] else ''}>{esc(U["auto"])}</p>
+ <p class="note" data-ui="rev"{' hidden' if not U["rev"] else ''}>{esc(U["rev"])}</p>
  {body}
  <p class="note" data-ui="tts">{esc(U["tts"])}</p>
  <p class="note" data-ui="note">{esc(U["note"])}</p>

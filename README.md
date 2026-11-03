@@ -22,6 +22,7 @@ Hubul adună **117 aplicații** (113 pagini HTML unice, offline, plus 4 programe
 - [Ghidul autorilor](docs/GHID-AUTORI.md): cum conectezi o aplicație (plic, dovezi, acoperire, relații, surse, motoare comune, teste obligatorii, scorul).
 - [Plicul FFF](docs/FFF-ENVELOPE.md) · [Descoperire](docs/DESCOPERIRE.md) · [Fluxuri](docs/FLUXURI.md) · [Suita cer–timp](docs/SUITA-CER-TIMP.md) · [Domenii](docs/DOMENII.md) · [Decizii ale autorului](docs/DECIZII-AUTOR.md)
 - [Retrospectiva etapelor 0–8](docs/RETROSPECTIVA.md): ce s-a folosit, ce nu, ce se propune a fi scos (judecat pe date măsurate).
+- [Revizuirea traducerilor automate](docs/TRADUCERI-REVIZIE.md): ce verifică controlul mecanic (`tools/traduceri-control.mjs`), ce s-a corectat, ce fișiere așteaptă vorbitori nativi · [cum corectezi și marchezi „revizuit de <nume>”](docs/TRADUCERI-CONTRIBUTIE.md).
 
 ## Comenzi uzuale
 

@@ -1,13 +1,13 @@
 WEBVTT
 
-00:00:00.400 --> 00:00:08.504
+00:00:00.400 --> 00:00:08.515
 LegatorOCR transformă pagini scanate într-un PDF cu text. Aici sunt trei imagini cu text ușor înclinat.
 
-00:00:11.304 --> 00:00:22.755
+00:00:11.295 --> 00:00:22.736
 O singură comandă corectează înclinarea, recunoaște textul cu OCR și scrie PDF-ul și un fișier text. Tabelul de timpuri arată unde se duce timpul.
 
-00:00:24.991 --> 00:00:35.583
+00:00:25.012 --> 00:00:35.627
 Textul recunoscut, pagină cu pagină. Imaginile din demonstrație sunt generate, deci rezultatul e curat; scanările reale sunt mai grele.
 
-00:00:37.762 --> 00:00:45.353
+00:00:37.784 --> 00:00:45.388
 PDF-ul are strat de text: poate fi căutat și copiat. Programul rulează local, fără cont.

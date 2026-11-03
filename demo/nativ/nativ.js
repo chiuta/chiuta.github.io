@@ -159,7 +159,7 @@
     document.documentElement.lang = lang;
     document.title = ui('title') + ' — chiuta.ro';
     var m = document.querySelector('meta[name=description]'); if (m) m.setAttribute('content', ui('lead'));
-    document.querySelectorAll('[data-ui]').forEach(function (e) { e.textContent = ui(e.getAttribute('data-ui')); });
+    document.querySelectorAll('[data-ui]').forEach(function (e) { e.textContent = ui(e.getAttribute('data-ui')); if (e.classList.contains('note')) e.hidden = !e.textContent; });
     document.querySelectorAll('[data-t]').forEach(function (e) { var p = D.progs[e.getAttribute('data-t')]; if (p) e.textContent = p.desc[lang] || p.desc.en; });
     document.querySelectorAll('[data-n]').forEach(function (e) { var a = e.getAttribute('data-n').split(':'), p = D.progs[a[0]]; if (p) { e.textContent = p.scenes[+a[1]].narr[lang] || p.scenes[+a[1]].narr.en; e.setAttribute('lang', lang); } });
     document.querySelectorAll('a[data-vtt]').forEach(function (a) { a.setAttribute('href', a.getAttribute('data-vtt') + '.' + lang + '.vtt'); });

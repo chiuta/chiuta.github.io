@@ -6,11 +6,11 @@ VERIGA controlla i link di un sito web. Qui, un piccolo sito di cinque file su d
 00:00:08.963 --> 00:00:17.435
 Un solo comando percorre il sito e cerca anche i file orfani. Il codice di uscita 2 dice agli script che ci sono link rotti.
 
-00:00:21.589 --> 00:00:27.352
+00:00:21.651 --> 00:00:27.414
 Il rapporto testuale elenca prima i link rotti. Qui mancano una pagina e un'immagine.
 
-00:00:30.624 --> 00:00:38.719
+00:00:30.696 --> 00:00:38.801
 Lo stesso risultato esce anche come tabella CSV, pronta per un foglio di calcolo. Anche il file orfano è elencato.
 
-00:00:41.537 --> 00:00:48.210
+00:00:41.609 --> 00:00:48.282
 La lingua dei rapporti si sceglie con l'opzione lang. Qui, lo stesso controllo, in inglese.

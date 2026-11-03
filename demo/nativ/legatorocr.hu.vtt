@@ -3,11 +3,11 @@ WEBVTT
 00:00:00.400 --> 00:00:09.434
 A LegatorOCR beszkennelt oldalakból kereshető PDF-et készít. Itt három kép van, enyhén ferde szöveggel.
 
-00:00:11.304 --> 00:00:23.740
+00:00:11.295 --> 00:00:23.762
 Egyetlen parancs kijavítja a dőlést, OCR-rel felismeri a szöveget, és megírja a PDF-et meg egy szövegfájlt. Az időtáblázat megmutatja, hova megy az idő.
 
-00:00:24.991 --> 00:00:34.699
+00:00:25.012 --> 00:00:34.711
 A felismert szöveg, oldalanként. A bemutató képei generáltak, ezért az eredmény tiszta; a valódi szkennelések nehezebbek.
 
-00:00:37.762 --> 00:00:45.582
+00:00:37.784 --> 00:00:45.604
 A PDF-nek van szövegrétege: kereshető és másolható. A program helyben fut, fiók nélkül.
