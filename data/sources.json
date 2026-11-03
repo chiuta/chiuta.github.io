@@ -836,14 +836,6 @@
       ]
      },
      {
-      "name": "Gutendex",
-      "url": "https://gutendex.com/books/?search=dickens",
-      "paths": [
-       "count",
-       "results"
-      ]
-     },
-     {
       "name": "Crossref",
       "url": "https://api.crossref.org/works?rows=1&query=test&mailto=alexio@trom.tf",
       "paths": [
@@ -874,7 +866,8 @@
    ],
    "deConfirmat": [
     "că aceleași căi sunt cele citite în codul aplicației",
-    "Open Library: robots.txt interzice /search (verificat la rularea reală din 2026-11-03), deci verificarea a fost scoasă din canar; aplicația o interoghează din browserul utilizatorului, nu din Actions."
+    "Open Library: robots.txt interzice /search (verificat la rularea reală din 2026-11-03), deci verificarea a fost scoasă din canar; aplicația o interoghează din browserul utilizatorului, nu din Actions.",
+    "Gutendex: robots.txt interzice /books/ (2026-11-03); verificarea a fost scoasă din canar."
    ]
   },
   {
