@@ -35,7 +35,7 @@
 </style>
 
 <meta charset="UTF-8">
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data: blob:; style-src 'self' 'unsafe-inline'; font-src 'self' data:; media-src 'self' blob: data:; object-src 'none'; base-uri 'self'; form-action 'self'; worker-src 'self' blob:; script-src 'self' 'sha256-CLz9ky8c+CI8yax80HOx/XKzzI+0llJZxdBKUKIqejE=' 'sha256-YO40Pa9U54kBXfBS8s7ySLVhwIuT7JC9cMSApha5DIk=' 'sha256-7e7l8xc7ik5hDfmBfjDtyQP7RoYs+V95PcbMIu1IzdY='; connect-src 'none'; manifest-src 'self'">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data: blob:; style-src 'self' 'unsafe-inline'; font-src 'self' data:; media-src 'self' blob: data:; object-src 'none'; base-uri 'self'; form-action 'self'; worker-src 'self' blob:; script-src 'self' 'sha256-CLz9ky8c+CI8yax80HOx/XKzzI+0llJZxdBKUKIqejE=' 'sha256-YO40Pa9U54kBXfBS8s7ySLVhwIuT7JC9cMSApha5DIk=' 'sha256-daM7rzEjLGTdTK28VORmVL6SsNw0ijrTjgdatKwFBc4='; connect-src 'none'; manifest-src 'self'">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <meta name="color-scheme" content="dark light">
 <meta name="theme-color" id="theme-color-meta" content="#07060f">
@@ -429,12 +429,13 @@ a.card-link.demo-link:hover{background:var(--accent-lo)}
 .demo-all:hover{color:var(--bg);filter:brightness(1.12)}
 .sec-demo{padding:.34rem .75rem;border-radius:8px;font-weight:600;border-color:color-mix(in srgb,var(--accent) 45%,transparent);background:transparent}
 .sec-demo:hover{background:var(--accent-lo)}
-.card-links::after{content:"";order:2;flex:0 0 100%;height:0}
 .card-links>details.fisa{margin:0;order:3;flex:0 0 auto}
 .card-links>details.fisa>summary{font-size:.66rem;padding:.38rem .7rem;border-radius:8px;min-height:30px;box-sizing:border-box;display:flex;align-items:center}
 .card-links>details.fisa[open]{order:9;flex:1 1 100%}
 .card-links>details.fisa[open]>summary{display:inline-flex}
-.card-links .card-ver{order:3}
+.card-top .card-ver{margin-left:auto;flex:0 0 auto}
+.card-top{flex-wrap:wrap}
+@media(max-width:480px){.card-links{gap:.25rem}.card-link,.card-links>details.fisa>summary{font-size:.6rem;padding:.34rem .4rem;gap:.15rem}a.card-link.live-link{font-size:.64rem;padding:.34rem .55rem}}
 @media(prefers-reduced-motion:reduce){.card-link,a.card-link.live-link::after{transition:none}.card-link:hover,a.card-link.live-link:hover{transform:none}}
 @media print{a.card-link.live-link{background:none;color:#000;box-shadow:none;border:1px solid #000}}
 </style>
@@ -1479,6 +1480,7 @@ function decorateCards(){
 
     /* versiunea: v + (ultima schimbare de fond, dacă e cunoscută); data de sincronizare rămâne în titlu și în fișă */
     const ver=c.querySelector('.card-ver');
+    { const top=c.querySelector('.card-top'); if(ver&&top&&ver.parentNode!==top) top.appendChild(ver); }
     if(ver){ ver.title=m.substantive?t('fSubst')+': '+m.substantive+' · '+t('fSync')+': '+(ver.dataset.upd||''):t('fSync')+': '+(ver.dataset.upd||'')+' · '+t('fSubst')+': '+t('fSubstNone'); }
 
     const d=el('details','fisa'); d.open=wasOpen;
@@ -1514,7 +1516,7 @@ function decorateCards(){
     }
     d.appendChild(dl);
     if(m.screenshot){ const fig=el('figure','fisa-shot'); const im=el('img'); im.src=m.screenshot; im.loading='lazy'; im.alt=m.screenshotAlt||(t('fShot')+' — '+appTitle(key)); fig.appendChild(im); d.appendChild(fig); }
-    { const cl=c.querySelector('.card-links'); if(cl){ cl.insertBefore(d,ver&&ver.parentNode===cl?ver:null); } else body.appendChild(d); }
+    { const cl=c.querySelector('.card-links'); if(cl) cl.appendChild(d); else body.appendChild(d); }
   });
   updateStats();
 }
