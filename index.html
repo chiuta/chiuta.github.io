@@ -35,7 +35,7 @@
 </style>
 
 <meta charset="UTF-8">
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data: blob:; style-src 'self' 'unsafe-inline'; font-src 'self' data:; media-src 'self' blob: data:; object-src 'none'; base-uri 'self'; form-action 'self'; worker-src 'self' blob:; script-src 'self' 'sha256-CLz9ky8c+CI8yax80HOx/XKzzI+0llJZxdBKUKIqejE=' 'sha256-YO40Pa9U54kBXfBS8s7ySLVhwIuT7JC9cMSApha5DIk=' 'sha256-IdmMJ6jZzj68LvQ8fL4gKzCURgbWDYz0O9wT2RYqS6I=' 'sha256-kQPhZFcD41+cWTVqxK52LxZtcC1NEvzHj3UYd1qC+8E='; connect-src 'none'; manifest-src 'self'">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data: blob:; style-src 'self' 'unsafe-inline'; font-src 'self' data:; media-src 'self' blob: data:; object-src 'none'; base-uri 'self'; form-action 'self'; worker-src 'self' blob:; script-src 'self' 'sha256-CLz9ky8c+CI8yax80HOx/XKzzI+0llJZxdBKUKIqejE=' 'sha256-YO40Pa9U54kBXfBS8s7ySLVhwIuT7JC9cMSApha5DIk=' 'sha256-IdmMJ6jZzj68LvQ8fL4gKzCURgbWDYz0O9wT2RYqS6I=' 'sha256-NhFYx+8UgWykiCFi4WXtcNrvQdtM0Hg323ahxHZhWmo='; connect-src 'none'; manifest-src 'self'">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <meta name="color-scheme" content="dark light">
 <meta name="theme-color" id="theme-color-meta" content="#07060f">
@@ -1819,8 +1819,10 @@ init();
     if(c.__slug) return; var slug=slugOf(c); if(!slug) return; c.__slug=slug;
     var body=c.querySelector('.card-body'); if(!body) return;
     var f=document.createElement('figure'); f.className='card-media';
-    var img=document.createElement('img'); img.alt=''; img.loading='lazy'; img.decoding='async'; img.src='demo/'+slug+'/poster.jpg';
-    img.addEventListener('error',function(){ c.classList.add('no-clip'); stop(c); });
+    var img=document.createElement('img'); img.alt=''; img.loading='lazy'; img.decoding='async';
+    img.__setSrc=function(){ var l=lg(),q=[]; if(l!=='en') q.push('demo/'+slug+'/loc/'+l+'/preview.webp'); q.push('demo/'+slug+'/preview.webp','demo/'+slug+'/poster.jpg'); img.__q=q; img.src=q.shift(); };
+    img.addEventListener('error',function(){ if(img.__q&&img.__q.length) img.src=img.__q.shift(); else { c.classList.add('no-clip'); stop(c); } });
+    img.__setSrc();
     var b=document.createElement('button'); b.type='button'; b.className='card-play'; b.textContent=tx('play'); b.setAttribute('aria-label',tx('play')+' — '+((c.querySelector('.card-name')||{}).textContent||slug));
     f.appendChild(img); f.appendChild(b);
     f.addEventListener('click',function(){ openBox(c); });
@@ -1830,7 +1832,7 @@ init();
     c.addEventListener('pointermove',function(e){ if(e.pointerType!=='mouse'||reduce) return; var r=c.getBoundingClientRect(); var x=(e.clientX-r.left)/r.width, y=(e.clientY-r.top)/r.height; c.style.setProperty('--rx',((.5-y)*6).toFixed(2)+'deg'); c.style.setProperty('--ry',((x-.5)*8).toFixed(2)+'deg'); c.classList.add('tilt'); });
     c.addEventListener('pointerleave',function(e){ c.classList.remove('tilt'); c.style.removeProperty('--rx'); c.style.removeProperty('--ry'); });
   }
-  function relabel(){ document.querySelectorAll('.card-media .card-play').forEach(function(b){ var c=b.closest('.app-card'); b.textContent=tx('play'); b.setAttribute('aria-label',tx('play')+' — '+((c.querySelector('.card-name')||{}).textContent||'')); }); live.slice().forEach(stop); }
+  function relabel(){ document.querySelectorAll('.card-media img').forEach(function(i){ if(i.__setSrc) i.__setSrc(); }); document.querySelectorAll('.card-media .card-play').forEach(function(b){ var c=b.closest('.app-card'); b.textContent=tx('play'); b.setAttribute('aria-label',tx('play')+' — '+((c.querySelector('.card-name')||{}).textContent||'')); }); live.slice().forEach(stop); }
   function init(){ document.querySelectorAll('#apps-grid .app-card:not([data-variant-of])').forEach(build); new MutationObserver(function(m){ if(m.some(function(x){return x.attributeName==='lang';})) relabel(); }).observe(document.documentElement,{attributes:true,attributeFilter:['lang']}); }
   if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',init); else init();
 })();
