@@ -1331,12 +1331,12 @@
     "id": "ACORDAJ",
     "app": "ACORDAJ",
     "cad": "lent",
-    "st": "alertă",
+    "st": "schimbat",
     "active": true,
-    "lastOk": null,
+    "lastOk": "2026-11-03",
     "lastFail": "2026-11-03",
-    "err": "structure",
-    "recs": null,
+    "err": null,
+    "recs": 1132,
     "stale": false
    },
    {
@@ -1523,11 +1523,11 @@
     "id": "LocalMind-modele",
     "app": "LocalMind",
     "cad": "lent",
-    "st": "alertă",
+    "st": "ok",
     "active": true,
-    "lastOk": null,
+    "lastOk": "2026-11-03",
     "lastFail": "2026-11-03",
-    "err": "drift",
+    "err": null,
     "recs": null,
     "stale": false
    },
@@ -1796,14 +1796,11 @@
   "sources": {
    "total": 30,
    "active": 15,
-   "ok": 13,
-   "alert": 2,
+   "ok": 15,
+   "alert": 0,
    "stopped": 15,
    "stale": 0,
-   "failingApps": [
-    "ACORDAJ",
-    "LocalMind"
-   ],
+   "failingApps": [],
    "healthFile": "2026-11-03"
   },
   "versions": {
