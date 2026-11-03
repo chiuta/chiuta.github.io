@@ -35,7 +35,7 @@
 </style>
 
 <meta charset="UTF-8">
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data: blob:; style-src 'self' 'unsafe-inline'; font-src 'self' data:; media-src 'self' blob: data:; object-src 'none'; base-uri 'self'; form-action 'self'; worker-src 'self' blob:; script-src 'self' 'sha256-CLz9ky8c+CI8yax80HOx/XKzzI+0llJZxdBKUKIqejE=' 'sha256-YO40Pa9U54kBXfBS8s7ySLVhwIuT7JC9cMSApha5DIk=' 'sha256-HPEWRrOshuRmc7mQEzd1tM95T9UjvS5Bt5mwGyZKWco='; connect-src 'none'; manifest-src 'self'">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data: blob:; style-src 'self' 'unsafe-inline'; font-src 'self' data:; media-src 'self' blob: data:; object-src 'none'; base-uri 'self'; form-action 'self'; worker-src 'self' blob:; script-src 'self' 'sha256-CLz9ky8c+CI8yax80HOx/XKzzI+0llJZxdBKUKIqejE=' 'sha256-YO40Pa9U54kBXfBS8s7ySLVhwIuT7JC9cMSApha5DIk=' 'sha256-HPEWRrOshuRmc7mQEzd1tM95T9UjvS5Bt5mwGyZKWco=' 'sha256-kQPhZFcD41+cWTVqxK52LxZtcC1NEvzHj3UYd1qC+8E='; connect-src 'none'; manifest-src 'self'">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <meta name="color-scheme" content="dark light">
 <meta name="theme-color" id="theme-color-meta" content="#07060f">
@@ -442,6 +442,45 @@ a.card-link.demo-link:hover{background:var(--accent-lo)}
 .desc-wrap>details.fisa>summary:hover{background:var(--accent-lo)}
 .desc-wrap>details.fisa>.fisa-dl,.desc-wrap>details.fisa>.fisa-shot{display:grid;margin-top:.5rem}
 .desc-wrap>details.fisa>.fisa-shot{display:block}
+/* carduri cu clip demo: previzualizare video în cadru, animații, lightbox */
+@property --ang{syntax:"<angle>";inherits:false;initial-value:0deg}
+.app-card{animation:fadeUp .55s ease backwards;transform-style:preserve-3d;will-change:transform}
+.app-card.tilt{transform:perspective(900px) rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg)) translateY(-4px);transition:transform .12s ease-out,border-color .25s,box-shadow .25s,background .3s}
+.app-card::before{content:"";position:absolute;inset:0;border-radius:inherit;padding:2px;pointer-events:none;opacity:0;transition:opacity .35s;z-index:3;background:conic-gradient(from var(--ang),transparent 0 62%,var(--accent) 80%,color-mix(in srgb,var(--accent) 30%,#fff) 90%,transparent 100%);-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;animation:cardspin 3.2s linear infinite}
+.app-card:hover::before,.app-card.vid-on::before{opacity:1}
+@keyframes cardspin{to{--ang:360deg}}
+.app-card.vid-on{box-shadow:0 16px 44px -12px color-mix(in srgb,var(--accent) 55%,transparent),0 0 0 1px color-mix(in srgb,var(--accent) 50%,transparent)}
+.card-media{position:relative;margin:-.1rem -.1rem .35rem;aspect-ratio:16/9;border-radius:10px;overflow:hidden;background:var(--bg3);cursor:pointer;isolation:isolate;box-shadow:0 6px 18px rgba(0,0,0,.28)}
+.card-media img,.card-media video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+.card-media img{animation:kenburns 14s ease-in-out infinite alternate;transform-origin:50% 40%}
+.card-media video{opacity:0;transition:opacity .5s;background:#000}
+.card-media.on video{opacity:1}
+@keyframes kenburns{from{transform:scale(1)}to{transform:scale(1.09) translate(-1.2%,-1%)}}
+.card-media::after{content:"";position:absolute;inset:0;z-index:2;pointer-events:none;background:linear-gradient(115deg,transparent 35%,rgba(255,255,255,.28) 50%,transparent 65%);transform:translateX(-120%)}
+.app-card:hover .card-media::after{animation:shine 1.1s ease-out}
+@keyframes shine{to{transform:translateX(120%)}}
+.card-media .card-play{position:absolute;z-index:3;right:.5rem;bottom:.5rem;display:flex;align-items:center;gap:.35rem;appearance:none;border:0;cursor:pointer;font:700 .62rem/1 var(--mono);letter-spacing:.03em;color:var(--bg);background:var(--accent);padding:.42rem .65rem .42rem .5rem;border-radius:999px;box-shadow:0 4px 14px rgba(0,0,0,.4);transition:transform .2s,opacity .3s}
+.card-media .card-play::before{content:"";width:0;height:0;border-left:.55rem solid currentColor;border-top:.33rem solid transparent;border-bottom:.33rem solid transparent}
+.card-media .card-play::after{content:"";position:absolute;inset:0;border-radius:inherit;border:2px solid var(--accent);animation:pulse 2s ease-out infinite}
+@keyframes pulse{from{transform:scale(1);opacity:.8}to{transform:scale(1.55);opacity:0}}
+.card-media:hover .card-play{transform:scale(1.08)}
+.card-media.on .card-play{opacity:.85}
+.card-media:focus-within{outline:2px solid var(--accent);outline-offset:2px}
+.app-card.no-clip .card-media{display:none}
+#vlight{margin:auto;inset:0;height:fit-content;border:0;padding:0;background:transparent;max-width:min(94vw,1100px);width:100%;color:var(--text)}
+#vlight::backdrop{background:rgba(2,4,10,.82);backdrop-filter:blur(6px)}
+#vlight[open]{animation:vpop .3s cubic-bezier(.2,.9,.3,1.2)}
+@keyframes vpop{from{opacity:0;transform:scale(.92) translateY(18px)}to{opacity:1;transform:none}}
+.vl-box{background:var(--bg2);border:1px solid var(--border-hi);border-radius:16px;overflow:hidden;box-shadow:0 30px 80px rgba(0,0,0,.6),0 0 60px -10px var(--accent)}
+.vl-head{display:flex;align-items:center;gap:.7rem;padding:.7rem 1rem}
+.vl-title{font-weight:800;font-size:1rem;flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.vl-box video{display:block;width:100%;max-height:72vh;background:#000;aspect-ratio:16/9}
+.vl-foot{display:flex;gap:.5rem;flex-wrap:wrap;padding:.8rem 1rem;align-items:center}
+.vl-btn{font:700 .75rem/1 var(--mono);text-decoration:none;cursor:pointer;appearance:none;border:1px solid var(--border-hi);color:var(--text);background:var(--bg3);padding:.6rem 1rem;border-radius:10px}
+.vl-btn.pri{border:0;color:var(--bg);background:linear-gradient(135deg,var(--accent),color-mix(in srgb,var(--accent) 62%,var(--text)))}
+.vl-x{font-size:1.2rem;padding:.35rem .7rem}
+@media(prefers-reduced-motion:reduce){.card-media img,.card-media .card-play::after,.app-card::before,.app-card:hover .card-media::after{animation:none}.app-card.tilt{transform:none}#vlight[open]{animation:none}}
+@media print{.card-media,#vlight{display:none!important}}
 @media(max-width:480px){.card-links{gap:.25rem}.card-link,.card-links>details.fisa>summary{font-size:.6rem;padding:.34rem .4rem;gap:.15rem}a.card-link.live-link{font-size:.64rem;padding:.34rem .55rem}}
 @media(prefers-reduced-motion:reduce){.card-link,a.card-link.live-link::after{transition:none}.card-link:hover,a.card-link.live-link:hover{transform:none}}
 @media print{a.card-link.live-link{background:none;color:#000;box-shadow:none;border:1px solid #000}}
@@ -1696,5 +1735,69 @@ init();
 #tf-donate svg{width:16px;height:16px;display:block}
 @media print{#tf-donate{display:none}}
 </style><a href="https://buymeacoffee.com/echo.of.the.strings" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 8h11v6.5a4 4 0 0 1-4 4H9a4 4 0 0 1-4-4V8z"/><path d="M16 9.5h2.2a2.3 2.3 0 0 1 0 4.6H16"/><path d="M7.5 4.5V3M11.5 4.5V3"/></svg>Buy Me a Coffee</a></div>
+<dialog id="vlight" aria-label="Demo"><div class="vl-box"><div class="vl-head"><span class="vl-title" id="vl-title"></span><button type="button" class="vl-btn vl-x" id="vl-x" aria-label="×">×</button></div><video id="vl-video" controls playsinline></video><div class="vl-foot"><a class="vl-btn pri" id="vl-open" target="_blank" rel="noopener noreferrer"></a><a class="vl-btn" id="vl-demo"></a></div></div></dialog>
+<script>
+(function(){
+  var L={play:{ro:'Vezi demo',en:'Watch demo',fr:'Voir la démo',it:'Guarda la demo',es:'Ver demo',pt:'Ver demo',de:'Demo ansehen',hu:'Demó megtekintése'},close:{ro:'Închide',en:'Close',fr:'Fermer',it:'Chiudi',es:'Cerrar',pt:'Fechar',de:'Schließen',hu:'Bezárás'},open:{ro:'Deschide',en:'Open',fr:'Ouvrir',it:'Apri',es:'Abrir',pt:'Abrir',de:'Öffnen',hu:'Megnyitás'},all:{ro:'▶ Toate demo-urile',en:'▶ All demos',fr:'▶ Toutes les démos',it:'▶ Tutte le demo',es:'▶ Todas las demos',pt:'▶ Todas as demos',de:'▶ Alle Demos',hu:'▶ Összes demó'}};
+  function lg(){ var l=(document.documentElement.lang||'en').slice(0,2); return L.play[l]?l:'en'; }
+  function tx(k){ return L[k][lg()]; }
+  var reduce=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var save=navigator.connection&&navigator.connection.saveData;
+  var MAXP=3, live=[];
+  function slugOf(c){ var n=c.querySelector('.card-name'); var m=n&&(n.getAttribute('data-c')||'').match(/^apps\|([^|]+)\|/); return m?m[1]:null; }
+  function src(slug,loc){ var l=lg(); return 'demo/'+slug+(loc&&l!=='en'?'/loc/'+l:'')+'/video.mp4'; }
+  function stop(c){ var f=c.querySelector('.card-media'); if(!f) return; var v=f.querySelector('video'); if(v){ try{v.pause();}catch(e){} v.removeAttribute('src'); try{v.load();}catch(e){} v.remove(); } f.classList.remove('on'); c.classList.remove('vid-on'); live=live.filter(function(x){return x!==c;}); }
+  function start(c){
+    var f=c.querySelector('.card-media'); if(!f||c.classList.contains('no-clip')||f.querySelector('video')) return;
+    while(live.length>=MAXP) stop(live[0]);
+    var slug=c.__slug, v=document.createElement('video'); v.muted=true; v.loop=true; v.playsInline=true; v.setAttribute('playsinline',''); v.preload='auto'; v.tabIndex=-1; v.setAttribute('aria-hidden','true');
+    var triedLoc=lg()!=='en';
+    v.addEventListener('error',function(){ if(triedLoc){ triedLoc=false; v.src=src(slug,false); v.play().catch(function(){}); } });
+    v.addEventListener('playing',function(){ f.classList.add('on'); c.classList.add('vid-on'); });
+    v.src=src(slug,true); f.insertBefore(v,f.querySelector('.card-play')); live.push(c);
+    var p=v.play(); if(p&&p.catch) p.catch(function(){});
+  }
+  var dlg=document.getElementById('vlight'), vv=document.getElementById('vl-video');
+  function openBox(c){
+    if(!dlg||!dlg.showModal) return;
+    var slug=c.__slug, l=lg(), name=(c.querySelector('.card-name')||{}).textContent||slug;
+    document.getElementById('vl-title').textContent=name;
+    var live_=c.querySelector('a.live-link'), o=document.getElementById('vl-open'); if(live_){ o.href=live_.href; o.textContent=tx('open')+' ↗'; o.hidden=false; } else o.hidden=true;
+    var d=document.getElementById('vl-demo'); d.href='demo/#'+slug; d.textContent=tx('all');
+    document.getElementById('vl-x').setAttribute('aria-label',tx('close'));
+    live.slice().forEach(stop);
+    while(vv.firstChild) vv.removeChild(vv.firstChild);
+    var loc=l!=='en', triedLoc=loc;
+    function setup(useLoc){
+      vv.src='demo/'+slug+(useLoc?'/loc/'+l:'')+'/video.mp4';
+      var tr=document.createElement('track'); tr.kind='subtitles'; tr.srclang=l; tr.label=l.toUpperCase(); tr.default=true; tr.src='demo/'+slug+(useLoc?'/loc/'+l:'')+'/'+l+'.vtt'; vv.appendChild(tr);
+    }
+    vv.onerror=function(){ if(triedLoc){ triedLoc=false; while(vv.firstChild) vv.removeChild(vv.firstChild); setup(false); vv.play().catch(function(){}); } };
+    setup(loc); dlg.showModal(); vv.play().catch(function(){});
+    try{ vv.addEventListener('loadedmetadata',function h(){ vv.removeEventListener('loadedmetadata',h); for(var i=0;i<vv.textTracks.length;i++) vv.textTracks[i].mode='showing'; }); }catch(e){}
+  }
+  function closeBox(){ try{ vv.pause(); }catch(e){} vv.removeAttribute('src'); while(vv.firstChild) vv.removeChild(vv.firstChild); try{ vv.load(); }catch(e){} if(dlg.open) dlg.close(); }
+  if(dlg){ document.getElementById('vl-x').addEventListener('click',closeBox); dlg.addEventListener('click',function(e){ if(e.target===dlg) closeBox(); }); dlg.addEventListener('close',function(){ try{vv.pause();}catch(e){} }); }
+  var io=('IntersectionObserver' in window)?new IntersectionObserver(function(es){ es.forEach(function(e){ var c=e.target.closest('.app-card'); if(!c) return; if(e.isIntersecting&&e.intersectionRatio>=.6){ if(!reduce&&!save) start(c); } else stop(c); }); },{threshold:[0,.6]}):null;
+  function build(c){
+    if(c.__slug) return; var slug=slugOf(c); if(!slug) return; c.__slug=slug;
+    var body=c.querySelector('.card-body'); if(!body) return;
+    var f=document.createElement('figure'); f.className='card-media';
+    var img=document.createElement('img'); img.alt=''; img.loading='lazy'; img.decoding='async'; img.src='demo/'+slug+'/poster.jpg';
+    img.addEventListener('error',function(){ c.classList.add('no-clip'); stop(c); });
+    var b=document.createElement('button'); b.type='button'; b.className='card-play'; b.textContent=tx('play'); b.setAttribute('aria-label',tx('play')+' — '+((c.querySelector('.card-name')||{}).textContent||slug));
+    f.appendChild(img); f.appendChild(b);
+    f.addEventListener('click',function(){ openBox(c); });
+    c.addEventListener('pointerenter',function(e){ if(e.pointerType==='mouse'||reduce||save) start(c); });
+    body.insertBefore(f,body.firstChild);
+    if(io) io.observe(f);
+    c.addEventListener('pointermove',function(e){ if(e.pointerType!=='mouse'||reduce) return; var r=c.getBoundingClientRect(); var x=(e.clientX-r.left)/r.width, y=(e.clientY-r.top)/r.height; c.style.setProperty('--rx',((.5-y)*6).toFixed(2)+'deg'); c.style.setProperty('--ry',((x-.5)*8).toFixed(2)+'deg'); c.classList.add('tilt'); });
+    c.addEventListener('pointerleave',function(e){ c.classList.remove('tilt'); c.style.removeProperty('--rx'); c.style.removeProperty('--ry'); });
+  }
+  function relabel(){ document.querySelectorAll('.card-media .card-play').forEach(function(b){ var c=b.closest('.app-card'); b.textContent=tx('play'); b.setAttribute('aria-label',tx('play')+' — '+((c.querySelector('.card-name')||{}).textContent||'')); }); live.slice().forEach(stop); }
+  function init(){ document.querySelectorAll('#apps-grid .app-card:not([data-variant-of])').forEach(build); new MutationObserver(function(m){ if(m.some(function(x){return x.attributeName==='lang';})) relabel(); }).observe(document.documentElement,{attributes:true,attributeFilter:['lang']}); }
+  if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',init); else init();
+})();
+</script>
 </body>
 </html>
