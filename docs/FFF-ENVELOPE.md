@@ -93,3 +93,7 @@ Cinci module canonice în [`tools/`](../tools/), injectate în aplicații de `no
 | `fff-jocuri.js` | — | Stratul TBL (i18n 8 limbi, Elo, turnee tur-retur, p2p lockstep) + `FFF.games`: istoric local, clasament Elo pe nume, hub „Turneu și Elo” cu rezultate notate de mână; export/import `{fff:"games",v:1}` | 11 din 14 (Dame, Go, Șah îl primesc în locul copiei lipite; 8 jocuri primesc hub-ul prin adaptorul `Jocuri.js`) |
 
 Jocurile fără modul (Sudoku, Solitaire, Zaruri) nu au adversari sau partide cu rezultat, deci un clasament Elo n-ar avea sens. Un adversar AI în rețea (ARENA) nu se potrivește jocurilor: ele rulează cu `connect-src 'none'`; adversarii rămân motoarele locale (Dame, Go, Șah) și oamenii (hot-seat). Testele: `tests/{agenda,pasaport,sunet,ai,jocuri}.test.mjs` (Node) și `tests/engines.test.mjs` (Playwright, rețea oprită).
+
+## 10. Plicul `place/fff` (Etapa 6)
+
+Locația comună a suitei cer–timp: `{v, lat, lon, name, tz, alt}`, fără semnătură. Circulă ca fragment `#fffplace=` (nu `#fff=`), fișier `.fff.json`, clipboard sau QR; destinația cere confirmare. Detalii: [SUITA-CER-TIMP.md](SUITA-CER-TIMP.md).
