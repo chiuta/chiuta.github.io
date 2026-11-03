@@ -1,0 +1,110 @@
+{
+ "schema": 1,
+ "updated": "2026-11-03",
+ "sources": {
+  "ACORDAJ": {
+   "status": "neexecutat"
+  },
+  "VNTV": {
+   "status": "neexecutat"
+  },
+  "AGORA-populatii": {
+   "status": "neexecutat"
+  },
+  "AGORA-BCE-Bulgaria": {
+   "status": "inventar"
+  },
+  "AGORA-linkuri-externe": {
+   "status": "inventar"
+  },
+  "Cupa-Mondiala-2026-Wikipedia": {
+   "status": "de-confirmat"
+  },
+  "Eclipse-NASA-GSFC": {
+   "status": "de-confirmat"
+  },
+  "IERS-DeltaT": {
+   "status": "de-confirmat"
+  },
+  "JPL-Horizons": {
+   "status": "inventar"
+  },
+  "ORARIUM-JPL-IAU": {
+   "status": "de-confirmat"
+  },
+  "UniversulObservabil-NED-SIMBAD": {
+   "status": "de-confirmat"
+  },
+  "INDICATIV-ANCOM": {
+   "status": "de-confirmat"
+  },
+  "Nexus-modele-Anthropic": {
+   "status": "neexecutat"
+  },
+  "Nexus-modele-OpenAI": {
+   "status": "neexecutat"
+  },
+  "Nexus-modele-Google": {
+   "status": "neexecutat"
+  },
+  "Anthropic-API-versiune": {
+   "status": "neexecutat"
+  },
+  "LocalMind-modele": {
+   "status": "neexecutat"
+  },
+  "ATINGERE-tessdata": {
+   "status": "ok",
+   "lastOk": "2026-11-03",
+   "errorType": null,
+   "errorMsg": null,
+   "consecutiveFails": 0
+  },
+  "fff-kit-astronomia": {
+   "status": "ok",
+   "lastOk": "2026-11-03",
+   "errorType": null,
+   "errorMsg": null,
+   "consecutiveFails": 0,
+   "info": "ultima 4.2.0"
+  },
+  "fff-kit-hipparcos": {
+   "status": "ok",
+   "lastOk": "2026-11-03",
+   "errorType": null,
+   "errorMsg": null,
+   "consecutiveFails": 0,
+   "info": "ultima 0.1.0"
+  },
+  "AcademiSearch-API": {
+   "status": "neexecutat"
+  },
+  "OmniHost-API": {
+   "status": "neexecutat"
+  },
+  "ScryVeil-API": {
+   "status": "neexecutat"
+  },
+  "ScryVeil-extra": {
+   "status": "inventar"
+  },
+  "X-fara-cont-Wayback": {
+   "status": "neexecutat"
+  },
+  "API-fara-frontiere-hosturi": {
+   "status": "inventar"
+  },
+  "AI-Liber-endpointuri": {
+   "status": "inventar"
+  },
+  "Poteca-OSM": {
+   "status": "inventar"
+  },
+  "Embeduri-sociale": {
+   "status": "inventar"
+  },
+  "Proxy-uri-proprii": {
+   "status": "inventar"
+  }
+ }
+}

@@ -1622,5 +1622,482 @@
         "platform": "native"
       }
     }
+  },
+  "dataSources": {
+    "ACORDAJ": [
+      {
+        "id": "ACORDAJ",
+        "host": "cursurispirituale.webnode.ro",
+        "cad": "lent",
+        "days": 30,
+        "st": "activ",
+        "card": true,
+        "fragil": true
+      }
+    ],
+    "AGORA": [
+      {
+        "id": "AGORA-populatii",
+        "host": "ec.europa.eu",
+        "cad": "lent",
+        "days": 30,
+        "st": "activ",
+        "card": true,
+        "asOf": "2026-10-08"
+      },
+      {
+        "id": "AGORA-BCE-Bulgaria",
+        "host": "www.ecb.europa.eu",
+        "cad": "înghețat",
+        "days": null,
+        "st": "doar-inventar",
+        "asOf": "2026-10-27"
+      },
+      {
+        "id": "AGORA-linkuri-externe",
+        "host": "www.mae.ro",
+        "cad": "lent",
+        "days": 30,
+        "st": "doar-inventar"
+      }
+    ],
+    "AI-Liber": [
+      {
+        "id": "Anthropic-API-versiune",
+        "host": "platform.claude.com",
+        "cad": "lent",
+        "days": 30,
+        "st": "activ"
+      },
+      {
+        "id": "AI-Liber-endpointuri",
+        "host": "text.pollinations.ai",
+        "cad": "lent",
+        "days": 30,
+        "st": "doar-inventar",
+        "fragil": true
+      }
+    ],
+    "API-fara-frontiere": [
+      {
+        "id": "OmniHost-API",
+        "host": "geocoding-api.open-meteo.com",
+        "cad": "lent",
+        "days": 30,
+        "st": "activ"
+      },
+      {
+        "id": "API-fara-frontiere-hosturi",
+        "host": "pokeapi.co",
+        "cad": "lent",
+        "days": 30,
+        "st": "doar-inventar"
+      }
+    ],
+    "ATINGERE": [
+      {
+        "id": "ATINGERE-tessdata",
+        "host": "raw.githubusercontent.com",
+        "cad": "înghețat",
+        "days": null,
+        "st": "activ",
+        "card": true
+      }
+    ],
+    "AcademiSearch": [
+      {
+        "id": "AcademiSearch-API",
+        "host": "openlibrary.org",
+        "cad": "lent",
+        "days": 30,
+        "st": "activ"
+      }
+    ],
+    "Arhiva-LinkedIn": [
+      {
+        "id": "Embeduri-sociale",
+        "host": "www.threads.com",
+        "cad": "lent",
+        "days": 30,
+        "st": "doar-inventar",
+        "fragil": true
+      }
+    ],
+    "Bolta": [
+      {
+        "id": "IERS-DeltaT",
+        "host": "datacenter.iers.org",
+        "cad": "lent",
+        "days": 30,
+        "st": "de-confirmat",
+        "card": true
+      },
+      {
+        "id": "fff-kit-astronomia",
+        "host": "registry.npmjs.org",
+        "cad": "lent",
+        "days": 30,
+        "st": "activ"
+      },
+      {
+        "id": "fff-kit-hipparcos",
+        "host": "pypi.org",
+        "cad": "lent",
+        "days": 30,
+        "st": "activ"
+      }
+    ],
+    "Cadraj": [
+      {
+        "id": "Embeduri-sociale",
+        "host": "www.threads.com",
+        "cad": "lent",
+        "days": 30,
+        "st": "doar-inventar",
+        "fragil": true
+      }
+    ],
+    "Cupa-Mondiala-2026": [
+      {
+        "id": "Cupa-Mondiala-2026-Wikipedia",
+        "host": "en.wikipedia.org",
+        "cad": "înghețat",
+        "days": null,
+        "st": "de-confirmat",
+        "card": true
+      }
+    ],
+    "ECLIPSA": [
+      {
+        "id": "Eclipse-NASA-GSFC",
+        "host": "eclipse.gsfc.nasa.gov",
+        "cad": "înghețat",
+        "days": null,
+        "st": "de-confirmat",
+        "card": true
+      },
+      {
+        "id": "IERS-DeltaT",
+        "host": "datacenter.iers.org",
+        "cad": "lent",
+        "days": 30,
+        "st": "de-confirmat"
+      },
+      {
+        "id": "JPL-Horizons",
+        "host": "ssd.jpl.nasa.gov",
+        "cad": "înghețat",
+        "days": null,
+        "st": "doar-inventar"
+      },
+      {
+        "id": "fff-kit-astronomia",
+        "host": "registry.npmjs.org",
+        "cad": "lent",
+        "days": 30,
+        "st": "activ"
+      }
+    ],
+    "ETER": [
+      {
+        "id": "INDICATIV-ANCOM",
+        "host": "www.ancom.ro",
+        "cad": "lent",
+        "days": 30,
+        "st": "de-confirmat",
+        "card": true,
+        "asOf": "2026-10"
+      }
+    ],
+    "Eclipsa-2027": [
+      {
+        "id": "Eclipse-NASA-GSFC",
+        "host": "eclipse.gsfc.nasa.gov",
+        "cad": "înghețat",
+        "days": null,
+        "st": "de-confirmat",
+        "card": true
+      },
+      {
+        "id": "IERS-DeltaT",
+        "host": "datacenter.iers.org",
+        "cad": "lent",
+        "days": 30,
+        "st": "de-confirmat"
+      },
+      {
+        "id": "JPL-Horizons",
+        "host": "ssd.jpl.nasa.gov",
+        "cad": "înghețat",
+        "days": null,
+        "st": "doar-inventar"
+      },
+      {
+        "id": "fff-kit-astronomia",
+        "host": "registry.npmjs.org",
+        "cad": "lent",
+        "days": 30,
+        "st": "activ"
+      },
+      {
+        "id": "fff-kit-hipparcos",
+        "host": "pypi.org",
+        "cad": "lent",
+        "days": 30,
+        "st": "activ"
+      }
+    ],
+    "FreeDetect": [
+      {
+        "id": "AcademiSearch-API",
+        "host": "openlibrary.org",
+        "cad": "lent",
+        "days": 30,
+        "st": "activ"
+      }
+    ],
+    "INDICATIV": [
+      {
+        "id": "INDICATIV-ANCOM",
+        "host": "www.ancom.ro",
+        "cad": "lent",
+        "days": 30,
+        "st": "de-confirmat",
+        "card": true,
+        "asOf": "2026-10"
+      }
+    ],
+    "LocalMind": [
+      {
+        "id": "LocalMind-modele",
+        "host": "huggingface.co",
+        "cad": "lent",
+        "days": 30,
+        "st": "activ",
+        "card": true
+      }
+    ],
+    "Nexus-fara-frontiere": [
+      {
+        "id": "Nexus-modele-Anthropic",
+        "host": "platform.claude.com",
+        "cad": "lent",
+        "days": 30,
+        "st": "activ",
+        "card": true,
+        "asOf": "2026-10-08"
+      },
+      {
+        "id": "Nexus-modele-OpenAI",
+        "host": "developers.openai.com",
+        "cad": "lent",
+        "days": 30,
+        "st": "activ",
+        "asOf": "2026-10-08"
+      },
+      {
+        "id": "Nexus-modele-Google",
+        "host": "ai.google.dev",
+        "cad": "lent",
+        "days": 30,
+        "st": "activ",
+        "asOf": "2026-10-08"
+      },
+      {
+        "id": "Anthropic-API-versiune",
+        "host": "platform.claude.com",
+        "cad": "lent",
+        "days": 30,
+        "st": "activ"
+      }
+    ],
+    "OUTPOST": [
+      {
+        "id": "ScryVeil-API",
+        "host": "dns.google",
+        "cad": "lent",
+        "days": 30,
+        "st": "activ"
+      }
+    ],
+    "OmniHost": [
+      {
+        "id": "OmniHost-API",
+        "host": "geocoding-api.open-meteo.com",
+        "cad": "lent",
+        "days": 30,
+        "st": "activ"
+      }
+    ],
+    "Poteca": [
+      {
+        "id": "Poteca-OSM",
+        "host": "tile.openstreetmap.org",
+        "cad": "lent",
+        "days": 30,
+        "st": "doar-inventar"
+      }
+    ],
+    "PrintreInteligente": [
+      {
+        "id": "Proxy-uri-proprii",
+        "host": "alexio.tf",
+        "cad": "lent",
+        "days": 30,
+        "st": "doar-inventar"
+      }
+    ],
+    "ScryVeil": [
+      {
+        "id": "ScryVeil-API",
+        "host": "dns.google",
+        "cad": "lent",
+        "days": 30,
+        "st": "activ"
+      },
+      {
+        "id": "ScryVeil-extra",
+        "host": "crt.sh",
+        "cad": "lent",
+        "days": 30,
+        "st": "doar-inventar",
+        "fragil": true
+      }
+    ],
+    "Threads-fara-cont": [
+      {
+        "id": "Embeduri-sociale",
+        "host": "www.threads.com",
+        "cad": "lent",
+        "days": 30,
+        "st": "doar-inventar",
+        "fragil": true
+      }
+    ],
+    "TranslateHub": [
+      {
+        "id": "Anthropic-API-versiune",
+        "host": "platform.claude.com",
+        "cad": "lent",
+        "days": 30,
+        "st": "activ"
+      }
+    ],
+    "Universul-Observabil": [
+      {
+        "id": "UniversulObservabil-NED-SIMBAD",
+        "host": "ned.ipac.caltech.edu",
+        "cad": "lent",
+        "days": 30,
+        "st": "de-confirmat",
+        "card": true,
+        "asOf": "2026-05"
+      }
+    ],
+    "Universul-Observabil-1D": [
+      {
+        "id": "UniversulObservabil-NED-SIMBAD",
+        "host": "ned.ipac.caltech.edu",
+        "cad": "lent",
+        "days": 30,
+        "st": "de-confirmat",
+        "card": true,
+        "asOf": "2026-05"
+      }
+    ],
+    "Universul-Observabil-2D": [
+      {
+        "id": "UniversulObservabil-NED-SIMBAD",
+        "host": "ned.ipac.caltech.edu",
+        "cad": "lent",
+        "days": 30,
+        "st": "de-confirmat",
+        "card": true,
+        "asOf": "2026-05"
+      }
+    ],
+    "Universul-Observabil-3D": [
+      {
+        "id": "UniversulObservabil-NED-SIMBAD",
+        "host": "ned.ipac.caltech.edu",
+        "cad": "lent",
+        "days": 30,
+        "st": "de-confirmat",
+        "card": true,
+        "asOf": "2026-05"
+      }
+    ],
+    "VNTV": [
+      {
+        "id": "VNTV",
+        "host": "www.videoneat.com",
+        "cad": "viu",
+        "days": 7,
+        "st": "activ",
+        "card": true
+      }
+    ],
+    "VietAR": [
+      {
+        "id": "Anthropic-API-versiune",
+        "host": "platform.claude.com",
+        "cad": "lent",
+        "days": 30,
+        "st": "activ"
+      }
+    ],
+    "Vitrina": [
+      {
+        "id": "Embeduri-sociale",
+        "host": "www.threads.com",
+        "cad": "lent",
+        "days": 30,
+        "st": "doar-inventar",
+        "fragil": true
+      }
+    ],
+    "VoiceAtelier": [
+      {
+        "id": "Proxy-uri-proprii",
+        "host": "alexio.tf",
+        "cad": "lent",
+        "days": 30,
+        "st": "doar-inventar"
+      }
+    ],
+    "X-fara-cont": [
+      {
+        "id": "X-fara-cont-Wayback",
+        "host": "archive.org",
+        "cad": "lent",
+        "days": 30,
+        "st": "activ",
+        "fragil": true
+      }
+    ],
+    "orarium": [
+      {
+        "id": "IERS-DeltaT",
+        "host": "datacenter.iers.org",
+        "cad": "lent",
+        "days": 30,
+        "st": "de-confirmat"
+      },
+      {
+        "id": "ORARIUM-JPL-IAU",
+        "host": "ssd.jpl.nasa.gov",
+        "cad": "înghețat",
+        "days": null,
+        "st": "de-confirmat",
+        "card": true
+      },
+      {
+        "id": "fff-kit-astronomia",
+        "host": "registry.npmjs.org",
+        "cad": "lent",
+        "days": 30,
+        "st": "activ"
+      }
+    ]
   }
 }

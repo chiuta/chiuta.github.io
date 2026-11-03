@@ -191,6 +191,19 @@ function renderSrc(D, UI, CODES, CODE_KIND) {
       h.push('<tr><th scope="row">' + E(lab) + '</th><td class="n">' + c.n + '</td><td>' + E(t(CODE_KIND[c.c] || 'k_tech')) + '</td></tr>');
     });
     h.push('</tbody></table></div></section>');
+    // sănătatea surselor externe (Etapa 8): data/transparenta.json → a8, scris de tools/refresh/meta.mjs
+    if (D.a8 && D.a8.sources && D.a8.sources.length) {
+      var A8 = D.a8, CADK = {'înghețat': 'cad_inghetat', lent: 'cad_lent', viu: 'cad_viu'};
+      var STK = {ok: 'st_ok', schimbat: 'st_schimbat', 'alertă': 'st_alerta', eroare: 'st_eroare', inventar: 'st_inventar', 'de-confirmat': 'st_deconfirmat', oprit: 'st_oprit', neexecutat: 'st_neexecutat'};
+      var nAct = A8.sources.filter(function (x) { return x.active; }).length;
+      h.push('<section aria-labelledby="s-src"><h2 id="s-src">' + E(t('h_src')) + '</h2><p class="note">' + E(t('src_lead')) + '</p><p class="note">' + F('src_sum', {n: A8.sources.length, a: nAct, b: A8.sources.length - nAct}) + '</p>');
+      h.push('<div class="tw wide"><table class="apps"><thead><tr>' + th('th_src') + th('th_cad') + th('th_state') + th('th_lastok') + th('th_lastfail') + th('th_err') + th('th_recs', 'n') + '</tr></thead><tbody>');
+      A8.sources.forEach(function (x) {
+        h.push('<tr><th scope="row">' + E(x.id) + '<br><span class="note">' + E(x.app) + '</span></th><td>' + E(t(CADK[x.cad] || 'cad_lent')) + '</td><td>' + E(t(STK[x.st] || 'st_neexecutat')) + (x.stale ? ' <span class="kind">' + E(t('src_stale')) + '</span>' : '') +
+          '</td><td>' + E(x.lastOk || '—') + '</td><td>' + E(x.lastFail || '—') + '</td><td>' + (x.err ? E(t('err_' + x.err)) : '—') + '</td><td class="n">' + (x.recs != null ? x.recs : '—') + '</td></tr>');
+      });
+      h.push('</tbody></table></div><p class="note">' + E(t('src_note')) + '</p></section>');
+    }
     // per aplicație
     h.push('<section aria-labelledby="s-apps"><h2 id="s-apps">' + E(t('h_apps')) + '</h2><div class="tw wide"><table class="apps"><thead><tr>' + th('th_app') + th('th_ver') + th('th_offline') + th('th_langs', 'n') + th('th_hosts', 'n') + th('th_score', 'n') + th('th_hm', 'n') + th('th_l', 'n') + '</tr></thead><tbody>');
     D.apps.forEach(function (a) {

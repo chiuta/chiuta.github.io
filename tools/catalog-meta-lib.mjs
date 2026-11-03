@@ -9,7 +9,7 @@ export const STATUSES = ['stable', 'experimental', 'alpha', 'lab'];
 
 export function loadMeta(hub) {
   const meta = JSON.parse(fs.readFileSync(path.join(hub, 'data', 'catalog-meta.json'), 'utf8'));
-  meta.apps ||= {}; meta.kinds ||= {}; meta.variants ||= {}; meta.related ||= []; meta.topics ||= []; meta.extraRelations ||= [];
+  meta.apps ||= {}; meta.kinds ||= {}; meta.variants ||= {}; meta.related ||= []; meta.topics ||= []; meta.extraRelations ||= []; meta.dataSources ||= {};
   return meta;
 }
 
@@ -105,6 +105,16 @@ export function validateMeta(meta, keys, bySection = null) {
     if (v.score !== undefined && !(typeof v.score === 'number' && v.score >= 0 && v.score <= 10)) out.push(`catalog-meta: ${k}: „score” trebuie să fie un număr între 0 și 10`);
     if (typeof v.score === 'number' && v.score < thr && v.status !== 'lab') out.push(`catalog-meta: ${k}: scor ${v.score} sub pragul ${thr}, dar starea nu e „lab” (laborator)`);
     if (v.status === 'lab' && typeof v.score !== 'number') out.push(`catalog-meta: ${k}: starea „lab” cere un „score” de audit`);
+  }
+  // Etapa 8.6: sursele externe ale aplicațiilor (derivate din data/sources.json de tools/refresh/meta.mjs)
+  for (const [k, list] of Object.entries(meta.dataSources)) {
+    if (!set.has(k)) { out.push(`catalog-meta: dataSources: „${k}” nu are card`); continue; }
+    for (const e of list) {
+      if (!e.id || !e.host) out.push(`catalog-meta: dataSources.${k}: sursă fără id/host`);
+      if (!['înghețat', 'lent', 'viu'].includes(e.cad)) out.push(`catalog-meta: dataSources.${k}.${e.id}: cadență „${e.cad}”`);
+      if (e.asOf && !/^\d{4}-\d\d(-\d\d)?$/.test(e.asOf)) out.push(`catalog-meta: dataSources.${k}.${e.id}: asOf trebuie să fie AAAA-LL[-ZZ]`);
+    }
+    if (list.filter((e) => e.card).length > 1) out.push(`catalog-meta: dataSources.${k}: cel mult o sursă „card” (cea afișată pe card)`);
   }
   if (bySection && bySection.recomandate) {
     let prev = Infinity;
