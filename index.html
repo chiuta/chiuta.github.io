@@ -482,22 +482,22 @@ a.card-link.demo-link:hover{background:var(--accent-lo)}
 @media(prefers-reduced-motion:reduce){.card-media img,.card-media .card-play::after,.app-card::before,.app-card:hover .card-media::after{animation:none}.app-card.tilt{transform:none}#vlight[open]{animation:none}}
 @media print{.card-media,#vlight{display:none!important}}
 /* o culoare distinctă pentru fiecare secțiune */
-.app-card[data-cat="literatura"],.sec-head#literatura{--h:10}
-.app-card[data-cat="rust"],.sec-head#rust{--h:38}
-.app-card[data-cat="gospodarie"],.sec-head#gospodarie{--h:62}
-.app-card[data-cat="recomandate"],.sec-head#recomandate{--h:88}
-.app-card[data-cat="teren"],.sec-head#teren{--h:125}
-.app-card[data-cat="educatie"],.sec-head#educatie{--h:150}
-.app-card[data-cat="ai"],.sec-head#ai{--h:175}
-.app-card[data-cat="verificare"],.sec-head#verificare{--h:197}
-.app-card[data-cat="utilitare"],.sec-head#utilitare{--h:225}
-.app-card[data-cat="stiinta"],.sec-head#stiinta{--h:255}
-.app-card[data-cat="cultura"],.sec-head#cultura{--h:280}
-.app-card[data-cat="confidentialitate"],.sec-head#confidentialitate{--h:302}
-.app-card[data-cat="sunet"],.sec-head#sunet{--h:325}
-.app-card[data-cat="jocuri"],.sec-head#jocuri{--h:350}
-.app-card[data-cat],.sec-head[id]{--accent:oklch(.76 .16 var(--h));--bg3:color-mix(in srgb,var(--accent) 12%,var(--bg2));--accent-lo:color-mix(in srgb,var(--accent) 15%,transparent);--border:color-mix(in srgb,var(--accent) 24%,transparent);--border-hi:color-mix(in srgb,var(--accent) 55%,transparent)}
-[data-mode="light"] .app-card[data-cat],[data-mode="light"] .sec-head[id]{--accent:oklch(.52 .17 var(--h))}
+.app-card[data-cat="jocuri"],.sec-head#jocuri{--h:10;--c:0.19}
+.app-card[data-cat="rust"],.sec-head#rust{--h:38;--c:0.17}
+.app-card[data-cat="gospodarie"],.sec-head#gospodarie{--h:62;--c:0.15}
+.app-card[data-cat="recomandate"],.sec-head#recomandate{--h:88;--c:0.17}
+.app-card[data-cat="educatie"],.sec-head#educatie{--h:118;--c:0.17}
+.app-card[data-cat="teren"],.sec-head#teren{--h:150;--c:0.15}
+.app-card[data-cat="ai"],.sec-head#ai{--h:178;--c:0.14}
+.app-card[data-cat="verificare"],.sec-head#verificare{--h:205;--c:0.14}
+.app-card[data-cat="stiinta"],.sec-head#stiinta{--h:238;--c:0.17}
+.app-card[data-cat="confidentialitate"],.sec-head#confidentialitate{--h:268;--c:0.16}
+.app-card[data-cat="cultura"],.sec-head#cultura{--h:292;--c:0.17}
+.app-card[data-cat="sunet"],.sec-head#sunet{--h:318;--c:0.19}
+.app-card[data-cat="literatura"],.sec-head#literatura{--h:345;--c:0.15}
+.app-card[data-cat="utilitare"],.sec-head#utilitare{--h:250;--c:0.035}
+.app-card[data-cat],.sec-head[id]{--accent:oklch(.76 var(--c,.16) var(--h));--bg3:color-mix(in srgb,var(--accent) 12%,var(--bg2));--accent-lo:color-mix(in srgb,var(--accent) 15%,transparent);--border:color-mix(in srgb,var(--accent) 24%,transparent);--border-hi:color-mix(in srgb,var(--accent) 55%,transparent)}
+[data-mode="light"] .app-card[data-cat],[data-mode="light"] .sec-head[id]{--accent:oklch(.5 calc(var(--c,.16) + .01) var(--h))}
 .app-card[data-cat]{background:linear-gradient(160deg,color-mix(in srgb,var(--accent) 9%,var(--bg2)),var(--bg2) 55%);border-top:2px solid color-mix(in srgb,var(--accent) 70%,transparent)}
 .app-card[data-cat] .card-name{color:color-mix(in srgb,var(--accent) 35%,var(--text))}
 .sec-head[id]{position:relative;padding-left:.9rem}
