@@ -48,19 +48,23 @@ export default {
       catch (e) { if (e.type === 'robots') continue; throw e; }   // pagină interzisă de robots: o sărim; alte erori opresc rularea
     }
     const byN = new Map(), problems = [], labels = {};
-    let order = [];
+    let order = [], dupes = 0;
     for (const p of pages) for (const e of extractNumbered(htmlToLines(p.html))) {
       const k = String(e.n).padStart(4, '0'), h = h8(e.title);
-      if (byN.has(k) && byN.get(k).h !== h) { problems.push({type: 'structure', msg: `numărul ${e.n} apare cu două titluri diferite (${p.url})`}); continue; }
+      // Pagina reală (probă 2026-11-03) are, pe lângă lista principală, un sub-bloc „1 …, 2 …,” și rânduri de subsol cu numere repetate (17 din 1151):
+      // se păstrează prima apariție; duplicatele sunt tolerate până la maxDuplicatePct (implicit 3%), peste prag structura e considerată schimbată.
+      if (byN.has(k) && byN.get(k).h !== h) { dupes++; continue; }
       if (!byN.has(k)) { byN.set(k, {k, h}); labels[k] = e.title; order.push(e.n); }
     }
+    const maxDup = src.validator.maxDuplicatePct ?? 3, totalSeen = byN.size + dupes;
+    if (dupes && 100 * dupes / Math.max(1, totalSeen) > maxDup) problems.push({type: 'structure', msg: `${dupes} numere apar cu titluri diferite (${(100 * dupes / totalSeen).toFixed(1)}% > ${maxDup}%): structura s-a schimbat`});
     const records = [...byN.values()].sort((a, b) => (a.k < b.k ? -1 : 1));
     const nums = records.map((r) => +r.k), inc = nums.filter((n, i) => i === 0 || n > nums[i - 1]).length;
     const dense = nums.length ? nums.length / nums[nums.length - 1] : 0;
     let structure = 'none';
     if (records.length) structure = 'numbered-lines' + (dense >= 0.9 ? '' : '/sparse');
     if (records.length && dense < 0.5) problems.push({type: 'structure', msg: `numerotare rară (${records.length} intrări până la ${nums[nums.length - 1]}): probabil nu e lista de titluri`});
-    const summary = {pages: pages.length, maxNumber: nums[nums.length - 1] || 0};
+    const summary = {pages: pages.length, maxNumber: nums[nums.length - 1] || 0, duplicates: dupes};
     const bl = ctx.baseline;
     if (bl && bl.hashes && records.length) {
       const set = new Set(bl.hashes), hit = records.filter((r) => set.has(r.h)).length;
