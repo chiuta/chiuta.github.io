@@ -25,6 +25,7 @@
   "seva": {"adapter": "Pasaport.js", "libs": ["fff-pasaport"]},
   "indicativ": {"adapter": "Pasaport.js", "libs": ["fff-pasaport"]},
   "mensura": {"adapter": "Pasaport.js", "libs": ["fff-pasaport"]},
+  "fenarium": {"adapter": "Pasaport.js", "libs": ["fff-pasaport"]},
   "puls": {"adapter": "Pasaport.js", "libs": ["fff-pasaport"]},
   "qso": {"adapter": "Pasaport.js", "libs": ["fff-pasaport"]},
   "regexlab": {"adapter": "Pasaport.js", "libs": ["fff-pasaport"]},

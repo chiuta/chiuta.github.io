@@ -1767,22 +1767,22 @@
   },
   "score": {
    "measured": 112,
-   "mean": 9.28,
+   "mean": 9.45,
    "median": 9.5,
    "bands": {
-    "b9": 98,
+    "b9": 100,
     "b8": 12,
     "b7": 0,
-    "b6": 2
+    "b6": 0
    },
-   "noTests": 2,
+   "noTests": 0,
    "incomplete": 0,
    "lowest": [
-    "Fenarium 0.3",
-    "MENSURA 0.5",
     "OmniHost 8.1",
     "PrintreInteligente 8.2",
-    "LocalMind 8.3"
+    "LocalMind 8.3",
+    "Constelar 8.5",
+    "Threads-fara-cont 8.5"
    ]
   },
   "age": {
@@ -2318,16 +2318,16 @@
    },
    {
     "key": "Fenarium",
-    "ver": "",
-    "score": 0.35,
-    "build": false,
-    "axe": 4,
-    "tests": 0,
-    "testsOk": 0,
-    "csp": 0,
-    "off": 0,
-    "langs": 0,
-    "kb": 1192
+    "ver": "9.1.0",
+    "score": 9.85,
+    "build": true,
+    "axe": 0,
+    "tests": 1,
+    "testsOk": 1,
+    "csp": 1.5,
+    "off": 1,
+    "langs": 8,
+    "kb": 1568
    },
    {
     "key": "FieldObserver",
@@ -2552,16 +2552,16 @@
    },
    {
     "key": "MENSURA",
-    "ver": "",
-    "score": 0.5,
-    "build": false,
-    "axe": 14,
-    "tests": 0,
-    "testsOk": 0,
-    "csp": 0,
-    "off": 0,
-    "langs": 0,
-    "kb": 323
+    "ver": "1.6.0",
+    "score": 10,
+    "build": true,
+    "axe": 0,
+    "tests": 1,
+    "testsOk": 1,
+    "csp": 1.5,
+    "off": 1,
+    "langs": 8,
+    "kb": 619
    },
    {
     "key": "Monstrarium",
@@ -3280,12 +3280,12 @@
    }
   ],
   "scored": 112,
-  "mean": 9.28,
+  "mean": 9.45,
   "median": 9.5,
-  "builds": 110,
-  "axe": 110,
-  "allTests": 110,
-  "noTests": 2,
+  "builds": 112,
+  "axe": 112,
+  "allTests": 112,
+  "noTests": 0,
   "incomplete": 0,
   "weights": {
    "build": 2,
