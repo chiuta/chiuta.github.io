@@ -1,0 +1,31 @@
+{
+  "app": "TEZAUR",
+  "created": "2026-11-03T03:11:34.000Z",
+  "fff": 2,
+  "payload": [
+    {
+      "author": [
+        {
+          "family": "Popescu",
+          "given": "Ana"
+        }
+      ],
+      "id": "lorem-ipsum-dolor-sit-amet-f51cc01e",
+      "issued": {
+        "date-parts": [
+          [
+            1999
+          ]
+        ]
+      },
+      "note": "sha256:f51cc01ef4f558bf56935abc325c0bc4b83875dc7085e5cb73213b1c213b3e3b (sample.png); FFF envelope from LegatorOCR; lang en",
+      "title": "Lorem ipsum dolor sit amet,",
+      "type": "document"
+    }
+  ],
+  "source": {
+    "label": "TEZAUR · bibliografie"
+  },
+  "title": "TEZAUR",
+  "type": "citation/csl"
+}

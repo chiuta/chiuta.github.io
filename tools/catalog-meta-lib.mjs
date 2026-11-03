@@ -129,3 +129,45 @@ export function validateMeta(meta, keys, bySection = null) {
   }
   return out;
 }
+
+/** Fluxuri între aplicații (Etapa 4): data/flows.json. */
+export function loadFlows(hub) {
+  const f = path.join(hub, 'data', 'flows.json');
+  if (!fs.existsSync(f)) return {schema: 1, flows: []};
+  const o = JSON.parse(fs.readFileSync(f, 'utf8')); o.flows ||= []; return o;
+}
+
+const TYPE_RE = /^[a-z0-9][a-z0-9.+-]*\/[a-z0-9][a-z0-9.+-]*$/;
+/** Coerența fluxurilor: id unic, nume și rezumat în 8 limbi, noduri cu card, tipuri valide, muchii care respectă „produce/acceptă”. */
+export function validateFlows(flows, keys) {
+  const set = new Set(keys), out = [], ids = new Set();
+  for (const f of flows.flows || []) {
+    const w = `fluxul „${f.id}”`;
+    if (!f.id || ids.has(f.id)) out.push(`flows: id lipsă sau duplicat (${f.id})`); ids.add(f.id);
+    for (const fld of ['name', 'summary']) for (const l of LANGS8) if (!f[fld] || !f[fld][l]) out.push(`flows: ${w}: „${fld}” nu are limba ${l}`);
+    const nodes = f.nodes || {};
+    for (const [k, nd] of Object.entries(nodes)) {
+      if (!set.has(k)) out.push(`flows: ${w}: aplicația „${k}” nu are card`);
+      if (!['web', 'cli'].includes(nd.mode)) out.push(`flows: ${w}: „${k}”: mode trebuie să fie web sau cli`);
+      for (const t of [...(nd.accepts || []), ...(nd.produces || [])]) if (!TYPE_RE.test(t)) out.push(`flows: ${w}: „${k}”: tip de plic invalid „${t}”`);
+    }
+    if (!(f.edges || []).length) out.push(`flows: ${w} nu are muchii`);
+    for (const [a, b, t] of f.edges || []) {
+      if (!nodes[a] || !nodes[b]) { out.push(`flows: ${w}: muchia ${a}→${b}: nod nedefinit`); continue; }
+      if (!(nodes[a].produces || []).includes(t)) out.push(`flows: ${w}: ${a} nu produce ${t}`);
+      if (!(nodes[b].accepts || []).includes(t)) out.push(`flows: ${w}: ${b} nu acceptă ${t}`);
+    }
+  }
+  return out;
+}
+
+/** Pe aplicație: {next: [{app,type,flow}], prev: [...]} — pentru „înlănțuie cu…” pe carduri. */
+export function flowsByApp(flows) {
+  const out = {};
+  const slot = (k) => (out[k] ||= {next: [], prev: []});
+  for (const f of flows.flows || []) for (const [a, b, t] of f.edges || []) {
+    if (!slot(a).next.some((x) => x.app === b && x.type === t)) slot(a).next.push({app: b, type: t, flow: f.id});
+    if (!slot(b).prev.some((x) => x.app === a && x.type === t)) slot(b).prev.push({app: a, type: t, flow: f.id});
+  }
+  return out;
+}

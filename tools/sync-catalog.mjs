@@ -30,7 +30,7 @@ import vm from 'node:vm';
 import {createHash} from 'node:crypto';
 import {fileURLToPath} from 'node:url';
 import {recomputeCspHashes} from '../fff-kit/lib/csp.mjs';
-import {buildRelations, loadMeta, deriveStatus, verText, variantOf, counts, validateMeta, coverageScore} from './catalog-meta-lib.mjs';
+import {buildRelations, loadFlows, validateFlows, flowsByApp, loadMeta, deriveStatus, verText, variantOf, counts, validateMeta, coverageScore} from './catalog-meta-lib.mjs';
 
 const HUB = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const argv = process.argv.slice(2);
@@ -180,13 +180,15 @@ const nCards = keys.length;
 const nSections = (html.match(/<div class="sec-head/g) || []).length;
 const cnt = counts(meta, keys, nSections);
 problems.push(...validateMeta(meta, keys, bySection));
+const FLOWS = loadFlows(HUB);
+problems.push(...validateFlows(FLOWS, keys));
 for (const [k, v] of Object.entries(meta.apps)) if (v.screenshot && !fs.existsSync(path.join(HUB, v.screenshot))) problems.push(`catalog-meta: ${k}: captura ${v.screenshot} nu există în hub`);
 // Contor „aplicații” = aplicații single-file (inclusiv variantele ascunse în fișa hub-ului); proiectele de alt tip (OSATURA, VERIGA, TEZAUR) sunt în secțiunea lor.
 html = html.replace(/(id="stat-repos">)\d+(<)/, (m, a, b) => { if (m !== `${a}${cnt.singleFile}${b}`) changes.push(`contor aplicații → ${cnt.singleFile}`); return `${a}${cnt.singleFile}${b}`; });
 html = html.replace(/(id="stat-sections">)\d+(<)/, (m, a, b) => { if (m !== `${a}${nSections}${b}`) changes.push(`contor secțiuni → ${nSections}`); return `${a}${nSections}${b}`; });
 {
   // metadatele încorporate (JSON; nu se execută, deci nu intră în hash-urile CSP)
-  const emb = {schema: meta.schema, policy: meta.policy, kinds: meta.kinds, variants: meta.variants, related: meta.related, topics: meta.topics, relations: buildRelations(meta), apps: {}};
+  const emb = {schema: meta.schema, policy: meta.policy, kinds: meta.kinds, variants: meta.variants, related: meta.related, topics: meta.topics, relations: buildRelations(meta), flows: {defs: FLOWS.flows.map((f) => ({id: f.id, name: f.name, summary: f.summary})), byApp: flowsByApp(FLOWS)}, apps: {}};
   for (const [k, v] of Object.entries(meta.apps)) {
     const o = {};
     for (const f of ['fisa', 'substantive', 'screenshot', 'screenshotAlt', 'score', 'evidence', 'health', 'fragile', 'checked']) if (v[f]) o[f] = v[f];

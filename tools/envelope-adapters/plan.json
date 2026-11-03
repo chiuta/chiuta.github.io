@@ -1,11 +1,20 @@
 {
-  "academisearch": {"adapter": "AcademiSearch.js"},
-  "dataweave": {"adapter": "DataWeave.js"},
-  "arhiva-fara-frontiere": {"adapter": "Arhiva-fara-frontiere.js"},
-  "cadraj": {"adapter": "Cadraj.js"},
+  "academisearch": {"adapter": "AcademiSearch.js", "libs": ["fff-repro"]},
+  "dataweave": {"adapter": "DataWeave.js", "libs": ["fff-repro"]},
+  "arhiva-fara-frontiere": {"adapter": ["Arhiva-fara-frontiere.js", "Jurnal.js"], "libs": ["fff-jurnal"]},
+  "cadraj": {"adapter": ["Cadraj.js", "AB.js"], "libs": ["fff-ab"]},
   "constelar": {"adapter": "Constelar.js"},
   "vaultcrypt": {"seif": true, "adapter": "VaultCrypt.js"},
   "nexus-fara-frontiere": {"seif": true},
   "ai-liber": {"seif": true},
-  "arena": {"seif": true}
+  "arena": {"seif": true},
+  "surveyor": {"adapter": "AB.js", "libs": ["fff-ab"]},
+  "scryveil": {"adapter": "AB.js", "libs": ["fff-ab"]},
+  "freedetect": {"adapter": "AB.js", "libs": ["fff-ab"]},
+  "agora": {"adapter": "Agora.js", "libs": ["fff-repro"]},
+  "fieldobserver": {"adapter": "Jurnal.js", "libs": ["fff-jurnal"]},
+  "vatra": {"adapter": "Jurnal.js", "libs": ["fff-jurnal"]},
+  "urme": {"adapter": "Jurnal.js", "libs": ["fff-jurnal"]},
+  "poteca": {"adapter": "Jurnal.js", "libs": ["fff-jurnal"]},
+  "exploratoriieco": {"adapter": "Jurnal.js", "libs": ["fff-jurnal"]}
 }

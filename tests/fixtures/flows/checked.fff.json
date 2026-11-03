@@ -1,0 +1,39 @@
+{
+  "app": "VERIGA",
+  "created": "2026-11-03T03:11:34.684Z",
+  "fff": 2,
+  "payload": [
+    {
+      "author": [
+        {
+          "family": "Popescu",
+          "given": "Ana"
+        }
+      ],
+      "custom": {
+        "veriga": {
+          "checked": false,
+          "date": "2026-11-03T03:11:34.684Z",
+          "status": "no-link"
+        }
+      },
+      "id": "lorem-ipsum-dolor-sit-amet-f51cc01e",
+      "issued": {
+        "date-parts": [
+          [
+            1999
+          ]
+        ]
+      },
+      "note": "sha256:f51cc01ef4f558bf56935abc325c0bc4b83875dc7085e5cb73213b1c213b3e3b (sample.png); FFF envelope from LegatorOCR; lang en",
+      "title": "Lorem ipsum dolor sit amet,",
+      "type": "document"
+    }
+  ],
+  "source": {
+    "label": "VERIGA · 1 referințe, 0 legături verificate, 0 rupte",
+    "via": "TEZAUR"
+  },
+  "title": "TEZAUR",
+  "type": "citation/csl"
+}

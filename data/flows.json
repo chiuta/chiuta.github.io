@@ -1,0 +1,352 @@
+{
+ "schema": 1,
+ "note": "Fluxuri între aplicații (Etapa 4). Un flux = noduri (aplicații cu tipurile de plic .fff.json acceptate/produse și modul: web = în pagină, cli = program Rust, prin fișier) + muchii [de la, la, tip]. Cardurile arată „înlănțuie cu…” din muchii. Validat de tools/sync-catalog.mjs; testat de tests/flows.test.mjs. Specificația plicului: docs/FFF-ENVELOPE.md; fluxurile: docs/FLUXURI.md.",
+ "flows": [
+  {
+   "id": "sursa",
+   "name": {
+    "ro": "Lanțul de surse",
+    "en": "Source chain",
+    "fr": "Chaîne de sources",
+    "it": "Catena delle fonti",
+    "es": "Cadena de fuentes",
+    "pt": "Cadeia de fontes",
+    "de": "Quellenkette",
+    "hu": "Forráslánc"
+   },
+   "summary": {
+    "ro": "Document scanat → text pe pagini → bibliografie → legături verificate → referință citabilă, fără rețea.",
+    "en": "Scanned document → text per page → bibliography → checked links → citable reference, offline.",
+    "fr": "Document numérisé → texte par page → bibliographie → liens vérifiés → référence citable, hors ligne.",
+    "it": "Documento scansionato → testo per pagina → bibliografia → link verificati → riferimento citabile, offline.",
+    "es": "Documento escaneado → texto por página → bibliografía → enlaces verificados → referencia citable, sin red.",
+    "pt": "Documento digitalizado → texto por página → bibliografia → ligações verificadas → referência citável, offline.",
+    "de": "Gescanntes Dokument → Text pro Seite → Bibliografie → geprüfte Links → zitierfähige Referenz, offline.",
+    "hu": "Beolvasott dokumentum → oldalankénti szöveg → bibliográfia → ellenőrzött linkek → idézhető hivatkozás, offline."
+   },
+   "nodes": {
+    "LegatorOCR": {
+     "produces": [
+      "document/ocr"
+     ],
+     "mode": "cli",
+     "how": "legatorocr scan.png --ocr --lang ro --author \"Nume, Prenume\" --fff-year 1999 --fff-out doc.fff.json"
+    },
+    "TEZAUR": {
+     "accepts": [
+      "document/ocr",
+      "text/plain",
+      "text/markdown"
+     ],
+     "produces": [
+      "citation/csl"
+     ],
+     "mode": "cli",
+     "how": "tezaur ingest --fff-in doc.fff.json && tezaur bib --fff-out bib.fff.json"
+    },
+    "VERIGA": {
+     "accepts": [
+      "citation/csl"
+     ],
+     "produces": [
+      "citation/csl"
+     ],
+     "mode": "cli",
+     "how": "veriga --fff-in bib.fff.json --fff-out checked.fff.json"
+    },
+    "AcademiSearch": {
+     "accepts": [
+      "citation/csl"
+     ],
+     "mode": "web",
+     "how": "Biblioteca mea → Importă plic (.fff.json)"
+    }
+   },
+   "edges": [
+    [
+     "LegatorOCR",
+     "TEZAUR",
+     "document/ocr"
+    ],
+    [
+     "TEZAUR",
+     "VERIGA",
+     "citation/csl"
+    ],
+    [
+     "VERIGA",
+     "AcademiSearch",
+     "citation/csl"
+    ],
+    [
+     "TEZAUR",
+     "AcademiSearch",
+     "citation/csl"
+    ]
+   ]
+  },
+  {
+   "id": "ab",
+   "name": {
+    "ro": "Comparații A/B",
+    "en": "A/B comparisons",
+    "fr": "Comparaisons A/B",
+    "it": "Confronti A/B",
+    "es": "Comparaciones A/B",
+    "pt": "Comparações A/B",
+    "de": "A/B-Vergleiche",
+    "hu": "A/B-összehasonlítások"
+   },
+   "summary": {
+    "ro": "„Ce variantă e mai bună?”: voturi, scor Elo și verdict, în plic; DataWeave le deschide ca tabel.",
+    "en": "“Which variant is better?”: votes, Elo score and verdict, in an envelope; DataWeave opens them as a table.",
+    "fr": "« Quelle variante est meilleure ? » : votes, score Elo et verdict, dans une enveloppe ; DataWeave les ouvre en tableau.",
+    "it": "«Quale variante è migliore?»: voti, punteggio Elo e verdetto in una busta; DataWeave li apre come tabella.",
+    "es": "«¿Qué variante es mejor?»: votos, puntuación Elo y veredicto en un sobre; DataWeave los abre como tabla.",
+    "pt": "«Qual variante é melhor?»: votos, pontuação Elo e veredito num envelope; o DataWeave abre-os como tabela.",
+    "de": "„Welche Variante ist besser?“: Stimmen, Elo-Wert und Urteil im Umschlag; DataWeave öffnet sie als Tabelle.",
+    "hu": "„Melyik változat jobb?”: szavazatok, Elo-pontszám és ítélet borítékban; a DataWeave táblázatként nyitja meg."
+   },
+   "nodes": {
+    "Cadraj": {
+     "produces": [
+      "experiment/ab"
+     ],
+     "mode": "web"
+    },
+    "Surveyor": {
+     "produces": [
+      "experiment/ab"
+     ],
+     "mode": "web"
+    },
+    "ScryVeil": {
+     "produces": [
+      "experiment/ab"
+     ],
+     "mode": "web"
+    },
+    "FreeDetect": {
+     "produces": [
+      "experiment/ab"
+     ],
+     "mode": "web"
+    },
+    "DataWeave": {
+     "accepts": [
+      "experiment/ab",
+      "table/csv",
+      "claim/repro"
+     ],
+     "produces": [
+      "claim/repro"
+     ],
+     "mode": "web"
+    }
+   },
+   "edges": [
+    [
+     "Cadraj",
+     "DataWeave",
+     "experiment/ab"
+    ],
+    [
+     "Surveyor",
+     "DataWeave",
+     "experiment/ab"
+    ],
+    [
+     "ScryVeil",
+     "DataWeave",
+     "experiment/ab"
+    ],
+    [
+     "FreeDetect",
+     "DataWeave",
+     "experiment/ab"
+    ]
+   ]
+  },
+  {
+   "id": "repro",
+   "name": {
+    "ro": "Laborator de reproducere",
+    "en": "Reproduction lab",
+    "fr": "Laboratoire de reproduction",
+    "it": "Laboratorio di riproduzione",
+    "es": "Laboratorio de reproducción",
+    "pt": "Laboratório de reprodução",
+    "de": "Reproduktionslabor",
+    "hu": "Reprodukciós labor"
+   },
+   "summary": {
+    "ro": "O afirmație numerică se re-rulează pe datele atașate; AGORA marchează cifrele verificat / neverificat.",
+    "en": "A numeric claim is re-run on the attached data; AGORA marks figures verified / unverified.",
+    "fr": "Une affirmation chiffrée est rejouée sur les données jointes ; AGORA marque les chiffres vérifié / non vérifié.",
+    "it": "Un'affermazione numerica viene rieseguita sui dati allegati; AGORA segna le cifre verificato / non verificato.",
+    "es": "Una afirmación numérica se vuelve a ejecutar con los datos adjuntos; AGORA marca las cifras verificado / no verificado.",
+    "pt": "Uma afirmação numérica é reexecutada com os dados anexos; o AGORA marca os números verificado / não verificado.",
+    "de": "Eine Zahlenaussage wird mit den angehängten Daten erneut berechnet; AGORA markiert Zahlen als geprüft / ungeprüft.",
+    "hu": "Egy számszerű állítást újra lefuttat a csatolt adatokon; az AGORA igazolt / nem igazolt jelzéssel látja el a számokat."
+   },
+   "nodes": {
+    "DataWeave": {
+     "accepts": [
+      "table/csv",
+      "experiment/ab",
+      "claim/repro"
+     ],
+     "produces": [
+      "claim/repro"
+     ],
+     "mode": "web"
+    },
+    "AcademiSearch": {
+     "accepts": [
+      "citation/csl",
+      "claim/repro"
+     ],
+     "produces": [
+      "claim/repro"
+     ],
+     "mode": "web"
+    },
+    "AGORA": {
+     "accepts": [
+      "claim/repro"
+     ],
+     "mode": "web"
+    }
+   },
+   "edges": [
+    [
+     "DataWeave",
+     "AcademiSearch",
+     "claim/repro"
+    ],
+    [
+     "DataWeave",
+     "AGORA",
+     "claim/repro"
+    ],
+    [
+     "AcademiSearch",
+     "AGORA",
+     "claim/repro"
+    ],
+    [
+     "AcademiSearch",
+     "DataWeave",
+     "claim/repro"
+    ]
+   ]
+  },
+  {
+   "id": "jurnal",
+   "name": {
+    "ro": "Jurnal de teren → atlas",
+    "en": "Field journal → atlas",
+    "fr": "Journal de terrain → atlas",
+    "it": "Diario di campo → atlante",
+    "es": "Diario de campo → atlas",
+    "pt": "Diário de campo → atlas",
+    "de": "Feldjournal → Atlas",
+    "hu": "Terepnapló → atlasz"
+   },
+   "summary": {
+    "ro": "Cinci aplicații scriu în același jurnal geolocalizat; exportul merge spre Arhiva fără frontiere.",
+    "en": "Five apps write to one geolocated journal; the export goes to Arhiva fără frontiere.",
+    "fr": "Cinq applications écrivent dans un même journal géolocalisé ; l'export va vers Arhiva fără frontiere.",
+    "it": "Cinque app scrivono nello stesso diario geolocalizzato; l'esportazione va ad Arhiva fără frontiere.",
+    "es": "Cinco aplicaciones escriben en un mismo diario geolocalizado; la exportación va a Arhiva fără frontiere.",
+    "pt": "Cinco aplicações escrevem no mesmo diário geolocalizado; a exportação segue para a Arhiva fără frontiere.",
+    "de": "Fünf Apps schreiben in dasselbe georeferenzierte Journal; der Export geht an Arhiva fără frontiere.",
+    "hu": "Öt alkalmazás ugyanabba a geolokalizált naplóba ír; az export az Arhiva fără frontiere felé megy."
+   },
+   "nodes": {
+    "FieldObserver": {
+     "produces": [
+      "geo/journal"
+     ],
+     "accepts": [
+      "geo/journal"
+     ],
+     "mode": "web"
+    },
+    "VATRA": {
+     "produces": [
+      "geo/journal"
+     ],
+     "accepts": [
+      "geo/journal"
+     ],
+     "mode": "web"
+    },
+    "URME": {
+     "produces": [
+      "geo/journal"
+     ],
+     "accepts": [
+      "geo/journal"
+     ],
+     "mode": "web"
+    },
+    "Poteca": {
+     "produces": [
+      "geo/journal"
+     ],
+     "accepts": [
+      "geo/journal"
+     ],
+     "mode": "web"
+    },
+    "ExploratoriiEco": {
+     "produces": [
+      "geo/journal"
+     ],
+     "accepts": [
+      "geo/journal"
+     ],
+     "mode": "web"
+    },
+    "Arhiva-fara-frontiere": {
+     "accepts": [
+      "geo/journal",
+      "citation/csl"
+     ],
+     "produces": [
+      "citation/csl"
+     ],
+     "mode": "web"
+    }
+   },
+   "edges": [
+    [
+     "FieldObserver",
+     "Arhiva-fara-frontiere",
+     "geo/journal"
+    ],
+    [
+     "VATRA",
+     "Arhiva-fara-frontiere",
+     "geo/journal"
+    ],
+    [
+     "URME",
+     "Arhiva-fara-frontiere",
+     "geo/journal"
+    ],
+    [
+     "Poteca",
+     "Arhiva-fara-frontiere",
+     "geo/journal"
+    ],
+    [
+     "ExploratoriiEco",
+     "Arhiva-fara-frontiere",
+     "geo/journal"
+    ]
+   ]
+  }
+ ]
+}

@@ -2,7 +2,7 @@
 // Injectează (idempotent) codul comun FFF din tools/ într-o aplicație single-file: plicul (.fff.json), seiful comun de chei și adaptorul aplicației.
 //   node tools/inject-shared.mjs <dirAplicație> <slug> [--release "<notă changelog>"] [--date YYYY-MM-DD]
 //   node tools/inject-shared.mjs --check <dirAplicație> <slug>      (nu scrie: verifică că copiile din aplicație sunt identice cu sursa din tools/)
-// Surse: tools/fff-envelope.js, tools/fff-seif.js, tools/envelope-adapters/<Slug>.js (+ registry.extra.json, patches.json).
+// Surse: tools/fff-envelope.js, tools/fff-seif.js, module comune listate în plan.json la „libs” (ex. tools/fff-agenda.js → <script id="fff-mod-agenda">), tools/envelope-adapters/<Slug>.js (+ registry.extra.json, patches.json).
 // Biblioteci după <!--fff:kit:end-->; adaptorul înainte de </body>. Apoi (doar la scriere) build.mjs release/fixcsp/info.
 import fs from 'node:fs'; import path from 'node:path'; import {spawnSync} from 'node:child_process'; import {fileURLToPath} from 'node:url';
 const HUB = path.join(path.dirname(fileURLToPath(import.meta.url)), '..');
@@ -30,13 +30,14 @@ function registryFor() {
 function adapterSource() {
   const reg = plan.adapter ? registryFor() : [];
   let s = '(function(){if(!(window.FFF&&window.FFF.envelope))return;window.FFF.envelope.registry=' + JSON.stringify(reg) + ';})();\n';
-  if (plan.adapter) s += rd(AD(plan.adapter)).trimEnd() + '\n';
+  if (plan.adapter) for (const a of [].concat(plan.adapter)) s += rd(AD(a)).trimEnd() + '\n';   // un adaptor sau o listă (ex. Cadraj: plicul + motorul A/B)
   if (/<\/script/i.test(s)) throw new Error('adaptor cu </script');
   return s;
 }
 const blocks = () => {
   const o = [{id: 'fff-envelope', src: rd(T('fff-envelope.js')), lib: true}];
   if (plan.seif) o.push({id: 'fff-seif', src: rd(T('fff-seif.js')), lib: true});
+  for (const m of plan.libs || []) { if (!/^fff-[a-z0-9-]+$/.test(m)) throw new Error('modul necunoscut: ' + m); o.push({id: 'fff-mod-' + m.slice(4), src: rd(T(m + '.js')), lib: true}); }   // module comune (Etapa 5): tools/<m>.js → <script id="fff-mod-…">
   if (plan.adapter) o.push({id: 'fff-envelope-adapter', src: adapterSource(), lib: false});
   for (const b of o) if (/<\/script/i.test(b.src)) throw new Error(b.id + ' conține </script');
   return o;
@@ -70,6 +71,7 @@ if (note) run('release', dir, '--bump', 'patch', '--date', date, '--lax', '--no-
 // 3) biblioteci + adaptor
 html = rd(idx);
 for (const id of ['fff-envelope', 'fff-seif', 'fff-envelope-adapter']) html = html.replace(RE(id), '');
+html = html.replace(/<script id="fff-mod-[a-z0-9-]+">[\s\S]*?<\/script>\n?/g, '');   // modulele comune se re-injectează mai jos, în ordinea din plan
 const bl = blocks(), mk = '<!--fff:kit:end-->';
 const libs = bl.filter((b) => b.lib).map((b) => `<script id="${b.id}">${b.src}</script>\n`).join('');
 const ad = bl.filter((b) => !b.lib).map((b) => `<script id="${b.id}">${b.src}</script>\n`).join('');

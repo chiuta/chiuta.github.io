@@ -11,7 +11,7 @@ Plicul este formatul comun prin care aplicațiile „fără frontiere” își d
 | Câmp | Obligatoriu | Tip | Sens |
 |---|---|---|---|
 | `fff` | da | întreg | Versiunea schemei canonice: `2`. (Forma de transport „compat” poartă `1`, vezi §3.) |
-| `type` | da | text `tip/subtip` | `table/csv`, `citation/csl`, `text/markdown`, `text/plain`, `quiz/undava`, `geo/gpx`, `events/ics`, `note/akasha`, `cards/qa`, `link/fff`, `clips/list`, `chat/transcript`, `keys/vault`. Orice `[a-z0-9][a-z0-9.+-]*/[a-z0-9][a-z0-9.+-]*` este valid; aplicațiile ignoră ce nu înțeleg. |
+| `type` | da | text `tip/subtip` | `table/csv`, `citation/csl`, `text/markdown`, `text/plain`, `quiz/undava`, `geo/gpx`, `events/ics`, `note/akasha`, `cards/qa`, `link/fff`, `clips/list`, `chat/transcript`, `keys/vault`, `agenda/fff`, `passport/fff`, `sound/profile`; din Etapa 4 (vezi [FLUXURI.md](FLUXURI.md)): `document/ocr`, `experiment/ab`, `claim/repro`, `geo/journal`. Orice `[a-z0-9][a-z0-9.+-]*/[a-z0-9][a-z0-9.+-]*` este valid; aplicațiile ignoră ce nu înțeleg. |
 | `title` | nu | text ≤ 200 | Titlu afișat în banda de confirmare. |
 | `payload` | da | orice JSON | Conținutul. Pentru `table/csv`: text CSV; `citation/csl`: listă CSL-JSON; `text/markdown`: text; `keys/vault`: blobul criptat (§5). |
 | `source` | nu | text sau `{label,url,id,doi}` | De unde provine (adresă, DOI, numele aplicației/corpusului). |
@@ -79,3 +79,17 @@ Adaptoarele sunt în [`tools/envelope-adapters/`](../tools/envelope-adapters/) (
 - Un plic mare (> ~24 000 de caractere comprimate) nu încape în link sau QR; fișierul și clipboardul merg până la 8 MiB.
 - Primirea prin link în aplicațiile fără `FFF.bridge` o face `mount()`; în cele cu bridge, o face banda bridge-ului (același prefix).
 - `evidence` este o judecată a aplicației emițătoare, nu o certificare.
+
+## 9. Motoare comune (Etapa 5)
+
+Cinci module canonice în [`tools/`](../tools/), injectate în aplicații de `node tools/inject-shared.mjs` (câmpul `libs` din `plan.json` → `<script id="fff-mod-…">`; `--check` verifică identitatea copiilor). Fiecare aplicație rămâne un singur fișier HTML, offline, cu CSP `connect-src 'none'` (excepție: cele trei aplicații AI).
+
+| Modul | Tip de plic | Ce face | Aplicații |
+|---|---|---|---|
+| `fff-agenda.js` | `agenda/fff` (+ import/export `events/ics`) | O singură listă de evenimente/sarcini, convertită în/din ICS (subset RFC 5545), între Orar, Gospodar și CLEPSIDRA | 3 |
+| `fff-pasaport.js` | `passport/fff` | Pașaport de învățare: buton „Notează în pașaport”, repetiție eșalonată (SM-2 simplificat), certificat tipăribil; stocat per origine, circulă prin fișier | 13 (repetiția eșalonată e afișată în Clopotel, certificatul tipăribil în Fabrica) |
+| `fff-sunet.js` | `sound/profile` | Mixer de peisaj sonor (straturi, profile dormit/studiu/preparat, oprire automată, WAV offline). Fără promisiuni de efect asupra somnului sau sănătății | 6 (Gospodar nu are sunet) |
+| `fff-ai.js` | — (cheile vin din seiful `keys/vault`) | Transport comun pentru Anthropic/OpenAI/Google: cerere, SSE, anulare, comparare; trei fețe: AI-Liber, Nexus, ARENA | 3 |
+| `fff-jocuri.js` | — | Stratul TBL (i18n 8 limbi, Elo, turnee tur-retur, p2p lockstep) + `FFF.games`: istoric local, clasament Elo pe nume, hub „Turneu și Elo” cu rezultate notate de mână; export/import `{fff:"games",v:1}` | 11 din 14 (Dame, Go, Șah îl primesc în locul copiei lipite; 8 jocuri primesc hub-ul prin adaptorul `Jocuri.js`) |
+
+Jocurile fără modul (Sudoku, Solitaire, Zaruri) nu au adversari sau partide cu rezultat, deci un clasament Elo n-ar avea sens. Un adversar AI în rețea (ARENA) nu se potrivește jocurilor: ele rulează cu `connect-src 'none'`; adversarii rămân motoarele locale (Dame, Go, Șah) și oamenii (hot-seat). Testele: `tests/{agenda,pasaport,sunet,ai,jocuri}.test.mjs` (Node) și `tests/engines.test.mjs` (Playwright, rețea oprită).

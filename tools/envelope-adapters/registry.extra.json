@@ -1,7 +1,16 @@
 [
-  {"slug":"arhiva-fara-frontiere","name":"Arhiva fără frontiere","url":"https://arhiva-fara-frontiere.chiuta.ro/","accepts":["citation/csl"],"produces":["citation/csl"]},
-  {"slug":"cadraj","name":"Cadraj","url":"https://cadraj.chiuta.ro/","accepts":["table/csv","text/plain"],"produces":["table/csv"]},
+  {"slug":"arhiva-fara-frontiere","name":"Arhiva fără frontiere","url":"https://arhiva-fara-frontiere.chiuta.ro/","accepts":["citation/csl","geo/journal"],"produces":["citation/csl"]},
+  {"slug":"cadraj","name":"Cadraj","url":"https://cadraj.chiuta.ro/","accepts":["table/csv","text/plain"],"produces":["table/csv","experiment/ab"]},
   {"slug":"constelar","name":"Constelar","url":"https://constelar.chiuta.ro/","accepts":["text/markdown","text/plain"],"produces":["text/markdown"]},
-  {"slug":"academisearch","name":"AcademiSearch","url":"https://academisearch.chiuta.ro/","accepts":["citation/csl"],"produces":["citation/csl"]},
-  {"slug":"dataweave","name":"DataWeave","url":"https://dataweave.chiuta.ro/","accepts":["table/csv"],"produces":["table/csv"]}
+  {"slug":"academisearch","name":"AcademiSearch","url":"https://academisearch.chiuta.ro/","accepts":["citation/csl","claim/repro"],"produces":["citation/csl","claim/repro"]},
+  {"slug":"dataweave","name":"DataWeave","url":"https://dataweave.chiuta.ro/","accepts":["table/csv","experiment/ab","claim/repro"],"produces":["table/csv","claim/repro"]},
+  {"slug":"surveyor","name":"Surveyor","url":"https://surveyor.chiuta.ro/","accepts":[],"produces":["table/csv","experiment/ab"]},
+  {"slug":"scryveil","name":"ScryVeil","url":"https://scryveil.chiuta.ro/","accepts":[],"produces":["experiment/ab"]},
+  {"slug":"freedetect","name":"FreeDetect","url":"https://freedetect.chiuta.ro/","accepts":["text/markdown"],"produces":["text/markdown","experiment/ab"]},
+  {"slug":"agora","name":"AGORA","url":"https://agora.chiuta.ro/","accepts":["claim/repro"],"produces":[]},
+  {"slug":"fieldobserver","name":"FieldObserver","url":"https://fieldobserver.chiuta.ro/","accepts":["geo/journal"],"produces":["table/csv","geo/journal"]},
+  {"slug":"vatra","name":"VATRA","url":"https://vatra.chiuta.ro/","accepts":["geo/journal"],"produces":["geo/journal"]},
+  {"slug":"urme","name":"URME","url":"https://urme.chiuta.ro/","accepts":["geo/journal"],"produces":["geo/gpx","geo/journal"]},
+  {"slug":"poteca","name":"Poteca","url":"https://poteca.chiuta.ro/","accepts":["geo/gpx","table/csv","geo/journal"],"produces":["table/csv","geo/journal"]},
+  {"slug":"exploratoriieco","name":"ExploratoriiEco","url":"https://exploratoriieco.chiuta.ro/","accepts":["geo/journal"],"produces":["geo/journal"]}
 ]
