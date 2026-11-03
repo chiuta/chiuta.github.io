@@ -5,8 +5,8 @@
 
 ## Pe scurt
 
-- Aplicații în catalog: **114** (114 în depozite proprii, 0 în `apps/` din hub).
-- Cu **origine proprie** (CNAME `<slug>.chiuta.ro`): **114**.
+- Aplicații în catalog: **117** (117 în depozite proprii, 0 în `apps/` din hub).
+- Cu **origine proprie** (CNAME `<slug>.chiuta.ro`): **117**.
 - Pe **origine partajată** `chiuta.ro`: **0** (0 aplicații din hub + 0 depozit(e) fără CNAME).
 - De mutat pe origine proprie (sensibile, din hub): **0** cu prioritate 1 (), **0** cu prioritate 2 ().
 
@@ -113,6 +113,7 @@ node tools/cname-inventory.mjs --dns     # informativ: interoghează DNS-ul publ
 | Fabrica | depozit | `fabrica.chiuta.ro` | proprie: https://fabrica.chiuta.ro/ | — |  |
 | FASCICUL | depozit | `fascicul.chiuta.ro` | proprie: https://fascicul.chiuta.ro/ | — |  |
 | INDICATIV | depozit | `indicativ.chiuta.ro` | proprie: https://indicativ.chiuta.ro/ | — |  |
+| MENSURA | depozit | `mensura.chiuta.ro` | proprie: https://mensura.chiuta.ro/ | — |  |
 | PULS | depozit | `puls.chiuta.ro` | proprie: https://puls.chiuta.ro/ | — |  |
 | QSO | depozit | `qso.chiuta.ro` | proprie: https://qso.chiuta.ro/ | da, dar deja pe origine proprie |  |
 | RegexLab | depozit | `regexlab.chiuta.ro` | proprie: https://regexlab.chiuta.ro/ | — |  |
@@ -194,10 +195,11 @@ node tools/cname-inventory.mjs --dns     # informativ: interoghează DNS-ul publ
 | NumeroLogIA | depozit | `numerologia.chiuta.ro` | proprie: https://numerologia.chiuta.ro/ | — |  |
 | Numerologie | depozit | `numerologie.chiuta.ro` | proprie: https://numerologie.chiuta.ro/ | — |  |
 | Radiestezie | depozit | `radiestezie.chiuta.ro` | proprie: https://radiestezie.chiuta.ro/ | — |  |
+| Fenarium | depozit | `fenarium.chiuta.ro` | proprie: https://fenarium.chiuta.ro/ | — |  |
 | Reiki | depozit | `reiki.chiuta.ro` | proprie: https://reiki.chiuta.ro/ | — |  |
 | Tarot | depozit | `tarot.chiuta.ro` | proprie: https://tarot.chiuta.ro/ | — |  |
 | ValeaPlopului1972 | depozit | `valeaplopului1972.chiuta.ro` | proprie: https://valeaplopului1972.chiuta.ro/ | — |  |
 | OSATURA | depozit | `osatura.chiuta.ro` | proprie: https://osatura.chiuta.ro/ | — | proiect Rust, site propriu; depozit chiuta/OSATURA |
 | VERIGA | depozit | `veriga.chiuta.ro` | proprie: https://veriga.chiuta.ro/ | — | proiect Rust, site propriu; depozit chiuta/VERIGA |
 | TEZAUR | depozit | `tezaur.chiuta.ro` | proprie: https://tezaur.chiuta.ro/ | — | proiect Rust, site propriu; depozit chiuta/TEZAUR |
-| LegatorOCR | depozit | `legatorocr.chiuta.ro` | proprie: https://legatorocr.chiuta.ro/ | — | proiect Rust, site propriu (docs/); depozit chiuta/LegatorOCR |
+| LegatorOCR | depozit | `legatorocr.chiuta.ro` | proprie: https://legatorocr.chiuta.ro/ | — | proiect Rust, site propriu; depozit chiuta/LegatorOCR |
