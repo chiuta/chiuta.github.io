@@ -20,7 +20,8 @@ export function deriveStatus(version, override) {
 
 /** Textul de pe card: versiunea + (ultima schimbare de fond, dacă e cunoscută). Data de sincronizare rămâne doar în data-upd. */
 export function verText(version, substantive) {
-  return `v${version}${substantive ? ' · ' + substantive : ''}`;
+  void substantive; // data ultimei schimbări de fond rămâne în fișă și în titlul etichetei, nu pe card
+  return `v${version}`;
 }
 
 /** Variantele (carduri ascunse în fișa hub-ului): cheie variantă → cheia hub-ului. */
