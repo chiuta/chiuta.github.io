@@ -1,0 +1,67 @@
+WEBVTT
+
+1
+00:00:02.340 --> 00:00:07.440
+OSATURA Studio se abre en el navegador
+con un proyecto ya cargado.
+
+2
+00:00:07.840 --> 00:00:14.960
+Pulsa Play para ver la animación.
+La línea de tiempo muestra cada clave.
+
+3
+00:00:15.360 --> 00:00:21.970
+Pausa y arrastra el control
+para examinar cualquier fotograma.
+
+4
+00:00:22.370 --> 00:00:27.470
+El panel Layers lista todas las capas.
+Haz clic en una para seleccionarla.
+
+5
+00:00:27.870 --> 00:00:33.470
+Activa «bones» para ver el esqueleto
+que mueve al personaje.
+
+6
+00:00:33.870 --> 00:00:38.970
+La pestaña Bones lista los huesos
+y sus ajustes.
+
+7
+00:00:39.370 --> 00:00:45.470
+Cada rombo de la línea de tiempo es un fotograma clave.
+Haz clic en uno para seleccionarlo.
+
+8
+00:00:45.870 --> 00:00:51.480
+Con «auto-key» activo, mover un hueso
+graba una clave automáticamente.
+
+9
+00:00:51.880 --> 00:00:58.020
+La paleta de comandos encuentra
+cualquier comando por su nombre.
+
+10
+00:00:58.420 --> 00:01:04.520
+Exporta como GIF, reproductor HTML o Lottie
+con un clic.
+
+11
+00:01:04.920 --> 00:01:11.520
+El botón Demo te guía paso a paso
+para construir un personaje que camina.
+
+12
+00:01:11.920 --> 00:01:18.530
+«Restore my project» recupera
+tu propio proyecto en cualquier momento.
+
+13
+00:01:18.930 --> 00:01:24.030
+Siguiente: docs/GETTING_STARTED.md y docs/STUDIO.md
+en el repositorio.
+

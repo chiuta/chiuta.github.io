@@ -1,0 +1,74 @@
+{
+ "en": [
+  "TEZAUR: ask questions of your own library and get answers with checkable citations.",
+  "On the left is your library: four documents, already indexed. Nothing leaves this computer.",
+  "Pick the Ask tab and type a question.",
+  "Press Run. The answer cites only passages actually found in your documents.",
+  "The demo model is a stand-in with a canned answer, so look at the numbers, not the prose.",
+  "TEZAUR flags what it cannot support: here a citation [9] that does not exist, struck through in red.",
+  "Below the answer are the passages used, with source, year and the share of query terms they cover."
+ ],
+ "ro": [
+  "TEZAUR: pune întrebări propriei biblioteci și primești răspunsuri cu citări verificabile.",
+  "În stânga e biblioteca ta: patru documente, deja indexate. Nimic nu pleacă din calculator.",
+  "Alege fila Întreabă și scrie o întrebare.",
+  "Apasă Rulează. Răspunsul citează doar pasaje găsite cu adevărat în documentele tale.",
+  "Modelul din demo e un înlocuitor cu răspuns fix: uită-te la numere, nu la text.",
+  "TEZAUR marchează ce nu poate susține: aici o citare [9] care nu există, tăiată cu roșu.",
+  "Sub răspuns sunt pasajele folosite, cu sursa, anul și cât din termenii interogării acoperă."
+ ],
+ "fr": [
+  "TEZAUR : posez des questions à votre propre bibliothèque et obtenez des réponses aux citations vérifiables.",
+  "À gauche, votre bibliothèque : quatre documents déjà indexés. Rien ne quitte cet ordinateur.",
+  "Choisissez l'onglet Întreabă (Poser une question) et tapez une question.",
+  "Appuyez sur Run. La réponse ne cite que des passages réellement trouvés dans vos documents.",
+  "Le modèle de la démo est un substitut à réponse fixe : regardez les numéros, pas le texte.",
+  "TEZAUR signale ce qu'il ne peut étayer : ici une citation [9] inexistante, barrée en rouge.",
+  "Sous la réponse : les passages utilisés, avec source, année et part des termes de la requête couverts."
+ ],
+ "it": [
+  "TEZAUR: fai domande alla tua biblioteca e ottieni risposte con citazioni verificabili.",
+  "A sinistra c'è la tua biblioteca: quattro documenti già indicizzati. Nulla lascia questo computer.",
+  "Scegli la scheda Întreabă (Chiedi) e scrivi una domanda.",
+  "Premi Run. La risposta cita solo passaggi realmente trovati nei tuoi documenti.",
+  "Il modello della demo è un sostituto con risposta fissa: guarda i numeri, non il testo.",
+  "TEZAUR segnala ciò che non può sostenere: qui una citazione [9] inesistente, barrata in rosso.",
+  "Sotto la risposta ci sono i passaggi usati, con fonte, anno e quota dei termini della richiesta coperti."
+ ],
+ "es": [
+  "TEZAUR: haz preguntas a tu propia biblioteca y obtén respuestas con citas verificables.",
+  "A la izquierda está tu biblioteca: cuatro documentos ya indexados. Nada sale de este equipo.",
+  "Elige la pestaña Întreabă (Preguntar) y escribe una pregunta.",
+  "Pulsa Run. La respuesta cita solo pasajes encontrados de verdad en tus documentos.",
+  "El modelo de la demo es un sustituto con respuesta fija: fíjate en los números, no en el texto.",
+  "TEZAUR señala lo que no puede respaldar: aquí una cita [9] inexistente, tachada en rojo.",
+  "Debajo de la respuesta están los pasajes usados, con fuente, año y proporción de términos cubiertos."
+ ],
+ "pt": [
+  "TEZAUR: faça perguntas à sua própria biblioteca e receba respostas com citações verificáveis.",
+  "À esquerda está a sua biblioteca: quatro documentos já indexados. Nada sai deste computador.",
+  "Escolha a aba Întreabă (Perguntar) e escreva uma pergunta.",
+  "Clique em Run. A resposta cita apenas passagens realmente encontradas nos seus documentos.",
+  "O modelo da demo é um substituto com resposta fixa: olhe para os números, não para o texto.",
+  "O TEZAUR sinaliza o que não consegue sustentar: aqui uma citação [9] inexistente, riscada a vermelho.",
+  "Abaixo da resposta estão as passagens usadas, com fonte, ano e a parcela dos termos da consulta que cobrem."
+ ],
+ "de": [
+  "TEZAUR: Stelle Fragen an deine eigene Bibliothek und erhalte Antworten mit prüfbaren Belegen.",
+  "Links siehst du deine Bibliothek: vier Dokumente, bereits indexiert. Nichts verlässt diesen Rechner.",
+  "Wähle den Reiter Întreabă (Fragen) und tippe eine Frage.",
+  "Klicke auf Run. Die Antwort zitiert nur Stellen, die wirklich in deinen Dokumenten stehen.",
+  "Das Demo-Modell ist ein Platzhalter mit fester Antwort: Achte auf die Nummern, nicht auf den Text.",
+  "TEZAUR markiert, was es nicht belegen kann: hier einen Beleg [9], den es nicht gibt, rot durchgestrichen.",
+  "Unter der Antwort stehen die verwendeten Stellen mit Quelle, Jahr und Anteil der abgedeckten Suchbegriffe."
+ ],
+ "hu": [
+  "TEZAUR: tegyél fel kérdéseket a saját könyvtáradnak, és ellenőrizhető hivatkozásokkal kapsz választ.",
+  "Balra a könyvtárad: négy már indexelt dokumentum. Semmi nem hagyja el a gépet.",
+  "Válaszd az Întreabă (Kérdezz) fület, és írj be egy kérdést.",
+  "Nyomd meg a Run gombot. A válasz csak olyan részeket idéz, amelyek tényleg benne vannak a dokumentumaidban.",
+  "A demó modellje egy rögzített választ adó helyettesítő: a számokat nézd, ne a szöveget.",
+  "A TEZAUR jelzi, amit nem tud alátámasztani: itt egy nem létező [9] hivatkozást, pirossal áthúzva.",
+  "A válasz alatt a felhasznált szövegrészek láthatók forrással, évvel és a lekérdezés lefedett szavainak arányával."
+ ]
+}

@@ -1,0 +1,67 @@
+WEBVTT
+
+1
+00:00:02.340 --> 00:00:07.440
+OSATURA Studio opens in your browser
+with a project already loaded.
+
+2
+00:00:07.840 --> 00:00:14.960
+Press Play to watch the animation.
+The timeline below shows every key.
+
+3
+00:00:15.360 --> 00:00:21.970
+Pause, then drag the slider
+to inspect any frame.
+
+4
+00:00:22.370 --> 00:00:27.470
+The Layers panel lists every layer.
+Click one to select it.
+
+5
+00:00:27.870 --> 00:00:33.470
+Turn on "bones" to see the skeleton
+that drives the character.
+
+6
+00:00:33.870 --> 00:00:38.970
+The Bones tab lists the bones
+and their settings.
+
+7
+00:00:39.370 --> 00:00:45.470
+Each diamond in the timeline is a keyframe.
+Click one to select it.
+
+8
+00:00:45.870 --> 00:00:51.480
+With "auto-key" on, moving a bone
+records a key by itself.
+
+9
+00:00:51.880 --> 00:00:58.020
+The command palette finds any command
+by its name.
+
+10
+00:00:58.420 --> 00:01:04.520
+Export as GIF, HTML player or Lottie
+with one click.
+
+11
+00:01:04.920 --> 00:01:11.520
+The Demo button walks you step by step
+through building a walking person.
+
+12
+00:01:11.920 --> 00:01:18.530
+"Restore my project" brings your own
+project back at any time.
+
+13
+00:01:18.930 --> 00:01:24.030
+Next: docs/GETTING_STARTED.md and docs/STUDIO.md
+in the repository.
+

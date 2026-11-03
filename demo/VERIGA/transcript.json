@@ -1,0 +1,58 @@
+{
+ "en": [
+  "Type a site address or a local folder in the Start field.",
+  "Press Start. VERIGA crawls pages, images, stylesheets and anchors.",
+  "The table fills in: status, code, URL, type, size, title, level and response time.",
+  "Red rows are broken links; green rows are working.",
+  "The status bar sums it up: how many URLs, how many broken, how many redirects."
+ ],
+ "ro": [
+  "Scrie în câmpul Start o adresă de site sau un dosar local.",
+  "Apasă Pornește. VERIGA parcurge paginile, imaginile, stilurile și ancorele.",
+  "Tabelul se umple: stare, cod, URL, tip, mărime, titlu, nivel și timp de răspuns.",
+  "Rândurile roșii sunt linkuri rupte; cele verzi funcționează.",
+  "Bara de stare rezumă totul: câte URL-uri, câte rupte, câte redirecționări."
+ ],
+ "fr": [
+  "Saisissez une adresse de site ou un dossier local dans le champ Start.",
+  "Cliquez sur « Start ». VERIGA parcourt pages, images, feuilles de style et ancres.",
+  "Le tableau se remplit : statut, code, URL, type, taille, titre, niveau et temps de réponse.",
+  "Les lignes rouges sont des liens cassés ; les vertes fonctionnent.",
+  "La barre d’état résume : nombre d’URL, de liens cassés et de redirections."
+ ],
+ "it": [
+  "Digita un indirizzo di sito o una cartella locale nel campo Start.",
+  "Premi «Start». VERIGA esplora pagine, immagini, fogli di stile e ancore.",
+  "La tabella si riempie: stato, codice, URL, tipo, dimensione, titolo, livello e tempo di risposta.",
+  "Le righe rosse sono link rotti; quelle verdi funzionano.",
+  "La barra di stato riassume: quanti URL, quanti rotti, quanti reindirizzamenti."
+ ],
+ "es": [
+  "Escribe una dirección de sitio o una carpeta local en el campo Start.",
+  "Pulsa «Start». VERIGA recorre páginas, imágenes, hojas de estilo y anclas.",
+  "La tabla se llena: estado, código, URL, tipo, tamaño, título, nivel y tiempo de respuesta.",
+  "Las filas rojas son enlaces rotos; las verdes funcionan.",
+  "La barra de estado lo resume: cuántas URL, cuántas rotas y cuántas redirecciones."
+ ],
+ "pt": [
+  "Escreva um endereço de site ou uma pasta local no campo Start.",
+  "Prima «Start». A VERIGA percorre páginas, imagens, folhas de estilo e âncoras.",
+  "A tabela preenche-se: estado, código, URL, tipo, tamanho, título, nível e tempo de resposta.",
+  "As linhas vermelhas são ligações quebradas; as verdes funcionam.",
+  "A barra de estado resume: quantos URL, quantos quebrados, quantos redirecionamentos."
+ ],
+ "de": [
+  "Geben Sie im Feld Start eine Website-Adresse oder einen lokalen Ordner ein.",
+  "Klicken Sie auf „Start“. VERIGA durchsucht Seiten, Bilder, Stylesheets und Anker.",
+  "Die Tabelle füllt sich: Status, Code, URL, Typ, Größe, Titel, Ebene und Antwortzeit.",
+  "Rote Zeilen sind defekte Links; grüne funktionieren.",
+  "Die Statusleiste fasst zusammen: wie viele URLs, wie viele defekt, wie viele Weiterleitungen."
+ ],
+ "hu": [
+  "Írj be egy webcímet vagy helyi mappát a Start mezőbe.",
+  "Nyomd meg a „Start” gombot. A VERIGA bejárja az oldalakat, képeket, stíluslapokat és horgonyokat.",
+  "A táblázat feltöltődik: állapot, kód, URL, típus, méret, cím, szint és válaszidő.",
+  "A piros sorok törött hivatkozások, a zöldek működnek.",
+  "Az állapotsor összegez: hány URL, hány törött, hány átirányítás."
+ ]
+}

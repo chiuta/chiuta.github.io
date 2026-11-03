@@ -1,0 +1,67 @@
+WEBVTT
+
+1
+00:00:02.340 --> 00:00:07.440
+Az OSATURA Studio a böngészőben nyílik meg,
+egy már betöltött projekttel.
+
+2
+00:00:07.840 --> 00:00:14.960
+A Play gombbal indítható az animáció.
+Az alsó idővonal minden kulcsot mutat.
+
+3
+00:00:15.360 --> 00:00:21.970
+Szüneteltess, majd húzd a csúszkát,
+hogy bármelyik képkockát megnézhesd.
+
+4
+00:00:22.370 --> 00:00:27.470
+A Layers panel felsorolja az összes réteget.
+Kattints egyre a kijelöléshez.
+
+5
+00:00:27.870 --> 00:00:33.470
+Kapcsold be a „bones” opciót, hogy lásd
+a figurát mozgató csontvázat.
+
+6
+00:00:33.870 --> 00:00:38.970
+A Bones fül felsorolja a csontokat
+és a beállításaikat.
+
+7
+00:00:39.370 --> 00:00:45.470
+Az idővonal minden rombusza egy kulcskocka.
+Kattints egyre a kijelöléshez.
+
+8
+00:00:45.870 --> 00:00:51.480
+Bekapcsolt „auto-key” mellett egy csont
+mozgatása automatikusan kulcsot rögzít.
+
+9
+00:00:51.880 --> 00:00:58.020
+A parancspaletta bármely parancsot
+megtalál a neve alapján.
+
+10
+00:00:58.420 --> 00:01:04.520
+Exportálj GIF-be, HTML-lejátszóba vagy Lottie-ba
+egyetlen kattintással.
+
+11
+00:01:04.920 --> 00:01:11.520
+A Demo gomb lépésről lépésre végigvezet
+egy sétáló alak elkészítésén.
+
+12
+00:01:11.920 --> 00:01:18.530
+A „Restore my project” bármikor
+visszahozza a saját projektedet.
+
+13
+00:01:18.930 --> 00:01:24.030
+Tovább: docs/GETTING_STARTED.md és docs/STUDIO.md
+a tárolóban.
+

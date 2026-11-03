@@ -1,0 +1,67 @@
+WEBVTT
+
+1
+00:00:02.340 --> 00:00:07.440
+OSATURA Studio se deschide în browser
+cu un proiect deja încărcat.
+
+2
+00:00:07.840 --> 00:00:14.960
+Apasă Play ca să vezi animația.
+Cronologia de jos arată fiecare cheie.
+
+3
+00:00:15.360 --> 00:00:21.970
+Oprește, apoi trage cursorul
+ca să examinezi orice cadru.
+
+4
+00:00:22.370 --> 00:00:27.470
+Panoul Layers listează toate straturile.
+Fă clic pe unul ca să-l selectezi.
+
+5
+00:00:27.870 --> 00:00:33.470
+Bifează „bones” ca să vezi scheletul
+care mișcă personajul.
+
+6
+00:00:33.870 --> 00:00:38.970
+Fila Bones listează oasele
+și setările lor.
+
+7
+00:00:39.370 --> 00:00:45.470
+Fiecare romb din cronologie este un cadru-cheie.
+Fă clic pe unul ca să-l selectezi.
+
+8
+00:00:45.870 --> 00:00:51.480
+Cu „auto-key” activ, mutarea unui os
+înregistrează singură o cheie.
+
+9
+00:00:51.880 --> 00:00:58.020
+Paleta de comenzi găsește orice comandă
+după nume.
+
+10
+00:00:58.420 --> 00:01:04.520
+Exportă ca GIF, player HTML sau Lottie
+cu un singur clic.
+
+11
+00:01:04.920 --> 00:01:11.520
+Butonul Demo te ghidează pas cu pas
+în construirea unui personaj care merge.
+
+12
+00:01:11.920 --> 00:01:18.530
+„Restore my project” îți readuce oricând
+propriul proiect.
+
+13
+00:01:18.930 --> 00:01:24.030
+Mai departe: docs/GETTING_STARTED.md și docs/STUDIO.md
+din depozit.
+

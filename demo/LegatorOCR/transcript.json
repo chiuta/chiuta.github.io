@@ -1,0 +1,82 @@
+{
+ "en": [
+  "LegatorOCR turns raw book scans into a searchable PDF.",
+  "Split, straighten, crop, clean, binarize, then export with an OCR text layer.",
+  "It measures the skew of the text lines and rotates the page back.",
+  "Mixed and hybrid modes keep sharp text and shrink colour pages to about 60–100 KB.",
+  "It reads scanned PDFs itself: JPEG 2000, JBIG2, CCITT and encrypted files.",
+  "Checked against OpenJPEG, poppler and qpdf, and fuzzed with hostile inputs.",
+  "One command in the terminal, or the graphical interface in 8 languages.",
+  "Free, local, no accounts. MIT licence. Code on GitHub."
+ ],
+ "ro": [
+  "LegatorOCR transformă scanările brute de carte într-un PDF căutabil.",
+  "Desparte, îndreaptă, taie, curăță, binarizează, apoi exportă cu strat de text OCR.",
+  "Măsoară înclinarea rândurilor de text și rotește pagina înapoi.",
+  "Modurile mixt și hibrid păstrează textul clar și reduc paginile color la circa 60–100 KB.",
+  "Citește singur PDF-uri scanate: JPEG 2000, JBIG2, CCITT și fișiere criptate.",
+  "Verificat cu OpenJPEG, poppler și qpdf, și testat cu intrări ostile (fuzzing).",
+  "O singură comandă în terminal, sau interfața grafică în 8 limbi.",
+  "Gratuit, local, fără conturi. Licență MIT. Cod pe GitHub."
+ ],
+ "fr": [
+  "LegatorOCR transforme les scans bruts de livres en PDF consultable.",
+  "Séparer, redresser, rogner, nettoyer, binariser, puis exporter avec une couche de texte OCR.",
+  "Il mesure l'inclinaison des lignes de texte et remet la page droite.",
+  "Les modes mixte et hybride gardent un texte net et réduisent les pages couleur à 60–100 Ko.",
+  "Il lit lui-même les PDF numérisés : JPEG 2000, JBIG2, CCITT et fichiers chiffrés.",
+  "Vérifié avec OpenJPEG, poppler et qpdf, et soumis à du fuzzing hostile.",
+  "Une seule commande dans le terminal, ou l'interface graphique en 8 langues.",
+  "Gratuit, local, sans compte. Licence MIT. Code sur GitHub."
+ ],
+ "it": [
+  "LegatorOCR trasforma le scansioni grezze dei libri in un PDF ricercabile.",
+  "Divide, raddrizza, ritaglia, pulisce, binarizza, poi esporta con un livello di testo OCR.",
+  "Misura l'inclinazione delle righe di testo e ruota la pagina all'indietro.",
+  "Le modalità mista e ibrida mantengono il testo nitido e riducono le pagine a colori a circa 60–100 KB.",
+  "Legge da solo i PDF scansionati: JPEG 2000, JBIG2, CCITT e file cifrati.",
+  "Verificato con OpenJPEG, poppler e qpdf, e messo alla prova con input ostili (fuzzing).",
+  "Un solo comando nel terminale, o l'interfaccia grafica in 8 lingue.",
+  "Gratuito, locale, senza account. Licenza MIT. Codice su GitHub."
+ ],
+ "es": [
+  "LegatorOCR convierte escaneos en bruto de libros en un PDF con búsqueda.",
+  "Separa, endereza, recorta, limpia, binariza y exporta con una capa de texto OCR.",
+  "Mide la inclinación de las líneas de texto y gira la página de vuelta.",
+  "Los modos mixto e híbrido mantienen el texto nítido y reducen las páginas en color a unos 60–100 KB.",
+  "Lee por sí mismo PDF escaneados: JPEG 2000, JBIG2, CCITT y archivos cifrados.",
+  "Comprobado con OpenJPEG, poppler y qpdf, y sometido a fuzzing con entradas hostiles.",
+  "Un solo comando en el terminal, o la interfaz gráfica en 8 idiomas.",
+  "Gratis, local, sin cuentas. Licencia MIT. Código en GitHub."
+ ],
+ "pt": [
+  "O LegatorOCR transforma digitalizações brutas de livros num PDF pesquisável.",
+  "Separa, endireita, recorta, limpa, binariza e exporta com camada de texto OCR.",
+  "Mede a inclinação das linhas de texto e roda a página de volta.",
+  "Os modos misto e híbrido mantêm o texto nítido e reduzem páginas a cores para cerca de 60–100 KB.",
+  "Lê sozinho PDFs digitalizados: JPEG 2000, JBIG2, CCITT e ficheiros cifrados.",
+  "Verificado com OpenJPEG, poppler e qpdf, e testado com entradas hostis (fuzzing).",
+  "Um só comando no terminal, ou a interface gráfica em 8 idiomas.",
+  "Gratuito, local, sem contas. Licença MIT. Código no GitHub."
+ ],
+ "de": [
+  "LegatorOCR macht aus rohen Buchscans ein durchsuchbares PDF.",
+  "Teilen, geradeziehen, beschneiden, säubern, binarisieren, dann mit OCR-Textebene exportieren.",
+  "Es misst die Schräglage der Textzeilen und dreht die Seite zurück.",
+  "Gemischter und Hybrid-Modus erhalten scharfen Text und verkleinern Farbseiten auf etwa 60–100 KB.",
+  "Es liest gescannte PDFs selbst: JPEG 2000, JBIG2, CCITT und verschlüsselte Dateien.",
+  "Geprüft mit OpenJPEG, poppler und qpdf und mit feindlichen Eingaben gefuzzt.",
+  "Ein Befehl im Terminal oder die grafische Oberfläche in 8 Sprachen.",
+  "Kostenlos, lokal, ohne Konto. MIT-Lizenz. Code auf GitHub."
+ ],
+ "hu": [
+  "A LegatorOCR a nyers könyvszkenneket kereshető PDF-fé alakítja.",
+  "Szétválaszt, kiegyenesít, vág, tisztít, binarizál, majd OCR-szövegréteggel exportál.",
+  "Megméri a szövegsorok dőlését, és visszaforgatja az oldalt.",
+  "A vegyes és hibrid mód éles szöveget tart, a színes oldalakat kb. 60–100 KB-ra csökkenti.",
+  "Maga olvassa a beolvasott PDF-eket: JPEG 2000, JBIG2, CCITT és titkosított fájlok.",
+  "Ellenőrizve OpenJPEG-gel, popplerrel és qpdf-fel, és ellenséges bemenetekkel fuzzolva.",
+  "Egyetlen parancs a terminálban, vagy a grafikus felület 8 nyelven.",
+  "Ingyenes, helyi, fiók nélkül. MIT-licenc. Kód a GitHubon."
+ ]
+}

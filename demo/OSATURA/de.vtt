@@ -1,0 +1,67 @@
+WEBVTT
+
+1
+00:00:02.340 --> 00:00:07.440
+OSATURA Studio öffnet sich im Browser
+mit einem bereits geladenen Projekt.
+
+2
+00:00:07.840 --> 00:00:14.960
+Mit Play startest du die Animation.
+Die Zeitleiste unten zeigt jeden Key.
+
+3
+00:00:15.360 --> 00:00:21.970
+Pausiere und ziehe den Regler,
+um ein beliebiges Bild zu prüfen.
+
+4
+00:00:22.370 --> 00:00:27.470
+Das Layers-Panel listet alle Ebenen auf.
+Klicke eine an, um sie auszuwählen.
+
+5
+00:00:27.870 --> 00:00:33.470
+Aktiviere „bones“, um das Skelett zu sehen,
+das die Figur bewegt.
+
+6
+00:00:33.870 --> 00:00:38.970
+Der Tab Bones listet die Knochen
+und ihre Einstellungen.
+
+7
+00:00:39.370 --> 00:00:45.470
+Jede Raute in der Zeitleiste ist ein Keyframe.
+Klicke eine an, um sie auszuwählen.
+
+8
+00:00:45.870 --> 00:00:51.480
+Ist „auto-key“ an, legt das Bewegen
+eines Knochens automatisch einen Key an.
+
+9
+00:00:51.880 --> 00:00:58.020
+Die Befehlspalette findet jeden Befehl
+über seinen Namen.
+
+10
+00:00:58.420 --> 00:01:04.520
+Exportiere als GIF, HTML-Player oder Lottie
+mit einem Klick.
+
+11
+00:01:04.920 --> 00:01:11.520
+Der Demo-Button führt dich Schritt für Schritt
+zu einer laufenden Figur.
+
+12
+00:01:11.920 --> 00:01:18.530
+„Restore my project“ bringt dein eigenes
+Projekt jederzeit zurück.
+
+13
+00:01:18.930 --> 00:01:24.030
+Weiter: docs/GETTING_STARTED.md und docs/STUDIO.md
+im Repository.
+

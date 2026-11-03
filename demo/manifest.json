@@ -12372,6 +12372,289 @@
      "size": 1806998
     }
    }
+  },
+  {
+   "slug": "OSATURA",
+   "title": "OSATURA",
+   "section": "rust",
+   "tags": {
+    "en": [
+     "animation",
+     "MPL/AGPL"
+    ],
+    "ro": [
+     "animație",
+     "MPL/AGPL"
+    ],
+    "fr": [
+     "animation",
+     "MPL/AGPL"
+    ],
+    "it": [
+     "animazione",
+     "MPL/AGPL"
+    ],
+    "es": [
+     "animación",
+     "MPL/AGPL"
+    ],
+    "pt": [
+     "animação",
+     "MPL/AGPL"
+    ],
+    "de": [
+     "Animation",
+     "MPL/AGPL"
+    ],
+    "hu": [
+     "animáció",
+     "MPL/AGPL"
+    ]
+   },
+   "line": {
+    "en": "Bring 2D drawings to life: mount them on a \"skeleton\", set them in motion and export the animation in several formats. Alpha version, little tried so far.",
+    "ro": "Dă viață desenelor 2D: le montezi pe „schelet”, le pui în mișcare și exporți animația în mai multe formate. Versiune alpha, încă puțin încercată.",
+    "fr": "Donnez vie à vos dessins 2D : montez-les sur un « squelette », mettez-les en mouvement et exportez l'animation dans plusieurs formats. Version alpha, encore peu essayée.",
+    "it": "Dai vita ai disegni 2D: li monti su uno «scheletro», li metti in movimento ed esporti l'animazione in più formati. Versione alpha, ancora poco provata.",
+    "es": "Da vida a tus dibujos 2D: los montas sobre un «esqueleto», los pones en movimiento y exportas la animación en varios formatos. Versión alfa, aún poco probada.",
+    "pt": "Dá vida a desenhos 2D: monta-os num «esqueleto», põe-nos em movimento e exporta a animação em vários formatos. Versão alfa, ainda pouco experimentada.",
+    "de": "Erwecke 2D-Zeichnungen zum Leben: Du montierst sie auf ein „Skelett“, setzt sie in Bewegung und exportierst die Animation in mehreren Formaten. Alpha-Version, bisher kaum erprobt.",
+    "hu": "Keltse életre a 2D-s rajzokat: „csontvázra” szereli, mozgásba hozza, és több formátumban exportálja az animációt. Alfa verzió, még keveset próbálták ki."
+   },
+   "url": "https://osatura.chiuta.ro/",
+   "readme": "https://github.com/chiuta/osatura",
+   "off": "no",
+   "status": "alpha",
+   "video": "OSATURA/video.mp4",
+   "poster": "OSATURA/poster.jpg",
+   "duration": 84.2,
+   "size": 1257638,
+   "vtt": {
+    "en": "OSATURA/en.vtt",
+    "ro": "OSATURA/ro.vtt",
+    "fr": "OSATURA/fr.vtt",
+    "it": "OSATURA/it.vtt",
+    "es": "OSATURA/es.vtt",
+    "pt": "OSATURA/pt.vtt",
+    "de": "OSATURA/de.vtt",
+    "hu": "OSATURA/hu.vtt"
+   },
+   "transcript": "OSATURA/transcript.json",
+   "videos": {}
+  },
+  {
+   "slug": "VERIGA",
+   "title": "VERIGA",
+   "section": "rust",
+   "tags": {
+    "en": [
+     "link checking",
+     "MIT"
+    ],
+    "ro": [
+     "verificare linkuri",
+     "MIT"
+    ],
+    "fr": [
+     "vérification de liens",
+     "MIT"
+    ],
+    "it": [
+     "verifica dei link",
+     "MIT"
+    ],
+    "es": [
+     "verificación de enlaces",
+     "MIT"
+    ],
+    "pt": [
+     "verificação de ligações",
+     "MIT"
+    ],
+    "de": [
+     "Linkprüfung",
+     "MIT"
+    ],
+    "hu": [
+     "hivatkozás-ellenőrzés",
+     "MIT"
+    ]
+   },
+   "line": {
+    "en": "Finds broken links on a website or in a folder, plus files left without purpose. Runs on Windows, macOS and Linux; requires some computer familiarity.",
+    "ro": "Găsește linkurile stricate de pe un site sau dintr-un folder, plus fișierele rămase fără rost. Merge pe Windows, macOS și Linux; necesită ceva obișnuință cu calculatorul.",
+    "fr": "Trouve les liens cassés d'un site ou d'un dossier, plus les fichiers devenus inutiles. Fonctionne sous Windows, macOS et Linux ; demande un peu d'habitude de l'ordinateur.",
+    "it": "Trova i link rotti di un sito o di una cartella, più i file rimasti inutilizzati. Funziona su Windows, macOS e Linux; richiede una certa pratica con il computer.",
+    "es": "Encuentra los enlaces rotos de un sitio web o de una carpeta, además de los archivos que quedaron sin uso. Funciona en Windows, macOS y Linux; requiere cierta soltura con el ordenador.",
+    "pt": "Encontra as ligações quebradas de um site ou de uma pasta, mais os ficheiros que ficaram sem uso. Funciona em Windows, macOS e Linux; exige alguma prática com o computador.",
+    "de": "Findet kaputte Links auf einer Website oder in einem Ordner, dazu übrig gebliebene, nutzlose Dateien. Läuft unter Windows, macOS und Linux; erfordert etwas Computererfahrung.",
+    "hu": "Megkeresi egy weboldal vagy mappa hibás hivatkozásait, valamint a gazdátlanul maradt fájlokat. Windowson, macOS-en és Linuxon fut; némi számítógépes jártasság kell hozzá."
+   },
+   "url": "https://veriga.chiuta.ro/",
+   "readme": "https://github.com/chiuta/VERIGA",
+   "off": "no",
+   "status": "stable",
+   "video": "VERIGA/video.mp4",
+   "poster": "VERIGA/poster.jpg",
+   "duration": 36.3,
+   "size": 238746,
+   "vtt": {
+    "en": "VERIGA/en.vtt",
+    "ro": "VERIGA/ro.vtt",
+    "fr": "VERIGA/fr.vtt",
+    "it": "VERIGA/it.vtt",
+    "es": "VERIGA/es.vtt",
+    "pt": "VERIGA/pt.vtt",
+    "de": "VERIGA/de.vtt",
+    "hu": "VERIGA/hu.vtt"
+   },
+   "transcript": "VERIGA/transcript.json",
+   "videos": {
+    "ro": {
+     "video": "VERIGA/loc/ro/video.mp4",
+     "vtt": "VERIGA/loc/ro/ro.vtt",
+     "duration": 36.3,
+     "size": 210907
+    }
+   }
+  },
+  {
+   "slug": "TEZAUR",
+   "title": "TEZAUR",
+   "section": "rust",
+   "tags": {
+    "en": [
+     "research",
+     "MIT"
+    ],
+    "ro": [
+     "cercetare",
+     "MIT"
+    ],
+    "fr": [
+     "recherche",
+     "MIT"
+    ],
+    "it": [
+     "ricerca",
+     "MIT"
+    ],
+    "es": [
+     "investigación",
+     "MIT"
+    ],
+    "pt": [
+     "investigação",
+     "MIT"
+    ],
+    "de": [
+     "Recherche",
+     "MIT"
+    ],
+    "hu": [
+     "kutatás",
+     "MIT"
+    ]
+   },
+   "line": {
+    "en": "An assistant for your thesis that writes only from your own books and articles, with verifiable citations. Runs on your computer; your documents never leave it. Work in progress.",
+    "ro": "Un asistent pentru teza ta care scrie numai pe baza cărților și articolelor tale, cu citări verificabile. Rulează pe calculatorul tău, documentele nu pleacă de pe el. Versiune în lucru.",
+    "fr": "Un assistant pour votre thèse qui écrit uniquement à partir de vos livres et articles, avec des citations vérifiables. Tourne sur votre ordinateur, les documents n'en sortent pas. Version en cours de développement.",
+    "it": "Un assistente per la tua tesi che scrive soltanto sulla base dei tuoi libri e articoli, con citazioni verificabili. Funziona sul tuo computer, i documenti non lo lasciano. Versione in lavorazione.",
+    "es": "Un asistente para tu tesis que escribe solo a partir de tus libros y artículos, con citas verificables. Se ejecuta en tu ordenador y los documentos no salen de él. Versión en desarrollo.",
+    "pt": "Um assistente para a tua tese que escreve apenas com base nos teus livros e artigos, com citações verificáveis. Corre no teu computador, os documentos não saem dele. Versão em desenvolvimento.",
+    "de": "Ein Assistent für deine Abschlussarbeit, der nur auf Grundlage deiner Bücher und Artikel schreibt, mit überprüfbaren Zitaten. Läuft auf deinem Computer, die Dokumente verlassen ihn nicht. Version in Arbeit.",
+    "hu": "Segéd a szakdolgozatához, amely csak az Ön könyvei és cikkei alapján ír, ellenőrizhető hivatkozásokkal. Az Ön számítógépén fut, a dokumentumok nem hagyják el. Fejlesztés alatt álló verzió."
+   },
+   "url": "https://tezaur.chiuta.ro/",
+   "readme": "https://github.com/chiuta/TEZAUR",
+   "off": "no",
+   "status": "alpha",
+   "video": "TEZAUR/video.mp4",
+   "poster": "TEZAUR/poster.jpg",
+   "duration": 58.7,
+   "size": 712554,
+   "vtt": {
+    "en": "TEZAUR/en.vtt",
+    "ro": "TEZAUR/ro.vtt",
+    "fr": "TEZAUR/fr.vtt",
+    "it": "TEZAUR/it.vtt",
+    "es": "TEZAUR/es.vtt",
+    "pt": "TEZAUR/pt.vtt",
+    "de": "TEZAUR/de.vtt",
+    "hu": "TEZAUR/hu.vtt"
+   },
+   "transcript": "TEZAUR/transcript.json",
+   "videos": {}
+  },
+  {
+   "slug": "LegatorOCR",
+   "title": "LegatorOCR",
+   "section": "rust",
+   "tags": {
+    "en": [
+     "scanning",
+     "MIT"
+    ],
+    "ro": [
+     "scanări",
+     "MIT"
+    ],
+    "fr": [
+     "numérisation",
+     "MIT"
+    ],
+    "it": [
+     "scansioni",
+     "MIT"
+    ],
+    "es": [
+     "escaneo",
+     "MIT"
+    ],
+    "pt": [
+     "digitalização",
+     "MIT"
+    ],
+    "de": [
+     "Scans",
+     "MIT"
+    ],
+    "hu": [
+     "szkennelés",
+     "MIT"
+    ]
+   },
+   "line": {
+    "en": "Scan a book and get a clean PDF with straightened pages and text you can search. Runs on Windows, macOS and Linux; your scans stay with you.",
+    "ro": "Scanezi o carte și primești un PDF curat, cu paginile îndreptate și cu text în care poți căuta. Merge pe Windows, macOS și Linux; scanările rămân la tine.",
+    "fr": "Numérisez un livre et obtenez un PDF propre, aux pages redressées et au texte où l’on peut chercher. Pour Windows, macOS et Linux ; vos numérisations restent chez vous.",
+    "it": "Scansioni un libro e ottieni un PDF pulito, con pagine raddrizzate e testo in cui puoi cercare. Per Windows, macOS e Linux; le scansioni restano da te.",
+    "es": "Escaneas un libro y obtienes un PDF limpio, con las páginas enderezadas y texto en el que puedes buscar. Para Windows, macOS y Linux; tus escaneos se quedan contigo.",
+    "pt": "Digitalizas um livro e obténs um PDF limpo, com as páginas endireitadas e texto onde podes pesquisar. Para Windows, macOS e Linux; as digitalizações ficam contigo.",
+    "de": "Du scannst ein Buch und bekommst ein sauberes PDF mit geraden Seiten und durchsuchbarem Text. Für Windows, macOS und Linux; deine Scans bleiben bei dir.",
+    "hu": "Beszkennel egy könyvet, és tiszta, kiegyenesített oldalú PDF-et kap, amelyben a szövegben is kereshet. Windowsra, macOS-re és Linuxra; a beolvasott lapok az Ön gépén maradnak."
+   },
+   "url": "https://legatorocr.chiuta.ro/",
+   "readme": "https://github.com/chiuta/LegatorOCR",
+   "off": "no",
+   "status": "alpha",
+   "video": "LegatorOCR/video.mp4",
+   "poster": "LegatorOCR/poster.jpg",
+   "duration": 70.0,
+   "size": 895763,
+   "vtt": {
+    "en": "LegatorOCR/en.vtt",
+    "ro": "LegatorOCR/ro.vtt",
+    "fr": "LegatorOCR/fr.vtt",
+    "it": "LegatorOCR/it.vtt",
+    "es": "LegatorOCR/es.vtt",
+    "pt": "LegatorOCR/pt.vtt",
+    "de": "LegatorOCR/de.vtt",
+    "hu": "LegatorOCR/hu.vtt"
+   },
+   "transcript": "LegatorOCR/transcript.json",
+   "videos": {}
   }
  ],
  "reels": {
