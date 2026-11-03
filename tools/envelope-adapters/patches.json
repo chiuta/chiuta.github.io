@@ -4,6 +4,21 @@
    "name": "FFFSeif.mount",
    "find": "  try { KV.controls(document.getElementById(\"kv-host\"), KVault, KVad); } catch(e){ console.warn(\"KV:\", e); }",
    "with": "  try { KV.controls(document.getElementById(\"kv-host\"), KVault, KVad); } catch(e){ console.warn(\"KV:\", e); }\n  try { if (window.FFFSeif) FFFSeif.mount({ KV: KV, vault: KVault, ad: KVad, known: [\"anthropic\", \"openai\", \"google\"], hostId: \"kv-host\" }); } catch(e){ console.warn(\"seif:\", e); }   /* import din seiful comun (VaultCrypt) */"
+  },
+  {
+   "name": "ai-anthropic",
+   "find": "async function callAnthropic(opts){\n  assertHeaderSafe(opts.apiKey);\n",
+   "with": "async function callAnthropic(opts){\n  assertHeaderSafe(opts.apiKey);\n  if (window.FFF && FFF.ai) return FFF.ai.run(\"anthropic\", { apiKey: opts.apiKey, model: opts.model, system: opts.system || undefined, messages: opts.messages, maxTokens: opts.maxTokens || 4096, signal: opts.signal, onDelta: opts.onDelta, touch: opts.touch, version: ANTHROPIC_VERSION, errPrefix: \"Anthropic (stream): \", streamErrDefault: tx(\"streamErrDefault\"), errLimit: 1e5, redact: redactKey, httpError: function(r){ return httpError(\"Anthropic\", r, opts.apiKey); } }).then(function(){});   /* nucleul AI comun FFF (tools/fff-ai.js); mai jos rămâne codul vechi, folosit doar dacă FFF.ai lipsește */\n"
+  },
+  {
+   "name": "ai-openai",
+   "find": "  if (opts.apiKey){ assertHeaderSafe(opts.apiKey); headers[\"Authorization\"] = \"Bearer \" + opts.apiKey; }\n",
+   "with": "  if (opts.apiKey){ assertHeaderSafe(opts.apiKey); headers[\"Authorization\"] = \"Bearer \" + opts.apiKey; }\n  if (window.FFF && FFF.ai) return FFF.ai.run(\"openai\", { url: url, apiKey: opts.apiKey, model: opts.model, system: opts.system, messages: opts.messages, temperature: opts.temperature, signal: opts.signal, onDelta: opts.onDelta, touch: opts.touch, errPrefix: (opts.label || \"OpenAI\") + \" (stream): \", streamErrDefault: tx(\"streamErrDefault\"), errLimit: 1e5, redact: redactKey, httpError: function(r){ return httpError(opts.label || \"OpenAI\", r, opts.apiKey); } }).then(function(){});   /* nucleul AI comun FFF */\n"
+  },
+  {
+   "name": "ai-google",
+   "find": "async function callGemini(opts){\n  assertHeaderSafe(opts.apiKey);\n",
+   "with": "async function callGemini(opts){\n  assertHeaderSafe(opts.apiKey);\n  if (window.FFF && FFF.ai) return FFF.ai.run(\"google\", { apiKey: opts.apiKey, model: opts.model, system: opts.system, messages: opts.messages, temperature: opts.temperature, signal: opts.signal, onDelta: opts.onDelta, touch: opts.touch, errPrefix: \"Google: \", errLimit: 1e5, redact: redactKey, blocked: function(r){ return \"Google: \" + tx(\"googleBlocked\", {r: r}); }, httpError: function(r){ return httpError(\"Google\", r, opts.apiKey); } }).then(function(){});   /* nucleul AI comun FFF */\n"
   }
  ],
  "arena": [
@@ -11,6 +26,16 @@
    "name": "FFFSeif.mount",
    "find": "try{KVctl=KV.controls($(\"kv-host\"),KVault,KVad);if(KVault.exists())KV.unlock(KVault,KVad);}catch(e){console.warn(\"KV:\",e);}",
    "with": "try{KVctl=KV.controls($(\"kv-host\"),KVault,KVad);if(KVault.exists())KV.unlock(KVault,KVad);}catch(e){console.warn(\"KV:\",e);}\ntry{if(window.FFFSeif)FFFSeif.mount({KV:KV,vault:KVault,ad:KVad,hostId:\"kv-host\",known:[\"anthropic\",\"openai\",\"google\",\"groq\",\"mistral\",\"perplexity\",\"openrouter\",\"pollinations\"],toApp:function(sh){var H={groq:\"api.groq.com\",mistral:\"api.mistral.ai\",openrouter:\"openrouter.ai\",openai:\"api.openai.com\",google:\"generativelanguage.googleapis.com\",perplexity:\"api.perplexity.ai\"},o={};S.models.forEach(function(x){var k=null;if(x.provider===\"anthropic\")k=sh.anthropic;else if(x.provider===\"pollinations\")k=sh.pollinations;else{var u=String(x.baseUrl||\"\");for(var p in H)if(sh[p]&&u.indexOf(H[p])>=0){k=sh[p];break;}}if(k)o[x.id]=k;});return o;}});}catch(e){console.warn(\"seif:\",e);}   /* import din seiful comun (VaultCrypt) */"
+  },
+  {
+   "name": "ai-openai",
+   "find": "async function* openaiStream(model,prompt,signal){\n",
+   "with": "async function* openaiStream(model,prompt,signal){\n  if(window.FFF&&FFF.ai){yield* FFF.ai.stream(\"openai\",{url:(model.baseUrl||\"https://api.openai.com/v1\").replace(/\\/+$/,\"\")+\"/chat/completions\",apiKey:model.apiKey,model:model.model,messages:[{role:\"user\",content:prompt}],signal:signal,silentAbort:true,errLimit:200,httpError:async function(r){return new Error(r.status+\" \"+(await r.text()).slice(0,200));}});return;}   /* nucleul AI comun FFF */\n"
+  },
+  {
+   "name": "ai-anthropic",
+   "find": "async function* anthropicStream(model,prompt,signal){\n",
+   "with": "async function* anthropicStream(model,prompt,signal){\n  if(window.FFF&&FFF.ai){yield* FFF.ai.stream(\"anthropic\",{url:(model.baseUrl||\"https://api.anthropic.com\").replace(/\\/+$/,\"\")+\"/v1/messages\",apiKey:model.apiKey,model:model.model,maxTokens:2048,version:\"2023-06-01\",messages:[{role:\"user\",content:prompt}],signal:signal,silentAbort:true,errLimit:200,httpError:async function(r){return new Error(r.status+\" \"+(await r.text()).slice(0,200));}});return;}   /* nucleul AI comun FFF */\n"
   }
  ],
  "ai-liber": [
@@ -18,6 +43,28 @@
    "name": "FFFSeif.mount",
    "find": "// Override gk/sk to use encryption for paid providers",
    "with": "try{if(window.FFFSeif)FFFSeif.mount({KV:KV,vault:_kvVault,ad:_kvAd,hostId:\"kv-host\",known:[\"anthropic\",\"openai\",\"google\",\"groq\",\"mistral\",\"perplexity\",\"openrouter\"]});}catch(e){console.warn(\"seif:\",e);}   /* import din seiful comun (VaultCrypt) */\n// Override gk/sk to use encryption for paid providers"
+  },
+  {
+   "name": "ai-anthropic",
+   "find": "async function streamAnthropic(modelId,msgs,key,onChunk){\n",
+   "with": "async function _ffAiHttpError(res){const e=await res.json().catch(()=>({}));if(res.status===404)return new Error(`Model 404 — verifică modelul selectat.`);return new Error(e.error?.message||`HTTP ${res.status}`);}\nasync function streamAnthropic(modelId,msgs,key,onChunk){\n  if(window.FFF&&FFF.ai)return FFF.ai.run('anthropic',{model:modelId,messages:msgs,system:getSYS(),apiKey:key,maxTokens:2000,version:'2023-06-01',onDelta:function(d,full){onChunk(full);},httpError:_ffAiHttpError}).then(function(r){return r.text;});   /* nucleul AI comun FFF */\n"
+  },
+  {
+   "name": "ai-openai",
+   "find": "async function streamOAI(ep,modelId,msgs,key,isOR,onChunk){\n",
+   "with": "async function streamOAI(ep,modelId,msgs,key,isOR,onChunk){\n  if(window.FFF&&FFF.ai)return FFF.ai.run('openai',{url:ep,model:modelId,messages:msgs,system:getSYS(),apiKey:key,maxTokens:2000,headers:isOR?{'HTTP-Referer':window.location.origin,'X-Title':'AI Liber'}:undefined,onDelta:function(d,full){onChunk(full);},httpError:_ffAiHttpError}).then(function(r){return r.text;});   /* nucleul AI comun FFF */\n"
+  },
+  {
+   "name": "ai-google",
+   "find": "  if(!key)throw new Error('authentication_error');\n  const contents=msgs.map",
+   "with": "  if(!key)throw new Error('authentication_error');\n  if(window.FFF&&FFF.ai)return FFF.ai.run('google',{model:modelId,messages:msgs,system:getSYS(),apiKey:key,maxTokens:2000,httpError:async function(res){const d=await res.json().catch(()=>({}));return new Error(d.error?.message||'HTTP '+res.status);}}).then(function(r){return r.text||t('emptyResp');});   /* nucleul AI comun FFF */\n  const contents=msgs.map"
+  }
+ ],
+ "orar": [
+  {
+   "name": "__fffOrar",
+   "find": "/* ---- import din CLEPSIDRA ----",
+   "with": "/* FFF · agenda comună: punte îngustă spre starea aplicației (adaptorul din tools/envelope-adapters/Orar.js o folosește; nu expune S) */\nwindow.__fffOrar = { ics: function () { return buildICS(S.events.filter(function (e) { return calOn(e.cal); }), { name: 'orar', catName: catNameFor }); },\n  imp: function (bytes) { var parsed = parseICS(bytes), nm = parsed.calName || 'Agenda comună FFF', ex = S.cals.filter(function (c) { return c.name === nm; })[0]; S.lastImport = null; S.imp = { parsed: parsed, name: nm + '.ics' }; renderImportPreview(); document.getElementById('imp-cal').value = ex ? ex.id : '__new'; document.getElementById('imp-go').click(); var r = S.lastImport || { added: [], skipped: 0 }; return { added: r.added.length, skipped: r.skipped }; } };\n/* ---- import din CLEPSIDRA ----"
   }
  ]
 }

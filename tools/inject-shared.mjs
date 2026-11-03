@@ -13,7 +13,7 @@ const val = (f) => { const i = argv.indexOf(f); return i < 0 ? null : argv[i + 1
 const pos = argv.filter((a, i) => !a.startsWith('--') && argv[i - 1] !== '--release' && argv[i - 1] !== '--date');
 const [dir, slug] = pos;
 if (!dir || !slug) { console.error('utilizare: inject-shared.mjs [--check] <dir> <slug> [--release "<notă>"] [--date YYYY-MM-DD]'); process.exit(2); }
-const CHECK = has('--check');
+const CHECK = has('--check'), NOKIT = has('--nokit');   // --nokit: aplicații fără fff-kit (ex. MENSURA): bibliotecile se pun înainte de </body>; fără release/fixcsp/info/changelog
 
 // ce primește fiecare aplicație: bibliotecile și fișierul de adaptor (după slug-ul din app.json)
 const PLAN = JSON.parse(rd(AD('plan.json')));
@@ -75,6 +75,7 @@ html = html.replace(/<script id="fff-mod-[a-z0-9-]+">[\s\S]*?<\/script>\n?/g, ''
 const bl = blocks(), mk = '<!--fff:kit:end-->';
 const libs = bl.filter((b) => b.lib).map((b) => `<script id="${b.id}">${b.src}</script>\n`).join('');
 const ad = bl.filter((b) => !b.lib).map((b) => `<script id="${b.id}">${b.src}</script>\n`).join('');
+if (NOKIT) { const i = html.lastIndexOf('</body>'); html = html.slice(0, i) + libs + ad + html.slice(i); fs.writeFileSync(idx, html); console.log(slug, 'ok (fără kit)'); process.exit(0); }
 if (libs) { const i = html.indexOf(mk); if (i < 0) throw new Error('lipsește <!--fff:kit:end-->'); const k = i + mk.length; html = html.slice(0, k) + '\n' + libs.trimEnd() + html.slice(k); }
 if (ad) { const i = html.lastIndexOf('</body>'); html = html.slice(0, i) + ad + html.slice(i); }
 fs.writeFileSync(idx, html);
