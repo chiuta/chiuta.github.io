@@ -7,7 +7,14 @@
     "substantive": "„Ultima schimbare de fond” = data ultimei schimbări de conținut sau funcționalitate (nu o sincronizare în masă a catalogului). Se completează numai când e cunoscută; altfel nu se afișează. Data de sincronizare (data-upd de pe card) rămâne în fișă, ca informație tehnică.",
     "score": "„score” = scorul auditului intern din 22.10.2026 (0–10; 10 = excelent), calculat din auditul fiecărei aplicații (nu din acest catalog). Pragul de laborator este 5: sub el, aplicația primește starea „laborator” și nu poate sta în „Recomandate”. Ordinea din „Recomandate” este descrescătoare după scor; sync-catalog --check verifică ambele reguli.",
     "labThreshold": 5,
-    "figures": "„figures: true” = textul cardului conține cifre verificabile (numărări, populații, date). O aplicație marcată astfel trebuie să aibă în fișă, în ro și en, un rând „Cifre și surse” cu cel puțin o dată AAAA-LL-ZZ; sync-catalog --check verifică."
+    "figures": "„figures: true” = textul cardului conține cifre verificabile (numărări, populații, date). O aplicație marcată astfel trebuie să aibă în fișă, în ro și en, un rând „Cifre și surse” cu cel puțin o dată AAAA-LL-ZZ; sync-catalog --check verifică.",
+    "evidence": "„evidence” (0–4) = nivelul de dovezi pentru ce AFIRMĂ practica sau conținutul aplicației, nu pentru calitatea software-ului: 0 = tradiție / valoare culturală (mod istoric/cultural); 1 = relatări și observații izolate; 2 = observații sistematice, studii mici sau preliminare; 3 = studii controlate; 4 = verificat (replicat, consens). Nivelul îl stabilește autorul pe baza textului propriu al aplicației și al literaturii citate; nu este o evaluare clinică. Aplicațiile cu afirmații de efect (astrologie, terapii energetice, radiestezie, frecvențe «terapeutice», relaxare) trebuie să aibă nivelul declarat.",
+    "coverage": "„coverage” = limbile interfeței (din fff-info → features.i18n, dintre cele 8: ro, en, fr, it, es, pt, de, hu) și platforma: web (fișier HTML în browser) sau nativ (program instalabil). Se derivă din aplicație; override în «coverage» doar unde aplicația nu declară limbile (Pendulul: ro) sau e un proiect Rust (OSATURA, TEZAUR: en; VERIGA, LegatorOCR: 8 limbi, nativ). Scor 0–4: 8 limbi = 4; 4–7 = 3; 2–3 = 2; 1 = 1. Fiecare card trebuie să aibă cel puțin o limbă.",
+    "health": "„health”: aplicații cu conținut legat de sănătate sau de efecte asupra corpului; cardul și fișa afișează «nu înlocuiește medicul».",
+    "fragile": "„fragile”: aplicații care depind de site-uri sau servicii terțe (scraping, embed-uri neoficiale, API-uri publice, liste de unelte externe) și pot înceta să funcționeze fără anunț. Cardul afișează «fragil». Verificarea periodică automată se face la construire (Etapa 8); câmpul opțional «checked» (AAAA-LL-ZZ) arată ultima verificare, când e cunoscută.",
+    "evidenceRequired": ["HoroScop", "Bioenergoterapie", "Afrodisiace-fara-frontiere", "FrequencyLaboratory", "ASMR", "Inforenergetica", "Radiestezie", "Reiki", "Tarot", "Numerologie", "NumeroLogIA", "ECLIPSA", "ACORDAJ", "CalmWaves", "Aurora"],
+    "healthRequired": ["Bioenergoterapie", "Reiki", "Afrodisiace-fara-frontiere", "FrequencyLaboratory", "ASMR", "CalmWaves", "Aurora", "Inforenergetica", "generator-frecvente", "Decibel", "SEVA", "PULS", "Nemurirea"],
+    "fragileRequired": ["Vitrina", "Threads-fara-cont", "X-fara-cont", "Cadraj", "Arhiva-LinkedIn", "VNTV", "ACORDAJ", "API-fara-frontiere", "OAZA", "FreeDetect"]
   },
   "kinds": {
     "OSATURA": "engine",
@@ -49,6 +56,10 @@
         "pt": {"limite": "Versão alfa (última pré-versão publicada: v0.1.0-alpha.4); nenhum animador além do autor a utilizou até agora, e as prioridades da tabela do README são uma intenção, não uma garantia de qualidade. Funções como retargeting de mocap, sincronização labial, deteção de rosto, colaboração e renderização por GPU são experimentais: não construas nada sobre elas por enquanto. As limitações conhecidas (78, com gravidade e soluções) estão em docs/LIMITATIONS.md."},
         "de": {"limite": "Alpha-Version (letzte veröffentlichte Vorabversion: v0.1.0-alpha.4); außer dem Autor hat sie noch kein Animator benutzt, und die Prioritäten in der README-Tabelle sind eine Absicht, keine Qualitätsgarantie. Funktionen wie Mocap-Retargeting, Lippensynchronisation, Gesichtserkennung, Zusammenarbeit und GPU-Rendering sind experimentell: baue noch nicht darauf auf. Die bekannten Einschränkungen (78, mit Schweregrad und Lösungen) stehen in docs/LIMITATIONS.md."},
         "hu": {"limite": "Alfa verzió (az utolsó közzétett előzetes kiadás: v0.1.0-alpha.4); a szerzőn kívül még egyetlen animátor sem használta, a README táblázatában szereplő prioritások pedig szándékot jelentenek, nem minőségi garanciát. Az olyan funkciók, mint a mocap retargeting, a szájszinkron, az arcfelismerés, az együttműködés és a GPU-renderelés kísérleti jellegűek: egyelőre ne építsen rájuk. Az ismert korlátok (78, súlyossággal és megkerülő megoldásokkal) a docs/LIMITATIONS.md fájlban találhatók."}
+      },
+      "coverage": {
+        "langs": ["en"],
+        "platform": "native"
       }
     },
     "Bolta": {
@@ -64,7 +75,13 @@
         "hu": {"limite": "Nem navigációs eszköz, és nem alkalmas precíziós asztrofotózásra vagy fedésekre. A pontosság az fff-kit/docs/ephem.md fájlban az 1900–2100 közötti évekre megadott érték; a jövőbeli ΔT bizonytalan. Csak az 5,0 magnitúdóig terjedő csillagok (1627), NGC/Messier-objektumok, üstökösök, kisbolygók és műholdak nélkül. A Tejútrendszer stilizált. A városok koordinátái kerekítettek (≈0,01°); a refrakció opcionális, és a horizont közelében közelítő."}
       }
     },
-    "Pendulul": {"substantive": "2026-10-22"},
+    "Pendulul": {
+      "substantive": "2026-10-22",
+      "coverage": {
+        "langs": ["ro"],
+        "platform": "web"
+      }
+    },
     "VNTV": {
       "substantive": "2026-10-23",
       "fisa": {
@@ -77,7 +94,8 @@
         "de": {"limite": "Hängt von der Verfügbarkeit von videoneat.com und videos.trom.tf ab; ohne sie gibt es nichts abzuspielen. Zeigt Trailer von Dokumentarfilmen, die den Produzenten gehören (PBS, BBC usw.), mit Link zur offiziellen Quelle; was von VideoNeat verschwindet, verschwindet auch aus VNTV. Automatische Übersetzungen können fehlerhaft sein. Der Betrieb auf echten Geräten (TV, iOS, Cast) muss überprüft werden; die Verfügbarkeit von P2P, AirPlay und Cast unterscheidet sich zwischen Browsern."},
         "hu": {"limite": "A videoneat.com és a videos.trom.tf elérhetőségétől függ; nélkülük nincs mit lejátszania. Dokumentumfilmek előzeteseit mutatja, amelyek a gyártókat illetik (PBS, BBC stb.), a hivatalos forrásra mutató hivatkozással; ami eltűnik a VideoNeatről, az a VNTV-ből is eltűnik. Az automatikus fordítások hibázhatnak. A valódi eszközökön (TV, iOS, Cast) való működést ellenőrizni kell; a P2P, az AirPlay és a Cast elérhetősége böngészőnként eltér."}
       },
-      "score": 8.9
+      "score": 8.9,
+      "fragile": true
     },
     "AGORA": {
       "line": {
@@ -214,7 +232,9 @@
         "de": {"limite": "Entspannungsinhalt, kein medizinischer Rat; die wissenschaftlichen Belege für die Wirkung binauraler Töne auf Schlaf oder Konzentration sind begrenzt."},
         "hu": {"limite": "Relaxációs tartalom, nem orvosi tanács; a binaurális hangok alvásra vagy koncentrációra gyakorolt hatásáról szóló tudományos bizonyítékok korlátozottak."}
       },
-      "score": 9.6
+      "score": 9.6,
+      "evidence": {"level": 2},
+      "health": true
     },
     "Belot-fara-frontiere": {
       "line": {
@@ -299,7 +319,8 @@
         "de": {"limite": "Ohne wissenschaftliche Validierung (ideomotorischer Effekt; kontrollierte Tests zeigen keine Ergebnisse über dem Zufall). Verwende sie nicht für Diagnosen, finanzielle Entscheidungen oder Bau- und Grabungsarbeiten."},
         "hu": {"limite": "Tudományos érvényesítés nélkül (ideomotoros hatás; az ellenőrzött tesztek nem mutatnak a véletlennél jobb eredményt). Ne használja diagnózishoz, pénzügyi döntésekhez, illetve építési és ásási munkákhoz."}
       },
-      "score": 9
+      "score": 9,
+      "evidence": {"level": 0}
     },
     "Solitaire-fara-frontiere": {
       "line": {
@@ -367,7 +388,8 @@
         "de": {"limite": "Symbolische Tradition und Unterhaltung, ohne wissenschaftliche Belege; es gibt keine einheitliche Berechnungskonvention. Triff keine Entscheidungen zu Gesundheit, Geld oder Beziehungen auf Grundlage einer Berechnung."},
         "hu": {"limite": "Szimbolikus hagyomány és szórakozás, tudományos bizonyíték nélkül; nincs egységes számítási konvenció. Ne hozzon egészségügyi, pénzügyi vagy párkapcsolati döntéseket egy számítás alapján."}
       },
-      "score": 9.3
+      "score": 9.3,
+      "evidence": {"level": 0}
     },
     "ExploratoriiEco": {
       "line": {
@@ -410,7 +432,8 @@
         "de": {"limite": "Dienste Dritter, nicht automatisch überprüft (Liste geprüft am 16. Juni 2026): Sie können ein Konto verlangen, Werbung anzeigen oder verschwinden; die Aufnahme in die Liste ist keine Empfehlung. Sende keine sensiblen Daten an öffentliche Dienste."},
         "hu": {"limite": "Harmadik felek szolgáltatásai, automatikusan nem ellenőrzöttek (a lista ellenőrzésének dátuma: 2026. június 16.): fiókot kérhetnek, hirdetéseket jeleníthetnek meg, vagy megszűnhetnek; a listázás nem ajánlás. Ne küldjön érzékeny adatokat nyilvános szolgáltatásoknak."}
       },
-      "score": 8.4
+      "score": 8.4,
+      "fragile": true
     },
     "AcademiSearch": {
       "fisa": {
@@ -449,7 +472,8 @@
         "de": {"limite": "Führt die Prüfung nicht selbst durch: Es ist ein Katalog und eine Hilfe für den Arbeitsablauf. Die Ergebnisse von Detektoren Dritter können falsch positiv sein, besonders bei nicht englischen Texten, einschließlich Rumänisch, und sind kein Beweis. Das lokale Textprofil enthält nur beschreibende Statistiken. Der Zitiergenerator und der DOI-Scan benötigen Internet."},
         "hu": {"limite": "Maga nem végzi el az ellenőrzést: katalógus és munkafolyamat-segéd. A harmadik felek detektorainak eredményei lehetnek álpozitívak, különösen nem angol nyelvű szövegeknél, így a románnál is, és nem minősülnek bizonyítéknak. A szöveg helyi profilja csak leíró statisztikákat tartalmaz. Az idézetgenerátorhoz és a DOI-vizsgálathoz internet szükséges."}
       },
-      "score": 8.3
+      "score": 8.3,
+      "fragile": true
     },
     "MarkdownAtelier": {
       "fisa": {
@@ -515,7 +539,8 @@
         "de": {"limite": "Inoffiziell, nicht mit LinkedIn verbunden. Das Archiv enthält nur, was du einfügst; die Notizen können Texte und personenbezogene Daten anderer enthalten, die urheberrechtlich geschützt sind, daher nur für den persönlichen Gebrauch. Die Galerie zeigt nur, was LinkedIn einbetten lässt (gelöschte oder private Beiträge erscheinen nicht); die Vorschau wurde nicht mit einem echten Netzwerk getestet."},
         "hu": {"limite": "Nem hivatalos, nem áll kapcsolatban a LinkedIn-nel. Az archívum csak azt tartalmazza, amit Ön beilleszt; a jegyzetek mások személyes szövegeit és adatait is tartalmazhatják, amelyeket szerzői jog véd, ezért kizárólag személyes használatra valók. A galéria csak azt mutatja, amit a LinkedIn beágyazni enged (a törölt vagy privát bejegyzések nem jelennek meg); a beágyazott előnézetet nem tesztelték valódi hálózaton."}
       },
-      "score": 8.8
+      "score": 8.8,
+      "fragile": true
     },
     "Cadraj": {
       "fisa": {
@@ -528,7 +553,8 @@
         "de": {"limite": "Listet die Clips eines Profils nicht automatisch auf, umgeht keine TikTok-Schutzmaßnahmen und lädt keine Videodateien herunter; Links werden manuell hinzugefügt. Nicht vollständig offline: Beim Ansehen wird der offizielle TikTok-Player in einem iframe geladen, sodass TikTok die Anfrage erhält. Die automatischen Übersetzungen der neuen Texte in fr/it/es/pt/de/hu sind nicht von Muttersprachlern überprüft."},
         "hu": {"limite": "Nem listázza automatikusan egy profil klipjeit, nem kerüli meg a TikTok védelmeit, és nem tölt le videófájlokat; a hivatkozásokat kézzel kell hozzáadni. Nem teljesen offline: megtekintéskor a hivatalos TikTok-lejátszó töltődik be egy iframe-ben, így a TikTok megkapja a kérést. Az új szövegek fr/it/es/pt/de/hu automatikus fordításait anyanyelvi beszélők nem ellenőrizték."}
       },
-      "score": 9.1
+      "score": 9.1,
+      "fragile": true
     },
     "Trade-Free-Link-Guardian": {
       "fisa": {
@@ -593,7 +619,8 @@
         "de": {"limite": "Inoffiziell, ohne Verbindung zu Meta; zeigt nur öffentliche Beiträge über das offizielle Embed an und kann die Beiträge eines Profils nicht automatisch auflisten. Private, altersbeschränkte oder geoblockierte Beiträge erscheinen nicht. Der Browser kann die direkte Anfrage blockieren (CORS); dann ist ein Proxy nötig, mit Folgen für den Datenschutz. Meta erhält die IP-Adresse und die angesehenen Beiträge. Die Liste wird nur gespeichert, wenn du die lokale Speicherung ankreuzt."},
         "hu": {"limite": "Nem hivatalos, nincs kapcsolata a Metával; csak nyilvános bejegyzéseket jelenít meg a hivatalos beágyazáson keresztül, és nem tudja automatikusan listázni egy profil bejegyzéseit. A privát, korhatáros vagy földrajzilag blokkolt bejegyzések nem jelennek meg. A böngésző blokkolhatja a közvetlen kérést (CORS), ilyenkor proxy szükséges, adatvédelmi következményekkel. A Meta megkapja az IP-címet és a megtekintett bejegyzéseket. A lista csak akkor mentődik, ha bejelöli a helyi mentést."}
       },
-      "score": 9.1
+      "score": 9.1,
+      "fragile": true
     },
     "Vitrina": {
       "fisa": {
@@ -606,7 +633,8 @@
         "de": {"limite": "Inoffiziell, ohne Verbindung zu Meta. Facebook kann eine Anmeldung verlangen oder die Anzeige mancher Inhalte verweigern; was du siehst, hängt von Meta ab. Für Gruppen und Veranstaltungen gibt es kein offizielles Modul (Beiträge aus öffentlichen Gruppen sind als „offiziell unbestätigt“ markiert). Meta erhält die IP-Adresse und die angezeigte URL. Die Einbettungen sind nicht per Sandbox isoliert."},
         "hu": {"limite": "Nem hivatalos, nincs kapcsolata a Metával. A Facebook bejelentkezést kérhet, vagy megtagadhatja egyes tartalmak megjelenítését; amit lát, az a Metától függ. A Csoportokhoz és az Eseményekhez nincs hivatalos modul (a nyilvános csoportok bejegyzései „hivatalosan nem megerősített” jelöléssel szerepelnek). A Meta megkapja az IP-címet és a megjelenített URL-t. A beágyazások nincsenek sandbox-szal elszigetelve."}
       },
-      "score": 9.5
+      "score": 9.5,
+      "fragile": true
     },
     "X-fara-cont": {
       "fisa": {
@@ -619,7 +647,8 @@
         "de": {"limite": "Liest keine X-Inhalte: Es erzeugt nur Links (direkt, Wayback-Archiv, Google-/Bing-Suche, Nitter). Kein Weg ist garantiert: X kann jederzeit eine Anmeldung verlangen, Archive können fehlen oder veraltet sein, und Nitter-Instanzen sind instabil. Der Profilname wird an archive.org gesendet. Nicht verbunden mit X Corp., Internet Archive, Google, Microsoft oder dem Nitter-Projekt."},
         "hu": {"limite": "Nem olvas X-tartalmat: csak hivatkozásokat állít elő (közvetlen, Wayback-archívum, Google/Bing keresés, Nitter). Egyik útvonal sem garantált: az X bármikor kérhet bejelentkezést, az archívumok hiányozhatnak vagy elavultak lehetnek, a Nitter-példányok pedig instabilak. A profilnév az archive.org-ra kerül elküldésre. Nem áll kapcsolatban az X Corp.-pal, az Internet Archive-val, a Google-lel, a Microsofttal és a Nitter projekttel."}
       },
-      "score": 9.5
+      "score": 9.5,
+      "fragile": true
     },
     "Curatitor": {
       "fisa": {
@@ -733,7 +762,8 @@
         "de": {"limite": "Bildungsinhalt, vom Autor auf Grundlage der Leitlinien von ERC, AHA/ILCOR und WHO verfasst, ohne klinische Validierung durch eine autorisierte Ausbilderin, einen autorisierten Ausbilder oder einen Arzt; er ersetzt weder einen autorisierten Kurs noch ärztlichen Rat oder das Eingreifen von Fachkräften. Rufe in einem echten Notfall die 112 an. Die Übersetzungen sind automatisch und nicht überprüft. Die Vibration funktioniert unter iOS/Safari nicht."},
         "hu": {"limite": "Oktatási tartalom, amelyet a szerző az ERC, az AHA/ILCOR és a WHO irányelvei alapján írt, hivatalos oktató vagy orvos általi klinikai érvényesítés nélkül; nem helyettesíti a hivatalos tanfolyamot, az orvosi tanácsot és a szakemberek beavatkozását. Valódi vészhelyzetben hívja a 112-t. Az automatikus fordításokat nem ellenőrizték. A rezgés iOS/Safarin nem működik."}
       },
-      "score": 8.5
+      "score": 8.5,
+      "health": true
     },
     "QSO": {
       "fisa": {
@@ -784,7 +814,8 @@
         "de": {"limite": "Ersetzt keine medizinische oder psychologische Versorgung; bietet Referenzmaterial und Werkzeuge zur Selbstbeobachtung, keine Diagnose und keine Behandlung. Die automatischen Übersetzungen sind nicht von Muttersprachlern überprüft, und die Gesundheitsinhalte müssen von Fachleuten geprüft werden."},
         "hu": {"limite": "Nem helyettesíti az orvosi vagy pszichológiai ellátást; referenciaanyagot és önmegfigyelési eszközöket kínál, nem diagnózist vagy kezelést. Az automatikus fordításokat anyanyelvi beszélők nem ellenőrizték, az egészségügyi tartalom pedig szakértői felülvizsgálatot igényel."}
       },
-      "score": 8
+      "score": 8,
+      "health": true
     },
     "Alfabete": {
       "fisa": {
@@ -1041,7 +1072,9 @@
         "de": {"limite": "Informativer und entspannender Inhalt; kein Medizinprodukt und ersetzt nicht ärztlichen Rat oder ärztliche Behandlung. Der Abschnitt „What the research actually says“ fasst Aussagen über Studien zusammen (z. B. binaurale Beats und Angst), die nicht unabhängig überprüft wurden; es sind keine therapeutischen Versprechen. Personen mit Epilepsie oder neurologischen Erkrankungen sollten vor der Nutzung binauraler Beats ärztlichen Rat einholen."},
         "hu": {"limite": "Tájékoztató és relaxációs tartalom; nem orvosi eszköz, és nem helyettesíti az orvosi tanácsot vagy kezelést. A „What the research actually says” szakasz olyan tanulmányokra vonatkozó állításokat foglal össze (pl. binaurális ütemek és szorongás), amelyeket függetlenül nem ellenőriztek; ezek nem terápiás ígéretek. Epilepsziában vagy neurológiai betegségben szenvedők a binaurális ütemek használata előtt kérjenek orvosi tanácsot."}
       },
-      "score": 9.2
+      "score": 9.2,
+      "evidence": {"level": 2},
+      "health": true
     },
     "Decibel": {
       "fisa": {
@@ -1053,7 +1086,8 @@
         "pt": {"limite": "Não é um sonómetro certificado: os microfones de telemóvel/portátil não estão calibrados e saturam acima de ~90–100 dB; as medições NÃO têm validade legal e não substituem a avaliação da exposição ao ruído exigida pelas normas de segurança no trabalho. A incerteza apresentada é indicativa (±3/±4/±5 dB). As doses usam limites indicativos (NIOSH, recomendações da UE da Diretiva 2003/10/CE). O audiograma não é um teste médico e não oferece interpretação clínica; para problemas de audição, consulta um otorrinolaringologista ou audiologista. Algumas tabelas e valores RETSPL foram transcritos de memória e podem conter pequenos erros."},
         "de": {"limite": "Kein zertifizierter Schallpegelmesser: Die Mikrofone von Telefon/Laptop sind nicht kalibriert und übersteuern über ~90–100 dB; die Messungen sind NICHT rechtsgültig und ersetzen nicht die Bewertung der Lärmexposition, die von den Arbeitsschutzvorschriften verlangt wird. Die angezeigte Unsicherheit ist ein Richtwert (±3/±4/±5 dB). Die Dosen verwenden Richtgrenzwerte (NIOSH, EU-Empfehlungen aus der Richtlinie 2003/10/EG). Das Audiogramm ist kein medizinischer Test und bietet keine klinische Auswertung; bei Hörproblemen wende dich an eine HNO-Ärztin bzw. einen HNO-Arzt oder an Audiologen. Einige Tabellen und RETSPL-Werte wurden aus dem Gedächtnis übertragen und können kleine Fehler enthalten."},
         "hu": {"limite": "Nem hitelesített hangszintmérő: a telefonok/laptopok mikrofonjai nincsenek kalibrálva, és kb. 90–100 dB felett telítődnek; a mérések jogilag NEM érvényesek, és nem helyettesítik a munkavédelmi előírások által megkövetelt zajexpozíció-értékelést. A megjelenített bizonytalanság tájékoztató jellegű (±3/±4/±5 dB). Az adagok tájékoztató határértékeket használnak (NIOSH, a 2003/10/EK irányelv uniós ajánlásai). Az audiogram nem orvosi teszt, és klinikai értelmezést nem ad; hallásproblémák esetén forduljon fül-orr-gégészhez vagy audiológushoz. Egyes táblázatokat és RETSPL-értékeket emlékezetből másoltak át, és apró hibákat tartalmazhatnak."}
-      }
+      },
+      "health": true
     },
     "FrequencyLaboratory": {
       "fisa": {
@@ -1066,7 +1100,9 @@
         "de": {"limite": "Informativer/Bildungsinhalt; kein Medizinprodukt und keine Behandlung (auch nicht bei Tinnitus, Schmerzen oder Hörproblemen). Die „Solfeggio“- und „Schumann“-Frequenzen, binaurale/isochrone Rhythmen und die Voreinstellungen „Pain Relief“ oder „Peak Performance“ haben als Therapie keine wissenschaftliche Validierung und keine nachgewiesene medizinische Wirkung. Verwende eine niedrige Lautstärke (zu Beginn unter 20 %), besonders mit Kopfhörern. Das Audiogramm ersetzt kein medizinisches. Die automatisch übersetzten Beschreibungen im Frequenzkatalog müssen von Fachleuten geprüft werden."},
         "hu": {"limite": "Tájékoztató/oktatási tartalom; nem orvosi eszköz vagy kezelés (a fülzúgásra, fájdalomra vagy hallásproblémákra sem). A „Solfeggio” és „Schumann” frekvenciáknak, a binaurális/izokron ritmusoknak, valamint a „Pain Relief” vagy „Peak Performance” előbeállításoknak nincs tudományos érvényesítése terápiaként, és bizonyított orvosi hatásuk sincs. Használjon alacsony hangerőt (kezdetben 20% alatt), különösen fejhallgatóval. Az audiogram nem helyettesíti az orvosi audiogramot. A frekvenciakatalógus automatikusan fordított leírásai szakértői felülvizsgálatot igényelnek."}
       },
-      "score": 6.7
+      "score": 6.7,
+      "evidence": {"level": 0},
+      "health": true
     },
     "generator-frecvente": {
       "fisa": {
@@ -1079,7 +1115,8 @@
         "de": {"limite": "Informativer/Bildungsinhalt, ersetzt nicht ärztlichen Rat. Die Kategorien „Solfeggio“ und „Schumann“ stammen aus modernen (New-Age-)Traditionen und haben keine wissenschaftliche Validierung; es werden keine therapeutischen Wirkungen versprochen. Der Hörtest zeigt eine relative Schwelle und ist kein medizinisches Audiogramm. Das Verhalten hängt vom Browser ab (Web Audio, MIDI, AudioWorklet). Im Portfolio gibt es eine neuere Version: FrequencyLaboratory."},
         "hu": {"limite": "Tájékoztató/oktatási tartalom, nem helyettesíti az orvosi tanácsot. A „Solfeggio” és „Schumann” kategóriák modern (New Age) hagyományokból származnak, és tudományos érvényesítésük nincs; terápiás hatást nem ígér. A hallásteszt relatív küszöböt mutat, és nem orvosi audiogram. A viselkedés a böngészőtől függ (Web Audio, MIDI, AudioWorklet). A portfólióban létezik egy újabb változat: FrequencyLaboratory."}
       },
-      "score": 7.4
+      "score": 7.4,
+      "health": true
     },
     "Akasha": {
       "fisa": {
@@ -1312,7 +1349,8 @@
         "de": {"limite": "Benötigt Internet: Die 47 Widgets fragen öffentliche APIs ab, die ausfallen, ihr Format ändern, Anfragen begrenzen oder veraltete Daten liefern können; die Verfügbarkeit wurde nicht an echten Servern überprüft (nur simulierte Antworten). Die Daten dienen der Information: Das Medikamentenetikett (FDA) ist auf Englisch und nur für Produkte aus den USA, Wechselkurse/Kryptowährungen/MwSt. sind keine Finanzberatung, und die Vorhersage anhand des Vornamens ist eine statistische Schätzung, die oft falsch liegt. Bilder können urheberrechtlich geschützt sein oder eigenen Lizenzen unterliegen."},
         "hu": {"limite": "Internetre van szüksége: a 47 widget nyilvános API-kat kérdez le, amelyek leállhatnak, megváltoztathatják a formátumot, korlátozhatják a kéréseket vagy elavult adatokat adhatnak vissza; az elérhetőséget valódi szervereken nem ellenőrizték (csak szimulált válaszokkal). Az adatok tájékoztató jellegűek: a gyógyszercímke (FDA) angol nyelvű és csak amerikai termékekre vonatkozik, az árfolyamok/kriptovaluták/áfa nem pénzügyi tanács, a keresztnév alapú előrejelzés pedig statisztikai becslés, amely gyakran téves. A képekre szerzői jog vagy saját licenc vonatkozhat."}
       },
-      "score": 8.8
+      "score": 8.8,
+      "fragile": true
     },
     "Origami": {
       "fisa": {
@@ -1338,7 +1376,9 @@
         "de": {"limite": "Informativer/Bildungsinhalt, kein medizinischer, juristischer oder finanzieller Rat; Reiki, Einweihungen, Astrologie und Numerologie haben keine wissenschaftliche Validierung. Die Bewertungen sind Denkrahmen, keine Urteile über Kurse oder Personen. Die Übersetzungen des Inhalts in 8 Sprachen sind automatisch, nicht von Muttersprachlern überprüft, und die Passagen zu Gesundheit, Sicherheit und Geld müssen von Fachleuten geprüft werden."},
         "hu": {"limite": "Tájékoztató/oktatási tartalom, nem orvosi, jogi vagy pénzügyi tanács; a Reikinek, a beavatásoknak, az asztrológiának és a numerológiának nincs tudományos érvényesítése. Az értékelések gondolkodási keretek, nem ítéletek tanfolyamokról vagy személyekről. A tartalom 8 nyelvre készült fordításai automatikusak, anyanyelvi beszélők nem ellenőrizték őket, az egészségről, biztonságról és pénzről szóló szakaszok pedig szakértői felülvizsgálatot igényelnek."}
       },
-      "score": 9.4
+      "score": 9.4,
+      "evidence": {"level": 0},
+      "fragile": true
     },
     "Afrodisiace-fara-frontiere": {
       "fisa": {
@@ -1351,7 +1391,9 @@
         "de": {"limite": "Bildungs- und Kulturinhalt, kein medizinischer Rat: Es gibt keine soliden wissenschaftlichen Belege dafür, dass irgendein Lebensmittel oder eine Pflanze aus der Liste Probleme mit Verlangen oder Sexualfunktion behandelt. Verschiebe keinen Arztbesuch und ersetze keine verordnete Behandlung; pflanzliche Nahrungsergänzungsmittel können mit Medikamenten wechselwirken und sind in Schwangerschaft/Stillzeit ohne ärztliche Zustimmung zu meiden. Die Aussagen über Studien sind allgemein, ohne Literaturangaben, und wurden nicht systematisch anhand von Primärquellen überprüft.", "pentru": "Erwachsene (der Leitfaden richtet sich an Erwachsene)."},
         "hu": {"limite": "Oktatási és kulturális tartalom, nem orvosi tanács: nincs szilárd tudományos bizonyíték arra, hogy a listán szereplő bármely étel vagy növény a vágy vagy a szexuális funkció problémáit kezelné. Ne halassza el az orvosi konzultációt, és ne helyettesítsen vele felírt kezelést; a gyógynövény-alapú étrend-kiegészítők kölcsönhatásba léphetnek gyógyszerekkel, és terhesség/szoptatás alatt orvosi jóváhagyás nélkül kerülendők. A tanulmányokra vonatkozó állítások általánosak, hivatkozások nélküliek, és elsődleges forrásokkal szisztematikusan nem vetették össze őket.", "pentru": "Felnőttek (az útmutató felnőtteknek szól)."}
       },
-      "score": 9.2
+      "score": 9.2,
+      "evidence": {"level": 1},
+      "health": true
     },
     "Aurora": {
       "fisa": {
@@ -1364,7 +1406,9 @@
         "de": {"limite": "Kontemplativer/entspannender Inhalt, nicht medizinisch: Chakren, zugeordnete Frequenzen und „heilende Klänge“ stammen aus spirituellen Traditionen und haben keine wissenschaftliche Validierung; es gibt keine soliden Belege dafür, dass bestimmte Frequenzen Erkrankungen behandeln oder dass binaurale Beats den Zustand des Gehirns zuverlässig verändern. Ersetzt nicht ärztlichen Rat."},
         "hu": {"limite": "Szemlélődő/relaxációs, nem orvosi tartalom: a csakrák, a hozzájuk rendelt frekvenciák és a „gyógyító hangok” spirituális hagyományokból erednek, és tudományos érvényesítésük nincs; nincs szilárd bizonyíték arra, hogy bizonyos frekvenciák betegségeket kezelnek, vagy hogy a binaurális ütemek megbízhatóan megváltoztatják az agy állapotát. Nem helyettesíti az orvosi tanácsot."}
       },
-      "score": 8.7
+      "score": 8.7,
+      "evidence": {"level": 2},
+      "health": true
     },
     "Bioenergoterapie": {
       "fisa": {
@@ -1377,7 +1421,9 @@
         "de": {"limite": "Ist keine Medizin und behandelt keine Krankheiten: Energiefeld, Aura und Chakren sind wissenschaftlich nicht nachgewiesen, und kontrollierte Untersuchungen verwandter Praktiken (z. B. Therapeutic Touch) zeigen keine Wirksamkeit über Placebo hinaus. Verschiebe oder unterbrich keine ärztliche Behandlung; bei jedem anhaltenden Symptom gehe zum Arzt. Die Erwähnung eines Experiments aus JAMA (1998) stammt aus dem Gedächtnis des Autors und muss überprüft werden; die Aussagen über den Status der Praxis in Rumänien sind als nicht überprüft markiert."},
         "hu": {"limite": "Nem orvostudomány, és nem gyógyít betegségeket: az energiamező, az aura és a csakrák tudományosan nem bizonyítottak, a rokon gyakorlatokra (pl. Therapeutic Touch) vonatkozó ellenőrzött kutatások pedig nem mutatnak a placebót meghaladó hatékonyságot. Ne halasszon el vagy szakítson meg orvosi kezelést; bármilyen tartós tünet esetén forduljon orvoshoz. Egy JAMA-ban (1998) közölt kísérlet említése a szerző emlékezetéből származik, és ellenőrizni kell; a gyakorlat romániai státuszára vonatkozó állítások ellenőrizetlenként vannak megjelölve."}
       },
-      "score": 9.3
+      "score": 9.3,
+      "evidence": {"level": 0},
+      "health": true
     },
     "ECLIPSA": {
       "fisa": {
@@ -1390,7 +1436,8 @@
         "de": {"limite": "Astrologie hat keine wissenschaftliche Validierung: Die Deutungen dienen der Reflexion/Unterhaltung, sind keine Vorhersagen und kein medizinischer, finanzieller oder juristischer Rat. Genauigkeit ~0,01° (Sonne), ~0,1–0,3° (Mond); Placidus ist über ~66° Breite nicht definiert; prüfe die Zeitzone vor ~1970 und an Tagen der Zeitumstellung manuell; Geburtsdatum ≥ 1900. Die Finsternisfunktionen (Kontakte) werden für Meereshöhe ohne Gelände berechnet; der Countdown verwendet die Uhr des Geräts und ist kein Sicherheitsinstrument (Filter nach ISO 12312-2 bleiben Pflicht). Die Städteliste enthält keine Orte auf dem Totalitätsstreifen in Afrika (Luxor, Cádiz)."},
         "hu": {"limite": "Az asztrológiának nincs tudományos érvényesítése: az értelmezések elmélkedésre/szórakozásra valók, nem jóslatok, és nem orvosi, pénzügyi vagy jogi tanács. Pontosság ~0,01° (Nap), ~0,1–0,3° (Hold); a Placidus nincs értelmezve ~66° földrajzi szélesség felett; ~1970 előtt és az óraátállítás napjain ellenőrizze kézzel az időzónát; születési dátum ≥ 1900. A napfogyatkozás-funkciók (kontaktusok) tengerszintre vannak számítva, domborzat nélkül; a számláló az eszköz óráját használja, nem biztonsági eszköz (az ISO 12312-2 szűrők továbbra is kötelezők). A városlista nem tartalmaz helyeket afrikai totalitássávból (Luxor, Cádiz)."}
       },
-      "score": 9.9
+      "score": 9.9,
+      "evidence": {"level": 0}
     },
     "HoroScop": {
       "fisa": {
@@ -1403,7 +1450,8 @@
         "de": {"limite": "Informativer, symbolischer und unterhaltender Inhalt, ersetzt nicht ärztlichen, juristischen oder finanziellen Rat. Astrologie hat keine wissenschaftliche Validierung: Die Planetenpositionen sind astronomische Berechnungen geringer Genauigkeit (Formeln vom Typ Schlyter/Meeus), die „Deutungen“ aber kulturelle Tradition, keine validierten Vorhersagen. Nicht geeignet für Navigation oder astrometrische Beobachtungen; die astrologischen Häuser werden nicht mit FFF.ephem berechnet."},
         "hu": {"limite": "Tájékoztató, szimbolikus és szórakoztató tartalom, nem helyettesíti az orvosi, jogi vagy pénzügyi tanácsot. Az asztrológiának nincs tudományos érvényesítése: a bolygók helyzete alacsony pontosságú csillagászati számítás (Schlyter/Meeus-típusú képletek), az „olvasatok” azonban kulturális hagyomány, nem érvényesített előrejelzések. Nem alkalmas navigációra vagy asztrometriai megfigyelésekre; az asztrológiai házakat nem az FFF.ephem számítja."}
       },
-      "score": 9.5
+      "score": 9.5,
+      "evidence": {"level": 0}
     },
     "Inforenergetica": {
       "fisa": {
@@ -1416,7 +1464,9 @@
         "de": {"limite": "Unkonventionelle Praxis ohne wissenschaftliche Validierung: Die beschriebenen Mechanismen wurden nicht durch kontrollierte Studien bestätigt, und die Wissenschaftsgemeinschaft betrachtet sie als Pseudowissenschaft; die App beschreibt eine Tradition zu Bildungs- und Kulturzwecken. Kein medizinischer Rat, keine Diagnose und keine Behandlung und ersetzt nicht den Arzt; verschiebe oder unterbrich keine verordnete Behandlung. „Inforenergetische Kraft“, „Diagnose“ und „Teledetermination“ sind keine physikalischen Messungen. Die historischen Verweise wurden nicht unabhängig überprüft."},
         "hu": {"limite": "Nem hagyományos gyakorlat tudományos érvényesítés nélkül: a leírt mechanizmusokat ellenőrzött vizsgálatok nem erősítették meg, a tudományos közösség pedig áltudománynak tekinti; az alkalmazás egy hagyományt ír le oktatási és kulturális céllal. Nem orvosi tanács, diagnózis vagy kezelés, és nem helyettesíti az orvost; ne halasszon el vagy szakítson meg felírt kezelést. Az „inforenergetikai erő”, a „diagnózis” és a „teledeterminálás” nem fizikai mérések. A történeti hivatkozásokat függetlenül nem ellenőrizték."}
       },
-      "score": 9.6
+      "score": 9.6,
+      "evidence": {"level": 0},
+      "health": true
     },
     "NOMIA": {
       "fisa": {
@@ -1442,7 +1492,8 @@
         "de": {"limite": "Informativer/unterhaltender Inhalt ohne wissenschaftliche Validierung: Numerologie, BaZi, Astrologie und Biorhythmus sind traditionelle oder populäre symbolische Systeme, keine Wissenschaften, und bieten weder Vorhersagen noch medizinischen, finanziellen oder juristischen Rat. Von der KI erzeugte Texte können falsch oder erfunden sein."},
         "hu": {"limite": "Tájékoztató/szórakoztató tartalom tudományos érvényesítés nélkül: a numerológia, a BaZi, az asztrológia és a bioritmus hagyományos vagy népszerű szimbolikus rendszerek, nem tudományok, és nem nyújtanak jóslatokat vagy orvosi, pénzügyi, illetve jogi tanácsot. Az MI által generált szövegek hibásak vagy kitaláltak lehetnek."}
       },
-      "score": 8.5
+      "score": 8.5,
+      "evidence": {"level": 0}
     },
     "Reiki": {
       "fisa": {
@@ -1455,7 +1506,9 @@
         "de": {"limite": "Spirituelle Entspannungspraxis, keine medizinische Behandlung: Es gibt keine wissenschaftlichen Belege dafür, dass sie irgendeine Krankheit heilt oder behandelt, und „Ki-Energie“ ist wissenschaftlich nicht nachgewiesen; sie ersetzt weder ärztliche Diagnose noch Behandlung, und eine verordnete Behandlung darf nicht verschoben oder abgebrochen werden. Die Belege für die Wirksamkeit gehen nicht über Entspannung und den Placebo-Effekt hinaus; der genaue Verweis auf den Cochrane-Review ist in der App nicht zitiert. Manche westlichen Darstellungen (besonders über Takata) werden von Forschenden als ungenau angesehen."},
         "hu": {"limite": "Spirituális relaxációs gyakorlat, nem orvosi kezelés: nincs tudományos bizonyíték arra, hogy bármilyen betegséget gyógyít vagy kezel, a „ki energia” pedig tudományosan nem bizonyított; nem helyettesíti az orvosi diagnózist vagy kezelést, a felírt kezelést pedig nem szabad elhalasztani vagy abbahagyni. A hatékonyság bizonyítékai nem lépik túl a relaxációt és a placebohatást; a pontos Cochrane-hivatkozást az alkalmazás nem idézi. Egyes nyugati beszámolókat (főleg Takatáról) a kutatók pontatlannak tartják."}
       },
-      "score": 9.6
+      "score": 9.6,
+      "evidence": {"level": 1},
+      "health": true
     },
     "Tarot": {
       "fisa": {
@@ -1468,7 +1521,8 @@
         "de": {"limite": "Kulturelle Tradition und Werkzeug zur Reflexion/Unterhaltung: Es gibt keine wissenschaftlichen Belege dafür, dass es die Zukunft vorhersagen, diagnostizieren oder heilen kann. Bildungsinhalt, der den Rat von Arzt, Psychologin, Jurist oder Finanzberater nicht ersetzt; triff keine wichtigen Entscheidungen auf Grundlage einer Legung. Die Aussagen über Zertifizierungen und Kurse in Rumänien sind als nicht überprüft markiert. Enthält keine Bilder der Karten; die Legung zeigt nur Namen."},
         "hu": {"limite": "Kulturális hagyomány, az elmélkedés/szórakozás eszköze: nincs tudományos bizonyíték arra, hogy megjósolhatja a jövőt, diagnosztizálhat vagy gyógyíthat. Oktatási tartalom, amely nem helyettesíti az orvos, pszichológus, jogász vagy pénzügyi tanácsadó tanácsát; ne hozzon fontos döntéseket egy húzás alapján. A romániai tanúsítványokra és tanfolyamokra vonatkozó állítások ellenőrizetlenként vannak megjelölve. Nem tartalmaz kártyaképeket; a húzás csak neveket mutat."}
       },
-      "score": 9.3
+      "score": 9.3,
+      "evidence": {"level": 0}
     },
     "ValeaPlopului1972": {
       "fisa": {
@@ -1510,6 +1564,24 @@
       "score": 9.2
     },
     "Clopotel": {"score": 8.3},
-    "Nemurirea": {"score": 8.9}
+    "Nemurirea": {"score": 8.9, "health": true},
+    "TEZAUR": {
+      "coverage": {
+        "langs": ["en"],
+        "platform": "native"
+      }
+    },
+    "VERIGA": {
+      "coverage": {
+        "langs": ["ro", "en", "fr", "it", "es", "pt", "de", "hu"],
+        "platform": "native"
+      }
+    },
+    "LegatorOCR": {
+      "coverage": {
+        "langs": ["ro", "en", "fr", "it", "es", "pt", "de", "hu"],
+        "platform": "native"
+      }
+    }
   }
 }

@@ -55,7 +55,9 @@ async function open(lang, urlPath = '', opts = {}) {
   await ctx.addInitScript((l) => { try { localStorage.setItem('lang', l); } catch { /* fără localStorage */ } }, lang);
   const page = await ctx.newPage();
   page.on('pageerror', (e) => errors.push(e.message));
-  page.on('console', (m) => { if (m.type() === 'error') errors.push(m.text() + (m.location().url ? ' [' + m.location().url + ']' : '')); });
+  // 404 pentru demo/<App>/loc/<limbă>/preview.webp|video.mp4 este fallback intenționat (previzualizarea localizată lipsește → se cere cea implicită);
+  // apare doar pentru cardurile ajunse în viewport, deci altfel testul ar depinde de poziția de derulare.
+  page.on('console', (m) => { const u = m.location().url || ''; if (m.type() === 'error' && !/\/demo\/[^/]+\/loc\/[a-z]{2}\//.test(u)) errors.push(m.text() + (u ? ' [' + u + ']' : '')); });
   await page.goto(BASE + urlPath);
   return {ctx, page, external, errors};
 }
@@ -193,6 +195,48 @@ await T('catalog: contoare derivate, stare, offline, fișă, variante Universul 
     if (l !== 'en') ok(!/Unofficial/.test(r.txt) && !/Romanian and English|ro și engleză/i.test(r.txt), `${l}: fișa cade încă pe engleză`);
     ok(!o.errors.length, `${l}: erori ${o.errors.join('|')}`);
     await o.ctx.close();
+  }
+});
+
+await T('catalog: acoperire pe toate cardurile, contor de dovezi, avertisment de sănătate, marcaj „fragil”, în cele 8 limbi', async () => {
+  const meta = JSON.parse(fs.readFileSync(path.join(HUB, 'index.html'), 'utf8').match(/<script type="application\/json" id="catalog-meta">([\s\S]*?)<\/script>/)[1]);
+  const EVID7 = ['HoroScop', 'Bioenergoterapie', 'Afrodisiace-fara-frontiere', 'FrequencyLaboratory', 'ASMR', 'Inforenergetica', 'Radiestezie'];
+  for (const l of LANGS) {
+    const {ctx, page, errors, external} = await open(l);
+    await page.waitForSelector('#apps-grid .app-card:not([data-variant-of])');
+    await page.waitForFunction((l) => document.documentElement.lang === l, l);
+    const r = await page.evaluate((EVID7) => {
+      const all = [...document.querySelectorAll('#apps-grid .app-card')], live = all.filter((c) => !c.hasAttribute('data-variant-of'));
+      const key = (c) => c.querySelector('[data-c^="apps|"]').dataset.c.split('|')[1];
+      const byKey = Object.fromEntries(live.map((c) => [key(c), c]));
+      const txt = (k, sel) => { const e = byKey[k] && byKey[k].querySelector(sel); return e ? e.textContent.trim() : null; };
+      return {
+        attrs: all.filter((c) => !(c.dataset.langs && c.dataset.plat)).map(key),
+        noCov: live.filter((c) => !c.querySelector('.card-badges .bd-cov')).map(key),
+        evid: EVID7.map((k) => [k, !!(byKey[k] && byKey[k].querySelector('.card-evid .ev-pip')), byKey[k] && byKey[k].querySelectorAll('.card-evid .ev-pip.on').length, txt(k, '.card-evid')]),
+        health: live.filter((c) => c.querySelector('.bd-health')).map(key), fragile: live.filter((c) => c.querySelector('.bd-fragile')).map(key),
+        tezaur: txt('TEZAUR', '.bd-cov'), pendulul: txt('Pendulul', '.bd-cov'), veriga: txt('VERIGA', '.bd-cov'), agora: txt('AGORA', '.bd-cov'),
+        puls: txt('PULS', '.bd-health'), vitrina: txt('Vitrina', '.bd-fragile'),
+        sheet: (() => { const c = byKey.HoroScop; c.querySelector('details.fisa').open = true; return c.querySelector('details.fisa').textContent; })(),
+        all: live.map((c) => c.querySelector('.card-badges').textContent + ' ' + (c.querySelector('.card-evid') ? c.querySelector('.card-evid').textContent : '')).join(' | '),
+      };
+    }, EVID7);
+    ok(r.attrs.length === 0, `${l}: carduri fără data-langs/data-plat: ${r.attrs.join(',')}`);
+    ok(r.noCov.length === 0, `${l}: carduri fără etichetă de acoperire: ${r.noCov.join(',')}`);
+    ok(r.evid.every((e) => e[1] && e[3] && !/undefined|\{|^ev\d/.test(e[3])), `${l}: contor de dovezi lipsă: ${JSON.stringify(r.evid)}`);
+    ok(r.evid.every((e) => e[2] === meta.apps[e[0]].evidence.level), `${l}: pătrățelele nu corespund nivelului: ${JSON.stringify(r.evid)}`);
+    ok(['Bioenergoterapie', 'Reiki', 'FrequencyLaboratory', 'PULS', 'SEVA', 'ASMR'].every((k) => r.health.includes(k)) && r.puls && r.puls.length > 5, `${l}: avertisment de sănătate: ${r.health.join(',')}`);
+    ok(['Vitrina', 'Threads-fara-cont', 'X-fara-cont', 'Cadraj'].every((k) => r.fragile.includes(k)) && r.vitrina && r.vitrina.length > 3, `${l}: „fragil”: ${r.fragile.join(',')}`);
+    ok(/\bEN\b/.test(r.tezaur) && /\bRO\b/.test(r.pendulul), `${l}: acoperire TEZAUR „${r.tezaur}” / Pendulul „${r.pendulul}”`);
+    ok(r.tezaur !== r.agora && r.veriga !== r.tezaur, `${l}: etichetele de acoperire nu diferă`);
+    ok(!/undefined|NaN|\[object|\$\{|\b(cov[A-Z]\w*|plat[A-Z]\w*|bd(Health|Fragile)|ev[0-4]|evMode\w*|fEvid|stLab)\b/.test(r.all + ' ' + r.sheet), `${l}: chei/substituenți neinterpolați în insigne/fișă`);
+    if (l === 'ro') {
+      ok(/instalabil/.test(r.tezaur) && /instalabil/.test(r.veriga), 'ro: Rust „instalabil”');
+      ok(/mod istoric \/ cultural/.test(r.evid.find((e) => e[0] === 'HoroScop')[3]), 'ro: HoroScop „mod istoric / cultural”');
+      ok(/nu înlocuiește medicul/.test(r.puls), 'ro: avertismentul de sănătate');
+    }
+    ok(!errors.length && !external.length, `${l}: erori/cereri externe: ${errors.concat(external).join(' | ')}`);
+    await ctx.close();
   }
 });
 

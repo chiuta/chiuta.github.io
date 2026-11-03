@@ -30,7 +30,7 @@ import vm from 'node:vm';
 import {createHash} from 'node:crypto';
 import {fileURLToPath} from 'node:url';
 import {recomputeCspHashes} from '../fff-kit/lib/csp.mjs';
-import {loadMeta, deriveStatus, verText, variantOf, counts, validateMeta} from './catalog-meta-lib.mjs';
+import {loadMeta, deriveStatus, verText, variantOf, counts, validateMeta, coverageScore} from './catalog-meta-lib.mjs';
 
 const HUB = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const argv = process.argv.slice(2);
@@ -102,7 +102,7 @@ function truth(key) {
 /* ---- carduri ---- */
 const parts = html.split('<div class="app-card"');
 const keys = [];
-const bySection = {};
+const bySection = {}, covCards = {};
 const lastSec = (txt, prev) => { const m = [...txt.matchAll(/<div class="sec-head[^"]*" id="([^"]+)"/g)]; return m.length ? m[m.length - 1][1] : prev; };
 let curSec = lastSec(parts[0], '');
 for (let i = 1; i < parts.length; i++) {
@@ -113,14 +113,33 @@ for (let i = 1; i < parts.length; i++) {
   const sec = curSec;
   (bySection[sec] ||= []).push(key);
   curSec = lastSec(parts[i], curSec);   // secțiunea următoare începe după coada acestui card
-  if (EXTERNAL.has(key)) { if (!/<span class="card-ver"/.test(parts[i])) warn(`${key}: cardul nu are <span class="card-ver">`); continue; }
+  if (EXTERNAL.has(key)) {
+    if (!/<span class="card-ver"/.test(parts[i])) warn(`${key}: cardul nu are <span class="card-ver">`);
+    // acoperire: limbile și platforma vin din meta.coverage (sau din cardul scris de mână); data-plat se scrie aici
+    const cov = (meta.apps[key] || {}).coverage;
+    const cur = (parts[i].match(/^[^>]*? data-langs="([^"]*)"/) || [])[1] || '';
+    const langs = cov ? cov.langs : cur.split(',').filter(Boolean);
+    const plat = cov ? cov.platform : (meta.kinds[key] === 'engine' ? 'native' : 'web');
+    if (!langs.length) warn(`${key}: fără limbi de acoperire (coverage.langs în catalog-meta)`);
+    { const te = parts[i].indexOf('>'); let tag = parts[i].slice(0, te); const before = tag;
+      if (/ data-langs="/.test(tag)) tag = tag.replace(/ data-langs="[^"]*"/, ` data-langs="${langs.join(',')}"`); else tag = ` data-langs="${langs.join(',')}"` + tag;
+      if (/ data-plat="/.test(tag)) tag = tag.replace(/ data-plat="[^"]*"/, ` data-plat="${plat}"`); else tag = /( data-status="[^"]*")/.test(tag) ? tag.replace(/( data-status="[^"]*")/, `$1 data-plat="${plat}"`) : tag + ` data-plat="${plat}"`;
+      if (tag !== before) changes.push(`${key}: acoperire → ${langs.join(',')} · ${plat}`);
+      parts[i] = tag + parts[i].slice(te); }
+    covCards[key] = {n: langs.length, plat, langs};
+    continue;
+  }
   const t = truth(key);
   if (t.missing) { warn(`${key}: nu există ${ROOT}/${key}/index.html și nici apps/${key}/index.html`); continue; }
   if (!t.version) { warn(`${key}: fără versiune în index.html`); continue; }
   // 0. atribute de filtrare (idempotent)
   const status = deriveStatus(t.version, (meta.apps[key] || {}).status);
-  const attrs = ` data-cat="${sec}" data-langs="${t.langs.join(',')}" data-off="${t.off}" data-status="${status}"` + (VARIANT[key] ? ` data-variant-of="${VARIANT[key]}" hidden` : '');
-  parts[i] = parts[i].replace(/^( data-cat="[^"]*")?( data-langs="[^"]*")?( data-off="[^"]*")?( data-status="[^"]*")?( data-variant-of="[^"]*" hidden)?/, (m) => { if (m !== attrs) changes.push(`${key}: filtre${m ? '' : ' (nou)'} → ${sec} · ${t.langs.length} limbi · offline ${t.off} · ${status}${VARIANT[key] ? ' · variantă' : ''}`); return attrs; });
+  const cov = (meta.apps[key] || {}).coverage;
+  const langs = cov ? cov.langs : t.langs, plat = cov ? cov.platform : (meta.kinds[key] === 'engine' ? 'native' : 'web');
+  if (!langs.length) warn(`${key}: fără limbi de acoperire (aplicația nu declară features.i18n; adaugă coverage.langs în catalog-meta)`);
+  covCards[key] = {n: langs.length, plat, langs};
+  const attrs = ` data-cat="${sec}" data-langs="${langs.join(',')}" data-off="${t.off}" data-status="${status}" data-plat="${plat}"` + (VARIANT[key] ? ` data-variant-of="${VARIANT[key]}" hidden` : '');
+  parts[i] = parts[i].replace(/^( data-cat="[^"]*")?( data-langs="[^"]*")?( data-off="[^"]*")?( data-status="[^"]*")?( data-plat="[^"]*")?( data-variant-of="[^"]*" hidden)?/, (m) => { if (m !== attrs) changes.push(`${key}: filtre${m ? '' : ' (nou)'} → ${sec} · ${t.langs.length} limbi · offline ${t.off} · ${status}${VARIANT[key] ? ' · variantă' : ''}`); return attrs; });
   // 1. versiune + dată
   const want = `<span class="card-ver" data-ver="${t.version}" data-upd="${t.updated}">${verText(t.version, (meta.apps[key] || {}).substantive)}</span>`;
   parts[i] = parts[i].replace(/<span class="card-ver"[^>]*>[^<]*<\/span>/, (m) => { if (m !== want) changes.push(`${key}: ${m.replace(/<[^>]+>/g, '')} → ${want.replace(/<[^>]+>/g, '')}`); return want; });
@@ -170,7 +189,7 @@ html = html.replace(/(id="stat-sections">)\d+(<)/, (m, a, b) => { if (m !== `${a
   const emb = {schema: meta.schema, policy: meta.policy, kinds: meta.kinds, variants: meta.variants, related: meta.related, apps: {}};
   for (const [k, v] of Object.entries(meta.apps)) {
     const o = {};
-    for (const f of ['fisa', 'substantive', 'screenshot', 'screenshotAlt', 'score']) if (v[f]) o[f] = v[f];
+    for (const f of ['fisa', 'substantive', 'screenshot', 'screenshotAlt', 'score', 'evidence', 'health', 'fragile', 'checked']) if (v[f]) o[f] = v[f];
     if (Object.keys(o).length) emb.apps[k] = o;
   }
   const block = `<script type="application/json" id="catalog-meta">${JSON.stringify(emb).replace(/</g, '\\u003c')}</script>`;

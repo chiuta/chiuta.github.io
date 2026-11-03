@@ -3,6 +3,8 @@
 import fs from 'node:fs';
 import path from 'node:path';
 
+export const LANGS8 = ['ro', 'en', 'fr', 'it', 'es', 'pt', 'de', 'hu'];
+export const PLATFORMS = ['web', 'native'];
 export const STATUSES = ['stable', 'experimental', 'alpha', 'lab'];
 
 export function loadMeta(hub) {
@@ -31,6 +33,9 @@ export function variantOf(meta) {
   return out;
 }
 
+/** Scor de acoperire 0–4 din numărul de limbi (din cele 8). */
+export function coverageScore(n) { return n >= 8 ? 4 : n >= 4 ? 3 : n >= 2 ? 2 : n >= 1 ? 1 : 0; }
+
 /** Contoare derivate din lista reală de carduri (chei). */
 export function counts(meta, keys, sections) {
   const vo = variantOf(meta);
@@ -56,6 +61,22 @@ export function validateMeta(meta, keys, bySection = null) {
       const c = v.fisa && v.fisa[l] && v.fisa[l].cifre;
       if (!c || !/\d{4}-\d\d-\d\d/.test(c)) out.push(`catalog-meta: ${k}: „figures” cere în fișa ${l} un text „cifre” cu sursă și dată AAAA-LL-ZZ`);
     }
+  }
+  // evidence / coverage / health / fragile
+  const pol = meta.policy || {};
+  for (const [k, v] of Object.entries(meta.apps)) {
+    if (v.evidence !== undefined && !(v.evidence && Number.isInteger(v.evidence.level) && v.evidence.level >= 0 && v.evidence.level <= 4)) out.push(`catalog-meta: ${k}: „evidence.level” trebuie să fie un întreg 0–4`);
+    if (v.health !== undefined && v.health !== true) out.push(`catalog-meta: ${k}: „health” poate fi doar true`);
+    if (v.fragile !== undefined && v.fragile !== true) out.push(`catalog-meta: ${k}: „fragile” poate fi doar true`);
+    if (v.checked !== undefined && !/^\d{4}-\d\d-\d\d$/.test(v.checked)) out.push(`catalog-meta: ${k}: „checked” trebuie să fie AAAA-LL-ZZ`);
+    if (v.coverage !== undefined) {
+      const c = v.coverage;
+      if (!c || !Array.isArray(c.langs) || !c.langs.length || c.langs.some((l) => !LANGS8.includes(l))) out.push(`catalog-meta: ${k}: „coverage.langs” trebuie să fie o listă nevidă din ${LANGS8.join(',')}`);
+      if (!c || !PLATFORMS.includes(c.platform)) out.push(`catalog-meta: ${k}: „coverage.platform” trebuie să fie ${PLATFORMS.join(' sau ')}`);
+    }
+  }
+  for (const [list, field] of [['evidenceRequired', 'evidence'], ['healthRequired', 'health'], ['fragileRequired', 'fragile']]) {
+    for (const k of pol[list] || []) if (!meta.apps[k] || meta.apps[k][field] === undefined) out.push(`catalog-meta: ${k} trebuie să aibă „${field}” (policy.${list})`);
   }
   // scor de audit + stare „laborator” + ordinea din „Recomandate”
   const thr = meta.policy && Number.isFinite(meta.policy.labThreshold) ? meta.policy.labThreshold : 5;
