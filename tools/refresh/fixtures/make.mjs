@@ -62,6 +62,9 @@ const urlsOf = (s) => [s.url, ...(s.urls || []), ...(((s.expect || {}).checks ||
   put1('garbage', '<html><body>Mentenanță</body></html>', 200);
   { robotsAll(id, 'fallback', [s.url, ...s.urls]); put(id, 'fallback', s.url, 'indisponibil', 503, 'text/plain'); put(id, 'fallback', s.urls[0], base, 200, 'application/json'); }
   { const j = idx(120); j.items[5].id = j.items[6].id; put1('duplicates', j); }
+  { const wp = s.urls[1], posts = Array.from({length: 130}, (_, i) => ({id: 2000 + i, title: {rendered: `Articol WP ${i} &amp; co`}, link: `https://www.videoneat.com/a-${i}/`, date: '2026-10-01T10:00:00'}));
+    robotsAll(id, 'wp-fallback', [s.url, ...s.urls]); put(id, 'wp-fallback', s.url, 'nu există', 404, 'text/plain'); put(id, 'wp-fallback', s.urls[0], 'nu există', 404, 'text/plain');
+    put(id, 'wp-fallback', wp + '&page=1', posts.slice(0, 100), 200, 'application/json'); put(id, 'wp-fallback', wp + '&page=2', posts.slice(100), 200, 'application/json'); }
 }
 
 /* ---------- AGORA-populatii (eurostat-population) ---------- */

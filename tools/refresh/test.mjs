@@ -111,6 +111,7 @@ test('VNTV (viu, pilot): auto-fuziune doar pentru diferențe mici; respins la sc
   for (const [scen, type] of [['drop', 'threshold'], ['structure', 'structure']]) { const r = run(root, 'VNTV', scen); assert.equal(r.out.status, 'alert', scen); assert.ok(r.out.reasons.some((q) => q.type === type), scen); }
   const g = run(root, 'VNTV', 'garbage'); assert.equal(g.out.status, 'error'); assert.equal(g.out.errorType, 'parse');
   const fb = run(mkRoot(), 'VNTV', 'fallback'); assert.equal(fb.out.status, 'changed'); assert.match(fb.out.summary.url, /videoneat-index\.json$/);
+  const wp = run(mkRoot(), 'VNTV', 'wp-fallback'); assert.equal(wp.out.count, 130); assert.equal(wp.out.summary.source, 'wp-posts'); assert.equal(wp.out.status, 'changed');
   const dup = run(root, 'VNTV', 'duplicates'); assert.equal(dup.out.count, 119, 'duplicatul e ignorat (sub pragul de 2%)');
   fs.rmSync(root, {recursive: true, force: true});
 });

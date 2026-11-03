@@ -92,7 +92,8 @@
    "nume": "Indexul catalogului VideoNeat (pluginul VideoNeat Index)",
    "url": "https://www.videoneat.com/wp-json/videoneat/v1/index",
    "urls": [
-    "https://www.videoneat.com/wp-content/uploads/videoneat-index.json"
+    "https://www.videoneat.com/wp-content/uploads/videoneat-index.json",
+    "https://www.videoneat.com/wp-json/wp/v2/posts?per_page=100&_fields=id,title,link,date"
    ],
    "tip": "API JSON",
    "cadenta": "viu",
@@ -123,7 +124,8 @@
    ],
    "deConfirmat": [
     "forma reală a răspunsului în producție (verificată doar după codul pluginului)",
-    "permisiunea pentru afișarea trailerelor (NOTICE.md)"
+    "permisiunea pentru afișarea trailerelor (NOTICE.md)",
+    "2026-11-03, rulare reală în Actions: /wp-json/videoneat/v1/index a răspuns HTTP 404 (pluginul VideoNeat Index nu pare instalat pe site); se încearcă fișierul static și apoi wp/v2/posts (rezerva folosită și de VNTV)"
    ],
    "note": "Pilot „viu” (8.4). Instantaneu = catalogul compact; aplicația citește indexul direct la rulare, instantaneul servește monitorizării și auto-fuziunii diferențelor mici.",
    "card": true

@@ -1,31 +1,49 @@
 // Parsere pentru surse JSON: videoneat-index (VNTV), eurostat-population (AGORA), json-shape (canare de API), npm-package, pypi-package.
 import {fetchOk, parseJson, path, err} from './common.mjs';
 
+/** Rezervă: API-ul WordPress standard (wp/v2/posts), același pe care îl folosește VNTV ca „fallback”. Fără trailer/an (acestea vin doar din index). */
+async function wpPosts(src, http, url) {
+  const all = [];
+  for (let page = 1; page <= 15; page++) {
+    const r = await fetchOk(http, src, url + (url.includes('?') ? '&' : '?') + 'page=' + page).catch((e) => { if (page > 1 && /HTTP 400\b/.test(e.message)) return null; throw e; });
+    if (!r) break;
+    const j = parseJson(http.text(r), 'WordPress posts');
+    if (!Array.isArray(j)) throw err('parse', 'wp/v2/posts nu a întors un tablou');
+    all.push(...j); if (j.length < 100) break;
+  }
+  return all;
+}
 export const videoneat = {
-  version: 1, kind: 'data',
+  version: 2, kind: 'data',
   async run(src, http) {
     let j, used, firstErr;
-    for (const u of [src.url, ...(src.urls || [])].filter((x, i, a) => x && a.indexOf(x) === i)) {
-      try { j = parseJson(http.text(await fetchOk(http, src, u)), 'indexul VideoNeat'); used = u; break; } catch (e) { firstErr ||= e; }
+    const urls = [src.url, ...(src.urls || [])].filter((x, i, a) => x && a.indexOf(x) === i);
+    for (const u of urls) {
+      try {
+        if (/\/wp\/v2\/posts/.test(u)) { const posts = await wpPosts(src, http, u); j = {wp: true, items: posts}; }
+        else j = parseJson(http.text(await fetchOk(http, src, u)), 'indexul VideoNeat');
+        used = u; break;
+      } catch (e) { firstErr ||= e; }
     }
     if (!j) throw firstErr;
     const problems = [], summary = {url: used};
     if (!j || typeof j !== 'object' || !Array.isArray(j.items)) throw err('parse', 'lipsește tabloul „items” (formatul indexului s-a schimbat?)');
-    if (j.v !== 1) problems.push({type: 'structure', msg: `versiunea formatului indexului este ${JSON.stringify(j.v)}, se aștepta 1`});
-    if (typeof j.count === 'number' && j.count !== j.items.length) problems.push({type: 'structure', msg: `count=${j.count} dar items are ${j.items.length}`});
+    if (!j.wp && j.v !== 1) problems.push({type: 'structure', msg: `versiunea formatului indexului este ${JSON.stringify(j.v)}, se aștepta 1`});
+    if (!j.wp && typeof j.count === 'number' && j.count !== j.items.length) problems.push({type: 'structure', msg: `count=${j.count} dar items are ${j.items.length}`});
     const keys = new Set(); for (const it of j.items.slice(0, 20)) Object.keys(it || {}).forEach((x) => keys.add(x));
-    const structure = 'v' + j.v + '|' + Object.keys(j).sort().join(',') + '|' + [...keys].sort().join(',');
+    const structure = j.wp ? 'wp-posts|' + [...keys].sort().join(',') : 'v' + j.v + '|' + Object.keys(j).sort().join(',') + '|' + [...keys].sort().join(',');
     const records = [], seen = new Set(); let bad = 0, withTrailer = 0;
     for (const it of j.items) {
-      if (!it || !Number.isInteger(it.id) || typeof it.title !== 'string' || !it.title.trim() || typeof it.link !== 'string') { bad++; continue; }
+      const title = j.wp ? (it && it.title && it.title.rendered) : (it && it.title);
+      if (!it || !Number.isInteger(it.id) || typeof title !== 'string' || !title.trim() || typeof it.link !== 'string') { bad++; continue; }
       if (seen.has(it.id)) { bad++; continue; } seen.add(it.id);
-      const tr = it.trailer && it.trailer.host && it.trailer.id ? `${it.trailer.host}/${it.trailer.id}` : null;
+      const tr = !j.wp && it.trailer && it.trailer.host && it.trailer.id ? `${it.trailer.host}/${it.trailer.id}` : null;
       if (tr) withTrailer++;
-      records.push({k: String(it.id).padStart(7, '0'), t: it.title.trim(), d: it.date || null, y: it.year || null, tr});
+      records.push({k: String(it.id).padStart(7, '0'), t: j.wp ? title.replace(/<[^>]+>/g, '').replace(/&#8217;/g, '’').replace(/&amp;/g, '&').trim() : title.trim(), d: (it.date || '').slice(0, 10) || null, y: j.wp ? null : (it.year || null), tr});
     }
     records.sort((a, b) => (a.k < b.k ? -1 : 1));
     if (j.items.length && bad / j.items.length > 0.02) problems.push({type: 'validation', msg: `${bad} din ${j.items.length} articole fără id/titlu/link valide (>2%)`});
-    summary.items = j.items.length; summary.withTrailer = withTrailer; summary.generated = j.generated || null;
+    summary.items = j.items.length; summary.withTrailer = withTrailer; summary.generated = j.generated || null; summary.source = j.wp ? 'wp-posts' : 'index';
     if (j.generated) { const age = (Date.now() - Date.parse(j.generated)) / 864e5; if (age > 30) summary.warning = `indexul este generat acum ${Math.round(age)} zile`; }
     return {records, structure, problems, summary, labels: Object.fromEntries(records.map((r) => [r.k, r.t]))};
   },
