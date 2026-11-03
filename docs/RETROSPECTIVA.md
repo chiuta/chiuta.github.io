@@ -86,7 +86,7 @@ Scrisă la 3 noiembrie 2026, la închiderea Etapei 7. Pentru fiecare etapă: ce 
 
 ## Etapa 8 · Actualizare automată a surselor
 
-- **Folosit:** 30 de surse; 15 active (13 ok, 2 în alertă la ultima fișă de sănătate); 7 probleme deschise ca issue-uri (#13–#19), din care 4 s-au închis singure după reparații.
+- **Folosit:** 30 de surse; 15 active, toate ok la rularea din 3 noiembrie (după reparațiile din Etapa 7; înainte, 2 erau în alertă: ACORDAJ și LocalMind); 7 probleme deschise ca issue-uri (#13–#19), din care 4 s-au închis singure după reparații.
 - **A prins probleme reale:** analizorul ACORDAJ dădea 4 titluri în loc de ~1130 (reparat: 1132); LocalMind ținea nume de modele redenumite (reparat); canarul Gutendex din AcademiSearch-API bloca robots (scos).
 - **Nefolosit:** 9 surse „doar-inventar” și 6 „de confirmat” nu se descarcă niciodată; sunt documentație, nu automatizare. Trei ramuri „gata de PR” (ACORDAJ, AGORA, VNTV) așteaptă recenzia autorului (PR #20–#22): `autoMerge` e oprit intenționat.
 - **De scos (propus):** nimic; sursele „doar-inventar” se pot muta într-un fișier separat dacă încurcă tabloul.
