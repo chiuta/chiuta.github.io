@@ -1,23 +1,15 @@
 // TEMPORAR: tipărește structura (nu conținutul) paginilor ACORDAJ; literele devin „a”, cifrele rămân.
 import {htmlToLines} from './parsers/common.mjs';
-import {internalLinks} from './parsers/html.mjs';
 const UA = 'chiuta-refresh/1.0 (+https://github.com/chiuta/chiuta.github.io; structura sursei)';
-const mask = (s) => String(s).replace(/\p{L}/gu, 'a').replace(/a{3,}/g, (m) => 'a'.repeat(Math.min(m.length, 12)));
-const get = async (u) => { const r = await fetch(u, {headers: {'user-agent': UA}}); return {status: r.status, ct: r.headers.get('content-type'), text: await r.text()}; };
-const rb = await get('https://cursurispirituale.webnode.ro/robots.txt'); console.log('robots', rb.status, '\n' + rb.text.slice(0, 600));
-const start = 'https://cursurispirituale.webnode.ro/';
-const p0 = await get(start); console.log('start', p0.status, p0.text.length);
-const links = internalLinks(p0.text, start, null, 60); console.log('links', links.length); console.log(links.join('\n'));
-for (const u of [start, ...links.slice(0, 12)]) {
-  const p = u === start ? p0 : await get(u); await new Promise((r) => setTimeout(r, 1500));
-  const lines = htmlToLines(p.text);
-  const num = lines.filter((l) => /^\d{1,4}\s*[.)–—:-]/.test(l));
-  console.log('\n== ' + u, p.status, 'bytes', p.text.length, 'lines', lines.length, 'numbered', num.length);
-  console.log(num.slice(0, 6).map(mask).join('\n'));
-  const idx = p.text.search(/>\s*1\s*[.)]\s*</); 
-  const cand = p.text.search(/\b1\s*\.\s/);
-  const at = idx >= 0 ? idx : cand;
-  if (at >= 0) console.log('html@', mask(p.text.slice(Math.max(0, at - 200), at + 300).replace(/\s+/g, ' ')));
-  // numere de forma N. în text brut
-  const raw = [...p.text.matchAll(/(?:^|[>\s])(\d{1,4})\s*\.\s+\p{L}/gu)].length; console.log('raw N. matches', raw);
-}
+const mask = (s) => String(s).replace(/\p{L}/gu, 'a').replace(/a{3,}/g, (m) => 'a'.repeat(Math.min(m.length, 8)));
+const get = async (u) => { const r = await fetch(u, {headers: {'user-agent': UA}}); return {status: r.status, text: await r.text()}; };
+const sm = await get('https://cursurispirituale.webnode.ro/sitemap.xml'); const urls = [...sm.text.matchAll(/<loc>([^<]+)<\/loc>/g)].map((m) => m[1]);
+console.log('sitemap', sm.status, urls.length); console.log(urls.slice(0, 40).join('\n'));
+const p = await get('https://cursurispirituale.webnode.ro/'); const lines = htmlToLines(p.text);
+const hist = {}; for (const l of lines) { const k = l.length < 15 ? 's' : l.length < 40 ? 'm' : l.length < 90 ? 'l' : 'xl'; hist[k] = (hist[k] || 0) + 1; } console.log('hist', JSON.stringify(hist));
+const withDigit = lines.filter((l) => /^\d/.test(l)); console.log('start-with-digit', withDigit.length, withDigit.slice(0, 10).map(mask));
+const mid = Math.floor(lines.length / 2); console.log('--- mid lines'); console.log(lines.slice(mid, mid + 40).map((l) => mask(l).slice(0, 80)).join('\n'));
+console.log('--- first 40 lines'); console.log(lines.slice(0, 40).map((l) => mask(l).slice(0, 80)).join('\n'));
+const i = p.text.indexOf('342.'); console.log('html@342', mask(p.text.slice(Math.max(0, i - 600), i + 400).replace(/\s+/g, ' ')));
+// structura HTML: numără etichetele frecvente
+const tags = {}; for (const m of p.text.matchAll(/<(\w+)[\s>]/g)) tags[m[1]] = (tags[m[1]] || 0) + 1; console.log('tags', JSON.stringify(Object.entries(tags).sort((a, b) => b[1] - a[1]).slice(0, 14)));
