@@ -6,7 +6,13 @@
    "status": "neexecutat"
   },
   "VNTV": {
-   "status": "neexecutat"
+   "status": "schimbat",
+   "lastOk": "2026-11-03",
+   "errorType": null,
+   "errorMsg": null,
+   "consecutiveFails": 0,
+   "records": 1363,
+   "sha256": "a64a9818ba5f"
   },
   "AGORA-populatii": {
    "status": "neexecutat"

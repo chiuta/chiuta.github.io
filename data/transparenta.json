@@ -1343,12 +1343,12 @@
     "id": "VNTV",
     "app": "VNTV",
     "cad": "viu",
-    "st": "neexecutat",
+    "st": "schimbat",
     "active": true,
-    "lastOk": null,
+    "lastOk": "2026-11-03",
     "lastFail": null,
     "err": null,
-    "recs": null,
+    "recs": 1363,
     "stale": false
    },
    {
