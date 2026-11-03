@@ -1,0 +1,33 @@
+<section class="disc" id="discover" aria-labelledby="disc-h">
+      <h2 class="apps-title" id="disc-h" data-d="title">Find your way</h2>
+      <p class="disc-lead" data-d="lead"></p>
+      <form class="ask" id="ask-form" role="search" aria-labelledby="ask-lbl" autocomplete="off">
+        <label for="ask-q" id="ask-lbl" data-d="askLbl"></label>
+        <div class="ask-row"><input id="ask-q" type="text" enterkeyhint="go" spellcheck="false" data-dp="askPh" aria-describedby="ask-hint"><button type="submit" class="disc-btn pri" id="ask-go" data-d="askGo"></button></div>
+        <p class="disc-small" id="ask-hint" data-d="askHint"></p>
+        <div class="ask-ex" role="group" aria-labelledby="ask-try"><span id="ask-try" data-d="askTry"></span><button type="button" class="rel-chip" data-ex="ex1"></button><button type="button" class="rel-chip" data-ex="ex2"></button><button type="button" class="rel-chip" data-ex="ex3"></button></div>
+      </form>
+      <div class="ask-out" id="ask-out" role="region" aria-live="polite" aria-labelledby="ask-lbl"></div>
+      <div class="disc-actions">
+        <button type="button" class="disc-btn" id="cs-open" aria-haspopup="dialog" data-d="csOpen"></button>
+      </div>
+      <details class="disc-panel" id="au-panel"><summary data-d="auTitle"></summary>
+        <div class="disc-body">
+          <p data-d="auLead"></p>
+          <div class="au-drop" id="au-drop"><input type="file" id="au-file" class="vh"><label for="au-file" class="disc-btn pri" data-d="auPick"></label> <span class="disc-small" data-d="auDrop"></span></div>
+          <div id="au-out" class="au-out" role="region" aria-live="polite" tabindex="-1"></div>
+        </div>
+      </details>
+      <details class="disc-panel" id="ld-panel"><summary data-d="ldTitle"></summary>
+        <div class="disc-body">
+          <p data-d="ldLead"></p>
+          <p class="disc-small" data-d="ldLimit"></p>
+          <div class="ld-row"><label class="ld-consent"><input type="checkbox" id="ld-ok"> <span data-d="ldConsent"></span></label></div>
+          <div class="ld-row"><input type="file" id="ld-file" class="vh" multiple accept=".json,.csv,.tsv,.txt,.md,.gpx,.ics,.fff,.geojson"><label for="ld-file" class="disc-btn pri" data-d="ldPick"></label> <button type="button" class="disc-btn" id="ld-clear" data-d="ldClear"></button></div>
+          <p class="disc-small" id="ld-status" role="status"></p>
+          <label for="ld-q" data-d="ldQ" class="disc-small"></label>
+          <input type="search" id="ld-q" class="ld-q" spellcheck="false" autocomplete="off">
+          <ul class="ld-res" id="ld-res"></ul>
+        </div>
+      </details>
+    </section>

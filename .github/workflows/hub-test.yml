@@ -31,6 +31,7 @@ jobs:
           node tools/sync-catalog.mjs --check --root tests/fixtures/apps
           node tools/transparenta.mjs --check
           node tests/envelope.test.mjs
+          node tools/build-discover.mjs --check
           node tools/cname-inventory.mjs --check --root tests/fixtures/apps
           node fff-kit/build.mjs fixcsp index.html | tee /tmp/fixcsp.txt
           grep -q "neschimbat" /tmp/fixcsp.txt
@@ -39,9 +40,12 @@ jobs:
           set -euo pipefail
           mkdir -p "$RUNNER_TEMP/pw" && cd "$RUNNER_TEMP/pw"
           echo '{"name":"ci-pw","private":true}' > package.json
-          npm install --no-audit --no-fund playwright@1.63.0
+          npm install --no-audit --no-fund playwright@1.63.0 axe-core@4.10.3
+          echo "FFF_AXE=$RUNNER_TEMP/pw/node_modules/axe-core/axe.min.js" >> "$GITHUB_ENV"
           npx playwright install --with-deps chromium
           echo "FFF_NODE_TOOLS=$RUNNER_TEMP/pw/package.json" >> "$GITHUB_ENV"
           echo "CHROMIUM_PATH=$(node -e "console.log(require('playwright').chromium.executablePath())")" >> "$GITHUB_ENV"
       - name: Testele hub-ului
         run: node tests/hub.test.mjs
+      - name: Teste Descoperire (relații, asistent, constelație, auditor, axe)
+        run: node tests/discover.test.mjs

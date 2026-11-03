@@ -1,0 +1,15 @@
+<dialog id="cs-dlg" aria-labelledby="cs-h">
+  <div class="cs-box">
+    <div class="cs-head"><h2 id="cs-h" data-d="csTitle"></h2><button type="button" class="disc-btn" id="cs-x" data-d="csClose"></button></div>
+    <p class="disc-small" id="cs-lead" data-d="csLead"></p>
+    <div class="cs-tools">
+      <label for="cs-pick" data-d="csPick" class="disc-small"></label><select id="cs-pick"></select>
+      <button type="button" class="disc-btn" id="cs-zo" data-d="csZoomOut"></button><button type="button" class="disc-btn" id="cs-zi" data-d="csZoomIn"></button><button type="button" class="disc-btn" id="cs-fit" data-d="csFit"></button>
+    </div>
+    <details class="cs-leg-d"><summary data-d="csSections"></summary><div class="cs-legend" id="cs-legend" role="group" aria-label="Sections"></div></details>
+    <div class="cs-main">
+      <div class="cs-scroll" id="cs-scroll" role="region" tabindex="0" aria-labelledby="cs-h" aria-describedby="cs-lead"></div>
+      <div class="cs-info" id="cs-info" aria-live="polite"></div>
+    </div>
+  </div>
+</dialog>
