@@ -30,7 +30,7 @@ import vm from 'node:vm';
 import {createHash} from 'node:crypto';
 import {fileURLToPath} from 'node:url';
 import {recomputeCspHashes} from '../fff-kit/lib/csp.mjs';
-import {loadMeta, deriveStatus, verText, variantOf, counts, validateMeta, coverageScore} from './catalog-meta-lib.mjs';
+import {buildRelations, loadMeta, deriveStatus, verText, variantOf, counts, validateMeta, coverageScore} from './catalog-meta-lib.mjs';
 
 const HUB = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const argv = process.argv.slice(2);
@@ -186,7 +186,7 @@ html = html.replace(/(id="stat-repos">)\d+(<)/, (m, a, b) => { if (m !== `${a}${
 html = html.replace(/(id="stat-sections">)\d+(<)/, (m, a, b) => { if (m !== `${a}${nSections}${b}`) changes.push(`contor secțiuni → ${nSections}`); return `${a}${nSections}${b}`; });
 {
   // metadatele încorporate (JSON; nu se execută, deci nu intră în hash-urile CSP)
-  const emb = {schema: meta.schema, policy: meta.policy, kinds: meta.kinds, variants: meta.variants, related: meta.related, apps: {}};
+  const emb = {schema: meta.schema, policy: meta.policy, kinds: meta.kinds, variants: meta.variants, related: meta.related, topics: meta.topics, relations: buildRelations(meta), apps: {}};
   for (const [k, v] of Object.entries(meta.apps)) {
     const o = {};
     for (const f of ['fisa', 'substantive', 'screenshot', 'screenshotAlt', 'score', 'evidence', 'health', 'fragile', 'checked']) if (v[f]) o[f] = v[f];

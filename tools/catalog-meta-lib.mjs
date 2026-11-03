@@ -9,7 +9,7 @@ export const STATUSES = ['stable', 'experimental', 'alpha', 'lab'];
 
 export function loadMeta(hub) {
   const meta = JSON.parse(fs.readFileSync(path.join(hub, 'data', 'catalog-meta.json'), 'utf8'));
-  meta.apps ||= {}; meta.kinds ||= {}; meta.variants ||= {}; meta.related ||= [];
+  meta.apps ||= {}; meta.kinds ||= {}; meta.variants ||= {}; meta.related ||= []; meta.topics ||= []; meta.extraRelations ||= [];
   return meta;
 }
 
@@ -24,6 +24,19 @@ export function deriveStatus(version, override) {
 export function verText(version, substantive) {
   void substantive; // data ultimei schimbări de fond rămâne în fișă și în titlul etichetei, nu pe card
   return `v${version}`;
+}
+
+/** Graful relațiilor declarate (Etapa 3): grupurile vechi `related`, subiectele `topics` (clici) și perechile `extraRelations`.
+ *  Întoarce {cheie: [cheie înrudită, …]} simetric, ordonat după greutate (câte legături comune) apoi alfabetic. */
+export function buildRelations(meta) {
+  const w = new Map();
+  const add = (a, b, x = 1) => { if (a === b) return; for (const [p, q] of [[a, b], [b, a]]) { if (!w.has(p)) w.set(p, new Map()); w.get(p).set(q, (w.get(p).get(q) || 0) + x); } };
+  for (const g of meta.related || []) for (const a of g) for (const b of g) add(a, b);
+  for (const t of meta.topics || []) for (const a of t.members) for (const b of t.members) add(a, b);
+  for (const [a, b] of meta.extraRelations || []) add(a, b, 2);
+  const out = {};
+  for (const [k, m] of [...w].sort((x, y) => x[0].localeCompare(y[0]))) out[k] = [...m].sort((x, y) => y[1] - x[1] || x[0].localeCompare(y[0])).map((e) => e[0]);
+  return out;
 }
 
 /** Variantele (carduri ascunse în fișa hub-ului): cheie variantă → cheia hub-ului. */
@@ -49,6 +62,14 @@ export function validateMeta(meta, keys, bySection = null) {
   const set = new Set(keys), out = [];
   for (const k of Object.keys(meta.apps)) if (!set.has(k)) out.push(`catalog-meta: aplicația „${k}” nu are card`);
   for (const [h, list] of Object.entries(meta.variants)) for (const k of [h, ...list]) if (!set.has(k)) out.push(`catalog-meta: varianta/hub-ul „${k}” nu are card`);
+  const rel = buildRelations(meta), vo = variantOf(meta);
+  for (const t of meta.topics) {
+    if (!t.id || !t.name || !t.kw) out.push(`catalog-meta: subiectul „${t.id}” nu are id/name/kw`);
+    for (const l of LANGS8) if (!t.name || !t.name[l]) out.push(`catalog-meta: subiectul „${t.id}” nu are numele în limba ${l}`);
+    for (const k of t.members || []) if (!set.has(k)) out.push(`catalog-meta: subiectul „${t.id}”: aplicația „${k}” nu are card`);
+  }
+  for (const [a, b] of meta.extraRelations) for (const k of [a, b]) if (!set.has(k)) out.push(`catalog-meta: relația „${a}”–„${b}”: „${k}” nu are card`);
+  for (const k of keys) if (!vo[k] && (rel[k] || []).length < 2) out.push(`catalog-meta: „${k}” are ${(rel[k] || []).length} relații declarate (minim 2)`);
   for (const g of meta.related) for (const k of g) if (!set.has(k)) out.push(`catalog-meta: aplicația înrudită „${k}” nu are card`);
   for (const [k, v] of Object.entries(meta.apps)) {
     if (v.status && !STATUSES.includes(v.status)) out.push(`catalog-meta: ${k}: stare necunoscută „${v.status}”`);
