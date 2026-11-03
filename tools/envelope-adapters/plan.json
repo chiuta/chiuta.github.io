@@ -1,0 +1,11 @@
+{
+  "academisearch": {"adapter": "AcademiSearch.js"},
+  "dataweave": {"adapter": "DataWeave.js"},
+  "arhiva-fara-frontiere": {"adapter": "Arhiva-fara-frontiere.js"},
+  "cadraj": {"adapter": "Cadraj.js"},
+  "constelar": {"adapter": "Constelar.js"},
+  "vaultcrypt": {"seif": true, "adapter": "VaultCrypt.js"},
+  "nexus-fara-frontiere": {"seif": true},
+  "ai-liber": {"seif": true},
+  "arena": {"seif": true}
+}

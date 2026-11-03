@@ -1,0 +1,23 @@
+{
+ "nexus-fara-frontiere": [
+  {
+   "name": "FFFSeif.mount",
+   "find": "  try { KV.controls(document.getElementById(\"kv-host\"), KVault, KVad); } catch(e){ console.warn(\"KV:\", e); }",
+   "with": "  try { KV.controls(document.getElementById(\"kv-host\"), KVault, KVad); } catch(e){ console.warn(\"KV:\", e); }\n  try { if (window.FFFSeif) FFFSeif.mount({ KV: KV, vault: KVault, ad: KVad, known: [\"anthropic\", \"openai\", \"google\"], hostId: \"kv-host\" }); } catch(e){ console.warn(\"seif:\", e); }   /* import din seiful comun (VaultCrypt) */"
+  }
+ ],
+ "arena": [
+  {
+   "name": "FFFSeif.mount",
+   "find": "try{KVctl=KV.controls($(\"kv-host\"),KVault,KVad);if(KVault.exists())KV.unlock(KVault,KVad);}catch(e){console.warn(\"KV:\",e);}",
+   "with": "try{KVctl=KV.controls($(\"kv-host\"),KVault,KVad);if(KVault.exists())KV.unlock(KVault,KVad);}catch(e){console.warn(\"KV:\",e);}\ntry{if(window.FFFSeif)FFFSeif.mount({KV:KV,vault:KVault,ad:KVad,hostId:\"kv-host\",known:[\"anthropic\",\"openai\",\"google\",\"groq\",\"mistral\",\"perplexity\",\"openrouter\",\"pollinations\"],toApp:function(sh){var H={groq:\"api.groq.com\",mistral:\"api.mistral.ai\",openrouter:\"openrouter.ai\",openai:\"api.openai.com\",google:\"generativelanguage.googleapis.com\",perplexity:\"api.perplexity.ai\"},o={};S.models.forEach(function(x){var k=null;if(x.provider===\"anthropic\")k=sh.anthropic;else if(x.provider===\"pollinations\")k=sh.pollinations;else{var u=String(x.baseUrl||\"\");for(var p in H)if(sh[p]&&u.indexOf(H[p])>=0){k=sh[p];break;}}if(k)o[x.id]=k;});return o;}});}catch(e){console.warn(\"seif:\",e);}   /* import din seiful comun (VaultCrypt) */"
+  }
+ ],
+ "ai-liber": [
+  {
+   "name": "FFFSeif.mount",
+   "find": "// Override gk/sk to use encryption for paid providers",
+   "with": "try{if(window.FFFSeif)FFFSeif.mount({KV:KV,vault:_kvVault,ad:_kvAd,hostId:\"kv-host\",known:[\"anthropic\",\"openai\",\"google\",\"groq\",\"mistral\",\"perplexity\",\"openrouter\"]});}catch(e){console.warn(\"seif:\",e);}   /* import din seiful comun (VaultCrypt) */\n// Override gk/sk to use encryption for paid providers"
+  }
+ ]
+}

@@ -1,0 +1,7 @@
+[
+  {"slug":"arhiva-fara-frontiere","name":"Arhiva fără frontiere","url":"https://arhiva-fara-frontiere.chiuta.ro/","accepts":["citation/csl"],"produces":["citation/csl"]},
+  {"slug":"cadraj","name":"Cadraj","url":"https://cadraj.chiuta.ro/","accepts":["table/csv","text/plain"],"produces":["table/csv"]},
+  {"slug":"constelar","name":"Constelar","url":"https://constelar.chiuta.ro/","accepts":["text/markdown","text/plain"],"produces":["text/markdown"]},
+  {"slug":"academisearch","name":"AcademiSearch","url":"https://academisearch.chiuta.ro/","accepts":["citation/csl"],"produces":["citation/csl"]},
+  {"slug":"dataweave","name":"DataWeave","url":"https://dataweave.chiuta.ro/","accepts":["table/csv"],"produces":["table/csv"]}
+]

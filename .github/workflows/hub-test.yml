@@ -30,6 +30,7 @@ jobs:
           set -euo pipefail
           node tools/sync-catalog.mjs --check --root tests/fixtures/apps
           node tools/transparenta.mjs --check
+          node tests/envelope.test.mjs
           node tools/cname-inventory.mjs --check --root tests/fixtures/apps
           node fff-kit/build.mjs fixcsp index.html | tee /tmp/fixcsp.txt
           grep -q "neschimbat" /tmp/fixcsp.txt
