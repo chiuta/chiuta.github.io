@@ -75,7 +75,19 @@ function publishData(o) {
     const open = gh('GET', `repos/${REPO}/pulls?state=open&head=${REPO.split('/')[0]}:${encodeURIComponent(branch)}`) || [];
     const title = `Date reîmprospătate: ${o.id}`, body = bodyPR(o, src, gateInfo);
     let pr = open[0];
-    if (pr) gh('PATCH', `repos/${REPO}/pulls/${pr.number}`, {title, body}); else pr = gh('POST', `repos/${REPO}/pulls`, {title, head: branch, base: BASE, body});
+    if (pr) gh('PATCH', `repos/${REPO}/pulls/${pr.number}`, {title, body}); else {
+      try { pr = gh('POST', `repos/${REPO}/pulls`, {title, head: branch, base: BASE, body}); }
+      catch (e) {
+        if (!/not permitted to create|pull request/i.test(String(e.message))) throw e;
+        // Setarea depozitului „Allow GitHub Actions to create and approve pull requests” e oprită: ramura e împinsă, deschidem un issue cu legătura de comparare.
+        ensureLabel('data-refresh', '0e8a16', 'Reîmprospătare automată a datelor externe');
+        const marker = `<!-- refresh-pr:${o.id} -->`, cmp = `https://github.com/${REPO}/compare/${BASE}...${encodeURIComponent(branch)}?expand=1`;
+        const ib = [marker, `Ramura \`${branch}\` conține datele reîmprospătate pentru \`${o.id}\` (${o.action}, ${o.count} înregistrări). Actions nu are voie să creeze pull request-uri în acest depozit (Settings → Actions → General → „Allow GitHub Actions to create and approve pull requests”).`, '', `Deschide PR-ul manual: ${cmp}`, '', body, ...(RUN_URL ? ['', `Rulare: ${RUN_URL}`] : [])].join('\n');
+        const ex = (gh('GET', `repos/${REPO}/issues?state=open&labels=data-refresh&per_page=100`) || []).find((i) => (i.body || '').includes(marker));
+        if (ex) gh('PATCH', `repos/${REPO}/issues/${ex.number}`, {body: ib}); else gh('POST', `repos/${REPO}/issues`, {title: `[refresh] Ramură gata de PR: ${o.id}`, body: ib, labels: ['data-refresh', 'needs-human']});
+        log(`${o.id}: PR imposibil din Actions; issue cu legătura de comparare`); done.push({id: o.id, branch, pr: null}); return;
+      }
+    }
     gh('POST', `repos/${REPO}/issues/${pr.number}/labels`, {labels: o.autoMerge ? ['data-refresh'] : ['data-refresh', 'needs-human']}, true);
     if (o.autoMerge && gateOk) {
       const m = gh('PUT', `repos/${REPO}/pulls/${pr.number}/merge`, {merge_method: 'squash', commit_title: title + ' (fuziune automată)'}, true);
@@ -114,7 +126,8 @@ function recover(ids) {
     gh('POST', `repos/${REPO}/issues/${ex.number}/comments`, {body: `Sursa \`${id}\` a trecut din nou validarea${RUN_URL ? ` (${RUN_URL})` : ''}. Închid issue-ul.`}); gh('PATCH', `repos/${REPO}/issues/${ex.number}`, {state: 'closed', state_reason: 'completed'}); log(`${id}: issue #${ex.number} închis (refăcut)`); }
 }
 
-for (const o of RES.results.filter((r) => r.status === 'changed' && r.kind === 'data')) publishData(o);
+let FAILED = 0;
+for (const o of RES.results.filter((r) => r.status === 'changed' && r.kind === 'data')) { try { publishData(o); } catch (e) { FAILED++; console.error(`${o.id}: publicare eșuată: ${e.message}`); } }
 for (const o of RES.results.filter((r) => r.status === 'alert' || r.status === 'error')) alert(o);
 recover(RES.results.filter((r) => r.status === 'ok' || r.status === 'changed').map((r) => r.id));
 
@@ -132,3 +145,4 @@ if (!NOHEALTH && !DRY) {
   } else log('sănătatea surselor: nicio schimbare de comis');
 } else if (DRY) log('\n[dry-run] sănătatea surselor: ar rula meta.mjs sync și un commit direct pe ' + BASE);
 log('\nPublicare terminată:', JSON.stringify(done));
+if (FAILED) process.exit(1);
