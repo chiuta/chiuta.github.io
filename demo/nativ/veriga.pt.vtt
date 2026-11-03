@@ -1,0 +1,16 @@
+WEBVTT
+
+00:00:00.400 --> 00:00:07.713
+O VERIGA verifica as ligações de um sítio web. Aqui, um sítio pequeno de cinco ficheiros no disco.
+
+00:00:08.963 --> 00:00:18.735
+Um só comando percorre o sítio e procura também os ficheiros órfãos. O código de saída 2 indica aos scripts que há ligações quebradas.
+
+00:00:21.589 --> 00:00:28.353
+O relatório de texto lista primeiro as ligações quebradas. Aqui faltam uma página e uma imagem.
+
+00:00:30.624 --> 00:00:39.440
+O mesmo resultado sai também como tabela CSV, pronta para uma folha de cálculo. O ficheiro órfão também aparece.
+
+00:00:41.537 --> 00:00:48.676
+O idioma dos relatórios escolhe-se com a opção lang. Aqui, a mesma verificação, em inglês.

@@ -192,6 +192,6 @@ Căutare pe web făcută la data de mai sus. Ce n-a putut fi citit direct (pagin
 - **Rămase deschise (decizii pentru autor):**
   - PR-urile #20–#22 (instantanee ACORDAJ, AGORA, VNTV; `autoMerge` oprit);
   - MENSURA și Fenarium fără kit (build check pică, fără teste);
-  - înregistrări native pentru TEZAUR, VERIGA, OSATURA, LegatorOCR (doar TEZAUR are binar; nefăcut);
+  - ~~înregistrări native pentru TEZAUR, VERIGA, OSATURA, LegatorOCR~~ **făcut la 3 noiembrie** ([demo/nativ/](demo/nativ/)): sesiuni reale de terminal (binarele construite local, date demo mici), redare în pagină cu subtitrări în 8 limbi și voce sintetică opțională (espeak-ng, local), câte o pagină offline dintr-un singur fișier și un MP4 pe program, legături din cardurile celor 4 programe. Traducerile fr, it, es, pt, de, hu sunt automate, de revizuit de vorbitori nativi; vocea sună mecanic. Reconstruire: `tools/native-demos/` (record.py, build.py); teste: `tests/nativ.test.mjs`;
   - traducerile automate din TEZAUR și din cele 6 limbi ale celorlalte aplicații, de revizuit de vorbitori nativi;
   - ieșirile propuse în retrospectivă (scorul manual, acceptori fără producători, fixturi CI).

@@ -1,0 +1,13 @@
+WEBVTT
+
+00:00:00.400 --> 00:00:08.266
+OSATURA ist eine 2D-Animations-Engine mit Skelett. Der Befehl demo schreibt ein vollständiges Beispielprojekt.
+
+00:00:09.780 --> 00:00:17.822
+Der Befehl check kompiliert das Projekt genau wie das Rendern und meldet Knochen, inverse Kinematik, Ebenen und Kanäle.
+
+00:00:22.519 --> 00:00:30.097
+Wir rendern ein Einzelbild, einmal als PNG mit eingezeichneten Knochen und einmal als SVG-Vektor.
+
+00:00:32.339 --> 00:00:41.748
+Der Export schreibt ein animiertes GIF. Alles läuft auf der Kommandozeile, ohne grafische Oberfläche. Das Projekt ist im Alpha-Stadium.

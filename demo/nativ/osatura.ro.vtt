@@ -1,0 +1,13 @@
+WEBVTT
+
+00:00:00.400 --> 00:00:08.048
+OSATURA este un motor de animație 2D cu schelet. Comanda demo scrie un proiect complet de exemplu.
+
+00:00:09.780 --> 00:00:18.745
+Comanda check compilează proiectul exact ca randarea și raportează oasele, cinematica inversă, straturile și canalele.
+
+00:00:22.519 --> 00:00:29.062
+Randăm un cadru, o dată ca imagine PNG cu oasele desenate și o dată ca vector SVG.
+
+00:00:32.339 --> 00:00:42.488
+Exportul scrie o animație GIF. Totul rulează în linia de comandă, fără interfață grafică. Proiectul este în stadiul alpha.

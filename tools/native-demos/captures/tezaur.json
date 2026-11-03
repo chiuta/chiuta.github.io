@@ -1,0 +1,60 @@
+{
+ "slug": "tezaur",
+ "version": "tezaur 0.4.0",
+ "scenes": [
+  [
+   {
+    "cmd": "ls lib",
+    "out": "lindgren2019.md\nmoreau2018.md\nokafor2021.md\nrefs.bib\n",
+    "code": 0
+   },
+   {
+    "cmd": "cat lib/okafor2021.md",
+    "out": "# Retrieval practice and exam anxiety\n\nRetrieval practice means testing yourself instead of rereading. In a controlled trial with 96 first-year students, low-stakes weekly quizzes reduced self-reported exam anxiety and raised the median grade by half a point on a ten-point scale.\n\nThe authors caution that the trial ran in a single department and that students were not randomly assigned to sections, so the causal claim is tentative.\n\nQuizzes that gave immediate feedback worked better than quizzes marked a week later.\n",
+    "code": 0
+   }
+  ],
+  [
+   {
+    "cmd": "tezaur --bib lib/refs.bib ingest lib",
+    "out": "[1/3] lib/lindgren2019.md … 1 chunks\n[2/3] lib/moreau2018.md … 1 chunks\n[3/3] lib/okafor2021.md … 1 chunks\ndone: 3 added, 0 unchanged, 0 skipped — 3 documents, 3 chunks in tezaur.idx\n",
+    "code": 0
+   }
+  ],
+  [
+   {
+    "cmd": "tezaur --bib lib/refs.bib sources",
+    "out": "  1. lindgren2019 — Lindgren (2019)  (1 chunks)\n     lib/lindgren2019.md\n  2. moreau2018 — Moreau (2018)  (1 chunks)\n     lib/moreau2018.md\n  3. okafor2021 — Okafor (2021)  (1 chunks)\n     lib/okafor2021.md\n3 documents, 3 chunks, embeddings: none (BM25 only), BibTeX entries: 3\n",
+    "code": 0
+   }
+  ],
+  [
+   {
+    "cmd": "tezaur search \"exam anxiety quizzes\" > cautare.txt; cut -c1-150 cautare.txt",
+    "out": "[1] okafor2021  (terms matched 100%)\n    # Retrieval practice and exam anxiety Retrieval practice means testing yourself instead of rereading. In a controlled trial with 96 first-year stu\n\n[2] lindgren2019  (terms matched 33%)\n    # Spaced repetition in university teaching Spaced repetition schedules each review shortly before the learner is expected to forget the item. In a\n\n",
+    "code": 0
+   }
+  ],
+  [
+   {
+    "cmd": "cat draft.md",
+    "out": "## Review methods\n\nSpaced review raised final exam scores by 14 percent [@lindgren2019]. Weekly low-stakes quizzes lowered exam anxiety [@okafor2021]. Spaced review also doubled the retention of open-ended problem solving [@lindgren2019].\n\nHandwriting always beats typing for every kind of lecture [@moreau2018]. The method is used widely in schools [@vance2020].\n",
+    "code": 0
+   }
+  ],
+  [
+   {
+    "cmd": "tezaur --bib lib/refs.bib audit draft.md",
+    "out": "# Citation audit\n\n5 checks — supported 3, weak 0, contradicted 0, unsupported 1, wrong page 0, figure mismatch 0, unknown source 1, page out of range 0, uncited 0; quotations: verbatim 0, elsewhere 0, not found 0.\n\nThis is a mechanical term-overlap check, not proof. Open the page for everything below.\n\n- **unsupported** [@moreau2018] — only 22% of the sentence's terms appear anywhere in this source\n  > Handwriting always beats typing for every kind of lecture.\n- **unknown-source** [@vance2020] — no document in the library matches the key 'vance2020'\n  > The method is used widely in schools.\n",
+    "code": 0
+   }
+  ],
+  [
+   {
+    "cmd": "tezaur --bib lib/refs.bib refs draft.md",
+    "out": "# Reference check\n\n4 distinct keys cited.\n\n## Cited but in neither the .bib nor the library (1)\n- vance2020\n\n",
+    "code": 0
+   }
+  ]
+ ]
+}

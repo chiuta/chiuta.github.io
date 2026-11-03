@@ -1,0 +1,16 @@
+WEBVTT
+
+00:00:00.400 --> 00:00:06.062
+VERIGA vérifie les liens d'un site web. Ici, un petit site de cinq fichiers sur le disque.
+
+00:00:08.963 --> 00:00:16.500
+Une seule commande parcourt le site et cherche aussi les fichiers orphelins. Le code de sortie 2 indique aux scripts que des liens sont cassés.
+
+00:00:21.589 --> 00:00:26.374
+Le rapport texte liste d'abord les liens cassés. Ici, une page et une image manquent.
+
+00:00:30.624 --> 00:00:36.944
+Le même résultat sort aussi en tableau CSV, prêt pour un tableur. Le fichier orphelin y figure aussi.
+
+00:00:41.537 --> 00:00:47.557
+La langue des rapports se choisit avec l'option lang. Ici, la même vérification, en anglais.

@@ -1,0 +1,49 @@
+{
+ "slug": "osatura",
+ "version": "osatura 0.1.0 (osatura-cli, AGPL-3.0-or-later; engine libraries MPL-2.0)",
+ "scenes": [
+  [
+   {
+    "cmd": "osatura --version | head -n 1",
+    "out": "osatura 0.1.0 (osatura-cli, AGPL-3.0-or-later; engine libraries MPL-2.0)\n",
+    "code": 0
+   },
+   {
+    "cmd": "osatura demo demo.json",
+    "out": "wrote demo.json\n",
+    "code": 0
+   }
+  ],
+  [
+   {
+    "cmd": "osatura check demo.json",
+    "out": "ok: 'OSATURA demo' 640×480 @ 24 fps, 48 frames, 6 bones, 1 ik, 14 layers, 14 channels\n",
+    "code": 0
+   }
+  ],
+  [
+   {
+    "cmd": "osatura render demo.json 12 frame12.png --bones",
+    "out": "wrote frame12.png\n",
+    "code": 0
+   },
+   {
+    "cmd": "osatura render demo.json 12 frame12.svg",
+    "out": "wrote frame12.svg\n",
+    "code": 0
+   }
+  ],
+  [
+   {
+    "cmd": "osatura export demo.json demo.gif",
+    "out": "wrote demo.gif\n",
+    "code": 0
+   },
+   {
+    "cmd": "ls -l frame12.png frame12.svg demo.gif",
+    "out": "-rw-r--r-- 1 root root 1111334 Nov  3 14:20 demo.gif\n-rw-r--r-- 1 root root   41038 Nov  3 14:20 frame12.png\n-rw-r--r-- 1 root root    7764 Nov  3 14:20 frame12.svg\n",
+    "code": 0
+   }
+  ]
+ ]
+}

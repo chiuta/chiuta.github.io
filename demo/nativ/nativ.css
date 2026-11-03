@@ -1,0 +1,30 @@
+
+.note{color:var(--mut);font-size:.9rem;max-width:80ch}
+.prog{scroll-margin-top:72px;background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:14px;margin:0 0 26px}
+.prog h2{margin:2px 4px 2px;font-size:1.3rem}.prog h2 small{color:var(--mut);font-weight:400;font-size:.8rem;margin-left:6px}
+.pdesc{margin:0 4px 12px;color:var(--mut)}
+.term{margin:0;background:#0d0b1a;color:#e6e3f5;border:1px solid var(--line);border-radius:10px;padding:12px 14px;font:14px/1.3 ui-monospace,"DejaVu Sans Mono",Menlo,Consolas,monospace;overflow-x:auto;white-space:pre;min-height:calc(26 * 1.3em + 24px)}
+.term .c1{color:#ff7b7b}.term .c2{color:#5eead4}.term .c3{color:#f0c86e}.term .c4{color:#8ca0ff}.term .c5{color:#c896ff}.term .c6{color:#6edcf0}.term .c8{color:#a8a4c8}.term .c7,.term .c9{color:#fff}
+.term .c1b,.term .c2b,.term .c3b,.term .c4b,.term .c5b,.term .c6b,.term .c8b,.term .c7b,.term .c9b,.term .c0b{font-weight:700}
+.term .c0b{color:#fff}.term .cur{background:#9d8bff;color:#0d0b1a}
+.subline{min-height:3.2em;margin:8px 0 0;padding:8px 12px;border-radius:8px;background:#000;color:#fff;font-size:1.02rem;text-align:center;display:flex;align-items:center;justify-content:center}
+.subline.empty{visibility:hidden}
+.ctl{display:flex;flex-wrap:wrap;gap:10px 14px;align-items:center;margin:10px 0 6px}
+.ctl .seek{flex:1 1 220px;min-width:140px;padding:0;accent-color:var(--acc)}
+.ctl .time{font-variant-numeric:tabular-nums;color:var(--mut);min-width:5.5em}
+.ctl label{display:inline-flex;gap:6px;align-items:center;color:var(--mut);font-size:.92rem}
+.ctl input[type=checkbox]{width:18px;height:18px;padding:0;accent-color:var(--acc)}
+.ctl select{padding:3px 6px}
+.scenes{display:flex;flex-wrap:wrap;gap:6px;margin:4px 0 8px}
+.chip{min-width:2.4rem;padding:4px 8px}.chip.on{border-color:var(--acc);background:color-mix(in srgb,var(--acc) 22%,var(--panel))}
+.links{margin:8px 4px;font-size:.95rem}.links a{white-space:nowrap}
+.vid,.transcript{margin:8px 4px}.vid summary,.transcript summary{cursor:pointer;color:var(--acc)}
+.vid video{margin-top:8px;max-width:100%}
+.transcript ol{padding-left:1.4em}.transcript li{margin:0 0 14px}
+.transcript .narr{margin:0 0 6px}.transcript ul.cmds{list-style:none;margin:0;padding:0}
+.transcript code.cmd{display:block;color:var(--acc2);font-family:ui-monospace,"DejaVu Sans Mono",Menlo,Consolas,monospace;font-size:.88rem;overflow-wrap:anywhere}
+.transcript pre.out{margin:2px 0 8px;padding:8px 10px;background:#0d0b1a;color:#e6e3f5;border:1px solid var(--line);border-radius:8px;overflow-x:auto;font:13px/1.35 ui-monospace,"DejaVu Sans Mono",Menlo,Consolas,monospace;white-space:pre-wrap;overflow-wrap:anywhere}
+.nojs{color:var(--mut)}
+.back{margin:20px 0}
+@media (max-width:640px){.term{font-size:11px}.subline{font-size:.95rem}}
+@media (prefers-reduced-motion:reduce){*{scroll-behavior:auto!important}}

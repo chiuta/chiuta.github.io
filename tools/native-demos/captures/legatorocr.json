@@ -1,0 +1,39 @@
+{
+ "slug": "legatorocr",
+ "version": "legatorocr 0.2.0-pre.10",
+ "scenes": [
+  [
+   {
+    "cmd": "ls -l page-*.png",
+    "out": "-rw-r--r-- 1 root root 179783 Nov  3 14:20 page-1.png\n-rw-r--r-- 1 root root 175232 Nov  3 14:20 page-2.png\n-rw-r--r-- 1 root root 187296 Nov  3 14:20 page-3.png\n",
+    "code": 0
+   }
+  ],
+  [
+   {
+    "cmd": "legatorocr page-*.png --format none --pdf book.pdf --ocr --lang en --txt book.txt --timings",
+    "out": "OCR engine: tesseract 5.3.4, language: en\npage-1: 788x1491 px @ 150 dpi, skew +2.33°\npage-2: 789x1491 px @ 150 dpi, skew -1.65°\npage-3: 788x1491 px @ 150 dpi, skew +3.10°\nstage                  calls     time (s)   share   per call (ms)\nocr                          3         5.84   65.6%         1946.2\nclean-up                     3         3.02   34.0%         1007.5\n  deskew/rotate              3         1.04   11.7%          345.8\n  deskew/pictures            3         0.26    2.9%           87.3\n  deskew/detect              3         0.24    2.7%           79.7\n  content/analyse            3         0.18    2.1%           61.3\n  deskew/analyse             3         0.17    1.9%           55.8\n  content/detect             3         0.04    0.5%           14.5\nload                         3         0.04    0.5%           13.4\n  content/grayscale          3         0.01    0.2%            4.8\n  deskew/grayscale           3         0.01    0.2%            4.8\n  clean-up/background        3         0.01    0.1%            2.5\norientation                  3         0.00    0.0%            0.0\ntotal (summed over threads): 8.90 s\npeak memory: 203 MiB\nwrote book.pdf (3 page(s), 155 OCR words)\nwrote book.txt\n",
+    "code": 0
+   }
+  ],
+  [
+   {
+    "cmd": "ls -l book.pdf book.txt",
+    "out": "-rw-r--r-- 1 root root 242042 Nov  3 14:20 book.pdf\n-rw-r--r-- 1 root root    839 Nov  3 14:20 book.txt\n",
+    "code": 0
+   },
+   {
+    "cmd": "head -n 8 book.txt",
+    "out": "Chapter 1. The Beginnings\nThe library was founded in 1864 by a\ngroup of teachers and merchants. In the\nfirst years the books were kept in a single\nroom, and lending was recorded in a ledger.\nBy the end of the century the collection\nheld over ten thousand volumes, mostly gifts.\n\fChapter 2. The Beginnings\n",
+    "code": 0
+   }
+  ],
+  [
+   {
+    "cmd": "pdftotext book.pdf - | head -n 3",
+    "out": "Chapter 1. The Beginnings\nThe library was founded in 1864 by a\ngroup of teachers and merchants. In the\n",
+    "code": 0
+   }
+  ]
+ ]
+}

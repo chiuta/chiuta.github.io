@@ -1,0 +1,16 @@
+WEBVTT
+
+00:00:00.400 --> 00:00:07.499
+VERIGA comprueba los enlaces de un sitio web. Aquí, un sitio pequeño de cinco archivos en el disco.
+
+00:00:08.963 --> 00:00:18.442
+Un solo comando recorre el sitio y busca también los archivos huérfanos. El código de salida 2 indica a los scripts que hay enlaces rotos.
+
+00:00:21.589 --> 00:00:27.873
+El informe de texto enumera primero los enlaces rotos. Aquí faltan una página y una imagen.
+
+00:00:30.624 --> 00:00:38.974
+El mismo resultado sale también como tabla CSV, listo para una hoja de cálculo. El archivo huérfano también aparece.
+
+00:00:41.537 --> 00:00:48.331
+El idioma de los informes se elige con la opción lang. Aquí, la misma comprobación, en inglés.

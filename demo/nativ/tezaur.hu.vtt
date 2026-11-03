@@ -1,0 +1,22 @@
+WEBVTT
+
+00:00:00.400 --> 00:00:11.144
+A TEZAUR egy szakdolgozati asszisztens, amely kizárólag a saját könyvtáradból dolgozik. Itt három tanulmány van, egyszerű szövegfájlként.
+
+00:00:12.394 --> 00:00:22.355
+Az ingest parancs helyben indexeli őket, a BibTeX formátumú irodalomjegyzékkel együtt. Semmi nem hagyja el a számítógépet.
+
+00:00:23.605 --> 00:00:32.148
+A sources parancs felsorolja az indexelt dokumentumokat, mindegyiket a saját irodalomjegyzéki tételéhez kötve.
+
+00:00:33.398 --> 00:00:43.136
+A keresés visszaadja a találó szövegrészeket, és megmutatja, hány keresőszót fed le mindegyik. Nyelvi modellre nincs szükség.
+
+00:00:44.466 --> 00:00:51.685
+Itt egy vázlatrészlet idézetekkel. Egyes állítások hűek a forrásokhoz, mások nem.
+
+00:00:53.610 --> 00:01:07.840
+Az audit parancs minden hivatkozást a forrásával vet össze. A túl általános állítás megalapozatlanként jelenik meg, a hiányzó kulcsot jelzi. Ez gépi ellenőrzés, nem bizonyíték.
+
+00:01:09.870 --> 00:01:21.961
+A refs parancs megtalálja azokat az idézett kulcsokat, amelyek sehol sem szerepelnek. Generált válaszokhoz a TEZAUR helyi modellt igényel, ezt itt nem mutatjuk.

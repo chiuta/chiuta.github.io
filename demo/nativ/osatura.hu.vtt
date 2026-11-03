@@ -1,0 +1,13 @@
+WEBVTT
+
+00:00:00.400 --> 00:00:08.530
+Az OSATURA egy 2D-s, csontvázas animációs motor. A demo parancs egy teljes példaprojektet ír.
+
+00:00:09.780 --> 00:00:21.269
+A check parancs pontosan úgy fordítja le a projektet, mint a renderelő, és jelenti a csontokat, az inverz kinematikát, a rétegeket és a csatornákat.
+
+00:00:22.519 --> 00:00:31.089
+Egy képkockát renderelünk, egyszer PNG-képként a berajzolt csontokkal, egyszer pedig SVG vektorként.
+
+00:00:32.339 --> 00:00:41.742
+Az export animált GIF-et ír. Minden a parancssorban fut, grafikus felület nélkül. A projekt alfa állapotban van.

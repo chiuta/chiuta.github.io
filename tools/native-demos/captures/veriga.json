@@ -1,0 +1,46 @@
+{
+ "slug": "veriga",
+ "version": "veriga 1.1.0",
+ "scenes": [
+  [
+   {
+    "cmd": "ls -R site",
+    "out": "site:\ncontact.html\ndespre.html\nindex.html\nstil.css\nveche.html\n",
+    "code": 0
+   }
+  ],
+  [
+   {
+    "cmd": "veriga ./site --orphans ./site --lang ro -o raport.txt -o linkuri.csv; echo \"cod de ieșire: $?\"",
+    "out": "cod de ieșire: 2\n[---] file:///home/demo/site/lipsa.html — Fișier local lipsă\n        ↳ file:///home/demo/site/index.html\n[---] file:///home/demo/site/img/logo.png — Fișier local lipsă\n        ↳ file:///home/demo/site/index.html\nGata: 7 URL-uri · 4 OK · 2 rupte · 0 redirecționări · 1 orfane\n→ raport.txt\n→ linkuri.csv\n",
+    "code": 0
+   }
+  ],
+  [
+   {
+    "cmd": "head -n 9 raport.txt",
+    "out": "VERIGA — raport de verificare a legăturilor\nStart: ./site\n2026-11-03T12:20:36.592404341+00:00 → 2026-11-03T12:20:36.595931373+00:00\nTotal: 7 | OK: 4 | Rupte: 2 | Redirecționate: 0 | Omise: 0 | Orfane: 1\n\n== Legături rupte ==\n\n-- Fișier local lipsă (2)\nfile:///home/demo/site/img/logo.png\n",
+    "code": 0
+   }
+  ],
+  [
+   {
+    "cmd": "cut -d, -f1,3,4 linkuri.csv",
+    "out": "Address,Status,Type\nfile:///home/demo/site/index.html,OK,Start\nfile:///home/demo/site/stil.css,OK,Stil CSS\nfile:///home/demo/site/despre.html,OK,Pagină\nfile:///home/demo/site/contact.html,OK,Pagină\nfile:///home/demo/site/lipsa.html,Fișier local lipsă,Pagină\nfile:///home/demo/site/img/logo.png,Fișier local lipsă,Imagine\nfile:///home/demo/site/veche.html,Fișier orfan,Fișier\n",
+    "code": 0
+   }
+  ],
+  [
+   {
+    "cmd": "veriga --version",
+    "out": "veriga 1.1.0\n",
+    "code": 0
+   },
+   {
+    "cmd": "veriga ./site --lang en --no-fail -q -o raport-en.txt; head -n 4 raport-en.txt",
+    "out": "VERIGA — link check report\nStart: ./site\n2026-11-03T12:20:36.620044995+00:00 → 2026-11-03T12:20:36.622721138+00:00\nTotal: 6 | OK: 4 | Broken: 2 | Redirected: 0 | Skipped: 0 | Orphans: 0\n→ raport-en.txt\n",
+    "code": 0
+   }
+  ]
+ ]
+}

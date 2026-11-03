@@ -1,0 +1,220 @@
+<!doctype html>
+<html lang="ro">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Programe native: demonstrații în terminal — chiuta.ro</title>
+<meta name="description" content="Sesiuni reale de terminal, rulate pe date demo mici, cu subtitrări în 8 limbi și voce sintetică opțională. Fără sunet implicit, fără urmărire, găzduite aici.">
+<meta name="color-scheme" content="dark light">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; img-src 'self' data:; media-src 'self' data:; style-src 'self'; script-src 'self'; connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'">
+<meta name="robots" content="index, follow">
+<link rel="icon" href="data:,">
+<link rel="stylesheet" href="../demo.css"><link rel="stylesheet" href="nativ.css">
+</head>
+<body>
+<header><div class="wrap">
+ <a class="brand" href="../">chiuta.ro</a>
+ <div class="hdr-right">
+  <label for="lang" class="meta" id="lblLang">Limbă</label>
+  <select id="lang" aria-labelledby="lblLang"></select>
+  <button id="theme" type="button" aria-label="Theme">◐</button>
+ </div>
+</div></header>
+<main class="wrap">
+ <h1 data-ui="title">Programe native: demonstrații în terminal</h1>
+ <p class="lead" data-ui="lead">Sesiuni reale de terminal, rulate pe date demo mici, cu subtitrări în 8 limbi și voce sintetică opțională. Fără sunet implicit, fără urmărire, găzduite aici.</p>
+ <p class="note" data-ui="auto">Traducerile în fr, it, es, pt, de și hu sunt automate și așteaptă revizuirea unor vorbitori nativi.</p>
+ <section class="prog" id="tezaur" aria-labelledby="h-tezaur">
+<h2 id="h-tezaur">TEZAUR <small>tezaur 0.4.0</small></h2>
+<p class="pdesc" data-t="tezaur" lang="ro">Asistent local de cercetare: indexare, căutare, audit de citări</p>
+<div class="player" data-slug="tezaur">
+<pre class="term" role="img" aria-label="Terminal (înregistrare): TEZAUR"></pre>
+<div class="subline empty" aria-hidden="true"></div>
+<div class="ctl"></div>
+<div class="scenes" role="group" aria-label="Scena"></div>
+<p class="nojs" data-ui="no_js">Pagina are nevoie de JavaScript pentru redare; transcrierea de mai jos funcționează fără.</p>
+</div>
+<p class="links"><a href="tezaur.cast" download data-ui="cast">Descarcă .cast</a> · <a data-vtt="tezaur" href="tezaur.ro.vtt" download data-ui="vtt">Subtitrări .vtt</a> · <a href="tezaur.mp4" download data-ui="video">Video MP4</a> · <a href="tezaur-offline.html" data-ui="offline">Pagină offline</a> · <a href="https://github.com/chiuta/TEZAUR" rel="noopener noreferrer" data-ui="gh">Cod sursă</a></p>
+<details class="vid"><summary data-ui="video">Video MP4</summary><video data-slug="tezaur" controls preload="none" playsinline poster="tezaur.jpg" src="tezaur.mp4"><track kind="subtitles" src="tezaur.ro.vtt" srclang="ro" label="RO"><track kind="subtitles" src="tezaur.en.vtt" srclang="en" label="EN"><track kind="subtitles" src="tezaur.fr.vtt" srclang="fr" label="FR"><track kind="subtitles" src="tezaur.it.vtt" srclang="it" label="IT"><track kind="subtitles" src="tezaur.es.vtt" srclang="es" label="ES"><track kind="subtitles" src="tezaur.pt.vtt" srclang="pt" label="PT"><track kind="subtitles" src="tezaur.de.vtt" srclang="de" label="DE"><track kind="subtitles" src="tezaur.hu.vtt" srclang="hu" label="HU"></video></details>
+<details class="transcript"><summary data-ui="transcript">Transcriere</summary><ol><li><p class="narr" lang="ro" data-n="tezaur:0">TEZAUR este un asistent pentru teză care lucrează numai cu biblioteca ta. Aici sunt trei studii, ca fișiere text.</p><ul class="cmds" aria-label="Comenzi rulate"><li><code class="cmd">$ ls lib</code><pre class="out" tabindex="0">lindgren2019.md
+moreau2018.md
+okafor2021.md
+refs.bib
+</pre></li><li><code class="cmd">$ cat lib/okafor2021.md</code><pre class="out" tabindex="0"># Retrieval practice and exam anxiety
+
+Retrieval practice means testing yourself instead of rereading. In a controlled trial with 96 first-year students, low-stakes weekly quizzes reduced self-reported exam anxiety and raised the median grade by half a point on a ten-point scale.
+
+The authors caution that the trial ran in a single department and that students were not randomly assigned to sections, so the causal claim is tentative.
+
+Quizzes that gave immediate feedback worked better than quizzes marked a week later.
+</pre></li></ul></li><li><p class="narr" lang="ro" data-n="tezaur:1">Comanda ingest le indexează local, împreună cu bibliografia în format BibTeX. Nimic nu pleacă din calculator.</p><ul class="cmds" aria-label="Comenzi rulate"><li><code class="cmd">$ tezaur --bib lib/refs.bib ingest lib</code><pre class="out" tabindex="0">[1/3] lib/lindgren2019.md … 1 chunks
+[2/3] lib/moreau2018.md … 1 chunks
+[3/3] lib/okafor2021.md … 1 chunks
+done: 3 added, 0 unchanged, 0 skipped — 3 documents, 3 chunks in tezaur.idx
+</pre></li></ul></li><li><p class="narr" lang="ro" data-n="tezaur:2">Comanda sources arată documentele indexate, fiecare legat de intrarea sa bibliografică.</p><ul class="cmds" aria-label="Comenzi rulate"><li><code class="cmd">$ tezaur --bib lib/refs.bib sources</code><pre class="out" tabindex="0">  1. lindgren2019 — Lindgren (2019)  (1 chunks)
+     lib/lindgren2019.md
+  2. moreau2018 — Moreau (2018)  (1 chunks)
+     lib/moreau2018.md
+  3. okafor2021 — Okafor (2021)  (1 chunks)
+     lib/okafor2021.md
+3 documents, 3 chunks, embeddings: none (BM25 only), BibTeX entries: 3
+</pre></li></ul></li><li><p class="narr" lang="ro" data-n="tezaur:3">Căutarea întoarce pasajele potrivite și arată câți termeni din întrebare acoperă. Nu are nevoie de niciun model de limbaj.</p><ul class="cmds" aria-label="Comenzi rulate"><li><code class="cmd">$ tezaur search &quot;exam anxiety quizzes&quot; &gt; cautare.txt; cut -c1-150 cautare.txt</code><pre class="out" tabindex="0">[1] okafor2021  (terms matched 100%)
+    # Retrieval practice and exam anxiety Retrieval practice means testing yourself instead of rereading. In a controlled trial with 96 first-year stu
+
+[2] lindgren2019  (terms matched 33%)
+    # Spaced repetition in university teaching Spaced repetition schedules each review shortly before the learner is expected to forget the item. In a
+
+</pre></li></ul></li><li><p class="narr" lang="ro" data-n="tezaur:4">Iată un fragment de ciornă cu citări. Unele afirmații sunt fidele surselor, altele nu.</p><ul class="cmds" aria-label="Comenzi rulate"><li><code class="cmd">$ cat draft.md</code><pre class="out" tabindex="0">## Review methods
+
+Spaced review raised final exam scores by 14 percent [@lindgren2019]. Weekly low-stakes quizzes lowered exam anxiety [@okafor2021]. Spaced review also doubled the retention of open-ended problem solving [@lindgren2019].
+
+Handwriting always beats typing for every kind of lecture [@moreau2018]. The method is used widely in schools [@vance2020].
+</pre></li></ul></li><li><p class="narr" lang="ro" data-n="tezaur:5">Comanda audit verifică fiecare citare față de sursă. O afirmație prea largă e marcată fără susținere, iar o cheie inexistentă e semnalată. Este o verificare mecanică, nu o dovadă.</p><ul class="cmds" aria-label="Comenzi rulate"><li><code class="cmd">$ tezaur --bib lib/refs.bib audit draft.md</code><pre class="out" tabindex="0"># Citation audit
+
+5 checks — supported 3, weak 0, contradicted 0, unsupported 1, wrong page 0, figure mismatch 0, unknown source 1, page out of range 0, uncited 0; quotations: verbatim 0, elsewhere 0, not found 0.
+
+This is a mechanical term-overlap check, not proof. Open the page for everything below.
+
+- **unsupported** [@moreau2018] — only 22% of the sentence&#x27;s terms appear anywhere in this source
+  &gt; Handwriting always beats typing for every kind of lecture.
+- **unknown-source** [@vance2020] — no document in the library matches the key &#x27;vance2020&#x27;
+  &gt; The method is used widely in schools.
+</pre></li></ul></li><li><p class="narr" lang="ro" data-n="tezaur:6">Comanda refs găsește cheile citate care nu apar nicăieri. Pentru răspunsuri generate, TEZAUR cere un model local, care nu e arătat aici.</p><ul class="cmds" aria-label="Comenzi rulate"><li><code class="cmd">$ tezaur --bib lib/refs.bib refs draft.md</code><pre class="out" tabindex="0"># Reference check
+
+4 distinct keys cited.
+
+## Cited but in neither the .bib nor the library (1)
+- vance2020
+
+</pre></li></ul></li></ol></details>
+</section><section class="prog" id="veriga" aria-labelledby="h-veriga">
+<h2 id="h-veriga">VERIGA <small>veriga 1.1.0</small></h2>
+<p class="pdesc" data-t="veriga" lang="ro">Verificator de legături: parcurge un site și scrie rapoarte</p>
+<div class="player" data-slug="veriga">
+<pre class="term" role="img" aria-label="Terminal (înregistrare): VERIGA"></pre>
+<div class="subline empty" aria-hidden="true"></div>
+<div class="ctl"></div>
+<div class="scenes" role="group" aria-label="Scena"></div>
+<p class="nojs" data-ui="no_js">Pagina are nevoie de JavaScript pentru redare; transcrierea de mai jos funcționează fără.</p>
+</div>
+<p class="links"><a href="veriga.cast" download data-ui="cast">Descarcă .cast</a> · <a data-vtt="veriga" href="veriga.ro.vtt" download data-ui="vtt">Subtitrări .vtt</a> · <a href="veriga.mp4" download data-ui="video">Video MP4</a> · <a href="veriga-offline.html" data-ui="offline">Pagină offline</a> · <a href="https://github.com/chiuta/VERIGA" rel="noopener noreferrer" data-ui="gh">Cod sursă</a></p>
+<details class="vid"><summary data-ui="video">Video MP4</summary><video data-slug="veriga" controls preload="none" playsinline poster="veriga.jpg" src="veriga.mp4"><track kind="subtitles" src="veriga.ro.vtt" srclang="ro" label="RO"><track kind="subtitles" src="veriga.en.vtt" srclang="en" label="EN"><track kind="subtitles" src="veriga.fr.vtt" srclang="fr" label="FR"><track kind="subtitles" src="veriga.it.vtt" srclang="it" label="IT"><track kind="subtitles" src="veriga.es.vtt" srclang="es" label="ES"><track kind="subtitles" src="veriga.pt.vtt" srclang="pt" label="PT"><track kind="subtitles" src="veriga.de.vtt" srclang="de" label="DE"><track kind="subtitles" src="veriga.hu.vtt" srclang="hu" label="HU"></video></details>
+<details class="transcript"><summary data-ui="transcript">Transcriere</summary><ol><li><p class="narr" lang="ro" data-n="veriga:0">VERIGA verifică legăturile unui site. Aici, un site mic, de cinci fișiere, pe disc.</p><ul class="cmds" aria-label="Comenzi rulate"><li><code class="cmd">$ ls -R site</code><pre class="out" tabindex="0">site:
+contact.html
+despre.html
+index.html
+stil.css
+veche.html
+</pre></li></ul></li><li><p class="narr" lang="ro" data-n="veriga:1">O singură comandă parcurge site-ul și caută și fișierele orfane. Codul de ieșire 2 spune scripturilor că există legături rupte.</p><ul class="cmds" aria-label="Comenzi rulate"><li><code class="cmd">$ veriga ./site --orphans ./site --lang ro -o raport.txt -o linkuri.csv; echo &quot;cod de ieșire: $?&quot;</code><pre class="out" tabindex="0">cod de ieșire: 2
+[---] file:///home/demo/site/lipsa.html — Fișier local lipsă
+        ↳ file:///home/demo/site/index.html
+[---] file:///home/demo/site/img/logo.png — Fișier local lipsă
+        ↳ file:///home/demo/site/index.html
+Gata: 7 URL-uri · 4 OK · 2 rupte · 0 redirecționări · 1 orfane
+→ raport.txt
+→ linkuri.csv
+</pre></li></ul></li><li><p class="narr" lang="ro" data-n="veriga:2">Raportul text pune întâi legăturile rupte. Aici lipsesc o pagină și o imagine.</p><ul class="cmds" aria-label="Comenzi rulate"><li><code class="cmd">$ head -n 9 raport.txt</code><pre class="out" tabindex="0">VERIGA — raport de verificare a legăturilor
+Start: ./site
+2026-11-03T12:20:36.592404341+00:00 → 2026-11-03T12:20:36.595931373+00:00
+Total: 7 | OK: 4 | Rupte: 2 | Redirecționate: 0 | Omise: 0 | Orfane: 1
+
+== Legături rupte ==
+
+-- Fișier local lipsă (2)
+file:///home/demo/site/img/logo.png
+</pre></li></ul></li><li><p class="narr" lang="ro" data-n="veriga:3">Același rezultat iese și ca tabel CSV, gata de deschis într-o foaie de calcul. Fișierul orfan e și el listat.</p><ul class="cmds" aria-label="Comenzi rulate"><li><code class="cmd">$ cut -d, -f1,3,4 linkuri.csv</code><pre class="out" tabindex="0">Address,Status,Type
+file:///home/demo/site/index.html,OK,Start
+file:///home/demo/site/stil.css,OK,Stil CSS
+file:///home/demo/site/despre.html,OK,Pagină
+file:///home/demo/site/contact.html,OK,Pagină
+file:///home/demo/site/lipsa.html,Fișier local lipsă,Pagină
+file:///home/demo/site/img/logo.png,Fișier local lipsă,Imagine
+file:///home/demo/site/veche.html,Fișier orfan,Fișier
+</pre></li></ul></li><li><p class="narr" lang="ro" data-n="veriga:4">Limba rapoartelor se alege cu opțiunea lang. Aici, aceeași verificare, în engleză.</p><ul class="cmds" aria-label="Comenzi rulate"><li><code class="cmd">$ veriga --version</code><pre class="out" tabindex="0">veriga 1.1.0
+</pre></li><li><code class="cmd">$ veriga ./site --lang en --no-fail -q -o raport-en.txt; head -n 4 raport-en.txt</code><pre class="out" tabindex="0">VERIGA — link check report
+Start: ./site
+2026-11-03T12:20:36.620044995+00:00 → 2026-11-03T12:20:36.622721138+00:00
+Total: 6 | OK: 4 | Broken: 2 | Redirected: 0 | Skipped: 0 | Orphans: 0
+→ raport-en.txt
+</pre></li></ul></li></ol></details>
+</section><section class="prog" id="legatorocr" aria-labelledby="h-legatorocr">
+<h2 id="h-legatorocr">LegatorOCR <small>legatorocr 0.2.0-pre.10</small></h2>
+<p class="pdesc" data-t="legatorocr" lang="ro">Pagini scanate în PDF cu text: corectare, OCR, export</p>
+<div class="player" data-slug="legatorocr">
+<pre class="term" role="img" aria-label="Terminal (înregistrare): LegatorOCR"></pre>
+<div class="subline empty" aria-hidden="true"></div>
+<div class="ctl"></div>
+<div class="scenes" role="group" aria-label="Scena"></div>
+<p class="nojs" data-ui="no_js">Pagina are nevoie de JavaScript pentru redare; transcrierea de mai jos funcționează fără.</p>
+</div>
+<p class="links"><a href="legatorocr.cast" download data-ui="cast">Descarcă .cast</a> · <a data-vtt="legatorocr" href="legatorocr.ro.vtt" download data-ui="vtt">Subtitrări .vtt</a> · <a href="legatorocr.mp4" download data-ui="video">Video MP4</a> · <a href="legatorocr-offline.html" data-ui="offline">Pagină offline</a> · <a href="https://github.com/chiuta/LegatorOCR" rel="noopener noreferrer" data-ui="gh">Cod sursă</a></p>
+<details class="vid"><summary data-ui="video">Video MP4</summary><video data-slug="legatorocr" controls preload="none" playsinline poster="legatorocr.jpg" src="legatorocr.mp4"><track kind="subtitles" src="legatorocr.ro.vtt" srclang="ro" label="RO"><track kind="subtitles" src="legatorocr.en.vtt" srclang="en" label="EN"><track kind="subtitles" src="legatorocr.fr.vtt" srclang="fr" label="FR"><track kind="subtitles" src="legatorocr.it.vtt" srclang="it" label="IT"><track kind="subtitles" src="legatorocr.es.vtt" srclang="es" label="ES"><track kind="subtitles" src="legatorocr.pt.vtt" srclang="pt" label="PT"><track kind="subtitles" src="legatorocr.de.vtt" srclang="de" label="DE"><track kind="subtitles" src="legatorocr.hu.vtt" srclang="hu" label="HU"></video></details>
+<details class="transcript"><summary data-ui="transcript">Transcriere</summary><ol><li><p class="narr" lang="ro" data-n="legatorocr:0">LegatorOCR transformă pagini scanate într-un PDF cu text. Aici sunt trei imagini cu text ușor înclinat.</p><ul class="cmds" aria-label="Comenzi rulate"><li><code class="cmd">$ ls -l page-*.png</code><pre class="out" tabindex="0">-rw-r--r-- 1 root root 179783 Nov  3 14:20 page-1.png
+-rw-r--r-- 1 root root 175232 Nov  3 14:20 page-2.png
+-rw-r--r-- 1 root root 187296 Nov  3 14:20 page-3.png
+</pre></li></ul></li><li><p class="narr" lang="ro" data-n="legatorocr:1">O singură comandă corectează înclinarea, recunoaște textul cu OCR și scrie PDF-ul și un fișier text. Tabelul de timpuri arată unde se duce timpul.</p><ul class="cmds" aria-label="Comenzi rulate"><li><code class="cmd">$ legatorocr page-*.png --format none --pdf book.pdf --ocr --lang en --txt book.txt --timings</code><pre class="out" tabindex="0">OCR engine: tesseract 5.3.4, language: en
+page-1: 788x1491 px @ 150 dpi, skew +2.33°
+page-2: 789x1491 px @ 150 dpi, skew -1.65°
+page-3: 788x1491 px @ 150 dpi, skew +3.10°
+stage                  calls     time (s)   share   per call (ms)
+ocr                          3         5.84   65.6%         1946.2
+clean-up                     3         3.02   34.0%         1007.5
+  deskew/rotate              3         1.04   11.7%          345.8
+  deskew/pictures            3         0.26    2.9%           87.3
+  deskew/detect              3         0.24    2.7%           79.7
+  content/analyse            3         0.18    2.1%           61.3
+  deskew/analyse             3         0.17    1.9%           55.8
+  content/detect             3         0.04    0.5%           14.5
+load                         3         0.04    0.5%           13.4
+  content/grayscale          3         0.01    0.2%            4.8
+  deskew/grayscale           3         0.01    0.2%            4.8
+  clean-up/background        3         0.01    0.1%            2.5
+orientation                  3         0.00    0.0%            0.0
+total (summed over threads): 8.90 s
+peak memory: 203 MiB
+wrote book.pdf (3 page(s), 155 OCR words)
+wrote book.txt
+</pre></li></ul></li><li><p class="narr" lang="ro" data-n="legatorocr:2">Textul recunoscut, pagină cu pagină. Imaginile din demonstrație sunt generate, deci rezultatul e curat; scanările reale sunt mai grele.</p><ul class="cmds" aria-label="Comenzi rulate"><li><code class="cmd">$ ls -l book.pdf book.txt</code><pre class="out" tabindex="0">-rw-r--r-- 1 root root 242042 Nov  3 14:20 book.pdf
+-rw-r--r-- 1 root root    839 Nov  3 14:20 book.txt
+</pre></li><li><code class="cmd">$ head -n 8 book.txt</code><pre class="out" tabindex="0">Chapter 1. The Beginnings
+The library was founded in 1864 by a
+group of teachers and merchants. In the
+first years the books were kept in a single
+room, and lending was recorded in a ledger.
+By the end of the century the collection
+held over ten thousand volumes, mostly gifts.
+Chapter 2. The Beginnings
+</pre></li></ul></li><li><p class="narr" lang="ro" data-n="legatorocr:3">PDF-ul are strat de text: poate fi căutat și copiat. Programul rulează local, fără cont.</p><ul class="cmds" aria-label="Comenzi rulate"><li><code class="cmd">$ pdftotext book.pdf - | head -n 3</code><pre class="out" tabindex="0">Chapter 1. The Beginnings
+The library was founded in 1864 by a
+group of teachers and merchants. In the
+</pre></li></ul></li></ol></details>
+</section><section class="prog" id="osatura" aria-labelledby="h-osatura">
+<h2 id="h-osatura">OSATURA <small>osatura 0.1.0 (osatura-cli, AGPL-3.0-or-later; engine libraries MPL-2.0)</small></h2>
+<p class="pdesc" data-t="osatura" lang="ro">Motor de animație 2D cu schelet, în linia de comandă</p>
+<div class="player" data-slug="osatura">
+<pre class="term" role="img" aria-label="Terminal (înregistrare): OSATURA"></pre>
+<div class="subline empty" aria-hidden="true"></div>
+<div class="ctl"></div>
+<div class="scenes" role="group" aria-label="Scena"></div>
+<p class="nojs" data-ui="no_js">Pagina are nevoie de JavaScript pentru redare; transcrierea de mai jos funcționează fără.</p>
+</div>
+<p class="links"><a href="osatura.cast" download data-ui="cast">Descarcă .cast</a> · <a data-vtt="osatura" href="osatura.ro.vtt" download data-ui="vtt">Subtitrări .vtt</a> · <a href="osatura.mp4" download data-ui="video">Video MP4</a> · <a href="osatura-offline.html" data-ui="offline">Pagină offline</a> · <a href="https://github.com/chiuta/osatura" rel="noopener noreferrer" data-ui="gh">Cod sursă</a></p>
+<details class="vid"><summary data-ui="video">Video MP4</summary><video data-slug="osatura" controls preload="none" playsinline poster="osatura.jpg" src="osatura.mp4"><track kind="subtitles" src="osatura.ro.vtt" srclang="ro" label="RO"><track kind="subtitles" src="osatura.en.vtt" srclang="en" label="EN"><track kind="subtitles" src="osatura.fr.vtt" srclang="fr" label="FR"><track kind="subtitles" src="osatura.it.vtt" srclang="it" label="IT"><track kind="subtitles" src="osatura.es.vtt" srclang="es" label="ES"><track kind="subtitles" src="osatura.pt.vtt" srclang="pt" label="PT"><track kind="subtitles" src="osatura.de.vtt" srclang="de" label="DE"><track kind="subtitles" src="osatura.hu.vtt" srclang="hu" label="HU"></video></details>
+<details class="transcript"><summary data-ui="transcript">Transcriere</summary><ol><li><p class="narr" lang="ro" data-n="osatura:0">OSATURA este un motor de animație 2D cu schelet. Comanda demo scrie un proiect complet de exemplu.</p><ul class="cmds" aria-label="Comenzi rulate"><li><code class="cmd">$ osatura --version | head -n 1</code><pre class="out" tabindex="0">osatura 0.1.0 (osatura-cli, AGPL-3.0-or-later; engine libraries MPL-2.0)
+</pre></li><li><code class="cmd">$ osatura demo demo.json</code><pre class="out" tabindex="0">wrote demo.json
+</pre></li></ul></li><li><p class="narr" lang="ro" data-n="osatura:1">Comanda check compilează proiectul exact ca randarea și raportează oasele, cinematica inversă, straturile și canalele.</p><ul class="cmds" aria-label="Comenzi rulate"><li><code class="cmd">$ osatura check demo.json</code><pre class="out" tabindex="0">ok: &#x27;OSATURA demo&#x27; 640×480 @ 24 fps, 48 frames, 6 bones, 1 ik, 14 layers, 14 channels
+</pre></li></ul></li><li><p class="narr" lang="ro" data-n="osatura:2">Randăm un cadru, o dată ca imagine PNG cu oasele desenate și o dată ca vector SVG.</p><ul class="cmds" aria-label="Comenzi rulate"><li><code class="cmd">$ osatura render demo.json 12 frame12.png --bones</code><pre class="out" tabindex="0">wrote frame12.png
+</pre></li><li><code class="cmd">$ osatura render demo.json 12 frame12.svg</code><pre class="out" tabindex="0">wrote frame12.svg
+</pre></li></ul></li><li><p class="narr" lang="ro" data-n="osatura:3">Exportul scrie o animație GIF. Totul rulează în linia de comandă, fără interfață grafică. Proiectul este în stadiul alpha.</p><ul class="cmds" aria-label="Comenzi rulate"><li><code class="cmd">$ osatura export demo.json demo.gif</code><pre class="out" tabindex="0">wrote demo.gif
+</pre></li><li><code class="cmd">$ ls -l frame12.png frame12.svg demo.gif</code><pre class="out" tabindex="0">-rw-r--r-- 1 root root 1111334 Nov  3 14:20 demo.gif
+-rw-r--r-- 1 root root   41038 Nov  3 14:20 frame12.png
+-rw-r--r-- 1 root root    7764 Nov  3 14:20 frame12.svg
+</pre></li></ul></li></ol></details>
+</section>
+ <p class="note" data-ui="tts">Vocea este sintetizată local cu espeak-ng (GPL-3.0); sună mecanic, dar funcționează în toate cele 8 limbi.</p>
+ <p class="note" data-ui="note">Ritmul este montat pentru a putea fi urmărit; textul de pe ecran este ieșirea reală a programelor, iar căile absolute sunt scurtate la /home/demo.</p>
+ <p class="back"><a href="../" data-ui="back">Înapoi la demo-uri</a></p>
+</main>
+<script src="nativ-data.js"></script><script src="nativ.js"></script>
+</body>
+</html>

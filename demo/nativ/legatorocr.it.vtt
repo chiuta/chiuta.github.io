@@ -1,0 +1,13 @@
+WEBVTT
+
+00:00:00.400 --> 00:00:08.974
+LegatorOCR trasforma pagine scansionate in un PDF ricercabile. Ecco tre immagini con il testo leggermente inclinato.
+
+00:00:11.304 --> 00:00:21.291
+Un solo comando corregge l'inclinazione, legge il testo con l'OCR e scrive il PDF e un file di testo. La tabella dei tempi mostra dove va il tempo.
+
+00:00:24.991 --> 00:00:35.739
+Il testo riconosciuto, pagina per pagina. Le immagini della dimostrazione sono generate, quindi il risultato è pulito; le scansioni reali sono più difficili.
+
+00:00:37.762 --> 00:00:45.999
+Il PDF ha uno strato di testo: si può cercare e copiare. Il programma funziona in locale, senza account.

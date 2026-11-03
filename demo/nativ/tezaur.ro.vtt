@@ -1,0 +1,22 @@
+WEBVTT
+
+00:00:00.400 --> 00:00:09.170
+TEZAUR este un asistent pentru teză care lucrează numai cu biblioteca ta. Aici sunt trei studii, ca fișiere text.
+
+00:00:12.394 --> 00:00:21.075
+Comanda ingest le indexează local, împreună cu bibliografia în format BibTeX. Nimic nu pleacă din calculator.
+
+00:00:23.605 --> 00:00:30.255
+Comanda sources arată documentele indexate, fiecare legat de intrarea sa bibliografică.
+
+00:00:33.398 --> 00:00:42.287
+Căutarea întoarce pasajele potrivite și arată câți termeni din întrebare acoperă. Nu are nevoie de niciun model de limbaj.
+
+00:00:44.466 --> 00:00:51.005
+Iată un fragment de ciornă cu citări. Unele afirmații sunt fidele surselor, altele nu.
+
+00:00:53.610 --> 00:01:07.975
+Comanda audit verifică fiecare citare față de sursă. O afirmație prea largă e marcată fără susținere, iar o cheie inexistentă e semnalată. Este o verificare mecanică, nu o dovadă.
+
+00:01:09.870 --> 00:01:20.229
+Comanda refs găsește cheile citate care nu apar nicăieri. Pentru răspunsuri generate, TEZAUR cere un model local, care nu e arătat aici.

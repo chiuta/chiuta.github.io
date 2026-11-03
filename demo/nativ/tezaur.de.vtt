@@ -1,0 +1,22 @@
+WEBVTT
+
+00:00:00.400 --> 00:00:10.093
+TEZAUR ist ein Assistent für die Abschlussarbeit, der nur mit Ihrer eigenen Bibliothek arbeitet. Hier sind drei Studien als einfache Textdateien.
+
+00:00:12.394 --> 00:00:20.896
+Der Befehl ingest indexiert sie lokal, zusammen mit der Bibliografie im BibTeX-Format. Nichts verlässt den Computer.
+
+00:00:23.605 --> 00:00:30.451
+Der Befehl sources listet die indexierten Dokumente auf, jedes mit seinem Literatureintrag verknüpft.
+
+00:00:33.398 --> 00:00:42.101
+Die Suche liefert die passenden Textstellen und zeigt, wie viele Suchbegriffe jede abdeckt. Ein Sprachmodell ist dafür nicht nötig.
+
+00:00:44.466 --> 00:00:51.643
+Hier ein Ausschnitt aus einem Entwurf mit Zitaten. Manche Aussagen entsprechen den Quellen, andere nicht.
+
+00:00:53.610 --> 00:01:07.085
+Der Befehl audit prüft jedes Zitat anhand seiner Quelle. Eine zu weitreichende Aussage wird als nicht belegt markiert, ein fehlender Schlüssel wird gemeldet. Es ist eine mechanische Prüfung, kein Beweis.
+
+00:01:09.870 --> 00:01:20.161
+Der Befehl refs findet zitierte Schlüssel, die nirgends vorkommen. Für erzeugte Antworten braucht TEZAUR ein lokales Modell, das hier nicht gezeigt wird.

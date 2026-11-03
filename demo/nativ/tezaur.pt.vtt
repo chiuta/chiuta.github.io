@@ -1,0 +1,22 @@
+WEBVTT
+
+00:00:00.400 --> 00:00:09.489
+TEZAUR é um assistente de tese que trabalha apenas com a sua própria biblioteca. Aqui estão três estudos, como ficheiros de texto.
+
+00:00:12.394 --> 00:00:21.371
+O comando ingest indexa-os localmente, juntamente com a bibliografia em formato BibTeX. Nada sai do computador.
+
+00:00:23.605 --> 00:00:30.560
+O comando sources lista os documentos indexados, cada um ligado à sua entrada bibliográfica.
+
+00:00:33.398 --> 00:00:43.215
+A pesquisa devolve as passagens correspondentes e mostra quantos termos da consulta cada uma cobre. Não precisa de nenhum modelo de linguagem.
+
+00:00:44.466 --> 00:00:52.361
+Aqui está um excerto de rascunho com citações. Algumas afirmações são fiéis às fontes, outras não.
+
+00:00:53.610 --> 00:01:08.620
+O comando audit verifica cada citação em relação à sua fonte. Uma afirmação demasiado ampla é marcada como sem apoio, e uma chave inexistente é assinalada. É uma verificação mecânica, não uma prova.
+
+00:01:09.870 --> 00:01:21.568
+O comando refs encontra as chaves citadas que não aparecem em lado nenhum. Para respostas geradas, o TEZAUR precisa de um modelo local, que não é mostrado aqui.

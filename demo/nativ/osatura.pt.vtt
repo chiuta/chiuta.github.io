@@ -1,0 +1,13 @@
+WEBVTT
+
+00:00:00.400 --> 00:00:08.051
+O OSATURA é um motor de animação 2D com esqueleto. O comando demo escreve um projeto de exemplo completo.
+
+00:00:09.780 --> 00:00:18.817
+O comando check compila o projeto exatamente como o render e informa os ossos, a cinemática inversa, as camadas e os canais.
+
+00:00:22.519 --> 00:00:29.383
+Renderizamos uma imagem, uma vez em PNG com os ossos desenhados e outra como vetor SVG.
+
+00:00:32.339 --> 00:00:41.937
+A exportação escreve um GIF animado. Tudo corre na linha de comandos, sem interface gráfica. O projeto está em fase alfa.

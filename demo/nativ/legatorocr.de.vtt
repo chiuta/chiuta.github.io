@@ -1,0 +1,13 @@
+WEBVTT
+
+00:00:00.400 --> 00:00:08.332
+LegatorOCR macht aus gescannten Seiten ein durchsuchbares PDF. Hier sind drei Bilder mit leicht schiefem Text.
+
+00:00:11.304 --> 00:00:22.643
+Ein einziger Befehl korrigiert die Schräglage, liest den Text per OCR und schreibt das PDF und eine Textdatei. Die Zeittabelle zeigt, wohin die Zeit geht.
+
+00:00:24.991 --> 00:00:34.466
+Der erkannte Text, Seite für Seite. Die Bilder der Vorführung sind erzeugt, das Ergebnis ist also sauber; echte Scans sind schwieriger.
+
+00:00:37.762 --> 00:00:45.389
+Das PDF hat eine Textebene: Es lässt sich durchsuchen und kopieren. Das Programm läuft lokal, ohne Konto.

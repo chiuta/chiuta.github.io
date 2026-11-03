@@ -1,0 +1,16 @@
+WEBVTT
+
+00:00:00.400 --> 00:00:07.092
+VERIGA prüft die Links einer Website. Hier eine kleine Website aus fünf Dateien auf der Festplatte.
+
+00:00:08.963 --> 00:00:18.866
+Ein einziger Befehl durchsucht die Website und sucht auch verwaiste Dateien. Der Exit-Code 2 meldet Skripten, dass defekte Links gefunden wurden.
+
+00:00:21.589 --> 00:00:27.591
+Der Textbericht nennt zuerst die defekten Links. Hier fehlen eine Seite und ein Bild.
+
+00:00:30.624 --> 00:00:39.408
+Dasselbe Ergebnis gibt es auch als CSV-Tabelle, bereit für eine Tabellenkalkulation. Auch die verwaiste Datei ist aufgeführt.
+
+00:00:41.537 --> 00:00:47.628
+Die Sprache der Berichte wählt man mit der Option lang. Hier dieselbe Prüfung auf Englisch.
