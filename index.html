@@ -35,7 +35,7 @@
 </style>
 
 <meta charset="UTF-8">
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data: blob:; style-src 'self' 'unsafe-inline'; font-src 'self' data:; media-src 'self' blob: data:; object-src 'none'; base-uri 'self'; form-action 'self'; worker-src 'self' blob:; script-src 'self' 'sha256-CLz9ky8c+CI8yax80HOx/XKzzI+0llJZxdBKUKIqejE=' 'sha256-YO40Pa9U54kBXfBS8s7ySLVhwIuT7JC9cMSApha5DIk=' 'sha256-IdmMJ6jZzj68LvQ8fL4gKzCURgbWDYz0O9wT2RYqS6I=' 'sha256-NhFYx+8UgWykiCFi4WXtcNrvQdtM0Hg323ahxHZhWmo='; connect-src 'none'; manifest-src 'self'">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data: blob:; style-src 'self' 'unsafe-inline'; font-src 'self' data:; media-src 'self' blob: data:; object-src 'none'; base-uri 'self'; form-action 'self'; worker-src 'self' blob:; script-src 'self' 'sha256-CLz9ky8c+CI8yax80HOx/XKzzI+0llJZxdBKUKIqejE=' 'sha256-YO40Pa9U54kBXfBS8s7ySLVhwIuT7JC9cMSApha5DIk=' 'sha256-zByTDV2nyjEJaWtPgkLA+JnFY73dIXuBlUugTLo1UO0=' 'sha256-NhFYx+8UgWykiCFi4WXtcNrvQdtM0Hg323ahxHZhWmo='; connect-src 'none'; manifest-src 'self'">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <meta name="color-scheme" content="dark light">
 <meta name="theme-color" id="theme-color-meta" content="#07060f">
@@ -517,6 +517,10 @@ details.fisa:not([open])>:not(summary){display:none!important}
 .sec-head[id]{background:linear-gradient(90deg,color-mix(in srgb,var(--accent) 26%,transparent),transparent 70%);border-radius:12px;padding:.9rem .9rem .7rem 1.2rem;margin-top:1.6rem}
 .sec-head[id]::before{left:.35rem;top:.7rem;bottom:.7rem}
 .sec-head[id] .sec-title{text-shadow:0 0 22px color-mix(in srgb,var(--accent) 45%,transparent)}
+.card-related{display:flex;flex-wrap:wrap;align-items:center;gap:.3rem;margin-top:.15rem}
+.card-related .rel-lbl{font:600 .58rem var(--mono);color:var(--muted);text-transform:uppercase;letter-spacing:.05em}
+.card-related .rel-chip{font:700 .62rem var(--mono);padding:.22rem .6rem;color:var(--accent);background:var(--accent-lo);border:1px solid color-mix(in srgb,var(--accent) 45%,transparent);border-radius:999px;transition:transform .15s,background .2s,box-shadow .2s}
+.card-related .rel-chip:hover{transform:translateY(-1px);background:color-mix(in srgb,var(--accent) 24%,transparent);box-shadow:0 3px 10px color-mix(in srgb,var(--accent) 35%,transparent)}
 @media(max-width:480px){.card-links{gap:.25rem}.card-link,.card-links>details.fisa>summary{font-size:.6rem;padding:.34rem .4rem;gap:.15rem}a.card-link.live-link{font-size:.64rem;padding:.34rem .55rem}}
 @media(prefers-reduced-motion:reduce){.card-link,a.card-link.live-link::after{transition:none}.card-link:hover,a.card-link.live-link:hover{transform:none}}
 @media print{a.card-link.live-link{background:none;color:#000;box-shadow:none;border:1px solid #000}}
@@ -1549,7 +1553,7 @@ function decorateCards(){
     if(!c.id) c.id='app-'+key;
     const body=c.querySelector('.card-body'), old=c.querySelector('details.fisa');
     const wasOpen=!!(old&&old.open);
-    c.querySelectorAll('.card-badges,details.fisa').forEach(n=>n.remove());
+    c.querySelectorAll('.card-badges,.card-related,details.fisa').forEach(n=>n.remove());
     let dwrap=c.querySelector('.desc-wrap'); { const dd=c.querySelector('.card-desc'); if(dd&&!dwrap){ dwrap=el('div','desc-wrap'); dd.before(dwrap); dwrap.appendChild(dd); } }
     const status=c.dataset.status||'stable', off=c.dataset.off||'no';
     const grp=(META.related||[]).find(g=>g.indexOf(key)>-1), others=grp?grp.filter(k=>k!==key):[];
@@ -1557,9 +1561,9 @@ function decorateCards(){
     const bars=el('div','card-badges');
     const bs=el('span','bd bd-'+status,t('st'+status.charAt(0).toUpperCase()+status.slice(1))); bs.title=t('fStatus')+': '+bs.textContent; bars.appendChild(bs);
     const bo=el('span','bd bd-off-'+off,t(offBadgeKey(off))); bo.title=t('fOff')+': '+bo.textContent; bars.appendChild(bo);
-    if(others.length){ const br=el('span','bd bd-rel',t('fRelated')+' · '+others.length); br.title=t('fRelated')+': '+others.map(appTitle).join(', '); bars.appendChild(br); }
     if(vars.length){ bars.appendChild(el('span','bd bd-var',t('fVariants')+' · '+vars.length)); }
     const desc=c.querySelector('.card-desc'); if(desc) (dwrap||desc).insertAdjacentElement('afterend',bars); else body.appendChild(bars);
+    { const rk=others.filter(k=>cardByKey(k)); if(rk.length){ const rw=el('div','card-related'); rw.appendChild(el('span','rel-lbl',t('fRelated')+':')); rk.forEach(k=>{ const b=el('button','rel-chip',appTitle(k)+' →'); b.type='button'; b.dataset.goto=k; b.dataset.noopen='1'; b.setAttribute('aria-label',t('fRelated')+': '+appTitle(k)); rw.appendChild(b); }); bars.insertAdjacentElement('afterend',rw); } }
 
     /* versiunea: v + (ultima schimbare de fond, dacă e cunoscută); data de sincronizare rămâne în titlu și în fișă */
     const ver=c.querySelector('.card-ver');
@@ -1603,14 +1607,14 @@ function decorateCards(){
   });
   updateStats();
 }
-function gotoCard(key){
+function gotoCard(key,noOpen){
   let c=cardByKey(key); if(!c) return;
   if(c.hidden){ FILTER.q='';FILTER.cat='';FILTER.lang='';FILTER.off='';FILTER.status=''; const q=document.getElementById('q'); if(q) q.value=''; syncFilter(); c=cardByKey(key); }
   c.scrollIntoView({block:'center',behavior:(window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches)?'auto':'smooth'});
-  const d=c.querySelector('details.fisa'); if(d){ d.open=true; const s=d.querySelector('summary'); if(s) s.focus({preventScroll:true}); }
+  const d=c.querySelector('details.fisa'); if(d&&!noOpen){ d.open=true; const s=d.querySelector('summary'); if(s) s.focus({preventScroll:true}); }
   c.classList.add('fx-ping'); setTimeout(()=>c.classList.remove('fx-ping'),1600);
 }
-document.addEventListener('click',e=>{ const b=e.target.closest&&e.target.closest('[data-goto]'); if(b){ e.preventDefault(); gotoCard(b.dataset.goto); } });
+document.addEventListener('click',e=>{ const b=e.target.closest&&e.target.closest('[data-goto]'); if(b){ e.preventDefault(); gotoCard(b.dataset.goto,!!b.dataset.noopen); } });
 function init(){
   cachedCount=document.querySelectorAll('#apps-grid .app-card:not([data-variant-of])').length;
   const q=document.getElementById('q');
