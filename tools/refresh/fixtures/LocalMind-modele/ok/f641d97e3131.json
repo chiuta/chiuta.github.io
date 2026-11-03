@@ -1,0 +1,7 @@
+{
+ "url": "https://huggingface.co/api/models/onnx-community/Llama-3.2-1B-Instruct-ONNX",
+ "status": 200,
+ "headers": {
+  "content-type": "application/json"
+ }
+}

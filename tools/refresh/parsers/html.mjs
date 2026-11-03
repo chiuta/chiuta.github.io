@@ -4,15 +4,24 @@
 // nu și titlurile (drepturile asupra listei nu sunt verificate; vezi data/sources.json → ACORDAJ).
 import {fetchOk, htmlToLines, h8, err} from './common.mjs';
 
-const LINE = /^(\d{1,4})\s*[.)–—:-]\s*(\S.{1,240})$/;
+// Formate acceptate (observate pe pagina reală, probă din 2026-11-03): „123. Titlu”, „123 Titlu”, „123Titlu” și numărul singur pe un rând,
+// cu titlul pe rândul următor („1125” / „Titlu”). Fixturile vechi folosesc „N. Titlu”; ambele merg.
+const LINE = /^(\d{1,4})(?:\s*[.)–—:-](?!\d)\s*|\s+|(?=\p{L}))(\S.{1,240})$/u;
+const ALONE = /^(\d{1,4})\s*[.)]?$/;
 export function extractNumbered(lines) {
   const out = [];
-  for (const l of lines) {
-    const m = l.match(LINE); if (!m) continue;
-    const n = +m[1], title = m[2].trim();
-    if (!n || !/\p{L}{2,}/u.test(title)) continue;
-    if (n >= 1900 && n <= 2100) continue;          // ani, nu numere de ordine
-    out.push({n, title});
+  const push = (n, title) => {
+    title = title.trim();
+    if (!n || !/\p{L}{2,}/u.test(title)) return false;
+    if (n >= 1900 && n <= 2100) return false;          // ani, nu numere de ordine
+    out.push({n, title}); return true;
+  };
+  for (let i = 0; i < lines.length; i++) {
+    const l = lines[i];
+    const m = l.match(LINE);
+    if (m) { push(+m[1], m[2]); continue; }
+    const a = l.match(ALONE);
+    if (a && i + 1 < lines.length && /^\p{L}/u.test(lines[i + 1]) && !LINE.test(lines[i + 1]) && push(+a[1], lines[i + 1])) i++;
   }
   return out;
 }

@@ -69,6 +69,10 @@ test('decide(): praguri la limită (exact 20% scădere trece, peste nu), structu
 test('parsere: linii numerotate, linkuri interne, JSON-stat', () => {
   const lines = ['Cursuri', '1. Reiki Usui', '2) Karuna', '2026. Copyright', '3 - ', '1134: Ultimul titlu', '12. 34'];
   assert.deepEqual(extractNumbered(lines).map((e) => e.n), [1, 2, 1134]);
+  // format real observat pe sursă (2026-11-03): „N Titlu” fără punct, „NTitlu” lipit, numărul singur pe rând; „680.20 …” și „11:11…” nu sunt numere de ordine
+  const real = ['1125', 'Alfa Beta', '1126 Gama Delta', '1041Epsilon Zeta', '680.20 Zeta Eta', '11:11Theta Iota', '13 Titlu 5 Kappa', '2026 Lambda Mu'];
+  assert.deepEqual(extractNumbered(real).map((e) => e.n), [1125, 1126, 1041, 13]);
+  assert.equal(extractNumbered(real)[0].title, 'Alfa Beta');
   const html = '<a href="/a/">x</a><a href="/a/#top">y</a><a href="/f.pdf">z</a><a href="https://alt.invalid/">e</a><a href="/b?x=1">q</a><a href="/c">c</a>';
   assert.deepEqual(internalLinks(html, 'https://s.invalid/', null, 10), ['https://s.invalid/a/', 'https://s.invalid/c']);
   const j = {class: 'dataset', id: ['geo', 'time'], size: [2, 2], dimension: {geo: {category: {index: ['AT', 'BE']}}, time: {category: {index: {2024: 0, 2025: 1}}}}, value: {0: 1, 1: 2, 3: 4}};
