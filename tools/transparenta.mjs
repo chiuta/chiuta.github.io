@@ -3,6 +3,8 @@
  *
  *   node tools/transparenta.mjs collect   citește /tmp/audit/audit.txt, /tmp/audit2/summary.md, /tmp/audit4/{base,new}
  *                                         și starea curentă a depozitelor → data/transparenta.json
+ *   node tools/transparenta.mjs audit     citește /tmp/audit7/*.json (tools/audit-run.mjs) → data/transparenta.json: a7 (scorul MĂSURAT, metoda în docs/GHID-AUTORI.md) + health
+ *   node tools/transparenta.mjs health    recalculează doar tabloul de bord „health” (tools/portfolio-health.mjs)
  *   node tools/transparenta.mjs build     data/transparenta.json + tools/transparenta-i18n.mjs → transparenta.html
  *   node tools/transparenta.mjs --check   exit 1 dacă transparenta.html nu corespunde datelor / dicționarului (nu scrie nimic)
  *
@@ -16,12 +18,14 @@ import {execFileSync} from 'node:child_process';
 import {fileURLToPath} from 'node:url';
 import {LANGS, LANG_NAMES, UI, CODES, CODE_KIND} from './transparenta-i18n.mjs';
 import {recomputeCspHashes} from '../fff-kit/lib/csp.mjs';
+import {computeHealth, healthProblems} from './portfolio-health.mjs';
 
 const HUB = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const argv = process.argv.slice(2);
 const cmd = argv.includes('--check') ? 'check' : argv[0];
 const ri = argv.indexOf('--root');
 const ROOT = path.resolve(ri >= 0 ? argv[ri + 1] : path.join(HUB, '..'));
+const A7 = process.env.AUDIT7 || '/tmp/audit7';
 const A1 = process.env.AUDIT1 || '/tmp/audit/audit.txt', A2 = process.env.AUDIT2 || '/tmp/audit2/summary.md', A4 = process.env.AUDIT4 || '/tmp/audit4';
 const DATA = path.join(HUB, 'data', 'transparenta.json'), OUT = path.join(HUB, 'transparenta.html');
 const EXTERNAL = new Set(['OSATURA', 'VERIGA', 'TEZAUR', 'LegatorOCR', 'Fenarium', 'MENSURA']);   // la fel ca în tools/sync-catalog.mjs
@@ -110,10 +114,83 @@ function collect() {
   }
   try { execFileSync('node', [path.join(HUB, 'tools', 'sync-catalog.mjs'), '--check'], {stdio: 'pipe'}); live.syncOk = true; } catch { live.syncOk = false; }
   apps.sort((x, y) => x.key.toLowerCase().localeCompare(y.key.toLowerCase()));
-  const data = {schema: 1, snapshot: new Date().toISOString().slice(0, 10), a1, a2, a4, live, apps};
+  let prev = {}; try { prev = JSON.parse(read(DATA)); } catch { /* prima rulare */ }
+  const data = {...prev, schema: 1, snapshot: new Date().toISOString().slice(0, 10), a1, a2, a4, live, apps};
   fs.mkdirSync(path.dirname(DATA), {recursive: true});
   fs.writeFileSync(DATA, JSON.stringify(data, null, 1) + '\n');
   console.log(`data/transparenta.json: ${apps.length} aplicații · audit 1 ${d1} · audit 2 ${d2} · sincronizare catalog ${live.syncOk ? 'ok' : 'NU'}`);
+}
+
+/* ---------------- auditul 7: scorul măsurat ---------------- */
+const KB = (n) => Math.round(n / 1024);
+export function scoreOne(r) {
+  const st = r.static || {};
+  const comp = {};
+  comp.build = r.build ? (r.build.ok ? 2 : 0) : null;
+  comp.axe = r.axe && !r.axe.timedOut && r.axe.violations != null ? (r.axe.ok ? 2 : 0) : null;
+  const tf = (r.tests && r.tests.files) || [];
+  comp.tests = r.tests && r.tests.skipped ? null : tf.length ? 2 * tf.filter((f) => f.ok).length / tf.length : 0;
+  comp.csp = st.cspPresent ? (st.connectNone && st.scriptHashOnly ? 1.5 : st.scriptHashOnly ? 1 : 0.5) : 0;
+  comp.off = st.sw && st.manifest ? (st.egress === 0 ? 1 : 0.5) : 0;
+  comp.langs = Math.min(1, (st.langs || 0) / 8);
+  comp.size = st.size <= 1048576 ? 0.5 : st.size <= 2097152 ? 0.35 : st.size <= 4194304 ? 0.2 : 0.1;
+  const incomplete = comp.build == null || comp.axe == null || comp.tests == null;
+  const score = incomplete ? null : +Object.values(comp).reduce((a, b) => a + b, 0).toFixed(2);
+  return {comp, score, incomplete};
+}
+function audit() {
+  if (!fs.existsSync(A7)) throw new Error('lipsește ' + A7 + ' (rulează tools/audit-run.mjs)');
+  const data = JSON.parse(read(DATA));
+  const rows = [];
+  let at = '';
+  for (const f of fs.readdirSync(A7).filter((x) => x.endsWith('.json')).sort()) {
+    const r = JSON.parse(read(path.join(A7, f)));
+    const {comp, score, incomplete} = scoreOne(r);
+    const tf = (r.tests && r.tests.files) || [];
+    if (r.at > at) at = r.at;
+    rows.push({key: r.app, ver: (r.static && r.static.ver) || '', score, incomplete: incomplete || undefined, build: r.build ? r.build.ok : null,
+      axe: r.axe && !r.axe.timedOut ? r.axe.violations : null, tests: tf.length, testsOk: tf.filter((x) => x.ok).length, csp: comp.csp, off: comp.off, langs: (r.static && r.static.langs) || 0, kb: KB((r.static && r.static.size) || 0)});
+  }
+  // fără erori de numire: cheile trebuie să existe în catalog
+  const idx = read(path.join(HUB, 'index.html'));
+  const cards = new Set([...idx.matchAll(/data-c="apps\|([^|"]+)\|title"/g)].map((m) => m[1]));
+  const extra = rows.filter((x) => !cards.has(x.key)).map((x) => x.key);
+  if (extra.length) console.warn('atenție: măsurate dar fără card: ' + extra.join(', '));
+  const sc = rows.filter((x) => typeof x.score === 'number').map((x) => x.score).sort((a, b) => a - b);
+  const med = sc.length ? (sc.length % 2 ? sc[(sc.length - 1) / 2] : (sc[sc.length / 2 - 1] + sc[sc.length / 2]) / 2) : null;
+  data.a7 = {date: at.slice(0, 10), apps: rows.length, scored: sc.length, mean: sc.length ? +(sc.reduce((a, b) => a + b, 0) / sc.length).toFixed(2) : null, median: med == null ? null : +med.toFixed(2),
+    builds: rows.filter((x) => x.build).length, axe: rows.filter((x) => x.axe === 0).length, allTests: rows.filter((x) => x.tests > 0 && x.testsOk === x.tests).length, noTests: rows.filter((x) => x.tests === 0).length,
+    incomplete: rows.filter((x) => x.incomplete).length, weights: {build: 2, axe: 2, tests: 2, csp: 1.5, offline: 1, langs: 1, size: 0.5}, apps_: undefined, apps: rows.sort((a, b) => a.key.toLowerCase().localeCompare(b.key.toLowerCase()))};
+  delete data.a7.apps_;
+  fs.writeFileSync(DATA, JSON.stringify(data, null, 1) + '\n');
+  // scorul măsurat apare în fișa fiecărui card (catalog-meta → apps[X].measured); „score” (auditul din 22.10) rămâne pentru ordinea din „Recomandate”
+  const CM = path.join(HUB, 'data', 'catalog-meta.json');
+  let cmt = read(CM);
+  const POL = '    "measured": ' + JSON.stringify('„measured” = scorul MĂSURAT (0–10) din tools/audit-run.mjs + `transparenta.mjs audit`: verificare build 2, axe-core 2, teste proprii 2, CSP 1,5, offline 1, limbi 1, dimensiune 0,5; doar din comenzi rulate, fără estimări (metoda completă: docs/GHID-AUTORI.md și transparenta.html). Nu schimbă ordinea din „Recomandate” (aceea urmează „score”). Lipsește când măsurătoarea e incompletă.') + ',\n';
+  cmt = cmt.replace(/^    "measured": .*\n/m, '');
+  cmt = cmt.replace(/^(    "score": .*\n)/m, (m0) => m0 + POL);
+  const lines = cmt.split('\n'), out = []; let inApps = false;
+  const byKey = new Map(rows.map((r) => [r.key, r]));
+  for (let k = 0; k < lines.length; k++) {
+    const l = lines[k], m = l.match(/^    "([^"]+)": \{$/);
+    if (/^  "[^"]+": /.test(l)) inApps = /^  "apps": /.test(l);
+    if (/^      "measured": /.test(l)) continue;            // se rescrie mai jos
+    out.push(l);
+    if (m && lines[k - 1] !== undefined && byKey.has(m[1]) && inApps) {
+      const r = byKey.get(m[1]);
+      if (typeof r.score === 'number') out.push('      "measured": ' + JSON.stringify({score: r.score, date: data.a7.date, ...(r.tests === 0 ? {tests: 0} : {})}) .replace(/":/g, '": ').replace(/,"/g, ', "') + ',');
+    }
+  }
+  fs.writeFileSync(CM, out.join('\n'));
+  JSON.parse(read(CM));   // validare
+  console.log(`a7: ${rows.length} aplicații · ${sc.length} cu scor · media ${data.a7.mean} · mediana ${data.a7.median} · incomplete ${data.a7.incomplete}`);
+  health();
+}
+function health() {
+  const data = JSON.parse(read(DATA));
+  data.health = computeHealth(HUB);
+  fs.writeFileSync(DATA, JSON.stringify(data, null, 1) + '\n');
+  console.log('health: ' + JSON.stringify({rel: data.health.relations.withRelation + '/' + data.health.apps, cov8: data.health.coverage.full8, mean: data.health.score && data.health.score.mean, stale30: data.health.age.stale30, srcAlert: data.health.sources.alert}));
 }
 
 /* ---------------- randare (aceeași funcție rulează în Node pentru HTML-ul static și în pagină, la schimbarea limbii) ---------------- */
@@ -203,6 +280,32 @@ function renderSrc(D, UI, CODES, CODE_KIND) {
           '</td><td>' + E(x.lastOk || '—') + '</td><td>' + E(x.lastFail || '—') + '</td><td>' + (x.err ? E(t('err_' + x.err)) : '—') + '</td><td class="n">' + (x.recs != null ? x.recs : '—') + '</td></tr>');
       });
       h.push('</tbody></table></div><p class="note">' + E(t('src_note')) + '</p></section>');
+    }
+    // sănătatea portofoliului + auditul măsurat (Etapa 7): data/transparenta.json → health, a7
+    if (D.health) {
+      var HE = D.health, ls = function (a) { return a && a.length ? (a.length > 6 ? a.slice(0, 6).join(', ') + ' (+' + (a.length - 6) + ')' : a.join(', ')) : t('hd_none'); };
+      h.push('<section aria-labelledby="s-health"><h2 id="s-health">' + E(t('h_health')) + '</h2><p class="note">' + E(t('health_lead')) + '</p>');
+      h.push('<div class="tw wide"><table><thead><tr>' + th('th_ind') + th('th_val') + th('th_det') + '</tr></thead><tbody>');
+      var hrow = function (k, v, d) { h.push('<tr><th scope="row">' + E(t(k)) + '</th><td>' + v + '</td><td>' + d + '</td></tr>'); };
+      var r_ = HE.relations, c_ = HE.coverage, a_ = HE.age, s_ = HE.sources, v_ = HE.versions, sc_ = HE.score;
+      hrow('hk_rel', F('hv_rel', {n: r_.withRelation, m: HE.apps, p: r_.pairs, f: r_.flows, fa: r_.flowApps}), r_.orphans.length ? F('hd_orph', {list: E(ls(r_.orphans))}) : '—');
+      hrow('hk_cov', F('hv_cov', {a: c_.full8, b: c_.partial, c: c_.single, d: c_.native, s: N(c_.avg)}), E(t('hd_cov')));
+      if (sc_) hrow('hk_score', F('hv_score', {mean: N(sc_.mean), med: N(sc_.median), n: sc_.measured, nt: sc_.noTests, inc: sc_.incomplete}), F('hd_low', {list: E(sc_.lowest.join(', '))}));
+      hrow('hk_age', F('hv_age', {a: a_.fresh7, b: a_.fresh30, c: a_.stale30, d: a_.stale90}), a_.oldest ? F('hd_old', {o: E(a_.oldest)}) : '—');
+      hrow('hk_src', F('hv_src', {a: s_.active, t: s_.total, ok: s_.ok, al: s_.alert, st: s_.stopped, sl: s_.stale}), s_.failingApps.length ? F('hd_srcfail', {list: E(s_.failingApps.join(', '))}) : '—');
+      hrow('hk_ver', F('hv_ver', {m: v_.measured, c: v_.cards, b: v_.behind.length}), v_.unmeasured.length ? F('hd_ver', {list: E(ls(v_.unmeasured))}) : '—');
+      h.push('</tbody></table></div></section>');
+    }
+    if (D.a7 && D.a7.apps && D.a7.apps.length) {
+      var A7_ = D.a7, mk = function (x) { return x == null ? '—' : x; };
+      h.push('<section aria-labelledby="s-a7"><h2 id="s-a7">' + E(t('h_a7')) + '</h2><p class="note">' + F('a7_lead', {date: A7_.date}) + '</p><p class="note">' + E(t('a7_method')) + '</p>');
+      h.push('<p class="note">' + F('a7_sum', {mean: N(A7_.mean), med: N(A7_.median), n: A7_.apps.length, b: A7_.builds, x: A7_.axe, t: A7_.allTests, nt: A7_.noTests}) + '</p>');
+      h.push('<div class="tw wide"><table class="apps"><thead><tr>' + th('th_app') + th('th_ver') + th('th_m7', 'n') + th('th_build') + th('th_axe', 'n') + th('th_tests', 'n') + th('th_csp', 'n') + th('th_off7', 'n') + th('th_lang7', 'n') + th('th_kb', 'n') + '</tr></thead><tbody>');
+      A7_.apps.forEach(function (x) {
+        h.push('<tr><th scope="row">' + E(x.key) + '</th><td>' + E(x.ver) + '</td><td class="n">' + (x.score == null ? '—' + (x.incomplete ? ' !' : '') : N(x.score.toFixed(1))) + '</td><td>' + (x.build == null ? '—' : E(t(x.build ? 'yes' : 'no'))) +
+          '</td><td class="n">' + mk(x.axe) + '</td><td class="n">' + (x.tests ? x.testsOk + '/' + x.tests : '0') + '</td><td class="n">' + N(x.csp) + '</td><td class="n">' + N(x.off) + '</td><td class="n">' + x.langs + '</td><td class="n">' + x.kb + '</td></tr>');
+      });
+      h.push('</tbody></table></div><p class="note">' + E(t('a7_note')) + '</p></section>');
     }
     // per aplicație
     h.push('<section aria-labelledby="s-apps"><h2 id="s-apps">' + E(t('h_apps')) + '</h2><div class="tw wide"><table class="apps"><thead><tr>' + th('th_app') + th('th_ver') + th('th_offline') + th('th_langs', 'n') + th('th_hosts', 'n') + th('th_score', 'n') + th('th_hm', 'n') + th('th_l', 'n') + '</tr></thead><tbody>');
@@ -322,6 +425,8 @@ function checkDict() {
 }
 
 if (cmd === 'collect') collect();
+else if (cmd === 'audit') audit();
+else if (cmd === 'health') health();
 else if (cmd === 'build' || cmd === 'check') {
   const problems = checkDict();
   const data = JSON.parse(read(DATA));
@@ -335,8 +440,9 @@ else if (cmd === 'build' || cmd === 'check') {
     const live = new Set(data.apps.map((a) => a.key)), idx = read(path.join(HUB, 'index.html'));
     const cards = [...idx.matchAll(/data-c="apps\|([^|"]+)\|title"/g)].map((m) => m[1]);
     for (const k of cards) if (!live.has(k)) problems.push(`aplicația ${k} din catalog lipsește din data/transparenta.json (rulează collect + build)`);
+    for (const m of healthProblems(data.health, computeHealth(HUB))) problems.push(m);
     if (/[\w.+-]+@[\w-]+\.[a-z]{2,}/i.test(JSON.stringify(data))) problems.push('date personale (adresă de e-mail) în data/transparenta.json');
     if (problems.length) { console.error(problems.join('\n')); process.exit(1); }
     console.log(`transparenta ok · ${data.apps.length} aplicații · ${LANGS.length} limbi · date din ${data.snapshot}`);
   }
-} else { console.error('folosire: transparenta.mjs collect | build | --check'); process.exit(2); }
+} else { console.error('folosire: transparenta.mjs collect | audit | health | build | --check'); process.exit(2); }

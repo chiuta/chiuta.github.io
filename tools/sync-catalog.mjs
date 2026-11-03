@@ -191,7 +191,7 @@ html = html.replace(/(id="stat-sections">)\d+(<)/, (m, a, b) => { if (m !== `${a
   const emb = {schema: meta.schema, policy: meta.policy, kinds: meta.kinds, variants: meta.variants, related: meta.related, topics: meta.topics, relations: buildRelations(meta), flows: {defs: FLOWS.flows.map((f) => ({id: f.id, name: f.name, summary: f.summary})), byApp: flowsByApp(FLOWS)}, apps: {}};
   for (const [k, v] of Object.entries(meta.apps)) {
     const o = {};
-    for (const f of ['fisa', 'substantive', 'screenshot', 'screenshotAlt', 'score', 'evidence', 'health', 'fragile', 'checked']) if (v[f]) o[f] = v[f];
+    for (const f of ['fisa', 'substantive', 'screenshot', 'screenshotAlt', 'score', 'measured', 'evidence', 'health', 'fragile', 'checked']) if (v[f]) o[f] = v[f];
     if (Object.keys(o).length) emb.apps[k] = o;
   }
   const block = `<script type="application/json" id="catalog-meta">${JSON.stringify(emb).replace(/</g, '\\u003c')}</script>`;

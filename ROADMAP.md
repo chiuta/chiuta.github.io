@@ -1,4 +1,4 @@
-# Roadmap chiuta.ro · fff-kit și cele 113 aplicații „fără frontiere”
+# Roadmap chiuta.ro · fff-kit și cele 117 de aplicații (113 pagini și 4 programe native) „fără frontiere”
 
 Stare la 2 noiembrie 2026 · autor: Alexandru-Ionuț Chiuță (Alexio) · licență MIT · fără cont, fără telemetrie, fără reclame, offline.
 
@@ -183,3 +183,15 @@ Căutare pe web făcută la data de mai sus. Ce n-a putut fi citit direct (pagin
 - **Funcții noi la nivel de kit, în 110 aplicații**: `FFF.sync` (sincronizare directă între dispozitive, fără server/cont) și `FFF.history` (istoric local cu restaurare reversibilă). VaultCrypt rămâne fără ele (păstrează secrete).
 - **De decis**: dacă sincronizarea să trimită și ștergerile (acum nu); verificarea traducerilor noi de către vorbitori nativi; dimensiunea (+140 KB/aplicație).
 
+
+## 9. Stadiu la 3 noiembrie 2026 (Etapa 7 încheiată)
+
+- **Audit repetat și reproductibil:** `node tools/audit-run.mjs` (build check, axe în 8 scenarii, testele proprii, CSP, offline, limbi, mărime) + `node tools/transparenta.mjs audit`. 112 aplicații măsurate, media 9,28; 399 de fișiere de test, toate trec când rulează pe rând. Metoda: [docs/GHID-AUTORI.md](docs/GHID-AUTORI.md); concluziile: [docs/RETROSPECTIVA.md](docs/RETROSPECTIVA.md).
+- **Tablou de sănătate** în `transparenta.html` și `data/transparenta.json` (relații, acoperire, scor, învechire, surse, versiuni), cu `--check` în CI.
+- **Datorii închise:** ACORDAJ (1132 de titluri), modelele LocalMind, diferența Franței la AGORA (explicată: dată de referință, nu eroare), testele care picau, constante de versiune învechite în 8 aplicații, axe pe butonul A/B (4 aplicații) și pe Cupa Mondială.
+- **Rămase deschise (decizii pentru autor):**
+  - PR-urile #20–#22 (instantanee ACORDAJ, AGORA, VNTV; `autoMerge` oprit);
+  - MENSURA și Fenarium fără kit (build check pică, fără teste);
+  - înregistrări native pentru TEZAUR, VERIGA, OSATURA, LegatorOCR (doar TEZAUR are binar; nefăcut);
+  - traducerile automate din TEZAUR și din cele 6 limbi ale celorlalte aplicații, de revizuit de vorbitori nativi;
+  - ieșirile propuse în retrospectivă (scorul manual, acceptori fără producători, fixturi CI).

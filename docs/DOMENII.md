@@ -77,6 +77,8 @@ Datele din `localStorage`/`IndexedDB` **nu se mută singure**: noua origine porn
 
 ## Verificare
 
+Stare verificată în Etapa 7 (consolidare): 117 din 117 depozite au CNAME `<slug>.chiuta.ro` și nicio aplicație nu e pe origine partajată (fiecare își păstrează `localStorage`/IndexedDB separat). Ce NU s-a putut verifica din mediul de lucru: rezolvarea DNS (`--dns` dă ENOTFOUND din spatele proxy-ului) și starea GitHub Pages „live”; acestea rămân de confirmat de pe o rețea cu DNS public.
+
 ```
 node tools/cname-inventory.mjs --check   # documentul corespunde depozitelor de pe disc
 node tools/cname-inventory.mjs --dns     # informativ: interoghează DNS-ul public pentru fiecare CNAME (necesită rețea)

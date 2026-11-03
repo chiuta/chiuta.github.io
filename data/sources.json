@@ -162,7 +162,7 @@
    "deConfirmat": [
     "URL-ul exact al API-ului și parametrul sinceTimePeriod (verificate doar după documentația cunoscută; shell-ul nu iese spre ec.europa.eu)"
    ],
-   "note": "Raportează diferențele față de populațiile din aplicație (ex. Franța ~69,1 mil. în copia locală față de ~68,6 mil. Eurostat). Modificarea aplicației rămâne manuală.",
+   "note": "Raportează diferențele față de populațiile din aplicație (ex. Franța ~69,1 mil. în copia locală față de ~68,6 mil. Eurostat). Diferența a fost investigată în Etapa 7 și NU e o eroare: Eurostat tps00001 are situația la 1 ianuarie 2025 (Franța fără Mayotte), iar copia locală are cifra provizorie INSEE la 1 ianuarie 2026 (69.082.000, cu Mayotte). Raportul o va semnala în continuare până când Eurostat publică 2026; se ignoră atunci când anul de referință diferă. Modificarea aplicației rămâne manuală.",
    "card": true
   },
   {

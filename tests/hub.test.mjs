@@ -227,8 +227,8 @@ await T('catalog: acoperire pe toate cardurile, contor de dovezi, avertisment de
     ok(r.evid.every((e) => e[2] === meta.apps[e[0]].evidence.level), `${l}: pătrățelele nu corespund nivelului: ${JSON.stringify(r.evid)}`);
     ok(['Bioenergoterapie', 'Reiki', 'FrequencyLaboratory', 'PULS', 'SEVA', 'ASMR'].every((k) => r.health.includes(k)) && r.puls && r.puls.length > 5, `${l}: avertisment de sănătate: ${r.health.join(',')}`);
     ok(['Vitrina', 'Threads-fara-cont', 'X-fara-cont', 'Cadraj'].every((k) => r.fragile.includes(k)) && r.vitrina && r.vitrina.length > 3, `${l}: „fragil”: ${r.fragile.join(',')}`);
-    ok(/\bEN\b/.test(r.tezaur) && /\bRO\b/.test(r.pendulul), `${l}: acoperire TEZAUR „${r.tezaur}” / Pendulul „${r.pendulul}”`);
-    ok(r.tezaur !== r.agora && r.veriga !== r.tezaur, `${l}: etichetele de acoperire nu diferă`);
+    ok(/\b8\b/.test(r.tezaur) && /\bRO\b/.test(r.pendulul), `${l}: acoperire TEZAUR „${r.tezaur}” (8 limbi, instalabil) / Pendulul „${r.pendulul}”`);
+    ok(r.tezaur !== r.agora && r.pendulul !== r.tezaur, `${l}: etichetele de acoperire nu diferă (TEZAUR e acum la fel cu VERIGA: 8 limbi, instalabil)`);
     ok(!/undefined|NaN|\[object|\$\{|\b(cov[A-Z]\w*|plat[A-Z]\w*|bd(Health|Fragile)|ev[0-4]|evMode\w*|fEvid|stLab)\b/.test(r.all + ' ' + r.sheet), `${l}: chei/substituenți neinterpolați în insigne/fișă`);
     if (l === 'ro') {
       ok(/instalabil/.test(r.tezaur) && /instalabil/.test(r.veriga), 'ro: Rust „instalabil”');

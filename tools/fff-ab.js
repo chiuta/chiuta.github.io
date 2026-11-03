@@ -190,7 +190,7 @@
   /** Montează butonul „A/B”. o = {app, slug, getItems?, host?, className?}. */
   function mount(o) {
     var d = root.document; if (!d || !d.body || d.getElementById('fffabFab')) return null; css();
-    var fab = el('button', { type: 'button', id: 'fffabFab', 'class': o.host ? (o.className || '') : 'fffab-fab', text: tr('open'), 'aria-haspopup': 'dialog', 'aria-label': tr('title') });
+    var fab = el('button', { type: 'button', id: 'fffabFab', 'class': o.host ? (o.className || '') : 'fffab-fab', text: tr('open'), 'aria-haspopup': 'dialog', 'aria-label': tr('open') + ' — ' + tr('title') });
     fab.addEventListener('click', function () { panel(o); }); (o.host || d.body).appendChild(fab); return fab;
   }
   return { VERSION: 1, K: K, START: START, MIN_GAMES: MIN_GAMES, MIN_GAP: MIN_GAP, I18N: I18N, tr: tr, cleanVariants: cleanVariants, cleanState: cleanState, ranking: ranking, verdict: verdict, nextPair: nextPair, vote: vote, undo: undo,

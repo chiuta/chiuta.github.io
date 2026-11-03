@@ -104,6 +104,7 @@ export function validateMeta(meta, keys, bySection = null) {
   for (const [k, v] of Object.entries(meta.apps)) {
     if (v.score !== undefined && !(typeof v.score === 'number' && v.score >= 0 && v.score <= 10)) out.push(`catalog-meta: ${k}: „score” trebuie să fie un număr între 0 și 10`);
     if (typeof v.score === 'number' && v.score < thr && v.status !== 'lab') out.push(`catalog-meta: ${k}: scor ${v.score} sub pragul ${thr}, dar starea nu e „lab” (laborator)`);
+    if (v.measured !== undefined && !(v.measured && typeof v.measured.score === 'number' && v.measured.score >= 0 && v.measured.score <= 10 && /^\d{4}-\d\d-\d\d$/.test(v.measured.date || ''))) out.push(`catalog-meta: ${k}: „measured” trebuie să fie {score 0–10, date AAAA-LL-ZZ}`);
     if (v.status === 'lab' && typeof v.score !== 'number') out.push(`catalog-meta: ${k}: starea „lab” cere un „score” de audit`);
   }
   // Etapa 8.6: sursele externe ale aplicațiilor (derivate din data/sources.json de tools/refresh/meta.mjs)

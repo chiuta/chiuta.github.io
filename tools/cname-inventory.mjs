@@ -155,6 +155,8 @@ function render() {
   P();
   P('## Verificare');
   P();
+  P(`Stare verificată în Etapa 7 (consolidare): ${own.length} din ${rows.length} depozite au CNAME \`<slug>.chiuta.ro\` și nicio aplicație nu e pe origine partajată (fiecare își păstrează \`localStorage\`/IndexedDB separat). Ce NU s-a putut verifica din mediul de lucru: rezolvarea DNS (\`--dns\` dă ENOTFOUND din spatele proxy-ului) și starea GitHub Pages „live”; acestea rămân de confirmat de pe o rețea cu DNS public.`);
+  P();
   P('```');
   P('node tools/cname-inventory.mjs --check   # documentul corespunde depozitelor de pe disc');
   P('node tools/cname-inventory.mjs --dns     # informativ: interoghează DNS-ul public pentru fiecare CNAME (necesită rețea)');
