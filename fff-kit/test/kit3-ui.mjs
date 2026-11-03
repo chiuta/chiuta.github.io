@@ -1,9 +1,9 @@
 // Teste UI (Playwright, rețea blocată): FFF.srs.panel, FFF.tts.picker, FFF.pii.guard — tastatură, axe, CSP, depășire orizontală.
-import fs from 'node:fs'; import path from 'node:path'; import {createRequire} from 'node:module'; import {fileURLToPath, pathToFileURL} from 'node:url';
+import fs from 'node:fs'; import os from 'node:os'; import path from 'node:path'; import {createRequire} from 'node:module'; import {fileURLToPath, pathToFileURL} from 'node:url';
 const require = createRequire('/opt/node-tools/package.json'); const {chromium} = require('playwright');
 const here = path.dirname(fileURLToPath(import.meta.url)), kit = path.join(here, '..');
-const S = '/tmp/claude-0/-home-claude/78529928-3825-51c3-b9bd-0e81655ab6bc/scratchpad';
-const AXE = fs.readFileSync(S + '/sweep/node_modules/axe-core/axe.min.js', 'utf8');
+const S = fs.mkdtempSync(path.join(os.tmpdir(), 'fff-kit3-'));
+const AXE = fs.readFileSync((await import('./_axe.mjs')).AXE, 'utf8');
 const tmp = fs.mkdtempSync(path.join(S, 'tmp_k3-')); // șters la final
 let pass = 0, fail = 0; const ok = (c, m) => { if (c) pass++; else { fail++; console.error('FAIL:', m); } };
 

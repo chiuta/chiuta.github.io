@@ -174,7 +174,7 @@ Căutare pe web făcută la data de mai sus. Ce n-a putut fi citit direct (pagin
 - **Rămase deschise** (decizii pentru autor):
   - OpenAlex cere acum chei API gratuite (AcademiSearch are câmp opțional de cheie; de decis dacă același lucru trebuie și în alte aplicații care îl interoghează);
   - Pollinations: API-ul clasic anonim e limitat pe IP, fără garanție; migrare la `gen.pollinations.ai` (cheie) de decis;
-  - `anthropic-version` din Nexus: `2023-06-01` încă valid, versiunea curentă `2026-10-21`;
+  - ~~`anthropic-version`: `2023-06-01` încă valid, versiunea curentă `2026-10-21`~~ **rezolvat în Etapa 9 (3 noiembrie 2026)**: valoarea și modelele sunt într-un singur loc (`tools/fff-ai.js`), în șase aplicații; `temperature`/`top_p`/`top_k` nu se mai trimit; vezi [docs/GHID-AUTORI.md](docs/GHID-AUTORI.md) §6.1;
   - ADIF: QSO exportă 3.1.4, specificația curentă e 3.1.8 (de verificat câmpurile înainte de schimbare);
   - populații AGORA pentru 10 țări fără cifră oficială 1.1.2026.
 

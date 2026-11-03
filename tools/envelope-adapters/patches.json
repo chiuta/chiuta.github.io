@@ -8,7 +8,7 @@
   {
    "name": "ai-anthropic",
    "find": "async function callAnthropic(opts){\n  assertHeaderSafe(opts.apiKey);\n",
-   "with": "async function callAnthropic(opts){\n  assertHeaderSafe(opts.apiKey);\n  if (window.FFF && FFF.ai) return FFF.ai.run(\"anthropic\", { apiKey: opts.apiKey, model: opts.model, system: opts.system || undefined, messages: opts.messages, maxTokens: opts.maxTokens || 4096, signal: opts.signal, onDelta: opts.onDelta, touch: opts.touch, version: ANTHROPIC_VERSION, errPrefix: \"Anthropic (stream): \", streamErrDefault: tx(\"streamErrDefault\"), errLimit: 1e5, redact: redactKey, httpError: function(r){ return httpError(\"Anthropic\", r, opts.apiKey); } }).then(function(){});   /* nucleul AI comun FFF (tools/fff-ai.js); mai jos rămâne codul vechi, folosit doar dacă FFF.ai lipsește */\n"
+   "with": "async function callAnthropic(opts){\n  assertHeaderSafe(opts.apiKey);\n  return FFF.ai.run(\"anthropic\", { apiKey: opts.apiKey, model: opts.model, system: opts.system || undefined, messages: opts.messages, maxTokens: opts.maxTokens || 4096, signal: opts.signal, onDelta: opts.onDelta, touch: opts.touch, errPrefix: \"Anthropic (stream): \", streamErrDefault: tx(\"streamErrDefault\"), errLimit: 1e5, redact: redactKey, httpError: function(r){ return httpError(\"Anthropic\", r, opts.apiKey); } }).then(function(){});\n"
   },
   {
    "name": "ai-openai",
@@ -35,7 +35,7 @@
   {
    "name": "ai-anthropic",
    "find": "async function* anthropicStream(model,prompt,signal){\n",
-   "with": "async function* anthropicStream(model,prompt,signal){\n  if(window.FFF&&FFF.ai){yield* FFF.ai.stream(\"anthropic\",{url:(model.baseUrl||\"https://api.anthropic.com\").replace(/\\/+$/,\"\")+\"/v1/messages\",apiKey:model.apiKey,model:model.model,maxTokens:2048,version:\"2023-06-01\",messages:[{role:\"user\",content:prompt}],signal:signal,silentAbort:true,errLimit:200,httpError:async function(r){return new Error(r.status+\" \"+(await r.text()).slice(0,200));}});return;}   /* nucleul AI comun FFF */\n"
+   "with": "async function* anthropicStream(model,prompt,signal){\n  /* nucleul AI comun FFF: versiunea API, antetele și excluderea temperature/top_p/top_k vin din FFF.ai (un singur loc) */\n  yield* FFF.ai.stream(\"anthropic\",{url:(model.baseUrl||\"https://api.anthropic.com\").replace(/\\/+$/,\"\")+\"/v1/messages\",apiKey:model.apiKey,model:model.model,maxTokens:2048,messages:[{role:\"user\",content:prompt}],signal:signal,silentAbort:true,errLimit:200,httpError:async function(r){return new Error(r.status+\" \"+(await r.text()).slice(0,200));}});\n"
   }
  ],
  "ai-liber": [
@@ -47,7 +47,7 @@
   {
    "name": "ai-anthropic",
    "find": "async function streamAnthropic(modelId,msgs,key,onChunk){\n",
-   "with": "async function _ffAiHttpError(res){const e=await res.json().catch(()=>({}));if(res.status===404)return new Error(`Model 404 — verifică modelul selectat.`);return new Error(e.error?.message||`HTTP ${res.status}`);}\nasync function streamAnthropic(modelId,msgs,key,onChunk){\n  if(window.FFF&&FFF.ai)return FFF.ai.run('anthropic',{model:modelId,messages:msgs,system:getSYS(),apiKey:key,maxTokens:2000,version:'2023-06-01',onDelta:function(d,full){onChunk(full);},httpError:_ffAiHttpError}).then(function(r){return r.text;});   /* nucleul AI comun FFF */\n"
+   "with": "async function _ffAiHttpError(res){const e=await res.json().catch(()=>({}));if(res.status===404)return new Error(`Model 404 — verifică modelul selectat.`);return new Error(e.error?.message||`HTTP ${res.status}`);}\nasync function streamAnthropic(modelId,msgs,key,onChunk){\n  /* nucleul AI comun FFF: versiunea API (anthropic-version), antetele pentru browser și excluderea temperature/top_p/top_k vin de acolo (un singur loc) */\n  return FFF.ai.run('anthropic',{model:modelId,messages:msgs,system:getSYS(),apiKey:key,maxTokens:2000,onDelta:function(d,full){onChunk(full);},httpError:_ffAiHttpError}).then(function(r){return r.text;});\n"
   },
   {
    "name": "ai-openai",

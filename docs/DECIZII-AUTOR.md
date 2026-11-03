@@ -187,3 +187,14 @@ Fiecare punct de mai jos nu poate fi „reparat” tehnic fără o hotărâre a 
 3. În `src/`, adaugă `index.json` din aceeași origine în lanțul de surse și rulează `node build.mjs`.
 4. Testele VNTV (mock) acoperă deja ordinea surselor; adaugă un caz pentru noua sursă.
 5. Documentează în README (8 limbi) de unde vine catalogul.
+
+
+## Constatări ale auditului adversarial care rămân pentru decizia autorului (din PR #1, închis la 3 noiembrie 2026)
+
+PR #1 a fost scris când cele 12 aplicații din `apps/` încă trăiau în hub; între timp s-au mutat în depozite proprii (acum 2.x) și au trecut prin recenzia din 2 noiembrie și prin auditul din Etapa 7. Din PR s-au preluat în `main` numai punctele care mai erau valabile (localStorage în hub, căile fixe din `fff-kit/test`, textul despre coliziunea `clepsidra.*`). Ce rămâne, fiindcă nu se poate repara tehnic fără o hotărâre:
+
+- **`app.json` → `storageKeys` gol** la aplicațiile cu chei construite din constante (`fff.<slug>.*`): `fff-kit/build.mjs info` detectează doar chei literale. Corecția ține de kit.
+- **Paritatea i18n din kit** nu detectează lipsa unei limbi în formatul `K('cheie', …)` cu 7 elemente (cum a fost `lim5` în Arbore); merită o regulă nouă în kit.
+- **Ținte tactile la 44 px:** raportul de atunci (Lexicon, Alfabete, Decibel, Poteca, Bolta și linkul de donație la 28–40 px) nu s-a re-măsurat în depozitele curente; se re-verifică cu auditul (`node tools/audit-run.mjs`) înainte de orice decizie de design în CSS-ul comun.
+- Link-ul TerRa din QSO (`chiuta.github.io/TerRa/`) față de `terra.chiuta.ro` din `docs/DOMENII.md`: de confirmat în depozitul QSO.
+- Teste Curatitor care cer `qpdf` (4 din 44) pică doar în medii fără `qpdf`.

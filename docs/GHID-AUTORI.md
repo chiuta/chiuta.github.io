@@ -46,7 +46,10 @@ node tools/sync-catalog.mjs --root <…> --check                  # exit 1 la or
 
 - `related`: grupuri de aplicații înrudite (apar la „Vezi și”); `extraRelations`: perechi `[A, B]` simetrice; `variants`: o aplicație-părinte cu variante ascunse (Universul Observabil 1D/2D/3D).
 - Fluxurile (lanțuri de aplicații prin plicuri) se declară în `data/flows.json` (noduri cu `produces`/`accepts` și modul `web`/`cli`, muchii `[de la, la, tip]`); `tools/sync-catalog.mjs` le validează față de registru și testele din `tests/flows*.test.mjs` le execută. Vezi [FLUXURI.md](FLUXURI.md).
-- Aplicația fără nicio relație apare în tabloul de sănătate ca „orfană”. Nu e o greșeală, dar e o ocazie: o legătură reală (un tip de plic comun) valorează mai mult decât un link.
+- Aplicația fără nicio relație **declarată** (grup `related`, pereche, flux) apare în tabloul de sănătate ca „orfană”. Nu e o greșeală, dar e o ocazie: o legătură reală (un tip de plic comun) valorează mai mult decât un link.
+- **Regula Etapei 9: fiecare card are cel puțin 2 relații justificate**, inclusiv variantele ascunse (Universul Observabil 1D/2D/3D). O relație e justificată doar dacă are un motiv verificabil din depozit: subiect comun (`topic:<id>`, cu cel mult 8 membri, altfel nu ajunge singur), grup `related`, pereche `extraRelations`, variantă, flux (`flow:<id>`), plic (`envelope:<tip>`: unul produce un tip specific pe care celălalt îl acceptă; `text/plain`, `text/markdown` și `table/csv` nu contează singure), sursă externă comună (`data:<gazdă>`) sau motor comun cu date proprii (`module:fff-…`: locație, pașaport, agendă, sunet, jurnal, nucleul AI, jocuri).
+- Perechile noi se scriu cu motiv în cuvinte: `["Curatitor", "VaultCrypt", "doi pași ai aceleiași igiene a fișierelor trimise: ștergi metadatele, apoi încuii fișierul"]`. Forma `[A, B]` rămâne validă, dar nu o folosi pentru o legătură pe care n-o poți explica într-o frază.
+- `node tools/sync-catalog.mjs` generează `data/relations.json` (toate perechile cu motivele lor; nu se editează) și pică (`--check`, în CI) dacă un card are sub 2 relații justificate sau o relație n-are motiv. `node tests/relations.test.mjs` verifică același lucru fără browser.
 
 ## 5. Surse externe (date care îmbătrânesc)
 
@@ -68,11 +71,18 @@ Nu copia cod: cere modulul prin `plan.json` → `libs`, iar `inject-shared.mjs` 
 | `fff-agenda.js` | evenimente/sarcini ↔ ICS (`agenda/fff`) | calendare, planificatoare |
 | `fff-pasaport.js` | pașaport de învățare, repetiție eșalonată, certificat | aplicații educaționale |
 | `fff-sunet.js` | mixer de peisaj sonor (profile, WAV offline) | aplicații cu sunet ambiental |
-| `fff-ai.js` | transport comun Anthropic/OpenAI/Google | doar aplicațiile AI (singurele cu `connect-src` deschis) |
+| `fff-ai.js` | transport comun Anthropic/OpenAI/Google; **singurul loc** pentru `anthropic-version` (`FFF.ai.ANTHROPIC_VERSION`) și modelele Anthropic (`FFF.ai.MODELS`, `modelStatus`, `migrateModel`, `anthropicHeaders`) | orice aplicație care apelează `api.anthropic.com` (plan.json: `"libs": ["fff-ai"]`, sau `"libsOnly": true` dacă n-are nevoie de plic) |
 | `fff-jocuri.js` | i18n TBL, Elo, turnee, p2p lockstep | jocuri cu adversar |
 | `fff-place.js` | locația, ora și fusul comune (`place/fff`) | suita cer–timp |
 | `fff-jurnal.js` | jurnal de teren → atlas | observare, hărți |
 | `fff-ab.js`, `fff-repro.js` | comparare A/B, laborator de reproducere | rezultate comparabile |
+
+### 6.1 API-ul Anthropic: nu scrie versiunea și modelele de mână
+
+- Nu scrie literal `anthropic-version`, `x-api-key` + `anthropic-dangerous-direct-browser-access` sau id-uri de model în aplicație. Pentru un apel propriu: `fetch(url, {headers: FFF.ai.anthropicHeaders(cheia), body: …})`; pentru conversație: `FFF.ai.run('anthropic', {…})`. Modelul gol sau retras se normalizează cu `FFF.ai.migrateModel(id)`; listele de sugestii iau `FFF.ai.MODELS.anthropic`.
+- Nu trimite `temperature`, `top_p` sau `top_k` către Anthropic: versiunea API `2026-10-21` le-a eliminat (400 pe orice model). Nucleul nu le trimite niciodată.
+- Valorile din `tools/fff-ai.js` au fost verificate în documentația oficială la **3 noiembrie 2026** (platform.claude.com: versionare, ghid de migrare 2026-10-21, prezentarea modelelor, deprecieri). La o versiune nouă: schimbi o singură constantă, rulezi `node tests/ai.test.mjs`, `node tools/anthropic-audit.mjs --root <aplicații>`, apoi `inject-shared` în cele șase aplicații (AI-Liber, ARENA, Nexus, Constelar, TranslateHub, VietAR). Worker-ul Cloudflare din PrintreInteligente nu poate importa nucleul: își repetă valoarea, iar auditul o compară cu cea centrală (se redeployează de mână).
+- Sursa `Anthropic-API-versiune` din `data/sources.json` urmărește pagina de versionare și dă alertă când nu mai apare valoarea centrală.
 
 ## 7. Testele obligatorii
 
@@ -113,7 +123,10 @@ bash -c 'for t in <dir>/tests/*.mjs; do node $t || exit 1; done'
 node tools/sync-catalog.mjs --root <apps> && node tools/sync-catalog.mjs --root <apps> --check
 node fff-kit/build.mjs fixcsp index.html
 node tools/transparenta.mjs health && node tools/transparenta.mjs build && node tools/transparenta.mjs --check
-node tools/make-fixtures.mjs --root <apps>        # NU fără --root: altfel fixturile CI rămân în urmă și hub-test cade
+node tools/make-fixtures.mjs --root <apps>        # NU fără --root (acum refuză să scrie): altfel fixturile CI rămân în urmă și hub-test cade
+node tools/make-fixtures.mjs --check              # fără clone: fixturile se potrivesc cu cardurile? (în CI; mesaj clar „regenerează”)
+node tests/relations.test.mjs && node tests/retro.test.mjs
+node tools/anthropic-audit.mjs --root <apps>      # nicio versiune/model Anthropic scrise de mână, niciun model retras
 ```
 
 Commit cu identitatea `alexio@trom.tf`; mesajul se încheie cu liniile de atribuire ale sesiunii. Pentru fiecare aplicație modificată: versiune incrementată, `CHANGELOG.md`, teste proprii verzi.

@@ -30,7 +30,7 @@ import vm from 'node:vm';
 import {createHash} from 'node:crypto';
 import {fileURLToPath} from 'node:url';
 import {recomputeCspHashes} from '../fff-kit/lib/csp.mjs';
-import {buildRelations, loadFlows, validateFlows, flowsByApp, loadMeta, deriveStatus, verText, variantOf, counts, validateMeta, coverageScore} from './catalog-meta-lib.mjs';
+import {EXTERNAL, buildRelations, loadEnvelopeInfo, relationEvidence, validateRelations, loadFlows, validateFlows, flowsByApp, loadMeta, deriveStatus, verText, variantOf, counts, validateMeta, coverageScore} from './catalog-meta-lib.mjs';
 
 const HUB = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const argv = process.argv.slice(2);
@@ -43,7 +43,7 @@ const ROOT = path.resolve(ri >= 0 ? argv[ri + 1] : path.join(HUB, '..'));
 // Cardul lor se întreține de mână (versiune, dată, linkuri); sunt numărate în contor, dar nu sunt verificate ca aplicațiile fff.
 // Proiecte Rust (nu aplicații HTML single-file), fiecare cu site propriu: OSATURA (osatura.chiuta.ro), VERIGA (veriga.chiuta.ro), TEZAUR (tezaur.chiuta.ro), LegatorOCR (legatorocr.chiuta.ro); cod în github.com/chiuta/<Nume>.
 // FENARIUM și MENSURA: aplicații single-file încă fără app.json/meta de versiune (versiunea se ține pe card); după ce primesc metadatele kitului, se scot de aici.
-const EXTERNAL = new Set(['OSATURA', 'VERIGA', 'TEZAUR', 'LegatorOCR', 'Fenarium', 'MENSURA']);
+/* EXTERNAL: vezi catalog-meta-lib.mjs (listă comună cu make-fixtures --check) */
 const LANG_ORDER = ['en', 'ro', 'fr', 'it', 'es', 'pt', 'de', 'hu'];
 const OFFLINE_QUALIFIED = new Set(['TerRa', 'VietAR', 'Pendulul']);   // Pendulul: fișierul salvat se citește offline; aplicația nu înregistrează service worker
 const OFFLINE_RE = /offline|fără conexiune|hors ligne|hors-ligne|senza connessione|sin conexión|sem ligação|sem conexão|ohne verbindung|internet nélkül/i;
@@ -182,6 +182,16 @@ const cnt = counts(meta, keys, nSections);
 problems.push(...validateMeta(meta, keys, bySection));
 const FLOWS = loadFlows(HUB);
 problems.push(...validateFlows(FLOWS, keys));
+// Etapa 9: relații cu justificare (≥2 pe card, inclusiv variantele ascunse, fiecare cu motiv verificabil) → data/relations.json (generat, verificat la --check)
+const EVID = relationEvidence(meta, FLOWS, loadEnvelopeInfo(HUB));
+problems.push(...validateRelations(EVID, keys, {topics: meta.topics}));
+{
+  const rel = Object.values(EVID).sort((x, y) => (x.a + '|' + x.b).localeCompare(y.a + '|' + y.b)).map((e) => ({a: e.a, b: e.b, reasons: e.reasons, ...(e.why ? {why: e.why} : {})}));
+  const relJson = JSON.stringify({schema: 1, note: 'Generat de tools/sync-catalog.mjs din data/catalog-meta.json, data/flows.json și registrul de plicuri; nu se editează de mână. Fiecare relație are cel puțin un motiv verificabil (vezi relationEvidence în tools/catalog-meta-lib.mjs).', count: rel.length, relations: rel}, null, 1) + '\n';
+  const rp = path.join(HUB, 'data', 'relations.json');
+  const cur = fs.existsSync(rp) ? read(rp) : '';
+  if (cur !== relJson) { changes.push('data/relations.json actualizat (' + rel.length + ' relații)'); if (!opt.check) fs.writeFileSync(rp, relJson); }
+}
 for (const [k, v] of Object.entries(meta.apps)) if (v.screenshot && !fs.existsSync(path.join(HUB, v.screenshot))) problems.push(`catalog-meta: ${k}: captura ${v.screenshot} nu există în hub`);
 // Contor „aplicații” = aplicații single-file (inclusiv variantele ascunse în fișa hub-ului); proiectele de alt tip (OSATURA, VERIGA, TEZAUR) sunt în secțiunea lor.
 html = html.replace(/(id="stat-repos">)\d+(<)/, (m, a, b) => { if (m !== `${a}${cnt.singleFile}${b}`) changes.push(`contor aplicații → ${cnt.singleFile}`); return `${a}${cnt.singleFile}${b}`; });

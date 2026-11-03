@@ -1,0 +1,3960 @@
+{
+ "schema": 1,
+ "note": "Generat de tools/sync-catalog.mjs din data/catalog-meta.json, data/flows.json și registrul de plicuri; nu se editează de mână. Fiecare relație are cel puțin un motiv verificabil (vezi relationEvidence în tools/catalog-meta-lib.mjs).",
+ "count": 516,
+ "relations": [
+  {
+   "a": "AcademiSearch",
+   "b": "Akasha",
+   "reasons": [
+    "envelope:citation/csl"
+   ]
+  },
+  {
+   "a": "AcademiSearch",
+   "b": "Arhiva-fara-frontiere",
+   "reasons": [
+    "topic:research",
+    "envelope:citation/csl"
+   ]
+  },
+  {
+   "a": "AcademiSearch",
+   "b": "DataWeave",
+   "reasons": [
+    "flow:repro",
+    "envelope:claim/repro"
+   ]
+  },
+  {
+   "a": "AcademiSearch",
+   "b": "FreeDetect",
+   "reasons": [
+    "topic:research",
+    "data:openlibrary.org"
+   ]
+  },
+  {
+   "a": "AcademiSearch",
+   "b": "LegatorOCR",
+   "reasons": [
+    "flow:sursa"
+   ]
+  },
+  {
+   "a": "AcademiSearch",
+   "b": "Lexicon",
+   "reasons": [
+    "topic:research"
+   ]
+  },
+  {
+   "a": "AcademiSearch",
+   "b": "MarkdownAtelier",
+   "reasons": [
+    "topic:research",
+    "envelope:citation/csl"
+   ]
+  },
+  {
+   "a": "AcademiSearch",
+   "b": "Provenienta",
+   "reasons": [
+    "topic:research"
+   ]
+  },
+  {
+   "a": "AcademiSearch",
+   "b": "TEZAUR",
+   "reasons": [
+    "topic:research",
+    "pair",
+    "flow:sursa"
+   ]
+  },
+  {
+   "a": "AcademiSearch",
+   "b": "VERIGA",
+   "reasons": [
+    "flow:sursa"
+   ]
+  },
+  {
+   "a": "ACORDAJ",
+   "b": "Afrodisiace-fara-frontiere",
+   "reasons": [
+    "topic:traditions"
+   ]
+  },
+  {
+   "a": "ACORDAJ",
+   "b": "Bioenergoterapie",
+   "reasons": [
+    "topic:traditions"
+   ]
+  },
+  {
+   "a": "ACORDAJ",
+   "b": "Fenarium",
+   "reasons": [
+    "topic:traditions"
+   ]
+  },
+  {
+   "a": "ACORDAJ",
+   "b": "Inforenergetica",
+   "reasons": [
+    "topic:traditions"
+   ]
+  },
+  {
+   "a": "ACORDAJ",
+   "b": "Radiestezie",
+   "reasons": [
+    "topic:traditions"
+   ]
+  },
+  {
+   "a": "ACORDAJ",
+   "b": "Reiki",
+   "reasons": [
+    "topic:traditions"
+   ]
+  },
+  {
+   "a": "Afrodisiace-fara-frontiere",
+   "b": "Bioenergoterapie",
+   "reasons": [
+    "topic:traditions"
+   ]
+  },
+  {
+   "a": "Afrodisiace-fara-frontiere",
+   "b": "Fenarium",
+   "reasons": [
+    "topic:traditions"
+   ]
+  },
+  {
+   "a": "Afrodisiace-fara-frontiere",
+   "b": "Inforenergetica",
+   "reasons": [
+    "topic:traditions"
+   ]
+  },
+  {
+   "a": "Afrodisiace-fara-frontiere",
+   "b": "Radiestezie",
+   "reasons": [
+    "topic:traditions"
+   ]
+  },
+  {
+   "a": "Afrodisiace-fara-frontiere",
+   "b": "Reiki",
+   "reasons": [
+    "topic:traditions"
+   ]
+  },
+  {
+   "a": "AGORA",
+   "b": "AcademiSearch",
+   "reasons": [
+    "flow:repro",
+    "envelope:claim/repro"
+   ]
+  },
+  {
+   "a": "AGORA",
+   "b": "API-fara-frontiere",
+   "reasons": [
+    "topic:data"
+   ]
+  },
+  {
+   "a": "AGORA",
+   "b": "DataWeave",
+   "reasons": [
+    "topic:data",
+    "flow:repro",
+    "envelope:claim/repro"
+   ]
+  },
+  {
+   "a": "AGORA",
+   "b": "Gospodar",
+   "reasons": [
+    "topic:data"
+   ]
+  },
+  {
+   "a": "AI-Liber",
+   "b": "ARENA",
+   "reasons": [
+    "topic:ai",
+    "module:fff-ai",
+    "data:platform.claude.com"
+   ]
+  },
+  {
+   "a": "AI-Liber",
+   "b": "Constelar",
+   "reasons": [
+    "topic:ai",
+    "module:fff-ai",
+    "data:platform.claude.com"
+   ]
+  },
+  {
+   "a": "AI-Liber",
+   "b": "LocalMind",
+   "reasons": [
+    "topic:ai"
+   ]
+  },
+  {
+   "a": "AI-Liber",
+   "b": "Nexus-fara-frontiere",
+   "reasons": [
+    "related",
+    "topic:ai",
+    "module:fff-ai",
+    "data:platform.claude.com"
+   ]
+  },
+  {
+   "a": "AI-Liber",
+   "b": "PrintreInteligente",
+   "reasons": [
+    "data:platform.claude.com"
+   ]
+  },
+  {
+   "a": "AI-Liber",
+   "b": "PromptVault",
+   "reasons": [
+    "topic:ai"
+   ]
+  },
+  {
+   "a": "AI-Liber",
+   "b": "TranslateHub",
+   "reasons": [
+    "module:fff-ai",
+    "data:platform.claude.com"
+   ]
+  },
+  {
+   "a": "AI-Liber",
+   "b": "VietAR",
+   "reasons": [
+    "module:fff-ai",
+    "data:platform.claude.com"
+   ]
+  },
+  {
+   "a": "Akasha",
+   "b": "Arbore",
+   "reasons": [
+    "topic:home"
+   ]
+  },
+  {
+   "a": "Akasha",
+   "b": "Arhiva-fara-frontiere",
+   "reasons": [
+    "envelope:citation/csl"
+   ]
+  },
+  {
+   "a": "Akasha",
+   "b": "CLEPSIDRA",
+   "reasons": [
+    "topic:home"
+   ]
+  },
+  {
+   "a": "Akasha",
+   "b": "Fabrica",
+   "reasons": [
+    "topic:authoring"
+   ]
+  },
+  {
+   "a": "Akasha",
+   "b": "Gospodar",
+   "reasons": [
+    "topic:home"
+   ]
+  },
+  {
+   "a": "Akasha",
+   "b": "MarkdownAtelier",
+   "reasons": [
+    "topic:authoring",
+    "envelope:note/akasha"
+   ]
+  },
+  {
+   "a": "Akasha",
+   "b": "Orar",
+   "reasons": [
+    "topic:home"
+   ]
+  },
+  {
+   "a": "Akasha",
+   "b": "Trusa-fara-frontiere",
+   "reasons": [
+    "topic:authoring"
+   ]
+  },
+  {
+   "a": "Alfabete",
+   "b": "ETER",
+   "reasons": [
+    "topic:radio"
+   ]
+  },
+  {
+   "a": "Alfabete",
+   "b": "INDICATIV",
+   "reasons": [
+    "topic:radio"
+   ]
+  },
+  {
+   "a": "Alfabete",
+   "b": "Lexicon",
+   "reasons": [
+    "topic:translate",
+    "topic:wordculture"
+   ]
+  },
+  {
+   "a": "Alfabete",
+   "b": "Limpezimea",
+   "reasons": [
+    "topic:wordculture"
+   ]
+  },
+  {
+   "a": "Alfabete",
+   "b": "Profund",
+   "reasons": [
+    "topic:wordculture"
+   ]
+  },
+  {
+   "a": "Alfabete",
+   "b": "QSO",
+   "reasons": [
+    "topic:radio"
+   ]
+  },
+  {
+   "a": "Alfabete",
+   "b": "TranslateHub",
+   "reasons": [
+    "topic:translate"
+   ]
+  },
+  {
+   "a": "Alfabete",
+   "b": "VoiceAtelier",
+   "reasons": [
+    "topic:translate",
+    "topic:access"
+   ]
+  },
+  {
+   "a": "Alfabete",
+   "b": "Zicala",
+   "reasons": [
+    "topic:wordculture"
+   ]
+  },
+  {
+   "a": "API-fara-frontiere",
+   "b": "DataWeave",
+   "reasons": [
+    "topic:data",
+    "topic:devtools"
+   ]
+  },
+  {
+   "a": "API-fara-frontiere",
+   "b": "Gospodar",
+   "reasons": [
+    "topic:data"
+   ]
+  },
+  {
+   "a": "API-fara-frontiere",
+   "b": "OAZA",
+   "reasons": [
+    "topic:devtools"
+   ]
+  },
+  {
+   "a": "API-fara-frontiere",
+   "b": "OmniHost",
+   "reasons": [
+    "topic:devtools",
+    "data:geocoding-api.open-meteo.com"
+   ]
+  },
+  {
+   "a": "API-fara-frontiere",
+   "b": "RegexLab",
+   "reasons": [
+    "topic:devtools"
+   ]
+  },
+  {
+   "a": "API-fara-frontiere",
+   "b": "SEOptimum",
+   "reasons": [
+    "topic:devtools"
+   ]
+  },
+  {
+   "a": "API-fara-frontiere",
+   "b": "Trusa-fara-frontiere",
+   "reasons": [
+    "topic:devtools"
+   ]
+  },
+  {
+   "a": "Arbore",
+   "b": "CLEPSIDRA",
+   "reasons": [
+    "topic:home"
+   ]
+  },
+  {
+   "a": "Arbore",
+   "b": "Gospodar",
+   "reasons": [
+    "topic:home",
+    "pair"
+   ]
+  },
+  {
+   "a": "Arbore",
+   "b": "Orar",
+   "reasons": [
+    "topic:home"
+   ]
+  },
+  {
+   "a": "ARENA",
+   "b": "Constelar",
+   "reasons": [
+    "topic:ai",
+    "module:fff-ai",
+    "data:platform.claude.com"
+   ]
+  },
+  {
+   "a": "ARENA",
+   "b": "LocalMind",
+   "reasons": [
+    "topic:ai"
+   ]
+  },
+  {
+   "a": "ARENA",
+   "b": "Nexus-fara-frontiere",
+   "reasons": [
+    "topic:ai",
+    "module:fff-ai",
+    "data:platform.claude.com"
+   ]
+  },
+  {
+   "a": "ARENA",
+   "b": "PrintreInteligente",
+   "reasons": [
+    "data:platform.claude.com"
+   ]
+  },
+  {
+   "a": "ARENA",
+   "b": "PromptVault",
+   "reasons": [
+    "topic:ai"
+   ]
+  },
+  {
+   "a": "ARENA",
+   "b": "TranslateHub",
+   "reasons": [
+    "module:fff-ai",
+    "data:platform.claude.com"
+   ]
+  },
+  {
+   "a": "ARENA",
+   "b": "VietAR",
+   "reasons": [
+    "module:fff-ai",
+    "data:platform.claude.com"
+   ]
+  },
+  {
+   "a": "Arhiva-fara-frontiere",
+   "b": "Bolta",
+   "reasons": [
+    "module:fff-jurnal"
+   ]
+  },
+  {
+   "a": "Arhiva-fara-frontiere",
+   "b": "Cadraj",
+   "reasons": [
+    "topic:social"
+   ]
+  },
+  {
+   "a": "Arhiva-fara-frontiere",
+   "b": "Eclipsa-2027",
+   "reasons": [
+    "module:fff-jurnal"
+   ]
+  },
+  {
+   "a": "Arhiva-fara-frontiere",
+   "b": "ExploratoriiEco",
+   "reasons": [
+    "flow:jurnal",
+    "envelope:geo/journal",
+    "module:fff-jurnal"
+   ]
+  },
+  {
+   "a": "Arhiva-fara-frontiere",
+   "b": "FieldObserver",
+   "reasons": [
+    "flow:jurnal",
+    "envelope:geo/journal",
+    "module:fff-jurnal"
+   ]
+  },
+  {
+   "a": "Arhiva-fara-frontiere",
+   "b": "FreeDetect",
+   "reasons": [
+    "topic:research"
+   ]
+  },
+  {
+   "a": "Arhiva-fara-frontiere",
+   "b": "LegatorOCR",
+   "reasons": [
+    "topic:scan"
+   ]
+  },
+  {
+   "a": "Arhiva-fara-frontiere",
+   "b": "Lexicon",
+   "reasons": [
+    "topic:research"
+   ]
+  },
+  {
+   "a": "Arhiva-fara-frontiere",
+   "b": "MarkdownAtelier",
+   "reasons": [
+    "topic:research",
+    "envelope:citation/csl"
+   ]
+  },
+  {
+   "a": "Arhiva-fara-frontiere",
+   "b": "Poteca",
+   "reasons": [
+    "flow:jurnal",
+    "envelope:geo/journal",
+    "module:fff-jurnal"
+   ]
+  },
+  {
+   "a": "Arhiva-fara-frontiere",
+   "b": "Provenienta",
+   "reasons": [
+    "topic:research"
+   ]
+  },
+  {
+   "a": "Arhiva-fara-frontiere",
+   "b": "TEZAUR",
+   "reasons": [
+    "topic:research",
+    "topic:scan"
+   ]
+  },
+  {
+   "a": "Arhiva-fara-frontiere",
+   "b": "Threads-fara-cont",
+   "reasons": [
+    "topic:social"
+   ]
+  },
+  {
+   "a": "Arhiva-fara-frontiere",
+   "b": "URME",
+   "reasons": [
+    "flow:jurnal",
+    "envelope:geo/journal",
+    "module:fff-jurnal"
+   ]
+  },
+  {
+   "a": "Arhiva-fara-frontiere",
+   "b": "VATRA",
+   "reasons": [
+    "flow:jurnal",
+    "envelope:geo/journal",
+    "module:fff-jurnal"
+   ]
+  },
+  {
+   "a": "Arhiva-fara-frontiere",
+   "b": "Vitrina",
+   "reasons": [
+    "topic:social"
+   ]
+  },
+  {
+   "a": "Arhiva-fara-frontiere",
+   "b": "X-fara-cont",
+   "reasons": [
+    "topic:social"
+   ]
+  },
+  {
+   "a": "Arhiva-LinkedIn",
+   "b": "Arhiva-fara-frontiere",
+   "reasons": [
+    "topic:social"
+   ]
+  },
+  {
+   "a": "Arhiva-LinkedIn",
+   "b": "Cadraj",
+   "reasons": [
+    "topic:social",
+    "data:www.threads.com"
+   ]
+  },
+  {
+   "a": "Arhiva-LinkedIn",
+   "b": "Threads-fara-cont",
+   "reasons": [
+    "topic:social",
+    "data:www.threads.com"
+   ]
+  },
+  {
+   "a": "Arhiva-LinkedIn",
+   "b": "Vitrina",
+   "reasons": [
+    "topic:social",
+    "data:www.threads.com"
+   ]
+  },
+  {
+   "a": "Arhiva-LinkedIn",
+   "b": "X-fara-cont",
+   "reasons": [
+    "topic:social"
+   ]
+  },
+  {
+   "a": "ASMR",
+   "b": "Aurora",
+   "reasons": [
+    "related",
+    "topic:calm"
+   ]
+  },
+  {
+   "a": "ASMR",
+   "b": "BorderlessMelodies",
+   "reasons": [
+    "related",
+    "topic:calm",
+    "envelope:sound/profile",
+    "module:fff-sunet"
+   ]
+  },
+  {
+   "a": "ASMR",
+   "b": "CalmWaves",
+   "reasons": [
+    "related",
+    "topic:calm",
+    "envelope:sound/profile",
+    "module:fff-sunet"
+   ]
+  },
+  {
+   "a": "ASMR",
+   "b": "Decibel",
+   "reasons": [
+    "envelope:sound/profile",
+    "module:fff-sunet"
+   ]
+  },
+  {
+   "a": "ASMR",
+   "b": "EcoulSpectral",
+   "reasons": [
+    "envelope:sound/profile",
+    "module:fff-sunet"
+   ]
+  },
+  {
+   "a": "ASMR",
+   "b": "generator-frecvente",
+   "reasons": [
+    "envelope:sound/profile",
+    "module:fff-sunet"
+   ]
+  },
+  {
+   "a": "ATINGERE",
+   "b": "Alfabete",
+   "reasons": [
+    "topic:access",
+    "pair"
+   ],
+   "why": "braille: Alfabete îl învață, ATINGERE convertește cărți în braille"
+  },
+  {
+   "a": "ATINGERE",
+   "b": "Arhiva-fara-frontiere",
+   "reasons": [
+    "topic:scan"
+   ]
+  },
+  {
+   "a": "ATINGERE",
+   "b": "Clopotel",
+   "reasons": [
+    "envelope:passport/fff",
+    "module:fff-pasaport"
+   ]
+  },
+  {
+   "a": "ATINGERE",
+   "b": "ETER",
+   "reasons": [
+    "envelope:passport/fff",
+    "module:fff-pasaport"
+   ]
+  },
+  {
+   "a": "ATINGERE",
+   "b": "Fabrica",
+   "reasons": [
+    "envelope:passport/fff",
+    "module:fff-pasaport"
+   ]
+  },
+  {
+   "a": "ATINGERE",
+   "b": "FASCICUL",
+   "reasons": [
+    "envelope:passport/fff",
+    "module:fff-pasaport"
+   ]
+  },
+  {
+   "a": "ATINGERE",
+   "b": "Fenarium",
+   "reasons": [
+    "envelope:passport/fff",
+    "module:fff-pasaport"
+   ]
+  },
+  {
+   "a": "ATINGERE",
+   "b": "INDICATIV",
+   "reasons": [
+    "envelope:passport/fff",
+    "module:fff-pasaport"
+   ]
+  },
+  {
+   "a": "ATINGERE",
+   "b": "LegatorOCR",
+   "reasons": [
+    "topic:scan",
+    "pair"
+   ]
+  },
+  {
+   "a": "ATINGERE",
+   "b": "MENSURA",
+   "reasons": [
+    "envelope:passport/fff",
+    "module:fff-pasaport"
+   ]
+  },
+  {
+   "a": "ATINGERE",
+   "b": "Monstrarium",
+   "reasons": [
+    "envelope:passport/fff",
+    "module:fff-pasaport"
+   ]
+  },
+  {
+   "a": "ATINGERE",
+   "b": "PULS",
+   "reasons": [
+    "envelope:passport/fff",
+    "module:fff-pasaport"
+   ]
+  },
+  {
+   "a": "ATINGERE",
+   "b": "QSO",
+   "reasons": [
+    "envelope:passport/fff",
+    "module:fff-pasaport"
+   ]
+  },
+  {
+   "a": "ATINGERE",
+   "b": "RegexLab",
+   "reasons": [
+    "envelope:passport/fff",
+    "module:fff-pasaport"
+   ]
+  },
+  {
+   "a": "ATINGERE",
+   "b": "SEOptimum",
+   "reasons": [
+    "envelope:passport/fff",
+    "module:fff-pasaport"
+   ]
+  },
+  {
+   "a": "ATINGERE",
+   "b": "SEVA",
+   "reasons": [
+    "envelope:passport/fff",
+    "module:fff-pasaport"
+   ]
+  },
+  {
+   "a": "ATINGERE",
+   "b": "TEZAUR",
+   "reasons": [
+    "topic:scan"
+   ]
+  },
+  {
+   "a": "ATINGERE",
+   "b": "VoiceAtelier",
+   "reasons": [
+    "topic:access"
+   ]
+  },
+  {
+   "a": "Aurora",
+   "b": "BorderlessMelodies",
+   "reasons": [
+    "related",
+    "topic:calm"
+   ]
+  },
+  {
+   "a": "Aurora",
+   "b": "CalmWaves",
+   "reasons": [
+    "related",
+    "topic:calm"
+   ]
+  },
+  {
+   "a": "Aurora",
+   "b": "SEVA",
+   "reasons": [
+    "pair"
+   ]
+  },
+  {
+   "a": "Belot-fara-frontiere",
+   "b": "Carti-de-joc-fara-frontiere",
+   "reasons": [
+    "topic:cards"
+   ]
+  },
+  {
+   "a": "Belot-fara-frontiere",
+   "b": "Dame-fara-frontiere",
+   "reasons": [
+    "module:fff-jocuri"
+   ]
+  },
+  {
+   "a": "Belot-fara-frontiere",
+   "b": "Domino-fara-frontiere",
+   "reasons": [
+    "pair",
+    "module:fff-jocuri"
+   ]
+  },
+  {
+   "a": "Belot-fara-frontiere",
+   "b": "Go-fara-frontiere",
+   "reasons": [
+    "module:fff-jocuri"
+   ]
+  },
+  {
+   "a": "Belot-fara-frontiere",
+   "b": "Profund",
+   "reasons": [
+    "module:fff-jocuri"
+   ]
+  },
+  {
+   "a": "Belot-fara-frontiere",
+   "b": "Remi-fara-frontiere",
+   "reasons": [
+    "topic:cards",
+    "module:fff-jocuri"
+   ]
+  },
+  {
+   "a": "Belot-fara-frontiere",
+   "b": "Sah-fara-frontiere",
+   "reasons": [
+    "module:fff-jocuri"
+   ]
+  },
+  {
+   "a": "Belot-fara-frontiere",
+   "b": "Scopone-fara-frontiere",
+   "reasons": [
+    "topic:cards"
+   ]
+  },
+  {
+   "a": "Belot-fara-frontiere",
+   "b": "Solitaire-fara-frontiere",
+   "reasons": [
+    "topic:cards"
+   ]
+  },
+  {
+   "a": "Belot-fara-frontiere",
+   "b": "Table-fara-frontiere",
+   "reasons": [
+    "module:fff-jocuri"
+   ]
+  },
+  {
+   "a": "Bioenergoterapie",
+   "b": "Fenarium",
+   "reasons": [
+    "topic:traditions"
+   ]
+  },
+  {
+   "a": "Bioenergoterapie",
+   "b": "Inforenergetica",
+   "reasons": [
+    "topic:traditions"
+   ]
+  },
+  {
+   "a": "Bioenergoterapie",
+   "b": "Radiestezie",
+   "reasons": [
+    "topic:traditions"
+   ]
+  },
+  {
+   "a": "Bioenergoterapie",
+   "b": "Reiki",
+   "reasons": [
+    "topic:traditions"
+   ]
+  },
+  {
+   "a": "Bolta",
+   "b": "CLEPSIDRA",
+   "reasons": [
+    "envelope:events/ics",
+    "module:fff-place"
+   ]
+  },
+  {
+   "a": "Bolta",
+   "b": "ECLIPSA",
+   "reasons": [
+    "data:datacenter.iers.org",
+    "data:registry.npmjs.org"
+   ]
+  },
+  {
+   "a": "Bolta",
+   "b": "Eclipsa-2027",
+   "reasons": [
+    "topic:astro",
+    "pair",
+    "module:fff-jurnal",
+    "module:fff-place",
+    "data:datacenter.iers.org",
+    "data:registry.npmjs.org",
+    "data:pypi.org"
+   ]
+  },
+  {
+   "a": "Bolta",
+   "b": "ExploratoriiEco",
+   "reasons": [
+    "module:fff-jurnal"
+   ]
+  },
+  {
+   "a": "Bolta",
+   "b": "FieldObserver",
+   "reasons": [
+    "module:fff-jurnal"
+   ]
+  },
+  {
+   "a": "Bolta",
+   "b": "Horizons.BeyondLimits",
+   "reasons": [
+    "topic:astro"
+   ]
+  },
+  {
+   "a": "Bolta",
+   "b": "IncredibleCosmos",
+   "reasons": [
+    "topic:astro"
+   ]
+  },
+  {
+   "a": "Bolta",
+   "b": "Orar",
+   "reasons": [
+    "envelope:events/ics",
+    "module:fff-place"
+   ]
+  },
+  {
+   "a": "Bolta",
+   "b": "orarium",
+   "reasons": [
+    "topic:astro",
+    "pair",
+    "module:fff-place",
+    "data:datacenter.iers.org",
+    "data:registry.npmjs.org"
+   ]
+  },
+  {
+   "a": "Bolta",
+   "b": "Poteca",
+   "reasons": [
+    "module:fff-jurnal"
+   ]
+  },
+  {
+   "a": "Bolta",
+   "b": "TerRa",
+   "reasons": [
+    "topic:astro"
+   ]
+  },
+  {
+   "a": "Bolta",
+   "b": "Universul-Observabil",
+   "reasons": [
+    "topic:astro"
+   ]
+  },
+  {
+   "a": "Bolta",
+   "b": "Universul-Observabil-3D",
+   "reasons": [
+    "module:fff-place"
+   ]
+  },
+  {
+   "a": "Bolta",
+   "b": "URME",
+   "reasons": [
+    "module:fff-jurnal"
+   ]
+  },
+  {
+   "a": "Bolta",
+   "b": "VATRA",
+   "reasons": [
+    "module:fff-jurnal"
+   ]
+  },
+  {
+   "a": "BorderlessMelodies",
+   "b": "CalmWaves",
+   "reasons": [
+    "related",
+    "topic:calm",
+    "envelope:sound/profile",
+    "module:fff-sunet"
+   ]
+  },
+  {
+   "a": "BorderlessMelodies",
+   "b": "Decibel",
+   "reasons": [
+    "envelope:sound/profile",
+    "module:fff-sunet"
+   ]
+  },
+  {
+   "a": "BorderlessMelodies",
+   "b": "EcoulSpectral",
+   "reasons": [
+    "envelope:sound/profile",
+    "module:fff-sunet"
+   ]
+  },
+  {
+   "a": "BorderlessMelodies",
+   "b": "generator-frecvente",
+   "reasons": [
+    "envelope:sound/profile",
+    "module:fff-sunet"
+   ]
+  },
+  {
+   "a": "BorderlessMelodies",
+   "b": "Origami",
+   "reasons": [
+    "topic:media"
+   ]
+  },
+  {
+   "a": "BorderlessMelodies",
+   "b": "OSATURA",
+   "reasons": [
+    "topic:media"
+   ]
+  },
+  {
+   "a": "BorderlessMelodies",
+   "b": "VNTV",
+   "reasons": [
+    "topic:media"
+   ]
+  },
+  {
+   "a": "Cadraj",
+   "b": "DataWeave",
+   "reasons": [
+    "flow:ab",
+    "envelope:experiment/ab"
+   ]
+  },
+  {
+   "a": "Cadraj",
+   "b": "FreeDetect",
+   "reasons": [
+    "flow:ab"
+   ]
+  },
+  {
+   "a": "Cadraj",
+   "b": "ScryVeil",
+   "reasons": [
+    "flow:ab"
+   ]
+  },
+  {
+   "a": "Cadraj",
+   "b": "Surveyor",
+   "reasons": [
+    "flow:ab"
+   ]
+  },
+  {
+   "a": "Cadraj",
+   "b": "Threads-fara-cont",
+   "reasons": [
+    "topic:social",
+    "data:www.threads.com"
+   ]
+  },
+  {
+   "a": "Cadraj",
+   "b": "Vitrina",
+   "reasons": [
+    "topic:social",
+    "data:www.threads.com"
+   ]
+  },
+  {
+   "a": "Cadraj",
+   "b": "X-fara-cont",
+   "reasons": [
+    "topic:social"
+   ]
+  },
+  {
+   "a": "CalmWaves",
+   "b": "Decibel",
+   "reasons": [
+    "envelope:sound/profile",
+    "module:fff-sunet"
+   ]
+  },
+  {
+   "a": "CalmWaves",
+   "b": "EcoulSpectral",
+   "reasons": [
+    "envelope:sound/profile",
+    "module:fff-sunet"
+   ]
+  },
+  {
+   "a": "CalmWaves",
+   "b": "generator-frecvente",
+   "reasons": [
+    "envelope:sound/profile",
+    "module:fff-sunet"
+   ]
+  },
+  {
+   "a": "Carti-de-joc-fara-frontiere",
+   "b": "Remi-fara-frontiere",
+   "reasons": [
+    "topic:cards"
+   ]
+  },
+  {
+   "a": "Carti-de-joc-fara-frontiere",
+   "b": "Scopone-fara-frontiere",
+   "reasons": [
+    "topic:cards"
+   ]
+  },
+  {
+   "a": "Carti-de-joc-fara-frontiere",
+   "b": "Solitaire-fara-frontiere",
+   "reasons": [
+    "topic:cards"
+   ]
+  },
+  {
+   "a": "CLEPSIDRA",
+   "b": "Clopotel",
+   "reasons": [
+    "related",
+    "topic:time"
+   ]
+  },
+  {
+   "a": "CLEPSIDRA",
+   "b": "ECLIPSA",
+   "reasons": [
+    "envelope:events/ics"
+   ]
+  },
+  {
+   "a": "CLEPSIDRA",
+   "b": "Eclipsa-2027",
+   "reasons": [
+    "envelope:events/ics",
+    "module:fff-place"
+   ]
+  },
+  {
+   "a": "CLEPSIDRA",
+   "b": "Gospodar",
+   "reasons": [
+    "topic:home",
+    "envelope:agenda/fff",
+    "module:fff-agenda"
+   ]
+  },
+  {
+   "a": "CLEPSIDRA",
+   "b": "Orar",
+   "reasons": [
+    "related",
+    "topic:time",
+    "topic:home",
+    "envelope:agenda/fff",
+    "envelope:events/ics",
+    "module:fff-place",
+    "module:fff-agenda"
+   ]
+  },
+  {
+   "a": "CLEPSIDRA",
+   "b": "orarium",
+   "reasons": [
+    "topic:time",
+    "envelope:events/ics",
+    "module:fff-place"
+   ]
+  },
+  {
+   "a": "CLEPSIDRA",
+   "b": "Universul-Observabil-3D",
+   "reasons": [
+    "module:fff-place"
+   ]
+  },
+  {
+   "a": "Clopotel",
+   "b": "ETER",
+   "reasons": [
+    "envelope:passport/fff",
+    "module:fff-pasaport"
+   ]
+  },
+  {
+   "a": "Clopotel",
+   "b": "Fabrica",
+   "reasons": [
+    "topic:workshop",
+    "pair",
+    "envelope:passport/fff",
+    "module:fff-pasaport"
+   ]
+  },
+  {
+   "a": "Clopotel",
+   "b": "FASCICUL",
+   "reasons": [
+    "topic:workshop",
+    "envelope:passport/fff",
+    "module:fff-pasaport"
+   ]
+  },
+  {
+   "a": "Clopotel",
+   "b": "Fenarium",
+   "reasons": [
+    "envelope:passport/fff",
+    "module:fff-pasaport"
+   ]
+  },
+  {
+   "a": "Clopotel",
+   "b": "INDICATIV",
+   "reasons": [
+    "envelope:passport/fff",
+    "module:fff-pasaport"
+   ]
+  },
+  {
+   "a": "Clopotel",
+   "b": "MENSURA",
+   "reasons": [
+    "envelope:passport/fff",
+    "module:fff-pasaport"
+   ]
+  },
+  {
+   "a": "Clopotel",
+   "b": "Monstrarium",
+   "reasons": [
+    "topic:workshop",
+    "envelope:passport/fff",
+    "module:fff-pasaport"
+   ]
+  },
+  {
+   "a": "Clopotel",
+   "b": "Orar",
+   "reasons": [
+    "related",
+    "topic:time"
+   ]
+  },
+  {
+   "a": "Clopotel",
+   "b": "orarium",
+   "reasons": [
+    "topic:time"
+   ]
+  },
+  {
+   "a": "Clopotel",
+   "b": "PULS",
+   "reasons": [
+    "envelope:passport/fff",
+    "module:fff-pasaport"
+   ]
+  },
+  {
+   "a": "Clopotel",
+   "b": "QSO",
+   "reasons": [
+    "envelope:passport/fff",
+    "module:fff-pasaport"
+   ]
+  },
+  {
+   "a": "Clopotel",
+   "b": "RegexLab",
+   "reasons": [
+    "envelope:passport/fff",
+    "module:fff-pasaport"
+   ]
+  },
+  {
+   "a": "Clopotel",
+   "b": "SEOptimum",
+   "reasons": [
+    "envelope:passport/fff",
+    "module:fff-pasaport"
+   ]
+  },
+  {
+   "a": "Clopotel",
+   "b": "SEVA",
+   "reasons": [
+    "envelope:passport/fff",
+    "module:fff-pasaport"
+   ]
+  },
+  {
+   "a": "Clopotel",
+   "b": "Undava",
+   "reasons": [
+    "topic:workshop"
+   ]
+  },
+  {
+   "a": "Constelar",
+   "b": "LocalMind",
+   "reasons": [
+    "topic:ai",
+    "pair"
+   ],
+   "why": "conversație cu un asistent care poate rula local, fără server propriu"
+  },
+  {
+   "a": "Constelar",
+   "b": "Nexus-fara-frontiere",
+   "reasons": [
+    "topic:ai",
+    "module:fff-ai",
+    "data:platform.claude.com"
+   ]
+  },
+  {
+   "a": "Constelar",
+   "b": "PrintreInteligente",
+   "reasons": [
+    "data:platform.claude.com"
+   ]
+  },
+  {
+   "a": "Constelar",
+   "b": "PromptVault",
+   "reasons": [
+    "topic:ai"
+   ]
+  },
+  {
+   "a": "Constelar",
+   "b": "TranslateHub",
+   "reasons": [
+    "module:fff-ai",
+    "data:platform.claude.com"
+   ]
+  },
+  {
+   "a": "Constelar",
+   "b": "VietAR",
+   "reasons": [
+    "module:fff-ai",
+    "data:platform.claude.com"
+   ]
+  },
+  {
+   "a": "Cupa-Mondiala-2026",
+   "b": "DataWeave",
+   "reasons": [
+    "pair"
+   ]
+  },
+  {
+   "a": "Cupa-Mondiala-2026",
+   "b": "Table-fara-frontiere",
+   "reasons": [
+    "topic:luck"
+   ]
+  },
+  {
+   "a": "Cupa-Mondiala-2026",
+   "b": "Zaruri-fara-frontiere",
+   "reasons": [
+    "topic:luck"
+   ]
+  },
+  {
+   "a": "Curatitor",
+   "b": "FreeDetect",
+   "reasons": [
+    "topic:audit"
+   ]
+  },
+  {
+   "a": "Curatitor",
+   "b": "Provenienta",
+   "reasons": [
+    "topic:privacy",
+    "topic:audit"
+   ]
+  },
+  {
+   "a": "Curatitor",
+   "b": "ScryVeil",
+   "reasons": [
+    "topic:privacy",
+    "topic:security"
+   ]
+  },
+  {
+   "a": "Curatitor",
+   "b": "Surveyor",
+   "reasons": [
+    "topic:audit"
+   ]
+  },
+  {
+   "a": "Curatitor",
+   "b": "Trusa-fara-frontiere",
+   "reasons": [
+    "topic:security"
+   ]
+  },
+  {
+   "a": "Curatitor",
+   "b": "VaultCrypt",
+   "reasons": [
+    "topic:privacy",
+    "topic:security",
+    "pair"
+   ],
+   "why": "doi pași ai aceleiași igiene a fișierelor trimise: ștergi metadatele, apoi încuii fișierul"
+  },
+  {
+   "a": "Dame-fara-frontiere",
+   "b": "Domino-fara-frontiere",
+   "reasons": [
+    "topic:board",
+    "module:fff-jocuri"
+   ]
+  },
+  {
+   "a": "Dame-fara-frontiere",
+   "b": "Go-fara-frontiere",
+   "reasons": [
+    "topic:board",
+    "module:fff-jocuri"
+   ]
+  },
+  {
+   "a": "Dame-fara-frontiere",
+   "b": "Mahjong-fara-frontiere",
+   "reasons": [
+    "topic:board"
+   ]
+  },
+  {
+   "a": "Dame-fara-frontiere",
+   "b": "Profund",
+   "reasons": [
+    "module:fff-jocuri"
+   ]
+  },
+  {
+   "a": "Dame-fara-frontiere",
+   "b": "Remi-fara-frontiere",
+   "reasons": [
+    "module:fff-jocuri"
+   ]
+  },
+  {
+   "a": "Dame-fara-frontiere",
+   "b": "Sah-fara-frontiere",
+   "reasons": [
+    "topic:board",
+    "module:fff-jocuri"
+   ]
+  },
+  {
+   "a": "Dame-fara-frontiere",
+   "b": "Table-fara-frontiere",
+   "reasons": [
+    "topic:board",
+    "module:fff-jocuri"
+   ]
+  },
+  {
+   "a": "Dame-fara-frontiere",
+   "b": "Zaruri-fara-frontiere",
+   "reasons": [
+    "topic:board"
+   ]
+  },
+  {
+   "a": "DataWeave",
+   "b": "FreeDetect",
+   "reasons": [
+    "flow:ab",
+    "envelope:experiment/ab"
+   ]
+  },
+  {
+   "a": "DataWeave",
+   "b": "Gospodar",
+   "reasons": [
+    "topic:data"
+   ]
+  },
+  {
+   "a": "DataWeave",
+   "b": "OAZA",
+   "reasons": [
+    "topic:devtools"
+   ]
+  },
+  {
+   "a": "DataWeave",
+   "b": "OmniHost",
+   "reasons": [
+    "topic:devtools"
+   ]
+  },
+  {
+   "a": "DataWeave",
+   "b": "RegexLab",
+   "reasons": [
+    "topic:devtools"
+   ]
+  },
+  {
+   "a": "DataWeave",
+   "b": "ScryVeil",
+   "reasons": [
+    "flow:ab",
+    "envelope:experiment/ab"
+   ]
+  },
+  {
+   "a": "DataWeave",
+   "b": "SEOptimum",
+   "reasons": [
+    "topic:devtools"
+   ]
+  },
+  {
+   "a": "DataWeave",
+   "b": "Surveyor",
+   "reasons": [
+    "flow:ab",
+    "envelope:experiment/ab"
+   ]
+  },
+  {
+   "a": "DataWeave",
+   "b": "Trusa-fara-frontiere",
+   "reasons": [
+    "topic:devtools"
+   ]
+  },
+  {
+   "a": "Decibel",
+   "b": "EcoulSpectral",
+   "reasons": [
+    "topic:audiolab",
+    "envelope:sound/profile",
+    "module:fff-sunet"
+   ]
+  },
+  {
+   "a": "Decibel",
+   "b": "Fenarium",
+   "reasons": [
+    "topic:perception"
+   ]
+  },
+  {
+   "a": "Decibel",
+   "b": "FrequencyLaboratory",
+   "reasons": [
+    "topic:audiolab",
+    "topic:perception"
+   ]
+  },
+  {
+   "a": "Decibel",
+   "b": "generator-frecvente",
+   "reasons": [
+    "topic:audiolab",
+    "envelope:sound/profile",
+    "module:fff-sunet"
+   ]
+  },
+  {
+   "a": "Decibel",
+   "b": "MENSURA",
+   "reasons": [
+    "topic:perception"
+   ]
+  },
+  {
+   "a": "Domino-fara-frontiere",
+   "b": "Go-fara-frontiere",
+   "reasons": [
+    "topic:board",
+    "module:fff-jocuri"
+   ]
+  },
+  {
+   "a": "Domino-fara-frontiere",
+   "b": "Mahjong-fara-frontiere",
+   "reasons": [
+    "topic:board"
+   ]
+  },
+  {
+   "a": "Domino-fara-frontiere",
+   "b": "Profund",
+   "reasons": [
+    "module:fff-jocuri"
+   ]
+  },
+  {
+   "a": "Domino-fara-frontiere",
+   "b": "Remi-fara-frontiere",
+   "reasons": [
+    "module:fff-jocuri"
+   ]
+  },
+  {
+   "a": "Domino-fara-frontiere",
+   "b": "Sah-fara-frontiere",
+   "reasons": [
+    "topic:board",
+    "module:fff-jocuri"
+   ]
+  },
+  {
+   "a": "Domino-fara-frontiere",
+   "b": "Table-fara-frontiere",
+   "reasons": [
+    "topic:board",
+    "module:fff-jocuri"
+   ]
+  },
+  {
+   "a": "Domino-fara-frontiere",
+   "b": "Zaruri-fara-frontiere",
+   "reasons": [
+    "topic:board"
+   ]
+  },
+  {
+   "a": "Eclipsa-2027",
+   "b": "ExploratoriiEco",
+   "reasons": [
+    "module:fff-jurnal"
+   ]
+  },
+  {
+   "a": "Eclipsa-2027",
+   "b": "FieldObserver",
+   "reasons": [
+    "module:fff-jurnal"
+   ]
+  },
+  {
+   "a": "Eclipsa-2027",
+   "b": "Horizons.BeyondLimits",
+   "reasons": [
+    "topic:astro"
+   ]
+  },
+  {
+   "a": "Eclipsa-2027",
+   "b": "HoroScop",
+   "reasons": [
+    "topic:astrology"
+   ]
+  },
+  {
+   "a": "Eclipsa-2027",
+   "b": "IncredibleCosmos",
+   "reasons": [
+    "topic:astro"
+   ]
+  },
+  {
+   "a": "Eclipsa-2027",
+   "b": "NumeroLogIA",
+   "reasons": [
+    "topic:astrology"
+   ]
+  },
+  {
+   "a": "Eclipsa-2027",
+   "b": "Numerologie",
+   "reasons": [
+    "topic:astrology"
+   ]
+  },
+  {
+   "a": "Eclipsa-2027",
+   "b": "Orar",
+   "reasons": [
+    "envelope:events/ics",
+    "module:fff-place"
+   ]
+  },
+  {
+   "a": "Eclipsa-2027",
+   "b": "orarium",
+   "reasons": [
+    "topic:astro",
+    "module:fff-place",
+    "data:datacenter.iers.org",
+    "data:registry.npmjs.org",
+    "data:ssd.jpl.nasa.gov"
+   ]
+  },
+  {
+   "a": "Eclipsa-2027",
+   "b": "Poteca",
+   "reasons": [
+    "module:fff-jurnal"
+   ]
+  },
+  {
+   "a": "Eclipsa-2027",
+   "b": "Tarot",
+   "reasons": [
+    "topic:astrology"
+   ]
+  },
+  {
+   "a": "Eclipsa-2027",
+   "b": "TerRa",
+   "reasons": [
+    "topic:astro"
+   ]
+  },
+  {
+   "a": "Eclipsa-2027",
+   "b": "Universul-Observabil",
+   "reasons": [
+    "topic:astro"
+   ]
+  },
+  {
+   "a": "Eclipsa-2027",
+   "b": "Universul-Observabil-3D",
+   "reasons": [
+    "module:fff-place"
+   ]
+  },
+  {
+   "a": "Eclipsa-2027",
+   "b": "URME",
+   "reasons": [
+    "module:fff-jurnal"
+   ]
+  },
+  {
+   "a": "Eclipsa-2027",
+   "b": "VATRA",
+   "reasons": [
+    "module:fff-jurnal"
+   ]
+  },
+  {
+   "a": "ECLIPSA",
+   "b": "Eclipsa-2027",
+   "reasons": [
+    "topic:astrology",
+    "pair",
+    "data:datacenter.iers.org",
+    "data:registry.npmjs.org",
+    "data:eclipse.gsfc.nasa.gov",
+    "data:ssd.jpl.nasa.gov"
+   ]
+  },
+  {
+   "a": "ECLIPSA",
+   "b": "HoroScop",
+   "reasons": [
+    "topic:astrology"
+   ]
+  },
+  {
+   "a": "ECLIPSA",
+   "b": "NumeroLogIA",
+   "reasons": [
+    "topic:astrology"
+   ]
+  },
+  {
+   "a": "ECLIPSA",
+   "b": "Numerologie",
+   "reasons": [
+    "topic:astrology"
+   ]
+  },
+  {
+   "a": "ECLIPSA",
+   "b": "Orar",
+   "reasons": [
+    "envelope:events/ics"
+   ]
+  },
+  {
+   "a": "ECLIPSA",
+   "b": "orarium",
+   "reasons": [
+    "data:datacenter.iers.org",
+    "data:registry.npmjs.org",
+    "data:ssd.jpl.nasa.gov"
+   ]
+  },
+  {
+   "a": "ECLIPSA",
+   "b": "Tarot",
+   "reasons": [
+    "topic:astrology"
+   ]
+  },
+  {
+   "a": "EcoulSpectral",
+   "b": "FrequencyLaboratory",
+   "reasons": [
+    "topic:audiolab"
+   ]
+  },
+  {
+   "a": "EcoulSpectral",
+   "b": "generator-frecvente",
+   "reasons": [
+    "topic:audiolab",
+    "envelope:sound/profile",
+    "module:fff-sunet"
+   ]
+  },
+  {
+   "a": "ETER",
+   "b": "Fabrica",
+   "reasons": [
+    "envelope:passport/fff",
+    "module:fff-pasaport"
+   ]
+  },
+  {
+   "a": "ETER",
+   "b": "FASCICUL",
+   "reasons": [
+    "envelope:passport/fff",
+    "module:fff-pasaport"
+   ]
+  },
+  {
+   "a": "ETER",
+   "b": "Fenarium",
+   "reasons": [
+    "envelope:passport/fff",
+    "module:fff-pasaport"
+   ]
+  },
+  {
+   "a": "ETER",
+   "b": "INDICATIV",
+   "reasons": [
+    "topic:radio",
+    "envelope:passport/fff",
+    "module:fff-pasaport",
+    "data:www.ancom.ro"
+   ]
+  },
+  {
+   "a": "ETER",
+   "b": "MENSURA",
+   "reasons": [
+    "envelope:passport/fff",
+    "module:fff-pasaport"
+   ]
+  },
+  {
+   "a": "ETER",
+   "b": "Monstrarium",
+   "reasons": [
+    "envelope:passport/fff",
+    "module:fff-pasaport"
+   ]
+  },
+  {
+   "a": "ETER",
+   "b": "PULS",
+   "reasons": [
+    "envelope:passport/fff",
+    "module:fff-pasaport"
+   ]
+  },
+  {
+   "a": "ETER",
+   "b": "QSO",
+   "reasons": [
+    "topic:radio",
+    "envelope:passport/fff",
+    "module:fff-pasaport"
+   ]
+  },
+  {
+   "a": "ETER",
+   "b": "RegexLab",
+   "reasons": [
+    "envelope:passport/fff",
+    "module:fff-pasaport"
+   ]
+  },
+  {
+   "a": "ETER",
+   "b": "SEOptimum",
+   "reasons": [
+    "envelope:passport/fff",
+    "module:fff-pasaport"
+   ]
+  },
+  {
+   "a": "ETER",
+   "b": "SEVA",
+   "reasons": [
+    "envelope:passport/fff",
+    "module:fff-pasaport"
+   ]
+  },
+  {
+   "a": "ETER",
+   "b": "Undava",
+   "reasons": [
+    "envelope:quiz/undava"
+   ]
+  },
+  {
+   "a": "ExploratoriiEco",
+   "b": "FieldObserver",
+   "reasons": [
+    "topic:field",
+    "flow:jurnal",
+    "envelope:geo/journal",
+    "module:fff-jurnal"
+   ]
+  },
+  {
+   "a": "ExploratoriiEco",
+   "b": "Nemurirea",
+   "reasons": [
+    "topic:biology"
+   ]
+  },
+  {
+   "a": "ExploratoriiEco",
+   "b": "Poteca",
+   "reasons": [
+    "topic:field",
+    "flow:jurnal",
+    "envelope:geo/journal",
+    "module:fff-jurnal"
+   ]
+  },
+  {
+   "a": "ExploratoriiEco",
+   "b": "SEVA",
+   "reasons": [
+    "topic:biology"
+   ]
+  },
+  {
+   "a": "ExploratoriiEco",
+   "b": "URME",
+   "reasons": [
+    "topic:field",
+    "flow:jurnal",
+    "envelope:geo/journal",
+    "module:fff-jurnal"
+   ]
+  },
+  {
+   "a": "ExploratoriiEco",
+   "b": "VATRA",
+   "reasons": [
+    "topic:field",
+    "flow:jurnal",
+    "envelope:geo/journal",
+    "module:fff-jurnal"
+   ]
+  },
+  {
+   "a": "ExploratoriiEco",
+   "b": "VietAR",
+   "reasons": [
+    "topic:field",
+    "topic:biology"
+   ]
+  },
+  {
+   "a": "Fabrica",
+   "b": "Fenarium",
+   "reasons": [
+    "envelope:passport/fff",
+    "module:fff-pasaport"
+   ]
+  },
+  {
+   "a": "Fabrica",
+   "b": "INDICATIV",
+   "reasons": [
+    "envelope:passport/fff",
+    "module:fff-pasaport"
+   ]
+  },
+  {
+   "a": "Fabrica",
+   "b": "MarkdownAtelier",
+   "reasons": [
+    "topic:authoring"
+   ]
+  },
+  {
+   "a": "Fabrica",
+   "b": "MENSURA",
+   "reasons": [
+    "envelope:passport/fff",
+    "module:fff-pasaport"
+   ]
+  },
+  {
+   "a": "Fabrica",
+   "b": "Monstrarium",
+   "reasons": [
+    "topic:workshop",
+    "envelope:passport/fff",
+    "module:fff-pasaport"
+   ]
+  },
+  {
+   "a": "Fabrica",
+   "b": "PULS",
+   "reasons": [
+    "envelope:passport/fff",
+    "module:fff-pasaport"
+   ]
+  },
+  {
+   "a": "Fabrica",
+   "b": "QSO",
+   "reasons": [
+    "envelope:passport/fff",
+    "module:fff-pasaport"
+   ]
+  },
+  {
+   "a": "Fabrica",
+   "b": "RegexLab",
+   "reasons": [
+    "envelope:passport/fff",
+    "module:fff-pasaport"
+   ]
+  },
+  {
+   "a": "Fabrica",
+   "b": "SEOptimum",
+   "reasons": [
+    "envelope:passport/fff",
+    "module:fff-pasaport"
+   ]
+  },
+  {
+   "a": "Fabrica",
+   "b": "SEVA",
+   "reasons": [
+    "envelope:passport/fff",
+    "module:fff-pasaport"
+   ]
+  },
+  {
+   "a": "Fabrica",
+   "b": "Trusa-fara-frontiere",
+   "reasons": [
+    "topic:authoring"
+   ]
+  },
+  {
+   "a": "Fabrica",
+   "b": "Undava",
+   "reasons": [
+    "topic:workshop"
+   ]
+  },
+  {
+   "a": "FASCICUL",
+   "b": "Fabrica",
+   "reasons": [
+    "topic:workshop",
+    "envelope:passport/fff",
+    "module:fff-pasaport"
+   ]
+  },
+  {
+   "a": "FASCICUL",
+   "b": "Fenarium",
+   "reasons": [
+    "envelope:passport/fff",
+    "module:fff-pasaport"
+   ]
+  },
+  {
+   "a": "FASCICUL",
+   "b": "INDICATIV",
+   "reasons": [
+    "envelope:passport/fff",
+    "module:fff-pasaport"
+   ]
+  },
+  {
+   "a": "FASCICUL",
+   "b": "MENSURA",
+   "reasons": [
+    "envelope:passport/fff",
+    "module:fff-pasaport"
+   ]
+  },
+  {
+   "a": "FASCICUL",
+   "b": "Monstrarium",
+   "reasons": [
+    "topic:workshop",
+    "envelope:passport/fff",
+    "module:fff-pasaport"
+   ]
+  },
+  {
+   "a": "FASCICUL",
+   "b": "PULS",
+   "reasons": [
+    "envelope:passport/fff",
+    "module:fff-pasaport"
+   ]
+  },
+  {
+   "a": "FASCICUL",
+   "b": "QSO",
+   "reasons": [
+    "envelope:passport/fff",
+    "module:fff-pasaport"
+   ]
+  },
+  {
+   "a": "FASCICUL",
+   "b": "RegexLab",
+   "reasons": [
+    "envelope:passport/fff",
+    "module:fff-pasaport"
+   ]
+  },
+  {
+   "a": "FASCICUL",
+   "b": "SEOptimum",
+   "reasons": [
+    "envelope:passport/fff",
+    "module:fff-pasaport"
+   ]
+  },
+  {
+   "a": "FASCICUL",
+   "b": "SEVA",
+   "reasons": [
+    "envelope:passport/fff",
+    "module:fff-pasaport"
+   ]
+  },
+  {
+   "a": "FASCICUL",
+   "b": "Undava",
+   "reasons": [
+    "topic:workshop",
+    "pair"
+   ]
+  },
+  {
+   "a": "Fenarium",
+   "b": "FrequencyLaboratory",
+   "reasons": [
+    "topic:perception"
+   ]
+  },
+  {
+   "a": "Fenarium",
+   "b": "INDICATIV",
+   "reasons": [
+    "envelope:passport/fff",
+    "module:fff-pasaport"
+   ]
+  },
+  {
+   "a": "Fenarium",
+   "b": "Inforenergetica",
+   "reasons": [
+    "topic:traditions"
+   ]
+  },
+  {
+   "a": "Fenarium",
+   "b": "MENSURA",
+   "reasons": [
+    "topic:perception",
+    "envelope:passport/fff",
+    "module:fff-pasaport"
+   ]
+  },
+  {
+   "a": "Fenarium",
+   "b": "Monstrarium",
+   "reasons": [
+    "envelope:passport/fff",
+    "module:fff-pasaport"
+   ]
+  },
+  {
+   "a": "Fenarium",
+   "b": "NOMIA",
+   "reasons": [
+    "topic:anomalies"
+   ]
+  },
+  {
+   "a": "Fenarium",
+   "b": "PrintreInteligente",
+   "reasons": [
+    "topic:anomalies"
+   ]
+  },
+  {
+   "a": "Fenarium",
+   "b": "PULS",
+   "reasons": [
+    "envelope:passport/fff",
+    "module:fff-pasaport"
+   ]
+  },
+  {
+   "a": "Fenarium",
+   "b": "QSO",
+   "reasons": [
+    "envelope:passport/fff",
+    "module:fff-pasaport"
+   ]
+  },
+  {
+   "a": "Fenarium",
+   "b": "Radiestezie",
+   "reasons": [
+    "topic:traditions"
+   ]
+  },
+  {
+   "a": "Fenarium",
+   "b": "RegexLab",
+   "reasons": [
+    "envelope:passport/fff",
+    "module:fff-pasaport"
+   ]
+  },
+  {
+   "a": "Fenarium",
+   "b": "Reiki",
+   "reasons": [
+    "topic:traditions"
+   ]
+  },
+  {
+   "a": "Fenarium",
+   "b": "SEOptimum",
+   "reasons": [
+    "envelope:passport/fff",
+    "module:fff-pasaport"
+   ]
+  },
+  {
+   "a": "Fenarium",
+   "b": "SEVA",
+   "reasons": [
+    "envelope:passport/fff",
+    "module:fff-pasaport"
+   ]
+  },
+  {
+   "a": "Fenarium",
+   "b": "ValeaPlopului1972",
+   "reasons": [
+    "topic:anomalies"
+   ]
+  },
+  {
+   "a": "FieldObserver",
+   "b": "Poteca",
+   "reasons": [
+    "topic:field",
+    "flow:jurnal",
+    "envelope:geo/journal",
+    "module:fff-jurnal"
+   ]
+  },
+  {
+   "a": "FieldObserver",
+   "b": "URME",
+   "reasons": [
+    "topic:field",
+    "flow:jurnal",
+    "envelope:geo/journal",
+    "module:fff-jurnal"
+   ]
+  },
+  {
+   "a": "FieldObserver",
+   "b": "VATRA",
+   "reasons": [
+    "topic:field",
+    "flow:jurnal",
+    "envelope:geo/journal",
+    "module:fff-jurnal"
+   ]
+  },
+  {
+   "a": "FieldObserver",
+   "b": "VietAR",
+   "reasons": [
+    "topic:field"
+   ]
+  },
+  {
+   "a": "FreeDetect",
+   "b": "Lexicon",
+   "reasons": [
+    "topic:research"
+   ]
+  },
+  {
+   "a": "FreeDetect",
+   "b": "MarkdownAtelier",
+   "reasons": [
+    "topic:research"
+   ]
+  },
+  {
+   "a": "FreeDetect",
+   "b": "Provenienta",
+   "reasons": [
+    "topic:research",
+    "topic:audit",
+    "pair"
+   ]
+  },
+  {
+   "a": "FreeDetect",
+   "b": "ScryVeil",
+   "reasons": [
+    "flow:ab"
+   ]
+  },
+  {
+   "a": "FreeDetect",
+   "b": "Surveyor",
+   "reasons": [
+    "topic:audit",
+    "flow:ab"
+   ]
+  },
+  {
+   "a": "FreeDetect",
+   "b": "TEZAUR",
+   "reasons": [
+    "topic:research"
+   ]
+  },
+  {
+   "a": "FrequencyLaboratory",
+   "b": "generator-frecvente",
+   "reasons": [
+    "topic:audiolab",
+    "pair"
+   ],
+   "why": "ambele produc tonuri și testează auzul"
+  },
+  {
+   "a": "FrequencyLaboratory",
+   "b": "MENSURA",
+   "reasons": [
+    "topic:perception"
+   ]
+  },
+  {
+   "a": "Go-fara-frontiere",
+   "b": "Mahjong-fara-frontiere",
+   "reasons": [
+    "topic:board"
+   ]
+  },
+  {
+   "a": "Go-fara-frontiere",
+   "b": "Profund",
+   "reasons": [
+    "module:fff-jocuri"
+   ]
+  },
+  {
+   "a": "Go-fara-frontiere",
+   "b": "Remi-fara-frontiere",
+   "reasons": [
+    "module:fff-jocuri"
+   ]
+  },
+  {
+   "a": "Go-fara-frontiere",
+   "b": "Sah-fara-frontiere",
+   "reasons": [
+    "topic:board",
+    "module:fff-jocuri"
+   ]
+  },
+  {
+   "a": "Go-fara-frontiere",
+   "b": "Table-fara-frontiere",
+   "reasons": [
+    "topic:board",
+    "module:fff-jocuri"
+   ]
+  },
+  {
+   "a": "Go-fara-frontiere",
+   "b": "Zaruri-fara-frontiere",
+   "reasons": [
+    "topic:board"
+   ]
+  },
+  {
+   "a": "Gospodar",
+   "b": "Orar",
+   "reasons": [
+    "topic:home",
+    "envelope:agenda/fff",
+    "module:fff-agenda"
+   ]
+  },
+  {
+   "a": "Horizons.BeyondLimits",
+   "b": "Hyper4D",
+   "reasons": [
+    "topic:mathviz"
+   ]
+  },
+  {
+   "a": "Horizons.BeyondLimits",
+   "b": "IncredibleCosmos",
+   "reasons": [
+    "topic:astro",
+    "topic:mathviz"
+   ]
+  },
+  {
+   "a": "Horizons.BeyondLimits",
+   "b": "orarium",
+   "reasons": [
+    "topic:astro"
+   ]
+  },
+  {
+   "a": "Horizons.BeyondLimits",
+   "b": "TerRa",
+   "reasons": [
+    "topic:astro",
+    "topic:mathviz"
+   ]
+  },
+  {
+   "a": "Horizons.BeyondLimits",
+   "b": "Universul-Observabil",
+   "reasons": [
+    "topic:astro",
+    "topic:mathviz"
+   ]
+  },
+  {
+   "a": "HoroScop",
+   "b": "NumeroLogIA",
+   "reasons": [
+    "topic:astrology"
+   ]
+  },
+  {
+   "a": "HoroScop",
+   "b": "Numerologie",
+   "reasons": [
+    "topic:astrology"
+   ]
+  },
+  {
+   "a": "HoroScop",
+   "b": "Tarot",
+   "reasons": [
+    "topic:astrology"
+   ]
+  },
+  {
+   "a": "Hyper4D",
+   "b": "IncredibleCosmos",
+   "reasons": [
+    "topic:mathviz"
+   ]
+  },
+  {
+   "a": "Hyper4D",
+   "b": "TerRa",
+   "reasons": [
+    "topic:mathviz"
+   ]
+  },
+  {
+   "a": "Hyper4D",
+   "b": "Universul-Observabil",
+   "reasons": [
+    "topic:mathviz"
+   ]
+  },
+  {
+   "a": "Hyper4D",
+   "b": "Universul-Observabil-3D",
+   "reasons": [
+    "pair"
+   ],
+   "why": "vizualizare spațială interactivă: rotești figura și o privești din unghiuri diferite"
+  },
+  {
+   "a": "IncredibleCosmos",
+   "b": "orarium",
+   "reasons": [
+    "topic:astro"
+   ]
+  },
+  {
+   "a": "IncredibleCosmos",
+   "b": "TerRa",
+   "reasons": [
+    "topic:astro",
+    "topic:mathviz"
+   ]
+  },
+  {
+   "a": "IncredibleCosmos",
+   "b": "Universul-Observabil",
+   "reasons": [
+    "topic:astro",
+    "topic:mathviz"
+   ]
+  },
+  {
+   "a": "INDICATIV",
+   "b": "MENSURA",
+   "reasons": [
+    "envelope:passport/fff",
+    "module:fff-pasaport"
+   ]
+  },
+  {
+   "a": "INDICATIV",
+   "b": "Monstrarium",
+   "reasons": [
+    "envelope:passport/fff",
+    "module:fff-pasaport"
+   ]
+  },
+  {
+   "a": "INDICATIV",
+   "b": "PULS",
+   "reasons": [
+    "envelope:passport/fff",
+    "module:fff-pasaport"
+   ]
+  },
+  {
+   "a": "INDICATIV",
+   "b": "QSO",
+   "reasons": [
+    "topic:radio",
+    "envelope:passport/fff",
+    "module:fff-pasaport"
+   ]
+  },
+  {
+   "a": "INDICATIV",
+   "b": "RegexLab",
+   "reasons": [
+    "envelope:passport/fff",
+    "module:fff-pasaport"
+   ]
+  },
+  {
+   "a": "INDICATIV",
+   "b": "SEOptimum",
+   "reasons": [
+    "envelope:passport/fff",
+    "module:fff-pasaport"
+   ]
+  },
+  {
+   "a": "INDICATIV",
+   "b": "SEVA",
+   "reasons": [
+    "envelope:passport/fff",
+    "module:fff-pasaport"
+   ]
+  },
+  {
+   "a": "INDICATIV",
+   "b": "Undava",
+   "reasons": [
+    "envelope:quiz/undava"
+   ]
+  },
+  {
+   "a": "Inforenergetica",
+   "b": "Radiestezie",
+   "reasons": [
+    "topic:traditions"
+   ]
+  },
+  {
+   "a": "Inforenergetica",
+   "b": "Reiki",
+   "reasons": [
+    "topic:traditions"
+   ]
+  },
+  {
+   "a": "LegatorOCR",
+   "b": "OSATURA",
+   "reasons": [
+    "topic:rust"
+   ]
+  },
+  {
+   "a": "LegatorOCR",
+   "b": "TEZAUR",
+   "reasons": [
+    "topic:scan",
+    "topic:rust",
+    "flow:sursa"
+   ]
+  },
+  {
+   "a": "LegatorOCR",
+   "b": "VERIGA",
+   "reasons": [
+    "topic:rust",
+    "flow:sursa"
+   ]
+  },
+  {
+   "a": "Lexicon",
+   "b": "Limpezimea",
+   "reasons": [
+    "topic:wordculture"
+   ]
+  },
+  {
+   "a": "Lexicon",
+   "b": "MarkdownAtelier",
+   "reasons": [
+    "topic:research"
+   ]
+  },
+  {
+   "a": "Lexicon",
+   "b": "Profund",
+   "reasons": [
+    "topic:wordculture"
+   ]
+  },
+  {
+   "a": "Lexicon",
+   "b": "Provenienta",
+   "reasons": [
+    "topic:research"
+   ]
+  },
+  {
+   "a": "Lexicon",
+   "b": "TEZAUR",
+   "reasons": [
+    "topic:research",
+    "pair"
+   ]
+  },
+  {
+   "a": "Lexicon",
+   "b": "TranslateHub",
+   "reasons": [
+    "topic:translate"
+   ]
+  },
+  {
+   "a": "Lexicon",
+   "b": "VoiceAtelier",
+   "reasons": [
+    "topic:translate"
+   ]
+  },
+  {
+   "a": "Lexicon",
+   "b": "Zicala",
+   "reasons": [
+    "topic:wordculture"
+   ]
+  },
+  {
+   "a": "Limpezimea",
+   "b": "NOMIA",
+   "reasons": [
+    "topic:scifi"
+   ]
+  },
+  {
+   "a": "Limpezimea",
+   "b": "Nota-Zero",
+   "reasons": [
+    "topic:scifi"
+   ]
+  },
+  {
+   "a": "Limpezimea",
+   "b": "Pendulul",
+   "reasons": [
+    "topic:scifi"
+   ]
+  },
+  {
+   "a": "Limpezimea",
+   "b": "PrintreInteligente",
+   "reasons": [
+    "topic:scifi"
+   ]
+  },
+  {
+   "a": "Limpezimea",
+   "b": "Profund",
+   "reasons": [
+    "topic:wordculture"
+   ]
+  },
+  {
+   "a": "Limpezimea",
+   "b": "ValeaPlopului1972",
+   "reasons": [
+    "topic:scifi"
+   ]
+  },
+  {
+   "a": "Limpezimea",
+   "b": "Zicala",
+   "reasons": [
+    "topic:wordculture"
+   ]
+  },
+  {
+   "a": "LocalMind",
+   "b": "Nexus-fara-frontiere",
+   "reasons": [
+    "topic:ai"
+   ]
+  },
+  {
+   "a": "LocalMind",
+   "b": "PromptVault",
+   "reasons": [
+    "topic:ai"
+   ]
+  },
+  {
+   "a": "Mahjong-fara-frontiere",
+   "b": "Sah-fara-frontiere",
+   "reasons": [
+    "topic:board"
+   ]
+  },
+  {
+   "a": "Mahjong-fara-frontiere",
+   "b": "Table-fara-frontiere",
+   "reasons": [
+    "topic:board"
+   ]
+  },
+  {
+   "a": "Mahjong-fara-frontiere",
+   "b": "Zaruri-fara-frontiere",
+   "reasons": [
+    "topic:board"
+   ]
+  },
+  {
+   "a": "MarkdownAtelier",
+   "b": "Provenienta",
+   "reasons": [
+    "topic:research"
+   ]
+  },
+  {
+   "a": "MarkdownAtelier",
+   "b": "TEZAUR",
+   "reasons": [
+    "topic:research"
+   ]
+  },
+  {
+   "a": "MarkdownAtelier",
+   "b": "Trusa-fara-frontiere",
+   "reasons": [
+    "topic:authoring"
+   ]
+  },
+  {
+   "a": "MENSURA",
+   "b": "Monstrarium",
+   "reasons": [
+    "envelope:passport/fff",
+    "module:fff-pasaport"
+   ]
+  },
+  {
+   "a": "MENSURA",
+   "b": "Profund",
+   "reasons": [
+    "topic:mind"
+   ]
+  },
+  {
+   "a": "MENSURA",
+   "b": "PULS",
+   "reasons": [
+    "envelope:passport/fff",
+    "module:fff-pasaport"
+   ]
+  },
+  {
+   "a": "MENSURA",
+   "b": "QSO",
+   "reasons": [
+    "envelope:passport/fff",
+    "module:fff-pasaport"
+   ]
+  },
+  {
+   "a": "MENSURA",
+   "b": "RegexLab",
+   "reasons": [
+    "envelope:passport/fff",
+    "module:fff-pasaport"
+   ]
+  },
+  {
+   "a": "MENSURA",
+   "b": "SEOptimum",
+   "reasons": [
+    "envelope:passport/fff",
+    "module:fff-pasaport"
+   ]
+  },
+  {
+   "a": "MENSURA",
+   "b": "SEVA",
+   "reasons": [
+    "envelope:passport/fff",
+    "module:fff-pasaport"
+   ]
+  },
+  {
+   "a": "MENSURA",
+   "b": "Sudoku-fara-frontiere",
+   "reasons": [
+    "topic:mind"
+   ]
+  },
+  {
+   "a": "MENSURA",
+   "b": "Undava",
+   "reasons": [
+    "topic:mind"
+   ]
+  },
+  {
+   "a": "Monstrarium",
+   "b": "Origami",
+   "reasons": [
+    "pair"
+   ],
+   "why": "meșteșug de atelier cu hârtie și materiale reciclate, pe pași"
+  },
+  {
+   "a": "Monstrarium",
+   "b": "PULS",
+   "reasons": [
+    "envelope:passport/fff",
+    "module:fff-pasaport"
+   ]
+  },
+  {
+   "a": "Monstrarium",
+   "b": "QSO",
+   "reasons": [
+    "envelope:passport/fff",
+    "module:fff-pasaport"
+   ]
+  },
+  {
+   "a": "Monstrarium",
+   "b": "RegexLab",
+   "reasons": [
+    "envelope:passport/fff",
+    "module:fff-pasaport"
+   ]
+  },
+  {
+   "a": "Monstrarium",
+   "b": "SEOptimum",
+   "reasons": [
+    "envelope:passport/fff",
+    "module:fff-pasaport"
+   ]
+  },
+  {
+   "a": "Monstrarium",
+   "b": "SEVA",
+   "reasons": [
+    "envelope:passport/fff",
+    "module:fff-pasaport"
+   ]
+  },
+  {
+   "a": "Monstrarium",
+   "b": "Undava",
+   "reasons": [
+    "topic:workshop"
+   ]
+  },
+  {
+   "a": "Nemurirea",
+   "b": "PULS",
+   "reasons": [
+    "topic:health"
+   ]
+  },
+  {
+   "a": "Nemurirea",
+   "b": "SEVA",
+   "reasons": [
+    "topic:health",
+    "topic:biology",
+    "pair"
+   ],
+   "why": "fiziologie și longevitate (îmbătrânire, somn, ritm biologic), ambele doar informative"
+  },
+  {
+   "a": "Nemurirea",
+   "b": "VATRA",
+   "reasons": [
+    "topic:health"
+   ]
+  },
+  {
+   "a": "Nemurirea",
+   "b": "VietAR",
+   "reasons": [
+    "topic:biology"
+   ]
+  },
+  {
+   "a": "Nexus-fara-frontiere",
+   "b": "PrintreInteligente",
+   "reasons": [
+    "data:platform.claude.com"
+   ]
+  },
+  {
+   "a": "Nexus-fara-frontiere",
+   "b": "PromptVault",
+   "reasons": [
+    "topic:ai"
+   ]
+  },
+  {
+   "a": "Nexus-fara-frontiere",
+   "b": "TranslateHub",
+   "reasons": [
+    "module:fff-ai",
+    "data:platform.claude.com"
+   ]
+  },
+  {
+   "a": "Nexus-fara-frontiere",
+   "b": "VietAR",
+   "reasons": [
+    "module:fff-ai",
+    "data:platform.claude.com"
+   ]
+  },
+  {
+   "a": "NOMIA",
+   "b": "Nota-Zero",
+   "reasons": [
+    "topic:scifi"
+   ]
+  },
+  {
+   "a": "NOMIA",
+   "b": "Pendulul",
+   "reasons": [
+    "topic:scifi"
+   ]
+  },
+  {
+   "a": "NOMIA",
+   "b": "PrintreInteligente",
+   "reasons": [
+    "topic:scifi",
+    "topic:anomalies"
+   ]
+  },
+  {
+   "a": "NOMIA",
+   "b": "ValeaPlopului1972",
+   "reasons": [
+    "topic:scifi",
+    "topic:anomalies",
+    "pair"
+   ],
+   "why": "ambele sunt ficțiune sau ipoteză despre contactul cu minți ne-umane"
+  },
+  {
+   "a": "Nota-Zero",
+   "b": "Pendulul",
+   "reasons": [
+    "topic:scifi",
+    "pair"
+   ]
+  },
+  {
+   "a": "Nota-Zero",
+   "b": "PrintreInteligente",
+   "reasons": [
+    "topic:scifi"
+   ]
+  },
+  {
+   "a": "Nota-Zero",
+   "b": "ValeaPlopului1972",
+   "reasons": [
+    "topic:scifi"
+   ]
+  },
+  {
+   "a": "NumeroLogIA",
+   "b": "Numerologie",
+   "reasons": [
+    "related",
+    "topic:astrology"
+   ]
+  },
+  {
+   "a": "NumeroLogIA",
+   "b": "Tarot",
+   "reasons": [
+    "topic:astrology"
+   ]
+  },
+  {
+   "a": "Numerologie",
+   "b": "Tarot",
+   "reasons": [
+    "topic:astrology"
+   ]
+  },
+  {
+   "a": "OAZA",
+   "b": "OmniHost",
+   "reasons": [
+    "topic:devtools",
+    "pair"
+   ]
+  },
+  {
+   "a": "OAZA",
+   "b": "RegexLab",
+   "reasons": [
+    "topic:devtools"
+   ]
+  },
+  {
+   "a": "OAZA",
+   "b": "SEOptimum",
+   "reasons": [
+    "topic:devtools"
+   ]
+  },
+  {
+   "a": "OAZA",
+   "b": "Trusa-fara-frontiere",
+   "reasons": [
+    "topic:devtools"
+   ]
+  },
+  {
+   "a": "OmniHost",
+   "b": "RegexLab",
+   "reasons": [
+    "topic:devtools"
+   ]
+  },
+  {
+   "a": "OmniHost",
+   "b": "SEOptimum",
+   "reasons": [
+    "topic:devtools"
+   ]
+  },
+  {
+   "a": "OmniHost",
+   "b": "Trusa-fara-frontiere",
+   "reasons": [
+    "topic:devtools"
+   ]
+  },
+  {
+   "a": "Orar",
+   "b": "orarium",
+   "reasons": [
+    "topic:time",
+    "envelope:events/ics",
+    "module:fff-place"
+   ]
+  },
+  {
+   "a": "Orar",
+   "b": "Universul-Observabil-3D",
+   "reasons": [
+    "module:fff-place"
+   ]
+  },
+  {
+   "a": "Origami",
+   "b": "VNTV",
+   "reasons": [
+    "topic:media"
+   ]
+  },
+  {
+   "a": "OSATURA",
+   "b": "Origami",
+   "reasons": [
+    "topic:media"
+   ]
+  },
+  {
+   "a": "OSATURA",
+   "b": "TEZAUR",
+   "reasons": [
+    "topic:rust"
+   ]
+  },
+  {
+   "a": "OSATURA",
+   "b": "VERIGA",
+   "reasons": [
+    "topic:rust"
+   ]
+  },
+  {
+   "a": "OSATURA",
+   "b": "VNTV",
+   "reasons": [
+    "topic:media"
+   ]
+  },
+  {
+   "a": "OUTPOST",
+   "b": "ScryVeil",
+   "reasons": [
+    "topic:links",
+    "data:dns.google"
+   ]
+  },
+  {
+   "a": "OUTPOST",
+   "b": "SEOptimum",
+   "reasons": [
+    "topic:links"
+   ]
+  },
+  {
+   "a": "OUTPOST",
+   "b": "Surveyor",
+   "reasons": [
+    "topic:links"
+   ]
+  },
+  {
+   "a": "OUTPOST",
+   "b": "Trade-Free-Link-Guardian",
+   "reasons": [
+    "topic:links"
+   ]
+  },
+  {
+   "a": "OUTPOST",
+   "b": "VERIGA",
+   "reasons": [
+    "topic:links",
+    "pair"
+   ],
+   "why": "două fețe ale întreținerii unui site: răspunde? și ce linkuri sunt stricate?"
+  },
+  {
+   "a": "Pendulul",
+   "b": "PrintreInteligente",
+   "reasons": [
+    "topic:scifi"
+   ]
+  },
+  {
+   "a": "Pendulul",
+   "b": "ValeaPlopului1972",
+   "reasons": [
+    "topic:scifi"
+   ]
+  },
+  {
+   "a": "Poteca",
+   "b": "URME",
+   "reasons": [
+    "topic:field",
+    "pair",
+    "flow:jurnal",
+    "envelope:geo/journal",
+    "envelope:geo/gpx",
+    "module:fff-jurnal"
+   ]
+  },
+  {
+   "a": "Poteca",
+   "b": "VATRA",
+   "reasons": [
+    "topic:field",
+    "flow:jurnal",
+    "envelope:geo/journal",
+    "module:fff-jurnal"
+   ]
+  },
+  {
+   "a": "Poteca",
+   "b": "VietAR",
+   "reasons": [
+    "topic:field"
+   ]
+  },
+  {
+   "a": "PrintreInteligente",
+   "b": "TranslateHub",
+   "reasons": [
+    "data:platform.claude.com"
+   ]
+  },
+  {
+   "a": "PrintreInteligente",
+   "b": "ValeaPlopului1972",
+   "reasons": [
+    "topic:scifi",
+    "topic:anomalies"
+   ]
+  },
+  {
+   "a": "PrintreInteligente",
+   "b": "VietAR",
+   "reasons": [
+    "data:platform.claude.com"
+   ]
+  },
+  {
+   "a": "PrintreInteligente",
+   "b": "VoiceAtelier",
+   "reasons": [
+    "data:alexio.tf"
+   ]
+  },
+  {
+   "a": "Profund",
+   "b": "Remi-fara-frontiere",
+   "reasons": [
+    "module:fff-jocuri"
+   ]
+  },
+  {
+   "a": "Profund",
+   "b": "Sah-fara-frontiere",
+   "reasons": [
+    "module:fff-jocuri"
+   ]
+  },
+  {
+   "a": "Profund",
+   "b": "Sudoku-fara-frontiere",
+   "reasons": [
+    "topic:mind"
+   ]
+  },
+  {
+   "a": "Profund",
+   "b": "Table-fara-frontiere",
+   "reasons": [
+    "module:fff-jocuri"
+   ]
+  },
+  {
+   "a": "Profund",
+   "b": "Undava",
+   "reasons": [
+    "topic:mind"
+   ]
+  },
+  {
+   "a": "Profund",
+   "b": "Zicala",
+   "reasons": [
+    "topic:wordculture",
+    "pair"
+   ]
+  },
+  {
+   "a": "PromptVault",
+   "b": "TranslateHub",
+   "reasons": [
+    "pair"
+   ]
+  },
+  {
+   "a": "Provenienta",
+   "b": "ScryVeil",
+   "reasons": [
+    "topic:privacy"
+   ]
+  },
+  {
+   "a": "Provenienta",
+   "b": "Surveyor",
+   "reasons": [
+    "topic:audit",
+    "pair"
+   ]
+  },
+  {
+   "a": "Provenienta",
+   "b": "TEZAUR",
+   "reasons": [
+    "topic:research"
+   ]
+  },
+  {
+   "a": "Provenienta",
+   "b": "VaultCrypt",
+   "reasons": [
+    "topic:privacy"
+   ]
+  },
+  {
+   "a": "PULS",
+   "b": "QSO",
+   "reasons": [
+    "envelope:passport/fff",
+    "module:fff-pasaport"
+   ]
+  },
+  {
+   "a": "PULS",
+   "b": "RegexLab",
+   "reasons": [
+    "envelope:passport/fff",
+    "module:fff-pasaport"
+   ]
+  },
+  {
+   "a": "PULS",
+   "b": "SEOptimum",
+   "reasons": [
+    "envelope:passport/fff",
+    "module:fff-pasaport"
+   ]
+  },
+  {
+   "a": "PULS",
+   "b": "SEVA",
+   "reasons": [
+    "topic:health",
+    "envelope:passport/fff",
+    "module:fff-pasaport"
+   ]
+  },
+  {
+   "a": "PULS",
+   "b": "Undava",
+   "reasons": [
+    "envelope:quiz/undava"
+   ]
+  },
+  {
+   "a": "PULS",
+   "b": "VATRA",
+   "reasons": [
+    "topic:health",
+    "pair"
+   ]
+  },
+  {
+   "a": "QSO",
+   "b": "RegexLab",
+   "reasons": [
+    "envelope:passport/fff",
+    "module:fff-pasaport"
+   ]
+  },
+  {
+   "a": "QSO",
+   "b": "SEOptimum",
+   "reasons": [
+    "envelope:passport/fff",
+    "module:fff-pasaport"
+   ]
+  },
+  {
+   "a": "QSO",
+   "b": "SEVA",
+   "reasons": [
+    "envelope:passport/fff",
+    "module:fff-pasaport"
+   ]
+  },
+  {
+   "a": "Radiestezie",
+   "b": "Reiki",
+   "reasons": [
+    "topic:traditions"
+   ]
+  },
+  {
+   "a": "RegexLab",
+   "b": "SEOptimum",
+   "reasons": [
+    "topic:devtools",
+    "envelope:passport/fff",
+    "module:fff-pasaport"
+   ]
+  },
+  {
+   "a": "RegexLab",
+   "b": "SEVA",
+   "reasons": [
+    "envelope:passport/fff",
+    "module:fff-pasaport"
+   ]
+  },
+  {
+   "a": "RegexLab",
+   "b": "Trusa-fara-frontiere",
+   "reasons": [
+    "topic:devtools"
+   ]
+  },
+  {
+   "a": "Remi-fara-frontiere",
+   "b": "Sah-fara-frontiere",
+   "reasons": [
+    "module:fff-jocuri"
+   ]
+  },
+  {
+   "a": "Remi-fara-frontiere",
+   "b": "Scopone-fara-frontiere",
+   "reasons": [
+    "topic:cards"
+   ]
+  },
+  {
+   "a": "Remi-fara-frontiere",
+   "b": "Solitaire-fara-frontiere",
+   "reasons": [
+    "topic:cards"
+   ]
+  },
+  {
+   "a": "Remi-fara-frontiere",
+   "b": "Table-fara-frontiere",
+   "reasons": [
+    "module:fff-jocuri"
+   ]
+  },
+  {
+   "a": "Sah-fara-frontiere",
+   "b": "Table-fara-frontiere",
+   "reasons": [
+    "topic:board",
+    "module:fff-jocuri"
+   ]
+  },
+  {
+   "a": "Sah-fara-frontiere",
+   "b": "Zaruri-fara-frontiere",
+   "reasons": [
+    "topic:board"
+   ]
+  },
+  {
+   "a": "Scopone-fara-frontiere",
+   "b": "Solitaire-fara-frontiere",
+   "reasons": [
+    "topic:cards"
+   ]
+  },
+  {
+   "a": "ScryVeil",
+   "b": "Surveyor",
+   "reasons": [
+    "topic:links",
+    "flow:ab"
+   ]
+  },
+  {
+   "a": "ScryVeil",
+   "b": "Trade-Free-Link-Guardian",
+   "reasons": [
+    "topic:links"
+   ]
+  },
+  {
+   "a": "ScryVeil",
+   "b": "Trusa-fara-frontiere",
+   "reasons": [
+    "topic:security"
+   ]
+  },
+  {
+   "a": "ScryVeil",
+   "b": "VaultCrypt",
+   "reasons": [
+    "topic:privacy",
+    "topic:security"
+   ]
+  },
+  {
+   "a": "ScryVeil",
+   "b": "VERIGA",
+   "reasons": [
+    "topic:links"
+   ]
+  },
+  {
+   "a": "SEOptimum",
+   "b": "ScryVeil",
+   "reasons": [
+    "topic:links"
+   ]
+  },
+  {
+   "a": "SEOptimum",
+   "b": "SEVA",
+   "reasons": [
+    "envelope:passport/fff",
+    "module:fff-pasaport"
+   ]
+  },
+  {
+   "a": "SEOptimum",
+   "b": "Surveyor",
+   "reasons": [
+    "topic:links"
+   ]
+  },
+  {
+   "a": "SEOptimum",
+   "b": "Trade-Free-Link-Guardian",
+   "reasons": [
+    "topic:links"
+   ]
+  },
+  {
+   "a": "SEOptimum",
+   "b": "Trusa-fara-frontiere",
+   "reasons": [
+    "topic:devtools"
+   ]
+  },
+  {
+   "a": "SEOptimum",
+   "b": "VERIGA",
+   "reasons": [
+    "topic:links"
+   ]
+  },
+  {
+   "a": "SEVA",
+   "b": "Undava",
+   "reasons": [
+    "envelope:quiz/undava"
+   ]
+  },
+  {
+   "a": "SEVA",
+   "b": "VATRA",
+   "reasons": [
+    "topic:health"
+   ]
+  },
+  {
+   "a": "SEVA",
+   "b": "VietAR",
+   "reasons": [
+    "topic:biology"
+   ]
+  },
+  {
+   "a": "Solitaire-fara-frontiere",
+   "b": "Sudoku-fara-frontiere",
+   "reasons": [
+    "pair"
+   ]
+  },
+  {
+   "a": "Sudoku-fara-frontiere",
+   "b": "Undava",
+   "reasons": [
+    "topic:mind"
+   ]
+  },
+  {
+   "a": "Surveyor",
+   "b": "Trade-Free-Link-Guardian",
+   "reasons": [
+    "topic:links"
+   ]
+  },
+  {
+   "a": "Surveyor",
+   "b": "VERIGA",
+   "reasons": [
+    "topic:links"
+   ]
+  },
+  {
+   "a": "Table-fara-frontiere",
+   "b": "Zaruri-fara-frontiere",
+   "reasons": [
+    "topic:board",
+    "topic:luck"
+   ]
+  },
+  {
+   "a": "TerRa",
+   "b": "orarium",
+   "reasons": [
+    "topic:astro",
+    "pair"
+   ],
+   "why": "ziua și noaptea pe Pământ și pe planete ↔ ora pe fiecare corp al Sistemului Solar"
+  },
+  {
+   "a": "TerRa",
+   "b": "Universul-Observabil",
+   "reasons": [
+    "topic:astro",
+    "topic:mathviz"
+   ]
+  },
+  {
+   "a": "TEZAUR",
+   "b": "VERIGA",
+   "reasons": [
+    "topic:rust",
+    "flow:sursa"
+   ]
+  },
+  {
+   "a": "Threads-fara-cont",
+   "b": "Vitrina",
+   "reasons": [
+    "topic:social",
+    "data:www.threads.com"
+   ]
+  },
+  {
+   "a": "Threads-fara-cont",
+   "b": "X-fara-cont",
+   "reasons": [
+    "topic:social",
+    "pair"
+   ],
+   "why": "aceeași treabă pe altă rețea: citirea postărilor publice fără cont"
+  },
+  {
+   "a": "Trade-Free-Link-Guardian",
+   "b": "VERIGA",
+   "reasons": [
+    "topic:links",
+    "pair"
+   ],
+   "why": "VERIGA preia funcțiile Link Guardian (linkuri stricate) într-un program nativ"
+  },
+  {
+   "a": "TranslateHub",
+   "b": "VietAR",
+   "reasons": [
+    "module:fff-ai",
+    "data:platform.claude.com"
+   ]
+  },
+  {
+   "a": "TranslateHub",
+   "b": "VoiceAtelier",
+   "reasons": [
+    "topic:translate",
+    "pair"
+   ]
+  },
+  {
+   "a": "Trusa-fara-frontiere",
+   "b": "VaultCrypt",
+   "reasons": [
+    "topic:security"
+   ]
+  },
+  {
+   "a": "Universul-Observabil-1D",
+   "b": "Universul-Observabil-2D",
+   "reasons": [
+    "variant",
+    "data:ned.ipac.caltech.edu"
+   ]
+  },
+  {
+   "a": "Universul-Observabil-1D",
+   "b": "Universul-Observabil-3D",
+   "reasons": [
+    "variant",
+    "data:ned.ipac.caltech.edu"
+   ]
+  },
+  {
+   "a": "Universul-Observabil-2D",
+   "b": "Universul-Observabil-3D",
+   "reasons": [
+    "variant",
+    "data:ned.ipac.caltech.edu"
+   ]
+  },
+  {
+   "a": "Universul-Observabil-3D",
+   "b": "orarium",
+   "reasons": [
+    "module:fff-place"
+   ]
+  },
+  {
+   "a": "Universul-Observabil",
+   "b": "orarium",
+   "reasons": [
+    "topic:astro"
+   ]
+  },
+  {
+   "a": "Universul-Observabil",
+   "b": "Universul-Observabil-1D",
+   "reasons": [
+    "variant",
+    "data:ned.ipac.caltech.edu"
+   ]
+  },
+  {
+   "a": "Universul-Observabil",
+   "b": "Universul-Observabil-2D",
+   "reasons": [
+    "variant",
+    "data:ned.ipac.caltech.edu"
+   ]
+  },
+  {
+   "a": "Universul-Observabil",
+   "b": "Universul-Observabil-3D",
+   "reasons": [
+    "variant",
+    "data:ned.ipac.caltech.edu"
+   ]
+  },
+  {
+   "a": "URME",
+   "b": "VATRA",
+   "reasons": [
+    "topic:field",
+    "flow:jurnal",
+    "envelope:geo/journal",
+    "module:fff-jurnal"
+   ]
+  },
+  {
+   "a": "URME",
+   "b": "VietAR",
+   "reasons": [
+    "topic:field"
+   ]
+  },
+  {
+   "a": "VATRA",
+   "b": "VietAR",
+   "reasons": [
+    "topic:field"
+   ]
+  },
+  {
+   "a": "Vitrina",
+   "b": "X-fara-cont",
+   "reasons": [
+    "topic:social"
+   ]
+  }
+ ]
+}

@@ -10,6 +10,39 @@
 })(typeof window !== 'undefined' ? window : (typeof globalThis !== 'undefined' ? globalThis : this), function (root) {
   'use strict';
   var KINDS = ['anthropic', 'openai', 'google'];
+  /* UN SINGUR LOC pentru versiunea API și modelele Anthropic (Etapa 9). Aplicațiile NU mai scriu literal `anthropic-version` sau id-uri de model în cod:
+   * iau valorile de aici (FFF.ai.ANTHROPIC_VERSION, FFF.ai.MODELS, FFF.ai.anthropicHeaders). Verificat în documentația oficială la 2026-11-03:
+   *   https://platform.claude.com/docs/en/api/versioning  → versiunea curentă 2026-10-21 (versiunea veche, din 2023, rămâne acceptată, dar nu mai e recomandată);
+   *   https://platform.claude.com/docs/en/api/migration-2026-10-21 → temperature, top_p, top_k sunt ELIMINATE (400 pe orice model);
+   *   https://platform.claude.com/docs/en/about-claude/models/overview și .../model-deprecations → id-urile și starea lor.
+   * Cine schimbă valorile de mai jos rulează `node tests/ai.test.mjs` și `node tools/anthropic-audit.mjs --root <aplicații>`. */
+  var ANTHROPIC_VERSION = '2026-10-21';
+  var MODELS = {
+    checked: '2026-11-03',
+    source: 'https://platform.claude.com/docs/en/about-claude/model-deprecations',
+    default: 'claude-sonnet-5-5',
+    /* active, recomandate (ordinea = ordinea din liste: echilibrat, cel mai capabil, rapid, raționament lung) */
+    anthropic: ['claude-sonnet-5-5', 'claude-opus-5-5', 'claude-haiku-5-5', 'claude-fable-5-1'],
+    /* active, dar nu cele mai noi: se acceptă dacă le scrie utilizatorul, nu se mai propun implicit */
+    legacy: ['claude-opus-5', 'claude-sonnet-5', 'claude-opus-4-8', 'claude-opus-4-7', 'claude-opus-4-6', 'claude-sonnet-4-6', 'claude-haiku-4-5-20251001', 'claude-opus-4-5-20251101'],
+    /* retrase sau cu retragere anunțată: id → înlocuitor recomandat de furnizor */
+    retired: {
+      'claude-sonnet-4-5-20250929': 'claude-sonnet-5-5', 'claude-sonnet-4-20250514': 'claude-sonnet-5-5', 'claude-opus-4-20250514': 'claude-opus-4-8', 'claude-opus-4-1-20250805': 'claude-opus-4-8',
+      'claude-3-7-sonnet-20250219': 'claude-sonnet-5-5', 'claude-3-5-haiku-20241022': 'claude-haiku-5-5', 'claude-3-haiku-20240307': 'claude-haiku-5-5', 'claude-3-5-sonnet-20241022': 'claude-sonnet-5-5',
+      'claude-3-5-sonnet-20240620': 'claude-sonnet-5-5', 'claude-3-opus-20240229': 'claude-opus-4-8', 'claude-3-sonnet-20240229': 'claude-sonnet-5-5'
+    }
+  };
+  /** Starea unui id de model Anthropic: 'active' | 'legacy' | 'retired' | 'unknown' (un id necunoscut nu e respins: furnizorul decide). */
+  function modelStatus(id) { id = String(id || ''); return MODELS.anthropic.indexOf(id) >= 0 ? 'active' : MODELS.legacy.indexOf(id) >= 0 ? 'legacy' : Object.prototype.hasOwnProperty.call(MODELS.retired, id) ? 'retired' : 'unknown'; }
+  /** Id-ul de folosit: un model retras se înlocuiește cu cel recomandat; gol/necunoscut rămâne neschimbat (sau implicitul, dacă e gol). */
+  function migrateModel(id) { id = String(id || ''); if (!id) return MODELS.default; return Object.prototype.hasOwnProperty.call(MODELS.retired, id) ? MODELS.retired[id] : id; }
+  /** Antetele unui apel direct din browser către Anthropic (aplicațiile care nu trec prin `build`). */
+  function anthropicHeaders(apiKey, version) {
+    if (apiKey) checkKey(apiKey);
+    var h = { 'Content-Type': 'application/json', 'anthropic-version': version || ANTHROPIC_VERSION, 'anthropic-dangerous-direct-browser-access': 'true' };
+    if (apiKey) h['x-api-key'] = apiKey;
+    return h;
+  }
   var DEFAULT_URL = { anthropic: 'https://api.anthropic.com/v1/messages', openai: 'https://api.openai.com/v1/chat/completions' };
   var GOOGLE_BASE = 'https://generativelanguage.googleapis.com/v1beta/models/';
 
@@ -28,7 +61,8 @@
     if (o.apiKey) checkKey(o.apiKey);
     if (kind === 'anthropic') {
       url = o.url || DEFAULT_URL.anthropic;
-      if (o.apiKey) h['x-api-key'] = o.apiKey; if (!o.version) throw AIError('version', 'anthropic: aplicația trebuie să indice versiunea API (o.version)'); h['anthropic-version'] = o.version; h['anthropic-dangerous-direct-browser-access'] = 'true';   // necesar pentru apeluri directe din browser
+      if (o.apiKey) h['x-api-key'] = o.apiKey; h['anthropic-version'] = o.version || ANTHROPIC_VERSION; h['anthropic-dangerous-direct-browser-access'] = 'true';   // necesar pentru apeluri directe din browser; versiunea vine din nucleu, nu din aplicație
+      /* temperature/top_p/top_k nu se trimit NICIODATĂ către Anthropic: eliminate în 2026-10-21 (400 pe orice model); `o.temperature` rămâne valabil doar pentru OpenAI/Google. */
       var sys = [o.system].concat(m.filter(function (x) { return x.role === 'system'; }).map(function (x) { return x.content; })).filter(Boolean).join('\n\n');
       body = { model: o.model, messages: m.filter(function (x) { return x.role !== 'system'; }), max_tokens: o.maxTokens || 4096, stream: stream }; if (sys) body.system = sys;
     } else if (kind === 'openai') {
@@ -114,5 +148,5 @@
       return run(m.kind, o).then(function (r) { return { id: m.id, text: r.text, ms: Date.now() - t0 }; }, function (e) { return { id: m.id, error: String(e && e.message || e), code: e && e.code, ms: Date.now() - t0 }; });
     }));
   }
-  return { VERSION: 1, KINDS: KINDS, AIError: AIError, build: build, sse: sse, stream: stream, run: run, compare: compare, redact: redact, checkKey: checkKey, codeFor: codeFor, deltaOf: deltaOf };
+  return { VERSION: 2, ANTHROPIC_VERSION: ANTHROPIC_VERSION, MODELS: MODELS, modelStatus: modelStatus, migrateModel: migrateModel, anthropicHeaders: anthropicHeaders, KINDS: KINDS, AIError: AIError, build: build, sse: sse, stream: stream, run: run, compare: compare, redact: redact, checkKey: checkKey, codeFor: codeFor, deltaOf: deltaOf };
 });

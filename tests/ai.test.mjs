@@ -24,7 +24,24 @@ await T('build anthropic: antete obligatorii pentru browser, versiune configurab
   const r = AI.build('anthropic', {model: 'claude-x', apiKey: 'k-1', version: '2026-10-21', system: 'S', messages: [{role: 'system', content: 'extra'}, {role: 'user', content: 'q'}, {role: 'weird', content: 'z'}]});
   eq(r.url, 'https://api.anthropic.com/v1/messages'); eq(r.init.headers['x-api-key'], 'k-1'); eq(r.init.headers['anthropic-version'], '2026-10-21'); eq(r.init.headers['anthropic-dangerous-direct-browser-access'], 'true');
   const b = JSON.parse(r.init.body); eq(b.system, 'S\n\nextra'); eq(b.messages, [{role: 'user', content: 'q'}, {role: 'user', content: 'z'}]); eq(b.max_tokens, 4096); eq(b.stream, true); yes(!('temperature' in b), 'fără temperature (API-ul îl respinge)');
-  let v = null; try { AI.build('anthropic', {model: 'm', messages: []}); } catch (e) { v = e.code; } eq(v, 'version', 'versiunea API e obligatorie: o fixează aplicația');
+  eq(AI.build('anthropic', {model: 'm', messages: []}).init.headers['anthropic-version'], AI.ANTHROPIC_VERSION, 'fără o.version: valoarea centrală din nucleu');
+  eq(AI.build('anthropic', {model: 'm', messages: [], version: '2023-06-01'}).init.headers['anthropic-version'], '2023-06-01', 'o aplicație poate rămâne explicit pe o versiune veche');
+});
+await T('Etapa 9: versiunea API și modelele sunt într-un singur loc, cu valorile verificate în documentația oficială (2026-11-03)', async () => {
+  eq(AI.ANTHROPIC_VERSION, '2026-10-21'); yes(/^\d{4}-\d\d-\d\d$/.test(AI.MODELS.checked), 'data verificării');
+  eq(AI.MODELS.anthropic, ['claude-sonnet-5-5', 'claude-opus-5-5', 'claude-haiku-5-5', 'claude-fable-5-1']); eq(AI.MODELS.default, 'claude-sonnet-5-5');
+  for (const id of AI.MODELS.anthropic) eq(AI.modelStatus(id), 'active', id);
+  eq(AI.modelStatus('claude-opus-4-8'), 'legacy'); eq(AI.modelStatus('claude-3-haiku-20240307'), 'retired'); eq(AI.modelStatus('claude-sonnet-4-20250514'), 'retired'); eq(AI.modelStatus('model-necunoscut'), 'unknown');
+  for (const id of [...AI.MODELS.anthropic, ...AI.MODELS.legacy]) yes(!(id in AI.MODELS.retired), id + ' nu poate fi și activ, și retras');
+  eq(AI.migrateModel('claude-sonnet-4-20250514'), 'claude-sonnet-5-5'); eq(AI.migrateModel('claude-opus-5-5'), 'claude-opus-5-5'); eq(AI.migrateModel(''), 'claude-sonnet-5-5'); eq(AI.migrateModel('altceva'), 'altceva');
+  const h = AI.anthropicHeaders('sk-ant-x'); eq([h['anthropic-version'], h['x-api-key'], h['anthropic-dangerous-direct-browser-access'], h['Content-Type']], ['2026-10-21', 'sk-ant-x', 'true', 'application/json']);
+  yes(!('x-api-key' in AI.anthropicHeaders('')), 'fără cheie, fără antet'); let c = null; try { AI.anthropicHeaders('cheie cu spațiu'); } catch (e) { c = e.code; } eq(c, 'badkey');
+});
+await T('Etapa 9: temperature/top_p/top_k nu ajung niciodată la Anthropic (eliminate în 2026-10-21 → 400), dar rămân valabile pentru OpenAI/Google', async () => {
+  const b = JSON.parse(AI.build('anthropic', {model: 'm', messages: [], temperature: 0.2, topP: 0.9, top_p: 0.9, top_k: 5}).init.body);
+  for (const k of ['temperature', 'top_p', 'top_k', 'topP']) yes(!(k in b), k + ' trimis către Anthropic');
+  eq(JSON.parse(AI.build('openai', {model: 'm', messages: [], temperature: 0.2}).init.body).temperature, 0.2);
+  eq(JSON.parse(AI.build('google', {model: 'm', messages: [], temperature: 0.2}).init.body).generationConfig.temperature, 0.2);
 });
 await T('build google: cheia în antet (nu în URL), roluri user/model, systemInstruction, generationConfig doar dacă e cerut, fără streaming', async () => {
   const r = AI.build('google', {model: 'gemini 2/x', apiKey: 'G-key', system: 'S', temperature: 0.3, maxTokens: 100, messages: [{role: 'user', content: 'a'}, {role: 'assistant', content: 'b'}]});

@@ -28,9 +28,15 @@ jobs:
       - name: Verificări fără browser (catalog, transparență, domenii, plic)
         run: |
           set -euo pipefail
+          node tools/make-fixtures.mjs --check
           node tools/sync-catalog.mjs --check --root tests/fixtures/apps
           node tools/transparenta.mjs --check
           node tests/envelope.test.mjs
+          node tests/relations.test.mjs
+          node tests/retro.test.mjs
+          node tests/ai.test.mjs
+          node tests/anthropic-audit.test.mjs
+          node tools/anthropic-audit.mjs
           node tools/build-discover.mjs --check
           node tools/cname-inventory.mjs --check --root tests/fixtures/apps
           node fff-kit/build.mjs fixcsp index.html | tee /tmp/fixcsp.txt

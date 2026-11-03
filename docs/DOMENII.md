@@ -12,7 +12,7 @@
 
 ## De ce contează originea
 
-Pentru browser, o origine este protocol + domeniu + port; **calea nu contează**. `localStorage`, `IndexedDB`, cookie-urile și service worker-ele sunt separate pe origine, nu pe aplicație. Orice aplicație de pe aceeași origine poate citi și scrie datele celorlalte, iar o singură aplicație compromisă (sau un pachet extern încărcat de ea) le expune pe toate. Un CSP strict într-o aplicație nu ajută dacă alta, de pe aceeași origine, este slabă. La auditul din 22 octombrie s-au demonstrat și coliziuni reale de chei (`clepsidra.*` între CLEPSIDRA și Orar).
+Pentru browser, o origine este protocol + domeniu + port; **calea nu contează**. `localStorage`, `IndexedDB`, cookie-urile și service worker-ele sunt separate pe origine, nu pe aplicație. Orice aplicație de pe aceeași origine poate citi și scrie datele celorlalte, iar o singură aplicație compromisă (sau un pachet extern încărcat de ea) le expune pe toate. Un CSP strict într-o aplicație nu ajută dacă alta, de pe aceeași origine, este slabă.
 
 Rezolvarea gratuită pe GitHub Pages: fiecare depozit își primește propriul subdomeniu (`<slug>.chiuta.ro`) prin fișierul `CNAME`. Pentru browser, `gospodar.chiuta.ro` și `chiuta.ro` sunt origini diferite.
 

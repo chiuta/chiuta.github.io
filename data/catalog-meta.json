@@ -70,7 +70,7 @@
     {"id": "wordculture", "name": {"en": "Words and culture", "ro": "Cuvinte și cultură", "fr": "Mots et culture", "it": "Parole e cultura", "es": "Palabras y cultura", "pt": "Palavras e cultura", "de": "Wörter und Kultur", "hu": "Szavak és kultúra"}, "members": ["Zicala", "Lexicon", "Profund", "Limpezimea", "Alfabete"], "kw": "proverbe proverbs cuvinte words dictionar dictionary limba limbi cultura culture romana romanian vorbe"},
     {"id": "security", "name": {"en": "Passwords and encryption", "ro": "Parole și criptare", "fr": "Mots de passe et chiffrement", "it": "Password e cifratura", "es": "Contraseñas y cifrado", "pt": "Palavras-passe e cifragem", "de": "Passwörter und Verschlüsselung", "hu": "Jelszavak és titkosítás"}, "members": ["VaultCrypt", "Trusa-fara-frontiere", "ScryVeil", "Curatitor"], "kw": "parola password parole cifrare criptare encrypt encryption securitate security cheie key seif vault"}
   ],
-  "extraRelations": [["Provenienta", "Surveyor"], ["TEZAUR", "AcademiSearch"], ["TEZAUR", "Lexicon"], ["VoiceAtelier", "TranslateHub"], ["Bolta", "Eclipsa-2027"], ["Eclipsa-2027", "ECLIPSA"], ["orarium", "Bolta"], ["PULS", "VATRA"], ["Gospodar", "Arbore"], ["ATINGERE", "LegatorOCR"], ["FASCICUL", "Undava"], ["FreeDetect", "Provenienta"], ["Aurora", "SEVA"], ["Cupa-Mondiala-2026", "DataWeave"], ["Sudoku-fara-frontiere", "Solitaire-fara-frontiere"], ["Belot-fara-frontiere", "Domino-fara-frontiere"], ["PromptVault", "TranslateHub"], ["Fabrica", "Clopotel"], ["URME", "Poteca"], ["Pendulul", "Nota-Zero"], ["Zicala", "Profund"], ["OmniHost", "OAZA"]],
+  "extraRelations": [["Provenienta", "Surveyor"], ["TEZAUR", "AcademiSearch"], ["TEZAUR", "Lexicon"], ["VoiceAtelier", "TranslateHub"], ["Bolta", "Eclipsa-2027"], ["Eclipsa-2027", "ECLIPSA"], ["orarium", "Bolta"], ["PULS", "VATRA"], ["Gospodar", "Arbore"], ["ATINGERE", "LegatorOCR"], ["FASCICUL", "Undava"], ["FreeDetect", "Provenienta"], ["Aurora", "SEVA"], ["Cupa-Mondiala-2026", "DataWeave"], ["Sudoku-fara-frontiere", "Solitaire-fara-frontiere"], ["Belot-fara-frontiere", "Domino-fara-frontiere"], ["PromptVault", "TranslateHub"], ["Fabrica", "Clopotel"], ["URME", "Poteca"], ["Pendulul", "Nota-Zero"], ["Zicala", "Profund"], ["OmniHost", "OAZA"], ["Trade-Free-Link-Guardian", "VERIGA", "VERIGA preia funcțiile Link Guardian (linkuri stricate) într-un program nativ"], ["X-fara-cont", "Threads-fara-cont", "aceeași treabă pe altă rețea: citirea postărilor publice fără cont"], ["Curatitor", "VaultCrypt", "doi pași ai aceleiași igiene a fișierelor trimise: ștergi metadatele, apoi încuii fișierul"], ["Hyper4D", "Universul-Observabil-3D", "vizualizare spațială interactivă: rotești figura și o privești din unghiuri diferite"], ["Nemurirea", "SEVA", "fiziologie și longevitate (îmbătrânire, somn, ritm biologic), ambele doar informative"], ["TerRa", "orarium", "ziua și noaptea pe Pământ și pe planete ↔ ora pe fiecare corp al Sistemului Solar"], ["FrequencyLaboratory", "generator-frecvente", "ambele produc tonuri și testează auzul"], ["LocalMind", "Constelar", "conversație cu un asistent care poate rula local, fără server propriu"], ["Origami", "Monstrarium", "meșteșug de atelier cu hârtie și materiale reciclate, pe pași"], ["Alfabete", "ATINGERE", "braille: Alfabete îl învață, ATINGERE convertește cărți în braille"], ["ValeaPlopului1972", "NOMIA", "ambele sunt ficțiune sau ipoteză despre contactul cu minți ne-umane"], ["OUTPOST", "VERIGA", "două fețe ale întreținerii unui site: răspunde? și ce linkuri sunt stricate?"]],
   "apps": {
     "Provenienta": {
       "measured": {"score": 10, "date": "2026-11-03"},
@@ -1803,6 +1803,15 @@
         "st": "doar-inventar"
       }
     ],
+    "ARENA": [
+      {
+        "id": "Anthropic-API-versiune",
+        "host": "platform.claude.com",
+        "cad": "lent",
+        "days": 30,
+        "st": "activ"
+      }
+    ],
     "ATINGERE": [
       {
         "id": "ATINGERE-tessdata",
@@ -1864,6 +1873,15 @@
         "days": 30,
         "st": "doar-inventar",
         "fragil": true
+      }
+    ],
+    "Constelar": [
+      {
+        "id": "Anthropic-API-versiune",
+        "host": "platform.claude.com",
+        "cad": "lent",
+        "days": 30,
+        "st": "activ"
       }
     ],
     "Cupa-Mondiala-2026": [
@@ -2048,6 +2066,13 @@
       }
     ],
     "PrintreInteligente": [
+      {
+        "id": "Anthropic-API-versiune",
+        "host": "platform.claude.com",
+        "cad": "lent",
+        "days": 30,
+        "st": "activ"
+      },
       {
         "id": "Proxy-uri-proprii",
         "host": "alexio.tf",

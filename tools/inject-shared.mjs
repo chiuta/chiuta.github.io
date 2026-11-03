@@ -35,7 +35,7 @@ function adapterSource() {
   return s;
 }
 const blocks = () => {
-  const o = [{id: 'fff-envelope', src: rd(T('fff-envelope.js')), lib: true}];
+  const o = plan.libsOnly ? [] : [{id: 'fff-envelope', src: rd(T('fff-envelope.js')), lib: true}];   // libsOnly: aplicații care primesc doar module comune (ex. nucleul AI), fără plic
   if (plan.seif) o.push({id: 'fff-seif', src: rd(T('fff-seif.js')), lib: true});
   for (const m of plan.libs || []) { if (!/^fff-[a-z0-9-]+$/.test(m)) throw new Error('modul necunoscut: ' + m); o.push({id: 'fff-mod-' + m.slice(4), src: rd(T(m + '.js')), lib: true}); }   // module comune (Etapa 5): tools/<m>.js → <script id="fff-mod-…">
   if (plan.adapter) o.push({id: 'fff-envelope-adapter', src: adapterSource(), lib: false});

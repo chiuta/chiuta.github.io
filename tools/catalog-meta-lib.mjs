@@ -5,6 +5,8 @@ import path from 'node:path';
 
 export const LANGS8 = ['ro', 'en', 'fr', 'it', 'es', 'pt', 'de', 'hu'];
 export const PLATFORMS = ['web', 'native'];
+/** Carduri cu versiune/dată/linkuri întreținute de mână (nu din <meta> și app.json): sync-catalog nu le sincronizează, iar make-fixtures --check nu le compară cu fixtura. */
+export const EXTERNAL = new Set(['OSATURA', 'VERIGA', 'TEZAUR', 'LegatorOCR', 'Fenarium', 'MENSURA']);
 export const STATUSES = ['stable', 'experimental', 'alpha', 'lab'];
 
 export function loadMeta(hub) {
@@ -68,6 +70,7 @@ export function validateMeta(meta, keys, bySection = null) {
     for (const l of LANGS8) if (!t.name || !t.name[l]) out.push(`catalog-meta: subiectul „${t.id}” nu are numele în limba ${l}`);
     for (const k of t.members || []) if (!set.has(k)) out.push(`catalog-meta: subiectul „${t.id}”: aplicația „${k}” nu are card`);
   }
+  for (const r of meta.extraRelations) if (r.length < 2 || r.length > 3 || (r[2] !== undefined && !(typeof r[2] === 'string' && r[2].trim().length > 8))) out.push(`catalog-meta: relația ${JSON.stringify(r)}: forma e [A, B] sau [A, B, "motiv în cuvinte"]`);
   for (const [a, b] of meta.extraRelations) for (const k of [a, b]) if (!set.has(k)) out.push(`catalog-meta: relația „${a}”–„${b}”: „${k}” nu are card`);
   for (const k of keys) if (!vo[k] && (rel[k] || []).length < 2) out.push(`catalog-meta: „${k}” are ${(rel[k] || []).length} relații declarate (minim 2)`);
   for (const g of meta.related) for (const k of g) if (!set.has(k)) out.push(`catalog-meta: aplicația înrudită „${k}” nu are card`);
@@ -169,6 +172,97 @@ export function flowsByApp(flows) {
   for (const f of flows.flows || []) for (const [a, b, t] of f.edges || []) {
     if (!slot(a).next.some((x) => x.app === b && x.type === t)) slot(a).next.push({app: b, type: t, flow: f.id});
     if (!slot(b).prev.some((x) => x.app === a && x.type === t)) slot(b).prev.push({app: a, type: t, flow: f.id});
+  }
+  return out;
+}
+
+/* ---- Relații cu justificare (Etapa 9) ----
+ * O relație între două carduri e „semnificativă” doar dacă are cel puțin un motiv verificabil din depozit:
+ *   topic:<id>      subiect (temă) comun, declarat în `topics` (clică curată, cu cuvinte-cheie în 8 limbi)
+ *   related         grup `related` (declarat de mână)
+ *   pair            pereche `extraRelations` (al treilea element, opțional, e motivul în cuvinte)
+ *   variant         varianta și părintele ei, sau două variante ale aceluiași părinte
+ *   flow:<id>       muchie sau nod din același flux declarat (data/flows.json)
+ *   envelope:<tip>  unul PRODUCE un tip de plic SPECIFIC pe care celălalt îl ACCEPTĂ (tipurile generice nu contează singure)
+ *   data:<gazdă>    aceeași sursă externă de date (data/sources.json → dataSources)
+ *   module:<fff-x>  același motor comun cu date proprii (locație, pașaport, agendă, sunet, jurnal)
+ * Motivele „tari” (strong) sunt toate în afară de topic și module. */
+export const GENERIC_TYPES = new Set(['text/plain', 'text/markdown', 'table/csv']);
+export const DATA_MODULES = new Set(['fff-place', 'fff-pasaport', 'fff-agenda', 'fff-sunet', 'fff-jurnal', 'fff-ai', 'fff-jocuri']);
+
+/** Capacitățile de plic (produce/acceptă) pe slug, din registrul kitului + registry.extra.json + plan.json (module). */
+export function loadEnvelopeInfo(hub) {
+  const out = {types: {}, modules: {}};
+  const add = (slug, p, a) => { const e = (out.types[slug] ||= {produces: new Set(), accepts: new Set()}); (p || []).forEach((t) => e.produces.add(t)); (a || []).forEach((t) => e.accepts.add(t)); };
+  try {
+    const src = fs.readFileSync(path.join(hub, 'fff-kit', 'bridge-adapters', 'registry.js'), 'utf8');
+    const m = src.match(/var FFF_REG = (\[[\s\S]*?\]);/);
+    if (m) for (const r of JSON.parse(m[1])) add(r.slug, r.produces, r.accepts);
+  } catch { /* fără registru */ }
+  try { for (const r of JSON.parse(fs.readFileSync(path.join(hub, 'tools', 'envelope-adapters', 'registry.extra.json'), 'utf8'))) add(r.slug, r.produces, r.accepts); } catch { /* fără extra */ }
+  try {
+    const plan = JSON.parse(fs.readFileSync(path.join(hub, 'tools', 'envelope-adapters', 'plan.json'), 'utf8'));
+    for (const [slug, v] of Object.entries(plan)) if (v && Array.isArray(v.libs)) out.modules[slug] = v.libs;
+  } catch { /* fără plan */ }
+  return out;
+}
+
+/** Toate relațiile (inclusiv variantele ascunse) cu motivele lor: {"A|B": {a, b, reasons: [...], strong: n}} (a < b alfabetic). */
+export function relationEvidence(meta, flows, env) {
+  const ev = new Map();
+  const add = (a, b, reason) => { if (a === b) return; const [x, y] = a < b ? [a, b] : [b, a]; const k = x + '|' + y; const e = ev.get(k) || {a: x, b: y, reasons: []}; if (!e.reasons.includes(reason)) e.reasons.push(reason); ev.set(k, e); };
+  const clique = (list, reason) => { for (let i = 0; i < list.length; i++) for (let j = i + 1; j < list.length; j++) add(list[i], list[j], reason); };
+  for (const g of meta.related || []) clique(g, 'related');
+  for (const t of meta.topics || []) clique(t.members || [], 'topic:' + t.id);
+  const why = {};
+  for (const [a, b, w] of meta.extraRelations || []) { add(a, b, 'pair'); if (w) why[(a < b ? a + '|' + b : b + '|' + a)] = w; }
+  for (const [h, list] of Object.entries(meta.variants || {})) clique([h, ...list], 'variant');
+  for (const f of flows.flows || []) { clique(Object.keys(f.nodes || {}), 'flow:' + f.id); }
+  const slugKey = new Map();
+  const keys = new Set();
+  for (const e of ev.values()) { keys.add(e.a); keys.add(e.b); }
+  for (const k of Object.keys(meta.apps || {})) keys.add(k);
+  for (const k of keys) slugKey.set(k.toLowerCase(), k);
+  // plic: A produce un tip specific pe care B îl acceptă
+  if (env) {
+    const list = [...slugKey].filter(([s]) => env.types[s]);
+    for (const [sa, ka] of list) for (const [sb, kb] of list) {
+      if (ka === kb) continue;
+      for (const t of env.types[sa].produces) if (!GENERIC_TYPES.has(t) && env.types[sb].accepts.has(t)) add(ka, kb, 'envelope:' + t);
+    }
+    const byMod = {};
+    for (const [slug, libs] of Object.entries(env.modules)) { const k = slugKey.get(slug); if (!k) continue; for (const l of libs) if (DATA_MODULES.has(l)) (byMod[l] ||= []).push(k); }
+    for (const [l, list2] of Object.entries(byMod)) clique(list2, 'module:' + l);
+  }
+  // sursă externă comună (aceeași gazdă; doar surse care nu sunt „doar-inventar” ignorate? — contează orice gazdă declarată, dar nu aceeași aplicație)
+  const byHost = {};
+  for (const [k, list] of Object.entries(meta.dataSources || {})) for (const e of list) if (e.host && e.st !== 'oprit') (byHost[e.host] ||= new Set()).add(k);
+  for (const [h, set] of Object.entries(byHost)) clique([...set], 'data:' + h);
+  const out = {};
+  for (const [k, e] of ev) { if (why[k]) e.why = why[k]; e.strong = e.reasons.filter((r) => !r.startsWith('topic:') && !r.startsWith('module:')).length; out[k] = e; }
+  return out;
+}
+
+/** Relațiile pe card din dovezi: {cheie: [{with, reasons, strong}]}, ordonate după tăria motivelor. */
+export function evidenceByCard(evidence) {
+  const out = {};
+  for (const e of Object.values(evidence)) for (const [x, y] of [[e.a, e.b], [e.b, e.a]]) (out[x] ||= []).push({with: y, reasons: e.reasons, strong: e.strong});
+  for (const l of Object.values(out)) l.sort((p, q) => q.strong - p.strong || q.reasons.length - p.reasons.length || p.with.localeCompare(q.with));
+  return out;
+}
+
+/** Verifică: fiecare card (și fiecare variantă ascunsă) are ≥ `min` relații, fiecare cu cel puțin un motiv verificabil, către carduri existente.
+ *  Un card ale cărui relații sunt toate doar „subiect” are nevoie de ≥1 motiv tare (pair/flow/envelope/data/related/variant) printre ele, ca să nu se țină doar de o clică largă. */
+export function validateRelations(evidence, keys, {min = 2, broad = 8, topics = []} = {}) {
+  const out = [], set = new Set(keys), by = evidenceByCard(evidence);
+  const size = Object.fromEntries(topics.map((t) => ['topic:' + t.id, (t.members || []).length]));
+  for (const e of Object.values(evidence)) for (const k of [e.a, e.b]) if (!set.has(k)) out.push(`relații: „${k}” nu are card`);
+  for (const k of keys) {
+    const rel = by[k] || [];
+    if (rel.length < min) { out.push(`relații: „${k}” are ${rel.length} relații justificate (minim ${min})`); continue; }
+    // o relație „doar subiect” dintr-un subiect larg (> broad membri) nu se numără singură
+    const solid = rel.filter((r) => r.strong > 0 || r.reasons.some((x) => x.startsWith('module:')) || r.reasons.some((x) => x.startsWith('topic:') && (size[x] || 0) <= broad));
+    if (solid.length < min) out.push(`relații: „${k}” are doar ${solid.length} relații cu motiv solid (minim ${min}; subiectele cu peste ${broad} membri nu ajung)`);
   }
   return out;
 }

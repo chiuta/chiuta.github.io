@@ -542,9 +542,12 @@
     "Nexus-fara-frontiere",
     "TranslateHub",
     "VietAR",
-    "AI-Liber"
+    "AI-Liber",
+    "ARENA",
+    "Constelar",
+    "PrintreInteligente"
    ],
-   "nume": "Versiunea API Anthropic (antetul anthropic-version: 2023-06-01)",
+   "nume": "Versiunea API Anthropic (antetul anthropic-version: 2026-10-21, în tools/fff-ai.js)",
    "url": "https://platform.claude.com/docs/en/api/versioning",
    "tip": "HTML",
    "cadenta": "lent",
@@ -552,11 +555,11 @@
    "stare": "activ",
    "parser": "page-mentions",
    "validator": {
-    "note": "valoarea 2023-06-01 trebuie să mai apară în pagina de versionare"
+    "note": "valoarea centrală (FFF.ai.ANTHROPIC_VERSION, 2026-10-21) trebuie să apară în pagina de versionare; dacă apare o versiune mai nouă, se actualizează tools/fff-ai.js și se rulează tools/anthropic-audit.mjs"
    },
    "expect": {
     "contains": [
-     "2023-06-01"
+     "2026-10-21"
     ],
     "minBytes": 1500
    },
@@ -568,8 +571,8 @@
    },
    "asOf": null,
    "dovada": [
-    "Nexus-fara-frontiere/index.html (anthropic-version)",
-    "TranslateHub, VietAR, AI-Liber (aceeași valoare)"
+    "tools/fff-ai.js (ANTHROPIC_VERSION, singurul loc)",
+    "AI-Liber, ARENA, Nexus, Constelar, TranslateHub, VietAR iau valoarea din FFF.ai; Worker-ul PrintreInteligente o repetă (verificat de tools/anthropic-audit.mjs)"
    ],
    "deConfirmat": [
     "URL-ul exact al paginii de versionare"

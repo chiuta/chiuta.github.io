@@ -110,3 +110,18 @@ Scrisă la 3 noiembrie 2026, la închiderea Etapei 7. Pentru fiecare etapă: ce 
 | Orfanii ca „problemă” | 58 din 117 | nimic | de reformulat ca informație |
 
 Nimic din această listă n-a fost șters.
+
+## Actualizare Etapa 9 (3 noiembrie 2026, seara)
+
+Ce s-a făcut din propunerile de mai sus și ce rămâne. Textul de mai sus nu s-a rescris: rămâne cum a fost scris la închiderea Etapei 7.
+
+| Propunere | Stare | Ce s-a făcut / de ce nu |
+|---|---|---|
+| Relațiile (Etapa 3: „de evitat ținta toate cele 117”) | **schimbat, cu garanții** | Ținta „fiecare card are ≥2 relații” e acum în CI, dar nu prin link-uri artificiale: fiecare relație trebuie să aibă un **motiv verificabil** (subiect cu cel mult 8 membri, pereche cu motiv în cuvinte, flux, plic specific, sursă comună, motor comun, variantă). 117 din 117 au ≥2 (inclusiv cele 3 variante UO); 12 perechi noi au motiv scris. `data/relations.json` arată fiecare pereche și motivele ei. „Orfanii” din tabloul de sănătate rămân măsurați după relațiile **declarate** (acum 77 din 117 au cel puțin una, față de 59). |
+| Câmpul `score` manual | **nefăcut, documentat** | `node tools/score-compare.mjs` compară cele două scoruri: scoaterea lui ar schimba starea „laborator” pentru OmniHost și LocalMind (manual 2,6 și 3,6, măsurat 8,1 și 8,35) și ordinea din „Recomandate”. Asta e o decizie de autor, nu un pas fără risc. Nota calitativă ar trebui mutată întâi în `fisa.limite`. |
+| Acceptorii `text/plain`, `cards/qa` | **înghețat, nu scos** | Scoaterea cere modificarea adaptoarelor din aplicații. `tests/retro.test.mjs` fixează lista celor două tipuri fără producător: un tip nou acceptat fără producător pică în CI, iar când apare un producător testul cere scoaterea tipului din listă. |
+| Fixturile CI comise | **ușurat, nu înlocuit** | În CI nu există clone, deci fixturile nu se pot genera acolo. `node tools/make-fixtures.mjs --check` (în CI, înaintea `sync-catalog`) spune clar „fixturi în urmă, regenerează cu --root” în loc de o eroare de catalog; fără `--root`, scriptul refuză să scrie (înainte, o rulare fără clone golea fixturile). |
+| Surse „doar-inventar” | **nefăcut** | Rămâne propunere (mutare în alt fișier). |
+| Orfanii ca „problemă” | **parțial** | Textul din ghid îi numește „ocazie”, nu „problemă”; tabloul de sănătate nu s-a rescris în 8 limbi. |
+
+Tot în Etapa 9: versiunea API Anthropic (`2026-10-21`) și modelele sunt într-un singur loc (`tools/fff-ai.js`), verificate în documentația oficială; `temperature`/`top_p`/`top_k` (eliminate în `2026-10-21`) nu se mai trimit; modelele retrase (`claude-3-haiku-20240307`, `claude-sonnet-4-20250514`) au fost scoase sau înlocuite. `tools/anthropic-audit.mjs` păzește regula.

@@ -254,6 +254,23 @@ await T('catalog: tastatură (Tab ajunge la câmpuri), ținte tactile ≥44px pe
   await ctx.close();
 });
 
+await T('catalog: localStorage indisponibil (mod privat / cookie-uri blocate) nu oprește scriptul; cardurile, filtrele și schimbarea limbii merg (audit adversarial, PR #1)', async () => {
+  const ctx = await browser.newContext({viewport: {width: 1280, height: 900}, locale: 'ro-RO', serviceWorkers: 'block'});
+  const errors = [];
+  await ctx.route(/^https?:/, (route) => (route.request().url().startsWith(BASE) ? route.continue() : route.abort()));
+  await ctx.addInitScript(() => { Object.defineProperty(window, 'localStorage', {configurable: true, get() { throw new DOMException('blocat', 'SecurityError'); }}); });
+  const page = await ctx.newPage();
+  page.on('pageerror', (e) => errors.push(e.message));
+  await page.goto(BASE);
+  await page.waitForSelector('#apps-grid .app-card:not([data-variant-of])');
+  ok(await total(page) >= 114, 'cardurile nu s-au afișat: ' + await total(page));
+  await page.evaluate(() => applyLang('fr'));
+  ok(await page.evaluate(() => document.documentElement.lang) === 'fr', 'limba nu s-a schimbat');
+  await page.evaluate(() => { document.getElementById('anim-toggle') && document.getElementById('anim-toggle').click(); });
+  ok(!errors.length, 'erori JS: ' + errors.join(' | '));
+  await ctx.close();
+});
+
 await T('transparenta.html: 8 limbi, fără chei/substituenți neinterpolați, fără rețea externă, fără depășire la 360px', async () => {
   for (const l of LANGS) {
     const {ctx, page, errors, external} = await open(l, 'transparenta.html', {viewport: {width: 360, height: 740}});
