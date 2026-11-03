@@ -1,0 +1,28 @@
+{
+ "schema": 1,
+ "note": "Populațiile (milioane, rotunjite) afișate de AGORA, extrase din lista de state; regenerat cu tools/refresh/baseline.mjs.",
+ "count": 21,
+ "popMillions": {
+  "AT": 9.2,
+  "BE": 11.9,
+  "BG": 6.4,
+  "CY": 0.98,
+  "HR": 3.9,
+  "EE": 1.36,
+  "FI": 5.7,
+  "FR": 69.1,
+  "DE": 83.5,
+  "GR": 10.4,
+  "IE": 5.4,
+  "IT": 58.9,
+  "LV": 1.85,
+  "LT": 2.89,
+  "LU": 0.691,
+  "MT": 0.588,
+  "NL": 18.1,
+  "PT": 11.4,
+  "SK": 5.4,
+  "SI": 2.13,
+  "ES": 49.6
+ }
+}

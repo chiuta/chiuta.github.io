@@ -1,0 +1,1261 @@
+{
+ "schema": 1,
+ "updated": "2026-11-03",
+ "note": "Inventarul surselor externe ale aplicațiilor din hub (Etapa 8.1). Construit din codul și READMEurile aplicațiilor (/demo/apps și clonele), din fff-info.egress și din fixturile de test; NU din rularea pe site-urile reale (mediul de lucru nu poate ieși spre ele). Ce nu s-a putut verifica e marcat „deConfirmat”. Executat de tools/refresh/run.mjs; configurat în .github/workflows/refresh.yml.",
+ "defaults": {
+  "userAgent": "chiuta-refresh/1.0 (+https://chiuta.ro/transparenta.html; alexio@trom.tf)",
+  "minIntervalMs": 2000,
+  "timeoutMs": 20000,
+  "maxBytes": 8000000,
+  "retries": 1,
+  "thresholds": {
+   "dropPct": 20,
+   "growthPct": 40,
+   "autoMerge": {
+    "maxChangedPct": 5,
+    "maxChanged": 10
+   }
+  },
+  "cadenceDays": {
+   "înghețat": null,
+   "lent": 30,
+   "viu": 7
+  },
+  "staleFactor": 2
+ },
+ "legenda": {
+  "cadenta": {
+   "înghețat": "nu se mai schimbă (verificare de integritate trimestrială, doar unde e definită)",
+   "lent": "lunar",
+   "viu": "săptămânal"
+  },
+  "kind": {
+   "data": "produce instantaneu de date + PR",
+   "watch": "doar monitorizare: deviația deschide issue, nu schimbă date"
+  },
+  "stare": {
+   "activ": "rulat de alergător",
+   "doar-inventar": "cunoscut, nesondat (motiv în „termeni”)",
+   "de-confirmat": "nu poate fi rulat până nu se confirmă URL/termeni",
+   "oprit": "oprit din motive de termeni/robots"
+  }
+ },
+ "sources": [
+  {
+   "id": "ACORDAJ",
+   "app": "ACORDAJ",
+   "nume": "Lista celor 1134 de titluri (cursurispirituale.webnode.ro)",
+   "url": "https://cursurispirituale.webnode.ro/",
+   "tip": "HTML",
+   "cadenta": "lent",
+   "kind": "data",
+   "stare": "activ",
+   "pilot": "lent",
+   "parser": "webnode-titles",
+   "crawl": {
+    "maxPages": 40
+   },
+   "validator": {
+    "minRecords": 900,
+    "minBaselineOverlapPct": 70,
+    "note": "schemă: linii numerotate „N. Titlu”; scădere >20% sau creștere >40% a numărului, numerotare rară, <70% coincidență cu titlurile din aplicație → respins (issue)"
+   },
+   "autoMerge": false,
+   "persist": "hash-uri",
+   "licenta": "Necunoscută. README-ul ACORDAJ: „drepturile asupra listei originale nu au fost verificate”; titlurile aparțin sursei și titularilor lor.",
+   "termeni": "De confirmat: consimțământul autorului listei NU este confirmat (banda din aplicație). Instantaneul comis păstrează doar hash-uri ale titlurilor, nu titlurile; nimic nu se aplică automat în aplicație (doar PR cu raport, aprobare umană).",
+   "robots": {
+    "mode": "verifică",
+    "note": "robots.txt (RFC 9309) se citește la fiecare rulare; dacă interzice calea sau e indisponibil (5xx/rețea), sursa nu se descarcă."
+   },
+   "fragil": true,
+   "asOf": null,
+   "dovada": [
+    "ACORDAJ/README.md (rânduri „Source of the list” și „Rights and attribution”)",
+    "ACORDAJ/index.html (const RAW, 1134 titluri; banda #srcBand)"
+   ],
+   "deConfirmat": [
+    "structura reală a paginilor sursei (numerotare, paginare pe subpagini): parserul e defensiv, validat doar pe fixtură sintetică",
+    "robots.txt al sursei (nu poate fi citit din mediul de lucru; se aplică la rulare)",
+    "termeni de utilizare/consimțământul autorului listei"
+   ],
+   "note": "Pilot „lent” (8.4). Dacă autorul listei refuză sau robots.txt interzice, se trece stare:\"oprit\"."
+  },
+  {
+   "id": "VNTV",
+   "app": "VNTV",
+   "apps": [
+    "VNTV"
+   ],
+   "nume": "Indexul catalogului VideoNeat (pluginul VideoNeat Index)",
+   "url": "https://www.videoneat.com/wp-json/videoneat/v1/index",
+   "urls": [
+    "https://www.videoneat.com/wp-content/uploads/videoneat-index.json"
+   ],
+   "tip": "API JSON",
+   "cadenta": "viu",
+   "kind": "data",
+   "stare": "activ",
+   "pilot": "viu",
+   "parser": "videoneat-index",
+   "validator": {
+    "minRecords": 20,
+    "note": "schemă: {v:1, generated, count, items[{id,title,link,date,cats,trailer,year,…}]}; count = items.length; <2% articole invalide; structură (chei) neschimbată"
+   },
+   "autoMerge": {
+    "maxChangedPct": 5,
+    "maxChanged": 10
+   },
+   "persist": "id, titlu, dată, an, trailer",
+   "licenta": "Pluginul VideoNeat Index: MIT (wp-plugin/videoneat-index). Metadatele de catalog (titlu, an, link) sunt ale VideoNeat/TROM; trailerele aparțin producătorilor (PBS, BBC ș.a.).",
+   "termeni": "Serviciu al aceluiași ecosistem TROM/VideoNeat, cu CORS deschis și cache 12 h, destinat clienților trade-free. De confirmat: NOTICE.md VNTV spune că nu e documentată o permisiune a producătorilor de trailere sau a TROM pentru afișarea trailerelor.",
+   "robots": {
+    "mode": "verifică",
+    "note": "robots.txt (RFC 9309) se citește la fiecare rulare; dacă interzice calea sau e indisponibil (5xx/rețea), sursa nu se descarcă."
+   },
+   "asOf": null,
+   "dovada": [
+    "VNTV/wp-plugin/videoneat-index/videoneat-index.php (endpoint-uri și format)",
+    "VNTV/stremio-addon/index.js (INDEX_URLS)",
+    "VNTV/NOTICE.md"
+   ],
+   "deConfirmat": [
+    "forma reală a răspunsului în producție (verificată doar după codul pluginului)",
+    "permisiunea pentru afișarea trailerelor (NOTICE.md)"
+   ],
+   "note": "Pilot „viu” (8.4). Instantaneu = catalogul compact; aplicația citește indexul direct la rulare, instantaneul servește monitorizării și auto-fuziunii diferențelor mici."
+  },
+  {
+   "id": "AGORA-populatii",
+   "app": "AGORA",
+   "nume": "Populația statelor din zona euro (Eurostat tps00001)",
+   "url": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/tps00001?format=JSON&lang=EN&geo=AT&geo=BE&geo=BG&geo=CY&geo=DE&geo=EE&geo=EL&geo=ES&geo=FI&geo=FR&geo=HR&geo=IE&geo=IT&geo=LT&geo=LU&geo=LV&geo=MT&geo=NL&geo=PT&geo=SI&geo=SK&sinceTimePeriod=2024",
+   "tip": "API JSON-stat",
+   "cadenta": "lent",
+   "kind": "data",
+   "stare": "activ",
+   "parser": "eurostat-population",
+   "validator": {
+    "minRecords": 21,
+    "appDeviationPct": 3,
+    "note": "schemă JSON-stat 2.0 (dimensiuni geo×time); toate cele 21 de state; valori 100 mii–100 mil.; diferențele față de aplicație (>3%) apar în raport"
+   },
+   "autoMerge": false,
+   "persist": "ultima valoare per stat",
+   "licenta": "Eurostat: reutilizare permisă cu menționarea sursei (Decizia 2011/833/UE; CC BY 4.0).",
+   "termeni": "API public de diseminare Eurostat, fără cheie. De confirmat: parametrii exacți (sinceTimePeriod) și limitele de rată.",
+   "robots": {
+    "mode": "verifică",
+    "note": "API public documentat; robots.txt se verifică totuși la fiecare rulare (dacă lipsește, 404, e permis)."
+   },
+   "asOf": "2026-10-08",
+   "asOfNote": "ultima verificare a autorului (README AGORA); populațiile unor state au fost înlocuite la 2026-11-02",
+   "dovada": [
+    "AGORA/README.md („Data and sources”, „Verified sources”)",
+    "AGORA/index.html (lista de state cu pop:)"
+   ],
+   "deConfirmat": [
+    "URL-ul exact al API-ului și parametrul sinceTimePeriod (verificate doar după documentația cunoscută; shell-ul nu iese spre ec.europa.eu)"
+   ],
+   "note": "Raportează diferențele față de populațiile din aplicație (ex. Franța ~69,1 mil. în copia locală față de ~68,6 mil. Eurostat). Modificarea aplicației rămâne manuală."
+  },
+  {
+   "id": "AGORA-BCE-Bulgaria",
+   "app": "AGORA",
+   "nume": "Comunicatul BCE din 1 ianuarie 2026 (Bulgaria, curs 1,95583)",
+   "url": "https://www.ecb.europa.eu/press/pr/date/2026/html/ecb.pr260101~c830245e42.en.html",
+   "tip": "HTML",
+   "cadenta": "înghețat",
+   "kind": "watch",
+   "stare": "doar-inventar",
+   "licenta": "BCE: reproducere permisă cu menționarea sursei (de confirmat clauza exactă).",
+   "termeni": "Document istoric; nu se mai schimbă.",
+   "robots": {
+    "mode": "verifică",
+    "note": "robots.txt (RFC 9309) se citește la fiecare rulare; dacă interzice calea sau e indisponibil (5xx/rețea), sursa nu se descarcă."
+   },
+   "asOf": "2026-10-27",
+   "asOfNote": "citit de autor la 27 octombrie 2026 (README AGORA)",
+   "dovada": [
+    "AGORA/README.md (Source for Bulgaria)"
+   ],
+   "note": "Înghețat: nu se sondează."
+  },
+  {
+   "id": "AGORA-linkuri-externe",
+   "app": "AGORA",
+   "nume": "Site-uri oficiale și de transport legate din ghidul practic",
+   "urls": [
+    "https://www.mae.ro",
+    "https://www.econsulat.ro",
+    "https://www.cardeuropean.ro",
+    "https://www.interrail.com",
+    "https://www.flixbus.com",
+    "https://www.omio.com",
+    "https://www.thetrainline.com",
+    "https://www.bdz.bg",
+    "https://www.zssk.sk",
+    "https://www.vr.fi",
+    "https://www.vivi.lv"
+   ],
+   "tip": "linkuri",
+   "cadenta": "lent",
+   "kind": "watch",
+   "stare": "doar-inventar",
+   "licenta": "Doar linkuri; nicio copiere de conținut.",
+   "termeni": "Verificarea linkurilor se face cu VERIGA / Trade-Free Link Guardian, nu cu alergătorul de date.",
+   "robots": {
+    "mode": "nu-se-aplică",
+    "note": "nu se descarcă"
+   },
+   "asOf": null,
+   "dovada": [
+    "AGORA/index.html (linkuri în ghidul practic)"
+   ],
+   "note": "Orare, tarife și reguli de călătorie sunt „orientative” conform README (nu sunt date importate)."
+  },
+  {
+   "id": "Cupa-Mondiala-2026-Wikipedia",
+   "app": "Cupa-Mondiala-2026",
+   "nume": "Rezultatele reale și tabelul celor 495 de combinații (Anexa C)",
+   "url": "https://en.wikipedia.org/wiki/2026_FIFA_World_Cup",
+   "tip": "HTML",
+   "cadenta": "înghețat",
+   "kind": "watch",
+   "stare": "de-confirmat",
+   "licenta": "Textul Wikipedia: CC BY-SA 4.0 (de confirmat pagina/paginile exacte folosite).",
+   "termeni": "Turneul real s-a încheiat la 19 iulie 2026: datele nu se mai schimbă. README: tabelul Anexei C „transcris din Wikipedia (inclusiv o oglindă a ei)”, necomparat cu PDF-ul FIFA.",
+   "robots": {
+    "mode": "verifică",
+    "note": "robots.txt (RFC 9309) se citește la fiecare rulare; dacă interzice calea sau e indisponibil (5xx/rețea), sursa nu se descarcă."
+   },
+   "asOf": null,
+   "dovada": [
+    "Cupa-Mondiala-2026/README.md (Limits, Real archive)"
+   ],
+   "deConfirmat": [
+    "paginile Wikipedia exacte (nume) din care s-au transcris datele",
+    "dacă mai există corecturi ulterioare (grupele cu <2 surse)"
+   ],
+   "note": "Cadența „înghețat”: plan inițial îl numea „viu”, dar turneul s-a încheiat; pilotul „viu” este VNTV."
+  },
+  {
+   "id": "Eclipse-NASA-GSFC",
+   "app": "ECLIPSA",
+   "apps": [
+    "ECLIPSA",
+    "Eclipsa-2027"
+   ],
+   "nume": "Catalogul eclipselor NASA/GSFC (F. Espenak) și elementele Bessel pentru 2 august 2027",
+   "url": "https://eclipse.gsfc.nasa.gov/",
+   "tip": "HTML/fișiere",
+   "cadenta": "înghețat",
+   "kind": "watch",
+   "stare": "de-confirmat",
+   "licenta": "Date NASA/GSFC, de regulă publice cu atribuire (de confirmat condițiile paginii).",
+   "termeni": "Cele 212 eclipse (2024–2070) și elementele Bessel nu se schimbă; ΔT-ul viitor este incert.",
+   "robots": {
+    "mode": "verifică",
+    "note": "robots.txt (RFC 9309) se citește la fiecare rulare; dacă interzice calea sau e indisponibil (5xx/rețea), sursa nu se descarcă."
+   },
+   "asOf": null,
+   "dovada": [
+    "ECLIPSA/README.md",
+    "Eclipsa-2027/README.md"
+   ],
+   "deConfirmat": [
+    "URL-urile exacte ale cataloagelor folosite",
+    "condițiile de reutilizare"
+   ]
+  },
+  {
+   "id": "IERS-DeltaT",
+   "app": "Bolta",
+   "apps": [
+    "Bolta",
+    "ECLIPSA",
+    "Eclipsa-2027",
+    "orarium"
+   ],
+   "nume": "ΔT (Espenak–Meeus) și tabelul IERS 1973–2027, din modulul FFF.ephem",
+   "url": "https://datacenter.iers.org/",
+   "tip": "fișier",
+   "cadenta": "lent",
+   "kind": "watch",
+   "stare": "de-confirmat",
+   "licenta": "Date IERS publice (de confirmat atribuirea cerută).",
+   "termeni": "Tabelul ΔT este încorporat în fff-kit (src/ephem.js); actualizarea lui cere o modificare în fff-kit și reconstruirea celor 4 aplicații — în afara perimetrului acestei etape.",
+   "robots": {
+    "mode": "verifică",
+    "note": "robots.txt (RFC 9309) se citește la fiecare rulare; dacă interzice calea sau e indisponibil (5xx/rețea), sursa nu se descarcă."
+   },
+   "asOf": null,
+   "dovada": [
+    "Bolta/README.md (ΔT)",
+    "fff-kit/THIRD-PARTY.md"
+   ],
+   "deConfirmat": [
+    "fișierul IERS exact din care provine tabelul",
+    "procedura de actualizare a fff-kit"
+   ]
+  },
+  {
+   "id": "JPL-Horizons",
+   "app": "ECLIPSA",
+   "apps": [
+    "ECLIPSA",
+    "Eclipsa-2027"
+   ],
+   "nume": "JPL Horizons (DE421) — referințe pentru testele de precizie",
+   "url": "https://ssd.jpl.nasa.gov/api/horizons.api",
+   "tip": "API",
+   "cadenta": "înghețat",
+   "kind": "watch",
+   "stare": "doar-inventar",
+   "licenta": "Date JPL/NASA publice.",
+   "termeni": "Folosit doar la generarea valorilor de referință din fff-kit/test/ref (nu de aplicații, nu la rulare). NU are legătură cu aplicația „Horizons. Beyond Limits”, care nu face nicio cerere de rețea.",
+   "robots": {
+    "mode": "nu-se-aplică",
+    "note": "nu se descarcă"
+   },
+   "asOf": null,
+   "dovada": [
+    "ECLIPSA/README.md (JPL DE421)",
+    "Horizons.BeyondLimits/README.md (fără rețea)"
+   ]
+  },
+  {
+   "id": "ORARIUM-JPL-IAU",
+   "app": "orarium",
+   "nume": "Elemente keplerian medii JPL (Standish) și orientări IAU WGCCRE",
+   "url": "https://ssd.jpl.nasa.gov/planets/approx_pos.html",
+   "tip": "HTML",
+   "cadenta": "înghețat",
+   "kind": "watch",
+   "stare": "de-confirmat",
+   "licenta": "Date JPL/IAU publice.",
+   "termeni": "Constante încorporate; nu se reîmprospătează.",
+   "robots": {
+    "mode": "verifică",
+    "note": "robots.txt (RFC 9309) se citește la fiecare rulare; dacă interzice calea sau e indisponibil (5xx/rețea), sursa nu se descarcă."
+   },
+   "asOf": null,
+   "dovada": [
+    "orarium/README.md (Sources and credits)"
+   ],
+   "deConfirmat": [
+    "URL-ul exact al tabelului Standish folosit"
+   ]
+  },
+  {
+   "id": "UniversulObservabil-NED-SIMBAD",
+   "app": "Universul-Observabil",
+   "apps": [
+    "Universul-Observabil",
+    "Universul-Observabil-1D",
+    "Universul-Observabil-2D",
+    "Universul-Observabil-3D"
+   ],
+   "nume": "Distanțe/deplasări spre roșu (NED, SIMBAD) și recordul JWST (arXiv 2505.11263)",
+   "urls": [
+    "https://ned.ipac.caltech.edu/",
+    "https://simbad.cds.unistra.fr/",
+    "https://arxiv.org/abs/2505.11263"
+   ],
+   "tip": "baze de date",
+   "cadenta": "lent",
+   "kind": "watch",
+   "stare": "de-confirmat",
+   "licenta": "Date astronomice publice (NED/SIMBAD cer citare).",
+   "termeni": "README: „NED/SIMBAD nu au fost accesibile în sesiune”; discrepanțele 1D↔2D rezolvate în docs/DISCREPANTE.md. Afirmații perisabile sunt datate „la data catalogului (mai 2026)”.",
+   "robots": {
+    "mode": "verifică",
+    "note": "robots.txt (RFC 9309) se citește la fiecare rulare; dacă interzice calea sau e indisponibil (5xx/rețea), sursa nu se descarcă."
+   },
+   "asOf": "2026-05",
+   "asOfNote": "data catalogului declarată de autor",
+   "dovada": [
+    "Universul-Observabil/README.md"
+   ],
+   "deConfirmat": [
+    "interogările exacte NED/SIMBAD",
+    "dacă recordul de z a fost depășit"
+   ]
+  },
+  {
+   "id": "INDICATIV-ANCOM",
+   "app": "INDICATIV",
+   "apps": [
+    "INDICATIV",
+    "ETER"
+   ],
+   "nume": "Reglementările ANCOM pentru examenul de radioamator (Decizia 245/2017)",
+   "url": "https://www.ancom.ro/",
+   "tip": "HTML",
+   "cadenta": "lent",
+   "kind": "watch",
+   "stare": "de-confirmat",
+   "licenta": "Texte oficiale ANCOM (de confirmat condițiile); o parte din întrebări din „SimEx” (GNU GPL, declarat de autor).",
+   "termeni": "Banca de 723 de întrebări NU este validată de ANCOM. Oficial: pagina ANCOM consultată în octombrie 2026.",
+   "robots": {
+    "mode": "verifică",
+    "note": "robots.txt (RFC 9309) se citește la fiecare rulare; dacă interzice calea sau e indisponibil (5xx/rețea), sursa nu se descarcă."
+   },
+   "asOf": "2026-10",
+   "asOfNote": "pagina ANCOM consultată în octombrie 2026 (README)",
+   "dovada": [
+    "INDICATIV/README.md"
+   ],
+   "deConfirmat": [
+    "URL-ul exact al paginii Radioamatori",
+    "modificări ulterioare ale deciziei"
+   ]
+  },
+  {
+   "id": "Nexus-modele-Anthropic",
+   "app": "Nexus-fara-frontiere",
+   "apps": [
+    "Nexus-fara-frontiere"
+   ],
+   "nume": "Modele Anthropic sugerate în Nexus",
+   "url": "https://platform.claude.com/docs/en/models/overview",
+   "tip": "HTML",
+   "cadenta": "lent",
+   "kind": "watch",
+   "stare": "activ",
+   "parser": "page-mentions",
+   "validator": {
+    "note": "fiecare model sugerat trebuie să apară încă în documentația oficială"
+   },
+   "expect": {
+    "contains": [
+     "claude-sonnet-5-5",
+     "claude-opus-5-5",
+     "claude-haiku-5-5",
+     "claude-fable-5-1"
+    ],
+    "minBytes": 2000
+   },
+   "licenta": "Documentație publică a furnizorului.",
+   "termeni": "Se citește o pagină de documentație, o dată pe lună. De confirmat: dacă pagina e randată pe server (dacă e doar JavaScript, validatorul semnalează „pagină prea scurtă”, nu date greșite).",
+   "robots": {
+    "mode": "verifică",
+    "note": "robots.txt (RFC 9309) se citește la fiecare rulare; dacă interzice calea sau e indisponibil (5xx/rețea), sursa nu se descarcă."
+   },
+   "asOf": "2026-10-08",
+   "asOfNote": "MODELS_CHECKED_ON din Nexus",
+   "dovada": [
+    "Nexus-fara-frontiere/index.html (MODEL_SUGGESTIONS, MODELS_CHECKED_ON)"
+   ],
+   "deConfirmat": [
+    "conținutul real al paginii (server-side vs JS)"
+   ]
+  },
+  {
+   "id": "Nexus-modele-OpenAI",
+   "app": "Nexus-fara-frontiere",
+   "nume": "Modele OpenAI sugerate în Nexus",
+   "url": "https://developers.openai.com/api/docs/models",
+   "tip": "HTML",
+   "cadenta": "lent",
+   "kind": "watch",
+   "stare": "activ",
+   "parser": "page-mentions",
+   "validator": {
+    "note": "fiecare model sugerat trebuie să apară încă în documentație"
+   },
+   "expect": {
+    "contains": [
+     "gpt-6-astra",
+     "gpt-6.1-sol",
+     "gpt-6-luna"
+    ],
+    "minBytes": 2000
+   },
+   "licenta": "Documentație publică a furnizorului.",
+   "termeni": "Ca mai sus.",
+   "robots": {
+    "mode": "verifică",
+    "note": "robots.txt (RFC 9309) se citește la fiecare rulare; dacă interzice calea sau e indisponibil (5xx/rețea), sursa nu se descarcă."
+   },
+   "asOf": "2026-10-08",
+   "dovada": [
+    "Nexus-fara-frontiere/index.html"
+   ],
+   "deConfirmat": [
+    "conținutul real al paginii"
+   ]
+  },
+  {
+   "id": "Nexus-modele-Google",
+   "app": "Nexus-fara-frontiere",
+   "nume": "Modele Google sugerate în Nexus",
+   "url": "https://ai.google.dev/gemini-api/docs/models",
+   "tip": "HTML",
+   "cadenta": "lent",
+   "kind": "watch",
+   "stare": "activ",
+   "parser": "page-mentions",
+   "validator": {
+    "note": "fiecare model sugerat trebuie să apară încă în documentație"
+   },
+   "expect": {
+    "contains": [
+     "gemini-3.8-flash",
+     "gemini-3.1-pro-preview",
+     "gemini-3.5-flash",
+     "gemini-3.1-flash-lite"
+    ],
+    "minBytes": 2000
+   },
+   "licenta": "Documentație publică a furnizorului.",
+   "termeni": "Ca mai sus.",
+   "robots": {
+    "mode": "verifică",
+    "note": "robots.txt (RFC 9309) se citește la fiecare rulare; dacă interzice calea sau e indisponibil (5xx/rețea), sursa nu se descarcă."
+   },
+   "asOf": "2026-10-08",
+   "dovada": [
+    "Nexus-fara-frontiere/index.html"
+   ],
+   "deConfirmat": [
+    "conținutul real al paginii"
+   ]
+  },
+  {
+   "id": "Anthropic-API-versiune",
+   "app": "Nexus-fara-frontiere",
+   "apps": [
+    "Nexus-fara-frontiere",
+    "TranslateHub",
+    "VietAR",
+    "AI-Liber"
+   ],
+   "nume": "Versiunea API Anthropic (antetul anthropic-version: 2023-06-01)",
+   "url": "https://platform.claude.com/docs/en/api/versioning",
+   "tip": "HTML",
+   "cadenta": "lent",
+   "kind": "watch",
+   "stare": "activ",
+   "parser": "page-mentions",
+   "validator": {
+    "note": "valoarea 2023-06-01 trebuie să mai apară în pagina de versionare"
+   },
+   "expect": {
+    "contains": [
+     "2023-06-01"
+    ],
+    "minBytes": 1500
+   },
+   "licenta": "Documentație publică a furnizorului.",
+   "termeni": "Cheile API nu sunt implicate: se citește doar documentația.",
+   "robots": {
+    "mode": "verifică",
+    "note": "robots.txt (RFC 9309) se citește la fiecare rulare; dacă interzice calea sau e indisponibil (5xx/rețea), sursa nu se descarcă."
+   },
+   "asOf": null,
+   "dovada": [
+    "Nexus-fara-frontiere/index.html (anthropic-version)",
+    "TranslateHub, VietAR, AI-Liber (aceeași valoare)"
+   ],
+   "deConfirmat": [
+    "URL-ul exact al paginii de versionare"
+   ]
+  },
+  {
+   "id": "LocalMind-modele",
+   "app": "LocalMind",
+   "nume": "Modelele ONNX din catalogul LocalMind (Hugging Face)",
+   "url": "https://huggingface.co/api/models/onnx-community/Qwen3-0.6B-ONNX",
+   "tip": "API JSON",
+   "cadenta": "lent",
+   "kind": "watch",
+   "stare": "activ",
+   "parser": "hf-models",
+   "validator": {
+    "note": "fiecare model trebuie să existe (200), să nu fie redenumit (id diferit) sau dezactivat"
+   },
+   "expect": {
+    "models": [
+     "onnx-community/Qwen3-0.6B-ONNX",
+     "onnx-community/Qwen3-1.7B-ONNX",
+     "onnx-community/Qwen3-4B-ONNX",
+     "onnx-community/LFM2-1.2B-ONNX",
+     "onnx-community/Llama-3.2-1B-Instruct",
+     "onnx-community/Llama-3.2-3B-Instruct",
+     "onnx-community/Qwen2.5-1.5B-Instruct",
+     "onnx-community/Qwen2.5-0.5B-Instruct"
+    ]
+   },
+   "licenta": "Fiecare model are licența proprie pe Hugging Face (nu se redistribuie nimic).",
+   "termeni": "API public Hugging Face, fără cheie, 8 cereri lunar. Aplicația însăși interoghează /api/models doar la căutare, din browserul utilizatorului.",
+   "robots": {
+    "mode": "verifică",
+    "note": "API public documentat; robots.txt se verifică totuși la fiecare rulare (dacă lipsește, 404, e permis)."
+   },
+   "asOf": null,
+   "dovada": [
+    "LocalMind/index.html (catalogul de modele, MDS_KNOWN_GATED)"
+   ],
+   "deConfirmat": [
+    "rularea reală (huggingface.co nu e accesibil din mediul de lucru; verificată doar pe fixturi)"
+   ]
+  },
+  {
+   "id": "ATINGERE-tessdata",
+   "app": "ATINGERE",
+   "nume": "Date de limbă Tesseract (tessdata_fast) la commit fixat, cu SHA-256",
+   "url": "https://raw.githubusercontent.com/tesseract-ocr/tessdata_fast/87416418657359cb625c412a48b6e1d6d41c29bd/ron.traineddata",
+   "tip": "fișier",
+   "cadenta": "înghețat",
+   "kind": "watch",
+   "stare": "activ",
+   "parser": "sha256-pinned",
+   "minIntervalMs": 1000,
+   "maxBytes": 25000000,
+   "validator": {
+    "note": "fiecare fișier fixat la commit trebuie să se descarce și să aibă exact SHA-256-ul declarat în aplicație"
+   },
+   "expect": {
+    "files": [
+     {
+      "name": "ron",
+      "url": "https://raw.githubusercontent.com/tesseract-ocr/tessdata_fast/87416418657359cb625c412a48b6e1d6d41c29bd/ron.traineddata",
+      "sha256": "9adfde6b51ba4b97efd10ea37c3070fd3fc2bad7815e81f5c3c198cd96216cc9"
+     },
+     {
+      "name": "eng",
+      "url": "https://raw.githubusercontent.com/tesseract-ocr/tessdata_fast/87416418657359cb625c412a48b6e1d6d41c29bd/eng.traineddata",
+      "sha256": "7d4322bd2a7749724879683fc3912cb542f19906c83bcc1a52132556427170b2"
+     },
+     {
+      "name": "fra",
+      "url": "https://raw.githubusercontent.com/tesseract-ocr/tessdata_fast/87416418657359cb625c412a48b6e1d6d41c29bd/fra.traineddata",
+      "sha256": "ced037562e8c80c13122dece28dd477d399af80911a28791a66a63ac1e3445ca"
+     },
+     {
+      "name": "deu",
+      "url": "https://raw.githubusercontent.com/tesseract-ocr/tessdata_fast/87416418657359cb625c412a48b6e1d6d41c29bd/deu.traineddata",
+      "sha256": "19d219bbb6672c869d20a9636c6816a81eb9a71796cb93ebe0cb1530e2cdb22d"
+     },
+     {
+      "name": "spa",
+      "url": "https://raw.githubusercontent.com/tesseract-ocr/tessdata_fast/87416418657359cb625c412a48b6e1d6d41c29bd/spa.traineddata",
+      "sha256": "6f2e04d02774a18f01bed44b1111f2cd7f3ba7ac9dc4373cd3f898a40ea6b464"
+     },
+     {
+      "name": "ita",
+      "url": "https://raw.githubusercontent.com/tesseract-ocr/tessdata_fast/87416418657359cb625c412a48b6e1d6d41c29bd/ita.traineddata",
+      "sha256": "b8f89e1e785118dac4d51ae042c029a64edb5c3ee42ef73027a6d412748d8827"
+     },
+     {
+      "name": "por",
+      "url": "https://raw.githubusercontent.com/tesseract-ocr/tessdata_fast/87416418657359cb625c412a48b6e1d6d41c29bd/por.traineddata",
+      "sha256": "c4932b937207a9514b7514d518b931a99938c02a28a5a5a553f8599ed58b7deb"
+     },
+     {
+      "name": "nld",
+      "url": "https://raw.githubusercontent.com/tesseract-ocr/tessdata_fast/87416418657359cb625c412a48b6e1d6d41c29bd/nld.traineddata",
+      "sha256": "ced0e5e046a84c908a6aa7accbef9a232c4a5d9a8276691b81c6ee64d02963f6"
+     },
+     {
+      "name": "pol",
+      "url": "https://raw.githubusercontent.com/tesseract-ocr/tessdata_fast/87416418657359cb625c412a48b6e1d6d41c29bd/pol.traineddata",
+      "sha256": "c4476cdbc0e33d898d32345122b7be1cbf85ace15f920f06c7714756e1ef79b2"
+     },
+     {
+      "name": "ces",
+      "url": "https://raw.githubusercontent.com/tesseract-ocr/tessdata_fast/87416418657359cb625c412a48b6e1d6d41c29bd/ces.traineddata",
+      "sha256": "934bcaf97ef3348413263331131c9fa7f55f30db333c711929c124fb635f7e1b"
+     },
+     {
+      "name": "hun",
+      "url": "https://raw.githubusercontent.com/tesseract-ocr/tessdata_fast/87416418657359cb625c412a48b6e1d6d41c29bd/hun.traineddata",
+      "sha256": "35067e7cfe102dcdc953f9a758fdfaa6296b17a1ee6d874ee780fa306430b9fb"
+     },
+     {
+      "name": "rus",
+      "url": "https://raw.githubusercontent.com/tesseract-ocr/tessdata_fast/87416418657359cb625c412a48b6e1d6d41c29bd/rus.traineddata",
+      "sha256": "e16e5e036cce1d9ec2b00063cf8b54472625b9e14d893a169e2b0dedeb4df225"
+     },
+     {
+      "name": "ukr",
+      "url": "https://raw.githubusercontent.com/tesseract-ocr/tessdata_fast/87416418657359cb625c412a48b6e1d6d41c29bd/ukr.traineddata",
+      "sha256": "d59e53e2bded32f4445f124b4b00240fcac7e8044c003ab822ccb94f0b3db59b"
+     },
+     {
+      "name": "bul",
+      "url": "https://raw.githubusercontent.com/tesseract-ocr/tessdata_fast/87416418657359cb625c412a48b6e1d6d41c29bd/bul.traineddata",
+      "sha256": "aebc9b0fcc8cfaf8a9f38a02bb7b85052bd850744696a2c11cf0081820e5b21e"
+     },
+     {
+      "name": "ell",
+      "url": "https://raw.githubusercontent.com/tesseract-ocr/tessdata_fast/87416418657359cb625c412a48b6e1d6d41c29bd/ell.traineddata",
+      "sha256": "4fba8a0b461038d51f1c20d043d4f2ac38c4e778f1b90830847f7bd8fa3ba726"
+     },
+     {
+      "name": "tur",
+      "url": "https://raw.githubusercontent.com/tesseract-ocr/tessdata_fast/87416418657359cb625c412a48b6e1d6d41c29bd/tur.traineddata",
+      "sha256": "7393381111e1152420fc4092cb44eef4237580d21b92bf30d7d221aad192c6b7"
+     },
+     {
+      "name": "ara",
+      "url": "https://raw.githubusercontent.com/tesseract-ocr/tessdata_fast/87416418657359cb625c412a48b6e1d6d41c29bd/ara.traineddata",
+      "sha256": "e3206d3dc87fd50c24a0fb9f01838615911d25168f4e64415244b67d2bb3e729"
+     },
+     {
+      "name": "heb",
+      "url": "https://raw.githubusercontent.com/tesseract-ocr/tessdata_fast/87416418657359cb625c412a48b6e1d6d41c29bd/heb.traineddata",
+      "sha256": "11f9e43ab227f786352a50f75c94c2e9906f1baba86d93276da19da7ce0904db"
+     },
+     {
+      "name": "hin",
+      "url": "https://raw.githubusercontent.com/tesseract-ocr/tessdata_fast/87416418657359cb625c412a48b6e1d6d41c29bd/hin.traineddata",
+      "sha256": "4c73ffc59d497c186b19d1e90f5d721d678ea6b2e277b719bee4e2af12271825"
+     }
+    ]
+   },
+   "licenta": "Apache-2.0 (Tesseract tessdata_fast).",
+   "termeni": "Commit fixat: conținutul nu se schimbă; verificarea trimestrială prinde doar dispariția/alterarea fișierelor. Se rulează trimestrial sau la cerere (include-frozen).",
+   "robots": {
+    "mode": "verifică",
+    "note": "robots.txt (RFC 9309) se citește la fiecare rulare; dacă interzice calea sau e indisponibil (5xx/rețea), sursa nu se descarcă."
+   },
+   "asOf": null,
+   "dovada": [
+    "ATINGERE/index.html (TESS_COMMIT, TESS_SHA)"
+   ]
+  },
+  {
+   "id": "fff-kit-astronomia",
+   "app": "Bolta",
+   "apps": [
+    "Bolta",
+    "ECLIPSA",
+    "Eclipsa-2027",
+    "orarium"
+   ],
+   "nume": "Pachetul npm astronomia (serii VSOP87D, Meeus) din care s-au extras coeficienții din fff-kit",
+   "url": "https://registry.npmjs.org/astronomia",
+   "tip": "registru de pachete",
+   "cadenta": "lent",
+   "kind": "watch",
+   "stare": "activ",
+   "parser": "npm-package",
+   "validator": {
+    "note": "pachetul există și ultima versiune nu e deprecată; versiunea mai nouă se raportează informativ"
+   },
+   "expect": {
+    "package": "astronomia",
+    "pinned": null
+   },
+   "licenta": "MIT (ambalare); coeficienții sunt date științifice libere (CDS).",
+   "termeni": "Registrul npm public; o cerere pe lună.",
+   "robots": {
+    "mode": "nu-se-aplică",
+    "note": "API de registru documentat"
+   },
+   "asOf": null,
+   "dovada": [
+    "fff-kit/THIRD-PARTY.md"
+   ]
+  },
+  {
+   "id": "fff-kit-hipparcos",
+   "app": "Bolta",
+   "apps": [
+    "Bolta",
+    "Eclipsa-2027"
+   ],
+   "nume": "Pachetul PyPI hipparcos-catalog (catalogul stelar Hipparcos, reducerea nouă)",
+   "url": "https://pypi.org/pypi/hipparcos-catalog/json",
+   "tip": "registru de pachete",
+   "cadenta": "lent",
+   "kind": "watch",
+   "stare": "activ",
+   "parser": "pypi-package",
+   "validator": {
+    "note": "pachetul există și ultima versiune nu e „yanked”"
+   },
+   "expect": {
+    "package": "hipparcos-catalog",
+    "pinned": null
+   },
+   "licenta": "MIT (ambalare); date ESA publice.",
+   "termeni": "PyPI JSON API public; o cerere pe lună.",
+   "robots": {
+    "mode": "nu-se-aplică",
+    "note": "API de registru documentat"
+   },
+   "asOf": null,
+   "dovada": [
+    "fff-kit/THIRD-PARTY.md"
+   ]
+  },
+  {
+   "id": "AcademiSearch-API",
+   "app": "AcademiSearch",
+   "apps": [
+    "AcademiSearch",
+    "FreeDetect"
+   ],
+   "nume": "API-urile bibliografice interogate de AcademiSearch/FreeDetect (canar de format)",
+   "url": "https://openlibrary.org/search.json?q=test&limit=1",
+   "tip": "API JSON",
+   "cadenta": "lent",
+   "kind": "watch",
+   "stare": "activ",
+   "parser": "json-shape",
+   "validator": {
+    "note": "o interogare minimă pe fiecare API; răspunsul trebuie să aibă în continuare căile folosite de aplicație"
+   },
+   "expect": {
+    "checks": [
+     {
+      "name": "Open Library",
+      "url": "https://openlibrary.org/search.json?q=test&limit=1&fields=title,key",
+      "paths": [
+       "numFound",
+       "docs"
+      ]
+     },
+     {
+      "name": "Internet Archive advancedsearch",
+      "url": "https://archive.org/advancedsearch.php?q=mediatype%3Atexts&fl%5B%5D=identifier&rows=1&output=json",
+      "paths": [
+       "response.numFound",
+       "response.docs"
+      ]
+     },
+     {
+      "name": "Gutendex",
+      "url": "https://gutendex.com/books/?search=dickens",
+      "paths": [
+       "count",
+       "results"
+      ]
+     },
+     {
+      "name": "Crossref",
+      "url": "https://api.crossref.org/works?rows=1&query=test&mailto=alexio@trom.tf",
+      "paths": [
+       "message.items",
+       "message.total-results"
+      ]
+     },
+     {
+      "name": "OpenAlex",
+      "url": "https://api.openalex.org/works?per-page=1&search=test&mailto=alexio@trom.tf",
+      "paths": [
+       "meta.count",
+       "results"
+      ]
+     }
+    ]
+   },
+   "licenta": "API-uri publice; rezultatele nu se stochează.",
+   "termeni": "Câte o cerere pe lună pe API, cu e-mailul de contact unde serviciul îl cere (Crossref, OpenAlex). Căile verificate sunt cele din documentația cunoscută: de confirmat față de codul de parsare din aplicație.",
+   "robots": {
+    "mode": "verifică",
+    "note": "API public documentat; robots.txt se verifică totuși la fiecare rulare (dacă lipsește, 404, e permis)."
+   },
+   "asOf": null,
+   "dovada": [
+    "AcademiSearch/index.html (fetch)",
+    "FreeDetect (api.crossref.org, openlibrary.org)"
+   ],
+   "deConfirmat": [
+    "că aceleași căi sunt cele citite în codul aplicației"
+   ]
+  },
+  {
+   "id": "OmniHost-API",
+   "app": "OmniHost",
+   "apps": [
+    "OmniHost",
+    "API-fara-frontiere"
+   ],
+   "nume": "API-urile din OmniHost (geocodare, dicționar, traducere)",
+   "url": "https://geocoding-api.open-meteo.com/v1/search?name=Bucharest&count=1",
+   "tip": "API JSON",
+   "cadenta": "lent",
+   "kind": "watch",
+   "stare": "activ",
+   "parser": "json-shape",
+   "validator": {
+    "note": "o interogare minimă pe fiecare API"
+   },
+   "expect": {
+    "checks": [
+     {
+      "name": "Open-Meteo geocodare",
+      "url": "https://geocoding-api.open-meteo.com/v1/search?name=Bucharest&count=1",
+      "paths": [
+       "results.0.latitude",
+       "results.0.longitude"
+      ]
+     },
+     {
+      "name": "dictionaryapi.dev",
+      "url": "https://api.dictionaryapi.dev/api/v2/entries/en/hello",
+      "paths": [
+       "0.word",
+       "0.meanings"
+      ]
+     },
+     {
+      "name": "MyMemory",
+      "url": "https://api.mymemory.translated.net/get?q=hello&langpair=en%7Cit",
+      "paths": [
+       "responseData.translatedText",
+       "responseStatus"
+      ]
+     }
+    ]
+   },
+   "licenta": "API-uri publice, uz necomercial/limitat.",
+   "termeni": "O cerere lunară pe API. Open-Meteo: uz necomercial gratuit; de confirmat limitele celorlalte.",
+   "robots": {
+    "mode": "verifică",
+    "note": "API public documentat; robots.txt se verifică totuși la fiecare rulare (dacă lipsește, 404, e permis)."
+   },
+   "asOf": null,
+   "dovada": [
+    "OmniHost/index.html (fetch)"
+   ]
+  },
+  {
+   "id": "ScryVeil-API",
+   "app": "ScryVeil",
+   "apps": [
+    "ScryVeil",
+    "OUTPOST"
+   ],
+   "nume": "DNS-over-HTTPS și RDAP (ScryVeil, OUTPOST)",
+   "url": "https://dns.google/resolve?name=example.com&type=A",
+   "tip": "API JSON",
+   "cadenta": "lent",
+   "kind": "watch",
+   "stare": "activ",
+   "parser": "json-shape",
+   "validator": {
+    "note": "o interogare minimă pe fiecare serviciu (domeniu de test example.com)"
+   },
+   "expect": {
+    "checks": [
+     {
+      "name": "dns.google",
+      "url": "https://dns.google/resolve?name=example.com&type=A",
+      "paths": [
+       "Status",
+       "Answer"
+      ]
+     },
+     {
+      "name": "cloudflare-dns.com",
+      "url": "https://cloudflare-dns.com/dns-query?name=example.com&type=A",
+      "headers": {
+       "Accept": "application/dns-json"
+      },
+      "paths": [
+       "Status",
+       "Answer"
+      ]
+     },
+     {
+      "name": "rdap.org",
+      "url": "https://rdap.org/domain/example.com",
+      "paths": [
+       "ldhName"
+      ]
+     }
+    ]
+   },
+   "licenta": "Servicii DNS/RDAP publice.",
+   "termeni": "Interogări pentru example.com (domeniu rezervat pentru teste). crt.sh, ipapi.co și safebrowsing sunt folosite de ScryVeil, dar NU sunt sondate (limite stricte / cheie / ToS) — vezi ScryVeil-extra.",
+   "robots": {
+    "mode": "verifică",
+    "note": "API public documentat; robots.txt se verifică totuși la fiecare rulare (dacă lipsește, 404, e permis)."
+   },
+   "asOf": null,
+   "dovada": [
+    "ScryVeil/index.html",
+    "OUTPOST/index.html"
+   ],
+   "deConfirmat": [
+    "forma răspunsului rdap.org (redirect către registru)"
+   ]
+  },
+  {
+   "id": "ScryVeil-extra",
+   "app": "ScryVeil",
+   "nume": "crt.sh, ipapi.co, Google Safe Browsing (nesondate)",
+   "urls": [
+    "https://crt.sh/",
+    "https://ipapi.co/",
+    "https://safebrowsing.googleapis.com/"
+   ],
+   "tip": "API",
+   "cadenta": "lent",
+   "kind": "watch",
+   "stare": "doar-inventar",
+   "licenta": "Termeni proprii ai fiecărui serviciu.",
+   "termeni": "Nesondate intenționat: crt.sh e lent/limitat, ipapi.co are cote mici, Safe Browsing cere cheie.",
+   "robots": {
+    "mode": "nu-se-aplică",
+    "note": "nu se descarcă"
+   },
+   "asOf": null,
+   "dovada": [
+    "ScryVeil/index.html (fff-info egress)"
+   ],
+   "fragil": true
+  },
+  {
+   "id": "X-fara-cont-Wayback",
+   "app": "X-fara-cont",
+   "nume": "Wayback Machine availability API",
+   "url": "https://archive.org/wayback/available?url=example.com",
+   "tip": "API JSON",
+   "cadenta": "lent",
+   "kind": "watch",
+   "stare": "activ",
+   "parser": "json-shape",
+   "validator": {
+    "note": "răspunsul are în continuare „archived_snapshots”"
+   },
+   "expect": {
+    "checks": [
+     {
+      "name": "Wayback available",
+      "url": "https://archive.org/wayback/available?url=example.com",
+      "paths": [
+       "archived_snapshots"
+      ]
+     }
+    ]
+   },
+   "licenta": "Internet Archive: API public.",
+   "termeni": "O cerere lunară. Alte canale ale aplicației (Nitter, motoare de căutare) sunt fragile și nesondate.",
+   "robots": {
+    "mode": "verifică",
+    "note": "API public documentat; robots.txt se verifică totuși la fiecare rulare (dacă lipsește, 404, e permis)."
+   },
+   "fragil": true,
+   "asOf": null,
+   "dovada": [
+    "X-fara-cont/README.md"
+   ]
+  },
+  {
+   "id": "API-fara-frontiere-hosturi",
+   "app": "API-fara-frontiere",
+   "nume": "Cele ~40 de API-uri publice din API fără frontiere (jocuri de date)",
+   "urls": [
+    "https://pokeapi.co/",
+    "https://restcountries.com/",
+    "https://api.open-meteo.com/"
+   ],
+   "tip": "API-uri multiple",
+   "cadenta": "lent",
+   "kind": "watch",
+   "stare": "doar-inventar",
+   "licenta": "Termenii serviciilor respective (de confirmat).",
+   "termeni": "Lista completă a gazdelor e în fff-info.egress al aplicației (60+ intrări). Nesondate: ar însemna ~40 de cereri/lună către servicii terțe; canarele existente (OmniHost-API) acoperă Open-Meteo și dictionaryapi. De extins la nevoie.",
+   "robots": {
+    "mode": "nu-se-aplică",
+    "note": "nu se descarcă"
+   },
+   "asOf": null,
+   "dovada": [
+    "API-fara-frontiere/index.html (fff-info egress)"
+   ]
+  },
+  {
+   "id": "AI-Liber-endpointuri",
+   "app": "AI-Liber",
+   "nume": "Furnizori de model (Pollinations, AI Horde, OpenRouter, Groq, Mistral, DuckDuckGo duckchat ș.a.)",
+   "urls": [
+    "https://text.pollinations.ai/",
+    "https://aihorde.net/",
+    "https://openrouter.ai/"
+   ],
+   "tip": "API-uri multiple",
+   "cadenta": "lent",
+   "kind": "watch",
+   "stare": "doar-inventar",
+   "licenta": "Termenii serviciilor respective (de confirmat).",
+   "termeni": "Endpoint-uri la alegerea utilizatorului, unele neoficiale (duckchat). Nesondate: ToS-ul unor furnizori interzice cererile automate; formatul se monitorizează prin raportările utilizatorilor.",
+   "robots": {
+    "mode": "nu-se-aplică",
+    "note": "nu se descarcă"
+   },
+   "asOf": null,
+   "fragil": true,
+   "dovada": [
+    "AI-Liber/index.html"
+   ]
+  },
+  {
+   "id": "Poteca-OSM",
+   "app": "Poteca",
+   "nume": "Plăci de hartă OpenStreetMap",
+   "urls": [
+    "https://tile.openstreetmap.org/"
+   ],
+   "tip": "imagini",
+   "cadenta": "lent",
+   "kind": "watch",
+   "stare": "doar-inventar",
+   "licenta": "Termenii serviciilor respective (de confirmat).",
+   "termeni": "Politica OSM interzice cererile automate/în masă către serverul de plăci: NU se sondează.",
+   "robots": {
+    "mode": "nu-se-aplică",
+    "note": "nu se descarcă"
+   },
+   "asOf": null,
+   "dovada": [
+    "Poteca/index.html (img-src)"
+   ]
+  },
+  {
+   "id": "Embeduri-sociale",
+   "app": "Threads-fara-cont",
+   "apps": [
+    "Threads-fara-cont",
+    "Arhiva-LinkedIn",
+    "Cadraj",
+    "Vitrina"
+   ],
+   "nume": "Embeduri oficiale Threads, LinkedIn, TikTok, Facebook (iframe)",
+   "urls": [
+    "https://www.threads.com/",
+    "https://www.linkedin.com/",
+    "https://www.tiktok.com/",
+    "https://www.facebook.com/"
+   ],
+   "tip": "iframe/oEmbed",
+   "cadenta": "lent",
+   "kind": "watch",
+   "stare": "doar-inventar",
+   "licenta": "Termenii serviciilor respective (de confirmat).",
+   "termeni": "Aplicațiile nu extrag date, doar încorporează iframe-uri oficiale la cererea utilizatorului. Sondarea ar cere autentificare/ToS: NU se face. Fragile prin natură (format de embed).",
+   "robots": {
+    "mode": "nu-se-aplică",
+    "note": "nu se descarcă"
+   },
+   "asOf": null,
+   "fragil": true,
+   "dovada": [
+    "READMEurile aplicațiilor"
+   ]
+  },
+  {
+   "id": "Proxy-uri-proprii",
+   "app": "PrintreInteligente",
+   "apps": [
+    "PrintreInteligente",
+    "VoiceAtelier"
+   ],
+   "nume": "alexio.tf, claude-proxy.alexio.workers.dev, tts-proxy.chiuta.workers.dev, translate.googleapis.com",
+   "urls": [
+    "https://alexio.tf/"
+   ],
+   "tip": "servicii proprii",
+   "cadenta": "lent",
+   "kind": "watch",
+   "stare": "doar-inventar",
+   "licenta": "Termenii serviciilor respective (de confirmat).",
+   "termeni": "Serviciile proprii ale autorului (Workers); monitorizarea lor ține de OUTPOST, nu de acest alergător. translate.googleapis.com: neoficial, nesondat.",
+   "robots": {
+    "mode": "nu-se-aplică",
+    "note": "nu se descarcă"
+   },
+   "asOf": null,
+   "dovada": [
+    "PrintreInteligente/index.html (fff-info egress)"
+   ]
+  }
+ ],
+ "faraSurse": {
+  "basis": "fff-info.egress gol sau doar linkuri/embeduri la cererea utilizatorului; conținutul lor provine din cunoștințe/texte ale autorului (proveniența: README-ul fiecăreia), nu dintr-un URL care se poate reîmprospăta.",
+  "utilizator": "gazda e aleasă de utilizator (nicio sursă fixă): ARENA, FASCICUL, NumeroLogIA, SEOptimum, Surveyor, TerRa, Constelar, Trade-Free-Link-Guardian",
+  "apps": [
+   "Arhiva-fara-frontiere",
+   "DataWeave",
+   "MarkdownAtelier",
+   "Undava",
+   "Curatitor",
+   "Provenienta",
+   "VaultCrypt",
+   "Clopotel",
+   "Monstrarium",
+   "Fabrica",
+   "MENSURA",
+   "PULS",
+   "QSO",
+   "RegexLab",
+   "SEVA",
+   "Alfabete",
+   "Lexicon",
+   "Limpezimea",
+   "Nota-Zero",
+   "Pendulul",
+   "Zicala",
+   "Horizons.BeyondLimits",
+   "Hyper4D",
+   "IncredibleCosmos",
+   "Nemurirea",
+   "ExploratoriiEco",
+   "FieldObserver",
+   "URME",
+   "VATRA",
+   "ASMR",
+   "BorderlessMelodies",
+   "CalmWaves",
+   "Decibel",
+   "EcoulSpectral",
+   "FrequencyLaboratory",
+   "generator-frecvente",
+   "Akasha",
+   "Arbore",
+   "CLEPSIDRA",
+   "Gospodar",
+   "Orar",
+   "Belot-fara-frontiere",
+   "Carti-de-joc-fara-frontiere",
+   "Dame-fara-frontiere",
+   "Domino-fara-frontiere",
+   "Go-fara-frontiere",
+   "Mahjong-fara-frontiere",
+   "Profund",
+   "Remi-fara-frontiere",
+   "Sah-fara-frontiere",
+   "Scopone-fara-frontiere",
+   "Solitaire-fara-frontiere",
+   "Sudoku-fara-frontiere",
+   "Table-fara-frontiere",
+   "Zaruri-fara-frontiere",
+   "PromptVault",
+   "OAZA",
+   "Origami",
+   "Trusa-fara-frontiere",
+   "Afrodisiace-fara-frontiere",
+   "Aurora",
+   "Bioenergoterapie",
+   "HoroScop",
+   "Inforenergetica",
+   "NOMIA",
+   "Numerologie",
+   "Radiestezie",
+   "Fenarium",
+   "Reiki",
+   "Tarot",
+   "ValeaPlopului1972",
+   "OSATURA",
+   "VERIGA",
+   "TEZAUR",
+   "LegatorOCR"
+  ]
+ }
+}
