@@ -430,7 +430,7 @@
     function render() {
       host.textContent = '';
       var c = node('div', 'fffs'), has = !!blob(), un = !!state.map;
-      c.appendChild(node('h3', null, tr('title'))); c.appendChild(node('p', 'fffs-s', tr('intro')));
+      c.appendChild(node(o.heading || 'h2', null, tr('title'))); c.appendChild(node('p', 'fffs-s', tr('intro')));
       c.appendChild(node('p', 'fffs-s', tr(!has ? 'stNone' : un ? 'stOpen' : 'stLocked')));
       if (!has) {
         var f = node('form', 'fffs-f'), p1 = field(tr('pw'), 'password', 'fffs-pw1', 'new-password'), p2 = field(tr('pw2'), 'password', 'fffs-pw2', 'new-password');

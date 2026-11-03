@@ -520,7 +520,9 @@
     });
     var r = anchor.getBoundingClientRect();
     box.style.left = Math.max(4, r.left + root.scrollX) + 'px'; box.style.top = (r.bottom + root.scrollY + 4) + 'px';
-    doc().body.appendChild(box);
+    var wrap = node('div'); wrap.setAttribute('role', 'region'); wrap.setAttribute('aria-label', tr('send'));   // meniul stă într-un reper (regula axe „region”)
+    var rm = box.remove.bind(box); box.remove = function () { rm(); wrap.remove(); };
+    wrap.appendChild(box); doc().body.appendChild(wrap);
     var first = box.querySelector('button'); if (first) try { first.focus(); } catch (e) { /* fără focus */ }
     box.addEventListener('keydown', function (ev) { if (ev.key === 'Escape') { box.remove(); try { anchor.focus(); } catch (e) { /* fără focus */ } } });
     setTimeout(function () { doc().addEventListener('click', function f(ev) { if (!box.contains(ev.target)) { box.remove(); doc().removeEventListener('click', f); } }); });
