@@ -12832,7 +12832,7 @@
    "video": "reels/educatie.mp4",
    "poster": "reels/educatie.jpg",
    "duration": 100,
-   "size": 1778336,
+   "size": 1890181,
    "vtt": {
     "en": "reels/educatie.en.vtt",
     "ro": "reels/educatie.ro.vtt",
@@ -12976,7 +12976,7 @@
    "video": "reels/cultura.mp4",
    "poster": "reels/cultura.jpg",
    "duration": 100,
-   "size": 1921663,
+   "size": 2026345,
    "vtt": {
     "en": "reels/cultura.en.vtt",
     "ro": "reels/cultura.ro.vtt",
@@ -12986,6 +12986,22 @@
     "pt": "reels/cultura.pt.vtt",
     "de": "reels/cultura.de.vtt",
     "hu": "reels/cultura.hu.vtt"
+   }
+  },
+  "rust": {
+   "video": "reels/rust.mp4",
+   "poster": "reels/rust.jpg",
+   "duration": 40,
+   "size": 403583,
+   "vtt": {
+    "en": "reels/rust.en.vtt",
+    "ro": "reels/rust.ro.vtt",
+    "fr": "reels/rust.fr.vtt",
+    "it": "reels/rust.it.vtt",
+    "es": "reels/rust.es.vtt",
+    "pt": "reels/rust.pt.vtt",
+    "de": "reels/rust.de.vtt",
+    "hu": "reels/rust.hu.vtt"
    }
   }
  },

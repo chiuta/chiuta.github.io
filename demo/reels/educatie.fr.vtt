@@ -1,49 +1,138 @@
 WEBVTT
 
 1
-00:00:00.100 --> 00:00:08.233
-ATINGERE — Un livre devient du braille sur l'écran tactile, avec vibrations, pour les personnes sourdaveugles, ou un livre audio pour les personnes aveugles.
+00:00:00.100 --> 00:00:02.200
+ATINGERE
 
 2
-00:00:08.433 --> 00:00:16.567
-Clopoțel — Tenez votre conférence ou votre atelier dans les temps : un chronomètre de scène avec votre programme et un signal qui prévient quand la fin approche.
+00:00:02.300 --> 00:00:07.692
+Un livre devient du braille sur l'écran tactile, avec vibrations, pour les personnes sourdaveugles, ou un livre audio pour les personnes aveugles.
 
 3
-00:00:16.767 --> 00:00:24.900
-MONSTRARIUM — Organisez un atelier de monstres en matériaux recyclés : l'application calcule les matériaux et les séries, et propose 50 monstres avec sons, 3D et un jeu éducatif.
+00:00:07.792 --> 00:00:09.892
+Clopoțel
 
 4
-00:00:25.100 --> 00:00:33.233
-ETER — Apprenez le radioamateurisme dans une encyclopédie avec code Morse, entraîneur au Morse, calculateurs d'antennes et recherche dans tout le contenu.
+00:00:09.992 --> 00:00:12.157
+Tenez votre conférence ou votre atelier dans les temps : un chronomètre de scène avec votre programme et un signal qui prévient quand la fin approche.
 
 5
-00:00:33.433 --> 00:00:41.567
-Fabrica — Écrivez un cours en texte simple et transformez-le en page avec leçons, test final et certificat à imprimer.
+00:00:12.387 --> 00:00:15.385
+Explorez les sections et les options.
 
 6
-00:00:41.767 --> 00:00:49.900
-FASCICUL — Transforme les téléphones de la salle en tableau commun sur un vidéoprojecteur : dessins, notes, images, laser et caméra en direct.
+00:00:15.485 --> 00:00:17.585
+MONSTRARIUM
 
 7
-00:00:50.100 --> 00:00:58.233
-INDICATIV — Préparez l'examen de radioamateur de l'ANCOM avec 723 questions, révisées à intervalles adaptés, sans connexion internet.
+00:00:17.685 --> 00:00:19.059
+Organisez un atelier de monstres en matériaux recyclés : l'application calcule les matériaux et les séries, et propose 50 monstres avec sons, 3D et un jeu éducatif.
 
 8
-00:00:58.433 --> 00:01:06.567
-PULS — Que faire en attendant l'ambulance ?
+00:00:19.289 --> 00:00:23.077
+Explorez les sections et les options.
 
 9
-00:01:06.767 --> 00:01:14.900
-QSO — Tenez le registre des liaisons radio de votre station de radioamateur, avec heure UTC, locators et statistiques.
+00:00:23.177 --> 00:00:25.277
+ETER
 
 10
-00:01:15.100 --> 00:01:23.233
-RegexLab — Essayez une expression régulière et voyez sur-le-champ ce qu'elle trouve, avec explications pas à pas, tests et un avertissement quand elle risque de figer le programme.
+00:00:25.377 --> 00:00:30.769
+Explorez les sections et les options.
 
 11
-00:01:23.433 --> 00:01:31.567
-SEOptimum — Vérifiez si une page web est bien préparée pour les moteurs de recherche.
+00:00:30.869 --> 00:00:32.969
+Fabrica
 
 12
-00:01:31.767 --> 00:01:39.900
-SEVA — Découvrez le sommeil, le rythme quotidien du corps, la respiration et l'alimentation dans une encyclopédie que vous pouvez aussi écouter.
+00:00:33.069 --> 00:00:37.182
+Explorez les sections et les options.
+
+13
+00:00:37.412 --> 00:00:38.462
+Saisissez ou cherchez pour l'essayer.
+
+14
+00:00:38.562 --> 00:00:40.662
+FASCICUL
+
+15
+00:00:40.762 --> 00:00:43.739
+Changez la langue de l'interface.
+
+16
+00:00:43.969 --> 00:00:46.154
+Gratuit et open source — chiuta.ro
+
+17
+00:00:46.254 --> 00:00:48.354
+INDICATIV
+
+18
+00:00:48.454 --> 00:00:51.851
+Changez la langue de l'interface.
+
+19
+00:00:52.081 --> 00:00:53.846
+Fonctionne hors ligne, sans compte.
+
+20
+00:00:53.946 --> 00:00:56.046
+PULS
+
+21
+00:00:59.708 --> 00:01:01.538
+Que faire en attendant l'ambulance ?
+
+22
+00:01:01.638 --> 00:01:03.738
+QSO
+
+23
+00:01:03.838 --> 00:01:09.231
+Tenez le registre des liaisons radio de votre station de radioamateur, avec heure UTC, locators et statistiques.
+
+24
+00:01:09.331 --> 00:01:11.431
+RegexLab
+
+25
+00:01:11.531 --> 00:01:14.263
+Changez la langue de l'interface.
+
+26
+00:01:14.493 --> 00:01:16.923
+Fonctionne hors ligne, sans compte.
+
+27
+00:01:17.023 --> 00:01:19.123
+SEOptimum
+
+28
+00:01:19.223 --> 00:01:24.615
+Explorez les sections et les options.
+
+29
+00:01:24.715 --> 00:01:26.815
+SEVA
+
+30
+00:01:27.314 --> 00:01:30.286
+Fonctionne hors ligne, sans compte.
+
+31
+00:01:30.516 --> 00:01:32.308
+Gratuit et open source — chiuta.ro
+
+32
+00:01:32.408 --> 00:01:34.508
+MENSURA
+
+33
+00:01:34.608 --> 00:01:35.672
+Limites honnêtes : normes provisoires, intervalles de confiance, pas un diagnostic.
+
+34
+00:01:35.902 --> 00:01:40.000
+Huit langues, aucun pistage.
+

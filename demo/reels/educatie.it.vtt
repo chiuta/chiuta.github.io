@@ -1,49 +1,138 @@
 WEBVTT
 
 1
-00:00:00.100 --> 00:00:08.233
-ATINGERE — Un libro diventa braille sullo schermo tattile, con vibrazioni, per persone sordocieche, oppure audiolibro per chi non vede.
+00:00:00.100 --> 00:00:02.200
+ATINGERE
 
 2
-00:00:08.433 --> 00:00:16.567
-Clopoțel — Tieni la conferenza o il laboratorio in orario: un timer da palco con la tua scaletta e un segnale che avvisa quando la fine si avvicina.
+00:00:02.300 --> 00:00:07.692
+Un libro diventa braille sullo schermo tattile, con vibrazioni, per persone sordocieche, oppure audiolibro per chi non vede.
 
 3
-00:00:16.767 --> 00:00:24.900
-MONSTRARIUM — Organizzi un laboratorio di mostri con materiali riciclati: l'app calcola i materiali e i turni e propone 50 mostri con suoni, 3D e un gioco educativo.
+00:00:07.792 --> 00:00:09.892
+Clopoțel
 
 4
-00:00:25.100 --> 00:00:33.233
-ETER — Impara la radioamatoria in un'enciclopedia con codice Morse, un allenatore per il Morse, calcolatori per antenne e ricerca in tutti i contenuti.
+00:00:09.992 --> 00:00:12.157
+Tieni la conferenza o il laboratorio in orario: un timer da palco con la tua scaletta e un segnale che avvisa quando la fine si avvicina.
 
 5
-00:00:33.433 --> 00:00:41.567
-Fabrica — Scrivi un corso come testo semplice e lo trasformi in una pagina con lezioni, test finale e certificato da stampare.
+00:00:12.387 --> 00:00:15.385
+Esplora le sezioni e le opzioni.
 
 6
-00:00:41.767 --> 00:00:49.900
-FASCICUL — Trasforma i telefoni presenti in sala in una lavagna comune sul videoproiettore: disegni, note, immagini, laser e fotocamera dal vivo.
+00:00:15.485 --> 00:00:17.585
+MONSTRARIUM
 
 7
-00:00:50.100 --> 00:00:58.233
-INDICATIV — Ti prepari all'esame da radioamatore ANCOM con 723 domande, ripetute a intervalli adatti, senza connessione a internet.
+00:00:17.685 --> 00:00:19.059
+Organizzi un laboratorio di mostri con materiali riciclati: l'app calcola i materiali e i turni e propone 50 mostri con suoni, 3D e un gioco educativo.
 
 8
-00:00:58.433 --> 00:01:06.567
-PULS — Cosa fai finché non arriva l'ambulanza?
+00:00:19.289 --> 00:00:23.077
+Esplora le sezioni e le opzioni.
 
 9
-00:01:06.767 --> 00:01:14.900
-QSO — Tieni traccia dei collegamenti radio della tua stazione di radioamatore, con ora UTC, locatori e statistiche.
+00:00:23.177 --> 00:00:25.277
+ETER
 
 10
-00:01:15.100 --> 00:01:23.233
-RegexLab — Provi un'espressione regolare e vedi subito cosa trova, con spiegazioni passo passo, test e un avviso quando potrebbe bloccare il programma.
+00:00:25.377 --> 00:00:30.769
+Esplora le sezioni e le opzioni.
 
 11
-00:01:23.433 --> 00:01:31.567
-SEOptimum — Verifichi quanto una pagina web è pronta per i motori di ricerca.
+00:00:30.869 --> 00:00:32.969
+Fabrica
 
 12
-00:01:31.767 --> 00:01:39.900
-SEVA — Scopri di più su sonno, ritmo quotidiano del corpo, respirazione e alimentazione, in un'enciclopedia che puoi anche ascoltare.
+00:00:33.069 --> 00:00:37.182
+Esplora le sezioni e le opzioni.
+
+13
+00:00:37.412 --> 00:00:38.462
+Scrivi o cerca per provarla.
+
+14
+00:00:38.562 --> 00:00:40.662
+FASCICUL
+
+15
+00:00:40.762 --> 00:00:43.739
+Cambia la lingua dell'interfaccia.
+
+16
+00:00:43.969 --> 00:00:46.154
+Gratuito e open source — chiuta.ro
+
+17
+00:00:46.254 --> 00:00:48.354
+INDICATIV
+
+18
+00:00:48.454 --> 00:00:51.851
+Cambia la lingua dell'interfaccia.
+
+19
+00:00:52.081 --> 00:00:53.846
+Funziona offline, senza account.
+
+20
+00:00:53.946 --> 00:00:56.046
+PULS
+
+21
+00:00:59.708 --> 00:01:01.538
+Cosa fai finché non arriva l'ambulanza?
+
+22
+00:01:01.638 --> 00:01:03.738
+QSO
+
+23
+00:01:03.838 --> 00:01:09.231
+Tieni traccia dei collegamenti radio della tua stazione di radioamatore, con ora UTC, locatori e statistiche.
+
+24
+00:01:09.331 --> 00:01:11.431
+RegexLab
+
+25
+00:01:11.531 --> 00:01:14.263
+Cambia la lingua dell'interfaccia.
+
+26
+00:01:14.493 --> 00:01:16.923
+Funziona offline, senza account.
+
+27
+00:01:17.023 --> 00:01:19.123
+SEOptimum
+
+28
+00:01:19.223 --> 00:01:24.615
+Esplora le sezioni e le opzioni.
+
+29
+00:01:24.715 --> 00:01:26.815
+SEVA
+
+30
+00:01:27.314 --> 00:01:30.286
+Funziona offline, senza account.
+
+31
+00:01:30.516 --> 00:01:32.308
+Gratuito e open source — chiuta.ro
+
+32
+00:01:32.408 --> 00:01:34.508
+MENSURA
+
+33
+00:01:34.608 --> 00:01:35.672
+Limiti onesti: norme provvisorie, intervalli di confidenza, non una diagnosi.
+
+34
+00:01:35.902 --> 00:01:40.000
+Otto lingue e nessun tracciamento.
+

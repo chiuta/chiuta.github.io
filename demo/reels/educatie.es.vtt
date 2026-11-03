@@ -1,49 +1,138 @@
 WEBVTT
 
 1
-00:00:00.100 --> 00:00:08.233
-ATINGERE — Un libro se convierte en braille en la pantalla táctil, con vibraciones, para personas sordociegas, o en audiolibro para personas ciegas.
+00:00:00.100 --> 00:00:02.200
+ATINGERE
 
 2
-00:00:08.433 --> 00:00:16.567
-Clopoțel — Mantén tu conferencia o taller en hora: un cronómetro de escenario con tu agenda y una señal que avisa cuando se acerca el final.
+00:00:02.300 --> 00:00:07.692
+Un libro se convierte en braille en la pantalla táctil, con vibraciones, para personas sordociegas, o en audiolibro para personas ciegas.
 
 3
-00:00:16.767 --> 00:00:24.900
-MONSTRARIUM — Organiza un taller de monstruos con materiales reciclados: la aplicación calcula los materiales y las tandas, y ofrece 50 monstruos con sonidos, 3D y un juego educativo.
+00:00:07.792 --> 00:00:09.892
+Clopoțel
 
 4
-00:00:25.100 --> 00:00:33.233
-ETER — Aprende radioafición en una enciclopedia con código Morse, entrenador de Morse, calculadoras de antenas y búsqueda en todo el contenido.
+00:00:09.992 --> 00:00:12.157
+Mantén tu conferencia o taller en hora: un cronómetro de escenario con tu agenda y una señal que avisa cuando se acerca el final.
 
 5
-00:00:33.433 --> 00:00:41.567
-Fabrica — Escribes un curso como texto sencillo y lo conviertes en una página con lecciones, prueba final y certificado para imprimir.
+00:00:12.387 --> 00:00:15.385
+Explora las secciones y las opciones.
 
 6
-00:00:41.767 --> 00:00:49.900
-FASCICUL — Convierte los teléfonos de la sala en una pizarra compartida en el proyector: dibujos, notas, imágenes, láser y cámara en vivo.
+00:00:15.485 --> 00:00:17.585
+MONSTRARIUM
 
 7
-00:00:50.100 --> 00:00:58.233
-INDICATIV — Prepárate para el examen de radioaficionado de ANCOM con 723 preguntas, repetidas a intervalos adecuados, sin conexión a internet.
+00:00:17.685 --> 00:00:19.059
+Organiza un taller de monstruos con materiales reciclados: la aplicación calcula los materiales y las tandas, y ofrece 50 monstruos con sonidos, 3D y un juego educativo.
 
 8
-00:00:58.433 --> 00:01:06.567
-PULS — ¿Qué hacer hasta que llegue la ambulancia?
+00:00:19.289 --> 00:00:23.077
+Explora las secciones y las opciones.
 
 9
-00:01:06.767 --> 00:01:14.900
-QSO — Lleva el registro de los contactos por radio de tu estación de radioaficionado, con hora UTC, locators y estadísticas.
+00:00:23.177 --> 00:00:25.277
+ETER
 
 10
-00:01:15.100 --> 00:01:23.233
-RegexLab — Prueba una expresión regular y ve al momento qué captura, con explicaciones paso a paso, pruebas y un aviso cuando podría bloquear el programa.
+00:00:25.377 --> 00:00:30.769
+Explora las secciones y las opciones.
 
 11
-00:01:23.433 --> 00:01:31.567
-SEOptimum — Comprueba lo bien preparada que está una página web para los buscadores.
+00:00:30.869 --> 00:00:32.969
+Fabrica
 
 12
-00:01:31.767 --> 00:01:39.900
-SEVA — Infórmate sobre el sueño, el ritmo diario del cuerpo, la respiración y la alimentación, en una enciclopedia que también puedes escuchar.
+00:00:33.069 --> 00:00:37.182
+Explora las secciones y las opciones.
+
+13
+00:00:37.412 --> 00:00:38.462
+Escribe o busca para probarla.
+
+14
+00:00:38.562 --> 00:00:40.662
+FASCICUL
+
+15
+00:00:40.762 --> 00:00:43.739
+Cambia el idioma de la interfaz.
+
+16
+00:00:43.969 --> 00:00:46.154
+Gratis y de código abierto — chiuta.ro
+
+17
+00:00:46.254 --> 00:00:48.354
+INDICATIV
+
+18
+00:00:48.454 --> 00:00:51.851
+Cambia el idioma de la interfaz.
+
+19
+00:00:52.081 --> 00:00:53.846
+Funciona sin conexión y sin cuenta.
+
+20
+00:00:53.946 --> 00:00:56.046
+PULS
+
+21
+00:00:59.708 --> 00:01:01.538
+¿Qué hacer hasta que llegue la ambulancia?
+
+22
+00:01:01.638 --> 00:01:03.738
+QSO
+
+23
+00:01:03.838 --> 00:01:09.231
+Lleva el registro de los contactos por radio de tu estación de radioaficionado, con hora UTC, locators y estadísticas.
+
+24
+00:01:09.331 --> 00:01:11.431
+RegexLab
+
+25
+00:01:11.531 --> 00:01:14.263
+Cambia el idioma de la interfaz.
+
+26
+00:01:14.493 --> 00:01:16.923
+Funciona sin conexión y sin cuenta.
+
+27
+00:01:17.023 --> 00:01:19.123
+SEOptimum
+
+28
+00:01:19.223 --> 00:01:24.615
+Explora las secciones y las opciones.
+
+29
+00:01:24.715 --> 00:01:26.815
+SEVA
+
+30
+00:01:27.314 --> 00:01:30.286
+Funciona sin conexión y sin cuenta.
+
+31
+00:01:30.516 --> 00:01:32.308
+Gratis y de código abierto — chiuta.ro
+
+32
+00:01:32.408 --> 00:01:34.508
+MENSURA
+
+33
+00:01:34.608 --> 00:01:35.672
+Límites honestos: normas provisionales, intervalos de confianza, no es un diagnóstico.
+
+34
+00:01:35.902 --> 00:01:40.000
+Ocho idiomas y sin rastreo.
+

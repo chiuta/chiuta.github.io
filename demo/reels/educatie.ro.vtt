@@ -1,49 +1,138 @@
 WEBVTT
 
 1
-00:00:00.100 --> 00:00:08.233
-ATINGERE — O carte devine braille pe ecranul tactil, cu vibrații, pentru persoane surdo-oarbe, sau audiobook pentru cele nevăzătoare.
+00:00:00.100 --> 00:00:02.200
+ATINGERE
 
 2
-00:00:08.433 --> 00:00:16.567
-Clopoțel — Ține conferința sau atelierul la timp: un cronometru pentru scenă cu agenda ta și un semnal care avertizează când se apropie sfârșitul.
+00:00:02.300 --> 00:00:07.692
+O carte devine braille pe ecranul tactil, cu vibrații, pentru persoane surdo-oarbe, sau audiobook pentru cele nevăzătoare.
 
 3
-00:00:16.767 --> 00:00:24.900
-MONSTRARIUM — Organizezi un atelier de monștri din materiale reciclate: aplicația calculează materialele și seriile și oferă 50 de monștri cu sunete, 3D și un joc educativ.
+00:00:07.792 --> 00:00:09.892
+Clopoțel
 
 4
-00:00:25.100 --> 00:00:33.233
-ETER — Învață radioamatorism într-o enciclopedie cu cod Morse, antrenor pentru Morse, calculatoare pentru antene și căutare în tot conținutul.
+00:00:09.992 --> 00:00:12.157
+Ține conferința sau atelierul la timp: un cronometru pentru scenă cu agenda ta și un semnal care avertizează când se apropie sfârșitul.
 
 5
-00:00:33.433 --> 00:00:41.567
-Fabrica — Scrii un curs ca text simplu și îl transformi într-o pagină cu lecții, test final și certificat de tipărit.
+00:00:12.387 --> 00:00:15.385
+Explorează secțiunile și opțiunile.
 
 6
-00:00:41.767 --> 00:00:49.900
-FASCICUL — Transformă telefoanele din sală într-o tablă comună pe videoproiector: desene, note, imagini, laser și cameră live.
+00:00:15.485 --> 00:00:17.585
+MONSTRARIUM
 
 7
-00:00:50.100 --> 00:00:58.233
-INDICATIV — Te pregătești pentru examenul de radioamator ANCOM cu 723 de întrebări, repetate la intervale potrivite, fără conexiune la internet.
+00:00:17.685 --> 00:00:19.059
+Organizezi un atelier de monștri din materiale reciclate: aplicația calculează materialele și seriile și oferă 50 de monștri cu sunete, 3D și un joc educativ.
 
 8
-00:00:58.433 --> 00:01:06.567
-PULS — Ce faci până vine ambulanța?
+00:00:19.289 --> 00:00:23.077
+Explorează secțiunile și opțiunile.
 
 9
-00:01:06.767 --> 00:01:14.900
-QSO — Ții evidența legăturilor radio din stația ta de radioamator, cu ora UTC, locatori și statistici.
+00:00:23.177 --> 00:00:25.277
+ETER
 
 10
-00:01:15.100 --> 00:01:23.233
-RegexLab — Încerci o expresie regulată și vezi pe loc ce prinde, cu explicații pas cu pas, teste și un avertisment când ar putea îngheța programul.
+00:00:25.377 --> 00:00:30.769
+Explorează secțiunile și opțiunile.
 
 11
-00:01:23.433 --> 00:01:31.567
-SEOptimum — Verifici cât de bine e pregătită o pagină web pentru motoarele de căutare.
+00:00:30.869 --> 00:00:32.969
+Fabrica
 
 12
-00:01:31.767 --> 00:01:39.900
-SEVA — Află mai multe despre somn, ritmul zilnic al corpului, respirație și alimentație, într-o enciclopedie pe care o poți și asculta.
+00:00:33.069 --> 00:00:37.182
+Explorează secțiunile și opțiunile.
+
+13
+00:00:37.412 --> 00:00:38.462
+Scrie sau caută ca să o încerci.
+
+14
+00:00:38.562 --> 00:00:40.662
+FASCICUL
+
+15
+00:00:40.762 --> 00:00:43.739
+Schimbă limba interfeței.
+
+16
+00:00:43.969 --> 00:00:46.154
+Gratuit și open source — chiuta.ro
+
+17
+00:00:46.254 --> 00:00:48.354
+INDICATIV
+
+18
+00:00:48.454 --> 00:00:51.851
+Schimbă limba interfeței.
+
+19
+00:00:52.081 --> 00:00:53.846
+Funcționează offline, fără cont.
+
+20
+00:00:53.946 --> 00:00:56.046
+PULS
+
+21
+00:00:59.708 --> 00:01:01.538
+Ce faci până vine ambulanța?
+
+22
+00:01:01.638 --> 00:01:03.738
+QSO
+
+23
+00:01:03.838 --> 00:01:09.231
+Ții evidența legăturilor radio din stația ta de radioamator, cu ora UTC, locatori și statistici.
+
+24
+00:01:09.331 --> 00:01:11.431
+RegexLab
+
+25
+00:01:11.531 --> 00:01:14.263
+Schimbă limba interfeței.
+
+26
+00:01:14.493 --> 00:01:16.923
+Funcționează offline, fără cont.
+
+27
+00:01:17.023 --> 00:01:19.123
+SEOptimum
+
+28
+00:01:19.223 --> 00:01:24.615
+Explorează secțiunile și opțiunile.
+
+29
+00:01:24.715 --> 00:01:26.815
+SEVA
+
+30
+00:01:27.314 --> 00:01:30.286
+Funcționează offline, fără cont.
+
+31
+00:01:30.516 --> 00:01:32.308
+Gratuit și open source — chiuta.ro
+
+32
+00:01:32.408 --> 00:01:34.508
+MENSURA
+
+33
+00:01:34.608 --> 00:01:35.672
+Limite oneste: norme provizorii, intervale de încredere, nu e diagnostic.
+
+34
+00:01:35.902 --> 00:01:40.000
+Opt limbi și fără urmărire.
+
