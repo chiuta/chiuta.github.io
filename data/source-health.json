@@ -3,14 +3,11 @@
  "updated": "2026-11-03",
  "sources": {
   "ACORDAJ": {
-   "status": "schimbat",
+   "status": "alertă",
    "lastFail": "2026-11-03",
-   "errorType": null,
-   "errorMsg": null,
-   "consecutiveFails": 0,
-   "lastOk": "2026-11-03",
-   "records": 1132,
-   "sha256": "e8e824860b67"
+   "errorType": "structure",
+   "errorMsg": "numerotare rară (4 intrări până la 680): probabil nu e lista de titluri",
+   "consecutiveFails": 1
   },
   "VNTV": {
    "status": "schimbat",
@@ -86,12 +83,11 @@
    "consecutiveFails": 0
   },
   "LocalMind-modele": {
-   "status": "ok",
+   "status": "alertă",
    "lastFail": "2026-11-03",
-   "errorType": null,
-   "errorMsg": null,
-   "consecutiveFails": 0,
-   "lastOk": "2026-11-03"
+   "errorType": "drift",
+   "errorMsg": "onnx-community/Llama-3.2-1B-Instruct: redenumit în onnx-community/Llama-3.2-1B-Instruct-ONNX",
+   "consecutiveFails": 1
   },
   "ATINGERE-tessdata": {
    "status": "ok",
