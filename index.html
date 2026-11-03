@@ -35,7 +35,7 @@
 </style>
 
 <meta charset="UTF-8">
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data: blob:; style-src 'self' 'unsafe-inline'; font-src 'self' data:; media-src 'self' blob: data:; object-src 'none'; base-uri 'self'; form-action 'self'; worker-src 'self' blob:; script-src 'self' 'sha256-CLz9ky8c+CI8yax80HOx/XKzzI+0llJZxdBKUKIqejE=' 'sha256-YO40Pa9U54kBXfBS8s7ySLVhwIuT7JC9cMSApha5DIk=' 'sha256-HPEWRrOshuRmc7mQEzd1tM95T9UjvS5Bt5mwGyZKWco=' 'sha256-kQPhZFcD41+cWTVqxK52LxZtcC1NEvzHj3UYd1qC+8E='; connect-src 'none'; manifest-src 'self'">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data: blob:; style-src 'self' 'unsafe-inline'; font-src 'self' data:; media-src 'self' blob: data:; object-src 'none'; base-uri 'self'; form-action 'self'; worker-src 'self' blob:; script-src 'self' 'sha256-CLz9ky8c+CI8yax80HOx/XKzzI+0llJZxdBKUKIqejE=' 'sha256-YO40Pa9U54kBXfBS8s7ySLVhwIuT7JC9cMSApha5DIk=' 'sha256-IdmMJ6jZzj68LvQ8fL4gKzCURgbWDYz0O9wT2RYqS6I=' 'sha256-kQPhZFcD41+cWTVqxK52LxZtcC1NEvzHj3UYd1qC+8E='; connect-src 'none'; manifest-src 'self'">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <meta name="color-scheme" content="dark light">
 <meta name="theme-color" id="theme-color-meta" content="#07060f">
@@ -503,6 +503,12 @@ a.card-link.demo-link:hover{background:var(--accent-lo)}
 .sec-head[id]{position:relative;padding-left:.9rem}
 .sec-head[id]::before{content:"";position:absolute;left:0;top:.2rem;bottom:.2rem;width:5px;border-radius:5px;background:linear-gradient(180deg,var(--accent),color-mix(in srgb,var(--accent) 25%,transparent));box-shadow:0 0 14px color-mix(in srgb,var(--accent) 60%,transparent)}
 .sec-head[id] .sec-title{color:var(--accent)}
+.card-badges{align-items:center}
+.card-badges>details.fisa{display:block;margin:0 0 0 auto;order:99}
+.card-badges>details.fisa>summary{display:inline-block;margin:0;padding:.14rem .55rem;font-size:.62rem;font-weight:700;color:var(--accent);background:transparent;border:1px solid color-mix(in srgb,var(--accent) 45%,transparent);border-radius:6px}
+.card-badges>details.fisa>summary:hover{background:var(--accent-lo)}
+.card-badges>details.fisa[open]{flex:1 1 100%;order:99}
+.card-badges>details.fisa[open]>summary{margin-bottom:.1rem}
 @media(max-width:480px){.card-links{gap:.25rem}.card-link,.card-links>details.fisa>summary{font-size:.6rem;padding:.34rem .4rem;gap:.15rem}a.card-link.live-link{font-size:.64rem;padding:.34rem .55rem}}
 @media(prefers-reduced-motion:reduce){.card-link,a.card-link.live-link::after{transition:none}.card-link:hover,a.card-link.live-link:hover{transform:none}}
 @media print{a.card-link.live-link{background:none;color:#000;box-shadow:none;border:1px solid #000}}
@@ -1585,7 +1591,7 @@ function decorateCards(){
     }
     d.appendChild(dl);
     if(m.screenshot){ const fig=el('figure','fisa-shot'); const im=el('img'); im.src=m.screenshot; im.loading='lazy'; im.alt=m.screenshotAlt||(t('fShot')+' — '+appTitle(key)); fig.appendChild(im); d.appendChild(fig); }
-    if(dwrap) dwrap.appendChild(d); else body.appendChild(d);
+    bars.appendChild(d);
   });
   updateStats();
 }
