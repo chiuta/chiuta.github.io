@@ -828,14 +828,6 @@
    "expect": {
     "checks": [
      {
-      "name": "Open Library",
-      "url": "https://openlibrary.org/search.json?q=test&limit=1&fields=title,key",
-      "paths": [
-       "numFound",
-       "docs"
-      ]
-     },
-     {
       "name": "Internet Archive advancedsearch",
       "url": "https://archive.org/advancedsearch.php?q=mediatype%3Atexts&fl%5B%5D=identifier&rows=1&output=json",
       "paths": [
@@ -881,7 +873,8 @@
     "FreeDetect (api.crossref.org, openlibrary.org)"
    ],
    "deConfirmat": [
-    "că aceleași căi sunt cele citite în codul aplicației"
+    "că aceleași căi sunt cele citite în codul aplicației",
+    "Open Library: robots.txt interzice /search (verificat la rularea reală din 2026-11-03), deci verificarea a fost scoasă din canar; aplicația o interoghează din browserul utilizatorului, nu din Actions."
    ]
   },
   {
@@ -912,14 +905,6 @@
       ]
      },
      {
-      "name": "dictionaryapi.dev",
-      "url": "https://api.dictionaryapi.dev/api/v2/entries/en/hello",
-      "paths": [
-       "0.word",
-       "0.meanings"
-      ]
-     },
-     {
       "name": "MyMemory",
       "url": "https://api.mymemory.translated.net/get?q=hello&langpair=en%7Cit",
       "paths": [
@@ -938,6 +923,9 @@
    "asOf": null,
    "dovada": [
     "OmniHost/index.html (fetch)"
+   ],
+   "deConfirmat": [
+    "dictionaryapi.dev: HTTP 403 pentru robotul de rulare din Actions (2026-11-03); verificarea a fost scoasă, nu se insistă."
    ]
   },
   {

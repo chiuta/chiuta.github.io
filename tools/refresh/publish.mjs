@@ -133,16 +133,20 @@ recover(RES.results.filter((r) => r.status === 'ok' || r.status === 'changed').m
 
 /* ---------- sănătatea surselor + meta, direct pe main ---------- */
 if (!NOHEALTH && !DRY) {
-  git('checkout', '-q', '--force', BASE); git('pull', '-q', '--rebase', 'origin', BASE);
-  const f = 'data/source-health.json';
-  fs.copyFileSync(path.join(OUT, f), path.join(WORK, f));
-  run('node', [path.join(HUB, 'tools', 'refresh', 'meta.mjs'), 'sync']);
-  if (run('git', ['status', '--porcelain', '--', 'data', 'index.html', 'sw.js', 'transparenta.html'], {soft: true}).stdout.trim()) {
-    if (!NOGATE) { const g = run('node', [path.join(HUB, 'tools', 'refresh', 'gate.mjs'), ...(GATE_TESTS ? ['--tests'] : []), '--base', `origin/${BASE}`], {soft: true}); log(g.stdout); if (g.status !== 0) { git('checkout', '-q', '--force', BASE); git('clean', '-fdq'); throw new Error('porțile pică pentru commitul de sănătate; nu se comite'); } }
+  // Fișierele derivate (index.html, sw.js, transparenta.html) se regenerează de la zero pe vârful curent al lui main la fiecare încercare: fără rebase, deci fără conflicte.
+  const f = 'data/source-health.json'; let pushed = false, any = false;
+  for (let i = 0; i < 4 && !pushed; i++) {
+    git('fetch', '-q', 'origin', BASE); git('checkout', '-q', '--force', BASE); git('reset', '-q', '--hard', `origin/${BASE}`); git('clean', '-fdq');
+    fs.copyFileSync(path.join(OUT, f), path.join(WORK, f));
+    run('node', [path.join(HUB, 'tools', 'refresh', 'meta.mjs'), 'sync']);
+    if (!run('git', ['status', '--porcelain', '--', 'data', 'index.html', 'sw.js', 'transparenta.html'], {soft: true}).stdout.trim()) { log('sănătatea surselor: nicio schimbare de comis'); break; }
+    any = true;
+    if (!NOGATE && i === 0) { const g = run('node', [path.join(HUB, 'tools', 'refresh', 'gate.mjs'), ...(GATE_TESTS ? ['--tests'] : []), '--base', `origin/${BASE}`], {soft: true}); log(g.stdout); if (g.status !== 0) { git('checkout', '-q', '--force', BASE); git('clean', '-fdq'); throw new Error('porțile pică pentru commitul de sănătate; nu se comite'); } }
     git('add', '-A', 'data', 'index.html', 'sw.js', 'transparenta.html');
     git('commit', '-q', '-m', `Sănătatea surselor externe: ${RES.date}`);
-    for (let i = 0; i < 3; i++) { if (run('git', ['push', '-q', 'origin', `HEAD:${BASE}`], {soft: true}).status === 0) { log('sănătatea surselor comisă pe ' + BASE); break; } git('pull', '-q', '--rebase', 'origin', BASE); }
-  } else log('sănătatea surselor: nicio schimbare de comis');
+    if (run('git', ['push', '-q', 'origin', `HEAD:${BASE}`], {soft: true}).status === 0) { pushed = true; log('sănătatea surselor comisă pe ' + BASE); }
+  }
+  if (any && !pushed) throw new Error('commitul de sănătate nu a putut fi împins după 4 încercări');
 } else if (DRY) log('\n[dry-run] sănătatea surselor: ar rula meta.mjs sync și un commit direct pe ' + BASE);
 log('\nPublicare terminată:', JSON.stringify(done));
 if (FAILED) process.exit(1);
