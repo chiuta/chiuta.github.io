@@ -113,11 +113,12 @@
    "info": "ultima 0.1.0"
   },
   "AcademiSearch-API": {
-   "status": "eroare",
+   "status": "ok",
    "lastFail": "2026-11-03",
-   "errorType": "robots",
-   "errorMsg": "robots.txt interzice „/books/” (https://gutendex.com/books/?search=dickens)",
-   "consecutiveFails": 1
+   "errorType": null,
+   "errorMsg": null,
+   "consecutiveFails": 0,
+   "lastOk": "2026-11-03"
   },
   "OmniHost-API": {
    "status": "ok",
