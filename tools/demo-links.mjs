@@ -13,7 +13,8 @@ let html = fs.readFileSync(p, 'utf8'); const orig = html;
 const man = JSON.parse(fs.readFileSync(path.join(HUB, 'demo', 'manifest.json'), 'utf8'));
 const reels = man.reels || {};
 let nCard = 0, nSec = 0;
-html = html.replace(/(<div class="card-links">(?:(?!<\/div>)[\s\S])*?<a class="card-link" href="https:\/\/github\.com\/chiuta\/([^"\/]+)"[^>]*>README<\/a>)(?!<a class="card-link demo-link")/g, (m, head, repo) => {
+const CARD_BUTTONS = false; // butoanele „▶ Demo” de pe carduri au fost retrase: clipul rulează direct în card
+if (CARD_BUTTONS) html = html.replace(/(<div class="card-links">(?:(?!<\/div>)[\s\S])*?<a class="card-link" href="https:\/\/github\.com\/chiuta\/([^"\/]+)"[^>]*>README<\/a>)(?!<a class="card-link demo-link")/g, (m, head, repo) => {
   if (!fs.existsSync(path.join(HUB, 'demo', repo, 'video.mp4'))) return m;
   const name = (m.match(/aria-label="README — ([^"]+)"/) || [])[1] || repo;
   nCard++;
