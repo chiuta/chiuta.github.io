@@ -125,7 +125,7 @@ for (let i = 1; i < parts.length; i++) {
   if (!/<span class="card-ver"/.test(parts[i])) warn(`${key}: cardul nu are <span class="card-ver">`);
   // 2. linkuri
   const live = t.hub ? `/apps/${key}/` : `https://chiuta.github.io/${key}/`;
-  const rdm = t.hub ? `https://github.com/chiuta/chiuta.github.io/blob/main/apps/${key}/README.md` : `https://github.com/chiuta/${key}`;
+  const rdm = t.hub ? `https://github.com/chiuta/chiuta.github.io/blob/main/apps/${key}/README.md` : `https://github.com/chiuta/${key}#readme`;
   parts[i] = parts[i].replace(/(<a class="card-link live-link" href=")([^"]*)(")/, (m, a, h, c) => { if (h !== live) changes.push(`${key}: Live ${h} → ${live}`); return a + live + c; });
   parts[i] = parts[i].replace(/(<a class="card-link" href=")([^"]*)(")/, (m, a, h, c) => { if (h !== rdm) changes.push(`${key}: ReadMe ${h} → ${rdm}`); return a + rdm + c; });
   if (!t.readme) warn(`${key}: lipsește README.md în ${t.dir}`);

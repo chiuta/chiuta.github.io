@@ -201,7 +201,7 @@
     "hu": "Egyszer keres, és tudományos munkákat lát tucatnyi nyílt forrásból. A lista hivatkozásokhoz menthető. Internetet igényel; a keresések eljutnak ezekhez a szolgáltatásokhoz."
    },
    "url": "https://chiuta.github.io/AcademiSearch/",
-   "readme": "https://github.com/chiuta/AcademiSearch",
+   "readme": "https://github.com/chiuta/AcademiSearch#readme",
    "off": "part",
    "status": "stable",
    "video": "AcademiSearch/video.mp4",
@@ -313,7 +313,7 @@
     "hu": "Az Internet Archive gyűjteményei fiók nélkül böngészhetők: keresés, adatlapok, előnézet, kedvencek mentése. Nem hivatalos; az archive.org látja az IP-címét és a kereséseit."
    },
    "url": "https://chiuta.github.io/Arhiva-fara-frontiere/",
-   "readme": "https://github.com/chiuta/Arhiva-fara-frontiere",
+   "readme": "https://github.com/chiuta/Arhiva-fara-frontiere#readme",
    "off": "part",
    "status": "stable",
    "video": "Arhiva-fara-frontiere/video.mp4",
@@ -417,7 +417,7 @@
     "hu": "Nyisson meg egy táblázatot, és értse meg: statisztikák, diagramok, kimutatások és összefüggések. Az adatok az Ön eszközén maradnak."
    },
    "url": "https://chiuta.github.io/DataWeave/",
-   "readme": "https://github.com/chiuta/DataWeave",
+   "readme": "https://github.com/chiuta/DataWeave#readme",
    "off": "full",
    "status": "stable",
    "video": "DataWeave/video.mp4",
@@ -529,7 +529,7 @@
     "hu": "Szeretné megtudni, hogy egy szöveg MI-írtnak vagy másolatnak tűnik-e? Egy helyen talál 42 külső eszközt és egy hivatkozásgenerátort. Az alkalmazás maga nem észlel semmit."
    },
    "url": "https://chiuta.github.io/FreeDetect/",
-   "readme": "https://github.com/chiuta/FreeDetect",
+   "readme": "https://github.com/chiuta/FreeDetect#readme",
    "off": "part",
    "status": "stable",
    "video": "FreeDetect/video.mp4",
@@ -633,7 +633,7 @@
     "hu": "Írjon dokumentumokat Markdownban, és azonnal lássa, hogyan néznek ki, egyszerű képletekkel, 7 nyelven, internetkapcsolat nélkül. A szövegek a böngészőben maradnak; mentsen biztonsági másolatot."
    },
    "url": "https://chiuta.github.io/MarkdownAtelier/",
-   "readme": "https://github.com/chiuta/MarkdownAtelier",
+   "readme": "https://github.com/chiuta/MarkdownAtelier#readme",
    "off": "full",
    "status": "stable",
    "video": "MarkdownAtelier/video.mp4",
@@ -737,7 +737,7 @@
     "hu": "Százat is meghaladó számú munkaeszközt tartalmazó nagy csomag, egy helyre gyűjtve. Négy külső szolgáltatással lép kapcsolatba; a részletek a leírásban vannak."
    },
    "url": "https://chiuta.github.io/OmniHost/",
-   "readme": "https://github.com/chiuta/OmniHost",
+   "readme": "https://github.com/chiuta/OmniHost#readme",
    "off": "no",
    "status": "stable",
    "video": "OmniHost/video.mp4",
@@ -849,7 +849,7 @@
     "hu": "Válasszon 22 fordítóeszköz közül, vagy fordítson MI-vel a saját kulcsával. Az MI-vel fordított szöveg az Anthropic szolgáltatásához kerül."
    },
    "url": "https://chiuta.github.io/TranslateHub/",
-   "readme": "https://github.com/chiuta/TranslateHub",
+   "readme": "https://github.com/chiuta/TranslateHub#readme",
    "off": "part",
    "status": "stable",
    "video": "TranslateHub/video.mp4",
@@ -961,7 +961,7 @@
     "hu": "Állítson össze vagy játsszon kvízt barátaival ugyanazon a telefonon vagy számítógépen, és ismételje meg a hibás kérdéseket. Hasonló a Kahoothoz, de nem kapcsolódik hozzá."
    },
    "url": "https://chiuta.github.io/Undava/",
-   "readme": "https://github.com/chiuta/Undava",
+   "readme": "https://github.com/chiuta/Undava#readme",
    "off": "full",
    "status": "stable",
    "video": "Undava/video.mp4",
@@ -1065,7 +1065,7 @@
     "hu": "Egy helyen tarthatja a saját maga beillesztett LinkedIn-bejegyzésekhez fűzött jegyzeteit, és szövegként exportálhatja. A galéria a hivatalos beágyazást használja, így kapcsolatba lép a LinkedInnel. Nem hivatalos."
    },
    "url": "https://chiuta.github.io/Arhiva-LinkedIn/",
-   "readme": "https://github.com/chiuta/Arhiva-LinkedIn",
+   "readme": "https://github.com/chiuta/Arhiva-LinkedIn#readme",
    "off": "part",
    "status": "stable",
    "video": "Arhiva-LinkedIn/video.mp4",
@@ -1169,7 +1169,7 @@
     "hu": "Kézzel gyűjthet TikTok-klipeket szerzők szerint csoportosítva, és a hivatalos lejátszóban nézheti meg őket. Megjelölheti, amit már látott."
    },
    "url": "https://chiuta.github.io/Cadraj/",
-   "readme": "https://github.com/chiuta/Cadraj",
+   "readme": "https://github.com/chiuta/Cadraj#readme",
    "off": "part",
    "status": "stable",
    "video": "Cadraj/video.mp4",
@@ -1281,7 +1281,7 @@
     "hu": "WordPress-oldalához: megkeresi és javítja a hibás hivatkozásokat, külső szolgáltatás nélkül. Valódi tartalmat módosít, ezért előbb készítsen mentést. Valódi WordPressen nem tesztelt."
    },
    "url": "https://chiuta.github.io/Trade-Free-Link-Guardian/",
-   "readme": "https://github.com/chiuta/Trade-Free-Link-Guardian",
+   "readme": "https://github.com/chiuta/Trade-Free-Link-Guardian#readme",
    "off": "full",
    "status": "stable",
    "video": "Trade-Free-Link-Guardian/video.mp4",
@@ -1385,7 +1385,7 @@
     "hu": "Szemmel tartja a webhelyeit, és megmutatja, válaszolnak-e még. Csak addig működik, amíg a lap nyitva van. A hibaoldal is válasznak számít. A felület angol nyelvű."
    },
    "url": "https://chiuta.github.io/OUTPOST/",
-   "readme": "https://github.com/chiuta/OUTPOST",
+   "readme": "https://github.com/chiuta/OUTPOST#readme",
    "off": "part",
    "status": "stable",
    "video": "OUTPOST/video.mp4",
@@ -1497,7 +1497,7 @@
     "hu": "Biztonsági ellenőrzést futtat egy domainre, és menthető szöveges jelentést kap. Egyes ellenőrzések hiányozhatnak vagy kulcsot kérhetnek. Külső szolgáltatásokat keres meg; csak saját domainhez."
    },
    "url": "https://chiuta.github.io/ScryVeil/",
-   "readme": "https://github.com/chiuta/ScryVeil",
+   "readme": "https://github.com/chiuta/ScryVeil#readme",
    "off": "part",
    "status": "stable",
    "video": "ScryVeil/video.mp4",
@@ -1609,7 +1609,7 @@
     "hu": "Milyen hivatkozások vannak a weboldalán, és melyek romlottak el? Leltárt készít horgonyokkal és átirányításokkal. A külsők nem erősíthetők meg biztosan. Csak saját oldalakhoz."
    },
    "url": "https://chiuta.github.io/Surveyor/",
-   "readme": "https://github.com/chiuta/Surveyor",
+   "readme": "https://github.com/chiuta/Surveyor#readme",
    "off": "part",
    "status": "stable",
    "video": "Surveyor/video.mp4",
@@ -1713,7 +1713,7 @@
     "hu": "Nyilvános Threads-bejegyzéseket olvashat fiók nélkül, és szövegként elmentheti őket. Nem hivatalos; a Meta látja az IP-címét, és olykor köztes szolgáltatás is kell hozzá."
    },
    "url": "https://chiuta.github.io/Threads-fara-cont/",
-   "readme": "https://github.com/chiuta/Threads-fara-cont",
+   "readme": "https://github.com/chiuta/Threads-fara-cont#readme",
    "off": "part",
    "status": "stable",
    "video": "Threads-fara-cont/video.mp4",
@@ -1817,7 +1817,7 @@
     "hu": "Nyilvános Facebook-bejegyzést ágyazhat be az oldalára fiók nélkül, és kimásolhatja a kész kódot. Nem hivatalos; a Meta látja az IP-címét, a megjelenítés pedig nem garantált."
    },
    "url": "https://chiuta.github.io/Vitrina/",
-   "readme": "https://github.com/chiuta/Vitrina",
+   "readme": "https://github.com/chiuta/Vitrina#readme",
    "off": "part",
    "status": "stable",
    "video": "Vitrina/video.mp4",
@@ -1921,7 +1921,7 @@
     "hu": "Fiók nélkül jut el az X nyilvános profiljaihoz és bejegyzéseihez többféle úton: közvetlen hivatkozás, archívum, keresés vagy Nitter. Nem olvassa a tartalmat; a hivatkozást az archive.org-nak küldi."
    },
    "url": "https://chiuta.github.io/X-fara-cont/",
-   "readme": "https://github.com/chiuta/X-fara-cont",
+   "readme": "https://github.com/chiuta/X-fara-cont#readme",
    "off": "part",
    "status": "stable",
    "video": "X-fara-cont/video.mp4",
@@ -2033,7 +2033,7 @@
     "hu": "Nézze meg, mit rejtenek a fotói és fájljai (hely, készülék, szerző), és törölje ezeket az adatokat, mielőtt elküldi őket. Nem rejti el az arcokat vagy más látható tartalmat."
    },
    "url": "https://chiuta.github.io/Curatitor/",
-   "readme": "https://github.com/chiuta/Curatitor",
+   "readme": "https://github.com/chiuta/Curatitor#readme",
    "off": "full",
    "status": "stable",
    "video": "Curatitor/video.mp4",
@@ -2145,7 +2145,7 @@
     "hu": "Van egy képe, és tudni szeretné, ki írta alá, és milyen szerkesztéseket jelentettek be? Ellenőrizze a csatolt digitális aláírást. Kísérleti, csak próbafájlokon tesztelve."
    },
    "url": "https://chiuta.github.io/Provenienta/",
-   "readme": "https://github.com/chiuta/Provenienta",
+   "readme": "https://github.com/chiuta/Provenienta#readme",
    "off": "full",
    "status": "experimental",
    "video": "Provenienta/video.mp4",
@@ -2249,7 +2249,7 @@
     "hu": "Van valami, amit el kell rejteni mások szeme elől? Zárjon le fájlokat és szövegeket jelszóval, közvetlenül a böngészőben. Az elveszett jelszó nem állítható helyre."
    },
    "url": "https://chiuta.github.io/VaultCrypt/",
-   "readme": "https://github.com/chiuta/VaultCrypt",
+   "readme": "https://github.com/chiuta/VaultCrypt#readme",
    "off": "full",
    "status": "stable",
    "video": "VaultCrypt/video.mp4",
@@ -2353,7 +2353,7 @@
     "hu": "A könyv az érintőképernyőn Braille-írássá válik rezgésekkel a siketvak, vagy hangoskönyvvé a vak olvasók számára. Anyanyelvi olvasókkal nem validált; korlátai vannak."
    },
    "url": "https://chiuta.github.io/ATINGERE/",
-   "readme": "https://github.com/chiuta/ATINGERE",
+   "readme": "https://github.com/chiuta/ATINGERE#readme",
    "off": "part",
    "status": "stable",
    "video": "ATINGERE/video.mp4",
@@ -2465,7 +2465,7 @@
     "hu": "Tartsa az időt konferencián vagy műhelyen: színpadi időmérő a saját napirenddel és jelzéssel, amely a vég közeledtére figyelmeztet. Román és angol nyelven."
    },
    "url": "https://chiuta.github.io/Clopotel/",
-   "readme": "https://github.com/chiuta/Clopotel",
+   "readme": "https://github.com/chiuta/Clopotel#readme",
    "off": "full",
    "status": "stable",
    "video": "Clopotel/video.mp4",
@@ -2577,7 +2577,7 @@
     "hu": "Szervezzen szörnyműhelyt újrahasznosított anyagokból: az alkalmazás kiszámolja az anyagokat és a turnusokat, és 50 szörnyet kínál hangokkal, 3D-vel és oktatójátékkal."
    },
    "url": "https://chiuta.github.io/Monstrarium/",
-   "readme": "https://github.com/chiuta/Monstrarium",
+   "readme": "https://github.com/chiuta/Monstrarium#readme",
    "off": "full",
    "status": "stable",
    "video": "Monstrarium/video.mp4",
@@ -2689,7 +2689,7 @@
     "hu": "Rádióamatőr-ismeretek egy enciklopédiában: Morse-kód, Morse-gyakorló, antennakalkulátorok és keresés az egész tartalomban."
    },
    "url": "https://chiuta.github.io/ETER/",
-   "readme": "https://github.com/chiuta/ETER",
+   "readme": "https://github.com/chiuta/ETER#readme",
    "off": "full",
    "status": "stable",
    "video": "ETER/video.mp4",
@@ -2801,7 +2801,7 @@
     "hu": "Írjon egy kurzust egyszerű szövegként, és alakítsa leckékből, záróteszből és nyomtatható tanúsítványból álló oldallá. A tanúsítványnak nincs hivatalos értéke."
    },
    "url": "https://chiuta.github.io/Fabrica/",
-   "readme": "https://github.com/chiuta/Fabrica",
+   "readme": "https://github.com/chiuta/Fabrica#readme",
    "off": "full",
    "status": "stable",
    "video": "Fabrica/video.mp4",
@@ -2905,7 +2905,7 @@
     "hu": "A teremben lévő telefonokból közös táblát csinál a kivetítőn: rajzok, jegyzetek, képek, lézermutató és élő kamera. Számítógépen tesztelve; valódi telefonokon még nem ellenőrizve."
    },
    "url": "https://chiuta.github.io/FASCICUL/",
-   "readme": "https://github.com/chiuta/FASCICUL",
+   "readme": "https://github.com/chiuta/FASCICUL#readme",
    "off": "part",
    "status": "stable",
    "video": "FASCICUL/video.mp4",
@@ -3017,7 +3017,7 @@
     "hu": "Az ANCOM rádióamatőr-vizsgára készülhet 723 kérdéssel, megfelelő időközönkénti ismétléssel, internetkapcsolat nélkül. Nem hivatalos; a kérdésbank csak részben ellenőrzött."
    },
    "url": "https://chiuta.github.io/INDICATIV/",
-   "readme": "https://github.com/chiuta/INDICATIV",
+   "readme": "https://github.com/chiuta/INDICATIV#readme",
    "off": "full",
    "status": "stable",
    "video": "INDICATIV/video.mp4",
@@ -3129,7 +3129,7 @@
     "hu": "Mit tegyünk a mentő kiérkezéséig? Román nyelvű elsősegély-útmutató újraélesztési metronómmal és opcionális vészhelyzeti kártyával. Klinikailag nem validált; hívja a 112-t."
    },
    "url": "https://chiuta.github.io/PULS/",
-   "readme": "https://github.com/chiuta/PULS",
+   "readme": "https://github.com/chiuta/PULS#readme",
    "off": "full",
    "status": "stable",
    "video": "PULS/video.mp4",
@@ -3241,7 +3241,7 @@
     "hu": "Vezesse rádióamatőr-állomása rádiókapcsolatait UTC-idővel, lokátorokkal és statisztikákkal. Nem hivatalos, a számítások hozzávetőlegesek."
    },
    "url": "https://chiuta.github.io/QSO/",
-   "readme": "https://github.com/chiuta/QSO",
+   "readme": "https://github.com/chiuta/QSO#readme",
    "off": "full",
    "status": "stable",
    "video": "QSO/video.mp4",
@@ -3345,7 +3345,7 @@
     "hu": "Próbáljon ki egy reguláris kifejezést, és azonnal lássa, mit talál el, lépésenkénti magyarázattal, tesztekkel és figyelmeztetéssel, ha a program lefagyhat."
    },
    "url": "https://chiuta.github.io/RegexLab/",
-   "readme": "https://github.com/chiuta/RegexLab",
+   "readme": "https://github.com/chiuta/RegexLab#readme",
    "off": "full",
    "status": "stable",
    "video": "RegexLab/video.mp4",
@@ -3449,7 +3449,7 @@
     "hu": "Ellenőrizheti, mennyire felkészült egy weboldal a keresőmotorokra. 20 eszköze van, köztük az oldalelemzés és a keresési találat előnézete."
    },
    "url": "https://chiuta.github.io/SEOptimum/",
-   "readme": "https://github.com/chiuta/SEOptimum",
+   "readme": "https://github.com/chiuta/SEOptimum#readme",
    "off": "part",
    "status": "stable",
    "video": "SEOptimum/video.mp4",
@@ -3553,7 +3553,7 @@
     "hu": "Tudjon meg többet az alvásról, a test napi ritmusáról, a légzésről és a táplálkozásról egy meghallgatható enciklopédiában. Csak tájékoztató jellegű; nem orvosi tanács."
    },
    "url": "https://chiuta.github.io/SEVA/",
-   "readme": "https://github.com/chiuta/SEVA",
+   "readme": "https://github.com/chiuta/SEVA#readme",
    "off": "full",
    "status": "stable",
    "video": "SEVA/video.mp4",
@@ -3665,7 +3665,7 @@
     "hu": "Mérd meg az IQ-d, EQ-d, CQ-d, RQ-d, a végrehajtó funkciókat és az érzékeket 18 teszttel 6 területen, összetett indexekkel és 95%-os megbízhatósági intervallumokkal. Ideiglenes normák, tájékoztató jellegű, nem diagnózis."
    },
    "url": "https://chiuta.github.io/MENSURA/",
-   "readme": "https://github.com/chiuta/MENSURA",
+   "readme": "https://github.com/chiuta/MENSURA#readme",
    "off": "no",
    "status": "stable",
    "video": "MENSURA/video.mp4",
@@ -3777,7 +3777,7 @@
     "hu": "Tanulja és gyakorolja a Morse-t, a Braille-t, a fonetikus ábécét, a zászlójelzést és a régi titkosításokat, majd nyomtasson egy lapot. A régi titkosítások nem védenek titkokat."
    },
    "url": "https://chiuta.github.io/Alfabete/",
-   "readme": "https://github.com/chiuta/Alfabete",
+   "readme": "https://github.com/chiuta/Alfabete#readme",
    "off": "full",
    "status": "stable",
    "video": "Alfabete/video.mp4",
@@ -3889,7 +3889,7 @@
     "hu": "Hozza el saját szótárait, és keressen bennük szavakat akkor is, ha ékezet nélkül vagy hibásan ír. Csak egy kis próbakészlettel érkezik. Offline."
    },
    "url": "https://chiuta.github.io/Lexicon/",
-   "readme": "https://github.com/chiuta/Lexicon",
+   "readme": "https://github.com/chiuta/Lexicon#readme",
    "off": "full",
    "status": "stable",
    "video": "Lexicon/video.mp4",
@@ -3993,7 +3993,7 @@
     "hu": "Olvassa el a „Limpezimea” című sci-fi regényt hét nyelven. A hozzá tartozó krónika és kritikai tanulmány MI (Claude) segítségével készült."
    },
    "url": "https://chiuta.github.io/Limpezimea/",
-   "readme": "https://github.com/chiuta/Limpezimea",
+   "readme": "https://github.com/chiuta/Limpezimea#readme",
    "off": "full",
    "status": "stable",
    "video": "Limpezimea/video.mp4",
@@ -4097,7 +4097,7 @@
     "hu": "Spekulatív fikciós elbeszélés a húrelméletről románul, angolul és franciául, a tudományos gondolatokat magyarázó jegyzetekkel. Fikció, nem tudományos forrás."
    },
    "url": "https://chiuta.github.io/Nota-Zero/",
-   "readme": "https://github.com/chiuta/Nota-Zero",
+   "readme": "https://github.com/chiuta/Nota-Zero#readme",
    "off": "full",
    "status": "stable",
    "video": "Nota-Zero/video.mp4",
@@ -4201,7 +4201,7 @@
     "hu": "Egy bolygó három csillag és egy fekete lyuk között leng: kilenckötetes sci-fi regény, Alexio írta Claude-dal együtt. 3D-szimulációval, elmenthető, offline olvasható olvasóval, EPUB-bal és PDF-fel."
    },
    "url": "https://chiuta.github.io/Pendulul/",
-   "readme": "https://github.com/chiuta/Pendulul",
+   "readme": "https://github.com/chiuta/Pendulul#readme",
    "off": "no",
    "status": "stable",
    "video": "Pendulul/video.mp4",
@@ -4262,7 +4262,7 @@
     "hu": "Lépjen be egy interaktív sci-fi regénybe, az Artemis 2 legénysége által ihletett szereplőkkel. A recenziók kitaláltak; a fordítás, a hang és az MI-funkciók külső szolgáltatásokat használnak."
    },
    "url": "https://chiuta.github.io/PrintreInteligente/",
-   "readme": "https://github.com/chiuta/PrintreInteligente",
+   "readme": "https://github.com/chiuta/PrintreInteligente#readme",
    "off": "part",
    "status": "stable",
    "video": "PrintreInteligente/video.mp4",
@@ -4366,7 +4366,7 @@
     "hu": "Naponta egy román közmondás egy 550 elemű gyűjteményből. Kereshet és kedvenceket menthet; a megjegyzések MI segítségével készültek."
    },
    "url": "https://chiuta.github.io/Zicala/",
-   "readme": "https://github.com/chiuta/Zicala",
+   "readme": "https://github.com/chiuta/Zicala#readme",
    "off": "full",
    "status": "stable",
    "video": "Zicala/video.mp4",
@@ -4478,7 +4478,7 @@
     "hu": "Hogyan született az euró, és mit jelent Romániának? 59 szakasz Maastrichttól az EKB-ig, plusz tanácsok utazóknak. Nem hivatalos."
    },
    "url": "https://chiuta.github.io/AGORA/",
-   "readme": "https://github.com/chiuta/AGORA",
+   "readme": "https://github.com/chiuta/AGORA#readme",
    "off": "full",
    "status": "stable",
    "video": "AGORA/video.mp4",
@@ -4590,7 +4590,7 @@
     "hu": "Hogyan nézett ki az ég Ön felett bármely helyen és napon 1900 és 2100 között? Láthatja a Napot, a Holdat, a bolygókat és a csillagokat, plusz a 2027-es napfogyatkozást. Az értékek számítottak, nem hivatalosak. Offline."
    },
    "url": "https://chiuta.github.io/Bolta/",
-   "readme": "https://github.com/chiuta/Bolta",
+   "readme": "https://github.com/chiuta/Bolta#readme",
    "off": "full",
    "status": "stable",
    "video": "Bolta/video.mp4",
@@ -4702,7 +4702,7 @@
     "hu": "Játsszon a 2026-os világbajnoksággal, és nézze meg, hogyan zajlik egy képzeletbeli torna. Az eredmények véletlenszerűek, nem előrejelzések; nem hivatalos."
    },
    "url": "https://chiuta.github.io/Cupa-Mondiala-2026/",
-   "readme": "https://github.com/chiuta/Cupa-Mondiala-2026",
+   "readme": "https://github.com/chiuta/Cupa-Mondiala-2026#readme",
    "off": "full",
    "status": "stable",
    "video": "Cupa-Mondiala-2026/video.mp4",
@@ -4806,7 +4806,7 @@
     "hu": "Térképen látható, hol és mennyi ideig tart a 2027. augusztus 2-i teljes napfogyatkozás, városokkal és helykereséssel, internet nélkül. Tájékoztató értékek; szűrő nélkül ne nézzen a Napba."
    },
    "url": "https://chiuta.github.io/Eclipsa-2027/",
-   "readme": "https://github.com/chiuta/Eclipsa-2027",
+   "readme": "https://github.com/chiuta/Eclipsa-2027#readme",
    "off": "full",
    "status": "stable",
    "video": "Eclipsa-2027/video.mp4",
@@ -4910,7 +4910,7 @@
     "hu": "Járja végig az univerzum történetét az Ősrobbanástól a végéig, 91 mérföldkövön át. A jövő tudományos spekuláció, nem biztos előrejelzés."
    },
    "url": "https://chiuta.github.io/Horizons.BeyondLimits/",
-   "readme": "https://github.com/chiuta/Horizons.BeyondLimits",
+   "readme": "https://github.com/chiuta/Horizons.BeyondLimits#readme",
    "off": "full",
    "status": "stable",
    "video": "Horizons.BeyondLimits/video.mp4",
@@ -5014,7 +5014,7 @@
     "hu": "Nézze meg, hogyan néznek ki a negyedik dimenzió alakzatai: forgathatja őket a képernyőn, és több szögből szemlélheti. A képek menthetők."
    },
    "url": "https://chiuta.github.io/Hyper4D/",
-   "readme": "https://github.com/chiuta/Hyper4D",
+   "readme": "https://github.com/chiuta/Hyper4D#readme",
    "off": "full",
    "status": "stable",
    "video": "Hyper4D/video.mp4",
@@ -5126,7 +5126,7 @@
     "hu": "Helyezzen el bolygókat és csillagokat úgy, hogy gravitációjuk célba vigyen egy üstököst. 108 szint, három nehézségi fok, szintenként legfeljebb három csillag."
    },
    "url": "https://chiuta.github.io/IncredibleCosmos/",
-   "readme": "https://github.com/chiuta/IncredibleCosmos",
+   "readme": "https://github.com/chiuta/IncredibleCosmos#readme",
    "off": "full",
    "status": "stable",
    "video": "IncredibleCosmos/video.mp4",
@@ -5230,7 +5230,7 @@
     "hu": "Fedezze fel, hogyan öregszik a test, és mit mond a tudomány a biológiai órákról és a hosszú életről, majd tesztelje magát egy kvízzel. Nem orvosi tanács."
    },
    "url": "https://chiuta.github.io/Nemurirea/",
-   "readme": "https://github.com/chiuta/Nemurirea",
+   "readme": "https://github.com/chiuta/Nemurirea#readme",
    "off": "full",
    "status": "stable",
    "video": "Nemurirea/video.mp4",
@@ -5342,7 +5342,7 @@
     "hu": "Hány óra van most a Marson, a Holdon vagy egy aszteroidán? Élő helyi idő 45 égitesten. Tájékoztató modell, internet nélkül; nem navigációra való."
    },
    "url": "https://chiuta.github.io/orarium/",
-   "readme": "https://github.com/chiuta/orarium",
+   "readme": "https://github.com/chiuta/orarium#readme",
    "off": "full",
    "status": "stable",
    "video": "orarium/video.mp4",
@@ -5446,7 +5446,7 @@
     "hu": "3D-s földgömb és térkép, amely a nappalt és az éjszakát mutatja a Földön, a Holdon és a bolygókon. A műholdak helyzete akár ~3 hónapos is lehet, amíg online nem frissíti."
    },
    "url": "https://chiuta.github.io/TerRa/",
-   "readme": "https://github.com/chiuta/TerRa",
+   "readme": "https://github.com/chiuta/TerRa#readme",
    "off": "part",
    "status": "stable",
    "video": "TerRa/video.mp4",
@@ -5566,7 +5566,7 @@
     "hu": "Mekkora a látható Univerzum? Hasonlítson össze három térképet (lineáris, síkbeli, térbeli), és végezzen kozmológiai számításokat. A számokat nem ellenőrizték függetlenül."
    },
    "url": "https://chiuta.github.io/Universul-Observabil/",
-   "readme": "https://github.com/chiuta/Universul-Observabil",
+   "readme": "https://github.com/chiuta/Universul-Observabil#readme",
    "off": "full",
    "status": "stable",
    "video": "Universul-Observabil/video.mp4",
@@ -5686,7 +5686,7 @@
     "hu": "Induljon el tőlünk a látható Univerzum pereme felé, 112 galaxis mellett elhaladva egyetlen tengelyen. Ironikus hangvétel, kerekített értékek, oktatási cél."
    },
    "url": "https://chiuta.github.io/Universul-Observabil-1D/",
-   "readme": "https://github.com/chiuta/Universul-Observabil-1D",
+   "readme": "https://github.com/chiuta/Universul-Observabil-1D#readme",
    "off": "full",
    "status": "stable",
    "video": "Universul-Observabil-1D/video.mp4",
@@ -5806,7 +5806,7 @@
     "hu": "Galaxistérkép a szatirikus „Lapos Föld” változatban: vicc, a Föld nem lapos. Nagyíthat 111 galaxis között; a távolságok hozzávetőlegesek. Offline."
    },
    "url": "https://chiuta.github.io/Universul-Observabil-2D/",
-   "readme": "https://github.com/chiuta/Universul-Observabil-2D",
+   "readme": "https://github.com/chiuta/Universul-Observabil-2D#readme",
    "off": "full",
    "status": "stable",
    "video": "Universul-Observabil-2D/video.mp4",
@@ -5926,7 +5926,7 @@
     "hu": "Repüljön több mint 115 galaxis között egy 3D-s térképen, vezetett túrákkal és kihívásokkal. Az értékek hozzávetőlegesek."
    },
    "url": "https://chiuta.github.io/Universul-Observabil-3D/",
-   "readme": "https://github.com/chiuta/Universul-Observabil-3D",
+   "readme": "https://github.com/chiuta/Universul-Observabil-3D#readme",
    "off": "full",
    "status": "stable",
    "video": "Universul-Observabil-3D/video.mp4",
@@ -6030,7 +6030,7 @@
     "hu": "Fényképezzen vagy vegyen fel egy növényt vagy élőlényt, és ötletet kap a fajról Románia 519 faja közül. Tévedhet; ne fogyasszon semmit ennek alapján."
    },
    "url": "https://chiuta.github.io/VietAR/",
-   "readme": "https://github.com/chiuta/VietAR",
+   "readme": "https://github.com/chiuta/VietAR#readme",
    "off": "part",
    "status": "stable",
    "video": "VietAR/video.mp4",
@@ -6134,7 +6134,7 @@
     "hu": "Terepi útmutató természetbarátoknak: az élőlények osztályozásától és nyomaitól Románia biomjaiig, naplóval, etikával és vészhelyzeti tudnivalókkal."
    },
    "url": "https://chiuta.github.io/ExploratoriiEco/",
-   "readme": "https://github.com/chiuta/ExploratoriiEco",
+   "readme": "https://github.com/chiuta/ExploratoriiEco#readme",
    "off": "full",
    "status": "stable",
    "video": "ExploratoriiEco/video.mp4",
@@ -6238,7 +6238,7 @@
     "hu": "Jegyezze fel terepi megfigyeléseit, a telefon pedig magától hozzáadja az érzékelői méréseit. A kimenetek archívuma megmarad."
    },
    "url": "https://chiuta.github.io/FieldObserver/",
-   "readme": "https://github.com/chiuta/FieldObserver",
+   "readme": "https://github.com/chiuta/FieldObserver#readme",
    "off": "full",
    "status": "stable",
    "video": "FieldObserver/video.mp4",
@@ -6350,7 +6350,7 @@
     "hu": "Nyissa meg a túrán vagy biciklizés közben rögzített útvonalakat, és nézze meg a távolságot, az emelkedést és a magassági profilt. Vághatja és egyesítheti is őket. Nincs térkép; az emelkedő becsült."
    },
    "url": "https://chiuta.github.io/Poteca/",
-   "readme": "https://github.com/chiuta/Poteca",
+   "readme": "https://github.com/chiuta/Poteca#readme",
    "off": "part",
    "status": "stable",
    "video": "Poteca/video.mp4",
@@ -6462,7 +6462,7 @@
     "hu": "Készüljön fel egy túrára a Colți–Aluniș útvonalon Buzăuban: növények, borostyán, kövületek, napkelte- és napnyugtaidők, felszerelés. A térkép nem navigációra való."
    },
    "url": "https://chiuta.github.io/URME/",
-   "readme": "https://github.com/chiuta/URME",
+   "readme": "https://github.com/chiuta/URME#readme",
    "off": "full",
    "status": "stable",
    "video": "URME/video.mp4",
@@ -6566,7 +6566,7 @@
     "hu": "Mit tegyen, ha a természetben víz, tűz vagy menedék nélkül marad? Túlélési enciklopédia internet nélkül, kereséssel és jegyzetekkel. Csak oktatási célú; vészhelyzetben hívja a 112-t."
    },
    "url": "https://chiuta.github.io/VATRA/",
-   "readme": "https://github.com/chiuta/VATRA",
+   "readme": "https://github.com/chiuta/VATRA#readme",
    "off": "full",
    "status": "stable",
    "video": "VATRA/video.mp4",
@@ -6670,7 +6670,7 @@
     "hu": "Állítson össze magának relaxáló hangkulisszát ambient rétegekből, érintésre szóló hangokból és binaurális ütemekből. Elalvási időzítővel; a keveréket megoszthatja másokkal."
    },
    "url": "https://chiuta.github.io/ASMR/",
-   "readme": "https://github.com/chiuta/ASMR",
+   "readme": "https://github.com/chiuta/ASMR#readme",
    "off": "full",
    "status": "stable",
    "video": "ASMR/video.mp4",
@@ -6774,7 +6774,7 @@
     "hu": "Hallgasson magától komponálódó zenét, közvetlenül a böngészőben. Hangként exportálható, és elalvási időzítő is van."
    },
    "url": "https://chiuta.github.io/BorderlessMelodies/",
-   "readme": "https://github.com/chiuta/BorderlessMelodies",
+   "readme": "https://github.com/chiuta/BorderlessMelodies#readme",
    "off": "full",
    "status": "stable",
    "video": "BorderlessMelodies/video.mp4",
@@ -6878,7 +6878,7 @@
     "hu": "Helyben generált ambient zene megnyugváshoz és alváshoz. Nem orvosi eszköz; a kutatási részt nem ellenőrizte független fél. Epilepszia esetén kérjen orvosi tanácsot."
    },
    "url": "https://chiuta.github.io/CalmWaves/",
-   "readme": "https://github.com/chiuta/CalmWaves",
+   "readme": "https://github.com/chiuta/CalmWaves#readme",
    "off": "full",
    "status": "stable",
    "video": "CalmWaves/video.mp4",
@@ -6990,7 +6990,7 @@
     "hu": "Mérje meg, milyen hangos a környezet zaja, és lássa, miből áll. Tájékoztató hallásteszt is van benne. Nem hitelesített eszköz; az eredmény a mikrofontól függ."
    },
    "url": "https://chiuta.github.io/Decibel/",
-   "readme": "https://github.com/chiuta/Decibel",
+   "readme": "https://github.com/chiuta/Decibel#readme",
    "off": "full",
    "status": "stable",
    "video": "Decibel/video.mp4",
@@ -7094,7 +7094,7 @@
     "hu": "Lássa a hangot képként, jelölje ki a zavaró részt, és különítse el vagy törölje. Tartalmaz zajcsökkentést, emberi hang észlelését és WAV-mentést."
    },
    "url": "https://chiuta.github.io/EcoulSpectral/",
-   "readme": "https://github.com/chiuta/EcoulSpectral",
+   "readme": "https://github.com/chiuta/EcoulSpectral#readme",
    "off": "full",
    "status": "stable",
    "video": "EcoulSpectral/video.mp4",
@@ -7214,7 +7214,7 @@
     "hu": "Próbáljon ki hangokat, effektusokat és hallásteszteket egy kis hanglaborban. A „terápiás” hatások nem bizonyítottak, és nem helyettesítik az orvost. Offline."
    },
    "url": "https://chiuta.github.io/FrequencyLaboratory/",
-   "readme": "https://github.com/chiuta/FrequencyLaboratory",
+   "readme": "https://github.com/chiuta/FrequencyLaboratory#readme",
    "off": "full",
    "status": "stable",
    "video": "FrequencyLaboratory/video.mp4",
@@ -7334,7 +7334,7 @@
     "hu": "Hozzon létre tiszta hangokat és lüktető dupla hangokat, hallgasson ismert előbeállításokat, és tájékoztató jelleggel ellenőrizze, mennyire hall jól. Nem orvosi eszköz. Offline."
    },
    "url": "https://chiuta.github.io/generator-frecvente/",
-   "readme": "https://github.com/chiuta/generator-frecvente",
+   "readme": "https://github.com/chiuta/generator-frecvente#readme",
    "off": "full",
    "status": "stable",
    "video": "generator-frecvente/video.mp4",
@@ -7438,7 +7438,7 @@
     "hu": "Jegyzetfüzet címkékkel, kereséssel és oldalak közti hivatkozásokkal, amely offline működik. Hogy semmi ne vesszen el, töltsön le friss másolatot a fájlról."
    },
    "url": "https://chiuta.github.io/Akasha/",
-   "readme": "https://github.com/chiuta/Akasha",
+   "readme": "https://github.com/chiuta/Akasha#readme",
    "off": "full",
    "status": "stable",
    "video": "Akasha/video.mp4",
@@ -7550,7 +7550,7 @@
     "hu": "Építse fel családfáját személyekkel, családokkal, idővonallal és román nyelvű rokonsági kalkulátorral. Az adatok csak ebben a böngészőben maradnak, szinkronizálás nélkül."
    },
    "url": "https://chiuta.github.io/Arbore/",
-   "readme": "https://github.com/chiuta/Arbore",
+   "readme": "https://github.com/chiuta/Arbore#readme",
    "off": "full",
    "status": "stable",
    "video": "Arbore/video.mp4",
@@ -7654,7 +7654,7 @@
     "hu": "Visszaszámláló óra, ébresztő és órarend hétköznapokra és hétvégékre. Nyilvántartja az ünnepnapokat és az Ön eseményeit."
    },
    "url": "https://chiuta.github.io/CLEPSIDRA/",
-   "readme": "https://github.com/chiuta/CLEPSIDRA",
+   "readme": "https://github.com/chiuta/CLEPSIDRA#readme",
    "off": "full",
    "status": "stable",
    "video": "CLEPSIDRA/video.mp4",
@@ -7766,7 +7766,7 @@
     "hu": "Vezesse a háztartás pénzügyeit: számlák, kiadások, havi költségvetések és jelentések. Fiók nélkül, de ha elveszíti a jelszót, elveszíti az adatokat. Nem pénzügyi tanács."
    },
    "url": "https://chiuta.github.io/Gospodar/",
-   "readme": "https://github.com/chiuta/Gospodar",
+   "readme": "https://github.com/chiuta/Gospodar#readme",
    "off": "full",
    "status": "stable",
    "video": "Gospodar/video.mp4",
@@ -7878,7 +7878,7 @@
     "hu": "Naptár és heti terv napi, heti vagy havi nézetben, a romániai munkaszüneti napokkal. Az ébresztések csak addig szólnak, amíg a lap nyitva marad."
    },
    "url": "https://chiuta.github.io/Orar/",
-   "readme": "https://github.com/chiuta/Orar",
+   "readme": "https://github.com/chiuta/Orar#readme",
    "off": "full",
    "status": "stable",
    "video": "Orar/video.mp4",
@@ -7990,7 +7990,7 @@
     "hu": "Ismerje meg a belote-ot és külföldi rokonait, majd játsszon asztalnál: Ön és egy MI-partner két MI-ellenfél ellen. Pontozólappal."
    },
    "url": "https://chiuta.github.io/Belot-fara-frontiere/",
-   "readme": "https://github.com/chiuta/Belot-fara-frontiere",
+   "readme": "https://github.com/chiuta/Belot-fara-frontiere#readme",
    "off": "full",
    "status": "stable",
    "video": "Belot-fara-frontiere/video.mp4",
@@ -8094,7 +8094,7 @@
     "hu": "A pasziánsztól és a Popa Prostultól a pókerig: 17 kártyajáték elmagyarázott szabályokkal, ebből 8-at rögtön játszhat is."
    },
    "url": "https://chiuta.github.io/Carti-de-joc-fara-frontiere/",
-   "readme": "https://github.com/chiuta/Carti-de-joc-fara-frontiere",
+   "readme": "https://github.com/chiuta/Carti-de-joc-fara-frontiere#readme",
    "off": "full",
    "status": "stable",
    "video": "Carti-de-joc-fara-frontiere/video.mp4",
@@ -8198,7 +8198,7 @@
     "hu": "Játsszon 25 dámaváltozatot a számítógép ellen, és mentse el a játszmát. Közülük 16 szabályai csak hozzávetőlegesek, ⚠-lel jelölve."
    },
    "url": "https://chiuta.github.io/Dame-fara-frontiere/",
-   "readme": "https://github.com/chiuta/Dame-fara-frontiere",
+   "readme": "https://github.com/chiuta/Dame-fara-frontiere#readme",
    "off": "full",
    "status": "stable",
    "video": "Dame-fara-frontiere/video.mp4",
@@ -8310,7 +8310,7 @@
     "hu": "Ismerje meg a dominó történetét és szabályait, majd játsszon asztalnál egy–három számítógép-vezérelt ellenfél ellen. Visszavonhat egy lépést."
    },
    "url": "https://chiuta.github.io/Domino-fara-frontiere/",
-   "readme": "https://github.com/chiuta/Domino-fara-frontiere",
+   "readme": "https://github.com/chiuta/Domino-fara-frontiere#readme",
    "off": "full",
    "status": "stable",
    "video": "Domino-fara-frontiere/video.mp4",
@@ -8422,7 +8422,7 @@
     "hu": "Tudja meg, honnan ered a Go és hogyan játsszák, majd próbálja ki magát a számítógép ellen, amely tippeket is adhat. Nem küld adatot az internetre."
    },
    "url": "https://chiuta.github.io/Go-fara-frontiere/",
-   "readme": "https://github.com/chiuta/Go-fara-frontiere",
+   "readme": "https://github.com/chiuta/Go-fara-frontiere#readme",
    "off": "full",
    "status": "stable",
    "video": "Go-fara-frontiere/video.mp4",
@@ -8534,7 +8534,7 @@
     "hu": "Ismerjen meg 8 mahjong-változatot, és játsszon pasziánszt vagy négyszemélyes partit három egyszerű, számítógép-vezérelt ellenféllel. Offline is működik."
    },
    "url": "https://chiuta.github.io/Mahjong-fara-frontiere/",
-   "readme": "https://github.com/chiuta/Mahjong-fara-frontiere",
+   "readme": "https://github.com/chiuta/Mahjong-fara-frontiere#readme",
    "off": "full",
    "status": "stable",
    "video": "Mahjong-fara-frontiere/video.mp4",
@@ -8654,7 +8654,7 @@
     "hu": "150 kérdés, amely a beszélgetést az udvariaskodáson túlra viszi barátok vagy család között. Játszhatja a képernyőn vagy kinyomtathatja, opcionális időzítővel."
    },
    "url": "https://chiuta.github.io/Profund/",
-   "readme": "https://github.com/chiuta/Profund",
+   "readme": "https://github.com/chiuta/Profund#readme",
    "off": "full",
    "status": "stable",
    "video": "Profund/video.mp4",
@@ -8758,7 +8758,7 @@
     "hu": "Ismerje meg a römi családját, és játsszon 19 változatot a számítógép ellen, statisztikákkal. 8 nyelven, nagy, jól látható lapokkal vagy kövekkel."
    },
    "url": "https://chiuta.github.io/Remi-fara-frontiere/",
-   "readme": "https://github.com/chiuta/Remi-fara-frontiere",
+   "readme": "https://github.com/chiuta/Remi-fara-frontiere#readme",
    "off": "full",
    "status": "stable",
    "video": "Remi-fara-frontiere/video.mp4",
@@ -8862,7 +8862,7 @@
     "hu": "Több mint 700 sakkváltozat felfedezésre, kis szószedettel; sokukat a számítógép ellen is játszhatja. Offline is működik."
    },
    "url": "https://chiuta.github.io/Sah-fara-frontiere/",
-   "readme": "https://github.com/chiuta/Sah-fara-frontiere",
+   "readme": "https://github.com/chiuta/Sah-fara-frontiere#readme",
    "off": "full",
    "status": "stable",
    "video": "Sah-fara-frontiere/video.mp4",
@@ -8974,7 +8974,7 @@
     "hu": "Tudja meg, hogyan született a Scopone, milyen szabályai vannak és hogyan térnek el régiónként, majd játsszon a számítógép ellen, amely tippeket is adhat."
    },
    "url": "https://chiuta.github.io/Scopone-fara-frontiere/",
-   "readme": "https://github.com/chiuta/Scopone-fara-frontiere",
+   "readme": "https://github.com/chiuta/Scopone-fara-frontiere#readme",
    "off": "full",
    "status": "stable",
    "video": "Scopone-fara-frontiere/video.mp4",
@@ -9078,7 +9078,7 @@
     "hu": "Böngésszen a pasziánszok között, mint a Klondike, a FreeCell vagy a Spider, és játsszon velük. Ha elakad, kérhet tippet, vagy megoldathatja a számítógéppel."
    },
    "url": "https://chiuta.github.io/Solitaire-fara-frontiere/",
-   "readme": "https://github.com/chiuta/Solitaire-fara-frontiere",
+   "readme": "https://github.com/chiuta/Solitaire-fara-frontiere#readme",
    "off": "full",
    "status": "stable",
    "video": "Solitaire-fara-frontiere/video.mp4",
@@ -9182,7 +9182,7 @@
     "hu": "136 féle Sudoku a klasszikustól a killerig és a 3D-sig, böngészhető és játszható. Lépésenkénti magyarázattal segít, és megoldja a saját rejtvényeit."
    },
    "url": "https://chiuta.github.io/Sudoku-fara-frontiere/",
-   "readme": "https://github.com/chiuta/Sudoku-fara-frontiere",
+   "readme": "https://github.com/chiuta/Sudoku-fara-frontiere#readme",
    "off": "full",
    "status": "stable",
    "video": "Sudoku-fara-frontiere/video.mp4",
@@ -9286,7 +9286,7 @@
     "hu": "Backgammon, Tavli, Narde és a tábla román változatai, olvasásra és játékra: 17 változat a számítógép ellen, billentyűzettel vagy egérrel."
    },
    "url": "https://chiuta.github.io/Table-fara-frontiere/",
-   "readme": "https://github.com/chiuta/Table-fara-frontiere",
+   "readme": "https://github.com/chiuta/Table-fara-frontiere#readme",
    "off": "full",
    "status": "stable",
    "video": "Table-fara-frontiere/video.mp4",
@@ -9390,7 +9390,7 @@
     "hu": "26 kockajáték olvasásra, ebből 12 játszható a számítógép ellen, plusz dobásszimulátor valószínűségekkel. Pénz nélkül; offline."
    },
    "url": "https://chiuta.github.io/Zaruri-fara-frontiere/",
-   "readme": "https://github.com/chiuta/Zaruri-fara-frontiere",
+   "readme": "https://github.com/chiuta/Zaruri-fara-frontiere#readme",
    "off": "full",
    "status": "stable",
    "video": "Zaruri-fara-frontiere/video.mp4",
@@ -9494,7 +9494,7 @@
     "hu": "Beszélgethet több MI-asszisztenssel egy helyről, köztük a saját számítógépén futókkal is. Az üzenetek a választott szolgáltatóhoz kerülnek; az MI tévedhet."
    },
    "url": "https://chiuta.github.io/AI-Liber/",
-   "readme": "https://github.com/chiuta/AI-Liber",
+   "readme": "https://github.com/chiuta/AI-Liber#readme",
    "off": "part",
    "status": "stable",
    "video": "AI-Liber/video.mp4",
@@ -9598,7 +9598,7 @@
     "hu": "Két MI-modell válaszol név nélkül, Ön pedig a jobbra szavaz; a ranglistát a saját számítógépén vezeti. Saját kulcsok szükségesek."
    },
    "url": "https://chiuta.github.io/ARENA/",
-   "readme": "https://github.com/chiuta/ARENA",
+   "readme": "https://github.com/chiuta/ARENA#readme",
    "off": "part",
    "status": "stable",
    "video": "ARENA/video.mp4",
@@ -9702,7 +9702,7 @@
     "hu": "Beszélgessen egy kis MI-asszisztenssel, amely közvetlenül a böngészőjében fut. A modellek egyszer letöltődnek az internetről; tévedhet."
    },
    "url": "https://chiuta.github.io/LocalMind/",
-   "readme": "https://github.com/chiuta/LocalMind",
+   "readme": "https://github.com/chiuta/LocalMind#readme",
    "off": "part",
    "status": "stable",
    "video": "LocalMind/video.mp4",
@@ -9806,7 +9806,7 @@
     "hu": "Beszélgessen több szolgáltató MI-asszisztenseivel, a beszélgetések közti kereséssel és mentéssel. Internet és saját kulcsok kellenek, amelyeket titkosítatlanul tárol."
    },
    "url": "https://chiuta.github.io/Nexus-fara-frontiere/",
-   "readme": "https://github.com/chiuta/Nexus-fara-frontiere",
+   "readme": "https://github.com/chiuta/Nexus-fara-frontiere#readme",
    "off": "part",
    "status": "stable",
    "video": "Nexus-fara-frontiere/video.mp4",
@@ -9910,7 +9910,7 @@
     "hu": "Több mint 500 kész megfogalmazás MI-asszisztensekhez, amelyekből választhat, és megjelölheti a kedvenceket. A saját szövegeit nem őrzi meg."
    },
    "url": "https://chiuta.github.io/PromptVault/",
-   "readme": "https://github.com/chiuta/PromptVault",
+   "readme": "https://github.com/chiuta/PromptVault#readme",
    "off": "full",
    "status": "stable",
    "video": "PromptVault/video.mp4",
@@ -10014,7 +10014,7 @@
     "hu": "Hallgassa meg, hogyan szólnak mesterséges hangok százai tucatnyi nyelven, és tudja meg, hogyan készül hangoskönyv. Az online minta a szöveget külső szolgáltatásoknak küldi, csak az Ön beleegyezésével."
    },
    "url": "https://chiuta.github.io/VoiceAtelier/",
-   "readme": "https://github.com/chiuta/VoiceAtelier",
+   "readme": "https://github.com/chiuta/VoiceAtelier#readme",
    "off": "part",
    "status": "stable",
    "video": "VoiceAtelier/video.mp4",
@@ -10118,7 +10118,7 @@
     "hu": "Egy helyen láthatja az időjárást, a NASA képeit, az ISS helyzetét és tucatnyi további élő adatot. Internetet igényel, és valódi szolgáltatásokkal nem tesztelték."
    },
    "url": "https://chiuta.github.io/API-fara-frontiere/",
-   "readme": "https://github.com/chiuta/API-fara-frontiere",
+   "readme": "https://github.com/chiuta/API-fara-frontiere#readme",
    "off": "part",
    "status": "stable",
    "video": "API-fara-frontiere/video.mp4",
@@ -10222,7 +10222,7 @@
     "hu": "Beszélgethet virtuális társakkal, akik emlékeznek a beszélgetésekre. Alapértelmezetten egyszerű szabályok szerint válaszolnak; valódi MI csak akkor, ha Ön szolgáltatót választ, és az üzenetek hozzá kerülnek. Csak felnőtteknek."
    },
    "url": "https://chiuta.github.io/Constelar/",
-   "readme": "https://github.com/chiuta/Constelar",
+   "readme": "https://github.com/chiuta/Constelar#readme",
    "off": "part",
    "status": "stable",
    "video": "Constelar/video.mp4",
@@ -10326,7 +10326,7 @@
     "hu": "Böngésszen 340 ingyenes webszolgáltatás között, többnyire fiók nélkül, egyetlen katalógusban. A listát 2026 júniusában ellenőrizték, de nem automatikusan."
    },
    "url": "https://chiuta.github.io/OAZA/",
-   "readme": "https://github.com/chiuta/OAZA",
+   "readme": "https://github.com/chiuta/OAZA#readme",
    "off": "full",
    "status": "stable",
    "video": "OAZA/video.mp4",
@@ -10430,7 +10430,7 @@
     "hu": "Tanuljon meg lépésről lépésre hajtogatni: jelölések, technikák és illusztrált modellek. Az alkalmazás emlékszik, hol tartott."
    },
    "url": "https://chiuta.github.io/Origami/",
-   "readme": "https://github.com/chiuta/Origami",
+   "readme": "https://github.com/chiuta/Origami#readme",
    "off": "full",
    "status": "stable",
    "video": "Origami/video.mp4",
@@ -10534,7 +10534,7 @@
     "hu": "Egy 15 kis mindennapi eszközből álló készlet: jegyzetek, táblázat, Markdown, jelszavak, pénzügyi napló és más. Nincs hivatalos kapcsolata a YunoHosttal, amely a kategóriákat ihlette."
    },
    "url": "https://chiuta.github.io/Trusa-fara-frontiere/",
-   "readme": "https://github.com/chiuta/Trusa-fara-frontiere",
+   "readme": "https://github.com/chiuta/Trusa-fara-frontiere#readme",
    "off": "full",
    "status": "stable",
    "video": "Trusa-fara-frontiere/video.mp4",
@@ -10646,7 +10646,7 @@
     "hu": "Hagyja, hogy a VideoNeat előzetesei megállás nélküli tévécsatornaként fussanak. Internetet igényel; P2P módban az Ön IP-címe látható a többi néző számára."
    },
    "url": "https://chiuta.github.io/VNTV/",
-   "readme": "https://github.com/chiuta/VNTV",
+   "readme": "https://github.com/chiuta/VNTV#readme",
    "off": "part",
    "status": "stable",
    "video": "VNTV/video.mp4",
@@ -10766,7 +10766,7 @@
     "hu": "Böngésszen több mint ezer spirituális kurzus és beavatás között, történelmi háttérrel és kritikus szemlélettel. Nem kapcsolódik a forrásoldalhoz, és tudományosan nem validált. Offline."
    },
    "url": "https://chiuta.github.io/ACORDAJ/",
-   "readme": "https://github.com/chiuta/ACORDAJ",
+   "readme": "https://github.com/chiuta/ACORDAJ#readme",
    "off": "full",
    "status": "stable",
    "video": "ACORDAJ/video.mp4",
@@ -10870,7 +10870,7 @@
     "hu": "Olvasson 22 olyan élelmiszerről és növényről, amelyeket a hagyomány a vággyal társít, mindegyiknél a bizonyítékok szintjével. Kulturális útmutató felnőtteknek, nem orvosi tanács."
    },
    "url": "https://chiuta.github.io/Afrodisiace-fara-frontiere/",
-   "readme": "https://github.com/chiuta/Afrodisiace-fara-frontiere",
+   "readme": "https://github.com/chiuta/Afrodisiace-fara-frontiere#readme",
    "off": "full",
    "status": "stable",
    "video": "Afrodisiace-fara-frontiere/video.mp4",
@@ -10990,7 +10990,7 @@
     "hu": "Hallgasson megnyugtató hangokat, finoman lüktető hangokat, és kövessen légzésvezetőt. Csak relaxációra, nem kezelés. Offline működik."
    },
    "url": "https://chiuta.github.io/Aurora/",
-   "readme": "https://github.com/chiuta/Aurora",
+   "readme": "https://github.com/chiuta/Aurora#readme",
    "off": "full",
    "status": "stable",
    "video": "Aurora/video.mp4",
@@ -11094,7 +11094,7 @@
     "hu": "Kurzus arról, mi a bioenergoterápia és honnan ered. A gyakorlatnak nincs tudományos bizonyítéka gyógyító hatásra, és nem helyettesíti az orvost."
    },
    "url": "https://chiuta.github.io/Bioenergoterapie/",
-   "readme": "https://github.com/chiuta/Bioenergoterapie",
+   "readme": "https://github.com/chiuta/Bioenergoterapie#readme",
    "off": "full",
    "status": "stable",
    "video": "Bioenergoterapie/video.mp4",
@@ -11198,7 +11198,7 @@
     "hu": "Tudja meg, melyik asztrológiai házba esik egy fogyatkozás a születési képletében, plusz a következő 12 fogyatkozást. A számítás hozzávetőleges, az értelmezés szimbolikus, tudományos validálás nélkül."
    },
    "url": "https://chiuta.github.io/ECLIPSA/",
-   "readme": "https://github.com/chiuta/ECLIPSA",
+   "readme": "https://github.com/chiuta/ECLIPSA#readme",
    "off": "full",
    "status": "stable",
    "video": "ECLIPSA/video.mp4",
@@ -11318,7 +11318,7 @@
     "hu": "Számítsa ki a bolygók helyzetét egy dátumra és helyre, majd fedezze fel a születési képletet, a szögkapcsolatokat és a kompatibilitást. Szimbolikus asztrológia, tudományos alap nélkül. Offline."
    },
    "url": "https://chiuta.github.io/HoroScop/",
-   "readme": "https://github.com/chiuta/HoroScop",
+   "readme": "https://github.com/chiuta/HoroScop#readme",
    "off": "full",
    "status": "stable",
    "video": "HoroScop/video.mp4",
@@ -11422,7 +11422,7 @@
     "hu": "Fedezze fel, mit állít az inforenergetika, egy nem konvencionális gyakorlat, egy strukturált kurzusban. Tudományosan nem validált, és nem orvosi tanács."
    },
    "url": "https://chiuta.github.io/Inforenergetica/",
-   "readme": "https://github.com/chiuta/Inforenergetica",
+   "readme": "https://github.com/chiuta/Inforenergetica#readme",
    "off": "full",
    "status": "stable",
    "video": "Inforenergetica/video.mp4",
@@ -11542,7 +11542,7 @@
     "hu": "Hogyan nézhet ki az első találkozás emberek, mesterséges intelligenciák és másféle elmék között? 1001 elképzelt forgatókönyv, fikció, nem tények. Offline is működik."
    },
    "url": "https://chiuta.github.io/NOMIA/",
-   "readme": "https://github.com/chiuta/NOMIA",
+   "readme": "https://github.com/chiuta/NOMIA#readme",
    "off": "full",
    "status": "stable",
    "video": "NOMIA/video.mp4",
@@ -11662,7 +11662,7 @@
     "hu": "Tudja meg, mit mond a numerológia, a kínai BaZi-asztrológia és a bioritmus a születési dátumáról, minden számítást lépésről lépésre elmagyarázva. Szimbolikus rendszer, tudományos alap nélkül."
    },
    "url": "https://chiuta.github.io/NumeroLogIA/",
-   "readme": "https://github.com/chiuta/NumeroLogIA",
+   "readme": "https://github.com/chiuta/NumeroLogIA#readme",
    "off": "part",
    "status": "stable",
    "video": "NumeroLogIA/video.mp4",
@@ -11766,7 +11766,7 @@
     "hu": "Fedezze fel a numerológiát szimbolikus hagyományként, négy szinten, gyakorlatokkal, szószedettel, naplóval és számológéppel. Tudományos validálás nélkül mutatjuk be."
    },
    "url": "https://chiuta.github.io/Numerologie/",
-   "readme": "https://github.com/chiuta/Numerologie",
+   "readme": "https://github.com/chiuta/Numerologie#readme",
    "off": "full",
    "status": "stable",
    "video": "Numerologie/video.mp4",
@@ -11870,7 +11870,7 @@
     "hu": "Járjon végig 18 szintet a radiesztéziáról, szószedettel, gyakorlónaplóval és nemzetközi függelékekkel. Már az elején jelzi, hogy tudományosan nem validált."
    },
    "url": "https://chiuta.github.io/Radiestezie/",
-   "readme": "https://github.com/chiuta/Radiestezie",
+   "readme": "https://github.com/chiuta/Radiestezie#readme",
    "off": "full",
    "status": "stable",
    "video": "Radiestezie/video.mp4",
@@ -11974,7 +11974,7 @@
     "hu": "Tudja meg, mi a Reiki, a spirituális gyakorlat, és mit mondanak a kutatások: a relaxáción túli hatásra nem találtak elegendő bizonyítékot. Nem helyettesíti az orvost."
    },
    "url": "https://chiuta.github.io/Reiki/",
-   "readme": "https://github.com/chiuta/Reiki",
+   "readme": "https://github.com/chiuta/Reiki#readme",
    "off": "full",
    "status": "stable",
    "video": "Reiki/video.mp4",
@@ -12078,7 +12078,7 @@
     "hu": "Ismerje meg a tarot történetét, a kártyák szimbólumait és az olvasás módját, kulturális jelenségként szemlélve. Interaktív kurzus, a saját tempójában haladhat."
    },
    "url": "https://chiuta.github.io/Tarot/",
-   "readme": "https://github.com/chiuta/Tarot",
+   "readme": "https://github.com/chiuta/Tarot#readme",
    "off": "full",
    "status": "stable",
    "video": "Tarot/video.mp4",
@@ -12198,7 +12198,7 @@
     "hu": "Nézzen meg kívülről, belülről és szimulációban egy 1972-es UFO-esetet, 3D-ben rekonstruálva. Elképzelt hipotézis, nem bizonyíték."
    },
    "url": "https://chiuta.github.io/ValeaPlopului1972/",
-   "readme": "https://github.com/chiuta/ValeaPlopului1972",
+   "readme": "https://github.com/chiuta/ValeaPlopului1972#readme",
    "off": "full",
    "status": "stable",
    "video": "ValeaPlopului1972/video.mp4",
@@ -12310,7 +12310,7 @@
     "hu": "A szubjektív észlelések atlasza és műhelye minden érzékszervben, a foszfenizmusból kiindulva: 13 modulos kurzus, vezetett kísérletek, vizuális szimulátor és randomizált A/B önkísérlet. Oktatási anyag, nem orvosi eszköz."
    },
    "url": "https://chiuta.github.io/Fenarium/",
-   "readme": "https://github.com/chiuta/Fenarium",
+   "readme": "https://github.com/chiuta/Fenarium#readme",
    "off": "no",
    "status": "stable",
    "video": "Fenarium/video.mp4",
@@ -12422,7 +12422,7 @@
     "hu": "Keltse életre a 2D-s rajzokat: „csontvázra” szereli, mozgásba hozza, és több formátumban exportálja az animációt. Alfa verzió, még keveset próbálták ki."
    },
    "url": "https://osatura.chiuta.ro/",
-   "readme": "https://github.com/chiuta/osatura",
+   "readme": "https://github.com/chiuta/osatura#readme",
    "off": "no",
    "status": "alpha",
    "video": "OSATURA/video.mp4",
@@ -12491,7 +12491,7 @@
     "hu": "Megkeresi egy weboldal vagy mappa hibás hivatkozásait, valamint a gazdátlanul maradt fájlokat. Windowson, macOS-en és Linuxon fut; némi számítógépes jártasság kell hozzá."
    },
    "url": "https://veriga.chiuta.ro/",
-   "readme": "https://github.com/chiuta/VERIGA",
+   "readme": "https://github.com/chiuta/VERIGA#readme",
    "off": "no",
    "status": "stable",
    "video": "VERIGA/video.mp4",
@@ -12567,7 +12567,7 @@
     "hu": "Segéd a szakdolgozatához, amely csak az Ön könyvei és cikkei alapján ír, ellenőrizhető hivatkozásokkal. Az Ön számítógépén fut, a dokumentumok nem hagyják el. Fejlesztés alatt álló verzió."
    },
    "url": "https://tezaur.chiuta.ro/",
-   "readme": "https://github.com/chiuta/TEZAUR",
+   "readme": "https://github.com/chiuta/TEZAUR#readme",
    "off": "no",
    "status": "alpha",
    "video": "TEZAUR/video.mp4",
@@ -12636,7 +12636,7 @@
     "hu": "Beszkennel egy könyvet, és tiszta, kiegyenesített oldalú PDF-et kap, amelyben a szövegben is kereshet. Windowsra, macOS-re és Linuxra; a beolvasott lapok az Ön gépén maradnak."
    },
    "url": "https://legatorocr.chiuta.ro/",
-   "readme": "https://github.com/chiuta/LegatorOCR",
+   "readme": "https://github.com/chiuta/LegatorOCR#readme",
    "off": "no",
    "status": "alpha",
    "video": "LegatorOCR/video.mp4",
