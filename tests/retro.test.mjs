@@ -35,16 +35,16 @@ T('scor: sursă unică (transparenta.json), `score` manual doar rezervă depreci
   const scored = a7.apps.filter((r) => typeof r.score === 'number');
   assert.ok(scored.length >= 112);
   for (const r of scored) assert.equal(meta.apps[r.key].measured.score, r.score, r.key);
-  // 2. cele 4 nemăsurate: exact programele native; nu au scor de rezervă (nu s-a inventat nimic)
+  // 2. nicio aplicație nemăsurată (nativele au grila proprie, a7n); nu au scor de rezervă (nu s-a inventat nimic)
   const unmeasured = keys.filter((k) => scoreOf(meta.apps[k] || {}) === null).sort();
-  assert.deepEqual(unmeasured, ['LegatorOCR', 'OSATURA', 'TEZAUR', 'VERIGA'], 'aplicații fără niciun scor');
+  assert.deepEqual(unmeasured, [], 'aplicații fără niciun scor');
   assert.deepEqual(keys.filter((k) => !(meta.apps[k] && meta.apps[k].measured) && meta.apps[k] && typeof meta.apps[k].score === 'number'), [], 'rezerva `score` doar pentru nemăsurate');
   // 3. `score` manual interzis pe o aplicație măsurată; acceptat (rezervă) pe una nemăsurată; citit doar dacă lipsește măsurătoarea
   const probs = (m) => validateMeta(m, keys, null).filter((p) => /score|măsurat|laborator|lab/i.test(p));
   assert.deepEqual(probs(meta), [], 'catalogul curent trebuie să fie curat');
   const m1 = structuredClone(meta); m1.apps.DataWeave.score = 9.9;
   assert.ok(probs(m1).some((p) => /DataWeave.*depreciat/.test(p)), '`score` pe aplicație măsurată trebuie respins');
-  const m2 = structuredClone(meta); m2.apps.TEZAUR.score = 6;
+  const m2 = structuredClone(meta); delete m2.apps.TEZAUR.measured; m2.apps.TEZAUR.score = 6;
   assert.deepEqual(probs(m2), [], '`score` de rezervă pe o aplicație nemăsurată e acceptat');
   assert.equal(scoreOf({score: 6}), 6); assert.equal(scoreOf({score: 6, measured: {score: 9, date: '2026-11-03'}}), 9); assert.equal(scoreOf({}), null);
   // 4. „laborator” nu depinde de scor: OmniHost și LocalMind au scor măsurat mare și rămân lab; o stare lab fără niciun scor e validă; un scor mic nu face o aplicație lab

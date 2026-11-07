@@ -3402,5 +3402,68 @@
    "langs": 1,
    "size": 0.5
   }
+ },
+ "a7n": {
+  "date": "2026-11-07",
+  "rust": "1.97",
+  "weights": {
+   "build": 2,
+   "clippy": 2,
+   "tests": 2,
+   "fmt": 1.5,
+   "deps": 1,
+   "langs": 1,
+   "size": 0.5
+  },
+  "apps": [
+   {
+    "key": "LegatorOCR",
+    "ver": "0.2.0",
+    "score": 9.35,
+    "build": true,
+    "warns": 0,
+    "npass": 656,
+    "fmt": true,
+    "deps": 242,
+    "langs": 8,
+    "mb": 26.7
+   },
+   {
+    "key": "OSATURA",
+    "ver": "0.1.0-alpha",
+    "score": 7.47,
+    "build": true,
+    "warns": 0,
+    "npass": 1413,
+    "fmt": false,
+    "deps": 141,
+    "langs": 1,
+    "mb": 19.4
+   },
+   {
+    "key": "TEZAUR",
+    "ver": "0.4.0",
+    "score": 6.12,
+    "build": true,
+    "warns": 1,
+    "npass": 75,
+    "fmt": false,
+    "deps": 163,
+    "langs": 1,
+    "mb": 6.5
+   },
+   {
+    "key": "VERIGA",
+    "ver": "1.1.0",
+    "score": 6.85,
+    "build": true,
+    "warns": 1,
+    "npass": 95,
+    "fmt": false,
+    "deps": 380,
+    "langs": 8,
+    "mb": 20.4
+   }
+  ]
  }
 }
