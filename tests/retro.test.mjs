@@ -35,9 +35,9 @@ T('scor: sursă unică (transparenta.json), `score` manual doar rezervă depreci
   const scored = a7.apps.filter((r) => typeof r.score === 'number');
   assert.ok(scored.length >= 112);
   for (const r of scored) assert.equal(meta.apps[r.key].measured.score, r.score, r.key);
-  // 2. cele 9 nemăsurate: programele native, Pendulul și cele 4 aplicații adăugate la 2026-11-07 (BRAZDA, VOIAJOR, CHIROMANTIA, PUNCTUM; auditul de scor nu a rulat încă pe ele); nu au scor de rezervă (nu s-a inventat nimic)
+  // 2. cele 5 nemăsurate: exact programele native + Pendulul; nu au scor de rezervă (nu s-a inventat nimic)
   const unmeasured = keys.filter((k) => scoreOf(meta.apps[k] || {}) === null).sort();
-  assert.deepEqual(unmeasured, ['BRAZDA', 'CHIROMANTIA', 'LegatorOCR', 'OSATURA', 'PUNCTUM', 'Pendulul', 'TEZAUR', 'VERIGA', 'VOIAJOR'], 'aplicații fără niciun scor');
+  assert.deepEqual(unmeasured, ['LegatorOCR', 'OSATURA', 'Pendulul', 'TEZAUR', 'VERIGA'], 'aplicații fără niciun scor');
   assert.deepEqual(keys.filter((k) => !(meta.apps[k] && meta.apps[k].measured) && meta.apps[k] && typeof meta.apps[k].score === 'number'), [], 'rezerva `score` doar pentru nemăsurate');
   // 3. `score` manual interzis pe o aplicație măsurată; acceptat (rezervă) pe una nemăsurată; citit doar dacă lipsește măsurătoarea
   const probs = (m) => validateMeta(m, keys, null).filter((p) => /score|măsurat|laborator|lab/i.test(p));

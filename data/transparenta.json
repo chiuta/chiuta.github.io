@@ -1347,7 +1347,7 @@
   },
   {
    "key": "CHIROMANTIA",
-   "ver": "2.4",
+   "ver": "2.5",
    "off": "full",
    "langs": 8,
    "hosts": 0,
@@ -1734,7 +1734,7 @@
   ]
  },
  "health": {
-  "date": "2026-11-06",
+  "date": "2026-11-07",
   "apps": 121,
   "relations": {
    "withRelation": 84,
@@ -1789,12 +1789,12 @@
    "avg": 3.95
   },
   "score": {
-   "measured": 112,
-   "mean": 9.45,
+   "measured": 116,
+   "mean": 9.44,
    "median": 9.5,
    "bands": {
-    "b9": 100,
-    "b8": 12,
+    "b9": 103,
+    "b8": 13,
     "b7": 0,
     "b6": 0
    },
@@ -1809,12 +1809,12 @@
    ]
   },
   "age": {
-   "ref": "2026-11-06",
-   "fresh7": 94,
+   "ref": "2026-11-07",
+   "fresh7": 92,
    "fresh30": 121,
    "stale30": 0,
    "stale90": 0,
-   "oldest": "OSATURA (13)"
+   "oldest": "OSATURA (14)"
   },
   "sources": {
    "total": 30,
@@ -1828,7 +1828,7 @@
   },
   "versions": {
    "cards": 121,
-   "measured": 112,
+   "measured": 116,
    "behind": [
     "AI-Liber",
     "ARENA",
@@ -1852,15 +1852,11 @@
     "VietAR"
    ],
    "unmeasured": [
-    "BRAZDA",
-    "CHIROMANTIA",
     "LegatorOCR",
     "OSATURA",
-    "PUNCTUM",
     "Pendulul",
     "TEZAUR",
-    "VERIGA",
-    "VOIAJOR"
+    "VERIGA"
    ]
   }
  },
@@ -2115,6 +2111,19 @@
     "kb": 767
    },
    {
+    "key": "BRAZDA",
+    "ver": "1.1.0",
+    "score": 9,
+    "build": true,
+    "axe": 0,
+    "tests": 1,
+    "testsOk": 1,
+    "csp": 1.5,
+    "off": 0,
+    "langs": 8,
+    "kb": 481
+   },
+   {
     "key": "Cadraj",
     "ver": "2.2.5",
     "score": 9.5,
@@ -2152,6 +2161,19 @@
     "off": 1,
     "langs": 8,
     "kb": 722
+   },
+   {
+    "key": "CHIROMANTIA",
+    "ver": "2.5",
+    "score": 9.5,
+    "build": true,
+    "axe": 0,
+    "tests": 1,
+    "testsOk": 1,
+    "csp": 1,
+    "off": 1,
+    "langs": 8,
+    "kb": 982
    },
    {
     "key": "CLEPSIDRA",
@@ -2856,6 +2878,19 @@
     "kb": 1532
    },
    {
+    "key": "PUNCTUM",
+    "ver": "2.5",
+    "score": 8.6,
+    "build": true,
+    "axe": 0,
+    "tests": 1,
+    "testsOk": 1,
+    "csp": 0.5,
+    "off": 1,
+    "langs": 8,
+    "kb": 5063
+   },
+   {
     "key": "QSO",
     "ver": "2.2.1",
     "score": 10,
@@ -3272,6 +3307,19 @@
     "kb": 627
    },
    {
+    "key": "VOIAJOR",
+    "ver": "1.1.0",
+    "score": 9,
+    "build": true,
+    "axe": 0,
+    "tests": 1,
+    "testsOk": 1,
+    "csp": 1.5,
+    "off": 0,
+    "langs": 8,
+    "kb": 304
+   },
+   {
     "key": "VoiceAtelier",
     "ver": "2.1.0",
     "score": 9,
@@ -3324,12 +3372,12 @@
     "kb": 5278
    }
   ],
-  "scored": 112,
-  "mean": 9.45,
+  "scored": 116,
+  "mean": 9.44,
   "median": 9.5,
-  "builds": 112,
-  "axe": 112,
-  "allTests": 112,
+  "builds": 116,
+  "axe": 116,
+  "allTests": 116,
   "noTests": 0,
   "incomplete": 0,
   "weights": {
