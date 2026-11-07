@@ -1793,8 +1793,8 @@
    "mean": 9.44,
    "median": 9.5,
    "bands": {
-    "b9": 103,
-    "b8": 13,
+    "b9": 104,
+    "b8": 12,
     "b7": 0,
     "b6": 0
    },
@@ -2880,15 +2880,15 @@
    {
     "key": "PUNCTUM",
     "ver": "2.5",
-    "score": 8.6,
+    "score": 9.1,
     "build": true,
     "axe": 0,
     "tests": 1,
     "testsOk": 1,
-    "csp": 0.5,
+    "csp": 1,
     "off": 1,
     "langs": 8,
-    "kb": 5063
+    "kb": 5069
    },
    {
     "key": "QSO",
