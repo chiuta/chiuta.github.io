@@ -5,8 +5,8 @@
 
 ## Pe scurt
 
-- Aplicații în catalog: **117** (117 în depozite proprii, 0 în `apps/` din hub).
-- Cu **origine proprie** (CNAME `<slug>.chiuta.ro`): **117**.
+- Aplicații în catalog: **121** (121 în depozite proprii, 0 în `apps/` din hub).
+- Cu **origine proprie** (CNAME `<slug>.chiuta.ro`): **121**.
 - Pe **origine partajată** `chiuta.ro`: **0** (0 aplicații din hub + 0 depozit(e) fără CNAME).
 - De mutat pe origine proprie (sensibile, din hub): **0** cu prioritate 1 (), **0** cu prioritate 2 ().
 
@@ -77,7 +77,7 @@ Datele din `localStorage`/`IndexedDB` **nu se mută singure**: noua origine porn
 
 ## Verificare
 
-Stare verificată în Etapa 7 (consolidare): 117 din 117 depozite au CNAME `<slug>.chiuta.ro` și nicio aplicație nu e pe origine partajată (fiecare își păstrează `localStorage`/IndexedDB separat). Ce NU s-a putut verifica din mediul de lucru: rezolvarea DNS (`--dns` dă ENOTFOUND din spatele proxy-ului) și starea GitHub Pages „live”; acestea rămân de confirmat de pe o rețea cu DNS public.
+Stare verificată în Etapa 7 (consolidare): 121 din 121 depozite au CNAME `<slug>.chiuta.ro` și nicio aplicație nu e pe origine partajată (fiecare își păstrează `localStorage`/IndexedDB separat). Ce NU s-a putut verifica din mediul de lucru: rezolvarea DNS (`--dns` dă ENOTFOUND din spatele proxy-ului) și starea GitHub Pages „live”; acestea rămân de confirmat de pe o rețea cu DNS public.
 
 ```
 node tools/cname-inventory.mjs --check   # documentul corespunde depozitelor de pe disc
@@ -129,6 +129,7 @@ node tools/cname-inventory.mjs --dns     # informativ: interoghează DNS-ul publ
 | Zicala | depozit | `zicala.chiuta.ro` | proprie: https://zicala.chiuta.ro/ | — |  |
 | AGORA | depozit | `agora.chiuta.ro` | proprie: https://agora.chiuta.ro/ | — |  |
 | Bolta | depozit | `bolta.chiuta.ro` | proprie: https://bolta.chiuta.ro/ | da, dar deja pe origine proprie |  |
+| BRAZDA | depozit | `brazda.chiuta.ro` | proprie: https://brazda.chiuta.ro/ | — |  |
 | Cupa-Mondiala-2026 | depozit | `cupa-mondiala-2026.chiuta.ro` | proprie: https://cupa-mondiala-2026.chiuta.ro/ | — |  |
 | Eclipsa-2027 | depozit | `eclipsa-2027.chiuta.ro` | proprie: https://eclipsa-2027.chiuta.ro/ | — |  |
 | Horizons.BeyondLimits | depozit | `horizons-beyondlimits.chiuta.ro` | proprie: https://horizons-beyondlimits.chiuta.ro/ | — |  |
@@ -142,6 +143,7 @@ node tools/cname-inventory.mjs --dns     # informativ: interoghează DNS-ul publ
 | Universul-Observabil-2D | depozit | `universul-observabil-2d.chiuta.ro` | proprie: https://universul-observabil-2d.chiuta.ro/ | — |  |
 | Universul-Observabil-3D | depozit | `universul-observabil-3d.chiuta.ro` | proprie: https://universul-observabil-3d.chiuta.ro/ | — |  |
 | VietAR | depozit | `vietar.chiuta.ro` | proprie: https://vietar.chiuta.ro/ | — |  |
+| VOIAJOR | depozit | `voiajor.chiuta.ro` | proprie: https://voiajor.chiuta.ro/ | — |  |
 | ExploratoriiEco | depozit | `exploratoriieco.chiuta.ro` | proprie: https://exploratoriieco.chiuta.ro/ | — |  |
 | FieldObserver | depozit | `fieldobserver.chiuta.ro` | proprie: https://fieldobserver.chiuta.ro/ | — |  |
 | Poteca | depozit | `poteca.chiuta.ro` | proprie: https://poteca.chiuta.ro/ | da, dar deja pe origine proprie |  |
@@ -190,12 +192,14 @@ node tools/cname-inventory.mjs --dns     # informativ: interoghează DNS-ul publ
 | Afrodisiace-fara-frontiere | depozit | `afrodisiace-fara-frontiere.chiuta.ro` | proprie: https://afrodisiace-fara-frontiere.chiuta.ro/ | — |  |
 | Aurora | depozit | `aurora.chiuta.ro` | proprie: https://aurora.chiuta.ro/ | — |  |
 | Bioenergoterapie | depozit | `bioenergoterapie.chiuta.ro` | proprie: https://bioenergoterapie.chiuta.ro/ | — |  |
+| CHIROMANTIA | depozit | `chiromantia.chiuta.ro` | proprie: https://chiromantia.chiuta.ro/ | — |  |
 | ECLIPSA | depozit | `eclipsa.chiuta.ro` | proprie: https://eclipsa.chiuta.ro/ | — |  |
 | HoroScop | depozit | `horoscop.chiuta.ro` | proprie: https://horoscop.chiuta.ro/ | — |  |
 | Inforenergetica | depozit | `inforenergetica.chiuta.ro` | proprie: https://inforenergetica.chiuta.ro/ | — |  |
 | NOMIA | depozit | `nomia.chiuta.ro` | proprie: https://nomia.chiuta.ro/ | — |  |
 | NumeroLogIA | depozit | `numerologia.chiuta.ro` | proprie: https://numerologia.chiuta.ro/ | — |  |
 | Numerologie | depozit | `numerologie.chiuta.ro` | proprie: https://numerologie.chiuta.ro/ | — |  |
+| PUNCTUM | depozit | `punctum.chiuta.ro` | proprie: https://punctum.chiuta.ro/ | — |  |
 | Radiestezie | depozit | `radiestezie.chiuta.ro` | proprie: https://radiestezie.chiuta.ro/ | — |  |
 | Fenarium | depozit | `fenarium.chiuta.ro` | proprie: https://fenarium.chiuta.ro/ | — |  |
 | Reiki | depozit | `reiki.chiuta.ro` | proprie: https://reiki.chiuta.ro/ | — |  |

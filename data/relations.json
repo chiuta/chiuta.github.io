@@ -1,7 +1,7 @@
 {
  "schema": 1,
  "note": "Generat de tools/sync-catalog.mjs din data/catalog-meta.json, data/flows.json și registrul de plicuri; nu se editează de mână. Fiecare relație are cel puțin un motiv verificabil (vezi relationEvidence în tools/catalog-meta-lib.mjs).",
- "count": 516,
+ "count": 539,
  "relations": [
   {
    "a": "AcademiSearch",
@@ -95,6 +95,13 @@
   },
   {
    "a": "ACORDAJ",
+   "b": "CHIROMANTIA",
+   "reasons": [
+    "topic:traditions"
+   ]
+  },
+  {
+   "a": "ACORDAJ",
    "b": "Fenarium",
    "reasons": [
     "topic:traditions"
@@ -124,6 +131,13 @@
   {
    "a": "Afrodisiace-fara-frontiere",
    "b": "Bioenergoterapie",
+   "reasons": [
+    "topic:traditions"
+   ]
+  },
+  {
+   "a": "Afrodisiace-fara-frontiere",
+   "b": "CHIROMANTIA",
    "reasons": [
     "topic:traditions"
    ]
@@ -962,6 +976,13 @@
   },
   {
    "a": "Bioenergoterapie",
+   "b": "CHIROMANTIA",
+   "reasons": [
+    "topic:traditions"
+   ]
+  },
+  {
+   "a": "Bioenergoterapie",
    "b": "Fenarium",
    "reasons": [
     "topic:traditions"
@@ -973,6 +994,14 @@
    "reasons": [
     "topic:traditions"
    ]
+  },
+  {
+   "a": "Bioenergoterapie",
+   "b": "PUNCTUM",
+   "reasons": [
+    "pair"
+   ],
+   "why": "terapii neconvenționale descrise informativ, cu limite și nivel de dovezi la vedere"
   },
   {
    "a": "Bioenergoterapie",
@@ -1107,6 +1136,13 @@
    ]
   },
   {
+   "a": "Bolta",
+   "b": "VOIAJOR",
+   "reasons": [
+    "topic:astro"
+   ]
+  },
+  {
    "a": "BorderlessMelodies",
    "b": "CalmWaves",
    "reasons": [
@@ -1160,6 +1196,22 @@
    "reasons": [
     "topic:media"
    ]
+  },
+  {
+   "a": "BRAZDA",
+   "b": "NOMIA",
+   "reasons": [
+    "pair"
+   ],
+   "why": "mesaje trimise printre stele: ce pui pe un disc și cum ar putea fi citit de o altă minte"
+  },
+  {
+   "a": "BRAZDA",
+   "b": "VOIAJOR",
+   "reasons": [
+    "pair"
+   ],
+   "why": "aceleași sonde Voyager: discul de aur pe care îl poartă și traiectoria pe care o parcurg"
   },
   {
    "a": "Cadraj",
@@ -1257,6 +1309,42 @@
    "reasons": [
     "topic:cards"
    ]
+  },
+  {
+   "a": "CHIROMANTIA",
+   "b": "Fenarium",
+   "reasons": [
+    "topic:traditions"
+   ]
+  },
+  {
+   "a": "CHIROMANTIA",
+   "b": "Inforenergetica",
+   "reasons": [
+    "topic:traditions"
+   ]
+  },
+  {
+   "a": "CHIROMANTIA",
+   "b": "Radiestezie",
+   "reasons": [
+    "topic:traditions"
+   ]
+  },
+  {
+   "a": "CHIROMANTIA",
+   "b": "Reiki",
+   "reasons": [
+    "topic:traditions"
+   ]
+  },
+  {
+   "a": "CHIROMANTIA",
+   "b": "Tarot",
+   "reasons": [
+    "pair"
+   ],
+   "why": "două practici de divinație studiate ca fenomen cultural, cu aceeași privire critică și cu nivel de dovezi afișat"
   },
   {
    "a": "CLEPSIDRA",
@@ -1890,6 +1978,13 @@
    "b": "VATRA",
    "reasons": [
     "module:fff-jurnal"
+   ]
+  },
+  {
+   "a": "Eclipsa-2027",
+   "b": "VOIAJOR",
+   "reasons": [
+    "topic:astro"
    ]
   },
   {
@@ -2612,6 +2707,13 @@
    ]
   },
   {
+   "a": "Horizons.BeyondLimits",
+   "b": "VOIAJOR",
+   "reasons": [
+    "topic:astro"
+   ]
+  },
+  {
    "a": "HoroScop",
    "b": "NumeroLogIA",
    "reasons": [
@@ -2682,6 +2784,13 @@
    "reasons": [
     "topic:astro",
     "topic:mathviz"
+   ]
+  },
+  {
+   "a": "IncredibleCosmos",
+   "b": "VOIAJOR",
+   "reasons": [
+    "topic:astro"
    ]
   },
   {
@@ -3075,6 +3184,13 @@
   {
    "a": "Nemurirea",
    "b": "PULS",
+   "reasons": [
+    "topic:health"
+   ]
+  },
+  {
+   "a": "Nemurirea",
+   "b": "PUNCTUM",
    "reasons": [
     "topic:health"
    ]
@@ -3501,6 +3617,13 @@
   },
   {
    "a": "PULS",
+   "b": "PUNCTUM",
+   "reasons": [
+    "topic:health"
+   ]
+  },
+  {
+   "a": "PULS",
    "b": "QSO",
    "reasons": [
     "envelope:passport/fff",
@@ -3545,6 +3668,28 @@
    "reasons": [
     "topic:health",
     "pair"
+   ]
+  },
+  {
+   "a": "PUNCTUM",
+   "b": "Reiki",
+   "reasons": [
+    "pair"
+   ],
+   "why": "practici de îngrijire prezentate cu nivel de dovezi afișat și fără înlocuirea medicului"
+  },
+  {
+   "a": "PUNCTUM",
+   "b": "SEVA",
+   "reasons": [
+    "topic:health"
+   ]
+  },
+  {
+   "a": "PUNCTUM",
+   "b": "VATRA",
+   "reasons": [
+    "topic:health"
    ]
   },
   {
@@ -3807,6 +3952,13 @@
    ]
   },
   {
+   "a": "TerRa",
+   "b": "VOIAJOR",
+   "reasons": [
+    "topic:astro"
+   ]
+  },
+  {
    "a": "TEZAUR",
    "b": "VERIGA",
    "reasons": [
@@ -3926,6 +4078,15 @@
    ]
   },
   {
+   "a": "Universul-Observabil",
+   "b": "VOIAJOR",
+   "reasons": [
+    "topic:astro",
+    "pair"
+   ],
+   "why": "aceeași întrebare la scări diferite: VOIAJOR urcă de la planete până la Calea Lactee, Universul Observabil merge dincolo de ea"
+  },
+  {
    "a": "URME",
    "b": "VATRA",
    "reasons": [
@@ -3954,6 +4115,13 @@
    "b": "X-fara-cont",
    "reasons": [
     "topic:social"
+   ]
+  },
+  {
+   "a": "VOIAJOR",
+   "b": "orarium",
+   "reasons": [
+    "topic:astro"
    ]
   }
  ]

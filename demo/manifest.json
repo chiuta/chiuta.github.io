@@ -4654,6 +4654,118 @@
    }
   },
   {
+   "slug": "BRAZDA",
+   "title": "BRAZDA",
+   "section": "stiinta",
+   "tags": {
+    "ro": [
+     "Voyager",
+     "MIT"
+    ],
+    "en": [
+     "Voyager",
+     "MIT"
+    ],
+    "fr": [
+     "Voyager",
+     "MIT"
+    ],
+    "it": [
+     "Voyager",
+     "MIT"
+    ],
+    "es": [
+     "Voyager",
+     "MIT"
+    ],
+    "pt": [
+     "Voyager",
+     "MIT"
+    ],
+    "de": [
+     "Voyager",
+     "MIT"
+    ],
+    "hu": [
+     "Voyager",
+     "MIT"
+    ]
+   },
+   "line": {
+    "ro": "Decodezi pas cu pas Discul de Aur Voyager, apoi codifici un disc nou pentru o sondă lansată acum. Imaginile din primii pași sunt schematice, nu cele NASA.",
+    "en": "Decode the Voyager Golden Record step by step, then encode a new disc for a probe launched now. The images in the first steps are schematic, not the NASA ones.",
+    "fr": "Décodez le Disque d’or Voyager pas à pas, puis encodez un nouveau disque pour une sonde lancée maintenant. Les images des premières étapes sont schématiques, pas celles de la NASA.",
+    "it": "Decodifica il Disco d’oro Voyager passo dopo passo, poi codifica un nuovo disco per una sonda lanciata adesso. Le immagini dei primi passi sono schematiche, non quelle della NASA.",
+    "es": "Decodifica el Disco de Oro de la Voyager paso a paso y luego codifica un disco nuevo para una sonda lanzada ahora. Las imágenes de los primeros pasos son esquemáticas, no las de la NASA.",
+    "pt": "Descodifique o Disco de Ouro da Voyager passo a passo e depois codifique um disco novo para uma sonda lançada agora. As imagens dos primeiros passos são esquemáticas, não as da NASA.",
+    "de": "Entschlüssle die Voyager-Goldplatte Schritt für Schritt und kodiere dann eine neue Platte für eine heute gestartete Sonde. Die Bilder der ersten Schritte sind schematisch, nicht die der NASA.",
+    "hu": "Fejtsd meg lépésről lépésre a Voyager aranylemezét, majd kódolj új lemezt egy most indított szondához. Az első lépések képei sematikusak, nem a NASA-éi."
+   },
+   "url": "https://brazda.chiuta.ro/",
+   "readme": "https://github.com/chiuta/brazda#readme",
+   "off": "no",
+   "status": "stable",
+   "video": "BRAZDA/video.mp4",
+   "poster": "BRAZDA/poster.jpg",
+   "duration": 44.9,
+   "size": 999424,
+   "vtt": {
+    "en": "BRAZDA/en.vtt",
+    "ro": "BRAZDA/ro.vtt",
+    "fr": "BRAZDA/fr.vtt",
+    "it": "BRAZDA/it.vtt",
+    "es": "BRAZDA/es.vtt",
+    "pt": "BRAZDA/pt.vtt",
+    "de": "BRAZDA/de.vtt",
+    "hu": "BRAZDA/hu.vtt"
+   },
+   "transcript": "BRAZDA/transcript.json",
+   "videos": {
+    "ro": {
+     "video": "BRAZDA/loc/ro/video.mp4",
+     "vtt": "BRAZDA/loc/ro/ro.vtt",
+     "duration": 46.6,
+     "size": 998612
+    },
+    "fr": {
+     "video": "BRAZDA/loc/fr/video.mp4",
+     "vtt": "BRAZDA/loc/fr/fr.vtt",
+     "duration": 47.6,
+     "size": 915918
+    },
+    "it": {
+     "video": "BRAZDA/loc/it/video.mp4",
+     "vtt": "BRAZDA/loc/it/it.vtt",
+     "duration": 49.4,
+     "size": 1054037
+    },
+    "es": {
+     "video": "BRAZDA/loc/es/video.mp4",
+     "vtt": "BRAZDA/loc/es/es.vtt",
+     "duration": 47.8,
+     "size": 1103404
+    },
+    "pt": {
+     "video": "BRAZDA/loc/pt/video.mp4",
+     "vtt": "BRAZDA/loc/pt/pt.vtt",
+     "duration": 46.9,
+     "size": 1077842
+    },
+    "de": {
+     "video": "BRAZDA/loc/de/video.mp4",
+     "vtt": "BRAZDA/loc/de/de.vtt",
+     "duration": 47.0,
+     "size": 1117224
+    },
+    "hu": {
+     "video": "BRAZDA/loc/hu/video.mp4",
+     "vtt": "BRAZDA/loc/hu/hu.vtt",
+     "duration": 42.8,
+     "size": 980418
+    }
+   }
+  },
+  {
    "slug": "Cupa-Mondiala-2026",
    "title": "Cupa Mondială 2026",
    "section": "stiinta",
@@ -6090,6 +6202,118 @@
      "vtt": "VietAR/loc/ro/ro.vtt",
      "duration": 21.2,
      "size": 183596
+    }
+   }
+  },
+  {
+   "slug": "VOIAJOR",
+   "title": "VOIAJOR",
+   "section": "stiinta",
+   "tags": {
+    "ro": [
+     "Voyager",
+     "MIT"
+    ],
+    "en": [
+     "Voyager",
+     "MIT"
+    ],
+    "fr": [
+     "Voyager",
+     "MIT"
+    ],
+    "it": [
+     "Voyager",
+     "MIT"
+    ],
+    "es": [
+     "Voyager",
+     "MIT"
+    ],
+    "pt": [
+     "Voyager",
+     "MIT"
+    ],
+    "de": [
+     "Voyager",
+     "MIT"
+    ],
+    "hu": [
+     "Voyager",
+     "MIT"
+    ]
+   },
+   "line": {
+    "ro": "Urmărești traseul sondelor Voyager 1 și 2 din 1977 până peste un miliard de ani, la orice scară, de la planete la Calea Lactee. Model orientativ, nu navigație.",
+    "en": "Follow the Voyager 1 and 2 trajectories from 1977 to a billion years ahead, at any scale, from the planets to the Milky Way. An indicative model, not navigation.",
+    "fr": "Suivez la trajectoire des sondes Voyager 1 et 2 de 1977 jusqu’à dans un milliard d’années, à toutes les échelles, des planètes à la Voie lactée. Modèle indicatif, pas de la navigation.",
+    "it": "Segui la traiettoria delle sonde Voyager 1 e 2 dal 1977 a fra un miliardo di anni, a ogni scala, dai pianeti alla Via Lattea. Modello indicativo, non navigazione.",
+    "es": "Sigue la trayectoria de las sondas Voyager 1 y 2 desde 1977 hasta dentro de mil millones de años, a cualquier escala, de los planetas a la Vía Láctea. Modelo orientativo, no navegación.",
+    "pt": "Acompanhe a trajetória das sondas Voyager 1 e 2 de 1977 até daqui a mil milhões de anos, a qualquer escala, dos planetas à Via Láctea. Modelo indicativo, não navegação.",
+    "de": "Verfolge die Bahnen der Sonden Voyager 1 und 2 von 1977 bis in eine Milliarde Jahre, in jedem Maßstab, von den Planeten bis zur Milchstraße. Orientierendes Modell, keine Navigation.",
+    "hu": "Kövesd a Voyager 1 és 2 pályáját 1977-től egymilliárd évvel előre, bármilyen léptékben, a bolygóktól a Tejútrendszerig. Tájékoztató modell, nem navigáció."
+   },
+   "url": "https://voiajor.chiuta.ro/",
+   "readme": "https://github.com/chiuta/voiajor#readme",
+   "off": "no",
+   "status": "stable",
+   "video": "VOIAJOR/video.mp4",
+   "poster": "VOIAJOR/poster.jpg",
+   "duration": 39.2,
+   "size": 1082254,
+   "vtt": {
+    "en": "VOIAJOR/en.vtt",
+    "ro": "VOIAJOR/ro.vtt",
+    "fr": "VOIAJOR/fr.vtt",
+    "it": "VOIAJOR/it.vtt",
+    "es": "VOIAJOR/es.vtt",
+    "pt": "VOIAJOR/pt.vtt",
+    "de": "VOIAJOR/de.vtt",
+    "hu": "VOIAJOR/hu.vtt"
+   },
+   "transcript": "VOIAJOR/transcript.json",
+   "videos": {
+    "ro": {
+     "video": "VOIAJOR/loc/ro/video.mp4",
+     "vtt": "VOIAJOR/loc/ro/ro.vtt",
+     "duration": 42.3,
+     "size": 1122669
+    },
+    "fr": {
+     "video": "VOIAJOR/loc/fr/video.mp4",
+     "vtt": "VOIAJOR/loc/fr/fr.vtt",
+     "duration": 45.0,
+     "size": 1134396
+    },
+    "it": {
+     "video": "VOIAJOR/loc/it/video.mp4",
+     "vtt": "VOIAJOR/loc/it/it.vtt",
+     "duration": 43.5,
+     "size": 1089576
+    },
+    "es": {
+     "video": "VOIAJOR/loc/es/video.mp4",
+     "vtt": "VOIAJOR/loc/es/es.vtt",
+     "duration": 43.8,
+     "size": 1129146
+    },
+    "pt": {
+     "video": "VOIAJOR/loc/pt/video.mp4",
+     "vtt": "VOIAJOR/loc/pt/pt.vtt",
+     "duration": 45.0,
+     "size": 1166391
+    },
+    "de": {
+     "video": "VOIAJOR/loc/de/video.mp4",
+     "vtt": "VOIAJOR/loc/de/de.vtt",
+     "duration": 45.4,
+     "size": 1070042
+    },
+    "hu": {
+     "video": "VOIAJOR/loc/hu/video.mp4",
+     "vtt": "VOIAJOR/loc/hu/hu.vtt",
+     "duration": 46.2,
+     "size": 1118197
     }
    }
   },
@@ -11158,6 +11382,118 @@
    }
   },
   {
+   "slug": "CHIROMANTIA",
+   "title": "CHIROMANTIA",
+   "section": "cultura",
+   "tags": {
+    "ro": [
+     "chiromanție",
+     "MIT"
+    ],
+    "en": [
+     "palmistry",
+     "MIT"
+    ],
+    "fr": [
+     "chiromancie",
+     "MIT"
+    ],
+    "it": [
+     "chiromanzia",
+     "MIT"
+    ],
+    "es": [
+     "quiromancia",
+     "MIT"
+    ],
+    "pt": [
+     "quiromancia",
+     "MIT"
+    ],
+    "de": [
+     "Handlesen",
+     "MIT"
+    ],
+    "hu": [
+     "tenyérjóslás",
+     "MIT"
+    ]
+   },
+   "line": {
+    "ro": "Atlas interactiv de chiromanție: harta palmei cu linii, munți, degete și tipuri de mână, privit ca tradiție culturală, cu o secțiune de știință și gândire critică. Fără validare științifică.",
+    "en": "An interactive palmistry atlas: a palm map with lines, mounts, fingers and hand types, read as a cultural tradition, with a section on science and critical thinking. No scientific validation.",
+    "fr": "Atlas interactif de chiromancie : carte de la paume avec lignes, monts, doigts et types de mains, lu comme tradition culturelle, avec une section de science et d’esprit critique. Sans validation scientifique.",
+    "it": "Atlante interattivo di chiromanzia: mappa del palmo con linee, monti, dita e tipi di mano, letto come tradizione culturale, con una sezione di scienza e pensiero critico. Senza validazione scientifica.",
+    "es": "Atlas interactivo de quiromancia: mapa de la palma con líneas, montes, dedos y tipos de mano, leído como tradición cultural, con una sección de ciencia y pensamiento crítico. Sin validación científica.",
+    "pt": "Atlas interativo de quiromancia: mapa da palma com linhas, montes, dedos e tipos de mão, lido como tradição cultural, com uma secção de ciência e pensamento crítico. Sem validação científica.",
+    "de": "Interaktiver Handlese-Atlas: Handkarte mit Linien, Hügeln, Fingern und Handtypen, als kulturelle Tradition gelesen, mit einem Bereich zu Wissenschaft und kritischem Denken. Ohne wissenschaftliche Validierung.",
+    "hu": "Interaktív tenyérjóslás-atlasz: tenyértérkép vonalakkal, dombokkal, ujjakkal és kéztípusokkal, kulturális hagyományként olvasva, tudományos és kritikai gondolkodási résszel. Tudományos érvényesítés nélkül."
+   },
+   "url": "https://chiromantia.chiuta.ro/",
+   "readme": "https://github.com/chiuta/chiromantia#readme",
+   "off": "full",
+   "status": "stable",
+   "video": "CHIROMANTIA/video.mp4",
+   "poster": "CHIROMANTIA/poster.jpg",
+   "duration": 36.5,
+   "size": 729485,
+   "vtt": {
+    "en": "CHIROMANTIA/en.vtt",
+    "ro": "CHIROMANTIA/ro.vtt",
+    "fr": "CHIROMANTIA/fr.vtt",
+    "it": "CHIROMANTIA/it.vtt",
+    "es": "CHIROMANTIA/es.vtt",
+    "pt": "CHIROMANTIA/pt.vtt",
+    "de": "CHIROMANTIA/de.vtt",
+    "hu": "CHIROMANTIA/hu.vtt"
+   },
+   "transcript": "CHIROMANTIA/transcript.json",
+   "videos": {
+    "ro": {
+     "video": "CHIROMANTIA/loc/ro/video.mp4",
+     "vtt": "CHIROMANTIA/loc/ro/ro.vtt",
+     "duration": 36.7,
+     "size": 784944
+    },
+    "fr": {
+     "video": "CHIROMANTIA/loc/fr/video.mp4",
+     "vtt": "CHIROMANTIA/loc/fr/fr.vtt",
+     "duration": 34.3,
+     "size": 731220
+    },
+    "it": {
+     "video": "CHIROMANTIA/loc/it/video.mp4",
+     "vtt": "CHIROMANTIA/loc/it/it.vtt",
+     "duration": 36.9,
+     "size": 654762
+    },
+    "es": {
+     "video": "CHIROMANTIA/loc/es/video.mp4",
+     "vtt": "CHIROMANTIA/loc/es/es.vtt",
+     "duration": 38.1,
+     "size": 837138
+    },
+    "pt": {
+     "video": "CHIROMANTIA/loc/pt/video.mp4",
+     "vtt": "CHIROMANTIA/loc/pt/pt.vtt",
+     "duration": 37.8,
+     "size": 775380
+    },
+    "de": {
+     "video": "CHIROMANTIA/loc/de/video.mp4",
+     "vtt": "CHIROMANTIA/loc/de/de.vtt",
+     "duration": 36.9,
+     "size": 723336
+    },
+    "hu": {
+     "video": "CHIROMANTIA/loc/hu/video.mp4",
+     "vtt": "CHIROMANTIA/loc/hu/hu.vtt",
+     "duration": 36.3,
+     "size": 741441
+    }
+   }
+  },
+  {
    "slug": "ECLIPSA",
    "title": "ECLIPSA",
    "section": "cultura",
@@ -11826,6 +12162,118 @@
      "vtt": "Numerologie/loc/ro/ro.vtt",
      "duration": 34.3,
      "size": 590194
+    }
+   }
+  },
+  {
+   "slug": "PUNCTUM",
+   "title": "PUNCTUM",
+   "section": "cultura",
+   "tags": {
+    "ro": [
+     "sănătate",
+     "MIT"
+    ],
+    "en": [
+     "health",
+     "MIT"
+    ],
+    "fr": [
+     "santé",
+     "MIT"
+    ],
+    "it": [
+     "salute",
+     "MIT"
+    ],
+    "es": [
+     "salud",
+     "MIT"
+    ],
+    "pt": [
+     "saúde",
+     "MIT"
+    ],
+    "de": [
+     "Gesundheit",
+     "MIT"
+    ],
+    "hu": [
+     "egészség",
+     "MIT"
+    ]
+   },
+   "line": {
+    "ro": "Atlas educativ de presopunctură și terapii prin puncte: peste 400 de puncte pe hărți interactive, rutine de auto-îngrijire cu sesiuni ghidate, dovezi și siguranță. Nu înlocuiește medicul.",
+    "en": "An educational atlas of acupressure and point-based therapies: over 400 points on interactive maps, self-care routines with guided sessions, evidence and safety. It does not replace a doctor.",
+    "fr": "Atlas éducatif d’acupression et de thérapies par points : plus de 400 points sur des cartes interactives, routines d’autosoins avec séances guidées, preuves et sécurité. Ne remplace pas un médecin.",
+    "it": "Atlante educativo di digitopressione e terapie a punti: oltre 400 punti su mappe interattive, routine di auto-cura con sessioni guidate, evidenze e sicurezza. Non sostituisce il medico.",
+    "es": "Atlas educativo de acupresión y terapias por puntos: más de 400 puntos en mapas interactivos, rutinas de autocuidado con sesiones guiadas, evidencia y seguridad. No sustituye al médico.",
+    "pt": "Atlas educativo de acupressão e terapias por pontos: mais de 400 pontos em mapas interativos, rotinas de autocuidado com sessões guiadas, evidências e segurança. Não substitui o médico.",
+    "de": "Lernatlas für Akupressur und Punkttherapien: über 400 Punkte auf interaktiven Karten, Selbstpflege-Routinen mit geführten Sitzungen, Evidenz und Sicherheit. Ersetzt keinen Arzt.",
+    "hu": "Oktató atlasz az akupresszúráról és a pontterápiákról: több mint 400 pont interaktív térképeken, önápolási rutinok vezetett alkalmakkal, bizonyítékok és biztonság. Nem helyettesíti az orvost."
+   },
+   "url": "https://punctum.chiuta.ro/",
+   "readme": "https://github.com/chiuta/punctum#readme",
+   "off": "full",
+   "status": "stable",
+   "video": "PUNCTUM/video.mp4",
+   "poster": "PUNCTUM/poster.jpg",
+   "duration": 38.8,
+   "size": 1294385,
+   "vtt": {
+    "en": "PUNCTUM/en.vtt",
+    "ro": "PUNCTUM/ro.vtt",
+    "fr": "PUNCTUM/fr.vtt",
+    "it": "PUNCTUM/it.vtt",
+    "es": "PUNCTUM/es.vtt",
+    "pt": "PUNCTUM/pt.vtt",
+    "de": "PUNCTUM/de.vtt",
+    "hu": "PUNCTUM/hu.vtt"
+   },
+   "transcript": "PUNCTUM/transcript.json",
+   "videos": {
+    "ro": {
+     "video": "PUNCTUM/loc/ro/video.mp4",
+     "vtt": "PUNCTUM/loc/ro/ro.vtt",
+     "duration": 38.9,
+     "size": 1186799
+    },
+    "fr": {
+     "video": "PUNCTUM/loc/fr/video.mp4",
+     "vtt": "PUNCTUM/loc/fr/fr.vtt",
+     "duration": 38.9,
+     "size": 1342153
+    },
+    "it": {
+     "video": "PUNCTUM/loc/it/video.mp4",
+     "vtt": "PUNCTUM/loc/it/it.vtt",
+     "duration": 38.4,
+     "size": 1307247
+    },
+    "es": {
+     "video": "PUNCTUM/loc/es/video.mp4",
+     "vtt": "PUNCTUM/loc/es/es.vtt",
+     "duration": 38.1,
+     "size": 1254160
+    },
+    "pt": {
+     "video": "PUNCTUM/loc/pt/video.mp4",
+     "vtt": "PUNCTUM/loc/pt/pt.vtt",
+     "duration": 39.4,
+     "size": 1299032
+    },
+    "de": {
+     "video": "PUNCTUM/loc/de/video.mp4",
+     "vtt": "PUNCTUM/loc/de/de.vtt",
+     "duration": 39.2,
+     "size": 1451292
+    },
+    "hu": {
+     "video": "PUNCTUM/loc/hu/video.mp4",
+     "vtt": "PUNCTUM/loc/hu/hu.vtt",
+     "duration": 39.4,
+     "size": 1202922
     }
    }
   },

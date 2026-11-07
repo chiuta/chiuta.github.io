@@ -1322,6 +1322,50 @@
    "score": 9,
    "hm": 0,
    "l": 4
+  },
+  {
+   "key": "BRAZDA",
+   "ver": "1.1.0",
+   "off": "no",
+   "langs": 8,
+   "hosts": 0,
+   "score": null,
+   "hm": null,
+   "l": null,
+   "ext": true
+  },
+  {
+   "key": "VOIAJOR",
+   "ver": "1.1.0",
+   "off": "no",
+   "langs": 8,
+   "hosts": 0,
+   "score": null,
+   "hm": null,
+   "l": null,
+   "ext": true
+  },
+  {
+   "key": "CHIROMANTIA",
+   "ver": "2.4",
+   "off": "full",
+   "langs": 8,
+   "hosts": 0,
+   "score": null,
+   "hm": null,
+   "l": null,
+   "ext": true
+  },
+  {
+   "key": "PUNCTUM",
+   "ver": "2.5",
+   "off": "full",
+   "langs": 8,
+   "hosts": 0,
+   "score": null,
+   "hm": null,
+   "l": null,
+   "ext": true
   }
  ],
  "a8": {
@@ -1690,10 +1734,10 @@
   ]
  },
  "health": {
-  "date": "2026-11-03",
-  "apps": 117,
+  "date": "2026-11-06",
+  "apps": 121,
   "relations": {
-   "withRelation": 77,
+   "withRelation": 84,
    "orphans": [
     "ACORDAJ",
     "API-fara-frontiere",
@@ -1701,7 +1745,6 @@
     "Afrodisiace-fara-frontiere",
     "Akasha",
     "Arhiva-LinkedIn",
-    "Bioenergoterapie",
     "Carti-de-joc-fara-frontiere",
     "Dame-fara-frontiere",
     "Decibel",
@@ -1723,25 +1766,23 @@
     "QSO",
     "Radiestezie",
     "RegexLab",
-    "Reiki",
     "Remi-fara-frontiere",
     "SEOptimum",
     "Sah-fara-frontiere",
     "Scopone-fara-frontiere",
     "Table-fara-frontiere",
-    "Tarot",
     "Trusa-fara-frontiere",
     "VNTV",
     "VietAR",
     "Vitrina",
     "Zaruri-fara-frontiere"
    ],
-   "pairs": 63,
+   "pairs": 69,
    "flows": 4,
    "flowApps": 16
   },
   "coverage": {
-   "full8": 115,
+   "full8": 119,
    "partial": 0,
    "single": 2,
    "native": 4,
@@ -1768,12 +1809,12 @@
    ]
   },
   "age": {
-   "ref": "2026-11-03",
-   "fresh7": 116,
-   "fresh30": 117,
+   "ref": "2026-11-06",
+   "fresh7": 94,
+   "fresh30": 121,
    "stale30": 0,
    "stale90": 0,
-   "oldest": "OSATURA (10)"
+   "oldest": "OSATURA (13)"
   },
   "sources": {
    "total": 30,
@@ -1786,7 +1827,7 @@
    "healthFile": "2026-11-03"
   },
   "versions": {
-   "cards": 117,
+   "cards": 121,
    "measured": 112,
    "behind": [
     "AI-Liber",
@@ -1811,11 +1852,15 @@
     "VietAR"
    ],
    "unmeasured": [
+    "BRAZDA",
+    "CHIROMANTIA",
     "LegatorOCR",
     "OSATURA",
+    "PUNCTUM",
     "Pendulul",
     "TEZAUR",
-    "VERIGA"
+    "VERIGA",
+    "VOIAJOR"
    ]
   }
  },

@@ -1,8 +1,8 @@
 # chiuta.ro: hubul aplicațiilor „fără frontiere”
 
-Hubul adună **117 aplicații** (113 pagini HTML unice, offline, plus 4 programe native: OSATURA, VERIGA, TEZAUR, LegatorOCR), kitul lor comun `fff-kit`, plicul `.fff.json` prin care își dau rezultate fără server, și uneltele care țin totul onest: catalogul, auditul, sănătatea surselor. Fără cont, fără telemetrie, fără reclame; licență MIT; interfață în 8 limbi (ro, en, fr, it, es, pt, de, hu).
+Hubul adună **121 de aplicații** (117 pagini HTML unice, offline, plus 4 programe native: OSATURA, VERIGA, TEZAUR, LegatorOCR), kitul lor comun `fff-kit`, plicul `.fff.json` prin care își dau rezultate fără server, și uneltele care țin totul onest: catalogul, auditul, sănătatea surselor. Fără cont, fără telemetrie, fără reclame; licență MIT; interfață în 8 limbi (ro, en, fr, it, es, pt, de, hu).
 
-*English in short:* a hub for 117 offline, trade-free apps (single HTML files + 4 native programs), their shared kit (`fff-kit`), the `.fff.json` envelope that lets them pass results to each other without a server, and the tooling that keeps the portfolio honest (catalog sync, a reproducible measured audit, source-health monitoring). Everything is in Romanian-first documentation; the UI of each app is in 8 languages.
+*English in short:* a hub for 121 offline, trade-free apps (single HTML files + 4 native programs), their shared kit (`fff-kit`), the `.fff.json` envelope that lets them pass results to each other without a server, and the tooling that keeps the portfolio honest (catalog sync, a reproducible measured audit, source-health monitoring). Everything is in Romanian-first documentation; the UI of each app is in 8 languages.
 
 ## Ce găsești aici
 
