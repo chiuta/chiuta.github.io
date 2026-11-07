@@ -1,6 +1,6 @@
 # fff-kit
 
-**Versiune:** 1.2.0 · **Ultima actualizare:** 22 octombrie 2026
+**Versiune:** 1.2.1 · **Ultima actualizare:** 7 noiembrie 2026
 
 Module comune pentru aplicațiile „fără frontiere”, **lipite în fiecare `index.html`** de un pas de build. Aplicația rămâne un fișier care funcționează descărcat, offline, fără server. Nimic din kit nu face cereri de rețea.
 
@@ -105,6 +105,10 @@ LC_ALL=C sed -E 's/data-fff-hash="[0-9a-f]*"/data-fff-hash=""/g; s/"sha256":"[0-
 ```
 
 `sizeBytes` este dimensiunea fișierului final; build-ul găsește prin iterație punctul fix (cifrele lui apar în fișier).
+
+## Novități în 1.2.1
+
+* `core`: `navigator.clipboard.writeText` este învelit. Dacă API-ul respinge (pagina fără focus, permisiune refuzată), kitul încearcă `execCommand('copy')`; dacă nici asta nu merge, respingerea rămâne pentru apelant, iar o respingere neprinsă de nimeni este marcată ca tratată, ca pagina să nu producă o eroare JavaScript. Descoperit de testul de stres (500 de acțiuni aleatorii pe fiecare aplicație).
 
 ## Novități în 1.2.0
 

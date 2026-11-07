@@ -52,11 +52,38 @@
       }
     }
   } catch (e3) {}
-  var KIT_VERSION = '1.2.0';
+  var KIT_VERSION = '1.2.1';
   var F = (window.FFF = window.FFF || {});
   if (F.core && F.core.version) return; // idempotent la dublă încărcare
   var SUP = ['ro', 'en', 'fr', 'it', 'es', 'pt', 'hu', 'de'];
   var doc = document;
+
+  /* ---------- clipboard sigur: refuzul de permisiune nu mai produce o excepție neprinsă ----------
+   * navigator.clipboard.writeText respinge cu NotAllowedError când pagina nu are focus sau permisiunea e refuzată.
+   * Încercăm întâi API-ul, apoi execCommand('copy'); dacă nici acesta nu merge, respingerea rămâne (apelantul o poate prinde),
+   * dar dacă nimeni n-o prinde, o marcăm ca tratată, ca pagina să rămână stabilă. */
+  try {
+    var cb = navigator.clipboard;
+    if (cb && typeof cb.writeText === 'function' && !cb.__fffSafe) {
+      var rawWrite = cb.writeText.bind(cb);
+      var legacyCopy = function (t) {
+        var ta = doc.createElement('textarea');
+        ta.value = String(t); ta.setAttribute('readonly', ''); ta.style.cssText = 'position:fixed;left:-9999px;top:0;opacity:0';
+        (doc.body || doc.documentElement).appendChild(ta); ta.select();
+        var ok = false; try { ok = doc.execCommand('copy'); } catch (e) { ok = false; }
+        ta.remove(); return ok;
+      };
+      cb.writeText = function (t) {
+        var p; try { p = rawWrite(t); } catch (e) { p = Promise.reject(e); }
+        return p.catch(function (err) { if (legacyCopy(t)) return; throw err; });
+      };
+      try { Object.defineProperty(cb, '__fffSafe', {value: true}); } catch (e) { cb.__fffSafe = true; }
+    }
+  } catch (e5) {}
+  window.addEventListener('unhandledrejection', function (ev) {
+    var r = ev && ev.reason;
+    if (r && (r.name === 'NotAllowedError' || r.name === 'SecurityError') && /clipboard|permission/i.test(String(r.message || ''))) ev.preventDefault();
+  });
 
   /* ---------- meta / app ---------- */
   function meta(name) {
