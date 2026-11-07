@@ -25,6 +25,8 @@ export function measuredScores(hub) {
   const a7 = JSON.parse(fs.readFileSync(f, 'utf8')).a7;
   const out = {};
   if (a7 && Array.isArray(a7.apps)) for (const r of a7.apps) if (r && r.key && typeof r.score === 'number') out[r.key] = {score: r.score, date: r.date || a7.date, ...(r.tests === 0 ? {tests: 0} : {})};
+  const n = JSON.parse(fs.readFileSync(f, 'utf8')).a7n;   // programe native: grilă proprie (cargo), același câmp `measured` în fișă
+  if (n && Array.isArray(n.apps)) for (const r of n.apps) if (r && r.key && typeof r.score === 'number') out[r.key] = {score: r.score, date: n.date};
   return out;
 }
 

@@ -288,6 +288,15 @@ function renderSrc(D, UI, CODES, CODE_KIND) {
       });
       h.push('</tbody></table></div><p class="note">' + E(t('a7_note')) + '</p></section>');
     }
+    // programe native (Rust): grilă proprie, măsurată cu cargo (data/transparenta.json → a7n)
+    if (D.a7n && D.a7n.apps && D.a7n.apps.length) {
+      h.push('<section aria-labelledby="s-a7n"><h2 id="s-a7n">' + E(t('h_a7n')) + '</h2><p class="note">' + F('a7n_method', {date: D.a7n.date}).replace(/`([^`]+)`/g, '<code>$1</code>') + '</p>');
+      h.push('<div class="tw wide"><table class="apps"><thead><tr>' + th('th_app') + th('th_ver') + th('th_m7', 'n') + th('th_build') + th('th_lint', 'n') + th('th_tests', 'n') + th('th_fmt') + th('th_dep', 'n') + th('th_lang7', 'n') + th('th_bin', 'n') + '</tr></thead><tbody>');
+      D.a7n.apps.forEach(function (x) {
+        h.push('<tr><th scope="row">' + E(x.key) + '</th><td>' + E(x.ver) + '</td><td class="n">' + N(x.score.toFixed(1)) + '</td><td>' + E(t(x.build ? 'yes' : 'no')) + '</td><td class="n">' + x.warns + '</td><td class="n">' + x.npass + '</td><td>' + E(t(x.fmt ? 'yes' : 'no')) + '</td><td class="n">' + x.deps + '</td><td class="n">' + x.langs + '</td><td class="n">' + N(x.mb) + '</td></tr>');
+      });
+      h.push('</tbody></table></div></section>');
+    }
     // per aplicație
     h.push('<section aria-labelledby="s-apps"><h2 id="s-apps">' + E(t('h_apps')) + '</h2><div class="tw wide"><table class="apps"><thead><tr>' + th('th_app') + th('th_ver') + th('th_offline') + th('th_langs', 'n') + th('th_hosts', 'n') + th('th_score', 'n') + th('th_hm', 'n') + th('th_l', 'n') + '</tr></thead><tbody>');
     D.apps.forEach(function (a) {
