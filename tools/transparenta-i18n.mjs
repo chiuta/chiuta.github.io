@@ -82,7 +82,7 @@ export const UI = {
   },
   ro: {
     title: 'Transparență', back: '← Înapoi la catalog', langLabel: 'Limba',
-    lead: 'Ce au verificat două audituri automate, deliberat ostile, asupra acestei colecții, ce s-a reparat de atunci și ce rămâne deschis. Pagina este generată din date de tools/transparenta.mjs, nu face cereri în rețea, nu are urmărire și nu conține date personale.',
+    lead: 'Ce au verificat două audituri automate, deliberat ostile, asupra acestei colecții, ce s-a reparat de atunci și ce rămâne deschis. Pagina este generată de tools/transparenta.mjs pe baza datelor din depozit, nu face cereri în rețea, nu are urmărire și nu conține date personale.',
     snapshot: 'Instantaneu al datelor {date} · auditul 1: {d1} · auditul 2: {d2}',
     h_glance: 'Pe scurt', g_apps: 'Aplicații măsurate', g_xss: 'XSS executat sub CSP', g_proto: 'Poluare de prototip', g_off: 'Aplicații cu service worker', g_open: 'Constatări deschise de orice fel',
     g_off_v: '{n} din {m}', g_apps_v: '{a}, apoi {b}', g_xss_v: '0 și 0', g_open_v: '{n} constatări la nivel de aplicație, vezi mai jos',

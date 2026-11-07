@@ -121,7 +121,7 @@ t('segment: text bun → fără erori; greșelile cunoscute → semnalate', () =
   const ref = 'The ingest command indexes the files locally, together with the BibTeX bibliography. Nothing leaves the computer.';
   assert.deepEqual(T.checkSegment(seg('fr', "La commande ingest indexe les fichiers localement, avec la bibliographie BibTeX. Rien ne quitte l'ordinateur.", ref), reg).filter((f) => f.sev === 'eroare'), []);
   assert.ok(codes(seg('hu', 'Az ingest parancs helyben indexeli a fájlokat, a BibTeX irodalomjegyzékkel. Semmi nem hagyja el a gépet õ.', ref)).includes('alfabet:eroare'), 'hu õ');
-  assert.ok(codes(seg('fr', 'La commande ingest indexe les fichiers, avec la bibliographie BibTeX. Nimic nu pleacă din calculator.', ref)).includes('ro-scapat:eroare'));
+  assert.ok(codes(seg('fr', 'La commande ingest indexe les fichiers, avec la bibliographie BibTeX. Nimic nu pleacă de pe calculator.', ref)).includes('ro-scapat:eroare'));
   assert.ok(codes(seg('fr', "La commande indexe les fichiers localement, avec la bibliographie. Rien ne quitte l'ordinateur.", ref)).includes('invariant:eroare'), 'ingest și BibTeX lipsesc');
   assert.ok(codes(seg('fr', 'Dans la librairie, rien ne bouge.', 'The library does not change at all in this long sentence about things.')).includes('glosar:eroare'), 'librairie = calc interzis');
   assert.ok(codes(seg('pt', 'O ingest guarda os arquivos na biblioteca, com BibTeX.', 'The ingest keeps the files in the library, with BibTeX.')).includes('confuzie:avertisment'), 'pt-BR');

@@ -17,7 +17,7 @@ NARR = {
     'TEZAUR é um assistente de tese que trabalha apenas com a sua própria biblioteca. Aqui estão três estudos, como ficheiros de texto.',
     'TEZAUR ist ein Assistent für die Abschlussarbeit, der nur mit Ihrer eigenen Bibliothek arbeitet. Hier sind drei Studien als einfache Textdateien.',
     'A TEZAUR egy szakdolgozati asszisztens, amely kizárólag a saját könyvtáradból dolgozik. Itt három tanulmány van, egyszerű szövegfájlként.'),
-  S('Comanda ingest le indexează local, împreună cu bibliografia în format BibTeX. Nimic nu pleacă din calculator.',
+  S('Comanda ingest le indexează local, împreună cu bibliografia în format BibTeX. Nimic nu pleacă de pe calculator.',
     'The ingest command indexes them locally, together with the BibTeX bibliography. Nothing leaves the computer.',
     'La commande ingest les indexe localement, avec la bibliographie au format BibTeX. Rien ne quitte l\'ordinateur.',
     'Il comando ingest li indicizza in locale, insieme alla bibliografia in formato BibTeX. Nulla lascia il computer.',
