@@ -1789,12 +1789,12 @@
    "avg": 3.95
   },
   "score": {
-   "measured": 116,
-   "mean": 9.44,
+   "measured": 117,
+   "mean": 9.43,
    "median": 9.5,
    "bands": {
     "b9": 104,
-    "b8": 12,
+    "b8": 13,
     "b7": 0,
     "b6": 0
    },
@@ -1804,8 +1804,8 @@
     "OmniHost 8.1",
     "PrintreInteligente 8.2",
     "LocalMind 8.3",
-    "Constelar 8.5",
-    "Threads-fara-cont 8.5"
+    "Pendulul 8.5",
+    "Constelar 8.5"
    ]
   },
   "age": {
@@ -1828,7 +1828,7 @@
   },
   "versions": {
    "cards": 121,
-   "measured": 116,
+   "measured": 117,
    "behind": [
     "AI-Liber",
     "ARENA",
@@ -1854,7 +1854,6 @@
    "unmeasured": [
     "LegatorOCR",
     "OSATURA",
-    "Pendulul",
     "TEZAUR",
     "VERIGA"
    ]
@@ -2800,6 +2799,20 @@
     "kb": 698
    },
    {
+    "key": "Pendulul",
+    "ver": "2.2.0",
+    "score": 8.47,
+    "date": "2026-11-07",
+    "build": true,
+    "axe": 0,
+    "tests": 1,
+    "testsOk": 1,
+    "csp": 1,
+    "off": 1,
+    "langs": 1,
+    "kb": 1060
+   },
+   {
     "key": "Poteca",
     "ver": "2.3.2",
     "score": 9.5,
@@ -3372,12 +3385,12 @@
     "kb": 5278
    }
   ],
-  "scored": 116,
-  "mean": 9.44,
+  "scored": 117,
+  "mean": 9.43,
   "median": 9.5,
-  "builds": 116,
-  "axe": 116,
-  "allTests": 116,
+  "builds": 117,
+  "axe": 117,
+  "allTests": 117,
   "noTests": 0,
   "incomplete": 0,
   "weights": {
