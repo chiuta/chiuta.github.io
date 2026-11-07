@@ -4707,8 +4707,8 @@
    "status": "stable",
    "video": "BRAZDA/video.mp4",
    "poster": "BRAZDA/poster.jpg",
-   "duration": 44.9,
-   "size": 999424,
+   "duration": 46.9,
+   "size": 1022252,
    "vtt": {
     "en": "BRAZDA/en.vtt",
     "ro": "BRAZDA/ro.vtt",
@@ -4725,43 +4725,43 @@
      "video": "BRAZDA/loc/ro/video.mp4",
      "vtt": "BRAZDA/loc/ro/ro.vtt",
      "duration": 46.6,
-     "size": 998612
+     "size": 917100
     },
     "fr": {
      "video": "BRAZDA/loc/fr/video.mp4",
      "vtt": "BRAZDA/loc/fr/fr.vtt",
-     "duration": 47.6,
-     "size": 915918
+     "duration": 47.0,
+     "size": 1040741
     },
     "it": {
      "video": "BRAZDA/loc/it/video.mp4",
      "vtt": "BRAZDA/loc/it/it.vtt",
-     "duration": 49.4,
-     "size": 1054037
+     "duration": 48.0,
+     "size": 1051575
     },
     "es": {
      "video": "BRAZDA/loc/es/video.mp4",
      "vtt": "BRAZDA/loc/es/es.vtt",
-     "duration": 47.8,
-     "size": 1103404
+     "duration": 48.7,
+     "size": 988135
     },
     "pt": {
      "video": "BRAZDA/loc/pt/video.mp4",
      "vtt": "BRAZDA/loc/pt/pt.vtt",
-     "duration": 46.9,
-     "size": 1077842
+     "duration": 51.8,
+     "size": 1088982
     },
     "de": {
      "video": "BRAZDA/loc/de/video.mp4",
      "vtt": "BRAZDA/loc/de/de.vtt",
-     "duration": 47.0,
-     "size": 1117224
+     "duration": 44.7,
+     "size": 976997
     },
     "hu": {
      "video": "BRAZDA/loc/hu/video.mp4",
      "vtt": "BRAZDA/loc/hu/hu.vtt",
-     "duration": 42.8,
-     "size": 980418
+     "duration": 43.1,
+     "size": 987745
     }
    }
   },
@@ -6259,8 +6259,8 @@
    "status": "stable",
    "video": "VOIAJOR/video.mp4",
    "poster": "VOIAJOR/poster.jpg",
-   "duration": 39.2,
-   "size": 1082254,
+   "duration": 41.5,
+   "size": 1169474,
    "vtt": {
     "en": "VOIAJOR/en.vtt",
     "ro": "VOIAJOR/ro.vtt",
@@ -6276,44 +6276,44 @@
     "ro": {
      "video": "VOIAJOR/loc/ro/video.mp4",
      "vtt": "VOIAJOR/loc/ro/ro.vtt",
-     "duration": 42.3,
-     "size": 1122669
+     "duration": 40.6,
+     "size": 1096406
     },
     "fr": {
      "video": "VOIAJOR/loc/fr/video.mp4",
      "vtt": "VOIAJOR/loc/fr/fr.vtt",
-     "duration": 45.0,
-     "size": 1134396
+     "duration": 46.5,
+     "size": 1144323
     },
     "it": {
      "video": "VOIAJOR/loc/it/video.mp4",
      "vtt": "VOIAJOR/loc/it/it.vtt",
-     "duration": 43.5,
-     "size": 1089576
+     "duration": 47.7,
+     "size": 1192794
     },
     "es": {
      "video": "VOIAJOR/loc/es/video.mp4",
      "vtt": "VOIAJOR/loc/es/es.vtt",
-     "duration": 43.8,
-     "size": 1129146
+     "duration": 50.5,
+     "size": 1221702
     },
     "pt": {
      "video": "VOIAJOR/loc/pt/video.mp4",
      "vtt": "VOIAJOR/loc/pt/pt.vtt",
-     "duration": 45.0,
-     "size": 1166391
+     "duration": 47.8,
+     "size": 1183848
     },
     "de": {
      "video": "VOIAJOR/loc/de/video.mp4",
      "vtt": "VOIAJOR/loc/de/de.vtt",
-     "duration": 45.4,
-     "size": 1070042
+     "duration": 46.6,
+     "size": 1176911
     },
     "hu": {
      "video": "VOIAJOR/loc/hu/video.mp4",
      "vtt": "VOIAJOR/loc/hu/hu.vtt",
-     "duration": 46.2,
-     "size": 1118197
+     "duration": 40.1,
+     "size": 1121317
     }
    }
   },
@@ -11435,8 +11435,8 @@
    "status": "stable",
    "video": "CHIROMANTIA/video.mp4",
    "poster": "CHIROMANTIA/poster.jpg",
-   "duration": 36.5,
-   "size": 729485,
+   "duration": 36.1,
+   "size": 735646,
    "vtt": {
     "en": "CHIROMANTIA/en.vtt",
     "ro": "CHIROMANTIA/ro.vtt",
@@ -11452,44 +11452,44 @@
     "ro": {
      "video": "CHIROMANTIA/loc/ro/video.mp4",
      "vtt": "CHIROMANTIA/loc/ro/ro.vtt",
-     "duration": 36.7,
-     "size": 784944
+     "duration": 37.5,
+     "size": 765951
     },
     "fr": {
      "video": "CHIROMANTIA/loc/fr/video.mp4",
      "vtt": "CHIROMANTIA/loc/fr/fr.vtt",
-     "duration": 34.3,
-     "size": 731220
+     "duration": 37.8,
+     "size": 805035
     },
     "it": {
      "video": "CHIROMANTIA/loc/it/video.mp4",
      "vtt": "CHIROMANTIA/loc/it/it.vtt",
-     "duration": 36.9,
-     "size": 654762
+     "duration": 39.1,
+     "size": 732802
     },
     "es": {
      "video": "CHIROMANTIA/loc/es/video.mp4",
      "vtt": "CHIROMANTIA/loc/es/es.vtt",
-     "duration": 38.1,
-     "size": 837138
+     "duration": 37.1,
+     "size": 714653
     },
     "pt": {
      "video": "CHIROMANTIA/loc/pt/video.mp4",
      "vtt": "CHIROMANTIA/loc/pt/pt.vtt",
-     "duration": 37.8,
-     "size": 775380
+     "duration": 38.2,
+     "size": 792728
     },
     "de": {
      "video": "CHIROMANTIA/loc/de/video.mp4",
      "vtt": "CHIROMANTIA/loc/de/de.vtt",
-     "duration": 36.9,
-     "size": 723336
+     "duration": 39.0,
+     "size": 777145
     },
     "hu": {
      "video": "CHIROMANTIA/loc/hu/video.mp4",
      "vtt": "CHIROMANTIA/loc/hu/hu.vtt",
-     "duration": 36.3,
-     "size": 741441
+     "duration": 36.0,
+     "size": 809910
     }
    }
   },
@@ -12219,8 +12219,8 @@
    "status": "stable",
    "video": "PUNCTUM/video.mp4",
    "poster": "PUNCTUM/poster.jpg",
-   "duration": 38.8,
-   "size": 1294385,
+   "duration": 40.1,
+   "size": 1333478,
    "vtt": {
     "en": "PUNCTUM/en.vtt",
     "ro": "PUNCTUM/ro.vtt",
@@ -12236,44 +12236,44 @@
     "ro": {
      "video": "PUNCTUM/loc/ro/video.mp4",
      "vtt": "PUNCTUM/loc/ro/ro.vtt",
-     "duration": 38.9,
-     "size": 1186799
+     "duration": 39.6,
+     "size": 1253704
     },
     "fr": {
      "video": "PUNCTUM/loc/fr/video.mp4",
      "vtt": "PUNCTUM/loc/fr/fr.vtt",
-     "duration": 38.9,
-     "size": 1342153
+     "duration": 39.8,
+     "size": 1329449
     },
     "it": {
      "video": "PUNCTUM/loc/it/video.mp4",
      "vtt": "PUNCTUM/loc/it/it.vtt",
-     "duration": 38.4,
-     "size": 1307247
+     "duration": 39.1,
+     "size": 1280573
     },
     "es": {
      "video": "PUNCTUM/loc/es/video.mp4",
      "vtt": "PUNCTUM/loc/es/es.vtt",
-     "duration": 38.1,
-     "size": 1254160
+     "duration": 39.1,
+     "size": 1274264
     },
     "pt": {
      "video": "PUNCTUM/loc/pt/video.mp4",
      "vtt": "PUNCTUM/loc/pt/pt.vtt",
-     "duration": 39.4,
-     "size": 1299032
+     "duration": 40.0,
+     "size": 1293607
     },
     "de": {
      "video": "PUNCTUM/loc/de/video.mp4",
      "vtt": "PUNCTUM/loc/de/de.vtt",
-     "duration": 39.2,
-     "size": 1451292
+     "duration": 40.2,
+     "size": 1400441
     },
     "hu": {
      "video": "PUNCTUM/loc/hu/video.mp4",
      "vtt": "PUNCTUM/loc/hu/hu.vtt",
-     "duration": 39.4,
-     "size": 1202922
+     "duration": 38.9,
+     "size": 1300070
     }
    }
   },
