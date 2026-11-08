@@ -6,7 +6,7 @@ import path from 'node:path';
 import {createHash} from 'node:crypto';
 import {spawnSync} from 'node:child_process';
 import {fileURLToPath} from 'node:url';
-import {releaseApp, releaseAll, bumpVersion, replaceVersion, bumpTestText, discoverApps} from '../lib/release.mjs';
+import {releaseApp, releaseAll, bumpVersion, replaceVersion, bumpTestText, bumpCodeConstants, discoverApps} from '../lib/release.mjs';
 import {checkKit, applyKit, runInfo} from '../build.mjs';
 import {checkCspHashes} from '../lib/csp.mjs';
 
@@ -180,6 +180,11 @@ console.log('copii ale aplicațiilor reale (în /tmp)');
     const idem = releaseAll(work, {bump: 'none', lax: true});
     check('a doua trecere cu --bump none: nicio modificare, 0 erori', idem.summary.errors === 0 && idem.apps.every((a) => a.changed.length === 0), idem.apps.map((a) => [a.dir.split('/').pop(), a.changed]));
   }
+}
+{
+  const src = ["const VERSION = '2.3.0', UPDATED = '2026-11-03', PFX = 'x.';", '// v2.3.0: istoric, rămâne', '<title>App v2.3.0</title>', "var KIT_VERSION = '2.3.0';", "const W = '2.3.01';"].join('\n');
+  const r = bumpCodeConstants(src, '2.3.0', '2.3.1', '2026-11-03', '2026-11-07').text.split('\n');
+  check('constante din cod: VERSION + UPDATED, titlu cu v…; comentariul, linia kitului și numărul mai lung rămân', r[0].includes("'2.3.1'") && r[0].includes("'2026-11-07'") && r[1].includes('v2.3.0') && r[2].includes('v2.3.1') && r[3].includes("'2.3.0'") && r[4].includes("'2.3.01'"), r);
 }
 
 console.log(`release: ${pass} ok, ${fail} eșuate`);

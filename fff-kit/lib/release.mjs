@@ -59,6 +59,23 @@ export function bumpTestText(text, oldV, newV, oldDate, newDate) {
   return {text: out.join('\n'), lines: changed};
 }
 
+/** Constantele din codul aplicației (const VERSION = '2.3.0', „v2.3.0” în titlu, UPDATED = '2026-11-03'): înlocuite doar între ghilimele sau după „v”;
+ *  liniile de comentariu și cele despre versiunea kitului rămân neatinse. Întoarce {text, lines}. */
+export function bumpCodeConstants(text, oldV, newV, oldDate, newDate) {
+  if (!oldV || oldV === newV) return {text, lines: 0};
+  const q = new RegExp(`(['"])${esc(oldV)}\\1|(?<![\\w.])v ?${esc(oldV)}(?![\\w]|\\.\\d)`);
+  const dmy = (d) => (d ? d.split('-').reverse().join('.') : d);
+  let lines = 0;
+  const out = text.split('\n').map((line) => {
+    const t = line.trim();
+    if (KIT_LINE.test(line) || (/^(\/\/|\/\*|\*)/.test(t) && !/^\/\/ [A-Z][A-Z .]+ v?\d/.test(t)) || !q.test(line)) return line;
+    let [l] = replaceVersion(line, oldV, newV);
+    for (const [a, b] of [[oldDate, newDate], [dmy(oldDate), dmy(newDate)]]) if (a && b && a !== b) l = l.split(a).join(b);
+    lines++; return l;
+  });
+  return {text: out.join('\n'), lines};
+}
+
 const rdIf = (p) => (fs.existsSync(p) ? fs.readFileSync(p, 'utf8') : null);
 function meta(html, name) {
   const m = html.match(new RegExp(`<meta\\b[^>]*\\bname=["']${name}["'][^>]*>`, 'i'));
@@ -190,8 +207,9 @@ export function releaseApp(dirArg, opt = {}) {
       if (!lu.done) rep.warnings.push('lipsește <meta name="last-updated"> (nu l-am creat)');
       const av = bumpAppVersionEl(html, oldV, newV, oldDate, newDate); html = av.html;
       if (!av.found) rep.warnings.push('lipsește elementul #app-version');
+      const cc = bumpCodeConstants(html, oldV, newV, oldDate, newDate); html = cc.text;
       fs.writeFileSync(file, html);
-      rep.steps.bump = {from: oldV, to: newV, date: newDate, appVersionEl: av.found ? (av.changed ? 'actualizat' : 'neschimbat (fără versiune/dată în text)') : 'lipsă'};
+      rep.steps.bump = {from: oldV, to: newV, date: newDate, appVersionEl: av.found ? (av.changed ? 'actualizat' : 'neschimbat (fără versiune/dată în text)') : 'lipsă', codeLines: cc.lines};
 
       /* sw.js */
       const swp = path.join(work, 'sw.js'), sw = rdIf(swp);
