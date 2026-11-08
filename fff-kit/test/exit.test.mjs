@@ -1,6 +1,6 @@
 // Teste FFF.exit (kit 1.3.0): buton „Închide” pe telefon. Rulare: node test/exit.test.mjs
 import fs from 'node:fs';
-import {makeApp, launch, check, summary, FIXTURE, sleep} from './_pw.mjs';
+import {makeApp, launch, check, summary, FIXTURE, sleep, axe} from './_pw.mjs';
 
 const browser = await launch();
 const NOWD = "Object.defineProperty(navigator, 'webdriver', {get: () => false});";   // simulează un browser obișnuit (nu automatizat)
@@ -127,6 +127,17 @@ console.log('plin ecran și limbi');
     await page.evaluate(() => document.querySelector('.fff-exit-btn').click());
     check('limba ' + l + ': „' + txt + '”', await page.evaluate((t) => document.querySelector('.fff-exit-pop').textContent.includes(t), txt));
     await page.evaluate(() => { const p = document.querySelector('.fff-exit-pop'); if (!p.hidden) document.querySelector('.fff-exit-no').click(); });
+  }
+  await ctx.close();
+}
+
+console.log('accesibilitate (axe-core)');
+{
+  const {ctx, page} = await phone(app.url, {init: NOWD});
+  for (const [stare, fn] of [['buton', async () => {}], ['confirmare deschisă', async () => { await page.tap('.fff-exit-btn'); }]]) {
+    await fn();
+    const v = await axe(page, '[data-fff-exit]');
+    check('axe, ' + stare + ': 0 violări', !v || v.length === 0, v && v.map((x) => x.id + ' ' + (x.nodes[0] && x.nodes[0].html || '').slice(0, 80)));
   }
   await ctx.close();
 }
