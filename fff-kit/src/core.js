@@ -52,7 +52,7 @@
       }
     }
   } catch (e3) {}
-  var KIT_VERSION = '1.2.1';
+  var KIT_VERSION = '1.3.0';
   var F = (window.FFF = window.FFF || {});
   if (F.core && F.core.version) return; // idempotent la dublă încărcare
   var SUP = ['ro', 'en', 'fr', 'it', 'es', 'pt', 'hu', 'de'];

@@ -1,6 +1,6 @@
 # fff-kit
 
-**Versiune:** 1.2.1 · **Ultima actualizare:** 7 noiembrie 2026
+**Versiune:** 1.3.0 · **Ultima actualizare:** 7 noiembrie 2026
 
 Module comune pentru aplicațiile „fără frontiere”, **lipite în fiecare `index.html`** de un pas de build. Aplicația rămâne un fișier care funcționează descărcat, offline, fără server. Nimic din kit nu face cereri de rețea.
 
@@ -105,6 +105,16 @@ LC_ALL=C sed -E 's/data-fff-hash="[0-9a-f]*"/data-fff-hash=""/g; s/"sha256":"[0-
 ```
 
 `sizeBytes` este dimensiunea fișierului final; build-ul găsește prin iterație punctul fix (cifrele lui apar în fișier).
+
+## Novități în 1.3.0
+
+### FFF.exit (modulul `exit`) — „cum închid aplicația?” pe telefon
+Pe telefon aplicațiile se deschid în filă nouă și multe trec în plin ecran, deci nu mai e vizibilă nicio bară de browser. Modulul pune un buton mic ✕ (44 px, se estompează după câteva secunde) într-un **colț liber**: caută primul colț (dreapta-sus, stânga-sus, dreapta-jos, stânga-jos) în care nu e niciun element atins, și recalculează după rotire și la plin ecran. Atingerea cere confirmarea „Închizi aplicația?” (Închide / Rămâi). „Închide” iese din plin ecran, încearcă `window.close()` (merge pentru fila deschisă din hub), iar dacă fila rămâne deschisă (aplicație instalată, filă cu istoric) întoarce în hub: `history.back()` când s-a venit de acolo, altfel `https://chiuta.ro/` (schimbabil cu `<meta name="fff-hub" content="https://…">`).
+
+* Apare doar pe ecrane tactile, în pagina de sus (nu în iframe), nu cu `?kiosk=1`, `?embed=1`, `?noexit=1` și nu în browsere automatizate (`navigator.webdriver`), ca testele care apasă la întâmplare să nu închidă pagina.
+* Se oprește cu `<meta name="fff-exit" content="off">` sau din cod cu `FFF.exit.hide()`; `FFF.exit.mount({force:true})` îl arată și pe desktop; `FFF.exit.close()` face aceeași ieșire din orice buton al aplicației.
+* Textele sunt în cele 8 limbi (`i18n/exit.json`) și urmăresc `lang`.
+* Limită: dacă aplicația pune în plin ecran doar un element, butonul se mută în el, dar nu peste un `<video>`/`<canvas>`/`<iframe>` ca element plin-ecran; într-un PWA instalat fila nu poate fi închisă din script, deci „Închide” duce în hub.
 
 ## Novități în 1.2.1
 

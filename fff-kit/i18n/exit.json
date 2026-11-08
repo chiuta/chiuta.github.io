@@ -1,0 +1,50 @@
+{
+ "ro": {
+  "btn": "Închide aplicația",
+  "ask": "Închizi aplicația?",
+  "yes": "Închide",
+  "no": "Rămâi"
+ },
+ "en": {
+  "btn": "Close the app",
+  "ask": "Close the app?",
+  "yes": "Close",
+  "no": "Stay"
+ },
+ "fr": {
+  "btn": "Fermer l'application",
+  "ask": "Fermer l'application ?",
+  "yes": "Fermer",
+  "no": "Rester"
+ },
+ "it": {
+  "btn": "Chiudi l'app",
+  "ask": "Chiudere l'app?",
+  "yes": "Chiudi",
+  "no": "Resta"
+ },
+ "es": {
+  "btn": "Cerrar la aplicación",
+  "ask": "¿Cerrar la aplicación?",
+  "yes": "Cerrar",
+  "no": "Quedarme"
+ },
+ "pt": {
+  "btn": "Fechar a aplicação",
+  "ask": "Fechar a aplicação?",
+  "yes": "Fechar",
+  "no": "Ficar"
+ },
+ "de": {
+  "btn": "App schließen",
+  "ask": "App schließen?",
+  "yes": "Schließen",
+  "no": "Bleiben"
+ },
+ "hu": {
+  "btn": "Alkalmazás bezárása",
+  "ask": "Bezárod az alkalmazást?",
+  "yes": "Bezárás",
+  "no": "Maradok"
+ }
+}
