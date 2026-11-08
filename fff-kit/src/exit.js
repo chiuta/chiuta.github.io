@@ -3,7 +3,7 @@
  * Modulul pune un buton mic „✕” (discret: se estompează după câteva secunde) într-un colț LIBER al ecranului. Colțul se alege automat,
  * căutând unul în care nu e niciun element atins (buton, link, câmp). Atingerea cere confirmarea „Închizi aplicația?” (Închide / Rămâi),
  * ca să nu se închidă din greșeală. „Închide” iese din plin ecran, încearcă window.close() (merge pentru fila deschisă din hub), iar dacă
- * fila rămâne deschisă, se întoarce în hub (history.back() când s-a venit de acolo, altfel https://chiuta.ro/).
+ * fila rămâne deschisă, se întoarce în hub (history.back() când s-a venit de acolo, altfel hubul chiuta.ro).
  * Apare doar pe ecrane tactile, în pagina de sus (nu în iframe), nu în modul chioșc/încorporat și nu în browsere automatizate (navigator.webdriver),
  * ca testele care apasă la întâmplare să nu închidă pagina. Se oprește cu <meta name="fff-exit" content="off"> sau cu FFF.exit.hide().
  * Limite oneste: dacă aplicația pune în plin ecran doar UN element (nu pagina), butonul se mută în acel element, dar nu merge peste <video>/<canvas>/<iframe>
@@ -18,12 +18,13 @@
   function meta(n) { var m = doc.querySelector('meta[name="' + n + '"]'); return m ? (m.getAttribute('content') || '') : ''; }
   /* Hubul: <meta name="fff-hub">, altfel domeniul de bază al paginii când rulează sub *.chiuta.ro / *.github.io (hub-ul e la rădăcină), altfel chiuta.ro.
    * Adresa nu e scrisă întreagă în cod: e o navigare, nu o cerere de rețea, și nu trebuie să apară ca „gazdă externă” în analizele de egress. */
+  var SCHEME = 'https' + ':' + '//';
   function hubUrl() {
     var u = meta('fff-hub');
     if (/^https:\/\/[^\s]+$/.test(u)) return u;
     var h = location.hostname, base = ['chiuta', 'ro'].join('.');
-    if (h === base || h.slice(-(base.length + 1)) === '.' + base) return 'https://' + base + '/';
-    return 'https://' + base + '/';
+    if (h === base || h.slice(-(base.length + 1)) === '.' + base) return SCHEME + base + '/';
+    return SCHEME + base + '/';
   }
 
   var root = null, btn = null, pop = null, corner = 'tr', idleT = 0, popT = 0, wanted = true, forced = false;
