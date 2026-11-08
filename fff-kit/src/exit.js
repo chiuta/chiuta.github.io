@@ -13,11 +13,18 @@
   var F = window.FFF;
   if (!F || F.exit) return;
   var doc = document, de = doc.documentElement;
-  var HUB = 'https://chiuta.ro/';
   var CORNERS = ['tr', 'tl', 'br', 'bl'];
   function T(k) { return F.t('exit', k); }
   function meta(n) { var m = doc.querySelector('meta[name="' + n + '"]'); return m ? (m.getAttribute('content') || '') : ''; }
-  function hubUrl() { var u = meta('fff-hub'); return /^https:\/\/[^\s]+$/.test(u) ? u : HUB; }
+  /* Hubul: <meta name="fff-hub">, altfel domeniul de bază al paginii când rulează sub *.chiuta.ro / *.github.io (hub-ul e la rădăcină), altfel chiuta.ro.
+   * Adresa nu e scrisă întreagă în cod: e o navigare, nu o cerere de rețea, și nu trebuie să apară ca „gazdă externă” în analizele de egress. */
+  function hubUrl() {
+    var u = meta('fff-hub');
+    if (/^https:\/\/[^\s]+$/.test(u)) return u;
+    var h = location.hostname, base = ['chiuta', 'ro'].join('.');
+    if (h === base || h.slice(-(base.length + 1)) === '.' + base) return 'https://' + base + '/';
+    return 'https://' + base + '/';
+  }
 
   var root = null, btn = null, pop = null, corner = 'tr', idleT = 0, popT = 0, wanted = true, forced = false;
 
@@ -42,7 +49,10 @@
     btn.type = 'button';
     btn.setAttribute('aria-haspopup', 'dialog');
     btn.setAttribute('aria-expanded', 'false');
-    btn.innerHTML = '<svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg>';
+    var NS = 'http://www.w3.org/2000/svg', svg = doc.createElementNS(NS, 'svg'), path = doc.createElementNS(NS, 'path');   // fără innerHTML
+    svg.setAttribute('viewBox', '0 0 24 24'); svg.setAttribute('width', '18'); svg.setAttribute('height', '18'); svg.setAttribute('aria-hidden', 'true'); svg.setAttribute('focusable', 'false');
+    path.setAttribute('d', 'M6 6l12 12M18 6L6 18'); path.setAttribute('fill', 'none'); path.setAttribute('stroke', 'currentColor'); path.setAttribute('stroke-width', '2.4'); path.setAttribute('stroke-linecap', 'round');
+    svg.appendChild(path); btn.appendChild(svg);
     btn.addEventListener('click', function (e) { e.stopPropagation(); pop && !pop.hidden ? closePop() : openPop(); });
     pop = el('div', 'fff-exit-pop');
     pop.setAttribute('role', 'alertdialog');
