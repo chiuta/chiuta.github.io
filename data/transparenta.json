@@ -1369,7 +1369,7 @@
   }
  ],
  "a8": {
-  "date": "2026-11-03",
+  "date": "2026-11-09",
   "sources": [
    {
     "id": "ACORDAJ",
@@ -1389,10 +1389,10 @@
     "cad": "viu",
     "st": "schimbat",
     "active": true,
-    "lastOk": "2026-11-03",
+    "lastOk": "2026-11-09",
     "lastFail": null,
     "err": null,
-    "recs": 1363,
+    "recs": 1364,
     "stale": false
    },
    {
@@ -1824,7 +1824,7 @@
    "stopped": 15,
    "stale": 0,
    "failingApps": [],
-   "healthFile": "2026-11-03"
+   "healthFile": "2026-11-09"
   },
   "versions": {
    "cards": 121,

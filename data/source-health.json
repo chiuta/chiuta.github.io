@@ -1,6 +1,6 @@
 {
  "schema": 1,
- "updated": "2026-11-03",
+ "updated": "2026-11-09",
  "sources": {
   "ACORDAJ": {
    "status": "schimbat",
@@ -14,12 +14,12 @@
   },
   "VNTV": {
    "status": "schimbat",
-   "lastOk": "2026-11-03",
+   "lastOk": "2026-11-09",
    "errorType": null,
    "errorMsg": null,
    "consecutiveFails": 0,
-   "records": 1363,
-   "sha256": "a64a9818ba5f"
+   "records": 1364,
+   "sha256": "bafcfecf9137"
   },
   "AGORA-populatii": {
    "status": "schimbat",
