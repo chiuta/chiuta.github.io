@@ -22,7 +22,7 @@
   function KEY() { return ((F.store && F.store.prefix) || ('fff.' + (F.slug || 'app') + '.')) + 'view'; }
 
   var root = null, bar = null, live = null, bIn = null, bOut = null, bFit = null;
-  var user = 1, auto = 1, total = 1, side = 'r', idleT = 0, wanted = true, forced = false, laterT = 0, stickyT = 0, mo = null;
+  var user = 1, auto = 1, total = 1, side = 'r', idleT = 0, wanted = true, forced = false, laterT = 0, stickyT = 0, trT = 0, mo = null;
 
   function zoomOk() { try { return !!(window.CSS && CSS.supports && CSS.supports('zoom', '1.2')); } catch (e) { return false; } }
   function eligible() {
@@ -208,7 +208,7 @@
   }
 
   /* ---------- antete fixe ---------- */
-  function opaque(c) { return c && c !== 'transparent' && !/rgba?\([^)]*,\s*0\s*\)$/.test(c) && !/rgba\(0,\s*0,\s*0,\s*0\)/.test(c); }
+  function opaque(c) { return !!c && c !== 'transparent' && !/^rgba\((?:[^,)]+,){3}\s*0(?:\.0+)?\s*\)$/.test(c) && !/^rgb\([^)]*\/\s*0(?:\.0+)?%?\s*\)$/.test(c); }
   function bgOf(el) {
     for (var e = el; e && e.nodeType === 1; e = e.parentElement) {
       var c = getComputedStyle(e).backgroundColor;
@@ -280,9 +280,10 @@
       try { mo = new MutationObserver(function (list) { for (var i = 0; i < list.length; i++) { var n = list[i].addedNodes; for (var j = 0; j < n.length; j++) { if (n[j].nodeType === 1 && (n[j].tagName === 'TABLE' || (n[j].querySelector && n[j].querySelector('table')))) { scheduleSticky(); return; } } } }); mo.observe(doc.body, {childList: true, subtree: true}); } catch (e) { /* ignorat */ }
     }
     try {
-      var tm = new MutationObserver(scheduleSticky);                               // schimbarea temei (clasă / atribut pe html sau body)
+      var tm = new MutationObserver(function () { try { stickyPass(); } catch (e) { /* ignorat */ } scheduleSticky(); setTimeout(scheduleSticky, 900); });                               // schimbarea temei (clasă / atribut pe html sau body)
       tm.observe(de, {attributes: true, attributeFilter: ['class', 'data-theme', 'data-tema', 'data-mode', 'style']});
       if (doc.body) tm.observe(doc.body, {attributes: true, attributeFilter: ['class', 'data-theme', 'data-tema', 'data-mode']});
+      doc.addEventListener('transitionend', function (e) { if (/background|color/.test(e.propertyName || '')) { clearTimeout(trT); trT = setTimeout(function () { try { stickyPass(); } catch (x) { /* ignorat */ } }, 60); } }, true);   // tranziții de temă: culoarea finală
       if (window.matchMedia) { var mq = matchMedia('(prefers-color-scheme: dark)'); if (mq.addEventListener) mq.addEventListener('change', scheduleSticky); }
     } catch (e) { /* ignorat */ }
     if (MODE === 'sticky') return;
