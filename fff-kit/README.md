@@ -1,6 +1,6 @@
 # fff-kit
 
-**Versiune:** 1.3.0 · **Ultima actualizare:** 7 noiembrie 2026
+**Versiune:** 1.4.0 · **Ultima actualizare:** 7 noiembrie 2026
 
 Module comune pentru aplicațiile „fără frontiere”, **lipite în fiecare `index.html`** de un pas de build. Aplicația rămâne un fișier care funcționează descărcat, offline, fără server. Nimic din kit nu face cereri de rețea.
 
@@ -105,6 +105,16 @@ LC_ALL=C sed -E 's/data-fff-hash="[0-9a-f]*"/data-fff-hash=""/g; s/"sha256":"[0-
 ```
 
 `sizeBytes` este dimensiunea fișierului final; build-ul găsește prin iterație punctul fix (cifrele lui apar în fișier).
+
+## Novități în 1.4.0
+
+### FFF.view (modulul `view`) — antete de tabel fixe, zoom și zoom automat
+
+* **Antete de tabel fixe la derulare** în toate aplicațiile: regulile CSS au specificitate 0 (`:where`), deci stilul propriu al aplicației are prioritate. Antetele pe mai multe rânduri se așază unul sub altul; un antet fără fundal primește fundalul părintelui ca să nu se vadă rândurile prin el. Dacă tabelul e într-un container care taie sau derulează pe orizontală (`overflow`), containerul primește `max-height: 85vh` și derulează pe verticală, ca antetul să rămână fix în el.
+* **Bară de jos cu trei iconițe**: micșorează (−), mărește (+) și „zoom automat” (readuce la valoarea calculată). Se așază în colțul/centrul liber al marginii de jos, se estompează după câteva secunde, are etichete în 8 limbi și mărime constantă (contra-zoom). Alegerea utilizatorului se păstrează în `fff.<slug>.view`.
+* **Zoom automat la încărcare**: `zoom` CSS pe `<html>`, calculat din mărimea textului de bază (țintă 18 px pe telefon, 19 px pe tabletă, 20 px pe ecran mare) și din lățimea ocupată de text (conținut îngust și centrat se lărgește la ecran), cu plafon la ~26 px de text și 2,2×. **Autoverificare**: dacă ar apărea derulare orizontală nouă (sau o pagină care încăpea pe verticală ar începe să se derulească), factorul se înjumătățește, iar în ultimă instanță rămâne 1. Pagina care are deja derulare orizontală sau e dominată de `<canvas>`/`<video>`/`<iframe>` nu primește zoom automat.
+* Bara și zoom-ul nu apar în iframe, cu `?kiosk=1`, `?embed=1`, `?noview=1`, în browsere automatizate (`navigator.webdriver`, ca testele să vadă pagina neschimbată) și în browsere fără `zoom` CSS. `<meta name="fff-view" content="off">` oprește totul, `sticky` păstrează doar antetele fixe, `noauto` păstrează bara fără zoom automat. API: `FFF.view.{zoomIn, zoomOut, reset, get, set, refit, hide, show, mount({force:true}), sticky}`.
+* Butonul ✕ (`exit`) și bara de zoom își păstrează mărimea la orice zoom și nu se suprapun (fiecare își alege colțul liber).
 
 ## Novități în 1.3.0
 

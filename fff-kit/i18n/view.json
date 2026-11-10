@@ -1,0 +1,10 @@
+{
+ "ro": {"bar": "Zoom și dimensiunea textului", "in": "Mărește", "out": "Micșorează", "fit": "Zoom automat", "zoom": "Zoom"},
+ "en": {"bar": "Zoom and text size", "in": "Zoom in", "out": "Zoom out", "fit": "Automatic zoom", "zoom": "Zoom"},
+ "fr": {"bar": "Zoom et taille du texte", "in": "Agrandir", "out": "Réduire", "fit": "Zoom automatique", "zoom": "Zoom"},
+ "it": {"bar": "Zoom e dimensione del testo", "in": "Ingrandisci", "out": "Riduci", "fit": "Zoom automatico", "zoom": "Zoom"},
+ "es": {"bar": "Zoom y tamaño del texto", "in": "Ampliar", "out": "Reducir", "fit": "Zoom automático", "zoom": "Zoom"},
+ "pt": {"bar": "Zoom e tamanho do texto", "in": "Ampliar", "out": "Reduzir", "fit": "Zoom automático", "zoom": "Zoom"},
+ "de": {"bar": "Zoom und Textgröße", "in": "Vergrößern", "out": "Verkleinern", "fit": "Automatischer Zoom", "zoom": "Zoom"},
+ "hu": {"bar": "Nagyítás és szövegméret", "in": "Nagyítás", "out": "Kicsinyítés", "fit": "Automatikus nagyítás", "zoom": "Nagyítás"}
+}
