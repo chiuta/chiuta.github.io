@@ -228,7 +228,9 @@
       for (var r = 0; r < rows.length; r++) {                                 // antete pe mai multe rânduri: fiecare sub precedentul
         var cells = rows[r].cells;
         for (var c = 0; c < cells.length; c++) {
-          var cell = cells[c], cs = getComputedStyle(cell);
+          var cell = cells[c];
+          if (cell.getAttribute('data-fff-bg')) { cell.style.backgroundColor = ''; cell.removeAttribute('data-fff-bg'); }   // reevaluat: tema se poate schimba
+          var cs = getComputedStyle(cell);
           if (cs.position !== 'sticky') continue;                              // aplicația și-a ales altă poziționare
           if (r > 0 && !cell.getAttribute('data-fff-top')) { cell.style.top = top + 'px'; cell.setAttribute('data-fff-top', '1'); }
           if (!opaque(cs.backgroundColor)) { var bg = bgOf(cell.parentElement) || bgOf(tb) || '#fff'; cell.style.backgroundColor = bg; cell.setAttribute('data-fff-bg', '1'); }
@@ -246,6 +248,7 @@
           a.style.overflowY = 'auto';
           a.style.maxHeight = '85vh';
           a.setAttribute('data-fff-vh', '1');
+          if (!a.hasAttribute('tabindex')) a.setAttribute('tabindex', '0'); // regiune derulabilă accesibilă de la tastatură
         }
         break;
       }
@@ -276,6 +279,12 @@
     if (doc.body && typeof MutationObserver === 'function') {
       try { mo = new MutationObserver(function (list) { for (var i = 0; i < list.length; i++) { var n = list[i].addedNodes; for (var j = 0; j < n.length; j++) { if (n[j].nodeType === 1 && (n[j].tagName === 'TABLE' || (n[j].querySelector && n[j].querySelector('table')))) { scheduleSticky(); return; } } } }); mo.observe(doc.body, {childList: true, subtree: true}); } catch (e) { /* ignorat */ }
     }
+    try {
+      var tm = new MutationObserver(scheduleSticky);                               // schimbarea temei (clasă / atribut pe html sau body)
+      tm.observe(de, {attributes: true, attributeFilter: ['class', 'data-theme', 'data-tema', 'data-mode', 'style']});
+      if (doc.body) tm.observe(doc.body, {attributes: true, attributeFilter: ['class', 'data-theme', 'data-tema', 'data-mode']});
+      if (window.matchMedia) { var mq = matchMedia('(prefers-color-scheme: dark)'); if (mq.addEventListener) mq.addEventListener('change', scheduleSticky); }
+    } catch (e) { /* ignorat */ }
     if (MODE === 'sticky') return;
     if (eligible()) mount();
   }
