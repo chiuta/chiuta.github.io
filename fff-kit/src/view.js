@@ -2,7 +2,7 @@
  * (3) zoom automat la încărcare, ca textul să fie mare și conținutul să ocupe spațiul util al ecranului.
  * Antete fixe: regulile CSS (specificitate 0) fac antetul de tabel „lipicios”; pentru tabelele aflate într-un container care taie sau derulează
  * pe orizontală (overflow), containerul primește o înălțime maximă ca antetul să rămână fix în el. Stilul propriu al aplicației are prioritate.
- * Zoom: proprietatea CSS `zoom` pe <html>, înmulțită din doi factori: cel automat (calculat din mărimea textului și din lățimea ocupată) și cel ales
+ * Zoom: proprietatea CSS `zoom` pe elementul rădăcină (html), înmulțită din doi factori: cel automat (calculat din mărimea textului și din lățimea ocupată) și cel ales
  * de utilizator (butoanele, păstrat în stocarea locală sub fff.<slug>.view). Automatul se verifică singur: dacă ar apărea derulare orizontală
  * nouă (sau o pagină care încăpea pe verticală ar începe să se derulească), factorul se înjumătățește și, în ultimă instanță, rămâne 1.
  * Nu se aplică la aplicații dominate de un <canvas>/<video>/<iframe> (zoom-ul automat ar strica calculele lor în pixeli).
