@@ -136,26 +136,48 @@
   function zoomOut() { setUser(round2(user / STEP)); }
   function reset() { setUser(1); }
 
-  /* ---------- bara de jos ---------- */
+  /* ---------- bara de zoom (pe margine) ---------- */
   var TOUCHY = 'a[href],button,input,select,textarea,summary,label,[role=button],[role=link],[role=tab],[role=menuitem],[onclick],[tabindex]:not([tabindex="-1"])';
   function busy(x, y) {
-    var pts = [[x, y], [x - 20, y - 12], [x + 20, y - 12], [x - 20, y + 12], [x + 20, y + 12]], n = 0;
+    var n = 0, vw = innerWidth, vh = innerHeight;
+    var pts = [[x, y], [x - 22, y], [x + 22, y], [x, y - 22], [x, y + 22], [x - 22, y - 22], [x + 22, y + 22], [x + 22, y - 22], [x - 22, y + 22]];
     for (var i = 0; i < pts.length; i++) {
-      var px = Math.min(Math.max(pts[i][0], 1), innerWidth - 2), py = Math.min(Math.max(pts[i][1], 1), innerHeight - 2);
+      var px = Math.min(Math.max(pts[i][0], 1), vw - 2), py = Math.min(Math.max(pts[i][1], 1), vh - 2);
       var e = doc.elementFromPoint(px, py);
-      if (e && !root.contains(e) && e !== doc.body && e !== de && e.closest && e.closest(TOUCHY)) n++;
+      if (!e || root.contains(e) || e === doc.body || e === de || !e.closest) continue;
+      if (e.closest(TOUCHY)) { n += 2; continue; }
+      if (e.childElementCount === 0 && e.textContent && e.textContent.trim().length > 1 && !/^(CANVAS|SVG|IMG|VIDEO)$/i.test(e.tagName)) { n += 1; continue; }   // text de citit
+      for (var a = e; a && a !== doc.body && a !== de; a = a.parentElement) {   // panouri fixe (meniuri, hărți, player) nu se acoperă
+        var cs = getComputedStyle(a);
+        if (cs.position === 'fixed' || cs.position === 'sticky') {
+          var r = a.getBoundingClientRect();
+          if (r.width * r.height < vw * vh * 0.6) n += 1;
+          break;
+        }
+      }
     }
     return n;
   }
+  /* coloană verticală pe marginea laterală (dreapta / stânga), la înălțimea cu cea mai puțină aglomerare */
   function place() {
     if (!root) return;
     var prev = root.style.visibility; root.style.visibility = 'hidden';
-    var w = innerWidth, h = innerHeight, y = h - 34, best = side, score = 99;
-    var spots = {r: [w - 80, y], l: [80, y], c: [w / 2, y]};
-    ['r', 'l', 'c'].forEach(function (c) { var s = busy(spots[c][0], spots[c][1]); if (s < score || (s === score && c === side)) { score = s; best = c; } });
+    var w = innerWidth, h = innerHeight, H = 144, best = null, score = 1e9;
+    var fr = [0.5, 0.4, 0.6, 0.3, 0.7, 0.2, 0.8];
+    var minY = 76 + H / 2, maxY = h - 12 - H / 2;                                // sub butonul ✕, deasupra marginii de jos
+    ['r', 'l'].forEach(function (c) {
+      var cx = c === 'r' ? w - 30 : 30;
+      fr.forEach(function (f, k) {
+        var cy = Math.min(Math.max(h * f, minY), maxY), sc = 0;
+        for (var d = -H / 2 + 22; d <= H / 2 - 22; d += 50) sc += busy(cx, cy + d);
+        sc = sc * 10 + k + (c === side ? 0 : 0.5);
+        if (sc < score) { score = sc; best = {c: c, y: cy}; }
+      });
+    });
     root.style.visibility = prev;
-    side = best;
+    side = best ? best.c : 'r';
     root.className = root.className.replace(/\bfff-view-(r|l|c)\b/g, '').replace(/\s+/g, ' ').trim() + ' fff-view-' + side;
+    root.style.top = Math.round(best ? best.y - H / 2 : 80) + 'px';
   }
   function icon(kind) {
     var NS = 'http://www.w3.org/2000/svg', s = doc.createElementNS(NS, 'svg');
