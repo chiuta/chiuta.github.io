@@ -1,6 +1,6 @@
 {
-  "version": "2.1.6",
-  "updated": "2026-11-10",
+  "version": "2.1.7",
+  "updated": "2026-11-11",
   "egress": [
     {
       "host": "http:(orice gazdă)",
