@@ -18,3 +18,5 @@
 .fff-view-sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 @media (prefers-reduced-motion:reduce){.fff-view,.fff-view-btn{transition:none}}
 @media print{.fff-view{display:none!important}:root{zoom:1!important}}
+
+:root.fff-vpad-r{padding-right:calc(56px + env(safe-area-inset-right,0px))!important}:root.fff-vpad-l{padding-left:calc(56px + env(safe-area-inset-left,0px))!important}

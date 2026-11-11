@@ -158,23 +158,42 @@
     }
     return n;
   }
-  /* coloană verticală pe marginea laterală (dreapta / stânga), la înălțimea cu cea mai puțină aglomerare */
-  function place() {
+  /* coloană verticală pe marginea laterală (dreapta / stânga), la înălțimea cu cele mai puține suprapuneri */
+  function ctrlRects() {                                                          // dreptunghiurile controalelor vizibile din ecran
+    var out = [], vw = innerWidth, vh = innerHeight, els = doc.querySelectorAll('a[href],button,input,select,textarea,summary,[role=button],[role=tab],[role=menuitem],[onclick]');
+    for (var i = 0; i < els.length && out.length < 600; i++) {
+      var e = els[i];
+      if (root.contains(e) || (e.closest && e.closest('.fff-exit'))) continue;
+      var r = e.getBoundingClientRect();
+      if (r.width < 4 || r.height < 4 || r.bottom < 0 || r.top > vh || r.right < 0 || r.left > vw) continue;
+      var cs = getComputedStyle(e);
+      if (cs.visibility === 'hidden' || cs.display === 'none' || +cs.opacity === 0) continue;
+      out.push(r);
+    }
+    return out;
+  }
+  function place(again) {
     if (!root) return;
     var prev = root.style.visibility; root.style.visibility = 'hidden';
-    var w = innerWidth, h = innerHeight, H = 144, best = null, score = 1e9;
-    var fr = [0.5, 0.4, 0.6, 0.3, 0.7, 0.2, 0.8];
-    var minY = 76 + H / 2, maxY = h - 12 - H / 2;                                // sub butonul ✕, deasupra marginii de jos
+    var w = innerWidth, h = innerHeight, H = 144, W = 44, best = null, score = 1e9, rects = ctrlRects();
+    var minY = 76 + H / 2, maxY = h - 12 - H / 2, M = 8;
+    if (!again) de.classList.remove('fff-vpad-r', 'fff-vpad-l');
     ['r', 'l'].forEach(function (c) {
-      var cx = c === 'r' ? w - 30 : 30;
-      fr.forEach(function (f, k) {
-        var cy = Math.min(Math.max(h * f, minY), maxY), sc = 0;
-        for (var d = -H / 2 + 22; d <= H / 2 - 22; d += 50) sc += busy(cx, cy + d);
-        sc = sc * 10 + k + (c === side ? 0 : 0.5);
-        if (sc < score) { score = sc; best = {c: c, y: cy}; }
-      });
+      var x0 = c === 'r' ? w - M - W : M, x1 = x0 + W;
+      for (var k = 0; k <= 14; k++) {
+        var f = 0.5 + (k % 2 ? 1 : -1) * Math.ceil(k / 2) * 0.05, cy = Math.min(Math.max(h * f, minY), maxY), t0 = cy - H / 2, t1 = cy + H / 2, sc = 0, ov = 0;
+        for (var i = 0; i < rects.length; i++) { var r = rects[i]; if (Math.min(x1, r.right) - Math.max(x0, r.left) > 1 && Math.min(t1, r.bottom) - Math.max(t0, r.top) > 1) { sc += 1; ov += 1; } }
+        for (var d = -H / 2 + 22; d <= H / 2 - 22; d += 50) sc += busy(c === 'r' ? w - 30 : 30, cy + d) * 0.2;
+        sc = sc * 10 + k * 0.1 + (c === 'r' ? 0 : 0.05);
+        if (sc < score) { score = sc; best = {c: c, y: cy, ov: ov}; }
+      }
     });
     root.style.visibility = prev;
+    if (best && best.ov > 0 && !again) {                                           // nicio înălțime liberă: rezervăm o gutieră pe margine, conținutul se strânge
+      de.classList.remove('fff-vpad-r', 'fff-vpad-l'); de.classList.add('fff-vpad-' + best.c);
+      void de.offsetWidth; return place(true);
+    }
+    if (best && best.ov > 0 && again) { de.classList.remove('fff-vpad-r', 'fff-vpad-l'); }   // nu a ajutat: revenim
     side = best ? best.c : 'r';
     root.className = root.className.replace(/\bfff-view-(r|l|c)\b/g, '').replace(/\s+/g, ' ').trim() + ' fff-view-' + side;
     root.style.top = Math.round(best ? best.y - H / 2 : 80) + 'px';
@@ -226,7 +245,25 @@
     auto = computeAuto();
     applyZoom(auto * user);
     place(); wake();
+    watchFree();
     return true;
+  }
+  /* după încărcare / schimbări de conținut, bara se mută dacă a ajuns peste un control */
+  var freeT = 0, freeW = false;
+  function ensureFree() {
+    if (!root || root.hidden || !root.isConnected) return;
+    var b = root.getBoundingClientRect(), rects = ctrlRects(), hit = false;
+    for (var i = 0; i < rects.length && !hit; i++) { var r = rects[i]; hit = Math.min(b.right, r.right) - Math.max(b.left, r.left) > 1 && Math.min(b.bottom, r.bottom) - Math.max(b.top, r.top) > 1; }
+    if (hit) place();
+  }
+  function watchFree() {
+    if (freeW) return; freeW = true;
+    var kick = function () { clearTimeout(freeT); freeT = setTimeout(ensureFree, 600); };
+    try {
+      new MutationObserver(function (ms) { for (var i = 0; i < ms.length; i++) { if (!root || !root.contains(ms[i].target)) { kick(); return; } } }).observe(doc.body, {childList: true, subtree: true, attributes: true, attributeFilter: ['class', 'hidden', 'style']});
+    } catch (e) { /* ignorat */ }
+    window.addEventListener('load', kick); window.addEventListener('resize', kick);
+    kick();
   }
 
   /* ---------- antete fixe ---------- */
@@ -287,7 +324,7 @@
     get: function () { return {user: user, auto: auto, total: total}; },
     refit: refit,
     show: function () { wanted = true; if (eligible() && mount()) { root.hidden = false; refit(); } },
-    hide: function () { wanted = false; if (root) { root.hidden = true; de.style.removeProperty('zoom'); de.style.removeProperty('--fff-zinv'); total = 1; } },
+    hide: function () { wanted = false; if (root) { root.hidden = true; de.style.removeProperty('zoom'); de.style.removeProperty('--fff-zinv'); de.classList.remove('fff-vpad-r', 'fff-vpad-l'); total = 1; } },
     mount: function (opt) { if (opt && opt.force) forced = true; wanted = true; if (!eligible()) return false; var ok = mount(); if (ok) { root.hidden = false; refit(); } return ok; },
     sticky: stickyPass,
     element: function () { return root; }
