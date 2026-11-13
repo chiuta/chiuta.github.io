@@ -4730,13 +4730,13 @@
     "fr": {
      "video": "BRAZDA/loc/fr/video.mp4",
      "vtt": "BRAZDA/loc/fr/fr.vtt",
-     "duration": 47.0,
+     "duration": 47,
      "size": 1040741
     },
     "it": {
      "video": "BRAZDA/loc/it/video.mp4",
      "vtt": "BRAZDA/loc/it/it.vtt",
-     "duration": 48.0,
+     "duration": 48,
      "size": 1051575
     },
     "es": {
@@ -11482,13 +11482,13 @@
     "de": {
      "video": "CHIROMANTIA/loc/de/video.mp4",
      "vtt": "CHIROMANTIA/loc/de/de.vtt",
-     "duration": 39.0,
+     "duration": 39,
      "size": 777145
     },
     "hu": {
      "video": "CHIROMANTIA/loc/hu/video.mp4",
      "vtt": "CHIROMANTIA/loc/hu/hu.vtt",
-     "duration": 36.0,
+     "duration": 36,
      "size": 809910
     }
    }
@@ -12260,7 +12260,7 @@
     "pt": {
      "video": "PUNCTUM/loc/pt/video.mp4",
      "vtt": "PUNCTUM/loc/pt/pt.vtt",
-     "duration": 40.0,
+     "duration": 40,
      "size": 1293607
     },
     "de": {
@@ -13223,6 +13223,592 @@
      "vtt": "LegatorOCR/loc/hu/hu.vtt",
      "duration": 26,
      "size": 254602
+    }
+   }
+  },
+  {
+   "slug": "Cronosala",
+   "title": "Cronosala",
+   "section": "utilitare",
+   "tags": {
+    "en": [
+     "sport",
+     "time"
+    ],
+    "ro": [
+     "sport",
+     "timp"
+    ],
+    "fr": [
+     "sport",
+     "temps"
+    ],
+    "it": [
+     "sport",
+     "tempo"
+    ],
+    "es": [
+     "deporte",
+     "tiempo"
+    ],
+    "pt": [
+     "desporto",
+     "tempo"
+    ],
+    "de": [
+     "Sport",
+     "Zeit"
+    ],
+    "hu": [
+     "sport",
+     "idő"
+    ]
+   },
+   "line": {
+    "en": "Gym timers: rest between sets, HIIT, Tabata, EMOM, AMRAP, circuits and a metronome, plus a training log with kg and reps. The interface is in Romanian only.",
+    "ro": "Cronometre pentru sală: pauze între seturi, HIIT, Tabata, EMOM, AMRAP, circuit și metronom, plus jurnal de antrenament cu kg și repetări. Interfața e doar în română.",
+    "fr": "Minuteurs de salle de sport : repos entre les séries, HIIT, Tabata, EMOM, AMRAP, circuits et métronome, plus un carnet d’entraînement (kg et répétitions). Interface uniquement en roumain.",
+    "it": "Timer per la palestra: recupero tra le serie, HIIT, Tabata, EMOM, AMRAP, circuiti e metronomo, più un diario di allenamento con kg e ripetizioni. Interfaccia solo in rumeno.",
+    "es": "Temporizadores para el gimnasio: descanso entre series, HIIT, Tabata, EMOM, AMRAP, circuitos y metrónomo, más un diario de entrenamiento con kg y repeticiones. Interfaz solo en rumano.",
+    "pt": "Temporizadores para o ginásio: descanso entre séries, HIIT, Tabata, EMOM, AMRAP, circuitos e metrónomo, mais um diário de treino com kg e repetições. Interface apenas em romeno.",
+    "de": "Timer fürs Fitnessstudio: Satzpausen, HIIT, Tabata, EMOM, AMRAP, Zirkel und Metronom, dazu ein Trainingstagebuch mit kg und Wiederholungen. Oberfläche nur auf Rumänisch.",
+    "hu": "Időzítők az edzőterembe: szünet a sorozatok között, HIIT, Tabata, EMOM, AMRAP, körök és metronóm, valamint edzésnapló kg-mal és ismétlésekkel. A felület csak románul van."
+   },
+   "url": "https://chiuta.github.io/Cronosala/",
+   "readme": "https://github.com/chiuta/Cronosala#readme",
+   "off": "no",
+   "status": "stable",
+   "video": "Cronosala/video.mp4",
+   "poster": "Cronosala/poster.jpg",
+   "duration": 38.4,
+   "size": 369065,
+   "vtt": {
+    "en": "Cronosala/en.vtt",
+    "ro": "Cronosala/ro.vtt",
+    "fr": "Cronosala/fr.vtt",
+    "it": "Cronosala/it.vtt",
+    "es": "Cronosala/es.vtt",
+    "pt": "Cronosala/pt.vtt",
+    "de": "Cronosala/de.vtt",
+    "hu": "Cronosala/hu.vtt"
+   },
+   "transcript": "Cronosala/transcript.json",
+   "videos": {}
+  },
+  {
+   "slug": "REZONANTA",
+   "title": "REZONANTA",
+   "section": "educatie",
+   "tags": {
+    "en": [
+     "communication",
+     "media"
+    ],
+    "ro": [
+     "comunicare",
+     "media"
+    ],
+    "fr": [
+     "communication",
+     "médias"
+    ],
+    "it": [
+     "comunicazione",
+     "media"
+    ],
+    "es": [
+     "comunicación",
+     "medios"
+    ],
+    "pt": [
+     "comunicação",
+     "media"
+    ],
+    "de": [
+     "Kommunikation",
+     "Medien"
+    ],
+    "hu": [
+     "kommunikáció",
+     "média"
+    ]
+   },
+   "line": {
+    "en": "A guide and tools for communication and media: message, channels, press release, interview, clarity, plan and crisis. The interface is in Romanian only.",
+    "ro": "Ghid și instrumente pentru comunicare și media: mesaj, canale, comunicat de presă, interviu, claritate, plan și criză. Interfața e doar în română.",
+    "fr": "Guide et outils de communication et de médias : message, canaux, communiqué de presse, interview, clarté, plan et crise. Interface uniquement en roumain.",
+    "it": "Guida e strumenti per comunicazione e media: messaggio, canali, comunicato stampa, intervista, chiarezza, piano e crisi. Interfaccia solo in rumeno.",
+    "es": "Guía y herramientas de comunicación y medios: mensaje, canales, nota de prensa, entrevista, claridad, plan y crisis. Interfaz solo en rumano.",
+    "pt": "Guia e ferramentas de comunicação e media: mensagem, canais, comunicado de imprensa, entrevista, clareza, plano e crise. Interface apenas em romeno.",
+    "de": "Leitfaden und Werkzeuge für Kommunikation und Medien: Botschaft, Kanäle, Pressemitteilung, Interview, Klarheit, Plan und Krise. Oberfläche nur auf Rumänisch.",
+    "hu": "Útmutató és eszközök a kommunikációhoz és a médiához: üzenet, csatornák, sajtóközlemény, interjú, érthetőség, terv és válság. A felület csak románul van."
+   },
+   "url": "https://chiuta.github.io/REZONANTA/",
+   "readme": "https://github.com/chiuta/REZONANTA#readme",
+   "off": "no",
+   "status": "stable",
+   "video": "REZONANTA/video.mp4",
+   "poster": "REZONANTA/poster.jpg",
+   "duration": 37.6,
+   "size": 326179,
+   "vtt": {
+    "en": "REZONANTA/en.vtt",
+    "ro": "REZONANTA/ro.vtt",
+    "fr": "REZONANTA/fr.vtt",
+    "it": "REZONANTA/it.vtt",
+    "es": "REZONANTA/es.vtt",
+    "pt": "REZONANTA/pt.vtt",
+    "de": "REZONANTA/de.vtt",
+    "hu": "REZONANTA/hu.vtt"
+   },
+   "transcript": "REZONANTA/transcript.json",
+   "videos": {}
+  },
+  {
+   "slug": "FARFURIA",
+   "title": "FARFURIA",
+   "section": "educatie",
+   "tags": {
+    "en": [
+     "nutrition",
+     "health"
+    ],
+    "ro": [
+     "nutriție",
+     "sănătate"
+    ],
+    "fr": [
+     "nutrition",
+     "santé"
+    ],
+    "it": [
+     "nutrizione",
+     "salute"
+    ],
+    "es": [
+     "nutrición",
+     "salud"
+    ],
+    "pt": [
+     "nutrição",
+     "saúde"
+    ],
+    "de": [
+     "Ernährung",
+     "Gesundheit"
+    ],
+    "hu": [
+     "táplálkozás",
+     "egészség"
+    ]
+   },
+   "line": {
+    "en": "A free digital dietitian: personalised calories and macros, a 7-day meal plan, a food diary and weight tracking. It does not replace a doctor or a dietitian.",
+    "ro": "Dietetician digital gratuit: calorii și macronutrienți personalizați, plan de masă pe 7 zile, jurnal alimentar și greutate. Nu înlocuiește medicul sau dieteticianul.",
+    "fr": "Un diététicien numérique gratuit : calories et macros personnalisées, plan de repas sur 7 jours, journal alimentaire et suivi du poids. Il ne remplace ni le médecin ni le diététicien.",
+    "it": "Un dietista digitale gratuito: calorie e macro personalizzate, piano pasti per 7 giorni, diario alimentare e monitoraggio del peso. Non sostituisce il medico né il dietista.",
+    "es": "Un dietista digital gratuito: calorías y macros personalizados, plan de comidas de 7 días, diario alimentario y seguimiento del peso. No sustituye al médico ni al dietista.",
+    "pt": "Um dietista digital gratuito: calorias e macros personalizados, plano de refeições para 7 dias, diário alimentar e acompanhamento do peso. Não substitui o médico nem o nutricionista.",
+    "de": "Ein kostenloser digitaler Ernährungsberater: persönliche Kalorien und Makros, 7-Tage-Speiseplan, Ernährungstagebuch und Gewichtsverlauf. Er ersetzt weder Arzt noch Ernährungsberater.",
+    "hu": "Ingyenes digitális dietetikus: személyre szabott kalória és makrók, 7 napos étrend, ételnapló és testsúlykövetés. Nem helyettesíti az orvost vagy a dietetikust."
+   },
+   "url": "https://chiuta.github.io/FARFURIA/",
+   "readme": "https://github.com/chiuta/FARFURIA#readme",
+   "off": "no",
+   "status": "stable",
+   "video": "FARFURIA/video.mp4",
+   "poster": "FARFURIA/poster.jpg",
+   "duration": 35.7,
+   "size": 441967,
+   "vtt": {
+    "en": "FARFURIA/en.vtt",
+    "ro": "FARFURIA/ro.vtt",
+    "fr": "FARFURIA/fr.vtt",
+    "it": "FARFURIA/it.vtt",
+    "es": "FARFURIA/es.vtt",
+    "pt": "FARFURIA/pt.vtt",
+    "de": "FARFURIA/de.vtt",
+    "hu": "FARFURIA/hu.vtt"
+   },
+   "transcript": "FARFURIA/transcript.json",
+   "videos": {
+    "ro": {
+     "video": "FARFURIA/loc/ro/video.mp4",
+     "vtt": "FARFURIA/loc/ro/ro.vtt",
+     "duration": 35.7,
+     "size": 458345
+    },
+    "fr": {
+     "video": "FARFURIA/loc/fr/video.mp4",
+     "vtt": "FARFURIA/loc/fr/fr.vtt",
+     "duration": 35.8,
+     "size": 432244
+    },
+    "it": {
+     "video": "FARFURIA/loc/it/video.mp4",
+     "vtt": "FARFURIA/loc/it/it.vtt",
+     "duration": 35.8,
+     "size": 446443
+    },
+    "es": {
+     "video": "FARFURIA/loc/es/video.mp4",
+     "vtt": "FARFURIA/loc/es/es.vtt",
+     "duration": 29.6,
+     "size": 440863
+    },
+    "pt": {
+     "video": "FARFURIA/loc/pt/video.mp4",
+     "vtt": "FARFURIA/loc/pt/pt.vtt",
+     "duration": 29.5,
+     "size": 435521
+    },
+    "de": {
+     "video": "FARFURIA/loc/de/video.mp4",
+     "vtt": "FARFURIA/loc/de/de.vtt",
+     "duration": 29.2,
+     "size": 423059
+    },
+    "hu": {
+     "video": "FARFURIA/loc/hu/video.mp4",
+     "vtt": "FARFURIA/loc/hu/hu.vtt",
+     "duration": 29.2,
+     "size": 447173
+    }
+   }
+  },
+  {
+   "slug": "VITALIS",
+   "title": "VITALIS",
+   "section": "educatie",
+   "tags": {
+    "en": [
+     "health",
+     "longevity"
+    ],
+    "ro": [
+     "sănătate",
+     "longevitate"
+    ],
+    "fr": [
+     "santé",
+     "longévité"
+    ],
+    "it": [
+     "salute",
+     "longevità"
+    ],
+    "es": [
+     "salud",
+     "longevidad"
+    ],
+    "pt": [
+     "saúde",
+     "longevidade"
+    ],
+    "de": [
+     "Gesundheit",
+     "Langlebigkeit"
+    ],
+    "hu": [
+     "egészség",
+     "hosszú élet"
+    ]
+   },
+   "line": {
+    "en": "A private health, longevity and biohacking companion: nine evidence-ranked pillars, calculators, a lifestyle score and a daily ritual. Not medical advice.",
+    "ro": "Companion privat pentru sănătate, longevitate și biohacking: nouă piloni ordonați după dovezi, calculatoare, scor de stil de viață și ritual zilnic. Nu e sfat medical.",
+    "fr": "Un compagnon privé pour la santé, la longévité et le biohacking : neuf piliers classés par niveau de preuve, calculateurs, score de mode de vie et rituel quotidien. Pas un avis médical.",
+    "it": "Un compagno privato per salute, longevità e biohacking: nove pilastri ordinati per prove, calcolatori, punteggio di stile di vita e rituale quotidiano. Non è un parere medico.",
+    "es": "Un compañero privado de salud, longevidad y biohacking: nueve pilares ordenados por evidencia, calculadoras, puntuación de estilo de vida y ritual diario. No es consejo médico.",
+    "pt": "Um companheiro privado de saúde, longevidade e biohacking: nove pilares ordenados por evidência, calculadoras, pontuação de estilo de vida e ritual diário. Não é aconselhamento médico.",
+    "de": "Ein privater Begleiter für Gesundheit, Langlebigkeit und Biohacking: neun nach Evidenz geordnete Säulen, Rechner, Lebensstil-Score und tägliches Ritual. Kein medizinischer Rat.",
+    "hu": "Privát társ az egészséghez, hosszú élethez és biohackinghez: kilenc bizonyíték szerint rangsorolt pillér, számológépek, életmódpontszám és napi rituálé. Nem orvosi tanács."
+   },
+   "url": "https://chiuta.github.io/VITALIS/",
+   "readme": "https://github.com/chiuta/VITALIS#readme",
+   "off": "full",
+   "status": "stable",
+   "video": "VITALIS/video.mp4",
+   "poster": "VITALIS/poster.jpg",
+   "duration": 32.9,
+   "size": 549807,
+   "vtt": {
+    "en": "VITALIS/en.vtt",
+    "ro": "VITALIS/ro.vtt",
+    "fr": "VITALIS/fr.vtt",
+    "it": "VITALIS/it.vtt",
+    "es": "VITALIS/es.vtt",
+    "pt": "VITALIS/pt.vtt",
+    "de": "VITALIS/de.vtt",
+    "hu": "VITALIS/hu.vtt"
+   },
+   "transcript": "VITALIS/transcript.json",
+   "videos": {
+    "ro": {
+     "video": "VITALIS/loc/ro/video.mp4",
+     "vtt": "VITALIS/loc/ro/ro.vtt",
+     "duration": 32.8,
+     "size": 566756
+    },
+    "fr": {
+     "video": "VITALIS/loc/fr/video.mp4",
+     "vtt": "VITALIS/loc/fr/fr.vtt",
+     "duration": 44.8,
+     "size": 656544
+    },
+    "it": {
+     "video": "VITALIS/loc/it/video.mp4",
+     "vtt": "VITALIS/loc/it/it.vtt",
+     "duration": 39.4,
+     "size": 637975
+    },
+    "es": {
+     "video": "VITALIS/loc/es/video.mp4",
+     "vtt": "VITALIS/loc/es/es.vtt",
+     "duration": 32.9,
+     "size": 569110
+    },
+    "pt": {
+     "video": "VITALIS/loc/pt/video.mp4",
+     "vtt": "VITALIS/loc/pt/pt.vtt",
+     "duration": 39.2,
+     "size": 616001
+    },
+    "de": {
+     "video": "VITALIS/loc/de/video.mp4",
+     "vtt": "VITALIS/loc/de/de.vtt",
+     "duration": 32.4,
+     "size": 600177
+    },
+    "hu": {
+     "video": "VITALIS/loc/hu/video.mp4",
+     "vtt": "VITALIS/loc/hu/hu.vtt",
+     "duration": 39.2,
+     "size": 665745
+    }
+   }
+  },
+  {
+   "slug": "DECUPAJ",
+   "title": "DECUPAJ",
+   "section": "sunet",
+   "tags": {
+    "en": [
+     "reels",
+     "video"
+    ],
+    "ro": [
+     "reels",
+     "video"
+    ],
+    "fr": [
+     "reels",
+     "vidéo"
+    ],
+    "it": [
+     "reels",
+     "video"
+    ],
+    "es": [
+     "reels",
+     "vídeo"
+    ],
+    "pt": [
+     "reels",
+     "vídeo"
+    ],
+    "de": [
+     "Reels",
+     "Video"
+    ],
+    "hu": [
+     "reels",
+     "videó"
+    ]
+   },
+   "line": {
+    "en": "Turn a podcast, audio or video, into vertical clips with subtitles, right in the browser, with no account and no watermark. Your files never leave your device.",
+    "ro": "Transformi un podcast, audio sau video, în clipuri verticale cu subtitrări, direct în browser, fără cont și fără watermark. Fișierele tale nu pleacă din dispozitiv.",
+    "fr": "Transformez un podcast, audio ou vidéo, en clips verticaux sous-titrés, directement dans le navigateur, sans compte ni filigrane. Vos fichiers ne quittent pas l’appareil.",
+    "it": "Trasforma un podcast, audio o video, in clip verticali con sottotitoli, direttamente nel browser, senza account e senza filigrana. I tuoi file non lasciano il dispositivo.",
+    "es": "Convierte un pódcast, de audio o vídeo, en clips verticales con subtítulos, directamente en el navegador, sin cuenta y sin marca de agua. Tus archivos no salen del dispositivo.",
+    "pt": "Transforme um podcast, em áudio ou vídeo, em clipes verticais com legendas, diretamente no navegador, sem conta e sem marca-d’água. Os seus ficheiros não saem do dispositivo.",
+    "de": "Verwandle einen Podcast, Audio oder Video, direkt im Browser in vertikale Clips mit Untertiteln, ohne Konto und ohne Wasserzeichen. Deine Dateien verlassen dein Gerät nicht.",
+    "hu": "Alakíts át egy podcastot, hangot vagy videót, függőleges feliratos klipekké közvetlenül a böngészőben, fiók és vízjel nélkül. A fájljaid nem hagyják el az eszközt."
+   },
+   "url": "https://chiuta.github.io/DECUPAJ/",
+   "readme": "https://github.com/chiuta/DECUPAJ#readme",
+   "off": "part",
+   "status": "stable",
+   "video": "DECUPAJ/video.mp4",
+   "poster": "DECUPAJ/poster.jpg",
+   "duration": 24.9,
+   "size": 313375,
+   "vtt": {
+    "en": "DECUPAJ/en.vtt",
+    "ro": "DECUPAJ/ro.vtt",
+    "fr": "DECUPAJ/fr.vtt",
+    "it": "DECUPAJ/it.vtt",
+    "es": "DECUPAJ/es.vtt",
+    "pt": "DECUPAJ/pt.vtt",
+    "de": "DECUPAJ/de.vtt",
+    "hu": "DECUPAJ/hu.vtt"
+   },
+   "transcript": "DECUPAJ/transcript.json",
+   "videos": {
+    "ro": {
+     "video": "DECUPAJ/loc/ro/video.mp4",
+     "vtt": "DECUPAJ/loc/ro/ro.vtt",
+     "duration": 31.7,
+     "size": 340216
+    },
+    "fr": {
+     "video": "DECUPAJ/loc/fr/video.mp4",
+     "vtt": "DECUPAJ/loc/fr/fr.vtt",
+     "duration": 24.8,
+     "size": 398711
+    },
+    "it": {
+     "video": "DECUPAJ/loc/it/video.mp4",
+     "vtt": "DECUPAJ/loc/it/it.vtt",
+     "duration": 24.9,
+     "size": 319235
+    },
+    "es": {
+     "video": "DECUPAJ/loc/es/video.mp4",
+     "vtt": "DECUPAJ/loc/es/es.vtt",
+     "duration": 32,
+     "size": 390465
+    },
+    "pt": {
+     "video": "DECUPAJ/loc/pt/video.mp4",
+     "vtt": "DECUPAJ/loc/pt/pt.vtt",
+     "duration": 25,
+     "size": 347842
+    },
+    "de": {
+     "video": "DECUPAJ/loc/de/video.mp4",
+     "vtt": "DECUPAJ/loc/de/de.vtt",
+     "duration": 31.3,
+     "size": 403241
+    },
+    "hu": {
+     "video": "DECUPAJ/loc/hu/video.mp4",
+     "vtt": "DECUPAJ/loc/hu/hu.vtt",
+     "duration": 31.3,
+     "size": 420128
+    }
+   }
+  },
+  {
+   "slug": "LECTOR",
+   "title": "LECTOR",
+   "section": "literatura",
+   "tags": {
+    "en": [
+     "audio",
+     "books"
+    ],
+    "ro": [
+     "audio",
+     "cărți"
+    ],
+    "fr": [
+     "audio",
+     "livres"
+    ],
+    "it": [
+     "audio",
+     "libri"
+    ],
+    "es": [
+     "audio",
+     "libros"
+    ],
+    "pt": [
+     "áudio",
+     "livros"
+    ],
+    "de": [
+     "Audio",
+     "Bücher"
+    ],
+    "hu": [
+     "hang",
+     "könyvek"
+    ]
+   },
+   "line": {
+    "en": "Books read aloud right in the browser: EPUB, DOCX, PDF, TXT or pasted text, with no account and no server. The text never leaves your device.",
+    "ro": "Cărți citite cu voce tare, direct în browser: EPUB, DOCX, PDF, TXT sau text lipit, fără cont și fără server. Textul nu pleacă din dispozitiv.",
+    "fr": "Des livres lus à voix haute directement dans le navigateur : EPUB, DOCX, PDF, TXT ou texte collé, sans compte ni serveur. Le texte ne quitte pas l’appareil.",
+    "it": "Libri letti ad alta voce direttamente nel browser: EPUB, DOCX, PDF, TXT o testo incollato, senza account né server. Il testo non lascia il dispositivo.",
+    "es": "Libros leídos en voz alta directamente en el navegador: EPUB, DOCX, PDF, TXT o texto pegado, sin cuenta ni servidor. El texto no sale del dispositivo.",
+    "pt": "Livros lidos em voz alta diretamente no navegador: EPUB, DOCX, PDF, TXT ou texto colado, sem conta nem servidor. O texto não sai do dispositivo.",
+    "de": "Bücher, direkt im Browser vorgelesen: EPUB, DOCX, PDF, TXT oder eingefügter Text, ohne Konto und ohne Server. Der Text verlässt dein Gerät nicht.",
+    "hu": "Könyvek felolvasva közvetlenül a böngészőben: EPUB, DOCX, PDF, TXT vagy bemásolt szöveg, fiók és szerver nélkül. A szöveg nem hagyja el az eszközt."
+   },
+   "url": "https://chiuta.github.io/LECTOR/",
+   "readme": "https://github.com/chiuta/LECTOR#readme",
+   "off": "part",
+   "status": "stable",
+   "video": "LECTOR/video.mp4",
+   "poster": "LECTOR/poster.jpg",
+   "duration": 33.3,
+   "size": 299342,
+   "vtt": {
+    "en": "LECTOR/en.vtt",
+    "ro": "LECTOR/ro.vtt",
+    "fr": "LECTOR/fr.vtt",
+    "it": "LECTOR/it.vtt",
+    "es": "LECTOR/es.vtt",
+    "pt": "LECTOR/pt.vtt",
+    "de": "LECTOR/de.vtt",
+    "hu": "LECTOR/hu.vtt"
+   },
+   "transcript": "LECTOR/transcript.json",
+   "videos": {
+    "ro": {
+     "video": "LECTOR/loc/ro/video.mp4",
+     "vtt": "LECTOR/loc/ro/ro.vtt",
+     "duration": 33.3,
+     "size": 294089
+    },
+    "fr": {
+     "video": "LECTOR/loc/fr/video.mp4",
+     "vtt": "LECTOR/loc/fr/fr.vtt",
+     "duration": 32.6,
+     "size": 274836
+    },
+    "it": {
+     "video": "LECTOR/loc/it/video.mp4",
+     "vtt": "LECTOR/loc/it/it.vtt",
+     "duration": 33.1,
+     "size": 300162
+    },
+    "es": {
+     "video": "LECTOR/loc/es/video.mp4",
+     "vtt": "LECTOR/loc/es/es.vtt",
+     "duration": 38.6,
+     "size": 344446
+    },
+    "pt": {
+     "video": "LECTOR/loc/pt/video.mp4",
+     "vtt": "LECTOR/loc/pt/pt.vtt",
+     "duration": 26.5,
+     "size": 269743
+    },
+    "de": {
+     "video": "LECTOR/loc/de/video.mp4",
+     "vtt": "LECTOR/loc/de/de.vtt",
+     "duration": 26.6,
+     "size": 269697
+    },
+    "hu": {
+     "video": "LECTOR/loc/hu/video.mp4",
+     "vtt": "LECTOR/loc/hu/hu.vtt",
+     "duration": 26.8,
+     "size": 278508
     }
    }
   }
