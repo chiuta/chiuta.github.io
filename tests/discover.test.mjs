@@ -215,7 +215,7 @@ function exifJpeg() {
 await T('auditor: JPEG cu EXIF/GPS/XMP-IA/C2PA, HTML cu linkuri, PDF cu autor; raport .fff.json; 8 limbi; fără rețea', async () => {
   const {ctx, page, errors, external} = await open('en');
   await page.evaluate(() => { document.getElementById('au-panel').open = true; });
-  const run = async (name, buffer, mime) => { await page.setInputFiles('#au-file', {name, mimeType: mime, buffer}); await page.waitForFunction(() => document.getElementById('au-out').dataset.keys); return page.$eval('#au-out', (o) => o.dataset.keys.split(' ')); };
+  const run = async (name, buffer, mime) => { await page.evaluate(() => { delete document.getElementById('au-out').dataset.keys; }); await page.setInputFiles('#au-file', {name, mimeType: mime, buffer}); await page.waitForFunction(() => document.getElementById('au-out').dataset.keys); return page.$eval('#au-out', (o) => o.dataset.keys.split(' ')); };
   let k = await run('foto.jpg', exifJpeg(), 'image/jpeg');
   for (const need of ['fC2paYes', 'fAi', 'fGps', 'fSw', 'fCam', 'fXmp', 'fLinks']) ok(k.includes(need), 'JPEG: lipsește ' + need + ' din ' + k);
   ok(/44\.4/.test(await page.$eval('#au-out', (o) => o.textContent)), 'coordonatele GPS nu sunt decodate');
