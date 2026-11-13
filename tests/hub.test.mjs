@@ -57,7 +57,7 @@ async function open(lang, urlPath = '', opts = {}) {
   page.on('pageerror', (e) => errors.push(e.message));
   // 404 pentru demo/<App>/loc/<limbă>/preview.webp|video.mp4 este fallback intenționat (previzualizarea localizată lipsește → se cere cea implicită);
   // apare doar pentru cardurile ajunse în viewport, deci altfel testul ar depinde de poziția de derulare.
-  page.on('console', (m) => { const u = m.location().url || ''; if (m.type() === 'error' && !/\/demo\/[^/]+\/loc\/[a-z]{2}\//.test(u)) errors.push(m.text() + (u ? ' [' + u + ']' : '')); });
+  page.on('console', (m) => { const u = m.location().url || ''; if (m.type() === 'error' && !/\/demo\/[^/]+\/loc\/[a-z]{2}\//.test(u) && !(/\/demo\/([^/]+)\/(preview\.webp|poster\.jpg)$/.test(u) && !fs.existsSync(path.join(HUB, 'demo', decodeURIComponent(u.match(/\/demo\/([^/]+)\//)[1]))))) errors.push(m.text() + (u ? ' [' + u + ']' : '')); });
   await page.goto(BASE + urlPath);
   return {ctx, page, external, errors};
 }

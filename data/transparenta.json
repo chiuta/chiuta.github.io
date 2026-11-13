@@ -1366,6 +1366,94 @@
    "hm": null,
    "l": null,
    "ext": true
+  },
+  {
+   "key": "Cronosala",
+   "ver": "3.0",
+   "off": "no",
+   "langs": 1,
+   "hosts": 0,
+   "score": null,
+   "hm": null,
+   "l": null,
+   "ext": true
+  },
+  {
+   "key": "DECUPAJ",
+   "ver": "12",
+   "off": "part",
+   "langs": 7,
+   "hosts": 0,
+   "score": null,
+   "hm": null,
+   "l": null,
+   "ext": true
+  },
+  {
+   "key": "LECTOR",
+   "ver": "12",
+   "off": "part",
+   "langs": 7,
+   "hosts": 0,
+   "score": null,
+   "hm": null,
+   "l": null,
+   "ext": true
+  },
+  {
+   "key": "FARFURIA",
+   "ver": "1.0",
+   "off": "no",
+   "langs": 8,
+   "hosts": 0,
+   "score": null,
+   "hm": null,
+   "l": null,
+   "ext": true
+  },
+  {
+   "key": "VITALIS",
+   "ver": "1.0.0",
+   "off": "full",
+   "langs": 8,
+   "hosts": 0,
+   "score": null,
+   "hm": null,
+   "l": null,
+   "ext": true
+  },
+  {
+   "key": "REZONANTA",
+   "ver": "1.0",
+   "off": "no",
+   "langs": 1,
+   "hosts": 0,
+   "score": null,
+   "hm": null,
+   "l": null,
+   "ext": true
+  },
+  {
+   "key": "Claritas",
+   "ver": "1.9.1",
+   "off": "full",
+   "langs": 8,
+   "hosts": 0,
+   "score": null,
+   "hm": null,
+   "l": null,
+   "ext": true
+  },
+  {
+   "key": "TurboCursa",
+   "ver": "1.7.1",
+   "off": "full",
+   "langs": 8,
+   "hosts": 0,
+   "score": null,
+   "hm": null,
+   "l": null,
+   "ext": true
   }
  ],
  "a8": {
@@ -1734,10 +1822,10 @@
   ]
  },
  "health": {
-  "date": "2026-11-11",
-  "apps": 121,
+  "date": "2026-11-13",
+  "apps": 129,
   "relations": {
-   "withRelation": 84,
+   "withRelation": 94,
    "orphans": [
     "ACORDAJ",
     "API-fara-frontiere",
@@ -1760,8 +1848,6 @@
     "Limpezimea",
     "MENSURA",
     "Mahjong-fara-frontiere",
-    "MarkdownAtelier",
-    "OSATURA",
     "PrintreInteligente",
     "QSO",
     "Radiestezie",
@@ -1777,16 +1863,16 @@
     "Vitrina",
     "Zaruri-fara-frontiere"
    ],
-   "pairs": 69,
+   "pairs": 76,
    "flows": 4,
    "flowApps": 16
   },
   "coverage": {
-   "full8": 119,
-   "partial": 0,
-   "single": 2,
-   "native": 4,
-   "avg": 3.95
+   "full8": 123,
+   "partial": 2,
+   "single": 4,
+   "native": 6,
+   "avg": 3.89
   },
   "score": {
    "measured": 117,
@@ -1809,12 +1895,12 @@
    ]
   },
   "age": {
-   "ref": "2026-11-11",
-   "fresh7": 114,
-   "fresh30": 121,
+   "ref": "2026-11-13",
+   "fresh7": 119,
+   "fresh30": 129,
    "stale30": 0,
    "stale90": 0,
-   "oldest": "OSATURA (18)"
+   "oldest": "OSATURA (20)"
   },
   "sources": {
    "total": 30,
@@ -1827,7 +1913,7 @@
    "healthFile": "2026-11-09"
   },
   "versions": {
-   "cards": 121,
+   "cards": 129,
    "measured": 117,
    "behind": [
     "BRAZDA",
@@ -1838,10 +1924,18 @@
     "VOIAJOR"
    ],
    "unmeasured": [
+    "Claritas",
+    "Cronosala",
+    "DECUPAJ",
+    "FARFURIA",
+    "LECTOR",
     "LegatorOCR",
     "OSATURA",
+    "REZONANTA",
     "TEZAUR",
-    "VERIGA"
+    "TurboCursa",
+    "VERIGA",
+    "VITALIS"
    ]
   }
  },

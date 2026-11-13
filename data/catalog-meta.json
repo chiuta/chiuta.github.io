@@ -14,7 +14,7 @@
     "health": "„health”: aplicații cu conținut legat de sănătate sau de efecte asupra corpului; cardul și fișa afișează «nu înlocuiește medicul».",
     "fragile": "„fragile”: aplicații care depind de site-uri sau servicii terțe (scraping, embed-uri neoficiale, API-uri publice, liste de unelte externe) și pot înceta să funcționeze fără anunț. Cardul afișează «fragil». Verificarea periodică automată se face la construire (Etapa 8); câmpul opțional «checked» (AAAA-LL-ZZ) arată ultima verificare, când e cunoscută.",
     "evidenceRequired": ["HoroScop", "Bioenergoterapie", "Afrodisiace-fara-frontiere", "FrequencyLaboratory", "ASMR", "Inforenergetica", "Radiestezie", "Reiki", "Tarot", "Numerologie", "NumeroLogIA", "ECLIPSA", "ACORDAJ", "CalmWaves", "Aurora", "CHIROMANTIA", "PUNCTUM"],
-    "healthRequired": ["Bioenergoterapie", "Reiki", "Afrodisiace-fara-frontiere", "FrequencyLaboratory", "ASMR", "CalmWaves", "Aurora", "Inforenergetica", "generator-frecvente", "Decibel", "SEVA", "PULS", "Nemurirea", "PUNCTUM"],
+    "healthRequired": ["Bioenergoterapie", "Reiki", "Afrodisiace-fara-frontiere", "FrequencyLaboratory", "ASMR", "CalmWaves", "Aurora", "Inforenergetica", "generator-frecvente", "Decibel", "SEVA", "PULS", "Nemurirea", "PUNCTUM", "FARFURIA", "VITALIS"],
     "fragileRequired": ["Vitrina", "Threads-fara-cont", "X-fara-cont", "Cadraj", "Arhiva-LinkedIn", "VNTV", "ACORDAJ", "API-fara-frontiere", "OAZA", "FreeDetect"]
   },
   "kinds": {
@@ -41,7 +41,7 @@
     {"id": "ai", "name": {"en": "AI assistants and prompts", "ro": "Asistenți AI și prompturi", "fr": "Assistants IA et prompts", "it": "Assistenti IA e prompt", "es": "Asistentes de IA y prompts", "pt": "Assistentes de IA e prompts", "de": "KI-Assistenten und Prompts", "hu": "MI-asisztensek és promptok"}, "members": ["AI-Liber", "Nexus-fara-frontiere", "ARENA", "LocalMind", "PromptVault", "Constelar"], "kw": "ai ia inteligenta artificiala artificial intelligence intelligenza inteligencia chatbot asistent assistant assistente llm prompt model conversatie conversation chat gpt claude gemini ki mi"},
     {"id": "translate", "name": {"en": "Languages, translation and voice", "ro": "Limbi, traducere și voce", "fr": "Langues, traduction et voix", "it": "Lingue, traduzione e voce", "es": "Idiomas, traducción y voz", "pt": "Línguas, tradução e voz", "de": "Sprachen, Übersetzung und Stimme", "hu": "Nyelvek, fordítás és hang"}, "members": ["TranslateHub", "Lexicon", "VoiceAtelier", "Alfabete"], "kw": "traducere translate translation traduction traduzione traduccion traducao ubersetzen ubersetzung forditas limba limbi language lingua sprache nyelv voce voice voix voz stimme hang dictionar dictionary vorbire speech text traduzir traducir tradurre traduire ubersetzen forditani"},
     {"id": "radio", "name": {"en": "Amateur radio", "ro": "Radioamatorism", "fr": "Radioamateur", "it": "Radioamatori", "es": "Radioafición", "pt": "Radioamadorismo", "de": "Amateurfunk", "hu": "Rádióamatőrködés"}, "members": ["ETER", "INDICATIV", "QSO", "Alfabete"], "kw": "radio radioamator amator amateur ham morse ancom emisie statie licenta examen exam indicativ qso jurnal log funk radioaficionado radioaficion radioamador radioamatore radioamateur amateurfunk radioamatorkodes"},
-    {"id": "health", "name": {"en": "Health and the body", "ro": "Sănătate și corp", "fr": "Santé et corps", "it": "Salute e corpo", "es": "Salud y cuerpo", "pt": "Saúde e corpo", "de": "Gesundheit und Körper", "hu": "Egészség és test"}, "members": ["PULS", "SEVA", "Nemurirea", "VATRA", "PUNCTUM"], "kw": "sanatate health sante salute salud saude gesundheit egeszseg prim ajutor first aid urgenta ambulanta somn sleep respiratie breathing nutritie imbatranire aging medic"},
+    {"id": "health", "name": {"en": "Health and the body", "ro": "Sănătate și corp", "fr": "Santé et corps", "it": "Salute e corpo", "es": "Salud y cuerpo", "pt": "Saúde e corpo", "de": "Gesundheit und Körper", "hu": "Egészség és test"}, "members": ["PULS", "SEVA", "Nemurirea", "VATRA", "PUNCTUM", "FARFURIA", "VITALIS"], "kw": "sanatate health sante salute salud saude gesundheit egeszseg prim ajutor first aid urgenta ambulanta somn sleep respiratie breathing nutritie imbatranire aging medic"},
     {"id": "field", "name": {"en": "Fieldwork and nature", "ro": "Teren și natură", "fr": "Terrain et nature", "it": "Campo e natura", "es": "Campo y naturaleza", "pt": "Campo e natureza", "de": "Gelände und Natur", "hu": "Terep és természet"}, "members": ["ExploratoriiEco", "FieldObserver", "Poteca", "URME", "VATRA", "VietAR"], "kw": "teren field natura nature drumetie hiking traseu trail gpx plante plants animale animals specii species biodiversitate excursie munte mountain observatii observations"},
     {"id": "astro", "name": {"en": "Astronomy and sky", "ro": "Astronomie și cer", "fr": "Astronomie et ciel", "it": "Astronomia e cielo", "es": "Astronomía y cielo", "pt": "Astronomia e céu", "de": "Astronomie und Himmel", "hu": "Csillagászat és égbolt"}, "members": ["Bolta", "Eclipsa-2027", "orarium", "TerRa", "Universul-Observabil", "Horizons.BeyondLimits", "IncredibleCosmos", "VOIAJOR"], "kw": "astronomie astronomy astronomia cer sky cielo ciel himmel stele stars planete planets luna moon soare sun eclipsa eclipse cosmos univers universe marte mars"},
     {"id": "astrology", "name": {"en": "Astrology and symbols", "ro": "Astrologie și simboluri", "fr": "Astrologie et symboles", "it": "Astrologia e simboli", "es": "Astrología y símbolos", "pt": "Astrologia e símbolos", "de": "Astrologie und Symbole", "hu": "Asztrológia és szimbólumok"}, "members": ["ECLIPSA", "HoroScop", "NumeroLogIA", "Numerologie", "Tarot", "Eclipsa-2027"], "kw": "astrologie astrology astrologia horoscop horoscope zodiac natal casa house numerologie numerology tarot carti cards efemerida"},
@@ -52,25 +52,25 @@
     {"id": "scifi", "name": {"en": "Science fiction and speculation", "ro": "Science-fiction și speculație", "fr": "Science-fiction et spéculation", "it": "Fantascienza e speculazione", "es": "Ciencia ficción y especulación", "pt": "Ficção científica e especulação", "de": "Science-Fiction und Spekulation", "hu": "Sci-fi és spekuláció"}, "members": ["Limpezimea", "Nota-Zero", "Pendulul", "PrintreInteligente", "NOMIA", "ValeaPlopului1972"], "kw": "sf science fiction fantascienza roman novel povestire story carte book literatura literature citit reading ficțiune fiction autor roman"},
     {"id": "authoring", "name": {"en": "Writing and creating", "ro": "Scriere și creare", "fr": "Écriture et création", "it": "Scrittura e creazione", "es": "Escritura y creación", "pt": "Escrita e criação", "de": "Schreiben und Gestalten", "hu": "Írás és alkotás"}, "members": ["Fabrica", "MarkdownAtelier", "Akasha", "Trusa-fara-frontiere"], "kw": "scriere writing scrie write curs course lectii lessons markdown notite notes document caiet notebook creare create redactare"},
     {"id": "workshop", "name": {"en": "Workshops and events", "ro": "Ateliere și evenimente", "fr": "Ateliers et événements", "it": "Laboratori ed eventi", "es": "Talleres y eventos", "pt": "Oficinas e eventos", "de": "Workshops und Veranstaltungen", "hu": "Műhelyek és rendezvények"}, "members": ["Fabrica", "Undava", "FASCICUL", "Clopotel", "Monstrarium"], "kw": "atelier workshop eveniment event conferinta conference predare teaching clasa classroom proiector projector cronometru timer quiz elevi pupils prezentare presentation"},
-    {"id": "access", "name": {"en": "Accessibility", "ro": "Accesibilitate", "fr": "Accessibilité", "it": "Accessibilità", "es": "Accesibilidad", "pt": "Acessibilidade", "de": "Barrierefreiheit", "hu": "Akadálymentesség"}, "members": ["ATINGERE", "Alfabete", "VoiceAtelier"], "kw": "accesibilitate accessibility braille orb blind surd deaf nevazator audiobook citire carte voce"},
-    {"id": "scan", "name": {"en": "Books and scanning", "ro": "Cărți și scanare", "fr": "Livres et numérisation", "it": "Libri e scansione", "es": "Libros y escaneo", "pt": "Livros e digitalização", "de": "Bücher und Scannen", "hu": "Könyvek és szkennelés"}, "members": ["LegatorOCR", "ATINGERE", "TEZAUR", "Arhiva-fara-frontiere"], "kw": "scanare scan scanner carte book livre libro buch pdf ocr text digitizare digitization"},
+    {"id": "access", "name": {"en": "Accessibility", "ro": "Accesibilitate", "fr": "Accessibilité", "it": "Accessibilità", "es": "Accesibilidad", "pt": "Acessibilidade", "de": "Barrierefreiheit", "hu": "Akadálymentesség"}, "members": ["ATINGERE", "Alfabete", "VoiceAtelier", "LECTOR", "Claritas"], "kw": "accesibilitate accessibility braille orb blind surd deaf nevazator audiobook citire carte voce"},
+    {"id": "scan", "name": {"en": "Books and scanning", "ro": "Cărți și scanare", "fr": "Livres et numérisation", "it": "Libri e scansione", "es": "Libros y escaneo", "pt": "Livros e digitalização", "de": "Bücher und Scannen", "hu": "Könyvek és szkennelés"}, "members": ["LegatorOCR", "ATINGERE", "TEZAUR", "Arhiva-fara-frontiere", "LECTOR"], "kw": "scanare scan scanner carte book livre libro buch pdf ocr text digitizare digitization"},
     {"id": "cards", "name": {"en": "Card games", "ro": "Jocuri de cărți", "fr": "Jeux de cartes", "it": "Giochi di carte", "es": "Juegos de cartas", "pt": "Jogos de cartas", "de": "Kartenspiele", "hu": "Kártyajátékok"}, "members": ["Belot-fara-frontiere", "Carti-de-joc-fara-frontiere", "Remi-fara-frontiere", "Scopone-fara-frontiere", "Solitaire-fara-frontiere"], "kw": "carti cards cartes carte cartas karten kartya joc game belot remi rummy scopone solitaire poker"},
     {"id": "board", "name": {"en": "Board games", "ro": "Jocuri de masă", "fr": "Jeux de plateau", "it": "Giochi da tavolo", "es": "Juegos de mesa", "pt": "Jogos de tabuleiro", "de": "Brettspiele", "hu": "Táblajátékok"}, "members": ["Dame-fara-frontiere", "Go-fara-frontiere", "Sah-fara-frontiere", "Table-fara-frontiere", "Domino-fara-frontiere", "Mahjong-fara-frontiere", "Zaruri-fara-frontiere"], "kw": "joc game jocuri table board sah chess go dame draughts checkers domino mahjong backgammon zaruri dice tabla sakk sakkozni ajedrez xadrez schach echecs scacchi"},
     {"id": "luck", "name": {"en": "Dice, luck and simulation", "ro": "Zaruri, noroc și simulare", "fr": "Dés, hasard et simulation", "it": "Dadi, fortuna e simulazione", "es": "Dados, suerte y simulación", "pt": "Dados, sorte e simulação", "de": "Würfel, Glück und Simulation", "hu": "Kocka, szerencse és szimuláció"}, "members": ["Zaruri-fara-frontiere", "Table-fara-frontiere", "Cupa-Mondiala-2026"], "kw": "zaruri dice noroc luck simulare simulation fotbal football soccer cupa mondiala world cup sport"},
     {"id": "mind", "name": {"en": "Mind and conversation", "ro": "Minte și conversație", "fr": "Esprit et conversation", "it": "Mente e conversazione", "es": "Mente y conversación", "pt": "Mente e conversa", "de": "Geist und Gespräch", "hu": "Elme és beszélgetés"}, "members": ["Sudoku-fara-frontiere", "Profund", "Undava", "MENSURA"], "kw": "puzzle sudoku minte mind logica logic intrebari questions conversatie conversation quiz test iq joc"},
-    {"id": "time", "name": {"en": "Time and scheduling", "ro": "Timp și programare", "fr": "Temps et planification", "it": "Tempo e pianificazione", "es": "Tiempo y planificación", "pt": "Tempo e planeamento", "de": "Zeit und Planung", "hu": "Idő és ütemezés"}, "members": ["CLEPSIDRA", "Clopotel", "Orar", "orarium"], "kw": "timp time ceas clock alarma alarm calendar program schedule agenda cronometru timer fus orar timezone"},
+    {"id": "time", "name": {"en": "Time and scheduling", "ro": "Timp și programare", "fr": "Temps et planification", "it": "Tempo e pianificazione", "es": "Tiempo y planificación", "pt": "Tempo e planeamento", "de": "Zeit und Planung", "hu": "Idő és ütemezés"}, "members": ["CLEPSIDRA", "Clopotel", "Orar", "orarium", "Cronosala"], "kw": "timp time ceas clock alarma alarm calendar program schedule agenda cronometru timer fus orar timezone"},
     {"id": "home", "name": {"en": "Home and family", "ro": "Gospodărie și familie", "fr": "Foyer et famille", "it": "Casa e famiglia", "es": "Hogar y familia", "pt": "Casa e família", "de": "Haushalt und Familie", "hu": "Háztartás és család"}, "members": ["Akasha", "Arbore", "Gospodar", "Orar", "CLEPSIDRA"], "kw": "gospodarie household familie family buget budget bani money genealogie arbore notite notes planificare planning casa home haztartas koltsegvetes presupuesto orcamento hogar haushalt foyer familiare"},
     {"id": "data", "name": {"en": "Data, economy and charts", "ro": "Date, economie și grafice", "fr": "Données, économie et graphiques", "it": "Dati, economia e grafici", "es": "Datos, economía y gráficos", "pt": "Dados, economia e gráficos", "de": "Daten, Wirtschaft und Diagramme", "hu": "Adatok, gazdaság és grafikonok"}, "members": ["DataWeave", "AGORA", "Gospodar", "API-fara-frontiere"], "kw": "date data tabel table csv grafic chart statistici statistics economie economy euro finante finance buget bani adatok"},
     {"id": "devtools", "name": {"en": "Developer tools and services", "ro": "Unelte pentru dezvoltatori și servicii", "fr": "Outils pour développeurs et services", "it": "Strumenti per sviluppatori e servizi", "es": "Herramientas para desarrolladores y servicios", "pt": "Ferramentas para programadores e serviços", "de": "Entwicklerwerkzeuge und Dienste", "hu": "Fejlesztői eszközök és szolgáltatások"}, "members": ["RegexLab", "SEOptimum", "OmniHost", "Trusa-fara-frontiere", "API-fara-frontiere", "OAZA", "DataWeave"], "kw": "dezvoltare development dev regex expresii cod code unelte tools utilitare utilities api servicii services web programare programming"},
-    {"id": "media", "name": {"en": "Media and creativity", "ro": "Media și creativitate", "fr": "Médias et créativité", "it": "Media e creatività", "es": "Medios y creatividad", "pt": "Média e criatividade", "de": "Medien und Kreativität", "hu": "Média és kreativitás"}, "members": ["VNTV", "OSATURA", "Origami", "BorderlessMelodies"], "kw": "video media animatie animation desen drawing hartie paper origami muzica music tv trailer film"},
-    {"id": "rust", "name": {"en": "Native Rust programs", "ro": "Programe native Rust", "fr": "Programmes natifs Rust", "it": "Programmi nativi Rust", "es": "Programas nativos Rust", "pt": "Programas nativos Rust", "de": "Native Rust-Programme", "hu": "Natív Rust-programok"}, "members": ["OSATURA", "VERIGA", "TEZAUR", "LegatorOCR"], "kw": "rust nativ native program instalare install desktop cli"},
+    {"id": "media", "name": {"en": "Media and creativity", "ro": "Media și creativitate", "fr": "Médias et créativité", "it": "Media e creatività", "es": "Medios y creatividad", "pt": "Média e criatividade", "de": "Medien und Kreativität", "hu": "Média és kreativitás"}, "members": ["VNTV", "OSATURA", "Origami", "BorderlessMelodies", "DECUPAJ"], "kw": "video media animatie animation desen drawing hartie paper origami muzica music tv trailer film"},
+    {"id": "rust", "name": {"en": "Native Rust programs", "ro": "Programe native Rust", "fr": "Programmes natifs Rust", "it": "Programmi nativi Rust", "es": "Programas nativos Rust", "pt": "Programas nativos Rust", "de": "Native Rust-Programme", "hu": "Natív Rust-programok"}, "members": ["OSATURA", "VERIGA", "TEZAUR", "LegatorOCR", "TurboCursa"], "kw": "rust nativ native program instalare install desktop cli"},
     {"id": "anomalies", "name": {"en": "Contact, anomalies and mystery", "ro": "Contact, anomalii și mister", "fr": "Contact, anomalies et mystère", "it": "Contatto, anomalie e mistero", "es": "Contacto, anomalías y misterio", "pt": "Contacto, anomalias e mistério", "de": "Kontakt, Anomalien und Rätsel", "hu": "Kapcsolat, anomáliák és rejtélyek"}, "members": ["ValeaPlopului1972", "NOMIA", "Fenarium", "PrintreInteligente"], "kw": "ufo uap extraterestru alien contact fenomene phenomena anomalii anomalies mister mystery"},
     {"id": "perception", "name": {"en": "Perception and measurement", "ro": "Percepție și măsurare", "fr": "Perception et mesure", "it": "Percezione e misura", "es": "Percepción y medición", "pt": "Perceção e medição", "de": "Wahrnehmung und Messung", "hu": "Érzékelés és mérés"}, "members": ["MENSURA", "Fenarium", "FrequencyLaboratory", "Decibel"], "kw": "perceptie perception simturi senses senzatii test iq masurare measure"},
     {"id": "biology", "name": {"en": "Life sciences", "ro": "Științele vieții", "fr": "Sciences de la vie", "it": "Scienze della vita", "es": "Ciencias de la vida", "pt": "Ciências da vida", "de": "Lebenswissenschaften", "hu": "Élettudományok"}, "members": ["Nemurirea", "VietAR", "ExploratoriiEco", "SEVA"], "kw": "biologie biology biologia viata life vie specii species imbatranire aging celule cells"},
-    {"id": "wordculture", "name": {"en": "Words and culture", "ro": "Cuvinte și cultură", "fr": "Mots et culture", "it": "Parole e cultura", "es": "Palabras y cultura", "pt": "Palavras e cultura", "de": "Wörter und Kultur", "hu": "Szavak és kultúra"}, "members": ["Zicala", "Lexicon", "Profund", "Limpezimea", "Alfabete"], "kw": "proverbe proverbs cuvinte words dictionar dictionary limba limbi cultura culture romana romanian vorbe"},
+    {"id": "wordculture", "name": {"en": "Words and culture", "ro": "Cuvinte și cultură", "fr": "Mots et culture", "it": "Parole e cultura", "es": "Palabras y cultura", "pt": "Palavras e cultura", "de": "Wörter und Kultur", "hu": "Szavak és kultúra"}, "members": ["Zicala", "Lexicon", "Profund", "Limpezimea", "Alfabete", "REZONANTA"], "kw": "proverbe proverbs cuvinte words dictionar dictionary limba limbi cultura culture romana romanian vorbe"},
     {"id": "security", "name": {"en": "Passwords and encryption", "ro": "Parole și criptare", "fr": "Mots de passe et chiffrement", "it": "Password e cifratura", "es": "Contraseñas y cifrado", "pt": "Palavras-passe e cifragem", "de": "Passwörter und Verschlüsselung", "hu": "Jelszavak és titkosítás"}, "members": ["VaultCrypt", "Trusa-fara-frontiere", "ScryVeil", "Curatitor"], "kw": "parola password parole cifrare criptare encrypt encryption securitate security cheie key seif vault"}
   ],
-  "extraRelations": [["Provenienta", "Surveyor"], ["TEZAUR", "AcademiSearch"], ["TEZAUR", "Lexicon"], ["VoiceAtelier", "TranslateHub"], ["Bolta", "Eclipsa-2027"], ["Eclipsa-2027", "ECLIPSA"], ["orarium", "Bolta"], ["PULS", "VATRA"], ["Gospodar", "Arbore"], ["ATINGERE", "LegatorOCR"], ["FASCICUL", "Undava"], ["FreeDetect", "Provenienta"], ["Aurora", "SEVA"], ["Cupa-Mondiala-2026", "DataWeave"], ["Sudoku-fara-frontiere", "Solitaire-fara-frontiere"], ["Belot-fara-frontiere", "Domino-fara-frontiere"], ["PromptVault", "TranslateHub"], ["Fabrica", "Clopotel"], ["URME", "Poteca"], ["Pendulul", "Nota-Zero"], ["Zicala", "Profund"], ["OmniHost", "OAZA"], ["Trade-Free-Link-Guardian", "VERIGA", "VERIGA preia funcțiile Link Guardian (linkuri stricate) într-un program nativ"], ["X-fara-cont", "Threads-fara-cont", "aceeași treabă pe altă rețea: citirea postărilor publice fără cont"], ["Curatitor", "VaultCrypt", "doi pași ai aceleiași igiene a fișierelor trimise: ștergi metadatele, apoi încuii fișierul"], ["Hyper4D", "Universul-Observabil-3D", "vizualizare spațială interactivă: rotești figura și o privești din unghiuri diferite"], ["Nemurirea", "SEVA", "fiziologie și longevitate (îmbătrânire, somn, ritm biologic), ambele doar informative"], ["TerRa", "orarium", "ziua și noaptea pe Pământ și pe planete ↔ ora pe fiecare corp al Sistemului Solar"], ["FrequencyLaboratory", "generator-frecvente", "ambele produc tonuri și testează auzul"], ["LocalMind", "Constelar", "conversație cu un asistent care poate rula local, fără server propriu"], ["Origami", "Monstrarium", "meșteșug de atelier cu hârtie și materiale reciclate, pe pași"], ["Alfabete", "ATINGERE", "braille: Alfabete îl învață, ATINGERE convertește cărți în braille"], ["ValeaPlopului1972", "NOMIA", "ambele sunt ficțiune sau ipoteză despre contactul cu minți ne-umane"], ["OUTPOST", "VERIGA", "două fețe ale întreținerii unui site: răspunde? și ce linkuri sunt stricate?"], ["BRAZDA", "VOIAJOR", "aceleași sonde Voyager: discul de aur pe care îl poartă și traiectoria pe care o parcurg"], ["BRAZDA", "NOMIA", "mesaje trimise printre stele: ce pui pe un disc și cum ar putea fi citit de o altă minte"], ["VOIAJOR", "Universul-Observabil", "aceeași întrebare la scări diferite: VOIAJOR urcă de la planete până la Calea Lactee, Universul Observabil merge dincolo de ea"], ["CHIROMANTIA", "Tarot", "două practici de divinație studiate ca fenomen cultural, cu aceeași privire critică și cu nivel de dovezi afișat"], ["PUNCTUM", "Reiki", "practici de îngrijire prezentate cu nivel de dovezi afișat și fără înlocuirea medicului"], ["PUNCTUM", "Bioenergoterapie", "terapii neconvenționale descrise informativ, cu limite și nivel de dovezi la vedere"]],
+  "extraRelations": [["Provenienta", "Surveyor"], ["TEZAUR", "AcademiSearch"], ["TEZAUR", "Lexicon"], ["VoiceAtelier", "TranslateHub"], ["Bolta", "Eclipsa-2027"], ["Eclipsa-2027", "ECLIPSA"], ["orarium", "Bolta"], ["PULS", "VATRA"], ["Gospodar", "Arbore"], ["ATINGERE", "LegatorOCR"], ["FASCICUL", "Undava"], ["FreeDetect", "Provenienta"], ["Aurora", "SEVA"], ["Cupa-Mondiala-2026", "DataWeave"], ["Sudoku-fara-frontiere", "Solitaire-fara-frontiere"], ["Belot-fara-frontiere", "Domino-fara-frontiere"], ["PromptVault", "TranslateHub"], ["Fabrica", "Clopotel"], ["URME", "Poteca"], ["Pendulul", "Nota-Zero"], ["Zicala", "Profund"], ["OmniHost", "OAZA"], ["Trade-Free-Link-Guardian", "VERIGA", "VERIGA preia funcțiile Link Guardian (linkuri stricate) într-un program nativ"], ["X-fara-cont", "Threads-fara-cont", "aceeași treabă pe altă rețea: citirea postărilor publice fără cont"], ["Curatitor", "VaultCrypt", "doi pași ai aceleiași igiene a fișierelor trimise: ștergi metadatele, apoi încuii fișierul"], ["Hyper4D", "Universul-Observabil-3D", "vizualizare spațială interactivă: rotești figura și o privești din unghiuri diferite"], ["Nemurirea", "SEVA", "fiziologie și longevitate (îmbătrânire, somn, ritm biologic), ambele doar informative"], ["TerRa", "orarium", "ziua și noaptea pe Pământ și pe planete ↔ ora pe fiecare corp al Sistemului Solar"], ["FrequencyLaboratory", "generator-frecvente", "ambele produc tonuri și testează auzul"], ["LocalMind", "Constelar", "conversație cu un asistent care poate rula local, fără server propriu"], ["Origami", "Monstrarium", "meșteșug de atelier cu hârtie și materiale reciclate, pe pași"], ["Alfabete", "ATINGERE", "braille: Alfabete îl învață, ATINGERE convertește cărți în braille"], ["ValeaPlopului1972", "NOMIA", "ambele sunt ficțiune sau ipoteză despre contactul cu minți ne-umane"], ["OUTPOST", "VERIGA", "două fețe ale întreținerii unui site: răspunde? și ce linkuri sunt stricate?"], ["BRAZDA", "VOIAJOR", "aceleași sonde Voyager: discul de aur pe care îl poartă și traiectoria pe care o parcurg"], ["BRAZDA", "NOMIA", "mesaje trimise printre stele: ce pui pe un disc și cum ar putea fi citit de o altă minte"], ["VOIAJOR", "Universul-Observabil", "aceeași întrebare la scări diferite: VOIAJOR urcă de la planete până la Calea Lactee, Universul Observabil merge dincolo de ea"], ["CHIROMANTIA", "Tarot", "două practici de divinație studiate ca fenomen cultural, cu aceeași privire critică și cu nivel de dovezi afișat"], ["PUNCTUM", "Reiki", "practici de îngrijire prezentate cu nivel de dovezi afișat și fără înlocuirea medicului"], ["PUNCTUM", "Bioenergoterapie", "terapii neconvenționale descrise informativ, cu limite și nivel de dovezi la vedere"], ["Cronosala", "CLEPSIDRA", "două instrumente de ritm și timp: intervale, pauze și alarme la sală, respectiv program de ore și alarme pe zi"], ["Cronosala", "Clopotel", "ambele împart timpul în intervale cu semnal sonor: pauze între seturi, respectiv timp de vorbire pe vorbitor"], ["DECUPAJ", "LECTOR", "două aplicații pentru conținut audio-video, din același cadru: tai clipuri dintr-un podcast, respectiv citești cărți cu voce tare, ambele local în browser"], ["FARFURIA", "VITALIS", "două îndrumare de stil de viață pe același domeniu, nutriția și longevitatea, ambele cu limite de siguranță scrise la vedere"], ["REZONANTA", "MarkdownAtelier", "ghidul de comunicare îți dă structura mesajului, iar editorul Markdown e locul unde îl scrii și îl exporți"], ["Claritas", "LECTOR", "amândouă fac textul mai ușor de urmărit: extensia citește cu voce tare orice pagină web, LECTOR citește cărțile tale"], ["TurboCursa", "OSATURA", "două proiecte clean-room scrise în Rust, cu motor propriu și cu ieșire și în browser (WebAssembly sau fișier web)"]],
   "apps": {
     "Provenienta": {
       "status": "experimental",
@@ -1592,6 +1592,320 @@
       "coverage": {
         "langs": ["ro", "en", "fr", "it", "es", "pt", "de", "hu"],
         "platform": "web"
+      }
+    },
+    "Cronosala": {
+      "coverage": {
+        "langs": [
+          "ro"
+        ],
+        "platform": "web"
+      },
+      "fisa": {
+        "ro": {
+          "limite": "Interfața e doar în română. Catalogul de exerciții și lista aparatelor se referă la o singură sală și sunt neoficiale. Pagina nu are service worker: folosită fără internet funcționează doar dacă fișierul e salvat sau pagina e deja încărcată. Datele stau în browser (copie de siguranță recomandată). Nu e sfat medical sau de antrenament personalizat."
+        },
+        "en": {
+          "limite": "The interface is in Romanian only. The exercise catalogue and machine list refer to a single gym and are unofficial. The page has no service worker: without internet it works only if the file is saved or the page is already loaded. Data lives in the browser (back it up). It is not medical advice or personalised coaching."
+        },
+        "fr": {
+          "limite": "L’interface est uniquement en roumain. Le catalogue d’exercices et la liste des appareils concernent une seule salle et sont non officiels. La page n’a pas de service worker : sans internet, elle ne fonctionne que si le fichier est enregistré ou la page déjà chargée. Les données restent dans le navigateur (faites une sauvegarde). Ce n’est ni un avis médical ni un coaching personnalisé."
+        },
+        "it": {
+          "limite": "L’interfaccia è solo in rumeno. Il catalogo di esercizi e l’elenco delle macchine riguardano una sola palestra e non sono ufficiali. La pagina non ha service worker: senza internet funziona solo se il file è salvato o la pagina è già caricata. I dati restano nel browser (fai un backup). Non è un parere medico né coaching personalizzato."
+        },
+        "es": {
+          "limite": "La interfaz es solo en rumano. El catálogo de ejercicios y la lista de máquinas se refieren a un único gimnasio y no son oficiales. La página no tiene service worker: sin internet solo funciona si el archivo está guardado o la página ya está cargada. Los datos se guardan en el navegador (haz una copia). No es consejo médico ni entrenamiento personalizado."
+        },
+        "pt": {
+          "limite": "A interface é apenas em romeno. O catálogo de exercícios e a lista de máquinas referem-se a um único ginásio e não são oficiais. A página não tem service worker: sem internet só funciona se o ficheiro estiver guardado ou a página já carregada. Os dados ficam no navegador (faça uma cópia). Não é aconselhamento médico nem treino personalizado."
+        },
+        "de": {
+          "limite": "Die Oberfläche ist nur auf Rumänisch. Übungskatalog und Geräteliste beziehen sich auf ein einzelnes Studio und sind inoffiziell. Die Seite hat keinen Service Worker: ohne Internet läuft sie nur, wenn die Datei gespeichert oder die Seite schon geladen ist. Die Daten bleiben im Browser (bitte sichern). Kein medizinischer Rat und kein persönliches Coaching."
+        },
+        "hu": {
+          "limite": "A felület csak románul érhető el. A gyakorlatkatalógus és a gépek listája egyetlen terem adataira vonatkozik, nem hivatalos. Az oldalnak nincs service workere: internet nélkül csak akkor működik, ha a fájl el van mentve vagy az oldal már betöltődött. Az adatok a böngészőben vannak (készíts másolatot). Nem orvosi tanács és nem személyre szabott edzésterv."
+        }
+      }
+    },
+    "DECUPAJ": {
+      "coverage": {
+        "langs": [
+          "ro",
+          "en",
+          "fr",
+          "it",
+          "es",
+          "de",
+          "hu"
+        ],
+        "platform": "web"
+      },
+      "fisa": {
+        "ro": {
+          "limite": "Transcrierea Whisper descarcă un model la prima folosire, deci are nevoie de internet o dată. Exportul MP4 depinde de WebCodecs din browser; altfel se înregistrează în timp real. Nu descarcă videoclipuri de pe YouTube, Vimeo sau Dailymotion: lucrezi doar cu fișierele tale, iar drepturile asupra lor sunt ale tale. Interfața nu are portugheză."
+        },
+        "en": {
+          "limite": "Whisper transcription downloads a model on first use, so it needs internet once. MP4 export depends on the browser’s WebCodecs; otherwise it records in real time. It does not download videos from YouTube, Vimeo or Dailymotion: you work only with your own files, and the rights to them are yours. The interface has no Portuguese."
+        },
+        "fr": {
+          "limite": "La transcription Whisper télécharge un modèle à la première utilisation : internet est nécessaire une fois. L’export MP4 dépend de WebCodecs dans le navigateur ; sinon il enregistre en temps réel. Elle ne télécharge pas de vidéos depuis YouTube, Vimeo ou Dailymotion : vous travaillez uniquement avec vos fichiers, dont les droits sont les vôtres. L’interface n’existe pas en portugais."
+        },
+        "it": {
+          "limite": "La trascrizione Whisper scarica un modello al primo utilizzo, quindi serve internet una volta. L’esportazione MP4 dipende da WebCodecs del browser; altrimenti registra in tempo reale. Non scarica video da YouTube, Vimeo o Dailymotion: lavori solo con i tuoi file, di cui detieni i diritti. L’interfaccia non è in portoghese."
+        },
+        "es": {
+          "limite": "La transcripción con Whisper descarga un modelo la primera vez, así que hace falta internet una vez. La exportación MP4 depende de WebCodecs del navegador; si no, graba en tiempo real. No descarga vídeos de YouTube, Vimeo ni Dailymotion: trabajas solo con tus archivos, cuyos derechos son tuyos. La interfaz no está en portugués."
+        },
+        "pt": {
+          "limite": "A transcrição Whisper descarrega um modelo na primeira utilização, por isso precisa de internet uma vez. A exportação MP4 depende do WebCodecs do navegador; caso contrário grava em tempo real. Não descarrega vídeos do YouTube, Vimeo ou Dailymotion: trabalha apenas com os seus ficheiros, cujos direitos são seus. A interface não existe em português."
+        },
+        "de": {
+          "limite": "Die Whisper-Transkription lädt beim ersten Mal ein Modell herunter und braucht daher einmal Internet. Der MP4-Export hängt von WebCodecs im Browser ab; sonst wird in Echtzeit aufgenommen. Es lädt keine Videos von YouTube, Vimeo oder Dailymotion herunter: Du arbeitest nur mit eigenen Dateien, deren Rechte bei Dir liegen. Die Oberfläche gibt es nicht auf Portugiesisch."
+        },
+        "hu": {
+          "limite": "A Whisper-átirat az első használatkor letölt egy modellt, ezért egyszer internet kell hozzá. Az MP4-export a böngésző WebCodecs támogatásától függ; különben valós időben rögzít. Nem tölt le videót a YouTube-ról, a Vimeóról vagy a Dailymotionról: csak a saját fájljaiddal dolgozol, amelyekhez a jogok a tieid. A felület nem érhető el portugálul."
+        }
+      }
+    },
+    "LECTOR": {
+      "coverage": {
+        "langs": [
+          "ro",
+          "en",
+          "fr",
+          "it",
+          "es",
+          "de",
+          "hu"
+        ],
+        "platform": "web"
+      },
+      "fisa": {
+        "ro": {
+          "limite": "Vocea neurală Piper (~60 MB) se descarcă la prima folosire, iar OCR-ul pentru PDF-uri scanate e lent și poate greși. Vocile dispozitivului diferă de la un browser la altul. Exportul WAV e experimental, doar pe computer. Citește numai cărți pe care ai dreptul să le folosești. Interfața nu are portugheză."
+        },
+        "en": {
+          "limite": "The Piper neural voice (~60 MB) downloads on first use, and OCR for scanned PDFs is slow and can make mistakes. Device voices differ between browsers. WAV export is experimental, desktop only. Read only books you have the right to use. The interface has no Portuguese."
+        },
+        "fr": {
+          "limite": "La voix neuronale Piper (~60 Mo) se télécharge à la première utilisation, et l’OCR des PDF numérisés est lent et peut se tromper. Les voix de l’appareil varient d’un navigateur à l’autre. L’export WAV est expérimental, sur ordinateur uniquement. Ne lisez que des livres que vous avez le droit d’utiliser. L’interface n’existe pas en portugais."
+        },
+        "it": {
+          "limite": "La voce neurale Piper (~60 MB) si scarica al primo utilizzo, e l’OCR dei PDF scansionati è lento e può sbagliare. Le voci del dispositivo cambiano da browser a browser. L’esportazione WAV è sperimentale, solo su computer. Leggi solo libri che hai il diritto di usare. L’interfaccia non è in portoghese."
+        },
+        "es": {
+          "limite": "La voz neuronal Piper (~60 MB) se descarga la primera vez, y el OCR de PDF escaneados es lento y puede equivocarse. Las voces del dispositivo varían según el navegador. La exportación WAV es experimental, solo en ordenador. Lee solo libros que tengas derecho a usar. La interfaz no está en portugués."
+        },
+        "pt": {
+          "limite": "A voz neural Piper (~60 MB) é descarregada na primeira utilização, e o OCR de PDF digitalizados é lento e pode errar. As vozes do dispositivo variam entre navegadores. A exportação WAV é experimental, só em computador. Leia apenas livros que tenha o direito de usar. A interface não existe em português."
+        },
+        "de": {
+          "limite": "Die neuronale Piper-Stimme (~60 MB) wird beim ersten Mal heruntergeladen, und die OCR für gescannte PDFs ist langsam und kann Fehler machen. Geräte-Stimmen unterscheiden sich je nach Browser. Der WAV-Export ist experimentell, nur am Computer. Lies nur Bücher, die du nutzen darfst. Die Oberfläche gibt es nicht auf Portugiesisch."
+        },
+        "hu": {
+          "limite": "A Piper neurális hang (~60 MB) az első használatkor töltődik le, a beolvasott PDF-ek OCR-je lassú és hibázhat. Az eszköz hangjai böngészőnként eltérnek. A WAV-export kísérleti, csak számítógépen. Csak olyan könyveket olvass, amelyeket jogosult vagy használni. A felület nem érhető el portugálul."
+        }
+      }
+    },
+    "FARFURIA": {
+      "health": true,
+      "coverage": {
+        "langs": [
+          "ro",
+          "en",
+          "fr",
+          "it",
+          "es",
+          "pt",
+          "de",
+          "hu"
+        ],
+        "platform": "web"
+      },
+      "fisa": {
+        "ro": {
+          "limite": "Nu este sfat medical și nu înlocuiește medicul sau dieteticianul. Caloriile se estimează cu formula Mifflin–St Jeor și sunt orientative; baza de alimente e aproximativă. Pentru minori, istoric de tulburări alimentare sau boală renală, aplicația blochează țintele și trimite la specialist. Pagina nu are service worker: fără internet funcționează doar dacă fișierul e salvat sau pagina e deja încărcată. Datele stau în browser."
+        },
+        "en": {
+          "limite": "It is not medical advice and does not replace a doctor or a dietitian. Calories are estimated with the Mifflin–St Jeor formula and are indicative; the food database is approximate. For minors, eating-disorder history or kidney disease, the app locks the targets and refers you to a professional. The page has no service worker: without internet it works only if the file is saved or the page is already loaded. Data stays in the browser."
+        },
+        "fr": {
+          "limite": "Ce n’est pas un avis médical et cela ne remplace ni le médecin ni le diététicien. Les calories sont estimées avec la formule de Mifflin–St Jeor et restent indicatives ; la base d’aliments est approximative. Pour les mineurs, les antécédents de troubles alimentaires ou la maladie rénale, l’application verrouille les objectifs et renvoie vers un professionnel. La page n’a pas de service worker : sans internet, elle ne fonctionne que si le fichier est enregistré ou la page déjà chargée. Les données restent dans le navigateur."
+        },
+        "it": {
+          "limite": "Non è un parere medico e non sostituisce il medico né il dietista. Le calorie sono stimate con la formula di Mifflin–St Jeor e sono indicative; il database degli alimenti è approssimativo. Per minori, storia di disturbi alimentari o malattia renale l’app blocca gli obiettivi e rimanda a un professionista. La pagina non ha service worker: senza internet funziona solo se il file è salvato o la pagina è già caricata. I dati restano nel browser."
+        },
+        "es": {
+          "limite": "No es consejo médico y no sustituye al médico ni al dietista. Las calorías se estiman con la fórmula de Mifflin–St Jeor y son orientativas; la base de alimentos es aproximada. Para menores, antecedentes de trastornos alimentarios o enfermedad renal, la app bloquea los objetivos y remite a un profesional. La página no tiene service worker: sin internet solo funciona si el archivo está guardado o la página ya está cargada. Los datos se quedan en el navegador."
+        },
+        "pt": {
+          "limite": "Não é aconselhamento médico e não substitui o médico nem o nutricionista. As calorias são estimadas com a fórmula de Mifflin–St Jeor e são orientativas; a base de alimentos é aproximada. Para menores, histórico de distúrbios alimentares ou doença renal, a app bloqueia as metas e encaminha para um profissional. A página não tem service worker: sem internet só funciona se o ficheiro estiver guardado ou a página já carregada. Os dados ficam no navegador."
+        },
+        "de": {
+          "limite": "Kein medizinischer Rat und kein Ersatz für Arzt oder Ernährungsberater. Kalorien werden mit der Mifflin–St-Jeor-Formel geschätzt und sind Richtwerte; die Lebensmitteldatenbank ist ungefähr. Bei Minderjährigen, Essstörungen in der Vorgeschichte oder Nierenerkrankung sperrt die App die Ziele und verweist an Fachleute. Die Seite hat keinen Service Worker: ohne Internet läuft sie nur, wenn die Datei gespeichert oder die Seite schon geladen ist. Die Daten bleiben im Browser."
+        },
+        "hu": {
+          "limite": "Nem orvosi tanács, és nem helyettesíti az orvost vagy a dietetikust. A kalóriákat a Mifflin–St Jeor-képlet becsüli, tájékoztató jellegűek; az ételadatbázis hozzávetőleges. Kiskorúaknál, étkezési zavar előzménye vagy vesebetegség esetén az alkalmazás zárolja a célokat, és szakemberhez irányít. Az oldalnak nincs service workere: internet nélkül csak akkor működik, ha a fájl el van mentve vagy az oldal már betöltődött. Az adatok a böngészőben maradnak."
+        }
+      }
+    },
+    "VITALIS": {
+      "health": true,
+      "coverage": {
+        "langs": [
+          "ro",
+          "en",
+          "fr",
+          "it",
+          "es",
+          "pt",
+          "de",
+          "hu"
+        ],
+        "platform": "web"
+      },
+      "fisa": {
+        "ro": {
+          "limite": "Nu este sfat medical, diagnostic sau tratament: calculatoarele și valorile de referință sunt orientative și nu înlocuiesc analizele și medicul. Nivelul de dovezi arată cât de solidă e o afirmație, nu calitatea programului. Biohackingul include practici cu dovezi slabe; verifică-le înainte să le aplici. Companionul pentru BioHacking360 este neoficial."
+        },
+        "en": {
+          "limite": "It is not medical advice, diagnosis or treatment: the calculators and reference ranges are indicative and do not replace lab tests and your doctor. The evidence level shows how solid a claim is, not the quality of the program. Biohacking includes practices with weak evidence; check them before applying. The BioHacking360 companion is unofficial."
+        },
+        "fr": {
+          "limite": "Ce n’est ni un avis médical, ni un diagnostic, ni un traitement : les calculateurs et valeurs de référence sont indicatifs et ne remplacent ni les analyses ni le médecin. Le niveau de preuve indique la solidité d’une affirmation, pas la qualité du programme. Le biohacking comprend des pratiques peu étayées ; vérifiez-les avant de les appliquer. Le compagnon BioHacking360 est non officiel."
+        },
+        "it": {
+          "limite": "Non è un parere medico, una diagnosi o una terapia: i calcolatori e i valori di riferimento sono indicativi e non sostituiscono le analisi e il medico. Il livello di prove indica quanto è solida un’affermazione, non la qualità del programma. Il biohacking comprende pratiche con prove deboli; verificale prima di applicarle. Il compagno per BioHacking360 non è ufficiale."
+        },
+        "es": {
+          "limite": "No es consejo médico, diagnóstico ni tratamiento: las calculadoras y los valores de referencia son orientativos y no sustituyen los análisis ni al médico. El nivel de evidencia indica cuán sólida es una afirmación, no la calidad del programa. El biohacking incluye prácticas con evidencia débil; compruébalas antes de aplicarlas. El compañero de BioHacking360 no es oficial."
+        },
+        "pt": {
+          "limite": "Não é aconselhamento médico, diagnóstico nem tratamento: as calculadoras e os valores de referência são orientativos e não substituem análises nem o médico. O nível de evidência mostra a solidez de uma afirmação, não a qualidade do programa. O biohacking inclui práticas com evidência fraca; verifique-as antes de as aplicar. O companheiro do BioHacking360 não é oficial."
+        },
+        "de": {
+          "limite": "Kein medizinischer Rat, keine Diagnose und keine Behandlung: Die Rechner und Referenzbereiche sind Richtwerte und ersetzen weder Laborwerte noch den Arzt. Die Evidenzstufe zeigt, wie belastbar eine Aussage ist, nicht die Qualität des Programms. Biohacking enthält Praktiken mit schwacher Evidenz; prüfe sie vor der Anwendung. Der BioHacking360-Begleiter ist inoffiziell."
+        },
+        "hu": {
+          "limite": "Nem orvosi tanács, diagnózis vagy kezelés: a számológépek és a referenciatartományok tájékoztató jellegűek, nem pótolják a laborvizsgálatot és az orvost. A bizonyítéki szint azt mutatja, mennyire megalapozott egy állítás, nem a program minőségét. A biohacking gyenge bizonyítékú gyakorlatokat is tartalmaz; alkalmazás előtt ellenőrizd őket. A BioHacking360-társ nem hivatalos."
+        }
+      }
+    },
+    "REZONANTA": {
+      "coverage": {
+        "langs": [
+          "ro"
+        ],
+        "platform": "web"
+      },
+      "fisa": {
+        "ro": {
+          "limite": "Interfața e doar în română. Scorurile pentru canale și analizorul de claritate sunt euristici orientative, nu garanții că mesajul ajunge sau convinge. Textele generate sunt șabloane: citește-le și adaptează-le înainte să le publici. Pagina nu are service worker: fără internet funcționează doar dacă fișierul e salvat sau pagina e deja încărcată. Textele rămân în browser."
+        },
+        "en": {
+          "limite": "The interface is in Romanian only. The channel scores and the clarity analyser are indicative heuristics, not guarantees that a message will land or persuade. Generated texts are templates: read and adapt them before publishing. The page has no service worker: without internet it works only if the file is saved or the page is already loaded. Texts stay in the browser."
+        },
+        "fr": {
+          "limite": "L’interface est uniquement en roumain. Les scores des canaux et l’analyseur de clarté sont des heuristiques indicatives, pas des garanties qu’un message sera reçu ou convaincra. Les textes générés sont des modèles : relisez-les et adaptez-les avant de publier. La page n’a pas de service worker : sans internet, elle ne fonctionne que si le fichier est enregistré ou la page déjà chargée. Les textes restent dans le navigateur."
+        },
+        "it": {
+          "limite": "L’interfaccia è solo in rumeno. I punteggi dei canali e l’analizzatore di chiarezza sono euristiche indicative, non garanzie che un messaggio arrivi o convinca. I testi generati sono modelli: leggili e adattali prima di pubblicarli. La pagina non ha service worker: senza internet funziona solo se il file è salvato o la pagina è già caricata. I testi restano nel browser."
+        },
+        "es": {
+          "limite": "La interfaz es solo en rumano. Las puntuaciones de canales y el analizador de claridad son heurísticas orientativas, no garantías de que un mensaje llegue o convenza. Los textos generados son plantillas: léelos y adáptalos antes de publicar. La página no tiene service worker: sin internet solo funciona si el archivo está guardado o la página ya está cargada. Los textos se quedan en el navegador."
+        },
+        "pt": {
+          "limite": "A interface é apenas em romeno. As pontuações dos canais e o analisador de clareza são heurísticas orientativas, não garantias de que uma mensagem chegue ou convença. Os textos gerados são modelos: leia-os e adapte-os antes de publicar. A página não tem service worker: sem internet só funciona se o ficheiro estiver guardado ou a página já carregada. Os textos ficam no navegador."
+        },
+        "de": {
+          "limite": "Die Oberfläche ist nur auf Rumänisch. Die Kanalbewertungen und der Klarheits-Analysator sind Richtwerte, keine Garantie, dass eine Botschaft ankommt oder überzeugt. Erzeugte Texte sind Vorlagen: lies und passe sie an, bevor du veröffentlichst. Die Seite hat keinen Service Worker: ohne Internet läuft sie nur, wenn die Datei gespeichert oder die Seite schon geladen ist. Die Texte bleiben im Browser."
+        },
+        "hu": {
+          "limite": "A felület csak románul érhető el. A csatornapontszámok és az érthetőségelemző tájékoztató jellegű heurisztikák, nem garantálják, hogy az üzenet eljut vagy meggyőz. A generált szövegek sablonok: közzététel előtt olvasd át és igazítsd őket. Az oldalnak nincs service workere: internet nélkül csak akkor működik, ha a fájl el van mentve vagy az oldal már betöltődött. A szövegek a böngészőben maradnak."
+        }
+      }
+    },
+    "Claritas": {
+      "coverage": {
+        "langs": [
+          "ro",
+          "en",
+          "fr",
+          "it",
+          "es",
+          "pt",
+          "de",
+          "hu"
+        ],
+        "platform": "native"
+      },
+      "fisa": {
+        "ro": {
+          "limite": "Corecția de contrast e euristică: pe fundaluri cu imagini sau în unele cadre rezultatul poate fi imperfect. Nu înlocuiește un site conceput accesibil, iar auditul WCAG automat prinde doar o parte din probleme, restul cer verificare manuală. Nu funcționează pe paginile interne ale browserului. Se instalează din pachetul descărcat, prin încărcare manuală (Chromium, Firefox); pentru Safari e nevoie de un Mac cu Xcode."
+        },
+        "en": {
+          "limite": "The contrast fix is heuristic: over background images or in some frames the result can be imperfect. It does not replace a site designed to be accessible, and the automatic WCAG audit catches only part of the problems; the rest need manual checks. It does not work on the browser’s internal pages. It is installed from the downloaded package by loading it manually (Chromium, Firefox); Safari needs a Mac with Xcode."
+        },
+        "fr": {
+          "limite": "La correction du contraste est heuristique : sur des images d’arrière-plan ou dans certains cadres, le résultat peut être imparfait. Elle ne remplace pas un site conçu pour être accessible, et l’audit WCAG automatique ne détecte qu’une partie des problèmes ; le reste demande une vérification manuelle. Elle ne fonctionne pas sur les pages internes du navigateur. Elle s’installe depuis le paquet téléchargé, en le chargeant manuellement (Chromium, Firefox) ; Safari nécessite un Mac avec Xcode."
+        },
+        "it": {
+          "limite": "La correzione del contrasto è euristica: su immagini di sfondo o in alcuni frame il risultato può essere imperfetto. Non sostituisce un sito progettato per essere accessibile, e l’audit WCAG automatico individua solo una parte dei problemi; il resto richiede verifiche manuali. Non funziona sulle pagine interne del browser. Si installa dal pacchetto scaricato, caricandolo manualmente (Chromium, Firefox); per Safari serve un Mac con Xcode."
+        },
+        "es": {
+          "limite": "La corrección de contraste es heurística: sobre imágenes de fondo o en algunos marcos el resultado puede ser imperfecto. No sustituye a un sitio diseñado para ser accesible, y la auditoría WCAG automática detecta solo una parte de los problemas; el resto requiere revisión manual. No funciona en las páginas internas del navegador. Se instala desde el paquete descargado, cargándolo manualmente (Chromium, Firefox); para Safari hace falta un Mac con Xcode."
+        },
+        "pt": {
+          "limite": "A correção de contraste é heurística: sobre imagens de fundo ou em alguns quadros o resultado pode ser imperfeito. Não substitui um site concebido para ser acessível, e a auditoria WCAG automática deteta apenas parte dos problemas; o resto exige verificação manual. Não funciona nas páginas internas do navegador. Instala-se a partir do pacote descarregado, carregando-o manualmente (Chromium, Firefox); para Safari é preciso um Mac com Xcode."
+        },
+        "de": {
+          "limite": "Die Kontrastkorrektur ist heuristisch: Über Hintergrundbildern oder in manchen Frames kann das Ergebnis unvollkommen sein. Sie ersetzt keine von vornherein barrierefrei gestaltete Website, und die automatische WCAG-Prüfung erkennt nur einen Teil der Probleme; der Rest braucht manuelle Prüfung. Auf internen Browserseiten funktioniert sie nicht. Sie wird aus dem heruntergeladenen Paket installiert, per manuellem Laden (Chromium, Firefox); für Safari ist ein Mac mit Xcode nötig."
+        },
+        "hu": {
+          "limite": "A kontrasztjavítás heurisztikus: háttérképek fölött vagy egyes keretekben a végeredmény tökéletlen lehet. Nem helyettesíti az akadálymentesen tervezett weboldalt, az automatikus WCAG-ellenőrzés pedig a hibáknak csak egy részét találja meg; a többi kézi ellenőrzést igényel. A böngésző belső oldalain nem működik. A letöltött csomagból telepíthető, kézi betöltéssel (Chromium, Firefox); Safarihoz Xcode-dal ellátott Mac szükséges."
+        }
+      }
+    },
+    "TurboCursa": {
+      "coverage": {
+        "langs": [
+          "ro",
+          "en",
+          "fr",
+          "it",
+          "es",
+          "pt",
+          "de",
+          "hu"
+        ],
+        "platform": "native"
+      },
+      "fisa": {
+        "ro": {
+          "limite": "Joc original, clean-room, neafiliat cu niciun joc existent; nu conține cod, resurse sau mărci ale altora. Varianta web e un fișier construit din cod (build_web.sh), iar versiunea nativă se rulează cu cargo. Textul din joc folosește un font pixelat, cu accentele desenate ca semn deasupra literei. Salvează cariera local, în fișier sau în browser."
+        },
+        "en": {
+          "limite": "An original, clean-room game, unaffiliated with any existing game; it contains no code, assets or trademarks from others. The web version is a file built from the source (build_web.sh), and the native version runs with cargo. In-game text uses a pixel font, with accents drawn as a mark above the letter. The career is saved locally, in a file or in the browser."
+        },
+        "fr": {
+          "limite": "Jeu original, clean-room, sans lien avec aucun jeu existant ; il ne contient ni code, ni ressources, ni marques d’autrui. La version web est un fichier construit à partir du code (build_web.sh), et la version native se lance avec cargo. Le texte du jeu utilise une police pixel, avec les accents dessinés comme une marque au-dessus de la lettre. La carrière est sauvegardée en local, dans un fichier ou dans le navigateur."
+        },
+        "it": {
+          "limite": "Gioco originale, clean-room, non affiliato ad alcun gioco esistente; non contiene codice, risorse o marchi altrui. La versione web è un file costruito dal codice (build_web.sh), mentre quella nativa si avvia con cargo. Il testo nel gioco usa un font pixel, con gli accenti disegnati come segno sopra la lettera. La carriera è salvata in locale, in un file o nel browser."
+        },
+        "es": {
+          "limite": "Juego original, clean-room, sin afiliación con ningún juego existente; no contiene código, recursos ni marcas ajenas. La versión web es un archivo construido a partir del código (build_web.sh), y la nativa se ejecuta con cargo. El texto del juego usa una fuente de píxeles, con los acentos dibujados como una marca sobre la letra. La carrera se guarda en local, en un archivo o en el navegador."
+        },
+        "pt": {
+          "limite": "Jogo original, clean-room, sem afiliação a qualquer jogo existente; não contém código, recursos nem marcas de terceiros. A versão web é um ficheiro construído a partir do código (build_web.sh), e a nativa executa-se com cargo. O texto do jogo usa uma fonte de píxeis, com os acentos desenhados como uma marca sobre a letra. A carreira é guardada localmente, num ficheiro ou no navegador."
+        },
+        "de": {
+          "limite": "Ein originales Clean-Room-Spiel ohne Verbindung zu einem bestehenden Spiel; es enthält weder Code noch Ressourcen oder Marken anderer. Die Web-Version ist eine aus dem Quellcode gebaute Datei (build_web.sh), die native Version läuft mit cargo. Der Spieltext nutzt eine Pixelschrift, Akzente werden als Zeichen über dem Buchstaben gezeichnet. Die Karriere wird lokal gespeichert, in einer Datei oder im Browser."
+        },
+        "hu": {
+          "limite": "Eredeti, clean-room játék, nem áll kapcsolatban egyetlen létező játékkal sem; nem tartalmaz mások kódját, anyagait vagy védjegyeit. A webes változat a forráskódból épített fájl (build_web.sh), a natív változat cargóval indul. A játékbeli szöveg pixelbetűt használ, az ékezeteket a betű fölé rajzolt jelként. A karrier helyben mentődik, fájlba vagy a böngészőbe."
+        }
       }
     }
   },

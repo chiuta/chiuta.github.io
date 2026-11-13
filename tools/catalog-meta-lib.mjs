@@ -6,7 +6,7 @@ import path from 'node:path';
 export const LANGS8 = ['ro', 'en', 'fr', 'it', 'es', 'pt', 'de', 'hu'];
 export const PLATFORMS = ['web', 'native'];
 /** Carduri cu versiune/dată/linkuri întreținute de mână (nu din <meta> și app.json): sync-catalog nu le sincronizează, iar make-fixtures --check nu le compară cu fixtura. */
-export const EXTERNAL = new Set(['OSATURA', 'VERIGA', 'TEZAUR', 'LegatorOCR', 'Fenarium', 'MENSURA', 'BRAZDA', 'VOIAJOR', 'CHIROMANTIA', 'PUNCTUM']);
+export const EXTERNAL = new Set(['OSATURA', 'VERIGA', 'TEZAUR', 'LegatorOCR', 'Fenarium', 'MENSURA', 'BRAZDA', 'VOIAJOR', 'CHIROMANTIA', 'PUNCTUM', 'Cronosala', 'DECUPAJ', 'LECTOR', 'FARFURIA', 'VITALIS', 'REZONANTA', 'Claritas', 'TurboCursa']);
 export const STATUSES = ['stable', 'experimental', 'alpha', 'lab'];
 
 export function loadMeta(hub) {

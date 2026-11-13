@@ -1,7 +1,7 @@
 {
  "schema": 1,
  "note": "Generat de tools/sync-catalog.mjs din data/catalog-meta.json, data/flows.json și registrul de plicuri; nu se editează de mână. Fiecare relație are cel puțin un motiv verificabil (vezi relationEvidence în tools/catalog-meta-lib.mjs).",
- "count": 539,
+ "count": 579,
  "relations": [
   {
    "a": "AcademiSearch",
@@ -325,6 +325,13 @@
   },
   {
    "a": "Alfabete",
+   "b": "Claritas",
+   "reasons": [
+    "topic:access"
+   ]
+  },
+  {
+   "a": "Alfabete",
    "b": "ETER",
    "reasons": [
     "topic:radio"
@@ -335,6 +342,13 @@
    "b": "INDICATIV",
    "reasons": [
     "topic:radio"
+   ]
+  },
+  {
+   "a": "Alfabete",
+   "b": "LECTOR",
+   "reasons": [
+    "topic:access"
    ]
   },
   {
@@ -364,6 +378,13 @@
    "b": "QSO",
    "reasons": [
     "topic:radio"
+   ]
+  },
+  {
+   "a": "Alfabete",
+   "b": "REZONANTA",
+   "reasons": [
+    "topic:wordculture"
    ]
   },
   {
@@ -564,6 +585,13 @@
   },
   {
    "a": "Arhiva-fara-frontiere",
+   "b": "LECTOR",
+   "reasons": [
+    "topic:scan"
+   ]
+  },
+  {
+   "a": "Arhiva-fara-frontiere",
    "b": "LegatorOCR",
    "reasons": [
     "topic:scan"
@@ -755,6 +783,13 @@
   },
   {
    "a": "ATINGERE",
+   "b": "Claritas",
+   "reasons": [
+    "topic:access"
+   ]
+  },
+  {
+   "a": "ATINGERE",
    "b": "Clopotel",
    "reasons": [
     "envelope:passport/fff",
@@ -799,6 +834,14 @@
    "reasons": [
     "envelope:passport/fff",
     "module:fff-pasaport"
+   ]
+  },
+  {
+   "a": "ATINGERE",
+   "b": "LECTOR",
+   "reasons": [
+    "topic:access",
+    "topic:scan"
    ]
   },
   {
@@ -1162,6 +1205,13 @@
   },
   {
    "a": "BorderlessMelodies",
+   "b": "DECUPAJ",
+   "reasons": [
+    "topic:media"
+   ]
+  },
+  {
+   "a": "BorderlessMelodies",
    "b": "EcoulSpectral",
    "reasons": [
     "envelope:sound/profile",
@@ -1347,12 +1397,37 @@
    "why": "două practici de divinație studiate ca fenomen cultural, cu aceeași privire critică și cu nivel de dovezi afișat"
   },
   {
+   "a": "Claritas",
+   "b": "LECTOR",
+   "reasons": [
+    "topic:access",
+    "pair"
+   ],
+   "why": "amândouă fac textul mai ușor de urmărit: extensia citește cu voce tare orice pagină web, LECTOR citește cărțile tale"
+  },
+  {
+   "a": "Claritas",
+   "b": "VoiceAtelier",
+   "reasons": [
+    "topic:access"
+   ]
+  },
+  {
    "a": "CLEPSIDRA",
    "b": "Clopotel",
    "reasons": [
     "related",
     "topic:time"
    ]
+  },
+  {
+   "a": "CLEPSIDRA",
+   "b": "Cronosala",
+   "reasons": [
+    "topic:time",
+    "pair"
+   ],
+   "why": "două instrumente de ritm și timp: intervale, pauze și alarme la sală, respectiv program de ore și alarme pe zi"
   },
   {
    "a": "CLEPSIDRA",
@@ -1406,6 +1481,15 @@
    "reasons": [
     "module:fff-place"
    ]
+  },
+  {
+   "a": "Clopotel",
+   "b": "Cronosala",
+   "reasons": [
+    "topic:time",
+    "pair"
+   ],
+   "why": "ambele împart timpul în intervale cu semnal sonor: pauze între seturi, respectiv timp de vorbire pe vorbitor"
   },
   {
    "a": "Clopotel",
@@ -1575,6 +1659,20 @@
    "reasons": [
     "module:fff-ai",
     "data:platform.claude.com"
+   ]
+  },
+  {
+   "a": "Cronosala",
+   "b": "Orar",
+   "reasons": [
+    "topic:time"
+   ]
+  },
+  {
+   "a": "Cronosala",
+   "b": "orarium",
+   "reasons": [
+    "topic:time"
    ]
   },
   {
@@ -1809,6 +1907,35 @@
    "b": "MENSURA",
    "reasons": [
     "topic:perception"
+   ]
+  },
+  {
+   "a": "DECUPAJ",
+   "b": "LECTOR",
+   "reasons": [
+    "pair"
+   ],
+   "why": "două aplicații pentru conținut audio-video, din același cadru: tai clipuri dintr-un podcast, respectiv citești cărți cu voce tare, ambele local în browser"
+  },
+  {
+   "a": "DECUPAJ",
+   "b": "Origami",
+   "reasons": [
+    "topic:media"
+   ]
+  },
+  {
+   "a": "DECUPAJ",
+   "b": "OSATURA",
+   "reasons": [
+    "topic:media"
+   ]
+  },
+  {
+   "a": "DECUPAJ",
+   "b": "VNTV",
+   "reasons": [
+    "topic:media"
    ]
   },
   {
@@ -2312,6 +2439,50 @@
    "reasons": [
     "topic:workshop"
    ]
+  },
+  {
+   "a": "FARFURIA",
+   "b": "Nemurirea",
+   "reasons": [
+    "topic:health"
+   ]
+  },
+  {
+   "a": "FARFURIA",
+   "b": "PULS",
+   "reasons": [
+    "topic:health"
+   ]
+  },
+  {
+   "a": "FARFURIA",
+   "b": "PUNCTUM",
+   "reasons": [
+    "topic:health"
+   ]
+  },
+  {
+   "a": "FARFURIA",
+   "b": "SEVA",
+   "reasons": [
+    "topic:health"
+   ]
+  },
+  {
+   "a": "FARFURIA",
+   "b": "VATRA",
+   "reasons": [
+    "topic:health"
+   ]
+  },
+  {
+   "a": "FARFURIA",
+   "b": "VITALIS",
+   "reasons": [
+    "topic:health",
+    "pair"
+   ],
+   "why": "două îndrumare de stil de viață pe același domeniu, nutriția și longevitatea, ambele cu limite de siguranță scrise la vedere"
   },
   {
    "a": "FASCICUL",
@@ -2872,6 +3043,27 @@
    ]
   },
   {
+   "a": "LECTOR",
+   "b": "LegatorOCR",
+   "reasons": [
+    "topic:scan"
+   ]
+  },
+  {
+   "a": "LECTOR",
+   "b": "TEZAUR",
+   "reasons": [
+    "topic:scan"
+   ]
+  },
+  {
+   "a": "LECTOR",
+   "b": "VoiceAtelier",
+   "reasons": [
+    "topic:access"
+   ]
+  },
+  {
    "a": "LegatorOCR",
    "b": "OSATURA",
    "reasons": [
@@ -2885,6 +3077,13 @@
     "topic:scan",
     "topic:rust",
     "flow:sursa"
+   ]
+  },
+  {
+   "a": "LegatorOCR",
+   "b": "TurboCursa",
+   "reasons": [
+    "topic:rust"
    ]
   },
   {
@@ -2921,6 +3120,13 @@
    "b": "Provenienta",
    "reasons": [
     "topic:research"
+   ]
+  },
+  {
+   "a": "Lexicon",
+   "b": "REZONANTA",
+   "reasons": [
+    "topic:wordculture"
    ]
   },
   {
@@ -2989,6 +3195,13 @@
   },
   {
    "a": "Limpezimea",
+   "b": "REZONANTA",
+   "reasons": [
+    "topic:wordculture"
+   ]
+  },
+  {
+   "a": "Limpezimea",
    "b": "ValeaPlopului1972",
    "reasons": [
     "topic:scifi"
@@ -3042,6 +3255,14 @@
    "reasons": [
     "topic:research"
    ]
+  },
+  {
+   "a": "MarkdownAtelier",
+   "b": "REZONANTA",
+   "reasons": [
+    "pair"
+   ],
+   "why": "ghidul de comunicare îți dă structura mesajului, iar editorul Markdown e locul unde îl scrii și îl exporți"
   },
   {
    "a": "MarkdownAtelier",
@@ -3217,6 +3438,13 @@
    "b": "VietAR",
    "reasons": [
     "topic:biology"
+   ]
+  },
+  {
+   "a": "Nemurirea",
+   "b": "VITALIS",
+   "reasons": [
+    "topic:health"
    ]
   },
   {
@@ -3414,6 +3642,15 @@
   },
   {
    "a": "OSATURA",
+   "b": "TurboCursa",
+   "reasons": [
+    "topic:rust",
+    "pair"
+   ],
+   "why": "două proiecte clean-room scrise în Rust, cu motor propriu și cu ieșire și în browser (WebAssembly sau fișier web)"
+  },
+  {
+   "a": "OSATURA",
    "b": "VERIGA",
    "reasons": [
     "topic:rust"
@@ -3545,6 +3782,13 @@
   },
   {
    "a": "Profund",
+   "b": "REZONANTA",
+   "reasons": [
+    "topic:wordculture"
+   ]
+  },
+  {
+   "a": "Profund",
    "b": "Sah-fara-frontiere",
    "reasons": [
     "module:fff-jocuri"
@@ -3671,6 +3915,13 @@
    ]
   },
   {
+   "a": "PULS",
+   "b": "VITALIS",
+   "reasons": [
+    "topic:health"
+   ]
+  },
+  {
    "a": "PUNCTUM",
    "b": "Reiki",
    "reasons": [
@@ -3688,6 +3939,13 @@
   {
    "a": "PUNCTUM",
    "b": "VATRA",
+   "reasons": [
+    "topic:health"
+   ]
+  },
+  {
+   "a": "PUNCTUM",
+   "b": "VITALIS",
    "reasons": [
     "topic:health"
    ]
@@ -3773,6 +4031,13 @@
    "b": "Table-fara-frontiere",
    "reasons": [
     "module:fff-jocuri"
+   ]
+  },
+  {
+   "a": "REZONANTA",
+   "b": "Zicala",
+   "reasons": [
+    "topic:wordculture"
    ]
   },
   {
@@ -3899,6 +4164,13 @@
    ]
   },
   {
+   "a": "SEVA",
+   "b": "VITALIS",
+   "reasons": [
+    "topic:health"
+   ]
+  },
+  {
    "a": "Solitaire-fara-frontiere",
    "b": "Sudoku-fara-frontiere",
    "reasons": [
@@ -3960,6 +4232,13 @@
   },
   {
    "a": "TEZAUR",
+   "b": "TurboCursa",
+   "reasons": [
+    "topic:rust"
+   ]
+  },
+  {
+   "a": "TEZAUR",
    "b": "VERIGA",
    "reasons": [
     "topic:rust",
@@ -4013,6 +4292,13 @@
    "b": "VaultCrypt",
    "reasons": [
     "topic:security"
+   ]
+  },
+  {
+   "a": "TurboCursa",
+   "b": "VERIGA",
+   "reasons": [
+    "topic:rust"
    ]
   },
   {
@@ -4108,6 +4394,13 @@
    "b": "VietAR",
    "reasons": [
     "topic:field"
+   ]
+  },
+  {
+   "a": "VATRA",
+   "b": "VITALIS",
+   "reasons": [
+    "topic:health"
    ]
   },
   {

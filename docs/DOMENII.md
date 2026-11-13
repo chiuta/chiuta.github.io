@@ -5,9 +5,10 @@
 
 ## Pe scurt
 
-- Aplicații în catalog: **121** (121 în depozite proprii, 0 în `apps/` din hub).
-- Cu **origine proprie** (CNAME `<slug>.chiuta.ro`): **121**.
-- Pe **origine partajată** `chiuta.ro`: **0** (0 aplicații din hub + 0 depozit(e) fără CNAME).
+- Aplicații în catalog: **129** (129 în depozite proprii, 0 în `apps/` din hub).
+- Cu **origine proprie** (CNAME `<slug>.chiuta.ro`): **128**.
+- Pe **origine partajată** `chiuta.ro`: **1** (0 aplicații din hub + 1 depozit(e) fără CNAME: Claritas).
+- ATENȚIE, lipsesc de pe disc: Claritas.
 - De mutat pe origine proprie (sensibile, din hub): **0** cu prioritate 1 (), **0** cu prioritate 2 ().
 
 ## De ce contează originea
@@ -24,6 +25,8 @@ Rezolvarea gratuită pe GitHub Pages: fiecare depozit își primește propriul s
 Celelalte aplicații din hub () nu păstrează date personale sau secrete; pot rămâne pe origine partajată, dar ar urma același traseu dacă se schimbă acest lucru.
 
 Deja pe origine proprie și sensibile (corect): AcademiSearch (cheie în sessionStorage); TranslateHub (cheie în sessionStorage); VaultCrypt (seif criptat); Nexus-fara-frontiere (chei API pentru modele AI); PromptVault (seif de prompturi); Constelar (cheie API în clar în localStorage (confirmat la audit)).
+
+Depozite fără CNAME (origine partajată cu hub-ul, de aliniat la convenție): Claritas → `claritas.chiuta.ro`.
 
 ## Pași exacți: DNS și verificarea domeniului chiuta.ro
 
@@ -77,7 +80,7 @@ Datele din `localStorage`/`IndexedDB` **nu se mută singure**: noua origine porn
 
 ## Verificare
 
-Stare verificată în Etapa 7 (consolidare): 121 din 121 depozite au CNAME `<slug>.chiuta.ro` și nicio aplicație nu e pe origine partajată (fiecare își păstrează `localStorage`/IndexedDB separat). Ce NU s-a putut verifica din mediul de lucru: rezolvarea DNS (`--dns` dă ENOTFOUND din spatele proxy-ului) și starea GitHub Pages „live”; acestea rămân de confirmat de pe o rețea cu DNS public.
+Stare verificată în Etapa 7 (consolidare): 128 din 129 depozite au CNAME `<slug>.chiuta.ro` și nicio aplicație nu e pe origine partajată (fiecare își păstrează `localStorage`/IndexedDB separat). Ce NU s-a putut verifica din mediul de lucru: rezolvarea DNS (`--dns` dă ENOTFOUND din spatele proxy-ului) și starea GitHub Pages „live”; acestea rămân de confirmat de pe o rețea cu DNS public.
 
 ```
 node tools/cname-inventory.mjs --check   # documentul corespunde depozitelor de pe disc
@@ -120,6 +123,9 @@ node tools/cname-inventory.mjs --dns     # informativ: interoghează DNS-ul publ
 | RegexLab | depozit | `regexlab.chiuta.ro` | proprie: https://regexlab.chiuta.ro/ | — |  |
 | SEOptimum | depozit | `seoptimum.chiuta.ro` | proprie: https://seoptimum.chiuta.ro/ | — |  |
 | SEVA | depozit | `seva.chiuta.ro` | proprie: https://seva.chiuta.ro/ | — |  |
+| FARFURIA | depozit | `farfuria.chiuta.ro` | proprie: https://farfuria.chiuta.ro/ | — |  |
+| VITALIS | depozit | `vitalis.chiuta.ro` | proprie: https://vitalis.chiuta.ro/ | — |  |
+| REZONANTA | depozit | `rezonanta.chiuta.ro` | proprie: https://rezonanta.chiuta.ro/ | — |  |
 | Alfabete | depozit | `alfabete.chiuta.ro` | proprie: https://alfabete.chiuta.ro/ | — |  |
 | Lexicon | depozit | `lexicon.chiuta.ro` | proprie: https://lexicon.chiuta.ro/ | da, dar deja pe origine proprie |  |
 | Limpezimea | depozit | `limpezimea.chiuta.ro` | proprie: https://limpezimea.chiuta.ro/ | — |  |
@@ -127,6 +133,7 @@ node tools/cname-inventory.mjs --dns     # informativ: interoghează DNS-ul publ
 | Pendulul | depozit | `pendulul.chiuta.ro` | proprie: https://pendulul.chiuta.ro/ | — |  |
 | PrintreInteligente | depozit | `printreinteligente.chiuta.ro` | proprie: https://printreinteligente.chiuta.ro/ | — |  |
 | Zicala | depozit | `zicala.chiuta.ro` | proprie: https://zicala.chiuta.ro/ | — |  |
+| LECTOR | depozit | `lector.chiuta.ro` | proprie: https://lector.chiuta.ro/ | — |  |
 | AGORA | depozit | `agora.chiuta.ro` | proprie: https://agora.chiuta.ro/ | — |  |
 | Bolta | depozit | `bolta.chiuta.ro` | proprie: https://bolta.chiuta.ro/ | da, dar deja pe origine proprie |  |
 | BRAZDA | depozit | `brazda.chiuta.ro` | proprie: https://brazda.chiuta.ro/ | — |  |
@@ -156,6 +163,7 @@ node tools/cname-inventory.mjs --dns     # informativ: interoghează DNS-ul publ
 | EcoulSpectral | depozit | `ecoulspectral.chiuta.ro` | proprie: https://ecoulspectral.chiuta.ro/ | — |  |
 | FrequencyLaboratory | depozit | `frequencylaboratory.chiuta.ro` | proprie: https://frequencylaboratory.chiuta.ro/ | — |  |
 | generator-frecvente | depozit | `generator-frecvente.chiuta.ro` | proprie: https://generator-frecvente.chiuta.ro/ | — |  |
+| DECUPAJ | depozit | `decupaj.chiuta.ro` | proprie: https://decupaj.chiuta.ro/ | — |  |
 | Akasha | depozit | `akasha.chiuta.ro` | proprie: https://akasha.chiuta.ro/ | — |  |
 | Arbore | depozit | `arbore.chiuta.ro` | proprie: https://arbore.chiuta.ro/ | da, dar deja pe origine proprie |  |
 | CLEPSIDRA | depozit | `clepsidra.chiuta.ro` | proprie: https://clepsidra.chiuta.ro/ | — |  |
@@ -175,6 +183,7 @@ node tools/cname-inventory.mjs --dns     # informativ: interoghează DNS-ul publ
 | Sudoku-fara-frontiere | depozit | `sudoku-fara-frontiere.chiuta.ro` | proprie: https://sudoku-fara-frontiere.chiuta.ro/ | — |  |
 | Table-fara-frontiere | depozit | `table-fara-frontiere.chiuta.ro` | proprie: https://table-fara-frontiere.chiuta.ro/ | — |  |
 | Zaruri-fara-frontiere | depozit | `zaruri-fara-frontiere.chiuta.ro` | proprie: https://zaruri-fara-frontiere.chiuta.ro/ | — |  |
+| TurboCursa | depozit | `turbocursa.chiuta.ro` | proprie: https://turbocursa.chiuta.ro/ | — |  |
 | AI-Liber | depozit | `ai-liber.chiuta.ro` | proprie: https://ai-liber.chiuta.ro/ | — |  |
 | ARENA | depozit | `arena.chiuta.ro` | proprie: https://arena.chiuta.ro/ | — |  |
 | LocalMind | depozit | `localmind.chiuta.ro` | proprie: https://localmind.chiuta.ro/ | — |  |
@@ -188,6 +197,8 @@ node tools/cname-inventory.mjs --dns     # informativ: interoghează DNS-ul publ
 | Origami | depozit | `origami.chiuta.ro` | proprie: https://origami.chiuta.ro/ | — |  |
 | Trusa-fara-frontiere | depozit | `trusa-fara-frontiere.chiuta.ro` | proprie: https://trusa-fara-frontiere.chiuta.ro/ | — |  |
 | VNTV | depozit | `vntv.chiuta.ro` | proprie: https://vntv.chiuta.ro/ | — |  |
+| Cronosala | depozit | `cronosala.chiuta.ro` | proprie: https://cronosala.chiuta.ro/ | — |  |
+| Claritas | LIPSĂ | — | partajată: https://chiuta.ro/Claritas/ (proiect fără CNAME, aceeași origine cu hub-ul) | — | fără CNAME; propus `claritas.chiuta.ro` |
 | ACORDAJ | depozit | `acordaj.chiuta.ro` | proprie: https://acordaj.chiuta.ro/ | — |  |
 | Afrodisiace-fara-frontiere | depozit | `afrodisiace-fara-frontiere.chiuta.ro` | proprie: https://afrodisiace-fara-frontiere.chiuta.ro/ | — |  |
 | Aurora | depozit | `aurora.chiuta.ro` | proprie: https://aurora.chiuta.ro/ | — |  |

@@ -37,7 +37,7 @@ T('scor: sursă unică (transparenta.json), `score` manual doar rezervă depreci
   for (const r of scored) assert.equal(meta.apps[r.key].measured.score, r.score, r.key);
   // 2. nicio aplicație nemăsurată (nativele au grila proprie, a7n); nu au scor de rezervă (nu s-a inventat nimic)
   const unmeasured = keys.filter((k) => scoreOf(meta.apps[k] || {}) === null).sort();
-  assert.deepEqual(unmeasured, [], 'aplicații fără niciun scor');
+  assert.deepEqual(unmeasured, ['Claritas', 'Cronosala', 'DECUPAJ', 'FARFURIA', 'LECTOR', 'REZONANTA', 'TurboCursa', 'VITALIS'], 'aplicații fără niciun scor (cele 8 intrate la 2026-11-13 așteaptă kitul și auditul; nu li s-a inventat niciun scor)');
   assert.deepEqual(keys.filter((k) => !(meta.apps[k] && meta.apps[k].measured) && meta.apps[k] && typeof meta.apps[k].score === 'number'), [], 'rezerva `score` doar pentru nemăsurate');
   // 3. `score` manual interzis pe o aplicație măsurată; acceptat (rezervă) pe una nemăsurată; citit doar dacă lipsește măsurătoarea
   const probs = (m) => validateMeta(m, keys, null).filter((p) => /score|măsurat|laborator|lab/i.test(p));
