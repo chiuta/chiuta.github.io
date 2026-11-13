@@ -243,6 +243,13 @@ await T('catalog: acoperire pe toate cardurile, contor de dovezi, avertisment de
 await T('catalog: tastatură (Tab ajunge la câmpuri), ținte tactile ≥44px pe mobil, fără depășire la 360px', async () => {
   const {ctx, page} = await open('en', '', {viewport: {width: 360, height: 740}, touch: true});
   await page.waitForSelector('#apps-filter');
+  // pe mobil filtrele sunt pliate în spatele butonului „Filtre” (hub-ux): butonul și uneltele trebuie să fie ținte tactile bune, iar după deschidere câmpurile trebuie să fie reale
+  await page.waitForSelector('#ux-filt');
+  const tools = await page.evaluate(() => [...document.querySelectorAll('#ux-tools button, #ux-tools .ux-seg button')].filter((e) => e.offsetParent !== null).map((e) => [e.textContent.trim().slice(0, 14), Math.round(e.getBoundingClientRect().height)]).filter((x) => x[1] < 43));
+  ok(!tools.length, 'unelte catalog sub 44px (ținte tactile): ' + JSON.stringify(tools));
+  ok(await page.evaluate(() => document.getElementById('ux-filt').getAttribute('aria-expanded') === 'false'), 'filtrele ar trebui să fie pliate implicit pe mobil');
+  await page.click('#ux-filt');
+  ok(await page.evaluate(() => document.getElementById('ux-filt').getAttribute('aria-expanded') === 'true'), 'butonul Filtre nu deschide panoul');
   const m = await page.evaluate(() => ({
     over: document.documentElement.scrollWidth > innerWidth + 1,
     small: [...document.querySelectorAll('#apps-filter input,#apps-filter select,#apps-filter button')].map((e) => [e.id, e.getBoundingClientRect().height]).filter((x) => x[1] < 43),

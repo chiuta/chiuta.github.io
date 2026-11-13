@@ -1,0 +1,117 @@
+/* hub-ux · strat de confort peste catalog: navigare pe secțiuni, filtre pe mobil, densitate, salvate, citibilitate.
+   Se injectează în index.html prin tools/hub-ux/apply.mjs. Fără rețea, fără telemetrie. */
+
+/* ---------- utilitare ---------- */
+.ux-sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.sec-head{scroll-margin-top:calc(var(--ux-nav,48px) + 62px)}
+.app-card{scroll-margin-top:calc(var(--ux-nav,48px) + 62px)}
+.app-card:not(:hover){will-change:auto}
+
+/* ---------- bara de secțiuni (lipicioasă, apare când ajungi la catalog) ---------- */
+.ux-jump{position:fixed;left:0;right:0;top:var(--ux-nav,45px);z-index:95;border-bottom:1px solid var(--border);
+  background:color-mix(in srgb,var(--bg) 90%,transparent);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);
+  transform:translateY(-120%);opacity:0;visibility:hidden;pointer-events:none;transition:transform .25s ease,opacity .2s ease,visibility 0s .25s}
+.ux-jump.on{transform:none;opacity:1;visibility:visible;pointer-events:auto;transition:transform .25s ease,opacity .2s ease}
+.ux-jump-in{display:flex;gap:.45rem;overflow-x:auto;padding:.4rem max(.75rem,calc((100vw - 1240px)/2));scrollbar-width:none;-webkit-overflow-scrolling:touch;overscroll-behavior-x:contain;
+  -webkit-mask-image:linear-gradient(90deg,transparent 0,#000 14px,#000 calc(100% - 14px),transparent);mask-image:linear-gradient(90deg,transparent 0,#000 14px,#000 calc(100% - 14px),transparent)}
+.ux-jump-in::-webkit-scrollbar{display:none}
+.ux-chip{flex:0 0 auto;display:inline-flex;align-items:center;gap:.4rem;min-height:34px;max-width:24ch;padding:0 .75rem;border:1px solid var(--border);border-radius:999px;
+  background:var(--bg2);color:var(--text);font:600 .72rem var(--mono);text-decoration:none;white-space:nowrap;transition:background .2s,border-color .2s,color .2s}
+.ux-chip>span{overflow:hidden;text-overflow:ellipsis}
+.ux-chip b{font-weight:700;font-size:.66rem;opacity:.65}
+.ux-chip:hover{border-color:var(--accent)}
+.ux-chip[aria-current="true"]{background:var(--accent);border-color:var(--accent);color:var(--bg)}
+.ux-chip[aria-current="true"] b{opacity:.85}
+.ux-chip[hidden]{display:none}
+@media (pointer:coarse){.ux-chip{min-height:44px}}
+@media (prefers-reduced-motion:reduce){.ux-jump,.ux-jump.on{transition:none}}
+
+/* ---------- bara de unelte a catalogului ---------- */
+.ux-tools{display:flex;flex-wrap:wrap;align-items:center;gap:.5rem .6rem;margin:.1rem 0 .9rem}
+.ux-btn,.ux-seg button{font:600 .74rem var(--mono);min-height:36px;padding:0 .8rem;border:1px solid var(--border);border-radius:8px;background:var(--bg2);color:var(--text);
+  cursor:pointer;display:inline-flex;align-items:center;gap:.4rem;transition:background .2s,border-color .2s,color .2s}
+.ux-btn:hover,.ux-seg button:hover{border-color:var(--accent)}
+.ux-btn[aria-pressed="true"],.ux-seg button[aria-pressed="true"],.ux-btn[aria-expanded="true"]{background:var(--accent-lo);border-color:var(--accent);color:var(--accent)}
+.ux-btn:disabled{opacity:.55;cursor:not-allowed}
+.ux-btn b{font-weight:700;min-width:1.2em;text-align:center}
+.ux-btn b:empty{display:none}
+.ux-seg{display:inline-flex}
+.ux-seg button{border-radius:0;margin-left:-1px}
+.ux-seg button:first-child{border-radius:8px 0 0 8px;margin-left:0}
+.ux-seg button:last-child{border-radius:0 8px 8px 0}
+.ux-seg-l{font:400 .72rem var(--mono);color:var(--muted)}
+.ux-only-mobile{display:none}
+@media (max-width:620px){.ux-only-mobile{display:inline-flex}.ux-seg-l,#ux-tools .ux-tx{display:none}}
+@media (pointer:coarse){.ux-btn,.ux-seg button{min-height:44px}}
+
+/* ---------- filtre: un singur rând pe desktop, pliabile pe mobil ---------- */
+@media (min-width:900px){
+  .apps-filter{flex-wrap:nowrap;align-items:flex-end}
+  .apps-filter .fld{flex:1 1 0;min-width:0}
+  .apps-filter .fld-q{flex:2 1 0}
+  .apps-filter .fld-btn{flex:0 0 auto}
+  .apps-filter .fld-btn button{width:auto;padding-left:1.1rem;padding-right:1.1rem;white-space:nowrap}
+}
+@media (max-width:620px){
+  .apps-filter.ux-collapsible:not(.ux-open) .fld:not(.fld-q):not(.fld-btn),
+  .apps-filter.ux-collapsible:not(.ux-open) .fld-btn{display:none}
+  .apps-filter.ux-collapsible{margin-bottom:.5rem}
+}
+
+/* ---------- „recent deschise” ---------- */
+.ux-mine{display:flex;flex-wrap:wrap;align-items:center;gap:.45rem;margin:0 0 .8rem;font:400 .72rem var(--mono);color:var(--muted)}
+.ux-mine[hidden]{display:none}
+.ux-mine .ux-mine-l{margin-right:.2rem}
+.ux-mine a{display:inline-flex;align-items:center;min-height:32px;padding:0 .7rem;border:1px solid var(--border);border-radius:999px;background:var(--bg2);color:var(--text);font:600 .72rem var(--mono);text-decoration:none}
+.ux-mine a:hover{border-color:var(--accent);color:var(--accent)}
+.ux-mine .ux-clear{min-height:32px;min-width:32px;border:0;background:none;color:var(--muted);cursor:pointer;font-size:1rem;border-radius:50%}
+.ux-mine .ux-clear:hover{color:var(--text);background:var(--accent-lo)}
+@media (pointer:coarse){.ux-mine a,.ux-mine .ux-clear{min-height:44px}.ux-mine .ux-clear{min-width:44px}}
+
+/* ---------- salvate ---------- */
+.app-card{position:relative}
+.ux-fav{position:absolute;top:.3rem;right:.35rem;z-index:3;width:30px;height:30px;padding:0;border:1px solid var(--border);border-radius:50%;
+  background:color-mix(in srgb,var(--bg2) 88%,transparent);color:var(--muted);cursor:pointer;font-size:1.1rem;line-height:1;display:grid;place-items:center;transition:color .2s,background .2s,border-color .2s}
+.ux-fav:hover{color:var(--accent);border-color:var(--accent)}
+#apps-grid .app-card .card-top{padding-right:34px}
+.ux-fav[aria-pressed="true"]{color:#e6a700}
+@media (pointer:coarse){.ux-fav{width:44px;height:44px;top:.1rem;right:.15rem}#apps-grid .app-card .card-top{padding-right:46px}}
+html[data-ux-fav="1"] #apps-grid .app-card:not(.is-fav){display:none!important}
+#apps-grid .sec-head.ux-nofav{display:none!important}
+.app-card.is-fav{border-color:color-mix(in srgb,#e6a700 55%,var(--border))}
+
+/* ---------- densitate: compact ascunde previzualizarea video și lanțurile de legături ---------- */
+html[data-ux-density="compact"] #apps-grid .app-card .card-media,
+html[data-ux-density="compact"] #apps-grid .app-card .card-related{display:none}
+html[data-ux-density="compact"] #apps-grid .app-card{min-height:0}
+html[data-ux-density="compact"] #apps-grid .app-card .card-icon{width:44px}
+html[data-ux-density="compact"] #apps-grid .app-card .card-desc{display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:3;line-clamp:3;overflow:hidden}
+html[data-ux-density="compact"] #apps-grid .app-card .card-body{padding-top:.5rem;padding-bottom:.55rem}
+
+/* ---------- citibilitate: dimensiuni și contrast ---------- */
+html body #apps-grid .app-card .card-desc{font-size:.78rem;line-height:1.55;color:color-mix(in srgb,var(--muted) 40%,var(--text))}
+html body #apps-grid .app-card .card-lang{font-size:.64rem}
+html body #apps-grid .app-card .card-lang.lang-default{color:color-mix(in srgb,var(--muted) 40%,var(--text))}
+html body #apps-grid .app-card .card-ver{font-size:.68rem;color:color-mix(in srgb,var(--muted) 40%,var(--text))}
+html body #apps-grid .app-card .bd{font-size:.66rem}
+html body #apps-grid .app-card .rel-lbl{font-size:.64rem;color:color-mix(in srgb,var(--muted) 40%,var(--text))}
+html body #apps-grid .app-card .rel-chip{font-size:.7rem}
+html body #apps-grid .sec-intro{font-size:.74rem;color:color-mix(in srgb,var(--muted) 40%,var(--text))}
+html body .apps-count{color:color-mix(in srgb,var(--muted) 40%,var(--text))}
+
+/* ---------- bloc demo: un rând subțire, nu un panou ---------- */
+.demo-hero{display:flex;flex-wrap:wrap;align-items:center;gap:.6rem 1.2rem;padding:.7rem 1rem;margin-bottom:1rem}
+.demo-hero .demo-hero-txt{display:flex;flex-wrap:wrap;align-items:center;gap:.3rem 1.2rem;flex:1 1 100%}
+.demo-hero .demo-lead{margin:0;flex:1 1 280px}
+.demo-hero .demo-all{flex:0 0 auto}
+
+/* ---------- înapoi sus ---------- */
+.ux-top{position:fixed;right:max(.9rem,env(safe-area-inset-right));bottom:max(.9rem,env(safe-area-inset-bottom));z-index:96;width:46px;height:46px;border-radius:50%;
+  border:1px solid var(--border);background:var(--bg2);color:var(--accent);font-size:1.25rem;line-height:1;cursor:pointer;display:grid;place-items:center;
+  box-shadow:0 6px 20px rgba(0,0,0,.25);transition:opacity .2s,transform .2s}
+.ux-top[hidden]{display:none}
+.ux-top:hover{border-color:var(--accent);transform:translateY(-2px)}
+@media (prefers-reduced-motion:reduce){.ux-top{transition:none}.ux-top:hover{transform:none}}
+
+@media print{.ux-jump,.ux-tools,.ux-top,.ux-mine,.ux-fav{display:none!important}}
+@media (forced-colors:active){.ux-chip[aria-current="true"],.ux-btn[aria-pressed="true"],.ux-seg button[aria-pressed="true"]{outline:2px solid Highlight}}
