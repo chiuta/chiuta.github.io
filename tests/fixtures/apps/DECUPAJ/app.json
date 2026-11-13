@@ -1,0 +1,93 @@
+{
+  "version": "12",
+  "updated": "2026-11-03",
+  "egress": [
+    {
+      "host": "*.hf.co",
+      "via": [
+        "csp:connect-src"
+      ]
+    },
+    {
+      "host": "*.huggingface.co",
+      "via": [
+        "csp:connect-src"
+      ]
+    },
+    {
+      "host": "cas-bridge.xethub.hf.co",
+      "via": [
+        "csp:connect-src"
+      ]
+    },
+    {
+      "host": "cdn.jsdelivr.net",
+      "via": [
+        "csp:connect-src",
+        "import()"
+      ]
+    },
+    {
+      "host": "cdnjs.cloudflare.com",
+      "via": [
+        "csp:connect-src"
+      ]
+    },
+    {
+      "host": "geo.dailymotion.com",
+      "via": [
+        "csp:frame-src"
+      ]
+    },
+    {
+      "host": "huggingface.co",
+      "via": [
+        "csp:connect-src"
+      ]
+    },
+    {
+      "host": "player.vimeo.com",
+      "via": [
+        "csp:frame-src"
+      ]
+    },
+    {
+      "host": "tessdata.projectnaptha.com",
+      "via": [
+        "csp:connect-src"
+      ]
+    },
+    {
+      "host": "www.dailymotion.com",
+      "via": [
+        "csp:frame-src"
+      ]
+    },
+    {
+      "host": "www.youtube-nocookie.com",
+      "via": [
+        "csp:frame-src"
+      ]
+    },
+    {
+      "host": "www.youtube.com",
+      "via": [
+        "csp:frame-src"
+      ]
+    }
+  ],
+  "features": {
+    "i18n": [
+      "en",
+      "fr",
+      "it",
+      "es",
+      "pt",
+      "hu",
+      "de"
+    ],
+    "pwa": {
+      "serviceWorker": true
+    }
+  }
+}

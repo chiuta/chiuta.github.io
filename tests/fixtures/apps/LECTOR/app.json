@@ -1,0 +1,70 @@
+{
+  "version": "12",
+  "updated": "2026-11-03",
+  "egress": [
+    {
+      "host": "*.hf.co",
+      "via": [
+        "csp:connect-src"
+      ]
+    },
+    {
+      "host": "*.huggingface.co",
+      "via": [
+        "csp:connect-src"
+      ]
+    },
+    {
+      "host": "cas-bridge.xethub.hf.co",
+      "via": [
+        "csp:connect-src"
+      ]
+    },
+    {
+      "host": "cdn.jsdelivr.net",
+      "via": [
+        "csp:connect-src",
+        "import()",
+        "src="
+      ]
+    },
+    {
+      "host": "cdnjs.cloudflare.com",
+      "via": [
+        "csp:connect-src"
+      ]
+    },
+    {
+      "host": "huggingface.co",
+      "via": [
+        "csp:connect-src"
+      ]
+    },
+    {
+      "host": "tessdata.projectnaptha.com",
+      "via": [
+        "csp:connect-src"
+      ]
+    },
+    {
+      "host": "unpkg.com",
+      "via": [
+        "csp:connect-src"
+      ]
+    }
+  ],
+  "features": {
+    "i18n": [
+      "en",
+      "fr",
+      "it",
+      "es",
+      "pt",
+      "hu",
+      "de"
+    ],
+    "pwa": {
+      "serviceWorker": true
+    }
+  }
+}

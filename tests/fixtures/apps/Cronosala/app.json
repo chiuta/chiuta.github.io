@@ -1,0 +1,11 @@
+{
+  "version": "3.0.0",
+  "updated": "2026-11-06",
+  "egress": [],
+  "features": {
+    "i18n": [],
+    "pwa": {
+      "serviceWorker": false
+    }
+  }
+}

@@ -151,6 +151,8 @@ function audit() {
     rows.push({key: r.app, ver: (r.static && r.static.ver) || '', score, incomplete: incomplete || undefined, build: r.build ? r.build.ok : null,
       axe: r.axe && !r.axe.timedOut ? r.axe.violations : null, tests: tf.length, testsOk: tf.filter((x) => x.ok).length, csp: comp.csp, off: comp.off, langs: (r.static && r.static.langs) || 0, kb: KB((r.static && r.static.size) || 0)});
   }
+  // --merge: păstrează rândurile măsurate anterior pentru aplicațiile care nu au JSON nou în /tmp/audit7 (măsurătoare parțială, doar pe aplicațiile noi)
+  if (process.argv.includes('--merge') && data.a7 && Array.isArray(data.a7.apps)) { for (const o of data.a7.apps) if (!rows.some((x) => x.key === o.key)) rows.push(o); if (data.a7.date && data.a7.date > at.slice(0, 10)) at = data.a7.date; }
   // fără erori de numire: cheile trebuie să existe în catalog
   const idx = read(path.join(HUB, 'index.html'));
   const cards = new Set([...idx.matchAll(/data-c="apps\|([^|"]+)\|title"/g)].map((m) => m[1]));

@@ -1630,81 +1630,65 @@
     },
     "DECUPAJ": {
       "coverage": {
-        "langs": [
-          "ro",
-          "en",
-          "fr",
-          "it",
-          "es",
-          "de",
-          "hu"
-        ],
+        "langs": ["ro", "en", "fr", "it", "es", "pt", "de", "hu"],
         "platform": "web"
       },
       "fisa": {
         "ro": {
-          "limite": "Transcrierea Whisper descarcă un model la prima folosire, deci are nevoie de internet o dată. Exportul MP4 depinde de WebCodecs din browser; altfel se înregistrează în timp real. Nu descarcă videoclipuri de pe YouTube, Vimeo sau Dailymotion: lucrezi doar cu fișierele tale, iar drepturile asupra lor sunt ale tale. Interfața nu are portugheză."
+          "limite": "Transcrierea Whisper descarcă un model la prima folosire, deci are nevoie de internet o dată. Exportul MP4 depinde de WebCodecs din browser; altfel se înregistrează în timp real. Nu descarcă videoclipuri de pe YouTube, Vimeo sau Dailymotion: lucrezi doar cu fișierele tale, iar drepturile asupra lor sunt ale tale."
         },
         "en": {
-          "limite": "Whisper transcription downloads a model on first use, so it needs internet once. MP4 export depends on the browser’s WebCodecs; otherwise it records in real time. It does not download videos from YouTube, Vimeo or Dailymotion: you work only with your own files, and the rights to them are yours. The interface has no Portuguese."
+          "limite": "Whisper transcription downloads a model on first use, so it needs internet once. MP4 export depends on the browser’s WebCodecs; otherwise it records in real time. It does not download videos from YouTube, Vimeo or Dailymotion: you work only with your own files, and the rights to them are yours."
         },
         "fr": {
-          "limite": "La transcription Whisper télécharge un modèle à la première utilisation : internet est nécessaire une fois. L’export MP4 dépend de WebCodecs dans le navigateur ; sinon il enregistre en temps réel. Elle ne télécharge pas de vidéos depuis YouTube, Vimeo ou Dailymotion : vous travaillez uniquement avec vos fichiers, dont les droits sont les vôtres. L’interface n’existe pas en portugais."
+          "limite": "La transcription Whisper télécharge un modèle à la première utilisation : internet est nécessaire une fois. L’export MP4 dépend de WebCodecs dans le navigateur ; sinon il enregistre en temps réel. Elle ne télécharge pas de vidéos depuis YouTube, Vimeo ou Dailymotion : vous travaillez uniquement avec vos fichiers, dont les droits sont les vôtres."
         },
         "it": {
-          "limite": "La trascrizione Whisper scarica un modello al primo utilizzo, quindi serve internet una volta. L’esportazione MP4 dipende da WebCodecs del browser; altrimenti registra in tempo reale. Non scarica video da YouTube, Vimeo o Dailymotion: lavori solo con i tuoi file, di cui detieni i diritti. L’interfaccia non è in portoghese."
+          "limite": "La trascrizione Whisper scarica un modello al primo utilizzo, quindi serve internet una volta. L’esportazione MP4 dipende da WebCodecs del browser; altrimenti registra in tempo reale. Non scarica video da YouTube, Vimeo o Dailymotion: lavori solo con i tuoi file, di cui detieni i diritti."
         },
         "es": {
-          "limite": "La transcripción con Whisper descarga un modelo la primera vez, así que hace falta internet una vez. La exportación MP4 depende de WebCodecs del navegador; si no, graba en tiempo real. No descarga vídeos de YouTube, Vimeo ni Dailymotion: trabajas solo con tus archivos, cuyos derechos son tuyos. La interfaz no está en portugués."
+          "limite": "La transcripción con Whisper descarga un modelo la primera vez, así que hace falta internet una vez. La exportación MP4 depende de WebCodecs del navegador; si no, graba en tiempo real. No descarga vídeos de YouTube, Vimeo ni Dailymotion: trabajas solo con tus archivos, cuyos derechos son tuyos."
         },
         "pt": {
-          "limite": "A transcrição Whisper descarrega um modelo na primeira utilização, por isso precisa de internet uma vez. A exportação MP4 depende do WebCodecs do navegador; caso contrário grava em tempo real. Não descarrega vídeos do YouTube, Vimeo ou Dailymotion: trabalha apenas com os seus ficheiros, cujos direitos são seus. A interface não existe em português."
+          "limite": "A transcrição Whisper descarrega um modelo na primeira utilização, por isso precisa de internet uma vez. A exportação MP4 depende do WebCodecs do navegador; caso contrário grava em tempo real. Não descarrega vídeos do YouTube, Vimeo ou Dailymotion: trabalha apenas com os seus ficheiros, cujos direitos são seus."
         },
         "de": {
-          "limite": "Die Whisper-Transkription lädt beim ersten Mal ein Modell herunter und braucht daher einmal Internet. Der MP4-Export hängt von WebCodecs im Browser ab; sonst wird in Echtzeit aufgenommen. Es lädt keine Videos von YouTube, Vimeo oder Dailymotion herunter: Du arbeitest nur mit eigenen Dateien, deren Rechte bei Dir liegen. Die Oberfläche gibt es nicht auf Portugiesisch."
+          "limite": "Die Whisper-Transkription lädt beim ersten Mal ein Modell herunter und braucht daher einmal Internet. Der MP4-Export hängt von WebCodecs im Browser ab; sonst wird in Echtzeit aufgenommen. Es lädt keine Videos von YouTube, Vimeo oder Dailymotion herunter: Du arbeitest nur mit eigenen Dateien, deren Rechte bei Dir liegen."
         },
         "hu": {
-          "limite": "A Whisper-átirat az első használatkor letölt egy modellt, ezért egyszer internet kell hozzá. Az MP4-export a böngésző WebCodecs támogatásától függ; különben valós időben rögzít. Nem tölt le videót a YouTube-ról, a Vimeóról vagy a Dailymotionról: csak a saját fájljaiddal dolgozol, amelyekhez a jogok a tieid. A felület nem érhető el portugálul."
+          "limite": "A Whisper-átirat az első használatkor letölt egy modellt, ezért egyszer internet kell hozzá. Az MP4-export a böngésző WebCodecs támogatásától függ; különben valós időben rögzít. Nem tölt le videót a YouTube-ról, a Vimeóról vagy a Dailymotionról: csak a saját fájljaiddal dolgozol, amelyekhez a jogok a tieid."
         }
       }
     },
     "LECTOR": {
       "coverage": {
-        "langs": [
-          "ro",
-          "en",
-          "fr",
-          "it",
-          "es",
-          "de",
-          "hu"
-        ],
+        "langs": ["ro", "en", "fr", "it", "es", "pt", "de", "hu"],
         "platform": "web"
       },
       "fisa": {
         "ro": {
-          "limite": "Vocea neurală Piper (~60 MB) se descarcă la prima folosire, iar OCR-ul pentru PDF-uri scanate e lent și poate greși. Vocile dispozitivului diferă de la un browser la altul. Exportul WAV e experimental, doar pe computer. Citește numai cărți pe care ai dreptul să le folosești. Interfața nu are portugheză."
+          "limite": "Vocea neurală Piper (~60 MB) se descarcă la prima folosire, iar OCR-ul pentru PDF-uri scanate e lent și poate greși. Vocile dispozitivului diferă de la un browser la altul. Exportul WAV e experimental, doar pe computer. Citește numai cărți pe care ai dreptul să le folosești."
         },
         "en": {
-          "limite": "The Piper neural voice (~60 MB) downloads on first use, and OCR for scanned PDFs is slow and can make mistakes. Device voices differ between browsers. WAV export is experimental, desktop only. Read only books you have the right to use. The interface has no Portuguese."
+          "limite": "The Piper neural voice (~60 MB) downloads on first use, and OCR for scanned PDFs is slow and can make mistakes. Device voices differ between browsers. WAV export is experimental, desktop only. Read only books you have the right to use."
         },
         "fr": {
-          "limite": "La voix neuronale Piper (~60 Mo) se télécharge à la première utilisation, et l’OCR des PDF numérisés est lent et peut se tromper. Les voix de l’appareil varient d’un navigateur à l’autre. L’export WAV est expérimental, sur ordinateur uniquement. Ne lisez que des livres que vous avez le droit d’utiliser. L’interface n’existe pas en portugais."
+          "limite": "La voix neuronale Piper (~60 Mo) se télécharge à la première utilisation, et l’OCR des PDF numérisés est lent et peut se tromper. Les voix de l’appareil varient d’un navigateur à l’autre. L’export WAV est expérimental, sur ordinateur uniquement. Ne lisez que des livres que vous avez le droit d’utiliser."
         },
         "it": {
-          "limite": "La voce neurale Piper (~60 MB) si scarica al primo utilizzo, e l’OCR dei PDF scansionati è lento e può sbagliare. Le voci del dispositivo cambiano da browser a browser. L’esportazione WAV è sperimentale, solo su computer. Leggi solo libri che hai il diritto di usare. L’interfaccia non è in portoghese."
+          "limite": "La voce neurale Piper (~60 MB) si scarica al primo utilizzo, e l’OCR dei PDF scansionati è lento e può sbagliare. Le voci del dispositivo cambiano da browser a browser. L’esportazione WAV è sperimentale, solo su computer. Leggi solo libri che hai il diritto di usare."
         },
         "es": {
-          "limite": "La voz neuronal Piper (~60 MB) se descarga la primera vez, y el OCR de PDF escaneados es lento y puede equivocarse. Las voces del dispositivo varían según el navegador. La exportación WAV es experimental, solo en ordenador. Lee solo libros que tengas derecho a usar. La interfaz no está en portugués."
+          "limite": "La voz neuronal Piper (~60 MB) se descarga la primera vez, y el OCR de PDF escaneados es lento y puede equivocarse. Las voces del dispositivo varían según el navegador. La exportación WAV es experimental, solo en ordenador. Lee solo libros que tengas derecho a usar."
         },
         "pt": {
-          "limite": "A voz neural Piper (~60 MB) é descarregada na primeira utilização, e o OCR de PDF digitalizados é lento e pode errar. As vozes do dispositivo variam entre navegadores. A exportação WAV é experimental, só em computador. Leia apenas livros que tenha o direito de usar. A interface não existe em português."
+          "limite": "A voz neural Piper (~60 MB) é descarregada na primeira utilização, e o OCR de PDF digitalizados é lento e pode errar. As vozes do dispositivo variam entre navegadores. A exportação WAV é experimental, só em computador. Leia apenas livros que tenha o direito de usar."
         },
         "de": {
-          "limite": "Die neuronale Piper-Stimme (~60 MB) wird beim ersten Mal heruntergeladen, und die OCR für gescannte PDFs ist langsam und kann Fehler machen. Geräte-Stimmen unterscheiden sich je nach Browser. Der WAV-Export ist experimentell, nur am Computer. Lies nur Bücher, die du nutzen darfst. Die Oberfläche gibt es nicht auf Portugiesisch."
+          "limite": "Die neuronale Piper-Stimme (~60 MB) wird beim ersten Mal heruntergeladen, und die OCR für gescannte PDFs ist langsam und kann Fehler machen. Geräte-Stimmen unterscheiden sich je nach Browser. Der WAV-Export ist experimentell, nur am Computer. Lies nur Bücher, die du nutzen darfst."
         },
         "hu": {
-          "limite": "A Piper neurális hang (~60 MB) az első használatkor töltődik le, a beolvasott PDF-ek OCR-je lassú és hibázhat. Az eszköz hangjai böngészőnként eltérnek. A WAV-export kísérleti, csak számítógépen. Csak olyan könyveket olvass, amelyeket jogosult vagy használni. A felület nem érhető el portugálul."
+          "limite": "A Piper neurális hang (~60 MB) az első használatkor töltődik le, a beolvasott PDF-ek OCR-je lassú és hibázhat. Az eszköz hangjai böngészőnként eltérnek. A WAV-export kísérleti, csak számítógépen. Csak olyan könyveket olvass, amelyeket jogosult vagy használni."
         }
       }
     },
