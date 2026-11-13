@@ -1,0 +1,18 @@
+/* fff-kit · ux — confort la atingere. Specificitate 0 (:where) unde se poate: stilul propriu al aplicației are prioritate. */
+:where(:root:not([data-fff-ux="off"]) a, :root:not([data-fff-ux="off"]) button, :root:not([data-fff-ux="off"]) input, :root:not([data-fff-ux="off"]) select, :root:not([data-fff-ux="off"]) textarea, :root:not([data-fff-ux="off"]) summary, :root:not([data-fff-ux="off"]) label, :root:not([data-fff-ux="off"]) [role=button], :root:not([data-fff-ux="off"]) [role=tab], :root:not([data-fff-ux="off"]) [role=menuitem], :root:not([data-fff-ux="off"]) [role=switch], :root:not([data-fff-ux="off"]) [role=checkbox]){touch-action:manipulation}
+:where(:root:not([data-fff-ux="off"]) button, :root:not([data-fff-ux="off"]) [role=button], :root:not([data-fff-ux="off"]) [role=tab], :root:not([data-fff-ux="off"]) summary){-webkit-user-select:none;user-select:none;-webkit-touch-callout:none}
+:where(html:not([data-fff-ux="off"])){scroll-behavior:smooth;-webkit-text-size-adjust:100%;text-size-adjust:100%}
+:where(:root:not([data-fff-ux="off"]) body){overflow-wrap:break-word}
+:where(:root:not([data-fff-ux="off"]) button:not(:disabled), :root:not([data-fff-ux="off"]) [role=button]){cursor:pointer}
+:where(:root:not([data-fff-ux="off"]) button, :root:not([data-fff-ux="off"]) [role=button], :root:not([data-fff-ux="off"]) summary, :root:not([data-fff-ux="off"]) [role=tab]):active:not(:disabled){filter:brightness(.92)}
+@media (prefers-reduced-motion:reduce){:where(html:not([data-fff-ux="off"])){scroll-behavior:auto}}
+@media (pointer:coarse){
+  /* ținte de atingere de cel puțin 44×44 px (WCAG 2.5.5 / Apple HIG); min-* nu strică înălțimile proprii mai mari */
+  :where(:root:not([data-fff-ux="off"]) button, :root:not([data-fff-ux="off"]) [role=button], :root:not([data-fff-ux="off"]) [role=tab], :root:not([data-fff-ux="off"]) [role=menuitem], :root:not([data-fff-ux="off"]) summary, :root:not([data-fff-ux="off"]) select, :root:not([data-fff-ux="off"]) textarea, :root:not([data-fff-ux="off"]) input:not([type=checkbox]):not([type=radio]):not([type=range]):not([type=hidden]):not([type=color]):not([type=file])){min-height:44px}
+  :where(:root:not([data-fff-ux="off"]) button, :root:not([data-fff-ux="off"]) [role=button], :root:not([data-fff-ux="off"]) [role=tab], :root:not([data-fff-ux="off"]) [role=menuitem]){min-width:44px}
+  :where(:root:not([data-fff-ux="off"]) input[type=checkbox], :root:not([data-fff-ux="off"]) input[type=radio]){min-width:22px;min-height:22px}
+  :where(:root:not([data-fff-ux="off"]) label:has(input[type=checkbox]), :root:not([data-fff-ux="off"]) label:has(input[type=radio])){min-height:44px;display:inline-flex;align-items:center;gap:.5em}
+  :root:not([data-fff-ux="off"]) [data-fff-hit]{display:inline-flex;align-items:center;min-height:44px;min-width:44px}
+  /* iOS mărește pagina la focus dacă textul câmpului e sub 16 px */
+  :root:not([data-fff-ux="off"]) input:not([type=checkbox]):not([type=radio]):not([type=range]):not([type=color]):not([type=file]):not([type=hidden]):not([data-fff-nouxfont]),:root:not([data-fff-ux="off"]) select:not([data-fff-nouxfont]),:root:not([data-fff-ux="off"]) textarea:not([data-fff-nouxfont]){font-size:max(16px,1em)}
+}

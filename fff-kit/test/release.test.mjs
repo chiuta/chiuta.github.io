@@ -1,4 +1,4 @@
-// Teste `build.mjs release` / `release-all` (kit 1.4.0). Lucrează EXCLUSIV pe copii din /tmp (nu atinge depozitele).
+// Teste `build.mjs release` / `release-all` (kit 1.5.0). Lucrează EXCLUSIV pe copii din /tmp (nu atinge depozitele).
 //  - aplicații sintetice (mereu) + 3 copii ale unor aplicații reale (dacă există în FFF_APPS_ROOT, implicit /home/claude/chk). Rulare: node test/release.test.mjs
 import fs from 'node:fs';
 import os from 'node:os';
@@ -62,7 +62,7 @@ console.log('release pe aplicație sintetică');
 {
   const root = tmp(), d = synth(root, 'alfa', {version: '2.3.9', date: '2026-10-22', modules: 'core,label,bundle,srs', disable: 'motiv de test'});
   const before = rf(d, 'index.html');
-  check('pregătire: kit 1.4.0, modulele srs, fff-disable', /modules=core,label,bundle,srs/.test(before) && before.includes('<meta name="fff-disable" content="motiv de test">'));
+  check('pregătire: kit 1.5.0, modulele srs, fff-disable', /modules=core,label,bundle,srs/.test(before) && before.includes('<meta name="fff-disable" content="motiv de test">'));
   const dry = releaseApp(d, {dryRun: true, date: DATE, lax: true});
   check('dry-run: ok, raportează fișierele care s-ar schimba, nu scrie nimic', dry.ok && dry.dryRun && dry.from === '2.3.9' && dry.to === '2.3.10' && ['index.html', 'sw.js', 'app.json', 'README.md', 'README.ro.md', 'README.fr.md', 'tests/a.test.mjs'].every((f) => dry.changed.includes(f)) && rf(d, 'index.html') === before && rf(d, 'sw.js').includes('"2.3.9"'), dry);
   const r = releaseApp(d, {date: DATE, lax: true});
@@ -71,7 +71,7 @@ console.log('release pe aplicație sintetică');
   check('#app-version actualizat (versiune și dată)', h.includes(`v 2.3.10 · ${DATE}`) && !h.includes('v 2.3.9'));
   check('sw.js: VERSION nou (cache-ul derivat se schimbă)', /VERSION = "2.3.10"/.test(rf(d, 'sw.js')));
   const app = JSON.parse(rf(d, 'app.json')), emb = JSON.parse(h.match(/id="fff-info">([\s\S]*?)<\/script>/)[1]);
-  check('app.json și fff-info: versiune, dată, kit 1.4.0, identice', app.version === '2.3.10' && app.updated === DATE && app.kit.version === '1.4.0' && JSON.stringify(app) === JSON.stringify(emb));
+  check('app.json și fff-info: versiune, dată, kit 1.5.0, identice', app.version === '2.3.10' && app.updated === DATE && app.kit.version === '1.5.0' && JSON.stringify(app) === JSON.stringify(emb));
   check('hash-ul SHA-256 din fff-info valabil; hash-uri CSP valide', checkKit(d, {lax: true}).ok && checkCspHashes(h).ok);
   check('slug, module și fff-disable păstrate', meta(h, 'fff-app') === 'alfa' && /modules=core,label,bundle,srs/.test(h) && h.includes('<meta name="fff-disable" content="motiv de test">') && app.kit.modules.join() === 'core,label,bundle,srs');
   const t = rf(d, 'tests', 'a.test.mjs');
@@ -93,7 +93,7 @@ console.log('release pe aplicație sintetică');
   const cl = cli(['release', d, '--bump', 'patch', '--date', '2026-11-04', '--lax']);
   check('CLI: release (exit 0, rezumat)', cl.status === 0 && /release ok/.test(cl.stdout) && /3\.0\.0 → 3\.0\.1/.test(cl.stdout), cl.stdout + cl.stderr);
   const js = JSON.parse(cli(['release', d, '--bump', 'none', '--json', '--lax']).stdout);
-  check('CLI --json: raport complet', js.ok === true && js.slug === 'alfa' && Array.isArray(js.changed) && js.steps.check.ok === true && js.kit === '1.4.0');
+  check('CLI --json: raport complet', js.ok === true && js.slug === 'alfa' && Array.isArray(js.changed) && js.steps.check.ok === true && js.kit === '1.5.0');
 }
 
 console.log('erori și avertismente');
@@ -170,7 +170,7 @@ console.log('copii ale aplicațiilor reale (în /tmp)');
       const a = rep.apps.find((x) => x.dir.endsWith('/' + n)), h = rf(work, n, 'index.html'), info = infoBefore[n], app = JSON.parse(rf(work, n, 'app.json'));
       const v = bumpVersion(info.version, 'patch');
       check(`${n}: ${info.version} → ${v}, data ${DATE}, meta + app.json + fff-info`, meta(h, 'application-version') === v && meta(h, 'last-updated') === DATE && app.version === v && app.updated === DATE && JSON.parse(h.match(/id="fff-info">([\s\S]*?)<\/script>/)[1]).version === v, a.errors);
-      check(`${n}: kit 1.4.0, aceleași module (${kitBefore[n]}), slug neschimbat`, app.kit.version === '1.4.0' && app.kit.modules.join() === kitBefore[n] && app.slug === info.slug);
+      check(`${n}: kit 1.5.0, aceleași module (${kitBefore[n]}), slug neschimbat`, app.kit.version === '1.5.0' && app.kit.modules.join() === kitBefore[n] && app.slug === info.slug);
       check(`${n}: sw.js VERSION, README-uri`, /VERSION\s*=\s*"?'?[^;,]*/.test(rf(work, n, 'sw.js')) && rf(work, n, 'sw.js').includes(v) && rf(work, n, 'README.md').includes(`**Version:** ${v} · **Last updated:** ${DATE}`));
       check(`${n}: hash CSP + SHA-256 valide (check --lax ok)`, checkKit(path.join(work, n), {lax: true}).ok && checkCspHashes(h).ok);
       check(`${n}: depozitul original NEATINS (release lucrează doar pe copie)`, sha(rf(ROOT, n, 'index.html')) === orig[n] || fs.statSync(path.join(ROOT, n, 'index.html')).mtimeMs > T_START);   // dacă altcineva editează depozitul în timpul testului, mtime e mai nou decât startul

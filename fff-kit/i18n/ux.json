@@ -1,0 +1,34 @@
+{
+ "ro": {
+  "copied": "Copiat",
+  "saved": "Salvat"
+ },
+ "en": {
+  "copied": "Copied",
+  "saved": "Saved"
+ },
+ "fr": {
+  "copied": "Copié",
+  "saved": "Enregistré"
+ },
+ "it": {
+  "copied": "Copiato",
+  "saved": "Salvato"
+ },
+ "es": {
+  "copied": "Copiado",
+  "saved": "Guardado"
+ },
+ "pt": {
+  "copied": "Copiado",
+  "saved": "Guardado"
+ },
+ "de": {
+  "copied": "Kopiert",
+  "saved": "Gespeichert"
+ },
+ "hu": {
+  "copied": "Másolva",
+  "saved": "Mentve"
+ }
+}

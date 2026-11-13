@@ -11,7 +11,7 @@ import {blankBlocks} from './lib/jsscan.mjs';
 import {NEW_RULES, nativeDialogIssues, unprefixedStorageIssues, cdnWithoutSriIssues, i18nParityIssues} from './lib/rules.mjs';
 
 const KIT = path.dirname(fileURLToPath(import.meta.url));
-const ORDER = ['core', 'store', 'dialog', 'exit', 'view', 'label', 'bundle', 'qr', 'p2p', 'sync', 'history', 'bridge', 'srs', 'tts', 'pii', 'search', 'ephem', 'ephem-stars'];
+const ORDER = ['core', 'store', 'dialog', 'exit', 'view', 'ux', 'label', 'bundle', 'qr', 'p2p', 'sync', 'history', 'bridge', 'srs', 'tts', 'pii', 'search', 'ephem', 'ephem-stars'];
 const BLOCK_RE = /\n<!--fff:kit:start[^>]*-->[\s\S]*?<!--fff:kit:end-->/;
 const INFO_RE = /\n<!--fff:info:start-->[\s\S]*?<!--fff:info:end-->/;
 const FORMAT_V = 1;

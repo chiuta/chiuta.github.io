@@ -1,6 +1,6 @@
 # fff-kit
 
-**Versiune:** 1.4.0 · **Ultima actualizare:** 7 noiembrie 2026
+**Versiune:** 1.5.0 · **Ultima actualizare:** 13 noiembrie 2026
 
 Module comune pentru aplicațiile „fără frontiere”, **lipite în fiecare `index.html`** de un pas de build. Aplicația rămâne un fișier care funcționează descărcat, offline, fără server. Nimic din kit nu face cereri de rețea.
 
@@ -105,6 +105,18 @@ LC_ALL=C sed -E 's/data-fff-hash="[0-9a-f]*"/data-fff-hash=""/g; s/"sha256":"[0-
 ```
 
 `sizeBytes` este dimensiunea fișierului final; build-ul găsește prin iterație punctul fix (cifrele lui apar în fișier).
+
+## Novități în 1.5.0
+
+### FFF.ux (modulul `ux`) — confort la atingere și satisfacție la utilizare
+
+- **Ținte de atingere ≥ 44 px** pe ecrane tactile (`pointer: coarse`): butoane, file, selecturi, câmpuri; stilul propriu (min-height) al aplicației are prioritate (specificitate 0). Pe desktop nimic nu se schimbă.
+- **Câmpuri cu text ≥ 16 px** pe ecrane tactile — iOS nu mai mărește pagina intempestiv la focus. Un câmp poate păstra mărimea proprie cu `data-fff-nouxfont`.
+- `touch-action: manipulation` (fără întârzierea de 300 ms), apăsare vizibilă (`:active`), selecția de text dezactivată pe butoane, derulare lină (respectă „mișcare redusă”), cuvinte lungi rupte în loc să iasă din ecran.
+- **Confirmare discretă** (toast, 8 limbi) la copiere în clipboard și la salvarea unui fișier (`<a download>`), **doar dacă aplicația nu și-a afișat deja propria confirmare** (nu apare dublura).
+- **Tasta „/”** duce focusul în câmpul de căutare; **Esc** îl părăsește.
+- Legăturile/etichetele ne-inline mai mici de 44 px primesc zonă de atingere de 44 px (`data-fff-hit`).
+- Opriri: `<meta name="fff-ux" content="off">` sau `?noux=1`. Teste: `node test/ux.test.mjs`.
 
 ## Novități în 1.4.0
 
