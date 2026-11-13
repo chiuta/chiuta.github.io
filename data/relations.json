@@ -1,7 +1,7 @@
 {
  "schema": 1,
  "note": "Generat de tools/sync-catalog.mjs din data/catalog-meta.json, data/flows.json și registrul de plicuri; nu se editează de mână. Fiecare relație are cel puțin un motiv verificabil (vezi relationEvidence în tools/catalog-meta-lib.mjs).",
- "count": 667,
+ "count": 665,
  "relations": [
   {
    "a": "AcademiSearch",
@@ -348,7 +348,6 @@
    "a": "Alfabete",
    "b": "glosar",
    "reasons": [
-    "topic:translate",
     "pair"
    ],
    "why": "alfabetele și dicționarele limbilor mici se completează: unul arată cum se scrie, celălalt ce înseamnă"
@@ -3500,7 +3499,6 @@
    "a": "Lexicon",
    "b": "glosar",
    "reasons": [
-    "topic:translate",
     "pair"
    ],
    "why": "amândouă sunt dicționare: Lexicon e dicționarul tău, glosar va aduna dicționare ale limbilor minoritare"
@@ -4868,13 +4866,6 @@
   },
   {
    "a": "TranslateHub",
-   "b": "glosar",
-   "reasons": [
-    "topic:translate"
-   ]
-  },
-  {
-   "a": "TranslateHub",
    "b": "VietAR",
    "reasons": [
     "module:fff-ai",
@@ -5047,13 +5038,6 @@
    "b": "orarium",
    "reasons": [
     "topic:astro"
-   ]
-  },
-  {
-   "a": "VoiceAtelier",
-   "b": "glosar",
-   "reasons": [
-    "topic:translate"
    ]
   },
   {

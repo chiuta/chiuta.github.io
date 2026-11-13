@@ -43,7 +43,8 @@ async function open(lang, viewport = DESK, bypassCSP = false) {
   await ctx.addInitScript((l) => { try { localStorage.setItem('lang', l); localStorage.setItem('hub.anim', 'off'); } catch { /* fără localStorage */ } }, lang);
   const page = await ctx.newPage();
   page.on('pageerror', (e) => errors.push(e.message));
-  page.on('console', (m) => { const u = m.location().url || ''; if (m.type() === 'error' && !/\/demo\/[^/]+\/loc\/[a-z]{2}\//.test(u)) errors.push(m.text()); });
+  // 404 pentru demo/<App>/(preview.webp|poster.jpg|video.mp4) când aplicația încă nu are filmuleț (card fără demo) e degradare intenționată (clasa no-clip)
+  page.on('console', (m) => { const u = m.location().url || ''; if (m.type() === 'error' && !/\/demo\/[^/]+\/loc\/[a-z]{2}\//.test(u) && !(/\/demo\/([^/]+)\/(preview\.webp|poster\.jpg|video\.mp4)$/.test(u) && !fs.existsSync(path.join(path.dirname(fileURLToPath(import.meta.url)), '..', 'demo', decodeURIComponent(u.match(/\/demo\/([^/]+)\//)[1]))))) errors.push(m.text()); });
   await page.goto(BASE);
   await page.waitForSelector('#discover');
   await page.waitForFunction(() => document.querySelectorAll('#apps-grid .card-related').length > 50);
@@ -136,8 +137,8 @@ for (const [vn, vp] of [['desktop', DESK], ['mobil', MOB]]) {
   await T('constelație (' + vn + '): 114 stele, relații, tastatură (săgeți + Enter), clic → card, Esc, 8 limbi', async () => {
     const {ctx, page, errors} = await open('ro', vp);
     await page.click('#cs-open'); await page.waitForSelector('#cs-dlg[open]');
-    const st = await page.evaluate(() => ({n: document.querySelectorAll('.cs-node').length, e: document.querySelectorAll('.cs-edges line').length, labeled: [...document.querySelectorAll('.cs-node')].every((g) => g.getAttribute('aria-label')), tab0: document.querySelectorAll('.cs-node[tabindex="0"]').length, ov: document.documentElement.scrollWidth - innerWidth}));
-    ok(st.n === 114, 'stele: ' + st.n); ok(st.e >= 200, 'linii: ' + st.e); ok(st.labeled, 'stele fără aria-label'); ok(st.tab0 === 1, 'roving tabindex: ' + st.tab0); ok(st.ov <= 0, 'depășire orizontală pagină: ' + st.ov);
+    const st = await page.evaluate(() => ({cards: liveCards().length, n: document.querySelectorAll('.cs-node').length, e: document.querySelectorAll('.cs-edges line').length, labeled: [...document.querySelectorAll('.cs-node')].every((g) => g.getAttribute('aria-label')), tab0: document.querySelectorAll('.cs-node[tabindex="0"]').length, ov: document.documentElement.scrollWidth - innerWidth}));
+    ok(st.n === st.cards && st.n >= 114, 'stele: ' + st.n + ' (carduri vii: ' + st.cards + ')'); ok(st.e >= 200, 'linii: ' + st.e); ok(st.labeled, 'stele fără aria-label'); ok(st.tab0 === 1, 'roving tabindex: ' + st.tab0); ok(st.ov <= 0, 'depășire orizontală pagină: ' + st.ov);
     // distanță minimă între stele ≥ 28 px logici
     const md = await page.evaluate(() => { const P = [...document.querySelectorAll('.cs-node')].map((g) => g.getBoundingClientRect()); let m = 1e9; for (let i = 0; i < P.length; i++) for (let j = i + 1; j < P.length; j++) m = Math.min(m, Math.hypot(P[i].x - P[j].x, P[i].y - P[j].y)); return m; });
     ok(md >= 26, 'stele prea apropiate: ' + md.toFixed(1));
