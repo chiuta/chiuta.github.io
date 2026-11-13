@@ -57,7 +57,7 @@ async function open(lang, urlPath = '', opts = {}) {
   page.on('pageerror', (e) => errors.push(e.message));
   // 404 pentru demo/<App>/loc/<limbă>/preview.webp|video.mp4 este fallback intenționat (previzualizarea localizată lipsește → se cere cea implicită);
   // apare doar pentru cardurile ajunse în viewport, deci altfel testul ar depinde de poziția de derulare.
-  page.on('console', (m) => { const u = m.location().url || ''; if (m.type() === 'error' && !/\/demo\/[^/]+\/loc\/[a-z]{2}\//.test(u) && !(/\/demo\/([^/]+)\/(preview\.webp|poster\.jpg)$/.test(u) && !fs.existsSync(path.join(HUB, 'demo', decodeURIComponent(u.match(/\/demo\/([^/]+)\//)[1]))))) errors.push(m.text() + (u ? ' [' + u + ']' : '')); });
+  page.on('console', (m) => { const u = m.location().url || ''; if (m.type() === 'error' && !/\/demo\/[^/]+\/loc\/[a-z]{2}\//.test(u) && !(/\/demo\/([^/]+)\/(preview\.webp|poster\.jpg|video\.mp4)$/.test(u) && !fs.existsSync(path.join(HUB, 'demo', decodeURIComponent(u.match(/\/demo\/([^/]+)\//)[1]))))) errors.push(m.text() + (u ? ' [' + u + ']' : '')); });
   await page.goto(BASE + urlPath);
   return {ctx, page, external, errors};
 }
@@ -159,13 +159,13 @@ await T('catalog: contoare derivate, stare, offline, fișă, variante Universul 
   ok(info.rustCards === 'OSATURA,VERIGA,TEZAUR,LegatorOCR', 'secțiunea Rust: ' + info.rustCards);
   ok(info.uoVariantLinks.length === 3 && info.uoVariantLinks.every((u) => /Universul-Observabil-[123]D\/?$/.test(u)), 'fișa hub-ului nu listează cele 3 variante: ' + info.uoVariantLinks.join(','));
   ok(info.shots === 0, 'nu trebuie să existe capturi dacă nu sunt declarate');
-  ok(info.statuses.alpha.join() === 'OSATURA,TEZAUR,LegatorOCR' && info.statuses.experimental.join() === 'Provenienta' && info.statuses.stable.length > 100, 'stări: ' + JSON.stringify(info.statuses).slice(0, 200));
+  ok([...info.statuses.alpha].sort().join() === 'ANTENA,ARBITRU,ASTROLABIU,ECOGRAMA,LegatorOCR,MARTOR,NEAMURI,OSATURA,TACTIL,TEZAUR,atelier-verificare,balanta,calendarium,ecou-spectral-rs,glosar,graiul,indicativ-international,proiector-fara-frontiere,regula,vietar-packs' && info.statuses.experimental.join() === 'Provenienta' && info.statuses.stable.length > 100, 'stări: ' + JSON.stringify(info.statuses).slice(0, 200));
   ok(info.statuses.lab.join() === 'LocalMind,OmniHost', 'laborator: ' + info.statuses.lab.join());
   ok(info.recom.length >= 5 && info.recom.every((r, i) => r[2] !== 'lab' && r[1] >= 5 && (i === 0 || info.recom[i - 1][1] >= r[1])), 'Recomandate nu e ordonată după scorul măsurat / conține laborator: ' + JSON.stringify(info.recom));
   ok(info.verText === 0, 'data de sincronizare în masă nu mai apare pe carduri');
   // filtru de stare
   await page.selectOption('#f-status', 'alpha');
-  await countIs(page, 3);
+  await countIs(page, 20);
   await page.selectOption('#f-status', 'experimental');
   await countIs(page, 1);
   await page.selectOption('#f-status', 'lab');

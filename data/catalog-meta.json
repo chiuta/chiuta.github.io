@@ -37,28 +37,28 @@
     {"id": "social", "name": {"en": "Social media without an account", "ro": "Rețele sociale fără cont", "fr": "Réseaux sociaux sans compte", "it": "Social senza account", "es": "Redes sociales sin cuenta", "pt": "Redes sociais sem conta", "de": "Soziale Netzwerke ohne Konto", "hu": "Közösségi oldalak fiók nélkül"}, "members": ["Cadraj", "Arhiva-LinkedIn", "Threads-fara-cont", "Vitrina", "X-fara-cont", "Arhiva-fara-frontiere"], "kw": "social retele networks tiktok linkedin threads twitter facebook postari posts publicatii reseaux sociaux redes sociales soziale netzwerke kozossegi arhivare archiving"},
     {"id": "links", "name": {"en": "Links, sites and monitoring", "ro": "Linkuri, site-uri și monitorizare", "fr": "Liens, sites et surveillance", "it": "Link, siti e monitoraggio", "es": "Enlaces, sitios y monitorización", "pt": "Links, sites e monitorização", "de": "Links, Websites und Überwachung", "hu": "Linkek, weboldalak és megfigyelés"}, "members": ["Surveyor", "VERIGA", "Trade-Free-Link-Guardian", "OUTPOST", "SEOptimum", "ScryVeil"], "kw": "linkuri link links liens enlaces ligacoes verificare site website web broken stricate rupte monitorizare monitoring uptime seo wordpress domeniu domain rot hibas weboldal sitio linkek hibas torott kaputte kaputt casses rotti rotos quebradas quebrados"},
     {"id": "privacy", "name": {"en": "Files, privacy and authenticity", "ro": "Fișiere, confidențialitate și autenticitate", "fr": "Fichiers, confidentialité et authenticité", "it": "File, privacy e autenticità", "es": "Archivos, privacidad y autenticidad", "pt": "Ficheiros, privacidade e autenticidade", "de": "Dateien, Datenschutz und Echtheit", "hu": "Fájlok, adatvédelem és hitelesség"}, "members": ["Curatitor", "Provenienta", "VaultCrypt", "ScryVeil"], "kw": "metadate metadata exif gps fotografie photo imagine image fisier file confidentialitate privacy cifrare encrypt criptare parola password c2pa autentic authentic fals fake deepfake provenienta securitate security biztonsag datenschutz sterge remove foto fotografia echt authentisch hiteles fenykep autenticita autentica autentico autentique"},
-    {"id": "audit", "name": {"en": "File audit trio", "ro": "Trio de audit al fișierelor", "fr": "Trio d’audit de fichiers", "it": "Trio di audit dei file", "es": "Trío de auditoría de archivos", "pt": "Trio de auditoria de ficheiros", "de": "Datei-Audit-Trio", "hu": "Fájlellenőrző trió"}, "members": ["Provenienta", "Curatitor", "Surveyor", "FreeDetect"], "kw": "audit auditor verifica verify check incredere trust document fisier file pdf imagine image link dovada evidence"},
-    {"id": "ai", "name": {"en": "AI assistants and prompts", "ro": "Asistenți AI și prompturi", "fr": "Assistants IA et prompts", "it": "Assistenti IA e prompt", "es": "Asistentes de IA y prompts", "pt": "Assistentes de IA e prompts", "de": "KI-Assistenten und Prompts", "hu": "MI-asisztensek és promptok"}, "members": ["AI-Liber", "Nexus-fara-frontiere", "ARENA", "LocalMind", "PromptVault", "Constelar"], "kw": "ai ia inteligenta artificiala artificial intelligence intelligenza inteligencia chatbot asistent assistant assistente llm prompt model conversatie conversation chat gpt claude gemini ki mi"},
-    {"id": "translate", "name": {"en": "Languages, translation and voice", "ro": "Limbi, traducere și voce", "fr": "Langues, traduction et voix", "it": "Lingue, traduzione e voce", "es": "Idiomas, traducción y voz", "pt": "Línguas, tradução e voz", "de": "Sprachen, Übersetzung und Stimme", "hu": "Nyelvek, fordítás és hang"}, "members": ["TranslateHub", "Lexicon", "VoiceAtelier", "Alfabete"], "kw": "traducere translate translation traduction traduzione traduccion traducao ubersetzen ubersetzung forditas limba limbi language lingua sprache nyelv voce voice voix voz stimme hang dictionar dictionary vorbire speech text traduzir traducir tradurre traduire ubersetzen forditani"},
-    {"id": "radio", "name": {"en": "Amateur radio", "ro": "Radioamatorism", "fr": "Radioamateur", "it": "Radioamatori", "es": "Radioafición", "pt": "Radioamadorismo", "de": "Amateurfunk", "hu": "Rádióamatőrködés"}, "members": ["ETER", "INDICATIV", "QSO", "Alfabete"], "kw": "radio radioamator amator amateur ham morse ancom emisie statie licenta examen exam indicativ qso jurnal log funk radioaficionado radioaficion radioamador radioamatore radioamateur amateurfunk radioamatorkodes"},
+    {"id": "audit", "name": {"en": "File audit trio", "ro": "Trio de audit al fișierelor", "fr": "Trio d’audit de fichiers", "it": "Trio di audit dei file", "es": "Trío de auditoría de archivos", "pt": "Trio de auditoria de ficheiros", "de": "Datei-Audit-Trio", "hu": "Fájlellenőrző trió"}, "members": ["Provenienta", "Curatitor", "Surveyor", "FreeDetect", "MARTOR", "atelier-verificare"], "kw": "audit auditor verifica verify check incredere trust document fisier file pdf imagine image link dovada evidence"},
+    {"id": "ai", "name": {"en": "AI assistants and prompts", "ro": "Asistenți AI și prompturi", "fr": "Assistants IA et prompts", "it": "Assistenti IA e prompt", "es": "Asistentes de IA y prompts", "pt": "Assistentes de IA e prompts", "de": "KI-Assistenten und Prompts", "hu": "MI-asisztensek és promptok"}, "members": ["AI-Liber", "Nexus-fara-frontiere", "ARENA", "LocalMind", "PromptVault", "Constelar", "balanta"], "kw": "ai ia inteligenta artificiala artificial intelligence intelligenza inteligencia chatbot asistent assistant assistente llm prompt model conversatie conversation chat gpt claude gemini ki mi"},
+    {"id": "translate", "name": {"en": "Languages, translation and voice", "ro": "Limbi, traducere și voce", "fr": "Langues, traduction et voix", "it": "Lingue, traduzione e voce", "es": "Idiomas, traducción y voz", "pt": "Línguas, tradução e voz", "de": "Sprachen, Übersetzung und Stimme", "hu": "Nyelvek, fordítás és hang"}, "members": ["TranslateHub", "Lexicon", "VoiceAtelier", "Alfabete", "glosar"], "kw": "traducere translate translation traduction traduzione traduccion traducao ubersetzen ubersetzung forditas limba limbi language lingua sprache nyelv voce voice voix voz stimme hang dictionar dictionary vorbire speech text traduzir traducir tradurre traduire ubersetzen forditani"},
+    {"id": "radio", "name": {"en": "Amateur radio", "ro": "Radioamatorism", "fr": "Radioamateur", "it": "Radioamatori", "es": "Radioafición", "pt": "Radioamadorismo", "de": "Amateurfunk", "hu": "Rádióamatőrködés"}, "members": ["ETER", "INDICATIV", "QSO", "Alfabete", "ANTENA", "indicativ-international"], "kw": "radio radioamator amator amateur ham morse ancom emisie statie licenta examen exam indicativ qso jurnal log funk radioaficionado radioaficion radioamador radioamatore radioamateur amateurfunk radioamatorkodes"},
     {"id": "health", "name": {"en": "Health and the body", "ro": "Sănătate și corp", "fr": "Santé et corps", "it": "Salute e corpo", "es": "Salud y cuerpo", "pt": "Saúde e corpo", "de": "Gesundheit und Körper", "hu": "Egészség és test"}, "members": ["PULS", "SEVA", "Nemurirea", "VATRA", "PUNCTUM", "FARFURIA", "VITALIS"], "kw": "sanatate health sante salute salud saude gesundheit egeszseg prim ajutor first aid urgenta ambulanta somn sleep respiratie breathing nutritie imbatranire aging medic"},
-    {"id": "field", "name": {"en": "Fieldwork and nature", "ro": "Teren și natură", "fr": "Terrain et nature", "it": "Campo e natura", "es": "Campo y naturaleza", "pt": "Campo e natureza", "de": "Gelände und Natur", "hu": "Terep és természet"}, "members": ["ExploratoriiEco", "FieldObserver", "Poteca", "URME", "VATRA", "VietAR"], "kw": "teren field natura nature drumetie hiking traseu trail gpx plante plants animale animals specii species biodiversitate excursie munte mountain observatii observations"},
+    {"id": "field", "name": {"en": "Fieldwork and nature", "ro": "Teren și natură", "fr": "Terrain et nature", "it": "Campo e natura", "es": "Campo y naturaleza", "pt": "Campo e natureza", "de": "Gelände und Natur", "hu": "Terep és természet"}, "members": ["ExploratoriiEco", "FieldObserver", "Poteca", "URME", "VATRA", "VietAR", "vietar-packs"], "kw": "teren field natura nature drumetie hiking traseu trail gpx plante plants animale animals specii species biodiversitate excursie munte mountain observatii observations"},
     {"id": "astro", "name": {"en": "Astronomy and sky", "ro": "Astronomie și cer", "fr": "Astronomie et ciel", "it": "Astronomia e cielo", "es": "Astronomía y cielo", "pt": "Astronomia e céu", "de": "Astronomie und Himmel", "hu": "Csillagászat és égbolt"}, "members": ["Bolta", "Eclipsa-2027", "orarium", "TerRa", "Universul-Observabil", "Horizons.BeyondLimits", "IncredibleCosmos", "VOIAJOR"], "kw": "astronomie astronomy astronomia cer sky cielo ciel himmel stele stars planete planets luna moon soare sun eclipsa eclipse cosmos univers universe marte mars"},
     {"id": "astrology", "name": {"en": "Astrology and symbols", "ro": "Astrologie și simboluri", "fr": "Astrologie et symboles", "it": "Astrologia e simboli", "es": "Astrología y símbolos", "pt": "Astrologia e símbolos", "de": "Astrologie und Symbole", "hu": "Asztrológia és szimbólumok"}, "members": ["ECLIPSA", "HoroScop", "NumeroLogIA", "Numerologie", "Tarot", "Eclipsa-2027"], "kw": "astrologie astrology astrologia horoscop horoscope zodiac natal casa house numerologie numerology tarot carti cards efemerida"},
     {"id": "traditions", "name": {"en": "Traditions and unconventional practices", "ro": "Tradiții și practici neconvenționale", "fr": "Traditions et pratiques non conventionnelles", "it": "Tradizioni e pratiche non convenzionali", "es": "Tradiciones y prácticas no convencionales", "pt": "Tradições e práticas não convencionais", "de": "Traditionen und unkonventionelle Praktiken", "hu": "Hagyományok és nem konvencionális gyakorlatok"}, "members": ["Bioenergoterapie", "Inforenergetica", "Radiestezie", "Reiki", "Afrodisiace-fara-frontiere", "ACORDAJ", "Fenarium", "CHIROMANTIA"], "kw": "traditii traditions spiritualitate spirituality terapii therapy energie energy reiki radiestezie dowsing pendul bioenergie alternativ cultural afrodisiace"},
     {"id": "calm", "name": {"en": "Calm and ambient sound", "ro": "Calm și sunet ambiental", "fr": "Calme et son ambiant", "it": "Calma e suono ambientale", "es": "Calma y sonido ambiental", "pt": "Calma e som ambiente", "de": "Ruhe und Ambient-Klang", "hu": "Nyugalom és ambient hang"}, "members": ["ASMR", "CalmWaves", "Aurora", "BorderlessMelodies"], "kw": "relaxare relaxation relax calm somn sleep meditatie meditation ambient muzica music musica sunete sounds respiratie asmr stress"},
-    {"id": "audiolab", "name": {"en": "Audio laboratory", "ro": "Laborator audio", "fr": "Laboratoire audio", "it": "Laboratorio audio", "es": "Laboratorio de audio", "pt": "Laboratório de áudio", "de": "Audiolabor", "hu": "Hanglabor"}, "members": ["Decibel", "EcoulSpectral", "FrequencyLaboratory", "generator-frecvente"], "kw": "audio frecventa frequency frequenza ton tone spectru spectrum zgomot noise decibeli decibel masurare measure hearing auz test sunet sound"},
+    {"id": "audiolab", "name": {"en": "Audio laboratory", "ro": "Laborator audio", "fr": "Laboratoire audio", "it": "Laboratorio audio", "es": "Laboratorio de audio", "pt": "Laboratório de áudio", "de": "Audiolabor", "hu": "Hanglabor"}, "members": ["Decibel", "EcoulSpectral", "FrequencyLaboratory", "generator-frecvente", "ECOGRAMA", "ecou-spectral-rs"], "kw": "audio frecventa frequency frequenza ton tone spectru spectrum zgomot noise decibeli decibel masurare measure hearing auz test sunet sound"},
     {"id": "mathviz", "name": {"en": "Mathematics and physics, visually", "ro": "Matematică și fizică, vizual", "fr": "Mathématiques et physique en images", "it": "Matematica e fisica visive", "es": "Matemáticas y física visuales", "pt": "Matemática e física visuais", "de": "Mathematik und Physik anschaulich", "hu": "Matematika és fizika szemléletesen"}, "members": ["Hyper4D", "IncredibleCosmos", "Horizons.BeyondLimits", "Universul-Observabil", "TerRa"], "kw": "matematica mathematics fizica physics geometrie geometry 4d dimensiuni dimensions gravitatie gravity simulare simulation vizualizare visualization"},
     {"id": "scifi", "name": {"en": "Science fiction and speculation", "ro": "Science-fiction și speculație", "fr": "Science-fiction et spéculation", "it": "Fantascienza e speculazione", "es": "Ciencia ficción y especulación", "pt": "Ficção científica e especulação", "de": "Science-Fiction und Spekulation", "hu": "Sci-fi és spekuláció"}, "members": ["Limpezimea", "Nota-Zero", "Pendulul", "PrintreInteligente", "NOMIA", "ValeaPlopului1972"], "kw": "sf science fiction fantascienza roman novel povestire story carte book literatura literature citit reading ficțiune fiction autor roman"},
     {"id": "authoring", "name": {"en": "Writing and creating", "ro": "Scriere și creare", "fr": "Écriture et création", "it": "Scrittura e creazione", "es": "Escritura y creación", "pt": "Escrita e criação", "de": "Schreiben und Gestalten", "hu": "Írás és alkotás"}, "members": ["Fabrica", "MarkdownAtelier", "Akasha", "Trusa-fara-frontiere"], "kw": "scriere writing scrie write curs course lectii lessons markdown notite notes document caiet notebook creare create redactare"},
-    {"id": "workshop", "name": {"en": "Workshops and events", "ro": "Ateliere și evenimente", "fr": "Ateliers et événements", "it": "Laboratori ed eventi", "es": "Talleres y eventos", "pt": "Oficinas e eventos", "de": "Workshops und Veranstaltungen", "hu": "Műhelyek és rendezvények"}, "members": ["Fabrica", "Undava", "FASCICUL", "Clopotel", "Monstrarium"], "kw": "atelier workshop eveniment event conferinta conference predare teaching clasa classroom proiector projector cronometru timer quiz elevi pupils prezentare presentation"},
-    {"id": "access", "name": {"en": "Accessibility", "ro": "Accesibilitate", "fr": "Accessibilité", "it": "Accessibilità", "es": "Accesibilidad", "pt": "Acessibilidade", "de": "Barrierefreiheit", "hu": "Akadálymentesség"}, "members": ["ATINGERE", "Alfabete", "VoiceAtelier", "LECTOR", "Claritas"], "kw": "accesibilitate accessibility braille orb blind surd deaf nevazator audiobook citire carte voce"},
+    {"id": "workshop", "name": {"en": "Workshops and events", "ro": "Ateliere și evenimente", "fr": "Ateliers et événements", "it": "Laboratori ed eventi", "es": "Talleres y eventos", "pt": "Oficinas e eventos", "de": "Workshops und Veranstaltungen", "hu": "Műhelyek és rendezvények"}, "members": ["Fabrica", "Undava", "FASCICUL", "Clopotel", "Monstrarium", "proiector-fara-frontiere"], "kw": "atelier workshop eveniment event conferinta conference predare teaching clasa classroom proiector projector cronometru timer quiz elevi pupils prezentare presentation"},
+    {"id": "access", "name": {"en": "Accessibility", "ro": "Accesibilitate", "fr": "Accessibilité", "it": "Accessibilità", "es": "Accesibilidad", "pt": "Acessibilidade", "de": "Barrierefreiheit", "hu": "Akadálymentesség"}, "members": ["ATINGERE", "Alfabete", "VoiceAtelier", "LECTOR", "Claritas", "TACTIL"], "kw": "accesibilitate accessibility braille orb blind surd deaf nevazator audiobook citire carte voce"},
     {"id": "scan", "name": {"en": "Books and scanning", "ro": "Cărți și scanare", "fr": "Livres et numérisation", "it": "Libri e scansione", "es": "Libros y escaneo", "pt": "Livros e digitalização", "de": "Bücher und Scannen", "hu": "Könyvek és szkennelés"}, "members": ["LegatorOCR", "ATINGERE", "TEZAUR", "Arhiva-fara-frontiere", "LECTOR"], "kw": "scanare scan scanner carte book livre libro buch pdf ocr text digitizare digitization"},
-    {"id": "cards", "name": {"en": "Card games", "ro": "Jocuri de cărți", "fr": "Jeux de cartes", "it": "Giochi di carte", "es": "Juegos de cartas", "pt": "Jogos de cartas", "de": "Kartenspiele", "hu": "Kártyajátékok"}, "members": ["Belot-fara-frontiere", "Carti-de-joc-fara-frontiere", "Remi-fara-frontiere", "Scopone-fara-frontiere", "Solitaire-fara-frontiere"], "kw": "carti cards cartes carte cartas karten kartya joc game belot remi rummy scopone solitaire poker"},
+    {"id": "cards", "name": {"en": "Card games", "ro": "Jocuri de cărți", "fr": "Jeux de cartes", "it": "Giochi di carte", "es": "Juegos de cartas", "pt": "Jogos de cartas", "de": "Kartenspiele", "hu": "Kártyajátékok"}, "members": ["Belot-fara-frontiere", "Carti-de-joc-fara-frontiere", "Remi-fara-frontiere", "Scopone-fara-frontiere", "Solitaire-fara-frontiere", "ARBITRU", "regula"], "kw": "carti cards cartes carte cartas karten kartya joc game belot remi rummy scopone solitaire poker"},
     {"id": "board", "name": {"en": "Board games", "ro": "Jocuri de masă", "fr": "Jeux de plateau", "it": "Giochi da tavolo", "es": "Juegos de mesa", "pt": "Jogos de tabuleiro", "de": "Brettspiele", "hu": "Táblajátékok"}, "members": ["Dame-fara-frontiere", "Go-fara-frontiere", "Sah-fara-frontiere", "Table-fara-frontiere", "Domino-fara-frontiere", "Mahjong-fara-frontiere", "Zaruri-fara-frontiere"], "kw": "joc game jocuri table board sah chess go dame draughts checkers domino mahjong backgammon zaruri dice tabla sakk sakkozni ajedrez xadrez schach echecs scacchi"},
     {"id": "luck", "name": {"en": "Dice, luck and simulation", "ro": "Zaruri, noroc și simulare", "fr": "Dés, hasard et simulation", "it": "Dadi, fortuna e simulazione", "es": "Dados, suerte y simulación", "pt": "Dados, sorte e simulação", "de": "Würfel, Glück und Simulation", "hu": "Kocka, szerencse és szimuláció"}, "members": ["Zaruri-fara-frontiere", "Table-fara-frontiere", "Cupa-Mondiala-2026"], "kw": "zaruri dice noroc luck simulare simulation fotbal football soccer cupa mondiala world cup sport"},
     {"id": "mind", "name": {"en": "Mind and conversation", "ro": "Minte și conversație", "fr": "Esprit et conversation", "it": "Mente e conversazione", "es": "Mente y conversación", "pt": "Mente e conversa", "de": "Geist und Gespräch", "hu": "Elme és beszélgetés"}, "members": ["Sudoku-fara-frontiere", "Profund", "Undava", "MENSURA"], "kw": "puzzle sudoku minte mind logica logic intrebari questions conversatie conversation quiz test iq joc"},
-    {"id": "time", "name": {"en": "Time and scheduling", "ro": "Timp și programare", "fr": "Temps et planification", "it": "Tempo e pianificazione", "es": "Tiempo y planificación", "pt": "Tempo e planeamento", "de": "Zeit und Planung", "hu": "Idő és ütemezés"}, "members": ["CLEPSIDRA", "Clopotel", "Orar", "orarium", "Cronosala"], "kw": "timp time ceas clock alarma alarm calendar program schedule agenda cronometru timer fus orar timezone"},
+    {"id": "time", "name": {"en": "Time and scheduling", "ro": "Timp și programare", "fr": "Temps et planification", "it": "Tempo e pianificazione", "es": "Tiempo y planificación", "pt": "Tempo e planeamento", "de": "Zeit und Planung", "hu": "Idő és ütemezés"}, "members": ["CLEPSIDRA", "Clopotel", "Orar", "orarium", "Cronosala", "calendarium"], "kw": "timp time ceas clock alarma alarm calendar program schedule agenda cronometru timer fus orar timezone"},
     {"id": "home", "name": {"en": "Home and family", "ro": "Gospodărie și familie", "fr": "Foyer et famille", "it": "Casa e famiglia", "es": "Hogar y familia", "pt": "Casa e família", "de": "Haushalt und Familie", "hu": "Háztartás és család"}, "members": ["Akasha", "Arbore", "Gospodar", "Orar", "CLEPSIDRA"], "kw": "gospodarie household familie family buget budget bani money genealogie arbore notite notes planificare planning casa home haztartas koltsegvetes presupuesto orcamento hogar haushalt foyer familiare"},
     {"id": "data", "name": {"en": "Data, economy and charts", "ro": "Date, economie și grafice", "fr": "Données, économie et graphiques", "it": "Dati, economia e grafici", "es": "Datos, economía y gráficos", "pt": "Dados, economia e gráficos", "de": "Daten, Wirtschaft und Diagramme", "hu": "Adatok, gazdaság és grafikonok"}, "members": ["DataWeave", "AGORA", "Gospodar", "API-fara-frontiere"], "kw": "date data tabel table csv grafic chart statistici statistics economie economy euro finante finance buget bani adatok"},
     {"id": "devtools", "name": {"en": "Developer tools and services", "ro": "Unelte pentru dezvoltatori și servicii", "fr": "Outils pour développeurs et services", "it": "Strumenti per sviluppatori e servizi", "es": "Herramientas para desarrolladores y servicios", "pt": "Ferramentas para programadores e serviços", "de": "Entwicklerwerkzeuge und Dienste", "hu": "Fejlesztői eszközök és szolgáltatások"}, "members": ["RegexLab", "SEOptimum", "OmniHost", "Trusa-fara-frontiere", "API-fara-frontiere", "OAZA", "DataWeave"], "kw": "dezvoltare development dev regex expresii cod code unelte tools utilitare utilities api servicii services web programare programming"},
@@ -67,10 +67,10 @@
     {"id": "anomalies", "name": {"en": "Contact, anomalies and mystery", "ro": "Contact, anomalii și mister", "fr": "Contact, anomalies et mystère", "it": "Contatto, anomalie e mistero", "es": "Contacto, anomalías y misterio", "pt": "Contacto, anomalias e mistério", "de": "Kontakt, Anomalien und Rätsel", "hu": "Kapcsolat, anomáliák és rejtélyek"}, "members": ["ValeaPlopului1972", "NOMIA", "Fenarium", "PrintreInteligente"], "kw": "ufo uap extraterestru alien contact fenomene phenomena anomalii anomalies mister mystery"},
     {"id": "perception", "name": {"en": "Perception and measurement", "ro": "Percepție și măsurare", "fr": "Perception et mesure", "it": "Percezione e misura", "es": "Percepción y medición", "pt": "Perceção e medição", "de": "Wahrnehmung und Messung", "hu": "Érzékelés és mérés"}, "members": ["MENSURA", "Fenarium", "FrequencyLaboratory", "Decibel"], "kw": "perceptie perception simturi senses senzatii test iq masurare measure"},
     {"id": "biology", "name": {"en": "Life sciences", "ro": "Științele vieții", "fr": "Sciences de la vie", "it": "Scienze della vita", "es": "Ciencias de la vida", "pt": "Ciências da vida", "de": "Lebenswissenschaften", "hu": "Élettudományok"}, "members": ["Nemurirea", "VietAR", "ExploratoriiEco", "SEVA"], "kw": "biologie biology biologia viata life vie specii species imbatranire aging celule cells"},
-    {"id": "wordculture", "name": {"en": "Words and culture", "ro": "Cuvinte și cultură", "fr": "Mots et culture", "it": "Parole e cultura", "es": "Palabras y cultura", "pt": "Palavras e cultura", "de": "Wörter und Kultur", "hu": "Szavak és kultúra"}, "members": ["Zicala", "Lexicon", "Profund", "Limpezimea", "Alfabete", "REZONANTA"], "kw": "proverbe proverbs cuvinte words dictionar dictionary limba limbi cultura culture romana romanian vorbe"},
+    {"id": "wordculture", "name": {"en": "Words and culture", "ro": "Cuvinte și cultură", "fr": "Mots et culture", "it": "Parole e cultura", "es": "Palabras y cultura", "pt": "Palavras e cultura", "de": "Wörter und Kultur", "hu": "Szavak és kultúra"}, "members": ["Zicala", "Lexicon", "Profund", "Limpezimea", "Alfabete", "REZONANTA", "NEAMURI", "graiul"], "kw": "proverbe proverbs cuvinte words dictionar dictionary limba limbi cultura culture romana romanian vorbe"},
     {"id": "security", "name": {"en": "Passwords and encryption", "ro": "Parole și criptare", "fr": "Mots de passe et chiffrement", "it": "Password e cifratura", "es": "Contraseñas y cifrado", "pt": "Palavras-passe e cifragem", "de": "Passwörter und Verschlüsselung", "hu": "Jelszavak és titkosítás"}, "members": ["VaultCrypt", "Trusa-fara-frontiere", "ScryVeil", "Curatitor"], "kw": "parola password parole cifrare criptare encrypt encryption securitate security cheie key seif vault"}
   ],
-  "extraRelations": [["Provenienta", "Surveyor"], ["TEZAUR", "AcademiSearch"], ["TEZAUR", "Lexicon"], ["VoiceAtelier", "TranslateHub"], ["Bolta", "Eclipsa-2027"], ["Eclipsa-2027", "ECLIPSA"], ["orarium", "Bolta"], ["PULS", "VATRA"], ["Gospodar", "Arbore"], ["ATINGERE", "LegatorOCR"], ["FASCICUL", "Undava"], ["FreeDetect", "Provenienta"], ["Aurora", "SEVA"], ["Cupa-Mondiala-2026", "DataWeave"], ["Sudoku-fara-frontiere", "Solitaire-fara-frontiere"], ["Belot-fara-frontiere", "Domino-fara-frontiere"], ["PromptVault", "TranslateHub"], ["Fabrica", "Clopotel"], ["URME", "Poteca"], ["Pendulul", "Nota-Zero"], ["Zicala", "Profund"], ["OmniHost", "OAZA"], ["Trade-Free-Link-Guardian", "VERIGA", "VERIGA preia funcțiile Link Guardian (linkuri stricate) într-un program nativ"], ["X-fara-cont", "Threads-fara-cont", "aceeași treabă pe altă rețea: citirea postărilor publice fără cont"], ["Curatitor", "VaultCrypt", "doi pași ai aceleiași igiene a fișierelor trimise: ștergi metadatele, apoi încuii fișierul"], ["Hyper4D", "Universul-Observabil-3D", "vizualizare spațială interactivă: rotești figura și o privești din unghiuri diferite"], ["Nemurirea", "SEVA", "fiziologie și longevitate (îmbătrânire, somn, ritm biologic), ambele doar informative"], ["TerRa", "orarium", "ziua și noaptea pe Pământ și pe planete ↔ ora pe fiecare corp al Sistemului Solar"], ["FrequencyLaboratory", "generator-frecvente", "ambele produc tonuri și testează auzul"], ["LocalMind", "Constelar", "conversație cu un asistent care poate rula local, fără server propriu"], ["Origami", "Monstrarium", "meșteșug de atelier cu hârtie și materiale reciclate, pe pași"], ["Alfabete", "ATINGERE", "braille: Alfabete îl învață, ATINGERE convertește cărți în braille"], ["ValeaPlopului1972", "NOMIA", "ambele sunt ficțiune sau ipoteză despre contactul cu minți ne-umane"], ["OUTPOST", "VERIGA", "două fețe ale întreținerii unui site: răspunde? și ce linkuri sunt stricate?"], ["BRAZDA", "VOIAJOR", "aceleași sonde Voyager: discul de aur pe care îl poartă și traiectoria pe care o parcurg"], ["BRAZDA", "NOMIA", "mesaje trimise printre stele: ce pui pe un disc și cum ar putea fi citit de o altă minte"], ["VOIAJOR", "Universul-Observabil", "aceeași întrebare la scări diferite: VOIAJOR urcă de la planete până la Calea Lactee, Universul Observabil merge dincolo de ea"], ["CHIROMANTIA", "Tarot", "două practici de divinație studiate ca fenomen cultural, cu aceeași privire critică și cu nivel de dovezi afișat"], ["PUNCTUM", "Reiki", "practici de îngrijire prezentate cu nivel de dovezi afișat și fără înlocuirea medicului"], ["PUNCTUM", "Bioenergoterapie", "terapii neconvenționale descrise informativ, cu limite și nivel de dovezi la vedere"], ["Cronosala", "CLEPSIDRA", "două instrumente de ritm și timp: intervale, pauze și alarme la sală, respectiv program de ore și alarme pe zi"], ["Cronosala", "Clopotel", "ambele împart timpul în intervale cu semnal sonor: pauze între seturi, respectiv timp de vorbire pe vorbitor"], ["DECUPAJ", "LECTOR", "două aplicații pentru conținut audio-video, din același cadru: tai clipuri dintr-un podcast, respectiv citești cărți cu voce tare, ambele local în browser"], ["FARFURIA", "VITALIS", "două îndrumare de stil de viață pe același domeniu, nutriția și longevitatea, ambele cu limite de siguranță scrise la vedere"], ["REZONANTA", "MarkdownAtelier", "ghidul de comunicare îți dă structura mesajului, iar editorul Markdown e locul unde îl scrii și îl exporți"], ["Claritas", "LECTOR", "amândouă fac textul mai ușor de urmărit: extensia citește cu voce tare orice pagină web, LECTOR citește cărțile tale"], ["TurboCursa", "OSATURA", "două proiecte clean-room scrise în Rust, cu motor propriu și cu ieșire și în browser (WebAssembly sau fișier web)"]],
+  "extraRelations": [["Provenienta", "Surveyor"], ["TEZAUR", "AcademiSearch"], ["TEZAUR", "Lexicon"], ["VoiceAtelier", "TranslateHub"], ["Bolta", "Eclipsa-2027"], ["Eclipsa-2027", "ECLIPSA"], ["orarium", "Bolta"], ["PULS", "VATRA"], ["Gospodar", "Arbore"], ["ATINGERE", "LegatorOCR"], ["FASCICUL", "Undava"], ["FreeDetect", "Provenienta"], ["Aurora", "SEVA"], ["Cupa-Mondiala-2026", "DataWeave"], ["Sudoku-fara-frontiere", "Solitaire-fara-frontiere"], ["Belot-fara-frontiere", "Domino-fara-frontiere"], ["PromptVault", "TranslateHub"], ["Fabrica", "Clopotel"], ["URME", "Poteca"], ["Pendulul", "Nota-Zero"], ["Zicala", "Profund"], ["OmniHost", "OAZA"], ["Trade-Free-Link-Guardian", "VERIGA", "VERIGA preia funcțiile Link Guardian (linkuri stricate) într-un program nativ"], ["X-fara-cont", "Threads-fara-cont", "aceeași treabă pe altă rețea: citirea postărilor publice fără cont"], ["Curatitor", "VaultCrypt", "doi pași ai aceleiași igiene a fișierelor trimise: ștergi metadatele, apoi încuii fișierul"], ["Hyper4D", "Universul-Observabil-3D", "vizualizare spațială interactivă: rotești figura și o privești din unghiuri diferite"], ["Nemurirea", "SEVA", "fiziologie și longevitate (îmbătrânire, somn, ritm biologic), ambele doar informative"], ["TerRa", "orarium", "ziua și noaptea pe Pământ și pe planete ↔ ora pe fiecare corp al Sistemului Solar"], ["FrequencyLaboratory", "generator-frecvente", "ambele produc tonuri și testează auzul"], ["LocalMind", "Constelar", "conversație cu un asistent care poate rula local, fără server propriu"], ["Origami", "Monstrarium", "meșteșug de atelier cu hârtie și materiale reciclate, pe pași"], ["Alfabete", "ATINGERE", "braille: Alfabete îl învață, ATINGERE convertește cărți în braille"], ["ValeaPlopului1972", "NOMIA", "ambele sunt ficțiune sau ipoteză despre contactul cu minți ne-umane"], ["OUTPOST", "VERIGA", "două fețe ale întreținerii unui site: răspunde? și ce linkuri sunt stricate?"], ["BRAZDA", "VOIAJOR", "aceleași sonde Voyager: discul de aur pe care îl poartă și traiectoria pe care o parcurg"], ["BRAZDA", "NOMIA", "mesaje trimise printre stele: ce pui pe un disc și cum ar putea fi citit de o altă minte"], ["VOIAJOR", "Universul-Observabil", "aceeași întrebare la scări diferite: VOIAJOR urcă de la planete până la Calea Lactee, Universul Observabil merge dincolo de ea"], ["CHIROMANTIA", "Tarot", "două practici de divinație studiate ca fenomen cultural, cu aceeași privire critică și cu nivel de dovezi afișat"], ["PUNCTUM", "Reiki", "practici de îngrijire prezentate cu nivel de dovezi afișat și fără înlocuirea medicului"], ["PUNCTUM", "Bioenergoterapie", "terapii neconvenționale descrise informativ, cu limite și nivel de dovezi la vedere"], ["Cronosala", "CLEPSIDRA", "două instrumente de ritm și timp: intervale, pauze și alarme la sală, respectiv program de ore și alarme pe zi"], ["Cronosala", "Clopotel", "ambele împart timpul în intervale cu semnal sonor: pauze între seturi, respectiv timp de vorbire pe vorbitor"], ["DECUPAJ", "LECTOR", "două aplicații pentru conținut audio-video, din același cadru: tai clipuri dintr-un podcast, respectiv citești cărți cu voce tare, ambele local în browser"], ["FARFURIA", "VITALIS", "două îndrumare de stil de viață pe același domeniu, nutriția și longevitatea, ambele cu limite de siguranță scrise la vedere"], ["REZONANTA", "MarkdownAtelier", "ghidul de comunicare îți dă structura mesajului, iar editorul Markdown e locul unde îl scrii și îl exporți"], ["Claritas", "LECTOR", "amândouă fac textul mai ușor de urmărit: extensia citește cu voce tare orice pagină web, LECTOR citește cărțile tale"], ["TurboCursa", "OSATURA", "două proiecte clean-room scrise în Rust, cu motor propriu și cu ieșire și în browser (WebAssembly sau fișier web)"], ["ANTENA", "ETER", "antene și propagare pentru radioamatori: ETER te învață radioamatorismul, ANTENA va calcula antenele folosite în el"], ["ARBITRU", "Sah-fara-frontiere", "motorul de reguli ARBITRU vrea să poată rula jocurile pe care Șah fără frontiere le implementează acum separat"], ["ASTROLABIU", "orarium", "amândouă calculează timpul și evenimentele cerești: ORARIUM arată ora în sistemul solar, ASTROLABIU va fi motorul de calcul"], ["ASTROLABIU", "Eclipsa-2027", "eclipsele sunt unul dintre evenimentele pe care ASTROLABIU le va calcula, iar Eclipsa 2027 le urmărește deja"], ["ECOGRAMA", "EcoulSpectral", "ambele lucrează cu spectrograma sunetului: Ecoul Spectral o afișează în browser, ECOGRAMA va permite editarea ei"], ["ecou-spectral-rs", "EcoulSpectral", "ugyanaz a spectrogramă a sunetului, în versiune nativă: Ecoul Spectral e varianta de browser, aceasta va fi cea instalată"], ["MARTOR", "Arhiva-fara-frontiere", "amândouă păstrează pagini web: Arhiva fără frontiere răsfoiește Internet Archive, MARTOR va capta și semna pagini ca probă"], ["NEAMURI", "Arbore", "Arbore ține arborele familiei, iar NEAMURI va da numele corect al rudeniei dintre două persoane din el"], ["TACTIL", "ATINGERE", "ATINGERE convertește cărți în braille pe ecranul tactil, iar TACTIL va fi stratul nativ de ieșire braille din același domeniu"], ["atelier-verificare", "Provenienta", "amândouă verifică proveniența: Proveniența atestă fișiere, atelier-verificare va aduna controale pentru imagini, linkuri și domenii"], ["balanta", "ARENA", "ARENA pune modele AI față în față, iar balanta va aduna evaluări oarbe în română cu voturi publice"], ["calendarium", "ASTROLABIU", "ASTROLABIU va calcula calendarele ca parte din evenimentele cerești, iar calendarium le adună ca atlas și convertor"], ["glosar", "Lexicon", "amândouă sunt dicționare: Lexicon e dicționarul tău, glosar va aduna dicționare ale limbilor minoritare"], ["glosar", "Alfabete", "alfabetele și dicționarele limbilor mici se completează: unul arată cum se scrie, celălalt ce înseamnă"], ["graiul", "Zicala", "amândouă adună vorbirea populară: Zicala ține zicale și proverbe, graiul va aduna folclor cu regiune și sursă"], ["indicativ-international", "INDICATIV", "INDICATIV antrenează examenul ANCOM român, iar indicativ-international va aduna băncile de întrebări ale altor țări în același format"], ["proiector-fara-frontiere", "FASCICUL", "ambele leagă telefoanele de un proiector fără server: FASCICUL e panoul colaborativ existent, acesta pornește de la o clasă și widgeturi plugin"], ["regula", "ARBITRU", "amândouă urmăresc un singur motor pentru jocuri descrise prin reguli: regula pornește de la fișiere JSON, ARBITRU de la un limbaj declarativ în Rust"], ["vietar-packs", "VietAR", "pachetele de specii sunt conținut pentru VietAR: numele, pozele și sunetele pe care aplicația le arată în teren"]],
   "apps": {
     "Provenienta": {
       "status": "experimental",
@@ -1905,6 +1905,703 @@
         },
         "hu": {
           "limite": "Eredeti, clean-room játék, nem áll kapcsolatban egyetlen létező játékkal sem; nem tartalmaz mások kódját, anyagait vagy védjegyeit. A webes változat a forráskódból épített fájl (build_web.sh), a natív változat cargóval indul. A játékbeli szöveg pixelbetűt használ, az ékezeteket a betű fölé rajzolt jelként. A karrier helyben mentődik, fájlba vagy a böngészőbe."
+        }
+      }
+    },
+    "ANTENA": {
+      "coverage": {
+        "langs": [
+          "ro",
+          "en",
+          "fr",
+          "it",
+          "es",
+          "pt",
+          "de",
+          "hu"
+        ],
+        "platform": "native"
+      },
+      "fisa": {
+        "ro": {
+          "limite": "Schelet pre-alfa: proiectul se compilează și are teste, dar funcțiile planificate sunt încă sarcini deschise în docs/issues. Nu există încă o aplicație sau un site de încercat; se rulează doar din linia de comandă, cu cargo. Nu te baza pe el pentru lucru real."
+        },
+        "en": {
+          "limite": "A pre-alpha skeleton: the project builds and has tests, but the planned features are still open tasks in docs/issues. There is no app or site to try yet; it runs only from the command line, with cargo. Do not rely on it for real work."
+        },
+        "fr": {
+          "limite": "Un squelette pré-alpha : le projet se compile et a des tests, mais les fonctions prévues sont encore des tâches ouvertes dans docs/issues. Il n’y a pas encore d’application ni de site à essayer ; il ne se lance qu’en ligne de commande, avec cargo. Ne vous y fiez pas pour un travail réel."
+        },
+        "it": {
+          "limite": "Uno scheletro pre-alpha: il progetto si compila e ha dei test, ma le funzioni previste sono ancora attività aperte in docs/issues. Non c’è ancora un’app o un sito da provare; si avvia solo da riga di comando, con cargo. Non farci affidamento per lavoro reale."
+        },
+        "es": {
+          "limite": "Un esqueleto pre-alfa: el proyecto compila y tiene pruebas, pero las funciones previstas siguen siendo tareas abiertas en docs/issues. Todavía no hay app ni sitio que probar; solo se ejecuta desde la línea de comandos, con cargo. No dependas de él para trabajo real."
+        },
+        "pt": {
+          "limite": "Um esqueleto pré-alfa: o projeto compila e tem testes, mas as funções previstas continuam a ser tarefas abertas em docs/issues. Ainda não há app nem site para experimentar; só se executa na linha de comandos, com cargo. Não conte com ele para trabalho real."
+        },
+        "de": {
+          "limite": "Ein Pre-Alpha-Gerüst: Das Projekt lässt sich bauen und hat Tests, die geplanten Funktionen sind aber noch offene Aufgaben in docs/issues. Es gibt noch keine App und keine Seite zum Ausprobieren; es läuft nur auf der Kommandozeile, mit cargo. Verlasse dich nicht darauf für echte Arbeit."
+        },
+        "hu": {
+          "limite": "Pre-alfa vázszerkezet: a projekt lefordul és vannak tesztjei, de a tervezett funkciók még nyitott feladatok a docs/issues mappában. Még nincs kipróbálható alkalmazás vagy oldal; csak parancssorból, cargóval fut. Ne támaszkodj rá valódi munkához."
+        }
+      }
+    },
+    "ARBITRU": {
+      "coverage": {
+        "langs": [
+          "ro",
+          "en",
+          "fr",
+          "it",
+          "es",
+          "pt",
+          "de",
+          "hu"
+        ],
+        "platform": "native"
+      },
+      "fisa": {
+        "ro": {
+          "limite": "Schelet pre-alfa: proiectul se compilează și are teste, dar funcțiile planificate sunt încă sarcini deschise în docs/issues. Nu există încă o aplicație sau un site de încercat; se rulează doar din linia de comandă, cu cargo. Nu te baza pe el pentru lucru real."
+        },
+        "en": {
+          "limite": "A pre-alpha skeleton: the project builds and has tests, but the planned features are still open tasks in docs/issues. There is no app or site to try yet; it runs only from the command line, with cargo. Do not rely on it for real work."
+        },
+        "fr": {
+          "limite": "Un squelette pré-alpha : le projet se compile et a des tests, mais les fonctions prévues sont encore des tâches ouvertes dans docs/issues. Il n’y a pas encore d’application ni de site à essayer ; il ne se lance qu’en ligne de commande, avec cargo. Ne vous y fiez pas pour un travail réel."
+        },
+        "it": {
+          "limite": "Uno scheletro pre-alpha: il progetto si compila e ha dei test, ma le funzioni previste sono ancora attività aperte in docs/issues. Non c’è ancora un’app o un sito da provare; si avvia solo da riga di comando, con cargo. Non farci affidamento per lavoro reale."
+        },
+        "es": {
+          "limite": "Un esqueleto pre-alfa: el proyecto compila y tiene pruebas, pero las funciones previstas siguen siendo tareas abiertas en docs/issues. Todavía no hay app ni sitio que probar; solo se ejecuta desde la línea de comandos, con cargo. No dependas de él para trabajo real."
+        },
+        "pt": {
+          "limite": "Um esqueleto pré-alfa: o projeto compila e tem testes, mas as funções previstas continuam a ser tarefas abertas em docs/issues. Ainda não há app nem site para experimentar; só se executa na linha de comandos, com cargo. Não conte com ele para trabalho real."
+        },
+        "de": {
+          "limite": "Ein Pre-Alpha-Gerüst: Das Projekt lässt sich bauen und hat Tests, die geplanten Funktionen sind aber noch offene Aufgaben in docs/issues. Es gibt noch keine App und keine Seite zum Ausprobieren; es läuft nur auf der Kommandozeile, mit cargo. Verlasse dich nicht darauf für echte Arbeit."
+        },
+        "hu": {
+          "limite": "Pre-alfa vázszerkezet: a projekt lefordul és vannak tesztjei, de a tervezett funkciók még nyitott feladatok a docs/issues mappában. Még nincs kipróbálható alkalmazás vagy oldal; csak parancssorból, cargóval fut. Ne támaszkodj rá valódi munkához."
+        }
+      }
+    },
+    "ASTROLABIU": {
+      "coverage": {
+        "langs": [
+          "ro",
+          "en",
+          "fr",
+          "it",
+          "es",
+          "pt",
+          "de",
+          "hu"
+        ],
+        "platform": "native"
+      },
+      "fisa": {
+        "ro": {
+          "limite": "Schelet pre-alfa: proiectul se compilează și are teste, dar funcțiile planificate sunt încă sarcini deschise în docs/issues. Nu există încă o aplicație sau un site de încercat; se rulează doar din linia de comandă, cu cargo. Nu te baza pe el pentru lucru real."
+        },
+        "en": {
+          "limite": "A pre-alpha skeleton: the project builds and has tests, but the planned features are still open tasks in docs/issues. There is no app or site to try yet; it runs only from the command line, with cargo. Do not rely on it for real work."
+        },
+        "fr": {
+          "limite": "Un squelette pré-alpha : le projet se compile et a des tests, mais les fonctions prévues sont encore des tâches ouvertes dans docs/issues. Il n’y a pas encore d’application ni de site à essayer ; il ne se lance qu’en ligne de commande, avec cargo. Ne vous y fiez pas pour un travail réel."
+        },
+        "it": {
+          "limite": "Uno scheletro pre-alpha: il progetto si compila e ha dei test, ma le funzioni previste sono ancora attività aperte in docs/issues. Non c’è ancora un’app o un sito da provare; si avvia solo da riga di comando, con cargo. Non farci affidamento per lavoro reale."
+        },
+        "es": {
+          "limite": "Un esqueleto pre-alfa: el proyecto compila y tiene pruebas, pero las funciones previstas siguen siendo tareas abiertas en docs/issues. Todavía no hay app ni sitio que probar; solo se ejecuta desde la línea de comandos, con cargo. No dependas de él para trabajo real."
+        },
+        "pt": {
+          "limite": "Um esqueleto pré-alfa: o projeto compila e tem testes, mas as funções previstas continuam a ser tarefas abertas em docs/issues. Ainda não há app nem site para experimentar; só se executa na linha de comandos, com cargo. Não conte com ele para trabalho real."
+        },
+        "de": {
+          "limite": "Ein Pre-Alpha-Gerüst: Das Projekt lässt sich bauen und hat Tests, die geplanten Funktionen sind aber noch offene Aufgaben in docs/issues. Es gibt noch keine App und keine Seite zum Ausprobieren; es läuft nur auf der Kommandozeile, mit cargo. Verlasse dich nicht darauf für echte Arbeit."
+        },
+        "hu": {
+          "limite": "Pre-alfa vázszerkezet: a projekt lefordul és vannak tesztjei, de a tervezett funkciók még nyitott feladatok a docs/issues mappában. Még nincs kipróbálható alkalmazás vagy oldal; csak parancssorból, cargóval fut. Ne támaszkodj rá valódi munkához."
+        }
+      }
+    },
+    "ECOGRAMA": {
+      "coverage": {
+        "langs": [
+          "ro",
+          "en",
+          "fr",
+          "it",
+          "es",
+          "pt",
+          "de",
+          "hu"
+        ],
+        "platform": "native"
+      },
+      "fisa": {
+        "ro": {
+          "limite": "Schelet pre-alfa: proiectul se compilează și are teste, dar funcțiile planificate sunt încă sarcini deschise în docs/issues. Nu există încă o aplicație sau un site de încercat; se rulează doar din linia de comandă, cu cargo. Nu te baza pe el pentru lucru real."
+        },
+        "en": {
+          "limite": "A pre-alpha skeleton: the project builds and has tests, but the planned features are still open tasks in docs/issues. There is no app or site to try yet; it runs only from the command line, with cargo. Do not rely on it for real work."
+        },
+        "fr": {
+          "limite": "Un squelette pré-alpha : le projet se compile et a des tests, mais les fonctions prévues sont encore des tâches ouvertes dans docs/issues. Il n’y a pas encore d’application ni de site à essayer ; il ne se lance qu’en ligne de commande, avec cargo. Ne vous y fiez pas pour un travail réel."
+        },
+        "it": {
+          "limite": "Uno scheletro pre-alpha: il progetto si compila e ha dei test, ma le funzioni previste sono ancora attività aperte in docs/issues. Non c’è ancora un’app o un sito da provare; si avvia solo da riga di comando, con cargo. Non farci affidamento per lavoro reale."
+        },
+        "es": {
+          "limite": "Un esqueleto pre-alfa: el proyecto compila y tiene pruebas, pero las funciones previstas siguen siendo tareas abiertas en docs/issues. Todavía no hay app ni sitio que probar; solo se ejecuta desde la línea de comandos, con cargo. No dependas de él para trabajo real."
+        },
+        "pt": {
+          "limite": "Um esqueleto pré-alfa: o projeto compila e tem testes, mas as funções previstas continuam a ser tarefas abertas em docs/issues. Ainda não há app nem site para experimentar; só se executa na linha de comandos, com cargo. Não conte com ele para trabalho real."
+        },
+        "de": {
+          "limite": "Ein Pre-Alpha-Gerüst: Das Projekt lässt sich bauen und hat Tests, die geplanten Funktionen sind aber noch offene Aufgaben in docs/issues. Es gibt noch keine App und keine Seite zum Ausprobieren; es läuft nur auf der Kommandozeile, mit cargo. Verlasse dich nicht darauf für echte Arbeit."
+        },
+        "hu": {
+          "limite": "Pre-alfa vázszerkezet: a projekt lefordul és vannak tesztjei, de a tervezett funkciók még nyitott feladatok a docs/issues mappában. Még nincs kipróbálható alkalmazás vagy oldal; csak parancssorból, cargóval fut. Ne támaszkodj rá valódi munkához."
+        }
+      }
+    },
+    "ecou-spectral-rs": {
+      "coverage": {
+        "langs": [
+          "ro",
+          "en",
+          "fr",
+          "it",
+          "es",
+          "pt",
+          "de",
+          "hu"
+        ],
+        "platform": "native"
+      },
+      "fisa": {
+        "ro": {
+          "limite": "Schelet pre-alfa: proiectul se compilează și are teste, dar funcțiile planificate sunt încă sarcini deschise în docs/issues. Nu există încă o aplicație sau un site de încercat; se rulează doar din linia de comandă, cu cargo. Nu te baza pe el pentru lucru real."
+        },
+        "en": {
+          "limite": "A pre-alpha skeleton: the project builds and has tests, but the planned features are still open tasks in docs/issues. There is no app or site to try yet; it runs only from the command line, with cargo. Do not rely on it for real work."
+        },
+        "fr": {
+          "limite": "Un squelette pré-alpha : le projet se compile et a des tests, mais les fonctions prévues sont encore des tâches ouvertes dans docs/issues. Il n’y a pas encore d’application ni de site à essayer ; il ne se lance qu’en ligne de commande, avec cargo. Ne vous y fiez pas pour un travail réel."
+        },
+        "it": {
+          "limite": "Uno scheletro pre-alpha: il progetto si compila e ha dei test, ma le funzioni previste sono ancora attività aperte in docs/issues. Non c’è ancora un’app o un sito da provare; si avvia solo da riga di comando, con cargo. Non farci affidamento per lavoro reale."
+        },
+        "es": {
+          "limite": "Un esqueleto pre-alfa: el proyecto compila y tiene pruebas, pero las funciones previstas siguen siendo tareas abiertas en docs/issues. Todavía no hay app ni sitio que probar; solo se ejecuta desde la línea de comandos, con cargo. No dependas de él para trabajo real."
+        },
+        "pt": {
+          "limite": "Um esqueleto pré-alfa: o projeto compila e tem testes, mas as funções previstas continuam a ser tarefas abertas em docs/issues. Ainda não há app nem site para experimentar; só se executa na linha de comandos, com cargo. Não conte com ele para trabalho real."
+        },
+        "de": {
+          "limite": "Ein Pre-Alpha-Gerüst: Das Projekt lässt sich bauen und hat Tests, die geplanten Funktionen sind aber noch offene Aufgaben in docs/issues. Es gibt noch keine App und keine Seite zum Ausprobieren; es läuft nur auf der Kommandozeile, mit cargo. Verlasse dich nicht darauf für echte Arbeit."
+        },
+        "hu": {
+          "limite": "Pre-alfa vázszerkezet: a projekt lefordul és vannak tesztjei, de a tervezett funkciók még nyitott feladatok a docs/issues mappában. Még nincs kipróbálható alkalmazás vagy oldal; csak parancssorból, cargóval fut. Ne támaszkodj rá valódi munkához."
+        }
+      }
+    },
+    "MARTOR": {
+      "coverage": {
+        "langs": [
+          "ro",
+          "en",
+          "fr",
+          "it",
+          "es",
+          "pt",
+          "de",
+          "hu"
+        ],
+        "platform": "native"
+      },
+      "fisa": {
+        "ro": {
+          "limite": "Schelet pre-alfa: proiectul se compilează și are teste, dar funcțiile planificate sunt încă sarcini deschise în docs/issues. Nu există încă o aplicație sau un site de încercat; se rulează doar din linia de comandă, cu cargo. Nu te baza pe el pentru lucru real."
+        },
+        "en": {
+          "limite": "A pre-alpha skeleton: the project builds and has tests, but the planned features are still open tasks in docs/issues. There is no app or site to try yet; it runs only from the command line, with cargo. Do not rely on it for real work."
+        },
+        "fr": {
+          "limite": "Un squelette pré-alpha : le projet se compile et a des tests, mais les fonctions prévues sont encore des tâches ouvertes dans docs/issues. Il n’y a pas encore d’application ni de site à essayer ; il ne se lance qu’en ligne de commande, avec cargo. Ne vous y fiez pas pour un travail réel."
+        },
+        "it": {
+          "limite": "Uno scheletro pre-alpha: il progetto si compila e ha dei test, ma le funzioni previste sono ancora attività aperte in docs/issues. Non c’è ancora un’app o un sito da provare; si avvia solo da riga di comando, con cargo. Non farci affidamento per lavoro reale."
+        },
+        "es": {
+          "limite": "Un esqueleto pre-alfa: el proyecto compila y tiene pruebas, pero las funciones previstas siguen siendo tareas abiertas en docs/issues. Todavía no hay app ni sitio que probar; solo se ejecuta desde la línea de comandos, con cargo. No dependas de él para trabajo real."
+        },
+        "pt": {
+          "limite": "Um esqueleto pré-alfa: o projeto compila e tem testes, mas as funções previstas continuam a ser tarefas abertas em docs/issues. Ainda não há app nem site para experimentar; só se executa na linha de comandos, com cargo. Não conte com ele para trabalho real."
+        },
+        "de": {
+          "limite": "Ein Pre-Alpha-Gerüst: Das Projekt lässt sich bauen und hat Tests, die geplanten Funktionen sind aber noch offene Aufgaben in docs/issues. Es gibt noch keine App und keine Seite zum Ausprobieren; es läuft nur auf der Kommandozeile, mit cargo. Verlasse dich nicht darauf für echte Arbeit."
+        },
+        "hu": {
+          "limite": "Pre-alfa vázszerkezet: a projekt lefordul és vannak tesztjei, de a tervezett funkciók még nyitott feladatok a docs/issues mappában. Még nincs kipróbálható alkalmazás vagy oldal; csak parancssorból, cargóval fut. Ne támaszkodj rá valódi munkához."
+        }
+      }
+    },
+    "NEAMURI": {
+      "coverage": {
+        "langs": [
+          "ro",
+          "en",
+          "fr",
+          "it",
+          "es",
+          "pt",
+          "de",
+          "hu"
+        ],
+        "platform": "native"
+      },
+      "fisa": {
+        "ro": {
+          "limite": "Schelet pre-alfa: proiectul se compilează și are teste, dar funcțiile planificate sunt încă sarcini deschise în docs/issues. Nu există încă o aplicație sau un site de încercat; se rulează doar din linia de comandă, cu cargo. Nu te baza pe el pentru lucru real."
+        },
+        "en": {
+          "limite": "A pre-alpha skeleton: the project builds and has tests, but the planned features are still open tasks in docs/issues. There is no app or site to try yet; it runs only from the command line, with cargo. Do not rely on it for real work."
+        },
+        "fr": {
+          "limite": "Un squelette pré-alpha : le projet se compile et a des tests, mais les fonctions prévues sont encore des tâches ouvertes dans docs/issues. Il n’y a pas encore d’application ni de site à essayer ; il ne se lance qu’en ligne de commande, avec cargo. Ne vous y fiez pas pour un travail réel."
+        },
+        "it": {
+          "limite": "Uno scheletro pre-alpha: il progetto si compila e ha dei test, ma le funzioni previste sono ancora attività aperte in docs/issues. Non c’è ancora un’app o un sito da provare; si avvia solo da riga di comando, con cargo. Non farci affidamento per lavoro reale."
+        },
+        "es": {
+          "limite": "Un esqueleto pre-alfa: el proyecto compila y tiene pruebas, pero las funciones previstas siguen siendo tareas abiertas en docs/issues. Todavía no hay app ni sitio que probar; solo se ejecuta desde la línea de comandos, con cargo. No dependas de él para trabajo real."
+        },
+        "pt": {
+          "limite": "Um esqueleto pré-alfa: o projeto compila e tem testes, mas as funções previstas continuam a ser tarefas abertas em docs/issues. Ainda não há app nem site para experimentar; só se executa na linha de comandos, com cargo. Não conte com ele para trabalho real."
+        },
+        "de": {
+          "limite": "Ein Pre-Alpha-Gerüst: Das Projekt lässt sich bauen und hat Tests, die geplanten Funktionen sind aber noch offene Aufgaben in docs/issues. Es gibt noch keine App und keine Seite zum Ausprobieren; es läuft nur auf der Kommandozeile, mit cargo. Verlasse dich nicht darauf für echte Arbeit."
+        },
+        "hu": {
+          "limite": "Pre-alfa vázszerkezet: a projekt lefordul és vannak tesztjei, de a tervezett funkciók még nyitott feladatok a docs/issues mappában. Még nincs kipróbálható alkalmazás vagy oldal; csak parancssorból, cargóval fut. Ne támaszkodj rá valódi munkához."
+        }
+      }
+    },
+    "TACTIL": {
+      "coverage": {
+        "langs": [
+          "ro",
+          "en",
+          "fr",
+          "it",
+          "es",
+          "pt",
+          "de",
+          "hu"
+        ],
+        "platform": "native"
+      },
+      "fisa": {
+        "ro": {
+          "limite": "Schelet pre-alfa: proiectul se compilează și are teste, dar funcțiile planificate sunt încă sarcini deschise în docs/issues. Nu există încă o aplicație sau un site de încercat; se rulează doar din linia de comandă, cu cargo. Nu te baza pe el pentru lucru real."
+        },
+        "en": {
+          "limite": "A pre-alpha skeleton: the project builds and has tests, but the planned features are still open tasks in docs/issues. There is no app or site to try yet; it runs only from the command line, with cargo. Do not rely on it for real work."
+        },
+        "fr": {
+          "limite": "Un squelette pré-alpha : le projet se compile et a des tests, mais les fonctions prévues sont encore des tâches ouvertes dans docs/issues. Il n’y a pas encore d’application ni de site à essayer ; il ne se lance qu’en ligne de commande, avec cargo. Ne vous y fiez pas pour un travail réel."
+        },
+        "it": {
+          "limite": "Uno scheletro pre-alpha: il progetto si compila e ha dei test, ma le funzioni previste sono ancora attività aperte in docs/issues. Non c’è ancora un’app o un sito da provare; si avvia solo da riga di comando, con cargo. Non farci affidamento per lavoro reale."
+        },
+        "es": {
+          "limite": "Un esqueleto pre-alfa: el proyecto compila y tiene pruebas, pero las funciones previstas siguen siendo tareas abiertas en docs/issues. Todavía no hay app ni sitio que probar; solo se ejecuta desde la línea de comandos, con cargo. No dependas de él para trabajo real."
+        },
+        "pt": {
+          "limite": "Um esqueleto pré-alfa: o projeto compila e tem testes, mas as funções previstas continuam a ser tarefas abertas em docs/issues. Ainda não há app nem site para experimentar; só se executa na linha de comandos, com cargo. Não conte com ele para trabalho real."
+        },
+        "de": {
+          "limite": "Ein Pre-Alpha-Gerüst: Das Projekt lässt sich bauen und hat Tests, die geplanten Funktionen sind aber noch offene Aufgaben in docs/issues. Es gibt noch keine App und keine Seite zum Ausprobieren; es läuft nur auf der Kommandozeile, mit cargo. Verlasse dich nicht darauf für echte Arbeit."
+        },
+        "hu": {
+          "limite": "Pre-alfa vázszerkezet: a projekt lefordul és vannak tesztjei, de a tervezett funkciók még nyitott feladatok a docs/issues mappában. Még nincs kipróbálható alkalmazás vagy oldal; csak parancssorból, cargóval fut. Ne támaszkodj rá valódi munkához."
+        }
+      }
+    },
+    "atelier-verificare": {
+      "coverage": {
+        "langs": [
+          "ro",
+          "en",
+          "fr",
+          "it",
+          "es",
+          "pt",
+          "de",
+          "hu"
+        ],
+        "platform": "web"
+      },
+      "fisa": {
+        "ro": {
+          "limite": "Proiect deschis în faza de început: depozitul are doar schema, un exemplu și un validator pentru contribuții; datele reale și aplicația propriu-zisă nu există încă. Nu are site sau aplicație de deschis. Cardul arată ce se construiește, nu ceva ce poți folosi azi."
+        },
+        "en": {
+          "limite": "An open project at its very start: the repository has only the schema, an example and a validator for contributions; the real data and the app itself do not exist yet. There is no site or app to open. The card shows what is being built, not something you can use today."
+        },
+        "fr": {
+          "limite": "Un projet ouvert à ses tout débuts : le dépôt ne contient que le schéma, un exemple et un validateur pour les contributions ; les vraies données et l’application elle-même n’existent pas encore. Il n’y a ni site ni application à ouvrir. La carte montre ce qui se construit, pas quelque chose d’utilisable aujourd’hui."
+        },
+        "it": {
+          "limite": "Un progetto aperto agli inizi: il repository contiene solo lo schema, un esempio e un validatore per i contributi; i dati reali e l’app vera e propria non esistono ancora. Non c’è un sito o un’app da aprire. La scheda mostra ciò che si sta costruendo, non qualcosa di utilizzabile oggi."
+        },
+        "es": {
+          "limite": "Un proyecto abierto en sus inicios: el repositorio solo tiene el esquema, un ejemplo y un validador para contribuciones; los datos reales y la app en sí aún no existen. No hay sitio ni app que abrir. La ficha muestra lo que se está construyendo, no algo utilizable hoy."
+        },
+        "pt": {
+          "limite": "Um projeto aberto no seu início: o repositório tem apenas o esquema, um exemplo e um validador para contribuições; os dados reais e a própria app ainda não existem. Não há site nem app para abrir. A ficha mostra o que está a ser construído, não algo utilizável hoje."
+        },
+        "de": {
+          "limite": "Ein offenes Projekt ganz am Anfang: Das Repository enthält nur das Schema, ein Beispiel und einen Validator für Beiträge; die echten Daten und die App selbst gibt es noch nicht. Es gibt keine Seite und keine App zum Öffnen. Die Karte zeigt, was entsteht, nicht etwas, das heute nutzbar ist."
+        },
+        "hu": {
+          "limite": "Nyílt projekt a legelején: a tárolóban csak a séma, egy példa és a hozzájárulások ellenőrzője van; a valódi adatok és maga az alkalmazás még nem léteznek. Nincs megnyitható oldal vagy alkalmazás. A kártya azt mutatja, mi épül, nem azt, ami ma használható."
+        }
+      }
+    },
+    "balanta": {
+      "coverage": {
+        "langs": [
+          "ro",
+          "en",
+          "fr",
+          "it",
+          "es",
+          "pt",
+          "de",
+          "hu"
+        ],
+        "platform": "web"
+      },
+      "fisa": {
+        "ro": {
+          "limite": "Proiect deschis în faza de început: depozitul are doar schema, un exemplu și un validator pentru contribuții; datele reale și aplicația propriu-zisă nu există încă. Nu are site sau aplicație de deschis. Cardul arată ce se construiește, nu ceva ce poți folosi azi."
+        },
+        "en": {
+          "limite": "An open project at its very start: the repository has only the schema, an example and a validator for contributions; the real data and the app itself do not exist yet. There is no site or app to open. The card shows what is being built, not something you can use today."
+        },
+        "fr": {
+          "limite": "Un projet ouvert à ses tout débuts : le dépôt ne contient que le schéma, un exemple et un validateur pour les contributions ; les vraies données et l’application elle-même n’existent pas encore. Il n’y a ni site ni application à ouvrir. La carte montre ce qui se construit, pas quelque chose d’utilisable aujourd’hui."
+        },
+        "it": {
+          "limite": "Un progetto aperto agli inizi: il repository contiene solo lo schema, un esempio e un validatore per i contributi; i dati reali e l’app vera e propria non esistono ancora. Non c’è un sito o un’app da aprire. La scheda mostra ciò che si sta costruendo, non qualcosa di utilizzabile oggi."
+        },
+        "es": {
+          "limite": "Un proyecto abierto en sus inicios: el repositorio solo tiene el esquema, un ejemplo y un validador para contribuciones; los datos reales y la app en sí aún no existen. No hay sitio ni app que abrir. La ficha muestra lo que se está construyendo, no algo utilizable hoy."
+        },
+        "pt": {
+          "limite": "Um projeto aberto no seu início: o repositório tem apenas o esquema, um exemplo e um validador para contribuições; os dados reais e a própria app ainda não existem. Não há site nem app para abrir. A ficha mostra o que está a ser construído, não algo utilizável hoje."
+        },
+        "de": {
+          "limite": "Ein offenes Projekt ganz am Anfang: Das Repository enthält nur das Schema, ein Beispiel und einen Validator für Beiträge; die echten Daten und die App selbst gibt es noch nicht. Es gibt keine Seite und keine App zum Öffnen. Die Karte zeigt, was entsteht, nicht etwas, das heute nutzbar ist."
+        },
+        "hu": {
+          "limite": "Nyílt projekt a legelején: a tárolóban csak a séma, egy példa és a hozzájárulások ellenőrzője van; a valódi adatok és maga az alkalmazás még nem léteznek. Nincs megnyitható oldal vagy alkalmazás. A kártya azt mutatja, mi épül, nem azt, ami ma használható."
+        }
+      }
+    },
+    "calendarium": {
+      "coverage": {
+        "langs": [
+          "ro",
+          "en",
+          "fr",
+          "it",
+          "es",
+          "pt",
+          "de",
+          "hu"
+        ],
+        "platform": "web"
+      },
+      "fisa": {
+        "ro": {
+          "limite": "Proiect deschis în faza de început: depozitul are doar schema, un exemplu și un validator pentru contribuții; datele reale și aplicația propriu-zisă nu există încă. Nu are site sau aplicație de deschis. Cardul arată ce se construiește, nu ceva ce poți folosi azi."
+        },
+        "en": {
+          "limite": "An open project at its very start: the repository has only the schema, an example and a validator for contributions; the real data and the app itself do not exist yet. There is no site or app to open. The card shows what is being built, not something you can use today."
+        },
+        "fr": {
+          "limite": "Un projet ouvert à ses tout débuts : le dépôt ne contient que le schéma, un exemple et un validateur pour les contributions ; les vraies données et l’application elle-même n’existent pas encore. Il n’y a ni site ni application à ouvrir. La carte montre ce qui se construit, pas quelque chose d’utilisable aujourd’hui."
+        },
+        "it": {
+          "limite": "Un progetto aperto agli inizi: il repository contiene solo lo schema, un esempio e un validatore per i contributi; i dati reali e l’app vera e propria non esistono ancora. Non c’è un sito o un’app da aprire. La scheda mostra ciò che si sta costruendo, non qualcosa di utilizzabile oggi."
+        },
+        "es": {
+          "limite": "Un proyecto abierto en sus inicios: el repositorio solo tiene el esquema, un ejemplo y un validador para contribuciones; los datos reales y la app en sí aún no existen. No hay sitio ni app que abrir. La ficha muestra lo que se está construyendo, no algo utilizable hoy."
+        },
+        "pt": {
+          "limite": "Um projeto aberto no seu início: o repositório tem apenas o esquema, um exemplo e um validador para contribuições; os dados reais e a própria app ainda não existem. Não há site nem app para abrir. A ficha mostra o que está a ser construído, não algo utilizável hoje."
+        },
+        "de": {
+          "limite": "Ein offenes Projekt ganz am Anfang: Das Repository enthält nur das Schema, ein Beispiel und einen Validator für Beiträge; die echten Daten und die App selbst gibt es noch nicht. Es gibt keine Seite und keine App zum Öffnen. Die Karte zeigt, was entsteht, nicht etwas, das heute nutzbar ist."
+        },
+        "hu": {
+          "limite": "Nyílt projekt a legelején: a tárolóban csak a séma, egy példa és a hozzájárulások ellenőrzője van; a valódi adatok és maga az alkalmazás még nem léteznek. Nincs megnyitható oldal vagy alkalmazás. A kártya azt mutatja, mi épül, nem azt, ami ma használható."
+        }
+      }
+    },
+    "glosar": {
+      "coverage": {
+        "langs": [
+          "ro",
+          "en",
+          "fr",
+          "it",
+          "es",
+          "pt",
+          "de",
+          "hu"
+        ],
+        "platform": "web"
+      },
+      "fisa": {
+        "ro": {
+          "limite": "Proiect deschis în faza de început: depozitul are doar schema, un exemplu și un validator pentru contribuții; datele reale și aplicația propriu-zisă nu există încă. Nu are site sau aplicație de deschis. Cardul arată ce se construiește, nu ceva ce poți folosi azi."
+        },
+        "en": {
+          "limite": "An open project at its very start: the repository has only the schema, an example and a validator for contributions; the real data and the app itself do not exist yet. There is no site or app to open. The card shows what is being built, not something you can use today."
+        },
+        "fr": {
+          "limite": "Un projet ouvert à ses tout débuts : le dépôt ne contient que le schéma, un exemple et un validateur pour les contributions ; les vraies données et l’application elle-même n’existent pas encore. Il n’y a ni site ni application à ouvrir. La carte montre ce qui se construit, pas quelque chose d’utilisable aujourd’hui."
+        },
+        "it": {
+          "limite": "Un progetto aperto agli inizi: il repository contiene solo lo schema, un esempio e un validatore per i contributi; i dati reali e l’app vera e propria non esistono ancora. Non c’è un sito o un’app da aprire. La scheda mostra ciò che si sta costruendo, non qualcosa di utilizzabile oggi."
+        },
+        "es": {
+          "limite": "Un proyecto abierto en sus inicios: el repositorio solo tiene el esquema, un ejemplo y un validador para contribuciones; los datos reales y la app en sí aún no existen. No hay sitio ni app que abrir. La ficha muestra lo que se está construyendo, no algo utilizable hoy."
+        },
+        "pt": {
+          "limite": "Um projeto aberto no seu início: o repositório tem apenas o esquema, um exemplo e um validador para contribuições; os dados reais e a própria app ainda não existem. Não há site nem app para abrir. A ficha mostra o que está a ser construído, não algo utilizável hoje."
+        },
+        "de": {
+          "limite": "Ein offenes Projekt ganz am Anfang: Das Repository enthält nur das Schema, ein Beispiel und einen Validator für Beiträge; die echten Daten und die App selbst gibt es noch nicht. Es gibt keine Seite und keine App zum Öffnen. Die Karte zeigt, was entsteht, nicht etwas, das heute nutzbar ist."
+        },
+        "hu": {
+          "limite": "Nyílt projekt a legelején: a tárolóban csak a séma, egy példa és a hozzájárulások ellenőrzője van; a valódi adatok és maga az alkalmazás még nem léteznek. Nincs megnyitható oldal vagy alkalmazás. A kártya azt mutatja, mi épül, nem azt, ami ma használható."
+        }
+      }
+    },
+    "graiul": {
+      "coverage": {
+        "langs": [
+          "ro",
+          "en",
+          "fr",
+          "it",
+          "es",
+          "pt",
+          "de",
+          "hu"
+        ],
+        "platform": "web"
+      },
+      "fisa": {
+        "ro": {
+          "limite": "Proiect deschis în faza de început: depozitul are doar schema, un exemplu și un validator pentru contribuții; datele reale și aplicația propriu-zisă nu există încă. Nu are site sau aplicație de deschis. Cardul arată ce se construiește, nu ceva ce poți folosi azi."
+        },
+        "en": {
+          "limite": "An open project at its very start: the repository has only the schema, an example and a validator for contributions; the real data and the app itself do not exist yet. There is no site or app to open. The card shows what is being built, not something you can use today."
+        },
+        "fr": {
+          "limite": "Un projet ouvert à ses tout débuts : le dépôt ne contient que le schéma, un exemple et un validateur pour les contributions ; les vraies données et l’application elle-même n’existent pas encore. Il n’y a ni site ni application à ouvrir. La carte montre ce qui se construit, pas quelque chose d’utilisable aujourd’hui."
+        },
+        "it": {
+          "limite": "Un progetto aperto agli inizi: il repository contiene solo lo schema, un esempio e un validatore per i contributi; i dati reali e l’app vera e propria non esistono ancora. Non c’è un sito o un’app da aprire. La scheda mostra ciò che si sta costruendo, non qualcosa di utilizzabile oggi."
+        },
+        "es": {
+          "limite": "Un proyecto abierto en sus inicios: el repositorio solo tiene el esquema, un ejemplo y un validador para contribuciones; los datos reales y la app en sí aún no existen. No hay sitio ni app que abrir. La ficha muestra lo que se está construyendo, no algo utilizable hoy."
+        },
+        "pt": {
+          "limite": "Um projeto aberto no seu início: o repositório tem apenas o esquema, um exemplo e um validador para contribuições; os dados reais e a própria app ainda não existem. Não há site nem app para abrir. A ficha mostra o que está a ser construído, não algo utilizável hoje."
+        },
+        "de": {
+          "limite": "Ein offenes Projekt ganz am Anfang: Das Repository enthält nur das Schema, ein Beispiel und einen Validator für Beiträge; die echten Daten und die App selbst gibt es noch nicht. Es gibt keine Seite und keine App zum Öffnen. Die Karte zeigt, was entsteht, nicht etwas, das heute nutzbar ist."
+        },
+        "hu": {
+          "limite": "Nyílt projekt a legelején: a tárolóban csak a séma, egy példa és a hozzájárulások ellenőrzője van; a valódi adatok és maga az alkalmazás még nem léteznek. Nincs megnyitható oldal vagy alkalmazás. A kártya azt mutatja, mi épül, nem azt, ami ma használható."
+        }
+      }
+    },
+    "indicativ-international": {
+      "coverage": {
+        "langs": [
+          "ro",
+          "en",
+          "fr",
+          "it",
+          "es",
+          "pt",
+          "de",
+          "hu"
+        ],
+        "platform": "web"
+      },
+      "fisa": {
+        "ro": {
+          "limite": "Proiect deschis în faza de început: depozitul are doar schema, un exemplu și un validator pentru contribuții; datele reale și aplicația propriu-zisă nu există încă. Nu are site sau aplicație de deschis. Cardul arată ce se construiește, nu ceva ce poți folosi azi."
+        },
+        "en": {
+          "limite": "An open project at its very start: the repository has only the schema, an example and a validator for contributions; the real data and the app itself do not exist yet. There is no site or app to open. The card shows what is being built, not something you can use today."
+        },
+        "fr": {
+          "limite": "Un projet ouvert à ses tout débuts : le dépôt ne contient que le schéma, un exemple et un validateur pour les contributions ; les vraies données et l’application elle-même n’existent pas encore. Il n’y a ni site ni application à ouvrir. La carte montre ce qui se construit, pas quelque chose d’utilisable aujourd’hui."
+        },
+        "it": {
+          "limite": "Un progetto aperto agli inizi: il repository contiene solo lo schema, un esempio e un validatore per i contributi; i dati reali e l’app vera e propria non esistono ancora. Non c’è un sito o un’app da aprire. La scheda mostra ciò che si sta costruendo, non qualcosa di utilizzabile oggi."
+        },
+        "es": {
+          "limite": "Un proyecto abierto en sus inicios: el repositorio solo tiene el esquema, un ejemplo y un validador para contribuciones; los datos reales y la app en sí aún no existen. No hay sitio ni app que abrir. La ficha muestra lo que se está construyendo, no algo utilizable hoy."
+        },
+        "pt": {
+          "limite": "Um projeto aberto no seu início: o repositório tem apenas o esquema, um exemplo e um validador para contribuições; os dados reais e a própria app ainda não existem. Não há site nem app para abrir. A ficha mostra o que está a ser construído, não algo utilizável hoje."
+        },
+        "de": {
+          "limite": "Ein offenes Projekt ganz am Anfang: Das Repository enthält nur das Schema, ein Beispiel und einen Validator für Beiträge; die echten Daten und die App selbst gibt es noch nicht. Es gibt keine Seite und keine App zum Öffnen. Die Karte zeigt, was entsteht, nicht etwas, das heute nutzbar ist."
+        },
+        "hu": {
+          "limite": "Nyílt projekt a legelején: a tárolóban csak a séma, egy példa és a hozzájárulások ellenőrzője van; a valódi adatok és maga az alkalmazás még nem léteznek. Nincs megnyitható oldal vagy alkalmazás. A kártya azt mutatja, mi épül, nem azt, ami ma használható."
+        }
+      }
+    },
+    "proiector-fara-frontiere": {
+      "coverage": {
+        "langs": [
+          "ro",
+          "en",
+          "fr",
+          "it",
+          "es",
+          "pt",
+          "de",
+          "hu"
+        ],
+        "platform": "web"
+      },
+      "fisa": {
+        "ro": {
+          "limite": "Proiect deschis în faza de început: depozitul are doar schema, un exemplu și un validator pentru contribuții; datele reale și aplicația propriu-zisă nu există încă. Nu are site sau aplicație de deschis. Cardul arată ce se construiește, nu ceva ce poți folosi azi."
+        },
+        "en": {
+          "limite": "An open project at its very start: the repository has only the schema, an example and a validator for contributions; the real data and the app itself do not exist yet. There is no site or app to open. The card shows what is being built, not something you can use today."
+        },
+        "fr": {
+          "limite": "Un projet ouvert à ses tout débuts : le dépôt ne contient que le schéma, un exemple et un validateur pour les contributions ; les vraies données et l’application elle-même n’existent pas encore. Il n’y a ni site ni application à ouvrir. La carte montre ce qui se construit, pas quelque chose d’utilisable aujourd’hui."
+        },
+        "it": {
+          "limite": "Un progetto aperto agli inizi: il repository contiene solo lo schema, un esempio e un validatore per i contributi; i dati reali e l’app vera e propria non esistono ancora. Non c’è un sito o un’app da aprire. La scheda mostra ciò che si sta costruendo, non qualcosa di utilizzabile oggi."
+        },
+        "es": {
+          "limite": "Un proyecto abierto en sus inicios: el repositorio solo tiene el esquema, un ejemplo y un validador para contribuciones; los datos reales y la app en sí aún no existen. No hay sitio ni app que abrir. La ficha muestra lo que se está construyendo, no algo utilizable hoy."
+        },
+        "pt": {
+          "limite": "Um projeto aberto no seu início: o repositório tem apenas o esquema, um exemplo e um validador para contribuições; os dados reais e a própria app ainda não existem. Não há site nem app para abrir. A ficha mostra o que está a ser construído, não algo utilizável hoje."
+        },
+        "de": {
+          "limite": "Ein offenes Projekt ganz am Anfang: Das Repository enthält nur das Schema, ein Beispiel und einen Validator für Beiträge; die echten Daten und die App selbst gibt es noch nicht. Es gibt keine Seite und keine App zum Öffnen. Die Karte zeigt, was entsteht, nicht etwas, das heute nutzbar ist."
+        },
+        "hu": {
+          "limite": "Nyílt projekt a legelején: a tárolóban csak a séma, egy példa és a hozzájárulások ellenőrzője van; a valódi adatok és maga az alkalmazás még nem léteznek. Nincs megnyitható oldal vagy alkalmazás. A kártya azt mutatja, mi épül, nem azt, ami ma használható."
+        }
+      }
+    },
+    "regula": {
+      "coverage": {
+        "langs": [
+          "ro",
+          "en",
+          "fr",
+          "it",
+          "es",
+          "pt",
+          "de",
+          "hu"
+        ],
+        "platform": "web"
+      },
+      "fisa": {
+        "ro": {
+          "limite": "Proiect deschis în faza de început: depozitul are doar schema, un exemplu și un validator pentru contribuții; datele reale și aplicația propriu-zisă nu există încă. Nu are site sau aplicație de deschis. Cardul arată ce se construiește, nu ceva ce poți folosi azi."
+        },
+        "en": {
+          "limite": "An open project at its very start: the repository has only the schema, an example and a validator for contributions; the real data and the app itself do not exist yet. There is no site or app to open. The card shows what is being built, not something you can use today."
+        },
+        "fr": {
+          "limite": "Un projet ouvert à ses tout débuts : le dépôt ne contient que le schéma, un exemple et un validateur pour les contributions ; les vraies données et l’application elle-même n’existent pas encore. Il n’y a ni site ni application à ouvrir. La carte montre ce qui se construit, pas quelque chose d’utilisable aujourd’hui."
+        },
+        "it": {
+          "limite": "Un progetto aperto agli inizi: il repository contiene solo lo schema, un esempio e un validatore per i contributi; i dati reali e l’app vera e propria non esistono ancora. Non c’è un sito o un’app da aprire. La scheda mostra ciò che si sta costruendo, non qualcosa di utilizzabile oggi."
+        },
+        "es": {
+          "limite": "Un proyecto abierto en sus inicios: el repositorio solo tiene el esquema, un ejemplo y un validador para contribuciones; los datos reales y la app en sí aún no existen. No hay sitio ni app que abrir. La ficha muestra lo que se está construyendo, no algo utilizable hoy."
+        },
+        "pt": {
+          "limite": "Um projeto aberto no seu início: o repositório tem apenas o esquema, um exemplo e um validador para contribuições; os dados reais e a própria app ainda não existem. Não há site nem app para abrir. A ficha mostra o que está a ser construído, não algo utilizável hoje."
+        },
+        "de": {
+          "limite": "Ein offenes Projekt ganz am Anfang: Das Repository enthält nur das Schema, ein Beispiel und einen Validator für Beiträge; die echten Daten und die App selbst gibt es noch nicht. Es gibt keine Seite und keine App zum Öffnen. Die Karte zeigt, was entsteht, nicht etwas, das heute nutzbar ist."
+        },
+        "hu": {
+          "limite": "Nyílt projekt a legelején: a tárolóban csak a séma, egy példa és a hozzájárulások ellenőrzője van; a valódi adatok és maga az alkalmazás még nem léteznek. Nincs megnyitható oldal vagy alkalmazás. A kártya azt mutatja, mi épül, nem azt, ami ma használható."
+        }
+      }
+    },
+    "vietar-packs": {
+      "coverage": {
+        "langs": [
+          "ro",
+          "en",
+          "fr",
+          "it",
+          "es",
+          "pt",
+          "de",
+          "hu"
+        ],
+        "platform": "web"
+      },
+      "fisa": {
+        "ro": {
+          "limite": "Proiect deschis în faza de început: depozitul are doar schema, un exemplu și un validator pentru contribuții; datele reale și aplicația propriu-zisă nu există încă. Nu are site sau aplicație de deschis. Cardul arată ce se construiește, nu ceva ce poți folosi azi."
+        },
+        "en": {
+          "limite": "An open project at its very start: the repository has only the schema, an example and a validator for contributions; the real data and the app itself do not exist yet. There is no site or app to open. The card shows what is being built, not something you can use today."
+        },
+        "fr": {
+          "limite": "Un projet ouvert à ses tout débuts : le dépôt ne contient que le schéma, un exemple et un validateur pour les contributions ; les vraies données et l’application elle-même n’existent pas encore. Il n’y a ni site ni application à ouvrir. La carte montre ce qui se construit, pas quelque chose d’utilisable aujourd’hui."
+        },
+        "it": {
+          "limite": "Un progetto aperto agli inizi: il repository contiene solo lo schema, un esempio e un validatore per i contributi; i dati reali e l’app vera e propria non esistono ancora. Non c’è un sito o un’app da aprire. La scheda mostra ciò che si sta costruendo, non qualcosa di utilizzabile oggi."
+        },
+        "es": {
+          "limite": "Un proyecto abierto en sus inicios: el repositorio solo tiene el esquema, un ejemplo y un validador para contribuciones; los datos reales y la app en sí aún no existen. No hay sitio ni app que abrir. La ficha muestra lo que se está construyendo, no algo utilizable hoy."
+        },
+        "pt": {
+          "limite": "Um projeto aberto no seu início: o repositório tem apenas o esquema, um exemplo e um validador para contribuições; os dados reais e a própria app ainda não existem. Não há site nem app para abrir. A ficha mostra o que está a ser construído, não algo utilizável hoje."
+        },
+        "de": {
+          "limite": "Ein offenes Projekt ganz am Anfang: Das Repository enthält nur das Schema, ein Beispiel und einen Validator für Beiträge; die echten Daten und die App selbst gibt es noch nicht. Es gibt keine Seite und keine App zum Öffnen. Die Karte zeigt, was entsteht, nicht etwas, das heute nutzbar ist."
+        },
+        "hu": {
+          "limite": "Nyílt projekt a legelején: a tárolóban csak a séma, egy példa és a hozzájárulások ellenőrzője van; a valódi adatok és maga az alkalmazás még nem léteznek. Nincs megnyitható oldal vagy alkalmazás. A kártya azt mutatja, mi épül, nem azt, ami ma használható."
         }
       }
     }

@@ -1454,6 +1454,193 @@
    "hm": null,
    "l": null,
    "ext": true
+  },
+  {
+   "key": "ANTENA",
+   "ver": "0.1.0-alpha.1",
+   "off": "no",
+   "langs": 8,
+   "hosts": 0,
+   "score": null,
+   "hm": null,
+   "l": null,
+   "ext": true
+  },
+  {
+   "key": "ARBITRU",
+   "ver": "0.1.0-alpha.1",
+   "off": "no",
+   "langs": 8,
+   "hosts": 0,
+   "score": null,
+   "hm": null,
+   "l": null,
+   "ext": true
+  },
+  {
+   "key": "ASTROLABIU",
+   "ver": "0.1.0-alpha.1",
+   "off": "no",
+   "langs": 8,
+   "hosts": 0,
+   "score": null,
+   "hm": null,
+   "l": null,
+   "ext": true
+  },
+  {
+   "key": "ECOGRAMA",
+   "ver": "0.1.0-alpha.1",
+   "off": "no",
+   "langs": 8,
+   "hosts": 0,
+   "score": null,
+   "hm": null,
+   "l": null,
+   "ext": true
+  },
+  {
+   "key": "ecou-spectral-rs",
+   "ver": "0.1.0-alpha.1",
+   "off": "no",
+   "langs": 8,
+   "hosts": 0,
+   "score": null,
+   "hm": null,
+   "l": null,
+   "ext": true
+  },
+  {
+   "key": "MARTOR",
+   "ver": "0.1.0-alpha.1",
+   "off": "no",
+   "langs": 8,
+   "hosts": 0,
+   "score": null,
+   "hm": null,
+   "l": null,
+   "ext": true
+  },
+  {
+   "key": "NEAMURI",
+   "ver": "0.1.0-alpha.1",
+   "off": "no",
+   "langs": 8,
+   "hosts": 0,
+   "score": null,
+   "hm": null,
+   "l": null,
+   "ext": true
+  },
+  {
+   "key": "TACTIL",
+   "ver": "0.1.0-alpha.1",
+   "off": "no",
+   "langs": 8,
+   "hosts": 0,
+   "score": null,
+   "hm": null,
+   "l": null,
+   "ext": true
+  },
+  {
+   "key": "atelier-verificare",
+   "ver": "0.1.0",
+   "off": "no",
+   "langs": 8,
+   "hosts": 0,
+   "score": null,
+   "hm": null,
+   "l": null,
+   "ext": true
+  },
+  {
+   "key": "balanta",
+   "ver": "0.1.0",
+   "off": "no",
+   "langs": 8,
+   "hosts": 0,
+   "score": null,
+   "hm": null,
+   "l": null,
+   "ext": true
+  },
+  {
+   "key": "calendarium",
+   "ver": "0.1.0",
+   "off": "no",
+   "langs": 8,
+   "hosts": 0,
+   "score": null,
+   "hm": null,
+   "l": null,
+   "ext": true
+  },
+  {
+   "key": "glosar",
+   "ver": "0.1.0",
+   "off": "no",
+   "langs": 8,
+   "hosts": 0,
+   "score": null,
+   "hm": null,
+   "l": null,
+   "ext": true
+  },
+  {
+   "key": "graiul",
+   "ver": "0.1.0",
+   "off": "no",
+   "langs": 8,
+   "hosts": 0,
+   "score": null,
+   "hm": null,
+   "l": null,
+   "ext": true
+  },
+  {
+   "key": "indicativ-international",
+   "ver": "0.1.0",
+   "off": "no",
+   "langs": 8,
+   "hosts": 0,
+   "score": null,
+   "hm": null,
+   "l": null,
+   "ext": true
+  },
+  {
+   "key": "proiector-fara-frontiere",
+   "ver": "0.1.0",
+   "off": "no",
+   "langs": 8,
+   "hosts": 0,
+   "score": null,
+   "hm": null,
+   "l": null,
+   "ext": true
+  },
+  {
+   "key": "regula",
+   "ver": "0.1.0",
+   "off": "no",
+   "langs": 8,
+   "hosts": 0,
+   "score": null,
+   "hm": null,
+   "l": null,
+   "ext": true
+  },
+  {
+   "key": "vietar-packs",
+   "ver": "0.1.0",
+   "off": "no",
+   "langs": 8,
+   "hosts": 0,
+   "score": null,
+   "hm": null,
+   "l": null,
+   "ext": true
   }
  ],
  "a8": {
@@ -1823,26 +2010,22 @@
  },
  "health": {
   "date": "2026-11-13",
-  "apps": 129,
+  "apps": 146,
   "relations": {
-   "withRelation": 94,
+   "withRelation": 117,
    "orphans": [
     "ACORDAJ",
     "API-fara-frontiere",
-    "ARENA",
     "Afrodisiace-fara-frontiere",
     "Akasha",
     "Arhiva-LinkedIn",
     "Carti-de-joc-fara-frontiere",
     "Dame-fara-frontiere",
     "Decibel",
-    "ETER",
-    "EcoulSpectral",
     "Fenarium",
     "Go-fara-frontiere",
     "Horizons.BeyondLimits",
     "HoroScop",
-    "INDICATIV",
     "IncredibleCosmos",
     "Inforenergetica",
     "Limpezimea",
@@ -1854,25 +2037,23 @@
     "RegexLab",
     "Remi-fara-frontiere",
     "SEOptimum",
-    "Sah-fara-frontiere",
     "Scopone-fara-frontiere",
     "Table-fara-frontiere",
     "Trusa-fara-frontiere",
     "VNTV",
-    "VietAR",
     "Vitrina",
     "Zaruri-fara-frontiere"
    ],
-   "pairs": 76,
+   "pairs": 95,
    "flows": 4,
    "flowApps": 16
   },
   "coverage": {
-   "full8": 123,
+   "full8": 140,
    "partial": 2,
    "single": 4,
-   "native": 6,
-   "avg": 3.89
+   "native": 14,
+   "avg": 3.9
   },
   "score": {
    "measured": 117,
@@ -1896,8 +2077,8 @@
   },
   "age": {
    "ref": "2026-11-13",
-   "fresh7": 119,
-   "fresh30": 129,
+   "fresh7": 136,
+   "fresh30": 146,
    "stale30": 0,
    "stale90": 0,
    "oldest": "OSATURA (20)"
@@ -1913,7 +2094,7 @@
    "healthFile": "2026-11-09"
   },
   "versions": {
-   "cards": 129,
+   "cards": 146,
    "measured": 117,
    "behind": [
     "BRAZDA",
@@ -1924,18 +2105,35 @@
     "VOIAJOR"
    ],
    "unmeasured": [
+    "ANTENA",
+    "ARBITRU",
+    "ASTROLABIU",
     "Claritas",
     "Cronosala",
     "DECUPAJ",
+    "ECOGRAMA",
     "FARFURIA",
     "LECTOR",
     "LegatorOCR",
+    "MARTOR",
+    "NEAMURI",
     "OSATURA",
     "REZONANTA",
+    "TACTIL",
     "TEZAUR",
     "TurboCursa",
     "VERIGA",
-    "VITALIS"
+    "VITALIS",
+    "atelier-verificare",
+    "balanta",
+    "calendarium",
+    "ecou-spectral-rs",
+    "glosar",
+    "graiul",
+    "indicativ-international",
+    "proiector-fara-frontiere",
+    "regula",
+    "vietar-packs"
    ]
   }
  },

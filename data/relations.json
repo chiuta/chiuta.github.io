@@ -1,7 +1,7 @@
 {
  "schema": 1,
  "note": "Generat de tools/sync-catalog.mjs din data/catalog-meta.json, data/flows.json și registrul de plicuri; nu se editează de mână. Fiecare relație are cel puțin un motiv verificabil (vezi relationEvidence în tools/catalog-meta-lib.mjs).",
- "count": 579,
+ "count": 667,
  "relations": [
   {
    "a": "AcademiSearch",
@@ -212,6 +212,13 @@
   },
   {
    "a": "AI-Liber",
+   "b": "balanta",
+   "reasons": [
+    "topic:ai"
+   ]
+  },
+  {
+   "a": "AI-Liber",
    "b": "Constelar",
    "reasons": [
     "topic:ai",
@@ -339,7 +346,30 @@
   },
   {
    "a": "Alfabete",
+   "b": "glosar",
+   "reasons": [
+    "topic:translate",
+    "pair"
+   ],
+   "why": "alfabetele și dicționarele limbilor mici se completează: unul arată cum se scrie, celălalt ce înseamnă"
+  },
+  {
+   "a": "Alfabete",
+   "b": "graiul",
+   "reasons": [
+    "topic:wordculture"
+   ]
+  },
+  {
+   "a": "Alfabete",
    "b": "INDICATIV",
+   "reasons": [
+    "topic:radio"
+   ]
+  },
+  {
+   "a": "Alfabete",
+   "b": "indicativ-international",
    "reasons": [
     "topic:radio"
    ]
@@ -368,6 +398,13 @@
   },
   {
    "a": "Alfabete",
+   "b": "NEAMURI",
+   "reasons": [
+    "topic:wordculture"
+   ]
+  },
+  {
+   "a": "Alfabete",
    "b": "Profund",
    "reasons": [
     "topic:wordculture"
@@ -385,6 +422,13 @@
    "b": "REZONANTA",
    "reasons": [
     "topic:wordculture"
+   ]
+  },
+  {
+   "a": "Alfabete",
+   "b": "TACTIL",
+   "reasons": [
+    "topic:access"
    ]
   },
   {
@@ -407,6 +451,43 @@
    "b": "Zicala",
    "reasons": [
     "topic:wordculture"
+   ]
+  },
+  {
+   "a": "ANTENA",
+   "b": "Alfabete",
+   "reasons": [
+    "topic:radio"
+   ]
+  },
+  {
+   "a": "ANTENA",
+   "b": "ETER",
+   "reasons": [
+    "topic:radio",
+    "pair"
+   ],
+   "why": "antene și propagare pentru radioamatori: ETER te învață radioamatorismul, ANTENA va calcula antenele folosite în el"
+  },
+  {
+   "a": "ANTENA",
+   "b": "INDICATIV",
+   "reasons": [
+    "topic:radio"
+   ]
+  },
+  {
+   "a": "ANTENA",
+   "b": "indicativ-international",
+   "reasons": [
+    "topic:radio"
+   ]
+  },
+  {
+   "a": "ANTENA",
+   "b": "QSO",
+   "reasons": [
+    "topic:radio"
    ]
   },
   {
@@ -461,6 +542,58 @@
    ]
   },
   {
+   "a": "ARBITRU",
+   "b": "Belot-fara-frontiere",
+   "reasons": [
+    "topic:cards"
+   ]
+  },
+  {
+   "a": "ARBITRU",
+   "b": "Carti-de-joc-fara-frontiere",
+   "reasons": [
+    "topic:cards"
+   ]
+  },
+  {
+   "a": "ARBITRU",
+   "b": "regula",
+   "reasons": [
+    "topic:cards",
+    "pair"
+   ],
+   "why": "amândouă urmăresc un singur motor pentru jocuri descrise prin reguli: regula pornește de la fișiere JSON, ARBITRU de la un limbaj declarativ în Rust"
+  },
+  {
+   "a": "ARBITRU",
+   "b": "Remi-fara-frontiere",
+   "reasons": [
+    "topic:cards"
+   ]
+  },
+  {
+   "a": "ARBITRU",
+   "b": "Sah-fara-frontiere",
+   "reasons": [
+    "pair"
+   ],
+   "why": "motorul de reguli ARBITRU vrea să poată rula jocurile pe care Șah fără frontiere le implementează acum separat"
+  },
+  {
+   "a": "ARBITRU",
+   "b": "Scopone-fara-frontiere",
+   "reasons": [
+    "topic:cards"
+   ]
+  },
+  {
+   "a": "ARBITRU",
+   "b": "Solitaire-fara-frontiere",
+   "reasons": [
+    "topic:cards"
+   ]
+  },
+  {
    "a": "Arbore",
    "b": "CLEPSIDRA",
    "reasons": [
@@ -477,10 +610,27 @@
   },
   {
    "a": "Arbore",
+   "b": "NEAMURI",
+   "reasons": [
+    "pair"
+   ],
+   "why": "Arbore ține arborele familiei, iar NEAMURI va da numele corect al rudeniei dintre două persoane din el"
+  },
+  {
+   "a": "Arbore",
    "b": "Orar",
    "reasons": [
     "topic:home"
    ]
+  },
+  {
+   "a": "ARENA",
+   "b": "balanta",
+   "reasons": [
+    "topic:ai",
+    "pair"
+   ],
+   "why": "ARENA pune modele AI față în față, iar balanta va aduna evaluări oarbe în română cu voturi publice"
   },
   {
    "a": "ARENA",
@@ -611,6 +761,14 @@
     "topic:research",
     "envelope:citation/csl"
    ]
+  },
+  {
+   "a": "Arhiva-fara-frontiere",
+   "b": "MARTOR",
+   "reasons": [
+    "pair"
+   ],
+   "why": "amândouă păstrează pagini web: Arhiva fără frontiere răsfoiește Internet Archive, MARTOR va capta și semna pagini ca probă"
   },
   {
    "a": "Arhiva-fara-frontiere",
@@ -766,6 +924,30 @@
    ]
   },
   {
+   "a": "ASTROLABIU",
+   "b": "calendarium",
+   "reasons": [
+    "pair"
+   ],
+   "why": "ASTROLABIU va calcula calendarele ca parte din evenimentele cerești, iar calendarium le adună ca atlas și convertor"
+  },
+  {
+   "a": "ASTROLABIU",
+   "b": "Eclipsa-2027",
+   "reasons": [
+    "pair"
+   ],
+   "why": "eclipsele sunt unul dintre evenimentele pe care ASTROLABIU le va calcula, iar Eclipsa 2027 le urmărește deja"
+  },
+  {
+   "a": "ASTROLABIU",
+   "b": "orarium",
+   "reasons": [
+    "pair"
+   ],
+   "why": "amândouă calculează timpul și evenimentele cerești: ORARIUM arată ora în sistemul solar, ASTROLABIU va fi motorul de calcul"
+  },
+  {
    "a": "ATINGERE",
    "b": "Alfabete",
    "reasons": [
@@ -910,6 +1092,15 @@
   },
   {
    "a": "ATINGERE",
+   "b": "TACTIL",
+   "reasons": [
+    "topic:access",
+    "pair"
+   ],
+   "why": "ATINGERE convertește cărți în braille pe ecranul tactil, iar TACTIL va fi stratul nativ de ieșire braille din același domeniu"
+  },
+  {
+   "a": "ATINGERE",
    "b": "TEZAUR",
    "reasons": [
     "topic:scan"
@@ -979,6 +1170,13 @@
    "b": "Profund",
    "reasons": [
     "module:fff-jocuri"
+   ]
+  },
+  {
+   "a": "Belot-fara-frontiere",
+   "b": "regula",
+   "reasons": [
+    "topic:cards"
    ]
   },
   {
@@ -1316,6 +1514,13 @@
    ]
   },
   {
+   "a": "calendarium",
+   "b": "orarium",
+   "reasons": [
+    "topic:time"
+   ]
+  },
+  {
    "a": "CalmWaves",
    "b": "Decibel",
    "reasons": [
@@ -1337,6 +1542,13 @@
    "reasons": [
     "envelope:sound/profile",
     "module:fff-sunet"
+   ]
+  },
+  {
+   "a": "Carti-de-joc-fara-frontiere",
+   "b": "regula",
+   "reasons": [
+    "topic:cards"
    ]
   },
   {
@@ -1407,9 +1619,23 @@
   },
   {
    "a": "Claritas",
+   "b": "TACTIL",
+   "reasons": [
+    "topic:access"
+   ]
+  },
+  {
+   "a": "Claritas",
    "b": "VoiceAtelier",
    "reasons": [
     "topic:access"
+   ]
+  },
+  {
+   "a": "CLEPSIDRA",
+   "b": "calendarium",
+   "reasons": [
+    "topic:time"
    ]
   },
   {
@@ -1480,6 +1706,13 @@
    "b": "Universul-Observabil-3D",
    "reasons": [
     "module:fff-place"
+   ]
+  },
+  {
+   "a": "Clopotel",
+   "b": "calendarium",
+   "reasons": [
+    "topic:time"
    ]
   },
   {
@@ -1568,6 +1801,13 @@
   },
   {
    "a": "Clopotel",
+   "b": "proiector-fara-frontiere",
+   "reasons": [
+    "topic:workshop"
+   ]
+  },
+  {
+   "a": "Clopotel",
    "b": "PULS",
    "reasons": [
     "envelope:passport/fff",
@@ -1611,6 +1851,13 @@
    "b": "Undava",
    "reasons": [
     "topic:workshop"
+   ]
+  },
+  {
+   "a": "Constelar",
+   "b": "balanta",
+   "reasons": [
+    "topic:ai"
    ]
   },
   {
@@ -1663,6 +1910,13 @@
   },
   {
    "a": "Cronosala",
+   "b": "calendarium",
+   "reasons": [
+    "topic:time"
+   ]
+  },
+  {
+   "a": "Cronosala",
    "b": "Orar",
    "reasons": [
     "topic:time"
@@ -1698,7 +1952,21 @@
   },
   {
    "a": "Curatitor",
+   "b": "atelier-verificare",
+   "reasons": [
+    "topic:audit"
+   ]
+  },
+  {
+   "a": "Curatitor",
    "b": "FreeDetect",
+   "reasons": [
+    "topic:audit"
+   ]
+  },
+  {
+   "a": "Curatitor",
+   "b": "MARTOR",
    "reasons": [
     "topic:audit"
    ]
@@ -1867,6 +2135,20 @@
    "b": "Trusa-fara-frontiere",
    "reasons": [
     "topic:devtools"
+   ]
+  },
+  {
+   "a": "Decibel",
+   "b": "ECOGRAMA",
+   "reasons": [
+    "topic:audiolab"
+   ]
+  },
+  {
+   "a": "Decibel",
+   "b": "ecou-spectral-rs",
+   "reasons": [
+    "topic:audiolab"
    ]
   },
   {
@@ -2171,6 +2453,52 @@
    ]
   },
   {
+   "a": "ECOGRAMA",
+   "b": "ecou-spectral-rs",
+   "reasons": [
+    "topic:audiolab"
+   ]
+  },
+  {
+   "a": "ECOGRAMA",
+   "b": "EcoulSpectral",
+   "reasons": [
+    "topic:audiolab",
+    "pair"
+   ],
+   "why": "ambele lucrează cu spectrograma sunetului: Ecoul Spectral o afișează în browser, ECOGRAMA va permite editarea ei"
+  },
+  {
+   "a": "ECOGRAMA",
+   "b": "FrequencyLaboratory",
+   "reasons": [
+    "topic:audiolab"
+   ]
+  },
+  {
+   "a": "ECOGRAMA",
+   "b": "generator-frecvente",
+   "reasons": [
+    "topic:audiolab"
+   ]
+  },
+  {
+   "a": "ecou-spectral-rs",
+   "b": "generator-frecvente",
+   "reasons": [
+    "topic:audiolab"
+   ]
+  },
+  {
+   "a": "EcoulSpectral",
+   "b": "ecou-spectral-rs",
+   "reasons": [
+    "topic:audiolab",
+    "pair"
+   ],
+   "why": "ugyanaz a spectrogramă a sunetului, în versiune nativă: Ecoul Spectral e varianta de browser, aceasta va fi cea instalată"
+  },
+  {
    "a": "EcoulSpectral",
    "b": "FrequencyLaboratory",
    "reasons": [
@@ -2218,6 +2546,13 @@
     "envelope:passport/fff",
     "module:fff-pasaport",
     "data:www.ancom.ro"
+   ]
+  },
+  {
+   "a": "ETER",
+   "b": "indicativ-international",
+   "reasons": [
+    "topic:radio"
    ]
   },
   {
@@ -2347,6 +2682,13 @@
    ]
   },
   {
+   "a": "ExploratoriiEco",
+   "b": "vietar-packs",
+   "reasons": [
+    "topic:field"
+   ]
+  },
+  {
    "a": "Fabrica",
    "b": "Fenarium",
    "reasons": [
@@ -2384,6 +2726,13 @@
     "topic:workshop",
     "envelope:passport/fff",
     "module:fff-pasaport"
+   ]
+  },
+  {
+   "a": "Fabrica",
+   "b": "proiector-fara-frontiere",
+   "reasons": [
+    "topic:workshop"
    ]
   },
   {
@@ -2525,6 +2874,15 @@
     "envelope:passport/fff",
     "module:fff-pasaport"
    ]
+  },
+  {
+   "a": "FASCICUL",
+   "b": "proiector-fara-frontiere",
+   "reasons": [
+    "topic:workshop",
+    "pair"
+   ],
+   "why": "ambele leagă telefoanele de un proiector fără server: FASCICUL e panoul colaborativ existent, acesta pornește de la o clasă și widgeturi plugin"
   },
   {
    "a": "FASCICUL",
@@ -2726,6 +3084,20 @@
    ]
   },
   {
+   "a": "FieldObserver",
+   "b": "vietar-packs",
+   "reasons": [
+    "topic:field"
+   ]
+  },
+  {
+   "a": "FreeDetect",
+   "b": "atelier-verificare",
+   "reasons": [
+    "topic:audit"
+   ]
+  },
+  {
    "a": "FreeDetect",
    "b": "Lexicon",
    "reasons": [
@@ -2737,6 +3109,13 @@
    "b": "MarkdownAtelier",
    "reasons": [
     "topic:research"
+   ]
+  },
+  {
+   "a": "FreeDetect",
+   "b": "MARTOR",
+   "reasons": [
+    "topic:audit"
    ]
   },
   {
@@ -2768,6 +3147,13 @@
    "b": "TEZAUR",
    "reasons": [
     "topic:research"
+   ]
+  },
+  {
+   "a": "FrequencyLaboratory",
+   "b": "ecou-spectral-rs",
+   "reasons": [
+    "topic:audiolab"
    ]
   },
   {
@@ -2966,6 +3352,15 @@
   },
   {
    "a": "INDICATIV",
+   "b": "indicativ-international",
+   "reasons": [
+    "topic:radio",
+    "pair"
+   ],
+   "why": "INDICATIV antrenează examenul ANCOM român, iar indicativ-international va aduna băncile de întrebări ale altor țări în același format"
+  },
+  {
+   "a": "INDICATIV",
    "b": "MENSURA",
    "reasons": [
     "envelope:passport/fff",
@@ -3051,6 +3446,13 @@
   },
   {
    "a": "LECTOR",
+   "b": "TACTIL",
+   "reasons": [
+    "topic:access"
+   ]
+  },
+  {
+   "a": "LECTOR",
    "b": "TEZAUR",
    "reasons": [
     "topic:scan"
@@ -3096,6 +3498,22 @@
   },
   {
    "a": "Lexicon",
+   "b": "glosar",
+   "reasons": [
+    "topic:translate",
+    "pair"
+   ],
+   "why": "amândouă sunt dicționare: Lexicon e dicționarul tău, glosar va aduna dicționare ale limbilor minoritare"
+  },
+  {
+   "a": "Lexicon",
+   "b": "graiul",
+   "reasons": [
+    "topic:wordculture"
+   ]
+  },
+  {
+   "a": "Lexicon",
    "b": "Limpezimea",
    "reasons": [
     "topic:wordculture"
@@ -3106,6 +3524,13 @@
    "b": "MarkdownAtelier",
    "reasons": [
     "topic:research"
+   ]
+  },
+  {
+   "a": "Lexicon",
+   "b": "NEAMURI",
+   "reasons": [
+    "topic:wordculture"
    ]
   },
   {
@@ -3154,6 +3579,20 @@
   {
    "a": "Lexicon",
    "b": "Zicala",
+   "reasons": [
+    "topic:wordculture"
+   ]
+  },
+  {
+   "a": "Limpezimea",
+   "b": "graiul",
+   "reasons": [
+    "topic:wordculture"
+   ]
+  },
+  {
+   "a": "Limpezimea",
+   "b": "NEAMURI",
    "reasons": [
     "topic:wordculture"
    ]
@@ -3212,6 +3651,13 @@
    "b": "Zicala",
    "reasons": [
     "topic:wordculture"
+   ]
+  },
+  {
+   "a": "LocalMind",
+   "b": "balanta",
+   "reasons": [
+    "topic:ai"
    ]
   },
   {
@@ -3276,6 +3722,27 @@
    "b": "Trusa-fara-frontiere",
    "reasons": [
     "topic:authoring"
+   ]
+  },
+  {
+   "a": "MARTOR",
+   "b": "atelier-verificare",
+   "reasons": [
+    "topic:audit"
+   ]
+  },
+  {
+   "a": "MARTOR",
+   "b": "Provenienta",
+   "reasons": [
+    "topic:audit"
+   ]
+  },
+  {
+   "a": "MARTOR",
+   "b": "Surveyor",
+   "reasons": [
+    "topic:audit"
    ]
   },
   {
@@ -3357,6 +3824,13 @@
   },
   {
    "a": "Monstrarium",
+   "b": "proiector-fara-frontiere",
+   "reasons": [
+    "topic:workshop"
+   ]
+  },
+  {
+   "a": "Monstrarium",
    "b": "PULS",
    "reasons": [
     "envelope:passport/fff",
@@ -3403,6 +3877,34 @@
    ]
   },
   {
+   "a": "NEAMURI",
+   "b": "graiul",
+   "reasons": [
+    "topic:wordculture"
+   ]
+  },
+  {
+   "a": "NEAMURI",
+   "b": "Profund",
+   "reasons": [
+    "topic:wordculture"
+   ]
+  },
+  {
+   "a": "NEAMURI",
+   "b": "REZONANTA",
+   "reasons": [
+    "topic:wordculture"
+   ]
+  },
+  {
+   "a": "NEAMURI",
+   "b": "Zicala",
+   "reasons": [
+    "topic:wordculture"
+   ]
+  },
+  {
    "a": "Nemurirea",
    "b": "PULS",
    "reasons": [
@@ -3445,6 +3947,13 @@
    "b": "VITALIS",
    "reasons": [
     "topic:health"
+   ]
+  },
+  {
+   "a": "Nexus-fara-frontiere",
+   "b": "balanta",
+   "reasons": [
+    "topic:ai"
    ]
   },
   {
@@ -3605,6 +4114,13 @@
   },
   {
    "a": "Orar",
+   "b": "calendarium",
+   "reasons": [
+    "topic:time"
+   ]
+  },
+  {
+   "a": "Orar",
    "b": "orarium",
    "reasons": [
     "topic:time",
@@ -3745,6 +4261,13 @@
    ]
   },
   {
+   "a": "Poteca",
+   "b": "vietar-packs",
+   "reasons": [
+    "topic:field"
+   ]
+  },
+  {
    "a": "PrintreInteligente",
    "b": "TranslateHub",
    "reasons": [
@@ -3771,6 +4294,13 @@
    "b": "VoiceAtelier",
    "reasons": [
     "data:alexio.tf"
+   ]
+  },
+  {
+   "a": "Profund",
+   "b": "graiul",
+   "reasons": [
+    "topic:wordculture"
    ]
   },
   {
@@ -3825,10 +4355,26 @@
   },
   {
    "a": "PromptVault",
+   "b": "balanta",
+   "reasons": [
+    "topic:ai"
+   ]
+  },
+  {
+   "a": "PromptVault",
    "b": "TranslateHub",
    "reasons": [
     "pair"
    ]
+  },
+  {
+   "a": "Provenienta",
+   "b": "atelier-verificare",
+   "reasons": [
+    "topic:audit",
+    "pair"
+   ],
+   "why": "amândouă verifică proveniența: Proveniența atestă fișiere, atelier-verificare va aduna controale pentru imagini, linkuri și domenii"
   },
   {
    "a": "Provenienta",
@@ -3952,6 +4498,13 @@
   },
   {
    "a": "QSO",
+   "b": "indicativ-international",
+   "reasons": [
+    "topic:radio"
+   ]
+  },
+  {
+   "a": "QSO",
    "b": "RegexLab",
    "reasons": [
     "envelope:passport/fff",
@@ -4007,6 +4560,13 @@
   },
   {
    "a": "Remi-fara-frontiere",
+   "b": "regula",
+   "reasons": [
+    "topic:cards"
+   ]
+  },
+  {
+   "a": "Remi-fara-frontiere",
    "b": "Sah-fara-frontiere",
    "reasons": [
     "module:fff-jocuri"
@@ -4035,6 +4595,13 @@
   },
   {
    "a": "REZONANTA",
+   "b": "graiul",
+   "reasons": [
+    "topic:wordculture"
+   ]
+  },
+  {
+   "a": "REZONANTA",
    "b": "Zicala",
    "reasons": [
     "topic:wordculture"
@@ -4053,6 +4620,13 @@
    "b": "Zaruri-fara-frontiere",
    "reasons": [
     "topic:board"
+   ]
+  },
+  {
+   "a": "Scopone-fara-frontiere",
+   "b": "regula",
+   "reasons": [
+    "topic:cards"
    ]
   },
   {
@@ -4172,6 +4746,13 @@
   },
   {
    "a": "Solitaire-fara-frontiere",
+   "b": "regula",
+   "reasons": [
+    "topic:cards"
+   ]
+  },
+  {
+   "a": "Solitaire-fara-frontiere",
    "b": "Sudoku-fara-frontiere",
    "reasons": [
     "pair"
@@ -4182,6 +4763,13 @@
    "b": "Undava",
    "reasons": [
     "topic:mind"
+   ]
+  },
+  {
+   "a": "Surveyor",
+   "b": "atelier-verificare",
+   "reasons": [
+    "topic:audit"
    ]
   },
   {
@@ -4204,6 +4792,13 @@
    "reasons": [
     "topic:board",
     "topic:luck"
+   ]
+  },
+  {
+   "a": "TACTIL",
+   "b": "VoiceAtelier",
+   "reasons": [
+    "topic:access"
    ]
   },
   {
@@ -4273,6 +4868,13 @@
   },
   {
    "a": "TranslateHub",
+   "b": "glosar",
+   "reasons": [
+    "topic:translate"
+   ]
+  },
+  {
+   "a": "TranslateHub",
    "b": "VietAR",
    "reasons": [
     "module:fff-ai",
@@ -4299,6 +4901,13 @@
    "b": "VERIGA",
    "reasons": [
     "topic:rust"
+   ]
+  },
+  {
+   "a": "Undava",
+   "b": "proiector-fara-frontiere",
+   "reasons": [
+    "topic:workshop"
    ]
   },
   {
@@ -4390,8 +4999,22 @@
    ]
   },
   {
+   "a": "URME",
+   "b": "vietar-packs",
+   "reasons": [
+    "topic:field"
+   ]
+  },
+  {
    "a": "VATRA",
    "b": "VietAR",
+   "reasons": [
+    "topic:field"
+   ]
+  },
+  {
+   "a": "VATRA",
+   "b": "vietar-packs",
    "reasons": [
     "topic:field"
    ]
@@ -4402,6 +5025,15 @@
    "reasons": [
     "topic:health"
    ]
+  },
+  {
+   "a": "VietAR",
+   "b": "vietar-packs",
+   "reasons": [
+    "topic:field",
+    "pair"
+   ],
+   "why": "pachetele de specii sunt conținut pentru VietAR: numele, pozele și sunetele pe care aplicația le arată în teren"
   },
   {
    "a": "Vitrina",
@@ -4416,6 +5048,22 @@
    "reasons": [
     "topic:astro"
    ]
+  },
+  {
+   "a": "VoiceAtelier",
+   "b": "glosar",
+   "reasons": [
+    "topic:translate"
+   ]
+  },
+  {
+   "a": "Zicala",
+   "b": "graiul",
+   "reasons": [
+    "topic:wordculture",
+    "pair"
+   ],
+   "why": "amândouă adună vorbirea populară: Zicala ține zicale și proverbe, graiul va aduna folclor cu regiune și sursă"
   }
  ]
 }
