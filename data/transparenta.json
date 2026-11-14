@@ -2009,7 +2009,7 @@
   ]
  },
  "health": {
-  "date": "2026-11-13",
+  "date": "2026-11-14",
   "apps": 146,
   "relations": {
    "withRelation": 117,
@@ -2049,39 +2049,39 @@
    "flowApps": 16
   },
   "coverage": {
-   "full8": 142,
+   "full8": 144,
    "partial": 0,
-   "single": 4,
+   "single": 2,
    "native": 14,
-   "avg": 3.92
+   "avg": 3.96
   },
   "score": {
    "measured": 123,
-   "mean": 9.35,
+   "mean": 9.37,
    "median": 9.5,
    "bands": {
-    "b9": 103,
+    "b9": 104,
     "b8": 18,
-    "b7": 2,
+    "b7": 1,
     "b6": 0
    },
    "noTests": 0,
    "incomplete": 0,
    "lowest": [
-    "REZONANTA 7.5",
     "SEOptimum 7.8",
-    "Cronosala 8.0",
     "OmniHost 8.1",
-    "PrintreInteligente 8.2"
+    "PrintreInteligente 8.2",
+    "TerRa 8.2",
+    "LocalMind 8.3"
    ]
   },
   "age": {
-   "ref": "2026-11-13",
-   "fresh7": 136,
+   "ref": "2026-11-14",
+   "fresh7": 132,
    "fresh30": 146,
    "stale30": 0,
    "stale90": 0,
-   "oldest": "OSATURA (20)"
+   "oldest": "OSATURA (21)"
   },
   "sources": {
    "total": 30,
@@ -2132,7 +2132,7 @@
   }
  },
  "a7": {
-  "date": "2026-11-13",
+  "date": "2026-11-14",
   "apps": [
    {
     "key": "AcademiSearch",
@@ -2487,16 +2487,16 @@
    },
    {
     "key": "Cronosala",
-    "ver": "3.0.0",
-    "score": 8,
+    "ver": "3.1.0",
+    "score": 9,
     "build": true,
     "axe": 0,
-    "tests": 1,
-    "testsOk": 1,
+    "tests": 2,
+    "testsOk": 2,
     "csp": 1.5,
     "off": 0,
-    "langs": 0,
-    "kb": 267
+    "langs": 8,
+    "kb": 495
    },
    {
     "key": "Cupa-Mondiala-2026",
@@ -3293,16 +3293,16 @@
    },
    {
     "key": "REZONANTA",
-    "ver": "1.0",
-    "score": 7.5,
+    "ver": "1.1.0",
+    "score": 8.5,
     "build": true,
     "axe": 0,
-    "tests": 1,
-    "testsOk": 1,
+    "tests": 2,
+    "testsOk": 2,
     "csp": 1,
     "off": 0,
-    "langs": 0,
-    "kb": 204
+    "langs": 8,
+    "kb": 439
    },
    {
     "key": "Sah-fara-frontiere",
@@ -3735,7 +3735,7 @@
    }
   ],
   "scored": 123,
-  "mean": 9.35,
+  "mean": 9.37,
   "median": 9.5,
   "builds": 123,
   "axe": 123,

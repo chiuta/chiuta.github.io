@@ -1597,34 +1597,41 @@
     "Cronosala": {
       "coverage": {
         "langs": [
-          "ro"
+          "ro",
+          "en",
+          "fr",
+          "it",
+          "es",
+          "pt",
+          "de",
+          "hu"
         ],
         "platform": "web"
       },
       "fisa": {
         "ro": {
-          "limite": "Interfața e doar în română. Catalogul de exerciții și lista aparatelor se referă la o singură sală și sunt neoficiale. Pagina nu are service worker: folosită fără internet funcționează doar dacă fișierul e salvat sau pagina e deja încărcată. Datele stau în browser (copie de siguranță recomandată). Nu e sfat medical sau de antrenament personalizat."
+          "limite": "Catalogul de exerciții și lista aparatelor se referă la o singură sală și sunt neoficiale. Pagina nu are service worker: folosită fără internet funcționează doar dacă fișierul e salvat sau pagina e deja încărcată. Datele stau în browser (copie de siguranță recomandată). Nu e sfat medical sau de antrenament personalizat."
         },
         "en": {
-          "limite": "The interface is in Romanian only. The exercise catalogue and machine list refer to a single gym and are unofficial. The page has no service worker: without internet it works only if the file is saved or the page is already loaded. Data lives in the browser (back it up). It is not medical advice or personalised coaching."
+          "limite": "The exercise catalogue and machine list refer to a single gym and are unofficial. The page has no service worker: without internet it works only if the file is saved or the page is already loaded. Data lives in the browser (back it up). It is not medical advice or personalised coaching."
         },
         "fr": {
-          "limite": "L’interface est uniquement en roumain. Le catalogue d’exercices et la liste des appareils concernent une seule salle et sont non officiels. La page n’a pas de service worker : sans internet, elle ne fonctionne que si le fichier est enregistré ou la page déjà chargée. Les données restent dans le navigateur (faites une sauvegarde). Ce n’est ni un avis médical ni un coaching personnalisé."
+          "limite": "Le catalogue d’exercices et la liste des appareils concernent une seule salle et sont non officiels. La page n’a pas de service worker : sans internet, elle ne fonctionne que si le fichier est enregistré ou la page déjà chargée. Les données restent dans le navigateur (faites une sauvegarde). Ce n’est ni un avis médical ni un coaching personnalisé."
         },
         "it": {
-          "limite": "L’interfaccia è solo in rumeno. Il catalogo di esercizi e l’elenco delle macchine riguardano una sola palestra e non sono ufficiali. La pagina non ha service worker: senza internet funziona solo se il file è salvato o la pagina è già caricata. I dati restano nel browser (fai un backup). Non è un parere medico né coaching personalizzato."
+          "limite": "Il catalogo di esercizi e l’elenco delle macchine riguardano una sola palestra e non sono ufficiali. La pagina non ha service worker: senza internet funziona solo se il file è salvato o la pagina è già caricata. I dati restano nel browser (fai un backup). Non è un parere medico né coaching personalizzato."
         },
         "es": {
-          "limite": "La interfaz es solo en rumano. El catálogo de ejercicios y la lista de máquinas se refieren a un único gimnasio y no son oficiales. La página no tiene service worker: sin internet solo funciona si el archivo está guardado o la página ya está cargada. Los datos se guardan en el navegador (haz una copia). No es consejo médico ni entrenamiento personalizado."
+          "limite": "El catálogo de ejercicios y la lista de máquinas se refieren a un único gimnasio y no son oficiales. La página no tiene service worker: sin internet solo funciona si el archivo está guardado o la página ya está cargada. Los datos se guardan en el navegador (haz una copia). No es consejo médico ni entrenamiento personalizado."
         },
         "pt": {
-          "limite": "A interface é apenas em romeno. O catálogo de exercícios e a lista de máquinas referem-se a um único ginásio e não são oficiais. A página não tem service worker: sem internet só funciona se o ficheiro estiver guardado ou a página já carregada. Os dados ficam no navegador (faça uma cópia). Não é aconselhamento médico nem treino personalizado."
+          "limite": "O catálogo de exercícios e a lista de máquinas referem-se a um único ginásio e não são oficiais. A página não tem service worker: sem internet só funciona se o ficheiro estiver guardado ou a página já carregada. Os dados ficam no navegador (faça uma cópia). Não é aconselhamento médico nem treino personalizado."
         },
         "de": {
-          "limite": "Die Oberfläche ist nur auf Rumänisch. Übungskatalog und Geräteliste beziehen sich auf ein einzelnes Studio und sind inoffiziell. Die Seite hat keinen Service Worker: ohne Internet läuft sie nur, wenn die Datei gespeichert oder die Seite schon geladen ist. Die Daten bleiben im Browser (bitte sichern). Kein medizinischer Rat und kein persönliches Coaching."
+          "limite": "Übungskatalog und Geräteliste beziehen sich auf ein einzelnes Studio und sind inoffiziell. Die Seite hat keinen Service Worker: ohne Internet läuft sie nur, wenn die Datei gespeichert oder die Seite schon geladen ist. Die Daten bleiben im Browser (bitte sichern). Kein medizinischer Rat und kein persönliches Coaching."
         },
         "hu": {
-          "limite": "A felület csak románul érhető el. A gyakorlatkatalógus és a gépek listája egyetlen terem adataira vonatkozik, nem hivatalos. Az oldalnak nincs service workere: internet nélkül csak akkor működik, ha a fájl el van mentve vagy az oldal már betöltődött. Az adatok a böngészőben vannak (készíts másolatot). Nem orvosi tanács és nem személyre szabott edzésterv."
+          "limite": "A gyakorlatkatalógus és a gépek listája egyetlen terem adataira vonatkozik, nem hivatalos. Az oldalnak nincs service workere: internet nélkül csak akkor működik, ha a fájl el van mentve vagy az oldal már betöltődött. Az adatok a böngészőben vannak (készíts másolatot). Nem orvosi tanács és nem személyre szabott edzésterv."
         }
       }
     },
@@ -1779,34 +1786,41 @@
     "REZONANTA": {
       "coverage": {
         "langs": [
-          "ro"
+          "ro",
+          "en",
+          "fr",
+          "it",
+          "es",
+          "pt",
+          "de",
+          "hu"
         ],
         "platform": "web"
       },
       "fisa": {
         "ro": {
-          "limite": "Interfața e doar în română. Scorurile pentru canale și analizorul de claritate sunt euristici orientative, nu garanții că mesajul ajunge sau convinge. Textele generate sunt șabloane: citește-le și adaptează-le înainte să le publici. Pagina nu are service worker: fără internet funcționează doar dacă fișierul e salvat sau pagina e deja încărcată. Textele rămân în browser."
+          "limite": "Scorurile pentru canale și analizorul de claritate sunt euristici orientative, nu garanții că mesajul ajunge sau convinge. Textele generate sunt șabloane: citește-le și adaptează-le înainte să le publici. Pagina nu are service worker: fără internet funcționează doar dacă fișierul e salvat sau pagina e deja încărcată. Textele rămân în browser."
         },
         "en": {
-          "limite": "The interface is in Romanian only. The channel scores and the clarity analyser are indicative heuristics, not guarantees that a message will land or persuade. Generated texts are templates: read and adapt them before publishing. The page has no service worker: without internet it works only if the file is saved or the page is already loaded. Texts stay in the browser."
+          "limite": "The channel scores and the clarity analyser are indicative heuristics, not guarantees that a message will land or persuade. Generated texts are templates: read and adapt them before publishing. The page has no service worker: without internet it works only if the file is saved or the page is already loaded. Texts stay in the browser."
         },
         "fr": {
-          "limite": "L’interface est uniquement en roumain. Les scores des canaux et l’analyseur de clarté sont des heuristiques indicatives, pas des garanties qu’un message sera reçu ou convaincra. Les textes générés sont des modèles : relisez-les et adaptez-les avant de publier. La page n’a pas de service worker : sans internet, elle ne fonctionne que si le fichier est enregistré ou la page déjà chargée. Les textes restent dans le navigateur."
+          "limite": "Les scores des canaux et l’analyseur de clarté sont des heuristiques indicatives, pas des garanties qu’un message sera reçu ou convaincra. Les textes générés sont des modèles : relisez-les et adaptez-les avant de publier. La page n’a pas de service worker : sans internet, elle ne fonctionne que si le fichier est enregistré ou la page déjà chargée. Les textes restent dans le navigateur."
         },
         "it": {
-          "limite": "L’interfaccia è solo in rumeno. I punteggi dei canali e l’analizzatore di chiarezza sono euristiche indicative, non garanzie che un messaggio arrivi o convinca. I testi generati sono modelli: leggili e adattali prima di pubblicarli. La pagina non ha service worker: senza internet funziona solo se il file è salvato o la pagina è già caricata. I testi restano nel browser."
+          "limite": "I punteggi dei canali e l’analizzatore di chiarezza sono euristiche indicative, non garanzie che un messaggio arrivi o convinca. I testi generati sono modelli: leggili e adattali prima di pubblicarli. La pagina non ha service worker: senza internet funziona solo se il file è salvato o la pagina è già caricata. I testi restano nel browser."
         },
         "es": {
-          "limite": "La interfaz es solo en rumano. Las puntuaciones de canales y el analizador de claridad son heurísticas orientativas, no garantías de que un mensaje llegue o convenza. Los textos generados son plantillas: léelos y adáptalos antes de publicar. La página no tiene service worker: sin internet solo funciona si el archivo está guardado o la página ya está cargada. Los textos se quedan en el navegador."
+          "limite": "Las puntuaciones de canales y el analizador de claridad son heurísticas orientativas, no garantías de que un mensaje llegue o convenza. Los textos generados son plantillas: léelos y adáptalos antes de publicar. La página no tiene service worker: sin internet solo funciona si el archivo está guardado o la página ya está cargada. Los textos se quedan en el navegador."
         },
         "pt": {
-          "limite": "A interface é apenas em romeno. As pontuações dos canais e o analisador de clareza são heurísticas orientativas, não garantias de que uma mensagem chegue ou convença. Os textos gerados são modelos: leia-os e adapte-os antes de publicar. A página não tem service worker: sem internet só funciona se o ficheiro estiver guardado ou a página já carregada. Os textos ficam no navegador."
+          "limite": "As pontuações dos canais e o analisador de clareza são heurísticas orientativas, não garantias de que uma mensagem chegue ou convença. Os textos gerados são modelos: leia-os e adapte-os antes de publicar. A página não tem service worker: sem internet só funciona se o ficheiro estiver guardado ou a página já carregada. Os textos ficam no navegador."
         },
         "de": {
-          "limite": "Die Oberfläche ist nur auf Rumänisch. Die Kanalbewertungen und der Klarheits-Analysator sind Richtwerte, keine Garantie, dass eine Botschaft ankommt oder überzeugt. Erzeugte Texte sind Vorlagen: lies und passe sie an, bevor du veröffentlichst. Die Seite hat keinen Service Worker: ohne Internet läuft sie nur, wenn die Datei gespeichert oder die Seite schon geladen ist. Die Texte bleiben im Browser."
+          "limite": "Die Kanalbewertungen und der Klarheits-Analysator sind Richtwerte, keine Garantie, dass eine Botschaft ankommt oder überzeugt. Erzeugte Texte sind Vorlagen: lies und passe sie an, bevor du veröffentlichst. Die Seite hat keinen Service Worker: ohne Internet läuft sie nur, wenn die Datei gespeichert oder die Seite schon geladen ist. Die Texte bleiben im Browser."
         },
         "hu": {
-          "limite": "A felület csak románul érhető el. A csatornapontszámok és az érthetőségelemző tájékoztató jellegű heurisztikák, nem garantálják, hogy az üzenet eljut vagy meggyőz. A generált szövegek sablonok: közzététel előtt olvasd át és igazítsd őket. Az oldalnak nincs service workere: internet nélkül csak akkor működik, ha a fájl el van mentve vagy az oldal már betöltődött. A szövegek a böngészőben maradnak."
+          "limite": "A csatornapontszámok és az érthetőségelemző tájékoztató jellegű heurisztikák, nem garantálják, hogy az üzenet eljut vagy meggyőz. A generált szövegek sablonok: közzététel előtt olvasd át és igazítsd őket. Az oldalnak nincs service workere: internet nélkül csak akkor működik, ha a fájl el van mentve vagy az oldal már betöltődött. A szövegek a böngészőben maradnak."
         }
       }
     },

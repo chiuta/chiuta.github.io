@@ -13265,14 +13265,14 @@
     ]
    },
    "line": {
-    "en": "Gym timers: rest between sets, HIIT, Tabata, EMOM, AMRAP, circuits and a metronome, plus a training log with kg and reps. The interface is in Romanian only.",
-    "ro": "Cronometre pentru sală: pauze între seturi, HIIT, Tabata, EMOM, AMRAP, circuit și metronom, plus jurnal de antrenament cu kg și repetări. Interfața e doar în română.",
-    "fr": "Minuteurs de salle de sport : repos entre les séries, HIIT, Tabata, EMOM, AMRAP, circuits et métronome, plus un carnet d’entraînement (kg et répétitions). Interface uniquement en roumain.",
-    "it": "Timer per la palestra: recupero tra le serie, HIIT, Tabata, EMOM, AMRAP, circuiti e metronomo, più un diario di allenamento con kg e ripetizioni. Interfaccia solo in rumeno.",
-    "es": "Temporizadores para el gimnasio: descanso entre series, HIIT, Tabata, EMOM, AMRAP, circuitos y metrónomo, más un diario de entrenamiento con kg y repeticiones. Interfaz solo en rumano.",
-    "pt": "Temporizadores para o ginásio: descanso entre séries, HIIT, Tabata, EMOM, AMRAP, circuitos e metrónomo, mais um diário de treino com kg e repetições. Interface apenas em romeno.",
-    "de": "Timer fürs Fitnessstudio: Satzpausen, HIIT, Tabata, EMOM, AMRAP, Zirkel und Metronom, dazu ein Trainingstagebuch mit kg und Wiederholungen. Oberfläche nur auf Rumänisch.",
-    "hu": "Időzítők az edzőterembe: szünet a sorozatok között, HIIT, Tabata, EMOM, AMRAP, körök és metronóm, valamint edzésnapló kg-mal és ismétlésekkel. A felület csak románul van."
+    "en": "Gym timers: rest between sets, HIIT, Tabata, EMOM, AMRAP, circuits and a metronome, plus a training log with kg and reps.",
+    "ro": "Cronometre pentru sală: pauze între seturi, HIIT, Tabata, EMOM, AMRAP, circuit și metronom, plus jurnal de antrenament cu kg și repetări.",
+    "fr": "Minuteurs de salle de sport : repos entre les séries, HIIT, Tabata, EMOM, AMRAP, circuits et métronome, plus un carnet d’entraînement (kg et répétitions).",
+    "it": "Timer per la palestra: recupero tra le serie, HIIT, Tabata, EMOM, AMRAP, circuiti e metronomo, più un diario di allenamento con kg e ripetizioni.",
+    "es": "Temporizadores para el gimnasio: descanso entre series, HIIT, Tabata, EMOM, AMRAP, circuitos y metrónomo, más un diario de entrenamiento con kg y repeticiones.",
+    "pt": "Temporizadores para o ginásio: descanso entre séries, HIIT, Tabata, EMOM, AMRAP, circuitos e metrónomo, mais um diário de treino com kg e repetições.",
+    "de": "Timer fürs Fitnessstudio: Satzpausen, HIIT, Tabata, EMOM, AMRAP, Zirkel und Metronom, dazu ein Trainingstagebuch mit kg und Wiederholungen.",
+    "hu": "Időzítők az edzőterembe: szünet a sorozatok között, HIIT, Tabata, EMOM, AMRAP, körök és metronóm, valamint edzésnapló kg-mal és ismétlésekkel."
    },
    "url": "https://chiuta.github.io/Cronosala/",
    "readme": "https://github.com/chiuta/Cronosala#readme",
@@ -13334,14 +13334,14 @@
     ]
    },
    "line": {
-    "en": "A guide and tools for communication and media: message, channels, press release, interview, clarity, plan and crisis. The interface is in Romanian only.",
-    "ro": "Ghid și instrumente pentru comunicare și media: mesaj, canale, comunicat de presă, interviu, claritate, plan și criză. Interfața e doar în română.",
-    "fr": "Guide et outils de communication et de médias : message, canaux, communiqué de presse, interview, clarté, plan et crise. Interface uniquement en roumain.",
-    "it": "Guida e strumenti per comunicazione e media: messaggio, canali, comunicato stampa, intervista, chiarezza, piano e crisi. Interfaccia solo in rumeno.",
-    "es": "Guía y herramientas de comunicación y medios: mensaje, canales, nota de prensa, entrevista, claridad, plan y crisis. Interfaz solo en rumano.",
-    "pt": "Guia e ferramentas de comunicação e media: mensagem, canais, comunicado de imprensa, entrevista, clareza, plano e crise. Interface apenas em romeno.",
-    "de": "Leitfaden und Werkzeuge für Kommunikation und Medien: Botschaft, Kanäle, Pressemitteilung, Interview, Klarheit, Plan und Krise. Oberfläche nur auf Rumänisch.",
-    "hu": "Útmutató és eszközök a kommunikációhoz és a médiához: üzenet, csatornák, sajtóközlemény, interjú, érthetőség, terv és válság. A felület csak románul van."
+    "en": "A guide and tools for communication and media: message, channels, press release, interview, clarity, plan and crisis.",
+    "ro": "Ghid și instrumente pentru comunicare și media: mesaj, canale, comunicat de presă, interviu, claritate, plan și criză.",
+    "fr": "Guide et outils de communication et de médias : message, canaux, communiqué de presse, interview, clarté, plan et crise.",
+    "it": "Guida e strumenti per comunicazione e media: messaggio, canali, comunicato stampa, intervista, chiarezza, piano e crisi.",
+    "es": "Guía y herramientas de comunicación y medios: mensaje, canales, nota de prensa, entrevista, claridad, plan y crisis.",
+    "pt": "Guia e ferramentas de comunicação e media: mensagem, canais, comunicado de imprensa, entrevista, clareza, plano e crise.",
+    "de": "Leitfaden und Werkzeuge für Kommunikation und Medien: Botschaft, Kanäle, Pressemitteilung, Interview, Klarheit, Plan und Krise.",
+    "hu": "Útmutató és eszközök a kommunikációhoz és a médiához: üzenet, csatornák, sajtóközlemény, interjú, érthetőség, terv és válság."
    },
    "url": "https://chiuta.github.io/REZONANTA/",
    "readme": "https://github.com/chiuta/REZONANTA#readme",
