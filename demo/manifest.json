@@ -13280,8 +13280,8 @@
    "status": "stable",
    "video": "Cronosala/video.mp4",
    "poster": "Cronosala/poster.jpg",
-   "duration": 38.4,
-   "size": 369065,
+   "duration": 49,
+   "size": 484219,
    "vtt": {
     "en": "Cronosala/en.vtt",
     "ro": "Cronosala/ro.vtt",
@@ -13293,7 +13293,50 @@
     "hu": "Cronosala/hu.vtt"
    },
    "transcript": "Cronosala/transcript.json",
-   "videos": {}
+   "videos": {
+    "ro": {
+     "video": "Cronosala/loc/ro/video.mp4",
+     "vtt": "Cronosala/loc/ro/ro.vtt",
+     "duration": 42.7,
+     "size": 452086
+    },
+    "fr": {
+     "video": "Cronosala/loc/fr/video.mp4",
+     "vtt": "Cronosala/loc/fr/fr.vtt",
+     "duration": 42.6,
+     "size": 487203
+    },
+    "it": {
+     "video": "Cronosala/loc/it/video.mp4",
+     "vtt": "Cronosala/loc/it/it.vtt",
+     "duration": 36.2,
+     "size": 491003
+    },
+    "es": {
+     "video": "Cronosala/loc/es/video.mp4",
+     "vtt": "Cronosala/loc/es/es.vtt",
+     "duration": 41.6,
+     "size": 571955
+    },
+    "pt": {
+     "video": "Cronosala/loc/pt/video.mp4",
+     "vtt": "Cronosala/loc/pt/pt.vtt",
+     "duration": 41.6,
+     "size": 558591
+    },
+    "de": {
+     "video": "Cronosala/loc/de/video.mp4",
+     "vtt": "Cronosala/loc/de/de.vtt",
+     "duration": 36,
+     "size": 495676
+    },
+    "hu": {
+     "video": "Cronosala/loc/hu/video.mp4",
+     "vtt": "Cronosala/loc/hu/hu.vtt",
+     "duration": 42.1,
+     "size": 500883
+    }
+   }
   },
   {
    "slug": "REZONANTA",
@@ -13349,8 +13392,8 @@
    "status": "stable",
    "video": "REZONANTA/video.mp4",
    "poster": "REZONANTA/poster.jpg",
-   "duration": 37.6,
-   "size": 326179,
+   "duration": 49.4,
+   "size": 420691,
    "vtt": {
     "en": "REZONANTA/en.vtt",
     "ro": "REZONANTA/ro.vtt",
@@ -13362,7 +13405,50 @@
     "hu": "REZONANTA/hu.vtt"
    },
    "transcript": "REZONANTA/transcript.json",
-   "videos": {}
+   "videos": {
+    "ro": {
+     "video": "REZONANTA/loc/ro/video.mp4",
+     "vtt": "REZONANTA/loc/ro/ro.vtt",
+     "duration": 51.1,
+     "size": 397939
+    },
+    "fr": {
+     "video": "REZONANTA/loc/fr/video.mp4",
+     "vtt": "REZONANTA/loc/fr/fr.vtt",
+     "duration": 43,
+     "size": 432557
+    },
+    "it": {
+     "video": "REZONANTA/loc/it/video.mp4",
+     "vtt": "REZONANTA/loc/it/it.vtt",
+     "duration": 49.2,
+     "size": 426758
+    },
+    "es": {
+     "video": "REZONANTA/loc/es/video.mp4",
+     "vtt": "REZONANTA/loc/es/es.vtt",
+     "duration": 49,
+     "size": 446114
+    },
+    "pt": {
+     "video": "REZONANTA/loc/pt/video.mp4",
+     "vtt": "REZONANTA/loc/pt/pt.vtt",
+     "duration": 56.3,
+     "size": 456092
+    },
+    "de": {
+     "video": "REZONANTA/loc/de/video.mp4",
+     "vtt": "REZONANTA/loc/de/de.vtt",
+     "duration": 42.4,
+     "size": 440483
+    },
+    "hu": {
+     "video": "REZONANTA/loc/hu/video.mp4",
+     "vtt": "REZONANTA/loc/hu/hu.vtt",
+     "duration": 49.8,
+     "size": 448194
+    }
+   }
   },
   {
    "slug": "FARFURIA",

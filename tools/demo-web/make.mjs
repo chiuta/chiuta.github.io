@@ -11,7 +11,7 @@ const a = process.argv.slice(2); const opt = (k, d) => { const i = a.indexOf(k);
 const ROOT = path.resolve(opt('--root', path.join(HUB, '..'))); const only = opt('--only', '') ? opt('--only').split(',') : null;
 const LANGS = ['en', 'ro', 'fr', 'it', 'es', 'pt', 'de', 'hu']; const langs = opt('--langs', '') ? opt('--langs').split(',') : LANGS;
 // aplicațiile cu interfață în 8 limbi (înregistrate pe fiecare limbă) vs. doar română
-const APPS = {FARFURIA: {dir: 'FARFURIA', loc: true}, VITALIS: {dir: 'VITALIS', loc: true}, DECUPAJ: {dir: 'DECUPAJ', loc: true}, LECTOR: {dir: 'LECTOR', loc: true}, Cronosala: {dir: 'Cronosala', loc: false}, REZONANTA: {dir: 'REZONANTA', loc: false}};
+const APPS = {FARFURIA: {dir: 'FARFURIA', loc: true}, VITALIS: {dir: 'VITALIS', loc: true}, DECUPAJ: {dir: 'DECUPAJ', loc: true}, LECTOR: {dir: 'LECTOR', loc: true}, Cronosala: {dir: 'Cronosala', loc: true}, REZONANTA: {dir: 'REZONANTA', loc: true}};
 
 const SAMPLE = '/tmp/demo-sample.wav'; if (!fs.existsSync(SAMPLE)) spawnSync('ffmpeg', ['-y', '-v', 'error', '-f', 'lavfi', '-i', 'sine=f=180:d=45', '-f', 'lavfi', '-i', 'sine=f=330:d=45', '-filter_complex', '[0][1]amix=inputs=2,tremolo=f=3:d=0.7,volume=2', '-ar', '16000', '-ac', '1', SAMPLE]);
 const T = (m) => (l) => m[l] || m.en;
@@ -19,8 +19,8 @@ const EP = T({ro: 'Episodul 12', en: 'Episode 12', fr: 'Épisode 12', it: 'Episo
 const WEL = T({ro: 'Bine ați venit', en: 'Welcome', fr: 'Bienvenue', it: 'Benvenuti', es: 'Bienvenidos', pt: 'Bem-vindos', de: 'Willkommen', hu: 'Üdvözöljük'});
 const SCENES = {
   Cronosala: {intro: [['wait', 1500], ['scroll', 200], ['wait', 1200], ['scroll', -200]],
-    explore: [['click', 'button:has-text("Tabata")'], ['wait', 1500], ['click', 'button:has-text("30/15")'], ['wait', 1200], ['click', '#goBtn'], ['wait', 3500], ['key', 'Escape'], ['wait', 900], ['click', 'button:has-text("Oprește")'], ['wait', 900], ['click', '#back'], ['wait', 600]],
-    try: [['click', 'button:has-text("Serii pe exerciții")'], ['wait', 2000], ['click', '#back'], ['wait', 500], ['click', 'button:has-text("Program lunar")'], ['wait', 2400], ['click', '#back']], offline: [['wait', 1200], ['scroll', 300], ['wait', 1200], ['scroll', -300]]},
+    explore: [['click', '[data-id=tabata]'], ['wait', 1800], ['click', '#goBtn'], ['wait', 4500], ['click', '#rClose'], ['wait', 900], ['click', '#dlgOk'], ['wait', 900], ['click', '#back'], ['wait', 600]],
+    try: [['click', '[data-id=sets]'], ['wait', 2000], ['click', '#back'], ['wait', 500], ['click', '[data-id=program]'], ['wait', 2400], ['click', '#back']], offline: [['wait', 1200], ['scroll', 300], ['wait', 1200], ['scroll', -300]]},
   FARFURIA: {intro: [['wait', 1800], ['scroll', 250], ['wait', 1500], ['scroll', -250]],
     explore: [['nth', 'button', 2], ['wait', 2200], ['scroll', 300], ['wait', 1200], ['scroll', -300], ['nth', 'button', 3], ['scroll', 300], ['wait', 1500]],
     try: [['nth', 'button', 4], ['wait', 1600], ['nth', 'button', 5], ['wait', 1600]], offline: [['nth', 'button', 1], ['wait', 1200], ['scroll', 300], ['wait', 1200]]},
