@@ -5,10 +5,10 @@
 
 ## Pe scurt
 
-- Aplicații în catalog: **146** (146 în depozite proprii, 0 în `apps/` din hub).
-- Cu **origine proprie** (CNAME `<slug>.chiuta.ro`): **128**.
-- Pe **origine partajată** `chiuta.ro`: **18** (0 aplicații din hub + 18 depozit(e) fără CNAME: MARTOR, atelier-verificare, ANTENA, TACTIL, indicativ-international, proiector-fara-frontiere, glosar, ASTROLABIU, calendarium, vietar-packs, ECOGRAMA, ecou-spectral-rs, ARBITRU, regula, balanta, Claritas, NEAMURI, graiul).
-- ATENȚIE, lipsesc de pe disc: MARTOR, atelier-verificare, ANTENA, TACTIL, indicativ-international, proiector-fara-frontiere, glosar, ASTROLABIU, calendarium, vietar-packs, ECOGRAMA, ecou-spectral-rs, ARBITRU, regula, balanta, Claritas, NEAMURI, graiul.
+- Aplicații în catalog: **151** (151 în depozite proprii, 0 în `apps/` din hub).
+- Cu **origine proprie** (CNAME `<slug>.chiuta.ro`): **129**.
+- Pe **origine partajată** `chiuta.ro`: **22** (0 aplicații din hub + 22 depozit(e) fără CNAME: MARTOR, atelier-verificare, ANTENA, TACTIL, indicativ-international, proiector-fara-frontiere, glosar, BRAZDA, VOIAJOR, ASTROLABIU, calendarium, vietar-packs, ECOGRAMA, ecou-spectral-rs, TurboCursa, ARBITRU, regula, balanta, Claritas, CHIROMANTIA, NEAMURI, graiul).
+- ATENȚIE, lipsesc de pe disc: MARTOR, atelier-verificare, ANTENA, TACTIL, indicativ-international, proiector-fara-frontiere, glosar, BRAZDA, VOIAJOR, ASTROLABIU, calendarium, vietar-packs, ECOGRAMA, ecou-spectral-rs, TurboCursa, ARBITRU, regula, balanta, Claritas, CHIROMANTIA, NEAMURI, graiul.
 - De mutat pe origine proprie (sensibile, din hub): **0** cu prioritate 1 (), **0** cu prioritate 2 ().
 
 ## De ce contează originea
@@ -26,7 +26,7 @@ Celelalte aplicații din hub () nu păstrează date personale sau secrete; pot r
 
 Deja pe origine proprie și sensibile (corect): AcademiSearch (cheie în sessionStorage); TranslateHub (cheie în sessionStorage); VaultCrypt (seif criptat); Nexus-fara-frontiere (chei API pentru modele AI); PromptVault (seif de prompturi); Constelar (cheie API în clar în localStorage (confirmat la audit)).
 
-Depozite fără CNAME (origine partajată cu hub-ul, de aliniat la convenție): MARTOR → `martor.chiuta.ro`, atelier-verificare → `atelier-verificare.chiuta.ro`, ANTENA → `antena.chiuta.ro`, TACTIL → `tactil.chiuta.ro`, indicativ-international → `indicativ-international.chiuta.ro`, proiector-fara-frontiere → `proiector-fara-frontiere.chiuta.ro`, glosar → `glosar.chiuta.ro`, ASTROLABIU → `astrolabiu.chiuta.ro`, calendarium → `calendarium.chiuta.ro`, vietar-packs → `vietar-packs.chiuta.ro`, ECOGRAMA → `ecograma.chiuta.ro`, ecou-spectral-rs → `ecou-spectral-rs.chiuta.ro`, ARBITRU → `arbitru.chiuta.ro`, regula → `regula.chiuta.ro`, balanta → `balanta.chiuta.ro`, Claritas → `claritas.chiuta.ro`, NEAMURI → `neamuri.chiuta.ro`, graiul → `graiul.chiuta.ro`.
+Depozite fără CNAME (origine partajată cu hub-ul, de aliniat la convenție): MARTOR → `martor.chiuta.ro`, atelier-verificare → `atelier-verificare.chiuta.ro`, ANTENA → `antena.chiuta.ro`, TACTIL → `tactil.chiuta.ro`, indicativ-international → `indicativ-international.chiuta.ro`, proiector-fara-frontiere → `proiector-fara-frontiere.chiuta.ro`, glosar → `glosar.chiuta.ro`, BRAZDA → `brazda.chiuta.ro`, VOIAJOR → `voiajor.chiuta.ro`, ASTROLABIU → `astrolabiu.chiuta.ro`, calendarium → `calendarium.chiuta.ro`, vietar-packs → `vietar-packs.chiuta.ro`, ECOGRAMA → `ecograma.chiuta.ro`, ecou-spectral-rs → `ecou-spectral-rs.chiuta.ro`, TurboCursa → `turbocursa.chiuta.ro`, ARBITRU → `arbitru.chiuta.ro`, regula → `regula.chiuta.ro`, balanta → `balanta.chiuta.ro`, Claritas → `claritas.chiuta.ro`, CHIROMANTIA → `chiromantia.chiuta.ro`, NEAMURI → `neamuri.chiuta.ro`, graiul → `graiul.chiuta.ro`.
 
 ## Pași exacți: DNS și verificarea domeniului chiuta.ro
 
@@ -80,7 +80,7 @@ Datele din `localStorage`/`IndexedDB` **nu se mută singure**: noua origine porn
 
 ## Verificare
 
-Stare verificată în Etapa 7 (consolidare): 128 din 146 depozite au CNAME `<slug>.chiuta.ro` și nicio aplicație nu e pe origine partajată (fiecare își păstrează `localStorage`/IndexedDB separat). Ce NU s-a putut verifica din mediul de lucru: rezolvarea DNS (`--dns` dă ENOTFOUND din spatele proxy-ului) și starea GitHub Pages „live”; acestea rămân de confirmat de pe o rețea cu DNS public.
+Stare verificată în Etapa 7 (consolidare): 129 din 151 depozite au CNAME `<slug>.chiuta.ro` și nicio aplicație nu e pe origine partajată (fiecare își păstrează `localStorage`/IndexedDB separat). Ce NU s-a putut verifica din mediul de lucru: rezolvarea DNS (`--dns` dă ENOTFOUND din spatele proxy-ului) și starea GitHub Pages „live”; acestea rămân de confirmat de pe o rețea cu DNS public.
 
 ```
 node tools/cname-inventory.mjs --check   # documentul corespunde depozitelor de pe disc
@@ -132,6 +132,7 @@ node tools/cname-inventory.mjs --dns     # informativ: interoghează DNS-ul publ
 | TACTIL | LIPSĂ | — | partajată: https://chiuta.ro/TACTIL/ (proiect fără CNAME, aceeași origine cu hub-ul) | — | fără CNAME; propus `tactil.chiuta.ro` |
 | indicativ-international | LIPSĂ | — | partajată: https://chiuta.ro/indicativ-international/ (proiect fără CNAME, aceeași origine cu hub-ul) | — | fără CNAME; propus `indicativ-international.chiuta.ro` |
 | proiector-fara-frontiere | LIPSĂ | — | partajată: https://chiuta.ro/proiector-fara-frontiere/ (proiect fără CNAME, aceeași origine cu hub-ul) | — | fără CNAME; propus `proiector-fara-frontiere.chiuta.ro` |
+| MIRAJ | depozit | `miraj.chiuta.ro` | proprie: https://miraj.chiuta.ro/ | — |  |
 | Alfabete | depozit | `alfabete.chiuta.ro` | proprie: https://alfabete.chiuta.ro/ | — |  |
 | Lexicon | depozit | `lexicon.chiuta.ro` | proprie: https://lexicon.chiuta.ro/ | da, dar deja pe origine proprie |  |
 | Limpezimea | depozit | `limpezimea.chiuta.ro` | proprie: https://limpezimea.chiuta.ro/ | — |  |
@@ -143,7 +144,7 @@ node tools/cname-inventory.mjs --dns     # informativ: interoghează DNS-ul publ
 | glosar | LIPSĂ | — | partajată: https://chiuta.ro/glosar/ (proiect fără CNAME, aceeași origine cu hub-ul) | — | fără CNAME; propus `glosar.chiuta.ro` |
 | AGORA | depozit | `agora.chiuta.ro` | proprie: https://agora.chiuta.ro/ | — |  |
 | Bolta | depozit | `bolta.chiuta.ro` | proprie: https://bolta.chiuta.ro/ | da, dar deja pe origine proprie |  |
-| BRAZDA | depozit | `brazda.chiuta.ro` | proprie: https://brazda.chiuta.ro/ | — |  |
+| BRAZDA | LIPSĂ | — | partajată: https://chiuta.ro/BRAZDA/ (proiect fără CNAME, aceeași origine cu hub-ul) | — | fără CNAME; propus `brazda.chiuta.ro` |
 | Cupa-Mondiala-2026 | depozit | `cupa-mondiala-2026.chiuta.ro` | proprie: https://cupa-mondiala-2026.chiuta.ro/ | — |  |
 | Eclipsa-2027 | depozit | `eclipsa-2027.chiuta.ro` | proprie: https://eclipsa-2027.chiuta.ro/ | — |  |
 | Horizons.BeyondLimits | depozit | `horizons-beyondlimits.chiuta.ro` | proprie: https://horizons-beyondlimits.chiuta.ro/ | — |  |
@@ -157,15 +158,17 @@ node tools/cname-inventory.mjs --dns     # informativ: interoghează DNS-ul publ
 | Universul-Observabil-2D | depozit | `universul-observabil-2d.chiuta.ro` | proprie: https://universul-observabil-2d.chiuta.ro/ | — |  |
 | Universul-Observabil-3D | depozit | `universul-observabil-3d.chiuta.ro` | proprie: https://universul-observabil-3d.chiuta.ro/ | — |  |
 | VietAR | depozit | `vietar.chiuta.ro` | proprie: https://vietar.chiuta.ro/ | — |  |
-| VOIAJOR | depozit | `voiajor.chiuta.ro` | proprie: https://voiajor.chiuta.ro/ | — |  |
+| VOIAJOR | LIPSĂ | — | partajată: https://chiuta.ro/VOIAJOR/ (proiect fără CNAME, aceeași origine cu hub-ul) | — | fără CNAME; propus `voiajor.chiuta.ro` |
 | ASTROLABIU | LIPSĂ | — | partajată: https://chiuta.ro/ASTROLABIU/ (proiect fără CNAME, aceeași origine cu hub-ul) | — | fără CNAME; propus `astrolabiu.chiuta.ro` |
 | calendarium | LIPSĂ | — | partajată: https://chiuta.ro/calendarium/ (proiect fără CNAME, aceeași origine cu hub-ul) | — | fără CNAME; propus `calendarium.chiuta.ro` |
+| ANTROPOS | depozit | `antropos.chiuta.ro` | proprie: https://antropos.chiuta.ro/ | — |  |
 | ExploratoriiEco | depozit | `exploratoriieco.chiuta.ro` | proprie: https://exploratoriieco.chiuta.ro/ | — |  |
 | FieldObserver | depozit | `fieldobserver.chiuta.ro` | proprie: https://fieldobserver.chiuta.ro/ | — |  |
 | Poteca | depozit | `poteca.chiuta.ro` | proprie: https://poteca.chiuta.ro/ | da, dar deja pe origine proprie |  |
 | URME | depozit | `urme.chiuta.ro` | proprie: https://urme.chiuta.ro/ | — |  |
 | VATRA | depozit | `vatra.chiuta.ro` | proprie: https://vatra.chiuta.ro/ | — |  |
 | vietar-packs | LIPSĂ | — | partajată: https://chiuta.ro/vietar-packs/ (proiect fără CNAME, aceeași origine cu hub-ul) | — | fără CNAME; propus `vietar-packs.chiuta.ro` |
+| ScutSonor | depozit | `scutsonor.chiuta.ro` | proprie: https://scutsonor.chiuta.ro/ | — |  |
 | ASMR | depozit | `asmr.chiuta.ro` | proprie: https://asmr.chiuta.ro/ | — |  |
 | BorderlessMelodies | depozit | `borderlessmelodies.chiuta.ro` | proprie: https://borderlessmelodies.chiuta.ro/ | — |  |
 | CalmWaves | depozit | `calmwaves.chiuta.ro` | proprie: https://calmwaves.chiuta.ro/ | — |  |
@@ -195,7 +198,7 @@ node tools/cname-inventory.mjs --dns     # informativ: interoghează DNS-ul publ
 | Sudoku-fara-frontiere | depozit | `sudoku-fara-frontiere.chiuta.ro` | proprie: https://sudoku-fara-frontiere.chiuta.ro/ | — |  |
 | Table-fara-frontiere | depozit | `table-fara-frontiere.chiuta.ro` | proprie: https://table-fara-frontiere.chiuta.ro/ | — |  |
 | Zaruri-fara-frontiere | depozit | `zaruri-fara-frontiere.chiuta.ro` | proprie: https://zaruri-fara-frontiere.chiuta.ro/ | — |  |
-| TurboCursa | depozit | `turbocursa.chiuta.ro` | proprie: https://turbocursa.chiuta.ro/ | — |  |
+| TurboCursa | LIPSĂ | — | partajată: https://chiuta.ro/TurboCursa/ (proiect fără CNAME, aceeași origine cu hub-ul) | — | fără CNAME; propus `turbocursa.chiuta.ro` |
 | ARBITRU | LIPSĂ | — | partajată: https://chiuta.ro/ARBITRU/ (proiect fără CNAME, aceeași origine cu hub-ul) | — | fără CNAME; propus `arbitru.chiuta.ro` |
 | regula | LIPSĂ | — | partajată: https://chiuta.ro/regula/ (proiect fără CNAME, aceeași origine cu hub-ul) | — | fără CNAME; propus `regula.chiuta.ro` |
 | AI-Liber | depozit | `ai-liber.chiuta.ro` | proprie: https://ai-liber.chiuta.ro/ | — |  |
@@ -214,11 +217,12 @@ node tools/cname-inventory.mjs --dns     # informativ: interoghează DNS-ul publ
 | VNTV | depozit | `vntv.chiuta.ro` | proprie: https://vntv.chiuta.ro/ | — |  |
 | Cronosala | depozit | `cronosala.chiuta.ro` | proprie: https://cronosala.chiuta.ro/ | — |  |
 | Claritas | LIPSĂ | — | partajată: https://chiuta.ro/Claritas/ (proiect fără CNAME, aceeași origine cu hub-ul) | — | fără CNAME; propus `claritas.chiuta.ro` |
+| Index-fara-frontiere | depozit | `index-fara-frontiere.chiuta.ro` | proprie: https://index-fara-frontiere.chiuta.ro/ | — |  |
 | ACORDAJ | depozit | `acordaj.chiuta.ro` | proprie: https://acordaj.chiuta.ro/ | — |  |
 | Afrodisiace-fara-frontiere | depozit | `afrodisiace-fara-frontiere.chiuta.ro` | proprie: https://afrodisiace-fara-frontiere.chiuta.ro/ | — |  |
 | Aurora | depozit | `aurora.chiuta.ro` | proprie: https://aurora.chiuta.ro/ | — |  |
 | Bioenergoterapie | depozit | `bioenergoterapie.chiuta.ro` | proprie: https://bioenergoterapie.chiuta.ro/ | — |  |
-| CHIROMANTIA | depozit | `chiromantia.chiuta.ro` | proprie: https://chiromantia.chiuta.ro/ | — |  |
+| CHIROMANTIA | LIPSĂ | — | partajată: https://chiuta.ro/CHIROMANTIA/ (proiect fără CNAME, aceeași origine cu hub-ul) | — | fără CNAME; propus `chiromantia.chiuta.ro` |
 | ECLIPSA | depozit | `eclipsa.chiuta.ro` | proprie: https://eclipsa.chiuta.ro/ | — |  |
 | HoroScop | depozit | `horoscop.chiuta.ro` | proprie: https://horoscop.chiuta.ro/ | — |  |
 | Inforenergetica | depozit | `inforenergetica.chiuta.ro` | proprie: https://inforenergetica.chiuta.ro/ | — |  |
@@ -233,6 +237,7 @@ node tools/cname-inventory.mjs --dns     # informativ: interoghează DNS-ul publ
 | ValeaPlopului1972 | depozit | `valeaplopului1972.chiuta.ro` | proprie: https://valeaplopului1972.chiuta.ro/ | — |  |
 | NEAMURI | LIPSĂ | — | partajată: https://chiuta.ro/NEAMURI/ (proiect fără CNAME, aceeași origine cu hub-ul) | — | fără CNAME; propus `neamuri.chiuta.ro` |
 | graiul | LIPSĂ | — | partajată: https://chiuta.ro/graiul/ (proiect fără CNAME, aceeași origine cu hub-ul) | — | fără CNAME; propus `graiul.chiuta.ro` |
+| DESCANTAR | depozit | `descantar.chiuta.ro` | proprie: https://descantar.chiuta.ro/ | — |  |
 | OSATURA | depozit | `osatura.chiuta.ro` | proprie: https://osatura.chiuta.ro/ | — | proiect Rust, site propriu; depozit chiuta/OSATURA |
 | VERIGA | depozit | `veriga.chiuta.ro` | proprie: https://veriga.chiuta.ro/ | — | proiect Rust, site propriu; depozit chiuta/VERIGA |
 | TEZAUR | depozit | `tezaur.chiuta.ro` | proprie: https://tezaur.chiuta.ro/ | — | proiect Rust, site propriu; depozit chiuta/TEZAUR |

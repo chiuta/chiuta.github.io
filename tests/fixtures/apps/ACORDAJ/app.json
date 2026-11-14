@@ -1,6 +1,6 @@
 {
-  "version": "3.0.7",
-  "updated": "2026-11-11",
+  "version": "3.0.8",
+  "updated": "2026-11-13",
   "egress": [
     {
       "host": "example.com",

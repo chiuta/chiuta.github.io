@@ -1,6 +1,6 @@
 {
-  "version": "2.5.5",
-  "updated": "2026-11-11",
+  "version": "1.3.0",
+  "updated": "2026-11-14",
   "egress": [],
   "features": {
     "i18n": [
@@ -14,7 +14,7 @@
       "de"
     ],
     "pwa": {
-      "serviceWorker": true
+      "serviceWorker": false
     }
   }
 }

@@ -1,1 +1,0 @@
-/* fixtură: există service worker */

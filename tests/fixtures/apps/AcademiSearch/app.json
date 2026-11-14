@@ -1,6 +1,6 @@
 {
-  "version": "5.2.12",
-  "updated": "2026-11-11",
+  "version": "5.2.13",
+  "updated": "2026-11-13",
   "egress": [
     {
       "host": "api.allorigins.win",

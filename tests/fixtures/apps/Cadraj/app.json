@@ -1,6 +1,6 @@
 {
-  "version": "2.2.11",
-  "updated": "2026-11-11",
+  "version": "2.2.12",
+  "updated": "2026-11-13",
   "egress": [
     {
       "host": "www.tiktok.com",

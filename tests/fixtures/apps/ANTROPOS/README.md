@@ -1,3 +1,3 @@
-# VOIAJOR
+# ANTROPOS
 
 Fixtură pentru teste; nu e documentația aplicației.

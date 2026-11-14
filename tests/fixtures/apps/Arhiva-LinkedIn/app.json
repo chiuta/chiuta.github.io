@@ -1,6 +1,6 @@
 {
-  "version": "2.3.6",
-  "updated": "2026-11-11",
+  "version": "2.3.7",
+  "updated": "2026-11-13",
   "egress": [
     {
       "host": "www.linkedin.com",

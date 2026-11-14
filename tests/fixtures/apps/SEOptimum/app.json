@@ -1,6 +1,6 @@
 {
-  "version": "2.2.9",
-  "updated": "2026-11-11",
+  "version": "2.2.10",
+  "updated": "2026-11-13",
   "egress": [
     {
       "host": "*(orice gazdă)",

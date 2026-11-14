@@ -1,7 +1,7 @@
 {
  "schema": 1,
  "note": "Generat de tools/sync-catalog.mjs din data/catalog-meta.json, data/flows.json și registrul de plicuri; nu se editează de mână. Fiecare relație are cel puțin un motiv verificabil (vezi relationEvidence în tools/catalog-meta-lib.mjs).",
- "count": 665,
+ "count": 680,
  "relations": [
   {
    "a": "AcademiSearch",
@@ -488,6 +488,30 @@
    "reasons": [
     "topic:radio"
    ]
+  },
+  {
+   "a": "ANTROPOS",
+   "b": "Fenarium",
+   "reasons": [
+    "pair"
+   ],
+   "why": "ambele sunt instrumente educaționale despre corpul uman"
+  },
+  {
+   "a": "ANTROPOS",
+   "b": "MENSURA",
+   "reasons": [
+    "pair"
+   ],
+   "why": "ambele calculează indici corporali din măsurători personale, local"
+  },
+  {
+   "a": "ANTROPOS",
+   "b": "MIRAJ",
+   "reasons": [
+    "pair"
+   ],
+   "why": "ambele explică fiziologia percepției"
   },
   {
    "a": "API-fara-frontiere",
@@ -1130,6 +1154,14 @@
   },
   {
    "a": "Aurora",
+   "b": "MIRAJ",
+   "reasons": [
+    "pair"
+   ],
+   "why": "ambele explică fenomene vizuale și luminoase"
+  },
+  {
+   "a": "Aurora",
    "b": "SEVA",
    "reasons": [
     "pair"
@@ -1570,6 +1602,14 @@
    "reasons": [
     "topic:cards"
    ]
+  },
+  {
+   "a": "CHIROMANTIA",
+   "b": "DESCANTAR",
+   "reasons": [
+    "pair"
+   ],
+   "why": "ambele sunt studii descriptive ale practicilor divinatorii"
   },
   {
    "a": "CHIROMANTIA",
@@ -2191,6 +2231,14 @@
    ]
   },
   {
+   "a": "Decibel",
+   "b": "ScutSonor",
+   "reasons": [
+    "pair"
+   ],
+   "why": "ambele lucrează cu sunetul puternic și măsurarea lui"
+  },
+  {
    "a": "DECUPAJ",
    "b": "LECTOR",
    "reasons": [
@@ -2218,6 +2266,22 @@
    "reasons": [
     "topic:media"
    ]
+  },
+  {
+   "a": "DESCANTAR",
+   "b": "Numerologie",
+   "reasons": [
+    "pair"
+   ],
+   "why": "ambele sunt studii descriptive ale practicilor divinatorii"
+  },
+  {
+   "a": "DESCANTAR",
+   "b": "Tarot",
+   "reasons": [
+    "pair"
+   ],
+   "why": "ambele sunt studii descriptive ale practicilor divinatorii"
   },
   {
    "a": "Domino-fara-frontiere",
@@ -2964,6 +3028,14 @@
   },
   {
    "a": "Fenarium",
+   "b": "MIRAJ",
+   "reasons": [
+    "pair"
+   ],
+   "why": "ambele explică fenomene de percepție și lumină"
+  },
+  {
+   "a": "Fenarium",
    "b": "Monstrarium",
    "reasons": [
     "envelope:passport/fff",
@@ -3172,6 +3244,14 @@
    ]
   },
   {
+   "a": "FrequencyLaboratory",
+   "b": "ScutSonor",
+   "reasons": [
+    "pair"
+   ],
+   "why": "ambele generează tonuri pe frecvențe alese"
+  },
+  {
    "a": "Go-fara-frontiere",
    "b": "Mahjong-fara-frontiere",
    "reasons": [
@@ -3348,6 +3428,30 @@
    "reasons": [
     "topic:astro"
    ]
+  },
+  {
+   "a": "Index-fara-frontiere",
+   "b": "OAZA",
+   "reasons": [
+    "pair"
+   ],
+   "why": "ambele sunt catalogări ale colecției"
+  },
+  {
+   "a": "Index-fara-frontiere",
+   "b": "Trusa-fara-frontiere",
+   "reasons": [
+    "pair"
+   ],
+   "why": "ambele sunt colecții fără frontiere"
+  },
+  {
+   "a": "Index-fara-frontiere",
+   "b": "Vitrina",
+   "reasons": [
+    "pair"
+   ],
+   "why": "ambele prezintă proiecte ale colecției"
   },
   {
    "a": "INDICATIV",
@@ -3742,6 +3846,14 @@
    "reasons": [
     "topic:audit"
    ]
+  },
+  {
+   "a": "MENSURA",
+   "b": "MIRAJ",
+   "reasons": [
+    "pair"
+   ],
+   "why": "ambele sunt materiale educaționale despre corp și simțuri"
   },
   {
    "a": "MENSURA",
@@ -4670,6 +4782,14 @@
    "reasons": [
     "topic:links"
    ]
+  },
+  {
+   "a": "ScutSonor",
+   "b": "URME",
+   "reasons": [
+    "pair"
+   ],
+   "why": "ambele sunt unelte de teren pentru drumuri și siguranță"
   },
   {
    "a": "SEOptimum",

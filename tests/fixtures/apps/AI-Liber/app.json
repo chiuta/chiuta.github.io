@@ -1,6 +1,6 @@
 {
-  "version": "2.3.11",
-  "updated": "2026-11-11",
+  "version": "2.3.12",
+  "updated": "2026-11-13",
   "egress": [
     {
       "host": "*.hf.co",
