@@ -461,6 +461,8 @@ const LANG_SUP = ['ro', 'en', 'fr', 'it', 'es', 'pt', 'hu', 'de'];
 const LANG_ENDONYM = {ro: 'Rom[aâ]n[aă]', en: 'English', fr: 'Fran[cç]ais', it: 'Italiano', es: 'Espa[nñ]ol', pt: 'Portugu[eê]s', hu: 'Magyar', de: 'Deutsch'};
 /** Limbile din interfață, deduse din: <option value>/data-lang, dicționare `cod:{…}`, liste de coduri (`LANGS=['ro','en',…]`) și tabele de endonime (`ro:'Română'`). */
 function detectLangs(src) {
+  // modulele comune injectate de hub (<script id="fff-mod-…">, ex. texturi, pașaport) au propriile dicționare în 8 limbi; nu spun nimic despre limbile aplicației
+  src = src.replace(/<script id="fff-mod-[a-z0-9-]+">[\s\S]*?<\/script>/g, '');
   const got = new Set();
   const q = `["'\`]`;
   for (const c of LANG_SUP) {

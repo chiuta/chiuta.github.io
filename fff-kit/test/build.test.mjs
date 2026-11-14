@@ -215,4 +215,11 @@ const b = await launch(); const p = await newPage(b);
 await p.page.goto('file://' + path.join(d, 'index.html')); await p.page.waitForTimeout(300);
 await b.close();
 check('0 erori CSP/pagină', p.errors.length === 0, p.errors);
+// detectLangs: dicționarele modulelor comune injectate de hub nu sunt limbi ale aplicației
+{
+  const {detectLangs} = await import('../build.mjs');
+  const dic = '<script id="fff-mod-texturi">var D={ro:{a:1},en:{a:1},fr:{a:1},it:{a:1},es:{a:1},pt:{a:1},hu:{a:1},de:{a:1}};</script>';
+  check('detectLangs: o aplicație doar în română cu un modul comun în 8 limbi rămâne fără limbi declarate', JSON.stringify(detectLangs('<html><body><p>Salut</p>' + dic + '</body></html>')) === '[]');
+  check('detectLangs: dicționarele proprii ale aplicației sunt în continuare găsite', JSON.stringify(detectLangs('<html><script>var T={ro:{a:1},en:{a:1}};</script>' + dic + '</html>')) === '["ro","en"]');
+}
 summary('build');
