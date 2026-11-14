@@ -35,7 +35,7 @@
 </style>
 
 <meta charset="UTF-8">
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data: blob:; style-src 'self' 'unsafe-inline'; font-src 'self' data:; media-src 'self' blob: data:; object-src 'none'; base-uri 'self'; form-action 'self'; worker-src 'self' blob:; script-src 'self' 'sha256-CLz9ky8c+CI8yax80HOx/XKzzI+0llJZxdBKUKIqejE=' 'sha256-YO40Pa9U54kBXfBS8s7ySLVhwIuT7JC9cMSApha5DIk=' 'sha256-J/AWE8YhK5Y/0vkifszipCsMZfd+XMUNW9U4Ny/j03c=' 'sha256-NhFYx+8UgWykiCFi4WXtcNrvQdtM0Hg323ahxHZhWmo=' 'sha256-8qWqoBs2wXPR0/K2FGOQkqRslizKQ5myWkSaVqIJlD8=' 'sha256-rwiX69fhg7g0t6uP6QCYQkK+MUMYeimVBjy1V+zYfkA=' 'sha256-+JWSP+s5ZoLPDu4RlozAOj347XBlp8/alqlV21ZpB54='; connect-src 'none'; manifest-src 'self'">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data: blob:; style-src 'self' 'unsafe-inline'; font-src 'self' data:; media-src 'self' blob: data:; object-src 'none'; base-uri 'self'; form-action 'self'; worker-src 'self' blob:; script-src 'self' 'sha256-CLz9ky8c+CI8yax80HOx/XKzzI+0llJZxdBKUKIqejE=' 'sha256-YO40Pa9U54kBXfBS8s7ySLVhwIuT7JC9cMSApha5DIk=' 'sha256-J/AWE8YhK5Y/0vkifszipCsMZfd+XMUNW9U4Ny/j03c=' 'sha256-NhFYx+8UgWykiCFi4WXtcNrvQdtM0Hg323ahxHZhWmo=' 'sha256-8qWqoBs2wXPR0/K2FGOQkqRslizKQ5myWkSaVqIJlD8=' 'sha256-rwiX69fhg7g0t6uP6QCYQkK+MUMYeimVBjy1V+zYfkA=' 'sha256-8lKdJDM1KVvBWtvhqX9HT/SSTtcrS4Wz0Cas310jYHY='; connect-src 'none'; manifest-src 'self'">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <meta name="color-scheme" content="dark light">
 <meta name="theme-color" id="theme-color-meta" content="#07060f">
@@ -3086,7 +3086,7 @@ if(D.readyState==='loading') D.addEventListener('DOMContentLoaded',waitReady); e
   }
 })(typeof window !== 'undefined' ? window : (typeof globalThis !== 'undefined' ? globalThis : this), function (root) {
   'use strict';
-  var VERSION = '1.1.0';
+  var VERSION = '1.1.1';
   var DOC = root.document || null;
 
   /* ================= 1. PRESETE DE MATERIALE ================= */
@@ -3616,13 +3616,18 @@ if(D.readyState==='loading') D.addEventListener('DOMContentLoaded',waitReady); e
   function watch() {
     if (S.obs || !root.MutationObserver || !DOC.body) return;
     var pend = [];
+    // Un lot are cel mult 40 de rădăcini; dacă au rămas altele în coadă, se programează imediat următorul lot (înainte rămâneau netexturate până la următoarea mutație).
+    function arm() { if (!S.timer && pend.length && S.on) S.timer = setTimeout(flush, 400); }
+    function flush() {
+      S.timer = 0; recount();
+      if (!S.on || S.st.count >= S.st.max) { pend.length = 0; return; }
+      var roots = pend.splice(0, 40);
+      (function next() { var r = roots.shift(); if (!r || !S.on) return arm(); if (!DOC.contains(r)) return next(); scan(r, S.st, next); })();
+    }
     S.obs = new root.MutationObserver(function (ms) {
       ms.forEach(function (m) { [].forEach.call(m.addedNodes, function (n) { if (n.nodeType === 1 && !n.hasAttribute('data-fffx')) pend.push(n); }); });
-      if (!pend.length || S.timer) return;
-      S.timer = setTimeout(function () {
-        S.timer = 0; var roots = pend.splice(0, 40); recount();
-        (function next() { var r = roots.shift(); if (!r || !S.on) return; if (!DOC.contains(r)) return next(); scan(r, S.st, next); })();
-      }, 400);
+      if (pend.length > 4000) pend.splice(0, pend.length - 4000);
+      arm();
     });
     S.obs.observe(DOC.body, {childList: true, subtree: true});
   }

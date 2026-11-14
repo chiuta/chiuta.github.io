@@ -19,7 +19,7 @@
   }
 })(typeof window !== 'undefined' ? window : (typeof globalThis !== 'undefined' ? globalThis : this), function (root) {
   'use strict';
-  var VERSION = '1.1.0';
+  var VERSION = '1.1.1';
   var DOC = root.document || null;
 
   /* ================= 1. PRESETE DE MATERIALE ================= */
@@ -549,13 +549,18 @@
   function watch() {
     if (S.obs || !root.MutationObserver || !DOC.body) return;
     var pend = [];
+    // Un lot are cel mult 40 de rădăcini; dacă au rămas altele în coadă, se programează imediat următorul lot (înainte rămâneau netexturate până la următoarea mutație).
+    function arm() { if (!S.timer && pend.length && S.on) S.timer = setTimeout(flush, 400); }
+    function flush() {
+      S.timer = 0; recount();
+      if (!S.on || S.st.count >= S.st.max) { pend.length = 0; return; }
+      var roots = pend.splice(0, 40);
+      (function next() { var r = roots.shift(); if (!r || !S.on) return arm(); if (!DOC.contains(r)) return next(); scan(r, S.st, next); })();
+    }
     S.obs = new root.MutationObserver(function (ms) {
       ms.forEach(function (m) { [].forEach.call(m.addedNodes, function (n) { if (n.nodeType === 1 && !n.hasAttribute('data-fffx')) pend.push(n); }); });
-      if (!pend.length || S.timer) return;
-      S.timer = setTimeout(function () {
-        S.timer = 0; var roots = pend.splice(0, 40); recount();
-        (function next() { var r = roots.shift(); if (!r || !S.on) return; if (!DOC.contains(r)) return next(); scan(r, S.st, next); })();
-      }, 400);
+      if (pend.length > 4000) pend.splice(0, pend.length - 4000);
+      arm();
     });
     S.obs.observe(DOC.body, {childList: true, subtree: true});
   }

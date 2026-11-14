@@ -140,6 +140,32 @@ await T('CSP prin antet (nevăzut din meta): o violare img-src data: oprește mo
   await ctx.close();
 });
 
+await T('observator: 120 de panouri adăugate odată primesc toate textura (nu doar primele 40)', async () => {
+  const {ctx, pg} = await open(page('body{background:#f4f1ea}', CSP_OK));
+  const count = () => pg.evaluate(() => document.querySelectorAll('[data-fffx="p"],[data-fffx="c"]').length);
+  const base = await count();
+  await pg.evaluate(() => {
+    for (let i = 0; i < 120; i++) { const d = document.createElement('div'); d.className = 'nou'; d.style.cssText = 'background:#fff;height:60px;width:300px;margin:4px auto'; d.textContent = 'rând ' + i; document.body.appendChild(d); }
+  });
+  let n = base;
+  for (let i = 0; i < 120 && n < base + 120; i++) { await pg.waitForTimeout(250); n = await count(); }
+  ok(n >= base + 120, 'marcate ' + (n - base) + ' din 120 adăugate (înainte de reparație rămâneau 40)');
+  await ctx.close();
+});
+
+await T('observator: după plafonul de suprafețe nu mai reprogramează și nu ține în coadă noduri', async () => {
+  const {ctx, pg} = await open(page('body{background:#f4f1ea}', CSP_OK));
+  await pg.evaluate(() => {
+    for (let i = 0; i < 400; i++) { const d = document.createElement('div'); d.style.cssText = 'background:#fff;height:40px;width:300px;margin:2px auto'; document.body.appendChild(d); }
+  });
+  let n = 0;
+  for (let i = 0; i < 80; i++) { await pg.waitForTimeout(250); n = await pg.evaluate(() => document.querySelectorAll('[data-fffx]').length); if (n >= 220) break; }
+  await pg.waitForTimeout(1500);
+  const after = await pg.evaluate(() => document.querySelectorAll('[data-fffx]').length);
+  ok(after <= 221 && after >= 200, 'plafon respectat: ' + after + ' suprafețe marcate (așteptat ≈220)');
+  await ctx.close();
+});
+
 await browser.close();
 const bad = results.filter((r) => !r[1]).length;
 console.log('\n' + (results.length - bad) + '/' + results.length + ' teste trecute');
