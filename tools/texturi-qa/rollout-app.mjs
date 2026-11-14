@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 // Pune texturile fractale într-o aplicație clonată și o verifică vizual, într-o singură comandă.
 //   node tools/texturi-qa/rollout-app.mjs <dirAplicație> --m <material> [--p <material>] [--a 1] [--seed 7] [--inc "sel"] [--exc "sel"] [--no-shots] [--out <dir>] [--views "0,1400"]
+//   (depozit fără app.json: adaugă --slug <slug>; nu se scrie niciun app.json)
 //   node tools/texturi-qa/rollout-app.mjs <dirAplicație> --resync [--no-shots] [--views 0]   (aplicație deja înregistrată: reinjectează motorul curent din hub, păstrând materialul și parametrii; fără capturi „înainte”)
 // Pași: citește app.json (slug) → capturi „înainte” (?notex=1) → texturi-register → inject-shared (--nokit automat dacă lipsește kitul) → --check → capturi „după”
 //       (luminos 1280×800 la derulările cerute, întunecat, mobil 390×800) → comparații → JSON-ul-rezumat (și în <out>/summary.json).
@@ -12,11 +13,11 @@ const val = (f, d) => { const i = argv.indexOf(f); return i < 0 ? d : argv[i + 1
 if (!argv[0] || !fs.existsSync(path.join(dir, 'index.html'))) { console.error('utilizare: rollout-app.mjs <dirAplicație cu index.html> --m <material> [...]'); process.exit(2); }
 if (has('--release')) { console.error('--release este DEZACTIVAT: fff-kit/src din hub (ux v1) e mai vechi decât kitul aflat deja în aplicații (ux v2, sizePass); release ar RETROGRADA kitul. Rulează fără --release (versiunea și CHANGELOG-ul se actualizează la îmbinare, cu sursele kitului din depozitul autorului).'); process.exit(2); }
 const app = (() => { try { return JSON.parse(fs.readFileSync(path.join(dir, 'app.json'), 'utf8')); } catch { return null; } })();
-if (!app || !app.slug) { console.error('app.json lipsește sau nu are „slug” în ' + dir); process.exit(2); }
-const slug = app.slug, out = path.resolve(val('--out', path.join('/home/claude/fractal/shots', slug))); fs.mkdirSync(out, {recursive: true});
+if ((!app || !app.slug) && !val('--slug')) { console.error('app.json lipsește sau nu are „slug” în ' + dir + ' — pentru depozite fără app.json dă slug-ul cu --slug <slug>'); process.exit(2); }
+const slug = (app && app.slug) || val('--slug'), out = path.resolve(val('--out', path.join('/home/claude/fractal/shots', slug))); fs.mkdirSync(out, {recursive: true});
 const run = (cmd, args, o = {}) => spawnSync(cmd, args, {encoding: 'utf8', maxBuffer: 1 << 26, ...o});
 const html = fs.readFileSync(path.join(dir, 'index.html'), 'utf8'), nokit = !html.includes('<!--fff:kit:end-->');
-const views = (val('--views', '0,1400')).split(',').map(Number), res = {slug, dir, version0: app.version, nokit, steps: {}, shots: {}, errors: []};
+const views = (val('--views', '0,1400')).split(',').map(Number), res = {slug, dir, version0: app && app.version, nokit, steps: {}, shots: {}, errors: []};
 const shot = (name, extra) => {
   const png = path.join(out, name + '.png'), r = run('python3', [path.join(QA, 'app-shot.py'), path.join(dir, 'index.html'), png, ...extra], {timeout: 420000});
   let j = null; try { j = JSON.parse(r.stdout.trim().split('\n').pop()); } catch { /* fără JSON */ }
