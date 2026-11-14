@@ -11,7 +11,7 @@ const a = process.argv.slice(2); const opt = (k, d) => { const i = a.indexOf(k);
 const ROOT = path.resolve(opt('--root', path.join(HUB, '..'))); const only = opt('--only', '') ? opt('--only').split(',') : null;
 const LANGS = ['en', 'ro', 'fr', 'it', 'es', 'pt', 'de', 'hu']; const langs = opt('--langs', '') ? opt('--langs').split(',') : LANGS;
 // aplicațiile cu interfață în 8 limbi (înregistrate pe fiecare limbă) vs. doar română
-const APPS = {FARFURIA: {dir: 'FARFURIA', loc: true}, VITALIS: {dir: 'VITALIS', loc: true}, DECUPAJ: {dir: 'DECUPAJ', loc: true}, LECTOR: {dir: 'LECTOR', loc: true}, Cronosala: {dir: 'Cronosala', loc: true}, REZONANTA: {dir: 'REZONANTA', loc: true}};
+const APPS = {FARFURIA: {dir: 'FARFURIA', loc: true}, VITALIS: {dir: 'VITALIS', loc: true}, DECUPAJ: {dir: 'DECUPAJ', loc: true}, LECTOR: {dir: 'LECTOR', loc: true}, Cronosala: {dir: 'Cronosala', loc: true}, REZONANTA: {dir: 'REZONANTA', loc: true}, ScutSonor: {dir: '../scut-sonor', loc: true}, MIRAJ: {dir: '../miraj', loc: true}, ANTROPOS: {dir: '../antropos', loc: true}, 'Index-fara-frontiere': {dir: '../index-fara-frontiere', loc: true}};
 
 const SAMPLE = '/tmp/demo-sample.wav'; if (!fs.existsSync(SAMPLE)) spawnSync('ffmpeg', ['-y', '-v', 'error', '-f', 'lavfi', '-i', 'sine=f=180:d=45', '-f', 'lavfi', '-i', 'sine=f=330:d=45', '-filter_complex', '[0][1]amix=inputs=2,tremolo=f=3:d=0.7,volume=2', '-ar', '16000', '-ac', '1', SAMPLE]);
 const T = (m) => (l) => m[l] || m.en;
@@ -36,6 +36,18 @@ const SCENES = {
   REZONANTA: {intro: [['wait', 1800], ['scroll', 300], ['wait', 1500], ['scroll', -300]],
     explore: [['click', '#t-msg'], ['wait', 2200], ['click', '#t-can'], ['wait', 2200], ['scroll', 300], ['wait', 1200]],
     try: [['click', '#t-txt'], ['wait', 1000], ['type', '#s-txt textarea', 'Propoziția scurtă se înțelege ușor. Propozițiile foarte lungi, încărcate de expresii greoaie și de subordonate, obosesc cititorul și îi îndepărtează atenția de mesaj.'], ['wait', 2200]], offline: [['click', '#t-cri'], ['wait', 1800], ['scroll', 300], ['wait', 1200]]},
+  ScutSonor: {intro: [['wait', 1800], ['scroll', 300], ['wait', 1500], ['scroll', -300]],
+    explore: [['click', '#dayBtn'], ['wait', 1500], ['click', '#dayBtn'], ['wait', 900], ['scroll', 500], ['wait', 1500], ['scroll', -500]],
+    try: [['click', '#emit'], ['wait', 3500], ['click', '#torch'], ['wait', 1800], ['click', '#torch'], ['click', '#emit'], ['wait', 900]], offline: [['scroll', 700], ['wait', 1500], ['scroll', -700]]},
+  MIRAJ: {intro: [['wait', 1800], ['scroll', 300], ['wait', 1200], ['scroll', -300]],
+    explore: [['nth', '#tabs button', 1], ['wait', 2200], ['nth', '#tabs button', 2], ['wait', 2200], ['click', '#tstart'], ['wait', 2500]],
+    try: [['nth', '#tabs button', 3], ['wait', 2200], ['scroll', 400], ['wait', 1200], ['scroll', -400], ['nth', '#tabs button', 4], ['wait', 2000]], offline: [['nth', '#tabs button', 0], ['wait', 1200], ['scroll', 300], ['wait', 1200]]},
+  ANTROPOS: {intro: [['wait', 1800], ['scroll', 300], ['wait', 1200], ['scroll', -300]],
+    explore: [['nth', '#nav button', 1], ['wait', 2000], ['nth', '#nav button', 2], ['wait', 2000], ['nth', '#nav button', 3], ['wait', 1800]],
+    try: [['nth', '#nav button', 5], ['wait', 1800], ['nth', '#nav button', 6], ['wait', 1800], ['nth', '#nav button', 7], ['wait', 1800]], offline: [['nth', '#nav button', 8], ['wait', 1500], ['scroll', 500], ['wait', 1500]]},
+  'Index-fara-frontiere': {intro: [['wait', 1800], ['scroll', 300], ['wait', 1200], ['scroll', -300]],
+    explore: [['type', '#search', 'AI'], ['wait', 2500], ['fill', '#search', ''], ['wait', 1000]],
+    try: [['click', '#theme-btn'], ['wait', 1600], ['click', '#theme-btn'], ['wait', 1200]], offline: [['scroll', 600], ['wait', 1500], ['scroll', -600]]}
 };
 const html = fs.readFileSync(path.join(HUB, 'index.html'), 'utf8');
 const CONTENT = JSON.parse(html.match(/const CONTENT=(\{.*?\});\n/s)[1]);

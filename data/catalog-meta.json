@@ -5781,34 +5781,41 @@
     "ScutSonor": {
       "coverage": {
         "langs": [
-          "ro"
+          "ro",
+          "en",
+          "fr",
+          "it",
+          "es",
+          "pt",
+          "de",
+          "hu"
         ],
         "platform": "web"
       },
       "fisa": {
         "ro": {
-          "limite": "Dovezile că sunetul sau lumina alungă câinii sunt slabe: aplicația e un ajutor, nu un scut, și nu înlocuiește comportamentul sigur sau apelul la 112. Difuzoarele de telefon redau aproape deloc ultrasunetul peste ~15–16 kHz; bara „Semnal” arată semnalul generat, nu ieșirea reală. Interfață doar în română."
+          "limite": "Dovezile că sunetul sau lumina alungă câinii sunt slabe: aplicația e un ajutor, nu un scut, și nu înlocuiește comportamentul sigur sau apelul la 112. Difuzoarele de telefon redau aproape deloc ultrasunetul peste ~15–16 kHz; bara „Semnal” arată semnalul generat, nu ieșirea reală. Interfață în 8 limbi (traduceri asistate automat)."
         },
         "en": {
-          "limite": "Evidence that sound or light drives dogs away is weak: the app is an aid, not a shield, and does not replace safe behaviour or calling emergency services. Phone speakers barely reproduce ultrasound above ~15–16 kHz; the “Signal” bar shows the generated signal, not real output. Interface in Romanian only."
+          "limite": "Evidence that sound or light drives dogs away is weak: the app is an aid, not a shield, and does not replace safe behaviour or calling emergency services. Phone speakers barely reproduce ultrasound above ~15–16 kHz; the “Signal” bar shows the generated signal, not real output. Interface in 8 languages (machine-assisted translations)."
         },
         "fr": {
-          "limite": "Les preuves que le son ou la lumière éloignent les chiens sont faibles : l’application est une aide, pas un bouclier, et ne remplace ni un comportement sûr ni l’appel aux secours. Les haut-parleurs de téléphone reproduisent à peine les ultrasons au-delà de ~15–16 kHz ; la barre « Signal » montre le signal généré, pas la sortie réelle. Interface en roumain uniquement."
+          "limite": "Les preuves que le son ou la lumière éloignent les chiens sont faibles : l’application est une aide, pas un bouclier, et ne remplace ni un comportement sûr ni l’appel aux secours. Les haut-parleurs de téléphone reproduisent à peine les ultrasons au-delà de ~15–16 kHz ; la barre « Signal » montre le signal généré, pas la sortie réelle. Interface en 8 langues (traductions assistées par machine)."
         },
         "it": {
-          "limite": "Le prove che suono o luce allontanino i cani sono deboli: l’app è un aiuto, non uno scudo, e non sostituisce un comportamento sicuro né la chiamata ai soccorsi. Gli altoparlanti dei telefoni riproducono a malapena gli ultrasuoni oltre ~15–16 kHz; la barra «Segnale» mostra il segnale generato, non l’uscita reale. Interfaccia solo in rumeno."
+          "limite": "Le prove che suono o luce allontanino i cani sono deboli: l’app è un aiuto, non uno scudo, e non sostituisce un comportamento sicuro né la chiamata ai soccorsi. Gli altoparlanti dei telefoni riproducono a malapena gli ultrasuoni oltre ~15–16 kHz; la barra «Segnale» mostra il segnale generato, non l’uscita reale. Interfaccia in 8 lingue (traduzioni assistite da macchina)."
         },
         "es": {
-          "limite": "Las pruebas de que el sonido o la luz ahuyentan a los perros son débiles: la aplicación es una ayuda, no un escudo, y no sustituye el comportamiento seguro ni llamar a emergencias. Los altavoces de teléfono apenas reproducen ultrasonidos por encima de ~15–16 kHz; la barra «Señal» muestra la señal generada, no la salida real. Interfaz solo en rumano."
+          "limite": "Las pruebas de que el sonido o la luz ahuyentan a los perros son débiles: la aplicación es una ayuda, no un escudo, y no sustituye el comportamiento seguro ni llamar a emergencias. Los altavoces de teléfono apenas reproducen ultrasonidos por encima de ~15–16 kHz; la barra «Señal» muestra la señal generada, no la salida real. Interfaz en 8 idiomas (traducciones asistidas por máquina)."
         },
         "pt": {
-          "limite": "As provas de que o som ou a luz afastam cães são fracas: a aplicação é uma ajuda, não um escudo, e não substitui o comportamento seguro nem a chamada aos serviços de emergência. Os altifalantes de telemóvel mal reproduzem ultrassons acima de ~15–16 kHz; a barra «Sinal» mostra o sinal gerado, não a saída real. Interface apenas em romeno."
+          "limite": "As provas de que o som ou a luz afastam cães são fracas: a aplicação é uma ajuda, não um escudo, e não substitui o comportamento seguro nem a chamada aos serviços de emergência. Os altifalantes de telemóvel mal reproduzem ultrassons acima de ~15–16 kHz; a barra «Sinal» mostra o sinal gerado, não a saída real. Interface em 8 idiomas (traduções assistidas por máquina)."
         },
         "de": {
-          "limite": "Belege dafür, dass Schall oder Licht Hunde vertreiben, sind schwach: Die App ist eine Hilfe, kein Schutzschild, und ersetzt weder sicheres Verhalten noch den Notruf. Handy-Lautsprecher geben Ultraschall über ~15–16 kHz kaum wieder; die Anzeige „Signal“ zeigt das erzeugte Signal, nicht die echte Ausgabe. Oberfläche nur auf Rumänisch."
+          "limite": "Belege dafür, dass Schall oder Licht Hunde vertreiben, sind schwach: Die App ist eine Hilfe, kein Schutzschild, und ersetzt weder sicheres Verhalten noch den Notruf. Handy-Lautsprecher geben Ultraschall über ~15–16 kHz kaum wieder; die Anzeige „Signal“ zeigt das erzeugte Signal, nicht die echte Ausgabe. Oberfläche in 8 Sprachen (maschinell unterstützte Übersetzungen)."
         },
         "hu": {
-          "limite": "A hang vagy fény kutyákat elriasztó hatására gyenge bizonyíték van: az alkalmazás segédeszköz, nem védőpajzs, és nem helyettesíti a biztonságos viselkedést vagy a segélyhívást. A telefonhangszórók ~15–16 kHz felett alig adnak vissza ultrahangot; a „Jel” sáv a generált jelet mutatja, nem a tényleges kimenetet. A felület csak románul érhető el."
+          "limite": "A hang vagy fény kutyákat elriasztó hatására gyenge bizonyíték van: az alkalmazás segédeszköz, nem védőpajzs, és nem helyettesíti a biztonságos viselkedést vagy a segélyhívást. A telefonhangszórók ~15–16 kHz felett alig adnak vissza ultrahangot; a „Jel” sáv a generált jelet mutatja, nem a tényleges kimenetet. A felület 8 nyelven érhető el (gépi segítséggel készült fordítások)."
         }
       }
     },
@@ -5816,68 +5823,81 @@
       "coverage": {
         "langs": [
           "ro",
-          "en"
+          "en",
+          "fr",
+          "it",
+          "es",
+          "pt",
+          "de",
+          "hu"
         ],
         "platform": "web"
       },
       "fisa": {
         "ro": {
-          "limite": "Explicație educațională simplificată, nu sfat medical și nu test oftalmologic. Interfață doar în română și engleză."
+          "limite": "Explicație educațională simplificată, nu sfat medical și nu test oftalmologic. Interfață în 8 limbi (traduceri asistate automat)."
         },
         "en": {
-          "limite": "A simplified educational explanation, not medical advice or an eye test. Interface in Romanian and English only."
+          "limite": "A simplified educational explanation, not medical advice or an eye test. Interface in 8 languages (machine-assisted translations)."
         },
         "fr": {
-          "limite": "Explication éducative simplifiée, ni avis médical ni test de la vue. Interface en roumain et en anglais uniquement."
+          "limite": "Explication éducative simplifiée, ni avis médical ni test de la vue. Interface en 8 langues (traductions assistées par machine)."
         },
         "it": {
-          "limite": "Spiegazione didattica semplificata, non un parere medico né un esame della vista. Interfaccia solo in rumeno e inglese."
+          "limite": "Spiegazione didattica semplificata, non un parere medico né un esame della vista. Interfaccia in 8 lingue (traduzioni assistite da macchina)."
         },
         "es": {
-          "limite": "Explicación educativa simplificada, no consejo médico ni examen de la vista. Interfaz solo en rumano e inglés."
+          "limite": "Explicación educativa simplificada, no consejo médico ni examen de la vista. Interfaz en 8 idiomas (traducciones asistidas por máquina)."
         },
         "pt": {
-          "limite": "Explicação educativa simplificada, não é aconselhamento médico nem exame de visão. Interface apenas em romeno e inglês."
+          "limite": "Explicação educativa simplificada, não é aconselhamento médico nem exame de visão. Interface em 8 idiomas (traduções assistidas por máquina)."
         },
         "de": {
-          "limite": "Vereinfachte Bildungserklärung, keine medizinische Beratung und kein Sehtest. Oberfläche nur auf Rumänisch und Englisch."
+          "limite": "Vereinfachte Bildungserklärung, keine medizinische Beratung und kein Sehtest. Oberfläche in 8 Sprachen (maschinell unterstützte Übersetzungen)."
         },
         "hu": {
-          "limite": "Egyszerűsített oktatási magyarázat, nem orvosi tanács és nem látásvizsgálat. A felület csak románul és angolul érhető el."
+          "limite": "Egyszerűsített oktatási magyarázat, nem orvosi tanács és nem látásvizsgálat. A felület 8 nyelven érhető el (gépi segítséggel készült fordítások)."
         }
       }
     },
     "ANTROPOS": {
       "coverage": {
         "langs": [
-          "ro"
+          "ro",
+          "en",
+          "fr",
+          "it",
+          "es",
+          "pt",
+          "de",
+          "hu"
         ],
         "platform": "web"
       },
       "fisa": {
         "ro": {
-          "limite": "Nu este diagnostic și nu se folosește pentru decizii medicale, de angajare sau juridice. Normele și pragurile sunt orientative. Se folosește pe sine sau cu consimțământul informat al persoanei. Interfață doar în română."
+          "limite": "Nu este diagnostic și nu se folosește pentru decizii medicale, de angajare sau juridice. Normele și pragurile sunt orientative. Se folosește pe sine sau cu consimțământul informat al persoanei. Interfață în 8 limbi (traduceri asistate automat)."
         },
         "en": {
-          "limite": "Not a diagnosis; do not use it for medical, hiring or legal decisions. Norms and thresholds are indicative. Use it on yourself or with the informed consent of the person tested. Interface in Romanian only."
+          "limite": "Not a diagnosis; do not use it for medical, hiring or legal decisions. Norms and thresholds are indicative. Use it on yourself or with the informed consent of the person tested. Interface in 8 languages (machine-assisted translations)."
         },
         "fr": {
-          "limite": "Ce n’est pas un diagnostic ; ne l’utilisez pas pour des décisions médicales, d’embauche ou juridiques. Normes et seuils indicatifs. À utiliser sur soi-même ou avec le consentement éclairé de la personne. Interface en roumain uniquement."
+          "limite": "Ce n’est pas un diagnostic ; ne l’utilisez pas pour des décisions médicales, d’embauche ou juridiques. Normes et seuils indicatifs. À utiliser sur soi-même ou avec le consentement éclairé de la personne. Interface en 8 langues (traductions assistées par machine)."
         },
         "it": {
-          "limite": "Non è una diagnosi; non usarlo per decisioni mediche, di assunzione o legali. Norme e soglie sono indicative. Usalo su te stesso o con il consenso informato della persona. Interfaccia solo in rumeno."
+          "limite": "Non è una diagnosi; non usarlo per decisioni mediche, di assunzione o legali. Norme e soglie sono indicative. Usalo su te stesso o con il consenso informato della persona. Interfaccia in 8 lingue (traduzioni assistite da macchina)."
         },
         "es": {
-          "limite": "No es un diagnóstico; no lo uses para decisiones médicas, de contratación o legales. Normas y umbrales orientativos. Úsalo contigo mismo o con el consentimiento informado de la persona. Interfaz solo en rumano."
+          "limite": "No es un diagnóstico; no lo uses para decisiones médicas, de contratación o legales. Normas y umbrales orientativos. Úsalo contigo mismo o con el consentimiento informado de la persona. Interfaz en 8 idiomas (traducciones asistidas por máquina)."
         },
         "pt": {
-          "limite": "Não é diagnóstico; não o uses para decisões médicas, de contratação ou jurídicas. Normas e limiares orientativos. Usa em ti próprio ou com o consentimento informado da pessoa. Interface apenas em romeno."
+          "limite": "Não é diagnóstico; não o uses para decisões médicas, de contratação ou jurídicas. Normas e limiares orientativos. Usa em ti próprio ou com o consentimento informado da pessoa. Interface em 8 idiomas (traduções assistidas por máquina)."
         },
         "de": {
-          "limite": "Keine Diagnose; nicht für medizinische, Einstellungs- oder rechtliche Entscheidungen verwenden. Normen und Schwellen sind orientierend. Nur an dir selbst oder mit informierter Einwilligung der Person anwenden. Oberfläche nur auf Rumänisch."
+          "limite": "Keine Diagnose; nicht für medizinische, Einstellungs- oder rechtliche Entscheidungen verwenden. Normen und Schwellen sind orientierend. Nur an dir selbst oder mit informierter Einwilligung der Person anwenden. Oberfläche in 8 Sprachen (maschinell unterstützte Übersetzungen)."
         },
         "hu": {
-          "limite": "Nem diagnózis; ne használd orvosi, felvételi vagy jogi döntésekhez. A normák és küszöbök tájékoztató jellegűek. Magadon vagy a személy tájékozott beleegyezésével használd. A felület csak románul érhető el."
+          "limite": "Nem diagnózis; ne használd orvosi, felvételi vagy jogi döntésekhez. A normák és küszöbök tájékoztató jellegűek. Magadon vagy a személy tájékozott beleegyezésével használd. A felület 8 nyelven érhető el (gépi segítséggel készült fordítások)."
         }
       }
     },
@@ -5926,34 +5946,40 @@
       "coverage": {
         "langs": [
           "ro",
-          "en"
+          "en",
+          "fr",
+          "it",
+          "es",
+          "pt",
+          "de",
+          "hu"
         ],
         "platform": "web"
       },
       "fisa": {
         "ro": {
-          "limite": "Instantaneu static verificat la 5 iulie 2026, neactualizat automat; resursele externe nu aparțin autorului. Interfață doar în română și engleză."
+          "limite": "Instantaneu static verificat la 5 iulie 2026, neactualizat automat; resursele externe nu aparțin autorului. Interfață în 8 limbi (traduceri asistate automat)."
         },
         "en": {
-          "limite": "A static snapshot checked on 5 July 2026, not updated automatically; the external resources are not the author’s. Interface in Romanian and English only."
+          "limite": "A static snapshot checked on 5 July 2026, not updated automatically; the external resources are not the author’s. Interface in 8 languages (machine-assisted translations)."
         },
         "fr": {
-          "limite": "Instantané statique vérifié le 5 juillet 2026, non mis à jour automatiquement ; les ressources externes n’appartiennent pas à l’auteur. Interface en roumain et en anglais uniquement."
+          "limite": "Instantané statique vérifié le 5 juillet 2026, non mis à jour automatiquement ; les ressources externes n’appartiennent pas à l’auteur. Interface en 8 langues (traductions assistées par machine)."
         },
         "it": {
-          "limite": "Istantanea statica verificata il 5 luglio 2026, non aggiornata automaticamente; le risorse esterne non appartengono all’autore. Interfaccia solo in rumeno e inglese."
+          "limite": "Istantanea statica verificata il 5 luglio 2026, non aggiornata automaticamente; le risorse esterne non appartengono all’autore. Interfaccia in 8 lingue (traduzioni assistite da macchina)."
         },
         "es": {
-          "limite": "Instantánea estática comprobada el 5 de julio de 2026, sin actualización automática; los recursos externos no pertenecen al autor. Interfaz solo en rumano e inglés."
+          "limite": "Instantánea estática comprobada el 5 de julio de 2026, sin actualización automática; los recursos externos no pertenecen al autor. Interfaz en 8 idiomas (traducciones asistidas por máquina)."
         },
         "pt": {
-          "limite": "Instantâneo estático verificado a 5 de julho de 2026, sem atualização automática; os recursos externos não pertencem ao autor. Interface apenas em romeno e inglês."
+          "limite": "Instantâneo estático verificado a 5 de julho de 2026, sem atualização automática; os recursos externos não pertencem ao autor. Interface em 8 idiomas (traduções assistidas por máquina)."
         },
         "de": {
-          "limite": "Statische Momentaufnahme, geprüft am 5. Juli 2026, nicht automatisch aktualisiert; die externen Ressourcen gehören nicht dem Autor. Oberfläche nur auf Rumänisch und Englisch."
+          "limite": "Statische Momentaufnahme, geprüft am 5. Juli 2026, nicht automatisch aktualisiert; die externen Ressourcen gehören nicht dem Autor. Oberfläche in 8 Sprachen (maschinell unterstützte Übersetzungen)."
         },
         "hu": {
-          "limite": "Statikus pillanatkép, 2026. július 5-én ellenőrizve, nem frissül automatikusan; a külső források nem a szerző művei. A felület csak románul és angolul érhető el."
+          "limite": "Statikus pillanatkép, 2026. július 5-én ellenőrizve, nem frissül automatikusan; a külső források nem a szerző művei. A felület 8 nyelven érhető el (gépi segítséggel készült fordítások)."
         }
       }
     }
