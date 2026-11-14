@@ -1,0 +1,5 @@
+{
+  "index": {"m": "steel", "p": "granite", "a": 0.85, "seed": 5, "hero": {"m": "julia", "mode": "overlay", "A": 0.6, "sel": ".hero-strip", "over": {"pal": ["#04252d", "#0a6f82", "#6fc7cf", "#eefafb"], "hi": "#ffffff", "lo": "#021c22", "chroma": 0.9, "c": [-0.7269, 0.1889], "scale": 2.6}}},
+  "transparenta": {"m": "linen", "p": "washi", "a": 0.8, "seed": 9},
+  "demo": {"m": "linen", "p": "washi", "a": 0.8, "seed": 3}
+}

@@ -88,10 +88,12 @@ Nu copia cod: cere modulul prin `plan.json` → `libs`, iar `inject-shared.mjs` 
 
 ### 6.2 Texturi fractale (`fff-texturi`)
 
-Înregistrare și injectare: `node tools/texturi-register.mjs <slug> --m <material> [--p <material-panouri>] [--a 1]` apoi `node tools/inject-shared.mjs <dirAplicație> <slug>`; verificare vizuală înainte/după: `node tools/texturi-qa/rollout-app.mjs <dirAplicație> --m <material>`.
-Materiale pentru pagină și panouri (se repetă fără cusătură): `parchment washi linen leather wood marble granite slate brass gold steel jade ice nebula moss sand`; `julia` și `mandel` doar ca imagine-erou (`--hero julia --sel "<selector>"`).
+Înregistrare și injectare: `node tools/texturi-register.mjs <slug> --m <material> [--p <material-fundal-pagină>] [--a 1]` apoi `node tools/inject-shared.mjs <dirAplicație> <slug>`; verificare vizuală înainte/după: `node tools/texturi-qa/rollout-app.mjs <dirAplicație> --m <material>`.
+`--m` = materialul panourilor (carduri, antete, butoane) și al paginii, `--p` = alt material doar pentru fundalul paginii. Materiale (se repetă fără cusătură): `parchment washi linen leather wood marble granite slate brass gold steel jade ice nebula moss sand`; `julia` și `mandel` doar ca imagine-erou (`--hero julia --sel "<selector>"`).
 Alegerea se face după subiect (hârtie și cărți → washi/parchment, cosmos → nebula, pietre și metale → granite/steel, natură → moss/wood), iar intensitatea `--a` între 0,6 și 1,6 (implicit 1): textul trebuie să rămână perfect lizibil, iar elementele interfeței nu se acoperă.
 Se oprește singur la contrast ridicat, culori forțate, economie de date, transparență redusă, imprimare, iframe și browsere automatizate; utilizatorul îl oprește din dialogul „Transparență” sau cu `?notex=1`; `?fffx=1` îl forțează (capturi, teste).
+Fundal de pagină în gradient (pe `body` sau `html`): textura merge într-un strat fix sub conținut (`FFF.texturi.info().page === 'backdrop'`), iar la schimbarea temei ținta paginii se realege, deci gradientul aplicației nu se pierde. Imaginile texturii sunt `data:`: dacă CSP-ul din `<meta>` nu admite `data:` în `img-src` (sau `default-src` în lipsa lui), motorul nu pornește (`info()` = `{on:false, reason:'csp-img-src'}`, fără erori); standardul portofoliului este `img-src 'self' data:`.
+Aplicație deja înregistrată, motor actualizat în hub: `node tools/texturi-qa/rollout-app.mjs <dirAplicație> --resync` reinjectează motorul păstrând materialul din `texturi.json`. Nu folosi `--release` din acest hub fără să sincronizezi întâi `fff-kit/src` cu kitul aflat deja în aplicații: sursa din hub e mai veche (ux v1, fără `sizePass`) și ar retrograda aplicațiile; orchestratorul refuză `--release`.
 
 ## 7. Testele obligatorii
 

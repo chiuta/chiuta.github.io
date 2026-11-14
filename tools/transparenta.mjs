@@ -18,6 +18,7 @@ import {execFileSync} from 'node:child_process';
 import {fileURLToPath} from 'node:url';
 import {LANGS, LANG_NAMES, UI, CODES, CODE_KIND} from './transparenta-i18n.mjs';
 import {recomputeCspHashes} from '../fff-kit/lib/csp.mjs';
+import {inlineBlock} from './texturi-hub/inline.mjs';   // texturi fractale (fff-texturi) în pagina generată
 import {computeHealth, healthProblems} from './portfolio-health.mjs';
 
 const HUB = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
@@ -396,6 +397,7 @@ ${body}
 </main>
 </div>
 <script>${script}</script>
+${inlineBlock('transparenta')}
 </body>
 </html>
 `;

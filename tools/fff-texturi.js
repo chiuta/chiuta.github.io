@@ -19,7 +19,7 @@
   }
 })(typeof window !== 'undefined' ? window : (typeof globalThis !== 'undefined' ? globalThis : this), function (root) {
   'use strict';
-  var VERSION = '1.0.0';
+  var VERSION = '1.1.0';
   var DOC = root.document || null;
 
   /* ================= 1. PRESETE DE MATERIALE ================= */
@@ -38,8 +38,8 @@
     brass: {base: 2, oct: 9, aniso: [1, 40], warp: 0.05, bump: 0.35, spec: 0.85, shine: 34, ao: 0.1, pal: ['#3a2604', '#7d5a10', '#c8982c', '#f5dc8a'], mott: ['#4f7a58', 0.18], hi: '#fff1b5', lo: '#2a1b02', chroma: 0.4, low: 0.5},
     gold: {base: 2, oct: 8, gain: 0.47, aniso: [1, 20], warp: 0.12, bump: 0.5, spec: 0.95, shine: 38, ao: 0.15, pal: ['#4a3204', '#9a7010', '#e8b923', '#fff3b0'], mott: ['#c47a10', 0.15], hi: '#fff6c4', lo: '#2e1d00', chroma: 0.45, low: 0.5},
     steel: {base: 2, oct: 9, aniso: [1, 60], warp: 0.02, bump: 0.25, spec: 0.95, shine: 80, ao: 0.1, pal: ['#15181d', '#4a505b', '#a9b0bd', '#f4f8ff'], hi: '#ffffff', lo: '#0a0c10', chroma: 0.1},
-    jade: {base: 2, oct: 9, gain: 0.45, warp: 0.9, ridge: 0.3, cell: [5, 0.22], bump: 0.5, spec: 0.5, shine: 30, ao: 0.3, pal: ['#04201a', '#0e5a46', '#4fb08a', '#c4f2d8'], mott: ['#a7e0b8', 0.2], hi: '#d8fbe6', lo: '#021510', chroma: 0.5, low: 0.6},
-    ice: {base: 3, oct: 8, gain: 0.45, warp: 0.45, ridge: 0.45, cell: [8, 0.5], bump: 0.5, spec: 0.6, shine: 60, ao: 0.15, pal: ['#07182c', '#1c4f7c', '#7cc0e8', '#f0fdff'], hi: '#ffffff', lo: '#04101f', chroma: 0.45, low: 0.5},
+    jade: {base: 2, oct: 10, gain: 0.46, warp: 0.6, ridge: 0.15, cell: [6, 0.1], bump: 0.3, spec: 0.5, shine: 30, ao: 0.3, pal: ['#04201a', '#0e5a46', '#4fb08a', '#c4f2d8'], mott: ['#a7e0b8', 0.2], hi: '#d8fbe6', lo: '#021510', chroma: 0.5, low: 0.6},
+    ice: {base: 3, oct: 9, gain: 0.46, warp: 0.3, ridge: 0.18, cell: [11, 0.16], speck: 0.05, bump: 0.32, spec: 0.6, shine: 60, ao: 0.15, pal: ['#07182c', '#1c4f7c', '#7cc0e8', '#f0fdff'], hi: '#ffffff', lo: '#04101f', chroma: 0.45, low: 0.5},
     nebula: {base: 2, oct: 10, gain: 0.48, warp: 1.6, ridge: 0.35, speck: -0.5, bump: 0.12, spec: 0, ao: 0, pal: ['#03020c', '#241060', '#a02a9c', '#ffb6e8'], mott: ['#2a5cff', 0.4], hi: '#fff0ff', lo: '#02010a', chroma: 0.8, low: 1},
     moss: {base: 3, oct: 10, gain: 0.46, warp: 0.9, ridge: 0.2, cell: [16, 0.3], bump: 1, spec: 0.08, ao: 0.6, pal: ['#08140a', '#1f4a16', '#5f9a2e', '#c4e07a'], mott: ['#6b4f1e', 0.2], hi: '#d6efa0', lo: '#050d05', chroma: 0.5, low: 0.4},
     sand: {base: 4, oct: 9, gain: 0.46, aniso: [1, 2], ridge: 0.25, speck: 0.12, warp: 0.3, bump: 0.7, spec: 0.05, ao: 0.35, pal: ['#5b4426', '#9a7a4a', '#d4b783', '#f6e4c0'], hi: '#fff0cf', lo: '#3a2a14', chroma: 0.3, low: 0.5},
@@ -406,10 +406,46 @@
   }
   function pageTarget() {
     var b = DOC.body, h = DOC.documentElement, cb = root.getComputedStyle(b), ch = root.getComputedStyle(h);
-    if (cb.backgroundImage !== 'none' && ch.backgroundImage !== 'none') return null;
-    if (alphaOf(cb.backgroundColor) >= 0.55 && cb.backgroundImage === 'none') return b;
-    if (alphaOf(ch.backgroundColor) >= 0.55 && ch.backgroundImage === 'none') return h;
-    return cb.backgroundImage === 'none' && ch.backgroundImage === 'none' ? h : null;
+    if (cb.backgroundImage !== 'none') return null;          // body are propriul gradient: stratul fix (backdropOK) sau nimic; pe html ar fi acoperită
+    if (alphaOf(cb.backgroundColor) >= 0.55) return b;
+    return ch.backgroundImage === 'none' ? h : null;
+  }
+  // Fundal de pagină în gradient (body sau html au background-image): textura nu se poate pune pe element fără să-i ia gradientul,
+  // deci merge într-un strat fix (data-fffx="b") între fundal și conținut. Fundalul propagat pe pânză se pictează sub straturile cu z-index negativ,
+  // dar fundalul propriu al lui body (când nu se propagă) se pictează deasupra lor: de aceea cazurile în care ar fi acoperit sunt excluse.
+  function backdropOK() {
+    var cb = root.getComputedStyle(DOC.body), ch = root.getComputedStyle(DOC.documentElement);
+    if (ch.backgroundImage === 'none' && alphaOf(ch.backgroundColor) < 0.02) return cb.backgroundImage !== 'none';
+    return ch.backgroundImage !== 'none' && cb.backgroundImage === 'none' && alphaOf(cb.backgroundColor) < 0.05;
+  }
+  function ensureBackdrop() {
+    var el = DOC.querySelector('[data-fffx="b"]');
+    if (!el) { el = DOC.createElement('div'); el.setAttribute('data-fffx', 'b'); el.setAttribute('aria-hidden', 'true'); }
+    if (el.parentNode !== DOC.documentElement) DOC.documentElement.appendChild(el);
+    return el;
+  }
+  function removeBackdrop() { var el = DOC.querySelector('[data-fffx="b"]'); if (el && el.parentNode) el.parentNode.removeChild(el); }
+  // (Re)alege cum primește pagina textura: pe body/html (marcaj „g”) sau în stratul fix. Fără marcaj, getComputedStyle vede fundalul aplicației, nu textura;
+  // totul e sincron, deci nu apare nicio redesenare între citire și punerea marcajului la loc.
+  function applyPage() {
+    var old = DOC.querySelector('[data-fffx="g"]'); if (old) old.removeAttribute('data-fffx');
+    var pt = pageTarget(); if (pt) pt.setAttribute('data-fffx', 'g');
+    S.bd = !pt && backdropOK(); if (S.bd) ensureBackdrop(); else removeBackdrop();
+    if (S.info) S.info.page = pt ? pt.tagName.toLowerCase() : (S.bd ? 'backdrop' : '');
+    return pt;
+  }
+  // La schimbarea temei (atribute pe html/body sau prefers-color-scheme) fundalul aplicației se poate schimba din culoare plină în gradient sau invers: realege.
+  function watchPage() {
+    if (S.pobs || !root.MutationObserver) return;
+    var go = function () { clearTimeout(S.ptimer); S.ptimer = setTimeout(function () { S.ptimer = 0; if (S.on && S.tex) applyPage(); }, 150); };
+    S.pobs = new root.MutationObserver(function (ms) { for (var i = 0; i < ms.length; i++) if (!/^data-fffx/.test(ms[i].attributeName || '')) return go(); });
+    S.pobs.observe(DOC.documentElement, {attributes: true}); if (DOC.body) S.pobs.observe(DOC.body, {attributes: true});
+    try { var q = root.matchMedia('(prefers-color-scheme: dark)'); if (q.addEventListener) { q.addEventListener('change', go); S.mq = q; S.mqgo = go; } } catch (e) { /* inert */ }
+  }
+  function unwatchPage() {
+    if (S.pobs) { S.pobs.disconnect(); S.pobs = null; }
+    clearTimeout(S.ptimer); S.ptimer = 0;
+    try { if (S.mq && S.mq.removeEventListener) S.mq.removeEventListener('change', S.mqgo); } catch (e) { /* inert */ } S.mq = null;
   }
   // Parcurge elementele (în felii), alege suprafețele mari cu fundal plin și fără imagine și le marchează cu data-fffx="p|c".
   function scan(rootEl, st, done) {
@@ -440,6 +476,7 @@
   function cssText(t) {
     var s = '', c = '!important;background-repeat:repeat!important;background-position:0 0';
     if (t.page) s += '[data-fffx="g"]{background-image:url("' + t.page.url + '")' + c + '!important;background-size:' + t.pageCss + 'px ' + t.pageCss + 'px!important}';
+    if (t.page) s += '[data-fffx="b"]{display:block!important;position:fixed!important;left:0!important;top:0!important;right:0!important;bottom:0!important;width:auto!important;height:auto!important;margin:0!important;padding:0!important;border:0!important;z-index:-1!important;pointer-events:none!important;background-image:url("' + t.page.url + '")' + c + '!important;background-size:' + t.pageCss + 'px ' + t.pageCss + 'px!important}';
     if (t.panel) s += '[data-fffx="p"],[data-fffx="c"]{background-image:url("' + t.panel.url + '")' + c + '!important}[data-fffx="p"]{background-size:' + t.panelCss + 'px ' + t.panelCss + 'px!important}[data-fffx="c"]{background-size:' + Math.round(t.panelCss * 0.55) + 'px ' + Math.round(t.panelCss * 0.55) + 'px!important}';
     if (t.hero) s += '[data-fffx="h"]{background-image:url("' + t.hero.url + '")!important;background-size:cover!important;background-position:center!important;background-repeat:no-repeat!important}';
     return s + '@media print,(forced-colors:active),(prefers-contrast:more){[data-fffx]{background-image:none!important}}';
@@ -461,7 +498,7 @@
 
   /* ================= 9. CONFIGURARE, PORNIRE, INTERFAȚĂ ================= */
   var CFG = {m: 'parchment', p: '', a: 1, seed: 7, size: 0, hero: null, inc: '', exc: '', max: 220, minArea: 3000, over: null, pover: null, low: null};
-  var S = {on: false, started: false, booted: false, tex: null, st: null, obs: null, timer: 0, info: null, force: false};
+  var S = {on: false, started: false, booted: false, tex: null, st: null, obs: null, timer: 0, info: null, force: false, bd: false, pobs: null, ptimer: 0, mq: null, mqgo: null};
   function lang() { try { var l = (root.FFF && root.FFF.lang && root.FFF.lang()) || DOC.documentElement.lang || 'en'; l = String(l).slice(0, 2).toLowerCase(); return TXT[l] ? l : 'en'; } catch (e) { return 'en'; } }
   function TT(k) { return (TXT[lang()] || TXT.en)[k]; }
   function mq(q) { try { return !!(root.matchMedia && root.matchMedia(q).matches); } catch (e) { return false; } }
@@ -470,10 +507,33 @@
     try { var F = root.FFF; if (F && F.store && F.store.get) return F.store.get('texturi', null); } catch (e) { /* inert */ }
     try { return root.localStorage.getItem('fff.texturi'); } catch (e2) { return null; }
   }
+  // CSP din <meta>: dacă img-src (sau default-src, în lipsa lui) nu admite data:, imaginile texturii ar fi blocate; nu porni (nici GPU irosit, nici erori în consolă).
+  function cspBlocksImages() {
+    try {
+      var ms = DOC.querySelectorAll('meta[http-equiv]');
+      for (var i = 0; i < ms.length; i++) {
+        if (!/^content-security-policy$/i.test(ms[i].getAttribute('http-equiv') || '')) continue;
+        var dir = {}, parts = String(ms[i].getAttribute('content') || '').split(';');
+        for (var j = 0; j < parts.length; j++) { var w = parts[j].trim().split(/\s+/), n = (w.shift() || '').toLowerCase(); if (n && !(n in dir)) dir[n] = w.join(' ').toLowerCase().split(/\s+/); }
+        var list = dir['img-src'] || dir['default-src'];
+        if (list && list.indexOf('data:') < 0) return true;
+      }
+    } catch (e) { /* inert */ }
+    return false;
+  }
+  // CSP primit prin antet (nu se vede din <meta>): dacă browserul raportează că a blocat o imagine data:, se oprește singur, fără a schimba preferința utilizatorului.
+  function cspWatch(e) {
+    if (!/^img-src/.test(String(e && e.violatedDirective || '')) || !/^data/.test(String(e && e.blockedURI || ''))) return;
+    DOC.removeEventListener('securitypolicyviolation', cspWatch);
+    S.on = false; removeCSS(); removeBackdrop(); unwatchPage();
+    if (S.obs) { S.obs.disconnect(); S.obs = null; }
+    DOC.documentElement.removeAttribute('data-fffx-on'); S.info = {on: false, reason: 'csp-img-src'};
+  }
   function allowed(ignorePref) {
     var q = root.location ? root.location.search : '';
     S.force = /[?&]fffx=1\b/.test(q) || !!root.FFF_TEXTURI_FORCE;
     if (/[?&](notex|kiosk|embed)=(1|true)\b/.test(q) || metaOff()) return false;
+    if (cspBlocksImages()) { S.info = {on: false, reason: 'csp-img-src'}; return false; }
     if (mq('print') || mq('(forced-colors: active)') || mq('(prefers-contrast: more)') || mq('(prefers-reduced-transparency: reduce)') || mq('(prefers-reduced-data: reduce)')) return false;
     try { if (root.navigator.connection && root.navigator.connection.saveData) return false; } catch (e) { /* inert */ }
     if (!S.force) { if (root.navigator && root.navigator.webdriver) return false; try { if (root.top !== root.self) return false; } catch (e3) { return false; } }
@@ -501,7 +561,7 @@
   }
   function start() {
     if (S.started) return Promise.resolve(S.info);
-    S.started = true; S.on = true;
+    S.started = true; S.on = true; DOC.addEventListener('securitypolicyviolation', cspWatch);
     var sz = pickSize(), t0 = now(), A = CFG.a, out = {};
     S.st = {count: 0, max: CFG.max, minArea: CFG.minArea, inc: CFG.inc, exc: CFG.exc ? EXC_DEF + ',' + CFG.exc : EXC_DEF};
     return makeTexture(CFG.m, {size: sz.size, seed: CFG.seed, A: 0.3 * A, over: CFG.over, low: CFG.low}).then(function (r) {
@@ -516,12 +576,12 @@
       if (!S.on) return null;
       out.panelCss = sz.css; out.pageCss = Math.round(sz.css * 1.25); S.tex = out;
       installCSS(cssText(out)); DOC.documentElement.setAttribute('data-fffx-on', '');
-      var pt = pageTarget(); if (pt) pt.setAttribute('data-fffx', 'g');
+      var pt = applyPage(); watchPage();
       if (out.hero && CFG.hero.sel) [].forEach.call(DOC.querySelectorAll(CFG.hero.sel), function (el) { if (root.getComputedStyle(el).backgroundImage === 'none') el.setAttribute('data-fffx', 'h'); });
       return new Promise(function (ok) {
         scan(DOC.body, S.st, function (n) {
           watch();
-          S.info = {on: true, backend: out.panel.backend, preset: out.panel.preset, size: sz.size, ms: Math.round(now() - t0), surfaces: n, page: pt ? pt.tagName.toLowerCase() : '', hero: !!out.hero};
+          S.info = {on: true, backend: out.panel.backend, preset: out.panel.preset, size: sz.size, ms: Math.round(now() - t0), surfaces: n, page: pt ? pt.tagName.toLowerCase() : (S.bd ? 'backdrop' : ''), hero: !!out.hero};
           try { if (root.FFF && root.FFF.bus) root.FFF.bus.emit('texturi:ready', S.info); } catch (e) { /* inert */ }
           ok(S.info);
         });
@@ -558,8 +618,8 @@
     set: function (on) {
       on = !!on;
       try { var F = root.FFF; if (F && F.store && F.store.set) F.store.set('texturi', on ? 'on' : 'off'); else root.localStorage.setItem('fff.texturi', on ? 'on' : 'off'); } catch (e) { /* inert */ }
-      if (on) { S.on = true; if (!S.started) start(); else if (S.tex) { installCSS(cssText(S.tex)); DOC.documentElement.setAttribute('data-fffx-on', ''); watch(); } }
-      else { S.on = false; removeCSS(); DOC.documentElement.removeAttribute('data-fffx-on'); if (S.obs) { S.obs.disconnect(); S.obs = null; } }
+      if (on) { S.on = true; if (!S.started) start(); else if (S.tex) { installCSS(cssText(S.tex)); DOC.documentElement.setAttribute('data-fffx-on', ''); applyPage(); watchPage(); watch(); } }
+      else { S.on = false; removeCSS(); removeBackdrop(); unwatchPage(); DOC.documentElement.removeAttribute('data-fffx-on'); if (S.obs) { S.obs.disconnect(); S.obs = null; } }
       return S.on;
     },
     _boot: boot

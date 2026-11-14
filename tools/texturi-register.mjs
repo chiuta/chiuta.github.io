@@ -1,9 +1,10 @@
 #!/usr/bin/env node
 // Înregistrează (idempotent, cu blocare de fișier) o aplicație pentru texturile fractale: adaugă „fff-texturi” la modulele ei din plan.json
 // și scrie în texturi.json materialul și intensitatea. Apoi se rulează `node tools/inject-shared.mjs <dirAplicație> <slug>`.
-//   node tools/texturi-register.mjs <slug> [--m material] [--p material-panouri] [--a 1] [--seed 7] [--hero julia|mandel|none] [--hero-a 0.9]
+//   node tools/texturi-register.mjs <slug> [--m material] [--p material-fundal-pagină] [--a 1] [--seed 7] [--hero julia|mandel|none] [--hero-a 0.9]
 //                                   [--sel "selector,...pt hero"] [--inc "selector"] [--exc "selector"] [--max 220] [--show]
-// Materiale pentru pagină și panouri (se repetă fără cusătură): parchment washi linen leather wood marble granite slate brass gold steel jade ice nebula moss sand.
+// --m = materialul panourilor (carduri, antete, butoane) și, dacă nu e dat --p, al paginii; --p = alt material doar pentru fundalul paginii.
+// Materiale (se repetă fără cusătură): parchment washi linen leather wood marble granite slate brass gold steel jade ice nebula moss sand.
 // Julia / Mandelbrot sunt doar pentru „hero” (imagine mare, nerepetată). Fără opțiuni, păstrează ce există deja pentru slug (sau „parchment”).
 import fs from 'node:fs'; import path from 'node:path'; import {fileURLToPath} from 'node:url';
 const HUB = path.join(path.dirname(fileURLToPath(import.meta.url)), '..'), AD = path.join(HUB, 'tools/envelope-adapters');
