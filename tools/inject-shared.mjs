@@ -34,10 +34,13 @@ function adapterSource() {
   if (/<\/script/i.test(s)) throw new Error('adaptor cu </script');
   return s;
 }
+// fff-texturi primește configurația aplicației (tools/envelope-adapters/texturi.json: material, intensitate, suprafețe) ca apel imediat după modul
+const TX = (() => { try { return JSON.parse(rd(AD('texturi.json'))); } catch (e) { return {}; } })();
+const modSrc = (m) => { let s = rd(T(m + '.js')); if (m === 'fff-texturi') s = s.trimEnd() + '\n;(function(){var T=window.FFF&&window.FFF.texturi;if(T&&T.configure)T.configure(' + JSON.stringify(TX[slug] || {}) + ');})();\n'; return s; };
 const blocks = () => {
   const o = plan.libsOnly ? [] : [{id: 'fff-envelope', src: rd(T('fff-envelope.js')), lib: true}];   // libsOnly: aplicații care primesc doar module comune (ex. nucleul AI), fără plic
   if (plan.seif) o.push({id: 'fff-seif', src: rd(T('fff-seif.js')), lib: true});
-  for (const m of plan.libs || []) { if (!/^fff-[a-z0-9-]+$/.test(m)) throw new Error('modul necunoscut: ' + m); o.push({id: 'fff-mod-' + m.slice(4), src: rd(T(m + '.js')), lib: true}); }   // module comune (Etapa 5): tools/<m>.js → <script id="fff-mod-…">
+  for (const m of plan.libs || []) { if (!/^fff-[a-z0-9-]+$/.test(m)) throw new Error('modul necunoscut: ' + m); o.push({id: 'fff-mod-' + m.slice(4), src: modSrc(m), lib: true}); }   // module comune (Etapa 5): tools/<m>.js → <script id="fff-mod-…">
   if (plan.adapter) o.push({id: 'fff-envelope-adapter', src: adapterSource(), lib: false});
   for (const b of o) if (/<\/script/i.test(b.src)) throw new Error(b.id + ' conține </script');
   return o;

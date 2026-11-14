@@ -57,5 +57,6 @@
   "vatra": {"adapter": "Jurnal.js", "libs": ["fff-jurnal"]},
   "urme": {"adapter": "Jurnal.js", "libs": ["fff-jurnal"]},
   "poteca": {"adapter": "Jurnal.js", "libs": ["fff-jurnal"]},
-  "exploratoriieco": {"adapter": "Jurnal.js", "libs": ["fff-jurnal"]}
+  "exploratoriieco": {"adapter": "Jurnal.js", "libs": ["fff-jurnal"]},
+  "origami": {"libsOnly": true, "libs": ["fff-texturi"]}
 }

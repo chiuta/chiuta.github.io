@@ -76,6 +76,7 @@ Nu copia cod: cere modulul prin `plan.json` → `libs`, iar `inject-shared.mjs` 
 | `fff-place.js` | locația, ora și fusul comune (`place/fff`) | suita cer–timp |
 | `fff-jurnal.js` | jurnal de teren → atlas | observare, hărți |
 | `fff-ab.js`, `fff-repro.js` | comparare A/B, laborator de reproducere | rezultate comparabile |
+| `fff-texturi.js` | texturi fractale pentru fundal și suprafețe (WebGL2 cu rezervă JS, plăci fără cusătură, strat translucid, fără rețea); material per aplicație în `tools/envelope-adapters/texturi.json` | orice aplicație cu interfață (nu e nevoie de imagini) |
 
 ### 6.1 API-ul Anthropic: nu scrie versiunea și modelele de mână
 
@@ -83,6 +84,14 @@ Nu copia cod: cere modulul prin `plan.json` → `libs`, iar `inject-shared.mjs` 
 - Nu trimite `temperature`, `top_p` sau `top_k` către Anthropic: versiunea API `2026-10-21` le-a eliminat (400 pe orice model). Nucleul nu le trimite niciodată.
 - Valorile din `tools/fff-ai.js` au fost verificate în documentația oficială la **3 noiembrie 2026** (platform.claude.com: versionare, ghid de migrare 2026-10-21, prezentarea modelelor, deprecieri). La o versiune nouă: schimbi o singură constantă, rulezi `node tests/ai.test.mjs`, `node tools/anthropic-audit.mjs --root <aplicații>`, apoi `inject-shared` în cele șase aplicații (AI-Liber, ARENA, Nexus, Constelar, TranslateHub, VietAR). Worker-ul Cloudflare din PrintreInteligente nu poate importa nucleul: își repetă valoarea, iar auditul o compară cu cea centrală (se redeployează de mână).
 - Sursa `Anthropic-API-versiune` din `data/sources.json` urmărește pagina de versionare și dă alertă când nu mai apare valoarea centrală.
+
+
+### 6.2 Texturi fractale (`fff-texturi`)
+
+Înregistrare și injectare: `node tools/texturi-register.mjs <slug> --m <material> [--p <material-panouri>] [--a 1]` apoi `node tools/inject-shared.mjs <dirAplicație> <slug>`; verificare vizuală înainte/după: `node tools/texturi-qa/rollout-app.mjs <dirAplicație> --m <material>`.
+Materiale pentru pagină și panouri (se repetă fără cusătură): `parchment washi linen leather wood marble granite slate brass gold steel jade ice nebula moss sand`; `julia` și `mandel` doar ca imagine-erou (`--hero julia --sel "<selector>"`).
+Alegerea se face după subiect (hârtie și cărți → washi/parchment, cosmos → nebula, pietre și metale → granite/steel, natură → moss/wood), iar intensitatea `--a` între 0,6 și 1,6 (implicit 1): textul trebuie să rămână perfect lizibil, iar elementele interfeței nu se acoperă.
+Se oprește singur la contrast ridicat, culori forțate, economie de date, transparență redusă, imprimare, iframe și browsere automatizate; utilizatorul îl oprește din dialogul „Transparență” sau cu `?notex=1`; `?fffx=1` îl forțează (capturi, teste).
 
 ## 7. Testele obligatorii
 
