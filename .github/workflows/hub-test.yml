@@ -62,3 +62,5 @@ jobs:
         run: node tests/discover.test.mjs
       - name: Teste înregistrări native (demo/nativ - cast, subtitrări 8 limbi, voce, pagini offline, CSP, axe)
         run: node tests/nativ.test.mjs
+      - name: Teste texturi fractale în browser (strat pentru gradient, schimbarea temei, CSP, pornit/oprit)
+        run: node tests/texturi-dom.test.mjs
