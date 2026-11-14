@@ -2094,11 +2094,11 @@
    "flowApps": 16
   },
   "coverage": {
-   "full8": 145,
-   "partial": 2,
-   "single": 4,
+   "full8": 149,
+   "partial": 0,
+   "single": 2,
    "native": 14,
-   "avg": 3.89
+   "avg": 3.96
   },
   "score": {
    "measured": 128,
@@ -2142,6 +2142,7 @@
    "cards": 151,
    "measured": 128,
    "behind": [
+    "ANTROPOS",
     "ATINGERE",
     "AcademiSearch",
     "Afrodisiace-fara-frontiere",
@@ -2185,11 +2186,13 @@
     "Hyper4D",
     "INDICATIV",
     "IncredibleCosmos",
+    "Index-fara-frontiere",
     "Inforenergetica",
     "Lexicon",
     "Limpezimea",
     "LocalMind",
     "MENSURA",
+    "MIRAJ",
     "Mahjong-fara-frontiere",
     "MarkdownAtelier",
     "Monstrarium",
@@ -2220,6 +2223,7 @@
     "Sah-fara-frontiere",
     "Scopone-fara-frontiere",
     "ScryVeil",
+    "ScutSonor",
     "Solitaire-fara-frontiere",
     "Sudoku-fara-frontiere",
     "Surveyor",

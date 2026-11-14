@@ -13897,6 +13897,454 @@
      "size": 278508
     }
    }
+  },
+  {
+   "slug": "ScutSonor",
+   "title": "ScutSonor",
+   "section": "teren",
+   "tags": {
+    "en": [
+     "safety",
+     "sound"
+    ],
+    "ro": [
+     "siguranță",
+     "sunet"
+    ],
+    "fr": [
+     "sécurité",
+     "son"
+    ],
+    "it": [
+     "sicurezza",
+     "suono"
+    ],
+    "es": [
+     "seguridad",
+     "sonido"
+    ],
+    "pt": [
+     "segurança",
+     "som"
+    ],
+    "de": [
+     "Sicherheit",
+     "Ton"
+    ],
+    "hu": [
+     "biztonság",
+     "hang"
+    ]
+   },
+   "line": {
+    "en": "Loud sound and flashlight strobe for encounters with aggressive dogs, plus a behaviour guide. An aid, not a guaranteed shield.",
+    "ro": "Sunet puternic și strobe cu lanterna pentru întâlniri cu câini agresivi, plus ghid de comportament. Ajutor, nu scut garantat.",
+    "fr": "Son puissant et stroboscope de lampe pour les rencontres avec des chiens agressifs, plus un guide de comportement. Une aide, pas un bouclier garanti.",
+    "it": "Suono forte e strobo della torcia per incontri con cani aggressivi, più una guida al comportamento. Un aiuto, non uno scudo garantito.",
+    "es": "Sonido fuerte y estroboscopio de linterna para encuentros con perros agresivos, más una guía de comportamiento. Una ayuda, no un escudo garantizado.",
+    "pt": "Som forte e estroboscópio da lanterna para encontros com cães agressivos, mais um guia de comportamento. Uma ajuda, não um escudo garantido.",
+    "de": "Lauter Ton und Taschenlampen-Stroboskop für Begegnungen mit aggressiven Hunden, dazu eine Verhaltensanleitung. Eine Hilfe, kein garantierter Schutz.",
+    "hu": "Hangos hang és zseblámpa-villogás agresszív kutyákkal való találkozáshoz, viselkedési útmutatóval. Segédeszköz, nem garantált védelem."
+   },
+   "url": "https://chiuta.github.io/ScutSonor/",
+   "readme": "https://github.com/chiuta/ScutSonor#readme",
+   "off": "no",
+   "status": "stable",
+   "video": "ScutSonor/video.mp4",
+   "poster": "ScutSonor/poster.jpg",
+   "duration": 42.3,
+   "size": 308152,
+   "vtt": {
+    "en": "ScutSonor/en.vtt",
+    "ro": "ScutSonor/ro.vtt",
+    "fr": "ScutSonor/fr.vtt",
+    "it": "ScutSonor/it.vtt",
+    "es": "ScutSonor/es.vtt",
+    "pt": "ScutSonor/pt.vtt",
+    "de": "ScutSonor/de.vtt",
+    "hu": "ScutSonor/hu.vtt"
+   },
+   "transcript": "ScutSonor/transcript.json",
+   "videos": {
+    "ro": {
+     "video": "ScutSonor/loc/ro/video.mp4",
+     "vtt": "ScutSonor/loc/ro/ro.vtt",
+     "duration": 36.9,
+     "size": 297985
+    },
+    "fr": {
+     "video": "ScutSonor/loc/fr/video.mp4",
+     "vtt": "ScutSonor/loc/fr/fr.vtt",
+     "duration": 42.3,
+     "size": 337604
+    },
+    "it": {
+     "video": "ScutSonor/loc/it/video.mp4",
+     "vtt": "ScutSonor/loc/it/it.vtt",
+     "duration": 42.6,
+     "size": 327688
+    },
+    "es": {
+     "video": "ScutSonor/loc/es/video.mp4",
+     "vtt": "ScutSonor/loc/es/es.vtt",
+     "duration": 36.9,
+     "size": 309426
+    },
+    "pt": {
+     "video": "ScutSonor/loc/pt/video.mp4",
+     "vtt": "ScutSonor/loc/pt/pt.vtt",
+     "duration": 36.9,
+     "size": 309378
+    },
+    "de": {
+     "video": "ScutSonor/loc/de/video.mp4",
+     "vtt": "ScutSonor/loc/de/de.vtt",
+     "duration": 36.8,
+     "size": 320578
+    },
+    "hu": {
+     "video": "ScutSonor/loc/hu/video.mp4",
+     "vtt": "ScutSonor/loc/hu/hu.vtt",
+     "duration": 36.8,
+     "size": 315084
+    }
+   }
+  },
+  {
+   "slug": "MIRAJ",
+   "title": "MIRAJ",
+   "section": "educatie",
+   "tags": {
+    "en": [
+     "vision",
+     "education"
+    ],
+    "ro": [
+     "vedere",
+     "educație"
+    ],
+    "fr": [
+     "vision",
+     "éducation"
+    ],
+    "it": [
+     "vista",
+     "educazione"
+    ],
+    "es": [
+     "visión",
+     "educación"
+    ],
+    "pt": [
+     "visão",
+     "educação"
+    ],
+    "de": [
+     "Sehen",
+     "Bildung"
+    ],
+    "hu": [
+     "látás",
+     "oktatás"
+    ]
+   },
+   "line": {
+    "en": "How the retina sees and how the brain builds the picture: fovea, blind spot, illusions and a quiz, on three levels.",
+    "ro": "Cum vede retina și cum construiește creierul imaginea: fovee, punct orb, iluzii și test, pe trei niveluri.",
+    "fr": "Comment la rétine voit et comment le cerveau construit l’image : fovéa, tache aveugle, illusions et quiz, sur trois niveaux.",
+    "it": "Come vede la retina e come il cervello costruisce l’immagine: fovea, punto cieco, illusioni e quiz, su tre livelli.",
+    "es": "Cómo ve la retina y cómo construye el cerebro la imagen: fóvea, punto ciego, ilusiones y cuestionario, en tres niveles.",
+    "pt": "Como a retina vê e como o cérebro constrói a imagem: fóvea, ponto cego, ilusões e questionário, em três níveis.",
+    "de": "Wie die Netzhaut sieht und das Gehirn das Bild aufbaut: Fovea, blinder Fleck, Illusionen und Quiz, auf drei Stufen.",
+    "hu": "Hogyan lát a recehártya, és hogyan építi fel az agy a képet: fovea, vakfolt, illúziók és kvíz, három szinten."
+   },
+   "url": "https://chiuta.github.io/MIRAJ/",
+   "readme": "https://github.com/chiuta/MIRAJ#readme",
+   "off": "no",
+   "status": "stable",
+   "video": "MIRAJ/video.mp4",
+   "poster": "MIRAJ/poster.jpg",
+   "duration": 48.8,
+   "size": 339181,
+   "vtt": {
+    "en": "MIRAJ/en.vtt",
+    "ro": "MIRAJ/ro.vtt",
+    "fr": "MIRAJ/fr.vtt",
+    "it": "MIRAJ/it.vtt",
+    "es": "MIRAJ/es.vtt",
+    "pt": "MIRAJ/pt.vtt",
+    "de": "MIRAJ/de.vtt",
+    "hu": "MIRAJ/hu.vtt"
+   },
+   "transcript": "MIRAJ/transcript.json",
+   "videos": {
+    "ro": {
+     "video": "MIRAJ/loc/ro/video.mp4",
+     "vtt": "MIRAJ/loc/ro/ro.vtt",
+     "duration": 42.2,
+     "size": 308599
+    },
+    "fr": {
+     "video": "MIRAJ/loc/fr/video.mp4",
+     "vtt": "MIRAJ/loc/fr/fr.vtt",
+     "duration": 48.7,
+     "size": 373149
+    },
+    "it": {
+     "video": "MIRAJ/loc/it/video.mp4",
+     "vtt": "MIRAJ/loc/it/it.vtt",
+     "duration": 48.2,
+     "size": 352963
+    },
+    "es": {
+     "video": "MIRAJ/loc/es/video.mp4",
+     "vtt": "MIRAJ/loc/es/es.vtt",
+     "duration": 35.9,
+     "size": 322281
+    },
+    "pt": {
+     "video": "MIRAJ/loc/pt/video.mp4",
+     "vtt": "MIRAJ/loc/pt/pt.vtt",
+     "duration": 42.1,
+     "size": 328786
+    },
+    "de": {
+     "video": "MIRAJ/loc/de/video.mp4",
+     "vtt": "MIRAJ/loc/de/de.vtt",
+     "duration": 48.6,
+     "size": 348524
+    },
+    "hu": {
+     "video": "MIRAJ/loc/hu/video.mp4",
+     "vtt": "MIRAJ/loc/hu/hu.vtt",
+     "duration": 35.9,
+     "size": 309034
+    }
+   }
+  },
+  {
+   "slug": "ANTROPOS",
+   "title": "ANTROPOS",
+   "section": "stiinta",
+   "tags": {
+    "en": [
+     "screening",
+     "biology"
+    ],
+    "ro": [
+     "screening",
+     "biologie"
+    ],
+    "fr": [
+     "dépistage",
+     "biologie"
+    ],
+    "it": [
+     "screening",
+     "biologia"
+    ],
+    "es": [
+     "cribado",
+     "biología"
+    ],
+    "pt": [
+     "rastreio",
+     "biologia"
+    ],
+    "de": [
+     "Screening",
+     "Biologie"
+    ],
+    "hu": [
+     "szűrés",
+     "biológia"
+    ]
+   },
+   "line": {
+    "en": "An orientative scientific profile, computed locally: PhenoAge biological age, voice, handwriting, clock drawing, TIPI personality and reaction time.",
+    "ro": "Profil științific orientativ, calculat local: vârstă biologică PhenoAge, voce, scris, ceas, personalitate TIPI și reacție.",
+    "fr": "Profil scientifique indicatif, calculé en local : âge biologique PhenoAge, voix, écriture, test de l’horloge, personnalité TIPI et réaction.",
+    "it": "Profilo scientifico orientativo, calcolato in locale: età biologica PhenoAge, voce, scrittura, test dell’orologio, personalità TIPI e reazione.",
+    "es": "Perfil científico orientativo, calculado en local: edad biológica PhenoAge, voz, escritura, test del reloj, personalidad TIPI y reacción.",
+    "pt": "Perfil científico orientativo, calculado localmente: idade biológica PhenoAge, voz, escrita, teste do relógio, personalidade TIPI e reação.",
+    "de": "Orientierendes wissenschaftliches Profil, lokal berechnet: biologisches Alter (PhenoAge), Stimme, Handschrift, Uhrentest, TIPI-Persönlichkeit und Reaktion.",
+    "hu": "Tájékoztató jellegű tudományos profil, helyben számolva: PhenoAge biológiai életkor, hang, kézírás, órarajz, TIPI személyiség és reakcióidő."
+   },
+   "url": "https://chiuta.github.io/ANTROPOS/",
+   "readme": "https://github.com/chiuta/ANTROPOS#readme",
+   "off": "no",
+   "status": "stable",
+   "video": "ANTROPOS/video.mp4",
+   "poster": "ANTROPOS/poster.jpg",
+   "duration": 32.4,
+   "size": 298697,
+   "vtt": {
+    "en": "ANTROPOS/en.vtt",
+    "ro": "ANTROPOS/ro.vtt",
+    "fr": "ANTROPOS/fr.vtt",
+    "it": "ANTROPOS/it.vtt",
+    "es": "ANTROPOS/es.vtt",
+    "pt": "ANTROPOS/pt.vtt",
+    "de": "ANTROPOS/de.vtt",
+    "hu": "ANTROPOS/hu.vtt"
+   },
+   "transcript": "ANTROPOS/transcript.json",
+   "videos": {
+    "ro": {
+     "video": "ANTROPOS/loc/ro/video.mp4",
+     "vtt": "ANTROPOS/loc/ro/ro.vtt",
+     "duration": 38.7,
+     "size": 346344
+    },
+    "fr": {
+     "video": "ANTROPOS/loc/fr/video.mp4",
+     "vtt": "ANTROPOS/loc/fr/fr.vtt",
+     "duration": 32.4,
+     "size": 371746
+    },
+    "it": {
+     "video": "ANTROPOS/loc/it/video.mp4",
+     "vtt": "ANTROPOS/loc/it/it.vtt",
+     "duration": 38.8,
+     "size": 351610
+    },
+    "es": {
+     "video": "ANTROPOS/loc/es/video.mp4",
+     "vtt": "ANTROPOS/loc/es/es.vtt",
+     "duration": 38.8,
+     "size": 376146
+    },
+    "pt": {
+     "video": "ANTROPOS/loc/pt/video.mp4",
+     "vtt": "ANTROPOS/loc/pt/pt.vtt",
+     "duration": 45.2,
+     "size": 398682
+    },
+    "de": {
+     "video": "ANTROPOS/loc/de/video.mp4",
+     "vtt": "ANTROPOS/loc/de/de.vtt",
+     "duration": 32.5,
+     "size": 353043
+    },
+    "hu": {
+     "video": "ANTROPOS/loc/hu/video.mp4",
+     "vtt": "ANTROPOS/loc/hu/hu.vtt",
+     "duration": 32.5,
+     "size": 338325
+    }
+   }
+  },
+  {
+   "slug": "Index-fara-frontiere",
+   "title": "Index-fara-frontiere",
+   "section": "utilitare",
+   "tags": {
+    "en": [
+     "catalogue",
+     "resources"
+    ],
+    "ro": [
+     "catalog",
+     "resurse"
+    ],
+    "fr": [
+     "catalogue",
+     "ressources"
+    ],
+    "it": [
+     "catalogo",
+     "risorse"
+    ],
+    "es": [
+     "catálogo",
+     "recursos"
+    ],
+    "pt": [
+     "catálogo",
+     "recursos"
+    ],
+    "de": [
+     "Katalog",
+     "Ressourcen"
+    ],
+    "hu": [
+     "katalógus",
+     "források"
+    ]
+   },
+   "line": {
+    "en": "A catalogue of single-file HTML apps: the chiuta.github.io collection plus external resources, with search and tags.",
+    "ro": "Catalog al aplicațiilor HTML single-file: colecția de pe chiuta.github.io și resurse externe, cu căutare și etichete.",
+    "fr": "Catalogue d’applications HTML à fichier unique : la collection de chiuta.github.io et des ressources externes, avec recherche et étiquettes.",
+    "it": "Catalogo di app HTML a file singolo: la collezione di chiuta.github.io e risorse esterne, con ricerca ed etichette.",
+    "es": "Catálogo de aplicaciones HTML de archivo único: la colección de chiuta.github.io y recursos externos, con búsqueda y etiquetas.",
+    "pt": "Catálogo de aplicações HTML de ficheiro único: a coleção de chiuta.github.io e recursos externos, com pesquisa e etiquetas.",
+    "de": "Katalog von Einzeldatei-HTML-Apps: die Sammlung von chiuta.github.io plus externe Ressourcen, mit Suche und Tags.",
+    "hu": "Katalógus egyfájlos HTML-alkalmazásokról: a chiuta.github.io gyűjtemény és külső források, kereséssel és címkékkel."
+   },
+   "url": "https://chiuta.github.io/Index-fara-frontiere/",
+   "readme": "https://github.com/chiuta/Index-fara-frontiere#readme",
+   "off": "no",
+   "status": "stable",
+   "video": "Index-fara-frontiere/video.mp4",
+   "poster": "Index-fara-frontiere/poster.jpg",
+   "duration": 35.8,
+   "size": 262174,
+   "vtt": {
+    "en": "Index-fara-frontiere/en.vtt",
+    "ro": "Index-fara-frontiere/ro.vtt",
+    "fr": "Index-fara-frontiere/fr.vtt",
+    "it": "Index-fara-frontiere/it.vtt",
+    "es": "Index-fara-frontiere/es.vtt",
+    "pt": "Index-fara-frontiere/pt.vtt",
+    "de": "Index-fara-frontiere/de.vtt",
+    "hu": "Index-fara-frontiere/hu.vtt"
+   },
+   "transcript": "Index-fara-frontiere/transcript.json",
+   "videos": {
+    "ro": {
+     "video": "Index-fara-frontiere/loc/ro/video.mp4",
+     "vtt": "Index-fara-frontiere/loc/ro/ro.vtt",
+     "duration": 30.6,
+     "size": 239198
+    },
+    "fr": {
+     "video": "Index-fara-frontiere/loc/fr/video.mp4",
+     "vtt": "Index-fara-frontiere/loc/fr/fr.vtt",
+     "duration": 30.5,
+     "size": 260640
+    },
+    "it": {
+     "video": "Index-fara-frontiere/loc/it/video.mp4",
+     "vtt": "Index-fara-frontiere/loc/it/it.vtt",
+     "duration": 24.3,
+     "size": 247081
+    },
+    "es": {
+     "video": "Index-fara-frontiere/loc/es/video.mp4",
+     "vtt": "Index-fara-frontiere/loc/es/es.vtt",
+     "duration": 34.5,
+     "size": 292347
+    },
+    "pt": {
+     "video": "Index-fara-frontiere/loc/pt/video.mp4",
+     "vtt": "Index-fara-frontiere/loc/pt/pt.vtt",
+     "duration": 34.6,
+     "size": 290548
+    },
+    "de": {
+     "video": "Index-fara-frontiere/loc/de/video.mp4",
+     "vtt": "Index-fara-frontiere/loc/de/de.vtt",
+     "duration": 29.1,
+     "size": 285427
+    },
+    "hu": {
+     "video": "Index-fara-frontiere/loc/hu/video.mp4",
+     "vtt": "Index-fara-frontiere/loc/hu/hu.vtt",
+     "duration": 24.2,
+     "size": 257445
+    }
+   }
   }
  ],
  "reels": {
