@@ -1,6 +1,6 @@
 # fff-kit
 
-**Versiune:** 1.5.0 · **Ultima actualizare:** 13 noiembrie 2026
+**Versiune:** 1.6.0 · **Ultima actualizare:** 15 noiembrie 2026
 
 Module comune pentru aplicațiile „fără frontiere”, **lipite în fiecare `index.html`** de un pas de build. Aplicația rămâne un fișier care funcționează descărcat, offline, fără server. Nimic din kit nu face cereri de rețea.
 
@@ -105,6 +105,22 @@ LC_ALL=C sed -E 's/data-fff-hash="[0-9a-f]*"/data-fff-hash=""/g; s/"sha256":"[0-
 ```
 
 `sizeBytes` este dimensiunea fișierului final; build-ul găsește prin iterație punctul fix (cifrele lui apar în fișier).
+
+## Novități în 1.6.0 (15 noiembrie 2026)
+
+**Modulul nou `a11y` (`FFF.a11y`)**: accesibilitate la fel în toate aplicațiile, după modelul din BRAZDA. Ordinea în build: `… exit, view, a11y, ux …`; se activează cu `--modules …,a11y`.
+
+* **Butonul „Aa”** (jos, în dreapta) deschide panoul „Opțiuni de accesibilitate”: mărimea textului (A− / A+, 85–160 %), contrast ridicat, fără animații, text lizibil (spațiere mărită), linkuri subliniate + focus accentuat, citire cu voce (textul selectat sau cel vizibil pe ecran, în bucăți scurte, în limba paginii), resetare, închidere (și Esc). Textul în 8 limbi (fr/it/es/pt/hu/de: traduceri automate, neverificate nativ).
+* **Săgeata „Înapoi sus”** apare după derulare; găsește singură zona derulabilă (pagina sau un panou mare al aplicației) și mută focusul pe `<main>`/`<h1>`.
+* **„Sari la conținut”**: legătură vizibilă doar la focus, pusă numai dacă pagina are `<main>`/`[role=main]`/`<h1>` și nu are deja una.
+* **Fereastra se potrivește mereu ecranului**: lățimea, înălțimea maximă și poziția panoului se recalculează din fereastra vizibilă (`visualViewport`) la redimensionare, rotire și tastatură; panoul se derulează în el însuși, iar zoom-ul paginii (`FFF.view`) e compensat (`--fff-zinv`), deci nu se mărește peste ecran. Butoanele își caută pe marginea din dreapta un loc în care nu acoperă niciun control (altfel rezervă o gutieră, `fff-apad`).
+* **Mărimea textului** = proprietatea CSS `zoom` pe `<body>` (merge și în aplicațiile cu dimensiuni în px); fără `zoom`, se scalează fontul lui `<html>`. Interfața kitului stă direct sub `<html>`, deci nu e scalată. Setările: `fff.<slug>.a11y`; la prima vizită se respectă „mișcare redusă” și „contrast mai mare” din sistem.
+* **Contrast ridicat**: negru/alb/cyan cu reguli de specificitate 0 (aplicația le poate bate); casetele colorate mici (pătrate de tablă, ștampile, bare de progres) își păstrează culoarea (`data-fff-keep`).
+* Nu apare în iframe, în modul chioșc/încorporat (`?kiosk=1`, `?embed=1`, `?noa11y=1`) și în browsere automatizate (`navigator.webdriver`; se forțează cu `?fffa11y=1`). Se oprește cu `<meta name="fff-a11y" content="off">`. API: `FFF.a11y.{open, close, toggle, get, set, reset, speak, stop, up, refit, mount, show, hide, element}`; evenimentul `a11y` pe `FFF.bus`.
+
+**`FFF.view`: bara de zoom cu lupă („−”, „+”) și „potrivire ecran” stă acum mereu pe marginea din STÂNGA** (dreapta e a panoului de accesibilitate); caută tot cea mai liberă înălțime, iar dacă nu există, rezervă gutiera din stânga. Bara e pusă sub `<html>`, nu sub `<body>`, ca zoom-ul textului să n-o scaleze.
+
+Test: `node test/a11y.test.mjs` (46 de verificări: montare condiționată, setări, persistență, axe, potrivire pe 4 ecrane și sub zoom mare, săgeată, loc liber, „Sari la conținut”).
 
 ## Novități în 1.5.0
 

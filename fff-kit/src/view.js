@@ -1,4 +1,4 @@
-/* fff-kit · FFF.view — vedere comodă pe orice ecran: (1) antete de tabel fixe la derulare, (2) bară de jos cu zoom − / + / automat,
+/* fff-kit · FFF.view — vedere comodă pe orice ecran: (1) antete de tabel fixe la derulare, (2) bară pe marginea din STÂNGA cu zoom − / + (lupă) / „potrivire ecran” (automat),
  * (3) zoom automat la încărcare, ca textul să fie mare și conținutul să ocupe spațiul util al ecranului.
  * Antete fixe: regulile CSS (specificitate 0) fac antetul de tabel „lipicios”; pentru tabelele aflate într-un container care taie sau derulează
  * pe orizontală (overflow), containerul primește o înălțime maximă ca antetul să rămână fix în el. Stilul propriu al aplicației are prioritate.
@@ -22,7 +22,7 @@
   function KEY() { return ((F.store && F.store.prefix) || ('fff.' + (F.slug || 'app') + '.')) + 'view'; }
 
   var root = null, bar = null, live = null, bIn = null, bOut = null, bFit = null;
-  var user = 1, auto = 1, total = 1, side = 'r', idleT = 0, wanted = true, forced = false, laterT = 0, stickyT = 0, trT = 0, mo = null;
+  var user = 1, auto = 1, total = 1, side = 'l', idleT = 0, wanted = true, forced = false, laterT = 0, stickyT = 0, trT = 0, mo = null;
 
   function zoomOk() { try { return !!(window.CSS && CSS.supports && CSS.supports('zoom', '1.2')); } catch (e) { return false; } }
   function eligible() {
@@ -178,13 +178,13 @@
     var w = innerWidth, h = innerHeight, H = 144, W = 44, best = null, score = 1e9, rects = ctrlRects();
     var minY = 76 + H / 2, maxY = h - 12 - H / 2, M = 8;
     if (!again) de.classList.remove('fff-vpad-r', 'fff-vpad-l');
-    ['r', 'l'].forEach(function (c) {
+    ['l'].forEach(function (c) {                                                  // bara de zoom stă mereu pe marginea din STÂNGA (dreapta e a panoului de accesibilitate, FFF.a11y)
       var x0 = c === 'r' ? w - M - W : M, x1 = x0 + W;
       for (var k = 0; k <= 14; k++) {
         var f = 0.5 + (k % 2 ? 1 : -1) * Math.ceil(k / 2) * 0.05, cy = Math.min(Math.max(h * f, minY), maxY), t0 = cy - H / 2, t1 = cy + H / 2, sc = 0, ov = 0;
         for (var i = 0; i < rects.length; i++) { var r = rects[i]; if (Math.min(x1, r.right) - Math.max(x0, r.left) > 1 && Math.min(t1, r.bottom) - Math.max(t0, r.top) > 1) { sc += 1; ov += 1; } }
         for (var d = -H / 2 + 22; d <= H / 2 - 22; d += 50) sc += busy(c === 'r' ? w - 30 : 30, cy + d) * 0.2;
-        sc = sc * 10 + k * 0.1 + (c === 'r' ? 0 : 0.05);
+        sc = sc * 10 + k * 0.1;
         if (sc < score) { score = sc; best = {c: c, y: cy, ov: ov}; }
       }
     });
@@ -194,7 +194,7 @@
       void de.offsetWidth; return place(true);
     }
     if (best && best.ov > 0 && again) { de.classList.remove('fff-vpad-r', 'fff-vpad-l'); }   // nu a ajutat: revenim
-    side = best ? best.c : 'r';
+    side = 'l';
     root.className = root.className.replace(/\bfff-view-(r|l|c)\b/g, '').replace(/\s+/g, ' ').trim() + ' fff-view-' + side;
     root.style.top = Math.round(best ? best.y - H / 2 : 80) + 'px';
   }
@@ -217,7 +217,7 @@
   }
   function build() {
     if (root) return;
-    root = doc.createElement('div'); root.className = 'fff-view fff-view-r'; root.setAttribute('data-fff-view', ''); root.setAttribute('role', 'toolbar');
+    root = doc.createElement('div'); root.className = 'fff-view fff-view-l'; root.setAttribute('data-fff-view', ''); root.setAttribute('role', 'toolbar');
     bOut = button('out', zoomOut); bIn = button('in', zoomIn); bFit = button('fit', reset);
     live = doc.createElement('span'); live.className = 'fff-view-sr'; live.setAttribute('role', 'status'); live.setAttribute('aria-live', 'polite');
     root.appendChild(bOut); root.appendChild(bIn); root.appendChild(bFit); root.appendChild(live);
@@ -240,7 +240,7 @@
   function mount() {
     if (root && root.isConnected) return true;
     if (!doc.body) return false;
-    build(); doc.body.appendChild(root); root.hidden = false;
+    build(); de.appendChild(root); root.hidden = false;      // sub <html>, nu sub <body>: zoom-ul textului din FFF.a11y (pe <body>) nu scalează bara
     load();
     auto = computeAuto();
     applyZoom(auto * user);
