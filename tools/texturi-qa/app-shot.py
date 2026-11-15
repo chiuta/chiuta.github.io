@@ -56,6 +56,7 @@ with sync_playwright() as p:
         pg.wait_for_timeout(200)
     res['info'] = pg.evaluate('window.FFF && FFF.texturi ? FFF.texturi.info() : null')
     res['marked'] = pg.evaluate("document.querySelectorAll('[data-fffx]').length")
+    res['pending'] = pg.evaluate('window.FFF && FFF.texturi && FFF.texturi.pending ? FFF.texturi.pending() : null')   # panouri ascunse urmărite (motor ≥ 1.1.2)
     res['csp'] = pg.evaluate('window.__csp')
     res['scrollH'] = pg.evaluate('document.documentElement.scrollHeight')
     pg.screenshot(path=out, full_page=FULL)

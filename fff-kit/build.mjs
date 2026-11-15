@@ -588,7 +588,8 @@ function usage() {
   node build.mjs check <dir> [--lax] [--json]   (strict: politicile CSP sunt erori; --lax: avertismente; excepții: fff.config.json → cspExceptions)
   node build.mjs fixcsp <dir>                    (recalculează hash-urile CSP ale scripturilor inline)
   node build.mjs info <dir> [--slug S] [--probe]
-  node build.mjs release <dir> [--bump patch|minor|none] [--to X.Y.Z] [--slug S] [--add-modules dialog,store] [--modules ...] [--date YYYY-MM-DD] [--dry-run] [--lax] [--no-tests] [--no-readme] [--json] [--report f.json]
+  node build.mjs release <dir> [--bump patch|minor|none] [--to X.Y.Z] [--slug S] [--add-modules dialog,store] [--modules ...] [--date YYYY-MM-DD] [--dry-run] [--lax] [--no-tests] [--no-readme] [--no-kit] [--json] [--report f.json]
+      (--no-kit: nu rescrie kitul din aplicație; doar bump + fixcsp + info + check. Necesar când sursele kitului din acest depozit sunt mai vechi decât kitul aplicației)
   node build.mjs release-all <rootdir> [--dry-run] [--only a,b] [--skip a,b] [--bump ...] [--lax] [--report f.json] [--json]   (apply kit + bump + fixcsp + info + check pe toate depozitele)
 Module: ${ORDER.join(', ')}`);
 }
@@ -621,7 +622,7 @@ if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.me
         if (r.validation.length) { r.validation.forEach((e) => console.log('EROARE  fff-info: ' + e)); console.log('info EȘUAT (validare): ' + r.file); process.exit(1); }
       } else if (cmd === 'release' || cmd === 'release-all') {
         const {releaseApp, releaseAll} = await import('./lib/release.mjs');
-        const ro = {bump: opt.bump || 'patch', to: opt.to, slug: opt.slug, modules: opt.modules, addModules: opt['add-modules'], date: opt.date, dryRun: !!opt['dry-run'], lax: !!opt.lax, tests: !opt['no-tests'], readme: !opt['no-readme'], only: opt.only, skip: opt.skip, init: !!opt.init};
+        const ro = {bump: opt.bump || 'patch', to: opt.to, slug: opt.slug, modules: opt.modules, addModules: opt['add-modules'], date: opt.date, dryRun: !!opt['dry-run'], lax: !!opt.lax, tests: !opt['no-tests'], readme: !opt['no-readme'], only: opt.only, skip: opt.skip, init: !!opt.init, kit: !opt['no-kit']};
         const rep = cmd === 'release' ? releaseApp(dir, ro) : releaseAll(dir, ro);
         const ok = cmd === 'release' ? rep.ok : rep.summary.errors === 0;
         if (opt.report) fs.writeFileSync(opt.report, JSON.stringify(rep, null, 1) + '\n');

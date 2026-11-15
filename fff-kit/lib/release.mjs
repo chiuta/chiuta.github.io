@@ -234,10 +234,16 @@ export function releaseApp(dirArg, opt = {}) {
       }
     } else rep.steps.bump = 'omis (--bump none sau versiune neschimbată)';
 
-    /* --- apply kit (păstrează slug/module/disable) --- */
-    const ap = applyKit(work, {slug: slug || undefined, modules: rep.modules.join(','), disable});
-    rep.slug = ap.slug; rep.modules = ap.modules;
-    rep.steps.apply = `kit ${kitVersion()} · module ${ap.modules.join(',')}`;
+    /* --- apply kit (păstrează slug/module/disable); cu opt.kit === false (--no-kit) kitul din aplicație rămâne neatins: bump + fixcsp + info + check, fără a-l rescrie din sursele acestui depozit --- */
+    let ap;
+    if (opt.kit === false) {
+      ap = {slug, modules: rep.modules};
+      rep.steps.apply = 'omis (--no-kit): kitul din aplicație rămâne neschimbat';
+    } else {
+      ap = applyKit(work, {slug: slug || undefined, modules: rep.modules.join(','), disable});
+      rep.slug = ap.slug; rep.modules = ap.modules;
+      rep.steps.apply = `kit ${kitVersion()} · module ${ap.modules.join(',')}`;
+    }
 
     /* --- fixcsp --- */
     const fx = recomputeCspHashes(fs.readFileSync(file, 'utf8'));
