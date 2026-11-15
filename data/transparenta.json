@@ -1,6 +1,6 @@
 {
  "schema": 1,
- "snapshot": "2026-10-22",
+ "snapshot": "2026-11-15",
  "a1": {
   "date": "2026-10-21",
   "apps": 110,
@@ -134,15 +134,15 @@
   "smallNew": 41
  },
  "live": {
-  "apps": 110,
-  "sw": 109,
+  "apps": 111,
+  "sw": 110,
   "noSw": 1,
   "fakeSw": 0,
   "emptyI18n": 0,
   "badHost": 21,
   "kitGe114": 109,
   "kitCount": 109,
-  "cnames": 100,
+  "cnames": 101,
   "syncOk": true,
   "shared": 12
  },
@@ -1691,6 +1691,38 @@
    "score": null,
    "hm": null,
    "l": null
+  },
+  {
+   "key": "ODISEEA",
+   "ver": "1.1",
+   "off": "no",
+   "langs": 8,
+   "hosts": 0,
+   "score": null,
+   "hm": null,
+   "l": null,
+   "ext": true
+  },
+  {
+   "key": "EXIF-CURAT",
+   "ver": "0.1.0-alpha.1",
+   "off": "no",
+   "langs": 1,
+   "hosts": 0,
+   "score": null,
+   "hm": null,
+   "l": null,
+   "ext": true
+  },
+  {
+   "key": "PatruZeci",
+   "ver": "3.2.1",
+   "off": "full",
+   "langs": 8,
+   "hosts": 0,
+   "score": null,
+   "hm": null,
+   "l": null
   }
  ],
  "a8": {
@@ -2060,9 +2092,9 @@
  },
  "health": {
   "date": "2026-11-15",
-  "apps": 151,
+  "apps": 154,
   "relations": {
-   "withRelation": 127,
+   "withRelation": 128,
    "orphans": [
     "ACORDAJ",
     "API-fara-frontiere",
@@ -2071,6 +2103,7 @@
     "Arhiva-LinkedIn",
     "Carti-de-joc-fara-frontiere",
     "Dame-fara-frontiere",
+    "EXIF-CURAT",
     "Go-fara-frontiere",
     "Horizons.BeyondLimits",
     "HoroScop",
@@ -2078,6 +2111,7 @@
     "Inforenergetica",
     "Limpezimea",
     "Mahjong-fara-frontiere",
+    "ODISEEA",
     "PrintreInteligente",
     "QSO",
     "Radiestezie",
@@ -2089,16 +2123,16 @@
     "VNTV",
     "Zaruri-fara-frontiere"
    ],
-   "pairs": 110,
+   "pairs": 111,
    "flows": 4,
    "flowApps": 16
   },
   "coverage": {
-   "full8": 149,
+   "full8": 151,
    "partial": 0,
-   "single": 2,
-   "native": 14,
-   "avg": 3.96
+   "single": 3,
+   "native": 15,
+   "avg": 3.94
   },
   "score": {
    "measured": 128,
@@ -2122,8 +2156,8 @@
   },
   "age": {
    "ref": "2026-11-15",
-   "fresh7": 141,
-   "fresh30": 151,
+   "fresh7": 144,
+   "fresh30": 154,
    "stale30": 0,
    "stale90": 0,
    "oldest": "OSATURA (22)"
@@ -2139,7 +2173,7 @@
    "healthFile": "2026-11-09"
   },
   "versions": {
-   "cards": 151,
+   "cards": 154,
    "measured": 128,
    "behind": [
     "ACORDAJ",
@@ -2273,10 +2307,13 @@
     "ASTROLABIU",
     "Claritas",
     "ECOGRAMA",
+    "EXIF-CURAT",
     "LegatorOCR",
     "MARTOR",
     "NEAMURI",
+    "ODISEEA",
     "OSATURA",
+    "PatruZeci",
     "TACTIL",
     "TEZAUR",
     "TurboCursa",

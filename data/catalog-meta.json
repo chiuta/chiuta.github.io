@@ -67,7 +67,8 @@
     "OSATURA": "engine",
     "VERIGA": "engine",
     "TEZAUR": "engine",
-    "LegatorOCR": "engine"
+    "LegatorOCR": "engine",
+    "EXIF-CURAT": "engine"
   },
   "variants": {
     "Universul-Observabil": [
@@ -181,7 +182,8 @@
         "Curatitor",
         "Provenienta",
         "VaultCrypt",
-        "ScryVeil"
+        "ScryVeil",
+        "EXIF-CURAT"
       ],
       "kw": "metadate metadata exif gps fotografie photo imagine image fisier file confidentialitate privacy cifrare encrypt criptare parola password c2pa autentic authentic fals fake deepfake provenienta securitate security biztonsag datenschutz sterge remove foto fotografia echt authentisch hiteles fenykep autenticita autentica autentico autentique"
     },
@@ -203,7 +205,8 @@
         "Surveyor",
         "FreeDetect",
         "MARTOR",
-        "atelier-verificare"
+        "atelier-verificare",
+        "EXIF-CURAT"
       ],
       "kw": "audit auditor verifica verify check incredere trust document fisier file pdf imagine image link dovada evidence"
     },
@@ -341,6 +344,25 @@
         "VOIAJOR"
       ],
       "kw": "astronomie astronomy astronomia cer sky cielo ciel himmel stele stars planete planets luna moon soare sun eclipsa eclipse cosmos univers universe marte mars"
+    },
+    {
+      "id": "voyager",
+      "name": {
+        "ro": "Voyager",
+        "en": "Voyager",
+        "fr": "Voyager",
+        "it": "Voyager",
+        "es": "Voyager",
+        "pt": "Voyager",
+        "de": "Voyager",
+        "hu": "Voyager"
+      },
+      "members": [
+        "BRAZDA",
+        "VOIAJOR",
+        "ODISEEA"
+      ],
+      "kw": "voyager sonda sonde probe golden record discul de aur heliosfera documentar documentary simulare simulation"
     },
     {
       "id": "astrology",
@@ -682,7 +704,8 @@
         "Arbore",
         "Gospodar",
         "Orar",
-        "CLEPSIDRA"
+        "CLEPSIDRA",
+        "PatruZeci"
       ],
       "kw": "gospodarie household familie family buget budget bani money genealogie arbore notite notes planificare planning casa home haztartas koltsegvetes presupuesto orcamento hogar haushalt foyer familiare"
     },
@@ -746,7 +769,8 @@
         "OSATURA",
         "Origami",
         "BorderlessMelodies",
-        "DECUPAJ"
+        "DECUPAJ",
+        "ODISEEA"
       ],
       "kw": "video media animatie animation desen drawing hartie paper origami muzica music tv trailer film"
     },
@@ -767,7 +791,8 @@
         "VERIGA",
         "TEZAUR",
         "LegatorOCR",
-        "TurboCursa"
+        "TurboCursa",
+        "EXIF-CURAT"
       ],
       "kw": "rust nativ native program instalare install desktop cli"
     },
@@ -1259,6 +1284,11 @@
       "Index-fara-frontiere",
       "Vitrina",
       "ambele prezintă proiecte ale colecției"
+    ],
+    [
+      "PatruZeci",
+      "Trusa-fara-frontiere",
+      "ambele sunt unelte mici de zi cu zi într-un singur fișier, fără cont și fără telemetrie"
     ]
   ],
   "apps": {
@@ -5980,6 +6010,109 @@
         },
         "hu": {
           "limite": "Statikus pillanatkép, 2026. július 5-én ellenőrizve, nem frissül automatikusan; a külső források nem a szerző művei. A felület 8 nyelven érhető el (gépi segítséggel készült fordítások)."
+        }
+      }
+    },
+    "ODISEEA": {
+      "coverage": {
+        "langs": [
+          "ro",
+          "en",
+          "fr",
+          "it",
+          "es",
+          "pt",
+          "de",
+          "hu"
+        ],
+        "platform": "web"
+      },
+      "fisa": {
+        "ro": {
+          "limite": "Documentarul rulează local, dar imaginile NASA se încarcă de pe internet (CORS); fără rețea rămân scenele procedurale și imaginea proprie. Adâncimea fotografiilor reale e estimată din luminozitate, nu din geometrie. Exportul 3D SBS complet (3840×1080) e greu pentru calculator; nu e testat pe ochelari VR reali. Vocea sintetică depinde de vocile browserului: dacă nu există voce pentru limba aleasă, rămâne oprită."
+        },
+        "en": {
+          "limite": "The documentary runs locally, but NASA images load from the internet (CORS); without network the procedural scenes and your own image remain. The depth of real photos is estimated from brightness, not geometry. The full 3D SBS export (3840×1080) is heavy; not tested on real VR glasses. The synthetic voice depends on the browser’s voices: if none exists for the chosen language, it stays off."
+        },
+        "fr": {
+          "limite": "Le documentaire tourne localement, mais les images NASA se chargent depuis Internet (CORS) ; sans réseau restent les scènes procédurales et votre propre image. La profondeur des photos réelles est estimée d’après la luminosité, pas la géométrie. L’export 3D SBS complet (3840×1080) est exigeant ; non testé sur de vraies lunettes VR. La voix de synthèse dépend des voix du navigateur : s’il n’en existe pas pour la langue choisie, elle reste désactivée."
+        },
+        "it": {
+          "limite": "Il documentario gira in locale, ma le immagini NASA si caricano da Internet (CORS); senza rete restano le scene procedurali e la tua immagine. La profondità delle foto reali è stimata dalla luminosità, non dalla geometria. L’esportazione 3D SBS completa (3840×1080) è pesante; non testata su veri visori VR. La voce sintetica dipende dalle voci del browser: se non ne esiste una per la lingua scelta, resta spenta."
+        },
+        "es": {
+          "limite": "El documental funciona en local, pero las imágenes de la NASA se cargan de Internet (CORS); sin red quedan las escenas procedurales y tu propia imagen. La profundidad de las fotos reales se estima por el brillo, no por la geometría. La exportación 3D SBS completa (3840×1080) es pesada; no probada en gafas VR reales. La voz sintética depende de las voces del navegador: si no existe una para el idioma elegido, permanece apagada."
+        },
+        "pt": {
+          "limite": "O documentário corre localmente, mas as imagens da NASA carregam da internet (CORS); sem rede ficam as cenas procedurais e a tua própria imagem. A profundidade das fotos reais é estimada pelo brilho, não pela geometria. A exportação 3D SBS completa (3840×1080) é pesada; não testada em óculos VR reais. A voz sintética depende das vozes do navegador: se não existir uma para o idioma escolhido, fica desligada."
+        },
+        "de": {
+          "limite": "Die Dokumentation läuft lokal, aber die NASA-Bilder werden aus dem Internet geladen (CORS); ohne Netz bleiben die prozeduralen Szenen und das eigene Bild. Die Tiefe echter Fotos wird aus der Helligkeit geschätzt, nicht aus der Geometrie. Der vollständige 3D-SBS-Export (3840×1080) ist rechenlastig; nicht auf echten VR-Brillen getestet. Die synthetische Stimme hängt von den Stimmen des Browsers ab: Gibt es keine für die gewählte Sprache, bleibt sie aus."
+        },
+        "hu": {
+          "limite": "A dokumentumfilm helyben fut, de a NASA-képek az internetről töltődnek be (CORS); hálózat nélkül a procedurális jelenetek és a saját kép maradnak. A valódi fényképek mélységét a fényességből becsüli, nem a geometriából. A teljes 3D-SBS-export (3840×1080) igényes; valódi VR-szemüvegen nem tesztelték. A szintetikus hang a böngésző hangjaitól függ: ha nincs a választott nyelvhez, kikapcsolva marad."
+        }
+      }
+    },
+    "EXIF-CURAT": {
+      "coverage": {
+        "langs": [
+          "en"
+        ],
+        "platform": "native"
+      },
+      "fisa": {
+        "ro": {
+          "limite": "Schelet pre-alfa: se compilează și testele trec în CI, dar nicio funcție planificată nu e gata; fiecare e o sarcină deschisă în docs/issues/. Parserele sunt implementate independent din specificații publice (vezi CLEANROOM.md); programul nu folosește cod terț. Interfața și site-ul sunt în engleză; README-urile în 8 limbi."
+        },
+        "en": {
+          "limite": "Pre-alpha skeleton: it builds and the tests pass in CI, but no planned feature is ready; each is an open task in docs/issues/. The parsers are implemented independently from public specifications (see CLEANROOM.md); the program uses no third-party code. The interface and site are in English; the READMEs in 8 languages."
+        },
+        "fr": {
+          "limite": "Squelette pré-alpha : il compile et les tests passent dans la CI, mais aucune fonction prévue n’est prête ; chacune est une tâche ouverte dans docs/issues/. Les analyseurs sont implémentés indépendamment à partir de spécifications publiques (voir CLEANROOM.md) ; le programme n’utilise aucun code tiers. L’interface et le site sont en anglais ; les README en 8 langues."
+        },
+        "it": {
+          "limite": "Scheletro pre-alfa: compila e i test passano nella CI, ma nessuna funzione prevista è pronta; ciascuna è un compito aperto in docs/issues/. I parser sono implementati in modo indipendente da specifiche pubbliche (vedi CLEANROOM.md); il programma non usa codice di terzi. L’interfaccia e il sito sono in inglese; i README in 8 lingue."
+        },
+        "es": {
+          "limite": "Esqueleto pre-alfa: compila y las pruebas pasan en la CI, pero ninguna función prevista está lista; cada una es una tarea abierta en docs/issues/. Los analizadores se implementan de forma independiente a partir de especificaciones públicas (véase CLEANROOM.md); el programa no usa código de terceros. La interfaz y el sitio están en inglés; los README en 8 idiomas."
+        },
+        "pt": {
+          "limite": "Esqueleto pré-alfa: compila e os testes passam na CI, mas nenhuma função planeada está pronta; cada uma é uma tarefa aberta em docs/issues/. Os parsers são implementados de forma independente a partir de especificações públicas (ver CLEANROOM.md); o programa não usa código de terceiros. A interface e o site estão em inglês; os README em 8 idiomas."
+        },
+        "de": {
+          "limite": "Pre-Alpha-Skelett: es baut und die Tests bestehen in der CI, aber keine geplante Funktion ist fertig; jede ist eine offene Aufgabe in docs/issues/. Die Parser sind unabhängig aus öffentlichen Spezifikationen implementiert (siehe CLEANROOM.md); das Programm nutzt keinen Code Dritter. Oberfläche und Site sind auf Englisch; die READMEs in 8 Sprachen."
+        },
+        "hu": {
+          "limite": "Pre-alfa váz: lefordul és a tesztek átmennek a CI-ben, de egyetlen tervezett funkció sincs kész; mindegyik nyitott feladat a docs/issues/ mappában. Az elemzőket a nyilvános specifikációkból függetlenül implementálták (lásd CLEANROOM.md); a program nem használ harmadik fél kódját. A felület és az oldal angol; a README-k 8 nyelven."
+        }
+      }
+    },
+    "PatruZeci": {
+      "fisa": {
+        "ro": {
+          "limite": "Neoficial și neafiliat producătorului WD-40; lista oficială e tradusă de autor, iar secțiunea web adaugă utilizări, mituri și avertismente din articole recente. Interfața e în 8 limbi, dar textele celor 1993 de utilizări există deocamdată doar în română și engleză; celelalte șase limbi le arată în engleză. Nu e sfat profesional; utilizările marcate „nu se recomandă” (frâne, centuri de siguranță, contact cu alimente) au explicația lor în fișă."
+        },
+        "en": {
+          "limite": "Unofficial and unaffiliated with the WD-40 manufacturer; the official list is translated by the author, and the web section adds uses, myths and warnings from recent articles. The interface is in 8 languages, but the texts of the 1993 uses exist for now only in Romanian and English; the other six languages show them in English. Not professional advice; the uses marked “not recommended” (brakes, seat belts, food contact) each have their explanation in the sheet."
+        },
+        "fr": {
+          "limite": "Non officiel et sans lien avec le fabricant du WD-40 ; la liste officielle est traduite par l’auteur, et la section web ajoute des utilisations, mythes et avertissements issus d’articles récents. L’interface est en 8 langues, mais les textes des 1993 utilisations n’existent pour l’instant qu’en roumain et en anglais ; les six autres langues les affichent en anglais. Ce n’est pas un conseil professionnel ; les utilisations marquées « non recommandé » (freins, ceintures de sécurité, contact alimentaire) ont chacune leur explication dans la fiche."
+        },
+        "it": {
+          "limite": "Non ufficiale e non affiliato al produttore del WD-40; la lista ufficiale è tradotta dall’autore, e la sezione web aggiunge usi, miti e avvertenze da articoli recenti. L’interfaccia è in 8 lingue, ma i testi dei 1993 usi esistono per ora solo in romeno e inglese; le altre sei lingue li mostrano in inglese. Non è un consiglio professionale; gli usi marcati «non raccomandato» (freni, cinture di sicurezza, contatto con alimenti) hanno ciascuno la propria spiegazione nella scheda."
+        },
+        "es": {
+          "limite": "No oficial y sin afiliación con el fabricante del WD-40; la lista oficial está traducida por el autor, y la sección web añade usos, mitos y advertencias de artículos recientes. La interfaz está en 8 idiomas, pero los textos de los 1993 usos existen por ahora solo en rumano e inglés; los otros seis idiomas los muestran en inglés. No es asesoría profesional; los usos marcados «no recomendado» (frenos, cinturones de seguridad, contacto con alimentos) tienen cada uno su explicación en la ficha."
+        },
+        "pt": {
+          "limite": "Não oficial e sem afiliação com o fabricante do WD-40; a lista oficial foi traduzida pelo autor, e a secção web acrescenta usos, mitos e avisos de artigos recentes. A interface está em 8 idiomas, mas os textos dos 1993 usos existem por agora apenas em romeno e inglês; os outros seis idiomas mostram-nos em inglês. Não é aconselhamento profissional; os usos marcados «não recomendado» (travões, cintos de segurança, contacto com alimentos) têm cada um a sua explicação na ficha."
+        },
+        "de": {
+          "limite": "Inoffiziell und ohne Verbindung zum WD-40-Hersteller; die offizielle Liste ist vom Autor übersetzt, und die Web-Rubrik ergänzt Anwendungen, Mythen und Warnungen aus aktuellen Artikeln. Die Oberfläche ist in 8 Sprachen, aber die Texte der 1993 Anwendungen gibt es bisher nur auf Rumänisch und Englisch; die anderen sechs Sprachen zeigen sie auf Englisch. Kein professioneller Rat; die mit „nicht empfohlen“ markierten Anwendungen (Bremsen, Sicherheitsgurte, Lebensmittelkontakt) haben jeweils ihre Erklärung in der Karte."
+        },
+        "hu": {
+          "limite": "Nem hivatalos, a WD-40 gyártójához nem kapcsolódik; a hivatalos listát a szerző fordította, a webes szekció pedig friss cikkekből származó használatokat, mítoszokat és figyelmeztetéseket ad hozzá. A felület 8 nyelvű, de az 1993 használat szövege egyelőre csak románul és angolul létezik; a másik hat nyelv angolul mutatja. Nem szakmai tanács; a „nem ajánlott” jelölésű használatok (fékek, biztonsági övek, élelmiszer-kontakt) mindegyikének megvan a magyarázata a lapon."
         }
       }
     }
