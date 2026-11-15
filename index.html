@@ -172,8 +172,9 @@ nav{position:sticky;top:0;z-index:100;background:color-mix(in srgb,var(--bg) 82%
 /* FLOATING PANELS */
 .float-panel{position:absolute;top:calc(100% + 4px);background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:.85rem 1rem;display:none;flex-direction:column;gap:.8rem;z-index:200;box-shadow:0 16px 48px rgba(0,0,0,.4);transition:background .3s,border-color .3s}
 .float-panel.open{display:flex}
-#theme-panel{right:1.25rem;min-width:240px}
-#lang-panel{right:calc(1.25rem + 145px);min-width:190px}
+/* la rezoluții foarte mari panourile rămân sub butoane: se aliniază cu marginea coloanei .wrap (max 1280px), nu cu marginea ecranului */
+#theme-panel{right:max(1.25rem,calc((100% - 1280px)/2 + 1.25rem));min-width:240px}
+#lang-panel{right:calc(max(1.25rem,calc((100% - 1280px)/2 + 1.25rem)) + 145px);min-width:190px}
 @media(max-width:680px){
   #theme-panel,#lang-panel{right:.5rem;left:.5rem;min-width:0}
   .theme-grid{grid-template-columns:repeat(4,1fr)}
