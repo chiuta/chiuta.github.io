@@ -1,7 +1,7 @@
 {
  "schema": 1,
  "note": "Generat de tools/sync-catalog.mjs din data/catalog-meta.json, data/flows.json și registrul de plicuri; nu se editează de mână. Fiecare relație are cel puțin un motiv verificabil (vezi relationEvidence în tools/catalog-meta-lib.mjs).",
- "count": 680,
+ "count": 706,
  "relations": [
   {
    "a": "AcademiSearch",
@@ -325,6 +325,13 @@
   },
   {
    "a": "Akasha",
+   "b": "PatruZeci",
+   "reasons": [
+    "topic:home"
+   ]
+  },
+  {
+   "a": "Akasha",
    "b": "Trusa-fara-frontiere",
    "reasons": [
     "topic:authoring"
@@ -642,6 +649,13 @@
   {
    "a": "Arbore",
    "b": "Orar",
+   "reasons": [
+    "topic:home"
+   ]
+  },
+  {
+   "a": "Arbore",
+   "b": "PatruZeci",
    "reasons": [
     "topic:home"
    ]
@@ -1457,6 +1471,13 @@
   },
   {
    "a": "BorderlessMelodies",
+   "b": "ODISEEA",
+   "reasons": [
+    "topic:media"
+   ]
+  },
+  {
+   "a": "BorderlessMelodies",
    "b": "Origami",
    "reasons": [
     "topic:media"
@@ -1486,8 +1507,16 @@
   },
   {
    "a": "BRAZDA",
+   "b": "ODISEEA",
+   "reasons": [
+    "topic:voyager"
+   ]
+  },
+  {
+   "a": "BRAZDA",
    "b": "VOIAJOR",
    "reasons": [
+    "topic:voyager",
     "pair"
    ],
    "why": "aceleași sonde Voyager: discul de aur pe care îl poartă și traiectoria pe care o parcurg"
@@ -1738,6 +1767,13 @@
     "topic:time",
     "envelope:events/ics",
     "module:fff-place"
+   ]
+  },
+  {
+   "a": "CLEPSIDRA",
+   "b": "PatruZeci",
+   "reasons": [
+    "topic:home"
    ]
   },
   {
@@ -1998,6 +2034,14 @@
   },
   {
    "a": "Curatitor",
+   "b": "EXIF-CURAT",
+   "reasons": [
+    "topic:privacy",
+    "topic:audit"
+   ]
+  },
+  {
+   "a": "Curatitor",
    "b": "FreeDetect",
    "reasons": [
     "topic:audit"
@@ -2245,6 +2289,13 @@
     "pair"
    ],
    "why": "două aplicații pentru conținut audio-video, din același cadru: tai clipuri dintr-un podcast, respectiv citești cărți cu voce tare, ambele local în browser"
+  },
+  {
+   "a": "DECUPAJ",
+   "b": "ODISEEA",
+   "reasons": [
+    "topic:media"
+   ]
   },
   {
    "a": "DECUPAJ",
@@ -2680,6 +2731,91 @@
    "b": "Undava",
    "reasons": [
     "envelope:quiz/undava"
+   ]
+  },
+  {
+   "a": "EXIF-CURAT",
+   "b": "atelier-verificare",
+   "reasons": [
+    "topic:audit"
+   ]
+  },
+  {
+   "a": "EXIF-CURAT",
+   "b": "FreeDetect",
+   "reasons": [
+    "topic:audit"
+   ]
+  },
+  {
+   "a": "EXIF-CURAT",
+   "b": "LegatorOCR",
+   "reasons": [
+    "topic:rust"
+   ]
+  },
+  {
+   "a": "EXIF-CURAT",
+   "b": "MARTOR",
+   "reasons": [
+    "topic:audit"
+   ]
+  },
+  {
+   "a": "EXIF-CURAT",
+   "b": "OSATURA",
+   "reasons": [
+    "topic:rust"
+   ]
+  },
+  {
+   "a": "EXIF-CURAT",
+   "b": "Provenienta",
+   "reasons": [
+    "topic:privacy",
+    "topic:audit"
+   ]
+  },
+  {
+   "a": "EXIF-CURAT",
+   "b": "ScryVeil",
+   "reasons": [
+    "topic:privacy"
+   ]
+  },
+  {
+   "a": "EXIF-CURAT",
+   "b": "Surveyor",
+   "reasons": [
+    "topic:audit"
+   ]
+  },
+  {
+   "a": "EXIF-CURAT",
+   "b": "TEZAUR",
+   "reasons": [
+    "topic:rust"
+   ]
+  },
+  {
+   "a": "EXIF-CURAT",
+   "b": "TurboCursa",
+   "reasons": [
+    "topic:rust"
+   ]
+  },
+  {
+   "a": "EXIF-CURAT",
+   "b": "VaultCrypt",
+   "reasons": [
+    "topic:privacy"
+   ]
+  },
+  {
+   "a": "EXIF-CURAT",
+   "b": "VERIGA",
+   "reasons": [
+    "topic:rust"
    ]
   },
   {
@@ -3302,6 +3438,13 @@
     "topic:home",
     "envelope:agenda/fff",
     "module:fff-agenda"
+   ]
+  },
+  {
+   "a": "Gospodar",
+   "b": "PatruZeci",
+   "reasons": [
+    "topic:home"
    ]
   },
   {
@@ -4202,6 +4345,34 @@
    ]
   },
   {
+   "a": "ODISEEA",
+   "b": "Origami",
+   "reasons": [
+    "topic:media"
+   ]
+  },
+  {
+   "a": "ODISEEA",
+   "b": "OSATURA",
+   "reasons": [
+    "topic:media"
+   ]
+  },
+  {
+   "a": "ODISEEA",
+   "b": "VNTV",
+   "reasons": [
+    "topic:media"
+   ]
+  },
+  {
+   "a": "ODISEEA",
+   "b": "VOIAJOR",
+   "reasons": [
+    "topic:voyager"
+   ]
+  },
+  {
    "a": "OmniHost",
    "b": "RegexLab",
    "reasons": [
@@ -4236,6 +4407,13 @@
     "topic:time",
     "envelope:events/ics",
     "module:fff-place"
+   ]
+  },
+  {
+   "a": "Orar",
+   "b": "PatruZeci",
+   "reasons": [
+    "topic:home"
    ]
   },
   {
@@ -4326,6 +4504,14 @@
     "pair"
    ],
    "why": "două fețe ale întreținerii unui site: răspunde? și ce linkuri sunt stricate?"
+  },
+  {
+   "a": "PatruZeci",
+   "b": "Trusa-fara-frontiere",
+   "reasons": [
+    "pair"
+   ],
+   "why": "ambele sunt unelte mici de zi cu zi într-un singur fișier, fără cont și fără telemetrie"
   },
   {
    "a": "Pendulul",
