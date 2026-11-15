@@ -36,7 +36,8 @@ export function replaceVersion(text, oldV, newV) {
   let n = 0;
   const plain = new RegExp(`(?<![\\d.A-UW-Za-uw-z_])${esc(oldV)}(?![\\w]|\\.\\d)`, 'g');
   const escd = new RegExp(`(?<![\\d.A-UW-Za-uw-z_])${esc(reEscaped(oldV))}(?![\\w]|\\\\\\.\\d|\\.\\d)`, 'g');
-  text = text.replace(escd, () => { n++; return reEscaped(newV); });
+  // forma cu puncte escapate (din regex-uri) are sens doar dacă versiunea are puncte; la o versiune fără puncte („13”) ar înlocui forma simplă cu cea escapată și ar strica textul
+  if (oldV.includes('.')) text = text.replace(escd, () => { n++; return reEscaped(newV); });
   text = text.replace(plain, () => { n++; return newV; });
   return [text, n];
 }
@@ -116,7 +117,10 @@ function bumpReadme(text, oldV, newV, oldDate, newDate) {
   // „**Version:** 2.3.9 · **Last updated:** 2026-10-22” (+ variante cu „ :” franceză). Se aliniază la versiunea nouă oricare ar fi cea scrisă (repară și README-uri rămase în urmă).
   const re = new RegExp(`^(\\*\\*(?:${LABELS.join('|')})\\s?:\\*\\*\\s*)\\d+(?:\\.\\d+){0,2}[^\\s·]*(\\s*·\\s*\\*\\*[^*\\n]+\\*\\*\\s*)(\\d{4}-\\d{2}-\\d{2})`, 'gm');
   let n = 0;
-  const out = text.replace(re, (m0, a, b, d) => { n++; return `${a}${newV}${b}${newDate || d}`; });
+  let out = text.replace(re, (m0, a, b, d) => { n++; return `${a}${newV}${b}${newDate || d}`; });
+  // varianta cursivă, fără aldine: „_Version: 13 · Last updated: 2026-11-15_” (și „_Version : …” în franceză)
+  const re2 = new RegExp(`^(_(?:${LABELS.join('|')})\\s?:\\s*)\\d+(?:\\.\\d+){0,2}[^\\s·]*(\\s*·\\s*[^:\\n]+:\\s*)(\\d{4}-\\d{2}-\\d{2})`, 'gm');
+  out = out.replace(re2, (m0, a, b, d) => { n++; return `${a}${newV}${b}${newDate || d}`; });
   return {text: out, n};
 }
 

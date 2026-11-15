@@ -12,7 +12,8 @@ const CONC = +process.env.FFF_CONC || 4;
 if (!fs.existsSync(ROOT)) { console.log('view-apps: ' + ROOT + ' lipsește — sărit'); process.exit(0); }
 const apps = fs.readdirSync(ROOT).filter((d) => !ONLY.length || ONLY.includes(d)).filter((d) => {
   const f = path.join(ROOT, d, 'index.html');
-  return fs.existsSync(f) && /FFF\.view|fff-view|data-fff-view/.test(fs.readFileSync(f, 'utf8'));
+  // modulul view din marcajul kitului (nu simpla apariție a lui „data-fff-view” în cod: modulul ux îl citește ca să sară peste bara de zoom)
+  return fs.existsSync(f) && /<!--fff:kit:start[^>]*\bmodules=(?:[a-z0-9-]+,)*view(?:,|-->|\s)/.test(fs.readFileSync(f, 'utf8'));
 }).sort();
 console.log('view-apps: ' + apps.length + ' aplicații în ' + ROOT);
 

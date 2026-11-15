@@ -1,8 +1,9 @@
 #!/usr/bin/env node
 // Ridică versiunea (patch) unei aplicații CU kit, FĂRĂ a rescrie kitul din ea: meta application-version/last-updated, #app-version, constante din cod,
 // sw.js (VERSION), README-uri, hash-uri CSP, app.json (fff-info), apoi intrarea din CHANGELOG.md. Nu face commit și nu împinge nimic.
-//   node tools/texturi-qa/bump-app.mjs <dirAplicație> --date YYYY-MM-DD [--slug S] [--to X.Y.Z] [--dry-run] [--note "<text de pus în CHANGELOG>"]
-// De ce nu `inject-shared.mjs --release`: acela rescrie kitul din fff-kit/src al hubului (ux v1), mai vechi decât kitul din aplicații (ux v2).
+//   node tools/texturi-qa/bump-app.mjs <dirAplicație> --date YYYY-MM-DD [--slug S] [--to X.Y.Z] [--kit] [--dry-run] [--note "<text de pus în CHANGELOG>"] [--note-ro "…" --note-en "…" (după limba CHANGELOG-ului)]
+// De ce nu `inject-shared.mjs --release`: acela rescrie mereu kitul; aici kitul rămâne neatins, dacă nu se cere `--kit`.
+//   `--kit` folosește kitul din fff-kit/src al hubului (acum egal cu cel din aplicațiile la zi: ux v2); după el, verifică pe ecran de telefon că rândurile compacte nu se taie.
 // Aplicațiile fără kit (fără <meta name="application-version">) nu intră aici: se ridică de mână, după PLAYBOOK2.md.
 import fs from 'node:fs'; import path from 'node:path'; import {fileURLToPath} from 'node:url';
 import {releaseApp, bumpCodeConstants} from '../../fff-kit/lib/release.mjs';
@@ -16,7 +17,8 @@ const app = (() => { try { return JSON.parse(rd(path.join(dir, 'app.json'))); } 
 const slug = val('--slug') || (app && app.slug) || undefined;
 const eng = ((rd(path.join(HUB, 'tools/fff-texturi.js')) || '').match(/var VERSION = '([\d.]+)'/) || [])[1] || '';
 
-const rep = releaseApp(dir, {bump: 'patch', to: val('--to'), date, lax: true, tests: false, readme: true, kit: false, slug, dryRun: has('--dry-run')});
+// --kit: rescrie și kitul aplicației din sursele hubului (pentru aplicații rămase în urma kitului); implicit kitul din aplicație rămâne neatins
+const rep = releaseApp(dir, {bump: 'patch', to: val('--to'), date, lax: true, tests: false, readme: true, kit: has('--kit'), slug, dryRun: has('--dry-run')});
 const out = {slug: rep.slug, from: rep.from, to: rep.to, date, ok: rep.ok, dryRun: rep.dryRun, changed: rep.changed, steps: rep.steps, warnings: rep.warnings, errors: rep.errors, extra: [], changelog: ''};
 if (!rep.ok || has('--dry-run')) { out.changelog = 'omis'; console.log(JSON.stringify(out)); process.exit(rep.ok ? 0 : 1); }
 
@@ -42,7 +44,7 @@ else if (new RegExp(`^## \\[?${rep.to.replace(/\./g, '\\.')}\\b`, 'm').test(t)) 
 else {
   const k = t.search(/^## /m), top = k < 0 ? '' : t.slice(k, k + 1500);
   const ro = /[ăâîșțşţĂÂÎȘȚ]|\b(și|pentru|aplicați\w*|nou|acum|adăugat|corectat)\b/i.test(top);
-  const note = val('--note') || (ro
+  const note = (ro ? val('--note-ro') : val('--note-en')) || val('--note') || (ro
     ? `- Nou: texturi fractale hiper-detaliate (fff-texturi ${eng}) — fundalul și suprafețele mari (carduri, panouri, antete, butoane; filele și dialogurile ascunse la încărcare, când se deschid) primesc un material generat local (WebGL2, fără rețea și fără imagini), care se repetă fără cusătură; culorile aplicației rămân ale ei. Se oprește din dialogul „Transparență” sau cu \`?notex=1\`.`
     : `- New: hyper-detailed fractal textures (fff-texturi ${eng}) — the background and large surfaces (cards, panels, headers, buttons; tabs and dialogs that are hidden at load, once they open) get a locally generated material (WebGL2, no network, no images) that tiles seamlessly; the app keeps its own colours. Turn it off in the "Transparency" dialog or with \`?notex=1\`.`);
   const h = (top.match(/^## (\[?)(\d+(?:\.\d+){0,2})(\]?)(\s*[—–-]\s*)(\d{4}-\d{2}-\d{2})/) || []);

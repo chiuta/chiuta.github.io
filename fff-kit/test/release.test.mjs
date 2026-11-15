@@ -38,6 +38,8 @@ function synth(root, name, {version = '2.3.9', date = '2026-10-22', modules = 'c
     '',
   ].join('\n'));
   for (const [l, a, b] of [['', 'Version', 'Last updated'], ['.ro', 'Versiune', 'Ultima actualizare'], ['.fr', 'Version', 'Dernière mise à jour']]) fs.writeFileSync(path.join(d, `README${l}.md`), `# ${name}\n\n**English** · ...\n\n**${a}${l === '.fr' ? ' ' : ''}:** ${version} · **${b}${l === '.fr' ? ' ' : ''}:** ${date}\n\ntext\n`);
+  // README cursiv, fără aldine (cum are DECUPAJ): „_Version: 2.3.9 · Last updated: …_”
+  fs.writeFileSync(path.join(d, 'README.de.md'), `# ${name}\n\n_Version: ${version} · Zuletzt aktualisiert: ${date}_\n\ntext\n`);
   fs.writeFileSync(path.join(d, 'fff.config.json'), JSON.stringify({storagePrefixes: ['fx.', 'demo-fff.']}));
   applyKit(d, {slug: name, modules, disable}); runInfo(d, {slug: name});
   return d;
@@ -76,6 +78,7 @@ console.log('release pe aplicație sintetică');
   check('slug, module și fff-disable păstrate', meta(h, 'fff-app') === 'alfa' && /modules=core,label,bundle,srs/.test(h) && h.includes('<meta name="fff-disable" content="motiv de test">') && app.kit.modules.join() === 'core,label,bundle,srs');
   const t = rf(d, 'tests', 'a.test.mjs');
   check('teste: versiune și dată în text simplu și regex; kit.version și alte numere neatinse', t.includes("const V = '2.3.10'") && t.includes('/v ?2\\.3\\.10 · ' + DATE + '/') && t.includes(`info.version === "2.3.10" && info.updated === '${DATE}'`) && t.includes("info.kit.version === '1.1.4'") && t.includes("'10.2.3.90'"), t);
+  check('README cursiv (_Version: … · …: data_) actualizat', rf(d, 'README.de.md').includes(`_Version: 2.3.10 · Zuletzt aktualisiert: ${DATE}_`));
   check('README-uri (en, ro, fr cu „ :”) actualizate', rf(d, 'README.md').includes(`**Version:** 2.3.10 · **Last updated:** ${DATE}`) && rf(d, 'README.ro.md').includes(`**Versiune:** 2.3.10 · **Ultima actualizare:** ${DATE}`) && rf(d, 'README.fr.md').includes(`**Version :** 2.3.10 · **Dernière mise à jour :** ${DATE}`));
   check('fff.config.json neschimbat', JSON.parse(rf(d, 'fff.config.json')).storagePrefixes.length === 2);
   const again = releaseApp(d, {bump: 'none', lax: true});
