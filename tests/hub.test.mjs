@@ -165,7 +165,7 @@ await T('catalog: contoare derivate, stare, offline, fișă, variante Universul 
   ok(info.verText === 0, 'data de sincronizare în masă nu mai apare pe carduri');
   // filtru de stare
   await page.selectOption('#f-status', 'alpha');
-  await countIs(page, 20);
+  await countIs(page, 21);
   await page.selectOption('#f-status', 'experimental');
   await countIs(page, 1);
   await page.selectOption('#f-status', 'lab');
