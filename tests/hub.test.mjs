@@ -124,7 +124,7 @@ await T('catalog: căutare text (inclusiv în altă limbă, fără diacritice), 
   await ctx.close();
 });
 
-await T('catalog: contoare derivate, stare, offline, fișă, variante Universul Observabil, înrudite, secțiunea Rust separată (OSATURA, VERIGA, TEZAUR, LegatorOCR)', async () => {
+await T('catalog: contoare derivate, stare, offline, fișă, variante Universul Observabil, înrudite, secțiunea Rust separată (OSATURA, VERIGA, TEZAUR, LegatorOCR, EXIF-CURAT)', async () => {
   const LIVE = '#apps-grid .app-card:not([data-variant-of])';
   const {ctx, page, errors, external} = await open('ro');
   await page.waitForSelector(LIVE);
@@ -156,10 +156,10 @@ await T('catalog: contoare derivate, stare, offline, fișă, variante Universul 
   ok(info.variantsVisible === 0 && info.nAll - info.nLive === 3, 'variantele Universului Observabil trebuie ascunse (3)');
   ok(info.noBadges.length === 0, 'fără insigne/fișă: ' + info.noBadges.join(', '));
   ok(info.osCat === 'rust' && info.osSection === 'rust' && info.osStatus === 'alpha', 'OSATURA nu e în secțiunea Rust: ' + JSON.stringify([info.osCat, info.osSection, info.osStatus]));
-  ok(info.rustCards === 'OSATURA,VERIGA,TEZAUR,LegatorOCR', 'secțiunea Rust: ' + info.rustCards);
+  ok(info.rustCards === 'OSATURA,VERIGA,TEZAUR,LegatorOCR,EXIF-CURAT', 'secțiunea Rust: ' + info.rustCards);
   ok(info.uoVariantLinks.length === 3 && info.uoVariantLinks.every((u) => /Universul-Observabil-[123]D\/?$/.test(u)), 'fișa hub-ului nu listează cele 3 variante: ' + info.uoVariantLinks.join(','));
   ok(info.shots === 0, 'nu trebuie să existe capturi dacă nu sunt declarate');
-  ok([...info.statuses.alpha].sort().join() === 'ANTENA,ARBITRU,ASTROLABIU,ECOGRAMA,LegatorOCR,MARTOR,NEAMURI,OSATURA,TACTIL,TEZAUR,atelier-verificare,balanta,calendarium,ecou-spectral-rs,glosar,graiul,indicativ-international,proiector-fara-frontiere,regula,vietar-packs' && info.statuses.experimental.join() === 'Provenienta' && info.statuses.stable.length > 100, 'stări: ' + JSON.stringify(info.statuses).slice(0, 200));
+  ok([...info.statuses.alpha].sort().join() === 'ANTENA,ARBITRU,ASTROLABIU,ECOGRAMA,EXIF-CURAT,LegatorOCR,MARTOR,NEAMURI,OSATURA,TACTIL,TEZAUR,atelier-verificare,balanta,calendarium,ecou-spectral-rs,glosar,graiul,indicativ-international,proiector-fara-frontiere,regula,vietar-packs' && info.statuses.experimental.join() === 'Provenienta' && info.statuses.stable.length > 100, 'stări: ' + JSON.stringify(info.statuses).slice(0, 200));
   ok(info.statuses.lab.join() === 'LocalMind,OmniHost', 'laborator: ' + info.statuses.lab.join());
   ok(info.recom.length >= 5 && info.recom.every((r, i) => r[2] !== 'lab' && r[1] >= 5 && (i === 0 || info.recom[i - 1][1] >= r[1])), 'Recomandate nu e ordonată după scorul măsurat / conține laborator: ' + JSON.stringify(info.recom));
   ok(info.verText === 0, 'data de sincronizare în masă nu mai apare pe carduri');
