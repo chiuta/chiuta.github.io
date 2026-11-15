@@ -1,0 +1,23 @@
+/* fff-kit · FFF.share — bară verticală de distribuire, marginea din stânga, centrată pe verticală; compensează zoom-ul paginii (FFF.view) prin --fff-zinv. */
+.fff-share{position:fixed;z-index:2147483590;left:calc(8px + env(safe-area-inset-left,0px));top:50%;transform:translateY(-50%);margin:0;padding:0;display:flex;flex-direction:column;align-items:center;gap:6px;
+  pointer-events:none;font:700 14px/1 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;transition:opacity .4s;max-height:calc(100vh * var(--fff-zinv,1) - 16px);overflow:visible}
+.fff-share *{box-sizing:border-box}
+.fff-share[hidden]{display:none}
+.fff-share-list{display:flex;flex-direction:column;gap:6px}
+.fff-share-closed .fff-share-list{display:none}
+.fff-share-btn{pointer-events:auto;box-sizing:border-box;width:40px;height:40px;min-width:40px;min-height:40px;border-radius:50%;border:1px solid rgba(255,255,255,.4);background:rgba(18,20,26,.72);color:#fff;
+  display:inline-grid;place-items:center;padding:0;margin:0;cursor:pointer;text-decoration:none;opacity:.88;-webkit-tap-highlight-color:transparent;transition:opacity .4s,transform .15s,border-color .15s;box-shadow:0 1px 6px rgba(0,0,0,.45)}
+.fff-share-btn:hover{border-color:#ffd54a;opacity:1}
+.fff-share-btn:active{transform:scale(.92)}
+.fff-share-btn:focus-visible{outline:3px solid #ffd54a;outline-offset:2px}
+.fff-share-btn svg{display:block;pointer-events:none}
+.fff-share-txt{pointer-events:none;font:800 15px/1 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;letter-spacing:-.02em}
+.fff-share-tog{width:32px;height:32px;min-width:32px;min-height:32px}
+.fff-share-tog svg{width:18px;height:18px}
+.fff-share-idle .fff-share-btn{opacity:.4}
+.fff-share-ok{background:#1f7a3a;border-color:#7fe3a0}.fff-share-no{background:#8a2a2a;border-color:#ff9a9a}
+.fff-share-sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+@media (pointer:coarse){.fff-share-btn{width:44px;height:44px;min-width:44px;min-height:44px}}
+@media (max-height:420px){.fff-share-btn{width:34px;height:34px;min-width:34px;min-height:34px}.fff-share-list,.fff-share{gap:4px}}
+@media (prefers-reduced-motion:reduce){.fff-share,.fff-share-btn{transition:none}}
+@media print{.fff-share{display:none!important}}

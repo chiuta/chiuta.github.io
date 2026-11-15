@@ -4,7 +4,7 @@
        :root:not([data-fff-viewoff]) table:not([role=presentation]):not([role=none]):not(:has(> thead)) > tbody > tr:first-child > th,
        :root:not([data-fff-viewoff]) table:not([role=presentation]):not([role=none]):not(:has(> thead)) > tr:first-child > th){position:sticky;top:0;z-index:3}
 .fff-view{position:fixed;z-index:2147483590;margin:0;padding:0;pointer-events:none;font:600 13px/1.2 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;transition:opacity .4s;
-  top:30%;display:flex;flex-direction:column;gap:6px}
+  top:50%;transform:translateY(-50%);display:flex;flex-direction:column;gap:6px}
 .fff-view[hidden]{display:none}
 .fff-view-r{right:calc(8px + env(safe-area-inset-right,0px))}
 .fff-view-l{left:calc(8px + env(safe-area-inset-left,0px))}

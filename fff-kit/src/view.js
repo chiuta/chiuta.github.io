@@ -52,12 +52,62 @@
     } catch (e) { /* ignorat */ }
   }
 
+
+  /* ---------- unități de viewport sub zoom ----------
+   * `zoom` pe <html> mărește tot, dar vh/vw rămân măsurate pe fereastra reală: un panou cu height:calc(100vh - 60px) iese cu (zoom−1)·100% din ecran și se suprapune
+   * peste subsol. Copiem regulile care folosesc vh/vw/vmin/vmax într-o foaie de stil proprie, cu unitatea înmulțită cu --fff-zinv (= 1/zoom). */
+  var UNIT = /(-?\d*\.?\d+)(vh|dvh|svh|lvh|vw|dvw|svw|lvw|vmin|dvmin|svmin|lvmin|vmax|dvmax|svmax|lvmax)\b/g;
+  var VPROPS = /^(height|min-height|max-height|width|min-width|max-width|top|bottom|left|right|inset(-block|-inline)?(-start|-end)?|block-size|inline-size|min-block-size|max-block-size|min-inline-size|max-inline-size|flex-basis)$/;
+  var vhSheet = null, vhT = 0;
+  function hasUnit(v) { UNIT.lastIndex = 0; var r = UNIT.test(v); UNIT.lastIndex = 0; return r; }
+  function wrapUnits(v) { return v.replace(UNIT, 'calc($1$2 * var(--fff-zinv,1))'); }
+  function collectUnits(list, out) {
+    for (var i = 0; i < list.length; i++) {
+      var r = list[i];
+      try {
+        if (r.type === 1 && r.style) {
+          var decl = '';
+          for (var j = 0; j < r.style.length; j++) {
+            var p = r.style[j]; if (!VPROPS.test(p)) continue;
+            var v = r.style.getPropertyValue(p); if (!hasUnit(v) || v.indexOf('--fff-zinv') >= 0) continue;
+            decl += p + ':' + wrapUnits(v) + (r.style.getPropertyPriority(p) ? '!important' : '') + ';';
+          }
+          if (decl && r.selectorText) out.push(r.selectorText + '{' + decl + '}');
+        } else if ((r.type === 4 || r.type === 12) && r.cssRules) {
+          var inner = []; collectUnits(r.cssRules, inner);
+          if (inner.length) out.push((r.type === 4 ? '@media ' : '@supports ') + r.conditionText + '{' + inner.join('') + '}');
+        }
+      } catch (e) { /* ignorat */ }
+    }
+  }
+  function fixUnits() {
+    if (Math.abs(total - 1) < 0.005 || !doc.head) return;
+    var out = [];
+    for (var i = 0; i < doc.styleSheets.length; i++) {
+      var ss = doc.styleSheets[i]; if (ss.ownerNode && ss.ownerNode.id === 'fff-vhfix') continue;
+      try { if (ss.cssRules) collectUnits(ss.cssRules, out); } catch (e) { /* foaie din alt domeniu */ }
+    }
+    if (!vhSheet) { vhSheet = doc.createElement('style'); vhSheet.id = 'fff-vhfix'; doc.head.appendChild(vhSheet); }
+    else if (vhSheet.nextSibling) doc.head.appendChild(vhSheet);                                   // rămâne ultima, ca să bată regulile aplicației
+    var css = out.join('\n'); if (vhSheet.textContent !== css) vhSheet.textContent = css;
+    var els = doc.querySelectorAll('[style*="vh"],[style*="vw"],[style*="vmin"],[style*="vmax"]');
+    for (var k = 0; k < els.length; k++) {
+      var st = els[k].style;
+      for (var m = 0; m < st.length; m++) {
+        var pp = st[m]; if (!VPROPS.test(pp)) continue;
+        var vv = st.getPropertyValue(pp); if (hasUnit(vv) && vv.indexOf('--fff-zinv') < 0) st.setProperty(pp, wrapUnits(vv), st.getPropertyPriority(pp));
+      }
+    }
+  }
+  function scheduleUnits() { clearTimeout(vhT); vhT = setTimeout(function () { try { fixUnits(); } catch (e) { /* ignorat */ } }, 120); }
+
   /* ---------- zoom ---------- */
   function applyZoom(z) {
     total = clamp(z);
     if (Math.abs(total - 1) < 0.005) { de.style.removeProperty('zoom'); de.style.removeProperty('--fff-zinv'); }
     else { de.style.zoom = String(round2(total)); de.style.setProperty('--fff-zinv', String(Math.round(1e4 / total) / 1e4)); }
     if (root) root.style.zoom = total === 1 ? '' : String(Math.round(1e4 / total) / 1e4);
+    scheduleUnits();
     state();
   }
   function state() {
@@ -172,31 +222,12 @@
     }
     return out;
   }
-  function place(again) {
+  function place() {                                                               // bara de zoom stă mereu pe marginea din DREAPTA, centrată pe verticală (CSS: top:50% + translateY)
     if (!root) return;
-    var prev = root.style.visibility; root.style.visibility = 'hidden';
-    var w = innerWidth, h = innerHeight, H = 144, W = 44, best = null, score = 1e9, rects = ctrlRects();
-    var minY = 76 + H / 2, maxY = h - 12 - H / 2, M = 8;
-    if (!again) de.classList.remove('fff-vpad-r', 'fff-vpad-l');
-    ['l'].forEach(function (c) {                                                  // bara de zoom stă mereu pe marginea din STÂNGA (dreapta e a panoului de accesibilitate, FFF.a11y)
-      var x0 = c === 'r' ? w - M - W : M, x1 = x0 + W;
-      for (var k = 0; k <= 14; k++) {
-        var f = 0.5 + (k % 2 ? 1 : -1) * Math.ceil(k / 2) * 0.05, cy = Math.min(Math.max(h * f, minY), maxY), t0 = cy - H / 2, t1 = cy + H / 2, sc = 0, ov = 0;
-        for (var i = 0; i < rects.length; i++) { var r = rects[i]; if (Math.min(x1, r.right) - Math.max(x0, r.left) > 1 && Math.min(t1, r.bottom) - Math.max(t0, r.top) > 1) { sc += 1; ov += 1; } }
-        for (var d = -H / 2 + 22; d <= H / 2 - 22; d += 50) sc += busy(c === 'r' ? w - 30 : 30, cy + d) * 0.2;
-        sc = sc * 10 + k * 0.1;
-        if (sc < score) { score = sc; best = {c: c, y: cy, ov: ov}; }
-      }
-    });
-    root.style.visibility = prev;
-    if (best && best.ov > 0 && !again) {                                           // nicio înălțime liberă: rezervăm o gutieră pe margine, conținutul se strânge
-      de.classList.remove('fff-vpad-r', 'fff-vpad-l'); de.classList.add('fff-vpad-' + best.c);
-      void de.offsetWidth; return place(true);
-    }
-    if (best && best.ov > 0 && again) { de.classList.remove('fff-vpad-r', 'fff-vpad-l'); }   // nu a ajutat: revenim
-    side = 'l';
+    de.classList.remove('fff-vpad-r', 'fff-vpad-l');
+    side = 'r';
     root.className = root.className.replace(/\bfff-view-(r|l|c)\b/g, '').replace(/\s+/g, ' ').trim() + ' fff-view-' + side;
-    root.style.top = Math.round(best ? best.y - H / 2 : 80) + 'px';
+    root.style.top = '';
   }
   function icon(kind) {
     var NS = 'http://www.w3.org/2000/svg', s = doc.createElementNS(NS, 'svg');
@@ -354,6 +385,6 @@
   window.addEventListener('resize', scheduleSticky, {passive: true});
   ['pointerdown', 'touchstart', 'scroll'].forEach(function (ev) { doc.addEventListener(ev, wake, {passive: true, capture: true}); });
   if (doc.readyState === 'loading') doc.addEventListener('DOMContentLoaded', init); else init();
-  window.addEventListener('load', function () { scheduleSticky(); setTimeout(function () { if (root && !root.hidden) refit(); }, 700); });
+  window.addEventListener('load', function () { scheduleUnits(); scheduleSticky(); setTimeout(function () { if (root && !root.hidden) refit(); }, 700); });
   setTimeout(function () { if (root && !root.hidden) refit(); }, 2500);
 })();
