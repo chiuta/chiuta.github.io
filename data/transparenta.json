@@ -1694,7 +1694,7 @@
   }
  ],
  "a8": {
-  "date": "2026-11-09",
+  "date": "2026-11-16",
   "sources": [
    {
     "id": "ACORDAJ",
@@ -1712,9 +1712,9 @@
     "id": "VNTV",
     "app": "VNTV",
     "cad": "viu",
-    "st": "schimbat",
+    "st": "ok",
     "active": true,
-    "lastOk": "2026-11-09",
+    "lastOk": "2026-11-16",
     "lastFail": null,
     "err": null,
     "recs": 1364,
@@ -2136,7 +2136,7 @@
    "stopped": 15,
    "stale": 0,
    "failingApps": [],
-   "healthFile": "2026-11-09"
+   "healthFile": "2026-11-16"
   },
   "versions": {
    "cards": 151,
