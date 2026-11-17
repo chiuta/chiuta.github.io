@@ -1,0 +1,70 @@
+{
+ "slug": "porumbel",
+ "version": "porumbel 0.1.0-alpha.1",
+ "scenes": [
+  [
+   {
+    "cmd": "porumbel --version",
+    "out": "porumbel 0.1.0-alpha.1\n",
+    "code": 0
+   },
+   {
+    "cmd": "porumbel --help | head -n 14",
+    "out": "PORUMBEL — carries photos from Open Camera (phone) into a folder on this computer and\nhands them to LegatorOCR.  /  Duce pozele din Open Camera în folderul de pe calculator\nși le deschide în LegatorOCR.\n\nUSAGE\n  porumbel [options]            run (server, ADB and folder watchers as configured)\n  porumbel init                 create the settings file and print where it is\n  porumbel qr                   print the QR code for the phone and exit\n  porumbel open-last            open the newest session in LegatorOCR and exit\n  porumbel forget               forget which photos were already received\n  porumbel print-config         show the effective settings\n  porumbel doctor               check folder, port, adb, phone and LegatorOCR\n\nOPTIONS (same names as in the settings file)\n",
+    "code": 0
+   }
+  ],
+  [
+   {
+    "cmd": "cat demo.conf",
+    "out": "# PORUMBEL — demo settings / setări pentru demonstrație\ninbox = inbox\ntoken = demo-token-0123456789\nserve = false\nwatch = sync\nopen = manual\nsession_gap = 4\nwatch_interval = 1\n",
+    "code": 0
+   },
+   {
+    "cmd": "porumbel print-config --config demo.conf | grep -E '^(token|serve|port|session_gap|open|watch) '",
+    "out": "token = demo…\nserve = false\nport = 8750\nsession_gap = 4\nopen = manual\n",
+    "code": 0
+   }
+  ],
+  [
+   {
+    "cmd": "ls sync",
+    "out": "IMG_20261113_101500.jpg\n",
+    "code": 0
+   },
+   {
+    "cmd": "porumbel --config demo.conf --once",
+    "out": "PORUMBEL 0.1.0-alpha.1\n  settings : demo.conf\n  inbox    : /home/demo/inbox\n  LegatorOCR: not found (the folder will be opened instead; set `launch =`)\n19-57-38 watch sync: first run — 1 existing files left alone (use --watch-all to import them)\n",
+    "code": 0
+   }
+  ],
+  [
+   {
+    "cmd": "cat phone.sh",
+    "out": "#!/bin/bash\n# stands in for the phone's sync app / ține locul aplicației de sincronizare de pe telefon\ncd \"$(dirname \"$0\")\"\nfor f in IMG_20261114_135501 IMG_20261114_135512 IMG_20261114_135524; do cp camera/$f.jpg sync/; sleep 2; done\nsleep 6\nfor f in IMG_20261114_141003 IMG_20261114_141011; do cp camera/$f.jpg sync/; sleep 2; done\n",
+    "code": 0
+   }
+  ],
+  [
+   {
+    "cmd": "./phone.sh & timeout 22 porumbel --config demo.conf",
+    "out": "PORUMBEL 0.1.0-alpha.1\n  settings : demo.conf\n  inbox    : /home/demo/inbox\n  LegatorOCR: not found (the folder will be opened instead; set `launch =`)\n19-57-40 + IMG_20261114_135501.jpg (5 KB) → 2026-11-14_13-55-01  [folder]\n19-57-42 + IMG_20261114_135512.jpg (5 KB) → 2026-11-14_13-55-01  [folder]\n19-57-44 + IMG_20261114_135524.jpg (5 KB) → 2026-11-14_13-55-01  [folder]\n19-57-52 + IMG_20261114_141003.jpg (5 KB) → 2026-11-14_14-10-03  [folder]\n19-57-54 + IMG_20261114_141011.jpg (5 KB) → 2026-11-14_14-10-03  [folder]\n",
+    "code": 124
+   }
+  ],
+  [
+   {
+    "cmd": "ls -R inbox",
+    "out": "inbox:\n2026-11-14_13-55-01\n2026-11-14_14-10-03\n\ninbox/2026-11-14_13-55-01:\nIMG_20261114_135501.jpg\nIMG_20261114_135512.jpg\nIMG_20261114_135524.jpg\n\ninbox/2026-11-14_14-10-03:\nIMG_20261114_141003.jpg\nIMG_20261114_141011.jpg\n",
+    "code": 0
+   }
+  ],
+  [
+   {
+    "cmd": "porumbel doctor --config demo.conf",
+    "out": "PORUMBEL 0.1.0-alpha.1 — diagnostic\n\n[ ok ] settings     demo.conf\n[ ok ] inbox        /home/demo/inbox\n[ ok ] token        long enough\n[ -- ] server       disabled (serve = false)\n[warn] LegatorOCR   not found; the session folder will be opened instead (set `launch =`)\n[ -- ] adb          off (enable with --adb)\n[ ok ] watch        sync\n\nNothing blocks PORUMBEL.\n",
+    "code": 0
+   }
+  ]
+ ]
+}

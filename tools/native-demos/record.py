@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Înregistrează sesiunile reale ale celor 4 programe native (TEZAUR, VERIGA, LegatorOCR, OSATURA) pe date demo mici.
+"""Înregistrează sesiunile reale ale celor 5 programe native (TEZAUR, VERIGA, LegatorOCR, OSATURA, PORUMBEL) pe date demo mici.
 
 Rulare: python3 -I tools/native-demos/record.py [--bin DIR] [slug ...]
 Scrie tools/native-demos/captures/<slug>.json: pentru fiecare comandă, textul ieșirii REALE (stdout+stderr combinat),
@@ -9,7 +9,7 @@ import json, os, shutil, subprocess, sys, tempfile, pathlib
 
 HERE = pathlib.Path(__file__).resolve().parent
 PAR = HERE.parents[2]  # părintele hub-ului (clonele programelor)
-BINS = {'tezaur': ('TEZAUR', 'tezaur'), 'veriga': ('VERIGA', 'veriga'), 'legatorocr': ('LegatorOCR', 'legatorocr'), 'osatura': ('osatura', 'osatura')}
+BINS = {'tezaur': ('TEZAUR', 'tezaur'), 'veriga': ('VERIGA', 'veriga'), 'legatorocr': ('LegatorOCR', 'legatorocr'), 'osatura': ('osatura', 'osatura'), 'porumbel': ('PORUMBEL', 'porumbel')}
 
 # Fiecare scenă = comenzile afișate (rulate real, într-un shell bash) — textul narat e în narration.json
 SCENES = {
@@ -41,7 +41,46 @@ SCENES = {
   ['osatura render demo.json 12 frame12.png --bones', 'osatura render demo.json 12 frame12.svg'],
   ['osatura export demo.json demo.gif', 'ls -l frame12.png frame12.svg demo.gif'],
  ],
+ 'porumbel': [
+  ['porumbel --version', 'porumbel --help | head -n 14'],
+  ['cat demo.conf', "porumbel print-config --config demo.conf | grep -E '^(token|serve|port|session_gap|open|watch) '"],
+  ['ls sync', 'porumbel --config demo.conf --once'],
+  ['cat phone.sh'],
+  ['./phone.sh & timeout 22 porumbel --config demo.conf'],
+  ['ls -R inbox'],
+  ['porumbel doctor --config demo.conf'],
+ ],
 }
+
+# Fișierele scenei PORUMBEL: phone.sh stă în locul aplicației de sincronizare de pe telefon (copiază pozele în folderul urmărit, una câte una);
+# pozele sunt JPEG-uri reale, mici (Pillow), cu nume ca în Open Camera. Totul se vede în scene (cat demo.conf, cat phone.sh).
+PORUMBEL_CONF = '''# PORUMBEL — demo settings / setări pentru demonstrație
+inbox = inbox
+token = demo-token-0123456789
+serve = false
+watch = sync
+open = manual
+session_gap = 4
+watch_interval = 1
+'''
+PORUMBEL_PHONE = '''#!/bin/bash
+# stands in for the phone's sync app / ține locul aplicației de sincronizare de pe telefon
+cd "$(dirname "$0")"
+for f in IMG_20261114_135501 IMG_20261114_135512 IMG_20261114_135524; do cp camera/$f.jpg sync/; sleep 2; done
+sleep 6
+for f in IMG_20261114_141003 IMG_20261114_141011; do cp camera/$f.jpg sync/; sleep 2; done
+'''
+def prep_porumbel(work):
+    from PIL import Image, ImageDraw
+    (work / 'camera').mkdir(); (work / 'sync').mkdir()
+    def page(path, label):
+        im = Image.new('RGB', (240, 160), (250, 248, 240)); d = ImageDraw.Draw(im)
+        for y in range(24, 140, 14): d.line((20, y, 220 - (y * 7) % 60, y), fill=(60, 60, 70), width=2)
+        d.text((20, 6), label, fill=(120, 30, 30)); im.save(path, quality=70)
+    for i, n in enumerate(['IMG_20261114_135501', 'IMG_20261114_135512', 'IMG_20261114_135524', 'IMG_20261114_141003', 'IMG_20261114_141011']): page(work / 'camera' / (n + '.jpg'), 'page %d' % (i + 1))
+    page(work / 'sync' / 'IMG_20261113_101500.jpg', 'old')   # o poză veche, deja în folderul sincronizat
+    (work / 'demo.conf').write_text(PORUMBEL_CONF, encoding='utf8')
+    (work / 'phone.sh').write_text(PORUMBEL_PHONE, encoding='utf8'); (work / 'phone.sh').chmod(0o755)
 
 def prep(slug, work):
     d = HERE / 'data'
@@ -51,6 +90,8 @@ def prep(slug, work):
         shutil.copytree(d / 'site', work / 'site')
     elif slug == 'legatorocr':
         subprocess.run([sys.executable, '-I', str(HERE / 'make_pages.py'), str(work)], check=True)
+    elif slug == 'porumbel':
+        prep_porumbel(work)
 
 def main():
     a = sys.argv[1:]; binroot = None

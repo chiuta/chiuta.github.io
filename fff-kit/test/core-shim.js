@@ -1,6 +1,9 @@
 // Shim minimal al lui FFF.core, DOAR pentru testele modulelor independente (kit-ul real: src/core.js).
 (function () {
   const F = (window.FFF = window.FFF || {});
+  // în kitul real FFF.rx/FFF.imp vin din src/compat.js (încărcat înaintea kitului); în Node motorul e modern, deci construcția e nativă
+  F.rx = F.rx || function (src, flags) { return new RegExp(src, flags || ''); };
+  F.imp = F.imp || function (u) { return import(u); };
   const SUP = ['ro', 'en', 'fr', 'it', 'es', 'pt', 'hu', 'de'];
   F._i18n = F._i18n || {};
   F.registerI18n = F.registerI18n || function (mod, obj) { F._i18n[mod] = obj; };

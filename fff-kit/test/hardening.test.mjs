@@ -7,6 +7,7 @@ import {spawnSync} from 'node:child_process';
 import {makeApp, launch, newPage, tmpDir, check, summary, FIXTURE, HERE} from './_pw.mjs';
 import {recomputeCspHashes} from '../lib/csp.mjs';
 import {kitVersion} from '../build.mjs';
+import {KIT_VERSION, KIT_VERSION_RX} from './_ver.mjs';
 
 const KIT = path.join(HERE, '..');
 const BUILD = path.join(KIT, 'build.mjs');
@@ -19,8 +20,8 @@ const bundleOf = (data, app = 'demo-fff') => JSON.stringify({format: 'fff-bundle
 
 /* ====================================================================== versiune */
 console.log('versiune');
-check('KIT_VERSION = 1.6.0 (core.js, build.mjs)', kitVersion() === '1.6.0' && /KIT_VERSION = '1\.6\.0'/.test(fs.readFileSync(path.join(KIT, 'src/core.js'), 'utf8')));
-check('README: Versiune 1.6.0', /\*\*Versiune:\*\* 1\.6\.0/.test(fs.readFileSync(path.join(KIT, 'README.md'), 'utf8')));
+check('KIT_VERSION = ' + KIT_VERSION + ' (core.js, build.mjs)', kitVersion() === KIT_VERSION && new RegExp("KIT_VERSION = '" + KIT_VERSION_RX + "'").test(fs.readFileSync(path.join(KIT, 'src/core.js'), 'utf8')));
+check('README: Versiune ' + KIT_VERSION, new RegExp('\\*\\*Versiune:\\*\\* ' + KIT_VERSION_RX).test(fs.readFileSync(path.join(KIT, 'README.md'), 'utf8')));
 
 /* ====================================================================== D3: iterații în texte */
 console.log('D3: textele din label.json derivă din constantă');
@@ -83,7 +84,7 @@ console.log('F11: derivă a blocului kit față de sursă');
   const h = rf(d);
   fs.writeFileSync(path.join(d, 'index.html'), h.replace("var SCHEMA = 1,", "var SCHEMA = 1, /* editat de mână */"));
   const o = run(['check', d, '--lax']);
-  check('modificare manuală a bundle.js în pagină → avertisment „derivă” cu modulul', /avert\.  derivă: blocul kit din pagină diferă de sursa kitului v1\.6\.0 \(bundle\)/.test(o.stdout), o.stdout);
+  check('modificare manuală a bundle.js în pagină → avertisment „derivă” cu modulul', new RegExp('avert\\.  derivă: blocul kit din pagină diferă de sursa kitului v' + KIT_VERSION_RX + ' \\(bundle\\)').test(o.stdout), o.stdout);
   fs.writeFileSync(path.join(d, 'index.html'), h.replace('.fff-dlg-sm{', '.fff-dlg-sm{/*x*/'));
   check('modificare în CSS → „derivă (css)”', /derivă: .*\(css\)/.test(run(['check', d, '--lax']).stdout));
   run(['apply', d, '--slug', 'demo-fff', '--modules', 'core,label,bundle']);

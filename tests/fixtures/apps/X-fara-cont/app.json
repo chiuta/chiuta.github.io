@@ -1,6 +1,6 @@
 {
-  "version": "2.2.9",
-  "updated": "2026-11-15",
+  "version": "2.3.2",
+  "updated": "2026-11-17",
   "egress": [
     {
       "host": "*.archive.org",

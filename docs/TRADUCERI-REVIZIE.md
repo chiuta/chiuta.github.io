@@ -82,7 +82,7 @@ Căile sunt relative la depozitul unității. Unde apare `{id}`, identificatorii
 #### fr · franceză (5 unități)
 
 - **Demonstrații native (demo/nativ)** (hub)
-  - `demo/nativ/{id}.fr.vtt` × 4 (id: tezaur, veriga, legatorocr, osatura)
+  - `demo/nativ/{id}.fr.vtt` × 5 (id: tezaur, veriga, legatorocr, osatura, porumbel)
   - `demo/nativ/nativ-data.js` (șirurile interfeței, cheia ui.*)
   - `demo/nativ/audio/{id}.fr.ogg` (voce sintetică: se regenerează din același text cu tools/native-demos/build.py)
 - **TEZAUR: tutoriale video (subtitrări)** (chiuta/TEZAUR)
@@ -98,7 +98,7 @@ Căile sunt relative la depozitul unității. Unde apare `{id}`, identificatorii
 #### it · italiană (5 unități)
 
 - **Demonstrații native (demo/nativ)** (hub)
-  - `demo/nativ/{id}.it.vtt` × 4 (id: tezaur, veriga, legatorocr, osatura)
+  - `demo/nativ/{id}.it.vtt` × 5 (id: tezaur, veriga, legatorocr, osatura, porumbel)
   - `demo/nativ/nativ-data.js` (șirurile interfeței, cheia ui.*)
   - `demo/nativ/audio/{id}.it.ogg` (voce sintetică: se regenerează din același text cu tools/native-demos/build.py)
 - **TEZAUR: tutoriale video (subtitrări)** (chiuta/TEZAUR)
@@ -114,7 +114,7 @@ Căile sunt relative la depozitul unității. Unde apare `{id}`, identificatorii
 #### es · spaniolă (5 unități)
 
 - **Demonstrații native (demo/nativ)** (hub)
-  - `demo/nativ/{id}.es.vtt` × 4 (id: tezaur, veriga, legatorocr, osatura)
+  - `demo/nativ/{id}.es.vtt` × 5 (id: tezaur, veriga, legatorocr, osatura, porumbel)
   - `demo/nativ/nativ-data.js` (șirurile interfeței, cheia ui.*)
   - `demo/nativ/audio/{id}.es.ogg` (voce sintetică: se regenerează din același text cu tools/native-demos/build.py)
 - **TEZAUR: tutoriale video (subtitrări)** (chiuta/TEZAUR)
@@ -130,7 +130,7 @@ Căile sunt relative la depozitul unității. Unde apare `{id}`, identificatorii
 #### pt · portugheză (5 unități)
 
 - **Demonstrații native (demo/nativ)** (hub)
-  - `demo/nativ/{id}.pt.vtt` × 4 (id: tezaur, veriga, legatorocr, osatura)
+  - `demo/nativ/{id}.pt.vtt` × 5 (id: tezaur, veriga, legatorocr, osatura, porumbel)
   - `demo/nativ/nativ-data.js` (șirurile interfeței, cheia ui.*)
   - `demo/nativ/audio/{id}.pt.ogg` (voce sintetică: se regenerează din același text cu tools/native-demos/build.py)
 - **TEZAUR: tutoriale video (subtitrări)** (chiuta/TEZAUR)
@@ -146,7 +146,7 @@ Căile sunt relative la depozitul unității. Unde apare `{id}`, identificatorii
 #### de · germană (5 unități)
 
 - **Demonstrații native (demo/nativ)** (hub)
-  - `demo/nativ/{id}.de.vtt` × 4 (id: tezaur, veriga, legatorocr, osatura)
+  - `demo/nativ/{id}.de.vtt` × 5 (id: tezaur, veriga, legatorocr, osatura, porumbel)
   - `demo/nativ/nativ-data.js` (șirurile interfeței, cheia ui.*)
   - `demo/nativ/audio/{id}.de.ogg` (voce sintetică: se regenerează din același text cu tools/native-demos/build.py)
 - **TEZAUR: tutoriale video (subtitrări)** (chiuta/TEZAUR)
@@ -162,7 +162,7 @@ Căile sunt relative la depozitul unității. Unde apare `{id}`, identificatorii
 #### hu · maghiară (5 unități)
 
 - **Demonstrații native (demo/nativ)** (hub)
-  - `demo/nativ/{id}.hu.vtt` × 4 (id: tezaur, veriga, legatorocr, osatura)
+  - `demo/nativ/{id}.hu.vtt` × 5 (id: tezaur, veriga, legatorocr, osatura, porumbel)
   - `demo/nativ/nativ-data.js` (șirurile interfeței, cheia ui.*)
   - `demo/nativ/audio/{id}.hu.ogg` (voce sintetică: se regenerează din același text cu tools/native-demos/build.py)
 - **TEZAUR: tutoriale video (subtitrări)** (chiuta/TEZAUR)

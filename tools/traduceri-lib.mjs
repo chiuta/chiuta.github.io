@@ -39,10 +39,10 @@ function fromVtt(unit, dir, base, langs = LANGS) {
   return {segments: out, counts};
 }
 
-/** demo/nativ: subtitrări (4 programe × 8 limbi) + șirurile interfeței (nativ-data.js). */
+/** demo/nativ: subtitrări (5 programe × 8 limbi) + șirurile interfeței (nativ-data.js). */
 export function extractNativ(hub) {
   const dir = path.join(hub, 'demo', 'nativ'), out = [], struct = [];
-  for (const s of ['tezaur', 'veriga', 'legatorocr', 'osatura']) {
+  for (const s of ['tezaur', 'veriga', 'legatorocr', 'osatura', 'porumbel']) {
     const r = fromVtt('nativ', dir, s); out.push(...r.segments);
     const n = new Set(Object.values(r.counts)); if (n.size !== 1) struct.push(`nativ:${s}: numărul de replici diferă între limbi ${JSON.stringify(r.counts)}`);
   }

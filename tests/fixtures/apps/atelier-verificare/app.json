@@ -1,0 +1,39 @@
+{
+  "version": "0.2.0",
+  "updated": "2026-11-17",
+  "egress": [
+    {
+      "host": "archive.org",
+      "via": [
+        "csp:connect-src"
+      ]
+    },
+    {
+      "host": "cloudflare-dns.com",
+      "via": [
+        "csp:connect-src"
+      ]
+    },
+    {
+      "host": "dns.google",
+      "via": [
+        "csp:connect-src"
+      ]
+    }
+  ],
+  "features": {
+    "i18n": [
+      "ro",
+      "en",
+      "fr",
+      "it",
+      "es",
+      "pt",
+      "hu",
+      "de"
+    ],
+    "pwa": {
+      "serviceWorker": true
+    }
+  }
+}

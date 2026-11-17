@@ -3,6 +3,7 @@
  *
  *   node tools/transparenta.mjs collect   citește /tmp/audit/audit.txt, /tmp/audit2/summary.md, /tmp/audit4/{base,new}
  *                                         și starea curentă a depozitelor → data/transparenta.json
+ *   node tools/transparenta.mjs rows      reînnoiește doar `live` și `apps` (versiune/offline/limbi/gazde pe card) păstrând auditurile și scorurile existente
  *   node tools/transparenta.mjs audit     citește /tmp/audit7/*.json (tools/audit-run.mjs) → data/transparenta.json: a7 (scorul MĂSURAT, metoda în docs/GHID-AUTORI.md) + health
  *   node tools/transparenta.mjs health    recalculează doar tabloul de bord „health” (tools/portfolio-health.mjs)
  *   node tools/transparenta.mjs build     data/transparenta.json + tools/transparenta-i18n.mjs → transparenta.html
@@ -18,8 +19,10 @@ import {execFileSync} from 'node:child_process';
 import {fileURLToPath} from 'node:url';
 import {LANGS, LANG_NAMES, UI, CODES, CODE_KIND} from './transparenta-i18n.mjs';
 import {recomputeCspHashes} from '../fff-kit/lib/csp.mjs';
+import {ensureCompat} from './compat/layer.mjs';
 import {inlineBlock} from './texturi-hub/inline.mjs';   // texturi fractale (fff-texturi) în pagina generată
 import {computeHealth, healthProblems} from './portfolio-health.mjs';
+import {EXTERNAL} from './catalog-meta-lib.mjs';   // lista comună cu sync-catalog și make-fixtures (o singură sursă)
 
 const HUB = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const argv = process.argv.slice(2);
@@ -29,13 +32,51 @@ const ROOT = path.resolve(ri >= 0 ? argv[ri + 1] : path.join(HUB, '..'));
 const A7 = process.env.AUDIT7 || '/tmp/audit7';
 const A1 = process.env.AUDIT1 || '/tmp/audit/audit.txt', A2 = process.env.AUDIT2 || '/tmp/audit2/summary.md', A4 = process.env.AUDIT4 || '/tmp/audit4';
 const DATA = path.join(HUB, 'data', 'transparenta.json'), OUT = path.join(HUB, 'transparenta.html');
-const EXTERNAL = new Set(['OSATURA', 'VERIGA', 'TEZAUR', 'LegatorOCR', 'Fenarium', 'MENSURA', 'BRAZDA', 'VOIAJOR', 'CHIROMANTIA', 'PUNCTUM']);   // la fel ca în tools/sync-catalog.mjs
 const read = (p) => fs.readFileSync(p, 'utf8');
 const MONTHS = {ianuarie: 1, februarie: 2, martie: 3, aprilie: 4, mai: 5, iunie: 6, iulie: 7, august: 8, septembrie: 9, octombrie: 10, noiembrie: 11, decembrie: 12};
 const num = (s) => parseFloat(String(s).replace(',', '.'));
 const verGe = (v, w) => { const a = String(v).split('.').map(Number), b = w.split('.').map(Number); for (let i = 0; i < 3; i++) { if ((a[i] || 0) !== (b[i] || 0)) return (a[i] || 0) > (b[i] || 0); } return true; };
 
 /* ---------------- collect ---------------- */
+/** Starea curentă: cardurile hub-ului + app.json din depozite → {live, apps}. byName: scorurile din auditul 2 (cheie cu litere mici → {score, c, h, m, l}). */
+function liveAndApps(byName) {
+  // starea curentă: cardurile hub-ului (verificate de sync-catalog) + app.json din depozite
+  const html = read(path.join(HUB, 'index.html'));
+  const cards = html.split('<div class="app-card"').slice(1);
+  const live = {apps: 0, sw: 0, noSw: 0, fakeSw: 0, emptyI18n: 0, badHost: 0, kitGe114: 0, kitCount: 0, cnames: 0, shared: 0, syncOk: false};
+  const apps = [];
+  for (const c of cards) {
+    const key = (c.match(/data-c="apps\|([^|"]+)\|title"/) || [])[1];
+    if (!key) continue;
+    const ver = (c.match(/data-ver="([^"]*)"/) || [])[1] || '';
+    const off = (c.match(/data-off="([^"]*)"/) || [])[1] || 'no';
+    const langs = ((c.match(/data-langs="([^"]*)"/) || [])[1] || '').split(',').filter(Boolean);
+    // Intrări externe (ex. OSATURA, motor Rust): nu fac parte din audituri și nu intră în cifrele agregate; rând marcat `ext`.
+    if (EXTERNAL.has(key)) { apps.push({key, ver, off, langs: langs.length, hosts: 0, score: null, hm: null, l: null, ext: true}); continue; }
+    let app = null, swFile = false;
+    for (const d of [path.join(ROOT, key), path.join(ROOT, key, 'docs'), path.join(HUB, 'apps', key)]) {
+      if (!fs.existsSync(path.join(d, 'index.html'))) continue;
+      swFile = fs.existsSync(path.join(d, 'sw.js'));
+      for (const e of [d, path.dirname(d) === ROOT ? d : d, path.join(ROOT, key)]) { try { app = JSON.parse(read(path.join(e, 'app.json'))); break; } catch { /* fără app.json */ } }
+      break;
+    }
+    if (fs.existsSync(path.join(ROOT, key, 'CNAME'))) live.cnames++;
+    else if (fs.existsSync(path.join(HUB, 'apps', key, 'index.html'))) live.shared++;
+    const hosts = app ? (app.egress || []).map((e) => (typeof e === 'string' ? e : e.host)).filter((h) => !(app.cspSelfTest && app.cspSelfTest.intentional && app.cspSelfTest.host === h)) : [];
+    live.apps++;
+    if (swFile) live.sw++; else live.noSw++;
+    if (app && app.features && app.features.pwa && app.features.pwa.serviceWorker && !swFile) live.fakeSw++;
+    if (app && (!app.features || !Array.isArray(app.features.i18n) || !app.features.i18n.length)) live.emptyI18n++;
+    live.badHost += hosts.filter((h) => /[${}<>"'\\\s]/.test(h)).length;
+    if (app && app.kit && app.kit.version) { live.kitCount++; if (verGe(app.kit.version, '1.1.4')) live.kitGe114++; }
+    const r = byName.get(key.toLowerCase());
+    apps.push({key, ver, off, langs: langs.length, hosts: hosts.length, score: r ? r.score : null, hm: r ? r.c + r.h + r.m : null, l: r ? r.l : null});
+  }
+  try { execFileSync('node', [path.join(HUB, 'tools', 'sync-catalog.mjs'), '--check'], {stdio: 'pipe'}); live.syncOk = true; } catch { live.syncOk = false; }
+  apps.sort((x, y) => x.key.toLowerCase().localeCompare(y.key.toLowerCase()));
+  return {live, apps};
+}
+
 function collect() {
   const t1 = read(A1), t2 = read(A2);
   const must = (m, what) => { if (!m) throw new Error('nu găsesc în audit: ' + what); return m; };
@@ -80,41 +121,7 @@ function collect() {
     if (cnt(b, 't')) a4.touchBase++; if (cnt(w, 't')) a4.touchNew++;
     if (cnt(b, 's')) a4.smallBase++; if (cnt(w, 's')) a4.smallNew++;
   }
-  // starea curentă: cardurile hub-ului (verificate de sync-catalog) + app.json din depozite
-  const html = read(path.join(HUB, 'index.html'));
-  const cards = html.split('<div class="app-card"').slice(1);
-  const live = {apps: 0, sw: 0, noSw: 0, fakeSw: 0, emptyI18n: 0, badHost: 0, kitGe114: 0, kitCount: 0, cnames: 0, shared: 0, syncOk: false};
-  const apps = [];
-  const byName = new Map(rows.map((r) => [r.key.toLowerCase(), r]));
-  for (const c of cards) {
-    const key = (c.match(/data-c="apps\|([^|"]+)\|title"/) || [])[1];
-    if (!key) continue;
-    const ver = (c.match(/data-ver="([^"]*)"/) || [])[1] || '';
-    const off = (c.match(/data-off="([^"]*)"/) || [])[1] || 'no';
-    const langs = ((c.match(/data-langs="([^"]*)"/) || [])[1] || '').split(',').filter(Boolean);
-    // Intrări externe (ex. OSATURA, motor Rust): nu fac parte din audituri și nu intră în cifrele agregate; rând marcat `ext`.
-    if (EXTERNAL.has(key)) { apps.push({key, ver, off, langs: langs.length, hosts: 0, score: null, hm: null, l: null, ext: true}); continue; }
-    let app = null, swFile = false;
-    for (const d of [path.join(ROOT, key), path.join(ROOT, key, 'docs'), path.join(HUB, 'apps', key)]) {
-      if (!fs.existsSync(path.join(d, 'index.html'))) continue;
-      swFile = fs.existsSync(path.join(d, 'sw.js'));
-      for (const e of [d, path.dirname(d) === ROOT ? d : d, path.join(ROOT, key)]) { try { app = JSON.parse(read(path.join(e, 'app.json'))); break; } catch { /* fără app.json */ } }
-      break;
-    }
-    if (fs.existsSync(path.join(ROOT, key, 'CNAME'))) live.cnames++;
-    else if (fs.existsSync(path.join(HUB, 'apps', key, 'index.html'))) live.shared++;
-    const hosts = app ? (app.egress || []).map((e) => (typeof e === 'string' ? e : e.host)).filter((h) => !(app.cspSelfTest && app.cspSelfTest.intentional && app.cspSelfTest.host === h)) : [];
-    live.apps++;
-    if (swFile) live.sw++; else live.noSw++;
-    if (app && app.features && app.features.pwa && app.features.pwa.serviceWorker && !swFile) live.fakeSw++;
-    if (app && (!app.features || !Array.isArray(app.features.i18n) || !app.features.i18n.length)) live.emptyI18n++;
-    live.badHost += hosts.filter((h) => /[${}<>"'\\\s]/.test(h)).length;
-    if (app && app.kit && app.kit.version) { live.kitCount++; if (verGe(app.kit.version, '1.1.4')) live.kitGe114++; }
-    const r = byName.get(key.toLowerCase());
-    apps.push({key, ver, off, langs: langs.length, hosts: hosts.length, score: r ? r.score : null, hm: r ? r.c + r.h + r.m : null, l: r ? r.l : null});
-  }
-  try { execFileSync('node', [path.join(HUB, 'tools', 'sync-catalog.mjs'), '--check'], {stdio: 'pipe'}); live.syncOk = true; } catch { live.syncOk = false; }
-  apps.sort((x, y) => x.key.toLowerCase().localeCompare(y.key.toLowerCase()));
+  const {live, apps} = liveAndApps(new Map(rows.map((r) => [r.key.toLowerCase(), r])));
   let prev = {}; try { prev = JSON.parse(read(DATA)); } catch { /* prima rulare */ }
   const data = {...prev, schema: 1, snapshot: new Date().toISOString().slice(0, 10), a1, a2, a4, live, apps};
   fs.mkdirSync(path.dirname(DATA), {recursive: true});
@@ -139,6 +146,16 @@ export function scoreOne(r) {
   const score = incomplete ? null : +Object.values(comp).reduce((a, b) => a + b, 0).toFixed(2);
   return {comp, score, incomplete};
 }
+/** `rows`: reînnoiește doar `live` și `apps` (versiune, offline, limbi, gazde pe card) din cardurile și depozitele curente, păstrând auditurile 1, 2, 4, 7 și scorurile
+ *  din rândurile existente. Util după ce o aplicație nouă a devenit „obișnuită” (a ieșit din EXTERNAL) fără a reface auditurile vechi. */
+function refreshRows() {
+  const prev = JSON.parse(read(DATA));
+  const byName = new Map((prev.apps || []).filter((a) => !a.ext && a.hm != null).map((a) => [a.key.toLowerCase(), {key: a.key, score: a.score, c: a.hm, h: 0, m: 0, l: a.l}]));
+  const {live, apps} = liveAndApps(byName);
+  fs.writeFileSync(DATA, JSON.stringify({...prev, snapshot: new Date().toISOString().slice(0, 10), live, apps}, null, 1) + '\n');
+  console.log(`data/transparenta.json: ${apps.length} rânduri reînnoite (${apps.filter((a) => a.ext).length} externe) · sincronizare catalog ${live.syncOk ? 'ok' : 'NU'}`);
+}
+
 function audit() {
   if (!fs.existsSync(A7)) throw new Error('lipsește ' + A7 + ' (rulează tools/audit-run.mjs)');
   const data = JSON.parse(read(DATA));
@@ -401,6 +418,7 @@ ${inlineBlock('transparenta')}
 </body>
 </html>
 `;
+  html = ensureCompat(html, {force: true}).html;   // pagina generată poartă singură stratul fff-compat (ResizeObserver, requestIdleCallback …): `build` și `--check` dau același rezultat
   html = recomputeCspHashes(html).html;
   return html;
 }
@@ -419,6 +437,7 @@ function checkDict() {
 }
 
 if (cmd === 'collect') collect();
+else if (cmd === 'rows') refreshRows();
 else if (cmd === 'audit') audit();
 else if (cmd === 'health') health();
 else if (cmd === 'build' || cmd === 'check') {

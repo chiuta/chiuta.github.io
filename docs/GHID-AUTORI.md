@@ -10,6 +10,7 @@ Pentru cine scrie o aplicație nouă „fără frontiere” sau o leagă de port
 4. **axe-core: 0 violări** la 360 și 1366 px, temă luminoasă și întunecată, pe pagină și pe dialogul „Transparență”.
 5. **Chei de stocare prefixate** cu slug-ul (`fff.<slug>.*` sau `<slug>.*`), nu chei generice.
 6. **Onestitate**: limitele aplicației se scriu în fișa din catalog; fără promisiuni medicale sau de „efect”.
+7. **Compatibilitate cu browsere mai vechi**: sintaxă ES2017 (Chrome/Edge 55+, Firefox 52+, Safari 10.1+/iOS 10.3+); `node tools/compat/audit.mjs --gate` trece. Regulile de scriere sunt în § 10.
 
 ## 1. Pornirea unei aplicații
 
@@ -105,6 +106,7 @@ Fiecare aplicație are `tests/*.test.mjs` (Playwright, rețea blocată prin `ctx
 3. **accesibilitate**: axe 0 violări în ambele teme, la 360 și 1366 px;
 4. **8 limbi**: nicio cheie lipsă, nicio depășire de layout;
 5. **import ostil**: fișier corupt/gol/uriaș nu strică starea (copia de siguranță are rollback).
+6. **motor vechi**: `node tools/compat/smoke.mjs --root <apps> --only <Nume>` (pagina se deschide și într-un motor vechi simulat fără erori noi; § 10).
 
 Reguli pentru teste: să ruleze din depozitul autonom (cale către kit prin `FFF_KIT`, cale către axe prin `FFF_AXE`/`AXE_PATH`, fără căi absolute ale unei sesiuni); să nu depindă de data de azi (ceas fix sau date explicite); să iasă cu cod ≠ 0 la eșec; să dea un mesaj clar când lipsește o dependență, nu o excepție criptică. Rulează-le pe rând (suita e lentă în paralel).
 
@@ -130,6 +132,8 @@ Dacă build-ul, axe sau testele nu au putut fi rulate (timeout, lipsă), scorul 
 node fff-kit/build.mjs release <dir> --bump patch --no-tests ; node fff-kit/build.mjs fixcsp <dir> ; node fff-kit/build.mjs info <dir>
 node fff-kit/build.mjs check <dir>
 node fff-kit/ci/axe-check.mjs <dir>
+node tools/compat/audit.mjs --root <apps> --only <Nume> --gate    # sintaxă ES2017 + strat fff-compat (hub)
+node tools/compat/smoke.mjs --root <apps> --only <Nume>           # motor vechi simulat
 bash -c 'for t in <dir>/tests/*.mjs; do node $t || exit 1; done'
 # în hub:
 node tools/sync-catalog.mjs --root <apps> && node tools/sync-catalog.mjs --root <apps> --check
@@ -142,3 +146,41 @@ node tools/anthropic-audit.mjs --root <apps>      # nicio versiune/model Anthrop
 ```
 
 Commit cu identitatea `alexio@trom.tf`; mesajul se încheie cu liniile de atribuire ale sesiunii. Pentru fiecare aplicație modificată: versiune incrementată, `CHANGELOG.md`, teste proprii verzi.
+
+## 10. Compatibilitate cu browsere mai vechi (subsetul ES2017)
+
+Pragul și motivele lui: [COMPATIBILITATE.md](COMPATIBILITATE.md). Pentru autor contează regulile de scriere și verificările.
+
+**Scrii așa de la început** (în scriptul aplicației, nu în kit):
+
+| Nu scrie | Scrie |
+|---|---|
+| `a?.b`, `a?.[i]`, `f?.()` | `a && a.b` (sau `a == null ? undefined : a.b`) |
+| `a ?? b` | `a != null ? a : b` |
+| `x \|\|= y`, `x &&= y`, `x ??= y` | `x = x \|\| y` etc. |
+| `catch { … }` | `catch (e) { … }` |
+| `1_000_000`, `10n` | `1000000`; pentru BigInt: `FFF.compat.need('BigInt')` și rezervă |
+| `{...a, b: 1}`, `const {x, ...rest} = o` | `Object.assign({}, a, {b: 1})`; rest: copiezi și ștergi cheile |
+| `import('./x.js')` | `FFF.imp(url)` |
+| `/(?<=a)b/`, `/\p{L}/u`, `/a.b/s`, `/x/d`, grupuri cu nume | `FFF.rx('(?<=a)b', '')`, `FFF.rx('\\p{L}', 'u')`, `FFF.rx('a.b', 's')`; fără `d` și fără grupuri cu nume |
+| `class A { x = 1; static y }` | inițializezi în constructor / după clasă |
+| `async function*`, `for await` | buclă cu `await` pe un iterator scris de mână |
+| `Array.prototype.toSorted/toReversed/toSpliced` | `slice().sort()` etc. |
+
+Permise: `async`/`await`, `**`, șabloane, `let`/`const`, clase (fără câmpuri), destructurare, `Map`/`Set`/`Promise`, `Object.assign`, și API-urile acoperite de `fff-compat` (`Object.entries/values/fromEntries`, `padStart`, `replaceAll`, `matchAll`, `at`, `flat/flatMap`, `findLast`, `Promise.allSettled/any/finally`, `structuredClone`, `crypto.randomUUID`, `ResizeObserver`, `IntersectionObserver`, `navigator.clipboard`, `roundRect`, `<dialog>` …; lista exactă: `fff-kit/SPEC.md` § FFF.compat).
+
+**Funcții al căror text îl serializezi** (export de script cu `f.toString()`, Worker din Blob, `new Function`): după coborâre, regex-urile din ele devin `$fffRx(…)`, iar ajutorul există doar în pagină. Scrie în codul generat și definiția lui (`var $fffRx = function (s, f) { return new RegExp(s, f); };`) sau declară-l local în funcție; altfel exportul/Worker-ul dă `ReferenceError`. `audit.mjs --gate` prinde cazul (vezi § 3 din COMPATIBILITATE.md).
+
+**Dacă o funcție cere ceva neacoperit** (`BigInt`, `BroadcastChannel`, `CompressionStream`, `OffscreenCanvas`, `Intl.Segmenter`, `navigator.share`, File System Access): verifică la pornire cu `if (FFF.compat.need('BigInt')) { /* dezactivează funcția */ }`. `need` arată un banner tradus și întoarce `true` când lipsește; restul aplicației rămâne utilizabil.
+
+**CSS**: nu te baza pe `:has()`, `dvh`, `color-mix()`, `@container`, `@layer`, `backdrop-filter`, nesting fără o rezervă; pune declarația simplă înaintea celei moderne (`height:100vh; height:100dvh`), iar în `calc(… env(…))` pune întâi valoarea fără `env()`. Fără stiluri inline (CSP strict), deci rezervele stau în foaia de stil.
+
+**Verifici** înainte de push (și în CI):
+
+```
+node tools/compat/audit.mjs --root <apps> --only <Nume> --gate     # 0 eșecuri; avertismentele de CSS/API le citești
+node tools/compat/lower.mjs --root <apps> --only <Nume>            # pe uscat: trebuie „nimic de coborât”; cu --write coboară ce a scăpat
+node tools/compat/smoke.mjs --root <apps> --only <Nume>            # fără regresii în motorul vechi simulat
+```
+
+Ai un depozit cu build propriu (`build.py`, `build.js`, …)? Pașii de mai sus se rulează **după** build; altfel următorul build rescrie fișierul necoborât. `lower.mjs --write` rezolvă ce a scăpat, dar formele scrise direct în ES2017 sunt cele mai sigure.

@@ -11,12 +11,16 @@ const a = process.argv.slice(2); const opt = (k, d) => { const i = a.indexOf(k);
 const ROOT = path.resolve(opt('--root', path.join(HUB, '..'))); const only = opt('--only', '') ? opt('--only').split(',') : null;
 const LANGS = ['en', 'ro', 'fr', 'it', 'es', 'pt', 'de', 'hu']; const langs = opt('--langs', '') ? opt('--langs').split(',') : LANGS;
 // aplicațiile cu interfață în 8 limbi (înregistrate pe fiecare limbă) vs. doar română
-const APPS = {FARFURIA: {dir: 'FARFURIA', loc: true}, VITALIS: {dir: 'VITALIS', loc: true}, DECUPAJ: {dir: 'DECUPAJ', loc: true}, LECTOR: {dir: 'LECTOR', loc: true}, Cronosala: {dir: 'Cronosala', loc: true}, REZONANTA: {dir: 'REZONANTA', loc: true}, ScutSonor: {dir: '../scut-sonor', loc: true}, MIRAJ: {dir: '../miraj', loc: true}, ANTROPOS: {dir: '../antropos', loc: true}, 'Index-fara-frontiere': {dir: '../index-fara-frontiere', loc: true}};
+const APPS = {FARFURIA: {dir: 'FARFURIA', loc: true}, VITALIS: {dir: 'VITALIS', loc: true}, DECUPAJ: {dir: 'DECUPAJ', loc: true}, LECTOR: {dir: 'LECTOR', loc: true}, Cronosala: {dir: 'Cronosala', loc: true}, REZONANTA: {dir: 'REZONANTA', loc: true}, ScutSonor: {dir: '../scut-sonor', loc: true}, MIRAJ: {dir: '../miraj', loc: true}, ANTROPOS: {dir: '../antropos', loc: true}, 'Index-fara-frontiere': {dir: '../index-fara-frontiere', loc: true},
+  DESCANTAR: {dir: 'DESCANTAR', loc: true}, PatruZeci: {dir: 'PatruZeci', loc: true}, 'atelier-verificare': {dir: 'atelier-verificare', loc: true}, balanta: {dir: 'balanta', loc: true}, calendarium: {dir: 'calendarium', loc: true},
+  glosar: {dir: 'glosar', loc: true}, graiul: {dir: 'graiul', loc: true}, 'indicativ-international': {dir: 'indicativ-international', loc: true}, 'proiector-fara-frontiere': {dir: 'proiector-fara-frontiere', loc: true},
+  regula: {dir: 'regula', loc: true}, 'vietar-packs': {dir: 'vietar-packs', loc: true}};
 
 const SAMPLE = '/tmp/demo-sample.wav'; if (!fs.existsSync(SAMPLE)) spawnSync('ffmpeg', ['-y', '-v', 'error', '-f', 'lavfi', '-i', 'sine=f=180:d=45', '-f', 'lavfi', '-i', 'sine=f=330:d=45', '-filter_complex', '[0][1]amix=inputs=2,tremolo=f=3:d=0.7,volume=2', '-ar', '16000', '-ac', '1', SAMPLE]);
 const T = (m) => (l) => m[l] || m.en;
 const EP = T({ro: 'Episodul 12', en: 'Episode 12', fr: 'Épisode 12', it: 'Episodio 12', es: 'Episodio 12', pt: 'Episódio 12', de: 'Folge 12', hu: '12. epizód'});
 const WEL = T({ro: 'Bine ați venit', en: 'Welcome', fr: 'Bienvenue', it: 'Benvenuti', es: 'Bienvenidos', pt: 'Bem-vindos', de: 'Willkommen', hu: 'Üdvözöljük'});
+const DQ = T({ro: 'Voi călători în curând?', en: 'Will I travel soon?', fr: 'Vais-je bientôt voyager ?', it: 'Viaggerò presto?', es: '¿Viajaré pronto?', pt: 'Vou viajar em breve?', de: 'Werde ich bald reisen?', hu: 'Hamarosan utazom?'});
 const SCENES = {
   Cronosala: {intro: [['wait', 1500], ['scroll', 200], ['wait', 1200], ['scroll', -200]],
     explore: [['click', '[data-id=tabata]'], ['wait', 1800], ['click', '#goBtn'], ['wait', 4500], ['click', '#rClose'], ['wait', 900], ['click', '#dlgOk'], ['wait', 900], ['click', '#back'], ['wait', 600]],
@@ -47,7 +51,41 @@ const SCENES = {
     try: [['nth', '#nav button', 5], ['wait', 1800], ['nth', '#nav button', 6], ['wait', 1800], ['nth', '#nav button', 7], ['wait', 1800]], offline: [['nth', '#nav button', 8], ['wait', 1500], ['scroll', 500], ['wait', 1500]]},
   'Index-fara-frontiere': {intro: [['wait', 1800], ['scroll', 300], ['wait', 1200], ['scroll', -300]],
     explore: [['type', '#search', 'AI'], ['wait', 2500], ['fill', '#search', ''], ['wait', 1000]],
-    try: [['click', '#theme-btn'], ['wait', 1600], ['click', '#theme-btn'], ['wait', 1200]], offline: [['scroll', 600], ['wait', 1500], ['scroll', -600]]}
+    try: [['click', '#theme-btn'], ['wait', 1600], ['click', '#theme-btn'], ['wait', 1200]], offline: [['scroll', 600], ['wait', 1500], ['scroll', -600]]},
+  // --- aplicații noi (noiembrie 2026): acțiuni reale ale paginilor; selectorii independenți de limbă (id-uri/structură), fără text tradus
+  DESCANTAR: {intro: [['wait', 1800], ['scroll', 300], ['wait', 1200], ['scroll', -300]],
+    explore: [['nth', 'nav button', 1], ['wait', 2200], ['scroll', 400], ['wait', 1200], ['scroll', -400], ['nth', 'nav button', 2], ['wait', 1800], ['nth', 'nav button', 0], ['wait', 1200]],
+    try: [['fill', '#q', DQ], ['nth', 'button.chip', 2], ['wait', 900], ['click', '#bsh'], ['wait', 1200], ['click', '#brow'], ['wait', 3200], ['scroll', 350], ['wait', 1500]], offline: [['nth', 'nav button', 3], ['wait', 1500], ['scroll', 500], ['wait', 1500]]},
+  PatruZeci: {intro: [['wait', 1800], ['scroll', 400], ['wait', 1200], ['scroll', -400]],
+    explore: [['nth', '#tabs button', 1], ['wait', 2200], ['scroll', 600], ['wait', 1200], ['scroll', -600], ['nth', '#tabs button', 2], ['wait', 2000], ['nth', '#tabs button', 3], ['wait', 1800]],
+    try: [['nth', '#tabs button', 0], ['wait', 1200], ['nth', 'button.chip', 1], ['wait', 1800], ['click', '#safe'], ['wait', 1500], ['click', '#safe'], ['click', '#rnd'], ['wait', 2200], ['key', 'Escape'], ['wait', 700]], offline: [['click', '#motion'], ['wait', 1500], ['click', '#motion'], ['scroll', 600], ['wait', 1500]]},
+  'atelier-verificare': {intro: [['wait', 1800], ['scroll', 300], ['wait', 1200], ['scroll', -300]],
+    explore: [['click', 'a.btn.pri'], ['wait', 1800], ['fill', '#at-title', 'Case 2026-11'], ['nth', '#app button.btn.alt', 1], ['wait', 1800], ['nth', '#app button.btn:not(.alt)', 1], ['wait', 4500]],
+    try: [['scroll', 500], ['wait', 1800], ['scroll', 500], ['wait', 1800]], offline: [['scroll', 1400], ['wait', 1200], ['click', '#vex'], ['wait', 1200], ['click', '#vgo'], ['wait', 1800]]},
+  balanta: {intro: [['wait', 1800], ['scroll', 300], ['wait', 1200], ['scroll', -300]],
+    explore: [['click', 'a.btn.pri'], ['wait', 1500], ['click', '#ba-apply'], ['wait', 1800], ['click', '#ba-t-answers'], ['wait', 2000], ['click', '#ba-t-vote'], ['wait', 1600], ['click', '#ba-t-results'], ['wait', 1600], ['click', '#ba-t-prompts'], ['wait', 1800]],
+    try: [['click', '#ba-t-setup'], ['wait', 1000], ['fill', '#ba-seed', 'demo'], ['click', '#ba-apply'], ['wait', 1800], ['click', '#ba-t-answers'], ['wait', 2200]], offline: [['scroll', 1400], ['wait', 1200], ['click', '#vex'], ['wait', 1200], ['click', '#vgo'], ['wait', 1800]]},
+  calendarium: {intro: [['wait', 1800], ['scroll', 300], ['wait', 1200], ['scroll', -300]],
+    explore: [['click', 'a.btn.pri'], ['wait', 1800], ['sel', '#cal-sel', 3], ['wait', 1800], ['sel', '#cal-sel', 6], ['wait', 1800], ['sel', '#cal-sel', 0], ['wait', 1200]],
+    try: [['fill', '#cal-f-year', '2027'], ['fill', '#cal-f-day', '1'], ['wait', 1500], ['click', '#cal-today'], ['wait', 1500], ['sel', '#cal-other', 4], ['wait', 1800], ['nth', 'button.cal-cell', 10], ['wait', 1800]], offline: [['scroll', 900], ['wait', 1500], ['scroll', 900], ['wait', 1500]]},
+  glosar: {intro: [['wait', 1800], ['scroll', 300], ['wait', 1200], ['scroll', -300]],
+    explore: [['click', 'a.btn.pri'], ['wait', 1800], ['click', '#gl-t-cover'], ['wait', 2200], ['click', '#gl-t-add'], ['wait', 1800], ['click', '#gl-t-export'], ['wait', 1800], ['click', '#gl-t-guide'], ['wait', 1800]],
+    try: [['click', '#gl-t-search'], ['wait', 1000], ['sel', '#gl-flang', 1], ['wait', 1500], ['type', '#gl-q', 'a'], ['wait', 2200], ['scroll', 300], ['wait', 1500]], offline: [['scroll', 1400], ['wait', 1200], ['click', '#vex'], ['wait', 1200], ['click', '#vgo'], ['wait', 1800]]},
+  graiul: {intro: [['wait', 1800], ['scroll', 300], ['wait', 1200], ['scroll', -300]],
+    explore: [['click', 'a.btn.pri'], ['wait', 1800], ['click', '#gr-tt-today'], ['wait', 2200], ['click', '#gr-tt-map'], ['wait', 2200], ['click', '#gr-tt-guide'], ['wait', 1800]],
+    try: [['click', '#gr-tt-search'], ['wait', 1000], ['sel', '#gr-ftype', 1], ['wait', 1500], ['sel', '#gr-ftype', 2], ['wait', 1500], ['type', '#gr-q', 'a'], ['wait', 2200]], offline: [['scroll', 1400], ['wait', 1200], ['click', '#vex'], ['wait', 1200], ['click', '#vgo'], ['wait', 1800]]},
+  'indicativ-international': {intro: [['wait', 1800], ['scroll', 300], ['wait', 1200], ['scroll', -300]],
+    explore: [['click', 'a.btn.pri'], ['wait', 1800], ['click', '#in-tt-exam'], ['wait', 2000], ['click', '#in-tt-packs'], ['wait', 2000], ['click', '#in-tt-guide'], ['wait', 1800]],
+    try: [['click', '#in-tt-train'], ['wait', 1000], ['sel', '#in-topic', 1], ['wait', 1200], ['click', '#in-start'], ['wait', 2600], ['scroll', 300], ['wait', 1500]], offline: [['scroll', 1400], ['wait', 1200], ['click', '#vex'], ['wait', 1200], ['click', '#vgo'], ['wait', 1800]]},
+  'proiector-fara-frontiere': {intro: [['wait', 1800], ['scroll', 300], ['wait', 1200], ['scroll', -300]],
+    explore: [['click', 'a.btn.pri'], ['wait', 1800], ['click', '#pf-hc'], ['wait', 1500], ['click', '#pf-xl'], ['wait', 1500], ['click', '#pf-hc'], ['click', '#pf-xl'], ['wait', 1000]],
+    try: [['click', '#pf-start-host'], ['wait', 4200], ['scroll', 300], ['wait', 1500]], offline: [['wait', 1500], ['scroll', -300], ['wait', 1500]]},
+  regula: {intro: [['wait', 1800], ['scroll', 300], ['wait', 1200], ['scroll', -300]],
+    explore: [['click', 'a.btn.pri'], ['wait', 1800], ['sel', '#rg-game', 1], ['wait', 1800], ['sel', '#rg-game', 2], ['wait', 1800], ['sel', '#rg-game', 0], ['wait', 1200]],
+    try: [['sel', '#rg-lv1', 1], ['click', '#rg-new'], ['wait', 1200], ['nth', 'button.rg-pt', 0], ['wait', 2200], ['click', '#rg-hint'], ['wait', 1800], ['click', '#rg-undo'], ['wait', 1500]], offline: [['scroll', 700], ['wait', 1500], ['scroll', 700], ['wait', 1500]]},
+  'vietar-packs': {intro: [['wait', 1800], ['scroll', 300], ['wait', 1200], ['scroll', -300]],
+    explore: [['click', 'a.btn.pri'], ['wait', 1800], ['click', '#vp-tt-packs'], ['wait', 2000], ['click', '#vp-tt-build'], ['wait', 2000], ['click', '#vp-tt-guide'], ['wait', 1800]],
+    try: [['click', '#vp-tt-browse'], ['wait', 1000], ['sel', '#vp-tox', 1], ['wait', 1500], ['nth', 'button.vp-sp', 0], ['wait', 2200], ['scroll', 300], ['wait', 1500]], offline: [['scroll', 1400], ['wait', 1200], ['click', '#vex'], ['wait', 1200], ['click', '#vgo'], ['wait', 1800]]}
 };
 const html = fs.readFileSync(path.join(HUB, 'index.html'), 'utf8');
 const CONTENT = JSON.parse(html.match(/const CONTENT=(\{.*?\});\n/s)[1]);

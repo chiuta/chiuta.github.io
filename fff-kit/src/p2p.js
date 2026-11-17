@@ -32,11 +32,11 @@
     const rs = new Blob([bytes]).stream().pipeThrough(stream);
     return new Uint8Array(await new Response(rs).arrayBuffer());
   }
-  /** Cod: FFF1.<o|a>.<z|r>.<b64url>;  z = deflate (zlib), r = brut (UTF-8). */
-  async function encodeSignal(kind, sdp) {
+  /** Cod: FFF1.<o|a>.<z|r>.<b64url>;  z = deflate (zlib), r = brut (UTF-8). `opts.compress === false` cere codul brut (pentru browsere fără DecompressionStream). */
+  async function encodeSignal(kind, sdp, opts) {
     const raw = new TextEncoder().encode(String(sdp).replace(/\r\n/g, '\n').replace(/\n+$/, ''));
     let method = 'r', body = raw;
-    if (typeof CompressionStream === 'function') {
+    if (typeof CompressionStream === 'function' && !(opts && opts.compress === false)) {
       try { const z = await through(raw, new CompressionStream('deflate')); if (z.length < raw.length) { method = 'z'; body = z; } } catch (e) { /* brut */ }
     }
     return PREFIX + '.' + (kind === 'offer' ? 'o' : 'a') + '.' + method + '.' + toB64u(body);
@@ -151,6 +151,10 @@
   function createSession(role, pc, opts) {
     const hs = {}, hb = Object.assign({interval: 2000, timeout: 9000, giveUp: 30000, connect: 30000}, opts.heartbeat || {});
     let dc = null, state = 'new', closed = false, hbTimer = 0, connTimer = 0, lastSeen = 0, lostSince = 0, rtt = null, sent = 0, received = 0;
+    // Oaspetele primește canalul deja deschis, gazda îl vede deschis abia după confirmarea lui (DCEP). Chrome ARUNCĂ mesajele care ajung la gazdă înainte de acel moment
+    // (~5 % din conexiuni, verificat cu `onmessage` brut), deci un mesaj trimis de oaspete în «open» s-ar pierde fără semn. De aceea oaspetele își ține mesajele
+    // într-o coadă (cel mult 64) până aude ceva de la gazdă (mesajul intern `ready`, trimis de gazdă la «open»; sau orice alt mesaj / bătaia inimii); după READY_MS le trimite oricum.
+    const READY_MS = 3000; let peerReady = role === 'host', outq = [], readyT = 0;
     const emit = (ev, a, b) => (hs[ev] || []).slice().forEach(f => { try { f(a, b); } catch (e) { console.error(e); } });
     const s = {
       role, offer: null, answer: null,
@@ -166,6 +170,7 @@
         if (!s.open || obj == null || typeof obj !== 'object') return false;
         let str; try { str = JSON.stringify(obj); } catch (e) { return false; }
         if (str.length > MAX_MSG) { emit('error', coded('too-large', 'tooLarge')); return false; }
+        if (!peerReady) { if (outq.length >= 64) return false; outq.push(str); return true; }
         try { dc.send(str); sent++; return true; } catch (e) { return false; }
       },
       close(reason) {
@@ -183,12 +188,17 @@
     function set(st) { if (state === st || closed && st !== 'closed') return; state = st; emit('state', st); }
     function finish(reason, delay) {
       if (closed) return; closed = true;
-      clearInterval(hbTimer); clearTimeout(connTimer);
+      clearInterval(hbTimer); clearTimeout(connTimer); clearTimeout(readyT);
       const d = dc, p = pc;
       const shut = () => { try { d && d.close(); } catch (e) { /* ignorat */ } try { p.close(); } catch (e) { /* ignorat */ } };
       if (delay) setTimeout(shut, delay); else shut();
       state = reason === 'failed' || reason === 'timeout' ? 'failed' : 'closed';
       emit('state', state); emit('close', reason);
+    }
+    function flush() {
+      if (peerReady) return;
+      peerReady = true; clearTimeout(readyT);
+      outq.splice(0).forEach(str => { try { dc.send(str); sent++; } catch (e) { /* canal închis între timp */ } });
     }
     function internal(o) {
       if (o._fff === 'ping') { try { dc.send(JSON.stringify({_fff: 'pong', ts: o.ts})); } catch (e) { /* ignorat */ } }
@@ -207,14 +217,25 @@
     }
     s._bind = function (ch) {
       dc = ch;
-      ch.onopen = () => { clearTimeout(connTimer); set('open'); startHb(); emit('open', s); };
+      let opened = false; const early = [];
+      // «open» se emite o singură dată (la oaspete, canalul vine deja deschis și browserul trimite apoi încă un eveniment «open»), iar mesajele sosite ÎNAINTEA lui
+      // (Chrome le poate livra primele) se rețin și se dau după ce ascultătorii lui «open» s-au înregistrat; altfel primul mesaj al celuilalt capăt s-ar pierde.
+      ch.onopen = () => {
+        if (opened) return; opened = true;
+        clearTimeout(connTimer); set('open'); startHb();
+        if (role === 'host') { try { ch.send('{"_fff":"ready"}'); } catch (e) { /* ignorat */ } }   // gazda are canalul deschis: oaspetele își poate trimite coada
+        else readyT = setTimeout(flush, READY_MS);
+        emit('open', s);
+        early.splice(0).forEach(o => emit('message', o));
+      };
       ch.onmessage = e => {
         if (typeof e.data !== 'string' || e.data.length > MAX_MSG) return;
         let o; try { o = JSON.parse(e.data); } catch (er) { return; }
         if (!o || typeof o !== 'object' || Array.isArray(o)) return;
-        lastSeen = Date.now(); received++;
+        lastSeen = Date.now(); received++; flush();
         if (state === 'lost') { set('open'); emit('recovered'); }
         if (o._fff) return internal(o);
+        if (!opened) { if (early.length < 64) early.push(o); return; }
         emit('message', o);
       };
       ch.onclose = () => { if (!closed) finish('channel-closed'); };
@@ -255,7 +276,7 @@
       s._setState('gathering');
       const gp = watchGathering(pc, opts);
       await pc.setLocalDescription(await pc.createOffer());
-      s.offer = await encodeSignal('offer', await gather(pc, opts, gp));
+      s.offer = await encodeSignal('offer', await gather(pc, opts, gp), opts);
     } catch (e) { try { pc.close(); } catch (er) { /* ignorat */ } throw e; }
     s._setState('waiting-answer');
     s.accept = async function (code) {
@@ -278,7 +299,7 @@
       await pc.setRemoteDescription({type: 'offer', sdp: r.sdp});
       const gp = watchGathering(pc, opts);
       await pc.setLocalDescription(await pc.createAnswer());
-      s.answer = await encodeSignal('answer', await gather(pc, opts, gp));
+      s.answer = await encodeSignal('answer', await gather(pc, opts, gp), opts);
     } catch (e) { try { pc.close(); } catch (er) { /* ignorat */ } throw e; }
     s._setState('connecting'); s._armConnect();
     return s;
@@ -538,14 +559,16 @@ dialog.fff-p2p .fff-p2p-warn{background:#3b2f0e;color:#ffe9b0;border-color:#d9a4
     const chkLabel = el('label', {class: 'fff-p2p-chk', for: id + '-ok'}, chk, el('span', {text: T('optin')}));
     const stun = el('input', {type: 'text', id: id + '-stun', placeholder: 'stun:host:3478', autocomplete: 'off', spellcheck: 'false', 'data-role': 'stun', 'aria-describedby': id + '-stunh'});
     const stunBox = el('div', {}, el('label', {for: id + '-stun', text: T('stunLabel')}), stun, el('p', {id: id + '-stunh', class: 'fff-p2p-small', text: T('stunHelp')}));
+    const rawChk = el('input', {type: 'checkbox', id: id + '-raw', 'data-role': 'compat-code', 'aria-describedby': id + '-rawh'});
+    const rawBox = el('div', {class: 'fff-p2p-chk-box'}, el('label', {class: 'fff-p2p-chk', for: id + '-raw'}, rawChk, el('span', {text: T('compatCode')})), el('p', {id: id + '-rawh', class: 'fff-p2p-small', text: T('compatHelp')}));
     const bHost = el('button', {type: 'button', 'data-role': 'mode-host', disabled: true, text: T('host')});
     const bJoin = el('button', {type: 'button', 'data-role': 'mode-join', disabled: true, text: T('join')});
     const modes = el('div', {class: 'fff-p2p-row', role: 'group', 'aria-label': T('title')}, bHost, bJoin);
     const panel = el('div', {'data-role': 'panel'});
-    dlg.append(warn, chkLabel, stunBox, modes, panel, status, el('div', {class: 'fff-p2p-row'}, closeBtn));
+    dlg.append(warn, chkLabel, stunBox, rawBox, modes, panel, status, el('div', {class: 'fff-p2p-row'}, closeBtn));
     chk.addEventListener('change', () => { bHost.disabled = bJoin.disabled = !chk.checked; if (!chk.checked) panel.replaceChildren(); });
 
-    function opts() { return {stun: stun.value, heartbeat: o.heartbeat, gatherTimeout: o.gatherTimeout}; }
+    function opts() { return {stun: stun.value, heartbeat: o.heartbeat, gatherTimeout: o.gatherTimeout, compress: !rawChk.checked && o.compress !== false}; }
     function copyBtn(ta) {
       const b = el('button', {type: 'button', class: 'fff-p2p-sec', 'data-role': 'copy', text: T('copy')});
       b.addEventListener('click', async () => {

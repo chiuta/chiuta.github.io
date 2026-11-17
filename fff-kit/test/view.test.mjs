@@ -1,4 +1,5 @@
 // Teste FFF.view (kit 1.4.0): antete de tabel fixe + bară de zoom + zoom automat. Rulare: node test/view.test.mjs
+import {createHash} from 'node:crypto';
 import {makeApp, launch, check, summary, sleep, axe} from './_pw.mjs';
 
 const browser = await launch();
@@ -167,6 +168,33 @@ console.log('coexistă cu butonul ✕ (exit)');
   const r = await p.evaluate(() => { const e = document.querySelector('[data-fff-exit]'), v = document.querySelector('[data-fff-view]'); const a = e.getBoundingClientRect(), b = v.getBoundingClientRect(); return {both: !!e && !!v, overlap: !(a.right < b.left || b.right < a.left || a.bottom < b.top || b.bottom < a.top), ew: a.width, z: FFF.view.get().total}; });
   check('ambele există și nu se suprapun', r.both && !r.overlap, JSON.stringify(r));
   check('✕ își păstrează mărimea (contra-zoom)', Math.abs(r.ew - 44) <= 3, String(r.ew));
+  await ctx.close();
+}
+
+console.log('unități vh sub zoom: corecția merge și sub CSP strict (style-src doar pe hash-uri), pe ambele căi');
+for (const old of [false, true]) {
+  const css = 'body{font:15px/1.5 sans-serif;margin:0}main{max-width:640px;margin:0 auto;padding:12px}.pn{height:calc(30vh - 30px);background:#eee;margin:0}@media (min-width:100px){.pm{height:15vh;background:#ddd}}';
+  const sha = createHash('sha256').update(css).digest('base64');
+  const html = `<!doctype html><html lang="ro"><head><meta charset="utf-8"><meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'unsafe-inline'; style-src 'sha256-${sha}'"><title>t</title><style>${css}</style></head><body><main><h1>Titlu</h1><p>Un paragraf scurt.</p><div class="pn" id="pn">panou</div><div class="pm" id="pm">media</div></main></body></html>`;
+  const strict = makeApp(html, {modules: 'core,view', info: false});
+  const tag = old ? 'browser vechi (fără foi construibile)' : 'foaie construibilă';
+  const {ctx, p, errors} = await open(strict.url, {init: NOWD + "window.__v=[];document.addEventListener('securitypolicyviolation',function(e){window.__v.push(e.violatedDirective+' '+(e.sample||''));});" + (old ? "try{delete CSSStyleSheet.prototype.replaceSync;}catch(e){}" : '')});
+  p.on('console', (m) => { if (/Content Security Policy/i.test(m.text())) errors.push(m.text().slice(0, 140)); });
+  await sleep(1300);
+  const probe = () => p.evaluate(() => {
+    const g = FFF.view.get();
+    return {z: g.total, h: parseFloat(getComputedStyle(document.getElementById('pn')).height), m: parseFloat(getComputedStyle(document.getElementById('pm')).height), vh: innerHeight, v: window.__v.slice(), adopted: (document.adoptedStyleSheets || []).length, tag: !!document.getElementById('fff-vhfix'), nst: document.querySelectorAll('style').length};
+  });
+  const fits = (r) => Math.abs(r.h - (r.vh * 0.3 / r.z - 30)) < 3 && Math.abs(r.m - r.vh * 0.15 / r.z) < 3;
+  const r = await probe();
+  check(tag + ': zoom aplicat (altfel testul nu spune nimic)', r.z > 1.2, JSON.stringify(r));
+  check(tag + ': panourile cu vh (și regula din @media) se corectează sub zoom', fits(r), JSON.stringify(r));
+  check(tag + ': fără încălcări CSP și fără <style> nou', r.v.length === 0 && errors.filter((e) => /Content Security Policy/.test(e)).length === 0 && !r.tag && r.nst === 2, JSON.stringify({v: r.v, errors, tag: r.tag, nst: r.nst}));
+  check(tag + ': mecanismul așteptat', old ? r.adopted === 0 : r.adopted === 1, JSON.stringify(r));
+  await p.evaluate(() => FFF.view.zoomIn()); await sleep(400);
+  const r2 = await probe();
+  check(tag + ': la schimbarea zoom-ului corecția se recalculează, fără foi în plus', fits(r2) && r2.adopted === r.adopted && r2.nst === 2 && r2.v.length === 0, JSON.stringify(r2));
+  await p.evaluate(() => FFF.view.set({user: 1, auto: 1})).catch(() => {});
   await ctx.close();
 }
 

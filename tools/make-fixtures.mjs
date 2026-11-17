@@ -33,12 +33,22 @@ const REGEN = 'Regenerează: node tools/make-fixtures.mjs --root <folderul cu cl
 
 /** Scrie fixturile în OUT din clonele din ROOT. */
 function generate(OUT) {
+  // aplicațiile fără clonă în ROOT își păstrează fixtura existentă (altfel o rulare pe un set parțial de clone ar șterge fixturile lor)
+  const keep = {};
+  for (const key of keys) {
+    const repo = path.join(ROOT, key);
+    if (!ex(path.join(repo, 'index.html')) && !ex(path.join(repo, 'docs', 'index.html')) && ex(path.join(FIX, key))) keep[key] = snapshot(path.join(FIX, key));
+  }
   fs.rmSync(OUT, {recursive: true, force: true});
   let n = 0; const skipped = [];
   for (const key of keys) {
     const repo = path.join(ROOT, key);
     const pub = ex(path.join(repo, 'index.html')) ? repo : ex(path.join(repo, 'docs', 'index.html')) ? path.join(repo, 'docs') : null;
-    if (!pub) { skipped.push(key); continue; }
+    if (!pub) {
+      skipped.push(key);
+      for (const [rel, text] of Object.entries(keep[key] || {})) { const f = path.join(OUT, key, rel); fs.mkdirSync(path.dirname(f), {recursive: true}); fs.writeFileSync(f, text); }
+      continue;
+    }
     const h = read(path.join(pub, 'index.html'));
     let app = null;
     for (const d of [pub, repo]) { try { app = JSON.parse(read(path.join(d, 'app.json'))); break; } catch { /* fără app.json */ } }

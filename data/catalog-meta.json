@@ -181,7 +181,9 @@
         "Curatitor",
         "Provenienta",
         "VaultCrypt",
-        "ScryVeil"
+        "ScryVeil",
+        "EXIF-CURAT",
+        "atelier-verificare"
       ],
       "kw": "metadate metadata exif gps fotografie photo imagine image fisier file confidentialitate privacy cifrare encrypt criptare parola password c2pa autentic authentic fals fake deepfake provenienta securitate security biztonsag datenschutz sterge remove foto fotografia echt authentisch hiteles fenykep autenticita autentica autentico autentique"
     },
@@ -226,7 +228,8 @@
         "LocalMind",
         "PromptVault",
         "Constelar",
-        "balanta"
+        "balanta",
+        "colibri-companion"
       ],
       "kw": "ai ia inteligenta artificiala artificial intelligence intelligenza inteligencia chatbot asistent assistant assistente llm prompt model conversatie conversation chat gpt claude gemini ki mi"
     },
@@ -554,7 +557,8 @@
         "ATINGERE",
         "TEZAUR",
         "Arhiva-fara-frontiere",
-        "LECTOR"
+        "LECTOR",
+        "PORUMBEL"
       ],
       "kw": "scanare scan scanner carte book livre libro buch pdf ocr text digitizare digitization"
     },
@@ -682,7 +686,8 @@
         "Arbore",
         "Gospodar",
         "Orar",
-        "CLEPSIDRA"
+        "CLEPSIDRA",
+        "PatruZeci"
       ],
       "kw": "gospodarie household familie family buget budget bani money genealogie arbore notite notes planificare planning casa home haztartas koltsegvetes presupuesto orcamento hogar haushalt foyer familiare"
     },
@@ -767,7 +772,10 @@
         "VERIGA",
         "TEZAUR",
         "LegatorOCR",
-        "TurboCursa"
+        "TurboCursa",
+        "EXIF-CURAT",
+        "PORUMBEL",
+        "colibri-companion"
       ],
       "kw": "rust nativ native program instalare install desktop cli"
     },
@@ -1259,6 +1267,51 @@
       "Index-fara-frontiere",
       "Vitrina",
       "ambele prezintă proiecte ale colecției"
+    ],
+    [
+      "ODISEEA",
+      "BRAZDA",
+      "aceeași poveste Voyager: documentarul arată Discul de Aur, iar BRAZDA îl decodifică pas cu pas"
+    ],
+    [
+      "ODISEEA",
+      "VOIAJOR",
+      "aceleași două sonde: ODISEEA le povestește în film, VOIAJOR le simulează traiectoriile"
+    ],
+    [
+      "EXIF-CURAT",
+      "Curatitor",
+      "același scop, două forme: ștergerea metadatelor din fișiere, în browser (Curatitor) și ca program nativ (EXIF-CURAT)"
+    ],
+    [
+      "EXIF-CURAT",
+      "atelier-verificare",
+      "metadatele văzute din două părți: atelier-verificare le citește ca probă, EXIF-CURAT le șterge înainte de publicare"
+    ],
+    [
+      "PORUMBEL",
+      "LegatorOCR",
+      "PORUMBEL aduce pozele de pe telefon și deschide fiecare sesiune încheiată în LegatorOCR"
+    ],
+    [
+      "PORUMBEL",
+      "ATINGERE",
+      "fotografiile paginilor de carte pot ajunge, prin LegatorOCR, la o carte în braille sau audio"
+    ],
+    [
+      "colibri-companion",
+      "LocalMind",
+      "același principiu: modele de limbaj care rulează pe calculatorul tău, fără cont și fără cloud"
+    ],
+    [
+      "colibri-companion",
+      "TEZAUR",
+      "TEZAUR redactează cu un model local (Ollama, Jan, LM Studio), iar Colibri Companion pornește un astfel de model local"
+    ],
+    [
+      "colibri-companion",
+      "LegatorOCR",
+      "Colibri Companion are o bibliotecă de integrare care rulează LegatorOCR ca program extern (încă neconectată la nicio fereastră)"
     ]
   ],
   "apps": {
@@ -5425,28 +5478,28 @@
       },
       "fisa": {
         "ro": {
-          "limite": "Proiect deschis în faza de început: depozitul are doar schema, un exemplu și un validator pentru contribuții; datele reale și aplicația propriu-zisă nu există încă. Nu are site sau aplicație de deschis. Cardul arată ce se construiește, nu ceva ce poți folosi azi."
+          "limite": "Nu poate dovedi că o imagine sau un clip e autentic. Poate arăta doar indicii care susțin sau contrazic o afirmație. Metadatele (EXIF, XMP, IPTC) se șterg, se copiază și se falsifică ușor. Absența lor spune puțin; prezența lor e o pistă, nu o dovadă. Rețelele sociale și aplicațiile de mesagerie le elimină în mare parte. Content Credentials (C2PA) sunt citite, nu validate: semnătura, lanțul de certificate și amprenta conținutului nu se verifică aici. Pentru asta folosește un verificator oficial. Analiza nivelului de eroare e un indiciu: luminează și muchiile ascuțite, zonele saturate și imaginile salvate de mai multe ori. Specialiștii o citesc împreună cu alte dovezi. Verificarea linkurilor lucrează doar pe textul adresei. O pagină web nu poate urmări redirecționările, citi certificatele TLS sau deschide pagina țintă, deci nu poate spune dacă un site e de încredere. Detectarea imaginilor generate de IA din metadate găsește doar urme declarate sau rămase. Un fișier curat poate fi totuși sintetic, iar unul marcat poate fi o fotografie reală retușată cu o unealtă de IA."
         },
         "en": {
-          "limite": "An open project at its very start: the repository has only the schema, an example and a validator for contributions; the real data and the app itself do not exist yet. There is no site or app to open. The card shows what is being built, not something you can use today."
+          "limite": "It cannot prove that an image or video is authentic. It can only show signs that support or contradict a claim. Metadata (EXIF, XMP, IPTC) is easy to remove, copy or forge. Its absence says little; its presence is a lead, not proof. Social networks and messaging apps strip most of it. Content Credentials (C2PA) are read, not validated: the signature, the certificate chain and the content hash are not checked here. Use an official verifier for that. Error-level analysis is a hint: it also lights up sharp edges, saturated areas and images saved several times. Experts read it together with other evidence. The link check works on the text of the address only. A web page cannot follow redirects, read TLS certificates or open the target page for you, so it cannot say whether a site is trustworthy. Detecting AI-generated images from metadata only finds declared or leftover traces. A clean file can still be synthetic, and a flagged file can be a real photo edited with an AI tool."
         },
         "fr": {
-          "limite": "Un projet ouvert à ses tout débuts : le dépôt ne contient que le schéma, un exemple et un validateur pour les contributions ; les vraies données et l’application elle-même n’existent pas encore. Il n’y a ni site ni application à ouvrir. La carte montre ce qui se construit, pas quelque chose d’utilisable aujourd’hui."
+          "limite": "Il ne peut pas prouver qu'une image ou une vidéo est authentique. Il montre seulement des indices qui appuient ou contredisent une affirmation. Les métadonnées (EXIF, XMP, IPTC) se suppriment, se copient et se falsifient facilement. Leur absence dit peu de chose ; leur présence est une piste, pas une preuve. Les réseaux sociaux et les messageries en suppriment la plupart. Les Content Credentials (C2PA) sont lus, pas validés : la signature, la chaîne de certificats et l'empreinte du contenu ne sont pas vérifiées ici. Utilisez un vérificateur officiel pour cela. L'analyse du niveau d'erreur est un indice : elle éclaire aussi les contours nets, les zones saturées et les images enregistrées plusieurs fois. Les spécialistes la lisent avec d'autres éléments. La vérification des liens porte uniquement sur le texte de l'adresse. Une page web ne peut ni suivre les redirections, ni lire les certificats TLS, ni ouvrir la page cible : elle ne peut donc pas dire si un site est fiable. La détection d'images générées par IA à partir des métadonnées ne trouve que des traces déclarées ou restantes. Un fichier propre peut quand même être synthétique, et un fichier signalé peut être une vraie photo retouchée avec un outil d'IA."
         },
         "it": {
-          "limite": "Un progetto aperto agli inizi: il repository contiene solo lo schema, un esempio e un validatore per i contributi; i dati reali e l’app vera e propria non esistono ancora. Non c’è un sito o un’app da aprire. La scheda mostra ciò che si sta costruendo, non qualcosa di utilizzabile oggi."
+          "limite": "Non può dimostrare che un'immagine o un video sia autentico. Mostra solo indizi che sostengono o contraddicono un'affermazione. I metadati (EXIF, XMP, IPTC) si cancellano, copiano e falsificano facilmente. La loro assenza dice poco; la loro presenza è una pista, non una prova. I social network e le app di messaggistica ne eliminano la maggior parte. I Content Credentials (C2PA) vengono letti, non validati: firma, catena di certificati e impronta del contenuto non sono verificate qui. Per questo usa un verificatore ufficiale. L'analisi del livello di errore è un indizio: illumina anche bordi netti, zone sature e immagini salvate più volte. Gli esperti la leggono insieme ad altre prove. Il controllo dei link lavora solo sul testo dell'indirizzo. Una pagina web non può seguire i reindirizzamenti, leggere i certificati TLS né aprire la pagina di destinazione, quindi non può dire se un sito sia affidabile. Il riconoscimento di immagini generate dall'IA dai metadati trova solo tracce dichiarate o residue. Un file pulito può comunque essere sintetico, e uno segnalato può essere una foto vera ritoccata con uno strumento di IA."
         },
         "es": {
-          "limite": "Un proyecto abierto en sus inicios: el repositorio solo tiene el esquema, un ejemplo y un validador para contribuciones; los datos reales y la app en sí aún no existen. No hay sitio ni app que abrir. La ficha muestra lo que se está construyendo, no algo utilizable hoy."
+          "limite": "No puede demostrar que una imagen o un vídeo sea auténtico. Solo muestra indicios que respaldan o contradicen una afirmación. Los metadatos (EXIF, XMP, IPTC) se borran, copian y falsifican con facilidad. Su ausencia dice poco; su presencia es una pista, no una prueba. Las redes sociales y las aplicaciones de mensajería eliminan la mayoría. Los Content Credentials (C2PA) se leen, no se validan: la firma, la cadena de certificados y el hash del contenido no se comprueban aquí. Para eso usa un verificador oficial. El análisis de nivel de error es un indicio: también ilumina bordes nítidos, zonas saturadas e imágenes guardadas varias veces. Los especialistas lo leen junto con otras pruebas. La comprobación de enlaces trabaja solo con el texto de la dirección. Una página web no puede seguir redirecciones, leer certificados TLS ni abrir la página de destino, así que no puede decir si un sitio es fiable. La detección de imágenes generadas por IA a partir de metadatos solo encuentra rastros declarados o residuales. Un archivo limpio puede ser sintético, y uno marcado puede ser una foto real retocada con una herramienta de IA."
         },
         "pt": {
-          "limite": "Um projeto aberto no seu início: o repositório tem apenas o esquema, um exemplo e um validador para contribuições; os dados reais e a própria app ainda não existem. Não há site nem app para abrir. A ficha mostra o que está a ser construído, não algo utilizável hoje."
+          "limite": "Não pode provar que uma imagem ou um vídeo é autêntico. Só mostra indícios que apoiam ou contrariam uma afirmação. Os metadados (EXIF, XMP, IPTC) apagam-se, copiam-se e falsificam-se com facilidade. A sua ausência diz pouco; a sua presença é uma pista, não uma prova. As redes sociais e as aplicações de mensagens removem a maior parte. Os Content Credentials (C2PA) são lidos, não validados: a assinatura, a cadeia de certificados e o hash do conteúdo não são verificados aqui. Para isso use um verificador oficial. A análise do nível de erro é um indício: também ilumina arestas nítidas, zonas saturadas e imagens guardadas várias vezes. Os especialistas leem-na juntamente com outras provas. A verificação de ligações trabalha apenas sobre o texto do endereço. Uma página web não consegue seguir redirecionamentos, ler certificados TLS nem abrir a página de destino, pelo que não pode dizer se um sítio é de confiança. A deteção de imagens geradas por IA a partir dos metadados só encontra vestígios declarados ou remanescentes. Um ficheiro limpo pode ser sintético, e um assinalado pode ser uma fotografia real retocada com uma ferramenta de IA."
         },
         "de": {
-          "limite": "Ein offenes Projekt ganz am Anfang: Das Repository enthält nur das Schema, ein Beispiel und einen Validator für Beiträge; die echten Daten und die App selbst gibt es noch nicht. Es gibt keine Seite und keine App zum Öffnen. Die Karte zeigt, was entsteht, nicht etwas, das heute nutzbar ist."
+          "limite": "Es kann nicht beweisen, dass ein Bild oder Video echt ist. Es zeigt nur Hinweise, die eine Behauptung stützen oder ihr widersprechen. Metadaten (EXIF, XMP, IPTC) lassen sich leicht entfernen, kopieren oder fälschen. Ihr Fehlen sagt wenig; ihr Vorhandensein ist ein Anhaltspunkt, kein Beweis. Soziale Netzwerke und Messenger entfernen das meiste. Content Credentials (C2PA) werden gelesen, nicht validiert: Signatur, Zertifikatskette und Inhalts-Hash werden hier nicht geprüft. Verwenden Sie dafür einen offiziellen Prüfer. Die Fehlerniveau-Analyse ist ein Hinweis: Sie leuchtet auch an scharfen Kanten, in gesättigten Bereichen und bei mehrfach gespeicherten Bildern auf. Fachleute lesen sie zusammen mit anderen Belegen. Die Linkprüfung arbeitet nur mit dem Text der Adresse. Eine Webseite kann weder Weiterleitungen verfolgen noch TLS-Zertifikate lesen noch die Zielseite öffnen; sie kann also nicht sagen, ob eine Website vertrauenswürdig ist. Die Erkennung KI-generierter Bilder anhand von Metadaten findet nur angegebene oder zurückgebliebene Spuren. Eine saubere Datei kann trotzdem synthetisch sein, und eine markierte Datei kann ein echtes, mit einem KI-Werkzeug bearbeitetes Foto sein."
         },
         "hu": {
-          "limite": "Nyílt projekt a legelején: a tárolóban csak a séma, egy példa és a hozzájárulások ellenőrzője van; a valódi adatok és maga az alkalmazás még nem léteznek. Nincs megnyitható oldal vagy alkalmazás. A kártya azt mutatja, mi épül, nem azt, ami ma használható."
+          "limite": "Nem bizonyíthatja, hogy egy kép vagy videó hiteles. Csak olyan jeleket mutat, amelyek egy állítást támogatnak vagy cáfolnak. A metaadatok (EXIF, XMP, IPTC) könnyen törölhetők, másolhatók és hamisíthatók. A hiányuk keveset mond; a meglétük nyom, nem bizonyíték. A közösségi hálózatok és üzenetküldők a legtöbbet eltávolítják. A Content Credentials (C2PA) adatokat olvassa, de nem érvényesíti: az aláírást, a tanúsítványláncot és a tartalom kivonatát itt nem ellenőrzi. Ehhez használj hivatalos ellenőrzőt. A hibaszint-elemzés csak jelzés: kiemeli az éles éleket, a telített területeket és a többször mentett képeket is. A szakértők más bizonyítékokkal együtt olvassák. A hivatkozás-ellenőrzés csak a cím szövegével dolgozik. Egy weboldal nem tud átirányításokat követni, TLS-tanúsítványokat olvasni vagy megnyitni a célt, ezért nem mondhatja meg, hogy egy webhely megbízható-e. A mesterséges intelligenciával készült képek metaadatokból történő felismerése csak a bevallott vagy a hátramaradt nyomokat találja meg. Egy tiszta fájl is lehet szintetikus, a megjelölt pedig lehet valódi fotó, amelyet MI-eszközzel szerkesztettek."
         }
       }
     },
@@ -5466,28 +5519,28 @@
       },
       "fisa": {
         "ro": {
-          "limite": "Proiect deschis în faza de început: depozitul are doar schema, un exemplu și un validator pentru contribuții; datele reale și aplicația propriu-zisă nu există încă. Nu are site sau aplicație de deschis. Cardul arată ce se construiește, nu ceva ce poți folosi azi."
+          "limite": "Nu apelează niciun model: răspunsurile le lipești tu. Nu există chei API, cont sau server. Votul orb e atât de bun cât e anonimizarea: aplicația ascunde numele de modele cunoscute, dar stilul unui răspuns poate trăda totuși autorul. Clasamentul arată preferințele celor care votează, pe prompturile alese; cu puține voturi sau puține prompturi nu spune nimic general despre modele. Prompturile incluse au fost redactate cu un asistent IA; cele în maghiară și cele de traducere așteaptă în mod special verificarea unor vorbitori nativi. Faptele din «cultură» au surse, dar se pot învechi."
         },
         "en": {
-          "limite": "An open project at its very start: the repository has only the schema, an example and a validator for contributions; the real data and the app itself do not exist yet. There is no site or app to open. The card shows what is being built, not something you can use today."
+          "limite": "It calls no model: you paste the answers yourself. There are no API keys, accounts or servers. Blind voting is only as good as the anonymisation: the app hides known model names, but the style of an answer can still give its author away. The ranking reflects the preferences of the voters on the chosen prompts; with few votes or few prompts it says nothing general about the models. The bundled prompts were drafted with an AI assistant; the Hungarian and translation ones in particular await review by native speakers. Facts in “culture” have sources but can become outdated."
         },
         "fr": {
-          "limite": "Un projet ouvert à ses tout débuts : le dépôt ne contient que le schéma, un exemple et un validateur pour les contributions ; les vraies données et l’application elle-même n’existent pas encore. Il n’y a ni site ni application à ouvrir. La carte montre ce qui se construit, pas quelque chose d’utilisable aujourd’hui."
+          "limite": "Elle n’appelle aucun modèle : vous collez vous-même les réponses. Il n’y a ni clé API, ni compte, ni serveur. Le vote à l’aveugle vaut ce que vaut l’anonymisation : l’application masque les noms de modèles connus, mais le style d’une réponse peut quand même trahir son auteur. Le classement reflète les préférences des votants sur les prompts choisis ; avec peu de votes ou peu de prompts, il ne dit rien de général sur les modèles. Les prompts fournis ont été rédigés avec un assistant d’IA ; ceux en hongrois et ceux de traduction attendent en particulier une relecture par des locuteurs natifs. Les faits de « culture » ont des sources, mais peuvent devenir obsolètes."
         },
         "it": {
-          "limite": "Un progetto aperto agli inizi: il repository contiene solo lo schema, un esempio e un validatore per i contributi; i dati reali e l’app vera e propria non esistono ancora. Non c’è un sito o un’app da aprire. La scheda mostra ciò che si sta costruendo, non qualcosa di utilizzabile oggi."
+          "limite": "Non chiama alcun modello: le risposte le incolli tu. Non ci sono chiavi API, account o server. Il voto alla cieca vale quanto l’anonimizzazione: l’app nasconde i nomi dei modelli noti, ma lo stile di una risposta può comunque tradirne l’autore. La classifica riflette le preferenze di chi vota sui prompt scelti; con pochi voti o pochi prompt non dice nulla di generale sui modelli. I prompt inclusi sono stati redatti con un assistente IA; quelli in ungherese e quelli di traduzione attendono in particolare la revisione di madrelingua. I fatti di «cultura» hanno fonti, ma possono diventare obsoleti."
         },
         "es": {
-          "limite": "Un proyecto abierto en sus inicios: el repositorio solo tiene el esquema, un ejemplo y un validador para contribuciones; los datos reales y la app en sí aún no existen. No hay sitio ni app que abrir. La ficha muestra lo que se está construyendo, no algo utilizable hoy."
+          "limite": "No llama a ningún modelo: las respuestas las pegas tú. No hay claves de API, cuentas ni servidores. El voto a ciegas vale lo que vale la anonimización: la aplicación oculta los nombres de modelos conocidos, pero el estilo de una respuesta aún puede delatar a su autor. La clasificación refleja las preferencias de quienes votan sobre los prompts elegidos; con pocos votos o pocos prompts no dice nada general sobre los modelos. Los prompts incluidos se redactaron con un asistente de IA; los húngaros y los de traducción esperan en especial la revisión de hablantes nativos. Los hechos de «cultura» tienen fuentes, pero pueden quedar desfasados."
         },
         "pt": {
-          "limite": "Um projeto aberto no seu início: o repositório tem apenas o esquema, um exemplo e um validador para contribuições; os dados reais e a própria app ainda não existem. Não há site nem app para abrir. A ficha mostra o que está a ser construído, não algo utilizável hoje."
+          "limite": "Não chama nenhum modelo: as respostas é você quem as cola. Não há chaves de API, contas nem servidores. A votação às cegas vale o que vale a anonimização: a aplicação oculta os nomes de modelos conhecidos, mas o estilo de uma resposta pode ainda assim denunciar o autor. A classificação reflete as preferências de quem vota nos prompts escolhidos; com poucos votos ou poucos prompts não diz nada de geral sobre os modelos. Os prompts incluídos foram redigidos com um assistente de IA; os em húngaro e os de tradução aguardam em especial a revisão de falantes nativos. Os factos de “cultura” têm fontes, mas podem ficar desatualizados."
         },
         "de": {
-          "limite": "Ein offenes Projekt ganz am Anfang: Das Repository enthält nur das Schema, ein Beispiel und einen Validator für Beiträge; die echten Daten und die App selbst gibt es noch nicht. Es gibt keine Seite und keine App zum Öffnen. Die Karte zeigt, was entsteht, nicht etwas, das heute nutzbar ist."
+          "limite": "Sie ruft kein Modell auf: Die Antworten fügen Sie selbst ein. Es gibt keine API-Schlüssel, Konten oder Server. Blindes Abstimmen ist nur so gut wie die Anonymisierung: Die App verbirgt bekannte Modellnamen, aber der Stil einer Antwort kann den Urheber trotzdem verraten. Die Rangliste spiegelt die Vorlieben der Abstimmenden bei den gewählten Prompts wider; mit wenigen Stimmen oder Prompts sagt sie nichts Allgemeines über die Modelle aus. Die mitgelieferten Prompts wurden mit einem KI-Assistenten verfasst; besonders die ungarischen und die Übersetzungs-Prompts warten auf die Durchsicht durch Muttersprachler. Fakten in „Kultur“ haben Quellen, können aber veralten."
         },
         "hu": {
-          "limite": "Nyílt projekt a legelején: a tárolóban csak a séma, egy példa és a hozzájárulások ellenőrzője van; a valódi adatok és maga az alkalmazás még nem léteznek. Nincs megnyitható oldal vagy alkalmazás. A kártya azt mutatja, mi épül, nem azt, ami ma használható."
+          "limite": "Egyetlen modellt sem hív meg: a válaszokat te illeszted be. Nincs API-kulcs, fiók vagy szerver. A vak szavazás annyit ér, amennyit az anonimizálás: az alkalmazás elrejti az ismert modellneveket, de egy válasz stílusa így is elárulhatja a szerzőjét. A rangsor a szavazók preferenciáit tükrözi a kiválasztott promptokon; kevés szavazattal vagy prompttal semmi általánosat nem mond a modellekről. A mellékelt promptokat MI-asszisztenssel fogalmaztuk; különösen a magyar és a fordítási promptok várják anyanyelvi beszélők átnézését. A „kultúra” kategória tényeihez tartoznak források, de elavulhatnak."
         }
       }
     },
@@ -5507,28 +5560,28 @@
       },
       "fisa": {
         "ro": {
-          "limite": "Proiect deschis în faza de început: depozitul are doar schema, un exemplu și un validator pentru contribuții; datele reale și aplicația propriu-zisă nu există încă. Nu are site sau aplicație de deschis. Cardul arată ce se construiește, nu ceva ce poți folosi azi."
+          "limite": "Calendarul hijri este cel TABELAR (aritmetic); calendarul observat sau Umm al-Qura poate diferi cu 1–2 zile. Înainte de anul 1 AH nu dă rezultat. Calendarul persan se calculează astronomic (echinocțiul lui Meeus, amiaza la Teheran) pentru anii gregorieni 1001–2999; dincolo de acest interval nu dă rezultat. Calendarul chinezesc folosește fusul Beijing (ora medie locală înainte de 1929) și este verificat pe 26 de date de An Nou (1984–2034) și 21 de luni bisecte (1984–2039); înainte de 1645 este o extindere proleptică, nu istoria oficială; în afara anilor gregorieni −1999…3000 nu dă rezultat. Calendarul maya folosește corelația GMT (584283); în literatură există și altele. Calendarul ebraic este cel aritmetic (de la anul 1)."
         },
         "en": {
-          "limite": "An open project at its very start: the repository has only the schema, an example and a validator for contributions; the real data and the app itself do not exist yet. There is no site or app to open. The card shows what is being built, not something you can use today."
+          "limite": "The Hijri calendar is the TABULAR (arithmetic) one; the observed or Umm al-Qura calendar can differ by 1–2 days. Before year 1 AH it gives no result. The Persian calendar is computed astronomically (Meeus equinox, Tehran noon) for Gregorian years 1001–2999; outside that range it gives no result. The Chinese calendar uses Beijing time (local mean time before 1929) and is checked against 26 New Year dates (1984–2034) and 21 leap months (1984–2039); before 1645 it is a proleptic extension, not the official history; outside Gregorian years −1999 to 3000 it gives no result. The Maya calendar uses the GMT correlation (584283); other correlations exist in the literature. The Hebrew calendar is the arithmetic one (from year 1)."
         },
         "fr": {
-          "limite": "Un projet ouvert à ses tout débuts : le dépôt ne contient que le schéma, un exemple et un validateur pour les contributions ; les vraies données et l’application elle-même n’existent pas encore. Il n’y a ni site ni application à ouvrir. La carte montre ce qui se construit, pas quelque chose d’utilisable aujourd’hui."
+          "limite": "Le calendrier hégirien est le TABULAIRE (arithmétique) ; le calendrier observé ou Umm al-Qura peut différer de 1 à 2 jours. Avant l’an 1 de l’hégire, aucun résultat. Le calendrier persan est calculé astronomiquement (équinoxe de Meeus, midi à Téhéran) pour les années grégoriennes 1001–2999 ; hors de cet intervalle il ne donne aucun résultat. Le calendrier chinois utilise l’heure de Pékin (heure moyenne locale avant 1929) et est vérifié sur 26 dates du Nouvel An (1984–2034) et 21 mois intercalaires (1984–2039) ; avant 1645 c’est une extension proleptique, non l’histoire officielle ; hors des années grégoriennes −1999 à 3000, aucun résultat. Le calendrier maya utilise la corrélation GMT (584283) ; d’autres corrélations existent dans la littérature. Le calendrier hébraïque est l’arithmétique (dès l’année 1)."
         },
         "it": {
-          "limite": "Un progetto aperto agli inizi: il repository contiene solo lo schema, un esempio e un validatore per i contributi; i dati reali e l’app vera e propria non esistono ancora. Non c’è un sito o un’app da aprire. La scheda mostra ciò che si sta costruendo, non qualcosa di utilizzabile oggi."
+          "limite": "Il calendario egiriano è quello TABULARE (aritmetico); quello osservato o Umm al-Qura può differire di 1–2 giorni. Prima dell’anno 1 dell’Egira non dà risultato. Il calendario persiano è calcolato astronomicamente (equinozio di Meeus, mezzogiorno a Teheran) per gli anni gregoriani 1001–2999; fuori da questo intervallo non dà risultato. Il calendario cinese usa l’ora di Pechino (ora locale media prima del 1929) ed è verificato su 26 date di Capodanno (1984–2034) e 21 mesi intercalari (1984–2039); prima del 1645 è un’estensione prolettica, non la storia ufficiale; fuori dagli anni gregoriani da −1999 a 3000 non dà risultato. Il calendario maya usa la correlazione GMT (584283); in letteratura ne esistono altre. Il calendario ebraico è quello aritmetico (dall’anno 1)."
         },
         "es": {
-          "limite": "Un proyecto abierto en sus inicios: el repositorio solo tiene el esquema, un ejemplo y un validador para contribuciones; los datos reales y la app en sí aún no existen. No hay sitio ni app que abrir. La ficha muestra lo que se está construyendo, no algo utilizable hoy."
+          "limite": "El calendario hégira es el TABULAR (aritmético); el observado o Umm al-Qura puede diferir en 1–2 días. Antes del año 1 de la Hégira no da resultado. El calendario persa se calcula astronómicamente (equinoccio de Meeus, mediodía en Teherán) para los años gregorianos 1001–2999; fuera de ese intervalo no da resultado. El calendario chino usa la hora de Pekín (hora local media antes de 1929) y está comprobado con 26 fechas de Año Nuevo (1984–2034) y 21 meses intercalares (1984–2039); antes de 1645 es una extensión proléptica, no la historia oficial; fuera de los años gregorianos −1999 a 3000 no da resultado. El calendario maya usa la correlación GMT (584283); en la literatura existen otras. El calendario hebreo es el aritmético (desde el año 1)."
         },
         "pt": {
-          "limite": "Um projeto aberto no seu início: o repositório tem apenas o esquema, um exemplo e um validador para contribuições; os dados reais e a própria app ainda não existem. Não há site nem app para abrir. A ficha mostra o que está a ser construído, não algo utilizável hoje."
+          "limite": "O calendário hégira é o TABULAR (aritmético); o observado ou Umm al-Qura pode diferir 1–2 dias. Antes do ano 1 da Hégira não dá resultado. O calendário persa é calculado astronomicamente (equinócio de Meeus, meio-dia em Teerão) para os anos gregorianos 1001–2999; fora desse intervalo não dá resultado. O calendário chinês usa a hora de Pequim (hora local média antes de 1929) e está verificado com 26 datas de Ano Novo (1984–2034) e 21 meses intercalares (1984–2039); antes de 1645 é uma extensão proléptica, não a história oficial; fora dos anos gregorianos −1999 a 3000 não dá resultado. O calendário maia usa a correlação GMT (584283); existem outras na literatura. O calendário hebraico é o aritmético (desde o ano 1)."
         },
         "de": {
-          "limite": "Ein offenes Projekt ganz am Anfang: Das Repository enthält nur das Schema, ein Beispiel und einen Validator für Beiträge; die echten Daten und die App selbst gibt es noch nicht. Es gibt keine Seite und keine App zum Öffnen. Die Karte zeigt, was entsteht, nicht etwas, das heute nutzbar ist."
+          "limite": "Der Hidschri-Kalender ist der TABELLARISCHE (arithmetische); der beobachtete oder Umm-al-Qura-Kalender kann um 1–2 Tage abweichen. Vor dem Jahr 1 AH gibt es kein Ergebnis. Der persische Kalender wird astronomisch berechnet (Meeus-Gleiche, Mittag in Teheran) für die gregorianischen Jahre 1001–2999; außerhalb liefert er kein Ergebnis. Der chinesische Kalender nutzt Pekinger Zeit (vor 1929 mittlere Ortszeit) und ist an 26 Neujahrsdaten (1984–2034) und 21 Schaltmonaten (1984–2039) geprüft; vor 1645 ist er eine proleptische Fortsetzung, nicht die amtliche Geschichte; außerhalb der gregorianischen Jahre −1999 bis 3000 liefert er kein Ergebnis. Der Maya-Kalender nutzt die GMT-Korrelation (584283); in der Literatur gibt es weitere. Der hebräische Kalender ist der arithmetische (ab Jahr 1)."
         },
         "hu": {
-          "limite": "Nyílt projekt a legelején: a tárolóban csak a séma, egy példa és a hozzájárulások ellenőrzője van; a valódi adatok és maga az alkalmazás még nem léteznek. Nincs megnyitható oldal vagy alkalmazás. A kártya azt mutatja, mi épül, nem azt, ami ma használható."
+          "limite": "A hidzsra-naptár a TÁBLÁZATOS (számtani); a megfigyelésen alapuló vagy az Umm al-Qura naptár 1–2 nappal eltérhet. Az 1. hidzsra év előtt nem ad eredményt. A perzsa naptár csillagászati számítás (Meeus-féle napéjegyenlőség, teheráni dél) az i. sz. 1001–2999 közötti évekre; ezen kívül nem ad eredményt. A kínai naptár a pekingi időt használja (1929 előtt helyi középidő), és 26 újévi dátumon (1984–2034) és 21 szökőhónapon (1984–2039) ellenőriztük; 1645 előtt prolektikus kiterjesztés, nem a hivatalos történet; a −1999 és 3000 közötti gregorián éveken kívül nem ad eredményt. A maja naptár a GMT-korrelációt (584283) használja; az irodalomban mások is vannak. A héber naptár a számtani (az 1. évtől)."
         }
       }
     },
@@ -5548,28 +5601,28 @@
       },
       "fisa": {
         "ro": {
-          "limite": "Proiect deschis în faza de început: depozitul are doar schema, un exemplu și un validator pentru contribuții; datele reale și aplicația propriu-zisă nu există încă. Nu are site sau aplicație de deschis. Cardul arată ce se construiește, nu ceva ce poți folosi azi."
+          "limite": "Listele incluse sunt material de început: numerale și câteva cuvinte, fiecare cu sursa ei publicată (Wikipedia, Wiktionary, dicționarul Angloromani de la kratylos.org), marcate «cu sursă». Niciun vorbitor nu le-a verificat încă. Aromâna, meglenoromâna și romani au doar câteva cuvinte fiecare, istroromâna niciunul încă. Lista de bază cu 50 de concepte e departe de a fi acoperită (vezi fila «Acoperire»). Ce adaugi se păstrează doar în acest browser (localStorage, aproximativ 5 MB). Descarcă regulat contribuțiile; ștergerea datelor browserului le șterge și pe ele. Traducerile interfeței au fost făcute cu un asistent IA și așteaptă verificarea unor vorbitori nativi; numele conceptelor există doar în engleză și în română."
         },
         "en": {
-          "limite": "An open project at its very start: the repository has only the schema, an example and a validator for contributions; the real data and the app itself do not exist yet. There is no site or app to open. The card shows what is being built, not something you can use today."
+          "limite": "The built-in lists are starter material: numerals and a few words, each traced to a published source (Wikipedia, Wiktionary, the Angloromani dictionary at kratylos.org) and marked “sourced”. No speaker has reviewed them yet. Aromanian, Megleno-Romanian and Romani have only a handful of words each, Istro-Romanian none yet. The basic list of 50 concepts is far from covered (see the “Coverage” tab). What you add is kept in this browser only (localStorage, about 5 MB). Download your contributions regularly; clearing the browser data deletes them. The interface translations were made with an AI assistant and await review by native speakers; concept names exist only in English and Romanian."
         },
         "fr": {
-          "limite": "Un projet ouvert à ses tout débuts : le dépôt ne contient que le schéma, un exemple et un validateur pour les contributions ; les vraies données et l’application elle-même n’existent pas encore. Il n’y a ni site ni application à ouvrir. La carte montre ce qui se construit, pas quelque chose d’utilisable aujourd’hui."
+          "limite": "Les listes fournies sont un matériau de départ : des numéraux et quelques mots, chacun relié à une source publiée (Wikipédia, Wiktionnaire, le dictionnaire angloromani de kratylos.org) et marqué « avec source ». Aucun locuteur ne les a encore relus. L’aroumain, le mégléno-roumain et le romani n’ont chacun que quelques mots, l’istro-roumain aucun pour l’instant. La liste de base de 50 concepts est loin d’être couverte (voir l’onglet « Couverture »). Ce que vous ajoutez n’est conservé que dans ce navigateur (localStorage, environ 5 Mo). Téléchargez régulièrement vos contributions ; effacer les données du navigateur les supprime. Les traductions de l’interface ont été faites avec un assistant d’IA et attendent la relecture de locuteurs natifs ; les noms des concepts n’existent qu’en anglais et en roumain."
         },
         "it": {
-          "limite": "Un progetto aperto agli inizi: il repository contiene solo lo schema, un esempio e un validatore per i contributi; i dati reali e l’app vera e propria non esistono ancora. Non c’è un sito o un’app da aprire. La scheda mostra ciò che si sta costruendo, non qualcosa di utilizzabile oggi."
+          "limite": "Le liste incluse sono materiale iniziale: numerali e qualche parola, ciascuna con la sua fonte pubblicata (Wikipedia, Wikizionario, il dizionario angloromanì di kratylos.org) e contrassegnata «con fonte». Nessun parlante le ha ancora riviste. L’arumeno, il meglenorumeno e il romaní hanno solo una manciata di parole ciascuno, l’istrorumeno ancora nessuna. La lista di base di 50 concetti è lontana dall’essere coperta (vedi la scheda «Copertura»). Quello che aggiungi resta solo in questo browser (localStorage, circa 5 MB). Scarica regolarmente i tuoi contributi; cancellare i dati del browser li cancella. Le traduzioni dell’interfaccia sono state fatte con un assistente IA e attendono la revisione di madrelingua; i nomi dei concetti esistono solo in inglese e in rumeno."
         },
         "es": {
-          "limite": "Un proyecto abierto en sus inicios: el repositorio solo tiene el esquema, un ejemplo y un validador para contribuciones; los datos reales y la app en sí aún no existen. No hay sitio ni app que abrir. La ficha muestra lo que se está construyendo, no algo utilizable hoy."
+          "limite": "Las listas incluidas son material inicial: numerales y unas pocas palabras, cada una con su fuente publicada (Wikipedia, Wikcionario, el diccionario de angloromaní de kratylos.org) y marcada «con fuente». Ningún hablante las ha revisado aún. El arrumano, el meglenorrumano y el romaní tienen solo un puñado de palabras cada uno, el istrorrumano ninguna aún. La lista básica de 50 conceptos está lejos de estar cubierta (véase la pestaña «Cobertura»). Lo que añades se guarda solo en este navegador (localStorage, unos 5 MB). Descarga tus contribuciones con regularidad; borrar los datos del navegador también las borra. Las traducciones de la interfaz se hicieron con un asistente de IA y esperan la revisión de hablantes nativos; los nombres de los conceptos solo existen en inglés y en rumano."
         },
         "pt": {
-          "limite": "Um projeto aberto no seu início: o repositório tem apenas o esquema, um exemplo e um validador para contribuições; os dados reais e a própria app ainda não existem. Não há site nem app para abrir. A ficha mostra o que está a ser construído, não algo utilizável hoje."
+          "limite": "As listas incluídas são material inicial: numerais e algumas palavras, cada uma com a sua fonte publicada (Wikipédia, Wikcionário, o dicionário de angloromani em kratylos.org) e marcada “com fonte”. Nenhum falante as reviu ainda. O arrumeno, o megleno-romeno e o romani têm só um punhado de palavras cada, o istro-romeno ainda nenhuma. A lista básica de 50 conceitos está longe de estar coberta (veja o separador “Cobertura”). O que adicionar fica guardado apenas neste navegador (localStorage, cerca de 5 MB). Descarregue regularmente as suas contribuições; apagar os dados do navegador apaga-as também. As traduções da interface foram feitas com um assistente de IA e aguardam revisão por falantes nativos; os nomes dos conceitos só existem em inglês e em romeno."
         },
         "de": {
-          "limite": "Ein offenes Projekt ganz am Anfang: Das Repository enthält nur das Schema, ein Beispiel und einen Validator für Beiträge; die echten Daten und die App selbst gibt es noch nicht. Es gibt keine Seite und keine App zum Öffnen. Die Karte zeigt, was entsteht, nicht etwas, das heute nutzbar ist."
+          "limite": "Die mitgelieferten Listen sind Startmaterial: Zahlwörter und einige Wörter, jeweils auf eine veröffentlichte Quelle zurückgeführt (Wikipedia, Wiktionary, das Angloromani-Wörterbuch auf kratylos.org) und als „mit Quelle“ markiert. Noch kein Sprecher hat sie geprüft. Aromunisch, Meglenorumänisch und Romani haben nur je eine Handvoll Wörter, Istrorumänisch noch keines. Die Grundliste mit 50 Konzepten ist bei Weitem nicht abgedeckt (siehe Reiter „Abdeckung“). Was Sie hinzufügen, bleibt nur in diesem Browser (localStorage, etwa 5 MB). Laden Sie Ihre Beiträge regelmäßig herunter; das Löschen der Browserdaten löscht sie mit. Die Übersetzungen der Oberfläche wurden mit einem KI-Assistenten erstellt und warten auf die Prüfung durch Muttersprachler; die Namen der Konzepte gibt es nur auf Englisch und Rumänisch."
         },
         "hu": {
-          "limite": "Nyílt projekt a legelején: a tárolóban csak a séma, egy példa és a hozzájárulások ellenőrzője van; a valódi adatok és maga az alkalmazás még nem léteznek. Nincs megnyitható oldal vagy alkalmazás. A kártya azt mutatja, mi épül, nem azt, ami ma használható."
+          "limite": "A beépített listák kiinduló anyagok: számnevek és néhány szó, mindegyik közzétett forrásra (Wikipédia, Wikiszótár, a kratylos.org angloromani szótára) visszavezetve, „forrással” jelöléssel. Egyetlen beszélő sem ellenőrizte még őket. Az arománnak, a megleno-románnak és a romaninak csak néhány szava van, az isztriai románnak még egy sem. Az 50 fogalmas alaplista messze nincs lefedve (lásd a „Lefedettség” fület). Amit hozzáadsz, csak ebben a böngészőben marad meg (localStorage, nagyjából 5 MB). Rendszeresen töltsd le a hozzájárulásaidat; a böngészőadatok törlése ezeket is törli. A felület fordításait MI-asszisztenssel készítettük, anyanyelvi beszélők ellenőrzésére várnak; a fogalmak nevei csak angolul és románul léteznek."
         }
       }
     },
@@ -5589,28 +5642,28 @@
       },
       "fisa": {
         "ro": {
-          "limite": "Proiect deschis în faza de început: depozitul are doar schema, un exemplu și un validator pentru contribuții; datele reale și aplicația propriu-zisă nu există încă. Nu are site sau aplicație de deschis. Cardul arată ce se construiește, nu ceva ce poți folosi azi."
+          "limite": "Datele de pornire sunt puține: zece proverbe românești luate de pe pagina Wikiquote „Romanian proverbs”, cu sursele lor, fără descântece, ghicitori sau colinde și fără județ. Ce se adaugă după aceea este atât de sigur cât este sursa lui. Nicio intrare din datele de pornire nu a fost revizuită de un folclorist sau de un vorbitor nativ; cele marcate „revizuit” spun cine le-a revizuit. „Cu sursă” înseamnă doar că e citată o sursă. Textele interfeței în alte limbi decât engleza și româna au fost scrise cu un asistent IA și cer revizuire de către vorbitori nativi. Ce adaugi rămâne în acest browser până îl descarci; ștergerea datelor site-ului îl șterge. Nu se trimite nimic nicăieri. Pagina nu poate verifica dacă acordul a fost cu adevărat dat: asta cade în sarcina celui care a cules textul."
         },
         "en": {
-          "limite": "An open project at its very start: the repository has only the schema, an example and a validator for contributions; the real data and the app itself do not exist yet. There is no site or app to open. The card shows what is being built, not something you can use today."
+          "limite": "The starter data is small: ten Romanian proverbs taken from Wikiquote’s page “Romanian proverbs”, with their sources, without charms, riddles or carols and without a county. What is added later is only as reliable as its source. No entry of the starter data has been reviewed by a folklorist or a native speaker; entries marked “reviewed” name who reviewed them. “Sourced” only means that a source is cited. The interface texts in languages other than English and Romanian were written with an AI assistant and need native review. What you add stays in this browser until you download it; clearing the site’s data deletes it. Nothing is sent anywhere. The page cannot check that consent was really given: that rests on the person who collected the text."
         },
         "fr": {
-          "limite": "Un projet ouvert à ses tout débuts : le dépôt ne contient que le schéma, un exemple et un validateur pour les contributions ; les vraies données et l’application elle-même n’existent pas encore. Il n’y a ni site ni application à ouvrir. La carte montre ce qui se construit, pas quelque chose d’utilisable aujourd’hui."
+          "limite": "Les données de départ sont peu nombreuses : dix proverbes roumains pris sur la page Wikiquote « Romanian proverbs », avec leurs sources, sans formules magiques, devinettes ni chants et sans comté. Ce qui est ajouté ensuite n’est fiable que dans la mesure de sa source. Aucune entrée des données de départ n’a été relue par un folkloriste ou un locuteur natif ; celles marquées « relu » disent qui les a relues. « Sourcé » signifie seulement qu’une source est citée. Les textes de l’interface dans d’autres langues que l’anglais et le roumain ont été écrits avec un assistant IA et demandent une relecture par des locuteurs natifs. Ce que vous ajoutez reste dans ce navigateur jusqu’à ce que vous le téléchargiez ; effacer les données du site le supprime. Rien n’est envoyé nulle part. La page ne peut pas vérifier que le consentement a vraiment été donné : cela relève de la personne qui a recueilli le texte."
         },
         "it": {
-          "limite": "Un progetto aperto agli inizi: il repository contiene solo lo schema, un esempio e un validatore per i contributi; i dati reali e l’app vera e propria non esistono ancora. Non c’è un sito o un’app da aprire. La scheda mostra ciò che si sta costruendo, non qualcosa di utilizzabile oggi."
+          "limite": "I dati iniziali sono pochi: dieci proverbi rumeni presi dalla pagina di Wikiquote «Romanian proverbs», con le loro fonti, senza incantesimi, indovinelli o canti e senza distretto. Ciò che si aggiunge dopo è affidabile quanto la sua fonte. Nessuna voce dei dati iniziali è stata rivista da un folklorista o da un madrelingua; quelle contrassegnate «rivisto» dicono chi le ha riviste. «Con fonte» significa solo che è citata una fonte. I testi dell’interfaccia in lingue diverse dall’inglese e dal rumeno sono stati scritti con un assistente IA e richiedono la revisione di madrelingua. Ciò che aggiungi resta in questo browser finché non lo scarichi; cancellare i dati del sito lo elimina. Non viene inviato nulla da nessuna parte. La pagina non può verificare che il consenso sia stato davvero dato: questo spetta a chi ha raccolto il testo."
         },
         "es": {
-          "limite": "Un proyecto abierto en sus inicios: el repositorio solo tiene el esquema, un ejemplo y un validador para contribuciones; los datos reales y la app en sí aún no existen. No hay sitio ni app que abrir. La ficha muestra lo que se está construyendo, no algo utilizable hoy."
+          "limite": "Los datos iniciales son pocos: diez refranes rumanos tomados de la página de Wikiquote «Romanian proverbs», con sus fuentes, sin conjuros, adivinanzas ni villancicos y sin condado. Lo que se añada después es tan fiable como su fuente. Ninguna entrada de los datos iniciales ha sido revisada por un folclorista ni por un hablante nativo; las marcadas como «revisado» dicen quién las revisó. «Con fuente» solo significa que se cita una fuente. Los textos de la interfaz en idiomas distintos del inglés y el rumano se escribieron con un asistente de IA y necesitan revisión por hablantes nativos. Lo que añades se queda en este navegador hasta que lo descargues; borrar los datos del sitio lo elimina. No se envía nada a ninguna parte. La página no puede comprobar que el consentimiento se dio de verdad: eso depende de quien recogió el texto."
         },
         "pt": {
-          "limite": "Um projeto aberto no seu início: o repositório tem apenas o esquema, um exemplo e um validador para contribuições; os dados reais e a própria app ainda não existem. Não há site nem app para abrir. A ficha mostra o que está a ser construído, não algo utilizável hoje."
+          "limite": "Os dados iniciais são poucos: dez provérbios romenos tirados da página «Romanian proverbs» da Wikiquote, com as suas fontes, sem esconjuros, adivinhas nem cantigas e sem distrito. O que se acrescentar depois é tão fiável quanto a sua fonte. Nenhuma entrada dos dados iniciais foi revista por um folclorista ou por um falante nativo; as marcadas como «revisto» dizem quem as reviu. «Com fonte» significa apenas que há uma fonte citada. Os textos da interface em línguas que não o inglês e o romeno foram escritos com um assistente de IA e precisam de revisão por falantes nativos. O que adiciona fica neste navegador até o descarregar; apagar os dados do sítio elimina-o. Nada é enviado para lado nenhum. A página não pode verificar se o consentimento foi realmente dado: isso cabe a quem recolheu o texto."
         },
         "de": {
-          "limite": "Ein offenes Projekt ganz am Anfang: Das Repository enthält nur das Schema, ein Beispiel und einen Validator für Beiträge; die echten Daten und die App selbst gibt es noch nicht. Es gibt keine Seite und keine App zum Öffnen. Die Karte zeigt, was entsteht, nicht etwas, das heute nutzbar ist."
+          "limite": "Die Startdaten sind knapp: zehn rumänische Sprichwörter von der Wikiquote-Seite „Romanian proverbs“, mit ihren Quellen, ohne Zaubersprüche, Rätsel oder Lieder und ohne Kreis. Was später hinzukommt, ist nur so verlässlich wie seine Quelle. Kein Eintrag der Startdaten wurde von Folkloristen oder Muttersprachlern geprüft; als „geprüft“ markierte Einträge nennen, wer sie geprüft hat. „Mit Quelle“ heißt nur, dass eine Quelle genannt ist. Die Oberflächentexte in anderen Sprachen als Englisch und Rumänisch wurden mit einem KI-Assistenten geschrieben und brauchen eine Prüfung durch Muttersprachler. Was Sie hinzufügen, bleibt in diesem Browser, bis Sie es herunterladen; das Löschen der Website-Daten löscht es. Nichts wird irgendwohin gesendet. Die Seite kann nicht prüfen, ob die Einwilligung wirklich erteilt wurde: Das liegt bei der Person, die den Text gesammelt hat."
         },
         "hu": {
-          "limite": "Nyílt projekt a legelején: a tárolóban csak a séma, egy példa és a hozzájárulások ellenőrzője van; a valódi adatok és maga az alkalmazás még nem léteznek. Nincs megnyitható oldal vagy alkalmazás. A kártya azt mutatja, mi épül, nem azt, ami ma használható."
+          "limite": "A kezdő adatok kevesek: tíz román közmondás a Wikiquote „Romanian proverbs” oldaláról, forrásaikkal, ráolvasás, találós kérdés vagy ének nélkül és megye nélkül. Ami később kerül hozzá, annyira megbízható, mint a forrása. A kezdő adatok egyik bejegyzését sem ellenőrizte folklórkutató vagy anyanyelvi beszélő; az „ellenőrzött” jelölésűek megnevezik, ki ellenőrizte őket. A „forrással” csak annyit jelent, hogy van megadott forrás. Az angoltól és a romántól eltérő nyelvű felületi szövegeket MI-asszisztenssel írtuk, anyanyelvi ellenőrzésre szorulnak. Amit hozzáadsz, az ebben a böngészőben marad, amíg le nem töltöd; a webhelyadatok törlése törli. Semmi sem kerül sehová elküldésre. Az oldal nem tudja ellenőrizni, hogy a beleegyezést valóban megadták-e: ez annak a felelőssége, aki a szöveget gyűjtötte."
         }
       }
     },
@@ -5630,28 +5683,28 @@
       },
       "fisa": {
         "ro": {
-          "limite": "Proiect deschis în faza de început: depozitul are doar schema, un exemplu și un validator pentru contribuții; datele reale și aplicația propriu-zisă nu există încă. Nu are site sau aplicație de deschis. Cardul arată ce se construiește, nu ceva ce poți folosi azi."
+          "limite": "Pachetul încorporat este un set mic de întrebări de exersare, scrise cu un asistent AI și verificate prin calcul sau prin fapte din manuale. Nu este o bancă oficială de întrebări și niciun examinator nu l-a revizuit. Nu este inclus niciun pachet de țară: băncile publice de întrebări ale Ungariei, Italiei, Germaniei și ale altora nu au putut fi descărcate și verificate aici, deci sunt sarcini pentru contribuitori. Compară fiecare pachet cu banca oficială înainte să te încrezi în el. Regulile examenelor reale (număr de întrebări, timp, prag de promovare) nu sunt încorporate. Un pachet le poate declara împreună cu sursa lor; fără asta simulatorul folosește valori de exersare, iar promovarea aici nu dovedește nimic despre un examen real."
         },
         "en": {
-          "limite": "An open project at its very start: the repository has only the schema, an example and a validator for contributions; the real data and the app itself do not exist yet. There is no site or app to open. The card shows what is being built, not something you can use today."
+          "limite": "The built-in pack is a small set of practice questions written with an AI assistant and checked by calculation or by textbook facts. It is not an official question bank and no examiner has reviewed it. No country pack is included: the public question banks of Hungary, Italy, Germany and others could not be downloaded and checked here, so they are tasks for contributors. Compare every pack with the official bank before you trust it. The exam rules (number of questions, time, pass mark) of real countries are not built in. A pack can declare them together with their source; without that the simulator uses practice defaults, and passing here proves nothing about a real exam."
         },
         "fr": {
-          "limite": "Un projet ouvert à ses tout débuts : le dépôt ne contient que le schéma, un exemple et un validateur pour les contributions ; les vraies données et l’application elle-même n’existent pas encore. Il n’y a ni site ni application à ouvrir. La carte montre ce qui se construit, pas quelque chose d’utilisable aujourd’hui."
+          "limite": "Le paquet intégré est un petit ensemble de questions d’entraînement écrites avec un assistant IA et vérifiées par le calcul ou par des faits de manuel. Ce n’est pas une banque officielle de questions et aucun examinateur ne l’a relu. Aucun paquet de pays n’est inclus : les banques publiques de questions de la Hongrie, de l’Italie, de l’Allemagne et d’autres n’ont pas pu être téléchargées et vérifiées ici ; ce sont des tâches pour les contributeurs. Comparez chaque paquet à la banque officielle avant de lui faire confiance. Les règles des vrais examens (nombre de questions, durée, seuil de réussite) ne sont pas intégrées. Un paquet peut les déclarer avec leur source ; sinon le simulateur utilise des valeurs d’entraînement, et réussir ici ne prouve rien sur un vrai examen."
         },
         "it": {
-          "limite": "Un progetto aperto agli inizi: il repository contiene solo lo schema, un esempio e un validatore per i contributi; i dati reali e l’app vera e propria non esistono ancora. Non c’è un sito o un’app da aprire. La scheda mostra ciò che si sta costruendo, non qualcosa di utilizzabile oggi."
+          "limite": "Il pacchetto incorporato è un piccolo insieme di domande di esercitazione scritte con un assistente IA e verificate con il calcolo o con fatti da manuale. Non è una banca ufficiale di domande e nessun esaminatore l’ha rivisto. Non è incluso alcun pacchetto di paese: le banche pubbliche di domande di Ungheria, Italia, Germania e altri non si sono potute scaricare e verificare qui, quindi sono compiti per i contributori. Confronta ogni pacchetto con la banca ufficiale prima di fidarti. Le regole degli esami veri (numero di domande, tempo, soglia di superamento) non sono incorporate. Un pacchetto può dichiararle con la loro fonte; senza di essa il simulatore usa valori di esercitazione, e superare l’esame qui non dimostra nulla su un esame vero."
         },
         "es": {
-          "limite": "Un proyecto abierto en sus inicios: el repositorio solo tiene el esquema, un ejemplo y un validador para contribuciones; los datos reales y la app en sí aún no existen. No hay sitio ni app que abrir. La ficha muestra lo que se está construyendo, no algo utilizable hoy."
+          "limite": "El paquete incorporado es un pequeño conjunto de preguntas de práctica escritas con un asistente de IA y comprobadas con cálculos o con datos de manual. No es un banco oficial de preguntas y ningún examinador lo ha revisado. No se incluye ningún paquete de país: los bancos públicos de preguntas de Hungría, Italia, Alemania y otros no se pudieron descargar ni comprobar aquí, así que son tareas para colaboradores. Compara cada paquete con el banco oficial antes de fiarte. Las reglas de los exámenes reales (número de preguntas, tiempo, nota de aprobado) no están incorporadas. Un paquete puede declararlas con su fuente; sin ella el simulador usa valores de práctica, y aprobar aquí no demuestra nada sobre un examen real."
         },
         "pt": {
-          "limite": "Um projeto aberto no seu início: o repositório tem apenas o esquema, um exemplo e um validador para contribuições; os dados reais e a própria app ainda não existem. Não há site nem app para abrir. A ficha mostra o que está a ser construído, não algo utilizável hoje."
+          "limite": "O pacote incorporado é um pequeno conjunto de perguntas de treino escritas com um assistente de IA e verificadas por cálculo ou por factos de manual. Não é um banco oficial de perguntas e nenhum examinador o reviu. Não está incluído nenhum pacote de país: os bancos públicos de perguntas da Hungria, da Itália, da Alemanha e de outros não puderam ser descarregados nem verificados aqui, pelo que são tarefas para contribuidores. Compare cada pacote com o banco oficial antes de confiar nele. As regras dos exames reais (número de perguntas, tempo, nota de aprovação) não estão incorporadas. Um pacote pode declará-las com a respetiva fonte; sem isso o simulador usa valores de treino, e passar aqui não prova nada sobre um exame real."
         },
         "de": {
-          "limite": "Ein offenes Projekt ganz am Anfang: Das Repository enthält nur das Schema, ein Beispiel und einen Validator für Beiträge; die echten Daten und die App selbst gibt es noch nicht. Es gibt keine Seite und keine App zum Öffnen. Die Karte zeigt, was entsteht, nicht etwas, das heute nutzbar ist."
+          "limite": "Das eingebaute Paket ist eine kleine Sammlung von Übungsfragen, mit einem KI-Assistenten geschrieben und durch Rechnung oder Lehrbuchwissen geprüft. Es ist kein offizieller Fragenkatalog, und kein Prüfer hat es durchgesehen. Es ist kein Länderpaket enthalten: Die öffentlichen Fragenkataloge von Ungarn, Italien, Deutschland und anderen ließen sich hier nicht herunterladen und prüfen, daher sind sie Aufgaben für Mitwirkende. Vergleichen Sie jedes Paket mit dem offiziellen Katalog, bevor Sie ihm vertrauen. Die Regeln echter Prüfungen (Fragenzahl, Zeit, Bestehensgrenze) sind nicht eingebaut. Ein Paket kann sie mit ihrer Quelle angeben; ohne Angabe verwendet der Simulator Übungswerte, und Bestehen hier beweist nichts über eine echte Prüfung."
         },
         "hu": {
-          "limite": "Nyílt projekt a legelején: a tárolóban csak a séma, egy példa és a hozzájárulások ellenőrzője van; a valódi adatok és maga az alkalmazás még nem léteznek. Nincs megnyitható oldal vagy alkalmazás. A kártya azt mutatja, mi épül, nem azt, ami ma használható."
+          "limite": "A beépített csomag néhány gyakorlókérdés, MI-asszisztenssel írva, számítással vagy tankönyvi tényekkel ellenőrizve. Nem hivatalos kérdésbank, és vizsgáztató nem nézte át. Országcsomag nincs benne: Magyarország, Olaszország, Németország és mások nyilvános kérdésbankját itt nem lehetett letölteni és ellenőrizni, ezért ezek a közreműködők feladatai. Minden csomagot vess össze a hivatalos bankkal, mielőtt megbízol benne. A valódi vizsgák szabályai (kérdésszám, idő, sikeres határ) nincsenek beépítve. A csomag megadhatja őket a forrásukkal együtt; enélkül a szimulátor gyakorló alapértékeket használ, és az itteni siker semmit sem bizonyít egy valódi vizsgáról."
         }
       }
     },
@@ -5671,28 +5724,28 @@
       },
       "fisa": {
         "ro": {
-          "limite": "Proiect deschis în faza de început: depozitul are doar schema, un exemplu și un validator pentru contribuții; datele reale și aplicația propriu-zisă nu există încă. Nu are site sau aplicație de deschis. Cardul arată ce se construiește, nu ceva ce poți folosi azi."
+          "limite": "Alfa: nicio încercare pe un telefon sau o tabletă reală și în niciun alt browser decât Chromium; totul a fost testat în Chromium, cu conexiuni WebRTC reale pe o singură mașină. Implicit, asocierea merge doar în aceeași rețea locală. Un server STUN introdus de tine ar putea-o permite între rețele (neîncercat aici), dar nu există releu (fără TURN), așa că Wi-Fi-ul pentru oaspeți care izolează dispozitivele, VPN-urile și multe rețele școlare, corporative și mobile o pot totuși bloca. Fiecare telefon cere propriul schimb de coduri, deci adăugarea unei clase întregi durează câteva minute. Asocierea arată adresa IP a fiecărui dispozitiv celuilalt (dialogul întreabă mai întâi). Canalul este criptat, dar identitatea celuilalt dispozitiv nu este verificată: asociază doar în propria sală. Sandbox-ul nu împiedică o activitate ostilă să-și blocheze propriul cadru (în unele browsere, toată fila), iar o activitate își poate folosi canalul privat până la limitele sale. Adaugă doar activități a căror sursă ai citit-o. Quiz-ul citește fișiere JSON, text simplu și CSV. Formatul „Undava” cerut în planul inițial nu a fost găsit documentat nicăieri și nu a fost testat cu fișiere Undava reale. Interfața și activitățile există în opt limbi; cele în franceză, italiană, spaniolă, portugheză, germană și maghiară au fost traduse automat și nu au fost verificate de vorbitori nativi."
         },
         "en": {
-          "limite": "An open project at its very start: the repository has only the schema, an example and a validator for contributions; the real data and the app itself do not exist yet. There is no site or app to open. The card shows what is being built, not something you can use today."
+          "limite": "Alpha: no real phone or tablet, and no browser other than Chromium, has run it; everything was tested in Chromium with real WebRTC connections on one machine. By default pairing works only on the same local network. A STUN server you enter may allow it across networks (not tried here), but there is no relay (no TURN), so guest Wi-Fi that isolates devices, VPNs and many school, corporate and mobile networks can still block it. Each phone needs its own exchange of codes, so adding a whole class takes a few minutes. Pairing shows each device’s IP address to the other (the dialog asks first). The channel is encrypted, but the identity of the other device is not verified: pair only in your own room. The sandbox does not stop a hostile activity from freezing its own frame (in some browsers the whole tab), and an activity can use its private channel up to its limits. Add only activities whose source you have read. The quiz reads JSON, plain-text and CSV files. The “Undava” format asked for in the first plan was not found documented anywhere and has not been tested against real Undava files. The interface and the activities exist in eight languages; those in French, Italian, Spanish, Portuguese, German and Hungarian were translated by software and have not been reviewed by native speakers."
         },
         "fr": {
-          "limite": "Un projet ouvert à ses tout débuts : le dépôt ne contient que le schéma, un exemple et un validateur pour les contributions ; les vraies données et l’application elle-même n’existent pas encore. Il n’y a ni site ni application à ouvrir. La carte montre ce qui se construit, pas quelque chose d’utilisable aujourd’hui."
+          "limite": "Alpha : aucun vrai téléphone ni vraie tablette, et aucun navigateur autre que Chromium, ne l’a fait tourner ; tout a été testé dans Chromium, avec de vraies connexions WebRTC sur une seule machine. Par défaut, l’appairage ne marche que sur le même réseau local. Un serveur STUN que vous saisissez peut le permettre entre réseaux (non essayé ici), mais il n’y a pas de relais (pas de TURN) : le Wi-Fi invité qui isole les appareils, les VPN et de nombreux réseaux scolaires, d’entreprise et mobiles peuvent donc encore le bloquer. Chaque téléphone demande son propre échange de codes, donc ajouter une classe entière prend quelques minutes. L’appairage montre l’adresse IP de chaque appareil à l’autre (la boîte de dialogue demande d’abord). Le canal est chiffré, mais l’identité de l’autre appareil n’est pas vérifiée : n’appairez que dans votre propre salle. Le bac à sable n’empêche pas une activité hostile de figer son propre cadre (dans certains navigateurs, tout l’onglet), et une activité peut utiliser son canal privé jusqu’à ses limites. N’ajoutez que des activités dont vous avez lu le code source. Le quiz lit des fichiers JSON, texte simple et CSV. Le format « Undava » demandé dans le premier plan n’a été trouvé documenté nulle part et n’a pas été testé avec de vrais fichiers Undava. L’interface et les activités existent en huit langues ; celles en français, italien, espagnol, portugais, allemand et hongrois ont été traduites automatiquement et n’ont pas été relues par des locuteurs natifs."
         },
         "it": {
-          "limite": "Un progetto aperto agli inizi: il repository contiene solo lo schema, un esempio e un validatore per i contributi; i dati reali e l’app vera e propria non esistono ancora. Non c’è un sito o un’app da aprire. La scheda mostra ciò che si sta costruendo, non qualcosa di utilizzabile oggi."
+          "limite": "Alpha: nessun telefono o tablet reale, e nessun browser diverso da Chromium, l’ha mai eseguita; tutto è stato provato in Chromium, con vere connessioni WebRTC su una sola macchina. Per impostazione predefinita l’abbinamento funziona solo nella stessa rete locale. Un server STUN che inserisci potrebbe consentirlo tra reti diverse (non provato qui), ma non c’è un relay (niente TURN): il Wi-Fi ospiti che isola i dispositivi, le VPN e molte reti scolastiche, aziendali e mobili possono quindi ancora bloccarlo. Ogni telefono richiede il proprio scambio di codici, quindi aggiungere una classe intera richiede qualche minuto. L’abbinamento mostra l’indirizzo IP di ciascun dispositivo all’altro (la finestra lo chiede prima). Il canale è cifrato, ma l’identità dell’altro dispositivo non è verificata: abbina solo nella tua aula. La sandbox non impedisce a un’attività ostile di bloccare il proprio frame (in alcuni browser l’intera scheda), e un’attività può usare il suo canale privato fino ai propri limiti. Aggiungi solo attività di cui hai letto il codice sorgente. Il quiz legge file JSON, testo semplice e CSV. Il formato «Undava» richiesto nel primo piano non è stato trovato documentato da nessuna parte e non è stato provato con veri file Undava. L’interfaccia e le attività esistono in otto lingue; quelle in francese, italiano, spagnolo, portoghese, tedesco e ungherese sono state tradotte automaticamente e non sono state riviste da madrelingua."
         },
         "es": {
-          "limite": "Un proyecto abierto en sus inicios: el repositorio solo tiene el esquema, un ejemplo y un validador para contribuciones; los datos reales y la app en sí aún no existen. No hay sitio ni app que abrir. La ficha muestra lo que se está construyendo, no algo utilizable hoy."
+          "limite": "Alfa: ningún teléfono ni tableta reales, y ningún navegador distinto de Chromium, la ha ejecutado; todo se probó en Chromium, con conexiones WebRTC reales en una sola máquina. De forma predeterminada, el emparejamiento solo funciona en la misma red local. Un servidor STUN que introduzcas podría permitirlo entre redes (no probado aquí), pero no hay relé (sin TURN), así que el Wi-Fi de invitados que aísla los dispositivos, las VPN y muchas redes escolares, corporativas y móviles aún pueden bloquearlo. Cada teléfono necesita su propio intercambio de códigos, de modo que añadir una clase entera lleva unos minutos. El emparejamiento muestra la dirección IP de cada dispositivo al otro (el diálogo pregunta antes). El canal está cifrado, pero la identidad del otro dispositivo no se verifica: empareja solo en tu propia sala. El entorno aislado no impide que una actividad hostil congele su propio marco (en algunos navegadores, toda la pestaña), y una actividad puede usar su canal privado hasta sus límites. Añade solo actividades cuyo código fuente hayas leído. El cuestionario lee archivos JSON, texto simple y CSV. El formato «Undava» pedido en el primer plan no se encontró documentado en ninguna parte y no se ha probado con archivos Undava reales. La interfaz y las actividades existen en ocho idiomas; las de francés, italiano, español, portugués, alemán y húngaro se tradujeron automáticamente y no las han revisado hablantes nativos."
         },
         "pt": {
-          "limite": "Um projeto aberto no seu início: o repositório tem apenas o esquema, um exemplo e um validador para contribuições; os dados reais e a própria app ainda não existem. Não há site nem app para abrir. A ficha mostra o que está a ser construído, não algo utilizável hoje."
+          "limite": "Alfa: nenhum telemóvel ou tablet real, e nenhum navegador que não o Chromium, a executou; tudo foi testado no Chromium, com ligações WebRTC reais numa só máquina. Por predefinição, o emparelhamento só funciona na mesma rede local. Um servidor STUN que introduza poderá permiti-lo entre redes (não experimentado aqui), mas não há retransmissão (sem TURN), por isso o Wi-Fi de convidados que isola os dispositivos, as VPN e muitas redes escolares, empresariais e móveis ainda o podem bloquear. Cada telemóvel precisa da sua própria troca de códigos, pelo que juntar uma turma inteira leva alguns minutos. O emparelhamento mostra o endereço IP de cada dispositivo ao outro (a caixa de diálogo pergunta primeiro). O canal é cifrado, mas a identidade do outro dispositivo não é verificada: emparelhe apenas na sua própria sala. A sandbox não impede que uma atividade hostil congele o seu próprio quadro (em alguns navegadores, o separador inteiro), e uma atividade pode usar o seu canal privado até aos seus limites. Adicione apenas atividades cujo código-fonte tenha lido. O questionário lê ficheiros JSON, texto simples e CSV. O formato «Undava» pedido no primeiro plano não foi encontrado documentado em lado nenhum e não foi testado com ficheiros Undava reais. A interface e as atividades existem em oito línguas; as de francês, italiano, espanhol, português, alemão e húngaro foram traduzidas automaticamente e não foram revistas por falantes nativos."
         },
         "de": {
-          "limite": "Ein offenes Projekt ganz am Anfang: Das Repository enthält nur das Schema, ein Beispiel und einen Validator für Beiträge; die echten Daten und die App selbst gibt es noch nicht. Es gibt keine Seite und keine App zum Öffnen. Die Karte zeigt, was entsteht, nicht etwas, das heute nutzbar ist."
+          "limite": "Alpha: Kein echtes Telefon und kein Tablet und kein anderer Browser als Chromium hat sie bisher ausgeführt; alles wurde in Chromium mit echten WebRTC-Verbindungen auf einem einzigen Rechner getestet. Standardmäßig funktioniert die Kopplung nur im selben lokalen Netz. Ein von dir eingetragener STUN-Server könnte sie netzübergreifend ermöglichen (hier nicht ausprobiert), aber es gibt kein Relay (kein TURN), daher können Gast-WLANs, die Geräte voneinander trennen, VPNs und viele Schul-, Firmen- und Mobilfunknetze sie weiterhin blockieren. Jedes Telefon braucht seinen eigenen Codeaustausch, eine ganze Klasse hinzuzufügen dauert also einige Minuten. Die Kopplung zeigt dem anderen Gerät die IP-Adresse jedes Geräts (der Dialog fragt vorher). Der Kanal ist verschlüsselt, die Identität des anderen Geräts wird aber nicht geprüft: Koppele nur in deinem eigenen Raum. Die Sandbox hindert eine feindliche Aktivität nicht daran, ihren eigenen Frame einzufrieren (in manchen Browsern den ganzen Tab), und eine Aktivität kann ihren privaten Kanal bis zu ihren Grenzen nutzen. Füge nur Aktivitäten hinzu, deren Quelltext du gelesen hast. Das Quiz liest JSON-, Klartext- und CSV-Dateien. Das im ersten Plan verlangte „Undava“-Format wurde nirgends dokumentiert gefunden und nicht mit echten Undava-Dateien getestet. Oberfläche und Aktivitäten gibt es in acht Sprachen; die auf Französisch, Italienisch, Spanisch, Portugiesisch, Deutsch und Ungarisch wurden maschinell übersetzt und nicht von Muttersprachlern geprüft."
         },
         "hu": {
-          "limite": "Nyílt projekt a legelején: a tárolóban csak a séma, egy példa és a hozzájárulások ellenőrzője van; a valódi adatok és maga az alkalmazás még nem léteznek. Nincs megnyitható oldal vagy alkalmazás. A kártya azt mutatja, mi épül, nem azt, ami ma használható."
+          "limite": "Alfa: egyetlen valódi telefonon vagy táblagépen, és a Chromiumon kívül egyetlen böngészőben sem futott; mindent Chromiumban teszteltünk, valódi WebRTC-kapcsolatokkal egyetlen gépen. Alapértelmezés szerint a párosítás csak ugyanazon a helyi hálózaton működik. Egy általad megadott STUN-szerver talán lehetővé teszi hálózatok között is (ezt itt nem próbáltuk ki), de nincs továbbító (TURN), ezért a vendég Wi-Fi, amely elszigeteli az eszközöket, a VPN, valamint sok iskolai, vállalati és mobilhálózat így is blokkolhatja. Minden telefonhoz külön kódcsere kell, ezért egy egész osztály hozzáadása néhány percig tart. A párosítás megmutatja minden eszköz IP-címét a másiknak (a párbeszédablak előbb rákérdez). A csatorna titkosított, de a másik eszköz kilétét nem ellenőrzi senki: csak a saját termedben párosíts. A homokozó nem akadályozza meg, hogy egy ellenséges tevékenység lefagyassza a saját keretét (egyes böngészőkben az egész lapot), és egy tevékenység a korlátaiig használhatja a privát csatornáját. Csak olyan tevékenységet adj hozzá, amelynek a forrását elolvastad. A kvíz JSON, egyszerű szöveg és CSV fájlokat olvas. Az első tervben kért „Undava” formátumot sehol nem találtuk dokumentálva, és valódi Undava fájlokkal nem teszteltük. A felület és a tevékenységek nyolc nyelven érhetők el; a francia, olasz, spanyol, portugál, német és magyar szöveget géppel fordítottuk, anyanyelvi beszélők nem nézték át."
         }
       }
     },
@@ -5712,28 +5765,28 @@
       },
       "fisa": {
         "ro": {
-          "limite": "Proiect deschis în faza de început: depozitul are doar schema, un exemplu și un validator pentru contribuții; datele reale și aplicația propriu-zisă nu există încă. Nu are site sau aplicație de deschis. Cardul arată ce se construiește, nu ceva ce poți folosi azi."
+          "limite": "Jocurile istorice sunt reconstituiri: sursele sunt incomplete, iar alegerile moderne sunt notate la fiecare joc. Nu sunt reguli de turneu. Hnefatafl este simplificat: lipsesc captura „zid de scuturi”, victoria prin fort pe margine și victoria prin încercuirea tuturor apărătorilor. Adversarul calculatorului este o căutare minimax scurtă (ușor: adâncime 2; mediu: adâncime 5, cu limită de noduri); joacă rezonabil, nu perfect. Nivelul aleator mută la întâmplare. Remizele prin repetare sau prin ture fără captură sunt convenții ale aplicației, notate la fiecare joc. Jocurile de cărți nu se pot juca încă. Jocurile tradiționale românești, în afară de Moara (Țintar), lipsesc: regulile lor nu au fost verificate în surse. Vezi sarcinile deschise."
         },
         "en": {
-          "limite": "An open project at its very start: the repository has only the schema, an example and a validator for contributions; the real data and the app itself do not exist yet. There is no site or app to open. The card shows what is being built, not something you can use today."
+          "limite": "The historical games are reconstructions: the sources are incomplete, and the modern choices are noted for each game. These are not tournament rules. Hnefatafl is simplified: the shieldwall capture, the edge-fort win and the win by encircling all defenders are missing. The computer opponent is a short minimax search (easy: depth 2; medium: depth 5 with a node limit); it plays reasonably, not perfectly. The random level moves at random. Draws by repetition or by turns without a capture are app conventions, noted for each game. Card games cannot be played yet. Traditional Romanian games other than Moara (Țintar) are missing: their rules were not verified against sources. See the open tasks."
         },
         "fr": {
-          "limite": "Un projet ouvert à ses tout débuts : le dépôt ne contient que le schéma, un exemple et un validateur pour les contributions ; les vraies données et l’application elle-même n’existent pas encore. Il n’y a ni site ni application à ouvrir. La carte montre ce qui se construit, pas quelque chose d’utilisable aujourd’hui."
+          "limite": "Les jeux historiques sont des reconstitutions : les sources sont incomplètes et les choix modernes sont indiqués pour chaque jeu. Ce ne sont pas des règles de tournoi. Le hnefatafl est simplifié : la prise par mur de boucliers, la victoire par fort de bord et la victoire par encerclement de tous les défenseurs manquent. L’adversaire informatique est une courte recherche minimax (facile : profondeur 2 ; moyen : profondeur 5, avec limite de nœuds) ; il joue raisonnablement, pas parfaitement. Le niveau aléatoire joue au hasard. Les nulles par répétition ou par tours sans prise sont des conventions de l’application, indiquées pour chaque jeu. Les jeux de cartes ne sont pas encore jouables. Les jeux traditionnels roumains autres que la Moara (Țintar) manquent : leurs règles n’ont pas été vérifiées dans des sources. Voir les tâches ouvertes."
         },
         "it": {
-          "limite": "Un progetto aperto agli inizi: il repository contiene solo lo schema, un esempio e un validatore per i contributi; i dati reali e l’app vera e propria non esistono ancora. Non c’è un sito o un’app da aprire. La scheda mostra ciò che si sta costruendo, non qualcosa di utilizzabile oggi."
+          "limite": "I giochi storici sono ricostruzioni: le fonti sono incomplete e le scelte moderne sono indicate per ogni gioco. Non sono regole da torneo. L’hnefatafl è semplificato: mancano la cattura del muro di scudi, la vittoria con il forte sul bordo e la vittoria per accerchiamento di tutti i difensori. L’avversario informatico usa una breve ricerca minimax (facile: profondità 2; medio: profondità 5, con limite di nodi); gioca in modo ragionevole, non perfetto. Il livello casuale muove a caso. Le patte per ripetizione o per turni senza cattura sono convenzioni dell’app, indicate per ogni gioco. I giochi di carte non sono ancora giocabili. Mancano i giochi tradizionali rumeni oltre alla Moara (Țintar): le loro regole non sono state verificate nelle fonti. Vedi le attività aperte."
         },
         "es": {
-          "limite": "Un proyecto abierto en sus inicios: el repositorio solo tiene el esquema, un ejemplo y un validador para contribuciones; los datos reales y la app en sí aún no existen. No hay sitio ni app que abrir. La ficha muestra lo que se está construyendo, no algo utilizable hoy."
+          "limite": "Los juegos históricos son reconstrucciones: las fuentes son incompletas y las elecciones modernas se indican en cada juego. No son reglas de torneo. El hnefatafl está simplificado: faltan la captura por muro de escudos, la victoria por fuerte en el borde y la victoria por cerco de todos los defensores. El rival informático usa una búsqueda minimax corta (fácil: profundidad 2; medio: profundidad 5, con límite de nodos); juega razonablemente, no a la perfección. El nivel aleatorio mueve al azar. Las tablas por repetición o por turnos sin captura son convenciones de la aplicación, indicadas en cada juego. Los juegos de cartas aún no se pueden jugar. Faltan los juegos tradicionales rumanos aparte de la Moara (Țintar): sus reglas no se verificaron en fuentes. Véanse las tareas abiertas."
         },
         "pt": {
-          "limite": "Um projeto aberto no seu início: o repositório tem apenas o esquema, um exemplo e um validador para contribuições; os dados reais e a própria app ainda não existem. Não há site nem app para abrir. A ficha mostra o que está a ser construído, não algo utilizável hoje."
+          "limite": "Os jogos históricos são reconstruções: as fontes são incompletas e as escolhas modernas vêm indicadas em cada jogo. Não são regras de torneio. O hnefatafl está simplificado: faltam a captura por muro de escudos, a vitória por forte na borda e a vitória por cerco de todos os defensores. O adversário informático usa uma pesquisa minimax curta (fácil: profundidade 2; médio: profundidade 5, com limite de nós); joga de forma razoável, não perfeita. O nível aleatório joga ao acaso. Os empates por repetição ou por jogadas sem captura são convenções da aplicação, indicadas em cada jogo. Os jogos de cartas ainda não se podem jogar. Faltam os jogos tradicionais romenos além da Moara (Țintar): as suas regras não foram verificadas em fontes. Veja as tarefas em aberto."
         },
         "de": {
-          "limite": "Ein offenes Projekt ganz am Anfang: Das Repository enthält nur das Schema, ein Beispiel und einen Validator für Beiträge; die echten Daten und die App selbst gibt es noch nicht. Es gibt keine Seite und keine App zum Öffnen. Die Karte zeigt, was entsteht, nicht etwas, das heute nutzbar ist."
+          "limite": "Die historischen Spiele sind Rekonstruktionen: Die Quellen sind lückenhaft, und moderne Festlegungen sind bei jedem Spiel vermerkt. Es sind keine Turnierregeln. Hnefatafl ist vereinfacht: Der Schildwall-Schlag, der Randfestungs-Sieg und der Sieg durch Einkreisen aller Verteidiger fehlen. Der Computergegner nutzt eine kurze Minimax-Suche (leicht: Tiefe 2; mittel: Tiefe 5 mit Knotenlimit); er spielt vernünftig, nicht perfekt. Die Stufe „zufällig“ zieht zufällig. Remis durch Wiederholung oder durch Züge ohne Schlag sind Konventionen der App und bei jedem Spiel vermerkt. Kartenspiele sind noch nicht spielbar. Traditionelle rumänische Spiele außer Moara (Țintar) fehlen: Ihre Regeln wurden nicht anhand von Quellen geprüft. Siehe die offenen Aufgaben."
         },
         "hu": {
-          "limite": "Nyílt projekt a legelején: a tárolóban csak a séma, egy példa és a hozzájárulások ellenőrzője van; a valódi adatok és maga az alkalmazás még nem léteznek. Nincs megnyitható oldal vagy alkalmazás. A kártya azt mutatja, mi épül, nem azt, ami ma használható."
+          "limite": "A történeti játékok rekonstrukciók: a források hiányosak, a modern döntéseket minden játéknál jelöljük. Ezek nem versenyszabályok. A hnefatafl egyszerűsített: hiányzik a pajzsfal-ütés, a szélvár általi győzelem és az összes védő bekerítése általi győzelem. A számítógépes ellenfél rövid minimax-keresést használ (könnyű: 2 mélység; közepes: 5 mélység csomópont-korláttal); ésszerűen játszik, nem tökéletesen. A véletlen szint találomra lép. Az ismétlés vagy ütés nélküli körök miatti döntetlen az alkalmazás megállapodása, minden játéknál jelöljük. A kártyajátékok még nem játszhatók. A Moara (Țintar) kivételével hiányoznak a hagyományos román játékok: szabályaikat nem ellenőrizték forrásokban. Lásd a nyitott feladatokat."
         }
       }
     },
@@ -5753,28 +5806,28 @@
       },
       "fisa": {
         "ro": {
-          "limite": "Proiect deschis în faza de început: depozitul are doar schema, un exemplu și un validator pentru contribuții; datele reale și aplicația propriu-zisă nu există încă. Nu are site sau aplicație de deschis. Cardul arată ce se construiește, nu ceva ce poți folosi azi."
+          "limite": "Pachetele încorporate sunt ciorne: numele și notele au fost scrise cu un asistent IA din cunoștințe generale și verificate doar în parte pe pagini publice. Niciun biolog, micolog sau vorbitor nativ nu le-a revizuit. Pachetele pentru Bulgaria și Moldova sunt schelete de câte 10 specii. «Nemarcată ca toxică» înseamnă doar că nimeni n-a marcat specia ca toxică în acest pachet. Nu este niciodată o afirmație că o plantă sau o ciupercă e comestibilă sau sigură, iar pachetele nu te învață cum să deosebești sosiile. Nu mânca niciodată o plantă sau o ciupercă din natură pe baza acestei pagini. Pachetele încorporate nu conțin fotografii și nici legături către sunete, fiindcă licențele și numerele înregistrărilor nu au putut fi verificate fără internet. Formatul le acceptă pe amândouă, cu autor, licență și sursă."
         },
         "en": {
-          "limite": "An open project at its very start: the repository has only the schema, an example and a validator for contributions; the real data and the app itself do not exist yet. There is no site or app to open. The card shows what is being built, not something you can use today."
+          "limite": "The built-in packs are drafts: names and notes were written with an AI assistant from general knowledge and checked only in part against public pages. No biologist, mycologist or native speaker has reviewed them. The Bulgarian and Moldovan packs are skeletons of 10 species each. «Not marked toxic» means only that nobody marked the species as toxic in this pack. It is never a statement that a plant or mushroom is edible or safe, and the packs do not teach how to tell look-alikes apart. Never eat a wild plant or mushroom because of this page. The built-in packs contain no photos and no sound links, because licences and recording numbers could not be verified offline. The format supports both, with author, licence and source."
         },
         "fr": {
-          "limite": "Un projet ouvert à ses tout débuts : le dépôt ne contient que le schéma, un exemple et un validateur pour les contributions ; les vraies données et l’application elle-même n’existent pas encore. Il n’y a ni site ni application à ouvrir. La carte montre ce qui se construit, pas quelque chose d’utilisable aujourd’hui."
+          "limite": "Les paquets intégrés sont des brouillons : noms et notes ont été rédigés avec un assistant IA à partir de connaissances générales et vérifiés en partie seulement sur des pages publiques. Aucun biologiste, mycologue ni locuteur natif ne les a relus. Les paquets bulgare et moldave sont des squelettes de 10 espèces chacun. « Non signalée toxique » signifie seulement que personne n’a marqué l’espèce comme toxique dans ce paquet. Ce n’est jamais l’affirmation qu’une plante ou un champignon est comestible ou sans danger, et les paquets n’apprennent pas à distinguer les sosies. Ne mangez jamais une plante ou un champignon sauvage à cause de cette page. Les paquets intégrés ne contiennent ni photos ni liens sonores, car les licences et les numéros d’enregistrement n’ont pas pu être vérifiés hors ligne. Le format accepte les deux, avec auteur, licence et source."
         },
         "it": {
-          "limite": "Un progetto aperto agli inizi: il repository contiene solo lo schema, un esempio e un validatore per i contributi; i dati reali e l’app vera e propria non esistono ancora. Non c’è un sito o un’app da aprire. La scheda mostra ciò che si sta costruendo, non qualcosa di utilizzabile oggi."
+          "limite": "I pacchetti incorporati sono bozze: nomi e note sono stati scritti con un assistente IA da conoscenze generali e verificati solo in parte su pagine pubbliche. Nessun biologo, micologo o madrelingua li ha rivisti. I pacchetti bulgaro e moldavo sono scheletri di 10 specie ciascuno. «Non segnalata come tossica» significa solo che nessuno ha segnato la specie come tossica in questo pacchetto. Non è mai l’affermazione che una pianta o un fungo sia commestibile o sicuro, e i pacchetti non insegnano a distinguere i sosia. Non mangiare mai una pianta o un fungo selvatico per via di questa pagina. I pacchetti incorporati non contengono foto né link a suoni, perché licenze e numeri delle registrazioni non si potevano verificare offline. Il formato supporta entrambi, con autore, licenza e fonte."
         },
         "es": {
-          "limite": "Un proyecto abierto en sus inicios: el repositorio solo tiene el esquema, un ejemplo y un validador para contribuciones; los datos reales y la app en sí aún no existen. No hay sitio ni app que abrir. La ficha muestra lo que se está construyendo, no algo utilizable hoy."
+          "limite": "Los paquetes incluidos son borradores: los nombres y las notas se escribieron con un asistente de IA a partir de conocimientos generales y se comprobaron solo en parte en páginas públicas. Ningún biólogo, micólogo ni hablante nativo los ha revisado. Los paquetes de Bulgaria y Moldavia son esqueletos de 10 especies cada uno. «No marcada como tóxica» solo significa que nadie marcó la especie como tóxica en este paquete. Nunca es una afirmación de que una planta o una seta sea comestible o segura, y los paquetes no enseñan a distinguir los dobles. No comas nunca una planta o una seta silvestre por esta página. Los paquetes incluidos no contienen fotos ni enlaces a sonidos, porque las licencias y los números de grabación no se pudieron comprobar sin conexión. El formato admite ambos, con autor, licencia y fuente."
         },
         "pt": {
-          "limite": "Um projeto aberto no seu início: o repositório tem apenas o esquema, um exemplo e um validador para contribuições; os dados reais e a própria app ainda não existem. Não há site nem app para abrir. A ficha mostra o que está a ser construído, não algo utilizável hoje."
+          "limite": "Os pacotes incorporados são rascunhos: nomes e notas foram escritos com um assistente de IA a partir de conhecimentos gerais e verificados apenas em parte em páginas públicas. Nenhum biólogo, micologista ou falante nativo os reviu. Os pacotes da Bulgária e da Moldávia são esqueletos de 10 espécies cada. «Não marcada como tóxica» significa apenas que ninguém marcou a espécie como tóxica neste pacote. Nunca é a afirmação de que uma planta ou um cogumelo é comestível ou seguro, e os pacotes não ensinam a distinguir os sósias. Nunca coma uma planta ou um cogumelo silvestre por causa desta página. Os pacotes incorporados não contêm fotos nem ligações a sons, porque as licenças e os números das gravações não puderam ser verificados sem ligação à internet. O formato admite ambos, com autor, licença e fonte."
         },
         "de": {
-          "limite": "Ein offenes Projekt ganz am Anfang: Das Repository enthält nur das Schema, ein Beispiel und einen Validator für Beiträge; die echten Daten und die App selbst gibt es noch nicht. Es gibt keine Seite und keine App zum Öffnen. Die Karte zeigt, was entsteht, nicht etwas, das heute nutzbar ist."
+          "limite": "Die eingebauten Pakete sind Entwürfe: Namen und Hinweise wurden mit einem KI-Assistenten aus allgemeinem Wissen geschrieben und nur teilweise anhand öffentlicher Seiten geprüft. Keine Biologin, kein Pilzkundler und keine Muttersprachlerin hat sie durchgesehen. Die Pakete für Bulgarien und Moldau sind Gerüste mit je 10 Arten. «Nicht als giftig markiert» heißt nur, dass niemand die Art in diesem Paket als giftig markiert hat. Es ist nie die Aussage, dass eine Pflanze oder ein Pilz essbar oder sicher ist, und die Pakete lehren nicht, Doppelgänger zu unterscheiden. Iss niemals eine wild wachsende Pflanze oder einen Pilz aufgrund dieser Seite. Die eingebauten Pakete enthalten keine Fotos und keine Laut-Links, weil Lizenzen und Aufnahmenummern offline nicht überprüft werden konnten. Das Format unterstützt beides, mit Autor, Lizenz und Quelle."
         },
         "hu": {
-          "limite": "Nyílt projekt a legelején: a tárolóban csak a séma, egy példa és a hozzájárulások ellenőrzője van; a valódi adatok és maga az alkalmazás még nem léteznek. Nincs megnyitható oldal vagy alkalmazás. A kártya azt mutatja, mi épül, nem azt, ami ma használható."
+          "limite": "A beépített csomagok vázlatok: a neveket és a megjegyzéseket MI-asszisztenssel írták általános ismeretekből, és csak részben ellenőrizték nyilvános oldalakon. Biológus, gombaszakértő vagy anyanyelvi beszélő nem nézte át őket. A bolgár és a moldovai csomag 10-10 fajos váz. A «Nincs mérgezőnek jelölve» csak annyit jelent, hogy ebben a csomagban senki nem jelölte mérgezőnek a fajt. Soha nem állítja, hogy egy növény vagy gomba ehető vagy biztonságos, és a csomagok nem tanítanak a hasonmások megkülönböztetésére. Soha ne egyél vadon élő növényt vagy gombát ez az oldal alapján. A beépített csomagok nem tartalmaznak fényképeket és hanghivatkozásokat, mert a licenceket és a felvételek számát internet nélkül nem lehetett ellenőrizni. A formátum mindkettőt támogatja, szerzővel, licenccel és forrással."
         }
       }
     },
@@ -5980,6 +6033,198 @@
         },
         "hu": {
           "limite": "Statikus pillanatkép, 2026. július 5-én ellenőrizve, nem frissül automatikusan; a külső források nem a szerző művei. A felület 8 nyelven érhető el (gépi segítséggel készült fordítások)."
+        }
+      }
+    },
+    "PatruZeci": {
+      "fisa": {
+        "ro": {
+          "limite": "Neoficial și independent: WD-40 este marcă înregistrată a WD-40 Company, care nu a testat lista de utilizări (trimise de utilizatori, foarte repetitivă). Ilustrațiile sunt scene generice asociate pe reguli, nu desene unice, deci potrivirea poate fi aproximativă. Traducerile au fost făcute cu IA și nu au fost revizuite de vorbitori nativi. WD-40 este un aerosol inflamabil: citește eticheta și fișa cu date de securitate; aplicația nu este sfat tehnic sau medical."
+        },
+        "en": {
+          "limite": "Unofficial and independent: WD-40 is a registered trademark of WD-40 Company, which has not tested the list of uses (submitted by users, and very repetitive). The illustrations are generic scenes matched by rules, not unique drawings, so the match can be approximate. Translations were made with AI and not reviewed by native speakers. WD-40 is a flammable aerosol: read the label and the safety data sheet; the app is not technical or medical advice."
+        },
+        "fr": {
+          "limite": "Non officiel et indépendant : WD-40 est une marque déposée de WD-40 Company, qui n’a pas testé la liste d’usages (soumis par des utilisateurs, très répétitive). Les illustrations sont des scènes génériques associées par des règles, pas des dessins uniques ; la correspondance peut donc être approximative. Les traductions ont été faites avec l’IA et n’ont pas été relues par des locuteurs natifs. Le WD-40 est un aérosol inflammable : lisez l’étiquette et la fiche de données de sécurité ; l’application n’est pas un conseil technique ou médical."
+        },
+        "it": {
+          "limite": "Non ufficiale e indipendente: WD-40 è un marchio registrato di WD-40 Company, che non ha testato l’elenco degli usi (inviati dagli utenti e molto ripetitivo). Le illustrazioni sono scene generiche abbinate per regole, non disegni unici, quindi l’abbinamento può essere approssimativo. Le traduzioni sono state fatte con l’IA e non sono state riviste da madrelingua. Il WD-40 è un aerosol infiammabile: leggi l’etichetta e la scheda di sicurezza; l’app non è una consulenza tecnica o medica."
+        },
+        "es": {
+          "limite": "No oficial e independiente: WD-40 es una marca registrada de WD-40 Company, que no ha probado la lista de usos (enviados por usuarios y muy repetitiva). Las ilustraciones son escenas genéricas asociadas por reglas, no dibujos únicos, así que la correspondencia puede ser aproximada. Las traducciones se hicieron con IA y no las han revisado hablantes nativos. El WD-40 es un aerosol inflamable: lee la etiqueta y la ficha de datos de seguridad; la aplicación no es asesoramiento técnico ni médico."
+        },
+        "pt": {
+          "limite": "Não oficial e independente: WD-40 é uma marca registada da WD-40 Company, que não testou a lista de utilizações (enviadas por utilizadores e muito repetitiva). As ilustrações são cenas genéricas associadas por regras, não desenhos únicos, pelo que a correspondência pode ser aproximada. As traduções foram feitas com IA e não foram revistas por falantes nativos. O WD-40 é um aerossol inflamável: leia o rótulo e a ficha de dados de segurança; a aplicação não é aconselhamento técnico ou médico."
+        },
+        "de": {
+          "limite": "Inoffiziell und unabhängig: WD-40 ist eine eingetragene Marke der WD-40 Company, die die Liste der Anwendungen (von Nutzern eingereicht und sehr repetitiv) nicht getestet hat. Die Illustrationen sind generische, regelbasiert zugeordnete Szenen, keine einzelnen Zeichnungen; die Zuordnung kann daher ungenau sein. Die Übersetzungen wurden mit KI erstellt und nicht von Muttersprachlern geprüft. WD-40 ist ein entzündliches Aerosol: Etikett und Sicherheitsdatenblatt lesen; die App ist keine technische oder medizinische Beratung."
+        },
+        "hu": {
+          "limite": "Nem hivatalos és független: a WD-40 a WD-40 Company bejegyzett védjegye, amely nem tesztelte a felhasználási lista tételeit (felhasználók küldték be, és nagyon ismétlődő). Az illusztrációk szabályok alapján társított általános jelenetek, nem egyedi rajzok, ezért a párosítás pontatlan lehet. A fordítások mesterséges intelligenciával készültek, anyanyelvi beszélők nem ellenőrizték őket. A WD-40 gyúlékony aeroszol: olvasd el a címkét és a biztonsági adatlapot; az alkalmazás nem műszaki vagy orvosi tanács."
+        }
+      }
+    },
+    "ODISEEA": {
+      "coverage": {
+        "langs": [
+          "ro",
+          "en",
+          "fr",
+          "it",
+          "es",
+          "pt",
+          "de",
+          "hu"
+        ],
+        "platform": "web"
+      },
+      "fisa": {
+        "ro": {
+          "limite": "Imaginile NASA se încarcă doar dacă browserul are acces la rețea (CORS), deci aplicația nu e complet offline. Texturile fractale sunt procedurale, nu fotografice, iar adâncimea fotografiilor reale e estimată din luminozitate. Nu a fost testată pe ochelari reali; exportul 3840×1080 e greu, iar un .mp4 cu vp9 poate cere conversie în H.264. Vocea sintetică folosește vocile browserului: dacă nu există una pentru limba aleasă, rămâne oprită. Verifică creditele imaginilor înainte de publicare."
+        },
+        "en": {
+          "limite": "NASA images only load if the browser has network access (CORS), so the app is not fully offline. The fractal textures are procedural, not photographic, and the depth of real photos is estimated from brightness. It has not been tested on real glasses; the 3840×1080 export is heavy, and an .mp4 with vp9 may need converting to H.264. The synthetic voice uses the browser’s voices: if none exists for the chosen language, it stays off. Check the image credits before publishing."
+        },
+        "fr": {
+          "limite": "Les images de la NASA ne se chargent que si le navigateur a accès au réseau (CORS) : l’application n’est donc pas entièrement hors ligne. Les textures fractales sont procédurales, pas photographiques, et la profondeur des vraies photos est estimée à partir de la luminosité. Elle n’a pas été testée sur de vraies lunettes ; l’export 3840×1080 est lourd, et un .mp4 en vp9 peut nécessiter une conversion en H.264. La voix de synthèse utilise les voix du navigateur : s’il n’en existe pas pour la langue choisie, elle reste désactivée. Vérifiez les crédits des images avant publication."
+        },
+        "it": {
+          "limite": "Le immagini NASA si caricano solo se il browser ha accesso alla rete (CORS), quindi l’app non è completamente offline. Le texture frattali sono procedurali, non fotografiche, e la profondità delle foto reali è stimata dalla luminosità. Non è stata provata su visori reali; l’esportazione 3840×1080 è pesante e un .mp4 con vp9 può richiedere la conversione in H.264. La voce sintetica usa le voci del browser: se non ce n’è una per la lingua scelta, resta disattivata. Controlla i crediti delle immagini prima di pubblicare."
+        },
+        "es": {
+          "limite": "Las imágenes de la NASA solo se cargan si el navegador tiene acceso a la red (CORS), así que la aplicación no funciona del todo sin conexión. Las texturas fractales son procedurales, no fotográficas, y la profundidad de las fotos reales se estima a partir del brillo. No se ha probado con gafas reales; la exportación de 3840×1080 es pesada y un .mp4 con vp9 puede requerir conversión a H.264. La voz sintética usa las voces del navegador: si no hay una para el idioma elegido, queda desactivada. Comprueba los créditos de las imágenes antes de publicar."
+        },
+        "pt": {
+          "limite": "As imagens da NASA só carregam se o navegador tiver acesso à rede (CORS), pelo que a aplicação não é totalmente offline. As texturas fractais são processuais, não fotográficas, e a profundidade das fotografias reais é estimada a partir do brilho. Não foi testada em óculos reais; a exportação de 3840×1080 é pesada e um .mp4 com vp9 pode exigir conversão para H.264. A voz sintética usa as vozes do navegador: se não houver uma para o idioma escolhido, fica desligada. Verifique os créditos das imagens antes de publicar."
+        },
+        "de": {
+          "limite": "Die NASA-Bilder werden nur geladen, wenn der Browser Netzzugang hat (CORS); die App ist also nicht vollständig offline. Die Fraktaltexturen sind prozedural, nicht fotografisch, und die Tiefe echter Fotos wird aus der Helligkeit geschätzt. Sie wurde nicht an echten Brillen getestet; der Export mit 3840×1080 ist schwer, und eine .mp4 mit vp9 muss eventuell in H.264 umgewandelt werden. Die synthetische Stimme nutzt die Stimmen des Browsers: Gibt es keine für die gewählte Sprache, bleibt sie aus. Bildnachweise vor der Veröffentlichung prüfen."
+        },
+        "hu": {
+          "limite": "A NASA-képek csak akkor töltődnek be, ha a böngészőnek van hálózati hozzáférése (CORS), ezért az alkalmazás nem teljesen offline. A fraktáltextúrák procedurálisak, nem fényképek, a valódi fotók mélységét a fényességből becsüli. Valódi szemüvegen nem tesztelték; a 3840×1080-as export nehéz, és a vp9-es .mp4-et esetleg H.264-re kell átalakítani. A szintetikus hang a böngésző hangjait használja: ha a kiválasztott nyelvhez nincs, kikapcsolva marad. Közzététel előtt ellenőrizd a képek forrásmegjelöléseit."
+        }
+      }
+    },
+    "EXIF-CURAT": {
+      "coverage": {
+        "langs": [
+          "ro",
+          "en",
+          "fr",
+          "it",
+          "es",
+          "pt",
+          "de",
+          "hu"
+        ],
+        "platform": "native"
+      },
+      "fisa": {
+        "ro": {
+          "limite": "Schelet pre-alfa: proiectul se compilează și are teste, dar funcțiile planificate sunt încă sarcini deschise în docs/issues. Nu există încă o aplicație sau un site de încercat; se rulează doar din linia de comandă, cu cargo. Nu te baza pe el pentru lucru real."
+        },
+        "en": {
+          "limite": "A pre-alpha skeleton: the project builds and has tests, but the planned features are still open tasks in docs/issues. There is no app or site to try yet; it runs only from the command line, with cargo. Do not rely on it for real work."
+        },
+        "fr": {
+          "limite": "Un squelette pré-alpha : le projet se compile et a des tests, mais les fonctions prévues sont encore des tâches ouvertes dans docs/issues. Il n’y a pas encore d’application ni de site à essayer ; il ne se lance qu’en ligne de commande, avec cargo. Ne vous y fiez pas pour un travail réel."
+        },
+        "it": {
+          "limite": "Uno scheletro pre-alpha: il progetto si compila e ha dei test, ma le funzioni previste sono ancora attività aperte in docs/issues. Non c’è ancora un’app o un sito da provare; si avvia solo da riga di comando, con cargo. Non farci affidamento per lavoro reale."
+        },
+        "es": {
+          "limite": "Un esqueleto pre-alfa: el proyecto compila y tiene pruebas, pero las funciones previstas siguen siendo tareas abiertas en docs/issues. Todavía no hay app ni sitio que probar; solo se ejecuta desde la línea de comandos, con cargo. No dependas de él para trabajo real."
+        },
+        "pt": {
+          "limite": "Um esqueleto pré-alfa: o projeto compila e tem testes, mas as funções previstas continuam a ser tarefas abertas em docs/issues. Ainda não há app nem site para experimentar; só se executa na linha de comandos, com cargo. Não conte com ele para trabalho real."
+        },
+        "de": {
+          "limite": "Ein Pre-Alpha-Gerüst: Das Projekt lässt sich bauen und hat Tests, die geplanten Funktionen sind aber noch offene Aufgaben in docs/issues. Es gibt noch keine App und keine Seite zum Ausprobieren; es läuft nur auf der Kommandozeile, mit cargo. Verlasse dich nicht darauf für echte Arbeit."
+        },
+        "hu": {
+          "limite": "Pre-alfa vázszerkezet: a projekt lefordul és vannak tesztjei, de a tervezett funkciók még nyitott feladatok a docs/issues mappában. Még nincs kipróbálható alkalmazás vagy oldal; csak parancssorból, cargóval fut. Ne támaszkodj rá valódi munkához."
+        }
+      }
+    },
+    "PORUMBEL": {
+      "coverage": {
+        "langs": [
+          "ro",
+          "en",
+          "fr",
+          "it",
+          "es",
+          "pt",
+          "de",
+          "hu"
+        ],
+        "platform": "native"
+      },
+      "fisa": {
+        "ro": {
+          "limite": "Versiune alfa (0.1.0): programul funcționează, dar nu e finisat. Pozele și jetonul de acces circulă necriptat prin rețeaua locală: folosește un Wi-Fi de încredere, modul ADB sau bind = 127.0.0.1, și nu expune portul pe internet. Pentru ADB trebuie activată depanarea USB (Android 6 sau mai nou). Fiecare sesiune se deschide într-o fereastră LegatorOCR separată, pentru că LegatorOCR nu poate adăuga pagini într-o fereastră deja deschisă."
+        },
+        "en": {
+          "limite": "Alpha version (0.1.0): the program works but is not polished. The photos and the access token travel unencrypted over the local network: use a Wi-Fi you trust, the ADB mode or bind = 127.0.0.1, and never expose the port to the internet. ADB needs USB debugging switched on (Android 6 or newer). Each session opens in its own LegatorOCR window, because LegatorOCR cannot add pages to a window that is already open."
+        },
+        "fr": {
+          "limite": "Version alpha (0.1.0) : le programme fonctionne mais n’est pas finalisé. Les photos et le jeton d’accès circulent non chiffrés sur le réseau local : utilisez un Wi-Fi de confiance, le mode ADB ou bind = 127.0.0.1, et n’exposez jamais le port sur Internet. ADB exige que le débogage USB soit activé (Android 6 ou plus récent). Chaque session s’ouvre dans sa propre fenêtre LegatorOCR, car LegatorOCR ne peut pas ajouter de pages à une fenêtre déjà ouverte."
+        },
+        "it": {
+          "limite": "Versione alpha (0.1.0): il programma funziona ma non è rifinito. Le foto e il token di accesso viaggiano non cifrati sulla rete locale: usa un Wi-Fi di cui ti fidi, la modalità ADB o bind = 127.0.0.1, e non esporre mai la porta su Internet. ADB richiede il debug USB attivo (Android 6 o successivo). Ogni sessione si apre in una finestra LegatorOCR separata, perché LegatorOCR non può aggiungere pagine a una finestra già aperta."
+        },
+        "es": {
+          "limite": "Versión alfa (0.1.0): el programa funciona, pero no está pulido. Las fotos y el token de acceso viajan sin cifrar por la red local: usa un Wi-Fi de confianza, el modo ADB o bind = 127.0.0.1, y no expongas nunca el puerto a Internet. ADB necesita la depuración USB activada (Android 6 o posterior). Cada sesión se abre en su propia ventana de LegatorOCR, porque LegatorOCR no puede añadir páginas a una ventana ya abierta."
+        },
+        "pt": {
+          "limite": "Versão alfa (0.1.0): o programa funciona, mas não está polido. As fotografias e o token de acesso circulam sem cifra na rede local: usa um Wi-Fi de confiança, o modo ADB ou bind = 127.0.0.1, e nunca exponhas a porta à Internet. O ADB exige a depuração USB ativada (Android 6 ou posterior). Cada sessão abre numa janela própria do LegatorOCR, porque o LegatorOCR não consegue acrescentar páginas a uma janela já aberta."
+        },
+        "de": {
+          "limite": "Alpha-Version (0.1.0): Das Programm funktioniert, ist aber nicht ausgereift. Die Fotos und das Zugriffstoken laufen unverschlüsselt durch das lokale Netz: Nutze ein vertrauenswürdiges WLAN, den ADB-Modus oder bind = 127.0.0.1, und setze den Port nie dem Internet aus. ADB braucht aktiviertes USB-Debugging (Android 6 oder neuer). Jede Sitzung öffnet sich in einem eigenen LegatorOCR-Fenster, weil LegatorOCR keine Seiten zu einem bereits geöffneten Fenster hinzufügen kann."
+        },
+        "hu": {
+          "limite": "Alfa verzió (0.1.0): a program működik, de nem kiforrott. A fényképek és a hozzáférési token titkosítatlanul haladnak a helyi hálózaton: használj megbízható Wi-Fit, az ADB módot vagy a bind = 127.0.0.1 beállítást, és soha ne tedd ki a portot az internetnek. Az ADB-hez be kell kapcsolni az USB-hibakeresést (Android 6 vagy újabb). Minden munkamenet saját LegatorOCR-ablakban nyílik meg, mert a LegatorOCR nem tud oldalakat hozzáadni egy már megnyitott ablakhoz."
+        }
+      }
+    },
+    "colibri-companion": {
+      "coverage": {
+        "langs": [
+          "ro",
+          "en",
+          "fr",
+          "it",
+          "es",
+          "pt",
+          "de",
+          "hu"
+        ],
+        "platform": "native"
+      },
+      "fisa": {
+        "ro": {
+          "limite": "Versiune alfa (0.1.0-alpha.4). Aplicația nu conține colibri: îl descarcă (cu acordul tău) sau îți arată comanda de instalare, iar calitatea și viteza răspunsurilor depind de modelul ales și de calculatorul tău. Uneltele MCP sunt o funcție timpurie și depind de cât de bine respectă modelul formatul cerut; fiecare apel cere aprobarea ta. Sfaturile din panoul Resurse sunt orientative, iar aplicația nu schimbă nicio setare singură. O verificare zilnică a versiunilor noi poate fi oprită."
+        },
+        "en": {
+          "limite": "Alpha version (0.1.0-alpha.4). The app does not include colibri: it downloads it (with your consent) or shows you the install command, and the quality and speed of the answers depend on the model you choose and on your computer. MCP tools are an early feature and depend on how well the model follows the required format; every call asks for your approval. The advice in the Resources panel is indicative, and the app changes no setting by itself. A once-a-day check for new versions can be turned off."
+        },
+        "fr": {
+          "limite": "Version alpha (0.1.0-alpha.4). L’application n’inclut pas colibri : elle le télécharge (avec votre accord) ou vous montre la commande d’installation, et la qualité et la vitesse des réponses dépendent du modèle choisi et de votre ordinateur. Les outils MCP sont une fonction précoce et dépendent de la façon dont le modèle respecte le format demandé ; chaque appel demande votre approbation. Les conseils du panneau Ressources sont indicatifs, et l’application ne modifie aucun réglage d’elle-même. Une vérification quotidienne des nouvelles versions peut être désactivée."
+        },
+        "it": {
+          "limite": "Versione alpha (0.1.0-alpha.4). L’app non include colibri: lo scarica (con il tuo consenso) o ti mostra il comando di installazione, e qualità e velocità delle risposte dipendono dal modello scelto e dal tuo computer. Gli strumenti MCP sono una funzione precoce e dipendono da quanto il modello rispetta il formato richiesto; ogni chiamata chiede la tua approvazione. I consigli del pannello Risorse sono indicativi e l’app non cambia nessuna impostazione da sola. Un controllo giornaliero delle nuove versioni può essere disattivato."
+        },
+        "es": {
+          "limite": "Versión alfa (0.1.0-alpha.4). La aplicación no incluye colibri: lo descarga (con tu consentimiento) o te muestra el comando de instalación, y la calidad y la velocidad de las respuestas dependen del modelo elegido y de tu ordenador. Las herramientas MCP son una función temprana y dependen de lo bien que el modelo siga el formato pedido; cada llamada pide tu aprobación. Los consejos del panel Recursos son orientativos y la aplicación no cambia ningún ajuste por sí sola. Una comprobación diaria de versiones nuevas se puede desactivar."
+        },
+        "pt": {
+          "limite": "Versão alfa (0.1.0-alpha.4). A aplicação não inclui o colibri: descarrega-o (com o teu consentimento) ou mostra-te o comando de instalação, e a qualidade e a velocidade das respostas dependem do modelo escolhido e do teu computador. As ferramentas MCP são uma função inicial e dependem de quão bem o modelo segue o formato pedido; cada chamada pede a tua aprovação. Os conselhos do painel Recursos são indicativos e a aplicação não altera nenhuma definição por si. Uma verificação diária de novas versões pode ser desativada."
+        },
+        "de": {
+          "limite": "Alpha-Version (0.1.0-alpha.4). Die App enthält colibri nicht: Sie lädt es (mit deiner Zustimmung) herunter oder zeigt dir den Installationsbefehl, und Qualität und Geschwindigkeit der Antworten hängen vom gewählten Modell und von deinem Computer ab. MCP-Werkzeuge sind eine frühe Funktion und hängen davon ab, wie gut das Modell das verlangte Format einhält; jeder Aufruf fragt nach deiner Freigabe. Die Hinweise im Ressourcen-Panel sind Richtwerte, und die App ändert von sich aus keine Einstellung. Eine tägliche Prüfung auf neue Versionen lässt sich abschalten."
+        },
+        "hu": {
+          "limite": "Alfa verzió (0.1.0-alpha.4). Az alkalmazás nem tartalmazza a colibrit: letölti (a beleegyezéseddel) vagy megmutatja a telepítési parancsot, a válaszok minősége és sebessége pedig a választott modelltől és a számítógépedtől függ. Az MCP-eszközök korai funkciók, és attól függnek, mennyire tartja be a modell a kért formátumot; minden hívás a jóváhagyásodat kéri. Az Erőforrások panel tanácsai tájékoztató jellegűek, és az alkalmazás magától semmilyen beállítást nem módosít. Az új verziók napi ellenőrzése kikapcsolható."
         }
       }
     }

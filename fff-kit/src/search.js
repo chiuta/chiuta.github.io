@@ -4,6 +4,7 @@
 (function () {
   'use strict';
   var F = (window.FFF = window.FFF || {});
+  var RXF = F.rx || function (s, fl) { return new RegExp(s, fl); };   // F.rx vine din fff-compat; rezerva ține modulul funcțional și dacă stratul lipsește
   var LANGS = ['ro', 'en', 'fr', 'it', 'es', 'pt', 'hu', 'de'];
 
   /* ---------- normalizare ---------- */
@@ -13,7 +14,7 @@
     if (s.normalize) s = s.normalize('NFD').replace(/[̀-ͯ]/g, '');     // ă â î ș ş ț ţ ő ű é ü …
     return s.replace(/[ßłđøæœıðþ]/g, function (c) { return SPECIAL[c]; });
   }
-  var TOKEN = /[\p{L}\p{N}]+/gu;
+  var TOKEN = RXF('[\\p{L}\\p{N}]+', 'gu');       // rx: rezervă pentru motoare fără \p{…} (vezi FFF.compat)
   function tokenize(s) { return norm(s).match(TOKEN) || []; }
 
   /* ---------- stemming ușor (reguli de sufixe pe text normalizat) ---------- */

@@ -47,11 +47,13 @@
   "wrongKind": "Cod de tip greșit: ai nevoie de {want}, ai introdus {got}.",
   "kindOffer": "ofertă",
   "kindAnswer": "răspuns",
-  "noDecompress": "Browserul nu poate decomprima codul (lipsește DecompressionStream). Folosește un browser mai nou.",
+  "noDecompress": "Browserul nu poate decomprima codul (lipsește DecompressionStream). Pe celălalt dispozitiv bifează „Cod compatibil (necomprimat)” și generează din nou codul, sau folosește un browser mai nou.",
   "noCandidates": "Nu am găsit adrese de rețea utilizabile (ești conectat la o rețea?).",
   "tooLarge": "Mesaj prea mare.",
   "emptyField": "Completează mai întâi câmpul.",
-  "close": "Închide"
+  "close": "Închide",
+  "compatCode": "Cod compatibil (necomprimat) — pentru browsere mai vechi",
+  "compatHelp": "Browserele mai vechi nu pot citi codul scurt. Codul devine de circa două ori mai lung (mai multe cadre QR). Bifează pe ambele dispozitive dacă unul este vechi."
  },
  "en": {
   "title": "Serverless multiplayer",
@@ -101,11 +103,13 @@
   "wrongKind": "Wrong code type: you need an {want}, you entered an {got}.",
   "kindOffer": "offer",
   "kindAnswer": "answer",
-  "noDecompress": "The browser cannot decompress the code (DecompressionStream missing). Use a newer browser.",
+  "noDecompress": "The browser cannot decompress the code (DecompressionStream missing). On the other device tick “Compatible code (uncompressed)” and generate the code again, or use a newer browser.",
   "noCandidates": "No usable network addresses found (are you connected to a network?).",
   "tooLarge": "Message too large.",
   "emptyField": "Fill in the field first.",
-  "close": "Close"
+  "close": "Close",
+  "compatCode": "Compatible code (uncompressed) — for older browsers",
+  "compatHelp": "Older browsers cannot read the short code. The code gets about twice as long (more QR frames). Tick it on both devices if one of them is old."
  },
  "fr": {
   "title": "Multijoueur sans serveur",
@@ -155,11 +159,13 @@
   "wrongKind": "Mauvais type de code : il faut {want}, vous avez saisi {got}.",
   "kindOffer": "une offre",
   "kindAnswer": "une réponse",
-  "noDecompress": "Le navigateur ne peut pas décompresser le code (DecompressionStream absent). Utilisez un navigateur plus récent.",
+  "noDecompress": "Le navigateur ne peut pas décompresser le code (DecompressionStream absent). Sur l’autre appareil, cochez « Code compatible (non compressé) » et générez à nouveau le code, ou utilisez un navigateur plus récent.",
   "noCandidates": "Aucune adresse réseau utilisable (êtes-vous connecté à un réseau ?).",
   "tooLarge": "Message trop volumineux.",
   "emptyField": "Remplissez d'abord le champ.",
-  "close": "Fermer"
+  "close": "Fermer",
+  "compatCode": "Code compatible (non compressé) — pour les navigateurs anciens",
+  "compatHelp": "Les navigateurs anciens ne savent pas lire le code court. Le code devient environ deux fois plus long (plus d’images QR). Cochez sur les deux appareils si l’un d’eux est ancien."
  },
  "it": {
   "title": "Multigiocatore senza server",
@@ -209,11 +215,13 @@
   "wrongKind": "Tipo di codice errato: serve {want}, hai inserito {got}.",
   "kindOffer": "un'offerta",
   "kindAnswer": "una risposta",
-  "noDecompress": "Il browser non può decomprimere il codice (manca DecompressionStream). Usa un browser più recente.",
+  "noDecompress": "Il browser non può decomprimere il codice (manca DecompressionStream). Sull’altro dispositivo spunta «Codice compatibile (non compresso)» e genera di nuovo il codice, oppure usa un browser più recente.",
   "noCandidates": "Nessun indirizzo di rete utilizzabile (sei connesso a una rete?).",
   "tooLarge": "Messaggio troppo grande.",
   "emptyField": "Compila prima il campo.",
-  "close": "Chiudi"
+  "close": "Chiudi",
+  "compatCode": "Codice compatibile (non compresso) — per browser meno recenti",
+  "compatHelp": "I browser meno recenti non sanno leggere il codice breve. Il codice diventa circa il doppio più lungo (più immagini QR). Spunta su entrambi i dispositivi se uno è datato."
  },
  "es": {
   "title": "Multijugador sin servidor",
@@ -263,11 +271,13 @@
   "wrongKind": "Tipo de código incorrecto: necesitas {want}, has introducido {got}.",
   "kindOffer": "una oferta",
   "kindAnswer": "una respuesta",
-  "noDecompress": "El navegador no puede descomprimir el código (falta DecompressionStream). Usa un navegador más reciente.",
+  "noDecompress": "El navegador no puede descomprimir el código (falta DecompressionStream). En el otro dispositivo marca «Código compatible (sin comprimir)» y genera el código de nuevo, o usa un navegador más reciente.",
   "noCandidates": "No hay direcciones de red utilizables (¿estás conectado a una red?).",
   "tooLarge": "Mensaje demasiado grande.",
   "emptyField": "Rellena primero el campo.",
-  "close": "Cerrar"
+  "close": "Cerrar",
+  "compatCode": "Código compatible (sin comprimir) — para navegadores antiguos",
+  "compatHelp": "Los navegadores antiguos no pueden leer el código corto. El código se vuelve unas dos veces más largo (más imágenes QR). Márcalo en ambos dispositivos si uno es antiguo."
  },
  "pt": {
   "title": "Multijogador sem servidor",
@@ -317,11 +327,13 @@
   "wrongKind": "Tipo de código errado: precisas de {want}, introduziste {got}.",
   "kindOffer": "uma oferta",
   "kindAnswer": "uma resposta",
-  "noDecompress": "O navegador não consegue descomprimir o código (falta DecompressionStream). Usa um navegador mais recente.",
+  "noDecompress": "O navegador não consegue descomprimir o código (falta DecompressionStream). No outro dispositivo marque «Código compatível (sem compressão)» e gere o código novamente, ou use um navegador mais recente.",
   "noCandidates": "Não há endereços de rede utilizáveis (estás ligado a uma rede?).",
   "tooLarge": "Mensagem demasiado grande.",
   "emptyField": "Preenche primeiro o campo.",
-  "close": "Fechar"
+  "close": "Fechar",
+  "compatCode": "Código compatível (sem compressão) — para navegadores antigos",
+  "compatHelp": "Os navegadores antigos não conseguem ler o código curto. O código fica cerca de duas vezes maior (mais imagens QR). Marque nos dois dispositivos se um deles for antigo."
  },
  "hu": {
   "title": "Szerver nélküli többjátékos mód",
@@ -371,11 +383,13 @@
   "wrongKind": "Rossz kódtípus: {want} kell, de {got} érkezett.",
   "kindOffer": "ajánlat",
   "kindAnswer": "válasz",
-  "noDecompress": "A böngésző nem tudja kicsomagolni a kódot (hiányzik a DecompressionStream). Használj újabb böngészőt.",
+  "noDecompress": "A böngésző nem tudja kicsomagolni a kódot (hiányzik a DecompressionStream). A másik eszközön jelöld be a „Kompatibilis kód (tömörítetlen)” jelölőnégyzetet, és generáld újra a kódot, vagy használj újabb böngészőt.",
   "noCandidates": "Nincs használható hálózati cím (csatlakozva vagy hálózathoz?).",
   "tooLarge": "Az üzenet túl nagy.",
   "emptyField": "Először töltsd ki a mezőt.",
-  "close": "Bezárás"
+  "close": "Bezárás",
+  "compatCode": "Kompatibilis kód (tömörítetlen) — régebbi böngészőkhöz",
+  "compatHelp": "A régebbi böngészők nem tudják olvasni a rövid kódot. A kód nagyjából kétszer hosszabb lesz (több QR-kép). Jelöld be mindkét eszközön, ha az egyik régi."
  },
  "de": {
   "title": "Mehrspieler ohne Server",
@@ -425,10 +439,12 @@
   "wrongKind": "Falscher Codetyp: Du brauchst {want}, eingegeben wurde {got}.",
   "kindOffer": "ein Angebot",
   "kindAnswer": "eine Antwort",
-  "noDecompress": "Der Browser kann den Code nicht entpacken (DecompressionStream fehlt). Nutze einen neueren Browser.",
+  "noDecompress": "Der Browser kann den Code nicht entpacken (DecompressionStream fehlt). Kreuze auf dem anderen Gerät „Kompatibler Code (unkomprimiert)“ an und erzeuge den Code neu, oder verwende einen neueren Browser.",
   "noCandidates": "Keine nutzbaren Netzwerkadressen gefunden (bist du mit einem Netz verbunden?).",
   "tooLarge": "Nachricht zu groß.",
   "emptyField": "Fülle zuerst das Feld aus.",
-  "close": "Schließen"
+  "close": "Schließen",
+  "compatCode": "Kompatibler Code (unkomprimiert) — für ältere Browser",
+  "compatHelp": "Ältere Browser können den kurzen Code nicht lesen. Der Code wird etwa doppelt so lang (mehr QR-Bilder). Auf beiden Geräten ankreuzen, wenn eines davon alt ist."
  }
 }

@@ -55,10 +55,10 @@
 
   /* ---------- unități de viewport sub zoom ----------
    * `zoom` pe <html> mărește tot, dar vh/vw rămân măsurate pe fereastra reală: un panou cu height:calc(100vh - 60px) iese cu (zoom−1)·100% din ecran și se suprapune
-   * peste subsol. Copiem regulile care folosesc vh/vw/vmin/vmax într-o foaie de stil proprie, cu unitatea înmulțită cu --fff-zinv (= 1/zoom). */
+   * peste subsol. Regulile care folosesc vh/vw/vmin/vmax primesc unitatea înmulțită cu --fff-zinv (= 1/zoom): copiate într-o foaie proprie sau rescrise pe loc (vezi mai jos). */
   var UNIT = /(-?\d*\.?\d+)(vh|dvh|svh|lvh|vw|dvw|svw|lvw|vmin|dvmin|svmin|lvmin|vmax|dvmax|svmax|lvmax)\b/g;
   var VPROPS = /^(height|min-height|max-height|width|min-width|max-width|top|bottom|left|right|inset(-block|-inline)?(-start|-end)?|block-size|inline-size|min-block-size|max-block-size|min-inline-size|max-inline-size|flex-basis)$/;
-  var vhSheet = null, vhT = 0;
+  var vhAdopt = null, vhT = 0;
   function hasUnit(v) { UNIT.lastIndex = 0; var r = UNIT.test(v); UNIT.lastIndex = 0; return r; }
   function wrapUnits(v) { return v.replace(UNIT, 'calc($1$2 * var(--fff-zinv,1))'); }
   function collectUnits(list, out) {
@@ -80,16 +80,50 @@
       } catch (e) { /* ignorat */ }
     }
   }
+  /* Corecția are două căi, ambele fără element <style> nou (un `style-src` strict, doar pe hash-uri, îl blochează și îl raportează ca încălcare CSP):
+   *  1) foaie CONSTRUIBILĂ (adoptedStyleSheets: Chrome 73+, Firefox 101+, Safari 16.4+) cu copiile regulilor; vine după toate foile paginii, deci bate regulile aplicației;
+   *  2) în browserele mai vechi, regulile existente se rescriu PE LOC prin CSSOM (rule.style.setProperty — permis de CSP): valoarea învelită cu --fff-zinv e identică cu
+   *     originalul la zoom 1 (var(--fff-zinv,1)), deci nu trebuie restaurată, iar cascada rămâne neatinsă. */
+  function canAdopt() {
+    try { return !!(window.CSSStyleSheet && typeof window.CSSStyleSheet.prototype.replaceSync === 'function' && 'adoptedStyleSheets' in doc); } catch (e) { return false; }
+  }
+  function setVhCss(css) {
+    if (!vhAdopt) vhAdopt = new window.CSSStyleSheet();
+    vhAdopt.replaceSync(css);
+    var cur = Array.prototype.slice.call(doc.adoptedStyleSheets || []);
+    if (cur.indexOf(vhAdopt) < 0) doc.adoptedStyleSheets = cur.concat([vhAdopt]);
+  }
+  function mutateUnits(list) {
+    for (var i = 0; i < list.length; i++) {
+      var r = list[i];
+      try {
+        if (r.type === 1 && r.style) {
+          var props = [];
+          for (var j = 0; j < r.style.length; j++) if (VPROPS.test(r.style[j])) props.push(r.style[j]);
+          for (var k = 0; k < props.length; k++) {
+            var v = r.style.getPropertyValue(props[k]);
+            if (hasUnit(v) && v.indexOf('--fff-zinv') < 0) r.style.setProperty(props[k], wrapUnits(v), r.style.getPropertyPriority(props[k]));
+          }
+        } else if ((r.type === 4 || r.type === 12) && r.cssRules) mutateUnits(r.cssRules);
+      } catch (e) { /* ignorat */ }
+    }
+  }
   function fixUnits() {
     if (Math.abs(total - 1) < 0.005 || !doc.head) return;
-    var out = [];
-    for (var i = 0; i < doc.styleSheets.length; i++) {
-      var ss = doc.styleSheets[i]; if (ss.ownerNode && ss.ownerNode.id === 'fff-vhfix') continue;
-      try { if (ss.cssRules) collectUnits(ss.cssRules, out); } catch (e) { /* foaie din alt domeniu */ }
+    var out = [], adopt = canAdopt(), done = false, i, ss;
+    if (adopt) {
+      for (i = 0; i < doc.styleSheets.length; i++) {
+        ss = doc.styleSheets[i];
+        try { if (ss.cssRules) collectUnits(ss.cssRules, out); } catch (e) { /* foaie din alt domeniu */ }
+      }
+      try { setVhCss(out.join('\n')); done = true; } catch (e) { /* mai jos: pe loc */ }
     }
-    if (!vhSheet) { vhSheet = doc.createElement('style'); vhSheet.id = 'fff-vhfix'; doc.head.appendChild(vhSheet); }
-    else if (vhSheet.nextSibling) doc.head.appendChild(vhSheet);                                   // rămâne ultima, ca să bată regulile aplicației
-    var css = out.join('\n'); if (vhSheet.textContent !== css) vhSheet.textContent = css;
+    if (!done) {
+      for (i = 0; i < doc.styleSheets.length; i++) {
+        ss = doc.styleSheets[i];
+        try { if (ss.cssRules) mutateUnits(ss.cssRules); } catch (e) { /* foaie din alt domeniu */ }
+      }
+    }
     var els = doc.querySelectorAll('[style*="vh"],[style*="vw"],[style*="vmin"],[style*="vmax"]');
     for (var k = 0; k < els.length; k++) {
       var st = els[k].style;

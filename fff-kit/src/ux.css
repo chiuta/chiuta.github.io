@@ -9,5 +9,10 @@
 @media (pointer:coarse){
   /* mărirea ținților de atingere la 44 px se face din JS (ux.js), cu excepții și anulare dacă ar rupe lățimea paginii */
     /* iOS mărește pagina la focus dacă textul câmpului e sub 16 px */
-  :root:not([data-fff-ux="off"]) input:not([type=checkbox]):not([type=radio]):not([type=range]):not([type=color]):not([type=file]):not([type=hidden]):not([data-fff-nouxfont]),:root:not([data-fff-ux="off"]) select:not([data-fff-nouxfont]),:root:not([data-fff-ux="off"]) textarea:not([data-fff-nouxfont]){font-size:max(16px,1em)}
+  :root:not([data-fff-ux="off"]) input:not([type=checkbox]):not([type=radio]):not([type=range]):not([type=color]):not([type=file]):not([type=hidden]):not([data-fff-nouxfont]),:root:not([data-fff-ux="off"]) select:not([data-fff-nouxfont]),:root:not([data-fff-ux="off"]) textarea:not([data-fff-nouxfont]){font-size:16px;font-size:max(16px,1em)}
 }
+
+/* Browsere fără :where() (clasa fff-oldsel): efectele esențiale cu selectoare simple. */
+html.fff-oldsel:not([data-fff-ux="off"]) a,html.fff-oldsel:not([data-fff-ux="off"]) button,html.fff-oldsel:not([data-fff-ux="off"]) input,html.fff-oldsel:not([data-fff-ux="off"]) select,html.fff-oldsel:not([data-fff-ux="off"]) textarea,html.fff-oldsel:not([data-fff-ux="off"]) summary,html.fff-oldsel:not([data-fff-ux="off"]) label,html.fff-oldsel:not([data-fff-ux="off"]) [role=button],html.fff-oldsel:not([data-fff-ux="off"]) [role=tab],html.fff-oldsel:not([data-fff-ux="off"]) [role=menuitem],html.fff-oldsel:not([data-fff-ux="off"]) [role=switch],html.fff-oldsel:not([data-fff-ux="off"]) [role=checkbox]{touch-action:manipulation}
+html.fff-oldsel:not([data-fff-ux="off"]) button,html.fff-oldsel:not([data-fff-ux="off"]) [role=button],html.fff-oldsel:not([data-fff-ux="off"]) [role=tab],html.fff-oldsel:not([data-fff-ux="off"]) summary{-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;-webkit-touch-callout:none}
+html.fff-oldsel:not([data-fff-ux="off"]){-webkit-text-size-adjust:100%;text-size-adjust:100%}

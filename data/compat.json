@@ -1,0 +1,9472 @@
+{
+ "generated": "2026-11-17",
+ "floor": {
+  "chrome": 55,
+  "edge": 15,
+  "firefox": 52,
+  "safari": 10.1,
+  "ios": 10.3,
+  "ecma": 2017
+ },
+ "kitMinVersion": "1.8.0",
+ "summary": {
+  "apps": 180,
+  "ok": 2,
+  "warn": 178,
+  "fail": 0,
+  "smoke": {
+   "ok": 171,
+   "warn": 9,
+   "fail": 0,
+   "missing": 0
+  }
+ },
+ "apps": {
+  "ACORDAJ": {
+   "file": "index.html",
+   "status": "warn",
+   "kit": "1.8.0",
+   "compatLayer": true,
+   "syntaxErrors": [],
+   "postFloor": {},
+   "apiBeyondFloor": [
+    {
+     "name": "Object.fromEntries",
+     "covered": true
+    },
+    {
+     "name": "Array.flat/flatMap",
+     "covered": true
+    },
+    {
+     "name": "requestIdleCallback",
+     "covered": true
+    },
+    {
+     "name": "Blob.arrayBuffer/text",
+     "covered": true
+    },
+    {
+     "name": "ResizeObserver",
+     "covered": true
+    },
+    {
+     "name": "IntersectionObserver",
+     "covered": true
+    },
+    {
+     "name": "navigator.clipboard",
+     "covered": true
+    },
+    {
+     "name": "CompressionStream",
+     "covered": false
+    },
+    {
+     "name": "String.padStart/padEnd",
+     "covered": true
+    },
+    {
+     "name": "scroll cu opțiuni",
+     "covered": true
+    },
+    {
+     "name": "canvas.toBlob",
+     "covered": true
+    },
+    {
+     "name": "<dialog>.showModal",
+     "covered": true
+    }
+   ],
+   "cssBeyondFloor": [
+    ":focus-visible",
+    "inset",
+    "aspect-ratio",
+    "gap (flex)",
+    "dvh/svh/lvh",
+    "clamp()/min()/max()",
+    "prefers-color-scheme",
+    "individual transform props",
+    "scroll-behavior"
+   ],
+   "smoke": {
+    "status": "ok",
+    "newErrors": 0,
+    "nativeErrors": 0,
+    "legacyErrors": 0
+   }
+  },
+  "AGORA": {
+   "file": "index.html",
+   "status": "warn",
+   "kit": "1.8.0",
+   "compatLayer": true,
+   "syntaxErrors": [],
+   "postFloor": {},
+   "apiBeyondFloor": [
+    {
+     "name": "requestIdleCallback",
+     "covered": true
+    },
+    {
+     "name": "Blob.arrayBuffer/text",
+     "covered": true
+    },
+    {
+     "name": "ResizeObserver",
+     "covered": true
+    },
+    {
+     "name": "navigator.clipboard",
+     "covered": true
+    },
+    {
+     "name": "Intl.RelativeTimeFormat/ListFormat/Segmenter",
+     "covered": false
+    },
+    {
+     "name": "BroadcastChannel",
+     "covered": false
+    },
+    {
+     "name": "CompressionStream",
+     "covered": false
+    },
+    {
+     "name": "scroll cu opțiuni",
+     "covered": true
+    },
+    {
+     "name": "<dialog>.showModal",
+     "covered": true
+    }
+   ],
+   "cssBeyondFloor": [
+    ":focus-visible",
+    "inset",
+    "gap (flex)",
+    "clamp()/min()/max()",
+    "color-mix()",
+    "accent-color",
+    "prefers-color-scheme",
+    "position: sticky",
+    "individual transform props",
+    "scroll-behavior"
+   ],
+   "smoke": {
+    "status": "ok",
+    "newErrors": 0,
+    "nativeErrors": 0,
+    "legacyErrors": 0
+   }
+  },
+  "AI-Liber": {
+   "file": "index.html",
+   "status": "warn",
+   "kit": "1.8.0",
+   "compatLayer": true,
+   "syntaxErrors": [],
+   "postFloor": {},
+   "apiBeyondFloor": [
+    {
+     "name": "Object.fromEntries",
+     "covered": true
+    },
+    {
+     "name": "String.replaceAll",
+     "covered": true
+    },
+    {
+     "name": "requestIdleCallback",
+     "covered": true
+    },
+    {
+     "name": "Blob.arrayBuffer/text",
+     "covered": true
+    },
+    {
+     "name": "AbortController",
+     "covered": true
+    },
+    {
+     "name": "ResizeObserver",
+     "covered": true
+    },
+    {
+     "name": "navigator.clipboard",
+     "covered": true
+    },
+    {
+     "name": "BroadcastChannel",
+     "covered": false
+    },
+    {
+     "name": "CompressionStream",
+     "covered": false
+    },
+    {
+     "name": "scroll cu opțiuni",
+     "covered": true
+    },
+    {
+     "name": "<dialog>.showModal",
+     "covered": true
+    }
+   ],
+   "cssBeyondFloor": [
+    ":focus-visible",
+    "inset",
+    "gap (flex)",
+    "dvh/svh/lvh",
+    "clamp()/min()/max()",
+    "color-mix()",
+    "backdrop-filter",
+    "accent-color",
+    "prefers-color-scheme",
+    "position: sticky",
+    "individual transform props",
+    "scroll-behavior"
+   ],
+   "smoke": {
+    "status": "ok",
+    "newErrors": 0,
+    "nativeErrors": 0,
+    "legacyErrors": 0
+   }
+  },
+  "ANTENA": {
+   "file": "index.html",
+   "status": "warn",
+   "kit": "1.8.0",
+   "compatLayer": true,
+   "syntaxErrors": [],
+   "postFloor": {},
+   "apiBeyondFloor": [
+    {
+     "name": "IntersectionObserver",
+     "covered": true
+    },
+    {
+     "name": "navigator.clipboard",
+     "covered": true
+    },
+    {
+     "name": "String.padStart/padEnd",
+     "covered": true
+    }
+   ],
+   "cssBeyondFloor": [
+    ":focus-visible",
+    "inset",
+    "aspect-ratio",
+    "gap (flex)",
+    "clamp()/min()/max()",
+    "color-mix()",
+    "backdrop-filter",
+    "prefers-color-scheme",
+    "position: sticky",
+    "scroll-behavior"
+   ],
+   "smoke": {
+    "status": "ok",
+    "newErrors": 0,
+    "nativeErrors": 0,
+    "legacyErrors": 0
+   }
+  },
+  "ANTROPOS": {
+   "file": "index.html",
+   "status": "warn",
+   "kit": "1.8.0",
+   "compatLayer": true,
+   "syntaxErrors": [],
+   "postFloor": {},
+   "apiBeyondFloor": [
+    {
+     "name": "requestIdleCallback",
+     "covered": true
+    },
+    {
+     "name": "Blob.arrayBuffer/text",
+     "covered": true
+    },
+    {
+     "name": "ResizeObserver",
+     "covered": true
+    }
+   ],
+   "cssBeyondFloor": [
+    ":focus-visible",
+    "gap (flex)",
+    "clamp()/min()/max()",
+    "prefers-color-scheme",
+    "position: sticky",
+    "individual transform props"
+   ],
+   "smoke": {
+    "status": "ok",
+    "newErrors": 0,
+    "nativeErrors": 0,
+    "legacyErrors": 0
+   }
+  },
+  "API-fara-frontiere": {
+   "file": "index.html",
+   "status": "warn",
+   "kit": "1.8.0",
+   "compatLayer": true,
+   "syntaxErrors": [],
+   "postFloor": {},
+   "apiBeyondFloor": [
+    {
+     "name": "requestIdleCallback",
+     "covered": true
+    },
+    {
+     "name": "crypto.randomUUID",
+     "covered": true
+    },
+    {
+     "name": "Blob.arrayBuffer/text",
+     "covered": true
+    },
+    {
+     "name": "AbortController",
+     "covered": true
+    },
+    {
+     "name": "ResizeObserver",
+     "covered": true
+    },
+    {
+     "name": "navigator.clipboard",
+     "covered": true
+    },
+    {
+     "name": "String.padStart/padEnd",
+     "covered": true
+    }
+   ],
+   "cssBeyondFloor": [
+    ":focus-visible",
+    "inset",
+    "gap (flex)",
+    "clamp()/min()/max()",
+    "backdrop-filter",
+    "prefers-color-scheme",
+    "position: sticky",
+    "individual transform props",
+    "scroll-behavior"
+   ],
+   "smoke": {
+    "status": "ok",
+    "newErrors": 0,
+    "nativeErrors": 0,
+    "legacyErrors": 0
+   }
+  },
+  "ARBITRU": {
+   "file": "index.html",
+   "status": "warn",
+   "kit": "1.8.0",
+   "compatLayer": true,
+   "syntaxErrors": [],
+   "postFloor": {},
+   "apiBeyondFloor": [
+    {
+     "name": "IntersectionObserver",
+     "covered": true
+    },
+    {
+     "name": "navigator.clipboard",
+     "covered": true
+    },
+    {
+     "name": "String.padStart/padEnd",
+     "covered": true
+    }
+   ],
+   "cssBeyondFloor": [
+    ":focus-visible",
+    "inset",
+    "aspect-ratio",
+    "gap (flex)",
+    "clamp()/min()/max()",
+    "color-mix()",
+    "backdrop-filter",
+    "prefers-color-scheme",
+    "position: sticky",
+    "scroll-behavior"
+   ],
+   "smoke": {
+    "status": "ok",
+    "newErrors": 0,
+    "nativeErrors": 0,
+    "legacyErrors": 0
+   }
+  },
+  "ARENA": {
+   "file": "index.html",
+   "status": "warn",
+   "kit": "1.8.0",
+   "compatLayer": true,
+   "syntaxErrors": [],
+   "postFloor": {},
+   "apiBeyondFloor": [
+    {
+     "name": "requestIdleCallback",
+     "covered": true
+    },
+    {
+     "name": "Blob.arrayBuffer/text",
+     "covered": true
+    },
+    {
+     "name": "BigInt",
+     "covered": false
+    },
+    {
+     "name": "AbortController",
+     "covered": true
+    },
+    {
+     "name": "ResizeObserver",
+     "covered": true
+    },
+    {
+     "name": "navigator.clipboard",
+     "covered": true
+    },
+    {
+     "name": "BroadcastChannel",
+     "covered": false
+    },
+    {
+     "name": "CompressionStream",
+     "covered": false
+    },
+    {
+     "name": "String.padStart/padEnd",
+     "covered": true
+    }
+   ],
+   "cssBeyondFloor": [
+    ":focus-visible",
+    "inset",
+    "gap (flex)",
+    "clamp()/min()/max()",
+    "color-mix()",
+    "prefers-color-scheme",
+    "individual transform props"
+   ],
+   "smoke": {
+    "status": "ok",
+    "newErrors": 0,
+    "nativeErrors": 0,
+    "legacyErrors": 0
+   }
+  },
+  "ASMR": {
+   "file": "index.html",
+   "status": "warn",
+   "kit": "1.8.0",
+   "compatLayer": true,
+   "syntaxErrors": [],
+   "postFloor": {},
+   "apiBeyondFloor": [
+    {
+     "name": "requestIdleCallback",
+     "covered": true
+    },
+    {
+     "name": "Blob.arrayBuffer/text",
+     "covered": true
+    },
+    {
+     "name": "ResizeObserver",
+     "covered": true
+    },
+    {
+     "name": "navigator.clipboard",
+     "covered": true
+    },
+    {
+     "name": "BroadcastChannel",
+     "covered": false
+    },
+    {
+     "name": "CompressionStream",
+     "covered": false
+    },
+    {
+     "name": "String.padStart/padEnd",
+     "covered": true
+    },
+    {
+     "name": "<dialog>.showModal",
+     "covered": true
+    }
+   ],
+   "cssBeyondFloor": [
+    ":focus-visible",
+    "inset",
+    "gap (flex)",
+    "clamp()/min()/max()",
+    "color-mix()",
+    "prefers-color-scheme",
+    "individual transform props"
+   ],
+   "smoke": {
+    "status": "ok",
+    "newErrors": 0,
+    "nativeErrors": 0,
+    "legacyErrors": 0
+   }
+  },
+  "ASTROLABIU": {
+   "file": "index.html",
+   "status": "warn",
+   "kit": "1.8.0",
+   "compatLayer": true,
+   "syntaxErrors": [],
+   "postFloor": {},
+   "apiBeyondFloor": [
+    {
+     "name": "IntersectionObserver",
+     "covered": true
+    },
+    {
+     "name": "navigator.clipboard",
+     "covered": true
+    },
+    {
+     "name": "String.padStart/padEnd",
+     "covered": true
+    }
+   ],
+   "cssBeyondFloor": [
+    ":focus-visible",
+    "inset",
+    "aspect-ratio",
+    "gap (flex)",
+    "clamp()/min()/max()",
+    "color-mix()",
+    "backdrop-filter",
+    "prefers-color-scheme",
+    "position: sticky",
+    "scroll-behavior"
+   ],
+   "smoke": {
+    "status": "ok",
+    "newErrors": 0,
+    "nativeErrors": 0,
+    "legacyErrors": 0
+   }
+  },
+  "ATINGERE": {
+   "file": "index.html",
+   "status": "warn",
+   "kit": "1.8.0",
+   "compatLayer": true,
+   "syntaxErrors": [],
+   "postFloor": {},
+   "apiBeyondFloor": [
+    {
+     "name": "Object.fromEntries",
+     "covered": true
+    },
+    {
+     "name": "requestIdleCallback",
+     "covered": true
+    },
+    {
+     "name": "Blob.arrayBuffer/text",
+     "covered": true
+    },
+    {
+     "name": "BigInt",
+     "covered": false
+    },
+    {
+     "name": "ResizeObserver",
+     "covered": true
+    },
+    {
+     "name": "navigator.clipboard",
+     "covered": true
+    },
+    {
+     "name": "Intl.RelativeTimeFormat/ListFormat/Segmenter",
+     "covered": false
+    },
+    {
+     "name": "BroadcastChannel",
+     "covered": false
+    },
+    {
+     "name": "CompressionStream",
+     "covered": false
+    },
+    {
+     "name": "String.padStart/padEnd",
+     "covered": true
+    },
+    {
+     "name": "scroll cu opțiuni",
+     "covered": true
+    },
+    {
+     "name": "<dialog>.showModal",
+     "covered": true
+    }
+   ],
+   "cssBeyondFloor": [
+    ":focus-visible",
+    "inset",
+    "aspect-ratio",
+    "gap (flex)",
+    "dvh/svh/lvh",
+    "clamp()/min()/max()",
+    "accent-color",
+    "prefers-color-scheme",
+    "individual transform props",
+    "scroll-behavior"
+   ],
+   "smoke": {
+    "status": "ok",
+    "newErrors": 0,
+    "nativeErrors": 0,
+    "legacyErrors": 0
+   }
+  },
+  "AcademiSearch": {
+   "file": "index.html",
+   "status": "warn",
+   "kit": "1.8.0",
+   "compatLayer": true,
+   "syntaxErrors": [],
+   "postFloor": {},
+   "apiBeyondFloor": [
+    {
+     "name": "Promise.allSettled",
+     "covered": true
+    },
+    {
+     "name": "requestIdleCallback",
+     "covered": true
+    },
+    {
+     "name": "Blob.arrayBuffer/text",
+     "covered": true
+    },
+    {
+     "name": "AbortController",
+     "covered": true
+    },
+    {
+     "name": "ResizeObserver",
+     "covered": true
+    },
+    {
+     "name": "IntersectionObserver",
+     "covered": true
+    },
+    {
+     "name": "navigator.clipboard",
+     "covered": true
+    },
+    {
+     "name": "BroadcastChannel",
+     "covered": false
+    },
+    {
+     "name": "CompressionStream",
+     "covered": false
+    },
+    {
+     "name": "<dialog>.showModal",
+     "covered": true
+    }
+   ],
+   "cssBeyondFloor": [
+    ":focus-visible",
+    "inset",
+    "gap (flex)",
+    "clamp()/min()/max()",
+    "backdrop-filter",
+    "prefers-color-scheme",
+    "individual transform props",
+    "scroll-behavior"
+   ],
+   "smoke": {
+    "status": "ok",
+    "newErrors": 0,
+    "nativeErrors": 0,
+    "legacyErrors": 0
+   }
+  },
+  "Afrodisiace-fara-frontiere": {
+   "file": "index.html",
+   "status": "warn",
+   "kit": "1.8.0",
+   "compatLayer": true,
+   "syntaxErrors": [],
+   "postFloor": {},
+   "apiBeyondFloor": [
+    {
+     "name": "requestIdleCallback",
+     "covered": true
+    },
+    {
+     "name": "ResizeObserver",
+     "covered": true
+    },
+    {
+     "name": "<dialog>.showModal",
+     "covered": true
+    }
+   ],
+   "cssBeyondFloor": [
+    ":focus-visible",
+    "inset",
+    "gap (flex)",
+    "clamp()/min()/max()",
+    "prefers-color-scheme",
+    "individual transform props",
+    "logical props",
+    "scroll-behavior"
+   ],
+   "smoke": {
+    "status": "ok",
+    "newErrors": 0,
+    "nativeErrors": 0,
+    "legacyErrors": 0
+   }
+  },
+  "Akasha": {
+   "file": "index.html",
+   "status": "warn",
+   "kit": "1.8.0",
+   "compatLayer": true,
+   "syntaxErrors": [],
+   "postFloor": {},
+   "apiBeyondFloor": [
+    {
+     "name": "requestIdleCallback",
+     "covered": true
+    },
+    {
+     "name": "ResizeObserver",
+     "covered": true
+    },
+    {
+     "name": "navigator.clipboard",
+     "covered": true
+    }
+   ],
+   "cssBeyondFloor": [
+    ":has()",
+    ":focus-visible",
+    "inset",
+    "gap (flex)",
+    "clamp()/min()/max()",
+    "color-mix()",
+    "backdrop-filter",
+    "accent-color",
+    "prefers-color-scheme",
+    "position: sticky",
+    "individual transform props",
+    "logical props",
+    "scroll-behavior"
+   ],
+   "smoke": {
+    "status": "ok",
+    "newErrors": 0,
+    "nativeErrors": 0,
+    "legacyErrors": 0
+   }
+  },
+  "Alfabete": {
+   "file": "index.html",
+   "status": "warn",
+   "kit": "1.8.0",
+   "compatLayer": true,
+   "syntaxErrors": [],
+   "postFloor": {},
+   "apiBeyondFloor": [
+    {
+     "name": "Array.flat/flatMap",
+     "covered": true
+    },
+    {
+     "name": "requestIdleCallback",
+     "covered": true
+    },
+    {
+     "name": "replaceChildren",
+     "covered": true
+    },
+    {
+     "name": "Blob.arrayBuffer/text",
+     "covered": true
+    },
+    {
+     "name": "ResizeObserver",
+     "covered": true
+    },
+    {
+     "name": "navigator.clipboard",
+     "covered": true
+    },
+    {
+     "name": "String.padStart/padEnd",
+     "covered": true
+    },
+    {
+     "name": "<dialog>.showModal",
+     "covered": true
+    }
+   ],
+   "cssBeyondFloor": [
+    ":focus-visible",
+    "gap (flex)",
+    "clamp()/min()/max()",
+    "prefers-color-scheme",
+    "individual transform props"
+   ],
+   "smoke": {
+    "status": "ok",
+    "newErrors": 0,
+    "nativeErrors": 0,
+    "legacyErrors": 0
+   }
+  },
+  "Arbore": {
+   "file": "index.html",
+   "status": "warn",
+   "kit": "1.8.0",
+   "compatLayer": true,
+   "syntaxErrors": [],
+   "postFloor": {},
+   "apiBeyondFloor": [
+    {
+     "name": "requestIdleCallback",
+     "covered": true
+    },
+    {
+     "name": "Blob.arrayBuffer/text",
+     "covered": true
+    },
+    {
+     "name": "ResizeObserver",
+     "covered": true
+    },
+    {
+     "name": "String.padStart/padEnd",
+     "covered": true
+    },
+    {
+     "name": "canvas.toBlob",
+     "covered": true
+    },
+    {
+     "name": "<dialog>.showModal",
+     "covered": true
+    }
+   ],
+   "cssBeyondFloor": [
+    ":focus-visible",
+    "gap (flex)",
+    "clamp()/min()/max()",
+    "prefers-color-scheme",
+    "position: sticky",
+    "individual transform props",
+    "scroll-behavior"
+   ],
+   "smoke": {
+    "status": "ok",
+    "newErrors": 0,
+    "nativeErrors": 0,
+    "legacyErrors": 0
+   }
+  },
+  "Arhiva-LinkedIn": {
+   "file": "index.html",
+   "status": "warn",
+   "kit": "1.8.0",
+   "compatLayer": true,
+   "syntaxErrors": [],
+   "postFloor": {},
+   "apiBeyondFloor": [
+    {
+     "name": "requestIdleCallback",
+     "covered": true
+    },
+    {
+     "name": "crypto.randomUUID",
+     "covered": true
+    },
+    {
+     "name": "ResizeObserver",
+     "covered": true
+    },
+    {
+     "name": "navigator.clipboard",
+     "covered": true
+    },
+    {
+     "name": "<dialog>.showModal",
+     "covered": true
+    }
+   ],
+   "cssBeyondFloor": [
+    ":focus-visible",
+    "gap (flex)",
+    "clamp()/min()/max()",
+    "prefers-color-scheme",
+    "individual transform props"
+   ],
+   "smoke": {
+    "status": "ok",
+    "newErrors": 0,
+    "nativeErrors": 0,
+    "legacyErrors": 0
+   }
+  },
+  "Arhiva-fara-frontiere": {
+   "file": "index.html",
+   "status": "warn",
+   "kit": "1.8.0",
+   "compatLayer": true,
+   "syntaxErrors": [],
+   "postFloor": {},
+   "apiBeyondFloor": [
+    {
+     "name": "Promise.finally",
+     "covered": true
+    },
+    {
+     "name": "requestIdleCallback",
+     "covered": true
+    },
+    {
+     "name": "Blob.arrayBuffer/text",
+     "covered": true
+    },
+    {
+     "name": "AbortController",
+     "covered": true
+    },
+    {
+     "name": "ResizeObserver",
+     "covered": true
+    },
+    {
+     "name": "navigator.clipboard",
+     "covered": true
+    },
+    {
+     "name": "BroadcastChannel",
+     "covered": false
+    },
+    {
+     "name": "CompressionStream",
+     "covered": false
+    },
+    {
+     "name": "scroll cu opțiuni",
+     "covered": true
+    }
+   ],
+   "cssBeyondFloor": [
+    ":focus-visible",
+    "inset",
+    "aspect-ratio",
+    "gap (flex)",
+    "clamp()/min()/max()",
+    "prefers-color-scheme",
+    "individual transform props"
+   ],
+   "smoke": {
+    "status": "ok",
+    "newErrors": 0,
+    "nativeErrors": 0,
+    "legacyErrors": 0
+   }
+  },
+  "Aurora": {
+   "file": "index.html",
+   "status": "warn",
+   "kit": "1.8.0",
+   "compatLayer": true,
+   "syntaxErrors": [],
+   "postFloor": {},
+   "apiBeyondFloor": [
+    {
+     "name": "requestIdleCallback",
+     "covered": true
+    },
+    {
+     "name": "ResizeObserver",
+     "covered": true
+    },
+    {
+     "name": "navigator.clipboard",
+     "covered": true
+    },
+    {
+     "name": "String.padStart/padEnd",
+     "covered": true
+    },
+    {
+     "name": "scroll cu opțiuni",
+     "covered": true
+    }
+   ],
+   "cssBeyondFloor": [
+    ":focus-visible",
+    "inset",
+    "aspect-ratio",
+    "gap (flex)",
+    "dvh/svh/lvh",
+    "clamp()/min()/max()",
+    "color-mix()",
+    "backdrop-filter",
+    "prefers-color-scheme",
+    "individual transform props",
+    "scroll-behavior"
+   ],
+   "smoke": {
+    "status": "ok",
+    "newErrors": 0,
+    "nativeErrors": 0,
+    "legacyErrors": 0
+   }
+  },
+  "Belot-fara-frontiere": {
+   "file": "index.html",
+   "status": "warn",
+   "kit": "1.8.0",
+   "compatLayer": true,
+   "syntaxErrors": [],
+   "postFloor": {},
+   "apiBeyondFloor": [
+    {
+     "name": "requestIdleCallback",
+     "covered": true
+    },
+    {
+     "name": "Blob.arrayBuffer/text",
+     "covered": true
+    },
+    {
+     "name": "ResizeObserver",
+     "covered": true
+    },
+    {
+     "name": "navigator.clipboard",
+     "covered": true
+    },
+    {
+     "name": "BroadcastChannel",
+     "covered": false
+    },
+    {
+     "name": "CompressionStream",
+     "covered": false
+    },
+    {
+     "name": "<dialog>.showModal",
+     "covered": true
+    }
+   ],
+   "cssBeyondFloor": [
+    ":focus-visible",
+    "inset",
+    "gap (flex)",
+    "clamp()/min()/max()",
+    "prefers-color-scheme",
+    "position: sticky",
+    "individual transform props",
+    "scroll-behavior"
+   ],
+   "smoke": {
+    "status": "ok",
+    "newErrors": 0,
+    "nativeErrors": 0,
+    "legacyErrors": 0
+   }
+  },
+  "Bioenergoterapie": {
+   "file": "index.html",
+   "status": "warn",
+   "kit": "1.8.0",
+   "compatLayer": true,
+   "syntaxErrors": [],
+   "postFloor": {},
+   "apiBeyondFloor": [
+    {
+     "name": "requestIdleCallback",
+     "covered": true
+    },
+    {
+     "name": "ResizeObserver",
+     "covered": true
+    },
+    {
+     "name": "navigator.clipboard",
+     "covered": true
+    },
+    {
+     "name": "navigator.share",
+     "covered": false
+    },
+    {
+     "name": "scroll cu opțiuni",
+     "covered": true
+    },
+    {
+     "name": "<dialog>.showModal",
+     "covered": true
+    }
+   ],
+   "cssBeyondFloor": [
+    ":focus-visible",
+    "gap (flex)",
+    "clamp()/min()/max()",
+    "prefers-color-scheme",
+    "position: sticky",
+    "individual transform props",
+    "scroll-behavior"
+   ],
+   "smoke": {
+    "status": "ok",
+    "newErrors": 0,
+    "nativeErrors": 0,
+    "legacyErrors": 0
+   }
+  },
+  "Bolta": {
+   "file": "index.html",
+   "status": "warn",
+   "kit": "1.8.0",
+   "compatLayer": true,
+   "syntaxErrors": [],
+   "postFloor": {},
+   "apiBeyondFloor": [
+    {
+     "name": "requestIdleCallback",
+     "covered": true
+    },
+    {
+     "name": "Blob.arrayBuffer/text",
+     "covered": true
+    },
+    {
+     "name": "ResizeObserver",
+     "covered": true
+    },
+    {
+     "name": "navigator.clipboard",
+     "covered": true
+    },
+    {
+     "name": "Intl.RelativeTimeFormat/ListFormat/Segmenter",
+     "covered": false
+    },
+    {
+     "name": "BroadcastChannel",
+     "covered": false
+    },
+    {
+     "name": "CompressionStream",
+     "covered": false
+    },
+    {
+     "name": "String.padStart/padEnd",
+     "covered": true
+    },
+    {
+     "name": "canvas.toBlob",
+     "covered": true
+    },
+    {
+     "name": "<dialog>.showModal",
+     "covered": true
+    }
+   ],
+   "cssBeyondFloor": [
+    ":focus-visible",
+    "inset",
+    "aspect-ratio",
+    "gap (flex)",
+    "clamp()/min()/max()",
+    "accent-color",
+    "prefers-color-scheme",
+    "individual transform props",
+    "scroll-behavior"
+   ],
+   "smoke": {
+    "status": "ok",
+    "newErrors": 0,
+    "nativeErrors": 0,
+    "legacyErrors": 0
+   }
+  },
+  "BorderlessMelodies": {
+   "file": "index.html",
+   "status": "warn",
+   "kit": "1.8.0",
+   "compatLayer": true,
+   "syntaxErrors": [],
+   "postFloor": {},
+   "apiBeyondFloor": [
+    {
+     "name": "requestIdleCallback",
+     "covered": true
+    },
+    {
+     "name": "Blob.arrayBuffer/text",
+     "covered": true
+    },
+    {
+     "name": "ResizeObserver",
+     "covered": true
+    },
+    {
+     "name": "navigator.clipboard",
+     "covered": true
+    },
+    {
+     "name": "BroadcastChannel",
+     "covered": false
+    },
+    {
+     "name": "CompressionStream",
+     "covered": false
+    },
+    {
+     "name": "String.padStart/padEnd",
+     "covered": true
+    },
+    {
+     "name": "scroll cu opțiuni",
+     "covered": true
+    },
+    {
+     "name": "canvas.toBlob",
+     "covered": true
+    },
+    {
+     "name": "<dialog>.showModal",
+     "covered": true
+    }
+   ],
+   "cssBeyondFloor": [
+    ":focus-visible",
+    "inset",
+    "aspect-ratio",
+    "gap (flex)",
+    "clamp()/min()/max()",
+    "backdrop-filter",
+    "accent-color",
+    "prefers-color-scheme",
+    "individual transform props"
+   ],
+   "smoke": {
+    "status": "ok",
+    "newErrors": 0,
+    "nativeErrors": 0,
+    "legacyErrors": 0
+   }
+  },
+  "Brazda": {
+   "file": "index.html",
+   "status": "warn",
+   "kit": "1.8.0",
+   "compatLayer": true,
+   "syntaxErrors": [],
+   "postFloor": {},
+   "apiBeyondFloor": [
+    {
+     "name": "Array.flat/flatMap",
+     "covered": true
+    },
+    {
+     "name": "requestIdleCallback",
+     "covered": true
+    },
+    {
+     "name": "Blob.arrayBuffer/text",
+     "covered": true
+    },
+    {
+     "name": "ResizeObserver",
+     "covered": true
+    },
+    {
+     "name": "navigator.clipboard",
+     "covered": true
+    },
+    {
+     "name": "navigator.share",
+     "covered": false
+    },
+    {
+     "name": "String.padStart/padEnd",
+     "covered": true
+    },
+    {
+     "name": "scroll cu opțiuni",
+     "covered": true
+    },
+    {
+     "name": "canvas.toBlob",
+     "covered": true
+    }
+   ],
+   "cssBeyondFloor": [
+    ":has()",
+    ":focus-visible",
+    "gap (flex)",
+    "clamp()/min()/max()",
+    "backdrop-filter",
+    "accent-color",
+    "prefers-color-scheme",
+    "position: sticky",
+    "individual transform props",
+    "scroll-behavior"
+   ],
+   "smoke": {
+    "status": "ok",
+    "newErrors": 0,
+    "nativeErrors": 0,
+    "legacyErrors": 0
+   }
+  },
+  "CLEPSIDRA": {
+   "file": "index.html",
+   "status": "warn",
+   "kit": "1.8.0",
+   "compatLayer": true,
+   "syntaxErrors": [],
+   "postFloor": {},
+   "apiBeyondFloor": [
+    {
+     "name": "requestIdleCallback",
+     "covered": true
+    },
+    {
+     "name": "Blob.arrayBuffer/text",
+     "covered": true
+    },
+    {
+     "name": "ResizeObserver",
+     "covered": true
+    },
+    {
+     "name": "navigator.clipboard",
+     "covered": true
+    },
+    {
+     "name": "BroadcastChannel",
+     "covered": false
+    },
+    {
+     "name": "CompressionStream",
+     "covered": false
+    },
+    {
+     "name": "String.padStart/padEnd",
+     "covered": true
+    }
+   ],
+   "cssBeyondFloor": [
+    ":has()",
+    ":focus-visible",
+    "inset",
+    "aspect-ratio",
+    "gap (flex)",
+    "clamp()/min()/max()",
+    "accent-color",
+    "prefers-color-scheme",
+    "individual transform props"
+   ],
+   "smoke": {
+    "status": "ok",
+    "newErrors": 0,
+    "nativeErrors": 0,
+    "legacyErrors": 0
+   }
+  },
+  "Cadraj": {
+   "file": "index.html",
+   "status": "warn",
+   "kit": "1.8.0",
+   "compatLayer": true,
+   "syntaxErrors": [],
+   "postFloor": {},
+   "apiBeyondFloor": [
+    {
+     "name": "requestIdleCallback",
+     "covered": true
+    },
+    {
+     "name": "Blob.arrayBuffer/text",
+     "covered": true
+    },
+    {
+     "name": "BigInt",
+     "covered": false
+    },
+    {
+     "name": "ResizeObserver",
+     "covered": true
+    },
+    {
+     "name": "navigator.clipboard",
+     "covered": true
+    },
+    {
+     "name": "BroadcastChannel",
+     "covered": false
+    },
+    {
+     "name": "CompressionStream",
+     "covered": false
+    },
+    {
+     "name": "String.padStart/padEnd",
+     "covered": true
+    },
+    {
+     "name": "<dialog>.showModal",
+     "covered": true
+    }
+   ],
+   "cssBeyondFloor": [
+    ":focus-visible",
+    "inset",
+    "aspect-ratio",
+    "gap (flex)",
+    "clamp()/min()/max()",
+    "accent-color",
+    "prefers-color-scheme",
+    "individual transform props",
+    "scroll-behavior"
+   ],
+   "smoke": {
+    "status": "ok",
+    "newErrors": 0,
+    "nativeErrors": 0,
+    "legacyErrors": 0
+   }
+  },
+  "CalmWaves": {
+   "file": "index.html",
+   "status": "warn",
+   "kit": "1.8.0",
+   "compatLayer": true,
+   "syntaxErrors": [],
+   "postFloor": {},
+   "apiBeyondFloor": [
+    {
+     "name": "requestIdleCallback",
+     "covered": true
+    },
+    {
+     "name": "Blob.arrayBuffer/text",
+     "covered": true
+    },
+    {
+     "name": "ResizeObserver",
+     "covered": true
+    },
+    {
+     "name": "navigator.clipboard",
+     "covered": true
+    },
+    {
+     "name": "BroadcastChannel",
+     "covered": false
+    },
+    {
+     "name": "CompressionStream",
+     "covered": false
+    },
+    {
+     "name": "<dialog>.showModal",
+     "covered": true
+    }
+   ],
+   "cssBeyondFloor": [
+    ":focus-visible",
+    "inset",
+    "gap (flex)",
+    "dvh/svh/lvh",
+    "clamp()/min()/max()",
+    "color-mix()",
+    "backdrop-filter",
+    "accent-color",
+    "prefers-color-scheme",
+    "individual transform props"
+   ],
+   "smoke": {
+    "status": "ok",
+    "newErrors": 0,
+    "nativeErrors": 0,
+    "legacyErrors": 0
+   }
+  },
+  "Carti-de-joc-fara-frontiere": {
+   "file": "index.html",
+   "status": "warn",
+   "kit": "1.8.0",
+   "compatLayer": true,
+   "syntaxErrors": [],
+   "postFloor": {},
+   "apiBeyondFloor": [
+    {
+     "name": "requestIdleCallback",
+     "covered": true
+    },
+    {
+     "name": "Blob.arrayBuffer/text",
+     "covered": true
+    },
+    {
+     "name": "ResizeObserver",
+     "covered": true
+    },
+    {
+     "name": "navigator.clipboard",
+     "covered": true
+    },
+    {
+     "name": "BroadcastChannel",
+     "covered": false
+    },
+    {
+     "name": "CompressionStream",
+     "covered": false
+    },
+    {
+     "name": "scroll cu opțiuni",
+     "covered": true
+    },
+    {
+     "name": "<dialog>.showModal",
+     "covered": true
+    }
+   ],
+   "cssBeyondFloor": [
+    ":focus-visible",
+    "inset",
+    "gap (flex)",
+    "clamp()/min()/max()",
+    "color-mix()",
+    "backdrop-filter",
+    "prefers-color-scheme",
+    "position: sticky",
+    "individual transform props",
+    "scroll-behavior"
+   ],
+   "smoke": {
+    "status": "ok",
+    "newErrors": 0,
+    "nativeErrors": 0,
+    "legacyErrors": 0
+   }
+  },
+  "Chiromantia": {
+   "file": "index.html",
+   "status": "warn",
+   "kit": "1.8.0",
+   "compatLayer": true,
+   "syntaxErrors": [],
+   "postFloor": {},
+   "apiBeyondFloor": [
+    {
+     "name": "requestIdleCallback",
+     "covered": true
+    },
+    {
+     "name": "ResizeObserver",
+     "covered": true
+    },
+    {
+     "name": "navigator.clipboard",
+     "covered": true
+    },
+    {
+     "name": "roundRect",
+     "covered": true
+    },
+    {
+     "name": "scroll cu opțiuni",
+     "covered": true
+    },
+    {
+     "name": "canvas.toBlob",
+     "covered": true
+    }
+   ],
+   "cssBeyondFloor": [
+    ":focus-visible",
+    "gap (flex)",
+    "clamp()/min()/max()",
+    "accent-color",
+    "prefers-color-scheme",
+    "position: sticky",
+    "individual transform props",
+    "scroll-behavior"
+   ],
+   "smoke": {
+    "status": "ok",
+    "newErrors": 0,
+    "nativeErrors": 0,
+    "legacyErrors": 0
+   }
+  },
+  "Chiromantia:chiromantia.html": {
+   "file": "chiromantia.html",
+   "status": "warn",
+   "kit": "1.8.0",
+   "compatLayer": true,
+   "syntaxErrors": [],
+   "postFloor": {},
+   "apiBeyondFloor": [
+    {
+     "name": "navigator.clipboard",
+     "covered": true
+    },
+    {
+     "name": "roundRect",
+     "covered": true
+    },
+    {
+     "name": "scroll cu opțiuni",
+     "covered": true
+    },
+    {
+     "name": "canvas.toBlob",
+     "covered": true
+    }
+   ],
+   "cssBeyondFloor": [
+    ":focus-visible",
+    "gap (flex)",
+    "accent-color",
+    "position: sticky",
+    "scroll-behavior"
+   ],
+   "smoke": {
+    "status": "ok",
+    "newErrors": 0,
+    "nativeErrors": 0,
+    "legacyErrors": 0
+   }
+  },
+  "Claritas:site/index.html": {
+   "file": "site/index.html",
+   "status": "warn",
+   "kit": "1.8.0",
+   "compatLayer": true,
+   "syntaxErrors": [],
+   "postFloor": {},
+   "apiBeyondFloor": [
+    {
+     "name": "IntersectionObserver",
+     "covered": true
+    },
+    {
+     "name": "navigator.clipboard",
+     "covered": true
+    }
+   ],
+   "cssBeyondFloor": [
+    ":has()",
+    ":focus-visible",
+    "inset",
+    "aspect-ratio",
+    "gap (flex)",
+    "clamp()/min()/max()",
+    "color-mix()",
+    "accent-color",
+    "text-wrap",
+    "prefers-color-scheme",
+    "position: sticky",
+    "logical props",
+    "scroll-behavior"
+   ],
+   "smoke": {
+    "status": "warn",
+    "newErrors": 0,
+    "nativeErrors": 1,
+    "legacyErrors": 1
+   }
+  },
+  "Clopotel": {
+   "file": "index.html",
+   "status": "warn",
+   "kit": "1.8.0",
+   "compatLayer": true,
+   "syntaxErrors": [],
+   "postFloor": {},
+   "apiBeyondFloor": [
+    {
+     "name": "requestIdleCallback",
+     "covered": true
+    },
+    {
+     "name": "Blob.arrayBuffer/text",
+     "covered": true
+    },
+    {
+     "name": "ResizeObserver",
+     "covered": true
+    },
+    {
+     "name": "navigator.clipboard",
+     "covered": true
+    },
+    {
+     "name": "BroadcastChannel",
+     "covered": false
+    },
+    {
+     "name": "CompressionStream",
+     "covered": false
+    },
+    {
+     "name": "String.padStart/padEnd",
+     "covered": true
+    }
+   ],
+   "cssBeyondFloor": [
+    ":focus-visible",
+    "inset",
+    "gap (flex)",
+    "clamp()/min()/max()",
+    "prefers-color-scheme",
+    "position: sticky",
+    "individual transform props"
+   ],
+   "smoke": {
+    "status": "ok",
+    "newErrors": 0,
+    "nativeErrors": 0,
+    "legacyErrors": 0
+   }
+  },
+  "Constelar": {
+   "file": "index.html",
+   "status": "warn",
+   "kit": "1.8.0",
+   "compatLayer": true,
+   "syntaxErrors": [],
+   "postFloor": {},
+   "apiBeyondFloor": [
+    {
+     "name": "requestIdleCallback",
+     "covered": true
+    },
+    {
+     "name": "Blob.arrayBuffer/text",
+     "covered": true
+    },
+    {
+     "name": "AbortController",
+     "covered": true
+    },
+    {
+     "name": "ResizeObserver",
+     "covered": true
+    },
+    {
+     "name": "navigator.clipboard",
+     "covered": true
+    },
+    {
+     "name": "Intl.RelativeTimeFormat/ListFormat/Segmenter",
+     "covered": false
+    },
+    {
+     "name": "BroadcastChannel",
+     "covered": false
+    },
+    {
+     "name": "CompressionStream",
+     "covered": false
+    },
+    {
+     "name": "navigator.share",
+     "covered": false
+    },
+    {
+     "name": "canvas.toBlob",
+     "covered": true
+    }
+   ],
+   "cssBeyondFloor": [
+    ":focus-visible",
+    "inset",
+    "gap (flex)",
+    "clamp()/min()/max()",
+    "backdrop-filter",
+    "prefers-color-scheme",
+    "individual transform props"
+   ],
+   "smoke": {
+    "status": "ok",
+    "newErrors": 0,
+    "nativeErrors": 0,
+    "legacyErrors": 0
+   }
+  },
+  "Cronosala": {
+   "file": "index.html",
+   "status": "warn",
+   "kit": "1.8.0",
+   "compatLayer": true,
+   "syntaxErrors": [],
+   "postFloor": {},
+   "apiBeyondFloor": [
+    {
+     "name": "requestIdleCallback",
+     "covered": true
+    },
+    {
+     "name": "Blob.arrayBuffer/text",
+     "covered": true
+    },
+    {
+     "name": "ResizeObserver",
+     "covered": true
+    },
+    {
+     "name": "navigator.clipboard",
+     "covered": true
+    },
+    {
+     "name": "String.padStart/padEnd",
+     "covered": true
+    }
+   ],
+   "cssBeyondFloor": [
+    ":focus-visible",
+    "inset",
+    "gap (flex)",
+    "clamp()/min()/max()",
+    "accent-color",
+    "prefers-color-scheme",
+    "position: sticky",
+    "individual transform props",
+    "logical props"
+   ],
+   "smoke": {
+    "status": "ok",
+    "newErrors": 0,
+    "nativeErrors": 0,
+    "legacyErrors": 0
+   }
+  },
+  "Cupa-Mondiala-2026": {
+   "file": "index.html",
+   "status": "warn",
+   "kit": "1.8.0",
+   "compatLayer": true,
+   "syntaxErrors": [],
+   "postFloor": {},
+   "apiBeyondFloor": [
+    {
+     "name": "Array.flat/flatMap",
+     "covered": true
+    },
+    {
+     "name": "requestIdleCallback",
+     "covered": true
+    },
+    {
+     "name": "Blob.arrayBuffer/text",
+     "covered": true
+    },
+    {
+     "name": "ResizeObserver",
+     "covered": true
+    },
+    {
+     "name": "navigator.clipboard",
+     "covered": true
+    },
+    {
+     "name": "CompressionStream",
+     "covered": false
+    },
+    {
+     "name": "String.padStart/padEnd",
+     "covered": true
+    },
+    {
+     "name": "scroll cu opțiuni",
+     "covered": true
+    },
+    {
+     "name": "<dialog>.showModal",
+     "covered": true
+    }
+   ],
+   "cssBeyondFloor": [
+    ":focus-visible",
+    "inset",
+    "gap (flex)",
+    "clamp()/min()/max()",
+    "backdrop-filter",
+    "accent-color",
+    "prefers-color-scheme",
+    "position: sticky",
+    "individual transform props",
+    "scroll-behavior"
+   ],
+   "smoke": {
+    "status": "ok",
+    "newErrors": 0,
+    "nativeErrors": 0,
+    "legacyErrors": 0
+   }
+  },
+  "Curatitor": {
+   "file": "index.html",
+   "status": "warn",
+   "kit": "1.8.0",
+   "compatLayer": true,
+   "syntaxErrors": [],
+   "postFloor": {},
+   "apiBeyondFloor": [
+    {
+     "name": "Array.flat/flatMap",
+     "covered": true
+    },
+    {
+     "name": "requestIdleCallback",
+     "covered": true
+    },
+    {
+     "name": "Blob.arrayBuffer/text",
+     "covered": true
+    },
+    {
+     "name": "ResizeObserver",
+     "covered": true
+    },
+    {
+     "name": "CompressionStream",
+     "covered": false
+    },
+    {
+     "name": "String.padStart/padEnd",
+     "covered": true
+    },
+    {
+     "name": "String.matchAll",
+     "covered": true
+    },
+    {
+     "name": "canvas.toBlob",
+     "covered": true
+    }
+   ],
+   "cssBeyondFloor": [
+    ":has()",
+    ":focus-visible",
+    "gap (flex)",
+    "clamp()/min()/max()",
+    "accent-color",
+    "prefers-color-scheme",
+    "position: sticky",
+    "individual transform props"
+   ],
+   "smoke": {
+    "status": "ok",
+    "newErrors": 0,
+    "nativeErrors": 0,
+    "legacyErrors": 0
+   }
+  },
+  "Curs-ASFAN-online": {
+   "file": "index.html",
+   "status": "ok",
+   "kit": null,
+   "compatLayer": false,
+   "syntaxErrors": [],
+   "postFloor": {},
+   "apiBeyondFloor": [],
+   "cssBeyondFloor": [],
+   "smoke": {
+    "status": "warn",
+    "newErrors": 0,
+    "nativeErrors": 1,
+    "legacyErrors": 1
+   }
+  },
+  "DECUPAJ": {
+   "file": "index.html",
+   "status": "warn",
+   "kit": "1.8.0",
+   "compatLayer": true,
+   "syntaxErrors": [],
+   "postFloor": {},
+   "apiBeyondFloor": [
+    {
+     "name": "requestIdleCallback",
+     "covered": true
+    },
+    {
+     "name": "Blob.arrayBuffer/text",
+     "covered": true
+    },
+    {
+     "name": "ResizeObserver",
+     "covered": true
+    },
+    {
+     "name": "navigator.clipboard",
+     "covered": true
+    },
+    {
+     "name": "roundRect",
+     "covered": true
+    },
+    {
+     "name": "CompressionStream",
+     "covered": false
+    },
+    {
+     "name": "navigator.share",
+     "covered": false
+    },
+    {
+     "name": "String.padStart/padEnd",
+     "covered": true
+    }
+   ],
+   "cssBeyondFloor": [
+    ":focus-visible",
+    "aspect-ratio",
+    "gap (flex)",
+    "clamp()/min()/max()",
+    "prefers-color-scheme",
+    "position: sticky",
+    "individual transform props",
+    "scroll-behavior"
+   ],
+   "smoke": {
+    "status": "ok",
+    "newErrors": 0,
+    "nativeErrors": 0,
+    "legacyErrors": 0
+   }
+  },
+  "DESCANTAR": {
+   "file": "index.html",
+   "status": "warn",
+   "kit": "1.8.0",
+   "compatLayer": true,
+   "syntaxErrors": [],
+   "postFloor": {},
+   "apiBeyondFloor": [
+    {
+     "name": "requestIdleCallback",
+     "covered": true
+    },
+    {
+     "name": "ResizeObserver",
+     "covered": true
+    },
+    {
+     "name": "navigator.clipboard",
+     "covered": true
+    },
+    {
+     "name": "scroll cu opțiuni",
+     "covered": true
+    }
+   ],
+   "cssBeyondFloor": [
+    "aspect-ratio",
+    "gap (flex)",
+    "clamp()/min()/max()",
+    "prefers-color-scheme",
+    "position: sticky",
+    "individual transform props"
+   ],
+   "smoke": {
+    "status": "ok",
+    "newErrors": 0,
+    "nativeErrors": 0,
+    "legacyErrors": 0
+   }
+  },
+  "Dame-fara-frontiere": {
+   "file": "index.html",
+   "status": "warn",
+   "kit": "1.8.0",
+   "compatLayer": true,
+   "syntaxErrors": [],
+   "postFloor": {},
+   "apiBeyondFloor": [
+    {
+     "name": "requestIdleCallback",
+     "covered": true
+    },
+    {
+     "name": "Blob.arrayBuffer/text",
+     "covered": true
+    },
+    {
+     "name": "ResizeObserver",
+     "covered": true
+    },
+    {
+     "name": "navigator.clipboard",
+     "covered": true
+    },
+    {
+     "name": "BroadcastChannel",
+     "covered": false
+    },
+    {
+     "name": "CompressionStream",
+     "covered": false
+    },
+    {
+     "name": "<dialog>.showModal",
+     "covered": true
+    }
+   ],
+   "cssBeyondFloor": [
+    ":focus-visible",
+    "inset",
+    "aspect-ratio",
+    "gap (flex)",
+    "clamp()/min()/max()",
+    "color-mix()",
+    "backdrop-filter",
+    "prefers-color-scheme",
+    "position: sticky",
+    "individual transform props",
+    "overflow: clip",
+    "logical props",
+    "scroll-behavior"
+   ],
+   "smoke": {
+    "status": "ok",
+    "newErrors": 0,
+    "nativeErrors": 0,
+    "legacyErrors": 0
+   }
+  },
+  "DataWeave": {
+   "file": "index.html",
+   "status": "warn",
+   "kit": "1.8.0",
+   "compatLayer": true,
+   "syntaxErrors": [],
+   "postFloor": {},
+   "apiBeyondFloor": [
+    {
+     "name": "Array.flat/flatMap",
+     "covered": true
+    },
+    {
+     "name": "requestIdleCallback",
+     "covered": true
+    },
+    {
+     "name": "Blob.arrayBuffer/text",
+     "covered": true
+    },
+    {
+     "name": "BigInt",
+     "covered": false
+    },
+    {
+     "name": "ResizeObserver",
+     "covered": true
+    },
+    {
+     "name": "navigator.clipboard",
+     "covered": true
+    },
+    {
+     "name": "BroadcastChannel",
+     "covered": false
+    },
+    {
+     "name": "CompressionStream",
+     "covered": false
+    },
+    {
+     "name": "String.padStart/padEnd",
+     "covered": true
+    },
+    {
+     "name": "canvas.toBlob",
+     "covered": true
+    },
+    {
+     "name": "<dialog>.showModal",
+     "covered": true
+    }
+   ],
+   "cssBeyondFloor": [
+    ":focus-visible",
+    "inset",
+    "gap (flex)",
+    "clamp()/min()/max()",
+    "color-mix()",
+    "accent-color",
+    "prefers-color-scheme",
+    "position: sticky",
+    "individual transform props",
+    "scroll-behavior"
+   ],
+   "smoke": {
+    "status": "ok",
+    "newErrors": 0,
+    "nativeErrors": 0,
+    "legacyErrors": 0
+   }
+  },
+  "Decibel": {
+   "file": "index.html",
+   "status": "warn",
+   "kit": "1.8.0",
+   "compatLayer": true,
+   "syntaxErrors": [],
+   "postFloor": {},
+   "apiBeyondFloor": [
+    {
+     "name": "requestIdleCallback",
+     "covered": true
+    },
+    {
+     "name": "Blob.arrayBuffer/text",
+     "covered": true
+    },
+    {
+     "name": "ResizeObserver",
+     "covered": true
+    },
+    {
+     "name": "navigator.clipboard",
+     "covered": true
+    },
+    {
+     "name": "BroadcastChannel",
+     "covered": false
+    },
+    {
+     "name": "CompressionStream",
+     "covered": false
+    },
+    {
+     "name": "String.padStart/padEnd",
+     "covered": true
+    },
+    {
+     "name": "<dialog>.showModal",
+     "covered": true
+    }
+   ],
+   "cssBeyondFloor": [
+    ":focus-visible",
+    "inset",
+    "gap (flex)",
+    "clamp()/min()/max()",
+    "accent-color",
+    "prefers-color-scheme",
+    "individual transform props"
+   ],
+   "smoke": {
+    "status": "ok",
+    "newErrors": 0,
+    "nativeErrors": 0,
+    "legacyErrors": 0
+   }
+  },
+  "Domino-fara-frontiere": {
+   "file": "index.html",
+   "status": "warn",
+   "kit": "1.8.0",
+   "compatLayer": true,
+   "syntaxErrors": [],
+   "postFloor": {},
+   "apiBeyondFloor": [
+    {
+     "name": "requestIdleCallback",
+     "covered": true
+    },
+    {
+     "name": "Blob.arrayBuffer/text",
+     "covered": true
+    },
+    {
+     "name": "ResizeObserver",
+     "covered": true
+    },
+    {
+     "name": "navigator.clipboard",
+     "covered": true
+    },
+    {
+     "name": "BroadcastChannel",
+     "covered": false
+    },
+    {
+     "name": "CompressionStream",
+     "covered": false
+    },
+    {
+     "name": "scroll cu opțiuni",
+     "covered": true
+    },
+    {
+     "name": "<dialog>.showModal",
+     "covered": true
+    }
+   ],
+   "cssBeyondFloor": [
+    ":focus-visible",
+    "inset",
+    "gap (flex)",
+    "clamp()/min()/max()",
+    "accent-color",
+    "prefers-color-scheme",
+    "position: sticky",
+    "individual transform props",
+    "scroll-behavior"
+   ],
+   "smoke": {
+    "status": "ok",
+    "newErrors": 0,
+    "nativeErrors": 0,
+    "legacyErrors": 0
+   }
+  },
+  "ECLIPSA": {
+   "file": "index.html",
+   "status": "warn",
+   "kit": "1.8.0",
+   "compatLayer": true,
+   "syntaxErrors": [],
+   "postFloor": {},
+   "apiBeyondFloor": [
+    {
+     "name": "requestIdleCallback",
+     "covered": true
+    },
+    {
+     "name": "ResizeObserver",
+     "covered": true
+    },
+    {
+     "name": "navigator.clipboard",
+     "covered": true
+    },
+    {
+     "name": "String.padStart/padEnd",
+     "covered": true
+    },
+    {
+     "name": "scroll cu opțiuni",
+     "covered": true
+    }
+   ],
+   "cssBeyondFloor": [
+    ":has()",
+    ":focus-visible",
+    "gap (flex)",
+    "clamp()/min()/max()",
+    "accent-color",
+    "prefers-color-scheme",
+    "individual transform props",
+    "scroll-behavior"
+   ],
+   "smoke": {
+    "status": "ok",
+    "newErrors": 0,
+    "nativeErrors": 0,
+    "legacyErrors": 0
+   }
+  },
+  "ECOGRAMA": {
+   "file": "index.html",
+   "status": "warn",
+   "kit": "1.8.0",
+   "compatLayer": true,
+   "syntaxErrors": [],
+   "postFloor": {},
+   "apiBeyondFloor": [
+    {
+     "name": "IntersectionObserver",
+     "covered": true
+    },
+    {
+     "name": "navigator.clipboard",
+     "covered": true
+    },
+    {
+     "name": "String.padStart/padEnd",
+     "covered": true
+    }
+   ],
+   "cssBeyondFloor": [
+    ":focus-visible",
+    "inset",
+    "aspect-ratio",
+    "gap (flex)",
+    "clamp()/min()/max()",
+    "color-mix()",
+    "backdrop-filter",
+    "prefers-color-scheme",
+    "position: sticky",
+    "scroll-behavior"
+   ],
+   "smoke": {
+    "status": "ok",
+    "newErrors": 0,
+    "nativeErrors": 0,
+    "legacyErrors": 0
+   }
+  },
+  "ETER": {
+   "file": "index.html",
+   "status": "warn",
+   "kit": "1.8.0",
+   "compatLayer": true,
+   "syntaxErrors": [],
+   "postFloor": {},
+   "apiBeyondFloor": [
+    {
+     "name": "Object.fromEntries",
+     "covered": true
+    },
+    {
+     "name": "Array.flat/flatMap",
+     "covered": true
+    },
+    {
+     "name": "requestIdleCallback",
+     "covered": true
+    },
+    {
+     "name": "Blob.arrayBuffer/text",
+     "covered": true
+    },
+    {
+     "name": "ResizeObserver",
+     "covered": true
+    },
+    {
+     "name": "navigator.clipboard",
+     "covered": true
+    },
+    {
+     "name": "BroadcastChannel",
+     "covered": false
+    },
+    {
+     "name": "CompressionStream",
+     "covered": false
+    },
+    {
+     "name": "navigator.share",
+     "covered": false
+    },
+    {
+     "name": "String.padStart/padEnd",
+     "covered": true
+    },
+    {
+     "name": "String.matchAll",
+     "covered": true
+    },
+    {
+     "name": "scroll cu opțiuni",
+     "covered": true
+    }
+   ],
+   "cssBeyondFloor": [
+    ":focus-visible",
+    "inset",
+    "gap (flex)",
+    "clamp()/min()/max()",
+    "color-mix()",
+    "prefers-color-scheme",
+    "position: sticky",
+    "individual transform props",
+    "logical props",
+    "scroll-behavior"
+   ],
+   "smoke": {
+    "status": "ok",
+    "newErrors": 0,
+    "nativeErrors": 0,
+    "legacyErrors": 0
+   }
+  },
+  "EXIF-CURAT": {
+   "file": "index.html",
+   "status": "warn",
+   "kit": null,
+   "compatLayer": true,
+   "syntaxErrors": [],
+   "postFloor": {},
+   "apiBeyondFloor": [
+    {
+     "name": "IntersectionObserver",
+     "covered": true
+    },
+    {
+     "name": "navigator.clipboard",
+     "covered": true
+    }
+   ],
+   "cssBeyondFloor": [
+    ":focus-visible",
+    "inset",
+    "aspect-ratio",
+    "gap (flex)",
+    "clamp()/min()/max()",
+    "color-mix()",
+    "backdrop-filter",
+    "prefers-color-scheme",
+    "position: sticky",
+    "scroll-behavior"
+   ],
+   "smoke": {
+    "status": "ok",
+    "newErrors": 0,
+    "nativeErrors": 0,
+    "legacyErrors": 0
+   }
+  },
+  "Eclipsa-2027": {
+   "file": "index.html",
+   "status": "warn",
+   "kit": "1.8.0",
+   "compatLayer": true,
+   "syntaxErrors": [],
+   "postFloor": {},
+   "apiBeyondFloor": [
+    {
+     "name": "requestIdleCallback",
+     "covered": true
+    },
+    {
+     "name": "Blob.arrayBuffer/text",
+     "covered": true
+    },
+    {
+     "name": "ResizeObserver",
+     "covered": true
+    },
+    {
+     "name": "navigator.clipboard",
+     "covered": true
+    },
+    {
+     "name": "Intl.RelativeTimeFormat/ListFormat/Segmenter",
+     "covered": false
+    },
+    {
+     "name": "BroadcastChannel",
+     "covered": false
+    },
+    {
+     "name": "CompressionStream",
+     "covered": false
+    },
+    {
+     "name": "scroll cu opțiuni",
+     "covered": true
+    },
+    {
+     "name": "<dialog>.showModal",
+     "covered": true
+    }
+   ],
+   "cssBeyondFloor": [
+    ":has()",
+    ":focus-visible",
+    "inset",
+    "gap (flex)",
+    "dvh/svh/lvh",
+    "clamp()/min()/max()",
+    "backdrop-filter",
+    "accent-color",
+    "prefers-color-scheme",
+    "position: sticky",
+    "individual transform props",
+    "display: contents",
+    "scroll-behavior"
+   ],
+   "smoke": {
+    "status": "ok",
+    "newErrors": 0,
+    "nativeErrors": 0,
+    "legacyErrors": 0
+   }
+  },
+  "EcoulSpectral": {
+   "file": "index.html",
+   "status": "warn",
+   "kit": "1.8.0",
+   "compatLayer": true,
+   "syntaxErrors": [],
+   "postFloor": {},
+   "apiBeyondFloor": [
+    {
+     "name": "requestIdleCallback",
+     "covered": true
+    },
+    {
+     "name": "Blob.arrayBuffer/text",
+     "covered": true
+    },
+    {
+     "name": "ResizeObserver",
+     "covered": true
+    },
+    {
+     "name": "navigator.clipboard",
+     "covered": true
+    },
+    {
+     "name": "BroadcastChannel",
+     "covered": false
+    },
+    {
+     "name": "CompressionStream",
+     "covered": false
+    },
+    {
+     "name": "scroll cu opțiuni",
+     "covered": true
+    }
+   ],
+   "cssBeyondFloor": [
+    ":focus-visible",
+    "inset",
+    "gap (flex)",
+    "clamp()/min()/max()",
+    "accent-color",
+    "prefers-color-scheme",
+    "individual transform props"
+   ],
+   "smoke": {
+    "status": "ok",
+    "newErrors": 0,
+    "nativeErrors": 0,
+    "legacyErrors": 0
+   }
+  },
+  "ExploratoriiEco": {
+   "file": "index.html",
+   "status": "warn",
+   "kit": "1.8.0",
+   "compatLayer": true,
+   "syntaxErrors": [],
+   "postFloor": {},
+   "apiBeyondFloor": [
+    {
+     "name": "requestIdleCallback",
+     "covered": true
+    },
+    {
+     "name": "Blob.arrayBuffer/text",
+     "covered": true
+    },
+    {
+     "name": "ResizeObserver",
+     "covered": true
+    },
+    {
+     "name": "navigator.clipboard",
+     "covered": true
+    },
+    {
+     "name": "BroadcastChannel",
+     "covered": false
+    },
+    {
+     "name": "CompressionStream",
+     "covered": false
+    },
+    {
+     "name": "navigator.share",
+     "covered": false
+    },
+    {
+     "name": "scroll cu opțiuni",
+     "covered": true
+    }
+   ],
+   "cssBeyondFloor": [
+    ":focus-visible",
+    "inset",
+    "gap (flex)",
+    "clamp()/min()/max()",
+    "accent-color",
+    "prefers-color-scheme",
+    "position: sticky",
+    "individual transform props",
+    "scroll-behavior"
+   ],
+   "smoke": {
+    "status": "ok",
+    "newErrors": 0,
+    "nativeErrors": 0,
+    "legacyErrors": 0
+   }
+  },
+  "FARFURIA": {
+   "file": "index.html",
+   "status": "warn",
+   "kit": "1.8.0",
+   "compatLayer": true,
+   "syntaxErrors": [],
+   "postFloor": {},
+   "apiBeyondFloor": [
+    {
+     "name": "requestIdleCallback",
+     "covered": true
+    },
+    {
+     "name": "ResizeObserver",
+     "covered": true
+    },
+    {
+     "name": "<dialog>.showModal",
+     "covered": true
+    }
+   ],
+   "cssBeyondFloor": [
+    ":has()",
+    ":focus-visible",
+    "gap (flex)",
+    "clamp()/min()/max()",
+    "accent-color",
+    "prefers-color-scheme",
+    "position: sticky",
+    "individual transform props"
+   ],
+   "smoke": {
+    "status": "ok",
+    "newErrors": 0,
+    "nativeErrors": 0,
+    "legacyErrors": 0
+   }
+  },
+  "FASCICUL": {
+   "file": "index.html",
+   "status": "warn",
+   "kit": "1.8.0",
+   "compatLayer": true,
+   "syntaxErrors": [],
+   "postFloor": {},
+   "apiBeyondFloor": [
+    {
+     "name": "Array.flat/flatMap",
+     "covered": true
+    },
+    {
+     "name": "requestIdleCallback",
+     "covered": true
+    },
+    {
+     "name": "Blob.arrayBuffer/text",
+     "covered": true
+    },
+    {
+     "name": "AbortController",
+     "covered": true
+    },
+    {
+     "name": "ResizeObserver",
+     "covered": true
+    },
+    {
+     "name": "navigator.clipboard",
+     "covered": true
+    },
+    {
+     "name": "BroadcastChannel",
+     "covered": false
+    },
+    {
+     "name": "CompressionStream",
+     "covered": false
+    },
+    {
+     "name": "navigator.share",
+     "covered": false
+    },
+    {
+     "name": "String.padStart/padEnd",
+     "covered": true
+    },
+    {
+     "name": "canvas.toBlob",
+     "covered": true
+    }
+   ],
+   "cssBeyondFloor": [
+    ":focus-visible",
+    "inset",
+    "aspect-ratio",
+    "gap (flex)",
+    "clamp()/min()/max()",
+    "prefers-color-scheme",
+    "individual transform props",
+    "scroll-behavior"
+   ],
+   "smoke": {
+    "status": "ok",
+    "newErrors": 0,
+    "nativeErrors": 0,
+    "legacyErrors": 0
+   }
+  },
+  "FASCICUL:fascicul.html": {
+   "file": "fascicul.html",
+   "status": "warn",
+   "kit": "1.8.0",
+   "compatLayer": true,
+   "syntaxErrors": [],
+   "postFloor": {},
+   "apiBeyondFloor": [
+    {
+     "name": "Array.flat/flatMap",
+     "covered": true
+    },
+    {
+     "name": "requestIdleCallback",
+     "covered": true
+    },
+    {
+     "name": "Blob.arrayBuffer/text",
+     "covered": true
+    },
+    {
+     "name": "AbortController",
+     "covered": true
+    },
+    {
+     "name": "ResizeObserver",
+     "covered": true
+    },
+    {
+     "name": "navigator.clipboard",
+     "covered": true
+    },
+    {
+     "name": "BroadcastChannel",
+     "covered": false
+    },
+    {
+     "name": "CompressionStream",
+     "covered": false
+    },
+    {
+     "name": "navigator.share",
+     "covered": false
+    },
+    {
+     "name": "String.padStart/padEnd",
+     "covered": true
+    },
+    {
+     "name": "canvas.toBlob",
+     "covered": true
+    }
+   ],
+   "cssBeyondFloor": [
+    ":focus-visible",
+    "inset",
+    "aspect-ratio",
+    "gap (flex)",
+    "clamp()/min()/max()",
+    "prefers-color-scheme",
+    "individual transform props",
+    "scroll-behavior"
+   ],
+   "smoke": {
+    "status": "ok",
+    "newErrors": 0,
+    "nativeErrors": 0,
+    "legacyErrors": 0
+   }
+  },
+  "Fabrica": {
+   "file": "index.html",
+   "status": "warn",
+   "kit": "1.8.0",
+   "compatLayer": true,
+   "syntaxErrors": [],
+   "postFloor": {},
+   "apiBeyondFloor": [
+    {
+     "name": "requestIdleCallback",
+     "covered": true
+    },
+    {
+     "name": "Blob.arrayBuffer/text",
+     "covered": true
+    },
+    {
+     "name": "ResizeObserver",
+     "covered": true
+    },
+    {
+     "name": "navigator.clipboard",
+     "covered": true
+    },
+    {
+     "name": "BroadcastChannel",
+     "covered": false
+    },
+    {
+     "name": "CompressionStream",
+     "covered": false
+    },
+    {
+     "name": "String.padStart/padEnd",
+     "covered": true
+    },
+    {
+     "name": "scroll cu opțiuni",
+     "covered": true
+    },
+    {
+     "name": "<dialog>.showModal",
+     "covered": true
+    }
+   ],
+   "cssBeyondFloor": [
+    ":focus-visible",
+    "inset",
+    "gap (flex)",
+    "clamp()/min()/max()",
+    "accent-color",
+    "prefers-color-scheme",
+    "position: sticky",
+    "individual transform props"
+   ],
+   "smoke": {
+    "status": "ok",
+    "newErrors": 0,
+    "nativeErrors": 0,
+    "legacyErrors": 0
+   }
+  },
+  "Fenarium": {
+   "file": "index.html",
+   "status": "warn",
+   "kit": "1.8.0",
+   "compatLayer": true,
+   "syntaxErrors": [],
+   "postFloor": {},
+   "apiBeyondFloor": [
+    {
+     "name": "Array.flat/flatMap",
+     "covered": true
+    },
+    {
+     "name": "requestIdleCallback",
+     "covered": true
+    },
+    {
+     "name": "Blob.arrayBuffer/text",
+     "covered": true
+    },
+    {
+     "name": "ResizeObserver",
+     "covered": true
+    },
+    {
+     "name": "navigator.clipboard",
+     "covered": true
+    },
+    {
+     "name": "BroadcastChannel",
+     "covered": false
+    },
+    {
+     "name": "CompressionStream",
+     "covered": false
+    },
+    {
+     "name": "String.padStart/padEnd",
+     "covered": true
+    },
+    {
+     "name": "scroll cu opțiuni",
+     "covered": true
+    },
+    {
+     "name": "canvas.toBlob",
+     "covered": true
+    }
+   ],
+   "cssBeyondFloor": [
+    ":has()",
+    ":focus-visible",
+    "inset",
+    "gap (flex)",
+    "clamp()/min()/max()",
+    "color-mix()",
+    "backdrop-filter",
+    "accent-color",
+    "prefers-color-scheme",
+    "position: sticky",
+    "individual transform props",
+    "scroll-behavior"
+   ],
+   "smoke": {
+    "status": "ok",
+    "newErrors": 0,
+    "nativeErrors": 0,
+    "legacyErrors": 0
+   }
+  },
+  "FieldObserver": {
+   "file": "index.html",
+   "status": "warn",
+   "kit": "1.8.0",
+   "compatLayer": true,
+   "syntaxErrors": [],
+   "postFloor": {},
+   "apiBeyondFloor": [
+    {
+     "name": "requestIdleCallback",
+     "covered": true
+    },
+    {
+     "name": "Blob.arrayBuffer/text",
+     "covered": true
+    },
+    {
+     "name": "AbortController",
+     "covered": true
+    },
+    {
+     "name": "ResizeObserver",
+     "covered": true
+    },
+    {
+     "name": "navigator.clipboard",
+     "covered": true
+    },
+    {
+     "name": "BroadcastChannel",
+     "covered": false
+    },
+    {
+     "name": "CompressionStream",
+     "covered": false
+    },
+    {
+     "name": "navigator.share",
+     "covered": false
+    },
+    {
+     "name": "String.padStart/padEnd",
+     "covered": true
+    },
+    {
+     "name": "<dialog>.showModal",
+     "covered": true
+    }
+   ],
+   "cssBeyondFloor": [
+    ":has()",
+    ":focus-visible",
+    "inset",
+    "gap (flex)",
+    "clamp()/min()/max()",
+    "accent-color",
+    "prefers-color-scheme",
+    "individual transform props",
+    "scroll-behavior"
+   ],
+   "smoke": {
+    "status": "ok",
+    "newErrors": 0,
+    "nativeErrors": 0,
+    "legacyErrors": 0
+   }
+  },
+  "FreeDetect": {
+   "file": "index.html",
+   "status": "warn",
+   "kit": "1.8.0",
+   "compatLayer": true,
+   "syntaxErrors": [],
+   "postFloor": {},
+   "apiBeyondFloor": [
+    {
+     "name": "Array.flat/flatMap",
+     "covered": true
+    },
+    {
+     "name": "Promise.finally",
+     "covered": true
+    },
+    {
+     "name": "requestIdleCallback",
+     "covered": true
+    },
+    {
+     "name": "Blob.arrayBuffer/text",
+     "covered": true
+    },
+    {
+     "name": "AbortController",
+     "covered": true
+    },
+    {
+     "name": "ResizeObserver",
+     "covered": true
+    },
+    {
+     "name": "navigator.clipboard",
+     "covered": true
+    },
+    {
+     "name": "BroadcastChannel",
+     "covered": false
+    },
+    {
+     "name": "CompressionStream",
+     "covered": false
+    },
+    {
+     "name": "String.matchAll",
+     "covered": true
+    }
+   ],
+   "cssBeyondFloor": [
+    ":focus-visible",
+    "inset",
+    "gap (flex)",
+    "clamp()/min()/max()",
+    "color-mix()",
+    "backdrop-filter",
+    "prefers-color-scheme",
+    "position: sticky",
+    "individual transform props",
+    "scroll-behavior"
+   ],
+   "smoke": {
+    "status": "ok",
+    "newErrors": 0,
+    "nativeErrors": 0,
+    "legacyErrors": 0
+   }
+  },
+  "FrequencyLaboratory": {
+   "file": "index.html",
+   "status": "warn",
+   "kit": "1.8.0",
+   "compatLayer": true,
+   "syntaxErrors": [],
+   "postFloor": {},
+   "apiBeyondFloor": [
+    {
+     "name": "Array.flat/flatMap",
+     "covered": true
+    },
+    {
+     "name": "requestIdleCallback",
+     "covered": true
+    },
+    {
+     "name": "Blob.arrayBuffer/text",
+     "covered": true
+    },
+    {
+     "name": "ResizeObserver",
+     "covered": true
+    },
+    {
+     "name": "IntersectionObserver",
+     "covered": true
+    },
+    {
+     "name": "navigator.clipboard",
+     "covered": true
+    },
+    {
+     "name": "navigator.share",
+     "covered": false
+    },
+    {
+     "name": "String.padStart/padEnd",
+     "covered": true
+    },
+    {
+     "name": "scroll cu opțiuni",
+     "covered": true
+    },
+    {
+     "name": "canvas.toBlob",
+     "covered": true
+    },
+    {
+     "name": "<dialog>.showModal",
+     "covered": true
+    }
+   ],
+   "cssBeyondFloor": [
+    ":focus-visible",
+    "inset",
+    "aspect-ratio",
+    "gap (flex)",
+    "clamp()/min()/max()",
+    "backdrop-filter",
+    "prefers-color-scheme",
+    "position: sticky",
+    "individual transform props",
+    "scroll-behavior"
+   ],
+   "smoke": {
+    "status": "ok",
+    "newErrors": 0,
+    "nativeErrors": 0,
+    "legacyErrors": 0
+   }
+  },
+  "Go-fara-frontiere": {
+   "file": "index.html",
+   "status": "warn",
+   "kit": "1.8.0",
+   "compatLayer": true,
+   "syntaxErrors": [],
+   "postFloor": {},
+   "apiBeyondFloor": [
+    {
+     "name": "requestIdleCallback",
+     "covered": true
+    },
+    {
+     "name": "Blob.arrayBuffer/text",
+     "covered": true
+    },
+    {
+     "name": "ResizeObserver",
+     "covered": true
+    },
+    {
+     "name": "navigator.clipboard",
+     "covered": true
+    },
+    {
+     "name": "BroadcastChannel",
+     "covered": false
+    },
+    {
+     "name": "CompressionStream",
+     "covered": false
+    },
+    {
+     "name": "String.padStart/padEnd",
+     "covered": true
+    },
+    {
+     "name": "<dialog>.showModal",
+     "covered": true
+    }
+   ],
+   "cssBeyondFloor": [
+    ":focus-visible",
+    "inset",
+    "gap (flex)",
+    "clamp()/min()/max()",
+    "color-mix()",
+    "accent-color",
+    "prefers-color-scheme",
+    "position: sticky",
+    "individual transform props"
+   ],
+   "smoke": {
+    "status": "ok",
+    "newErrors": 0,
+    "nativeErrors": 0,
+    "legacyErrors": 0
+   }
+  },
+  "Gospodar": {
+   "file": "index.html",
+   "status": "warn",
+   "kit": "1.8.0",
+   "compatLayer": true,
+   "syntaxErrors": [],
+   "postFloor": {},
+   "apiBeyondFloor": [
+    {
+     "name": "requestIdleCallback",
+     "covered": true
+    },
+    {
+     "name": "Blob.arrayBuffer/text",
+     "covered": true
+    },
+    {
+     "name": "BigInt",
+     "covered": false
+    },
+    {
+     "name": "ResizeObserver",
+     "covered": true
+    },
+    {
+     "name": "navigator.clipboard",
+     "covered": true
+    },
+    {
+     "name": "BroadcastChannel",
+     "covered": false
+    },
+    {
+     "name": "CompressionStream",
+     "covered": false
+    },
+    {
+     "name": "String.padStart/padEnd",
+     "covered": true
+    },
+    {
+     "name": "scroll cu opțiuni",
+     "covered": true
+    },
+    {
+     "name": "<dialog>.showModal",
+     "covered": true
+    }
+   ],
+   "cssBeyondFloor": [
+    ":focus-visible",
+    "inset",
+    "gap (flex)",
+    "dvh/svh/lvh",
+    "clamp()/min()/max()",
+    "prefers-color-scheme",
+    "individual transform props",
+    "scroll-behavior"
+   ],
+   "smoke": {
+    "status": "ok",
+    "newErrors": 0,
+    "nativeErrors": 0,
+    "legacyErrors": 0
+   }
+  },
+  "Horizons.BeyondLimits": {
+   "file": "index.html",
+   "status": "warn",
+   "kit": "1.8.0",
+   "compatLayer": true,
+   "syntaxErrors": [],
+   "postFloor": {},
+   "apiBeyondFloor": [
+    {
+     "name": "requestIdleCallback",
+     "covered": true
+    },
+    {
+     "name": "Blob.arrayBuffer/text",
+     "covered": true
+    },
+    {
+     "name": "ResizeObserver",
+     "covered": true
+    },
+    {
+     "name": "IntersectionObserver",
+     "covered": true
+    },
+    {
+     "name": "navigator.clipboard",
+     "covered": true
+    },
+    {
+     "name": "BroadcastChannel",
+     "covered": false
+    },
+    {
+     "name": "CompressionStream",
+     "covered": false
+    },
+    {
+     "name": "scroll cu opțiuni",
+     "covered": true
+    },
+    {
+     "name": "<dialog>.showModal",
+     "covered": true
+    }
+   ],
+   "cssBeyondFloor": [
+    ":focus-visible",
+    "inset",
+    "gap (flex)",
+    "clamp()/min()/max()",
+    "backdrop-filter",
+    "accent-color",
+    "prefers-color-scheme",
+    "individual transform props",
+    "scroll-behavior"
+   ],
+   "smoke": {
+    "status": "ok",
+    "newErrors": 0,
+    "nativeErrors": 0,
+    "legacyErrors": 0
+   }
+  },
+  "HoroScop": {
+   "file": "index.html",
+   "status": "warn",
+   "kit": "1.8.0",
+   "compatLayer": true,
+   "syntaxErrors": [],
+   "postFloor": {},
+   "apiBeyondFloor": [
+    {
+     "name": "requestIdleCallback",
+     "covered": true
+    },
+    {
+     "name": "ResizeObserver",
+     "covered": true
+    },
+    {
+     "name": "navigator.clipboard",
+     "covered": true
+    },
+    {
+     "name": "String.padStart/padEnd",
+     "covered": true
+    },
+    {
+     "name": "scroll cu opțiuni",
+     "covered": true
+    },
+    {
+     "name": "<dialog>.showModal",
+     "covered": true
+    }
+   ],
+   "cssBeyondFloor": [
+    ":focus-visible",
+    "inset",
+    "gap (flex)",
+    "clamp()/min()/max()",
+    "prefers-color-scheme",
+    "individual transform props"
+   ],
+   "smoke": {
+    "status": "ok",
+    "newErrors": 0,
+    "nativeErrors": 0,
+    "legacyErrors": 0
+   }
+  },
+  "Hyper4D": {
+   "file": "index.html",
+   "status": "warn",
+   "kit": "1.8.0",
+   "compatLayer": true,
+   "syntaxErrors": [],
+   "postFloor": {},
+   "apiBeyondFloor": [
+    {
+     "name": "requestIdleCallback",
+     "covered": true
+    },
+    {
+     "name": "ResizeObserver",
+     "covered": true
+    },
+    {
+     "name": "navigator.clipboard",
+     "covered": true
+    },
+    {
+     "name": "<dialog>.showModal",
+     "covered": true
+    }
+   ],
+   "cssBeyondFloor": [
+    ":focus-visible",
+    "gap (flex)",
+    "clamp()/min()/max()",
+    "accent-color",
+    "prefers-color-scheme",
+    "individual transform props"
+   ],
+   "smoke": {
+    "status": "ok",
+    "newErrors": 0,
+    "nativeErrors": 0,
+    "legacyErrors": 0
+   }
+  },
+  "INDICATIV": {
+   "file": "index.html",
+   "status": "warn",
+   "kit": "1.8.0",
+   "compatLayer": true,
+   "syntaxErrors": [],
+   "postFloor": {},
+   "apiBeyondFloor": [
+    {
+     "name": "requestIdleCallback",
+     "covered": true
+    },
+    {
+     "name": "Blob.arrayBuffer/text",
+     "covered": true
+    },
+    {
+     "name": "ResizeObserver",
+     "covered": true
+    },
+    {
+     "name": "navigator.clipboard",
+     "covered": true
+    },
+    {
+     "name": "BroadcastChannel",
+     "covered": false
+    },
+    {
+     "name": "CompressionStream",
+     "covered": false
+    },
+    {
+     "name": "String.padStart/padEnd",
+     "covered": true
+    },
+    {
+     "name": "<dialog>.showModal",
+     "covered": true
+    }
+   ],
+   "cssBeyondFloor": [
+    ":focus-visible",
+    "inset",
+    "gap (flex)",
+    "dvh/svh/lvh",
+    "clamp()/min()/max()",
+    "color-mix()",
+    "backdrop-filter",
+    "prefers-color-scheme",
+    "individual transform props",
+    "scroll-behavior"
+   ],
+   "smoke": {
+    "status": "ok",
+    "newErrors": 0,
+    "nativeErrors": 0,
+    "legacyErrors": 0
+   }
+  },
+  "IncredibleCosmos": {
+   "file": "index.html",
+   "status": "warn",
+   "kit": "1.8.0",
+   "compatLayer": true,
+   "syntaxErrors": [],
+   "postFloor": {},
+   "apiBeyondFloor": [
+    {
+     "name": "queueMicrotask",
+     "covered": true
+    },
+    {
+     "name": "requestIdleCallback",
+     "covered": true
+    },
+    {
+     "name": "ResizeObserver",
+     "covered": true
+    },
+    {
+     "name": "navigator.clipboard",
+     "covered": true
+    },
+    {
+     "name": "OffscreenCanvas",
+     "covered": false
+    }
+   ],
+   "cssBeyondFloor": [
+    ":focus-visible",
+    "gap (flex)",
+    "clamp()/min()/max()",
+    "prefers-color-scheme",
+    "individual transform props",
+    "scroll-behavior"
+   ],
+   "smoke": {
+    "status": "ok",
+    "newErrors": 0,
+    "nativeErrors": 0,
+    "legacyErrors": 0
+   }
+  },
+  "Index-fara-frontiere": {
+   "file": "index.html",
+   "status": "warn",
+   "kit": "1.8.0",
+   "compatLayer": true,
+   "syntaxErrors": [],
+   "postFloor": {},
+   "apiBeyondFloor": [
+    {
+     "name": "requestIdleCallback",
+     "covered": true
+    },
+    {
+     "name": "ResizeObserver",
+     "covered": true
+    }
+   ],
+   "cssBeyondFloor": [
+    ":focus-visible",
+    "gap (flex)",
+    "clamp()/min()/max()",
+    "color-mix()",
+    "backdrop-filter",
+    "prefers-color-scheme",
+    "position: sticky",
+    "individual transform props"
+   ],
+   "smoke": {
+    "status": "ok",
+    "newErrors": 0,
+    "nativeErrors": 0,
+    "legacyErrors": 0
+   }
+  },
+  "Inforenergetica": {
+   "file": "index.html",
+   "status": "warn",
+   "kit": "1.8.0",
+   "compatLayer": true,
+   "syntaxErrors": [],
+   "postFloor": {},
+   "apiBeyondFloor": [
+    {
+     "name": "requestIdleCallback",
+     "covered": true
+    },
+    {
+     "name": "ResizeObserver",
+     "covered": true
+    },
+    {
+     "name": "navigator.clipboard",
+     "covered": true
+    },
+    {
+     "name": "navigator.share",
+     "covered": false
+    },
+    {
+     "name": "scroll cu opțiuni",
+     "covered": true
+    },
+    {
+     "name": "<dialog>.showModal",
+     "covered": true
+    }
+   ],
+   "cssBeyondFloor": [
+    ":focus-visible",
+    "inset",
+    "aspect-ratio",
+    "gap (flex)",
+    "dvh/svh/lvh",
+    "clamp()/min()/max()",
+    "color-mix()",
+    "prefers-color-scheme",
+    "position: sticky",
+    "individual transform props",
+    "scroll-behavior"
+   ],
+   "smoke": {
+    "status": "ok",
+    "newErrors": 0,
+    "nativeErrors": 0,
+    "legacyErrors": 0
+   }
+  },
+  "LECTOR": {
+   "file": "index.html",
+   "status": "warn",
+   "kit": "1.8.0",
+   "compatLayer": true,
+   "syntaxErrors": [],
+   "postFloor": {},
+   "apiBeyondFloor": [
+    {
+     "name": "requestIdleCallback",
+     "covered": true
+    },
+    {
+     "name": "Blob.arrayBuffer/text",
+     "covered": true
+    },
+    {
+     "name": "ResizeObserver",
+     "covered": true
+    },
+    {
+     "name": "navigator.clipboard",
+     "covered": true
+    },
+    {
+     "name": "CompressionStream",
+     "covered": false
+    },
+    {
+     "name": "String.matchAll",
+     "covered": true
+    },
+    {
+     "name": "scroll cu opțiuni",
+     "covered": true
+    }
+   ],
+   "cssBeyondFloor": [
+    ":focus-visible",
+    "gap (flex)",
+    "dvh/svh/lvh",
+    "clamp()/min()/max()",
+    "backdrop-filter",
+    "accent-color",
+    "prefers-color-scheme",
+    "position: sticky",
+    "individual transform props",
+    "scroll-behavior"
+   ],
+   "smoke": {
+    "status": "ok",
+    "newErrors": 0,
+    "nativeErrors": 0,
+    "legacyErrors": 0
+   }
+  },
+  "LegatorOCR": {
+   "file": "index.html",
+   "status": "ok",
+   "kit": null,
+   "compatLayer": false,
+   "syntaxErrors": [],
+   "postFloor": {},
+   "apiBeyondFloor": [],
+   "cssBeyondFloor": [],
+   "smoke": {
+    "status": "ok",
+    "newErrors": 0,
+    "nativeErrors": 0,
+    "legacyErrors": 0
+   }
+  },
+  "LegatorOCR:web/capture/index.html": {
+   "file": "web/capture/index.html",
+   "status": "warn",
+   "kit": null,
+   "compatLayer": true,
+   "syntaxErrors": [],
+   "postFloor": {},
+   "apiBeyondFloor": [
+    {
+     "name": "Blob.arrayBuffer/text",
+     "covered": true
+    },
+    {
+     "name": "String.padStart/padEnd",
+     "covered": true
+    },
+    {
+     "name": "canvas.toBlob",
+     "covered": true
+    }
+   ],
+   "cssBeyondFloor": [
+    "inset",
+    "aspect-ratio",
+    "gap (flex)",
+    "prefers-color-scheme"
+   ],
+   "smoke": {
+    "status": "ok",
+    "newErrors": 0,
+    "nativeErrors": 0,
+    "legacyErrors": 0
+   }
+  },
+  "Lexicon": {
+   "file": "index.html",
+   "status": "warn",
+   "kit": "1.8.0",
+   "compatLayer": true,
+   "syntaxErrors": [],
+   "postFloor": {},
+   "apiBeyondFloor": [
+    {
+     "name": "Object.fromEntries",
+     "covered": true
+    },
+    {
+     "name": "requestIdleCallback",
+     "covered": true
+    },
+    {
+     "name": "replaceChildren",
+     "covered": true
+    },
+    {
+     "name": "Blob.arrayBuffer/text",
+     "covered": true
+    },
+    {
+     "name": "ResizeObserver",
+     "covered": true
+    },
+    {
+     "name": "navigator.clipboard",
+     "covered": true
+    },
+    {
+     "name": "CompressionStream",
+     "covered": false
+    },
+    {
+     "name": "String.padStart/padEnd",
+     "covered": true
+    },
+    {
+     "name": "scroll cu opțiuni",
+     "covered": true
+    },
+    {
+     "name": "<dialog>.showModal",
+     "covered": true
+    }
+   ],
+   "cssBeyondFloor": [
+    ":focus-visible",
+    "gap (flex)",
+    "clamp()/min()/max()",
+    "prefers-color-scheme",
+    "individual transform props",
+    "scroll-behavior"
+   ],
+   "smoke": {
+    "status": "ok",
+    "newErrors": 0,
+    "nativeErrors": 0,
+    "legacyErrors": 0
+   }
+  },
+  "Limpezimea": {
+   "file": "index.html",
+   "status": "warn",
+   "kit": "1.8.0",
+   "compatLayer": true,
+   "syntaxErrors": [],
+   "postFloor": {},
+   "apiBeyondFloor": [
+    {
+     "name": "requestIdleCallback",
+     "covered": true
+    },
+    {
+     "name": "ResizeObserver",
+     "covered": true
+    },
+    {
+     "name": "IntersectionObserver",
+     "covered": true
+    },
+    {
+     "name": "navigator.clipboard",
+     "covered": true
+    },
+    {
+     "name": "scroll cu opțiuni",
+     "covered": true
+    },
+    {
+     "name": "canvas.toBlob",
+     "covered": true
+    }
+   ],
+   "cssBeyondFloor": [
+    ":focus-visible",
+    "gap (flex)",
+    "dvh/svh/lvh",
+    "clamp()/min()/max()",
+    "backdrop-filter",
+    "prefers-color-scheme",
+    "position: sticky",
+    "individual transform props",
+    "logical props",
+    "display: contents",
+    "scroll-behavior"
+   ],
+   "smoke": {
+    "status": "ok",
+    "newErrors": 0,
+    "nativeErrors": 0,
+    "legacyErrors": 0
+   }
+  },
+  "LocalMind": {
+   "file": "index.html",
+   "status": "warn",
+   "kit": "1.8.0",
+   "compatLayer": true,
+   "syntaxErrors": [],
+   "postFloor": {},
+   "apiBeyondFloor": [
+    {
+     "name": "Object.fromEntries",
+     "covered": true
+    },
+    {
+     "name": "Array.at()",
+     "covered": true
+    },
+    {
+     "name": "requestIdleCallback",
+     "covered": true
+    },
+    {
+     "name": "replaceChildren",
+     "covered": true
+    },
+    {
+     "name": "Blob.arrayBuffer/text",
+     "covered": true
+    },
+    {
+     "name": "AbortController",
+     "covered": true
+    },
+    {
+     "name": "ResizeObserver",
+     "covered": true
+    },
+    {
+     "name": "navigator.clipboard",
+     "covered": true
+    },
+    {
+     "name": "BroadcastChannel",
+     "covered": false
+    },
+    {
+     "name": "String.padStart/padEnd",
+     "covered": true
+    },
+    {
+     "name": "scroll cu opțiuni",
+     "covered": true
+    },
+    {
+     "name": "<dialog>.showModal",
+     "covered": true
+    }
+   ],
+   "cssBeyondFloor": [
+    ":has()",
+    ":focus-visible",
+    "inset",
+    "gap (flex)",
+    "dvh/svh/lvh",
+    "clamp()/min()/max()",
+    "color-mix()",
+    "backdrop-filter",
+    "accent-color",
+    "prefers-color-scheme",
+    "individual transform props",
+    "scroll-behavior"
+   ],
+   "smoke": {
+    "status": "ok",
+    "newErrors": 0,
+    "nativeErrors": 0,
+    "legacyErrors": 0
+   }
+  },
+  "MARTOR": {
+   "file": "index.html",
+   "status": "warn",
+   "kit": "1.8.0",
+   "compatLayer": true,
+   "syntaxErrors": [],
+   "postFloor": {},
+   "apiBeyondFloor": [
+    {
+     "name": "IntersectionObserver",
+     "covered": true
+    },
+    {
+     "name": "navigator.clipboard",
+     "covered": true
+    },
+    {
+     "name": "String.padStart/padEnd",
+     "covered": true
+    }
+   ],
+   "cssBeyondFloor": [
+    ":focus-visible",
+    "inset",
+    "aspect-ratio",
+    "gap (flex)",
+    "clamp()/min()/max()",
+    "color-mix()",
+    "backdrop-filter",
+    "prefers-color-scheme",
+    "position: sticky",
+    "scroll-behavior"
+   ],
+   "smoke": {
+    "status": "ok",
+    "newErrors": 0,
+    "nativeErrors": 0,
+    "legacyErrors": 0
+   }
+  },
+  "MENSURA": {
+   "file": "index.html",
+   "status": "warn",
+   "kit": "1.8.0",
+   "compatLayer": true,
+   "syntaxErrors": [],
+   "postFloor": {},
+   "apiBeyondFloor": [
+    {
+     "name": "Array.flat/flatMap",
+     "covered": true
+    },
+    {
+     "name": "requestIdleCallback",
+     "covered": true
+    },
+    {
+     "name": "replaceChildren",
+     "covered": true
+    },
+    {
+     "name": "Blob.arrayBuffer/text",
+     "covered": true
+    },
+    {
+     "name": "ResizeObserver",
+     "covered": true
+    },
+    {
+     "name": "navigator.clipboard",
+     "covered": true
+    },
+    {
+     "name": "BroadcastChannel",
+     "covered": false
+    },
+    {
+     "name": "CompressionStream",
+     "covered": false
+    },
+    {
+     "name": "String.padStart/padEnd",
+     "covered": true
+    }
+   ],
+   "cssBeyondFloor": [
+    ":focus-visible",
+    "inset",
+    "aspect-ratio",
+    "gap (flex)",
+    "dvh/svh/lvh",
+    "clamp()/min()/max()",
+    "color-mix()",
+    "backdrop-filter",
+    "prefers-color-scheme",
+    "position: sticky",
+    "individual transform props",
+    "scroll-behavior"
+   ],
+   "smoke": {
+    "status": "ok",
+    "newErrors": 0,
+    "nativeErrors": 0,
+    "legacyErrors": 0
+   }
+  },
+  "MIRAJ": {
+   "file": "index.html",
+   "status": "warn",
+   "kit": "1.8.0",
+   "compatLayer": true,
+   "syntaxErrors": [],
+   "postFloor": {},
+   "apiBeyondFloor": [
+    {
+     "name": "requestIdleCallback",
+     "covered": true
+    },
+    {
+     "name": "ResizeObserver",
+     "covered": true
+    },
+    {
+     "name": "scroll cu opțiuni",
+     "covered": true
+    }
+   ],
+   "cssBeyondFloor": [
+    ":focus-visible",
+    "aspect-ratio",
+    "gap (flex)",
+    "clamp()/min()/max()",
+    "backdrop-filter",
+    "accent-color",
+    "prefers-color-scheme",
+    "position: sticky",
+    "individual transform props"
+   ],
+   "smoke": {
+    "status": "ok",
+    "newErrors": 0,
+    "nativeErrors": 0,
+    "legacyErrors": 0
+   }
+  },
+  "Mahjong-fara-frontiere": {
+   "file": "index.html",
+   "status": "warn",
+   "kit": "1.8.0",
+   "compatLayer": true,
+   "syntaxErrors": [],
+   "postFloor": {},
+   "apiBeyondFloor": [
+    {
+     "name": "requestIdleCallback",
+     "covered": true
+    },
+    {
+     "name": "Blob.arrayBuffer/text",
+     "covered": true
+    },
+    {
+     "name": "ResizeObserver",
+     "covered": true
+    },
+    {
+     "name": "navigator.clipboard",
+     "covered": true
+    },
+    {
+     "name": "BroadcastChannel",
+     "covered": false
+    },
+    {
+     "name": "CompressionStream",
+     "covered": false
+    },
+    {
+     "name": "<dialog>.showModal",
+     "covered": true
+    }
+   ],
+   "cssBeyondFloor": [
+    ":has()",
+    ":focus-visible",
+    "inset",
+    "gap (flex)",
+    "clamp()/min()/max()",
+    "color-mix()",
+    "accent-color",
+    "prefers-color-scheme",
+    "position: sticky",
+    "individual transform props"
+   ],
+   "smoke": {
+    "status": "ok",
+    "newErrors": 0,
+    "nativeErrors": 0,
+    "legacyErrors": 0
+   }
+  },
+  "MarkdownAtelier": {
+   "file": "index.html",
+   "status": "warn",
+   "kit": "1.8.0",
+   "compatLayer": true,
+   "syntaxErrors": [],
+   "postFloor": {},
+   "apiBeyondFloor": [
+    {
+     "name": "requestIdleCallback",
+     "covered": true
+    },
+    {
+     "name": "ResizeObserver",
+     "covered": true
+    },
+    {
+     "name": "navigator.clipboard",
+     "covered": true
+    },
+    {
+     "name": "scroll cu opțiuni",
+     "covered": true
+    },
+    {
+     "name": "<dialog>.showModal",
+     "covered": true
+    }
+   ],
+   "cssBeyondFloor": [
+    ":has()",
+    ":focus-visible",
+    "inset",
+    "gap (flex)",
+    "clamp()/min()/max()",
+    "color-mix()",
+    "backdrop-filter",
+    "accent-color",
+    "prefers-color-scheme",
+    "individual transform props",
+    "scroll-behavior"
+   ],
+   "smoke": {
+    "status": "ok",
+    "newErrors": 0,
+    "nativeErrors": 0,
+    "legacyErrors": 0
+   }
+  },
+  "Monstrarium": {
+   "file": "index.html",
+   "status": "warn",
+   "kit": "1.8.0",
+   "compatLayer": true,
+   "syntaxErrors": [],
+   "postFloor": {},
+   "apiBeyondFloor": [
+    {
+     "name": "requestIdleCallback",
+     "covered": true
+    },
+    {
+     "name": "Blob.arrayBuffer/text",
+     "covered": true
+    },
+    {
+     "name": "ResizeObserver",
+     "covered": true
+    },
+    {
+     "name": "navigator.clipboard",
+     "covered": true
+    },
+    {
+     "name": "BroadcastChannel",
+     "covered": false
+    },
+    {
+     "name": "CompressionStream",
+     "covered": false
+    },
+    {
+     "name": "navigator.share",
+     "covered": false
+    },
+    {
+     "name": "String.padStart/padEnd",
+     "covered": true
+    },
+    {
+     "name": "scroll cu opțiuni",
+     "covered": true
+    },
+    {
+     "name": "canvas.toBlob",
+     "covered": true
+    }
+   ],
+   "cssBeyondFloor": [
+    ":focus-visible",
+    "inset",
+    "aspect-ratio",
+    "gap (flex)",
+    "dvh/svh/lvh",
+    "clamp()/min()/max()",
+    "prefers-color-scheme",
+    "position: sticky",
+    "individual transform props",
+    "scroll-behavior"
+   ],
+   "smoke": {
+    "status": "ok",
+    "newErrors": 0,
+    "nativeErrors": 0,
+    "legacyErrors": 0
+   }
+  },
+  "NEAMURI": {
+   "file": "index.html",
+   "status": "warn",
+   "kit": "1.8.0",
+   "compatLayer": true,
+   "syntaxErrors": [],
+   "postFloor": {},
+   "apiBeyondFloor": [
+    {
+     "name": "IntersectionObserver",
+     "covered": true
+    },
+    {
+     "name": "navigator.clipboard",
+     "covered": true
+    },
+    {
+     "name": "String.padStart/padEnd",
+     "covered": true
+    }
+   ],
+   "cssBeyondFloor": [
+    ":focus-visible",
+    "inset",
+    "aspect-ratio",
+    "gap (flex)",
+    "clamp()/min()/max()",
+    "color-mix()",
+    "backdrop-filter",
+    "prefers-color-scheme",
+    "position: sticky",
+    "scroll-behavior"
+   ],
+   "smoke": {
+    "status": "ok",
+    "newErrors": 0,
+    "nativeErrors": 0,
+    "legacyErrors": 0
+   }
+  },
+  "NOMIA": {
+   "file": "index.html",
+   "status": "warn",
+   "kit": "1.8.0",
+   "compatLayer": true,
+   "syntaxErrors": [],
+   "postFloor": {},
+   "apiBeyondFloor": [
+    {
+     "name": "Array.flat/flatMap",
+     "covered": true
+    },
+    {
+     "name": "requestIdleCallback",
+     "covered": true
+    },
+    {
+     "name": "Blob.arrayBuffer/text",
+     "covered": true
+    },
+    {
+     "name": "ResizeObserver",
+     "covered": true
+    },
+    {
+     "name": "IntersectionObserver",
+     "covered": true
+    },
+    {
+     "name": "navigator.clipboard",
+     "covered": true
+    },
+    {
+     "name": "navigator.share",
+     "covered": false
+    },
+    {
+     "name": "String.padStart/padEnd",
+     "covered": true
+    },
+    {
+     "name": "String.trimStart/trimEnd",
+     "covered": true
+    },
+    {
+     "name": "toggleAttribute",
+     "covered": true
+    },
+    {
+     "name": "scroll cu opțiuni",
+     "covered": true
+    },
+    {
+     "name": "<dialog>.showModal",
+     "covered": true
+    }
+   ],
+   "cssBeyondFloor": [
+    ":has()",
+    ":focus-visible",
+    "inset",
+    "gap (flex)",
+    "dvh/svh/lvh",
+    "clamp()/min()/max()",
+    "color-mix()",
+    "backdrop-filter",
+    "prefers-color-scheme",
+    "position: sticky",
+    "individual transform props",
+    "logical props",
+    "scroll-behavior"
+   ],
+   "smoke": {
+    "status": "ok",
+    "newErrors": 0,
+    "nativeErrors": 0,
+    "legacyErrors": 0
+   }
+  },
+  "Nemurirea": {
+   "file": "index.html",
+   "status": "warn",
+   "kit": "1.8.0",
+   "compatLayer": true,
+   "syntaxErrors": [],
+   "postFloor": {},
+   "apiBeyondFloor": [
+    {
+     "name": "requestIdleCallback",
+     "covered": true
+    },
+    {
+     "name": "ResizeObserver",
+     "covered": true
+    },
+    {
+     "name": "IntersectionObserver",
+     "covered": true
+    },
+    {
+     "name": "scroll cu opțiuni",
+     "covered": true
+    },
+    {
+     "name": "<dialog>.showModal",
+     "covered": true
+    }
+   ],
+   "cssBeyondFloor": [
+    ":focus-visible",
+    "inset",
+    "gap (flex)",
+    "clamp()/min()/max()",
+    "backdrop-filter",
+    "accent-color",
+    "prefers-color-scheme",
+    "position: sticky",
+    "individual transform props",
+    "logical props",
+    "scroll-behavior"
+   ],
+   "smoke": {
+    "status": "ok",
+    "newErrors": 0,
+    "nativeErrors": 0,
+    "legacyErrors": 0
+   }
+  },
+  "Nexus-fara-frontiere": {
+   "file": "index.html",
+   "status": "warn",
+   "kit": "1.8.0",
+   "compatLayer": true,
+   "syntaxErrors": [],
+   "postFloor": {},
+   "apiBeyondFloor": [
+    {
+     "name": "Promise.finally",
+     "covered": true
+    },
+    {
+     "name": "requestIdleCallback",
+     "covered": true
+    },
+    {
+     "name": "Blob.arrayBuffer/text",
+     "covered": true
+    },
+    {
+     "name": "AbortController",
+     "covered": true
+    },
+    {
+     "name": "ResizeObserver",
+     "covered": true
+    },
+    {
+     "name": "navigator.clipboard",
+     "covered": true
+    },
+    {
+     "name": "BroadcastChannel",
+     "covered": false
+    },
+    {
+     "name": "CompressionStream",
+     "covered": false
+    },
+    {
+     "name": "scroll cu opțiuni",
+     "covered": true
+    }
+   ],
+   "cssBeyondFloor": [
+    ":focus-visible",
+    "inset",
+    "gap (flex)",
+    "dvh/svh/lvh",
+    "clamp()/min()/max()",
+    "backdrop-filter",
+    "prefers-color-scheme",
+    "individual transform props"
+   ],
+   "smoke": {
+    "status": "ok",
+    "newErrors": 0,
+    "nativeErrors": 0,
+    "legacyErrors": 0
+   }
+  },
+  "Nota-Zero": {
+   "file": "index.html",
+   "status": "warn",
+   "kit": "1.8.0",
+   "compatLayer": true,
+   "syntaxErrors": [],
+   "postFloor": {},
+   "apiBeyondFloor": [
+    {
+     "name": "requestIdleCallback",
+     "covered": true
+    },
+    {
+     "name": "ResizeObserver",
+     "covered": true
+    },
+    {
+     "name": "IntersectionObserver",
+     "covered": true
+    },
+    {
+     "name": "scroll cu opțiuni",
+     "covered": true
+    },
+    {
+     "name": "<dialog>.showModal",
+     "covered": true
+    }
+   ],
+   "cssBeyondFloor": [
+    ":focus-visible",
+    "inset",
+    "gap (flex)",
+    "dvh/svh/lvh",
+    "clamp()/min()/max()",
+    "color-mix()",
+    "backdrop-filter",
+    "accent-color",
+    "prefers-color-scheme",
+    "individual transform props",
+    "overflow: clip",
+    "scroll-behavior"
+   ],
+   "smoke": {
+    "status": "ok",
+    "newErrors": 0,
+    "nativeErrors": 0,
+    "legacyErrors": 0
+   }
+  },
+  "Nota-Zero:recenzie.html": {
+   "file": "recenzie.html",
+   "status": "warn",
+   "kit": null,
+   "compatLayer": true,
+   "syntaxErrors": [],
+   "postFloor": {},
+   "apiBeyondFloor": [
+    {
+     "name": "ResizeObserver",
+     "covered": true
+    },
+    {
+     "name": "OffscreenCanvas",
+     "covered": false
+    }
+   ],
+   "cssBeyondFloor": [
+    ":focus-visible",
+    "inset",
+    "gap (flex)",
+    "clamp()/min()/max()",
+    "backdrop-filter",
+    "scroll-behavior"
+   ],
+   "smoke": {
+    "status": "ok",
+    "newErrors": 0,
+    "nativeErrors": 0,
+    "legacyErrors": 0
+   }
+  },
+  "NumeroLogIA": {
+   "file": "index.html",
+   "status": "warn",
+   "kit": "1.8.0",
+   "compatLayer": true,
+   "syntaxErrors": [],
+   "postFloor": {},
+   "apiBeyondFloor": [
+    {
+     "name": "requestIdleCallback",
+     "covered": true
+    },
+    {
+     "name": "Blob.arrayBuffer/text",
+     "covered": true
+    },
+    {
+     "name": "AbortController",
+     "covered": true
+    },
+    {
+     "name": "ResizeObserver",
+     "covered": true
+    },
+    {
+     "name": "navigator.clipboard",
+     "covered": true
+    },
+    {
+     "name": "String.padStart/padEnd",
+     "covered": true
+    },
+    {
+     "name": "scroll cu opțiuni",
+     "covered": true
+    },
+    {
+     "name": "<dialog>.showModal",
+     "covered": true
+    }
+   ],
+   "cssBeyondFloor": [
+    ":focus-visible",
+    "inset",
+    "aspect-ratio",
+    "gap (flex)",
+    "clamp()/min()/max()",
+    "prefers-color-scheme",
+    "position: sticky",
+    "individual transform props"
+   ],
+   "smoke": {
+    "status": "ok",
+    "newErrors": 0,
+    "nativeErrors": 0,
+    "legacyErrors": 0
+   }
+  },
+  "Numerologie": {
+   "file": "index.html",
+   "status": "warn",
+   "kit": "1.8.0",
+   "compatLayer": true,
+   "syntaxErrors": [],
+   "postFloor": {},
+   "apiBeyondFloor": [
+    {
+     "name": "requestIdleCallback",
+     "covered": true
+    },
+    {
+     "name": "ResizeObserver",
+     "covered": true
+    },
+    {
+     "name": "navigator.clipboard",
+     "covered": true
+    },
+    {
+     "name": "navigator.share",
+     "covered": false
+    },
+    {
+     "name": "<dialog>.showModal",
+     "covered": true
+    }
+   ],
+   "cssBeyondFloor": [
+    ":focus-visible",
+    "aspect-ratio",
+    "gap (flex)",
+    "clamp()/min()/max()",
+    "prefers-color-scheme",
+    "position: sticky",
+    "individual transform props",
+    "scroll-behavior"
+   ],
+   "smoke": {
+    "status": "ok",
+    "newErrors": 0,
+    "nativeErrors": 0,
+    "legacyErrors": 0
+   }
+  },
+  "OAZA": {
+   "file": "index.html",
+   "status": "warn",
+   "kit": "1.8.0",
+   "compatLayer": true,
+   "syntaxErrors": [],
+   "postFloor": {},
+   "apiBeyondFloor": [
+    {
+     "name": "requestIdleCallback",
+     "covered": true
+    },
+    {
+     "name": "Blob.arrayBuffer/text",
+     "covered": true
+    },
+    {
+     "name": "AbortController",
+     "covered": true
+    },
+    {
+     "name": "ResizeObserver",
+     "covered": true
+    },
+    {
+     "name": "navigator.clipboard",
+     "covered": true
+    },
+    {
+     "name": "String.padStart/padEnd",
+     "covered": true
+    },
+    {
+     "name": "<dialog>.showModal",
+     "covered": true
+    }
+   ],
+   "cssBeyondFloor": [
+    ":focus-visible",
+    "inset",
+    "aspect-ratio",
+    "gap (flex)",
+    "clamp()/min()/max()",
+    "backdrop-filter",
+    "prefers-color-scheme",
+    "position: sticky",
+    "individual transform props",
+    "scroll-behavior"
+   ],
+   "smoke": {
+    "status": "ok",
+    "newErrors": 0,
+    "nativeErrors": 0,
+    "legacyErrors": 0
+   }
+  },
+  "ODISEEA": {
+   "file": "index.html",
+   "status": "warn",
+   "kit": "1.8.0",
+   "compatLayer": true,
+   "syntaxErrors": [],
+   "postFloor": {},
+   "apiBeyondFloor": [
+    {
+     "name": "Array.flat/flatMap",
+     "covered": true
+    },
+    {
+     "name": "Blob.arrayBuffer/text",
+     "covered": true
+    },
+    {
+     "name": "BigInt",
+     "covered": false
+    },
+    {
+     "name": "AbortController",
+     "covered": true
+    },
+    {
+     "name": "roundRect",
+     "covered": true
+    },
+    {
+     "name": "String.padStart/padEnd",
+     "covered": true
+    },
+    {
+     "name": "canvas.toBlob",
+     "covered": true
+    }
+   ],
+   "cssBeyondFloor": [
+    ":focus-visible",
+    "inset",
+    "aspect-ratio",
+    "gap (flex)",
+    "dvh/svh/lvh",
+    "clamp()/min()/max()",
+    "@container",
+    "backdrop-filter",
+    "accent-color",
+    "prefers-color-scheme",
+    "position: sticky",
+    "scroll-behavior"
+   ],
+   "smoke": {
+    "status": "ok",
+    "newErrors": 0,
+    "nativeErrors": 0,
+    "legacyErrors": 0
+   }
+  },
+  "ODISEEA:ODISEEA.html": {
+   "file": "ODISEEA.html",
+   "status": "warn",
+   "kit": "1.8.0",
+   "compatLayer": true,
+   "syntaxErrors": [],
+   "postFloor": {},
+   "apiBeyondFloor": [
+    {
+     "name": "Array.flat/flatMap",
+     "covered": true
+    },
+    {
+     "name": "Blob.arrayBuffer/text",
+     "covered": true
+    },
+    {
+     "name": "BigInt",
+     "covered": false
+    },
+    {
+     "name": "AbortController",
+     "covered": true
+    },
+    {
+     "name": "roundRect",
+     "covered": true
+    },
+    {
+     "name": "String.padStart/padEnd",
+     "covered": true
+    },
+    {
+     "name": "canvas.toBlob",
+     "covered": true
+    }
+   ],
+   "cssBeyondFloor": [
+    ":focus-visible",
+    "inset",
+    "aspect-ratio",
+    "gap (flex)",
+    "dvh/svh/lvh",
+    "clamp()/min()/max()",
+    "@container",
+    "backdrop-filter",
+    "accent-color",
+    "prefers-color-scheme",
+    "position: sticky",
+    "scroll-behavior"
+   ],
+   "smoke": {
+    "status": "ok",
+    "newErrors": 0,
+    "nativeErrors": 0,
+    "legacyErrors": 0
+   }
+  },
+  "ODISEEA:premiera.html": {
+   "file": "premiera.html",
+   "status": "warn",
+   "kit": null,
+   "compatLayer": true,
+   "syntaxErrors": [],
+   "postFloor": {},
+   "apiBeyondFloor": [
+    {
+     "name": "String.padStart/padEnd",
+     "covered": true
+    }
+   ],
+   "cssBeyondFloor": [
+    ":focus-visible",
+    "inset",
+    "aspect-ratio",
+    "gap (flex)",
+    "clamp()/min()/max()",
+    "scroll-behavior"
+   ],
+   "smoke": {
+    "status": "ok",
+    "newErrors": 0,
+    "nativeErrors": 0,
+    "legacyErrors": 0
+   }
+  },
+  "ODISEEA:GALERIE.html": {
+   "file": "GALERIE.html",
+   "status": "warn",
+   "kit": null,
+   "compatLayer": false,
+   "syntaxErrors": [],
+   "postFloor": {},
+   "apiBeyondFloor": [],
+   "cssBeyondFloor": [
+    "aspect-ratio",
+    "gap (flex)",
+    "position: sticky"
+   ],
+   "smoke": {
+    "status": "ok",
+    "newErrors": 0,
+    "nativeErrors": 0,
+    "legacyErrors": 0
+   }
+  },
+  "OUTPOST": {
+   "file": "index.html",
+   "status": "warn",
+   "kit": "1.8.0",
+   "compatLayer": true,
+   "syntaxErrors": [],
+   "postFloor": {},
+   "apiBeyondFloor": [
+    {
+     "name": "Promise.finally",
+     "covered": true
+    },
+    {
+     "name": "requestIdleCallback",
+     "covered": true
+    },
+    {
+     "name": "crypto.randomUUID",
+     "covered": true
+    },
+    {
+     "name": "AbortController",
+     "covered": true
+    },
+    {
+     "name": "ResizeObserver",
+     "covered": true
+    },
+    {
+     "name": "navigator.clipboard",
+     "covered": true
+    },
+    {
+     "name": "String.padStart/padEnd",
+     "covered": true
+    },
+    {
+     "name": "<dialog>.showModal",
+     "covered": true
+    }
+   ],
+   "cssBeyondFloor": [
+    ":focus-visible",
+    "gap (flex)",
+    "clamp()/min()/max()",
+    "accent-color",
+    "prefers-color-scheme",
+    "individual transform props"
+   ],
+   "smoke": {
+    "status": "ok",
+    "newErrors": 0,
+    "nativeErrors": 0,
+    "legacyErrors": 0
+   }
+  },
+  "OmniHost": {
+   "file": "index.html",
+   "status": "warn",
+   "kit": "1.8.0",
+   "compatLayer": true,
+   "syntaxErrors": [],
+   "postFloor": {},
+   "apiBeyondFloor": [
+    {
+     "name": "requestIdleCallback",
+     "covered": true
+    },
+    {
+     "name": "Blob.arrayBuffer/text",
+     "covered": true
+    },
+    {
+     "name": "ResizeObserver",
+     "covered": true
+    },
+    {
+     "name": "navigator.clipboard",
+     "covered": true
+    },
+    {
+     "name": "CompressionStream",
+     "covered": false
+    },
+    {
+     "name": "String.padStart/padEnd",
+     "covered": true
+    },
+    {
+     "name": "scroll cu opțiuni",
+     "covered": true
+    }
+   ],
+   "cssBeyondFloor": [
+    ":focus-visible",
+    "inset",
+    "aspect-ratio",
+    "gap (flex)",
+    "dvh/svh/lvh",
+    "clamp()/min()/max()",
+    "color-mix()",
+    "backdrop-filter",
+    "prefers-color-scheme",
+    "position: sticky",
+    "individual transform props",
+    "scroll-behavior"
+   ],
+   "smoke": {
+    "status": "ok",
+    "newErrors": 0,
+    "nativeErrors": 0,
+    "legacyErrors": 0
+   }
+  },
+  "Orar": {
+   "file": "index.html",
+   "status": "warn",
+   "kit": "1.8.0",
+   "compatLayer": true,
+   "syntaxErrors": [],
+   "postFloor": {},
+   "apiBeyondFloor": [
+    {
+     "name": "Array.flat/flatMap",
+     "covered": true
+    },
+    {
+     "name": "requestIdleCallback",
+     "covered": true
+    },
+    {
+     "name": "Blob.arrayBuffer/text",
+     "covered": true
+    },
+    {
+     "name": "ResizeObserver",
+     "covered": true
+    },
+    {
+     "name": "navigator.clipboard",
+     "covered": true
+    },
+    {
+     "name": "BroadcastChannel",
+     "covered": false
+    },
+    {
+     "name": "CompressionStream",
+     "covered": false
+    },
+    {
+     "name": "String.padStart/padEnd",
+     "covered": true
+    },
+    {
+     "name": "<dialog>.showModal",
+     "covered": true
+    }
+   ],
+   "cssBeyondFloor": [
+    ":has()",
+    ":focus-visible",
+    "inset",
+    "gap (flex)",
+    "clamp()/min()/max()",
+    "prefers-color-scheme",
+    "individual transform props",
+    "scroll-behavior"
+   ],
+   "smoke": {
+    "status": "ok",
+    "newErrors": 0,
+    "nativeErrors": 0,
+    "legacyErrors": 0
+   }
+  },
+  "Origami": {
+   "file": "index.html",
+   "status": "warn",
+   "kit": "1.8.0",
+   "compatLayer": true,
+   "syntaxErrors": [],
+   "postFloor": {},
+   "apiBeyondFloor": [
+    {
+     "name": "requestIdleCallback",
+     "covered": true
+    },
+    {
+     "name": "ResizeObserver",
+     "covered": true
+    },
+    {
+     "name": "IntersectionObserver",
+     "covered": true
+    },
+    {
+     "name": "scroll cu opțiuni",
+     "covered": true
+    }
+   ],
+   "cssBeyondFloor": [
+    ":focus-visible",
+    "inset",
+    "aspect-ratio",
+    "gap (flex)",
+    "dvh/svh/lvh",
+    "clamp()/min()/max()",
+    "color-mix()",
+    "backdrop-filter",
+    "prefers-color-scheme",
+    "position: sticky",
+    "individual transform props",
+    "scroll-behavior"
+   ],
+   "smoke": {
+    "status": "ok",
+    "newErrors": 0,
+    "nativeErrors": 0,
+    "legacyErrors": 0
+   }
+  },
+  "PORUMBEL": {
+   "file": "docs/index.html",
+   "status": "warn",
+   "kit": null,
+   "compatLayer": false,
+   "syntaxErrors": [],
+   "postFloor": {},
+   "apiBeyondFloor": [],
+   "cssBeyondFloor": [
+    "prefers-color-scheme"
+   ],
+   "smoke": {
+    "status": "ok",
+    "newErrors": 0,
+    "nativeErrors": 0,
+    "legacyErrors": 0
+   }
+  },
+  "PULS": {
+   "file": "index.html",
+   "status": "warn",
+   "kit": "1.8.0",
+   "compatLayer": true,
+   "syntaxErrors": [],
+   "postFloor": {},
+   "apiBeyondFloor": [
+    {
+     "name": "requestIdleCallback",
+     "covered": true
+    },
+    {
+     "name": "Blob.arrayBuffer/text",
+     "covered": true
+    },
+    {
+     "name": "ResizeObserver",
+     "covered": true
+    },
+    {
+     "name": "navigator.clipboard",
+     "covered": true
+    },
+    {
+     "name": "BroadcastChannel",
+     "covered": false
+    },
+    {
+     "name": "CompressionStream",
+     "covered": false
+    },
+    {
+     "name": "navigator.share",
+     "covered": false
+    },
+    {
+     "name": "String.padStart/padEnd",
+     "covered": true
+    },
+    {
+     "name": "canvas.toBlob",
+     "covered": true
+    },
+    {
+     "name": "<dialog>.showModal",
+     "covered": true
+    }
+   ],
+   "cssBeyondFloor": [
+    ":has()",
+    ":focus-visible",
+    "inset",
+    "gap (flex)",
+    "clamp()/min()/max()",
+    "prefers-color-scheme",
+    "position: sticky",
+    "individual transform props",
+    "scroll-behavior"
+   ],
+   "smoke": {
+    "status": "ok",
+    "newErrors": 0,
+    "nativeErrors": 0,
+    "legacyErrors": 0
+   }
+  },
+  "PUNCTUM": {
+   "file": "index.html",
+   "status": "warn",
+   "kit": "1.8.0",
+   "compatLayer": true,
+   "syntaxErrors": [],
+   "postFloor": {},
+   "apiBeyondFloor": [
+    {
+     "name": "Array.flat/flatMap",
+     "covered": true
+    },
+    {
+     "name": "requestIdleCallback",
+     "covered": true
+    },
+    {
+     "name": "ResizeObserver",
+     "covered": true
+    },
+    {
+     "name": "String.padStart/padEnd",
+     "covered": true
+    },
+    {
+     "name": "scroll cu opțiuni",
+     "covered": true
+    }
+   ],
+   "cssBeyondFloor": [
+    ":has()",
+    ":focus-visible",
+    "inset",
+    "gap (flex)",
+    "clamp()/min()/max()",
+    "color-mix()",
+    "accent-color",
+    "prefers-color-scheme",
+    "position: sticky",
+    "individual transform props",
+    "scroll-behavior"
+   ],
+   "smoke": {
+    "status": "ok",
+    "newErrors": 0,
+    "nativeErrors": 0,
+    "legacyErrors": 0
+   }
+  },
+  "PUNCTUM:punctum.html": {
+   "file": "punctum.html",
+   "status": "warn",
+   "kit": "1.8.0",
+   "compatLayer": true,
+   "syntaxErrors": [],
+   "postFloor": {},
+   "apiBeyondFloor": [
+    {
+     "name": "Array.flat/flatMap",
+     "covered": true
+    },
+    {
+     "name": "String.padStart/padEnd",
+     "covered": true
+    },
+    {
+     "name": "scroll cu opțiuni",
+     "covered": true
+    }
+   ],
+   "cssBeyondFloor": [
+    ":has()",
+    ":focus-visible",
+    "inset",
+    "gap (flex)",
+    "clamp()/min()/max()",
+    "color-mix()",
+    "accent-color",
+    "prefers-color-scheme",
+    "position: sticky",
+    "scroll-behavior"
+   ],
+   "smoke": {
+    "status": "ok",
+    "newErrors": 0,
+    "nativeErrors": 0,
+    "legacyErrors": 0
+   }
+  },
+  "PatruZeci": {
+   "file": "index.html",
+   "status": "warn",
+   "kit": "1.8.0",
+   "compatLayer": true,
+   "syntaxErrors": [],
+   "postFloor": {},
+   "apiBeyondFloor": [
+    {
+     "name": "requestIdleCallback",
+     "covered": true
+    },
+    {
+     "name": "ResizeObserver",
+     "covered": true
+    },
+    {
+     "name": "IntersectionObserver",
+     "covered": true
+    },
+    {
+     "name": "scroll cu opțiuni",
+     "covered": true
+    }
+   ],
+   "cssBeyondFloor": [
+    ":focus-visible",
+    "inset",
+    "aspect-ratio",
+    "gap (flex)",
+    "dvh/svh/lvh",
+    "clamp()/min()/max()",
+    "backdrop-filter",
+    "prefers-color-scheme",
+    "position: sticky",
+    "scroll-behavior"
+   ],
+   "smoke": {
+    "status": "ok",
+    "newErrors": 0,
+    "nativeErrors": 0,
+    "legacyErrors": 0
+   }
+  },
+  "Pendulul": {
+   "file": "docs/index.html",
+   "status": "warn",
+   "kit": "1.8.0",
+   "compatLayer": true,
+   "syntaxErrors": [],
+   "postFloor": {},
+   "apiBeyondFloor": [
+    {
+     "name": "requestIdleCallback",
+     "covered": true
+    },
+    {
+     "name": "Blob.arrayBuffer/text",
+     "covered": true
+    },
+    {
+     "name": "BigInt",
+     "covered": false
+    },
+    {
+     "name": "ResizeObserver",
+     "covered": true
+    },
+    {
+     "name": "OffscreenCanvas",
+     "covered": false
+    },
+    {
+     "name": "CompressionStream",
+     "covered": false
+    },
+    {
+     "name": "scroll cu opțiuni",
+     "covered": true
+    }
+   ],
+   "cssBeyondFloor": [
+    ":focus-visible",
+    "inset",
+    "aspect-ratio",
+    "gap (flex)",
+    "dvh/svh/lvh",
+    "clamp()/min()/max()",
+    "backdrop-filter",
+    "accent-color",
+    "text-wrap",
+    "prefers-color-scheme",
+    "individual transform props",
+    "scroll-behavior"
+   ],
+   "smoke": {
+    "status": "ok",
+    "newErrors": 0,
+    "nativeErrors": 0,
+    "legacyErrors": 0
+   }
+  },
+  "Pendulul:dist/pendulul-3d.html": {
+   "file": "dist/pendulul-3d.html",
+   "status": "warn",
+   "kit": "1.8.0",
+   "compatLayer": true,
+   "syntaxErrors": [],
+   "postFloor": {},
+   "apiBeyondFloor": [
+    {
+     "name": "Blob.arrayBuffer/text",
+     "covered": true
+    },
+    {
+     "name": "BigInt",
+     "covered": false
+    },
+    {
+     "name": "OffscreenCanvas",
+     "covered": false
+    },
+    {
+     "name": "CompressionStream",
+     "covered": false
+    },
+    {
+     "name": "scroll cu opțiuni",
+     "covered": true
+    }
+   ],
+   "cssBeyondFloor": [
+    ":focus-visible",
+    "inset",
+    "aspect-ratio",
+    "gap (flex)",
+    "dvh/svh/lvh",
+    "clamp()/min()/max()",
+    "backdrop-filter",
+    "accent-color",
+    "text-wrap",
+    "prefers-color-scheme",
+    "scroll-behavior"
+   ],
+   "smoke": {
+    "status": "ok",
+    "newErrors": 0,
+    "nativeErrors": 0,
+    "legacyErrors": 0
+   }
+  },
+  "Poteca": {
+   "file": "index.html",
+   "status": "warn",
+   "kit": "1.8.0",
+   "compatLayer": true,
+   "syntaxErrors": [],
+   "postFloor": {},
+   "apiBeyondFloor": [
+    {
+     "name": "requestIdleCallback",
+     "covered": true
+    },
+    {
+     "name": "Blob.arrayBuffer/text",
+     "covered": true
+    },
+    {
+     "name": "ResizeObserver",
+     "covered": true
+    },
+    {
+     "name": "navigator.clipboard",
+     "covered": true
+    },
+    {
+     "name": "BroadcastChannel",
+     "covered": false
+    },
+    {
+     "name": "CompressionStream",
+     "covered": false
+    },
+    {
+     "name": "String.padStart/padEnd",
+     "covered": true
+    },
+    {
+     "name": "String.trimStart/trimEnd",
+     "covered": true
+    },
+    {
+     "name": "canvas.toBlob",
+     "covered": true
+    },
+    {
+     "name": "<dialog>.showModal",
+     "covered": true
+    }
+   ],
+   "cssBeyondFloor": [
+    ":focus-visible",
+    "inset",
+    "gap (flex)",
+    "dvh/svh/lvh",
+    "clamp()/min()/max()",
+    "color-mix()",
+    "accent-color",
+    "prefers-color-scheme",
+    "individual transform props",
+    "scroll-behavior"
+   ],
+   "smoke": {
+    "status": "ok",
+    "newErrors": 0,
+    "nativeErrors": 0,
+    "legacyErrors": 0
+   }
+  },
+  "PrintreInteligente": {
+   "file": "index.html",
+   "status": "warn",
+   "kit": "1.8.0",
+   "compatLayer": true,
+   "syntaxErrors": [],
+   "postFloor": {},
+   "apiBeyondFloor": [
+    {
+     "name": "Object.fromEntries",
+     "covered": true
+    },
+    {
+     "name": "requestIdleCallback",
+     "covered": true
+    },
+    {
+     "name": "ResizeObserver",
+     "covered": true
+    },
+    {
+     "name": "IntersectionObserver",
+     "covered": true
+    },
+    {
+     "name": "navigator.clipboard",
+     "covered": true
+    },
+    {
+     "name": "String.padStart/padEnd",
+     "covered": true
+    },
+    {
+     "name": "scroll cu opțiuni",
+     "covered": true
+    },
+    {
+     "name": "<dialog>.showModal",
+     "covered": true
+    }
+   ],
+   "cssBeyondFloor": [
+    ":focus-visible",
+    "inset",
+    "gap (flex)",
+    "dvh/svh/lvh",
+    "clamp()/min()/max()",
+    "backdrop-filter",
+    "prefers-color-scheme",
+    "position: sticky",
+    "individual transform props",
+    "scroll-behavior"
+   ],
+   "smoke": {
+    "status": "ok",
+    "newErrors": 0,
+    "nativeErrors": 0,
+    "legacyErrors": 0
+   }
+  },
+  "Profund": {
+   "file": "index.html",
+   "status": "warn",
+   "kit": "1.8.0",
+   "compatLayer": true,
+   "syntaxErrors": [],
+   "postFloor": {},
+   "apiBeyondFloor": [
+    {
+     "name": "requestIdleCallback",
+     "covered": true
+    },
+    {
+     "name": "Blob.arrayBuffer/text",
+     "covered": true
+    },
+    {
+     "name": "ResizeObserver",
+     "covered": true
+    },
+    {
+     "name": "navigator.clipboard",
+     "covered": true
+    },
+    {
+     "name": "BroadcastChannel",
+     "covered": false
+    },
+    {
+     "name": "CompressionStream",
+     "covered": false
+    },
+    {
+     "name": "<dialog>.showModal",
+     "covered": true
+    }
+   ],
+   "cssBeyondFloor": [
+    ":focus-visible",
+    "inset",
+    "aspect-ratio",
+    "gap (flex)",
+    "clamp()/min()/max()",
+    "backdrop-filter",
+    "prefers-color-scheme",
+    "position: sticky",
+    "individual transform props",
+    "scroll-behavior"
+   ],
+   "smoke": {
+    "status": "ok",
+    "newErrors": 0,
+    "nativeErrors": 0,
+    "legacyErrors": 0
+   }
+  },
+  "PromptVault": {
+   "file": "index.html",
+   "status": "warn",
+   "kit": "1.8.0",
+   "compatLayer": true,
+   "syntaxErrors": [],
+   "postFloor": {},
+   "apiBeyondFloor": [
+    {
+     "name": "Object.fromEntries",
+     "covered": true
+    },
+    {
+     "name": "Array.flat/flatMap",
+     "covered": true
+    },
+    {
+     "name": "requestIdleCallback",
+     "covered": true
+    },
+    {
+     "name": "ResizeObserver",
+     "covered": true
+    },
+    {
+     "name": "navigator.clipboard",
+     "covered": true
+    }
+   ],
+   "cssBeyondFloor": [
+    ":focus-visible",
+    "inset",
+    "gap (flex)",
+    "dvh/svh/lvh",
+    "clamp()/min()/max()",
+    "color-mix()",
+    "accent-color",
+    "prefers-color-scheme",
+    "individual transform props",
+    "scroll-behavior"
+   ],
+   "smoke": {
+    "status": "ok",
+    "newErrors": 0,
+    "nativeErrors": 0,
+    "legacyErrors": 0
+   }
+  },
+  "Provenienta": {
+   "file": "index.html",
+   "status": "warn",
+   "kit": "1.8.0",
+   "compatLayer": true,
+   "syntaxErrors": [],
+   "postFloor": {},
+   "apiBeyondFloor": [
+    {
+     "name": "Array.flat/flatMap",
+     "covered": true
+    },
+    {
+     "name": "requestIdleCallback",
+     "covered": true
+    },
+    {
+     "name": "Blob.arrayBuffer/text",
+     "covered": true
+    },
+    {
+     "name": "BigInt",
+     "covered": false
+    },
+    {
+     "name": "ResizeObserver",
+     "covered": true
+    },
+    {
+     "name": "String.padStart/padEnd",
+     "covered": true
+    }
+   ],
+   "cssBeyondFloor": [
+    ":focus-visible",
+    "gap (flex)",
+    "clamp()/min()/max()",
+    "prefers-color-scheme",
+    "individual transform props"
+   ],
+   "smoke": {
+    "status": "ok",
+    "newErrors": 0,
+    "nativeErrors": 0,
+    "legacyErrors": 0
+   }
+  },
+  "QSO": {
+   "file": "index.html",
+   "status": "warn",
+   "kit": "1.8.0",
+   "compatLayer": true,
+   "syntaxErrors": [],
+   "postFloor": {},
+   "apiBeyondFloor": [
+    {
+     "name": "requestIdleCallback",
+     "covered": true
+    },
+    {
+     "name": "Blob.arrayBuffer/text",
+     "covered": true
+    },
+    {
+     "name": "ResizeObserver",
+     "covered": true
+    },
+    {
+     "name": "navigator.clipboard",
+     "covered": true
+    },
+    {
+     "name": "BroadcastChannel",
+     "covered": false
+    },
+    {
+     "name": "CompressionStream",
+     "covered": false
+    },
+    {
+     "name": "String.padStart/padEnd",
+     "covered": true
+    },
+    {
+     "name": "scroll cu opțiuni",
+     "covered": true
+    },
+    {
+     "name": "<dialog>.showModal",
+     "covered": true
+    }
+   ],
+   "cssBeyondFloor": [
+    ":focus-visible",
+    "inset",
+    "gap (flex)",
+    "clamp()/min()/max()",
+    "accent-color",
+    "prefers-color-scheme",
+    "position: sticky",
+    "individual transform props"
+   ],
+   "smoke": {
+    "status": "ok",
+    "newErrors": 0,
+    "nativeErrors": 0,
+    "legacyErrors": 0
+   }
+  },
+  "REZONANTA": {
+   "file": "index.html",
+   "status": "warn",
+   "kit": "1.8.0",
+   "compatLayer": true,
+   "syntaxErrors": [],
+   "postFloor": {},
+   "apiBeyondFloor": [
+    {
+     "name": "requestIdleCallback",
+     "covered": true
+    },
+    {
+     "name": "ResizeObserver",
+     "covered": true
+    },
+    {
+     "name": "navigator.clipboard",
+     "covered": true
+    },
+    {
+     "name": "scroll cu opțiuni",
+     "covered": true
+    }
+   ],
+   "cssBeyondFloor": [
+    ":focus-visible",
+    "gap (flex)",
+    "clamp()/min()/max()",
+    "accent-color",
+    "prefers-color-scheme",
+    "position: sticky",
+    "individual transform props",
+    "scroll-behavior"
+   ],
+   "smoke": {
+    "status": "ok",
+    "newErrors": 0,
+    "nativeErrors": 0,
+    "legacyErrors": 0
+   }
+  },
+  "Radiestezie": {
+   "file": "index.html",
+   "status": "warn",
+   "kit": "1.8.0",
+   "compatLayer": true,
+   "syntaxErrors": [],
+   "postFloor": {},
+   "apiBeyondFloor": [
+    {
+     "name": "requestIdleCallback",
+     "covered": true
+    },
+    {
+     "name": "ResizeObserver",
+     "covered": true
+    },
+    {
+     "name": "navigator.clipboard",
+     "covered": true
+    },
+    {
+     "name": "String.padStart/padEnd",
+     "covered": true
+    },
+    {
+     "name": "<dialog>.showModal",
+     "covered": true
+    }
+   ],
+   "cssBeyondFloor": [
+    ":focus-visible",
+    "inset",
+    "gap (flex)",
+    "clamp()/min()/max()",
+    "prefers-color-scheme",
+    "position: sticky",
+    "individual transform props",
+    "scroll-behavior"
+   ],
+   "smoke": {
+    "status": "ok",
+    "newErrors": 0,
+    "nativeErrors": 0,
+    "legacyErrors": 0
+   }
+  },
+  "RegexLab": {
+   "file": "index.html",
+   "status": "warn",
+   "kit": "1.8.0",
+   "compatLayer": true,
+   "syntaxErrors": [],
+   "postFloor": {},
+   "apiBeyondFloor": [
+    {
+     "name": "requestIdleCallback",
+     "covered": true
+    },
+    {
+     "name": "Blob.arrayBuffer/text",
+     "covered": true
+    },
+    {
+     "name": "ResizeObserver",
+     "covered": true
+    },
+    {
+     "name": "navigator.clipboard",
+     "covered": true
+    },
+    {
+     "name": "BroadcastChannel",
+     "covered": false
+    },
+    {
+     "name": "CompressionStream",
+     "covered": false
+    },
+    {
+     "name": "String.padStart/padEnd",
+     "covered": true
+    },
+    {
+     "name": "String.matchAll",
+     "covered": true
+    }
+   ],
+   "cssBeyondFloor": [
+    ":focus-visible",
+    "inset",
+    "gap (flex)",
+    "clamp()/min()/max()",
+    "backdrop-filter",
+    "prefers-color-scheme",
+    "position: sticky",
+    "individual transform props",
+    "scroll-behavior"
+   ],
+   "smoke": {
+    "status": "ok",
+    "newErrors": 0,
+    "nativeErrors": 0,
+    "legacyErrors": 0
+   }
+  },
+  "Reiki": {
+   "file": "index.html",
+   "status": "warn",
+   "kit": "1.8.0",
+   "compatLayer": true,
+   "syntaxErrors": [],
+   "postFloor": {},
+   "apiBeyondFloor": [
+    {
+     "name": "requestIdleCallback",
+     "covered": true
+    },
+    {
+     "name": "ResizeObserver",
+     "covered": true
+    },
+    {
+     "name": "navigator.clipboard",
+     "covered": true
+    },
+    {
+     "name": "navigator.share",
+     "covered": false
+    },
+    {
+     "name": "scroll cu opțiuni",
+     "covered": true
+    },
+    {
+     "name": "<dialog>.showModal",
+     "covered": true
+    }
+   ],
+   "cssBeyondFloor": [
+    ":focus-visible",
+    "gap (flex)",
+    "clamp()/min()/max()",
+    "prefers-color-scheme",
+    "position: sticky",
+    "individual transform props",
+    "scroll-behavior"
+   ],
+   "smoke": {
+    "status": "ok",
+    "newErrors": 0,
+    "nativeErrors": 0,
+    "legacyErrors": 0
+   }
+  },
+  "Remi-fara-frontiere": {
+   "file": "index.html",
+   "status": "warn",
+   "kit": "1.8.0",
+   "compatLayer": true,
+   "syntaxErrors": [],
+   "postFloor": {},
+   "apiBeyondFloor": [
+    {
+     "name": "requestIdleCallback",
+     "covered": true
+    },
+    {
+     "name": "Blob.arrayBuffer/text",
+     "covered": true
+    },
+    {
+     "name": "ResizeObserver",
+     "covered": true
+    },
+    {
+     "name": "navigator.clipboard",
+     "covered": true
+    },
+    {
+     "name": "BroadcastChannel",
+     "covered": false
+    },
+    {
+     "name": "CompressionStream",
+     "covered": false
+    },
+    {
+     "name": "<dialog>.showModal",
+     "covered": true
+    }
+   ],
+   "cssBeyondFloor": [
+    ":focus-visible",
+    "inset",
+    "gap (flex)",
+    "clamp()/min()/max()",
+    "prefers-color-scheme",
+    "position: sticky",
+    "individual transform props",
+    "scroll-behavior"
+   ],
+   "smoke": {
+    "status": "ok",
+    "newErrors": 0,
+    "nativeErrors": 0,
+    "legacyErrors": 0
+   }
+  },
+  "SEOptimum": {
+   "file": "index.html",
+   "status": "warn",
+   "kit": "1.8.0",
+   "compatLayer": true,
+   "syntaxErrors": [],
+   "postFloor": {},
+   "apiBeyondFloor": [
+    {
+     "name": "requestIdleCallback",
+     "covered": true
+    },
+    {
+     "name": "Blob.arrayBuffer/text",
+     "covered": true
+    },
+    {
+     "name": "AbortController",
+     "covered": true
+    },
+    {
+     "name": "ResizeObserver",
+     "covered": true
+    },
+    {
+     "name": "navigator.clipboard",
+     "covered": true
+    },
+    {
+     "name": "BroadcastChannel",
+     "covered": false
+    },
+    {
+     "name": "CompressionStream",
+     "covered": false
+    },
+    {
+     "name": "String.padStart/padEnd",
+     "covered": true
+    },
+    {
+     "name": "scroll cu opțiuni",
+     "covered": true
+    }
+   ],
+   "cssBeyondFloor": [
+    ":focus-visible",
+    "inset",
+    "aspect-ratio",
+    "gap (flex)",
+    "clamp()/min()/max()",
+    "accent-color",
+    "prefers-color-scheme",
+    "position: sticky",
+    "individual transform props",
+    "scroll-behavior"
+   ],
+   "smoke": {
+    "status": "ok",
+    "newErrors": 0,
+    "nativeErrors": 0,
+    "legacyErrors": 0
+   }
+  },
+  "SEVA": {
+   "file": "index.html",
+   "status": "warn",
+   "kit": "1.8.0",
+   "compatLayer": true,
+   "syntaxErrors": [],
+   "postFloor": {},
+   "apiBeyondFloor": [
+    {
+     "name": "requestIdleCallback",
+     "covered": true
+    },
+    {
+     "name": "Blob.arrayBuffer/text",
+     "covered": true
+    },
+    {
+     "name": "ResizeObserver",
+     "covered": true
+    },
+    {
+     "name": "navigator.clipboard",
+     "covered": true
+    },
+    {
+     "name": "BroadcastChannel",
+     "covered": false
+    },
+    {
+     "name": "CompressionStream",
+     "covered": false
+    },
+    {
+     "name": "navigator.share",
+     "covered": false
+    },
+    {
+     "name": "String.padStart/padEnd",
+     "covered": true
+    },
+    {
+     "name": "scroll cu opțiuni",
+     "covered": true
+    }
+   ],
+   "cssBeyondFloor": [
+    ":has()",
+    ":focus-visible",
+    "inset",
+    "aspect-ratio",
+    "gap (flex)",
+    "clamp()/min()/max()",
+    "accent-color",
+    "prefers-color-scheme",
+    "position: sticky",
+    "individual transform props",
+    "scroll-behavior"
+   ],
+   "smoke": {
+    "status": "ok",
+    "newErrors": 0,
+    "nativeErrors": 0,
+    "legacyErrors": 0
+   }
+  },
+  "Sah-fara-frontiere": {
+   "file": "index.html",
+   "status": "warn",
+   "kit": "1.8.0",
+   "compatLayer": true,
+   "syntaxErrors": [],
+   "postFloor": {},
+   "apiBeyondFloor": [
+    {
+     "name": "Array.flat/flatMap",
+     "covered": true
+    },
+    {
+     "name": "requestIdleCallback",
+     "covered": true
+    },
+    {
+     "name": "Blob.arrayBuffer/text",
+     "covered": true
+    },
+    {
+     "name": "ResizeObserver",
+     "covered": true
+    },
+    {
+     "name": "IntersectionObserver",
+     "covered": true
+    },
+    {
+     "name": "navigator.clipboard",
+     "covered": true
+    },
+    {
+     "name": "BroadcastChannel",
+     "covered": false
+    },
+    {
+     "name": "CompressionStream",
+     "covered": false
+    },
+    {
+     "name": "String.padStart/padEnd",
+     "covered": true
+    },
+    {
+     "name": "scroll cu opțiuni",
+     "covered": true
+    },
+    {
+     "name": "canvas.toBlob",
+     "covered": true
+    },
+    {
+     "name": "<dialog>.showModal",
+     "covered": true
+    }
+   ],
+   "cssBeyondFloor": [
+    ":focus-visible",
+    "inset",
+    "aspect-ratio",
+    "gap (flex)",
+    "clamp()/min()/max()",
+    "color-mix()",
+    "backdrop-filter",
+    "prefers-color-scheme",
+    "position: sticky",
+    "individual transform props",
+    "scroll-behavior"
+   ],
+   "smoke": {
+    "status": "ok",
+    "newErrors": 0,
+    "nativeErrors": 0,
+    "legacyErrors": 0
+   }
+  },
+  "Scopone-fara-frontiere": {
+   "file": "index.html",
+   "status": "warn",
+   "kit": "1.8.0",
+   "compatLayer": true,
+   "syntaxErrors": [],
+   "postFloor": {},
+   "apiBeyondFloor": [
+    {
+     "name": "Array.flat/flatMap",
+     "covered": true
+    },
+    {
+     "name": "requestIdleCallback",
+     "covered": true
+    },
+    {
+     "name": "Blob.arrayBuffer/text",
+     "covered": true
+    },
+    {
+     "name": "ResizeObserver",
+     "covered": true
+    },
+    {
+     "name": "navigator.clipboard",
+     "covered": true
+    },
+    {
+     "name": "BroadcastChannel",
+     "covered": false
+    },
+    {
+     "name": "CompressionStream",
+     "covered": false
+    },
+    {
+     "name": "<dialog>.showModal",
+     "covered": true
+    }
+   ],
+   "cssBeyondFloor": [
+    ":focus-visible",
+    "inset",
+    "aspect-ratio",
+    "gap (flex)",
+    "clamp()/min()/max()",
+    "color-mix()",
+    "prefers-color-scheme",
+    "position: sticky",
+    "individual transform props",
+    "scroll-behavior"
+   ],
+   "smoke": {
+    "status": "ok",
+    "newErrors": 0,
+    "nativeErrors": 0,
+    "legacyErrors": 0
+   }
+  },
+  "ScryVeil": {
+   "file": "index.html",
+   "status": "warn",
+   "kit": "1.8.0",
+   "compatLayer": true,
+   "syntaxErrors": [],
+   "postFloor": {},
+   "apiBeyondFloor": [
+    {
+     "name": "requestIdleCallback",
+     "covered": true
+    },
+    {
+     "name": "Blob.arrayBuffer/text",
+     "covered": true
+    },
+    {
+     "name": "AbortController",
+     "covered": true
+    },
+    {
+     "name": "ResizeObserver",
+     "covered": true
+    },
+    {
+     "name": "navigator.clipboard",
+     "covered": true
+    },
+    {
+     "name": "BroadcastChannel",
+     "covered": false
+    },
+    {
+     "name": "CompressionStream",
+     "covered": false
+    },
+    {
+     "name": "scroll cu opțiuni",
+     "covered": true
+    }
+   ],
+   "cssBeyondFloor": [
+    ":focus-visible",
+    "inset",
+    "gap (flex)",
+    "clamp()/min()/max()",
+    "prefers-color-scheme",
+    "individual transform props"
+   ],
+   "smoke": {
+    "status": "ok",
+    "newErrors": 0,
+    "nativeErrors": 0,
+    "legacyErrors": 0
+   }
+  },
+  "ScutSonor": {
+   "file": "index.html",
+   "status": "warn",
+   "kit": "1.8.0",
+   "compatLayer": true,
+   "syntaxErrors": [],
+   "postFloor": {},
+   "apiBeyondFloor": [
+    {
+     "name": "requestIdleCallback",
+     "covered": true
+    },
+    {
+     "name": "ResizeObserver",
+     "covered": true
+    }
+   ],
+   "cssBeyondFloor": [
+    ":focus-visible",
+    "inset",
+    "gap (flex)",
+    "clamp()/min()/max()",
+    "color-mix()",
+    "prefers-color-scheme",
+    "individual transform props"
+   ],
+   "smoke": {
+    "status": "ok",
+    "newErrors": 0,
+    "nativeErrors": 0,
+    "legacyErrors": 0
+   }
+  },
+  "Solitaire-fara-frontiere": {
+   "file": "index.html",
+   "status": "warn",
+   "kit": "1.8.0",
+   "compatLayer": true,
+   "syntaxErrors": [],
+   "postFloor": {},
+   "apiBeyondFloor": [
+    {
+     "name": "requestIdleCallback",
+     "covered": true
+    },
+    {
+     "name": "ResizeObserver",
+     "covered": true
+    },
+    {
+     "name": "scroll cu opțiuni",
+     "covered": true
+    },
+    {
+     "name": "<dialog>.showModal",
+     "covered": true
+    }
+   ],
+   "cssBeyondFloor": [
+    ":focus-visible",
+    "inset",
+    "gap (flex)",
+    "clamp()/min()/max()",
+    "prefers-color-scheme",
+    "individual transform props"
+   ],
+   "smoke": {
+    "status": "ok",
+    "newErrors": 0,
+    "nativeErrors": 0,
+    "legacyErrors": 0
+   }
+  },
+  "Sudoku-fara-frontiere": {
+   "file": "index.html",
+   "status": "warn",
+   "kit": "1.8.0",
+   "compatLayer": true,
+   "syntaxErrors": [],
+   "postFloor": {},
+   "apiBeyondFloor": [
+    {
+     "name": "requestIdleCallback",
+     "covered": true
+    },
+    {
+     "name": "ResizeObserver",
+     "covered": true
+    },
+    {
+     "name": "navigator.clipboard",
+     "covered": true
+    },
+    {
+     "name": "<dialog>.showModal",
+     "covered": true
+    }
+   ],
+   "cssBeyondFloor": [
+    ":focus-visible",
+    "inset",
+    "gap (flex)",
+    "clamp()/min()/max()",
+    "color-mix()",
+    "backdrop-filter",
+    "prefers-color-scheme",
+    "position: sticky",
+    "individual transform props"
+   ],
+   "smoke": {
+    "status": "ok",
+    "newErrors": 0,
+    "nativeErrors": 0,
+    "legacyErrors": 0
+   }
+  },
+  "Surveyor": {
+   "file": "index.html",
+   "status": "warn",
+   "kit": "1.8.0",
+   "compatLayer": true,
+   "syntaxErrors": [],
+   "postFloor": {},
+   "apiBeyondFloor": [
+    {
+     "name": "requestIdleCallback",
+     "covered": true
+    },
+    {
+     "name": "Blob.arrayBuffer/text",
+     "covered": true
+    },
+    {
+     "name": "AbortController",
+     "covered": true
+    },
+    {
+     "name": "ResizeObserver",
+     "covered": true
+    },
+    {
+     "name": "navigator.clipboard",
+     "covered": true
+    },
+    {
+     "name": "BroadcastChannel",
+     "covered": false
+    },
+    {
+     "name": "CompressionStream",
+     "covered": false
+    }
+   ],
+   "cssBeyondFloor": [
+    ":focus-visible",
+    "inset",
+    "gap (flex)",
+    "clamp()/min()/max()",
+    "prefers-color-scheme",
+    "individual transform props"
+   ],
+   "smoke": {
+    "status": "ok",
+    "newErrors": 0,
+    "nativeErrors": 0,
+    "legacyErrors": 0
+   }
+  },
+  "TACTIL": {
+   "file": "index.html",
+   "status": "warn",
+   "kit": "1.8.0",
+   "compatLayer": true,
+   "syntaxErrors": [],
+   "postFloor": {},
+   "apiBeyondFloor": [
+    {
+     "name": "IntersectionObserver",
+     "covered": true
+    },
+    {
+     "name": "navigator.clipboard",
+     "covered": true
+    },
+    {
+     "name": "String.padStart/padEnd",
+     "covered": true
+    }
+   ],
+   "cssBeyondFloor": [
+    ":focus-visible",
+    "inset",
+    "aspect-ratio",
+    "gap (flex)",
+    "clamp()/min()/max()",
+    "color-mix()",
+    "backdrop-filter",
+    "prefers-color-scheme",
+    "position: sticky",
+    "scroll-behavior"
+   ],
+   "smoke": {
+    "status": "ok",
+    "newErrors": 0,
+    "nativeErrors": 0,
+    "legacyErrors": 0
+   }
+  },
+  "TEZAUR": {
+   "file": "index.html",
+   "status": "warn",
+   "kit": "1.8.0",
+   "compatLayer": true,
+   "syntaxErrors": [],
+   "postFloor": {},
+   "apiBeyondFloor": [
+    {
+     "name": "IntersectionObserver",
+     "covered": true
+    },
+    {
+     "name": "String.padStart/padEnd",
+     "covered": true
+    },
+    {
+     "name": "String.matchAll",
+     "covered": true
+    },
+    {
+     "name": "scroll cu opțiuni",
+     "covered": true
+    }
+   ],
+   "cssBeyondFloor": [
+    ":focus-visible",
+    "inset",
+    "gap (flex)",
+    "dvh/svh/lvh",
+    "clamp()/min()/max()",
+    "backdrop-filter",
+    "prefers-color-scheme",
+    "scroll-behavior"
+   ],
+   "smoke": {
+    "status": "ok",
+    "newErrors": 0,
+    "nativeErrors": 0,
+    "legacyErrors": 0
+   }
+  },
+  "TEZAUR:tezaur.html": {
+   "file": "tezaur.html",
+   "status": "warn",
+   "kit": null,
+   "compatLayer": true,
+   "syntaxErrors": [],
+   "postFloor": {},
+   "apiBeyondFloor": [
+    {
+     "name": "Array.flat/flatMap",
+     "covered": true
+    },
+    {
+     "name": "requestIdleCallback",
+     "covered": true
+    },
+    {
+     "name": "Blob.arrayBuffer/text",
+     "covered": true
+    },
+    {
+     "name": "AbortController",
+     "covered": true
+    },
+    {
+     "name": "ResizeObserver",
+     "covered": true
+    },
+    {
+     "name": "navigator.clipboard",
+     "covered": true
+    },
+    {
+     "name": "CompressionStream",
+     "covered": false
+    },
+    {
+     "name": "String.padStart/padEnd",
+     "covered": true
+    },
+    {
+     "name": "String.trimStart/trimEnd",
+     "covered": true
+    },
+    {
+     "name": "String.matchAll",
+     "covered": true
+    },
+    {
+     "name": "scroll cu opțiuni",
+     "covered": true
+    }
+   ],
+   "cssBeyondFloor": [
+    ":focus-visible",
+    "inset",
+    "gap (flex)",
+    "clamp()/min()/max()",
+    "prefers-color-scheme",
+    "position: sticky",
+    "scroll-behavior"
+   ],
+   "smoke": {
+    "status": "ok",
+    "newErrors": 0,
+    "nativeErrors": 0,
+    "legacyErrors": 0
+   }
+  },
+  "TEZAUR:pwa/index.html": {
+   "file": "pwa/index.html",
+   "status": "warn",
+   "kit": null,
+   "compatLayer": true,
+   "syntaxErrors": [],
+   "postFloor": {},
+   "apiBeyondFloor": [
+    {
+     "name": "Array.flat/flatMap",
+     "covered": true
+    },
+    {
+     "name": "requestIdleCallback",
+     "covered": true
+    },
+    {
+     "name": "Blob.arrayBuffer/text",
+     "covered": true
+    },
+    {
+     "name": "AbortController",
+     "covered": true
+    },
+    {
+     "name": "ResizeObserver",
+     "covered": true
+    },
+    {
+     "name": "navigator.clipboard",
+     "covered": true
+    },
+    {
+     "name": "CompressionStream",
+     "covered": false
+    },
+    {
+     "name": "String.padStart/padEnd",
+     "covered": true
+    },
+    {
+     "name": "String.trimStart/trimEnd",
+     "covered": true
+    },
+    {
+     "name": "String.matchAll",
+     "covered": true
+    },
+    {
+     "name": "scroll cu opțiuni",
+     "covered": true
+    }
+   ],
+   "cssBeyondFloor": [
+    ":focus-visible",
+    "inset",
+    "gap (flex)",
+    "clamp()/min()/max()",
+    "prefers-color-scheme",
+    "position: sticky",
+    "scroll-behavior"
+   ],
+   "smoke": {
+    "status": "ok",
+    "newErrors": 0,
+    "nativeErrors": 0,
+    "legacyErrors": 0
+   }
+  },
+  "Table-fara-frontiere": {
+   "file": "index.html",
+   "status": "warn",
+   "kit": "1.8.0",
+   "compatLayer": true,
+   "syntaxErrors": [],
+   "postFloor": {},
+   "apiBeyondFloor": [
+    {
+     "name": "requestIdleCallback",
+     "covered": true
+    },
+    {
+     "name": "Blob.arrayBuffer/text",
+     "covered": true
+    },
+    {
+     "name": "ResizeObserver",
+     "covered": true
+    },
+    {
+     "name": "navigator.clipboard",
+     "covered": true
+    },
+    {
+     "name": "BroadcastChannel",
+     "covered": false
+    },
+    {
+     "name": "CompressionStream",
+     "covered": false
+    },
+    {
+     "name": "scroll cu opțiuni",
+     "covered": true
+    },
+    {
+     "name": "<dialog>.showModal",
+     "covered": true
+    }
+   ],
+   "cssBeyondFloor": [
+    ":focus-visible",
+    "inset",
+    "gap (flex)",
+    "clamp()/min()/max()",
+    "backdrop-filter",
+    "prefers-color-scheme",
+    "position: sticky",
+    "individual transform props",
+    "scroll-behavior"
+   ],
+   "smoke": {
+    "status": "ok",
+    "newErrors": 0,
+    "nativeErrors": 0,
+    "legacyErrors": 0
+   }
+  },
+  "Tarot": {
+   "file": "index.html",
+   "status": "warn",
+   "kit": "1.8.0",
+   "compatLayer": true,
+   "syntaxErrors": [],
+   "postFloor": {},
+   "apiBeyondFloor": [
+    {
+     "name": "requestIdleCallback",
+     "covered": true
+    },
+    {
+     "name": "ResizeObserver",
+     "covered": true
+    },
+    {
+     "name": "navigator.clipboard",
+     "covered": true
+    },
+    {
+     "name": "navigator.share",
+     "covered": false
+    },
+    {
+     "name": "scroll cu opțiuni",
+     "covered": true
+    },
+    {
+     "name": "<dialog>.showModal",
+     "covered": true
+    }
+   ],
+   "cssBeyondFloor": [
+    ":focus-visible",
+    "gap (flex)",
+    "clamp()/min()/max()",
+    "prefers-color-scheme",
+    "position: sticky",
+    "individual transform props",
+    "scroll-behavior"
+   ],
+   "smoke": {
+    "status": "ok",
+    "newErrors": 0,
+    "nativeErrors": 0,
+    "legacyErrors": 0
+   }
+  },
+  "TerRa": {
+   "file": "index.html",
+   "status": "warn",
+   "kit": "1.8.0",
+   "compatLayer": true,
+   "syntaxErrors": [],
+   "postFloor": {},
+   "apiBeyondFloor": [
+    {
+     "name": "requestIdleCallback",
+     "covered": true
+    },
+    {
+     "name": "Blob.arrayBuffer/text",
+     "covered": true
+    },
+    {
+     "name": "ResizeObserver",
+     "covered": true
+    },
+    {
+     "name": "navigator.clipboard",
+     "covered": true
+    },
+    {
+     "name": "String.padStart/padEnd",
+     "covered": true
+    },
+    {
+     "name": "<dialog>.showModal",
+     "covered": true
+    }
+   ],
+   "cssBeyondFloor": [
+    ":has()",
+    ":focus-visible",
+    "inset",
+    "gap (flex)",
+    "dvh/svh/lvh",
+    "clamp()/min()/max()",
+    "backdrop-filter",
+    "prefers-color-scheme",
+    "position: sticky",
+    "individual transform props"
+   ],
+   "smoke": {
+    "status": "ok",
+    "newErrors": 0,
+    "nativeErrors": 0,
+    "legacyErrors": 0
+   }
+  },
+  "Threads-fara-cont": {
+   "file": "index.html",
+   "status": "warn",
+   "kit": "1.8.0",
+   "compatLayer": true,
+   "syntaxErrors": [],
+   "postFloor": {},
+   "apiBeyondFloor": [
+    {
+     "name": "requestIdleCallback",
+     "covered": true
+    },
+    {
+     "name": "replaceChildren",
+     "covered": true
+    },
+    {
+     "name": "AbortController",
+     "covered": true
+    },
+    {
+     "name": "ResizeObserver",
+     "covered": true
+    },
+    {
+     "name": "navigator.clipboard",
+     "covered": true
+    }
+   ],
+   "cssBeyondFloor": [
+    ":focus-visible",
+    "gap (flex)",
+    "clamp()/min()/max()",
+    "accent-color",
+    "prefers-color-scheme",
+    "individual transform props"
+   ],
+   "smoke": {
+    "status": "ok",
+    "newErrors": 0,
+    "nativeErrors": 0,
+    "legacyErrors": 0
+   }
+  },
+  "Trade-Free-Link-Guardian": {
+   "file": "index.html",
+   "status": "warn",
+   "kit": "1.8.0",
+   "compatLayer": true,
+   "syntaxErrors": [],
+   "postFloor": {},
+   "apiBeyondFloor": [
+    {
+     "name": "requestIdleCallback",
+     "covered": true
+    },
+    {
+     "name": "replaceChildren",
+     "covered": true
+    },
+    {
+     "name": "Blob.arrayBuffer/text",
+     "covered": true
+    },
+    {
+     "name": "ResizeObserver",
+     "covered": true
+    },
+    {
+     "name": "navigator.clipboard",
+     "covered": true
+    },
+    {
+     "name": "scroll cu opțiuni",
+     "covered": true
+    }
+   ],
+   "cssBeyondFloor": [
+    ":focus-visible",
+    "gap (flex)",
+    "clamp()/min()/max()",
+    "accent-color",
+    "prefers-color-scheme",
+    "individual transform props",
+    "scroll-behavior"
+   ],
+   "smoke": {
+    "status": "ok",
+    "newErrors": 0,
+    "nativeErrors": 0,
+    "legacyErrors": 0
+   },
+   "exception": {
+    "manual": [
+     "regex-d-flag"
+    ],
+    "because": "m.indices au fallback determinist (blocul fff:idx din index.html), comparat cu rezultatul nativ pe >200 000 de potriviri în tests/indices.test.mjs"
+   }
+  },
+  "TranslateHub": {
+   "file": "index.html",
+   "status": "warn",
+   "kit": "1.8.0",
+   "compatLayer": true,
+   "syntaxErrors": [],
+   "postFloor": {},
+   "apiBeyondFloor": [
+    {
+     "name": "Object.fromEntries",
+     "covered": true
+    },
+    {
+     "name": "requestIdleCallback",
+     "covered": true
+    },
+    {
+     "name": "crypto.randomUUID",
+     "covered": true
+    },
+    {
+     "name": "Blob.arrayBuffer/text",
+     "covered": true
+    },
+    {
+     "name": "AbortController",
+     "covered": true
+    },
+    {
+     "name": "ResizeObserver",
+     "covered": true
+    },
+    {
+     "name": "navigator.clipboard",
+     "covered": true
+    },
+    {
+     "name": "Intl.RelativeTimeFormat/ListFormat/Segmenter",
+     "covered": false
+    },
+    {
+     "name": "String.trimStart/trimEnd",
+     "covered": true
+    },
+    {
+     "name": "scroll cu opțiuni",
+     "covered": true
+    },
+    {
+     "name": "<dialog>.showModal",
+     "covered": true
+    }
+   ],
+   "cssBeyondFloor": [
+    ":focus-visible",
+    "inset",
+    "gap (flex)",
+    "clamp()/min()/max()",
+    "color-mix()",
+    "backdrop-filter",
+    "prefers-color-scheme",
+    "position: sticky",
+    "individual transform props",
+    "scroll-behavior"
+   ],
+   "smoke": {
+    "status": "ok",
+    "newErrors": 0,
+    "nativeErrors": 0,
+    "legacyErrors": 0
+   }
+  },
+  "Trusa-fara-frontiere": {
+   "file": "index.html",
+   "status": "warn",
+   "kit": "1.8.0",
+   "compatLayer": true,
+   "syntaxErrors": [],
+   "postFloor": {},
+   "apiBeyondFloor": [
+    {
+     "name": "requestIdleCallback",
+     "covered": true
+    },
+    {
+     "name": "ResizeObserver",
+     "covered": true
+    },
+    {
+     "name": "navigator.clipboard",
+     "covered": true
+    },
+    {
+     "name": "String.padStart/padEnd",
+     "covered": true
+    },
+    {
+     "name": "<dialog>.showModal",
+     "covered": true
+    }
+   ],
+   "cssBeyondFloor": [
+    ":focus-visible",
+    "inset",
+    "gap (flex)",
+    "clamp()/min()/max()",
+    "prefers-color-scheme",
+    "individual transform props"
+   ],
+   "smoke": {
+    "status": "ok",
+    "newErrors": 0,
+    "nativeErrors": 0,
+    "legacyErrors": 0
+   }
+  },
+  "TurboCursa": {
+   "file": "docs/index.html",
+   "status": "warn",
+   "kit": "1.8.0",
+   "compatLayer": true,
+   "syntaxErrors": [],
+   "postFloor": {},
+   "apiBeyondFloor": [
+    {
+     "name": "IntersectionObserver",
+     "covered": true
+    }
+   ],
+   "cssBeyondFloor": [
+    ":focus-visible",
+    "inset",
+    "aspect-ratio",
+    "gap (flex)",
+    "dvh/svh/lvh",
+    "clamp()/min()/max()",
+    "text-wrap",
+    "prefers-color-scheme",
+    "position: sticky",
+    "scroll-behavior"
+   ],
+   "smoke": {
+    "status": "warn",
+    "newErrors": 0,
+    "nativeErrors": 1,
+    "legacyErrors": 1
+   }
+  },
+  "TurboCursa:docs/turbocursa.html": {
+   "file": "docs/turbocursa.html",
+   "status": "warn",
+   "kit": "1.8.0",
+   "compatLayer": true,
+   "syntaxErrors": [],
+   "postFloor": {},
+   "apiBeyondFloor": [
+    {
+     "name": "navigator.clipboard",
+     "covered": true
+    },
+    {
+     "name": "Intl.RelativeTimeFormat/ListFormat/Segmenter",
+     "covered": false
+    }
+   ],
+   "cssBeyondFloor": [
+    ":focus-visible",
+    "inset",
+    "aspect-ratio",
+    "gap (flex)",
+    "clamp()/min()/max()",
+    "prefers-color-scheme"
+   ],
+   "smoke": {
+    "status": "ok",
+    "newErrors": 0,
+    "nativeErrors": 0,
+    "legacyErrors": 0
+   }
+  },
+  "URME": {
+   "file": "index.html",
+   "status": "warn",
+   "kit": "1.8.0",
+   "compatLayer": true,
+   "syntaxErrors": [],
+   "postFloor": {},
+   "apiBeyondFloor": [
+    {
+     "name": "requestIdleCallback",
+     "covered": true
+    },
+    {
+     "name": "Blob.arrayBuffer/text",
+     "covered": true
+    },
+    {
+     "name": "ResizeObserver",
+     "covered": true
+    },
+    {
+     "name": "IntersectionObserver",
+     "covered": true
+    },
+    {
+     "name": "navigator.clipboard",
+     "covered": true
+    },
+    {
+     "name": "BroadcastChannel",
+     "covered": false
+    },
+    {
+     "name": "CompressionStream",
+     "covered": false
+    },
+    {
+     "name": "String.padStart/padEnd",
+     "covered": true
+    },
+    {
+     "name": "scroll cu opțiuni",
+     "covered": true
+    }
+   ],
+   "cssBeyondFloor": [
+    ":focus-visible",
+    "inset",
+    "aspect-ratio",
+    "gap (flex)",
+    "clamp()/min()/max()",
+    "color-mix()",
+    "backdrop-filter",
+    "accent-color",
+    "prefers-color-scheme",
+    "position: sticky",
+    "individual transform props",
+    "scroll-behavior"
+   ],
+   "smoke": {
+    "status": "ok",
+    "newErrors": 0,
+    "nativeErrors": 0,
+    "legacyErrors": 0
+   }
+  },
+  "Undava": {
+   "file": "index.html",
+   "status": "warn",
+   "kit": "1.8.0",
+   "compatLayer": true,
+   "syntaxErrors": [],
+   "postFloor": {},
+   "apiBeyondFloor": [
+    {
+     "name": "requestIdleCallback",
+     "covered": true
+    },
+    {
+     "name": "Blob.arrayBuffer/text",
+     "covered": true
+    },
+    {
+     "name": "ResizeObserver",
+     "covered": true
+    },
+    {
+     "name": "navigator.clipboard",
+     "covered": true
+    },
+    {
+     "name": "scroll cu opțiuni",
+     "covered": true
+    },
+    {
+     "name": "<dialog>.showModal",
+     "covered": true
+    }
+   ],
+   "cssBeyondFloor": [
+    ":focus-visible",
+    "inset",
+    "aspect-ratio",
+    "gap (flex)",
+    "dvh/svh/lvh",
+    "clamp()/min()/max()",
+    "backdrop-filter",
+    "accent-color",
+    "prefers-color-scheme",
+    "position: sticky",
+    "individual transform props",
+    "scroll-behavior"
+   ],
+   "smoke": {
+    "status": "ok",
+    "newErrors": 0,
+    "nativeErrors": 0,
+    "legacyErrors": 0
+   }
+  },
+  "Universul-Observabil": {
+   "file": "index.html",
+   "status": "warn",
+   "kit": "1.8.0",
+   "compatLayer": true,
+   "syntaxErrors": [],
+   "postFloor": {},
+   "apiBeyondFloor": [
+    {
+     "name": "requestIdleCallback",
+     "covered": true
+    },
+    {
+     "name": "ResizeObserver",
+     "covered": true
+    },
+    {
+     "name": "IntersectionObserver",
+     "covered": true
+    }
+   ],
+   "cssBeyondFloor": [
+    ":has()",
+    ":focus-visible",
+    "inset",
+    "gap (flex)",
+    "clamp()/min()/max()",
+    "backdrop-filter",
+    "accent-color",
+    "prefers-color-scheme",
+    "individual transform props",
+    "scroll-behavior"
+   ],
+   "smoke": {
+    "status": "ok",
+    "newErrors": 0,
+    "nativeErrors": 0,
+    "legacyErrors": 0
+   }
+  },
+  "Universul-Observabil-1D": {
+   "file": "index.html",
+   "status": "warn",
+   "kit": "1.8.0",
+   "compatLayer": true,
+   "syntaxErrors": [],
+   "postFloor": {},
+   "apiBeyondFloor": [
+    {
+     "name": "requestIdleCallback",
+     "covered": true
+    },
+    {
+     "name": "ResizeObserver",
+     "covered": true
+    },
+    {
+     "name": "navigator.clipboard",
+     "covered": true
+    },
+    {
+     "name": "scroll cu opțiuni",
+     "covered": true
+    }
+   ],
+   "cssBeyondFloor": [
+    ":focus-visible",
+    "inset",
+    "gap (flex)",
+    "clamp()/min()/max()",
+    "backdrop-filter",
+    "accent-color",
+    "prefers-color-scheme",
+    "position: sticky",
+    "individual transform props",
+    "scroll-behavior"
+   ],
+   "smoke": {
+    "status": "ok",
+    "newErrors": 0,
+    "nativeErrors": 0,
+    "legacyErrors": 0
+   }
+  },
+  "Universul-Observabil-2D": {
+   "file": "index.html",
+   "status": "warn",
+   "kit": "1.8.0",
+   "compatLayer": true,
+   "syntaxErrors": [],
+   "postFloor": {},
+   "apiBeyondFloor": [
+    {
+     "name": "requestIdleCallback",
+     "covered": true
+    },
+    {
+     "name": "ResizeObserver",
+     "covered": true
+    },
+    {
+     "name": "navigator.clipboard",
+     "covered": true
+    },
+    {
+     "name": "navigator.share",
+     "covered": false
+    },
+    {
+     "name": "String.padStart/padEnd",
+     "covered": true
+    },
+    {
+     "name": "canvas.toBlob",
+     "covered": true
+    }
+   ],
+   "cssBeyondFloor": [
+    ":focus-visible",
+    "inset",
+    "gap (flex)",
+    "clamp()/min()/max()",
+    "backdrop-filter",
+    "accent-color",
+    "prefers-color-scheme",
+    "position: sticky",
+    "individual transform props",
+    "scroll-behavior"
+   ],
+   "smoke": {
+    "status": "ok",
+    "newErrors": 0,
+    "nativeErrors": 0,
+    "legacyErrors": 0
+   }
+  },
+  "Universul-Observabil-3D": {
+   "file": "index.html",
+   "status": "warn",
+   "kit": "1.8.0",
+   "compatLayer": true,
+   "syntaxErrors": [],
+   "postFloor": {},
+   "apiBeyondFloor": [
+    {
+     "name": "requestIdleCallback",
+     "covered": true
+    },
+    {
+     "name": "Blob.arrayBuffer/text",
+     "covered": true
+    },
+    {
+     "name": "AbortController",
+     "covered": true
+    },
+    {
+     "name": "ResizeObserver",
+     "covered": true
+    },
+    {
+     "name": "navigator.clipboard",
+     "covered": true
+    },
+    {
+     "name": "BroadcastChannel",
+     "covered": false
+    },
+    {
+     "name": "OffscreenCanvas",
+     "covered": false
+    },
+    {
+     "name": "CompressionStream",
+     "covered": false
+    },
+    {
+     "name": "scroll cu opțiuni",
+     "covered": true
+    },
+    {
+     "name": "canvas.toBlob",
+     "covered": true
+    }
+   ],
+   "cssBeyondFloor": [
+    ":focus-visible",
+    "inset",
+    "gap (flex)",
+    "clamp()/min()/max()",
+    "backdrop-filter",
+    "accent-color",
+    "prefers-color-scheme",
+    "individual transform props",
+    "scroll-behavior"
+   ],
+   "smoke": {
+    "status": "ok",
+    "newErrors": 0,
+    "nativeErrors": 0,
+    "legacyErrors": 0
+   }
+  },
+  "VATRA": {
+   "file": "index.html",
+   "status": "warn",
+   "kit": "1.8.0",
+   "compatLayer": true,
+   "syntaxErrors": [],
+   "postFloor": {},
+   "apiBeyondFloor": [
+    {
+     "name": "requestIdleCallback",
+     "covered": true
+    },
+    {
+     "name": "Blob.arrayBuffer/text",
+     "covered": true
+    },
+    {
+     "name": "ResizeObserver",
+     "covered": true
+    },
+    {
+     "name": "navigator.clipboard",
+     "covered": true
+    },
+    {
+     "name": "BroadcastChannel",
+     "covered": false
+    },
+    {
+     "name": "CompressionStream",
+     "covered": false
+    },
+    {
+     "name": "navigator.share",
+     "covered": false
+    },
+    {
+     "name": "String.padStart/padEnd",
+     "covered": true
+    },
+    {
+     "name": "scroll cu opțiuni",
+     "covered": true
+    }
+   ],
+   "cssBeyondFloor": [
+    ":focus-visible",
+    "inset",
+    "gap (flex)",
+    "clamp()/min()/max()",
+    "accent-color",
+    "prefers-color-scheme",
+    "position: sticky",
+    "individual transform props",
+    "scroll-behavior"
+   ],
+   "smoke": {
+    "status": "ok",
+    "newErrors": 0,
+    "nativeErrors": 0,
+    "legacyErrors": 0
+   }
+  },
+  "VERIGA": {
+   "file": "index.html",
+   "status": "warn",
+   "kit": "1.8.0",
+   "compatLayer": true,
+   "syntaxErrors": [],
+   "postFloor": {},
+   "apiBeyondFloor": [
+    {
+     "name": "ResizeObserver",
+     "covered": true
+    },
+    {
+     "name": "navigator.clipboard",
+     "covered": true
+    },
+    {
+     "name": "roundRect",
+     "covered": true
+    },
+    {
+     "name": "String.padStart/padEnd",
+     "covered": true
+    }
+   ],
+   "cssBeyondFloor": [
+    ":focus-visible",
+    "inset",
+    "aspect-ratio",
+    "gap (flex)",
+    "clamp()/min()/max()",
+    "color-mix()",
+    "backdrop-filter",
+    "text-wrap",
+    "prefers-color-scheme",
+    "position: sticky",
+    "logical props",
+    "scroll-behavior"
+   ],
+   "smoke": {
+    "status": "warn",
+    "newErrors": 0,
+    "nativeErrors": 2,
+    "legacyErrors": 2
+   },
+   "exception": {
+    "manual": [
+     "regex-d-flag"
+    ],
+    "because": "m.indices au fallback determinist (blocul fff:idx din web/veriga.html), comparat cu rezultatul nativ pe >240 000 de potriviri în web/tests/indices.test.js"
+   }
+  },
+  "VERIGA:web/veriga.html": {
+   "file": "web/veriga.html",
+   "status": "warn",
+   "kit": null,
+   "compatLayer": true,
+   "syntaxErrors": [],
+   "postFloor": {},
+   "apiBeyondFloor": [
+    {
+     "name": "Array.flat/flatMap",
+     "covered": true
+    },
+    {
+     "name": "Promise.finally",
+     "covered": true
+    },
+    {
+     "name": "Blob.arrayBuffer/text",
+     "covered": true
+    },
+    {
+     "name": "AbortController",
+     "covered": true
+    },
+    {
+     "name": "navigator.clipboard",
+     "covered": true
+    },
+    {
+     "name": "showOpenFilePicker/FS Access",
+     "covered": false
+    },
+    {
+     "name": "String.matchAll",
+     "covered": true
+    },
+    {
+     "name": "scroll cu opțiuni",
+     "covered": true
+    }
+   ],
+   "cssBeyondFloor": [
+    ":focus-visible",
+    "gap (flex)",
+    "clamp()/min()/max()",
+    "prefers-color-scheme",
+    "position: sticky",
+    "scroll-behavior"
+   ],
+   "smoke": {
+    "status": "ok",
+    "newErrors": 0,
+    "nativeErrors": 0,
+    "legacyErrors": 0
+   },
+   "exception": {
+    "manual": [
+     "regex-d-flag"
+    ],
+    "because": "m.indices au fallback determinist (blocul fff:idx din web/veriga.html), comparat cu rezultatul nativ pe >240 000 de potriviri în web/tests/indices.test.js"
+   }
+  },
+  "VERIGA:app/index.html": {
+   "file": "app/index.html",
+   "status": "warn",
+   "kit": null,
+   "compatLayer": true,
+   "syntaxErrors": [],
+   "postFloor": {},
+   "apiBeyondFloor": [
+    {
+     "name": "Array.flat/flatMap",
+     "covered": true
+    },
+    {
+     "name": "Promise.finally",
+     "covered": true
+    },
+    {
+     "name": "Blob.arrayBuffer/text",
+     "covered": true
+    },
+    {
+     "name": "AbortController",
+     "covered": true
+    },
+    {
+     "name": "navigator.clipboard",
+     "covered": true
+    },
+    {
+     "name": "showOpenFilePicker/FS Access",
+     "covered": false
+    },
+    {
+     "name": "String.matchAll",
+     "covered": true
+    },
+    {
+     "name": "scroll cu opțiuni",
+     "covered": true
+    }
+   ],
+   "cssBeyondFloor": [
+    ":focus-visible",
+    "gap (flex)",
+    "clamp()/min()/max()",
+    "prefers-color-scheme",
+    "position: sticky",
+    "scroll-behavior"
+   ],
+   "smoke": {
+    "status": "ok",
+    "newErrors": 0,
+    "nativeErrors": 0,
+    "legacyErrors": 0
+   },
+   "exception": {
+    "manual": [
+     "regex-d-flag"
+    ],
+    "because": "m.indices au fallback determinist (blocul fff:idx din web/veriga.html), comparat cu rezultatul nativ pe >240 000 de potriviri în web/tests/indices.test.js"
+   }
+  },
+  "VERIGA:packaging/wordpress/veriga-link-checker/assets/veriga.html": {
+   "file": "packaging/wordpress/veriga-link-checker/assets/veriga.html",
+   "status": "warn",
+   "kit": null,
+   "compatLayer": true,
+   "syntaxErrors": [],
+   "postFloor": {},
+   "apiBeyondFloor": [
+    {
+     "name": "Array.flat/flatMap",
+     "covered": true
+    },
+    {
+     "name": "Promise.finally",
+     "covered": true
+    },
+    {
+     "name": "Blob.arrayBuffer/text",
+     "covered": true
+    },
+    {
+     "name": "AbortController",
+     "covered": true
+    },
+    {
+     "name": "navigator.clipboard",
+     "covered": true
+    },
+    {
+     "name": "showOpenFilePicker/FS Access",
+     "covered": false
+    },
+    {
+     "name": "String.matchAll",
+     "covered": true
+    },
+    {
+     "name": "scroll cu opțiuni",
+     "covered": true
+    }
+   ],
+   "cssBeyondFloor": [
+    ":focus-visible",
+    "gap (flex)",
+    "clamp()/min()/max()",
+    "prefers-color-scheme",
+    "position: sticky",
+    "scroll-behavior"
+   ],
+   "smoke": {
+    "status": "ok",
+    "newErrors": 0,
+    "nativeErrors": 0,
+    "legacyErrors": 0
+   },
+   "exception": {
+    "manual": [
+     "regex-d-flag"
+    ],
+    "because": "m.indices au fallback determinist (blocul fff:idx din web/veriga.html), comparat cu rezultatul nativ pe >240 000 de potriviri în web/tests/indices.test.js"
+   }
+  },
+  "VITALIS": {
+   "file": "index.html",
+   "status": "warn",
+   "kit": "1.8.0",
+   "compatLayer": true,
+   "syntaxErrors": [],
+   "postFloor": {},
+   "apiBeyondFloor": [
+    {
+     "name": "Array.flat/flatMap",
+     "covered": true
+    },
+    {
+     "name": "requestIdleCallback",
+     "covered": true
+    },
+    {
+     "name": "ResizeObserver",
+     "covered": true
+    },
+    {
+     "name": "navigator.clipboard",
+     "covered": true
+    },
+    {
+     "name": "String.padStart/padEnd",
+     "covered": true
+    },
+    {
+     "name": "scroll cu opțiuni",
+     "covered": true
+    }
+   ],
+   "cssBeyondFloor": [
+    ":focus-visible",
+    "gap (flex)",
+    "dvh/svh/lvh",
+    "clamp()/min()/max()",
+    "color-mix()",
+    "accent-color",
+    "prefers-color-scheme",
+    "position: sticky",
+    "individual transform props",
+    "scroll-behavior"
+   ],
+   "smoke": {
+    "status": "ok",
+    "newErrors": 0,
+    "nativeErrors": 0,
+    "legacyErrors": 0
+   }
+  },
+  "VNTV": {
+   "file": "index.html",
+   "status": "warn",
+   "kit": "1.8.0",
+   "compatLayer": true,
+   "syntaxErrors": [],
+   "postFloor": {},
+   "apiBeyondFloor": [
+    {
+     "name": "Array.flat/flatMap",
+     "covered": true
+    },
+    {
+     "name": "Promise.finally",
+     "covered": true
+    },
+    {
+     "name": "requestIdleCallback",
+     "covered": true
+    },
+    {
+     "name": "Blob.arrayBuffer/text",
+     "covered": true
+    },
+    {
+     "name": "ResizeObserver",
+     "covered": true
+    },
+    {
+     "name": "navigator.clipboard",
+     "covered": true
+    },
+    {
+     "name": "navigator.share",
+     "covered": false
+    },
+    {
+     "name": "String.padStart/padEnd",
+     "covered": true
+    },
+    {
+     "name": "scroll cu opțiuni",
+     "covered": true
+    }
+   ],
+   "cssBeyondFloor": [
+    ":focus-visible",
+    "inset",
+    "aspect-ratio",
+    "gap (flex)",
+    "dvh/svh/lvh",
+    "clamp()/min()/max()",
+    "backdrop-filter",
+    "prefers-color-scheme",
+    "individual transform props",
+    "logical props",
+    "scroll-behavior"
+   ],
+   "smoke": {
+    "status": "warn",
+    "newErrors": 0,
+    "nativeErrors": 2,
+    "legacyErrors": 2
+   }
+  },
+  "VNTV:dist/vntv.html": {
+   "file": "dist/vntv.html",
+   "status": "warn",
+   "kit": "1.8.0",
+   "compatLayer": true,
+   "syntaxErrors": [],
+   "postFloor": {},
+   "apiBeyondFloor": [
+    {
+     "name": "Array.flat/flatMap",
+     "covered": true
+    },
+    {
+     "name": "Promise.finally",
+     "covered": true
+    },
+    {
+     "name": "requestIdleCallback",
+     "covered": true
+    },
+    {
+     "name": "Blob.arrayBuffer/text",
+     "covered": true
+    },
+    {
+     "name": "ResizeObserver",
+     "covered": true
+    },
+    {
+     "name": "navigator.clipboard",
+     "covered": true
+    },
+    {
+     "name": "navigator.share",
+     "covered": false
+    },
+    {
+     "name": "String.padStart/padEnd",
+     "covered": true
+    },
+    {
+     "name": "scroll cu opțiuni",
+     "covered": true
+    }
+   ],
+   "cssBeyondFloor": [
+    ":focus-visible",
+    "inset",
+    "aspect-ratio",
+    "gap (flex)",
+    "dvh/svh/lvh",
+    "clamp()/min()/max()",
+    "backdrop-filter",
+    "prefers-color-scheme",
+    "individual transform props",
+    "logical props",
+    "scroll-behavior"
+   ],
+   "smoke": {
+    "status": "ok",
+    "newErrors": 0,
+    "nativeErrors": 0,
+    "legacyErrors": 0
+   }
+  },
+  "VNTV:deploy/site/index.html": {
+   "file": "deploy/site/index.html",
+   "status": "warn",
+   "kit": "1.8.0",
+   "compatLayer": true,
+   "syntaxErrors": [],
+   "postFloor": {},
+   "apiBeyondFloor": [
+    {
+     "name": "Array.flat/flatMap",
+     "covered": true
+    },
+    {
+     "name": "Promise.finally",
+     "covered": true
+    },
+    {
+     "name": "requestIdleCallback",
+     "covered": true
+    },
+    {
+     "name": "Blob.arrayBuffer/text",
+     "covered": true
+    },
+    {
+     "name": "ResizeObserver",
+     "covered": true
+    },
+    {
+     "name": "navigator.clipboard",
+     "covered": true
+    },
+    {
+     "name": "navigator.share",
+     "covered": false
+    },
+    {
+     "name": "String.padStart/padEnd",
+     "covered": true
+    },
+    {
+     "name": "scroll cu opțiuni",
+     "covered": true
+    }
+   ],
+   "cssBeyondFloor": [
+    ":focus-visible",
+    "inset",
+    "aspect-ratio",
+    "gap (flex)",
+    "dvh/svh/lvh",
+    "clamp()/min()/max()",
+    "backdrop-filter",
+    "prefers-color-scheme",
+    "individual transform props",
+    "logical props",
+    "scroll-behavior"
+   ],
+   "smoke": {
+    "status": "warn",
+    "newErrors": 0,
+    "nativeErrors": 2,
+    "legacyErrors": 2
+   }
+  },
+  "ValeaPlopului1972": {
+   "file": "index.html",
+   "status": "warn",
+   "kit": "1.8.0",
+   "compatLayer": true,
+   "syntaxErrors": [],
+   "postFloor": {},
+   "apiBeyondFloor": [
+    {
+     "name": "requestIdleCallback",
+     "covered": true
+    },
+    {
+     "name": "ResizeObserver",
+     "covered": true
+    },
+    {
+     "name": "OffscreenCanvas",
+     "covered": false
+    },
+    {
+     "name": "navigator.share",
+     "covered": false
+    },
+    {
+     "name": "String.padStart/padEnd",
+     "covered": true
+    }
+   ],
+   "cssBeyondFloor": [
+    ":focus-visible",
+    "gap (flex)",
+    "clamp()/min()/max()",
+    "accent-color",
+    "prefers-color-scheme",
+    "position: sticky",
+    "individual transform props",
+    "scroll-behavior"
+   ],
+   "smoke": {
+    "status": "ok",
+    "newErrors": 0,
+    "nativeErrors": 0,
+    "legacyErrors": 0
+   }
+  },
+  "ValeaPlopului1972:ValeaPlopului_Interior3D.html": {
+   "file": "ValeaPlopului_Interior3D.html",
+   "status": "warn",
+   "kit": null,
+   "compatLayer": false,
+   "syntaxErrors": [],
+   "postFloor": {},
+   "apiBeyondFloor": [
+    {
+     "name": "OffscreenCanvas",
+     "covered": false
+    }
+   ],
+   "cssBeyondFloor": [
+    ":focus-visible",
+    "inset",
+    "gap (flex)",
+    "clamp()/min()/max()",
+    "accent-color"
+   ],
+   "smoke": {
+    "status": "ok",
+    "newErrors": 0,
+    "nativeErrors": 0,
+    "legacyErrors": 0
+   }
+  },
+  "ValeaPlopului1972:ValeaPlopului_Model3D_Tehnic.html": {
+   "file": "ValeaPlopului_Model3D_Tehnic.html",
+   "status": "warn",
+   "kit": null,
+   "compatLayer": false,
+   "syntaxErrors": [],
+   "postFloor": {},
+   "apiBeyondFloor": [
+    {
+     "name": "OffscreenCanvas",
+     "covered": false
+    }
+   ],
+   "cssBeyondFloor": [
+    ":focus-visible",
+    "inset",
+    "gap (flex)",
+    "clamp()/min()/max()",
+    "backdrop-filter",
+    "accent-color"
+   ],
+   "smoke": {
+    "status": "ok",
+    "newErrors": 0,
+    "nativeErrors": 0,
+    "legacyErrors": 0
+   }
+  },
+  "VaultCrypt": {
+   "file": "index.html",
+   "status": "warn",
+   "kit": "1.8.0",
+   "compatLayer": true,
+   "syntaxErrors": [],
+   "postFloor": {},
+   "apiBeyondFloor": [
+    {
+     "name": "requestIdleCallback",
+     "covered": true
+    },
+    {
+     "name": "Blob.arrayBuffer/text",
+     "covered": true
+    },
+    {
+     "name": "BigInt",
+     "covered": false
+    },
+    {
+     "name": "ResizeObserver",
+     "covered": true
+    },
+    {
+     "name": "navigator.clipboard",
+     "covered": true
+    },
+    {
+     "name": "BroadcastChannel",
+     "covered": false
+    },
+    {
+     "name": "CompressionStream",
+     "covered": false
+    },
+    {
+     "name": "String.padStart/padEnd",
+     "covered": true
+    },
+    {
+     "name": "scroll cu opțiuni",
+     "covered": true
+    }
+   ],
+   "cssBeyondFloor": [
+    ":focus-visible",
+    "inset",
+    "gap (flex)",
+    "clamp()/min()/max()",
+    "backdrop-filter",
+    "accent-color",
+    "prefers-color-scheme",
+    "individual transform props",
+    "scroll-behavior"
+   ],
+   "smoke": {
+    "status": "ok",
+    "newErrors": 0,
+    "nativeErrors": 0,
+    "legacyErrors": 0
+   }
+  },
+  "VietAR": {
+   "file": "index.html",
+   "status": "warn",
+   "kit": "1.8.0",
+   "compatLayer": true,
+   "syntaxErrors": [],
+   "postFloor": {},
+   "apiBeyondFloor": [
+    {
+     "name": "requestIdleCallback",
+     "covered": true
+    },
+    {
+     "name": "Blob.arrayBuffer/text",
+     "covered": true
+    },
+    {
+     "name": "AbortController",
+     "covered": true
+    },
+    {
+     "name": "ResizeObserver",
+     "covered": true
+    }
+   ],
+   "cssBeyondFloor": [
+    ":focus-visible",
+    "inset",
+    "aspect-ratio",
+    "gap (flex)",
+    "clamp()/min()/max()",
+    "backdrop-filter",
+    "prefers-color-scheme",
+    "individual transform props",
+    "logical props",
+    "scroll-behavior"
+   ],
+   "smoke": {
+    "status": "ok",
+    "newErrors": 0,
+    "nativeErrors": 0,
+    "legacyErrors": 0
+   }
+  },
+  "Vitrina": {
+   "file": "index.html",
+   "status": "warn",
+   "kit": "1.8.0",
+   "compatLayer": true,
+   "syntaxErrors": [],
+   "postFloor": {},
+   "apiBeyondFloor": [
+    {
+     "name": "requestIdleCallback",
+     "covered": true
+    },
+    {
+     "name": "ResizeObserver",
+     "covered": true
+    },
+    {
+     "name": "navigator.clipboard",
+     "covered": true
+    },
+    {
+     "name": "scroll cu opțiuni",
+     "covered": true
+    }
+   ],
+   "cssBeyondFloor": [
+    ":focus-visible",
+    "inset",
+    "gap (flex)",
+    "clamp()/min()/max()",
+    "prefers-color-scheme",
+    "individual transform props"
+   ],
+   "smoke": {
+    "status": "ok",
+    "newErrors": 0,
+    "nativeErrors": 0,
+    "legacyErrors": 0
+   }
+  },
+  "Voiajor": {
+   "file": "index.html",
+   "status": "warn",
+   "kit": "1.8.0",
+   "compatLayer": true,
+   "syntaxErrors": [],
+   "postFloor": {},
+   "apiBeyondFloor": [
+    {
+     "name": "requestIdleCallback",
+     "covered": true
+    },
+    {
+     "name": "ResizeObserver",
+     "covered": true
+    }
+   ],
+   "cssBeyondFloor": [
+    "inset",
+    "gap (flex)",
+    "dvh/svh/lvh",
+    "clamp()/min()/max()",
+    "backdrop-filter",
+    "accent-color",
+    "prefers-color-scheme",
+    "individual transform props",
+    "scroll-behavior"
+   ],
+   "smoke": {
+    "status": "ok",
+    "newErrors": 0,
+    "nativeErrors": 0,
+    "legacyErrors": 0
+   }
+  },
+  "VoiceAtelier": {
+   "file": "index.html",
+   "status": "warn",
+   "kit": "1.8.0",
+   "compatLayer": true,
+   "syntaxErrors": [],
+   "postFloor": {},
+   "apiBeyondFloor": [
+    {
+     "name": "requestIdleCallback",
+     "covered": true
+    },
+    {
+     "name": "Blob.arrayBuffer/text",
+     "covered": true
+    },
+    {
+     "name": "AbortController",
+     "covered": true
+    },
+    {
+     "name": "ResizeObserver",
+     "covered": true
+    },
+    {
+     "name": "navigator.clipboard",
+     "covered": true
+    },
+    {
+     "name": "Intl.RelativeTimeFormat/ListFormat/Segmenter",
+     "covered": false
+    },
+    {
+     "name": "String.padStart/padEnd",
+     "covered": true
+    },
+    {
+     "name": "scroll cu opțiuni",
+     "covered": true
+    }
+   ],
+   "cssBeyondFloor": [
+    ":focus-visible",
+    "inset",
+    "gap (flex)",
+    "clamp()/min()/max()",
+    "prefers-color-scheme",
+    "position: sticky",
+    "individual transform props",
+    "logical props",
+    "scroll-behavior"
+   ],
+   "smoke": {
+    "status": "ok",
+    "newErrors": 0,
+    "nativeErrors": 0,
+    "legacyErrors": 0
+   }
+  },
+  "X-fara-cont": {
+   "file": "index.html",
+   "status": "warn",
+   "kit": "1.8.0",
+   "compatLayer": true,
+   "syntaxErrors": [],
+   "postFloor": {},
+   "apiBeyondFloor": [
+    {
+     "name": "requestIdleCallback",
+     "covered": true
+    },
+    {
+     "name": "BigInt",
+     "covered": false
+    },
+    {
+     "name": "AbortController",
+     "covered": true
+    },
+    {
+     "name": "ResizeObserver",
+     "covered": true
+    },
+    {
+     "name": "navigator.clipboard",
+     "covered": true
+    }
+   ],
+   "cssBeyondFloor": [
+    ":focus-visible",
+    "gap (flex)",
+    "clamp()/min()/max()",
+    "prefers-color-scheme",
+    "individual transform props"
+   ],
+   "smoke": {
+    "status": "ok",
+    "newErrors": 0,
+    "nativeErrors": 0,
+    "legacyErrors": 0
+   }
+  },
+  "Zaruri-fara-frontiere": {
+   "file": "index.html",
+   "status": "warn",
+   "kit": "1.8.0",
+   "compatLayer": true,
+   "syntaxErrors": [],
+   "postFloor": {},
+   "apiBeyondFloor": [
+    {
+     "name": "requestIdleCallback",
+     "covered": true
+    },
+    {
+     "name": "ResizeObserver",
+     "covered": true
+    },
+    {
+     "name": "navigator.clipboard",
+     "covered": true
+    }
+   ],
+   "cssBeyondFloor": [
+    ":focus-visible",
+    "gap (flex)",
+    "clamp()/min()/max()",
+    "prefers-color-scheme",
+    "individual transform props",
+    "scroll-behavior"
+   ],
+   "smoke": {
+    "status": "ok",
+    "newErrors": 0,
+    "nativeErrors": 0,
+    "legacyErrors": 0
+   }
+  },
+  "Zicala": {
+   "file": "index.html",
+   "status": "warn",
+   "kit": "1.8.0",
+   "compatLayer": true,
+   "syntaxErrors": [],
+   "postFloor": {},
+   "apiBeyondFloor": [
+    {
+     "name": "requestIdleCallback",
+     "covered": true
+    },
+    {
+     "name": "ResizeObserver",
+     "covered": true
+    },
+    {
+     "name": "navigator.clipboard",
+     "covered": true
+    }
+   ],
+   "cssBeyondFloor": [
+    ":focus-visible",
+    "gap (flex)",
+    "clamp()/min()/max()",
+    "prefers-color-scheme",
+    "individual transform props",
+    "scroll-behavior"
+   ],
+   "smoke": {
+    "status": "ok",
+    "newErrors": 0,
+    "nativeErrors": 0,
+    "legacyErrors": 0
+   }
+  },
+  "atelier-verificare": {
+   "file": "index.html",
+   "status": "warn",
+   "kit": "1.8.0",
+   "compatLayer": true,
+   "syntaxErrors": [],
+   "postFloor": {},
+   "apiBeyondFloor": [
+    {
+     "name": "requestIdleCallback",
+     "covered": true
+    },
+    {
+     "name": "Blob.arrayBuffer/text",
+     "covered": true
+    },
+    {
+     "name": "AbortController",
+     "covered": true
+    },
+    {
+     "name": "ResizeObserver",
+     "covered": true
+    },
+    {
+     "name": "IntersectionObserver",
+     "covered": true
+    },
+    {
+     "name": "navigator.clipboard",
+     "covered": true
+    },
+    {
+     "name": "String.padStart/padEnd",
+     "covered": true
+    },
+    {
+     "name": "canvas.toBlob",
+     "covered": true
+    }
+   ],
+   "cssBeyondFloor": [
+    ":focus-visible",
+    "inset",
+    "aspect-ratio",
+    "gap (flex)",
+    "clamp()/min()/max()",
+    "color-mix()",
+    "backdrop-filter",
+    "prefers-color-scheme",
+    "position: sticky",
+    "scroll-behavior"
+   ],
+   "smoke": {
+    "status": "ok",
+    "newErrors": 0,
+    "nativeErrors": 0,
+    "legacyErrors": 0
+   }
+  },
+  "balanta": {
+   "file": "index.html",
+   "status": "warn",
+   "kit": "1.8.0",
+   "compatLayer": true,
+   "syntaxErrors": [],
+   "postFloor": {},
+   "apiBeyondFloor": [
+    {
+     "name": "requestIdleCallback",
+     "covered": true
+    },
+    {
+     "name": "ResizeObserver",
+     "covered": true
+    },
+    {
+     "name": "IntersectionObserver",
+     "covered": true
+    },
+    {
+     "name": "navigator.clipboard",
+     "covered": true
+    },
+    {
+     "name": "String.padStart/padEnd",
+     "covered": true
+    }
+   ],
+   "cssBeyondFloor": [
+    ":focus-visible",
+    "inset",
+    "aspect-ratio",
+    "gap (flex)",
+    "clamp()/min()/max()",
+    "color-mix()",
+    "backdrop-filter",
+    "prefers-color-scheme",
+    "position: sticky",
+    "scroll-behavior"
+   ],
+   "smoke": {
+    "status": "ok",
+    "newErrors": 0,
+    "nativeErrors": 0,
+    "legacyErrors": 0
+   }
+  },
+  "calendarium": {
+   "file": "index.html",
+   "status": "warn",
+   "kit": "1.8.0",
+   "compatLayer": true,
+   "syntaxErrors": [],
+   "postFloor": {},
+   "apiBeyondFloor": [
+    {
+     "name": "requestIdleCallback",
+     "covered": true
+    },
+    {
+     "name": "ResizeObserver",
+     "covered": true
+    },
+    {
+     "name": "IntersectionObserver",
+     "covered": true
+    },
+    {
+     "name": "navigator.clipboard",
+     "covered": true
+    },
+    {
+     "name": "String.padStart/padEnd",
+     "covered": true
+    }
+   ],
+   "cssBeyondFloor": [
+    ":focus-visible",
+    "inset",
+    "aspect-ratio",
+    "gap (flex)",
+    "clamp()/min()/max()",
+    "color-mix()",
+    "backdrop-filter",
+    "accent-color",
+    "prefers-color-scheme",
+    "position: sticky",
+    "scroll-behavior"
+   ],
+   "smoke": {
+    "status": "ok",
+    "newErrors": 0,
+    "nativeErrors": 0,
+    "legacyErrors": 0
+   }
+  },
+  "chiuta.github.io:index.html": {
+   "file": "index.html",
+   "status": "warn",
+   "kit": null,
+   "compatLayer": true,
+   "syntaxErrors": [],
+   "postFloor": {},
+   "apiBeyondFloor": [
+    {
+     "name": "requestIdleCallback",
+     "covered": true
+    },
+    {
+     "name": "Blob.arrayBuffer/text",
+     "covered": true
+    },
+    {
+     "name": "ResizeObserver",
+     "covered": true
+    },
+    {
+     "name": "IntersectionObserver",
+     "covered": true
+    },
+    {
+     "name": "navigator.clipboard",
+     "covered": true
+    },
+    {
+     "name": "CompressionStream",
+     "covered": false
+    },
+    {
+     "name": "String.padStart/padEnd",
+     "covered": true
+    },
+    {
+     "name": "scroll cu opțiuni",
+     "covered": true
+    },
+    {
+     "name": "<dialog>.showModal",
+     "covered": true
+    }
+   ],
+   "cssBeyondFloor": [
+    ":is()/:where()",
+    ":has()",
+    ":focus-visible",
+    "inset",
+    "aspect-ratio",
+    "gap (flex)",
+    "dvh/svh/lvh",
+    "clamp()/min()/max()",
+    "color-mix()",
+    "backdrop-filter",
+    "position: sticky",
+    "individual transform props",
+    "scroll-behavior"
+   ],
+   "smoke": {
+    "status": "ok",
+    "newErrors": 0,
+    "nativeErrors": 0,
+    "legacyErrors": 0
+   }
+  },
+  "chiuta.github.io:transparenta.html": {
+   "file": "transparenta.html",
+   "status": "warn",
+   "kit": null,
+   "compatLayer": true,
+   "syntaxErrors": [],
+   "postFloor": {},
+   "apiBeyondFloor": [
+    {
+     "name": "requestIdleCallback",
+     "covered": true
+    },
+    {
+     "name": "ResizeObserver",
+     "covered": true
+    }
+   ],
+   "cssBeyondFloor": [
+    ":focus-visible",
+    "gap (flex)",
+    "clamp()/min()/max()",
+    "prefers-color-scheme"
+   ],
+   "smoke": {
+    "status": "ok",
+    "newErrors": 0,
+    "nativeErrors": 0,
+    "legacyErrors": 0
+   }
+  },
+  "colibri-companion": {
+   "file": "index.html",
+   "status": "warn",
+   "kit": null,
+   "compatLayer": true,
+   "syntaxErrors": [],
+   "postFloor": {},
+   "apiBeyondFloor": [
+    {
+     "name": "navigator.clipboard",
+     "covered": true
+    },
+    {
+     "name": "<dialog>.showModal",
+     "covered": true
+    }
+   ],
+   "cssBeyondFloor": [
+    ":focus-visible",
+    "inset",
+    "aspect-ratio",
+    "gap (flex)",
+    "clamp()/min()/max()",
+    "backdrop-filter",
+    "position: sticky",
+    "logical props",
+    "scroll-behavior"
+   ],
+   "smoke": {
+    "status": "warn",
+    "newErrors": 0,
+    "nativeErrors": 4,
+    "legacyErrors": 4
+   }
+  },
+  "ecou-spectral-rs": {
+   "file": "index.html",
+   "status": "warn",
+   "kit": "1.8.0",
+   "compatLayer": true,
+   "syntaxErrors": [],
+   "postFloor": {},
+   "apiBeyondFloor": [
+    {
+     "name": "IntersectionObserver",
+     "covered": true
+    },
+    {
+     "name": "navigator.clipboard",
+     "covered": true
+    },
+    {
+     "name": "String.padStart/padEnd",
+     "covered": true
+    }
+   ],
+   "cssBeyondFloor": [
+    ":focus-visible",
+    "inset",
+    "aspect-ratio",
+    "gap (flex)",
+    "clamp()/min()/max()",
+    "color-mix()",
+    "backdrop-filter",
+    "prefers-color-scheme",
+    "position: sticky",
+    "scroll-behavior"
+   ],
+   "smoke": {
+    "status": "ok",
+    "newErrors": 0,
+    "nativeErrors": 0,
+    "legacyErrors": 0
+   }
+  },
+  "generator-frecvente": {
+   "file": "index.html",
+   "status": "warn",
+   "kit": "1.8.0",
+   "compatLayer": true,
+   "syntaxErrors": [],
+   "postFloor": {},
+   "apiBeyondFloor": [
+    {
+     "name": "requestIdleCallback",
+     "covered": true
+    },
+    {
+     "name": "Blob.arrayBuffer/text",
+     "covered": true
+    },
+    {
+     "name": "ResizeObserver",
+     "covered": true
+    },
+    {
+     "name": "IntersectionObserver",
+     "covered": true
+    },
+    {
+     "name": "navigator.clipboard",
+     "covered": true
+    },
+    {
+     "name": "BroadcastChannel",
+     "covered": false
+    },
+    {
+     "name": "CompressionStream",
+     "covered": false
+    },
+    {
+     "name": "navigator.share",
+     "covered": false
+    },
+    {
+     "name": "String.padStart/padEnd",
+     "covered": true
+    },
+    {
+     "name": "scroll cu opțiuni",
+     "covered": true
+    },
+    {
+     "name": "canvas.toBlob",
+     "covered": true
+    },
+    {
+     "name": "<dialog>.showModal",
+     "covered": true
+    }
+   ],
+   "cssBeyondFloor": [
+    ":focus-visible",
+    "inset",
+    "aspect-ratio",
+    "gap (flex)",
+    "clamp()/min()/max()",
+    "backdrop-filter",
+    "prefers-color-scheme",
+    "individual transform props",
+    "scroll-behavior"
+   ],
+   "smoke": {
+    "status": "ok",
+    "newErrors": 0,
+    "nativeErrors": 0,
+    "legacyErrors": 0
+   }
+  },
+  "glosar": {
+   "file": "index.html",
+   "status": "warn",
+   "kit": "1.8.0",
+   "compatLayer": true,
+   "syntaxErrors": [],
+   "postFloor": {},
+   "apiBeyondFloor": [
+    {
+     "name": "requestIdleCallback",
+     "covered": true
+    },
+    {
+     "name": "ResizeObserver",
+     "covered": true
+    },
+    {
+     "name": "IntersectionObserver",
+     "covered": true
+    },
+    {
+     "name": "navigator.clipboard",
+     "covered": true
+    },
+    {
+     "name": "String.padStart/padEnd",
+     "covered": true
+    }
+   ],
+   "cssBeyondFloor": [
+    ":focus-visible",
+    "inset",
+    "aspect-ratio",
+    "gap (flex)",
+    "clamp()/min()/max()",
+    "color-mix()",
+    "backdrop-filter",
+    "prefers-color-scheme",
+    "position: sticky",
+    "scroll-behavior"
+   ],
+   "smoke": {
+    "status": "ok",
+    "newErrors": 0,
+    "nativeErrors": 0,
+    "legacyErrors": 0
+   }
+  },
+  "graiul": {
+   "file": "index.html",
+   "status": "warn",
+   "kit": "1.8.0",
+   "compatLayer": true,
+   "syntaxErrors": [],
+   "postFloor": {},
+   "apiBeyondFloor": [
+    {
+     "name": "requestIdleCallback",
+     "covered": true
+    },
+    {
+     "name": "ResizeObserver",
+     "covered": true
+    },
+    {
+     "name": "IntersectionObserver",
+     "covered": true
+    },
+    {
+     "name": "navigator.clipboard",
+     "covered": true
+    },
+    {
+     "name": "String.padStart/padEnd",
+     "covered": true
+    }
+   ],
+   "cssBeyondFloor": [
+    ":focus-visible",
+    "inset",
+    "aspect-ratio",
+    "gap (flex)",
+    "clamp()/min()/max()",
+    "color-mix()",
+    "backdrop-filter",
+    "prefers-color-scheme",
+    "position: sticky",
+    "scroll-behavior"
+   ],
+   "smoke": {
+    "status": "ok",
+    "newErrors": 0,
+    "nativeErrors": 0,
+    "legacyErrors": 0
+   }
+  },
+  "indicativ-international": {
+   "file": "index.html",
+   "status": "warn",
+   "kit": "1.8.0",
+   "compatLayer": true,
+   "syntaxErrors": [],
+   "postFloor": {},
+   "apiBeyondFloor": [
+    {
+     "name": "requestIdleCallback",
+     "covered": true
+    },
+    {
+     "name": "ResizeObserver",
+     "covered": true
+    },
+    {
+     "name": "IntersectionObserver",
+     "covered": true
+    },
+    {
+     "name": "navigator.clipboard",
+     "covered": true
+    },
+    {
+     "name": "String.padStart/padEnd",
+     "covered": true
+    }
+   ],
+   "cssBeyondFloor": [
+    ":focus-visible",
+    "inset",
+    "aspect-ratio",
+    "gap (flex)",
+    "clamp()/min()/max()",
+    "color-mix()",
+    "backdrop-filter",
+    "prefers-color-scheme",
+    "position: sticky",
+    "scroll-behavior"
+   ],
+   "smoke": {
+    "status": "ok",
+    "newErrors": 0,
+    "nativeErrors": 0,
+    "legacyErrors": 0
+   }
+  },
+  "orarium": {
+   "file": "index.html",
+   "status": "warn",
+   "kit": "1.8.0",
+   "compatLayer": true,
+   "syntaxErrors": [],
+   "postFloor": {},
+   "apiBeyondFloor": [
+    {
+     "name": "requestIdleCallback",
+     "covered": true
+    },
+    {
+     "name": "Blob.arrayBuffer/text",
+     "covered": true
+    },
+    {
+     "name": "ResizeObserver",
+     "covered": true
+    },
+    {
+     "name": "navigator.clipboard",
+     "covered": true
+    },
+    {
+     "name": "BroadcastChannel",
+     "covered": false
+    },
+    {
+     "name": "CompressionStream",
+     "covered": false
+    },
+    {
+     "name": "String.padStart/padEnd",
+     "covered": true
+    }
+   ],
+   "cssBeyondFloor": [
+    ":focus-visible",
+    "inset",
+    "gap (flex)",
+    "clamp()/min()/max()",
+    "backdrop-filter",
+    "accent-color",
+    "prefers-color-scheme",
+    "position: sticky",
+    "individual transform props"
+   ],
+   "smoke": {
+    "status": "ok",
+    "newErrors": 0,
+    "nativeErrors": 0,
+    "legacyErrors": 0
+   }
+  },
+  "osatura": {
+   "file": "index.html",
+   "status": "warn",
+   "kit": "1.8.0",
+   "compatLayer": true,
+   "syntaxErrors": [],
+   "postFloor": {},
+   "apiBeyondFloor": [],
+   "cssBeyondFloor": [
+    ":is()/:where()",
+    "inset",
+    "aspect-ratio",
+    "gap (flex)",
+    "clamp()/min()/max()",
+    "color-mix()",
+    "backdrop-filter",
+    "accent-color",
+    "prefers-color-scheme",
+    "individual transform props",
+    "scroll-behavior"
+   ],
+   "smoke": {
+    "status": "ok",
+    "newErrors": 0,
+    "nativeErrors": 0,
+    "legacyErrors": 0
+   }
+  },
+  "osatura:osatura-cli/src/studio.html": {
+   "file": "osatura-cli/src/studio.html",
+   "status": "warn",
+   "kit": null,
+   "compatLayer": true,
+   "syntaxErrors": [],
+   "postFloor": {},
+   "apiBeyondFloor": [
+    {
+     "name": "Promise.finally",
+     "covered": true
+    },
+    {
+     "name": "Blob.arrayBuffer/text",
+     "covered": true
+    },
+    {
+     "name": "ResizeObserver",
+     "covered": true
+    },
+    {
+     "name": "CompressionStream",
+     "covered": false
+    },
+    {
+     "name": "showOpenFilePicker/FS Access",
+     "covered": false
+    },
+    {
+     "name": "scroll cu opțiuni",
+     "covered": true
+    }
+   ],
+   "cssBeyondFloor": [
+    "inset",
+    "gap (flex)",
+    "clamp()/min()/max()",
+    "color-mix()"
+   ],
+   "smoke": {
+    "status": "warn",
+    "newErrors": 0,
+    "nativeErrors": 2,
+    "legacyErrors": 2
+   }
+  },
+  "osatura:site/index.template.html": {
+   "file": "site/index.template.html",
+   "status": "warn",
+   "kit": null,
+   "compatLayer": true,
+   "syntaxErrors": [],
+   "postFloor": {},
+   "apiBeyondFloor": [
+    {
+     "name": "replaceChildren",
+     "covered": true
+    },
+    {
+     "name": "Blob.arrayBuffer/text",
+     "covered": true
+    },
+    {
+     "name": "IntersectionObserver",
+     "covered": true
+    },
+    {
+     "name": "navigator.clipboard",
+     "covered": true
+    },
+    {
+     "name": "CompressionStream",
+     "covered": false
+    },
+    {
+     "name": "String.padStart/padEnd",
+     "covered": true
+    },
+    {
+     "name": "String.matchAll",
+     "covered": true
+    },
+    {
+     "name": "scroll cu opțiuni",
+     "covered": true
+    }
+   ],
+   "cssBeyondFloor": [
+    ":is()/:where()",
+    "inset",
+    "aspect-ratio",
+    "gap (flex)",
+    "clamp()/min()/max()",
+    "color-mix()",
+    "backdrop-filter",
+    "accent-color",
+    "individual transform props",
+    "scroll-behavior"
+   ],
+   "smoke": {
+    "status": "warn",
+    "newErrors": 0,
+    "nativeErrors": 2,
+    "legacyErrors": 2
+   }
+  },
+  "proiector-fara-frontiere": {
+   "file": "index.html",
+   "status": "warn",
+   "kit": "1.8.0",
+   "compatLayer": true,
+   "syntaxErrors": [],
+   "postFloor": {},
+   "apiBeyondFloor": [
+    {
+     "name": "requestIdleCallback",
+     "covered": true
+    },
+    {
+     "name": "ResizeObserver",
+     "covered": true
+    },
+    {
+     "name": "IntersectionObserver",
+     "covered": true
+    },
+    {
+     "name": "navigator.clipboard",
+     "covered": true
+    },
+    {
+     "name": "String.padStart/padEnd",
+     "covered": true
+    }
+   ],
+   "cssBeyondFloor": [
+    ":focus-visible",
+    "inset",
+    "aspect-ratio",
+    "gap (flex)",
+    "clamp()/min()/max()",
+    "color-mix()",
+    "backdrop-filter",
+    "prefers-color-scheme",
+    "position: sticky",
+    "individual transform props",
+    "scroll-behavior"
+   ],
+   "smoke": {
+    "status": "ok",
+    "newErrors": 0,
+    "nativeErrors": 0,
+    "legacyErrors": 0
+   }
+  },
+  "regula": {
+   "file": "index.html",
+   "status": "warn",
+   "kit": "1.8.0",
+   "compatLayer": true,
+   "syntaxErrors": [],
+   "postFloor": {},
+   "apiBeyondFloor": [
+    {
+     "name": "requestIdleCallback",
+     "covered": true
+    },
+    {
+     "name": "ResizeObserver",
+     "covered": true
+    },
+    {
+     "name": "IntersectionObserver",
+     "covered": true
+    },
+    {
+     "name": "navigator.clipboard",
+     "covered": true
+    },
+    {
+     "name": "String.padStart/padEnd",
+     "covered": true
+    }
+   ],
+   "cssBeyondFloor": [
+    ":focus-visible",
+    "inset",
+    "aspect-ratio",
+    "gap (flex)",
+    "clamp()/min()/max()",
+    "color-mix()",
+    "backdrop-filter",
+    "prefers-color-scheme",
+    "position: sticky",
+    "scroll-behavior"
+   ],
+   "smoke": {
+    "status": "ok",
+    "newErrors": 0,
+    "nativeErrors": 0,
+    "legacyErrors": 0
+   }
+  },
+  "vietar-packs": {
+   "file": "index.html",
+   "status": "warn",
+   "kit": "1.8.0",
+   "compatLayer": true,
+   "syntaxErrors": [],
+   "postFloor": {},
+   "apiBeyondFloor": [
+    {
+     "name": "requestIdleCallback",
+     "covered": true
+    },
+    {
+     "name": "ResizeObserver",
+     "covered": true
+    },
+    {
+     "name": "IntersectionObserver",
+     "covered": true
+    },
+    {
+     "name": "navigator.clipboard",
+     "covered": true
+    },
+    {
+     "name": "String.padStart/padEnd",
+     "covered": true
+    }
+   ],
+   "cssBeyondFloor": [
+    ":focus-visible",
+    "inset",
+    "aspect-ratio",
+    "gap (flex)",
+    "clamp()/min()/max()",
+    "color-mix()",
+    "backdrop-filter",
+    "prefers-color-scheme",
+    "position: sticky",
+    "scroll-behavior"
+   ],
+   "smoke": {
+    "status": "ok",
+    "newErrors": 0,
+    "nativeErrors": 0,
+    "legacyErrors": 0
+   }
+  }
+ }
+}

@@ -3,6 +3,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import {execSync} from 'node:child_process';
 import {makeApp, launch, newPage, axe, check, summary, FIXTURE, HERE} from './_pw.mjs';
+import {KIT_VERSION, KIT_VERSION_RX} from './_ver.mjs';
 
 const browser = await launch();
 const app = makeApp(FIXTURE, {config: {egressNote: 'Nota demo de rețea.', selfModifying: true}});
@@ -23,7 +24,7 @@ check('stocare: chei + octeți', /demo-fff\.count\s+\d+ B/.test(txt) && txt.incl
 check('permisiuni: localStorage listat', txt.includes('localStorage'));
 check('fișier: SHA-256 declarat + dimensiune', txt.includes(await page.evaluate(() => document.documentElement.getAttribute('data-fff-hash'))) && /Dimensiune: [\d.]+ KB/.test(txt));
 check('selfModifying din fff.config.json → avertisment în dialog', txt.includes('își poate salva propria copie'));
-check('kit: versiune și module', txt.includes('fff-kit v1.6.0') && txt.includes('core, label, bundle'));
+check('kit: versiune și module', txt.includes('fff-kit v' + KIT_VERSION) && txt.includes('core, label, bundle'));
 await page.keyboard.press('Escape'); await page.waitForTimeout(150);
 check('Esc închide și elimină dialogul din DOM', await page.evaluate(() => document.querySelectorAll('dialog').length === 0));
 check('focusul revine pe #app-version', await page.evaluate(() => document.activeElement && document.activeElement.id === 'app-version'));

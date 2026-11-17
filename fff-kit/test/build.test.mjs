@@ -5,7 +5,8 @@ import {execFileSync, spawnSync, execSync} from 'node:child_process';
 import {fileURLToPath} from 'node:url';
 import {createHash} from 'node:crypto';
 import {tmpDir, FIXTURE, check, summary, launch, newPage} from './_pw.mjs';
-import {recomputeCspHashes, checkCspHashes} from '../lib/csp.mjs';
+import {recomputeCspHashes, checkCspHashes, inlineScripts, sandboxScripts} from '../lib/csp.mjs';
+import {KIT_VERSION, KIT_VERSION_RX} from './_ver.mjs';
 
 const HERE = path.dirname(fileURLToPath(import.meta.url));
 const BUILD = path.join(HERE, '..', 'build.mjs');
@@ -27,6 +28,21 @@ check('kitul e înaintea scriptului aplicației', h1.indexOf('id="fff-kit"') < h
 check('modulele în ordinea core, label, bundle', h1.indexOf('---- fff-kit/core') < h1.indexOf('---- fff-kit/label') && h1.indexOf('---- fff-kit/label') < h1.indexOf('---- fff-kit/bundle'));
 check('CSP: hash-uri valide, fără unsafe-inline la scripturi', checkCspHashes(h1).ok && !/script-src[^;]*unsafe-inline/.test(h1));
 check('check: ok', run(['check', d]).status === 0);
+
+console.log('blocuri sandbox inerte (iframe-uri srcdoc care moștenesc CSP-ul)');
+{
+  const body = '(function(){ /* widget */ })();';
+  const sb = '<script type="text/x-fff-sandbox" id="w-x">' + body + '</script>';
+  const hh = ORIG.replace('</body>', () => sb + '\n</body>');
+  const hb = "'sha256-" + createHash('sha256').update(body).digest('base64') + "'";
+  check('blocul sandbox e recunoscut, dar nu e script executabil', sandboxScripts(hh).length === 1 && inlineScripts(hh).length === inlineScripts(ORIG).length);
+  check('fără recalculare, blocul sandbox nu e acoperit de CSP', !checkCspHashes(hh).ok && checkCspHashes(hh).missing.includes(hb));
+  const r1 = recomputeCspHashes(hh);
+  check('recomputeCspHashes pune hash-ul blocului în script-src (și nimic mai larg)', r1.html.includes(hb) && checkCspHashes(r1.html).ok && !/script-src[^;]*(unsafe-inline|unsafe-eval|blob:|data:|\*)/.test(r1.html));
+  check('recalcularea e idempotentă', recomputeCspHashes(r1.html).changed === false);
+  check('fără bloc, hash-ul dispare din CSP', !recomputeCspHashes(r1.html.replace(sb, '')).html.includes(hb));
+  check('un bloc cu alt tip sau cu src nu se hash-uiește ca sandbox', sandboxScripts(ORIG.replace('</body>', () => '<script type="text/x-other">x</script><script type="text/x-fff-sandbox" src="a.js"></script></body>')).length === 0);
+}
 r = run(['apply', d, '--slug', 'demo-fff', '--modules', 'core,label,bundle']);
 check('apply idempotent (octet cu octet)', rf(d) === h1);
 check('un singur bloc după reaplicare', (rf(d).match(/fff:kit:start/g) || []).length === 1);
@@ -47,7 +63,7 @@ const kitCopy = tmpDir('kit-');
 fs.mkdirSync(path.join(kitCopy, 'src')); fs.mkdirSync(path.join(kitCopy, 'i18n')); fs.mkdirSync(path.join(kitCopy, 'lib'));
 for (const f of ['build.mjs']) fs.copyFileSync(path.join(HERE, '..', f), path.join(kitCopy, f));
 for (const f of fs.readdirSync(path.join(HERE, '..', 'lib'))) fs.copyFileSync(path.join(HERE, '..', 'lib', f), path.join(kitCopy, 'lib', f));
-for (const f of ['core.js', 'label.js', 'bundle.js', 'kit.css']) fs.copyFileSync(path.join(HERE, '..', 'src', f), path.join(kitCopy, 'src', f));
+for (const f of ['core.js', 'compat.js', 'label.js', 'bundle.js', 'kit.css']) fs.copyFileSync(path.join(HERE, '..', 'src', f), path.join(kitCopy, 'src', f));
 for (const f of ['label.json', 'bundle.json']) fs.copyFileSync(path.join(HERE, '..', 'i18n', f), path.join(kitCopy, 'i18n', f));
 const dm = mk(ORIG);
 r = run(['apply', dm, '--slug', 'x', '--modules', 'core,qr,srs'], {build: path.join(kitCopy, 'build.mjs')});
@@ -68,14 +84,23 @@ check('remove: check eșuează (nu mai e kit)', run(['check', dr]).status !== 0)
 check('remove repetat: nimic de scos, nu strică', run(['remove', dr]).status === 0 && rf(dr) === ORIG);
 
 console.log('CSP: variante');
-const noStyleCsp = ORIG.replace("style-src 'unsafe-inline'", "style-src 'self'");
+// o pagină cu CSP strict are hash-ul stilului aplicației în style-src (altfel browserul îl blochează, iar `check` o respinge — vezi mai jos)
+const appStyleHash = "'sha256-" + createHash('sha256').update(ORIG.match(/<style>([\s\S]*?)<\/style>/)[1]).digest('base64') + "'";
+const noStyleCsp = ORIG.replace("style-src 'unsafe-inline'", "style-src 'self' " + appStyleHash);
 const dn = mk(noStyleCsp); run(['apply', dn, '--slug', 'demo-fff']);
 const hn = rf(dn);
-check('style-src fără unsafe-inline → hash pentru stilul kitului', /style-src 'self' 'sha256-[A-Za-z0-9+/=]+'/.test(hn) && run(['check', dn]).status === 0);
+const styleSrc = (h) => (h.match(/style-src[^;]*/) || [''])[0];
+check('style-src fără unsafe-inline → hash pentru stilul kitului, lângă cel al aplicației', styleSrc(hn).includes(appStyleHash) && (styleSrc(hn).match(/'sha256-[A-Za-z0-9+/=]+'/g) || []).length === 2 && run(['check', dn]).status === 0, styleSrc(hn));
 run(['apply', dn, '--slug', 'demo-fff']);
-check('reaplicare: nu se acumulează hash-uri de stil', rf(dn) === hn && (rf(dn).match(/style-src[^;]*/)[0].match(/sha256/g) || []).length === 1);
+check('reaplicare: nu se acumulează hash-uri de stil', rf(dn) === hn && (styleSrc(rf(dn)).match(/sha256/g) || []).length === 2);
 run(['remove', dn]);
-check('remove: scoate hash-ul de stil', rf(dn) === noStyleCsp, rf(dn).match(/style-src[^;]*/)?.[0]);
+check('remove: scoate doar hash-ul stilului kitului (cel al aplicației rămâne)', rf(dn) === noStyleCsp, styleSrc(rf(dn)));
+const unhashed = ORIG.replace("style-src 'unsafe-inline'", "style-src 'self'");
+const dh = mk(unhashed); run(['apply', dh, '--slug', 'demo-fff']);
+r = run(['check', dh]);
+check('style-src fără unsafe-inline și stilul aplicației fără hash: check eșuează și numește stilul', r.status === 1 && /stilul inline «\(fără id\)» nu este permis de CSP/.test(r.stdout + r.stderr), r.stdout + r.stderr);
+const dq = mk(noStyleCsp.replace('</body>', '<noscript><style>.x{color:red}</style></noscript></body>')); run(['apply', dq, '--slug', 'demo-fff']);
+check('<noscript><style> nu cere hash (cu scripturile active nu se aplică)', run(['check', dq]).status === 0);
 const noCsp = ORIG.replace(/<meta http-equiv="Content-Security-Policy"[^>]*>\n/, '');
 const d0 = mk(noCsp); run(['apply', d0, '--slug', 'demo-fff']);
 check('fără CSP: check strict = eroare de politică, --lax ok, remove restaurează', run(['check', d0]).status === 1 && run(['check', d0, '--lax']).status === 0 && (run(['remove', d0]), rf(d0) === noCsp));
@@ -131,7 +156,7 @@ check('storageKeys literale (fără sessionStorage, fără fff.*)', info.storage
 check('nume, versiune, dată, descriere din meta; config suprascrie/adaugă', info.name === 'Demo FFF' && info.version === '1.2.3' && info.updated === '2026-10-14' && info.description === 'Descriere din config' && info.egressNote === 'Doar la acțiunea utilizatorului.' && info.selfModifying === true);
 check('config nu poate suprascrie sha256/sizeBytes', /^[0-9a-f]{64}$/.test(info.sha256));
 check('features: export/import/i18n/pwa/module', info.features.export && info.features.import && info.features.i18n.join() === 'ro,en,fr' && info.features.pwa.manifest === true && info.features.modules.join() === 'core,label,bundle');
-check('kit: versiune + module; csp rezumat', info.kit.version === '1.6.0' && info.kit.modules.length === 3 && info.csp.present && info.csp.scriptInline === 'hash' && info.csp.directives['script-src'] === 'sha256×2', info.csp);
+check('kit: versiune + module; csp rezumat', info.kit.version === KIT_VERSION && info.kit.modules.length === 3 && info.csp.present && info.csp.scriptInline === 'hash' && info.csp.directives['script-src'] === 'sha256×4', info.csp);
 const html = rf(di);
 const size = Buffer.byteLength(html);
 check('sizeBytes = dimensiunea fișierului', info.sizeBytes === size, [info.sizeBytes, size]);

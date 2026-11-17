@@ -1,7 +1,7 @@
 {
  "schema": 1,
  "note": "Generat de tools/sync-catalog.mjs din data/catalog-meta.json, data/flows.json și registrul de plicuri; nu se editează de mână. Fiecare relație are cel puțin un motiv verificabil (vezi relationEvidence în tools/catalog-meta-lib.mjs).",
- "count": 680,
+ "count": 722,
  "relations": [
   {
    "a": "AcademiSearch",
@@ -219,6 +219,13 @@
   },
   {
    "a": "AI-Liber",
+   "b": "colibri-companion",
+   "reasons": [
+    "topic:ai"
+   ]
+  },
+  {
+   "a": "AI-Liber",
    "b": "Constelar",
    "reasons": [
     "topic:ai",
@@ -319,6 +326,13 @@
   {
    "a": "Akasha",
    "b": "Orar",
+   "reasons": [
+    "topic:home"
+   ]
+  },
+  {
+   "a": "Akasha",
+   "b": "PatruZeci",
    "reasons": [
     "topic:home"
    ]
@@ -647,6 +661,13 @@
    ]
   },
   {
+   "a": "Arbore",
+   "b": "PatruZeci",
+   "reasons": [
+    "topic:home"
+   ]
+  },
+  {
    "a": "ARENA",
    "b": "balanta",
    "reasons": [
@@ -654,6 +675,13 @@
     "pair"
    ],
    "why": "ARENA pune modele AI față în față, iar balanta va aduna evaluări oarbe în română cu voturi publice"
+  },
+  {
+   "a": "ARENA",
+   "b": "colibri-companion",
+   "reasons": [
+    "topic:ai"
+   ]
   },
   {
    "a": "ARENA",
@@ -792,6 +820,13 @@
     "pair"
    ],
    "why": "amândouă păstrează pagini web: Arhiva fără frontiere răsfoiește Internet Archive, MARTOR va capta și semna pagini ca probă"
+  },
+  {
+   "a": "Arhiva-fara-frontiere",
+   "b": "PORUMBEL",
+   "reasons": [
+    "topic:scan"
+   ]
   },
   {
    "a": "Arhiva-fara-frontiere",
@@ -1075,6 +1110,15 @@
   },
   {
    "a": "ATINGERE",
+   "b": "PORUMBEL",
+   "reasons": [
+    "topic:scan",
+    "pair"
+   ],
+   "why": "fotografiile paginilor de carte pot ajunge, prin LegatorOCR, la o carte în braille sau audio"
+  },
+  {
+   "a": "ATINGERE",
    "b": "PULS",
    "reasons": [
     "envelope:passport/fff",
@@ -1165,6 +1209,13 @@
    "b": "SEVA",
    "reasons": [
     "pair"
+   ]
+  },
+  {
+   "a": "balanta",
+   "b": "colibri-companion",
+   "reasons": [
+    "topic:ai"
    ]
   },
   {
@@ -1486,6 +1537,14 @@
   },
   {
    "a": "BRAZDA",
+   "b": "ODISEEA",
+   "reasons": [
+    "pair"
+   ],
+   "why": "aceeași poveste Voyager: documentarul arată Discul de Aur, iar BRAZDA îl decodifică pas cu pas"
+  },
+  {
+   "a": "BRAZDA",
    "b": "VOIAJOR",
    "reasons": [
     "pair"
@@ -1742,6 +1801,13 @@
   },
   {
    "a": "CLEPSIDRA",
+   "b": "PatruZeci",
+   "reasons": [
+    "topic:home"
+   ]
+  },
+  {
+   "a": "CLEPSIDRA",
    "b": "Universul-Observabil-3D",
    "reasons": [
     "module:fff-place"
@@ -1901,6 +1967,13 @@
   },
   {
    "a": "Constelar",
+   "b": "colibri-companion",
+   "reasons": [
+    "topic:ai"
+   ]
+  },
+  {
+   "a": "Constelar",
    "b": "LocalMind",
    "reasons": [
     "topic:ai",
@@ -1993,8 +2066,18 @@
    "a": "Curatitor",
    "b": "atelier-verificare",
    "reasons": [
+    "topic:privacy",
     "topic:audit"
    ]
+  },
+  {
+   "a": "Curatitor",
+   "b": "EXIF-CURAT",
+   "reasons": [
+    "topic:privacy",
+    "pair"
+   ],
+   "why": "același scop, două forme: ștergerea metadatelor din fișiere, în browser (Curatitor) și ca program nativ (EXIF-CURAT)"
   },
   {
    "a": "Curatitor",
@@ -2683,6 +2766,85 @@
    ]
   },
   {
+   "a": "EXIF-CURAT",
+   "b": "atelier-verificare",
+   "reasons": [
+    "topic:privacy",
+    "pair"
+   ],
+   "why": "metadatele văzute din două părți: atelier-verificare le citește ca probă, EXIF-CURAT le șterge înainte de publicare"
+  },
+  {
+   "a": "EXIF-CURAT",
+   "b": "colibri-companion",
+   "reasons": [
+    "topic:rust"
+   ]
+  },
+  {
+   "a": "EXIF-CURAT",
+   "b": "LegatorOCR",
+   "reasons": [
+    "topic:rust"
+   ]
+  },
+  {
+   "a": "EXIF-CURAT",
+   "b": "OSATURA",
+   "reasons": [
+    "topic:rust"
+   ]
+  },
+  {
+   "a": "EXIF-CURAT",
+   "b": "PORUMBEL",
+   "reasons": [
+    "topic:rust"
+   ]
+  },
+  {
+   "a": "EXIF-CURAT",
+   "b": "Provenienta",
+   "reasons": [
+    "topic:privacy"
+   ]
+  },
+  {
+   "a": "EXIF-CURAT",
+   "b": "ScryVeil",
+   "reasons": [
+    "topic:privacy"
+   ]
+  },
+  {
+   "a": "EXIF-CURAT",
+   "b": "TEZAUR",
+   "reasons": [
+    "topic:rust"
+   ]
+  },
+  {
+   "a": "EXIF-CURAT",
+   "b": "TurboCursa",
+   "reasons": [
+    "topic:rust"
+   ]
+  },
+  {
+   "a": "EXIF-CURAT",
+   "b": "VaultCrypt",
+   "reasons": [
+    "topic:privacy"
+   ]
+  },
+  {
+   "a": "EXIF-CURAT",
+   "b": "VERIGA",
+   "reasons": [
+    "topic:rust"
+   ]
+  },
+  {
    "a": "ExploratoriiEco",
    "b": "FieldObserver",
    "reasons": [
@@ -3305,6 +3467,13 @@
    ]
   },
   {
+   "a": "Gospodar",
+   "b": "PatruZeci",
+   "reasons": [
+    "topic:home"
+   ]
+  },
+  {
    "a": "Horizons.BeyondLimits",
    "b": "Hyper4D",
    "reasons": [
@@ -3549,6 +3718,13 @@
   },
   {
    "a": "LECTOR",
+   "b": "PORUMBEL",
+   "reasons": [
+    "topic:scan"
+   ]
+  },
+  {
+   "a": "LECTOR",
    "b": "TACTIL",
    "reasons": [
     "topic:access"
@@ -3570,10 +3746,29 @@
   },
   {
    "a": "LegatorOCR",
+   "b": "colibri-companion",
+   "reasons": [
+    "topic:rust",
+    "pair"
+   ],
+   "why": "Colibri Companion are o bibliotecă de integrare care rulează LegatorOCR ca program extern (încă neconectată la nicio fereastră)"
+  },
+  {
+   "a": "LegatorOCR",
    "b": "OSATURA",
    "reasons": [
     "topic:rust"
    ]
+  },
+  {
+   "a": "LegatorOCR",
+   "b": "PORUMBEL",
+   "reasons": [
+    "topic:scan",
+    "topic:rust",
+    "pair"
+   ],
+   "why": "PORUMBEL aduce pozele de pe telefon și deschide fiecare sesiune încheiată în LegatorOCR"
   },
   {
    "a": "LegatorOCR",
@@ -3761,6 +3956,15 @@
    "reasons": [
     "topic:ai"
    ]
+  },
+  {
+   "a": "LocalMind",
+   "b": "colibri-companion",
+   "reasons": [
+    "topic:ai",
+    "pair"
+   ],
+   "why": "același principiu: modele de limbaj care rulează pe calculatorul tău, fără cont și fără cloud"
   },
   {
    "a": "LocalMind",
@@ -4068,6 +4272,13 @@
   },
   {
    "a": "Nexus-fara-frontiere",
+   "b": "colibri-companion",
+   "reasons": [
+    "topic:ai"
+   ]
+  },
+  {
+   "a": "Nexus-fara-frontiere",
    "b": "PrintreInteligente",
    "reasons": [
     "data:platform.claude.com"
@@ -4202,6 +4413,14 @@
    ]
   },
   {
+   "a": "ODISEEA",
+   "b": "VOIAJOR",
+   "reasons": [
+    "pair"
+   ],
+   "why": "aceleași două sonde: ODISEEA le povestește în film, VOIAJOR le simulează traiectoriile"
+  },
+  {
    "a": "OmniHost",
    "b": "RegexLab",
    "reasons": [
@@ -4240,6 +4459,13 @@
   },
   {
    "a": "Orar",
+   "b": "PatruZeci",
+   "reasons": [
+    "topic:home"
+   ]
+  },
+  {
+   "a": "Orar",
    "b": "Universul-Observabil-3D",
    "reasons": [
     "module:fff-place"
@@ -4254,9 +4480,23 @@
   },
   {
    "a": "OSATURA",
+   "b": "colibri-companion",
+   "reasons": [
+    "topic:rust"
+   ]
+  },
+  {
+   "a": "OSATURA",
    "b": "Origami",
    "reasons": [
     "topic:media"
+   ]
+  },
+  {
+   "a": "OSATURA",
+   "b": "PORUMBEL",
+   "reasons": [
+    "topic:rust"
    ]
   },
   {
@@ -4339,6 +4579,35 @@
    "b": "ValeaPlopului1972",
    "reasons": [
     "topic:scifi"
+   ]
+  },
+  {
+   "a": "PORUMBEL",
+   "b": "colibri-companion",
+   "reasons": [
+    "topic:rust"
+   ]
+  },
+  {
+   "a": "PORUMBEL",
+   "b": "TEZAUR",
+   "reasons": [
+    "topic:scan",
+    "topic:rust"
+   ]
+  },
+  {
+   "a": "PORUMBEL",
+   "b": "TurboCursa",
+   "reasons": [
+    "topic:rust"
+   ]
+  },
+  {
+   "a": "PORUMBEL",
+   "b": "VERIGA",
+   "reasons": [
+    "topic:rust"
    ]
   },
   {
@@ -4472,6 +4741,13 @@
   },
   {
    "a": "PromptVault",
+   "b": "colibri-companion",
+   "reasons": [
+    "topic:ai"
+   ]
+  },
+  {
+   "a": "PromptVault",
    "b": "TranslateHub",
    "reasons": [
     "pair"
@@ -4481,6 +4757,7 @@
    "a": "Provenienta",
    "b": "atelier-verificare",
    "reasons": [
+    "topic:privacy",
     "topic:audit",
     "pair"
    ],
@@ -4748,6 +5025,13 @@
   },
   {
    "a": "ScryVeil",
+   "b": "atelier-verificare",
+   "reasons": [
+    "topic:privacy"
+   ]
+  },
+  {
+   "a": "ScryVeil",
    "b": "Surveyor",
    "reasons": [
     "topic:links",
@@ -4945,6 +5229,15 @@
   },
   {
    "a": "TEZAUR",
+   "b": "colibri-companion",
+   "reasons": [
+    "topic:rust",
+    "pair"
+   ],
+   "why": "TEZAUR redactează cu un model local (Ollama, Jan, LM Studio), iar Colibri Companion pornește un astfel de model local"
+  },
+  {
+   "a": "TEZAUR",
    "b": "TurboCursa",
    "reasons": [
     "topic:rust"
@@ -5005,6 +5298,13 @@
    "b": "VaultCrypt",
    "reasons": [
     "topic:security"
+   ]
+  },
+  {
+   "a": "TurboCursa",
+   "b": "colibri-companion",
+   "reasons": [
+    "topic:rust"
    ]
   },
   {
@@ -5135,6 +5435,20 @@
    "b": "VITALIS",
    "reasons": [
     "topic:health"
+   ]
+  },
+  {
+   "a": "VaultCrypt",
+   "b": "atelier-verificare",
+   "reasons": [
+    "topic:privacy"
+   ]
+  },
+  {
+   "a": "VERIGA",
+   "b": "colibri-companion",
+   "reasons": [
+    "topic:rust"
    ]
   },
   {

@@ -148,7 +148,7 @@ async function rasterDecode(p, selector) {              // decodifică QR-ul SVG
   });
   ok(['empty', 'garbage', 'prefixOnly', 'badB64'].every(k => /^bad-code:/.test(r[k]) && !/^bad-code:badCode$/.test(r[k])), 'coduri invalide → bad-code cu mesaj tradus', r);
   ok(/^wrong-kind:/.test(r.wrongKindJoinWithAnswer) || /^bad-code:/.test(r.wrongKindJoinWithAnswer), 'join() cu cod de tip răspuns este refuzat', r.wrongKindJoinWithAnswer);
-  ok(r.corrupt.rejected === 40 && r.corrupt.accepted === 0, 'un caracter corupt este întotdeauna detectat (40/40)', r.corrupt);
+  ok(r.corrupt.accepted === 0 && r.corrupt.rejected + r.corrupt.harmless === 40 && r.corrupt.harmless <= 1, 'un caracter corupt este întotdeauna detectat (cel mult un caz inofensiv: biții de umplutură base64 din ultimul caracter)', r.corrupt);
   ok(r.tolerant === 'offer', 'spații/linii noi/ghilimele tolerate la lipire', r.tolerant);
   ok(r.acceptOffer === 'wrong-kind', 'accept(ofertă) refuzat', r.acceptOffer);
   ok(JSON.stringify(r.stun.ok) === '["stun:stun.example.org:3478","stun:example.net"]' && r.stun.none.length === 0 && r.stun.v6.length === 1, 'parseStun: formate valide', r.stun);
@@ -465,6 +465,127 @@ let gameResults = {};
   } catch (e) { res.connectedWithoutFlags = false; res.reason = String(e.message).slice(0, 120); }
   results.withoutTestFlags = res;
   await A.context().close(); await B.context().close(); await plain.close();
+}
+
+/* ====================================================================== 10. cod compatibil (necomprimat), pentru browsere fără DecompressionStream ===================================================== */
+{
+  const A = await mk(), B = await mk();
+  const r = await A.evaluate(async () => {
+    const sdp = 'v=0\r\no=- 1 1 IN IP4 0.0.0.0\r\ns=-\r\nt=0 0\r\n' + 'a=candidate:1 1 udp 2113937151 192.168.1.2 50000 typ host\r\n'.repeat(6);
+    const z = await FFF.p2p.encodeSignal('offer', sdp), raw = await FFF.p2p.encodeSignal('offer', sdp, {compress: false});
+    const dz = await FFF.p2p.decodeSignal(z), dr = await FFF.p2p.decodeSignal(raw);
+    return {z: z.slice(0, 9), r: raw.slice(0, 9), zl: z.length, rl: raw.length, same: dz.sdp === dr.sdp && dz.kind === 'offer'};
+  });
+  ok(r.z === 'FFF1.o.z.' && r.r === 'FFF1.o.r.', 'compress:false → cod brut (r); implicit → comprimat (z)', r);
+  ok(r.same && r.rl > r.zl, 'ambele coduri dau același SDP; cel brut e mai lung', r);
+  results.compatCode = r;
+
+  // conexiune reală cu coduri brute, în ambele sensuri
+  const offer = await A.evaluate(async () => { const s = await FFF.p2p.host({compress: false}); window.s = s; return s.offer; });
+  ok(offer.startsWith('FFF1.o.r.'), 'oferta gazdei cu compress:false este brută', offer.slice(0, 12));
+  const ans = await B.evaluate(async o => { const s = await FFF.p2p.join(o, {compress: false}); window.s = s; return s.answer; }, offer);
+  ok(ans.startsWith('FFF1.a.r.'), 'răspunsul oaspetelui cu compress:false este brut', ans.slice(0, 12));
+  await A.evaluate(a => s.accept(a), ans);
+  await Promise.all([A, B].map(p => p.waitForFunction(() => s.state === 'open', null, {timeout: 20000})));
+  await B.evaluate(() => { window.__got = new Promise(res => { s.on('message', m => res(m)); }); });
+  await A.evaluate(() => s.send({ping: 'brut'}));
+  const msg = await B.evaluate(() => window.__got);
+  ok(msg && msg.ping === 'brut', 'canalul funcționează după schimb de coduri brute', msg);
+
+  // un browser fără DecompressionStream primește o eroare clară (cu soluția), nu un cod „stricat”
+  const C = await mk();
+  const zOffer = await A.evaluate(async () => (await FFF.p2p.host({})).offer);
+  ok(zOffer.startsWith('FFF1.o.z.'), 'oferta implicită este comprimată', zOffer.slice(0, 10));
+  const e = await C.evaluate(async o => {
+    Object.defineProperty(window, 'DecompressionStream', {value: undefined, configurable: true});
+    try { await FFF.p2p.join(o, {}); return {code: 'nicio eroare'}; } catch (er) { return {code: er.code, message: er.message}; }
+  }, zOffer);
+  ok(e.code === 'no-decompress' && /compatibil|Compatible/i.test(e.message), 'fără DecompressionStream: eroare no-decompress cu indicație către codul compatibil', e);
+  const rawOk = await C.evaluate(async o => {
+    Object.defineProperty(window, 'DecompressionStream', {value: undefined, configurable: true});
+    return (await FFF.p2p.decodeSignal(o)).kind;
+  }, offer);
+  ok(rawOk === 'offer', 'fără DecompressionStream, codul brut se citește', rawOk);
+
+  // dialogul: caseta există, e debifată implicit, are etichetă și descriere; bifată → oferta e brută
+  const D1 = await mk(), D2 = await mk();
+  await openDialog(D1); await optin(D1);
+  const chk = D(D1, 'compat-code');
+  ok(await chk.count() === 1 && !(await chk.isChecked()), 'dialog: caseta «cod compatibil» există și e debifată implicit');
+  ok((await chk.getAttribute('aria-describedby')) && (await D1.locator('label[for="' + (await chk.getAttribute('id')) + '"]').count()) === 1, 'dialog: caseta are etichetă și descriere asociate');
+  await chk.check(); await D(D1, 'mode-host').click(); await D(D1, 'gen-offer').click();
+  await D(D1, 'offer-out').waitFor(); const dOffer = await D(D1, 'offer-out').inputValue();
+  ok(dOffer.startsWith('FFF1.o.r.'), 'dialog: cu caseta bifată oferta generată este brută', dOffer.slice(0, 12));
+  await openDialog(D2); await optin(D2); await D(D2, 'compat-code').check(); await D(D2, 'mode-join').click();
+  await D(D2, 'offer-in').fill(dOffer); await D(D2, 'gen-answer').click();
+  await D(D2, 'answer-out').waitFor(); const dAns = await D(D2, 'answer-out').inputValue();
+  ok(dAns.startsWith('FFF1.a.r.'), 'dialog: răspunsul oaspetelui cu caseta bifată este brut', dAns.slice(0, 12));
+  await D(D1, 'answer-in').fill(dAns); await D(D1, 'connect').click();
+  await Promise.all([D1, D2].map(p => p.waitForFunction(() => window.__game.ls && window.__game.session && window.__game.session.state === 'open', null, {timeout: 20000})));
+  ok(true, 'dialog: conectare reușită cu coduri brute');
+  for (const c of contexts.splice(0)) await c.close().catch(() => {});
+}
+
+/* ====================================================================== 11. «open» o singură dată; primul mesaj al celuilalt capăt nu se pierde ====================================================================== */
+{
+  // Oaspetele trimite imediat în ascultătorul lui «open»; gazda își înregistrează ascultătorul de mesaje tot în «open». Fără coada de mesaje timpurii și fără
+  // emisia unică, un mesaj sosit înaintea lui «open» se pierdea, iar «open» se emitea de două ori la oaspete. În plus, Chrome ARUNCĂ (nu doar întârzie) mesajele
+  // care ajung la gazdă înainte ca ea să vadă canalul deschis: cu `onmessage` brut, ~5–7 % din conexiuni pierdeau primul mesaj al oaspetelui. Remediul e un
+  // protocol: gazda trimite `{_fff:'ready'}` la «open», iar oaspetele își ține mesajele în coadă până aude de la ea. Cursa e intermitentă, deci se repetă de multe ori.
+  const RUNS = 24; let lost = 0, dupOpen = 0, order = 0;
+  for (let i = 0; i < RUNS; i++) {
+    const A = await mk(), B = await mk();
+    const offer = await A.evaluate(async () => { const s = await FFF.p2p.host(); window.s = s; window.opens = 0; window.got = []; window.sawOpenFirst = null;
+      s.on('open', () => { window.opens++; s.on('message', m => { if (window.sawOpenFirst === null) window.sawOpenFirst = window.opens > 0; got.push(m); }); }); return s.offer; });
+    const answer = await B.evaluate(async o => { const s = await FFF.p2p.join(o); window.s = s; window.opens = 0; window.got = [];
+      s.on('open', () => { window.opens++; s.send({hi: window.opens}); s.on('message', m => got.push(m)); }); return s.answer; }, offer);
+    await A.evaluate(a => s.accept(a), answer);
+    await Promise.all([A, B].map(p => p.waitForFunction(() => s.state === 'open', null, {timeout: 15000})));
+    await A.waitForFunction(() => got.length >= 1, null, {timeout: 4000}).catch(() => {});
+    await sleep(250);                                                         // un eventual al doilea «open» sau mesaj dublu ar apărea acum
+    const a = await A.evaluate(() => ({opens, got, first: sawOpenFirst})), b = await B.evaluate(() => ({opens, got}));
+    if (!a.got.length) lost++;
+    if (a.opens !== 1 || b.opens !== 1) dupOpen++;
+    if (a.got.length > 1) order++;
+    await A.evaluate(() => s.send({back: 1})); await B.waitForFunction(() => got.length >= 1, null, {timeout: 4000}).catch(() => {});
+    if (!(await B.evaluate(() => got.length >= 1))) lost++;
+  }
+  ok(lost === 0, `mesajul trimis imediat în «open» ajunge (${RUNS} sesiuni, ${lost} pierdute)`, lost);
+  ok(dupOpen === 0, `«open» se emite exact o dată pe fiecare parte (${RUNS} sesiuni, ${dupOpen} cu dubluri)`, dupOpen);
+  ok(order === 0, 'niciun mesaj duplicat', order);
+  for (const c of contexts.splice(0)) await c.close().catch(() => {});
+}
+
+/* ====================================================================== 12. coada oaspetelui: ordinea se păstrează; gazdă veche (fără `ready`) ====================================================================== */
+{
+  // trei mesaje trimise de oaspete chiar în «open» ajung toate, în ordine (coada se golește înaintea mesajelor următoare)
+  const A = await mk(), B = await mk();
+  const offer = await A.evaluate(async () => { const s = await FFF.p2p.host(); window.s = s; window.got = [];
+    s.on('open', () => { s.on('message', m => got.push(m)); }); return s.offer; });
+  const answer = await B.evaluate(async o => { const s = await FFF.p2p.join(o); window.s = s; window.rets = [];
+    s.on('open', () => { window.rets.push(s.send({n: 1}), s.send({n: 2}), s.send({n: 3})); setTimeout(() => window.rets.push(s.send({n: 4})), 30); }); return s.answer; }, offer);
+  await A.evaluate(a => s.accept(a), answer);
+  await Promise.all([A, B].map(p => p.waitForFunction(() => s.state === 'open', null, {timeout: 15000})));
+  await A.waitForFunction(() => got.length >= 4, null, {timeout: 6000}).catch(() => {});
+  const g = await A.evaluate(() => got.map(m => m.n)), rets = await B.evaluate(() => window.rets);
+  ok(JSON.stringify(g) === '[1,2,3,4]', 'trei mesaje trimise de oaspete în «open», plus unul după, ajung în ordine', g);
+  ok(rets.length === 4 && rets.every(Boolean), 'send() la oaspete întoarce true și cât timp mesajul stă în coadă', rets);
+  for (const c of contexts.splice(0)) await c.close().catch(() => {});
+}
+{
+  // o gazdă mai veche (kit fără mesajul `ready`) nu blochează oaspetele: ajunge la el bătaia inimii sau, cel târziu, temporizatorul de 3 s
+  const A = await mk(), B = await mk();
+  await A.addInitScript(() => { const o = RTCDataChannel.prototype.send; RTCDataChannel.prototype.send = function (d) { if (typeof d === 'string' && d.indexOf('"ready"') > 0) return; return o.call(this, d); }; });
+  await A.reload();
+  const offer = await A.evaluate(async () => { const s = await FFF.p2p.host(); window.s = s; window.got = [];
+    s.on('open', () => { s.on('message', m => got.push(m)); }); return s.offer; });
+  const answer = await B.evaluate(async o => { const s = await FFF.p2p.join(o); window.s = s; s.on('open', () => { window.t0 = Date.now(); s.send({hi: 1}); }); return s.answer; }, offer);
+  await A.evaluate(a => s.accept(a), answer);
+  await Promise.all([A, B].map(p => p.waitForFunction(() => s.state === 'open', null, {timeout: 15000})));
+  await A.waitForFunction(() => got.length >= 1, null, {timeout: 7000}).catch(() => {});
+  const g = await A.evaluate(() => got.length);
+  ok(g === 1, 'gazdă fără `ready` (kit vechi): mesajul oaspetelui ajunge oricum (bătaia inimii sau temporizatorul)', g);
+  for (const c of contexts.splice(0)) await c.close().catch(() => {});
 }
 
 ok(errs.length === 0, '0 pageerror', errs);

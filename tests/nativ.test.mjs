@@ -1,4 +1,4 @@
-// Teste „înregistrări native” (demo/nativ/): demonstrațiile în terminal ale celor 4 programe Rust (TEZAUR, VERIGA, LegatorOCR, OSATURA),
+// Teste „înregistrări native” (demo/nativ/): demonstrațiile în terminal ale celor 5 programe Rust (TEZAUR, VERIGA, LegatorOCR, OSATURA, PORUMBEL),
 // cu subtitrări în 8 limbi, voce sintetică opțională, pagină offline dintr-un singur fișier, CSP connect-src 'none', axe 0 violări.
 // Rulare: node tests/nativ.test.mjs [filtru-nume]. Browser: CHROMIUM_PATH sau Chromium din /opt/pw-browsers; axe: FFF_AXE.
 // Reconstruire: tools/native-demos/record.py (ieșiri reale) apoi tools/native-demos/build.py (cast, vtt, audio, mp4, pagini).
@@ -12,7 +12,7 @@ const {chromium} = require('playwright');
 const HUB = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const N = path.join(HUB, 'demo', 'nativ');
 const LANGS = ['ro', 'en', 'fr', 'it', 'es', 'pt', 'de', 'hu'];
-const SLUGS = ['tezaur', 'veriga', 'legatorocr', 'osatura'];
+const SLUGS = ['tezaur', 'veriga', 'legatorocr', 'osatura', 'porumbel'];
 const MIME = {'.html': 'text/html; charset=utf-8', '.js': 'text/javascript', '.json': 'application/json', '.css': 'text/css', '.vtt': 'text/vtt', '.mp4': 'video/mp4', '.ogg': 'audio/ogg', '.jpg': 'image/jpeg', '.cast': 'application/x-asciicast'};
 const AXE = process.env.FFF_AXE || ['/tmp/claude-0/axe/node_modules/axe-core/axe.min.js', '/opt/node-tools/node_modules/axe-core/axe.min.js'].find((f) => fs.existsSync(f));
 const CHROME = process.env.CHROMIUM_PATH || ['/usr/bin/google-chrome', '/opt/pw-browsers/chromium'].find((f) => fs.existsSync(f));
@@ -100,11 +100,11 @@ async function open(urlPath, lang, viewport = DESK, o = {}) {
 }
 const DATA = JSON.parse(read('nativ-data.js').replace(/^window\.NATIV=/, '').replace(/;$/, ''));
 
-await T('pagina: 8 limbi, 4 playere, interfața tradusă, fără erori, fără cereri externe, fără încălcări CSP', async () => {
+await T('pagina: 8 limbi, 5 playere, interfața tradusă, fără erori, fără cereri externe, fără încălcări CSP', async () => {
   const titles = new Set();
   for (const l of LANGS) {
     const {ctx, page, external, errors, csp} = await open('demo/nativ/', l);
-    ok(await page.evaluate(() => document.querySelectorAll('.player[data-slug]').length) === 4, l + ': nu sunt 4 playere');
+    ok(await page.evaluate(() => document.querySelectorAll('.player[data-slug]').length) === SLUGS.length, l + ': nu sunt ' + SLUGS.length + ' playere');
     ok((await page.evaluate(() => document.documentElement.lang)) === l, l + ': lang');
     const h1 = await page.textContent('h1'); ok(h1 === DATA.ui[l].title, `${l}: h1 „${h1}”`); titles.add(h1);
     ok((await page.textContent('[data-ui=auto]')) === DATA.ui[l].auto, l + ': avertismentul traducerilor automate nu e în limba paginii');
@@ -129,8 +129,8 @@ await T('CSP: connect-src \'none\', fără inline în pagina găzduită; pagina 
 
 await T('redare: derulare până la sfârșit arată ieșirea reală; subtitrarea = replica din .vtt în limba aleasă; schimbarea limbii o schimbă pe loc', async () => {
   const {ctx, page, errors} = await open('demo/nativ/', 'ro');
-  const last = {tezaur: 'vance2020', veriga: 'link check report', legatorocr: 'Chapter 1', osatura: 'demo.gif'};
-  for (let i = 0; i < 4; i++) {
+  const last = {tezaur: 'vance2020', veriga: 'link check report', legatorocr: 'Chapter 1', osatura: 'demo.gif', porumbel: 'Nothing blocks PORUMBEL'};
+  for (let i = 0; i < SLUGS.length; i++) {
     const s = SLUGS[i];
     await page.evaluate((i) => { const p = window.__nativ.players[i]; p.seek(p.d.dur - 0.5); }, i);
     const t = await page.textContent(`#${s} .term`); ok(new RegExp(last[s]).test(t), `${s}: ultima scenă nu apare în terminal`);
@@ -220,7 +220,7 @@ else {
       ok(!bad.length, 'violări axe:\n' + bad.join('\n'));
     });
   }
-  await T('axe: 0 violări pe cele 4 pagini offline (desktop, ro + hu)', async () => {
+  await T('axe: 0 violări pe cele 5 pagini offline (desktop, ro + hu)', async () => {
     const bad = [];
     for (const s of SLUGS) {
       const {ctx, page} = await open(`demo/nativ/${s}-offline.html`, 'ro', DESK, {bypassCSP: true});
@@ -233,9 +233,9 @@ else {
 }
 
 // ---- 3. integrare în hub
-await T('hub: cardurile celor 4 programe native trimit la demonstrația din terminal; demo/ și sitemap.xml trimit la demo/nativ/', async () => {
+await T('hub: cardurile celor 5 programe native trimit la demonstrația din terminal; demo/ și sitemap.xml trimit la demo/nativ/', async () => {
   const idx = fs.readFileSync(path.join(HUB, 'index.html'), 'utf8');
-  for (const [s, name] of [['tezaur', 'TEZAUR'], ['veriga', 'VERIGA'], ['legatorocr', 'LegatorOCR'], ['osatura', 'OSATURA']]) {
+  for (const [s, name] of [['tezaur', 'TEZAUR'], ['veriga', 'VERIGA'], ['legatorocr', 'LegatorOCR'], ['osatura', 'OSATURA'], ['porumbel', 'PORUMBEL']]) {
     const i = idx.indexOf(`data-c="apps|${name}|title"`); ok(i > 0, 'card lipsă ' + name);
     const j = idx.indexOf('class="app-card"', i); const card = idx.slice(idx.lastIndexOf('<div class="app-card"', i), j > 0 ? j : i + 4000);
     ok(card.includes(`href="demo/nativ/#${s}"`), `cardul ${name} nu trimite la demo/nativ/#${s}`);

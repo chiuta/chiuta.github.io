@@ -1,4 +1,4 @@
-// Teste FFF.a11y (kit 1.6.0): panoul „Aa”, săgeata „Înapoi sus”, potrivirea la ecran, bara de zoom pe stânga. Rulare: node test/a11y.test.mjs
+// Teste FFF.a11y: panoul „Aa”, săgeata „Înapoi sus”, potrivirea la ecran, bara de zoom pe dreapta (kit ≥ 1.7). Rulare: node test/a11y.test.mjs
 import {makeApp, launch, check, summary, sleep, axe} from './_pw.mjs';
 
 const browser = await launch();
@@ -110,8 +110,9 @@ for (const [name, w, h, touch] of [['desktop', 1280, 720, false], ['telefon', 36
   const b = await box(p, '.fff-a11y-panel'), aa = await box(p, '.fff-a11y-aa');
   check(`zoom pagină ×${z.toFixed(2)}: panoul în ecran și butonul tot 44 px`, z > 1.5 && inScreen(b, 800, 600) && Math.round(aa.w) === 44, {z, b, aa});
   const vb = await box(p, '[data-fff-view]');
-  check('bara de zoom cu lupă / „potrivire ecran” e pe marginea din STÂNGA', vb && vb.l < 100 && vb.r < 120, vb);
-  check('bara de zoom și panoul „Aa” nu se suprapun', !(vb.r > b.l && vb.l < b.r && vb.b > b.t && vb.t < b.b));
+  // designul din kit 1.7: bara de zoom stă pe marginea din DREAPTA, la mijlocul înălțimii; panoul „Aa” (deasupra ei în stivă) o acoperă cât timp e deschis
+  check('bara de zoom cu lupă / „potrivire ecran” e pe marginea din DREAPTA, la mijlocul înălțimii', vb && vb.r > 800 - 24 && Math.abs((vb.t + vb.b) / 2 - 300) < 140, vb);
+  check('bara de zoom nu acoperă butonul „Aa” și panoul deschis stă deasupra ei în stivă', !(vb.r > aa.l && vb.l < aa.r && vb.b > aa.t && vb.t < aa.b) && await p.evaluate(() => Number(getComputedStyle(document.querySelector('.fff-a11y-panel')).zIndex) > Number(getComputedStyle(document.querySelector('[data-fff-view]')).zIndex)));
   await ctx.close();
 }
 

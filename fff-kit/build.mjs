@@ -142,7 +142,7 @@ function buildBlock(slug, modules, opt) {
     if (fs.existsSync(cp)) css += fs.readFileSync(cp, 'utf8');
     const ip = path.join(KIT, 'i18n', m + '.json');
     if (fs.existsSync(ip)) i18n[m] = JSON.parse(fs.readFileSync(ip, 'utf8'));
-    else if (m !== 'core' && m !== 'store') console.error(`avertisment: lipsește i18n/${m}.json`);
+    else if (m !== 'core' && m !== 'store' && m !== 'ephem-stars') console.error(`avertisment: lipsește i18n/${m}.json`);
   }
   if (/<\/script|<!--/i.test(js)) throw new Error('sursa kitului conține „</script” sau „<!--” (interzis în script inline)');
   if (/<\/style/i.test(css)) throw new Error('CSS-ul kitului conține „</style”');
@@ -154,13 +154,17 @@ function buildBlock(slug, modules, opt) {
   ];
   if (opt.disable) lines.push(`<meta name="fff-disable" content="${attr(opt.disable)}">`);
   lines.push(`<style id="fff-style">${css.replace(/\s+$/, '')}</style>`);
+  const compat = rd('src/compat.js').replace(/\s+$/, '');
+  if (/<\/script|<!--/i.test(compat)) throw new Error('src/compat.js conține „</script” sau „<!--” (interzis în script inline)');
+  lines.push(`<script id="fff-compat">/* fff-compat ${ver} — ES5, rulează înaintea kitului */\n${compat}\n</script>`);
+  lines.push(`<script type="module" id="fff-imp">window.__fffImp=function(u){return import(u)};</script>`);
   lines.push(`<script id="fff-kit">/* fff-kit ${ver} */\n${js}</script>`);
   lines.push(`<script type="application/json" id="fff-i18n">${escJsonForHtml(JSON.stringify(i18n))}</script>`);
   lines.push('<!--fff:kit:end-->');
   return {text: '\n' + lines.join('\n'), modules: sorted};
 }
 function currentModules(html) {
-  const m = html.match(/<!--fff:kit:start[^>]*\bmodules=([a-z0-9,]+)/);
+  const m = html.match(/<!--fff:kit:start[^>]*\bmodules=([a-z0-9,]+(?:-[a-z0-9,]+)*)/);   // module cu cratimă (ephem-stars) incluse; «-->» de la sfârșitul marcajului nu se prinde
   return m ? m[1].split(',') : [];
 }
 function readConfig(dir) {
@@ -272,9 +276,11 @@ function kitDrift(html, mods) {
   const slug = metaContent(html, 'fff-app'), disable = metaContent(html, 'fff-disable');
   let exp;
   try { exp = buildBlock(slug, mods, {disable}).text; } catch { return []; }
-  if (cur[0] === exp) return [];
+  // paginile fără etichetă <html> înaintea blocului primesc atributul data-fff-hash în primul «<html» întâlnit (un comentariu din CSS-ul kitului): nu e derivă
+  const noHash = (t) => t.replace(/ data-fff-hash="[0-9a-f]*"/g, '');
+  if (noHash(cur[0]) === exp) return [];
   const parts = (t) => { const o = {}; const re = /\/\* ---- fff-kit\/([a-z0-9-]+) ---- \*\/\n([\s\S]*?)(?=\/\* ---- fff-kit\/|<\/script>)/g; let m; while ((m = re.exec(t))) o[m[1]] = m[2]; const st = t.match(/<style id="fff-style">([\s\S]*?)<\/style>/); o.__css = st ? st[1] : ''; const i18 = t.match(/id="fff-i18n">([\s\S]*?)<\/script>/); o.__i18n = i18 ? i18[1] : ''; return o; };
-  const a = parts(cur[0]), b = parts(exp);
+  const a = parts(noHash(cur[0])), b = parts(exp);
   const diff = [...new Set([...Object.keys(a), ...Object.keys(b)])].filter((k) => a[k] !== b[k]).map((k) => k === '__css' ? 'css' : k === '__i18n' ? 'i18n' : k);
   return [`derivă: blocul kit din pagină diferă de sursa kitului v${kitVersion()}${diff.length ? ' (' + diff.join(', ') + ')' : ''} — rulează apply`];
 }
@@ -291,6 +297,11 @@ function checkKit(dirArg, opt = {}) {
   else {
     if (!/<meta name="fff-app" content="[^"]+">/.test(html)) errors.push('lipsește <meta name="fff-app">');
     if (!/<script id="fff-kit">/.test(html)) errors.push('lipsește <script id="fff-kit">');
+    const kv = (html.match(/<script id="fff-kit">\/\* fff-kit ([0-9.]+) \*\//) || [])[1] || '0';
+    if (kv.split('.').map(Number).reduce((a, n, i) => a + n * [1e6, 1e3, 1][i], 0) >= 1008000) {   // ≥ 1.8.0: stratul de compatibilitate este obligatoriu
+      if (!/<script id="fff-compat">/.test(html)) errors.push('lipsește <script id="fff-compat"> (strat de compatibilitate, kit ≥ 1.8.0): rulează apply');
+      if (!/<script type="module" id="fff-imp">/.test(html)) errors.push('lipsește <script type="module" id="fff-imp"> (import() dinamic compatibil): rulează apply');
+    }
     if (!/<style id="fff-style">/.test(html)) errors.push('lipsește <style id="fff-style">');
     if (!/<script type="application\/json" id="fff-i18n">/.test(html)) errors.push('lipsește #fff-i18n');
     const mods = currentModules(html);
@@ -309,6 +320,17 @@ function checkKit(dirArg, opt = {}) {
     const sm = html.match(/<style\b[^>]*\bid=["']fff-style["'][^>]*>([\s\S]*?)<\/style>/i);
     const eff = dirs['style-src'] || dirs['default-src'];
     if (sm && eff && !eff.includes("'unsafe-inline'") && !eff.includes(`'sha256-${sha256b64(sm[1])}'`)) errors.push('stilul kitului nu este permis de CSP (style-src)');
+    // orice alt <style> inline (stilul aplicației, cel al widgeturilor) trebuie acoperit de un hash: altfel browserul îl blochează și pagina rămâne fără aspect
+    if (eff && !eff.includes("'unsafe-inline'")) {
+      const bare = html.replace(/<script\b[\s\S]*?<\/script>/gi, '').replace(/<noscript\b[\s\S]*?<\/noscript>/gi, '');
+      const miss = [];
+      for (const s of bare.matchAll(/<style\b([^>]*)>([\s\S]*?)<\/style>/gi)) {
+        const id = (s[1].match(/\bid=["']([^"']+)["']/) || [])[1] || '(fără id)';
+        if (id === 'fff-style' || !s[2].trim() || eff.includes(`'sha256-${sha256b64(s[2])}'`)) continue;
+        miss.push(id);
+      }
+      if (miss.length) errors.push(`stilul inline «${miss.join('», «')}» nu este permis de CSP (style-src): hash lipsă sau învechit`);
+    }
   }
   const cfg = readConfigSafe(path.dirname(file));
   for (const m of cspPolicyIssues(html, cfg)) add(true, m);
@@ -519,7 +541,7 @@ function computeInfo(html, dir, slug, extra) {
     name: titleOf(html),
     version: metaContent(html, 'application-version'),
     updated: metaContent(html, 'last-updated'),
-    description: metaContent(html, 'description'),
+    description: decodeEntities(metaContent(html, 'description')),
     egress: eg,
     permissions: perms,
     storageKeys: keys,

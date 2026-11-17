@@ -3,11 +3,13 @@
 (function () {
   'use strict';
   var F = (window.FFF = window.FFF || {});
+  var RXF = F.rx || function (s, fl) { return new RegExp(s, fl); };   // F.rx vine din fff-compat; rezerva ține modulul funcțional și dacă stratul lipsește
   function T(k, v) { return F.t ? F.t('tts', k, v) : k; }
   function synth() { try { return window.speechSynthesis || null; } catch (e) { return null; } }
   function supported() { return !!(synth() && typeof window.SpeechSynthesisUtterance === 'function'); }
   function lget(k, d) { try { return F.store ? F.store.get(k, d) : d; } catch (e) { return d; } }
   function lset(k, v) { try { if (F.store) F.store.set(k, v); } catch (e) { /* ignorat */ } }
+  var RX_LN = RXF('[\\p{L}\\p{N}]', 'u'), RX_WORDEND = RXF('([\\p{L}]+)$', 'u'), RX_LOWER = RXF('\\p{Ll}', 'u'), RX_CLAUSE = RXF('(?<=[,;:–—])\\s+', '');   // rx: rezervă pentru motoare fără \p{…}/lookbehind (vezi FFF.compat)
   var SOFT_PAUSE = typeof navigator !== 'undefined' && /Android/i.test(navigator.userAgent || '');   // pause() nesuportat fiabil
 
   var ABBR = { dr: 1, dl: 1, dna: 1, nr: 1, str: 1, bd: 1, etc: 1, prof: 1, ing: 1, mr: 1, mrs: 1, ms: 1, vs: 1, ex: 1, fig: 1, cca: 1, pag: 1, sc: 1, ap: 1, bl: 1, jud: 1, mun: 1, tel: 1, dnei: 1, dlui: 1, mme: 1, sr: 1, sra: 1 };
@@ -17,7 +19,7 @@
     max = max || 180;
     text = String(text == null ? '' : text).replace(/\r\n?/g, '\n').replace(/[ \t ]+/g, ' ');
     var out = [], sent = [], i, n = text.length, start = 0;
-    function push(a, b) { var s = text.slice(a, b).replace(/\s+/g, ' ').trim(); if (/[\p{L}\p{N}]/u.test(s)) sent.push(s); }
+    function push(a, b) { var s = text.slice(a, b).replace(/\s+/g, ' ').trim(); if (RX_LN.test(s)) sent.push(s); }
     for (i = 0; i < n; i++) {
       var ch = text[i];
       if (ch === '\n') { push(start, i); start = i + 1; continue; }
@@ -26,10 +28,10 @@
         var cjk = /[。！？]/.test(ch);
         if (j < n && !cjk && !/\s/.test(text[j])) { i = j - 1; continue; }                   // 3.14, e.g.com, U.S.A
         if (ch === '.' && !cjk) {
-          var m = /([\p{L}]+)$/u.exec(text.slice(Math.max(0, i - 8), i));
+          var m = RX_WORDEND.exec(text.slice(Math.max(0, i - 8), i));
           if (m && ABBR[m[1].toLowerCase()] && j === i + 1) { continue; }                      // abreviere
           var k = j; while (k < n && text[k] === ' ') k++;
-          if (k < n && /\p{Ll}/u.test(text[k])) { i = j - 1; continue; }                      // continuă cu literă mică
+          if (k < n && RX_LOWER.test(text[k])) { i = j - 1; continue; }                      // continuă cu literă mică
         }
         push(start, j); start = j; i = j - 1;
       }
@@ -37,7 +39,7 @@
     push(start, n);
     sent.forEach(function (s) {
       if (s.length <= max) { out.push(s); return; }
-      var parts = s.split(/(?<=[,;:–—])\s+/), cur = '';
+      var parts = s.split(RX_CLAUSE), cur = '';
       parts.forEach(function (p) {
         if ((cur + ' ' + p).trim().length <= max) { cur = (cur + ' ' + p).trim(); return; }
         if (cur) out.push(cur); cur = '';

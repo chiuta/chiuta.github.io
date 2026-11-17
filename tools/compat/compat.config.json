@@ -1,0 +1,84 @@
+{
+  "$comment": "Pragul de compatibilitate al aplicațiilor single-file HTML — SINGURUL loc unde se schimbă ținta. Garantat: sintaxă ES2017 (async/await inclus) + polyfill-urile din fff-kit/src/compat.js. Pentru un prag mai jos (Chrome 49–54 / Safari 10.0) se generează opțional o versiune „legacy” ES2015 (vezi docs/COMPATIBILITATE.md).",
+  "floor": {
+    "chrome": 55,
+    "edge": 15,
+    "firefox": 52,
+    "safari": 10.1,
+    "ios": 10.3,
+    "ecma": 2017
+  },
+  "kitMinVersion": "1.8.0",
+  "exceptions": {
+    "Trade-Free-Link-Guardian": {
+      "manual": [
+        "regex-d-flag"
+      ],
+      "because": "m.indices au fallback determinist (blocul fff:idx din index.html), comparat cu rezultatul nativ pe >200 000 de potriviri în tests/indices.test.mjs"
+    },
+    "VERIGA": {
+      "manual": [
+        "regex-d-flag"
+      ],
+      "because": "m.indices au fallback determinist (blocul fff:idx din web/veriga.html), comparat cu rezultatul nativ pe >240 000 de potriviri în web/tests/indices.test.js"
+    }
+  },
+  "$exceptions": "Excepții per aplicație: «syntax»: true ignoră erorile de sintaxă ale auditului (fals pozitive verificate); «manual»: [tipuri] recunoaște ca rezolvate manual notele codemodului de acest tip; «because» este obligatoriu.",
+  "extraTargets": {
+    "chiuta.github.io": [
+      "index.html",
+      "transparenta.html"
+    ],
+    "ODISEEA": [
+      "ODISEEA.html",
+      "premiera.html",
+      "GALERIE.html"
+    ],
+    "PUNCTUM": [
+      "punctum.html"
+    ],
+    "Pendulul": [
+      "dist/pendulul-3d.html"
+    ],
+    "TEZAUR": [
+      "tezaur.html",
+      "pwa/index.html"
+    ],
+    "VNTV": [
+      "dist/vntv.html",
+      "deploy/site/index.html"
+    ],
+    "FASCICUL": [
+      "fascicul.html"
+    ],
+    "Chiromantia": [
+      "chiromantia.html"
+    ],
+    "TurboCursa": [
+      "docs/turbocursa.html"
+    ],
+    "Claritas": [
+      "site/index.html"
+    ],
+    "ValeaPlopului1972": [
+      "ValeaPlopului_Interior3D.html",
+      "ValeaPlopului_Model3D_Tehnic.html"
+    ],
+    "VERIGA": [
+      "web/veriga.html",
+      "app/index.html",
+      "packaging/wordpress/veriga-link-checker/assets/veriga.html"
+    ],
+    "osatura": [
+      "osatura-cli/src/studio.html",
+      "site/index.template.html"
+    ],
+    "LegatorOCR": [
+      "web/capture/index.html"
+    ],
+    "Nota-Zero": [
+      "recenzie.html"
+    ]
+  },
+  "$extraTargets": "Fișiere HTML single-file distribuite separat de index.html-ul principal al depozitului (copii de distribuție, rezultate de build, pagini web ale aplicațiilor Rust); intră în audit, în coborârea sintaxei și în smoke la fel ca aplicațiile. Cheie = depozit, valoare = căi relative. Rezultatul de build trebuie regenerat/coborât din nou după fiecare build (vezi docs/COMPATIBILITATE.md)."
+}

@@ -37,7 +37,7 @@ T('scor: sursă unică (transparenta.json), `score` manual doar rezervă depreci
   for (const r of scored) assert.equal(meta.apps[r.key].measured.score, r.score, r.key);
   // 2. nicio aplicație nemăsurată (nativele au grila proprie, a7n); nu au scor de rezervă (nu s-a inventat nimic)
   const unmeasured = keys.filter((k) => scoreOf(meta.apps[k] || {}) === null).sort();
-  assert.deepEqual(unmeasured, ['ANTENA', 'ARBITRU', 'ASTROLABIU', 'Claritas', 'ECOGRAMA', 'MARTOR', 'NEAMURI', 'TACTIL', 'TurboCursa', 'atelier-verificare', 'balanta', 'calendarium', 'ecou-spectral-rs', 'glosar', 'graiul', 'indicativ-international', 'proiector-fara-frontiere', 'regula', 'vietar-packs'], 'aplicații fără niciun scor (cele 19 rămase din intrările de la 2026-11-13 (Claritas, TurboCursa și 17 proiecte alpha) nu sunt aplicații HTML kit; cele 6 aplicații HTML au fost măsurate; nu li s-a inventat niciun scor)');
+  assert.deepEqual(unmeasured, ['ANTENA', 'ARBITRU', 'ASTROLABIU', 'Claritas', 'ECOGRAMA', 'EXIF-CURAT', 'MARTOR', 'NEAMURI', 'ODISEEA', 'PORUMBEL', 'TACTIL', 'TurboCursa', 'colibri-companion', 'ecou-spectral-rs'], 'aplicații fără niciun scor (cele 23 rămase din intrările de la 2026-11-13 (Claritas, TurboCursa, 17 proiecte alpha și, din 2026-11-16, ODISEEA, EXIF-CURAT, PORUMBEL și colibri-companion) nu sunt aplicații HTML kit; cele 6 aplicații HTML au fost măsurate; nu li s-a inventat niciun scor)');
   assert.deepEqual(keys.filter((k) => !(meta.apps[k] && meta.apps[k].measured) && meta.apps[k] && typeof meta.apps[k].score === 'number'), [], 'rezerva `score` doar pentru nemăsurate');
   // 3. `score` manual interzis pe o aplicație măsurată; acceptat (rezervă) pe una nemăsurată; citit doar dacă lipsește măsurătoarea
   const probs = (m) => validateMeta(m, keys, null).filter((p) => /score|măsurat|laborator|lab/i.test(p));
@@ -82,6 +82,29 @@ T('make-fixtures: fără --root nu scrie nimic; --check fără clone cere explic
   assert.equal(e.status, 2); assert.match(e.stderr, /nu scriu nimic/);
   assert.equal(fs.readdirSync(dir).length, n, 'o rădăcină goală nu golește fixturile');
   fs.rmSync(empty, {recursive: true, force: true});
+});
+
+T('make-fixtures: pe un set parțial de clone, aplicațiile fără clonă își păstrează fixtura (nu se șterge nimic)', () => {
+  // copie minimă a hub-ului într-un folder temporar: scriptul își calculează HUB din propria cale, deci fixturile reale nu se ating
+  const tmp = fs.mkdtempSync(path.join(process.env.TMPDIR || '/tmp', 'fixpart-'));
+  const put = (rel, text) => { const f = path.join(tmp, rel); fs.mkdirSync(path.dirname(f), {recursive: true}); fs.writeFileSync(f, text); };
+  const cp = (rel) => put(rel, fs.readFileSync(path.join(HUB, rel), 'utf8'));
+  ['tools/make-fixtures.mjs', 'tools/catalog-meta-lib.mjs', 'index.html', 'data/catalog-meta.json'].forEach(cp);
+  const FIXD = path.join(HUB, 'tests', 'fixtures', 'apps');
+  const before = {};
+  for (const k of ['BRAZDA', 'VOIAJOR', 'Bolta']) for (const f of fs.readdirSync(path.join(FIXD, k))) { cp('tests/fixtures/apps/' + k + '/' + f); before[k + '/' + f] = fs.readFileSync(path.join(FIXD, k, f), 'utf8'); }
+  const root = path.join(tmp, 'clone');
+  put('clone/Bolta/index.html', '<!doctype html><meta name="application-version" content="9.9.9"><meta name="last-updated" content="2026-01-02">');
+  const r = spawnSync('node', [path.join(tmp, 'tools', 'make-fixtures.mjs'), '--root', root], {encoding: 'utf8'});
+  assert.equal(r.status, 0, r.stdout + r.stderr);
+  assert.match(r.stdout, /omise\): .*BRAZDA/, 'aplicațiile fără clonă sunt raportate');
+  for (const k of ['BRAZDA', 'VOIAJOR']) for (const f of fs.readdirSync(path.join(FIXD, k))) {
+    const g = path.join(tmp, 'tests', 'fixtures', 'apps', k, f);
+    assert.ok(fs.existsSync(g), k + '/' + f + ' a dispărut');
+    assert.equal(fs.readFileSync(g, 'utf8'), before[k + '/' + f], k + '/' + f + ' s-a schimbat');
+  }
+  assert.match(fs.readFileSync(path.join(tmp, 'tests', 'fixtures', 'apps', 'Bolta', 'index.html'), 'utf8'), /content="9\.9\.9"/, 'aplicația cu clonă se regenerează');
+  fs.rmSync(tmp, {recursive: true, force: true});
 });
 
 console.log(fail ? `\n${fail} eșuate` : '\ntoate trec');

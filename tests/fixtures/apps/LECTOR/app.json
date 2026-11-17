@@ -1,6 +1,6 @@
 {
-  "version": "14",
-  "updated": "2026-11-15",
+  "version": "14.1.2",
+  "updated": "2026-11-17",
   "egress": [
     {
       "host": "*.hf.co",
@@ -24,7 +24,6 @@
       "host": "cdn.jsdelivr.net",
       "via": [
         "csp:connect-src",
-        "import()",
         "src="
       ]
     },

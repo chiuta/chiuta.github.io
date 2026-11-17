@@ -159,13 +159,13 @@ await T('catalog: contoare derivate, stare, offline, fișă, variante Universul 
   ok(info.rustCards === 'OSATURA,VERIGA,TEZAUR,LegatorOCR', 'secțiunea Rust: ' + info.rustCards);
   ok(info.uoVariantLinks.length === 3 && info.uoVariantLinks.every((u) => /Universul-Observabil-[123]D\/?$/.test(u)), 'fișa hub-ului nu listează cele 3 variante: ' + info.uoVariantLinks.join(','));
   ok(info.shots === 0, 'nu trebuie să existe capturi dacă nu sunt declarate');
-  ok([...info.statuses.alpha].sort().join() === 'ANTENA,ARBITRU,ASTROLABIU,ECOGRAMA,LegatorOCR,MARTOR,NEAMURI,OSATURA,TACTIL,TEZAUR,atelier-verificare,balanta,calendarium,ecou-spectral-rs,glosar,graiul,indicativ-international,proiector-fara-frontiere,regula,vietar-packs' && info.statuses.experimental.join() === 'Provenienta' && info.statuses.stable.length > 100, 'stări: ' + JSON.stringify(info.statuses).slice(0, 200));
+  ok([...info.statuses.alpha].sort().join() === 'ANTENA,ARBITRU,ASTROLABIU,ECOGRAMA,EXIF-CURAT,LegatorOCR,MARTOR,NEAMURI,OSATURA,PORUMBEL,TACTIL,TEZAUR,atelier-verificare,balanta,calendarium,colibri-companion,ecou-spectral-rs,glosar,graiul,indicativ-international,proiector-fara-frontiere,regula,vietar-packs' && info.statuses.experimental.join() === 'Provenienta' && info.statuses.stable.length > 100, 'stări: ' + JSON.stringify(info.statuses).slice(0, 200));
   ok(info.statuses.lab.join() === 'LocalMind,OmniHost', 'laborator: ' + info.statuses.lab.join());
   ok(info.recom.length >= 5 && info.recom.every((r, i) => r[2] !== 'lab' && r[1] >= 5 && (i === 0 || info.recom[i - 1][1] >= r[1])), 'Recomandate nu e ordonată după scorul măsurat / conține laborator: ' + JSON.stringify(info.recom));
   ok(info.verText === 0, 'data de sincronizare în masă nu mai apare pe carduri');
   // filtru de stare
   await page.selectOption('#f-status', 'alpha');
-  await countIs(page, 20);
+  await countIs(page, info.statuses.alpha.length);   // numărul de carduri alpha vine din lista verificată mai sus, nu dintr-o constantă
   await page.selectOption('#f-status', 'experimental');
   await countIs(page, 1);
   await page.selectOption('#f-status', 'lab');

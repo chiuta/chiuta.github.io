@@ -22,13 +22,14 @@
    "id": "nativ",
    "title": "Demonstrații native (demo/nativ)",
    "where": "hub",
-   "note": "32 subtitrări .vtt (4 programe × 8 limbi), șirurile interfeței și pistele audio sintetice",
+   "note": "40 subtitrări .vtt (5 programe × 8 limbi), șirurile interfeței și pistele audio sintetice",
    "repo": "hub",
    "ids": [
     "tezaur",
     "veriga",
     "legatorocr",
-    "osatura"
+    "osatura",
+    "porumbel"
    ],
    "files": [
     "demo/nativ/{id}.{l}.vtt"

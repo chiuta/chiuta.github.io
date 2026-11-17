@@ -14345,6 +14345,1254 @@
      "size": 257445
     }
    }
+  },
+  {
+   "slug": "DESCANTAR",
+   "title": "DESCANTAR",
+   "section": "cultura",
+   "tags": {
+    "en": [
+     "folklore",
+     "beans"
+    ],
+    "ro": [
+     "folclor",
+     "bobi"
+    ],
+    "fr": [
+     "folklore",
+     "haricots"
+    ],
+    "it": [
+     "folclore",
+     "fagioli"
+    ],
+    "es": [
+     "folclore",
+     "frijoles"
+    ],
+    "pt": [
+     "folclore",
+     "feijões"
+    ],
+    "de": [
+     "Volkskunde",
+     "Bohnen"
+    ],
+    "hu": [
+     "néprajz",
+     "bab"
+    ]
+   },
+   "line": {
+    "en": "Bean divination with 41 beans (3×3 method, Oltenian variant) and 12 traditional charms, as an object of folklore study.",
+    "ro": "Dat în bobi cu 41 de boabe (metoda 3×3, varianta oltenească) și 12 descântece tradiționale, ca obiect de studiu folcloric.",
+    "fr": "Divination aux 41 haricots (méthode 3×3, variante d’Olténie) et 12 incantations traditionnelles, comme objet d’étude folklorique.",
+    "it": "Divinazione con 41 fagioli (metodo 3×3, variante dell’Oltenia) e 12 incantesimi tradizionali, come oggetto di studio folclorico.",
+    "es": "Adivinación con 41 frijoles (método 3×3, variante de Oltenia) y 12 ensalmos tradicionales, como objeto de estudio folclórico.",
+    "pt": "Adivinhação com 41 feijões (método 3×3, variante da Oltênia) e 12 benzeduras tradicionais, como objeto de estudo folclórico.",
+    "de": "Bohnenorakel mit 41 Bohnen (3×3-Methode, oltenische Variante) und 12 traditionelle Sprüche, als Gegenstand der Volkskunde.",
+    "hu": "Babavetés 41 babbal (3×3 módszer, olténiai változat) és 12 hagyományos ráolvasás, népszokás-kutatási tárgyként."
+   },
+   "url": "https://chiuta.github.io/DESCANTAR/",
+   "readme": "https://github.com/chiuta/DESCANTAR#readme",
+   "off": "no",
+   "status": "stable",
+   "video": "DESCANTAR/video.mp4",
+   "poster": "DESCANTAR/poster.jpg",
+   "duration": 37.1,
+   "size": 338897,
+   "vtt": {
+    "en": "DESCANTAR/en.vtt",
+    "ro": "DESCANTAR/ro.vtt",
+    "fr": "DESCANTAR/fr.vtt",
+    "it": "DESCANTAR/it.vtt",
+    "es": "DESCANTAR/es.vtt",
+    "pt": "DESCANTAR/pt.vtt",
+    "de": "DESCANTAR/de.vtt",
+    "hu": "DESCANTAR/hu.vtt"
+   },
+   "transcript": "DESCANTAR/transcript.json",
+   "videos": {
+    "ro": {
+     "video": "DESCANTAR/loc/ro/video.mp4",
+     "vtt": "DESCANTAR/loc/ro/ro.vtt",
+     "duration": 48.9,
+     "size": 389594
+    },
+    "fr": {
+     "video": "DESCANTAR/loc/fr/video.mp4",
+     "vtt": "DESCANTAR/loc/fr/fr.vtt",
+     "duration": 36.9,
+     "size": 336932
+    },
+    "it": {
+     "video": "DESCANTAR/loc/it/video.mp4",
+     "vtt": "DESCANTAR/loc/it/it.vtt",
+     "duration": 43.2,
+     "size": 383753
+    },
+    "es": {
+     "video": "DESCANTAR/loc/es/video.mp4",
+     "vtt": "DESCANTAR/loc/es/es.vtt",
+     "duration": 43.2,
+     "size": 372199
+    },
+    "pt": {
+     "video": "DESCANTAR/loc/pt/video.mp4",
+     "vtt": "DESCANTAR/loc/pt/pt.vtt",
+     "duration": 37.2,
+     "size": 334377
+    },
+    "de": {
+     "video": "DESCANTAR/loc/de/video.mp4",
+     "vtt": "DESCANTAR/loc/de/de.vtt",
+     "duration": 36.7,
+     "size": 339660
+    },
+    "hu": {
+     "video": "DESCANTAR/loc/hu/video.mp4",
+     "vtt": "DESCANTAR/loc/hu/hu.vtt",
+     "duration": 36.7,
+     "size": 343142
+    }
+   }
+  },
+  {
+   "slug": "PatruZeci",
+   "title": "PatruZeci",
+   "section": "gospodarie",
+   "tags": {
+    "en": [
+     "WD-40",
+     "DIY"
+    ],
+    "ro": [
+     "WD-40",
+     "bricolaj"
+    ],
+    "fr": [
+     "WD-40",
+     "bricolage"
+    ],
+    "it": [
+     "WD-40",
+     "fai da te"
+    ],
+    "es": [
+     "WD-40",
+     "bricolaje"
+    ],
+    "pt": [
+     "WD-40",
+     "bricolagem"
+    ],
+    "de": [
+     "WD-40",
+     "Heimwerken"
+    ],
+    "hu": [
+     "WD-40",
+     "barkácsolás"
+    ]
+   },
+   "line": {
+    "en": "The illustrated, animated atlas of WD-40 uses: a guide of 147 cards and the official list of 1993 uses, each with its own animated scene. Unofficial, offline, no account.",
+    "ro": "Atlasul ilustrat și animat al utilizărilor WD-40: ghid cu 147 de fișe și lista oficială de 1993 de utilizări, fiecare cu scena ei animată. Neoficial, offline, fără cont.",
+    "fr": "L’atlas illustré et animé des usages du WD-40 : un guide de 147 fiches et la liste officielle de 1993 usages, chacun avec sa scène animée. Non officiel, hors ligne, sans compte.",
+    "it": "L’atlante illustrato e animato degli usi del WD-40: una guida di 147 schede e l’elenco ufficiale di 1993 usi, ciascuno con la sua scena animata. Non ufficiale, offline, senza account.",
+    "es": "El atlas ilustrado y animado de los usos del WD-40: una guía de 147 fichas y la lista oficial de 1993 usos, cada uno con su escena animada. No oficial, sin conexión, sin cuenta.",
+    "pt": "O atlas ilustrado e animado das utilizações do WD-40: um guia de 147 fichas e a lista oficial de 1993 utilizações, cada uma com a sua cena animada. Não oficial, offline, sem conta.",
+    "de": "Der bebilderte, animierte Atlas der WD-40-Anwendungen: ein Leitfaden mit 147 Karten und die offizielle Liste mit 1993 Anwendungen, jede mit eigener animierter Szene. Inoffiziell, offline, ohne Konto.",
+    "hu": "A WD-40 felhasználási módjainak illusztrált, animált atlasza: 147 kártyás útmutató és a hivatalos, 1993 felhasználást tartalmazó lista, mindegyik saját animált jelenettel. Nem hivatalos, offline, fiók nélkül."
+   },
+   "url": "https://chiuta.github.io/PatruZeci/",
+   "readme": "https://github.com/chiuta/PatruZeci#readme",
+   "off": "full",
+   "status": "stable",
+   "video": "PatruZeci/video.mp4",
+   "poster": "PatruZeci/poster.jpg",
+   "duration": 39.5,
+   "size": 719793,
+   "vtt": {
+    "en": "PatruZeci/en.vtt",
+    "ro": "PatruZeci/ro.vtt",
+    "fr": "PatruZeci/fr.vtt",
+    "it": "PatruZeci/it.vtt",
+    "es": "PatruZeci/es.vtt",
+    "pt": "PatruZeci/pt.vtt",
+    "de": "PatruZeci/de.vtt",
+    "hu": "PatruZeci/hu.vtt"
+   },
+   "transcript": "PatruZeci/transcript.json",
+   "videos": {
+    "ro": {
+     "video": "PatruZeci/loc/ro/video.mp4",
+     "vtt": "PatruZeci/loc/ro/ro.vtt",
+     "duration": 45.7,
+     "size": 774915
+    },
+    "fr": {
+     "video": "PatruZeci/loc/fr/video.mp4",
+     "vtt": "PatruZeci/loc/fr/fr.vtt",
+     "duration": 45.7,
+     "size": 774249
+    },
+    "it": {
+     "video": "PatruZeci/loc/it/video.mp4",
+     "vtt": "PatruZeci/loc/it/it.vtt",
+     "duration": 45.7,
+     "size": 792118
+    },
+    "es": {
+     "video": "PatruZeci/loc/es/video.mp4",
+     "vtt": "PatruZeci/loc/es/es.vtt",
+     "duration": 39.6,
+     "size": 745078
+    },
+    "pt": {
+     "video": "PatruZeci/loc/pt/video.mp4",
+     "vtt": "PatruZeci/loc/pt/pt.vtt",
+     "duration": 39.6,
+     "size": 752799
+    },
+    "de": {
+     "video": "PatruZeci/loc/de/video.mp4",
+     "vtt": "PatruZeci/loc/de/de.vtt",
+     "duration": 39.7,
+     "size": 752255
+    },
+    "hu": {
+     "video": "PatruZeci/loc/hu/video.mp4",
+     "vtt": "PatruZeci/loc/hu/hu.vtt",
+     "duration": 39.4,
+     "size": 771661
+    }
+   }
+  },
+  {
+   "slug": "atelier-verificare",
+   "title": "atelier-verificare",
+   "section": "verificare",
+   "tags": {
+    "en": [
+     "journalism",
+     "verification",
+     "photos"
+    ],
+    "ro": [
+     "jurnalism",
+     "verificare",
+     "fotografii"
+    ],
+    "fr": [
+     "journalisme",
+     "vérification",
+     "photos"
+    ],
+    "it": [
+     "giornalismo",
+     "verifica",
+     "foto"
+    ],
+    "es": [
+     "periodismo",
+     "verificación",
+     "fotos"
+    ],
+    "pt": [
+     "jornalismo",
+     "verificação",
+     "fotos"
+    ],
+    "de": [
+     "Journalismus",
+     "Verifizierung",
+     "Fotos"
+    ],
+    "hu": [
+     "újságírás",
+     "ellenőrzés",
+     "fényképek"
+    ]
+   },
+   "line": {
+    "en": "Check photos, videos, links and domains in your browser, nothing uploaded: real file type and SHA-256, EXIF/GPS, XMP/IPTC, Content Credentials (read only), error-level analysis. It cannot prove that a photo is authentic. Alpha.",
+    "ro": "Verifică fotografii, clipuri, linkuri și domenii în browser, fără să încarci nimic: tipul real al fișierului și SHA-256, EXIF/GPS, XMP/IPTC, Content Credentials (doar citite), analiza nivelului de eroare. Nu poate dovedi că o fotografie e autentică. Alpha.",
+    "fr": "Vérifiez photos, vidéos, liens et domaines dans le navigateur, sans rien envoyer : vrai type de fichier et SHA-256, EXIF/GPS, XMP/IPTC, Content Credentials (lus seulement), analyse du niveau d’erreur. Ne peut pas prouver qu’une photo est authentique. Alpha.",
+    "it": "Controlla foto, video, link e domini nel browser, senza caricare nulla: tipo reale del file e SHA-256, EXIF/GPS, XMP/IPTC, Content Credentials (solo lette), analisi del livello di errore. Non può provare che una foto sia autentica. Alpha.",
+    "es": "Comprueba fotos, vídeos, enlaces y dominios en el navegador, sin subir nada: tipo real del archivo y SHA-256, EXIF/GPS, XMP/IPTC, Content Credentials (solo lectura), análisis del nivel de error. No puede probar que una foto sea auténtica. Alpha.",
+    "pt": "Verifique fotos, vídeos, links e domínios no navegador, sem enviar nada: tipo real do ficheiro e SHA-256, EXIF/GPS, XMP/IPTC, Content Credentials (só leitura), análise do nível de erro. Não prova que uma foto é autêntica. Alpha.",
+    "de": "Prüfen Sie Fotos, Videos, Links und Domains im Browser, ohne etwas hochzuladen: echter Dateityp und SHA-256, EXIF/GPS, XMP/IPTC, Content Credentials (nur gelesen), Error-Level-Analyse. Kann nicht beweisen, dass ein Foto echt ist. Alpha.",
+    "hu": "Fényképek, videók, linkek és domainek ellenőrzése a böngészőben, feltöltés nélkül: valódi fájltípus és SHA-256, EXIF/GPS, XMP/IPTC, Content Credentials (csak olvasva), hibaszint-elemzés. Nem tudja bizonyítani, hogy egy fénykép hiteles. Alpha."
+   },
+   "url": "https://chiuta.github.io/atelier-verificare/",
+   "readme": "https://github.com/chiuta/atelier-verificare#readme",
+   "off": "part",
+   "status": "alpha",
+   "video": "atelier-verificare/video.mp4",
+   "poster": "atelier-verificare/poster.jpg",
+   "duration": 42,
+   "size": 597346,
+   "vtt": {
+    "en": "atelier-verificare/en.vtt",
+    "ro": "atelier-verificare/ro.vtt",
+    "fr": "atelier-verificare/fr.vtt",
+    "it": "atelier-verificare/it.vtt",
+    "es": "atelier-verificare/es.vtt",
+    "pt": "atelier-verificare/pt.vtt",
+    "de": "atelier-verificare/de.vtt",
+    "hu": "atelier-verificare/hu.vtt"
+   },
+   "transcript": "atelier-verificare/transcript.json",
+   "videos": {
+    "ro": {
+     "video": "atelier-verificare/loc/ro/video.mp4",
+     "vtt": "atelier-verificare/loc/ro/ro.vtt",
+     "duration": 42,
+     "size": 637685
+    },
+    "fr": {
+     "video": "atelier-verificare/loc/fr/video.mp4",
+     "vtt": "atelier-verificare/loc/fr/fr.vtt",
+     "duration": 40.7,
+     "size": 735064
+    },
+    "it": {
+     "video": "atelier-verificare/loc/it/video.mp4",
+     "vtt": "atelier-verificare/loc/it/it.vtt",
+     "duration": 34.6,
+     "size": 614011
+    },
+    "es": {
+     "video": "atelier-verificare/loc/es/video.mp4",
+     "vtt": "atelier-verificare/loc/es/es.vtt",
+     "duration": 34.5,
+     "size": 660010
+    },
+    "pt": {
+     "video": "atelier-verificare/loc/pt/video.mp4",
+     "vtt": "atelier-verificare/loc/pt/pt.vtt",
+     "duration": 41.9,
+     "size": 723508
+    },
+    "de": {
+     "video": "atelier-verificare/loc/de/video.mp4",
+     "vtt": "atelier-verificare/loc/de/de.vtt",
+     "duration": 46.4,
+     "size": 691661
+    },
+    "hu": {
+     "video": "atelier-verificare/loc/hu/video.mp4",
+     "vtt": "atelier-verificare/loc/hu/hu.vtt",
+     "duration": 34.7,
+     "size": 707725
+    }
+   }
+  },
+  {
+   "slug": "balanta",
+   "title": "balanta",
+   "section": "ai",
+   "tags": {
+    "en": [
+     "AI",
+     "evaluation"
+    ],
+    "ro": [
+     "AI",
+     "evaluare"
+    ],
+    "fr": [
+     "IA",
+     "évaluation"
+    ],
+    "it": [
+     "IA",
+     "valutazione"
+    ],
+    "es": [
+     "IA",
+     "evaluación"
+    ],
+    "pt": [
+     "IA",
+     "avaliação"
+    ],
+    "de": [
+     "KI",
+     "Bewertung"
+    ],
+    "hu": [
+     "MI",
+     "értékelés"
+    ]
+   },
+   "line": {
+    "en": "Compare AI models blind: paste the answers of two to eight models to 92 Romanian, English and Hungarian prompts, vote A or B, and get a ranking with intervals. Alpha; works offline.",
+    "ro": "Compară modele de IA pe orbește: lipești răspunsurile a două până la opt modele la 92 de cerințe în română, engleză și maghiară, votezi A sau B și primești un clasament cu intervale. Alpha; funcționează offline.",
+    "fr": "Comparez des modèles d’IA à l’aveugle : collez les réponses de deux à huit modèles à 92 consignes en roumain, anglais et hongrois, votez A ou B et obtenez un classement avec intervalles. Alpha ; fonctionne hors ligne.",
+    "it": "Confronta modelli di IA alla cieca: incolla le risposte da due a otto modelli a 92 prompt in rumeno, inglese e ungherese, vota A o B e ottieni una classifica con intervalli. Alpha; funziona offline.",
+    "es": "Compara modelos de IA a ciegas: pega las respuestas de dos a ocho modelos a 92 instrucciones en rumano, inglés y húngaro, vota A o B y obtén una clasificación con intervalos. Alpha; funciona sin conexión.",
+    "pt": "Compare modelos de IA às cegas: cole as respostas de dois a oito modelos a 92 pedidos em romeno, inglês e húngaro, vote A ou B e obtenha uma classificação com intervalos. Alpha; funciona offline.",
+    "de": "Vergleiche KI-Modelle blind: Füge die Antworten von zwei bis acht Modellen auf 92 Aufgaben auf Rumänisch, Englisch und Ungarisch ein, stimme für A oder B ab und erhalte ein Ranking mit Intervallen. Alpha; funktioniert offline.",
+    "hu": "Hasonlíts össze MI-modelleket vakon: illeszd be két–nyolc modell válaszait a 92 román, angol és magyar feladatra, szavazz A-ra vagy B-re, és kapj rangsort konfidenciaintervallumokkal. Alpha; offline is működik."
+   },
+   "url": "https://chiuta.github.io/balanta/",
+   "readme": "https://github.com/chiuta/balanta#readme",
+   "off": "full",
+   "status": "alpha",
+   "video": "balanta/video.mp4",
+   "poster": "balanta/poster.jpg",
+   "duration": 41.2,
+   "size": 530499,
+   "vtt": {
+    "en": "balanta/en.vtt",
+    "ro": "balanta/ro.vtt",
+    "fr": "balanta/fr.vtt",
+    "it": "balanta/it.vtt",
+    "es": "balanta/es.vtt",
+    "pt": "balanta/pt.vtt",
+    "de": "balanta/de.vtt",
+    "hu": "balanta/hu.vtt"
+   },
+   "transcript": "balanta/transcript.json",
+   "videos": {
+    "ro": {
+     "video": "balanta/loc/ro/video.mp4",
+     "vtt": "balanta/loc/ro/ro.vtt",
+     "duration": 41.2,
+     "size": 561443
+    },
+    "fr": {
+     "video": "balanta/loc/fr/video.mp4",
+     "vtt": "balanta/loc/fr/fr.vtt",
+     "duration": 47.5,
+     "size": 632827
+    },
+    "it": {
+     "video": "balanta/loc/it/video.mp4",
+     "vtt": "balanta/loc/it/it.vtt",
+     "duration": 47.4,
+     "size": 608484
+    },
+    "es": {
+     "video": "balanta/loc/es/video.mp4",
+     "vtt": "balanta/loc/es/es.vtt",
+     "duration": 41.1,
+     "size": 608311
+    },
+    "pt": {
+     "video": "balanta/loc/pt/video.mp4",
+     "vtt": "balanta/loc/pt/pt.vtt",
+     "duration": 41.2,
+     "size": 589104
+    },
+    "de": {
+     "video": "balanta/loc/de/video.mp4",
+     "vtt": "balanta/loc/de/de.vtt",
+     "duration": 41.2,
+     "size": 609310
+    },
+    "hu": {
+     "video": "balanta/loc/hu/video.mp4",
+     "vtt": "balanta/loc/hu/hu.vtt",
+     "duration": 41.4,
+     "size": 614801
+    }
+   }
+  },
+  {
+   "slug": "calendarium",
+   "title": "calendarium",
+   "section": "stiinta",
+   "tags": {
+    "en": [
+     "calendars",
+     "time"
+    ],
+    "ro": [
+     "calendare",
+     "timp"
+    ],
+    "fr": [
+     "calendriers",
+     "temps"
+    ],
+    "it": [
+     "calendari",
+     "tempo"
+    ],
+    "es": [
+     "calendarios",
+     "tiempo"
+    ],
+    "pt": [
+     "calendários",
+     "tempo"
+    ],
+    "de": [
+     "Kalender",
+     "Zeit"
+    ],
+    "hu": [
+     "naptárak",
+     "idő"
+    ]
+   },
+   "line": {
+    "en": "Type a date in any of eleven calendars (Gregorian, Julian, Hebrew, Hijri, Persian, Chinese, Maya, Mars…) and see it in all the others, with a month view. Alpha; works offline.",
+    "ro": "Scrie o dată într-unul din cele unsprezece calendare (gregorian, iulian, ebraic, hijri, persan, chinezesc, maya, marțian…) și o vezi în toate celelalte, cu vedere pe lună. Alpha; funcționează offline.",
+    "fr": "Saisissez une date dans l’un des onze calendriers (grégorien, julien, hébraïque, hégirien, persan, chinois, maya, martien…) et voyez-la dans tous les autres, avec une vue par mois. Alpha ; fonctionne hors ligne.",
+    "it": "Scrivi una data in uno degli undici calendari (gregoriano, giuliano, ebraico, egiriano, persiano, cinese, maya, marziano…) e vedila in tutti gli altri, con vista mensile. Alpha; funziona offline.",
+    "es": "Escribe una fecha en uno de los once calendarios (gregoriano, juliano, hebreo, hégira, persa, chino, maya, marciano…) y mírala en todos los demás, con vista mensual. Alpha; funciona sin conexión.",
+    "pt": "Escreva uma data num dos onze calendários (gregoriano, juliano, hebraico, hégira, persa, chinês, maia, marciano…) e veja-a em todos os outros, com vista mensal. Alpha; funciona offline.",
+    "de": "Gib ein Datum in einem von elf Kalendern ein (gregorianisch, julianisch, hebräisch, Hidschra, persisch, chinesisch, Maya, Mars …) und sieh es in allen anderen, mit Monatsansicht. Alpha; funktioniert offline.",
+    "hu": "Írj be egy dátumot a tizenegy naptár bármelyikében (Gergely, Julián, héber, hidzsra, perzsa, kínai, maja, marsi…), és nézd meg az összes többiben, havi nézettel. Alpha; offline is működik."
+   },
+   "url": "https://chiuta.github.io/calendarium/",
+   "readme": "https://github.com/chiuta/calendarium#readme",
+   "off": "full",
+   "status": "alpha",
+   "video": "calendarium/video.mp4",
+   "poster": "calendarium/poster.jpg",
+   "duration": 36.2,
+   "size": 386924,
+   "vtt": {
+    "en": "calendarium/en.vtt",
+    "ro": "calendarium/ro.vtt",
+    "fr": "calendarium/fr.vtt",
+    "it": "calendarium/it.vtt",
+    "es": "calendarium/es.vtt",
+    "pt": "calendarium/pt.vtt",
+    "de": "calendarium/de.vtt",
+    "hu": "calendarium/hu.vtt"
+   },
+   "transcript": "calendarium/transcript.json",
+   "videos": {
+    "ro": {
+     "video": "calendarium/loc/ro/video.mp4",
+     "vtt": "calendarium/loc/ro/ro.vtt",
+     "duration": 42.4,
+     "size": 429499
+    },
+    "fr": {
+     "video": "calendarium/loc/fr/video.mp4",
+     "vtt": "calendarium/loc/fr/fr.vtt",
+     "duration": 42.4,
+     "size": 450905
+    },
+    "it": {
+     "video": "calendarium/loc/it/video.mp4",
+     "vtt": "calendarium/loc/it/it.vtt",
+     "duration": 42.3,
+     "size": 436851
+    },
+    "es": {
+     "video": "calendarium/loc/es/video.mp4",
+     "vtt": "calendarium/loc/es/es.vtt",
+     "duration": 36.3,
+     "size": 380003
+    },
+    "pt": {
+     "video": "calendarium/loc/pt/video.mp4",
+     "vtt": "calendarium/loc/pt/pt.vtt",
+     "duration": 42.4,
+     "size": 458691
+    },
+    "de": {
+     "video": "calendarium/loc/de/video.mp4",
+     "vtt": "calendarium/loc/de/de.vtt",
+     "duration": 42.4,
+     "size": 419603
+    },
+    "hu": {
+     "video": "calendarium/loc/hu/video.mp4",
+     "vtt": "calendarium/loc/hu/hu.vtt",
+     "duration": 42.3,
+     "size": 439781
+    }
+   }
+  },
+  {
+   "slug": "glosar",
+   "title": "glosar",
+   "section": "literatura",
+   "tags": {
+    "en": [
+     "languages",
+     "dictionaries"
+    ],
+    "ro": [
+     "limbi",
+     "dicționare"
+    ],
+    "fr": [
+     "langues",
+     "dictionnaires"
+    ],
+    "it": [
+     "lingue",
+     "dizionari"
+    ],
+    "es": [
+     "idiomas",
+     "diccionarios"
+    ],
+    "pt": [
+     "línguas",
+     "dicionários"
+    ],
+    "de": [
+     "Sprachen",
+     "Wörterbücher"
+    ],
+    "hu": [
+     "nyelvek",
+     "szótárak"
+    ]
+   },
+   "line": {
+    "en": "An offline dictionary for Aromanian, Megleno-Romanian and Romani: search without diacritics, see which basic words are missing, add words with a source and a recording. Alpha.",
+    "ro": "Dicționar offline pentru aromână, meglenoromână și romani: caută fără diacritice, vezi ce cuvinte de bază lipsesc, adaugă cuvinte cu sursă și înregistrare. Alpha.",
+    "fr": "Un dictionnaire hors ligne pour l’aroumain, le mégléno-roumain et le romani : recherche sans diacritiques, mots de base manquants, ajout de mots avec une source et un enregistrement. Alpha.",
+    "it": "Un dizionario offline per aromeno, meglenoromeno e romaní: ricerca senza diacritici, parole di base mancanti, aggiunta di parole con fonte e registrazione. Alpha.",
+    "es": "Un diccionario sin conexión para aromuno, meglenorrumano y romaní: búsqueda sin diacríticos, palabras básicas que faltan y alta de palabras con fuente y grabación. Alpha.",
+    "pt": "Um dicionário offline para aromeno, megleno-romeno e romani: pesquisa sem diacríticos, palavras básicas em falta e adição de palavras com fonte e gravação. Alpha.",
+    "de": "Ein Offline-Wörterbuch für Aromunisch, Meglenorumänisch und Romani: Suche ohne Diakritika, fehlende Grundwörter, Wörter mit Quelle und Aufnahme hinzufügen. Alpha.",
+    "hu": "Offline szótár aromán, megleno-román és romani nyelvhez: ékezet nélküli keresés, hiányzó alapszavak, szavak hozzáadása forrással és felvétellel. Alpha."
+   },
+   "url": "https://chiuta.github.io/glosar/",
+   "readme": "https://github.com/chiuta/glosar#readme",
+   "off": "full",
+   "status": "alpha",
+   "video": "glosar/video.mp4",
+   "poster": "glosar/poster.jpg",
+   "duration": 41.2,
+   "size": 613068,
+   "vtt": {
+    "en": "glosar/en.vtt",
+    "ro": "glosar/ro.vtt",
+    "fr": "glosar/fr.vtt",
+    "it": "glosar/it.vtt",
+    "es": "glosar/es.vtt",
+    "pt": "glosar/pt.vtt",
+    "de": "glosar/de.vtt",
+    "hu": "glosar/hu.vtt"
+   },
+   "transcript": "glosar/transcript.json",
+   "videos": {
+    "ro": {
+     "video": "glosar/loc/ro/video.mp4",
+     "vtt": "glosar/loc/ro/ro.vtt",
+     "duration": 41.2,
+     "size": 576051
+    },
+    "fr": {
+     "video": "glosar/loc/fr/video.mp4",
+     "vtt": "glosar/loc/fr/fr.vtt",
+     "duration": 41.2,
+     "size": 624745
+    },
+    "it": {
+     "video": "glosar/loc/it/video.mp4",
+     "vtt": "glosar/loc/it/it.vtt",
+     "duration": 41.2,
+     "size": 582830
+    },
+    "es": {
+     "video": "glosar/loc/es/video.mp4",
+     "vtt": "glosar/loc/es/es.vtt",
+     "duration": 41.2,
+     "size": 635475
+    },
+    "pt": {
+     "video": "glosar/loc/pt/video.mp4",
+     "vtt": "glosar/loc/pt/pt.vtt",
+     "duration": 41.2,
+     "size": 618690
+    },
+    "de": {
+     "video": "glosar/loc/de/video.mp4",
+     "vtt": "glosar/loc/de/de.vtt",
+     "duration": 48.2,
+     "size": 666721
+    },
+    "hu": {
+     "video": "glosar/loc/hu/video.mp4",
+     "vtt": "glosar/loc/hu/hu.vtt",
+     "duration": 41.3,
+     "size": 635116
+    }
+   }
+  },
+  {
+   "slug": "graiul",
+   "title": "graiul",
+   "section": "cultura",
+   "tags": {
+    "en": [
+     "folklore",
+     "archive"
+    ],
+    "ro": [
+     "folclor",
+     "arhivă"
+    ],
+    "fr": [
+     "folklore",
+     "archive"
+    ],
+    "it": [
+     "folclore",
+     "archivio"
+    ],
+    "es": [
+     "folclore",
+     "archivo"
+    ],
+    "pt": [
+     "folclore",
+     "arquivo"
+    ],
+    "de": [
+     "Folklore",
+     "Archiv"
+    ],
+    "hu": [
+     "népköltészet",
+     "archívum"
+    ]
+   },
+   "line": {
+    "en": "An offline archive of Romanian folklore (proverbs, charms, riddles, carols) with source, county and consent. It starts with ten proverbs; you can add more. Alpha.",
+    "ro": "Arhivă offline de folclor românesc (proverbe, descântece, ghicitori, colinde) cu sursă, județ și acord. Pornește cu zece proverbe; poți adăuga altele. Alpha.",
+    "fr": "Une archive hors ligne du folklore roumain (proverbes, formules magiques, devinettes, chants de Noël) avec source, comté et consentement. Elle commence avec dix proverbes ; vous pouvez en ajouter. Alpha.",
+    "it": "Un archivio offline del folklore rumeno (proverbi, incantesimi, indovinelli, canti natalizi) con fonte, distretto e consenso. Parte con dieci proverbi; puoi aggiungerne altri. Alpha.",
+    "es": "Un archivo sin conexión del folclore rumano (refranes, conjuros, adivinanzas, villancicos) con fuente, condado y consentimiento. Empieza con diez refranes; puedes añadir más. Alpha.",
+    "pt": "Um arquivo offline do folclore romeno (provérbios, esconjuros, adivinhas, cânticos de Natal) com fonte, distrito e consentimento. Começa com dez provérbios; pode adicionar mais. Alpha.",
+    "de": "Ein Offline-Archiv rumänischer Volkskultur (Sprichwörter, Zaubersprüche, Rätsel, Weihnachtslieder) mit Quelle, Kreis und Einwilligung. Es beginnt mit zehn Sprichwörtern; du kannst weitere hinzufügen. Alpha.",
+    "hu": "Offline archívum a román népköltészetről (közmondások, ráolvasások, találós kérdések, kolindák) forrással, megyével és beleegyezéssel. Tíz közmondással indul; továbbiakat is hozzáadhatsz. Alpha."
+   },
+   "url": "https://chiuta.github.io/graiul/",
+   "readme": "https://github.com/chiuta/graiul#readme",
+   "off": "full",
+   "status": "alpha",
+   "video": "graiul/video.mp4",
+   "poster": "graiul/poster.jpg",
+   "duration": 45.2,
+   "size": 585465,
+   "vtt": {
+    "en": "graiul/en.vtt",
+    "ro": "graiul/ro.vtt",
+    "fr": "graiul/fr.vtt",
+    "it": "graiul/it.vtt",
+    "es": "graiul/es.vtt",
+    "pt": "graiul/pt.vtt",
+    "de": "graiul/de.vtt",
+    "hu": "graiul/hu.vtt"
+   },
+   "transcript": "graiul/transcript.json",
+   "videos": {
+    "ro": {
+     "video": "graiul/loc/ro/video.mp4",
+     "vtt": "graiul/loc/ro/ro.vtt",
+     "duration": 45,
+     "size": 593233
+    },
+    "fr": {
+     "video": "graiul/loc/fr/video.mp4",
+     "vtt": "graiul/loc/fr/fr.vtt",
+     "duration": 45.2,
+     "size": 654042
+    },
+    "it": {
+     "video": "graiul/loc/it/video.mp4",
+     "vtt": "graiul/loc/it/it.vtt",
+     "duration": 45.1,
+     "size": 636659
+    },
+    "es": {
+     "video": "graiul/loc/es/video.mp4",
+     "vtt": "graiul/loc/es/es.vtt",
+     "duration": 39,
+     "size": 595986
+    },
+    "pt": {
+     "video": "graiul/loc/pt/video.mp4",
+     "vtt": "graiul/loc/pt/pt.vtt",
+     "duration": 39,
+     "size": 637769
+    },
+    "de": {
+     "video": "graiul/loc/de/video.mp4",
+     "vtt": "graiul/loc/de/de.vtt",
+     "duration": 39,
+     "size": 600659
+    },
+    "hu": {
+     "video": "graiul/loc/hu/video.mp4",
+     "vtt": "graiul/loc/hu/hu.vtt",
+     "duration": 51.4,
+     "size": 673047
+    }
+   }
+  },
+  {
+   "slug": "indicativ-international",
+   "title": "indicativ-international",
+   "section": "educatie",
+   "tags": {
+    "en": [
+     "radio",
+     "exams"
+    ],
+    "ro": [
+     "radio",
+     "examene"
+    ],
+    "fr": [
+     "radio",
+     "examens"
+    ],
+    "it": [
+     "radio",
+     "esami"
+    ],
+    "es": [
+     "radio",
+     "exámenes"
+    ],
+    "pt": [
+     "rádio",
+     "exames"
+    ],
+    "de": [
+     "Funk",
+     "Prüfungen"
+    ],
+    "hu": [
+     "rádió",
+     "vizsgák"
+    ]
+   },
+   "line": {
+    "en": "Practise amateur-radio exam questions with a five-box repetition schedule and timed mock exams; import question packs in one shared JSON format. 50 practice questions included; not an official bank. Alpha.",
+    "ro": "Exersează întrebări de examen de radioamator cu un program de repetare în cinci cutii și examene de probă cronometrate; importă pachete de întrebări într-un format JSON comun. 50 de întrebări de exersare incluse; nu e o bancă oficială. Alpha.",
+    "fr": "Exercez-vous aux questions d’examen de radioamateur avec un programme de répétition en cinq boîtes et des examens blancs chronométrés ; importez des paquets de questions dans un format JSON commun. 50 questions d’entraînement incluses ; pas une banque officielle. Alpha.",
+    "it": "Esercitati con le domande d’esame da radioamatore con uno schema di ripetizione a cinque scatole e simulazioni d’esame a tempo; importa pacchetti di domande in un formato JSON comune. 50 domande di esercizio incluse; non è una banca ufficiale. Alpha.",
+    "es": "Practica las preguntas del examen de radioaficionado con un esquema de repetición en cinco cajas y simulacros cronometrados; importa paquetes de preguntas en un formato JSON común. Incluye 50 preguntas de práctica; no es un banco oficial. Alpha.",
+    "pt": "Pratique as perguntas do exame de radioamador com um esquema de repetição em cinco caixas e simulacros cronometrados; importe pacotes de perguntas num formato JSON comum. Inclui 50 perguntas de treino; não é um banco oficial. Alpha.",
+    "de": "Übe Prüfungsfragen für den Amateurfunk mit einem Fünf-Fächer-Wiederholungsplan und Probeprüfungen auf Zeit; importiere Fragenpakete in einem gemeinsamen JSON-Format. 50 Übungsfragen enthalten; kein offizieller Fragenkatalog. Alpha.",
+    "hu": "Gyakorold a rádióamatőr-vizsgakérdéseket ötdobozos ismétlési renddel és időzített próbavizsgákkal; importálj kérdéscsomagokat egy közös JSON-formátumban. 50 gyakorlókérdés mellékelve; nem hivatalos kérdésbank. Alpha."
+   },
+   "url": "https://chiuta.github.io/indicativ-international/",
+   "readme": "https://github.com/chiuta/indicativ-international#readme",
+   "off": "full",
+   "status": "alpha",
+   "video": "indicativ-international/video.mp4",
+   "poster": "indicativ-international/poster.jpg",
+   "duration": 38.5,
+   "size": 527608,
+   "vtt": {
+    "en": "indicativ-international/en.vtt",
+    "ro": "indicativ-international/ro.vtt",
+    "fr": "indicativ-international/fr.vtt",
+    "it": "indicativ-international/it.vtt",
+    "es": "indicativ-international/es.vtt",
+    "pt": "indicativ-international/pt.vtt",
+    "de": "indicativ-international/de.vtt",
+    "hu": "indicativ-international/hu.vtt"
+   },
+   "transcript": "indicativ-international/transcript.json",
+   "videos": {
+    "ro": {
+     "video": "indicativ-international/loc/ro/video.mp4",
+     "vtt": "indicativ-international/loc/ro/ro.vtt",
+     "duration": 38.7,
+     "size": 537267
+    },
+    "fr": {
+     "video": "indicativ-international/loc/fr/video.mp4",
+     "vtt": "indicativ-international/loc/fr/fr.vtt",
+     "duration": 38.5,
+     "size": 592754
+    },
+    "it": {
+     "video": "indicativ-international/loc/it/video.mp4",
+     "vtt": "indicativ-international/loc/it/it.vtt",
+     "duration": 44.7,
+     "size": 637166
+    },
+    "es": {
+     "video": "indicativ-international/loc/es/video.mp4",
+     "vtt": "indicativ-international/loc/es/es.vtt",
+     "duration": 38.6,
+     "size": 564312
+    },
+    "pt": {
+     "video": "indicativ-international/loc/pt/video.mp4",
+     "vtt": "indicativ-international/loc/pt/pt.vtt",
+     "duration": 38.6,
+     "size": 590374
+    },
+    "de": {
+     "video": "indicativ-international/loc/de/video.mp4",
+     "vtt": "indicativ-international/loc/de/de.vtt",
+     "duration": 45.2,
+     "size": 600464
+    },
+    "hu": {
+     "video": "indicativ-international/loc/hu/video.mp4",
+     "vtt": "indicativ-international/loc/hu/hu.vtt",
+     "duration": 38.7,
+     "size": 574601
+    }
+   }
+  },
+  {
+   "slug": "proiector-fara-frontiere",
+   "title": "proiector-fara-frontiere",
+   "section": "educatie",
+   "tags": {
+    "en": [
+     "classroom",
+     "projection",
+     "quiz"
+    ],
+    "ro": [
+     "clasă",
+     "proiecție",
+     "quiz"
+    ],
+    "fr": [
+     "classe",
+     "projection",
+     "quiz"
+    ],
+    "it": [
+     "classe",
+     "proiezione",
+     "quiz"
+    ],
+    "es": [
+     "aula",
+     "proyección",
+     "cuestionario"
+    ],
+    "pt": [
+     "sala de aula",
+     "projeção",
+     "questionário"
+    ],
+    "de": [
+     "Klassenzimmer",
+     "Projektion",
+     "Quiz"
+    ],
+    "hu": [
+     "tanterem",
+     "kivetítés",
+     "kvíz"
+    ]
+   },
+   "line": {
+    "en": "Classroom phones become a shared screen, with no server and no account: timer, poll, quiz, notes and whiteboard, paired by QR code or pasted text on the same network. Alpha: not yet tried on real phones.",
+    "ro": "Telefoanele din clasă devin un ecran comun, fără server și fără cont: cronometru, sondaj, quiz, bilețele și tablă, asociate prin cod QR sau text lipit, în aceeași rețea. Alpha: încă neîncercat pe telefoane reale.",
+    "fr": "Les téléphones de la classe deviennent un écran commun, sans serveur ni compte : minuteur, sondage, quiz, notes et tableau blanc, appairés par code QR ou texte collé sur le même réseau. Alpha : pas encore essayé sur de vrais téléphones.",
+    "it": "I telefoni della classe diventano uno schermo condiviso, senza server né account: timer, sondaggio, quiz, foglietti e lavagna, abbinati con codice QR o testo incollato nella stessa rete. Alpha: non ancora provato su telefoni reali.",
+    "es": "Los teléfonos del aula se convierten en una pantalla compartida, sin servidor ni cuenta: temporizador, encuesta, cuestionario, notas y pizarra, emparejados con código QR o texto pegado en la misma red. Alpha: aún sin probar en teléfonos reales.",
+    "pt": "Os telemóveis da sala tornam-se um ecrã partilhado, sem servidor nem conta: temporizador, sondagem, questionário, notas e quadro, emparelhados por código QR ou texto colado na mesma rede. Alpha: ainda não experimentado em telemóveis reais.",
+    "de": "Die Telefone im Klassenzimmer werden zu einem gemeinsamen Bildschirm, ohne Server und ohne Konto: Timer, Umfrage, Quiz, Haftnotizen und Whiteboard, gekoppelt per QR-Code oder eingefügtem Text im selben Netz. Alpha: noch nicht auf echten Telefonen ausprobiert.",
+    "hu": "Az osztály telefonjai közös képernyővé válnak, kiszolgáló és fiók nélkül: visszaszámláló, szavazás, kvíz, cetlik és tábla, QR-kóddal vagy beillesztett szöveggel párosítva ugyanazon a hálózaton. Alpha: valódi telefonokon még nem próbáltuk."
+   },
+   "url": "https://chiuta.github.io/proiector-fara-frontiere/",
+   "readme": "https://github.com/chiuta/proiector-fara-frontiere#readme",
+   "off": "full",
+   "status": "alpha",
+   "video": "proiector-fara-frontiere/video.mp4",
+   "poster": "proiector-fara-frontiere/poster.jpg",
+   "duration": 32.8,
+   "size": 394900,
+   "vtt": {
+    "en": "proiector-fara-frontiere/en.vtt",
+    "ro": "proiector-fara-frontiere/ro.vtt",
+    "fr": "proiector-fara-frontiere/fr.vtt",
+    "it": "proiector-fara-frontiere/it.vtt",
+    "es": "proiector-fara-frontiere/es.vtt",
+    "pt": "proiector-fara-frontiere/pt.vtt",
+    "de": "proiector-fara-frontiere/de.vtt",
+    "hu": "proiector-fara-frontiere/hu.vtt"
+   },
+   "transcript": "proiector-fara-frontiere/transcript.json",
+   "videos": {
+    "ro": {
+     "video": "proiector-fara-frontiere/loc/ro/video.mp4",
+     "vtt": "proiector-fara-frontiere/loc/ro/ro.vtt",
+     "duration": 32.8,
+     "size": 390357
+    },
+    "fr": {
+     "video": "proiector-fara-frontiere/loc/fr/video.mp4",
+     "vtt": "proiector-fara-frontiere/loc/fr/fr.vtt",
+     "duration": 38.9,
+     "size": 491233
+    },
+    "it": {
+     "video": "proiector-fara-frontiere/loc/it/video.mp4",
+     "vtt": "proiector-fara-frontiere/loc/it/it.vtt",
+     "duration": 32.6,
+     "size": 397002
+    },
+    "es": {
+     "video": "proiector-fara-frontiere/loc/es/video.mp4",
+     "vtt": "proiector-fara-frontiere/loc/es/es.vtt",
+     "duration": 32.8,
+     "size": 427327
+    },
+    "pt": {
+     "video": "proiector-fara-frontiere/loc/pt/video.mp4",
+     "vtt": "proiector-fara-frontiere/loc/pt/pt.vtt",
+     "duration": 32.6,
+     "size": 421965
+    },
+    "de": {
+     "video": "proiector-fara-frontiere/loc/de/video.mp4",
+     "vtt": "proiector-fara-frontiere/loc/de/de.vtt",
+     "duration": 32.7,
+     "size": 435285
+    },
+    "hu": {
+     "video": "proiector-fara-frontiere/loc/hu/video.mp4",
+     "vtt": "proiector-fara-frontiere/loc/hu/hu.vtt",
+     "duration": 33.4,
+     "size": 398810
+    }
+   }
+  },
+  {
+   "slug": "regula",
+   "title": "regula",
+   "section": "jocuri",
+   "tags": {
+    "en": [
+     "games",
+     "rules"
+    ],
+    "ro": [
+     "jocuri",
+     "reguli"
+    ],
+    "fr": [
+     "jeux",
+     "règles"
+    ],
+    "it": [
+     "giochi",
+     "regole"
+    ],
+    "es": [
+     "juegos",
+     "reglas"
+    ],
+    "pt": [
+     "jogos",
+     "regras"
+    ],
+    "de": [
+     "Spiele",
+     "Regeln"
+    ],
+    "hu": [
+     "játékok",
+     "szabályok"
+    ]
+   },
+   "line": {
+    "en": "Play five classic two-player games (Nine Men’s Morris, Alquerque, Fanorona, Mū tōrere, Hnefatafl) against the computer or a friend; add your own game as JSON. Alpha; works offline.",
+    "ro": "Joacă cinci jocuri clasice pentru doi (Moara/Țintar, Alquerque, Fanorona, Mū tōrere, Hnefatafl) împotriva calculatorului sau a unui prieten; poți adăuga propriul joc ca JSON. Alpha; funcționează offline.",
+    "fr": "Jouez à cinq jeux classiques à deux (moulin, Alquerque, Fanorona, Mū tōrere, Hnefatafl) contre l’ordinateur ou un ami ; ajoutez votre propre jeu en JSON. Alpha ; fonctionne hors ligne.",
+    "it": "Gioca a cinque giochi classici per due (mulino, Alquerque, Fanorona, Mū tōrere, Hnefatafl) contro il computer o un amico; aggiungi il tuo gioco in JSON. Alpha; funziona offline.",
+    "es": "Juega a cinco juegos clásicos para dos (molino, Alquerque, Fanorona, Mū tōrere, Hnefatafl) contra el ordenador o un amigo; añade tu propio juego en JSON. Alpha; funciona sin conexión.",
+    "pt": "Jogue cinco jogos clássicos para dois (moinho, Alquerque, Fanorona, Mū tōrere, Hnefatafl) contra o computador ou um amigo; adicione o seu próprio jogo em JSON. Alpha; funciona offline.",
+    "de": "Spiele fünf klassische Zweipersonenspiele (Mühle, Alquerque, Fanorona, Mū tōrere, Hnefatafl) gegen den Computer oder einen Freund; füge ein eigenes Spiel als JSON hinzu. Alpha; funktioniert offline.",
+    "hu": "Játssz öt klasszikus kétszemélyes játékot (malom, Alquerque, Fanorona, Mū tōrere, Hnefatafl) a számítógép vagy egy barát ellen; add hozzá a saját játékodat JSON-ban. Alpha; offline is működik."
+   },
+   "url": "https://chiuta.github.io/regula/",
+   "readme": "https://github.com/chiuta/regula#readme",
+   "off": "full",
+   "status": "alpha",
+   "video": "regula/video.mp4",
+   "poster": "regula/poster.jpg",
+   "duration": 36.3,
+   "size": 368155,
+   "vtt": {
+    "en": "regula/en.vtt",
+    "ro": "regula/ro.vtt",
+    "fr": "regula/fr.vtt",
+    "it": "regula/it.vtt",
+    "es": "regula/es.vtt",
+    "pt": "regula/pt.vtt",
+    "de": "regula/de.vtt",
+    "hu": "regula/hu.vtt"
+   },
+   "transcript": "regula/transcript.json",
+   "videos": {
+    "ro": {
+     "video": "regula/loc/ro/video.mp4",
+     "vtt": "regula/loc/ro/ro.vtt",
+     "duration": 42.4,
+     "size": 434065
+    },
+    "fr": {
+     "video": "regula/loc/fr/video.mp4",
+     "vtt": "regula/loc/fr/fr.vtt",
+     "duration": 36.3,
+     "size": 412757
+    },
+    "it": {
+     "video": "regula/loc/it/video.mp4",
+     "vtt": "regula/loc/it/it.vtt",
+     "duration": 42.4,
+     "size": 454387
+    },
+    "es": {
+     "video": "regula/loc/es/video.mp4",
+     "vtt": "regula/loc/es/es.vtt",
+     "duration": 36.2,
+     "size": 431573
+    },
+    "pt": {
+     "video": "regula/loc/pt/video.mp4",
+     "vtt": "regula/loc/pt/pt.vtt",
+     "duration": 36.3,
+     "size": 420674
+    },
+    "de": {
+     "video": "regula/loc/de/video.mp4",
+     "vtt": "regula/loc/de/de.vtt",
+     "duration": 36.2,
+     "size": 424158
+    },
+    "hu": {
+     "video": "regula/loc/hu/video.mp4",
+     "vtt": "regula/loc/hu/hu.vtt",
+     "duration": 42.5,
+     "size": 497169
+    }
+   }
+  },
+  {
+   "slug": "vietar-packs",
+   "title": "vietar-packs",
+   "section": "teren",
+   "tags": {
+    "en": [
+     "nature",
+     "species"
+    ],
+    "ro": [
+     "natură",
+     "specii"
+    ],
+    "fr": [
+     "nature",
+     "espèces"
+    ],
+    "it": [
+     "natura",
+     "specie"
+    ],
+    "es": [
+     "naturaleza",
+     "especies"
+    ],
+    "pt": [
+     "natureza",
+     "espécies"
+    ],
+    "de": [
+     "Natur",
+     "Arten"
+    ],
+    "hu": [
+     "természet",
+     "fajok"
+    ]
+   },
+   "line": {
+    "en": "Browse, import, check and create regional species packs for VietAR: names in several languages, toxic flags, look-alikes. Five draft starter packs with 71 species. Alpha; works offline.",
+    "ro": "Răsfoiește, importă, verifică și creează pachete regionale de specii pentru VietAR: nume în mai multe limbi, indicator de toxicitate, sosii. Cinci pachete de pornire, ciorne, cu 71 de specii. Alpha; funcționează offline.",
+    "fr": "Parcourez, importez, vérifiez et créez des paquets régionaux d’espèces pour VietAR : noms en plusieurs langues, indicateur de toxicité, espèces semblables. Cinq paquets de départ, en brouillon, avec 71 espèces. Alpha ; fonctionne hors ligne.",
+    "it": "Sfoglia, importa, verifica e crea pacchetti regionali di specie per VietAR: nomi in più lingue, indicatore di tossicità, specie simili. Cinque pacchetti iniziali, in bozza, con 71 specie. Alpha; funziona offline.",
+    "es": "Explora, importa, comprueba y crea paquetes regionales de especies para VietAR: nombres en varios idiomas, indicador de toxicidad, especies parecidas. Cinco paquetes iniciales, en borrador, con 71 especies. Alpha; funciona sin conexión.",
+    "pt": "Explore, importe, verifique e crie pacotes regionais de espécies para o VietAR: nomes em vários idiomas, indicador de toxicidade, espécies parecidas. Cinco pacotes iniciais, em rascunho, com 71 espécies. Alpha; funciona offline.",
+    "de": "Durchsuche, importiere, prüfe und erstelle regionale Artenpakete für VietAR: Namen in mehreren Sprachen, Giftigkeitskennzeichen, Verwechslungsarten. Fünf Startpakete als Entwurf mit 71 Arten. Alpha; funktioniert offline.",
+    "hu": "Böngéssz, importálj, ellenőrizz és hozz létre regionális fajcsomagokat a VietAR-hoz: nevek több nyelven, mérgezőségi jelző, hasonló fajok. Öt piszkozat-állapotú kezdőcsomag 71 fajjal. Alpha; offline is működik."
+   },
+   "url": "https://chiuta.github.io/vietar-packs/",
+   "readme": "https://github.com/chiuta/vietar-packs#readme",
+   "off": "full",
+   "status": "alpha",
+   "video": "vietar-packs/video.mp4",
+   "poster": "vietar-packs/poster.jpg",
+   "duration": 38.5,
+   "size": 698848,
+   "vtt": {
+    "en": "vietar-packs/en.vtt",
+    "ro": "vietar-packs/ro.vtt",
+    "fr": "vietar-packs/fr.vtt",
+    "it": "vietar-packs/it.vtt",
+    "es": "vietar-packs/es.vtt",
+    "pt": "vietar-packs/pt.vtt",
+    "de": "vietar-packs/de.vtt",
+    "hu": "vietar-packs/hu.vtt"
+   },
+   "transcript": "vietar-packs/transcript.json",
+   "videos": {
+    "ro": {
+     "video": "vietar-packs/loc/ro/video.mp4",
+     "vtt": "vietar-packs/loc/ro/ro.vtt",
+     "duration": 38.5,
+     "size": 759848
+    },
+    "fr": {
+     "video": "vietar-packs/loc/fr/video.mp4",
+     "vtt": "vietar-packs/loc/fr/fr.vtt",
+     "duration": 38.4,
+     "size": 825857
+    },
+    "it": {
+     "video": "vietar-packs/loc/it/video.mp4",
+     "vtt": "vietar-packs/loc/it/it.vtt",
+     "duration": 44.7,
+     "size": 897941
+    },
+    "es": {
+     "video": "vietar-packs/loc/es/video.mp4",
+     "vtt": "vietar-packs/loc/es/es.vtt",
+     "duration": 38.4,
+     "size": 750921
+    },
+    "pt": {
+     "video": "vietar-packs/loc/pt/video.mp4",
+     "vtt": "vietar-packs/loc/pt/pt.vtt",
+     "duration": 44.5,
+     "size": 907181
+    },
+    "de": {
+     "video": "vietar-packs/loc/de/video.mp4",
+     "vtt": "vietar-packs/loc/de/de.vtt",
+     "duration": 38.5,
+     "size": 818134
+    },
+    "hu": {
+     "video": "vietar-packs/loc/hu/video.mp4",
+     "vtt": "vietar-packs/loc/hu/hu.vtt",
+     "duration": 38.6,
+     "size": 754823
+    }
+   }
   }
  ],
  "reels": {

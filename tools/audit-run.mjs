@@ -5,7 +5,7 @@
  * Măsurători (toate rulate, nimic estimat):
  *   build   : `fff-kit/build.mjs check <app>` (CSP, hash-uri, reguli native-dialog / unprefixed-storage / i18n-parity ...)
  *   axe     : fff-kit/ci/axe-check.mjs (pagina + dialogul Transparență, 360/1366 px, luminos/întunecat; 8 scenarii)
- *   tests   : fiecare tests/*.mjs al aplicației, cod de ieșire 0 = trece (fiecare fișier rulat o dată, timeout 590 s)
+ *   tests   : fiecare tests/*.mjs (sau test/*.test.mjs, pentru aplicațiile cu node --test) al aplicației, cod de ieșire 0 = trece (fiecare fișier rulat o dată, timeout 590 s)
  *   static  : din index.html / app.json: connect-src 'none', script inline doar cu hash, host-uri externe, sw.js, limbi, dimensiune
  * Scorul (0–10) se calculează în tools/transparenta.mjs din aceste fișiere; vezi docs/GHID-AUTORI.md, secțiunea „Scorul”. */
 import fs from 'node:fs'; import path from 'node:path'; import {spawnSync} from 'node:child_process'; import {fileURLToPath} from 'node:url';
@@ -30,11 +30,12 @@ for (const d of dirs) {
     egress: (aj.egress || []).length, sw: fs.existsSync(path.join(dir, 'sw.js')), manifest: fs.existsSync(path.join(dir, 'manifest.webmanifest')), langs: ((aj.features || {}).i18n || []).length, hosts: hosts.size};
   if (!TESTS_ONLY && !process.argv.includes('--skip-build')) { const r = run('node', [path.join(HUB, 'fff-kit/build.mjs'), 'check', dir], HUB, 120000); res.build = {ok: r.code === 0, msg: r.out.trim().split('\n').slice(-2).join(' | ').slice(0, 300), ms: r.ms}; }
   if (!TESTS_ONLY && !process.argv.includes('--skip-axe')) { const r = run('node', [path.join(HUB, 'fff-kit/ci/axe-check.mjs'), dir], HUB, +(process.env.AXE_TIMEOUT || 240000)); const m = r.out.match(/(\d+) violări în (\d+) scenarii/); res.axe = {ok: r.code === 0 && !!m && m[1] === '0', violations: m ? +m[1] : null, scenarios: m ? +m[2] : null, timedOut: !!r.timedOut, ms: r.ms, msg: r.out.trim().split('\n').slice(-2).join(' | ').slice(0, 300)}; }
-  const tdir = path.join(dir, 'tests'); res.tests = {files: []};
+  const tname = fs.existsSync(path.join(dir, 'tests')) ? 'tests' : 'test';   // aplicațiile alpha folosesc test/ (node --test); restul tests/
+  const tdir = path.join(dir, tname); res.tests = {files: []};
   let reused = false;
   if (TESTS_ONLY && REUSE) { try { const o = JSON.parse(fs.readFileSync(path.join(REUSE, d + '.json'), 'utf8')); const cur = JSON.parse(fs.readFileSync(path.join(dir, 'app.json'), 'utf8')).version; if (o.static && o.static.ver === cur && o.tests && !o.tests.skipped) { res.tests = o.tests; res.testsReused = true; reused = true; } } catch { /* rulează */ } }
   if (!reused && !process.argv.includes('--skip-tests') && fs.existsSync(tdir)) {
-    for (const f of fs.readdirSync(tdir).filter((x) => /\.test\.mjs$|^test\.mjs$/.test(x)).sort()) { const r = run('node', [path.join('tests', f)], dir, 590000); const m = r.out.match(/(\d+) (?:ok|reușite|passed|verzi)/i); res.tests.files.push({f, ok: r.code === 0, code: r.code, ms: r.ms, timedOut: !!r.timedOut, note: r.code === 0 ? (m ? m[0] : '') : r.out.trim().split('\n').slice(-3).join(' | ').slice(0, 300)}); }
+    for (const f of fs.readdirSync(tdir).filter((x) => /\.test\.mjs$|^test\.mjs$/.test(x)).sort()) { const r = run('node', [path.join(tname, f)], dir, 590000); const m = r.out.match(/(\d+) (?:ok|reușite|passed|verzi)/i); res.tests.files.push({f, ok: r.code === 0, code: r.code, ms: r.ms, timedOut: !!r.timedOut, note: r.code === 0 ? (m ? m[0] : '') : r.out.trim().split('\n').slice(-3).join(' | ').slice(0, 300)}); }
   } else if (!reused && process.argv.includes('--skip-tests')) res.tests.skipped = true;
   fs.writeFileSync(path.join(OUT, d + '.json'), JSON.stringify(res, null, 1));
   console.log(d, 'build', res.build && res.build.ok, 'axe', res.axe && res.axe.violations, 'tests', res.tests.files.filter((x) => x.ok).length + '/' + res.tests.files.length);

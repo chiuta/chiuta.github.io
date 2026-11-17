@@ -19,6 +19,23 @@ export function inlineScripts(html) {
   return out;
 }
 
+/** Blocuri «inerte» <script type="text/x-fff-sandbox">…</script>: tipul nu e JavaScript, deci pagina nu le rulează; textul lor se pune la rulare în iframe-uri
+ *  sandbox (srcdoc), care MOȘTENESC CSP-ul paginii. De aceea hash-ul lor intră în script-src (și numai hash-ul: nimic mai larg). */
+export const SANDBOX_TYPE = 'text/x-fff-sandbox';
+export function sandboxScripts(html) {
+  const out = [];
+  const re = /<script\b([^>]*)>([\s\S]*?)<\/script>/gi;
+  let m;
+  while ((m = re.exec(html))) {
+    const attrs = m[1];
+    if (/\bsrc\s*=/i.test(attrs)) continue;
+    const t = (attrs.match(/\btype\s*=\s*["']?([^"'\s>]*)/i) || [0, ''])[1].toLowerCase();
+    if (t !== SANDBOX_TYPE || !m[2].trim()) continue;
+    out.push({start: m.index, end: m.index + m[0].length, body: m[2], attrs});
+  }
+  return out;
+}
+
 export function sha256b64(s) {
   return createHash('sha256').update(s, 'utf8').digest('base64');
 }
@@ -45,7 +62,7 @@ export function recomputeCspHashes(html) {
     const nc = content.replace(/(^|;\s*)script-src[^;]*/, (_, p) => p + nd);
     return {html: html.replace(meta.tag, () => meta.tag.replace(cm[0], `content=${q}${nc}${q}`)), changed: true, note: 'unsafe-inline: hash-uri eliminate'};
   }
-  const hashes = [...new Set(inlineScripts(html).map(s => `'sha256-${sha256b64(s.body)}'`))];
+  const hashes = [...new Set(inlineScripts(html).concat(sandboxScripts(html)).map(s => `'sha256-${sha256b64(s.body)}'`))];
   const have = new Set((sm[3].match(/'sha256-[^']+'/g) || []));
   if (have.size === hashes.length && hashes.every(h => have.has(h))) return {html, changed: false, note: 'neschimbat'};
   const kept = sm[3].replace(/\s*'sha256-[^']+'/g, '').trim();
@@ -62,7 +79,7 @@ export function checkCspHashes(html) {
   if (/script-src[^;"]*'unsafe-inline'/.test(meta.tag)) return {ok: true, missing: [], note: 'unsafe-inline'};
   if (!/script-src|default-src/.test(meta.tag)) return {ok: true, missing: [], note: 'script-src nerestricționat'};
   const miss = [];
-  for (const s of inlineScripts(html)) {
+  for (const s of inlineScripts(html).concat(sandboxScripts(html))) {
     const h = `'sha256-${sha256b64(s.body)}'`;
     if (!meta.tag.includes(h)) miss.push(h);
   }

@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
 """Construiește demo/nativ/ din captures/*.json (ieșiri reale, record.py) + narration.py (8 limbi).
 
-Rulare:  <python cu espeakng-loader, Pillow>  tools/native-demos/build.py [--no-video] [--no-audio]
+Rulare:  <python cu espeakng-loader, Pillow>  tools/native-demos/build.py [--no-video] [--no-audio] [--only slug[,slug]]
+(--only: se reconstruiesc cast/vtt/audio/video doar pentru programele indicate; celelalte rămân neatinse (datele lor se reiau din nativ-data.js și din capturi), iar paginile se refac pentru toate)
   pip install espeakng-loader Pillow     (espeak-ng: GPL-3.0, rulează local; fără TTS cloud). ffmpeg în PATH.
 Produce în demo/nativ/: index.html, nativ.css, nativ.js, nativ-data.js, <slug>.cast (asciicast v2), <slug>.<lang>.vtt,
   <slug>.mp4 (+ poster), audio/<slug>.<lang>.ogg (voce sintetică, Opus), <slug>-offline.html (un singur fișier: totul inline).
@@ -27,11 +28,12 @@ for _l in LANGS:
 TR_MARK = 'traducere: ' + ' '.join(f"{l}=" + (f"revizuit:{REVIEWS[l]['by'].replace(' ', '_')}:{REVIEWS[l]['date']}" if l in REVIEWS else 'automat') for l in MT)
 
 COLS, ROWS = 100, 26
-SLUGS = ['tezaur', 'veriga', 'legatorocr', 'osatura']
-REPO = {'tezaur': 'TEZAUR', 'veriga': 'VERIGA', 'legatorocr': 'LegatorOCR', 'osatura': 'osatura'}
+SLUGS = ['tezaur', 'veriga', 'legatorocr', 'osatura', 'porumbel']
+REPO = {'tezaur': 'TEZAUR', 'veriga': 'VERIGA', 'legatorocr': 'LegatorOCR', 'osatura': 'osatura', 'porumbel': 'PORUMBEL'}
 ESPEAK = {'ro': 'ro', 'en': 'en-us', 'fr': 'fr', 'it': 'it', 'es': 'es', 'pt': 'pt', 'de': 'de', 'hu': 'hu'}
 TTS_RATE = 150
 NO_VIDEO = '--no-video' in sys.argv
+ONLY = set(sys.argv[sys.argv.index('--only') + 1].split(',')) if '--only' in sys.argv else None
 NO_AUDIO = '--no-audio' in sys.argv
 FFMPEG_OPTS = ['-preset', 'veryfast']
 
@@ -128,6 +130,14 @@ def build_prog(slug, tmp):
     total = round(t + 1.0, 3)
     cues = {l: [[round(s['t0'] + 0.4, 3), round(s['t0'] + 0.4 + s['voice'][l] + 0.25, 3), s['narr'][l]] for s in scenes] for l in LANGS}
     return {'slug': slug, 'name': TITLES[slug][0], 'desc': TITLES[slug][1], 'version': cap['version'], 'dur': total, 'events': events, 'scenes': scenes, 'cues': cues}
+
+def load_prog(slug):
+    """Reia un program deja construit (cast, vtt, audio, video rămân neschimbate): datele vin din nativ-data.js existent + capturi."""
+    D = json.loads((OUT / 'nativ-data.js').read_text(encoding='utf8').replace('window.NATIV=', '', 1).rstrip().rstrip(';'))['progs'][slug]
+    cap = json.loads((HERE / 'captures' / (slug + '.json')).read_text(encoding='utf8'))
+    assert len(D['scenes']) == len(cap['scenes']), (slug, 'captura nu mai corespunde construcției existente: rulează fără --only')
+    scenes = [{**sc, 'cmds': [c['cmd'] for c in cp], 'outs': [c['out'] for c in cp]} for sc, cp in zip(D['scenes'], cap['scenes'])]
+    return {'slug': slug, 'name': D['name'], 'desc': D['desc'], 'version': D['version'], 'dur': D['dur'], 'events': D['events'], 'scenes': scenes, 'cues': D['cues']}
 
 def vtt_time(x):
     ms = int(round(x * 1000)); return '%02d:%02d:%02d.%03d' % (ms // 3600000, ms // 60000 % 60, ms // 1000 % 60, ms % 1000)
@@ -323,6 +333,8 @@ def main():
     tmp = pathlib.Path(tempfile.mkdtemp(prefix='nativ-'))
     progs = []
     for slug in SLUGS:
+        if ONLY and slug not in ONLY:
+            progs.append(load_prog(slug)); print(slug, 'neschimbat (--only)'); continue
         p = build_prog(slug, tmp); progs.append(p)
         write_cast(p); write_vtt(p)
         if not NO_AUDIO: write_audio(p, tmp)

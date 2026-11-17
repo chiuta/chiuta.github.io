@@ -3,6 +3,7 @@
 (function () {
   'use strict';
   var F = (window.FFF = window.FFF || {});
+  var RXF = F.rx || function (s, fl) { return new RegExp(s, fl); };   // F.rx vine din fff-compat; rezerva ține modulul funcțional și dacă stratul lipsește
   function T(k, v) { return F.t ? F.t('pii', k, v) : k; }
 
   /* ---------- validări ---------- */
@@ -90,13 +91,13 @@
 
   /* ---------- detectori ---------- */
   var RX = {
-    email: /(?<![\p{L}\p{N}._%+\-])[\p{L}\p{N}][\p{L}\p{N}._%+\-]{0,63}@(?:[\p{L}\p{N}](?:[\p{L}\p{N}\-]{0,61}[\p{L}\p{N}])?\.)+[\p{L}]{2,24}(?![\p{L}\p{N}@])/gu,
-    phone: /(?<![\p{L}\p{N}_+.\-])(?:(?:\+|00)[ ]?\d[\d ().\-]{6,19}\d|0[2-7][\d ().\-]{7,12}\d)(?![\p{L}\p{N}_]|[.\-]\d)/gu,
-    iban: /(?<![\p{L}\p{N}])[A-Z]{2}\d{2}(?:[ ]?[A-Z0-9]{1,4}){3,10}(?![\p{L}\p{N}])/gu,
-    digits13: /(?<![\d])[1-9]\d{12}(?![\d])/g,
-    card: /(?<![\d])\d(?:[ \-]?\d){11,18}(?![\d])/g,
-    ip4: /(?<![\w.\-])(?:(?:25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)\.){3}(?:25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(?![\w]|\.\d|\-\d)/g,
-    ip6: /(?<![\w:.])(?:[0-9a-fA-F]{0,4}:){2,7}[0-9a-fA-F]{0,4}(?![\w:])/g,
+    email: RXF('(?<![\\p{L}\\p{N}._%+\\-])[\\p{L}\\p{N}][\\p{L}\\p{N}._%+\\-]{0,63}@(?:[\\p{L}\\p{N}](?:[\\p{L}\\p{N}\\-]{0,61}[\\p{L}\\p{N}])?\\.)+[\\p{L}]{2,24}(?![\\p{L}\\p{N}@])', 'gu'),
+    phone: RXF('(?<![\\p{L}\\p{N}_+.\\-])(?:(?:\\+|00)[ ]?\\d[\\d ().\\-]{6,19}\\d|0[2-7][\\d ().\\-]{7,12}\\d)(?![\\p{L}\\p{N}_]|[.\\-]\\d)', 'gu'),
+    iban: RXF('(?<![\\p{L}\\p{N}])[A-Z]{2}\\d{2}(?:[ ]?[A-Z0-9]{1,4}){3,10}(?![\\p{L}\\p{N}])', 'gu'),
+    digits13: RXF('(?<![\\d])[1-9]\\d{12}(?![\\d])', 'g'),
+    card: RXF('(?<![\\d])\\d(?:[ \\-]?\\d){11,18}(?![\\d])', 'g'),
+    ip4: RXF('(?<![\\w.\\-])(?:(?:25[0-5]|2[0-4]\\d|1\\d\\d|[1-9]?\\d)\\.){3}(?:25[0-5]|2[0-4]\\d|1\\d\\d|[1-9]?\\d)(?![\\w]|\\.\\d|\\-\\d)', 'g'),
+    ip6: RXF('(?<![\\w:.])(?:[0-9a-fA-F]{0,4}:){2,7}[0-9a-fA-F]{0,4}(?![\\w:])', 'g'),
     url: /\bhttps?:\/\/[^\s<>"'`]+/gi
   };
   var SECRETS = [
@@ -110,15 +111,17 @@
   var PH = /^(?:x+|\*+|\.{3,}|<[^>]*>|\[[^\]]*\]|your[_\-].*|example.*|changeme|change_me|password|parola|secret|token|null|undefined|none|true|false|\$\{.*\}|\{\{.*\}\}|%\w+%|xxx.*|\*{3,}.*)$/i;
   var SENSITIVE_PARAM = /^(?:token|access_token|id_token|refresh_token|api[_\-]?key|apikey|key|secret|client_secret|password|passwd|pass|pwd|sig|signature|auth|authorization|session|sessionid|session_id|sid|jwt|code|otp|reset|x-amz-signature|x-amz-credential|x-amz-security-token)$/i;
 
+  var ALPHA = RXF('^[\\p{L}]+$', 'u');   // litere Unicode (rx: rezervă pentru motoare fără \p{…}/lookbehind — vezi FFF.compat)
+
   var ADDR = [
-    /\b(?:[Ss]trada|[Ss]tr\.|[Bb]ulevardul|[Bb]d\.|[Bb]-dul|[Cc]alea|[Șș]oseaua|[Șș]os\.|[Aa]leea|[Ii]ntrarea|[Pp]iața|[Ss]plaiul|[Pp]relungirea)\s+\p{Lu}[\p{L}.'\-]*(?:\s+(?:\p{Lu}|\d)[\p{L}.'\-\d]*){0,3}?,?\s*(?:nr\.?\s*)?\d{1,4}[A-Za-z]?(?:\s*,?\s*(?:bl|sc|et|ap|bloc|scara|etaj|apartament)\.?\s*[\p{L}\d]+){0,4}(?:,?\s*(?:sector(?:ul)?\s*\d|(?:jud\.?|județul)\s+\p{Lu}\p{L}+))?/gu,
-    /\b\d{1,5}\s+\p{Lu}[\p{L}]+(?:\s+\p{Lu}[\p{L}]+)?\s+(?:Street|St|Avenue|Ave|Road|Rd|Lane|Drive|Boulevard|Blvd|Way|Court)\b\.?/gu,
-    /\b\d{1,3}(?:\s?bis)?,?\s+(?:rue|avenue|boulevard|place|chemin|impasse|allée)\s+(?:(?:de la|du|des|de l[’']|de|d[’'])\s?)?\p{Lu}[\p{L}'’\-]+(?:\s+\p{Lu}[\p{L}'’\-]+){0,2}/gu,
-    /\b\p{Lu}[\p{L}\-]*[ ]?(?:[Ss]traße|[Ss]trasse|[Ss]tr\.|[Ww]eg|[Pp]latz|[Aa]llee|[Gg]asse)\s+\d{1,4}[a-z]?(?:,?\s*\d{5}\s+\p{Lu}\p{L}+)?/gu,
-    /\b\p{Lu}[\p{L}\-]+\s+(?:utca|út|tér|körút|krt\.|u\.)\s+\d{1,4}(?:\/\w)?/gu,
-    /\b(?:[Vv]ia|[Vv]iale|[Pp]iazza|[Cc]orso|[Vv]icolo)\s+(?:(?:d[ei]l?|della|dell[’'])\s?)?\p{Lu}[\p{L}’']+(?:\s+\p{Lu}[\p{L}’']+)?,?\s+(?:n\.?\s*)?\d{1,4}[a-z]?/gu,
-    /\b(?:[Cc]alle|[Aa]venida|[Aa]vda\.|[Pp]laza|[Pp]aseo)\s+(?:(?:de|del|de la)\s)?\p{Lu}[\p{L}]+(?:\s+\p{Lu}[\p{L}]+)?,?\s+(?:n[º°o]\.?\s*)?\d{1,4}/gu,
-    /\b(?:[Rr]ua|[Aa]venida|[Tt]ravessa|[Pp]raça|[Ll]argo)\s+(?:(?:d[aeo]s?|do|da)\s)?\p{Lu}[\p{L}]+(?:\s+\p{Lu}[\p{L}]+)?,?\s+(?:n[º°.]?\s*)?\d{1,4}/gu
+    RXF('\\b(?:[Ss]trada|[Ss]tr\\.|[Bb]ulevardul|[Bb]d\\.|[Bb]-dul|[Cc]alea|[Șș]oseaua|[Șș]os\\.|[Aa]leea|[Ii]ntrarea|[Pp]iața|[Ss]plaiul|[Pp]relungirea)\\s+\\p{Lu}[\\p{L}.\'\\-]*(?:\\s+(?:\\p{Lu}|\\d)[\\p{L}.\'\\-\\d]*){0,3}?,?\\s*(?:nr\\.?\\s*)?\\d{1,4}[A-Za-z]?(?:\\s*,?\\s*(?:bl|sc|et|ap|bloc|scara|etaj|apartament)\\.?\\s*[\\p{L}\\d]+){0,4}(?:,?\\s*(?:sector(?:ul)?\\s*\\d|(?:jud\\.?|județul)\\s+\\p{Lu}\\p{L}+))?', 'gu'),
+    RXF('\\b\\d{1,5}\\s+\\p{Lu}[\\p{L}]+(?:\\s+\\p{Lu}[\\p{L}]+)?\\s+(?:Street|St|Avenue|Ave|Road|Rd|Lane|Drive|Boulevard|Blvd|Way|Court)\\b\\.?', 'gu'),
+    RXF('\\b\\d{1,3}(?:\\s?bis)?,?\\s+(?:rue|avenue|boulevard|place|chemin|impasse|allée)\\s+(?:(?:de la|du|des|de l[’\']|de|d[’\'])\\s?)?\\p{Lu}[\\p{L}\'’\\-]+(?:\\s+\\p{Lu}[\\p{L}\'’\\-]+){0,2}', 'gu'),
+    RXF('\\b\\p{Lu}[\\p{L}\\-]*[ ]?(?:[Ss]traße|[Ss]trasse|[Ss]tr\\.|[Ww]eg|[Pp]latz|[Aa]llee|[Gg]asse)\\s+\\d{1,4}[a-z]?(?:,?\\s*\\d{5}\\s+\\p{Lu}\\p{L}+)?', 'gu'),
+    RXF('\\b\\p{Lu}[\\p{L}\\-]+\\s+(?:utca|út|tér|körút|krt\\.|u\\.)\\s+\\d{1,4}(?:\\/\\w)?', 'gu'),
+    RXF('\\b(?:[Vv]ia|[Vv]iale|[Pp]iazza|[Cc]orso|[Vv]icolo)\\s+(?:(?:d[ei]l?|della|dell[’\'])\\s?)?\\p{Lu}[\\p{L}’\']+(?:\\s+\\p{Lu}[\\p{L}’\']+)?,?\\s+(?:n\\.?\\s*)?\\d{1,4}[a-z]?', 'gu'),
+    RXF('\\b(?:[Cc]alle|[Aa]venida|[Aa]vda\\.|[Pp]laza|[Pp]aseo)\\s+(?:(?:de|del|de la)\\s)?\\p{Lu}[\\p{L}]+(?:\\s+\\p{Lu}[\\p{L}]+)?,?\\s+(?:n[º°o]\\.?\\s*)?\\d{1,4}', 'gu'),
+    RXF('\\b(?:[Rr]ua|[Aa]venida|[Tt]ravessa|[Pp]raça|[Ll]argo)\\s+(?:(?:d[aeo]s?|do|da)\\s)?\\p{Lu}[\\p{L}]+(?:\\s+\\p{Lu}[\\p{L}]+)?,?\\s+(?:n[º°.]?\\s*)?\\d{1,4}', 'gu')
   ];
   var POSTAL = /\b[Cc]od(?:ul)?\s+po[sșş]tal:?\s*\d{6}\b/gu;
 
@@ -187,7 +190,7 @@
       var v = m[1], isPw = /pass|pwd|parol/i.test(m[0].slice(0, 12)), s = m.index + m[0].length - v.length;
       if (PH.test(v)) return;
       if (!isPw && (v.length < 16 || entropy(v) < 3.0)) return;
-      if (isPw && /^[\p{L}]+$/u.test(v) && v.length < 8 && !/\d/.test(v)) { add('secret', s, s + v.length, 0.55); return; }
+      if (isPw && ALPHA.test(v) && v.length < 8 && !/\d/.test(v)) { add('secret', s, s + v.length, 0.55); return; }
       add('secret', s, s + v.length, isPw ? 0.8 : 0.85);
     });
     // URL cu parametri sensibili
@@ -221,16 +224,16 @@
     return kept.filter(function (k) { return k.confidence >= min; });
   }
 
-  var NAMERX = /\p{Lu}[\p{Ll}’'\-]{1,}(?:[ ]\p{Lu}[\p{Ll}’'\-]{1,}){0,2}/gu;
+  var NAMERX = RXF('\\p{Lu}[\\p{Ll}’\'\\-]{1,}(?:[ ]\\p{Lu}[\\p{Ll}’\'\\-]{1,}){0,2}', 'gu');
   var TITLE_RX = new RegExp('^(?:' + TITLES + ')$');
   function scanNames(text, add) {
     var CAP = '\\p{Lu}[\\p{Ll}’\'\\-]+', NAME = '(' + CAP + '(?:[ ]' + CAP + '){0,2})';
-    var titleRx = new RegExp('(?<![\\p{L}])(?:' + TITLES + ')\\s+' + NAME, 'gu');
+    var titleRx = RXF('(?<![\\p{L}])(?:' + TITLES + ')\\s+' + NAME, 'gu');
     each(titleRx, text, function (m) {
       var nm = m[1], s = m.index + m[0].length - nm.length; if (nm.split(' ').every(function (w) { return STOP[w]; })) return;
       add('name', s, s + nm.length, 0.55);
     });
-    var introRx = new RegExp('(?<![\\p{L}])' + INTRO + '\\s+', 'giu'), nameY = new RegExp(NAME, 'uy');
+    var introRx = RXF('(?<![\\p{L}])' + INTRO + '\\s+', 'giu'), nameY = RXF(NAME, 'uy');
     each(introRx, text, function (m) {
       nameY.lastIndex = m.index + m[0].length; var r = nameY.exec(text); if (!r) return;
       var nm = r[1]; if (STOP[nm.split(' ')[0]]) return;

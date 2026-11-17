@@ -39,7 +39,10 @@ export function headClose(html) {
 }
 
 const esc = s => String(s).replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
-const unesc = s => String(s).replace(/&quot;/g, '"').replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&#39;|&apos;/g, "'").replace(/&amp;/g, '&');
+// decodifică entitățile obișnuite și referințele numerice (&#39; &#x27; &#8217; …); «&amp;» ultimul, ca «&amp;lt;» să rămână «&lt;»
+const unesc = s => String(s).replace(/&quot;/g, '"').replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&apos;/g, "'")
+  .replace(/&#(x[0-9a-f]{1,6}|[0-9]{1,7});/gi, (m, n) => { const c = n[0] === 'x' || n[0] === 'X' ? parseInt(n.slice(1), 16) : parseInt(n, 10); return c > 0 && c <= 0x10ffff && !(c >= 0xd800 && c <= 0xdfff) ? String.fromCodePoint(c) : m; })
+  .replace(/&amp;/g, '&');
 const hexOk = h => /^#([0-9a-f]{3}|[0-9a-f]{6})$/i.test(h || '');
 const norm6 = h => { h = h.toLowerCase(); return h.length === 4 ? '#' + [...h.slice(1)].map(c => c + c).join('') : h; };
 const lum = h => { h = norm6(h); const c = [1, 3, 5].map(i => parseInt(h.slice(i, i + 2), 16) / 255).map(v => v <= .03928 ? v / 12.92 : ((v + .055) / 1.055) ** 2.4); return .2126 * c[0] + .7152 * c[1] + .0722 * c[2]; };
@@ -120,7 +123,13 @@ function stripBlock(html) {
     }
     // restaurare exactă (spații/rânduri) dacă CSP-ul curent diferă de cel original doar prin formatare/ordinea hash-urilor
     const cur = cspParts(h);
-    if (meta.orig != null && cur != null && canon(cur) === canon(meta.orig)) h = replaceCspContent(h, meta.orig);
+    if (meta.orig != null && cur != null && canon(cur) === canon(meta.orig)) {
+      // «orig» păstrează hash-urile din momentul primei aplicări: cele de stil nu se recalculează aici (doar cele de script, mai jos), deci rămân cele CURENTE;
+      // altfel o modificare a stilului aplicației între două rulări ar readuce un hash învechit în style-src și browserul ar bloca stilul (aplicație fără aspect)
+      const curStyle = dirMap(cur)['style-src'];
+      h = replaceCspContent(h, meta.orig);
+      if (curStyle && curStyle.length) h = setCspDirective(h, 'style-src', curStyle.join(' '));
+    }
     h = recomputeCspHashes(h).html;
   }
   return {html: h, meta};

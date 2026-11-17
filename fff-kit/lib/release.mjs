@@ -67,9 +67,15 @@ export function bumpCodeConstants(text, oldV, newV, oldDate, newDate) {
   const q = new RegExp(`(['"])${esc(oldV)}\\1|(?<![\\w.])v ?${esc(oldV)}(?![\\w]|\\.\\d)`);
   const dmy = (d) => (d ? d.split('-').reverse().join('.') : d);
   let lines = 0;
+  // constante de dată fără versiune pe aceeași linie (var APP_DATE = "2026-11-15"; { updated: '…' }): se ridică doar dacă numele conține «date»/«updated» și valoarea e exact data veche, între ghilimele
+  const dq = oldDate && newDate && oldDate !== newDate ? new RegExp(`\\b[A-Za-z_$][\\w$]*(?:date|updated)[\\w$]*\\s*[:=]\\s*(['"\`])(?:${esc(oldDate)}|${esc(dmy(oldDate))})\\1`, 'i') : null;
   const out = text.split('\n').map((line) => {
     const t = line.trim();
-    if (KIT_LINE.test(line) || (/^(\/\/|\/\*|\*)/.test(t) && !/^\/\/ [A-Z][A-Z .]+ v?\d/.test(t)) || !q.test(line)) return line;
+    if (KIT_LINE.test(line) || (/^(\/\/|\/\*|\*)/.test(t) && !/^\/\/ [A-Z][A-Z .]+ v?\d/.test(t))) return line;
+    if (!q.test(line)) {
+      if (dq && dq.test(line)) { let l = line; for (const [a, b] of [[oldDate, newDate], [dmy(oldDate), dmy(newDate)]]) if (a && b && a !== b) l = l.split(a).join(b); if (l !== line) { lines++; return l; } }
+      return line;
+    }
     let [l] = replaceVersion(line, oldV, newV);
     for (const [a, b] of [[oldDate, newDate], [dmy(oldDate), dmy(newDate)]]) if (a && b && a !== b) l = l.split(a).join(b);
     lines++; return l;

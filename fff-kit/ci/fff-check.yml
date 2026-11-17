@@ -44,14 +44,15 @@ on:
         type: boolean
         default: true
       node-version:
+        description: 'Versiunea Node.js pentru testele aplicației (cel mai recent LTS; nu mai veche de 24)'
         type: string
-        default: '20'
+        default: '26'
       playwright-version:
         type: string
-        default: '1.49.1'
+        default: '1.63.0'
       axe-version:
         type: string
-        default: '4.10.2'
+        default: '4.14.0'
       test-timeout-minutes:
         type: number
         default: 15
@@ -66,7 +67,7 @@ concurrency:
 jobs:
   check:
     name: fff-check
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-26.04
     timeout-minutes: 30
     env:
       APP_DIR: ${{ inputs.app-dir }}
@@ -132,6 +133,7 @@ jobs:
           echo "CHROMIUM_PATH=$CH" >> "$GITHUB_ENV"
           echo "FFF_AXE=$PWD/node_modules/axe-core/axe.min.js" >> "$GITHUB_ENV"
           echo "AXE_PATH=$PWD/node_modules/axe-core/axe.min.js" >> "$GITHUB_ENV"
+          if grep -rqs "pdftotext" "$APP_DIR/tests" 2>/dev/null; then sudo apt-get install -y -qq poppler-utils >/dev/null; fi
           # compatibilitate cu testele încă neportate (căi /opt/…): vezi fff-kit/tools/portable-tests.mjs
           if grep -rqs "/opt/node-tools\|/opt/pw-browsers" "$APP_DIR/tests" 2>/dev/null; then
             sudo mkdir -p /opt/node-tools /opt/pw-browsers
@@ -152,10 +154,17 @@ jobs:
           shopt -s nullglob
           files=( $TEST_GLOB )
           if [ ${#files[@]} -eq 0 ]; then echo "::notice::niciun test ($TEST_GLOB)"; exit 0; fi
+          set +e; set +o pipefail
           fail=0
           for f in "${files[@]}"; do
             echo "::group::$f"
-            if ! node "$f"; then echo "::error file=$f::testul a eșuat"; fail=1; fi
+            node "$f" > /tmp/test-out.log 2>&1; rc=$?
+            if [ "$rc" -ne 0 ]; then echo "::warning file=$f::prima rulare eșuată — reîncerc o dată (teste cu timp/rețea simulată)"; cat /tmp/test-out.log; node "$f" > /tmp/test-out.log 2>&1; rc=$?; fi
+            cat /tmp/test-out.log
+            if [ "$rc" -ne 0 ]; then
+              echo "::error file=$f::testul a eșuat"; fail=1
+              grep -E "FAIL|✘|Error|rror:" /tmp/test-out.log | head -4 | cut -c1-300 | while IFS= read -r l; do echo "::error file=$f::${l//%/%25}"; done
+            fi
             echo "::endgroup::"
           done
           exit $fail

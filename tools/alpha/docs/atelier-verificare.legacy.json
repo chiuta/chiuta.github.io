@@ -1,0 +1,34 @@
+{
+ "en": [
+  "ISSUES_GOOD_FIRST and CODE_OF_CONDUCT translated into all eight languages.",
+  "README in English, Romanian, French, Italian, Spanish, Portuguese, German and Hungarian: status and planned scope sections (derived from `ISSUES_GOOD_FIRST.md`)."
+ ],
+ "ro": [
+  "ISSUES_GOOD_FIRST și CODE_OF_CONDUCT traduse în toate cele opt limbi.",
+  "README în engleză, română, franceză, italiană, spaniolă, portugheză, germană și maghiară: secțiuni de stare și de domeniu planificat (derivate din `ISSUES_GOOD_FIRST.md`)."
+ ],
+ "fr": [
+  "ISSUES_GOOD_FIRST et CODE_OF_CONDUCT traduits dans les huit langues.",
+  "README en anglais, roumain, français, italien, espagnol, portugais, allemand et hongrois : sections d’état et de périmètre prévu (dérivées de `ISSUES_GOOD_FIRST.md`)."
+ ],
+ "it": [
+  "ISSUES_GOOD_FIRST e CODE_OF_CONDUCT tradotti in tutte e otto le lingue.",
+  "README in inglese, rumeno, francese, italiano, spagnolo, portoghese, tedesco e ungherese: sezioni di stato e di ambito previsto (derivate da `ISSUES_GOOD_FIRST.md`)."
+ ],
+ "es": [
+  "ISSUES_GOOD_FIRST y CODE_OF_CONDUCT traducidos a los ocho idiomas.",
+  "README en inglés, rumano, francés, italiano, español, portugués, alemán y húngaro: secciones de estado y de alcance previsto (derivadas de `ISSUES_GOOD_FIRST.md`)."
+ ],
+ "pt": [
+  "ISSUES_GOOD_FIRST e CODE_OF_CONDUCT traduzidos para as oito línguas.",
+  "README em inglês, romeno, francês, italiano, espanhol, português, alemão e húngaro: secções de estado e de âmbito previsto (derivadas de `ISSUES_GOOD_FIRST.md`)."
+ ],
+ "de": [
+  "ISSUES_GOOD_FIRST und CODE_OF_CONDUCT in alle acht Sprachen übersetzt.",
+  "README auf Englisch, Rumänisch, Französisch, Italienisch, Spanisch, Portugiesisch, Deutsch und Ungarisch: Abschnitte zu Status und geplantem Umfang (abgeleitet aus `ISSUES_GOOD_FIRST.md`)."
+ ],
+ "hu": [
+  "Az ISSUES_GOOD_FIRST és a CODE_OF_CONDUCT lefordítva mind a nyolc nyelvre.",
+  "README angolul, románul, franciául, olaszul, spanyolul, portugálul, németül és magyarul: állapot- és tervezett terjedelem-szakaszok (az `ISSUES_GOOD_FIRST.md` alapján)."
+ ]
+}

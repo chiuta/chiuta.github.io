@@ -17,6 +17,7 @@ Nu există server de semnalizare: oferta și răspunsul sunt SDP-ul WebRTC cu to
 `FFF1.<o|a>.<z|r>.<b64url>` — `o`=ofertă, `a`=răspuns; `z` = SDP comprimat `deflate` (format zlib, prin `CompressionStream`; are sumă de control Adler-32,
 deci un caracter greșit la copiere este detectat: în test, 40/40 corupții simple sunt respinse), `r` = brut (UTF-8) când `CompressionStream` lipsește sau nu câștigă spațiu.
 Decodarea unui cod `z` cere `DecompressionStream` (Chrome/Edge 80+, Firefox 113+, Safari 16.4+); altfel eroare tradusă `no-decompress`.
+**Cod compatibil (necomprimat):** `host({compress:false})` / `join(cod, {compress:false})` / `encodeSignal(tip, sdp, {compress:false})` produc totdeauna `r` (brut, ≈ de două ori mai lung). E nevoie de el când unul dintre dispozitive e un browser fără `DecompressionStream` (Chrome/Edge < 80, Firefox < 113, Safari < 16.4): acela nu poate citi codurile `z`, iar eroarea `no-decompress` îi spune ce să ceară. Un browser fără `CompressionStream` produce singur coduri brute; **ambele** dispozitive trebuie să poată citi ce primesc, deci caseta se bifează pe dispozitivul care ar comprima (dialogul are caseta «Cod compatibil (necomprimat)», debifată implicit). Codurile brute dau mai multe cadre QR; copierea de text rămâne alternativa. Testat în `test/p2p.test.mjs` (secțiunea 10) cu `DecompressionStream` eliminat artificial; **nu** s-a testat pe browsere vechi reale.
 La lipire sunt tolerate spații, linii noi și ghilimele. SDP-ul decodat este verificat (prima linie `v=0`, toate liniile `x=…`, ≤ 400 de linii).
 
 ### QR: un cod sau coduri succesive (varianta aleasă și motivul)
@@ -54,15 +55,16 @@ Se folosește `BarcodeDetector` dacă există, altfel decodorul propriu (vezi ma
 | `lockstep(session, opts)` | sesiune de joc (mai jos) |
 | `encodeSignal`, `decodeSignal`, `parseStun`, `frames`, `assembler`, `qrView` | utilitare publice |
 
-`opts` (host/join): `stun` (șir sau listă), `heartbeat: {interval:2000, timeout:9000, giveUp:30000, connect:30000}`, `gatherTimeout` (4000 ms).
+`opts` (host/join): `compress` (`false` = cod brut, vezi mai sus), `stun` (șir sau listă), `heartbeat: {interval:2000, timeout:9000, giveUp:30000, connect:30000}`, `gatherTimeout` (4000 ms).
 Colectarea candidatelor se încheie la `complete`, sau după ≥ 1 candidat și 500 ms de liniște (cu STUN: până la 2,5 s pentru un candidat *srflx*); fără niciun candidat → eroare `no-candidates`.
 
 **Sesiune** (`session`): `role` (`host`|`guest`), `state` (`new`, `gathering`, `waiting-answer`, `connecting`, `open`, `lost`, `failed`, `closed`), `send(obj)` → `true|false`, `on(ev, fn)` → funcție de dezabonare, `off`,
 `close()`, `reconnect(offerCode?)`, `rtt`, `stats`, `iceServers`, `channel` (`RTCDataChannel`), `open`.
-Evenimente: `open`, `message(obj)`, `close(motiv)` (`local`, `remote`, `timeout`, `failed`, `channel-closed`, `cancel`, `reconnect`), `state`, `lost`, `recovered`, `latency(ms)`, `error(Error{code})`.
+Evenimente: `open` (emis o singură dată; mesajele care sosesc înaintea lui sunt reținute — cel mult 64 — și date imediat după ascultătorii lui `open`), `message(obj)`, `close(motiv)` (`local`, `remote`, `timeout`, `failed`, `channel-closed`, `cancel`, `reconnect`), `state`, `lost`, `recovered`, `latency(ms)`, `error(Error{code})`.
 Coduri de eroare: `unsupported`, `bad-code`, `wrong-kind`, `no-decompress`, `no-candidates`, `stun-invalid`, `too-large`, `ice-failed`, `timeout`; `error.message` este tradus în limba curentă.
 
 - **Heartbeat:** la fiecare 2 s se trimite `{"_fff":"ping"}`; partenerul răspunde `pong` (de aici `rtt`). Fără trafic 9 s → stare `lost` (eveniment `lost`); dacă traficul revine → `recovered`; după 30 s de tăcere → `close('timeout')`, stare `failed`. Mesajele `_fff` sunt interne și nu ajung la aplicație.
+- **Confirmarea `ready` și coada oaspetelui:** oaspetele primește canalul deja deschis, gazda îl vede deschis abia după confirmarea lui, iar Chrome **aruncă** (nu doar întârzie) mesajele care ajung la gazdă înainte de acel moment — cu `onmessage` brut, ~5–7 % din conexiuni pierdeau primul mesaj al oaspetelui, trimis în `open`. De aceea gazda trimite `{"_fff":"ready"}` imediat ce vede `open`, iar `send()` la oaspete pune mesajele într-o coadă (cel mult 64, ordinea păstrată; întoarce `true`) până aude ceva de la gazdă (`ready`, un mesaj de aplicație sau bătaia inimii); după 3 s le trimite oricum, ca o gazdă cu un kit mai vechi (fără `ready`) să nu blocheze oaspetele. Gazda nu are nevoie de coadă: la ea canalul se deschide după ce oaspetele e deja gata. Testat în `test/p2p.test.mjs` (24 de sesiuni, ordinea, gazdă veche).
 - **Închidere curată:** `close()` trimite `{"_fff":"bye"}`, închide canalul și conexiunea; partenerul primește `close('remote')`. Repetarea lui `close()` nu face nimic.
 - **Intrări ignorate:** orice mesaj non-text, > 64 KiB, JSON invalid sau care nu e obiect este ignorat fără excepții.
 - **Reconectare manuală:** `await session.reconnect()` (gazdă) → sesiune nouă cu ofertă nouă; oaspetele face `FFF.p2p.join(oferta)`; apoi `lockstep.rebind(sesiuneaNouă)` la ambii, ca să păstreze starea jocului.
