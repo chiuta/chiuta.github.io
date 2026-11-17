@@ -39,7 +39,7 @@ concurrency:
 
 jobs:
   plan:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-26.04
     outputs:
       cadences: ${{ steps.p.outputs.cadences }}
     steps:
@@ -71,7 +71,7 @@ jobs:
 
   refresh:
     needs: plan
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-26.04
     timeout-minutes: 60
     strategy:
       fail-fast: false
@@ -91,7 +91,7 @@ jobs:
 
       - uses: actions/setup-node@v4
         with:
-          node-version: '22'
+          node-version: '26'
 
       - name: Rulează alergătorul
         id: run

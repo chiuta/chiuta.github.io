@@ -18,13 +18,13 @@ concurrency:
 
 jobs:
   test:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-26.04
     timeout-minutes: 25
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: '26'
       - name: Verificări fără browser (catalog, transparență, domenii, plic)
         run: |
           set -euo pipefail
@@ -34,6 +34,7 @@ jobs:
           node tests/envelope.test.mjs
           node tests/relations.test.mjs
           node tests/retro.test.mjs
+          node tests/alpha-build.test.mjs
           node tools/score-compare.mjs --check
           node tests/traduceri.test.mjs
           node tests/texturi.test.mjs

@@ -1,0 +1,62 @@
+# Testele din browser ale aplicațiilor alpha (Playwright + Chromium): depozitele aplicațiilor se clonează public, ramura main.
+# Separat de hub-test (care rămâne ermetic, pe fixturi): aici contează starea reală a depozitelor aplicațiilor.
+# Rulează: la modificarea testelor/sculelor alpha din hub, săptămânal (luni) și la cerere. Nu necesită secrete.
+name: alpha-browser
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'tests/alpha-apps.test.mjs'
+      - 'tests/proiector.test.mjs'
+      - 'tools/alpha/**'
+      - '.github/workflows/alpha-browser.yml'
+  schedule:
+    - cron: '31 6 * * 1'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: alpha-browser-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  browser:
+    runs-on: ubuntu-26.04
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '26'
+      - name: Aplicațiile alpha (depozite publice, ramura main)
+        run: |
+          set -euo pipefail
+          mkdir -p "$RUNNER_TEMP/apps"
+          for a in atelier-verificare balanta calendarium glosar graiul indicativ-international proiector-fara-frontiere regula vietar-packs; do
+            git clone --quiet --depth 1 "https://github.com/chiuta/$a.git" "$RUNNER_TEMP/apps/$a"
+          done
+          echo "FFF_ROOT=$RUNNER_TEMP/apps" >> "$GITHUB_ENV"
+      - name: Verificări fără browser (construirea și documentația aplicațiilor, copiile builderului)
+        run: |
+          set -euo pipefail
+          node tests/alpha-build.test.mjs
+          for a in atelier-verificare balanta calendarium glosar graiul indicativ-international proiector-fara-frontiere regula vietar-packs; do
+            (cd "$FFF_ROOT/$a" && node scripts/build.mjs --check && node --test "test/*.test.mjs")
+          done
+      - name: Playwright + Chromium
+        run: |
+          set -euo pipefail
+          mkdir -p "$RUNNER_TEMP/pw" && cd "$RUNNER_TEMP/pw"
+          echo '{"name":"ci-pw","private":true}' > package.json
+          npm install --no-audit --no-fund playwright@1.63.0 axe-core@4.10.3
+          echo "FFF_AXE=$RUNNER_TEMP/pw/node_modules/axe-core/axe.min.js" >> "$GITHUB_ENV"
+          npx playwright install --with-deps chromium
+          echo "FFF_NODE_TOOLS=$RUNNER_TEMP/pw/package.json" >> "$GITHUB_ENV"
+          echo "CHROMIUM_PATH=$(node -e "console.log(require('playwright').chromium.executablePath())")" >> "$GITHUB_ENV"
+      - name: Aplicațiile alpha în browser (limbi, accesibilitate, mobil, date ostile, export)
+        run: node tests/alpha-apps.test.mjs --root "$FFF_ROOT"
+      - name: proiector-fara-frontiere în browser (telefoane reale simulate prin WebRTC, widgeturi ostile)
+        run: node tests/proiector.test.mjs --root "$FFF_ROOT"
