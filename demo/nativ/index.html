@@ -212,12 +212,96 @@ group of teachers and merchants. In the
 -rw-r--r-- 1 root root   41038 Nov  3 14:20 frame12.png
 -rw-r--r-- 1 root root    7764 Nov  3 14:20 frame12.svg
 </pre></li></ul></li></ol></details>
+</section><section class="prog" id="porumbel" aria-labelledby="h-porumbel">
+<h2 id="h-porumbel">PORUMBEL <small>porumbel 0.1.0-alpha.1</small></h2>
+<p class="pdesc" data-t="porumbel" lang="ro">Pozele din telefon ajung singure în calculator, gata pentru LegatorOCR</p>
+<div class="player" data-slug="porumbel">
+<pre class="term" role="img" aria-label="Terminal (înregistrare): PORUMBEL"></pre>
+<div class="subline empty" aria-hidden="true"></div>
+<div class="ctl"></div>
+<div class="scenes" role="group" aria-label="Scena"></div>
+<p class="nojs" data-ui="no_js">Pagina are nevoie de JavaScript pentru redare; transcrierea de mai jos funcționează fără.</p>
+</div>
+<p class="links"><a href="porumbel.cast" download data-ui="cast">Descarcă .cast</a> · <a data-vtt="porumbel" href="porumbel.ro.vtt" download data-ui="vtt">Subtitrări .vtt</a> · <a href="porumbel.mp4" download data-ui="video">Video MP4</a> · <a href="porumbel-offline.html" data-ui="offline">Pagină offline</a> · <a href="https://github.com/chiuta/PORUMBEL" rel="noopener noreferrer" data-ui="gh">Cod sursă</a></p>
+<details class="vid"><summary data-ui="video">Video MP4</summary><video data-slug="porumbel" controls preload="none" playsinline poster="porumbel.jpg" src="porumbel.mp4"><track kind="subtitles" src="porumbel.ro.vtt" srclang="ro" label="RO"><track kind="subtitles" src="porumbel.en.vtt" srclang="en" label="EN"><track kind="subtitles" src="porumbel.fr.vtt" srclang="fr" label="FR"><track kind="subtitles" src="porumbel.it.vtt" srclang="it" label="IT"><track kind="subtitles" src="porumbel.es.vtt" srclang="es" label="ES"><track kind="subtitles" src="porumbel.pt.vtt" srclang="pt" label="PT"><track kind="subtitles" src="porumbel.de.vtt" srclang="de" label="DE"><track kind="subtitles" src="porumbel.hu.vtt" srclang="hu" label="HU"></video></details>
+<details class="transcript"><summary data-ui="transcript">Transcriere</summary><ol><li><p class="narr" lang="ro" data-n="porumbel:0">PORUMBEL duce pozele din Open Camera, de pe telefon, într-un folder de pe calculator și le dă mai departe lui LegatorOCR. Un program mic, în linia de comandă: iată versiunea și comenzile.</p><ul class="cmds" aria-label="Comenzi rulate"><li><code class="cmd">$ porumbel --version</code><pre class="out" tabindex="0">porumbel 0.1.0-alpha.1
+</pre></li><li><code class="cmd">$ porumbel --help | head -n 14</code><pre class="out" tabindex="0">PORUMBEL — carries photos from Open Camera (phone) into a folder on this computer and
+hands them to LegatorOCR.  /  Duce pozele din Open Camera în folderul de pe calculator
+și le deschide în LegatorOCR.
+
+USAGE
+  porumbel [options]            run (server, ADB and folder watchers as configured)
+  porumbel init                 create the settings file and print where it is
+  porumbel qr                   print the QR code for the phone and exit
+  porumbel open-last            open the newest session in LegatorOCR and exit
+  porumbel forget               forget which photos were already received
+  porumbel print-config         show the effective settings
+  porumbel doctor               check folder, port, adb, phone and LegatorOCR
+
+OPTIONS (same names as in the settings file)
+</pre></li></ul></li><li><p class="narr" lang="ro" data-n="porumbel:1">Setările sunt un fișier text simplu, cu linii cheie egal valoare; aici, un fișier de demonstrație. Comanda print-config arată setările efective, iar parola apare doar cu primele litere.</p><ul class="cmds" aria-label="Comenzi rulate"><li><code class="cmd">$ cat demo.conf</code><pre class="out" tabindex="0"># PORUMBEL — demo settings / setări pentru demonstrație
+inbox = inbox
+token = demo-token-0123456789
+serve = false
+watch = sync
+open = manual
+session_gap = 4
+watch_interval = 1
+</pre></li><li><code class="cmd">$ porumbel print-config --config demo.conf | grep -E &#x27;^(token|serve|port|session_gap|open|watch) &#x27;</code><pre class="out" tabindex="0">token = demo…
+serve = false
+port = 8750
+session_gap = 4
+open = manual
+</pre></li></ul></li><li><p class="narr" lang="ro" data-n="porumbel:2">Un folder sincronizat conține deja o poză veche. La prima rulare, PORUMBEL lasă în pace pozele existente și spune asta; preia doar pozele noi.</p><ul class="cmds" aria-label="Comenzi rulate"><li><code class="cmd">$ ls sync</code><pre class="out" tabindex="0">IMG_20261113_101500.jpg
+</pre></li><li><code class="cmd">$ porumbel --config demo.conf --once</code><pre class="out" tabindex="0">PORUMBEL 0.1.0-alpha.1
+  settings : demo.conf
+  inbox    : /home/demo/inbox
+  LegatorOCR: not found (the folder will be opened instead; set `launch =`)
+19-57-38 watch sync: first run — 1 existing files left alone (use --watch-all to import them)
+</pre></li></ul></li><li><p class="narr" lang="ro" data-n="porumbel:3">Un mic script ține locul aplicației de sincronizare de pe telefon: copiază pozele în folderul urmărit una câte una, cu o pauză mai lungă la mijloc.</p><ul class="cmds" aria-label="Comenzi rulate"><li><code class="cmd">$ cat phone.sh</code><pre class="out" tabindex="0">#!/bin/bash
+# stands in for the phone&#x27;s sync app / ține locul aplicației de sincronizare de pe telefon
+cd &quot;$(dirname &quot;$0&quot;)&quot;
+for f in IMG_20261114_135501 IMG_20261114_135512 IMG_20261114_135524; do cp camera/$f.jpg sync/; sleep 2; done
+sleep 6
+for f in IMG_20261114_141003 IMG_20261114_141011; do cp camera/$f.jpg sync/; sleep 2; done
+</pre></li></ul></li><li><p class="narr" lang="ro" data-n="porumbel:4">PORUMBEL preia pozele și le grupează în sesiuni. Pozele apropiate în timp ajung în același folder, numit după prima; după o pauză de peste patru secunde, setarea demo, începe o sesiune nouă.</p><ul class="cmds" aria-label="Comenzi rulate"><li><code class="cmd">$ ./phone.sh &amp; timeout 22 porumbel --config demo.conf</code><pre class="out" tabindex="0">PORUMBEL 0.1.0-alpha.1
+  settings : demo.conf
+  inbox    : /home/demo/inbox
+  LegatorOCR: not found (the folder will be opened instead; set `launch =`)
+19-57-40 + IMG_20261114_135501.jpg (5 KB) → 2026-11-14_13-55-01  [folder]
+19-57-42 + IMG_20261114_135512.jpg (5 KB) → 2026-11-14_13-55-01  [folder]
+19-57-44 + IMG_20261114_135524.jpg (5 KB) → 2026-11-14_13-55-01  [folder]
+19-57-52 + IMG_20261114_141003.jpg (5 KB) → 2026-11-14_14-10-03  [folder]
+19-57-54 + IMG_20261114_141011.jpg (5 KB) → 2026-11-14_14-10-03  [folder]
+</pre></li></ul></li><li><p class="narr" lang="ro" data-n="porumbel:5">Rezultatul: două foldere de sesiune, fiecare cu pozele ei în ordinea fotografierii.</p><ul class="cmds" aria-label="Comenzi rulate"><li><code class="cmd">$ ls -R inbox</code><pre class="out" tabindex="0">inbox:
+2026-11-14_13-55-01
+2026-11-14_14-10-03
+
+inbox/2026-11-14_13-55-01:
+IMG_20261114_135501.jpg
+IMG_20261114_135512.jpg
+IMG_20261114_135524.jpg
+
+inbox/2026-11-14_14-10-03:
+IMG_20261114_141003.jpg
+IMG_20261114_141011.jpg
+</pre></li></ul></li><li><p class="narr" lang="ro" data-n="porumbel:6">Comanda doctor verifică întreaga configurare. Aici LegatorOCR nu este instalat, deci s-ar deschide folderul sesiunii; nimic nu blochează programul, care este în stadiul alpha.</p><ul class="cmds" aria-label="Comenzi rulate"><li><code class="cmd">$ porumbel doctor --config demo.conf</code><pre class="out" tabindex="0">PORUMBEL 0.1.0-alpha.1 — diagnostic
+
+[ ok ] settings     demo.conf
+[ ok ] inbox        /home/demo/inbox
+[ ok ] token        long enough
+[ -- ] server       disabled (serve = false)
+[warn] LegatorOCR   not found; the session folder will be opened instead (set `launch =`)
+[ -- ] adb          off (enable with --adb)
+[ ok ] watch        sync
+
+Nothing blocks PORUMBEL.
+</pre></li></ul></li></ol></details>
 </section>
  <p class="note" data-ui="tts">Vocea este sintetizată local cu espeak-ng (GPL-3.0); sună mecanic, dar funcționează în toate cele 8 limbi.</p>
  <p class="note" data-ui="note">Ritmul este montat pentru a putea fi urmărit; textul de pe ecran este ieșirea reală a programelor, iar căile absolute sunt scurtate la /home/demo.</p>
  <p class="back"><a href="../" data-ui="back">Înapoi la demo-uri</a></p>
 </main>
 <script src="nativ-data.js"></script><script src="nativ.js"></script>
-<!--TX:EXT:START--><script src="../../tools/fff-texturi.js"></script><script src="../../tools/texturi-hub/cfg-demo.js"></script><!--TX:EXT:END-->
 </body>
 </html>

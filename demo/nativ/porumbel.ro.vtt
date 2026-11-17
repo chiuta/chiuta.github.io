@@ -1,0 +1,22 @@
+WEBVTT
+
+00:00:00.400 --> 00:00:14.797
+PORUMBEL duce pozele din Open Camera, de pe telefon, într-un folder de pe calculator și le dă mai departe lui LegatorOCR. Un program mic, în linia de comandă: iată versiunea și comenzile.
+
+00:00:16.047 --> 00:00:30.233
+Setările sunt un fișier text simplu, cu linii cheie egal valoare; aici, un fișier de demonstrație. Comanda print-config arată setările efective, iar parola apare doar cu primele litere.
+
+00:00:33.164 --> 00:00:44.387
+Un folder sincronizat conține deja o poză veche. La prima rulare, PORUMBEL lasă în pace pozele existente și spune asta; preia doar pozele noi.
+
+00:00:46.873 --> 00:00:57.755
+Un mic script ține locul aplicației de sincronizare de pe telefon: copiază pozele în folderul urmărit una câte una, cu o pauză mai lungă la mijloc.
+
+00:00:59.502 --> 00:01:14.331
+PORUMBEL preia pozele și le grupează în sesiuni. Pozele apropiate în timp ajung în același folder, numit după prima; după o pauză de peste patru secunde, setarea demo, începe o sesiune nouă.
+
+00:01:17.680 --> 00:01:24.175
+Rezultatul: două foldere de sesiune, fiecare cu pozele ei în ordinea fotografierii.
+
+00:01:26.421 --> 00:01:39.784
+Comanda doctor verifică întreaga configurare. Aici LegatorOCR nu este instalat, deci s-ar deschide folderul sesiunii; nimic nu blochează programul, care este în stadiul alpha.

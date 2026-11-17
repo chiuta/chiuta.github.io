@@ -1,0 +1,22 @@
+WEBVTT
+
+00:00:00.400 --> 00:00:14.270
+O PORUMBEL leva as fotografias do Open Camera, no telemóvel, para uma pasta do computador e passa-as ao LegatorOCR. Um programa pequeno, de linha de comandos: eis a versão e os comandos.
+
+00:00:16.047 --> 00:00:30.416
+As definições são um ficheiro de texto, linhas chave igual valor; aqui, um de demonstração. O comando print-config mostra as definições efetivas, com a palavra-passe reduzida às primeiras letras.
+
+00:00:33.164 --> 00:00:44.410
+Uma pasta sincronizada já contém uma fotografia antiga. Na primeira execução, o PORUMBEL deixa em paz as que já lá estão e di-lo; só recolhe as novas.
+
+00:00:46.873 --> 00:00:58.107
+Um pequeno script faz as vezes da aplicação de sincronização do telemóvel: copia as fotografias uma a uma para a pasta vigiada, com uma pausa mais longa a meio.
+
+00:00:59.502 --> 00:01:14.741
+O PORUMBEL recolhe as fotografias e agrupa-as em sessões: as próximas no tempo vão para a mesma pasta, com o nome da primeira; após uma pausa de mais de quatro segundos (definição da demonstração) começa outra sessão.
+
+00:01:17.680 --> 00:01:25.171
+O resultado: duas pastas de sessão, cada uma com as suas fotografias pela ordem em que foram tiradas.
+
+00:01:26.421 --> 00:01:39.012
+O comando doctor verifica toda a configuração. Aqui o LegatorOCR não está instalado, por isso abrir-se-ia a pasta da sessão; nada bloqueia o programa, que está em fase alfa.

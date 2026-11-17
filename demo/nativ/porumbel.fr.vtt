@@ -1,0 +1,22 @@
+WEBVTT
+
+00:00:00.400 --> 00:00:12.281
+PORUMBEL transporte les photos d'Open Camera, sur le téléphone, vers un dossier de l'ordinateur et les passe à LegatorOCR. Un petit programme en ligne de commande : voici sa version et ses commandes.
+
+00:00:16.047 --> 00:00:27.987
+Les réglages tiennent dans un fichier texte, lignes clé égale valeur ; ici, un fichier de démonstration. La commande print-config affiche les réglages effectifs, mot de passe réduit à ses premières lettres.
+
+00:00:33.164 --> 00:00:43.367
+Un dossier synchronisé contient déjà une ancienne photo. Au premier lancement, PORUMBEL laisse tranquilles les photos déjà présentes et le dit ; seules les nouvelles sont prises en charge.
+
+00:00:46.873 --> 00:00:56.273
+Un petit script tient lieu d'application de synchronisation du téléphone : il copie les photos une à une dans le dossier surveillé, avec une pause plus longue au milieu.
+
+00:00:59.502 --> 00:01:11.326
+PORUMBEL reprend les photos et les groupe en sessions : les photos rapprochées vont dans un même dossier, nommé d'après la première ; après une pause de plus de quatre secondes (réglage de la démo), nouvelle session.
+
+00:01:17.680 --> 00:01:23.175
+Le résultat : deux dossiers de session, chacun avec ses photos dans l'ordre de prise de vue.
+
+00:01:26.421 --> 00:01:38.062
+La commande doctor vérifie toute la configuration. Ici LegatorOCR n'est pas installé : le dossier de la session serait ouvert à la place ; rien ne bloque le programme, qui est au stade alpha.
