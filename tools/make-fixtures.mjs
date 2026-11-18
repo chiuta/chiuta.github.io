@@ -23,6 +23,8 @@ const ROOT = ri >= 0 ? path.resolve(argv[ri + 1]) : null;
 const FIX = path.join(HUB, 'tests', 'fixtures', 'apps');
 const read = (p) => fs.readFileSync(p, 'utf8');
 const ex = (p) => fs.existsSync(p);
+const publicDir = (repo) => ['', 'docs', 'site'].map((dir) => path.join(repo, dir))
+  .find((dir) => ex(path.join(dir, 'index.html')));
 
 const html = read(path.join(HUB, 'index.html'));
 const cards = html.split('<div class="app-card"').slice(1).map((c) => ({key: (c.match(/data-c="apps\|([^|"]+)\|title"/) || [])[1], ver: (c.match(/<span class="card-ver" data-ver="([^"]*)" data-upd="([^"]*)"/) || [])[1] || '', upd: (c.match(/<span class="card-ver" data-ver="([^"]*)" data-upd="([^"]*)"/) || [])[2] || ''})).filter((c) => c.key);
@@ -37,13 +39,13 @@ function generate(OUT) {
   const keep = {};
   for (const key of keys) {
     const repo = path.join(ROOT, key);
-    if (!ex(path.join(repo, 'index.html')) && !ex(path.join(repo, 'docs', 'index.html')) && ex(path.join(FIX, key))) keep[key] = snapshot(path.join(FIX, key));
+    if (!publicDir(repo) && ex(path.join(FIX, key))) keep[key] = snapshot(path.join(FIX, key));
   }
   fs.rmSync(OUT, {recursive: true, force: true});
   let n = 0; const skipped = [];
   for (const key of keys) {
     const repo = path.join(ROOT, key);
-    const pub = ex(path.join(repo, 'index.html')) ? repo : ex(path.join(repo, 'docs', 'index.html')) ? path.join(repo, 'docs') : null;
+    const pub = publicDir(repo);
     if (!pub) {
       skipped.push(key);
       for (const [rel, text] of Object.entries(keep[key] || {})) { const f = path.join(OUT, key, rel); fs.mkdirSync(path.dirname(f), {recursive: true}); fs.writeFileSync(f, text); }
@@ -54,7 +56,7 @@ function generate(OUT) {
     for (const d of [pub, repo]) { try { app = JSON.parse(read(path.join(d, 'app.json'))); break; } catch { /* fără app.json */ } }
     let cfg = {};
     try { cfg = JSON.parse(read(path.join(repo, 'fff.config.json'))); } catch { /* fără fff.config.json */ }
-    const dest = path.join(OUT, key), destPub = pub === repo ? dest : path.join(dest, 'docs');
+    const dest = path.join(OUT, key), destPub = path.join(dest, path.relative(repo, pub));
     fs.mkdirSync(destPub, {recursive: true});
     const ver = metaOf(h, 'application-version') || (app && app.version) || '', upd = metaOf(h, 'last-updated') || (app && app.updated) || '';
     fs.writeFileSync(path.join(destPub, 'index.html'), `<!doctype html>\n<meta charset="utf-8">\n<title>${key} (fixtură)</title>\n<meta name="application-version" content="${ver}">\n<meta name="last-updated" content="${upd}">\n`);
@@ -81,8 +83,8 @@ if (CHECK && !ROOT) {
   const bad = [];
   for (const c of cards) {
     if (ENGINES.has(c.key) || EXTERNAL.has(c.key)) continue;   // programele native n-au fixturi; cardurile EXTERNE au versiunea întreținută de mână
-    const dir = path.join(FIX, c.key), pub = ex(path.join(dir, 'index.html')) ? dir : path.join(dir, 'docs');
-    if (!ex(path.join(pub, 'index.html'))) { bad.push(`${c.key}: lipsește fixtura`); continue; }
+    const pub = publicDir(path.join(FIX, c.key));
+    if (!pub) { bad.push(`${c.key}: lipsește fixtura`); continue; }
     const h = read(path.join(pub, 'index.html')), v = metaOf(h, 'application-version'), u = metaOf(h, 'last-updated');
     if (c.ver && v && v !== c.ver) bad.push(`${c.key}: fixtura are v${v}, cardul v${c.ver}`);
     else if (c.upd && u && u !== c.upd) bad.push(`${c.key}: fixtura are data ${u}, cardul ${c.upd}`);
@@ -93,7 +95,7 @@ if (CHECK && !ROOT) {
   console.log(`fixturi la zi: ${cards.length} carduri verificate (versiune + dată)`); process.exit(0);
 }
 if (!ROOT) { console.error('lipsește --root DIR (folderul cu clonele aplicațiilor). ' + REGEN); process.exit(2); }
-if (!keys.some((k) => ex(path.join(ROOT, k, 'index.html')) || ex(path.join(ROOT, k, 'docs', 'index.html')))) { console.error(`în ${ROOT} nu există nicio clonă de aplicație: nu scriu nimic (ar goli fixturile). ` + REGEN); process.exit(2); }
+if (!keys.some((k) => publicDir(path.join(ROOT, k)))) { console.error(`în ${ROOT} nu există nicio clonă de aplicație: nu scriu nimic (ar goli fixturile). ` + REGEN); process.exit(2); }
 
 if (CHECK) {
   const tmp = fs.mkdtempSync(path.join(os.tmpdir(), 'fixtures-'));
