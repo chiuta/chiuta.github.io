@@ -2100,7 +2100,7 @@
   ]
  },
  "health": {
-  "date": "2026-11-17",
+  "date": "2026-11-18",
   "apps": 156,
   "relations": {
    "withRelation": 131,
@@ -2163,12 +2163,12 @@
    ]
   },
   "age": {
-   "ref": "2026-11-17",
+   "ref": "2026-11-18",
    "fresh7": 146,
    "fresh30": 156,
    "stale30": 0,
    "stale90": 0,
-   "oldest": "OSATURA (24)"
+   "oldest": "OSATURA (25)"
   },
   "sources": {
    "total": 30,
