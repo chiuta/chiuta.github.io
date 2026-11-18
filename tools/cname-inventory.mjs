@@ -53,7 +53,7 @@ const rows = keys.map((key) => {
     return {key, where: 'depozit', cname, expected: cname, origin: `proprie: https://${cname}/`, note: `proiect Rust, site propriu; depozit chiuta/${key}`, sens: '', inHub: false, inRepo: true, own: true, prio: 0};
   }
   const repo = path.join(ROOT, key), hubApp = path.join(HUB, 'apps', key);
-  const inRepo = exists(path.join(repo, 'index.html')) || exists(path.join(repo, 'docs', 'index.html'));
+  const inRepo = ['', 'docs', 'site'].some((dir) => exists(path.join(repo, dir, 'index.html')));
   // O pagină din apps/ care e doar stub de redirecționare (migrate-apps.mjs: „s-a mutat”) nu mai înseamnă origine partajată: aplicația e pe domeniul ei.
   const hubStub = exists(path.join(hubApp, 'index.html')) && /<title>[^<]*s-a mutat/i.test(read(path.join(hubApp, 'index.html')));
   const inHub = exists(path.join(hubApp, 'index.html')) && !hubStub;
