@@ -35,7 +35,7 @@ const present = (name) => fs.existsSync(appFile(name));
 let browser;
 async function open(name, o = {}) {
   const h = await newPage(browser, o);
-  if (o.clock) await h.page.clock.install();
+  if (o.clock) await h.page.clock.install(o.clock === true ? undefined : {time: new Date(o.clock)});   // true: ceasul real, controlabil; sau un moment fix de pornire
   if (o.state !== undefined) await h.ctx.addInitScript((v) => { try { localStorage.setItem(v[0], v[1]); } catch (e) { /* ignorat */ } }, [o.stateKey, o.state]);
   await h.page.goto('file://' + appFile(name));
   return h;
@@ -251,7 +251,9 @@ if (present('calendarium')) {
   });
 
   await T('calendarium: vederea lunară (navigare, selectarea unei zile, calendar secundar, lună bisectă chinezească)', async () => {
-    const h = await open('calendarium');
+    // Ziua de azi e fixată pe 5 martie: câmpul «ziua» pornește cu 5, iar 17 introdus apoi produce «change» la ieșirea din câmp pe care o declanșează
+    // chiar apăsarea pe ‹ (re-randarea între mousedown și click pierdea apăsarea). Cu data reală testul ar depinde de ziua în care rulează.
+    const h = await open('calendarium', {clock: '2026-03-05T10:00:00Z'});
     await h.page.waitForSelector(ready);
     await h.page.selectOption('#langsel', 'en');
     await calSet(h.page, 'gregorian', {year: 2026, month: 11, day: 17});
