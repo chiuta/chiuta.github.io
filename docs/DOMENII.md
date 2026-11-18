@@ -6,9 +6,8 @@
 ## Pe scurt
 
 - Aplicații în catalog: **156** (156 în depozite proprii, 0 în `apps/` din hub).
-- Cu **origine proprie** (CNAME `<slug>.chiuta.ro`): **155**.
-- Pe **origine partajată** `chiuta.ro`: **1** (0 aplicații din hub + 1 depozit(e) fără CNAME: Claritas).
-- ATENȚIE, lipsesc de pe disc: Claritas.
+- Cu **origine proprie** (CNAME `<slug>.chiuta.ro`): **156**.
+- Pe **origine partajată** `chiuta.ro`: **0** (0 aplicații din hub + 0 depozit(e) fără CNAME).
 - De mutat pe origine proprie (sensibile, din hub): **0** cu prioritate 1 (), **0** cu prioritate 2 ().
 
 ## De ce contează originea
@@ -25,8 +24,6 @@ Rezolvarea gratuită pe GitHub Pages: fiecare depozit își primește propriul s
 Celelalte aplicații din hub () nu păstrează date personale sau secrete; pot rămâne pe origine partajată, dar ar urma același traseu dacă se schimbă acest lucru.
 
 Deja pe origine proprie și sensibile (corect): AcademiSearch (cheie în sessionStorage); TranslateHub (cheie în sessionStorage); VaultCrypt (seif criptat); Nexus-fara-frontiere (chei API pentru modele AI); PromptVault (seif de prompturi); Constelar (cheie API în clar în localStorage (confirmat la audit)).
-
-Depozite fără CNAME (origine partajată cu hub-ul, de aliniat la convenție): Claritas → `claritas.chiuta.ro`.
 
 ## Pași exacți: DNS și verificarea domeniului chiuta.ro
 
@@ -80,7 +77,7 @@ Datele din `localStorage`/`IndexedDB` **nu se mută singure**: noua origine porn
 
 ## Verificare
 
-Stare verificată în Etapa 7 (consolidare): 155 din 156 depozite au CNAME `<slug>.chiuta.ro` și nicio aplicație nu e pe origine partajată (fiecare își păstrează `localStorage`/IndexedDB separat). Ce NU s-a putut verifica din mediul de lucru: rezolvarea DNS (`--dns` dă ENOTFOUND din spatele proxy-ului) și starea GitHub Pages „live”; acestea rămân de confirmat de pe o rețea cu DNS public.
+Stare verificată în Etapa 7 (consolidare): 156 din 156 depozite au CNAME `<slug>.chiuta.ro` și nicio aplicație nu e pe origine partajată (fiecare își păstrează `localStorage`/IndexedDB separat). Ce NU s-a putut verifica din mediul de lucru: rezolvarea DNS (`--dns` dă ENOTFOUND din spatele proxy-ului) și starea GitHub Pages „live”; acestea rămân de confirmat de pe o rețea cu DNS public.
 
 ```
 node tools/cname-inventory.mjs --check   # documentul corespunde depozitelor de pe disc
@@ -220,7 +217,7 @@ node tools/cname-inventory.mjs --dns     # informativ: interoghează DNS-ul publ
 | Trusa-fara-frontiere | depozit | `trusa-fara-frontiere.chiuta.ro` | proprie: https://trusa-fara-frontiere.chiuta.ro/ | — |  |
 | VNTV | depozit | `vntv.chiuta.ro` | proprie: https://vntv.chiuta.ro/ | — |  |
 | Cronosala | depozit | `cronosala.chiuta.ro` | proprie: https://cronosala.chiuta.ro/ | — |  |
-| Claritas | LIPSĂ | — | partajată: https://chiuta.ro/Claritas/ (proiect fără CNAME, aceeași origine cu hub-ul) | — | fără CNAME; propus `claritas.chiuta.ro` |
+| Claritas | depozit | `claritas.chiuta.ro` | proprie: https://claritas.chiuta.ro/ | — |  |
 | Index-fara-frontiere | depozit | `index-fara-frontiere.chiuta.ro` | proprie: https://index-fara-frontiere.chiuta.ro/ | — |  |
 | PORUMBEL | depozit | `porumbel.chiuta.ro` | proprie: https://porumbel.chiuta.ro/ | — |  |
 | ACORDAJ | depozit | `acordaj.chiuta.ro` | proprie: https://acordaj.chiuta.ro/ | — |  |
