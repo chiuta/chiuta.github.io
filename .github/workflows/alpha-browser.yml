@@ -1,6 +1,7 @@
 # Testele din browser ale aplicațiilor alpha (Playwright + Chromium): depozitele aplicațiilor se clonează public, ramura main.
 # Separat de hub-test (care rămâne ermetic, pe fixturi): aici contează starea reală a depozitelor aplicațiilor.
-# Rulează: la modificarea testelor/sculelor alpha din hub, săptămânal (luni) și la cerere. Nu necesită secrete.
+# Rulează: la modificarea testelor/sculelor alpha din hub (inclusiv fff-kit/test/_pw.mjs), săptămânal (luni) și la cerere. Nu necesită secrete.
+# Playwright: FFF_NODE_TOOLS (package.json din $RUNNER_TEMP/pw) e citit de fff-kit/test/_pw.mjs, deci nu e nevoie de /opt/node-tools.
 name: alpha-browser
 
 on:
@@ -10,6 +11,7 @@ on:
       - 'tests/alpha-apps.test.mjs'
       - 'tests/proiector.test.mjs'
       - 'tools/alpha/**'
+      - 'fff-kit/test/_pw.mjs'
       - '.github/workflows/alpha-browser.yml'
   schedule:
     - cron: '31 6 * * 1'

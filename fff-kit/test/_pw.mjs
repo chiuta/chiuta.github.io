@@ -7,7 +7,8 @@ import {fileURLToPath} from 'node:url';
 import {applyKit, runInfo} from '../build.mjs';
 import {AXE} from './_axe.mjs';
 
-const require = createRequire('/opt/node-tools/package.json');
+// Playwright se caută în FFF_NODE_TOOLS / PW_ROOT (package.json al unui folder cu playwright), ca în testele hub-ului; implicit /opt/node-tools.
+const require = createRequire(process.env.FFF_NODE_TOOLS || process.env.PW_ROOT || '/opt/node-tools/package.json');
 export const {chromium} = require('playwright');
 export const HERE = path.dirname(fileURLToPath(import.meta.url));
 export {AXE};
