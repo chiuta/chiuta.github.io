@@ -104,9 +104,12 @@
     return n >= 8;
   }
   function undo(e) { e.style.removeProperty('min-height'); e.style.removeProperty('min-width'); e.removeAttribute('data-fff-sz'); }
+  /* lățimea paginii: și body.scrollWidth, fiindcă aplicațiile cu «html,body{overflow-x:hidden}» nu derulează, deci de.scrollWidth rămâne la lățimea ecranului
+   * chiar dacă un rând de butoane iese din ecran (butoanele de la capăt ar fi tăiate fără să se vadă nicio eroare) */
+  function pageW() { return Math.max(de.scrollWidth, doc.body ? doc.body.scrollWidth : 0); }
   function sizePass() {
     if (OFF || !coarse() || doc.documentElement.hasAttribute('data-fff-nosz')) return;
-    var vw = innerWidth, base = Math.max(de.scrollWidth, vw);
+    var vw = innerWidth, base = Math.max(pageW(), vw);
     var els = doc.querySelectorAll('a[href],button,input:not([type=hidden]):not([type=checkbox]):not([type=radio]):not([type=range]):not([type=color]):not([type=file]),select,textarea,summary,[role=button],[role=tab],[role=menuitem],[role=link]');
     var groups = [], seen = [];
     for (var i = 0; i < els.length && i < 800; i++) {
@@ -122,13 +125,15 @@
       groups[k].push({e: e, h: r.height, w: r.width});
     }
     for (var g = 0; g < groups.length; g++) {                       // pe grupuri de frați: dacă mărirea lor ar lărgi pagina, doar grupul acela rămâne neatins
-      var grp = groups[g];
+      var grp = groups[g], par = grp[0].e.parentElement, pBefore = par ? par.scrollWidth - par.clientWidth : 0;
       grp.forEach(function (o) {
         if (o.h < 44) o.e.style.setProperty('min-height', '44px', 'important');
         if (o.w < 44 && o.e.tagName !== 'INPUT' && o.e.tagName !== 'SELECT' && o.e.tagName !== 'TEXTAREA') o.e.style.setProperty('min-width', '44px', 'important');
         o.e.setAttribute('data-fff-sz', '1');
       });
-      if (de.scrollWidth > base + 1) grp.forEach(function (o) { undo(o.e); o.e.setAttribute('data-fff-nosz', '1'); });
+      var pOver = false;                                            // părintele (fără derulare proprie) nu trebuie să aibă conținut mai lat decât el
+      try { pOver = !!par && /^(visible|hidden|clip)$/.test(getComputedStyle(par).overflowX) && (par.scrollWidth - par.clientWidth) > pBefore + 1; } catch (e) { /* ignorat */ }
+      if (pageW() > base + 1 || pOver) grp.forEach(function (o) { undo(o.e); o.e.setAttribute('data-fff-nosz', '1'); });
       else grp.forEach(function (o) { sized.push(o.e); });
     }
   }

@@ -180,7 +180,7 @@ await ns.ctx.addInitScript(() => { Object.defineProperty(window, 'localStorage',
 const bare = makeApp('<!doctype html><html lang="en"><head><meta charset="utf-8"><title>Bare</title></head><body><p id="app-version">v 1.0.0 · 2026-10-14</p></body></html>', {modules: 'core,label,bundle', info: false});
 await ns.page.goto(bare.url); await ns.page.waitForTimeout(300);
 const NS = await ns.page.evaluate(() => { FFF.store.set('k', {a: 1}); return {g: FFF.store.get('k'), keys: FFF.store.keys(), ik: FFF.store.indexKeys(), av: FFF.store.available(), lang: FFF.lang()}; });
-check('FFF.store cade în memorie dacă localStorage aruncă', NS.g.a === 1 && NS.keys.join() === 'k' && NS.ik.length === 0 && !NS.av && NS.lang === 'en', NS);
+check('FFF.store lucrează pe stocarea în memorie dacă localStorage aruncă (kit 1.8.1): get/keys merg, indexKeys vede cheia, available() = false (nedurabilă)', NS.g.a === 1 && NS.keys.join() === 'k' && NS.ik.join() === 'fff.demo-fff.k' && !NS.av && NS.lang === 'en', NS);
 check('fără erori fără localStorage', ns.errors.length === 0, ns.errors);
 
 console.log('curat');

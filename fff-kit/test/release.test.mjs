@@ -6,7 +6,7 @@ import path from 'node:path';
 import {createHash} from 'node:crypto';
 import {spawnSync} from 'node:child_process';
 import {fileURLToPath} from 'node:url';
-import {releaseApp, releaseAll, bumpVersion, replaceVersion, bumpTestText, bumpCodeConstants, discoverApps} from '../lib/release.mjs';
+import {releaseApp, releaseAll, bumpVersion, replaceVersion, bumpTestText, bumpCodeConstants, discoverApps, versionFilesOf} from '../lib/release.mjs';
 import {checkKit, applyKit, runInfo} from '../build.mjs';
 import {checkCspHashes} from '../lib/csp.mjs';
 import {KIT_VERSION} from './_ver.mjs';
@@ -194,6 +194,35 @@ console.log('copii ale aplicațiilor reale (în /tmp)');
   const src = ['var APP_DATE = "2026-11-03";', "const LAST_UPDATED = '2026-11-03', X = 1;", "var other = '2026-11-03';", 'var VERSION = "2.3.0";'].join('\n');
   const r = bumpCodeConstants(src, '2.3.0', '2.3.1', '2026-11-03', '2026-11-07').text.split('\n');
   check('constante de dată fără versiune pe linie (APP_DATE, LAST_UPDATED) se ridică; altă variabilă cu aceeași dată rămâne', r[0].includes('2026-11-07') && r[1].includes('2026-11-07') && r[2].includes('2026-11-03') && r[3].includes('2.3.1'), r);
+}
+
+console.log('versionFiles (fff.config.json): ștampile de versiune în alte fișiere');
+{
+  const root = tmp(), d = synth(root, 'gama', {version: '1.1.3', date: '2026-10-22'});
+  const w = (rel, text) => { fs.mkdirSync(path.dirname(path.join(root, 'gama', rel)), {recursive: true}); fs.writeFileSync(path.join(root, 'gama', rel), text); };
+  w('i18n/fr.js', 'NomiaPack("fr","1.1.3",[["a","b"],["c","1.1.30"]]);\n');
+  w('i18n/de.js', "NomiaPack('de','1.1.3',[['x','y']]);\nvar zahl = '11.1.3';\n");
+  w('i18n/note.txt', '"1.1.3" rămâne (nu e *.js)\n');
+  w('data/versiune.json', '{"build":"1.1.3","kit":"1.1.3"}\n');
+  fs.writeFileSync(path.join(root, 'in-afara.js'), 'x("1.1.3");\n');
+  fs.writeFileSync(path.join(root, 'gama', 'fff.config.json'), JSON.stringify({storagePrefixes: ['fx.'], versionFiles: ['i18n/*.js', 'data/versiune.json', 'lipsa.js', '../in-afara.js', '/etc/passwd', 'i*/x.js']}));
+  const bef = {fr: rf(d, 'i18n', 'fr.js'), de: rf(d, 'i18n', 'de.js'), txt: rf(d, 'i18n', 'note.txt'), json: rf(d, 'data', 'versiune.json')};
+  const dry = releaseApp(d, {dryRun: true, date: DATE, lax: true});
+  check('dry-run: fișierele din versionFiles apar printre cele care s-ar schimba, iar pe disc nu se scrie nimic', dry.ok && ['i18n/fr.js', 'i18n/de.js', 'data/versiune.json'].every((f) => dry.changed.includes(f)) && rf(d, 'i18n', 'fr.js') === bef.fr && rf(d, 'data', 'versiune.json') === bef.json, dry.changed);
+  const r = releaseApp(d, {date: DATE, lax: true});
+  check('release: ok, 1.1.3 → 1.1.4, pasul versionFiles raportat', r.ok && r.to === '1.1.4' && /^4 înlocuiri în 3\/3 fișiere$/.test(r.steps.versionFiles || ''), r);
+  check('ștampila din *.js se ridică (ghilimele duble și simple); numerele mai lungi și altele rămân', rf(d, 'i18n', 'fr.js') === bef.fr.replace('"1.1.3"', '"1.1.4"') && rf(d, 'i18n', 'de.js') === bef.de.replace("'1.1.3'", "'1.1.4'") && rf(d, 'i18n', 'fr.js').includes('"1.1.30"') && rf(d, 'i18n', 'de.js').includes("'11.1.3'"));
+  check('fișier indicat exact (data/versiune.json): ambele apariții ale versiunii vechi, între ghilimele, se ridică', rf(d, 'data', 'versiune.json') === '{"build":"1.1.4","kit":"1.1.4"}\n');
+  check('un fișier care nu se potrivește cu tiparul (note.txt) și unul din afara aplicației (../in-afara.js) rămân neatinse; cale absolută și model în director sunt ignorate', rf(d, 'i18n', 'note.txt') === bef.txt && rf(root, 'in-afara.js') === 'x("1.1.3");\n');
+  check('rezultatul declarat de fișiere: versionFilesOf listează exact cele 3 căi, sortate', JSON.stringify(versionFilesOf(d)) === JSON.stringify(['data/versiune.json', 'i18n/de.js', 'i18n/fr.js']), versionFilesOf(d));
+  check('hash CSP și SHA-256 valide după release', checkKit(d, {lax: true}).ok && checkCspHashes(rf(d, 'index.html')).ok);
+  const again = releaseApp(d, {bump: 'none', lax: true});
+  check('idempotent: --bump none nu schimbă nimic', again.ok && again.changed.length === 0, again.changed);
+  const nx = releaseApp(d, {date: '2026-11-02', lax: true});
+  check('a doua urcare (1.1.4 → 1.1.5) ridică din nou ștampilele', nx.ok && nx.to === '1.1.5' && rf(d, 'i18n', 'fr.js').includes('"1.1.5"') && !rf(d, 'i18n', 'fr.js').includes('"1.1.4"'));
+  fs.writeFileSync(path.join(d, 'i18n', 'fr.js'), 'NomiaPack("fr","9.9.9",[]);\n'); fs.writeFileSync(path.join(d, 'i18n', 'de.js'), 'x\n'); fs.writeFileSync(path.join(d, 'data', 'versiune.json'), '{}\n');
+  const miss = releaseApp(d, {date: '2026-11-03', lax: true});
+  check('ștampile care nu mai conțin versiunea veche: avertisment, nu eroare', miss.ok && miss.warnings.some((x) => /versionFiles/.test(x)), miss.warnings);
 }
 
 console.log(`release: ${pass} ok, ${fail} eșuate`);

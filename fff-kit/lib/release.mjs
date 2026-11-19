@@ -147,8 +147,29 @@ function walkTests(dir) {
   return out;
 }
 /** Instantaneu: {cale relativă: sha} al fișierelor pe care le poate atinge release. */
+/** fff.config.json → "versionFiles": ["i18n/*.js", "data/versiune.json"]: alte fișiere ale aplicației care poartă versiunea ca șir între ghilimele
+ *  (de ex. pachete de limbă încărcate la cerere și ștampilate cu versiunea construcției — NomiaPack("fr","1.1.3",[…]) — pe care pagina le respinge
+ *  dacă ștampila nu coincide cu versiunea paginii). La un bump, versiunea veche între ghilimele devine cea nouă în aceste fișiere.
+ *  Doar căi relative sub directorul aplicației (fără «..»); «*» doar în numele fișierului, nu în director. Întoarce căi relative, sortate. */
+export function versionFilesOf(dir) {
+  let cfg = {};
+  try { cfg = JSON.parse(rdIf(path.join(dir, 'fff.config.json')) || '{}'); } catch { return []; }
+  const pats = Array.isArray(cfg.versionFiles) ? cfg.versionFiles : [];
+  const out = new Set();
+  for (const pat of pats) {
+    if (typeof pat !== 'string' || !pat.trim() || path.isAbsolute(pat) || pat.split(/[\\/]/).includes('..')) continue;
+    const dn = path.dirname(pat), bn = path.basename(pat);
+    if (dn.includes('*')) continue;
+    const base = path.join(dir, dn);
+    if (!bn.includes('*')) { try { if (fs.lstatSync(path.join(base, bn)).isFile()) out.add(path.join(dn, bn)); } catch { /* lipsește: ignorat */ } continue; }
+    const re = new RegExp('^' + bn.split('*').map(esc).join('[^/]*') + '$');
+    let list = []; try { list = fs.readdirSync(base, {withFileTypes: true}); } catch { continue; }
+    for (const e of list) if (e.isFile() && re.test(e.name)) out.add(path.join(dn, e.name));
+  }
+  return [...out].sort();
+}
 function snapshot(dir) {
-  const files = ['index.html', 'sw.js', 'app.json', 'fff.config.json', ...fs.readdirSync(dir).filter((f) => /^README(?:\.[a-z]{2})?\.md$/.test(f)), ...walkTests(dir).map((f) => path.relative(dir, f))];
+  const files = ['index.html', 'sw.js', 'app.json', 'fff.config.json', ...fs.readdirSync(dir).filter((f) => /^README(?:\.[a-z]{2})?\.md$/.test(f)), ...walkTests(dir).map((f) => path.relative(dir, f)), ...versionFilesOf(dir)];
   const o = {};
   for (const f of files) { const t = rdIf(path.join(dir, f)); if (t != null) o[f] = sha(t); }
   return o;
@@ -241,6 +262,19 @@ export function releaseApp(dirArg, opt = {}) {
           if (r.lines) { fs.writeFileSync(f, r.text); tf++; tl += r.lines; }
         }
         rep.steps.tests = `${tl} linii în ${tf} fișiere`;
+      }
+      /* alte fișiere cu versiunea (fff.config.json → versionFiles) */
+      const vfiles = versionFilesOf(work);
+      if (vfiles.length && newV !== oldV) {
+        const qre = new RegExp(`(["'])${esc(oldV)}\\1`, 'g');
+        let vn = 0, vf = 0;
+        for (const f of vfiles) {
+          const fp = path.join(work, f), t = fs.readFileSync(fp, 'utf8');
+          let k = 0; const t2 = t.replace(qre, (m, q) => { k++; return q + newV + q; });
+          if (k) { fs.writeFileSync(fp, t2); vn += k; vf++; }
+        }
+        rep.steps.versionFiles = `${vn} înlocuiri în ${vf}/${vfiles.length} fișiere`;
+        if (!vn) rep.warnings.push('versionFiles: versiunea veche, între ghilimele, nu a fost găsită în fișierele indicate');
       }
     } else rep.steps.bump = 'omis (--bump none sau versiune neschimbată)';
 

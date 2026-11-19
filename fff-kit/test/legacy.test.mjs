@@ -6,6 +6,7 @@ import fs from 'node:fs';
 import {createRequire} from 'node:module';
 import {makeApp, launch, newPage, check, summary, FIXTURE} from './_pw.mjs';
 import {checkKit} from '../build.mjs';
+import {KIT_VERSION} from './_ver.mjs';
 
 const browser = await launch();
 const app = makeApp(FIXTURE, {modules: 'core,store,dialog,label,bundle', info: false});
@@ -23,7 +24,7 @@ check('check: fără erori; blocurile fff-compat și fff-imp există', ck.ok && 
   const {page, errors} = await newPage(browser);
   await page.goto(app.url); await page.waitForTimeout(300);
   const o = await page.evaluate(() => ({ready: FFF.compat.ready, old: FFF.compat.tooOld, miss: FFF.compat.missing, v: FFF.compat.version, kit: FFF.version, imp: typeof window.__fffImp, cls: document.documentElement.className, rx: typeof FFF.rx, banner: !!document.querySelector('[data-fff-compat]')}));
-  check('browser modern: strat activ, nimic de semnalat, import() disponibil', o.ready && !o.old && o.miss.length === 0 && o.imp === 'function' && o.banner === false && o.kit === '1.8.0' && o.v === '1.8.0' && o.rx === 'function', o);
+  check('browser modern: strat activ, nimic de semnalat, import() disponibil', o.ready && !o.old && o.miss.length === 0 && o.imp === 'function' && o.banner === false && o.kit === KIT_VERSION && o.v === '1.8.0' && o.rx === 'function', o);
   check('browser modern: nicio clasă de rezervă pe <html>', o.cls === '', o.cls);
   check('browser modern: fără erori de pagină', errors.length === 0, errors);
   await page.close();

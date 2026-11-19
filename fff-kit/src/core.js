@@ -52,7 +52,51 @@
       }
     }
   } catch (e3) {}
-  var KIT_VERSION = '1.8.0';
+  /* ---------- stocare indisponibilă → stocare în memorie (1.8.1) ----------
+   * Cu „blochează toate cookie-urile / datele site-urilor”, într-un WebView fără DOM storage sau într-un iframe fără allow-same-origin,
+   * `window.localStorage` aruncă SecurityError (sau lipsește), iar o aplicație care îl folosește direct se oprea la pornire (pagină goală).
+   * Punem în loc o stocare doar în memorie (dispare la închiderea paginii), cu aceeași interfață — inclusiv `localStorage.cheie = valoare`,
+   * `in`, `delete`, `Object.keys` când există Proxy. Nu atinge o stocare care funcționează. `FFF.storageVolatile` devine true.
+   * Pentru `localStorage`, modulele kitului (FFF.store, observatorul de chei, copia de siguranță) lucrează pe aceeași memorie: vezi `memShim` mai jos. */
+  var memShim = null;
+  (function () {
+    ['localStorage', 'sessionStorage'].forEach(function (name) {
+      var bad = false;
+      try { var s0 = window[name]; if (!s0 || typeof s0.getItem !== 'function') bad = true; else s0.getItem('fff.__probe'); } catch (e) { bad = true; }
+      if (!bad) return;
+      var has = Object.prototype.hasOwnProperty, data = {};
+      var api = {
+        getItem: function (k) { k = String(k); return has.call(data, k) ? data[k] : null; },
+        setItem: function (k, v) { data[String(k)] = String(v); },
+        removeItem: function (k) { delete data[String(k)]; },
+        clear: function () { data = {}; },
+        key: function (i) { var ks = Object.keys(data); i = +i; return i >= 0 && i < ks.length ? ks[i] : null; }
+      };
+      try { Object.defineProperty(api, 'length', {configurable: true, get: function () { return Object.keys(data).length; }}); } catch (e1) { /* ignorat */ }
+      var store = api;
+      if (typeof Proxy === 'function') {
+        try {
+          store = new Proxy(api, {
+            get: function (t, p) {
+              if (p in t) return t[p];
+              return typeof p === 'string' && has.call(data, p) ? data[p] : undefined;
+            },
+            set: function (t, p, v) { if (typeof p === 'string') data[p] = String(v); return true; },
+            has: function (t, p) { return p in t || (typeof p === 'string' && has.call(data, p)); },
+            deleteProperty: function (t, p) { if (typeof p === 'string') delete data[p]; return true; },
+            ownKeys: function () { return Object.keys(data); },
+            getOwnPropertyDescriptor: function (t, p) { return typeof p === 'string' && has.call(data, p) ? {value: data[p], writable: true, enumerable: true, configurable: true} : undefined; }
+          });
+        } catch (e2) { store = api; }
+      }
+      try { Object.defineProperty(window, name, {configurable: true, enumerable: true, get: function () { return store; }}); }
+      catch (e3) { try { window[name] = store; } catch (e4) { /* ignorat */ } }
+      (window.FFF = window.FFF || {}).storageVolatile = true;
+      if (name === 'localStorage') memShim = {api: api};
+      try { if (window.console && console.warn) console.warn('[fff] ' + name + ' indisponibil în acest browser: modificările se păstrează doar până la închiderea paginii'); } catch (e5) { /* ignorat */ }
+    });
+  })();
+  var KIT_VERSION = '1.8.1';
   var F = (window.FFF = window.FFF || {});
   if (F.core && F.core.version) return; // idempotent la dublă încărcare
   var SUP = ['ro', 'en', 'fr', 'it', 'es', 'pt', 'hu', 'de'];
@@ -147,6 +191,7 @@
   var LS = null;
   try { LS = window.localStorage; } catch (e) { LS = null; }
   var P = window.Storage ? window.Storage.prototype : null;
+  if (memShim) P = memShim.api;   // stocare în memorie: observatorul și freeze() lucrează pe metodele ei, nu pe cele ale Storage.prototype (care nu se aplică pe ea)
   var origGet = P && P.getItem, origSet = P && P.setItem, origRem = P && P.removeItem, origClr = P && P.clear;
 
   F.lang = function () {
@@ -339,7 +384,7 @@
     frozen: function () { return frozen; },
     forget: function (k) { if (observing) untrack(k); },
     remember: function (k) { if (observing) track(k); },
-    available: function () { return lsOk(); },
+    available: function () { return lsOk() && !memShim; },   // „disponibilă” = durabilă: pe stocarea în memorie întoarce false (vezi FFF.storageVolatile)
     observing: function () { return observing; }
   };
   F.store = store;

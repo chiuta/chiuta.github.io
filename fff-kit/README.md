@@ -1,6 +1,6 @@
 # fff-kit
 
-**Versiune:** 1.8.0 · **Ultima actualizare:** 17 noiembrie 2026
+**Versiune:** 1.8.1 · **Ultima actualizare:** 19 noiembrie 2026
 
 Module comune pentru aplicațiile „fără frontiere”, **lipite în fiecare `index.html`** de un pas de build. Aplicația rămâne un fișier care funcționează descărcat, offline, fără server. Nimic din kit nu face cereri de rețea.
 
@@ -30,7 +30,7 @@ node fff-kit/build.mjs remove <dir>
   * `permissions` = API-uri detectate în sursa aplicației (fără codul kitului): getUserMedia, geolocation, RTCPeerConnection, navigator.share, Notification, speechSynthesis, SpeechRecognition, clipboard, serviceWorker, indexedDB, localStorage, Web Crypto, WebGL, WebGPU, Worker, BroadcastChannel.
   * `storageKeys` = chei literale din `getItem/setItem/removeItem` pe orice obiect în afară de `sessionStorage` (chei construite dinamic nu pot fi văzute static).
   * `--probe` încarcă pagina în Chromium (Playwright) cu rețeaua blocată, așteaptă 3,5 s și adaugă gazdele încercate și cheile `localStorage` apărute la rulare.
-* **`fff.config.json`** (opțional, în directorul aplicației) suprascrie/adaugă câmpuri în `app.json`/`fff-info`, de ex. `{"egressNote": "…", "description": "…", "selfModifying": true, "disable": "motiv"}`. `sha256`, `sizeBytes` și `schema` nu pot fi suprascrise. Alte câmpuri recunoscute: `cspExceptions` (vezi `check`) și `bundleKeys` (listă de chei sau prefixe `prefix_*` pe care importul le consideră ale aplicației, pentru chei construite dinamic). `disable` (șir) scrie `<meta name="fff-disable">`: kitul nu mai înfășoară `Storage`, nu transformă `#app-version` și dialogul afișează motivul.
+* **`fff.config.json`** (opțional, în directorul aplicației) suprascrie/adaugă câmpuri în `app.json`/`fff-info`, de ex. `{"egressNote": "…", "description": "…", "selfModifying": true, "disable": "motiv"}`. `sha256`, `sizeBytes` și `schema` nu pot fi suprascrise. Alte câmpuri recunoscute: `cspExceptions` (vezi `check`) și `bundleKeys` (listă de chei sau prefixe `prefix_*` pe care importul le consideră ale aplicației, pentru chei construite dinamic). `disable` (șir) scrie `<meta name="fff-disable">`: kitul nu mai înfășoară `Storage`, nu transformă `#app-version` și dialogul afișează motivul. `versionFiles` (listă de căi relative, `*` doar în numele fișierului, de ex. `["i18n/*.js"]`; nu apare în `app.json`) = alte fișiere care poartă versiunea ca șir între ghilimele (de ex. pachete de limbă ștampilate cu versiunea construcției, pe care pagina le respinge dacă ștampila diferă): `release` ridică în ele versiunea veche, scrisă între ghilimele, la cea nouă și le numără la `changed`.
 
 ## API pe scurt
 
@@ -106,6 +106,23 @@ LC_ALL=C sed -E 's/data-fff-hash="[0-9a-f]*"/data-fff-hash=""/g; s/"sha256":"[0-
 ```
 
 `sizeBytes` este dimensiunea fișierului final; build-ul găsește prin iterație punctul fix (cifrele lui apar în fișier).
+
+## Novități în 1.8.1 (19 noiembrie 2026)
+
+**Stocare indisponibilă → stocare în memorie.** Cu „blochează toate cookie-urile și datele site-urilor” (Chrome, Firefox, Safari), într-un WebView fără DOM storage sau într-un `<iframe sandbox>` fără `allow-same-origin`, `window.localStorage` (sau `sessionStorage`) aruncă `SecurityError` ori întoarce `null`. O aplicație care îl citește direct la pornire se oprea cu pagină goală sau cu funcții lipsă (constatat în auditul din 19–20 noiembrie 2026, la mai multe aplicații ale portofoliului). Începând cu 1.8.1, **`core` pune în loc o stocare doar în memorie** — aceeași interfață (`getItem/setItem/removeItem/clear/key/length`, și `localStorage.cheie = valoare`, `in`, `delete`, `Object.keys` unde există `Proxy`) — iar aplicația pornește și funcționează pe parcursul sesiunii; datele dispar la închiderea paginii (nu există unde să fie păstrate).
+
+* Se activează **doar** când accesul aruncă sau valoarea lipsește; o stocare care funcționează nu este atinsă, iar o eroare de cotă la scriere (`QuotaExceededError`) nu o înlocuiește (datele existente rămân citibile).
+* `FFF.storageVolatile === true` arată că s-a trecut pe memorie; aplicația poate avertiza utilizatorul că „modificările nu se salvează în acest browser”.
+* Modulele kitului (`FFF.store`, copia de siguranță) folosesc aceeași stocare în memorie: `FFF.store.available()` întoarce `false`, `FFF.store.set()` întoarce `false` (nu pretinde că a salvat durabil), iar exportul copiei de siguranță cuprinde datele din sesiune.
+* ES5, fără rețea. Test: `node test/storage-guard.test.mjs` (22 de verificări: getter care aruncă `SecurityError`, `undefined`, `null`, stocare funcțională neatinsă, cotă depășită).
+
+**Cod fără secvențe care păcălesc ștampilatoarele naive.** Un comentariu din `view.js` conținea textul «<style>». O unealtă care ștampilează CSP cu un regex peste tot documentul (`<style>(.*?)</style>`, cazul `web/stamp-site-csp.py` din VERIGA) lua acel text drept început de bloc și calcula hash-ul pentru o bucată greșită din pagină (de la comentariu până la `</style>`-ul real), iar stilul real nu avea hash: browserul îl bloca și toate cele 8 pagini ale site-ului VERIGA apăreau fără aspect (v1.5.0 și v1.5.1), fără ca `--check` al ștampilatorului să observe, fiindcă folosea același regex. Comentariul este reformulat, iar `test/inline-safe.test.mjs` (22 de verificări) interzice în codul kitului secvențele `<style`, `</style`, `<script`, `</script` și `<!--`. Verificarea `check` a kitului scoate deja corpul scripturilor înainte de a căuta elementele `<style>`.
+
+**Ținte tactile fără ecran tăiat.** Ghidajul `FFF.ux` care mărește controalele mici la 44 px verifica doar `document.documentElement.scrollWidth`; într-o pagină cu `html, body { overflow-x: hidden }` (frecvent în aplicațiile cu bară fixă de butoane) pagina nu derulează, deci un rând de 9 butoane mărit la 44 px ieșea din ecran fără ca ghidajul să observe, iar ultimul buton rămânea tăiat (constatat în FieldObserver, 360 px). Acum ghidajul măsoară și `document.body.scrollWidth` și, pe grupul de frați, `scrollWidth` al părintelui (dacă acesta nu are derulare proprie): dacă mărirea ar face conținutul mai lat decât părintele, grupul rămâne neatins (`data-fff-nosz`). Test: `node test/ux.test.mjs` (verificările noi eșuează fără corectură).
+
+**`release`: ștampile de versiune în alte fișiere.** O aplicație care încarcă la cerere pachete de limbă ștampilate cu versiunea construcției (de ex. `NomiaPack("fr","1.1.3",[…])`, respinse de pagină dacă ștampila diferă de `BUILD`) rămânea, după un `release`, cu pachetele nerecunoscute: limbile se întorceau la textul original. `fff.config.json → "versionFiles": ["i18n/*.js"]` (căi relative, `*` doar în numele fișierului; câmpul nu ajunge în `app.json`) face ca `release` să ridice, în aceste fișiere, versiunea veche scrisă între ghilimele la cea nouă (pasul apare în raport ca `steps.versionFiles`, iar fișierele în `changed`). Test: `node test/release.test.mjs` (10 verificări noi).
+
+**`info`: numele aplicației din `<title>`-ul documentului.** `name` din `app.json`/`fff-info` era primul `<title>` din fișier, inclusiv cel dintr-un șablon SVG/KML din script (`<title>' + xml(…) + '</title>`) când scriptul mare stă în `<head>` înaintea `<title>`-ului real: la 8 aplicații numele ajunsese un fragment de cod. Se ignoră acum conținutul `<script>`, `<style>` și comentariile.
 
 ## Novități în 1.8.0 (17 noiembrie 2026)
 
@@ -247,16 +264,18 @@ Face testele aplicațiilor portabile: `node tools/portable-tests.mjs <aplicație
 
 ```
 node fff-kit/test/all.mjs [--timeout=900] [--only=core,bundle] [--skip=ephem] [--list] [--fail-fast]   # TOATE testele autonome, pe rând
-node fff-kit/test/core.test.mjs      # 34 verificări
+node fff-kit/test/core.test.mjs      # 35 verificări
 node fff-kit/test/label.test.mjs     # 57 (inclusiv axe în dialog, luminos/întunecat, 360 px, dimensiuni minime 1.1.4)
 node fff-kit/test/bundle.test.mjs    # 53 (export/import/ștergere, criptare, rollback, UI)
-node fff-kit/test/build.test.mjs     # 68 (apply/idempotență/remove/check/info, politici CSP)
+node fff-kit/test/build.test.mjs     # 79 (apply/idempotență/remove/check/info, politici CSP)
 node fff-kit/test/dialog.test.mjs    # 62 (FFF.dialog: API, ARIA, focus, Escape, toast aria-live, axe, 360/1366 px)
 node fff-kit/test/store.test.mjs     # 32 (FFF.store: prefix, JSON, cote, migrate idempotentă, freeze/bundle)
 node fff-kit/test/rules.test.mjs     # 51 (native-dialog, unprefixed-storage, cdn-without-sri, i18n-parity)
-node fff-kit/test/release.test.mjs   # 58 (release/release-all pe copii în /tmp)
-node fff-kit/test/portable-tests.test.mjs # 33
-node fff-kit/test/ci.test.mjs        # 35 (workflow, add-ci, derivă, axe-check)
+node fff-kit/test/release.test.mjs   # 52 (release/release-all pe copii în /tmp)
+node fff-kit/test/portable-tests.test.mjs # 26
+node fff-kit/test/ci.test.mjs        # 37 (workflow, add-ci, derivă, axe-check)
+node fff-kit/test/storage-guard.test.mjs # kit 1.8.1: stocare în memorie când localStorage/sessionStorage aruncă sau lipsesc (22)
+node fff-kit/test/inline-safe.test.mjs   # kit 1.8.1: codul kitului fără <style>, <script>, <!-- (ștampilatoare cu regex peste tot documentul) (22)
 node fff-kit/test/legacy.test.mjs    # kit 1.8.0: strat de compatibilitate (rezerve de API, regex fără \p/lookbehind, <dialog>, avertisment)
 node fff-kit/test/hardening.test.mjs # kit 1.1.3: pagehide vs. restaurare, chei la import, rollback, parolă/iterații, export sensibil, anti-clickjacking, politici CSP, derivă, ICE/lockstep, tools/
 # + qr, p2p, srs, tts, pii, search, ephem (*.test.mjs), ephem.browser.mjs, kit3-ui.mjs

@@ -247,4 +247,12 @@ check('0 erori CSP/pagină', p.errors.length === 0, p.errors);
   check('detectLangs: o aplicație doar în română cu un modul comun în 8 limbi rămâne fără limbi declarate', JSON.stringify(detectLangs('<html><body><p>Salut</p>' + dic + '</body></html>')) === '[]');
   check('detectLangs: dicționarele proprii ale aplicației sunt în continuare găsite', JSON.stringify(detectLangs('<html><script>var T={ro:{a:1},en:{a:1}};</script>' + dic + '</html>')) === '["ro","en"]');
 }
+{
+  // `name` din app.json: <title> al documentului, nu un <title> dintr-un șablon SVG din script sau dintr-un comentariu (constatat la 8 aplicații)
+  const dt = mk(ORIG.replace('<title>Demo FFF</title>', "<script>var svg = '<circle><title>' + xml(tip) + '</title></circle>';</script><!-- <title>în comentariu</title> --><style>/* <title>în stil</title> */</style><title>Demo FFF</title>"));
+  run(['apply', dt, '--slug', 'demo-fff']);
+  const rt = run(['info', dt]);
+  const nm = JSON.parse(fs.readFileSync(path.join(dt, 'app.json'), 'utf8')).name;
+  check('info: name = <title> al documentului (ignoră <title> din script, comentarii și stil)', rt.status === 0 && nm === 'Demo FFF', nm);
+}
 summary('build');

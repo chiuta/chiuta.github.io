@@ -50,6 +50,18 @@ console.log('ecran tactil');
   await ctx.close();
 }
 
+console.log('bară de butoane într-o pagină cu overflow-x:hidden (v1.8.1)');
+{
+  const row = '<div id="row" style="display:flex;gap:3px;padding:0 3px">' + Array.from({length: 9}, (_, i) => `<button class="mic m${i}" style="flex:1;min-width:0;width:auto;height:48px" aria-label="b${i}">${i}</button>`).join('') + '</div>';
+  const app3 = makeApp(page(row, '<style>html,body{overflow-x:hidden}</style>'), {modules: 'core,dialog,ux', info: false});
+  const {ctx, p} = await open(app3.url, {w: 360});
+  await sleep(700);
+  check('rândul de 9 butoane nu iese din ecran (grupul rămâne neatins)', await p.evaluate(() => { const r = document.getElementById('row'); return r.scrollWidth <= r.clientWidth + 1; }));
+  check('butoanele din rând nu primesc min-width de 44 px', await p.evaluate(() => Array.prototype.every.call(document.querySelectorAll('#row button'), (b) => b.style.minWidth === '')));
+  check('grupul este marcat data-fff-nosz', await p.evaluate(() => document.querySelector('#row button').hasAttribute('data-fff-nosz')));
+  await ctx.close();
+}
+
 console.log('mouse (desktop): mărimile proprii rămân');
 {
   const {ctx, p} = await open(app.url, {touch: false, w: 1280, h: 800});

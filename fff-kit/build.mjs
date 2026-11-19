@@ -68,7 +68,13 @@ function decodeEntities(s) {
     return Number.isFinite(n) ? String.fromCodePoint(n) : m;
   });
 }
-function titleOf(html) { const m = html.match(/<title[^>]*>([\s\S]*?)<\/title>/i); return m ? decodeEntities(m[1].replace(/<[^>]+>/g, '')).trim() : ''; }
+/** Titlul documentului: ignoră <title> din <script>/<style> și din comentarii (de ex. șabloane SVG/KML din cod: `<title>' + xml(…) + '</title>`),
+ *  care altfel ar deveni „numele” aplicației în app.json / fff-info (constatat la 3 aplicații cu scriptul mare în <head>, înaintea <title>-ului real). */
+function titleOf(html) {
+  const doc = html.replace(/<(script|style)\b[^>]*>[\s\S]*?<\/\1\s*>/gi, '').replace(/<!--[\s\S]*?-->/g, '');
+  const m = doc.match(/<title[^>]*>([\s\S]*?)<\/title>/i);
+  return m ? decodeEntities(m[1].replace(/<[^>]+>/g, '')).trim() : '';
+}
 
 function insertionIndex(html) {
   let m = html.match(/<meta\b[^>]*\bcharset\s*=[^>]*>/i);
@@ -559,7 +565,7 @@ function computeInfo(html, dir, slug, extra) {
     selfSerializing: /documentElement\.outerHTML/.test(src),
   };
   const reserved = new Set(['sizeBytes', 'sha256', 'schema']);
-  for (const [k, v] of Object.entries(cfg)) if (!reserved.has(k) && k !== 'disable' && k !== 'kitDisabled') info[k] = v;
+  for (const [k, v] of Object.entries(cfg)) if (!reserved.has(k) && k !== 'disable' && k !== 'kitDisabled' && k !== 'versionFiles') info[k] = v;   // versionFiles = instrucțiune pentru `release`, nu informație despre aplicație
   return info;
 }
 
