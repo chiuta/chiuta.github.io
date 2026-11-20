@@ -119,6 +119,25 @@ const clickUntil = async (P, sel, done, tries = 4) => {
   for (let i = 0; i < tries; i++) { if (await P.page.evaluate(done, sel)) return; await P.page.click(sel); await sleep(300); }
   if (!(await P.page.evaluate(done, sel))) throw new Error('clicul pe ' + sel + ' nu a avut efect după ' + tries + ' încercări');
 };
+/** Ce vede pagina când un widget ostil nu răspunde (pentru mesajele de eroare ale testelor): cadrele ei, conținutul lui #out, ultimele erori din consolă și starea proiectorului. */
+const evilDiag = async (P) => {
+  const kids = P.page.mainFrame().childFrames();
+  const fr = await Promise.all(kids.map((k) => k.evaluate(() => { const o = document.getElementById('out'); return {out: o ? o.textContent.slice(0, 160) : '(fără #out)', butoane: [...document.querySelectorAll('button')].map((b) => b.id).join(',')}; })
+    .then((x) => Object.assign({url: k.url().slice(0, 24)}, x), (e) => ({url: k.url().slice(0, 24), eroare: String(e.message).split('\n')[0].slice(0, 60)}))));
+  return 'cadre=' + JSON.stringify(fr) + ' | erori=' + P.errors.slice(-6).map((e) => String(e).slice(0, 140)).join(' / ') + ' | ' + await peek(P);
+};
+/** Ca clickUntil, dar pentru un buton din cadrul widgetului: cadrul se ia din nou la fiecare încercare (se poate reînnoi), iar clicul se repetă până apare efectul `done` (funcție evaluată în cadru).
+    Acoperă clicul pierdut de Chromium și cursa «portul n-a ajuns încă la widget» (butonul de inundație răspunde atunci «no-port»). Efectul se verifică înainte de fiecare clic, deci sondele nu se rulează de două ori. */
+const clickInFrame = async (P, sel, done, tries = 6) => {
+  let last = '';
+  for (let i = 0; i < tries; i++) {
+    const f = await frameOf(P);
+    if (f) { try { if (await f.evaluate(done)) return; await f.click(sel, {timeout: 4000}); } catch (e) { last = String(e.message).split('\n')[0].slice(0, 80); } }
+    await sleep(500);
+  }
+  const f = await frameOf(P);
+  if (!(f && await f.evaluate(done).catch(() => false))) throw new Error('clicul pe ' + sel + ' din widget nu a avut efect după ' + tries + ' încercări (ultima eroare: ' + (last || '-') + ') · ' + await evilDiag(P));
+};
 const isOpen = () => !!(document.querySelector('details.pf-look') || {}).open;
 const isPressed = (s) => { const b = document.querySelector(s); return !!b && b.getAttribute('aria-pressed') === 'true'; };
 const settle = (p) => p.evaluate(() => Promise.race([
@@ -430,6 +449,7 @@ export function mount(box, api) {
     rec('flood', 'done');
   });
 }`;
+const FLOOD_DONE = () => /"flood":"done"/.test(document.getElementById('out').textContent);     // evaluată în cadrul widgetului ostil, după clicul pe #flood
 const evilDescriptor = (id, perms) => ({id, name: 'Evil ' + id, version: '0.0.1', entry: 'widgets/' + id + '/index.js', permissions: perms, description: 'Hostile test widget.',
   i18n: Object.fromEntries(LANGS.map((l) => [l, {name: 'Evil ' + id, description: 'Hostile test widget.'}]))});
 
@@ -490,11 +510,11 @@ async function partC() {
     const {H, Gs} = await session(1, {host: {file}, guest: {file}});
     await openAct(H, Gs, 'evil-none');
     const before = await H.page.evaluate(() => ({url: location.href, keys: Object.keys(localStorage).sort().join(), title: document.title}));
-    const hf = await frameOf(H); await hf.click('#go');
+    await clickInFrame(H, '#go', () => document.getElementById('out').textContent.length > 2);
     const readOut = async () => { const f = await frameOf(H); if (!f) return null; try { return JSON.parse(await f.evaluate(() => document.getElementById('out').textContent)); } catch (e) { return null; } };
     let r = null; const t0 = Date.now();
     while (Date.now() - t0 < 15000) { r = await readOut(); if (r && Object.keys(r).length >= 25) break; await sleep(150); }
-    ok(r && Object.keys(r).length >= 25, 'sondele nu s-au terminat; rezultate: ' + JSON.stringify(r));
+    ok(r && Object.keys(r).length >= 25, 'sondele nu s-au terminat; rezultate: ' + JSON.stringify(r) + ' · ' + await evilDiag(H));
     await sleep(1200);                                                                        // promisiuni lente și eventuale efecte întârziate
     r = await readOut();
     if (process.env.DEBUG_PF) console.log(JSON.stringify(r, null, 1), '\nERORI:\n' + H.errors.join('\n'), '\nRETEA:', H.net);
@@ -540,8 +560,7 @@ async function partC() {
     const {H, Gs} = await session(2, {host: {file, init: {fn: SPY, arg: null}}, guest: {file}});
     await openAct(H, Gs, 'evil-all');
     const downloads = [], dlObjs = []; H.page.on('download', (d) => { downloads.push(d.suggestedFilename()); dlObjs.push(d); });
-    const t0 = Date.now(); const hf = await frameOf(H); await hf.click('#flood');
-    await untilIn(H, () => /"flood":"done"/.test(document.getElementById('out').textContent), null, 'inundația s-a terminat');
+    const t0 = Date.now(); await clickInFrame(H, '#flood', FLOOD_DONE);
     ok(await Promise.race([H.page.evaluate(() => 1), sleep(5000).then(() => 0)]), 'gazda nu mai răspunde după inundație');
     // ultima stare trimisă trebuie să ajungă la telefoane, deși au fost 3000 de actualizări
     for (const G of Gs) await untilIn(G, () => { try { return /"final":true/.test(JSON.parse(document.getElementById('out').textContent).state_seen); } catch (e) { return false; } }, null, 'ultima stare nu a ajuns la telefon', 10000);
@@ -569,8 +588,7 @@ async function partC() {
     const {H, Gs} = await session(1, {host: {file, init: {fn: SPY, arg: null}}, guest: {file}});
     await openAct(H, Gs, 'evil-none');
     const downloads = []; H.page.on('download', (d) => downloads.push(d.suggestedFilename()));
-    const hf = await frameOf(H); await hf.click('#flood');
-    await untilIn(H, () => /"flood":"done"/.test(document.getElementById('out').textContent), null, 'inundația s-a terminat');
+    await clickInFrame(H, '#flood', FLOOD_DONE);
     await sleep(1500);
     eq(downloads.length, 0, 'descărcare fără permisiune: ' + downloads.join(', '));
     eq(await H.page.evaluate(() => window.__setItem), 0, 'scriere în stocare fără permisiune');
