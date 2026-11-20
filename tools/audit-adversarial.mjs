@@ -1,10 +1,11 @@
 #!/usr/bin/env node
 // tools/audit-adversarial.mjs — baterie generică de audit adversarial pentru o aplicație HTML single-file (kit fff), versiunea 4.8.
-//   node tools/audit-adversarial.mjs <depozit> [--quick] [--root DIR] [--out DIR]
+//   node tools/audit-adversarial.mjs <depozit> [--quick] [--only s2,s7] [--root DIR] [--out DIR]
 //   node tools/audit-adversarial.mjs --summary [DIR]      agregă rezultatele (JSON) dintr-un director: aplicații, constatări pe gravitate și pe cod
 // Scrie <out>/<depozit>.json cu {app, findings:[{sev,code,msg}], stats:{...}}; --root = folderul cu clonele depozitelor (implicit: părintele hubului),
 // --out = unde scrie (implicit: <tmp>/audit-adversarial). Variabile: AUDIT_ROOT, AUDIT_OUT, CHROMIUM_PATH (altfel Chromium-ul din Playwright),
 // PW_ROOT / FFF_NODE_TOOLS = /cale/package.json în care e instalat `playwright`.
+// --only = rulează doar fazele numite (s2…s7, s5b, s6b; încărcarea S1 rulează mereu): util după o reparație, ca să nu se refacă toată bateria; scrie rezultatele într-un --out separat.
 // Pași: încărcare (erori, cereri externe, încălcări CSP, stiluri neaplicate), 8 limbi (text brut, chei lipsă, netradus, mojibake), monkey-test cu
 // intrări ostile, stocare coruptă / indisponibilă / plină, ceas schimbat + fusuri, viewporturi mici (inclusiv 320 px în fiecare limbă), ținte
 // tactile, tastatură, bare fixe (acoperite de conținut; conținut rămas sub bara de jos), igienă statică (charset, ortografie, id-uri, ARIA). Fără rețea: cererile externe sunt blocate și raportate.
@@ -29,8 +30,10 @@ function loadPlaywright() {
 const ROOT = path.resolve(opt('--root') || process.env.AUDIT_ROOT || path.join(HUB, '..'));
 const OUT = path.resolve(opt('--out') || process.env.AUDIT_OUT || path.join(os.tmpdir(), 'audit-adversarial'));
 const LANGS = ['ro', 'en', 'fr', 'it', 'es', 'pt', 'hu', 'de'];
-const name = argv.filter((a, i) => !a.startsWith('--') && !['--root', '--out'].includes(argv[i - 1]))[0];
+const name = argv.filter((a, i) => !a.startsWith('--') && !['--root', '--out', '--only'].includes(argv[i - 1]))[0];
 const QUICK = argv.includes('--quick');
+const ONLY = (opt('--only') || '').toLowerCase().split(',').map((x) => x.trim()).filter(Boolean);
+const phase = (id) => !ONLY.length || ONLY.includes(id);
 
 if (SUMMARY) {   // agregare: node tools/audit-adversarial.mjs --summary [DIR]
   const dir = path.resolve(name || opt('--out') || process.env.AUDIT_OUT || path.join(os.tmpdir(), 'audit-adversarial'));
@@ -45,7 +48,7 @@ if (SUMMARY) {   // agregare: node tools/audit-adversarial.mjs --summary [DIR]
   console.log(Object.entries(byCode).sort((a, b) => b[1] - a[1]).map(([c, n]) => `${c} ${n}`).join(' · '));
   process.exit(0);
 }
-if (!name) { console.error('utilizare: node tools/audit-adversarial.mjs <depozit> [--quick] [--root DIR] [--out DIR]  |  --summary [DIR]'); process.exit(2); }
+if (!name) { console.error('utilizare: node tools/audit-adversarial.mjs <depozit> [--quick] [--only s2,s7] [--root DIR] [--out DIR]  |  --summary [DIR]'); process.exit(2); }
 const {chromium} = loadPlaywright();
 const dir = path.join(ROOT, name);
 const file = path.join(dir, 'index.html');
@@ -484,7 +487,7 @@ function mulberry(seed) { let a = seed >>> 0; return () => { a |= 0; a = (a + 0x
     }
 
     // S2 — limbi
-    if (budget(200000)) {
+    if (phase('s2') && budget(200000)) {
       const {ctx, page, errs} = await openCtx(browser);
       await page.goto(url, {waitUntil: 'load', timeout: 30000}).catch(() => {});
       await page.waitForTimeout(600);
@@ -551,9 +554,9 @@ function mulberry(seed) { let a = seed >>> 0; return () => { a |= 0; a = (a + 0x
       await ctx.close();
     }
 
-    // S3 — monkey (limba implicită), apoi citire chei de stocare
+    // S3 — monkey (limba implicită), apoi citire chei de stocare (S4 se sprijină pe cheile citite aici)
     let keys = [];
-    if (budget(240000)) {
+    if ((phase('s3') || phase('s4')) && budget(240000)) {
       const {ctx, page, errs, net, dialogs} = await openCtx(browser);
       await page.goto(url, {waitUntil: 'load', timeout: 30000}).catch(() => {});
       await page.waitForTimeout(500);
@@ -579,7 +582,7 @@ function mulberry(seed) { let a = seed >>> 0; return () => { a |= 0; a = (a + 0x
     }
 
     // S4 — stocare coruptă / indisponibilă
-    if (budget(300000)) {
+    if (phase('s4') && budget(300000)) {
       const payloads = QUICK ? ['{"', 'null'] : ['{"', 'null', '[]', '{"a":1}', '9'.repeat(100000)];
       const keyList = keys.length ? keys : [];
       const variants = [];
@@ -602,7 +605,7 @@ function mulberry(seed) { let a = seed >>> 0; return () => { a |= 0; a = (a + 0x
     }
 
     // S5 — ceas și fusuri
-    if (budget(360000)) {
+    if (phase('s5') && budget(360000)) {
       const clocks = QUICK ? [['1970-01-01T00:00:00Z', 'UTC'], ['2027-12-31T23:59:50+14:00', 'Pacific/Kiritimati']] : [
         ['1970-01-01T00:00:00Z', 'UTC'], ['2038-01-19T03:14:08Z', 'UTC'], ['2100-03-01T12:00:00Z', 'UTC'],
         ['2027-12-31T23:59:50+14:00', 'Pacific/Kiritimati'], ['2027-03-28T00:59:50Z', 'Europe/Bucharest'], ['2026-06-11T19:00:00Z', 'America/Mexico_City'],
@@ -623,7 +626,7 @@ function mulberry(seed) { let a = seed >>> 0; return () => { a |= 0; a = (a + 0x
     }
 
     // S5b — setări regionale diferite (virgulă/punct zecimal, formate de dată)
-    if (budget(425000)) {
+    if (phase('s5b') && budget(425000)) {
       for (const loc of QUICK ? ['de-DE'] : ['en-US', 'de-DE', 'hu-HU']) {
         if (!budget(425000)) break;
         const {ctx, page, errs} = await openCtx(browser, {locale: loc, tz: 'UTC'});
@@ -639,7 +642,7 @@ function mulberry(seed) { let a = seed >>> 0; return () => { a |= 0; a = (a + 0x
     }
 
     // S6b — aspect la 320 px în fiecare limbă (cuvinte lungi: de/hu/fr)
-    if (budget(430000)) {
+    if (phase('s6b') && budget(430000)) {
       const {ctx, page, errs} = await openCtx(browser, {w: 320, h: 568});
       await page.goto(url, {waitUntil: 'load', timeout: 30000}).catch(() => {});
       await page.waitForTimeout(500);
@@ -662,7 +665,7 @@ function mulberry(seed) { let a = seed >>> 0; return () => { a |= 0; a = (a + 0x
     }
 
     // S6 — viewporturi mici
-    if (budget(400000)) {
+    if (phase('s6') && budget(400000)) {
       for (const [w, h, tch] of [[320, 568, false], [360, 640, true], [568, 320, false], [1920, 400, false]]) {
         const {ctx, page, errs} = await openCtx(browser, {w, h, touch: tch});
         await page.goto(url, {waitUntil: 'load', timeout: 30000}).catch(() => {});
@@ -675,7 +678,7 @@ function mulberry(seed) { let a = seed >>> 0; return () => { a |= 0; a = (a + 0x
     }
 
     // S7 — bare fixe: acoperite de conținut (z-index lipsă) și conținut rămas sub bara de jos (320×640 și 1280×800)
-    if (budget(420000)) {
+    if (phase('s7') && budget(420000)) {
       for (const [w, h] of [[320, 640], [1280, 800]]) {
         const {ctx, page} = await openCtx(browser, {w, h});
         await page.goto(url, {waitUntil: 'load', timeout: 30000}).catch(() => {});
@@ -698,6 +701,7 @@ function mulberry(seed) { let a = seed >>> 0; return () => { a |= 0; a = (a + 0x
   }
   flushHygiene();
   stats.v = 4.8;
+  if (ONLY.length) stats.only = ONLY.join(',');
   stats.seconds = Math.round((Date.now() - T0) / 1000);
   fs.writeFileSync(path.join(OUT, name + '.json'), JSON.stringify({app: name, findings: F, stats}, null, 1));
   console.log(`${name}: ${F.length} constatări (${F.filter((f) => f.sev === 'high').length} grave) în ${stats.seconds}s`);
