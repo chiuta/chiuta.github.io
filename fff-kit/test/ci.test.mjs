@@ -39,7 +39,7 @@ console.log('workflow reutilizabil (ci/fff-check.yml)');
   check('fără ${{ secrets.* }} și fără pull_request_target', !/secrets\./.test(raw) && !/pull_request_target/.test(raw));
   const steps = y ? y.jobs.check.steps : [];
   const text = y ? JSON.stringify(steps) : raw;
-  check('pași: checkout aplicație + checkout kit (hub), setup-node', /actions\/checkout@v4/.test(text) && /repository/.test(text) && /actions\/setup-node@v4/.test(text) && (text.match(/actions\/checkout@v4/g) || []).length >= 2);
+  check('pași: checkout aplicație + checkout kit (hub), setup-node', /actions\/checkout@v(?:[7-9]|\d{2,})\b/.test(text) && /repository/.test(text) && /actions\/setup-node@v(?:[7-9]|\d{2,})\b/.test(text) && (text.match(/actions\/checkout@v(?:[7-9]|\d{2,})\b/g) || []).length >= 2);
   check('rulează build.mjs check (strict, --lax condiționat)', /build\.mjs\\?"? check/.test(text) || /build\.mjs" check/.test(raw));
   check('derivă: release --dry-run --bump none', /release[^\n]*--dry-run --bump none/.test(raw) || /release[^"]*--dry-run --bump none/.test(text));
   check('Playwright + axe-core instalate (npm --no-save) și chromium (--with-deps)', /npm install --no-save[^\n]*playwright@/.test(raw) && /playwright install --with-deps chromium/.test(raw));

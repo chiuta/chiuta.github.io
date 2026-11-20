@@ -49,10 +49,10 @@ on:
         default: '26'
       playwright-version:
         type: string
-        default: '1.63.0'
+        default: '1.65.1'
       axe-version:
         type: string
-        default: '4.14.0'
+        default: '4.14.1'
       test-timeout-minutes:
         type: number
         default: 15
@@ -75,10 +75,10 @@ jobs:
       PLAYWRIGHT_BROWSERS_PATH: ${{ github.workspace }}/.pw-browsers
     steps:
       - name: Aplicația
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
 
       - name: Kitul (fff-kit din hub)
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
         with:
           repository: ${{ inputs.kit-repo }}
           ref: ${{ inputs.kit-ref }}
@@ -87,7 +87,7 @@ jobs:
             fff-kit
           persist-credentials: false
 
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v7
         with:
           node-version: ${{ inputs.node-version }}
 
