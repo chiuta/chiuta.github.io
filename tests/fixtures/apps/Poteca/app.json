@@ -1,6 +1,6 @@
 {
-  "version": "2.4.2",
-  "updated": "2026-11-17",
+  "version": "2.4.3",
+  "updated": "2026-11-20",
   "egress": [
     {
       "host": "tile.openstreetmap.org",

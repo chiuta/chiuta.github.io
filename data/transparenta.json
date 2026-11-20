@@ -1,6 +1,6 @@
 {
  "schema": 1,
- "snapshot": "2026-11-17",
+ "snapshot": "2026-11-20",
  "a1": {
   "date": "2026-10-21",
   "apps": 110,
@@ -134,22 +134,22 @@
   "smallNew": 41
  },
  "live": {
-  "apps": 130,
-  "sw": 121,
+  "apps": 132,
+  "sw": 123,
   "noSw": 9,
   "fakeSw": 0,
   "emptyI18n": 1,
   "badHost": 19,
-  "kitGe114": 130,
-  "kitCount": 130,
-  "cnames": 130,
+  "kitGe114": 132,
+  "kitCount": 132,
+  "cnames": 132,
   "shared": 0,
   "syncOk": true
  },
  "apps": [
   {
    "key": "AcademiSearch",
-   "ver": "5.3.2",
+   "ver": "5.3.3",
    "off": "part",
    "langs": 8,
    "hosts": 14,
@@ -159,7 +159,7 @@
   },
   {
    "key": "ACORDAJ",
-   "ver": "3.1.2",
+   "ver": "3.1.3",
    "off": "full",
    "langs": 8,
    "hosts": 0,
@@ -169,7 +169,7 @@
   },
   {
    "key": "Afrodisiace-fara-frontiere",
-   "ver": "2.1.2",
+   "ver": "2.1.3",
    "off": "full",
    "langs": 8,
    "hosts": 0,
@@ -179,7 +179,7 @@
   },
   {
    "key": "AGORA",
-   "ver": "2.2.2",
+   "ver": "2.2.3",
    "off": "full",
    "langs": 8,
    "hosts": 0,
@@ -189,7 +189,7 @@
   },
   {
    "key": "AI-Liber",
-   "ver": "2.4.2",
+   "ver": "2.4.3",
    "off": "part",
    "langs": 8,
    "hosts": 16,
@@ -199,7 +199,7 @@
   },
   {
    "key": "Akasha",
-   "ver": "2.2.2",
+   "ver": "2.2.3",
    "off": "full",
    "langs": 8,
    "hosts": 0,
@@ -209,7 +209,7 @@
   },
   {
    "key": "Alfabete",
-   "ver": "2.4.2",
+   "ver": "2.4.3",
    "off": "full",
    "langs": 8,
    "hosts": 0,
@@ -230,7 +230,7 @@
   },
   {
    "key": "ANTROPOS",
-   "ver": "1.2.2",
+   "ver": "1.2.3",
    "off": "no",
    "langs": 8,
    "hosts": 0,
@@ -240,7 +240,7 @@
   },
   {
    "key": "API-fara-frontiere",
-   "ver": "2.1.2",
+   "ver": "2.1.3",
    "off": "part",
    "langs": 8,
    "hosts": 67,
@@ -261,7 +261,7 @@
   },
   {
    "key": "Arbore",
-   "ver": "2.2.2",
+   "ver": "2.2.3",
    "off": "full",
    "langs": 8,
    "hosts": 0,
@@ -271,7 +271,7 @@
   },
   {
    "key": "ARENA",
-   "ver": "2.3.2",
+   "ver": "2.3.3",
    "off": "part",
    "langs": 8,
    "hosts": 2,
@@ -281,7 +281,7 @@
   },
   {
    "key": "Arhiva-fara-frontiere",
-   "ver": "2.3.2",
+   "ver": "2.3.3",
    "off": "part",
    "langs": 8,
    "hosts": 2,
@@ -291,7 +291,7 @@
   },
   {
    "key": "Arhiva-LinkedIn",
-   "ver": "2.4.2",
+   "ver": "2.4.3",
    "off": "part",
    "langs": 8,
    "hosts": 1,
@@ -301,7 +301,7 @@
   },
   {
    "key": "ASMR",
-   "ver": "2.3.2",
+   "ver": "2.3.3",
    "off": "full",
    "langs": 8,
    "hosts": 0,
@@ -322,18 +322,17 @@
   },
   {
    "key": "atelier-verificare",
-   "ver": "0.1.0",
-   "off": "no",
+   "ver": "0.2.1",
+   "off": "part",
    "langs": 8,
-   "hosts": 0,
+   "hosts": 3,
    "score": null,
    "hm": null,
-   "l": null,
-   "ext": true
+   "l": null
   },
   {
    "key": "ATINGERE",
-   "ver": "1.6.2",
+   "ver": "1.6.3",
    "off": "part",
    "langs": 8,
    "hosts": 5,
@@ -343,7 +342,7 @@
   },
   {
    "key": "Aurora",
-   "ver": "1.4.2",
+   "ver": "1.4.3",
    "off": "full",
    "langs": 8,
    "hosts": 0,
@@ -353,7 +352,7 @@
   },
   {
    "key": "balanta",
-   "ver": "0.2.0",
+   "ver": "0.2.1",
    "off": "full",
    "langs": 8,
    "hosts": 0,
@@ -363,7 +362,7 @@
   },
   {
    "key": "Belot-fara-frontiere",
-   "ver": "2.3.2",
+   "ver": "2.3.3",
    "off": "full",
    "langs": 8,
    "hosts": 0,
@@ -373,7 +372,7 @@
   },
   {
    "key": "Bioenergoterapie",
-   "ver": "2.1.2",
+   "ver": "2.1.3",
    "off": "full",
    "langs": 8,
    "hosts": 0,
@@ -383,7 +382,7 @@
   },
   {
    "key": "Bolta",
-   "ver": "2.5.2",
+   "ver": "2.5.3",
    "off": "full",
    "langs": 8,
    "hosts": 0,
@@ -393,7 +392,7 @@
   },
   {
    "key": "BorderlessMelodies",
-   "ver": "2.2.2",
+   "ver": "2.2.3",
    "off": "full",
    "langs": 8,
    "hosts": 0,
@@ -414,7 +413,7 @@
   },
   {
    "key": "Cadraj",
-   "ver": "2.3.2",
+   "ver": "2.3.3",
    "off": "part",
    "langs": 8,
    "hosts": 1,
@@ -424,7 +423,7 @@
   },
   {
    "key": "calendarium",
-   "ver": "0.2.0",
+   "ver": "0.2.1",
    "off": "full",
    "langs": 8,
    "hosts": 0,
@@ -434,7 +433,7 @@
   },
   {
    "key": "CalmWaves",
-   "ver": "2.2.2",
+   "ver": "2.2.3",
    "off": "full",
    "langs": 8,
    "hosts": 0,
@@ -444,7 +443,7 @@
   },
   {
    "key": "Carti-de-joc-fara-frontiere",
-   "ver": "2.3.2",
+   "ver": "2.3.3",
    "off": "full",
    "langs": 8,
    "hosts": 0,
@@ -476,7 +475,7 @@
   },
   {
    "key": "CLEPSIDRA",
-   "ver": "2.2.2",
+   "ver": "2.2.3",
    "off": "full",
    "langs": 8,
    "hosts": 0,
@@ -486,7 +485,7 @@
   },
   {
    "key": "Clopotel",
-   "ver": "2.2.11",
+   "ver": "2.2.12",
    "off": "full",
    "langs": 8,
    "hosts": 0,
@@ -507,7 +506,7 @@
   },
   {
    "key": "Constelar",
-   "ver": "2.2.2",
+   "ver": "2.2.3",
    "off": "part",
    "langs": 8,
    "hosts": 3,
@@ -517,7 +516,7 @@
   },
   {
    "key": "Cronosala",
-   "ver": "3.2.2",
+   "ver": "3.2.3",
    "off": "no",
    "langs": 8,
    "hosts": 0,
@@ -527,7 +526,7 @@
   },
   {
    "key": "Cupa-Mondiala-2026",
-   "ver": "8.4.2",
+   "ver": "8.4.3",
    "off": "full",
    "langs": 8,
    "hosts": 0,
@@ -537,7 +536,7 @@
   },
   {
    "key": "Curatitor",
-   "ver": "2.3.2",
+   "ver": "2.3.3",
    "off": "full",
    "langs": 8,
    "hosts": 0,
@@ -547,7 +546,7 @@
   },
   {
    "key": "Dame-fara-frontiere",
-   "ver": "2.3.2",
+   "ver": "2.3.3",
    "off": "full",
    "langs": 8,
    "hosts": 0,
@@ -557,7 +556,7 @@
   },
   {
    "key": "DataWeave",
-   "ver": "8.4.2",
+   "ver": "8.4.3",
    "off": "full",
    "langs": 8,
    "hosts": 0,
@@ -567,7 +566,7 @@
   },
   {
    "key": "Decibel",
-   "ver": "2.3.2",
+   "ver": "2.3.3",
    "off": "full",
    "langs": 8,
    "hosts": 0,
@@ -577,7 +576,7 @@
   },
   {
    "key": "DECUPAJ",
-   "ver": "15.1.2",
+   "ver": "15.1.3",
    "off": "part",
    "langs": 8,
    "hosts": 12,
@@ -587,7 +586,7 @@
   },
   {
    "key": "DESCANTAR",
-   "ver": "1.4.2",
+   "ver": "1.4.3",
    "off": "no",
    "langs": 8,
    "hosts": 0,
@@ -597,7 +596,7 @@
   },
   {
    "key": "Domino-fara-frontiere",
-   "ver": "2.2.2",
+   "ver": "2.2.3",
    "off": "full",
    "langs": 8,
    "hosts": 0,
@@ -607,7 +606,7 @@
   },
   {
    "key": "ECLIPSA",
-   "ver": "2.2.2",
+   "ver": "2.2.3",
    "off": "full",
    "langs": 8,
    "hosts": 0,
@@ -617,7 +616,7 @@
   },
   {
    "key": "Eclipsa-2027",
-   "ver": "2.4.2",
+   "ver": "2.4.3",
    "off": "full",
    "langs": 8,
    "hosts": 0,
@@ -649,7 +648,7 @@
   },
   {
    "key": "EcoulSpectral",
-   "ver": "2.2.2",
+   "ver": "2.2.3",
    "off": "full",
    "langs": 8,
    "hosts": 0,
@@ -659,7 +658,7 @@
   },
   {
    "key": "ETER",
-   "ver": "5.4.2",
+   "ver": "5.4.3",
    "off": "full",
    "langs": 8,
    "hosts": 0,
@@ -680,7 +679,7 @@
   },
   {
    "key": "ExploratoriiEco",
-   "ver": "2.1.2",
+   "ver": "2.1.3",
    "off": "full",
    "langs": 8,
    "hosts": 0,
@@ -690,7 +689,7 @@
   },
   {
    "key": "Fabrica",
-   "ver": "2.3.2",
+   "ver": "2.3.3",
    "off": "full",
    "langs": 8,
    "hosts": 0,
@@ -700,7 +699,7 @@
   },
   {
    "key": "FARFURIA",
-   "ver": "1.1.2",
+   "ver": "1.1.3",
    "off": "no",
    "langs": 8,
    "hosts": 0,
@@ -710,7 +709,7 @@
   },
   {
    "key": "FASCICUL",
-   "ver": "2.2.2",
+   "ver": "2.2.3",
    "off": "part",
    "langs": 8,
    "hosts": 2,
@@ -731,7 +730,7 @@
   },
   {
    "key": "FieldObserver",
-   "ver": "2.4.2",
+   "ver": "2.4.3",
    "off": "full",
    "langs": 8,
    "hosts": 0,
@@ -741,7 +740,7 @@
   },
   {
    "key": "FreeDetect",
-   "ver": "2.3.2",
+   "ver": "2.3.3",
    "off": "part",
    "langs": 8,
    "hosts": 3,
@@ -751,7 +750,7 @@
   },
   {
    "key": "FrequencyLaboratory",
-   "ver": "5.3.2",
+   "ver": "5.3.3",
    "off": "full",
    "langs": 8,
    "hosts": 0,
@@ -761,7 +760,7 @@
   },
   {
    "key": "generator-frecvente",
-   "ver": "3.3.2",
+   "ver": "3.3.3",
    "off": "full",
    "langs": 8,
    "hosts": 0,
@@ -771,7 +770,7 @@
   },
   {
    "key": "glosar",
-   "ver": "0.2.0",
+   "ver": "0.2.1",
    "off": "full",
    "langs": 8,
    "hosts": 0,
@@ -781,7 +780,7 @@
   },
   {
    "key": "Go-fara-frontiere",
-   "ver": "2.3.2",
+   "ver": "2.3.3",
    "off": "full",
    "langs": 8,
    "hosts": 0,
@@ -791,7 +790,7 @@
   },
   {
    "key": "Gospodar",
-   "ver": "2.4.2",
+   "ver": "2.4.3",
    "off": "full",
    "langs": 8,
    "hosts": 0,
@@ -801,7 +800,7 @@
   },
   {
    "key": "graiul",
-   "ver": "0.2.0",
+   "ver": "0.2.1",
    "off": "full",
    "langs": 8,
    "hosts": 0,
@@ -811,7 +810,7 @@
   },
   {
    "key": "Horizons.BeyondLimits",
-   "ver": "2.3.2",
+   "ver": "2.3.3",
    "off": "full",
    "langs": 8,
    "hosts": 0,
@@ -821,7 +820,7 @@
   },
   {
    "key": "HoroScop",
-   "ver": "2.1.2",
+   "ver": "2.1.3",
    "off": "full",
    "langs": 8,
    "hosts": 0,
@@ -831,7 +830,7 @@
   },
   {
    "key": "Hyper4D",
-   "ver": "2.3.2",
+   "ver": "2.3.3",
    "off": "full",
    "langs": 8,
    "hosts": 0,
@@ -841,7 +840,7 @@
   },
   {
    "key": "IncredibleCosmos",
-   "ver": "2.2.2",
+   "ver": "2.2.3",
    "off": "full",
    "langs": 8,
    "hosts": 0,
@@ -851,7 +850,7 @@
   },
   {
    "key": "Index-fara-frontiere",
-   "ver": "1.2.2",
+   "ver": "1.2.3",
    "off": "no",
    "langs": 8,
    "hosts": 0,
@@ -861,7 +860,7 @@
   },
   {
    "key": "INDICATIV",
-   "ver": "2.4.2",
+   "ver": "2.4.3",
    "off": "full",
    "langs": 8,
    "hosts": 0,
@@ -871,7 +870,7 @@
   },
   {
    "key": "indicativ-international",
-   "ver": "0.2.0",
+   "ver": "0.2.1",
    "off": "full",
    "langs": 8,
    "hosts": 0,
@@ -881,7 +880,7 @@
   },
   {
    "key": "Inforenergetica",
-   "ver": "2.1.2",
+   "ver": "2.1.3",
    "off": "full",
    "langs": 8,
    "hosts": 0,
@@ -891,7 +890,7 @@
   },
   {
    "key": "LECTOR",
-   "ver": "14.1.2",
+   "ver": "14.1.3",
    "off": "part",
    "langs": 8,
    "hosts": 8,
@@ -912,7 +911,7 @@
   },
   {
    "key": "Lexicon",
-   "ver": "2.5.2",
+   "ver": "2.5.3",
    "off": "full",
    "langs": 8,
    "hosts": 0,
@@ -922,7 +921,7 @@
   },
   {
    "key": "Limpezimea",
-   "ver": "2.3.2",
+   "ver": "2.3.3",
    "off": "full",
    "langs": 8,
    "hosts": 0,
@@ -932,7 +931,7 @@
   },
   {
    "key": "LocalMind",
-   "ver": "2.4.2",
+   "ver": "2.4.3",
    "off": "part",
    "langs": 8,
    "hosts": 7,
@@ -942,7 +941,7 @@
   },
   {
    "key": "Mahjong-fara-frontiere",
-   "ver": "2.2.2",
+   "ver": "2.2.3",
    "off": "full",
    "langs": 8,
    "hosts": 0,
@@ -952,7 +951,7 @@
   },
   {
    "key": "MarkdownAtelier",
-   "ver": "2.4.2",
+   "ver": "2.4.3",
    "off": "full",
    "langs": 8,
    "hosts": 0,
@@ -984,7 +983,7 @@
   },
   {
    "key": "MIRAJ",
-   "ver": "1.2.2",
+   "ver": "1.2.3",
    "off": "no",
    "langs": 8,
    "hosts": 0,
@@ -994,7 +993,7 @@
   },
   {
    "key": "Monstrarium",
-   "ver": "2.4.2",
+   "ver": "2.4.3",
    "off": "full",
    "langs": 8,
    "hosts": 0,
@@ -1015,7 +1014,7 @@
   },
   {
    "key": "Nemurirea",
-   "ver": "2.2.2",
+   "ver": "2.2.3",
    "off": "full",
    "langs": 8,
    "hosts": 0,
@@ -1025,7 +1024,7 @@
   },
   {
    "key": "Nexus-fara-frontiere",
-   "ver": "2.3.2",
+   "ver": "2.3.3",
    "off": "part",
    "langs": 8,
    "hosts": 5,
@@ -1035,7 +1034,7 @@
   },
   {
    "key": "NOMIA",
-   "ver": "1.1.2",
+   "ver": "1.1.4",
    "off": "full",
    "langs": 8,
    "hosts": 0,
@@ -1045,7 +1044,7 @@
   },
   {
    "key": "Nota-Zero",
-   "ver": "2.2.2",
+   "ver": "2.2.3",
    "off": "full",
    "langs": 8,
    "hosts": 0,
@@ -1055,7 +1054,7 @@
   },
   {
    "key": "NumeroLogIA",
-   "ver": "2.1.2",
+   "ver": "2.1.3",
    "off": "part",
    "langs": 8,
    "hosts": 2,
@@ -1065,7 +1064,7 @@
   },
   {
    "key": "Numerologie",
-   "ver": "2.1.2",
+   "ver": "2.1.3",
    "off": "full",
    "langs": 8,
    "hosts": 0,
@@ -1075,7 +1074,7 @@
   },
   {
    "key": "OAZA",
-   "ver": "2.1.2",
+   "ver": "2.1.3",
    "off": "full",
    "langs": 8,
    "hosts": 0,
@@ -1096,7 +1095,7 @@
   },
   {
    "key": "OmniHost",
-   "ver": "2.4.2",
+   "ver": "2.4.3",
    "off": "no",
    "langs": 8,
    "hosts": 4,
@@ -1106,7 +1105,7 @@
   },
   {
    "key": "Orar",
-   "ver": "2.3.2",
+   "ver": "2.3.3",
    "off": "full",
    "langs": 8,
    "hosts": 0,
@@ -1116,7 +1115,7 @@
   },
   {
    "key": "orarium",
-   "ver": "2.3.2",
+   "ver": "2.3.4",
    "off": "full",
    "langs": 8,
    "hosts": 0,
@@ -1126,7 +1125,7 @@
   },
   {
    "key": "Origami",
-   "ver": "2.1.2",
+   "ver": "2.1.3",
    "off": "full",
    "langs": 8,
    "hosts": 0,
@@ -1147,7 +1146,7 @@
   },
   {
    "key": "OUTPOST",
-   "ver": "2.3.2",
+   "ver": "2.3.3",
    "off": "part",
    "langs": 8,
    "hosts": 3,
@@ -1157,7 +1156,7 @@
   },
   {
    "key": "PatruZeci",
-   "ver": "3.8.1",
+   "ver": "3.8.3",
    "off": "full",
    "langs": 8,
    "hosts": 0,
@@ -1188,7 +1187,7 @@
   },
   {
    "key": "Poteca",
-   "ver": "2.4.2",
+   "ver": "2.4.3",
    "off": "part",
    "langs": 8,
    "hosts": 1,
@@ -1198,7 +1197,7 @@
   },
   {
    "key": "PrintreInteligente",
-   "ver": "2.3.2",
+   "ver": "2.3.3",
    "off": "part",
    "langs": 8,
    "hosts": 4,
@@ -1208,7 +1207,7 @@
   },
   {
    "key": "Profund",
-   "ver": "2.1.2",
+   "ver": "2.1.3",
    "off": "full",
    "langs": 8,
    "hosts": 0,
@@ -1218,18 +1217,17 @@
   },
   {
    "key": "proiector-fara-frontiere",
-   "ver": "0.1.0",
-   "off": "no",
+   "ver": "0.2.1",
+   "off": "full",
    "langs": 8,
    "hosts": 0,
    "score": null,
    "hm": null,
-   "l": null,
-   "ext": true
+   "l": null
   },
   {
    "key": "PromptVault",
-   "ver": "2.3.2",
+   "ver": "2.3.3",
    "off": "full",
    "langs": 8,
    "hosts": 0,
@@ -1239,7 +1237,7 @@
   },
   {
    "key": "Provenienta",
-   "ver": "2.2.2",
+   "ver": "2.2.3",
    "off": "full",
    "langs": 8,
    "hosts": 0,
@@ -1249,7 +1247,7 @@
   },
   {
    "key": "PULS",
-   "ver": "2.7.2",
+   "ver": "2.7.3",
    "off": "full",
    "langs": 8,
    "hosts": 0,
@@ -1270,7 +1268,7 @@
   },
   {
    "key": "QSO",
-   "ver": "2.3.2",
+   "ver": "2.3.3",
    "off": "full",
    "langs": 8,
    "hosts": 0,
@@ -1280,7 +1278,7 @@
   },
   {
    "key": "Radiestezie",
-   "ver": "2.1.2",
+   "ver": "2.1.3",
    "off": "full",
    "langs": 8,
    "hosts": 0,
@@ -1290,7 +1288,7 @@
   },
   {
    "key": "RegexLab",
-   "ver": "2.3.2",
+   "ver": "2.3.3",
    "off": "full",
    "langs": 8,
    "hosts": 0,
@@ -1300,7 +1298,7 @@
   },
   {
    "key": "regula",
-   "ver": "0.2.0",
+   "ver": "0.2.1",
    "off": "full",
    "langs": 8,
    "hosts": 0,
@@ -1310,7 +1308,7 @@
   },
   {
    "key": "Reiki",
-   "ver": "2.1.2",
+   "ver": "2.1.3",
    "off": "full",
    "langs": 8,
    "hosts": 0,
@@ -1320,7 +1318,7 @@
   },
   {
    "key": "Remi-fara-frontiere",
-   "ver": "2.1.2",
+   "ver": "2.1.3",
    "off": "full",
    "langs": 8,
    "hosts": 0,
@@ -1330,7 +1328,7 @@
   },
   {
    "key": "REZONANTA",
-   "ver": "1.2.2",
+   "ver": "1.2.3",
    "off": "no",
    "langs": 8,
    "hosts": 0,
@@ -1340,7 +1338,7 @@
   },
   {
    "key": "Sah-fara-frontiere",
-   "ver": "15.3.2",
+   "ver": "15.3.3",
    "off": "full",
    "langs": 8,
    "hosts": 0,
@@ -1350,7 +1348,7 @@
   },
   {
    "key": "Scopone-fara-frontiere",
-   "ver": "2.1.2",
+   "ver": "2.1.3",
    "off": "full",
    "langs": 8,
    "hosts": 0,
@@ -1360,7 +1358,7 @@
   },
   {
    "key": "ScryVeil",
-   "ver": "2.3.2",
+   "ver": "2.3.3",
    "off": "part",
    "langs": 8,
    "hosts": 7,
@@ -1370,7 +1368,7 @@
   },
   {
    "key": "ScutSonor",
-   "ver": "2.2.2",
+   "ver": "2.2.3",
    "off": "no",
    "langs": 8,
    "hosts": 0,
@@ -1380,7 +1378,7 @@
   },
   {
    "key": "SEOptimum",
-   "ver": "2.3.2",
+   "ver": "2.3.3",
    "off": "part",
    "langs": 8,
    "hosts": 3,
@@ -1390,7 +1388,7 @@
   },
   {
    "key": "SEVA",
-   "ver": "2.3.2",
+   "ver": "2.3.3",
    "off": "full",
    "langs": 8,
    "hosts": 0,
@@ -1400,7 +1398,7 @@
   },
   {
    "key": "Solitaire-fara-frontiere",
-   "ver": "2.3.2",
+   "ver": "2.3.3",
    "off": "full",
    "langs": 8,
    "hosts": 0,
@@ -1410,7 +1408,7 @@
   },
   {
    "key": "Sudoku-fara-frontiere",
-   "ver": "2.3.2",
+   "ver": "2.3.4",
    "off": "full",
    "langs": 8,
    "hosts": 0,
@@ -1420,7 +1418,7 @@
   },
   {
    "key": "Surveyor",
-   "ver": "2.4.2",
+   "ver": "2.4.3",
    "off": "part",
    "langs": 8,
    "hosts": 2,
@@ -1430,7 +1428,7 @@
   },
   {
    "key": "Table-fara-frontiere",
-   "ver": "2.2.2",
+   "ver": "2.2.3",
    "off": "full",
    "langs": 8,
    "hosts": 0,
@@ -1451,7 +1449,7 @@
   },
   {
    "key": "Tarot",
-   "ver": "2.1.2",
+   "ver": "2.1.3",
    "off": "full",
    "langs": 8,
    "hosts": 0,
@@ -1461,7 +1459,7 @@
   },
   {
    "key": "TerRa",
-   "ver": "2.3.2",
+   "ver": "2.3.3",
    "off": "part",
    "langs": 8,
    "hosts": 1,
@@ -1482,7 +1480,7 @@
   },
   {
    "key": "Threads-fara-cont",
-   "ver": "2.3.2",
+   "ver": "2.3.3",
    "off": "part",
    "langs": 8,
    "hosts": 5,
@@ -1492,7 +1490,7 @@
   },
   {
    "key": "Trade-Free-Link-Guardian",
-   "ver": "2.3.2",
+   "ver": "2.3.3",
    "off": "full",
    "langs": 8,
    "hosts": 0,
@@ -1502,7 +1500,7 @@
   },
   {
    "key": "TranslateHub",
-   "ver": "2.3.2",
+   "ver": "2.3.3",
    "off": "part",
    "langs": 8,
    "hosts": 3,
@@ -1512,7 +1510,7 @@
   },
   {
    "key": "Trusa-fara-frontiere",
-   "ver": "2.2.2",
+   "ver": "2.2.3",
    "off": "full",
    "langs": 8,
    "hosts": 0,
@@ -1533,7 +1531,7 @@
   },
   {
    "key": "Undava",
-   "ver": "2.4.2",
+   "ver": "2.4.3",
    "off": "full",
    "langs": 8,
    "hosts": 0,
@@ -1543,7 +1541,7 @@
   },
   {
    "key": "Universul-Observabil",
-   "ver": "2.2.2",
+   "ver": "2.2.3",
    "off": "full",
    "langs": 8,
    "hosts": 0,
@@ -1553,7 +1551,7 @@
   },
   {
    "key": "Universul-Observabil-1D",
-   "ver": "2.2.2",
+   "ver": "2.2.3",
    "off": "full",
    "langs": 8,
    "hosts": 0,
@@ -1563,7 +1561,7 @@
   },
   {
    "key": "Universul-Observabil-2D",
-   "ver": "6.3.2",
+   "ver": "6.3.3",
    "off": "full",
    "langs": 8,
    "hosts": 0,
@@ -1573,7 +1571,7 @@
   },
   {
    "key": "Universul-Observabil-3D",
-   "ver": "2.3.2",
+   "ver": "2.3.3",
    "off": "full",
    "langs": 8,
    "hosts": 0,
@@ -1583,7 +1581,7 @@
   },
   {
    "key": "URME",
-   "ver": "2.4.2",
+   "ver": "2.4.3",
    "off": "full",
    "langs": 8,
    "hosts": 0,
@@ -1593,7 +1591,7 @@
   },
   {
    "key": "ValeaPlopului1972",
-   "ver": "2.2.2",
+   "ver": "2.2.3",
    "off": "full",
    "langs": 8,
    "hosts": 0,
@@ -1603,7 +1601,7 @@
   },
   {
    "key": "VATRA",
-   "ver": "2.3.2",
+   "ver": "2.3.3",
    "off": "full",
    "langs": 8,
    "hosts": 0,
@@ -1613,7 +1611,7 @@
   },
   {
    "key": "VaultCrypt",
-   "ver": "3.2.2",
+   "ver": "3.2.3",
    "off": "full",
    "langs": 8,
    "hosts": 0,
@@ -1634,7 +1632,7 @@
   },
   {
    "key": "VietAR",
-   "ver": "20.3.2",
+   "ver": "20.3.3",
    "off": "part",
    "langs": 8,
    "hosts": 10,
@@ -1644,7 +1642,7 @@
   },
   {
    "key": "vietar-packs",
-   "ver": "0.2.0",
+   "ver": "0.2.1",
    "off": "full",
    "langs": 8,
    "hosts": 0,
@@ -1654,7 +1652,7 @@
   },
   {
    "key": "VITALIS",
-   "ver": "1.1.2",
+   "ver": "1.1.3",
    "off": "full",
    "langs": 8,
    "hosts": 0,
@@ -1664,7 +1662,7 @@
   },
   {
    "key": "Vitrina",
-   "ver": "2.3.2",
+   "ver": "2.3.3",
    "off": "part",
    "langs": 8,
    "hosts": 2,
@@ -1674,7 +1672,7 @@
   },
   {
    "key": "VNTV",
-   "ver": "3.1.2",
+   "ver": "3.1.3",
    "off": "part",
    "langs": 8,
    "hosts": 2,
@@ -1695,7 +1693,7 @@
   },
   {
    "key": "VoiceAtelier",
-   "ver": "2.2.2",
+   "ver": "2.2.3",
    "off": "part",
    "langs": 8,
    "hosts": 1,
@@ -1705,7 +1703,7 @@
   },
   {
    "key": "X-fara-cont",
-   "ver": "2.3.2",
+   "ver": "2.3.3",
    "off": "part",
    "langs": 8,
    "hosts": 3,
@@ -1715,7 +1713,7 @@
   },
   {
    "key": "Zaruri-fara-frontiere",
-   "ver": "2.3.2",
+   "ver": "2.3.3",
    "off": "full",
    "langs": 8,
    "hosts": 0,
@@ -1725,7 +1723,7 @@
   },
   {
    "key": "Zicala",
-   "ver": "2.3.2",
+   "ver": "2.3.3",
    "off": "full",
    "langs": 8,
    "hosts": 0,
@@ -2100,7 +2098,7 @@
   ]
  },
  "health": {
-  "date": "2026-11-18",
+  "date": "2026-11-20",
   "apps": 156,
   "relations": {
    "withRelation": 131,
@@ -2163,12 +2161,12 @@
    ]
   },
   "age": {
-   "ref": "2026-11-18",
+   "ref": "2026-11-20",
    "fresh7": 146,
    "fresh30": 156,
    "stale30": 0,
    "stale90": 0,
-   "oldest": "OSATURA (25)"
+   "oldest": "OSATURA (27)"
   },
   "sources": {
    "total": 30,
@@ -2307,8 +2305,17 @@
     "X-fara-cont",
     "Zaruri-fara-frontiere",
     "Zicala",
+    "atelier-verificare",
+    "balanta",
+    "calendarium",
     "generator-frecvente",
-    "orarium"
+    "glosar",
+    "graiul",
+    "indicativ-international",
+    "orarium",
+    "proiector-fara-frontiere",
+    "regula",
+    "vietar-packs"
    ],
    "unmeasured": [
     "ANTENA",
