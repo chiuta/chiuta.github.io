@@ -1,0 +1,115 @@
+# Auditul adversarial comparativ din noiembrie 2026
+
+*English in short:* on 19–20 November 2026 the whole portfolio went through one adversarial browser battery (150 single-file apps × 8 languages, corrupt/blocked storage, small screens, clock and time-zone changes, keyboard, CSP), static scans of every HTML file and `app.json`, and a legacy-engine smoke run. 137 repositories were updated and published (kit 1.8.1 everywhere, own fixes in 46). This page records what was checked, what was found (by class and application), what is **not** covered, and how to repeat it (`tools/audit-adversarial.mjs`, `tools/compat/`).
+
+Documentul este scris pentru cine continuă lucrul: spune ce s-a verificat și cum, ce s-a găsit (cu numere care se pot reproduce), ce a ieșit prost la prima încercare, ce nu e acoperit și cum se repetă auditul. Nu repetă ghidul autorilor ([GHID-AUTORI.md](GHID-AUTORI.md)) sau pragul de compatibilitate ([COMPATIBILITATE.md](COMPATIBILITATE.md)).
+
+## 1. Ce s-a verificat și cu ce
+
+| Strat | Ce se verifică | Unealta | Acoperire |
+|---|---|---|---|
+| Baterie în browser | încărcare (erori, cereri externe nedeclarate, încălcări CSP, stiluri neaplicate); **8 limbi** (text brut, chei lipsă, netradus, mojibake, schimbarea limbii); monkey-test cu intrări ostile; stocare coruptă, blocată, plină; ceas și fus orar schimbate; viewporturi mici (320 px în **fiecare** limbă); ținte tactile; tastatură | `tools/audit-adversarial.mjs` (v4.7) | 150 de aplicații; cele reparate (33) au fost re-rulate după reparare |
+| Igienă statică | `<meta charset>` în primii 1024 de octeți; ortografie românească (sedilă → virgulă); id-uri duplicate, referințe ARIA; `app.json` (nume, egress); hash-urile CSP ale **fiecărui** bloc `<style>` și `<script>` inline | scanare proprie, analiză cu parser HTML (fără regex peste scripturi) | toate fișierele HTML și `app.json` din depozitele locale; 212 de pagini cu CSP în `<meta>` |
+| CSP în browser | încălcări `securitypolicyviolation` și foi de stil neaplicate la încărcare | scanare în Chromium | 154 de aplicații (0 încălcări; 3 fără CSP în `<meta>`); după reparații, încă 31 (0) |
+| Compatibilitate | sintaxă ES2017 (acorn), API-uri peste prag, stratul `fff-compat`, motor vechi simulat | `tools/compat/audit.mjs`, `tools/compat/smoke.mjs` | 180 de ținte HTML (depozit sau depozit:cale) |
+| Teste proprii | testele fiecărei aplicații, rulate după fiecare modificare | `tests/` din fiecare depozit | 37 de aplicații cu teste (orarium re-rulat pe pagina finală) |
+| CI | fluxurile fiecărui depozit pe commit-ul publicat | `gh api` (REST) | 137 de depozite |
+
+„Comparativ” are aici două sensuri: **între aplicații** (aceeași baterie pe toate; când aceeași clasă de defect apare la mai multe, se repară la sursă, în kit, nu aplicație cu aplicație) și **înainte/după** (fiecare reparație a fost verificată pe pagina de la HEAD și pe cea reparată, cu aceeași măsurătoare: lățimea paginii la 320 px, erori de pagină, rezultatul testelor).
+
+## 2. Cifrele (reproductibile)
+
+* **Bateria brută**: 150 de aplicații, 55 cu constatări, **371** de constatări (263 grave, 81 medii, 27 scăzute), ≈ 3,5 h de rulare. `node tools/audit-adversarial.mjs --summary <director-rezultate>` reface aceste numere. Codurile cele mai frecvente: `lang-error` 191 (la 4 aplicații: o eroare repetată în fiecare limbă), `hyg-key` 23, `load-error` 17, `clipped-text-lang` 15, `h-overflow-lang` 15, `storage-corupt` 13, `hyg-placeholder` 13.
+* **După reparare**: 33 de aplicații re-rulate; au rămas **6** constatări, **0 grave**, toate clasificate (§ 6): AI-Liber și Profund (text tăiat decorativ în germană), AcademiSearch (ecou al unei gazde în cheile de limbă), Alfabete (ancore ale unui router cu `#`), PrintreInteligente (aplicație cu traducere proprie), VietAR (dialogul de ajutor ține focusul la prima deschidere).
+* **Bateria 4.7** (cu verificarea CSP, § 5) a fost rulată separat pe 6 aplicații (Voiajor, VoiceAtelier, Zaruri-fara-frontiere, generator-frecvente, glosar, regula): 0 constatări, 0 încălcări CSP.
+* **Publicare**: **137 de depozite** actualizate pe `main`: 91 doar cu kitul 1.8.1; 5 cu kitul și corecția numelui din `app.json`; 41 cu remedieri proprii (din care 9 aplicații alpha, reconstruite din `src/`). Versiunile au crescut cu o treaptă de corecție (de exemplu 2.1.2 → 2.1.3), cu CHANGELOG și documentație în cele 8 limbi.
+* **Teste**: aplicațiile cu teste au trecut toate după ultima modificare (de exemplu ACORDAJ 5/5, Brazda 4 pași, NOMIA 7/7, TerRa 8/8, FieldObserver 7/7, Sah 7/7, VNTV 41/41 pentru aplicație).
+
+## 3. Clase de defecte găsite
+
+| Clasă | Aplicații | Ce se întâmpla | Ce s-a făcut |
+|---|---|---|---|
+| **Stocare blocată** (cookie-uri și date de site interzise, WebView fără DOM storage, iframe sandbox) | ARENA, AI-Liber, Constelar, Nexus-fara-frontiere, ExploratoriiEco, FieldObserver, NOMIA | `localStorage` aruncă `SecurityError`; aplicația se oprea sau rămânea aproape goală (ARENA: eroarea «S is not defined») | **kit 1.8.1**: stocare în memorie pusă automat în loc, doar când accesul aruncă; `FFF.storageVolatile` arată starea. O reparație în kit în loc de șapte în aplicații |
+| **Stocare coruptă** (`null`, număr, listă în loc de obiect) | Lexicon, SEOptimum, Sah-fara-frontiere, DESCANTAR, FrequencyLaboratory | aplicația nu mai pornea sau panoul cădea (`Cannot read properties of null`, `Object.keys(null)`) | citirile validează tipul și revin la valoarea implicită |
+| **Derulare orizontală la 320 px**, doar în unele limbi (cuvinte lungi în de/hu/es/pt/fr) | ASMR, Vitrina, Dame-fara-frontiere, Sah-fara-frontiere, BorderlessMelodies, Arhiva-fara-frontiere, Radiestezie, AcademiSearch, Index-fara-frontiere (+ FieldObserver la 360 px) | pagina derula lateral sau butoane ieșeau din ecran | rânduri care trec pe linie nouă, `minmax(0, 1fr)`, ruperea cuvintelor; măsurat înainte/după (de exemplu Index: 347 → 320 px în toate cele 8 limbi). Kit 1.8.1: ghidajul de ținte tactile nu mai lărgește un rând dacă l-ar scoate din ecran |
+| **Ortografie** (sedilă ş/ţ în loc de virgulă ș/ț) | PromptVault, ACORDAJ, Radiestezie, TerRa, Carti-de-joc-fara-frontiere | „radiesteziști” cu sedilă în 17 locuri, „Şarpele”, „Nănești”… | corectat; „Türkmenbaşy” rămâne (ş e litera corectă în turkmenă) |
+| **`<meta charset>` după primii 1024 de octeți** | PromptVault, VietAR, orarium, Profund, FreeDetect (și `index.html` al hubului) | un banner de comentariu sau eticheta CSP împingeau declarația în afara ferestrei citite înainte de analiză | mutat primul în `<head>`; nu s-a observat afișare greșită în Chrome |
+| **Metadate**: numele din `app.json` și `fff-info` era un fragment de cod | Arhiva-fara-frontiere, Bolta, Eclipsa-2027, ExploratoriiEco, FieldObserver, Poteca, URME, VATRA | `info` lua primul `<title>` din fișier, inclusiv unul dintr-un șablon SVG al scriptului | **kit 1.8.1**: `info` ignoră `<script>`, `<style>` și comentariile |
+| **ARIA / id** | NOMIA, ExploratoriiEco, Alfabete | id-uri duplicate în două containere; `aria-labelledby` către un titlu inexistent la încărcare | id-uri cu sufix, atributul pus la randare |
+| **Mișcare redusă** | PrintreInteligente | cu `prefers-reduced-motion`, bucla de desen citea un context nul și arunca o eroare la fiecare cadru | bucla nu desenează până la `init()` |
+| **Țintă tactilă < 24 px** (WCAG 2.2, 2.5.8) | Brazda | butoanele de navigare de 22 px pe ecrane late | minimum 24 px |
+| **Structură HTML** | FrequencyLaboratory | închideri de `div` mutate: ~60 de panouri erau ascunse pe desktop și înghesuite în bara fixă pe mobil (§ 4) | structură reparată; panourile respectă acum modulele alese |
+| **Pachete de limbă ștampilate cu versiunea** | NOMIA, ACORDAJ | după ridicarea versiunii pagina respingea pachetele `i18n/*.js` și limbile cădeau pe textul original | kit 1.8.1: `fff.config.json → versionFiles`, `release` le re-ștampilează |
+| **Construirea din sursă nu reproduce pagina** | VNTV; cele 9 aplicații alpha | build-ul din `src/` producea altă pagină decât cea verificată (§ 4) | build-ul reproduce pagina comisă; CI verifică |
+| **Teste instabile** | Scopone-fara-frontiere (`fff-r8`), VNTV («Subtitrări traduse») | cădeau intermitent (Scopone în CI, VNTV în rulări izolate), dinainte de audit | întărite (§ 7); nu erau defecte ale aplicațiilor |
+
+## 4. Patru cazuri instructive
+
+**VERIGA: stilul paginilor, blocat de propriul CSP.** `web/stamp-site-csp.py` căuta elementele `<style>` cu un regex peste tot documentul. Un comentariu din codul kitului conținea textul «`<style>`»; ștampilatorul îl lua drept început de bloc și calcula hash-ul pentru 87 578 de caractere (de la comentariu până la `</style>`-ul real), iar stilul real (18 101 caractere) rămânea fără hash. Rezultat măsurat în Chromium, la fel pe v1.5.0, v1.5.1 și `main`: încălcare `style-src-elem` pe toate cele 8 pagini ale site-ului și derulare orizontală de 3 209 px la 320 px lățime. **`--check` nu prindea defectul**, fiindcă folosea același regex ca ștampilatorul: o verificare care împarte greșeala cu ce verifică nu poate vedea greșeala. Reparat pe `main` (ștampilatorul scoate corpul scripturilor înainte să caute `<style>`; test nou `web/tests/site-csp.test.js`, care pică pe paginile de dinainte). Defectul era în etichetele `v1.5.0` și `v1.5.1` și pe `main`; reparația e doar pe `main`, deci etichetele existente rămân cu paginile vechi până la un release nou (1.5.2). În kit, comentariul a fost reformulat, iar `test/inline-safe.test.mjs` interzice în codul kitului secvențele `<style`, `</style`, `<script`, `</script` și `<!--`.
+
+**VNTV: `node build.mjs` producea altă pagină decât cea verificată.** Blocul de kit din șablon era cel vechi (fără modulele a11y și share), iar `src/js` nu era coborât la ES2017 (49 de `?.` în pagina construită, 1 în cea comisă). Fluxul `pages.yml` rulează `node build.mjs` la publicare, deci site-ul public putea diferi de ce se testase (efectul depinde de ce publică acel flux; nu s-a verificat pagina live). Acum `src/js` conține codul ES2017, build-ul preia blocul de kit, `fff-info` și `data-fff-hash` din `index.html` comis, reproduce pagina verificată octet cu octet, iar `ci.yml` are un pas care pică dacă paginile comise diferă de ce produce build-ul. A mai ieșit la iveală, abia în CI, că **Playwright 1.56.0 nu poate instala dependențele pe Ubuntu 26.04** («Playwright does not support chromium on ubuntu26.04-x64»): suportul vine de la 1.61. Versiunea fixată a trecut la 1.65.1 (testele aplicației 41/41).
+
+**FrequencyLaboratory: ~60 de panouri aflate în locul greșit.** Închiderile `div` ale grilei principale erau mutate după ultimul panou, iar bara de acțiuni se deschidea înaintea a ~60 de panouri (bit crusher, bancă binaurală, wavetable ș.a.). Pe desktop, panourile erau ascunse (bara e vizibilă doar sub 900 px); pe mobil erau înghesuite în bara fixă și lărgeau pagina la ~920 px. Reparat structura; **efect secundar de știut**: panourile respectă acum modulele alese (butonul «Module»), deci unul din modul inactiv apare abia după activarea modulului; testul `modular-v5` activează acum toate modulele.
+
+**ACORDAJ: suma de integritate din pagină.** `EMBED_SHA` este SHA-256 al scriptului care o conține, cu literalul zerorizat. Orice modificare a scriptului o invalidează: autotestul din panoul de diagnostic și testul `fff-r8` cădeau până la recalcularea ei, apoi `release --bump none`. Regula pentru aplicațiile cu sumă încorporată: **recalculează suma după orice modificare a scriptului, apoi ridică versiunea**.
+
+## 5. Punctul orb al bateriei și ce s-a schimbat
+
+Până la 4.6, bateria trata mesajele de CSP («Refused to apply…», «Content Security Policy…») ca zgomot de mediu și le arunca. Prin urmare o pagină cu stilul blocat de CSP (cazul VERIGA) nu ieșea ca defect. În 4.7: ascultă `securitypolicyviolation`, raportează `csp-blocked` și caută `<style>` neaplicate. Odată cu asta s-au făcut două scanări pe tot portofoliul (tabelul de la § 1): dinamică (154 de pagini: nicio încălcare) și statică (212 pagini cu CSP în `<meta>`). Singurele pagini fără hash pentru un bloc inline: șabloanele `Chiromantia/src/template.html` și `PUNCTUM/src/template.html` (build-ul le ștampilează), un fixture de test al kitului și `Pendulul/docs/prezentare.html` (kit 1.7.0, fără `#app-version`; funcționează, fiindcă `<meta>`-ul CSP vine după scriptul kitului, dar CSP-ul nu îl protejează; **neatins**, merită un `apply` la următoarea revizuire a Pendulului).
+
+## 6. Fals pozitive (ce NU e defect)
+
+Clase recunoscute după triere; au rămas în raport, nu s-au „reparat”: ieșiri din aplicație prin `window.open` sau navigare (numărate ca egress nedeclarat); ancore ale unui router cu `#` (`dead-anchor`); `hyg-*` care ecoizează o gazdă sau un placeholder în chei de limbă; erori `file://` (CORS pentru fonturi, module, cadre: pe `https://` nu apar; în `smoke.mjs` apar în ambele motoare, deci nu sunt regresii de compatibilitate); text netradus doar tranzitoriu, în timpul schimbării limbii; text tăiat decorativ (fețe de carduri); ținte mici în interiorul unui text; aplicații doar în engleză sau cu mecanism propriu de traducere (`lang-switch-undetected`); text diferit la fiecare încărcare (citate aleatorii, `ro-en-identical`); `keyboard-trap` când un dialog modal e deschis la prima pornire (VietAR: dialogul de ajutor, cu butonul «Got it»).
+
+## 7. Kitul 1.8.1 și publicarea
+
+Kit 1.8.1 (19 noiembrie 2026; detalii în [fff-kit/README.md](../fff-kit/README.md)): stocare în memorie când cea a browserului aruncă; cod fără secvențe de marcaj; ghidaj tactil care nu scoate un rând din ecran; `versionFiles` în `release`; `info` fără `<title>`-uri din scripturi. La 20 noiembrie `data/compat.json` arată **140** de ținte pe 1.8.1, **20** rămase pe 1.8.0 (în special depozitele altor sesiuni de lucru, neatinse) și 20 fără kit (pagini care nu sunt aplicații single-file). `kitMinVersion` rămâne `1.8.0`: stratul de compatibilitate nu s-a schimbat în 1.8.1, iar o limită mai sus ar pica auditul pe țintele care nu sunt ale acestui lot.
+
+Pași și capcane (valabile la fiecare lot de publicare):
+
+* ordinea: aplicațiile întâi, hubul la urmă (`sync-catalog`, `make-fixtures --root`, `transparenta rows|health|build`, apoi testele hubului); **niciodată `make-fixtures` fără `--root`**;
+* după orice reconstruire care schimbă blocul de kit, `node fff-kit/build.mjs release . --bump none --lax` (punct fix; fluxul reutilizabil `fff-check` pică la «Derivă de kit» altfel). Fluxul compară cu kitul de la `kit-ref` (implicit `main`): după un release al kitului, depozitele care nu au fost aduse la zi cad până la `release --bump none`; fixează `kit-ref` la o etichetă dacă vrei rulări care nu depind de `main`;
+* euristica kitului pentru texte de test (`bumpTestText`) poate înlocui date și versiuni din fixturi de test (apare la `graiul`, `vietar-packs`, `atelier-verificare`, `LECTOR`): după `release --bump patch`, citește `git diff -- test`;
+* **Playwright ≥ 1.61** pentru `--with-deps` pe `ubuntu-26.04`; fluxul reutilizabil folosește 1.63;
+* Chromium cu emulare de telefon poate pierde o scriere în `localStorage` făcută chiar înainte de `page.reload()` (≈ 5% pe o pagină goală, 0 din 60 fără emulare): testele care salvează preferințe și reîncarcă trebuie să verifice și să reîncerce (Scopone-fara-frontiere, VNTV).
+
+## 8. Compatibilitate cu motorul vechi simulat
+
+Rezultat la 20 noiembrie 2026 (`data/compat.json`, 180 de ținte; prag ES2017, Chrome 55, Firefox 52, Safari 10.1):
+
+| Verificare | ok | avertizări | eșuate |
+|---|---|---|---|
+| audit (sintaxă ES2017, API-uri și CSS peste prag, straturi) | 2 | 178 | 0 |
+| smoke în motorul vechi simulat | 170 | 10 | 0 |
+
+* Avertizările auditului sunt API-uri sau CSS mai noi decât pragul, fie acoperite de `fff-compat`, fie semnalate (de exemplu `CompressionStream`, `backdrop-filter`); nu sunt erori de sintaxă (acelea ar fi «eșuate»). Vezi [COMPATIBILITATE.md](COMPATIBILITATE.md).
+* **Regresii în motorul vechi: 0.** Cele 10 avertizări smoke apar toate **doar în motorul normal** și au cauze de mediu `file://`, nu de compatibilitate: fonturi blocate de CORS (Curs-ASFAN-online, VERIGA, colibri-companion), cadre `file:` (Claritas, TurboCursa), imagine `file:` blocată de `img-src` (VNTV, de două ori), `fetch` pe `file:` (osatura/studio.html), un șablon cu locul-ținere `/*__CSP__*/` (osatura/index.template.html) și LegatorOCR, a cărui pagină de intrare redirecționează spre `docs/`: pe `file://` Chromium arată lista directorului, iar scriptul ei propriu dă «start is not defined» (pe `https://` se servește `docs/index.html`).
+* Smoke-ul nu verifică sintaxa (o face auditul) și nici aspectul CSS; vezi limitele (§ 9).
+
+## 9. Limite (ce nu garantează acest audit)
+
+* **Nu s-a rulat pe dispozitive sau browsere vechi reale.** „Motorul vechi” e Chromium actual cu API-urile peste prag șterse și sintaxa verificată cu acorn; nu vede diferențe de CSS (de exemplu `backdrop-filter`, `:has()`) și nici comportamente din motoare care diferă de Chromium.
+* **Traducerile noi sunt automate** și nu au fost citite de vorbitori nativi (vezi [TRADUCERI-REVIZIE.md](TRADUCERI-REVIZIE.md) pentru ce așteaptă revizuire).
+* **Euristicile unei baterii nu sunt dovezi**: o aplicație cu 0 constatări a trecut ce se măsoară, nu „nu are defecte”. Ce nu se măsoară: logica specifică fiecărei aplicații (în afara testelor ei), conținutul (corectitudinea datelor), accesibilitatea dincolo de axe și de câteva reguli (țintă, ARIA, focus).
+* **Neauditate**: CUANTOR, GERMEN, LUSTRUM (fără acces din această sesiune) și depozitele private; depozitele Rust și extensiile altor sesiuni (ANTENA, ARBITRU, ASTROLABIU, ECOGRAMA, EXIF-CURAT, MARTOR, NEAMURI, TACTIL, ODISEEA, PORUMBEL, ecou-spectral-rs, Claritas, LegatorOCR, TEZAUR, TurboCursa, colibri-companion, osatura): doar paginile de prezentare, în citire; singura intervenție a fost la VERIGA, unde defectul era în producție (§ 4).
+* **Release-urile GitHub** nu se pot crea din această sesiune (HTTP 403): versiunile sunt pe `main`, iar notele de release ×8 și scriptul de publicare sunt pregătite pentru cine are dreptul. Corpurile release-urilor deja publicate nu pot fi editate prin API și rămân cele vechi; etichetele VERIGA `v1.5.0` și `v1.5.1` conțin paginile site-ului fără stil (§ 4).
+* **Ce nu am atins**: fluxurile `live.yml` ale DECUPAJ și LECTOR (rulează pe `ubuntu-latest`; la DECUPAJ instalarea WebKit se blochează), VATRA, TranslateHub, ODISEEA și TEZAUR, lăsate ca atare.
+
+## 10. Cum se repetă
+
+```bash
+# bateria (un depozit pe rând; --out = unde scrie; CHROMIUM_PATH sau Chromium-ul din Playwright; PW_ROOT = package.json cu `playwright`)
+for a in Tarot ACORDAJ Lexicon; do node tools/audit-adversarial.mjs $a --root <clone> --out /tmp/audit-adv; done
+node tools/audit-adversarial.mjs --summary /tmp/audit-adv          # numere pe gravitate și pe cod
+
+# compatibilitate: audit (sintaxă, straturi) + motor vechi simulat, apoi data/compat.json cu ambele
+node tools/compat/smoke.mjs --root <clone> --jobs 2 --json /tmp/smoke.json
+node tools/compat/audit.mjs --root <clone> --smoke /tmp/smoke.json --json data/compat.json --gate
+
+# hubul după un lot de publicări
+node tools/sync-catalog.mjs --root <clone> && node fff-kit/build.mjs fixcsp index.html
+node tools/make-fixtures.mjs --root <clone>                         # NU fără --root
+node tools/transparenta.mjs rows && node tools/transparenta.mjs health && node tools/transparenta.mjs build
+```
+
+Cum se citește o constatare: `sev` (`high` = eroare de pagină, aplicație nepornită, ieșire în afara aplicației; `med` = defect vizibil într-o limbă sau o dimensiune; `low` = aspect), `code` (clasa, § 2 și § 6) și `msg` (ce s-a măsurat). La fiecare constatare nouă: reproduceți-o pe pagina de la HEAD, reparați la sursă, **măsurați din nou înainte/după** și abia apoi decideți dacă e defect sau clasă de fals pozitiv.

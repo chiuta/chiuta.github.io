@@ -11,9 +11,9 @@ Hubul adună **151 de aplicații și proiecte** (122 pagini HTML unice, offline,
 | `index.html` | catalogul (carduri, fișe, căutare universală, constelație, planificator „Spune-mi ce ai de făcut”) |
 | `transparenta.html` | rezultatele auditurilor, **sănătatea portofoliului**, **auditul măsurat** (scor pe aplicație), sănătatea surselor externe; 8 limbi |
 | `fff-kit/` | kitul comun (CSP, dialogul „Transparență”, copie de siguranță, i18n, p2p, sync, bridge…) și `build.mjs` |
-| `tools/` | sincronizarea catalogului, motoarele comune `fff-*.js`, injectorul de plic, auditul (`audit-run.mjs`), tabloul de sănătate (`portfolio-health.mjs`), reîmprospătarea surselor (`refresh/`) |
+| `tools/` | sincronizarea catalogului, motoarele comune `fff-*.js`, injectorul de plic, auditul (`audit-run.mjs`), bateria adversarială (`audit-adversarial.mjs`), tabloul de sănătate (`portfolio-health.mjs`), reîmprospătarea surselor (`refresh/`) |
 | `data/` | `catalog-meta.json` (fișe, relații, acoperire, stare), `score-legacy.json` (arhiva scorului manual depreciat), `flows.json` (fluxuri), `sources.json` + `source-health.json` (surse externe), `transparenta.json` (audit + sănătate) |
-| `docs/` | specificația plicului, descoperire, fluxuri, suita cer–timp, domenii, **ghidul autorilor**, **retrospectiva** |
+| `docs/` | specificația plicului, descoperire, fluxuri, suita cer–timp, domenii, **ghidul autorilor**, **retrospectiva**, **auditul adversarial** |
 | `tests/` | testele hubului (Node + Chromium, rețea blocată) |
 | `ROADMAP.md` | ce urmează |
 
@@ -23,6 +23,7 @@ Hubul adună **151 de aplicații și proiecte** (122 pagini HTML unice, offline,
 - [Plicul FFF](docs/FFF-ENVELOPE.md) · [Descoperire](docs/DESCOPERIRE.md) · [Fluxuri](docs/FLUXURI.md) · [Suita cer–timp](docs/SUITA-CER-TIMP.md) · [Domenii](docs/DOMENII.md) · [Decizii ale autorului](docs/DECIZII-AUTOR.md) · [Compatibilitate cu browsere vechi](docs/COMPATIBILITATE.md)
 - [Retrospectiva etapelor 0–8](docs/RETROSPECTIVA.md): ce s-a folosit, ce nu, ce se propune a fi scos (judecat pe date măsurate).
 - [Revizuirea traducerilor automate](docs/TRADUCERI-REVIZIE.md): ce verifică controlul mecanic (`tools/traduceri-control.mjs`), ce s-a corectat, ce fișiere așteaptă vorbitori nativi · [cum corectezi și marchezi „revizuit de <nume>”](docs/TRADUCERI-CONTRIBUTIE.md).
+- [Auditul adversarial din noiembrie 2026](docs/AUDIT-ADVERSARIAL-2026-11.md): ce s-a verificat (150 de aplicații × 8 limbi, stocare ostilă, ecrane mici, CSP, motor vechi simulat), ce s-a găsit pe clase, cazurile instructive, limitele și cum se repetă (`tools/audit-adversarial.mjs`).
 
 ## Comenzi uzuale
 
@@ -35,6 +36,9 @@ node fff-kit/build.mjs fixcsp index.html
 node tools/audit-run.mjs --root <apps> --out /tmp/audit7        # build, axe, teste, fapte statice
 node tools/transparenta.mjs audit                                # scor pe aplicație + health + fișele din catalog
 node tools/transparenta.mjs build && node tools/transparenta.mjs --check
+
+# audit adversarial în browser (un depozit pe rând; rezultatele se agregă cu --summary)
+node tools/audit-adversarial.mjs <depozit> --root <apps> --out /tmp/audit-adv && node tools/audit-adversarial.mjs --summary /tmp/audit-adv
 
 # surse externe
 node --test tools/refresh/test.mjs
