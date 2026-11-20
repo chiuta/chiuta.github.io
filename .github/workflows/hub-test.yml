@@ -34,6 +34,7 @@ jobs:
           node tests/envelope.test.mjs
           node tests/relations.test.mjs
           node tests/retro.test.mjs
+          node tests/compat.test.mjs
           node tests/alpha-build.test.mjs
           node tools/score-compare.mjs --check
           node tests/traduceri.test.mjs

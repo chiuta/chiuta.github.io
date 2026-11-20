@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-17",
+ "generated": "2026-11-20",
  "floor": {
   "chrome": 55,
   "edge": 15,
@@ -15,8 +15,8 @@
   "warn": 178,
   "fail": 0,
   "smoke": {
-   "ok": 171,
-   "warn": 9,
+   "ok": 170,
+   "warn": 10,
    "fail": 0,
    "missing": 0
   }
@@ -25,7 +25,7 @@
   "ACORDAJ": {
    "file": "index.html",
    "status": "warn",
-   "kit": "1.8.0",
+   "kit": "1.8.1",
    "compatLayer": true,
    "syntaxErrors": [],
    "postFloor": {},
@@ -86,8 +86,6 @@
     "gap (flex)",
     "dvh/svh/lvh",
     "clamp()/min()/max()",
-    "prefers-color-scheme",
-    "individual transform props",
     "scroll-behavior"
    ],
    "smoke": {
@@ -100,7 +98,7 @@
   "AGORA": {
    "file": "index.html",
    "status": "warn",
-   "kit": "1.8.0",
+   "kit": "1.8.1",
    "compatLayer": true,
    "syntaxErrors": [],
    "postFloor": {},
@@ -144,14 +142,10 @@
    ],
    "cssBeyondFloor": [
     ":focus-visible",
-    "inset",
     "gap (flex)",
-    "clamp()/min()/max()",
     "color-mix()",
     "accent-color",
-    "prefers-color-scheme",
     "position: sticky",
-    "individual transform props",
     "scroll-behavior"
    ],
    "smoke": {
@@ -164,7 +158,7 @@
   "AI-Liber": {
    "file": "index.html",
    "status": "warn",
-   "kit": "1.8.0",
+   "kit": "1.8.1",
    "compatLayer": true,
    "syntaxErrors": [],
    "postFloor": {},
@@ -220,12 +214,9 @@
     "gap (flex)",
     "dvh/svh/lvh",
     "clamp()/min()/max()",
-    "color-mix()",
     "backdrop-filter",
     "accent-color",
-    "prefers-color-scheme",
     "position: sticky",
-    "individual transform props",
     "scroll-behavior"
    ],
    "smoke": {
@@ -278,7 +269,7 @@
   "ANTROPOS": {
    "file": "index.html",
    "status": "warn",
-   "kit": "1.8.0",
+   "kit": "1.8.1",
    "compatLayer": true,
    "syntaxErrors": [],
    "postFloor": {},
@@ -299,10 +290,8 @@
    "cssBeyondFloor": [
     ":focus-visible",
     "gap (flex)",
-    "clamp()/min()/max()",
     "prefers-color-scheme",
-    "position: sticky",
-    "individual transform props"
+    "position: sticky"
    ],
    "smoke": {
     "status": "ok",
@@ -314,7 +303,7 @@
   "API-fara-frontiere": {
    "file": "index.html",
    "status": "warn",
-   "kit": "1.8.0",
+   "kit": "1.8.1",
    "compatLayer": true,
    "syntaxErrors": [],
    "postFloor": {},
@@ -352,11 +341,8 @@
     ":focus-visible",
     "inset",
     "gap (flex)",
-    "clamp()/min()/max()",
     "backdrop-filter",
-    "prefers-color-scheme",
     "position: sticky",
-    "individual transform props",
     "scroll-behavior"
    ],
    "smoke": {
@@ -409,7 +395,7 @@
   "ARENA": {
    "file": "index.html",
    "status": "warn",
-   "kit": "1.8.0",
+   "kit": "1.8.1",
    "compatLayer": true,
    "syntaxErrors": [],
    "postFloor": {},
@@ -455,10 +441,7 @@
     ":focus-visible",
     "inset",
     "gap (flex)",
-    "clamp()/min()/max()",
-    "color-mix()",
-    "prefers-color-scheme",
-    "individual transform props"
+    "clamp()/min()/max()"
    ],
    "smoke": {
     "status": "ok",
@@ -470,7 +453,7 @@
   "ASMR": {
    "file": "index.html",
    "status": "warn",
-   "kit": "1.8.0",
+   "kit": "1.8.1",
    "compatLayer": true,
    "syntaxErrors": [],
    "postFloor": {},
@@ -512,10 +495,7 @@
     ":focus-visible",
     "inset",
     "gap (flex)",
-    "clamp()/min()/max()",
-    "color-mix()",
-    "prefers-color-scheme",
-    "individual transform props"
+    "clamp()/min()/max()"
    ],
    "smoke": {
     "status": "ok",
@@ -567,7 +547,7 @@
   "ATINGERE": {
    "file": "index.html",
    "status": "warn",
-   "kit": "1.8.0",
+   "kit": "1.8.1",
    "compatLayer": true,
    "syntaxErrors": [],
    "postFloor": {},
@@ -629,8 +609,6 @@
     "dvh/svh/lvh",
     "clamp()/min()/max()",
     "accent-color",
-    "prefers-color-scheme",
-    "individual transform props",
     "scroll-behavior"
    ],
    "smoke": {
@@ -643,7 +621,7 @@
   "AcademiSearch": {
    "file": "index.html",
    "status": "warn",
-   "kit": "1.8.0",
+   "kit": "1.8.1",
    "compatLayer": true,
    "syntaxErrors": [],
    "postFloor": {},
@@ -695,8 +673,6 @@
     "gap (flex)",
     "clamp()/min()/max()",
     "backdrop-filter",
-    "prefers-color-scheme",
-    "individual transform props",
     "scroll-behavior"
    ],
    "smoke": {
@@ -709,7 +685,7 @@
   "Afrodisiace-fara-frontiere": {
    "file": "index.html",
    "status": "warn",
-   "kit": "1.8.0",
+   "kit": "1.8.1",
    "compatLayer": true,
    "syntaxErrors": [],
    "postFloor": {},
@@ -733,7 +709,6 @@
     "gap (flex)",
     "clamp()/min()/max()",
     "prefers-color-scheme",
-    "individual transform props",
     "logical props",
     "scroll-behavior"
    ],
@@ -747,7 +722,7 @@
   "Akasha": {
    "file": "index.html",
    "status": "warn",
-   "kit": "1.8.0",
+   "kit": "1.8.1",
    "compatLayer": true,
    "syntaxErrors": [],
    "postFloor": {},
@@ -776,7 +751,6 @@
     "accent-color",
     "prefers-color-scheme",
     "position: sticky",
-    "individual transform props",
     "logical props",
     "scroll-behavior"
    ],
@@ -790,7 +764,7 @@
   "Alfabete": {
    "file": "index.html",
    "status": "warn",
-   "kit": "1.8.0",
+   "kit": "1.8.1",
    "compatLayer": true,
    "syntaxErrors": [],
    "postFloor": {},
@@ -832,8 +806,7 @@
     ":focus-visible",
     "gap (flex)",
     "clamp()/min()/max()",
-    "prefers-color-scheme",
-    "individual transform props"
+    "prefers-color-scheme"
    ],
    "smoke": {
     "status": "ok",
@@ -845,7 +818,7 @@
   "Arbore": {
    "file": "index.html",
    "status": "warn",
-   "kit": "1.8.0",
+   "kit": "1.8.1",
    "compatLayer": true,
    "syntaxErrors": [],
    "postFloor": {},
@@ -881,7 +854,6 @@
     "clamp()/min()/max()",
     "prefers-color-scheme",
     "position: sticky",
-    "individual transform props",
     "scroll-behavior"
    ],
    "smoke": {
@@ -894,7 +866,7 @@
   "Arhiva-LinkedIn": {
    "file": "index.html",
    "status": "warn",
-   "kit": "1.8.0",
+   "kit": "1.8.1",
    "compatLayer": true,
    "syntaxErrors": [],
    "postFloor": {},
@@ -923,9 +895,7 @@
    "cssBeyondFloor": [
     ":focus-visible",
     "gap (flex)",
-    "clamp()/min()/max()",
-    "prefers-color-scheme",
-    "individual transform props"
+    "clamp()/min()/max()"
    ],
    "smoke": {
     "status": "ok",
@@ -937,7 +907,7 @@
   "Arhiva-fara-frontiere": {
    "file": "index.html",
    "status": "warn",
-   "kit": "1.8.0",
+   "kit": "1.8.1",
    "compatLayer": true,
    "syntaxErrors": [],
    "postFloor": {},
@@ -984,9 +954,7 @@
     "inset",
     "aspect-ratio",
     "gap (flex)",
-    "clamp()/min()/max()",
-    "prefers-color-scheme",
-    "individual transform props"
+    "clamp()/min()/max()"
    ],
    "smoke": {
     "status": "ok",
@@ -998,7 +966,7 @@
   "Aurora": {
    "file": "index.html",
    "status": "warn",
-   "kit": "1.8.0",
+   "kit": "1.8.1",
    "compatLayer": true,
    "syntaxErrors": [],
    "postFloor": {},
@@ -1033,8 +1001,6 @@
     "clamp()/min()/max()",
     "color-mix()",
     "backdrop-filter",
-    "prefers-color-scheme",
-    "individual transform props",
     "scroll-behavior"
    ],
    "smoke": {
@@ -1047,7 +1013,7 @@
   "Belot-fara-frontiere": {
    "file": "index.html",
    "status": "warn",
-   "kit": "1.8.0",
+   "kit": "1.8.1",
    "compatLayer": true,
    "syntaxErrors": [],
    "postFloor": {},
@@ -1086,9 +1052,7 @@
     "inset",
     "gap (flex)",
     "clamp()/min()/max()",
-    "prefers-color-scheme",
     "position: sticky",
-    "individual transform props",
     "scroll-behavior"
    ],
    "smoke": {
@@ -1101,7 +1065,7 @@
   "Bioenergoterapie": {
    "file": "index.html",
    "status": "warn",
-   "kit": "1.8.0",
+   "kit": "1.8.1",
    "compatLayer": true,
    "syntaxErrors": [],
    "postFloor": {},
@@ -1134,10 +1098,7 @@
    "cssBeyondFloor": [
     ":focus-visible",
     "gap (flex)",
-    "clamp()/min()/max()",
-    "prefers-color-scheme",
     "position: sticky",
-    "individual transform props",
     "scroll-behavior"
    ],
    "smoke": {
@@ -1150,7 +1111,7 @@
   "Bolta": {
    "file": "index.html",
    "status": "warn",
-   "kit": "1.8.0",
+   "kit": "1.8.1",
    "compatLayer": true,
    "syntaxErrors": [],
    "postFloor": {},
@@ -1203,8 +1164,6 @@
     "gap (flex)",
     "clamp()/min()/max()",
     "accent-color",
-    "prefers-color-scheme",
-    "individual transform props",
     "scroll-behavior"
    ],
    "smoke": {
@@ -1217,7 +1176,7 @@
   "BorderlessMelodies": {
    "file": "index.html",
    "status": "warn",
-   "kit": "1.8.0",
+   "kit": "1.8.1",
    "compatLayer": true,
    "syntaxErrors": [],
    "postFloor": {},
@@ -1271,8 +1230,7 @@
     "clamp()/min()/max()",
     "backdrop-filter",
     "accent-color",
-    "prefers-color-scheme",
-    "individual transform props"
+    "prefers-color-scheme"
    ],
    "smoke": {
     "status": "ok",
@@ -1284,7 +1242,7 @@
   "Brazda": {
    "file": "index.html",
    "status": "warn",
-   "kit": "1.8.0",
+   "kit": "1.8.1",
    "compatLayer": true,
    "syntaxErrors": [],
    "postFloor": {},
@@ -1333,9 +1291,7 @@
     "clamp()/min()/max()",
     "backdrop-filter",
     "accent-color",
-    "prefers-color-scheme",
     "position: sticky",
-    "individual transform props",
     "scroll-behavior"
    ],
    "smoke": {
@@ -1348,7 +1304,7 @@
   "CLEPSIDRA": {
    "file": "index.html",
    "status": "warn",
-   "kit": "1.8.0",
+   "kit": "1.8.1",
    "compatLayer": true,
    "syntaxErrors": [],
    "postFloor": {},
@@ -1389,9 +1345,7 @@
     "aspect-ratio",
     "gap (flex)",
     "clamp()/min()/max()",
-    "accent-color",
-    "prefers-color-scheme",
-    "individual transform props"
+    "accent-color"
    ],
    "smoke": {
     "status": "ok",
@@ -1403,7 +1357,7 @@
   "Cadraj": {
    "file": "index.html",
    "status": "warn",
-   "kit": "1.8.0",
+   "kit": "1.8.1",
    "compatLayer": true,
    "syntaxErrors": [],
    "postFloor": {},
@@ -1452,8 +1406,6 @@
     "gap (flex)",
     "clamp()/min()/max()",
     "accent-color",
-    "prefers-color-scheme",
-    "individual transform props",
     "scroll-behavior"
    ],
    "smoke": {
@@ -1466,7 +1418,7 @@
   "CalmWaves": {
    "file": "index.html",
    "status": "warn",
-   "kit": "1.8.0",
+   "kit": "1.8.1",
    "compatLayer": true,
    "syntaxErrors": [],
    "postFloor": {},
@@ -1506,11 +1458,8 @@
     "gap (flex)",
     "dvh/svh/lvh",
     "clamp()/min()/max()",
-    "color-mix()",
     "backdrop-filter",
-    "accent-color",
-    "prefers-color-scheme",
-    "individual transform props"
+    "accent-color"
    ],
    "smoke": {
     "status": "ok",
@@ -1522,7 +1471,7 @@
   "Carti-de-joc-fara-frontiere": {
    "file": "index.html",
    "status": "warn",
-   "kit": "1.8.0",
+   "kit": "1.8.1",
    "compatLayer": true,
    "syntaxErrors": [],
    "postFloor": {},
@@ -1565,11 +1514,8 @@
     "inset",
     "gap (flex)",
     "clamp()/min()/max()",
-    "color-mix()",
     "backdrop-filter",
-    "prefers-color-scheme",
     "position: sticky",
-    "individual transform props",
     "scroll-behavior"
    ],
    "smoke": {
@@ -1582,7 +1528,7 @@
   "Chiromantia": {
    "file": "index.html",
    "status": "warn",
-   "kit": "1.8.0",
+   "kit": "1.8.1",
    "compatLayer": true,
    "syntaxErrors": [],
    "postFloor": {},
@@ -1615,11 +1561,8 @@
    "cssBeyondFloor": [
     ":focus-visible",
     "gap (flex)",
-    "clamp()/min()/max()",
     "accent-color",
-    "prefers-color-scheme",
     "position: sticky",
-    "individual transform props",
     "scroll-behavior"
    ],
    "smoke": {
@@ -1710,7 +1653,7 @@
   "Clopotel": {
    "file": "index.html",
    "status": "warn",
-   "kit": "1.8.0",
+   "kit": "1.8.1",
    "compatLayer": true,
    "syntaxErrors": [],
    "postFloor": {},
@@ -1749,9 +1692,7 @@
     "inset",
     "gap (flex)",
     "clamp()/min()/max()",
-    "prefers-color-scheme",
-    "position: sticky",
-    "individual transform props"
+    "position: sticky"
    ],
    "smoke": {
     "status": "ok",
@@ -1763,7 +1704,7 @@
   "Constelar": {
    "file": "index.html",
    "status": "warn",
-   "kit": "1.8.0",
+   "kit": "1.8.1",
    "compatLayer": true,
    "syntaxErrors": [],
    "postFloor": {},
@@ -1814,9 +1755,7 @@
     "inset",
     "gap (flex)",
     "clamp()/min()/max()",
-    "backdrop-filter",
-    "prefers-color-scheme",
-    "individual transform props"
+    "backdrop-filter"
    ],
    "smoke": {
     "status": "ok",
@@ -1828,7 +1767,7 @@
   "Cronosala": {
    "file": "index.html",
    "status": "warn",
-   "kit": "1.8.0",
+   "kit": "1.8.1",
    "compatLayer": true,
    "syntaxErrors": [],
    "postFloor": {},
@@ -1862,7 +1801,6 @@
     "accent-color",
     "prefers-color-scheme",
     "position: sticky",
-    "individual transform props",
     "logical props"
    ],
    "smoke": {
@@ -1875,7 +1813,7 @@
   "Cupa-Mondiala-2026": {
    "file": "index.html",
    "status": "warn",
-   "kit": "1.8.0",
+   "kit": "1.8.1",
    "compatLayer": true,
    "syntaxErrors": [],
    "postFloor": {},
@@ -1924,9 +1862,7 @@
     "clamp()/min()/max()",
     "backdrop-filter",
     "accent-color",
-    "prefers-color-scheme",
     "position: sticky",
-    "individual transform props",
     "scroll-behavior"
    ],
    "smoke": {
@@ -1939,7 +1875,7 @@
   "Curatitor": {
    "file": "index.html",
    "status": "warn",
-   "kit": "1.8.0",
+   "kit": "1.8.1",
    "compatLayer": true,
    "syntaxErrors": [],
    "postFloor": {},
@@ -1981,11 +1917,9 @@
     ":has()",
     ":focus-visible",
     "gap (flex)",
-    "clamp()/min()/max()",
     "accent-color",
     "prefers-color-scheme",
-    "position: sticky",
-    "individual transform props"
+    "position: sticky"
    ],
    "smoke": {
     "status": "ok",
@@ -2013,7 +1947,7 @@
   "DECUPAJ": {
    "file": "index.html",
    "status": "warn",
-   "kit": "1.8.0",
+   "kit": "1.8.1",
    "compatLayer": true,
    "syntaxErrors": [],
    "postFloor": {},
@@ -2055,10 +1989,7 @@
     ":focus-visible",
     "aspect-ratio",
     "gap (flex)",
-    "clamp()/min()/max()",
-    "prefers-color-scheme",
     "position: sticky",
-    "individual transform props",
     "scroll-behavior"
    ],
    "smoke": {
@@ -2071,7 +2002,7 @@
   "DESCANTAR": {
    "file": "index.html",
    "status": "warn",
-   "kit": "1.8.0",
+   "kit": "1.8.1",
    "compatLayer": true,
    "syntaxErrors": [],
    "postFloor": {},
@@ -2096,10 +2027,7 @@
    "cssBeyondFloor": [
     "aspect-ratio",
     "gap (flex)",
-    "clamp()/min()/max()",
-    "prefers-color-scheme",
-    "position: sticky",
-    "individual transform props"
+    "position: sticky"
    ],
    "smoke": {
     "status": "ok",
@@ -2111,7 +2039,7 @@
   "Dame-fara-frontiere": {
    "file": "index.html",
    "status": "warn",
-   "kit": "1.8.0",
+   "kit": "1.8.1",
    "compatLayer": true,
    "syntaxErrors": [],
    "postFloor": {},
@@ -2155,7 +2083,6 @@
     "backdrop-filter",
     "prefers-color-scheme",
     "position: sticky",
-    "individual transform props",
     "overflow: clip",
     "logical props",
     "scroll-behavior"
@@ -2170,7 +2097,7 @@
   "DataWeave": {
    "file": "index.html",
    "status": "warn",
-   "kit": "1.8.0",
+   "kit": "1.8.1",
    "compatLayer": true,
    "syntaxErrors": [],
    "postFloor": {},
@@ -2225,11 +2152,8 @@
     "inset",
     "gap (flex)",
     "clamp()/min()/max()",
-    "color-mix()",
     "accent-color",
-    "prefers-color-scheme",
     "position: sticky",
-    "individual transform props",
     "scroll-behavior"
    ],
    "smoke": {
@@ -2242,7 +2166,7 @@
   "Decibel": {
    "file": "index.html",
    "status": "warn",
-   "kit": "1.8.0",
+   "kit": "1.8.1",
    "compatLayer": true,
    "syntaxErrors": [],
    "postFloor": {},
@@ -2282,12 +2206,10 @@
    ],
    "cssBeyondFloor": [
     ":focus-visible",
-    "inset",
     "gap (flex)",
     "clamp()/min()/max()",
     "accent-color",
-    "prefers-color-scheme",
-    "individual transform props"
+    "prefers-color-scheme"
    ],
    "smoke": {
     "status": "ok",
@@ -2299,7 +2221,7 @@
   "Domino-fara-frontiere": {
    "file": "index.html",
    "status": "warn",
-   "kit": "1.8.0",
+   "kit": "1.8.1",
    "compatLayer": true,
    "syntaxErrors": [],
    "postFloor": {},
@@ -2343,9 +2265,6 @@
     "gap (flex)",
     "clamp()/min()/max()",
     "accent-color",
-    "prefers-color-scheme",
-    "position: sticky",
-    "individual transform props",
     "scroll-behavior"
    ],
    "smoke": {
@@ -2358,7 +2277,7 @@
   "ECLIPSA": {
    "file": "index.html",
    "status": "warn",
-   "kit": "1.8.0",
+   "kit": "1.8.1",
    "compatLayer": true,
    "syntaxErrors": [],
    "postFloor": {},
@@ -2390,8 +2309,6 @@
     "gap (flex)",
     "clamp()/min()/max()",
     "accent-color",
-    "prefers-color-scheme",
-    "individual transform props",
     "scroll-behavior"
    ],
    "smoke": {
@@ -2444,7 +2361,7 @@
   "ETER": {
    "file": "index.html",
    "status": "warn",
-   "kit": "1.8.0",
+   "kit": "1.8.1",
    "compatLayer": true,
    "syntaxErrors": [],
    "postFloor": {},
@@ -2504,9 +2421,7 @@
     "gap (flex)",
     "clamp()/min()/max()",
     "color-mix()",
-    "prefers-color-scheme",
     "position: sticky",
-    "individual transform props",
     "logical props",
     "scroll-behavior"
    ],
@@ -2556,7 +2471,7 @@
   "Eclipsa-2027": {
    "file": "index.html",
    "status": "warn",
-   "kit": "1.8.0",
+   "kit": "1.8.1",
    "compatLayer": true,
    "syntaxErrors": [],
    "postFloor": {},
@@ -2607,9 +2522,7 @@
     "clamp()/min()/max()",
     "backdrop-filter",
     "accent-color",
-    "prefers-color-scheme",
     "position: sticky",
-    "individual transform props",
     "display: contents",
     "scroll-behavior"
    ],
@@ -2623,7 +2536,7 @@
   "EcoulSpectral": {
    "file": "index.html",
    "status": "warn",
-   "kit": "1.8.0",
+   "kit": "1.8.1",
    "compatLayer": true,
    "syntaxErrors": [],
    "postFloor": {},
@@ -2662,9 +2575,7 @@
     "inset",
     "gap (flex)",
     "clamp()/min()/max()",
-    "accent-color",
-    "prefers-color-scheme",
-    "individual transform props"
+    "accent-color"
    ],
    "smoke": {
     "status": "ok",
@@ -2676,7 +2587,7 @@
   "ExploratoriiEco": {
    "file": "index.html",
    "status": "warn",
-   "kit": "1.8.0",
+   "kit": "1.8.1",
    "compatLayer": true,
    "syntaxErrors": [],
    "postFloor": {},
@@ -2720,9 +2631,7 @@
     "gap (flex)",
     "clamp()/min()/max()",
     "accent-color",
-    "prefers-color-scheme",
     "position: sticky",
-    "individual transform props",
     "scroll-behavior"
    ],
    "smoke": {
@@ -2735,7 +2644,7 @@
   "FARFURIA": {
    "file": "index.html",
    "status": "warn",
-   "kit": "1.8.0",
+   "kit": "1.8.1",
    "compatLayer": true,
    "syntaxErrors": [],
    "postFloor": {},
@@ -2760,8 +2669,7 @@
     "clamp()/min()/max()",
     "accent-color",
     "prefers-color-scheme",
-    "position: sticky",
-    "individual transform props"
+    "position: sticky"
    ],
    "smoke": {
     "status": "ok",
@@ -2773,7 +2681,7 @@
   "FASCICUL": {
    "file": "index.html",
    "status": "warn",
-   "kit": "1.8.0",
+   "kit": "1.8.1",
    "compatLayer": true,
    "syntaxErrors": [],
    "postFloor": {},
@@ -2824,13 +2732,10 @@
     }
    ],
    "cssBeyondFloor": [
-    ":focus-visible",
     "inset",
     "aspect-ratio",
     "gap (flex)",
     "clamp()/min()/max()",
-    "prefers-color-scheme",
-    "individual transform props",
     "scroll-behavior"
    ],
    "smoke": {
@@ -2843,7 +2748,7 @@
   "FASCICUL:fascicul.html": {
    "file": "fascicul.html",
    "status": "warn",
-   "kit": "1.8.0",
+   "kit": "1.8.1",
    "compatLayer": true,
    "syntaxErrors": [],
    "postFloor": {},
@@ -2894,13 +2799,10 @@
     }
    ],
    "cssBeyondFloor": [
-    ":focus-visible",
     "inset",
     "aspect-ratio",
     "gap (flex)",
     "clamp()/min()/max()",
-    "prefers-color-scheme",
-    "individual transform props",
     "scroll-behavior"
    ],
    "smoke": {
@@ -2913,7 +2815,7 @@
   "Fabrica": {
    "file": "index.html",
    "status": "warn",
-   "kit": "1.8.0",
+   "kit": "1.8.1",
    "compatLayer": true,
    "syntaxErrors": [],
    "postFloor": {},
@@ -2957,13 +2859,11 @@
    ],
    "cssBeyondFloor": [
     ":focus-visible",
-    "inset",
     "gap (flex)",
     "clamp()/min()/max()",
     "accent-color",
     "prefers-color-scheme",
-    "position: sticky",
-    "individual transform props"
+    "position: sticky"
    ],
    "smoke": {
     "status": "ok",
@@ -2975,7 +2875,7 @@
   "Fenarium": {
    "file": "index.html",
    "status": "warn",
-   "kit": "1.8.0",
+   "kit": "1.8.1",
    "compatLayer": true,
    "syntaxErrors": [],
    "postFloor": {},
@@ -3030,9 +2930,7 @@
     "color-mix()",
     "backdrop-filter",
     "accent-color",
-    "prefers-color-scheme",
     "position: sticky",
-    "individual transform props",
     "scroll-behavior"
    ],
    "smoke": {
@@ -3045,7 +2943,7 @@
   "FieldObserver": {
    "file": "index.html",
    "status": "warn",
-   "kit": "1.8.0",
+   "kit": "1.8.1",
    "compatLayer": true,
    "syntaxErrors": [],
    "postFloor": {},
@@ -3098,8 +2996,6 @@
     "gap (flex)",
     "clamp()/min()/max()",
     "accent-color",
-    "prefers-color-scheme",
-    "individual transform props",
     "scroll-behavior"
    ],
    "smoke": {
@@ -3112,7 +3008,7 @@
   "FreeDetect": {
    "file": "index.html",
    "status": "warn",
-   "kit": "1.8.0",
+   "kit": "1.8.1",
    "compatLayer": true,
    "syntaxErrors": [],
    "postFloor": {},
@@ -3163,11 +3059,8 @@
     "inset",
     "gap (flex)",
     "clamp()/min()/max()",
-    "color-mix()",
     "backdrop-filter",
-    "prefers-color-scheme",
     "position: sticky",
-    "individual transform props",
     "scroll-behavior"
    ],
    "smoke": {
@@ -3180,7 +3073,7 @@
   "FrequencyLaboratory": {
    "file": "index.html",
    "status": "warn",
-   "kit": "1.8.0",
+   "kit": "1.8.1",
    "compatLayer": true,
    "syntaxErrors": [],
    "postFloor": {},
@@ -3237,9 +3130,7 @@
     "gap (flex)",
     "clamp()/min()/max()",
     "backdrop-filter",
-    "prefers-color-scheme",
     "position: sticky",
-    "individual transform props",
     "scroll-behavior"
    ],
    "smoke": {
@@ -3252,7 +3143,7 @@
   "Go-fara-frontiere": {
    "file": "index.html",
    "status": "warn",
-   "kit": "1.8.0",
+   "kit": "1.8.1",
    "compatLayer": true,
    "syntaxErrors": [],
    "postFloor": {},
@@ -3292,14 +3183,11 @@
    ],
    "cssBeyondFloor": [
     ":focus-visible",
-    "inset",
     "gap (flex)",
     "clamp()/min()/max()",
-    "color-mix()",
     "accent-color",
     "prefers-color-scheme",
-    "position: sticky",
-    "individual transform props"
+    "position: sticky"
    ],
    "smoke": {
     "status": "ok",
@@ -3311,7 +3199,7 @@
   "Gospodar": {
    "file": "index.html",
    "status": "warn",
-   "kit": "1.8.0",
+   "kit": "1.8.1",
    "compatLayer": true,
    "syntaxErrors": [],
    "postFloor": {},
@@ -3359,12 +3247,10 @@
    ],
    "cssBeyondFloor": [
     ":focus-visible",
-    "inset",
     "gap (flex)",
     "dvh/svh/lvh",
     "clamp()/min()/max()",
     "prefers-color-scheme",
-    "individual transform props",
     "scroll-behavior"
    ],
    "smoke": {
@@ -3377,7 +3263,7 @@
   "Horizons.BeyondLimits": {
    "file": "index.html",
    "status": "warn",
-   "kit": "1.8.0",
+   "kit": "1.8.1",
    "compatLayer": true,
    "syntaxErrors": [],
    "postFloor": {},
@@ -3426,8 +3312,6 @@
     "clamp()/min()/max()",
     "backdrop-filter",
     "accent-color",
-    "prefers-color-scheme",
-    "individual transform props",
     "scroll-behavior"
    ],
    "smoke": {
@@ -3440,7 +3324,7 @@
   "HoroScop": {
    "file": "index.html",
    "status": "warn",
-   "kit": "1.8.0",
+   "kit": "1.8.1",
    "compatLayer": true,
    "syntaxErrors": [],
    "postFloor": {},
@@ -3475,8 +3359,7 @@
     "inset",
     "gap (flex)",
     "clamp()/min()/max()",
-    "prefers-color-scheme",
-    "individual transform props"
+    "prefers-color-scheme"
    ],
    "smoke": {
     "status": "ok",
@@ -3488,7 +3371,7 @@
   "Hyper4D": {
    "file": "index.html",
    "status": "warn",
-   "kit": "1.8.0",
+   "kit": "1.8.1",
    "compatLayer": true,
    "syntaxErrors": [],
    "postFloor": {},
@@ -3514,9 +3397,7 @@
     ":focus-visible",
     "gap (flex)",
     "clamp()/min()/max()",
-    "accent-color",
-    "prefers-color-scheme",
-    "individual transform props"
+    "accent-color"
    ],
    "smoke": {
     "status": "ok",
@@ -3528,7 +3409,7 @@
   "INDICATIV": {
    "file": "index.html",
    "status": "warn",
-   "kit": "1.8.0",
+   "kit": "1.8.1",
    "compatLayer": true,
    "syntaxErrors": [],
    "postFloor": {},
@@ -3574,8 +3455,6 @@
     "clamp()/min()/max()",
     "color-mix()",
     "backdrop-filter",
-    "prefers-color-scheme",
-    "individual transform props",
     "scroll-behavior"
    ],
    "smoke": {
@@ -3588,7 +3467,7 @@
   "IncredibleCosmos": {
    "file": "index.html",
    "status": "warn",
-   "kit": "1.8.0",
+   "kit": "1.8.1",
    "compatLayer": true,
    "syntaxErrors": [],
    "postFloor": {},
@@ -3617,9 +3496,6 @@
    "cssBeyondFloor": [
     ":focus-visible",
     "gap (flex)",
-    "clamp()/min()/max()",
-    "prefers-color-scheme",
-    "individual transform props",
     "scroll-behavior"
    ],
    "smoke": {
@@ -3632,7 +3508,7 @@
   "Index-fara-frontiere": {
    "file": "index.html",
    "status": "warn",
-   "kit": "1.8.0",
+   "kit": "1.8.1",
    "compatLayer": true,
    "syntaxErrors": [],
    "postFloor": {},
@@ -3653,8 +3529,7 @@
     "color-mix()",
     "backdrop-filter",
     "prefers-color-scheme",
-    "position: sticky",
-    "individual transform props"
+    "position: sticky"
    ],
    "smoke": {
     "status": "ok",
@@ -3666,7 +3541,7 @@
   "Inforenergetica": {
    "file": "index.html",
    "status": "warn",
-   "kit": "1.8.0",
+   "kit": "1.8.1",
    "compatLayer": true,
    "syntaxErrors": [],
    "postFloor": {},
@@ -3704,9 +3579,7 @@
     "dvh/svh/lvh",
     "clamp()/min()/max()",
     "color-mix()",
-    "prefers-color-scheme",
     "position: sticky",
-    "individual transform props",
     "scroll-behavior"
    ],
    "smoke": {
@@ -3719,7 +3592,7 @@
   "LECTOR": {
    "file": "index.html",
    "status": "warn",
-   "kit": "1.8.0",
+   "kit": "1.8.1",
    "compatLayer": true,
    "syntaxErrors": [],
    "postFloor": {},
@@ -3760,9 +3633,7 @@
     "clamp()/min()/max()",
     "backdrop-filter",
     "accent-color",
-    "prefers-color-scheme",
     "position: sticky",
-    "individual transform props",
     "scroll-behavior"
    ],
    "smoke": {
@@ -3782,10 +3653,10 @@
    "apiBeyondFloor": [],
    "cssBeyondFloor": [],
    "smoke": {
-    "status": "ok",
+    "status": "warn",
     "newErrors": 0,
-    "nativeErrors": 0,
-    "legacyErrors": 0
+    "nativeErrors": 3,
+    "legacyErrors": 3
    }
   },
   "LegatorOCR:web/capture/index.html": {
@@ -3825,7 +3696,7 @@
   "Lexicon": {
    "file": "index.html",
    "status": "warn",
-   "kit": "1.8.0",
+   "kit": "1.8.1",
    "compatLayer": true,
    "syntaxErrors": [],
    "postFloor": {},
@@ -3876,7 +3747,6 @@
     "gap (flex)",
     "clamp()/min()/max()",
     "prefers-color-scheme",
-    "individual transform props",
     "scroll-behavior"
    ],
    "smoke": {
@@ -3889,7 +3759,7 @@
   "Limpezimea": {
    "file": "index.html",
    "status": "warn",
-   "kit": "1.8.0",
+   "kit": "1.8.1",
    "compatLayer": true,
    "syntaxErrors": [],
    "postFloor": {},
@@ -3927,7 +3797,6 @@
     "backdrop-filter",
     "prefers-color-scheme",
     "position: sticky",
-    "individual transform props",
     "logical props",
     "display: contents",
     "scroll-behavior"
@@ -3942,7 +3811,7 @@
   "LocalMind": {
    "file": "index.html",
    "status": "warn",
-   "kit": "1.8.0",
+   "kit": "1.8.1",
    "compatLayer": true,
    "syntaxErrors": [],
    "postFloor": {},
@@ -4003,11 +3872,8 @@
     "gap (flex)",
     "dvh/svh/lvh",
     "clamp()/min()/max()",
-    "color-mix()",
     "backdrop-filter",
     "accent-color",
-    "prefers-color-scheme",
-    "individual transform props",
     "scroll-behavior"
    ],
    "smoke": {
@@ -4060,7 +3926,7 @@
   "MENSURA": {
    "file": "index.html",
    "status": "warn",
-   "kit": "1.8.0",
+   "kit": "1.8.1",
    "compatLayer": true,
    "syntaxErrors": [],
    "postFloor": {},
@@ -4111,9 +3977,7 @@
     "clamp()/min()/max()",
     "color-mix()",
     "backdrop-filter",
-    "prefers-color-scheme",
     "position: sticky",
-    "individual transform props",
     "scroll-behavior"
    ],
    "smoke": {
@@ -4126,7 +3990,7 @@
   "MIRAJ": {
    "file": "index.html",
    "status": "warn",
-   "kit": "1.8.0",
+   "kit": "1.8.1",
    "compatLayer": true,
    "syntaxErrors": [],
    "postFloor": {},
@@ -4148,12 +4012,9 @@
     ":focus-visible",
     "aspect-ratio",
     "gap (flex)",
-    "clamp()/min()/max()",
     "backdrop-filter",
     "accent-color",
-    "prefers-color-scheme",
-    "position: sticky",
-    "individual transform props"
+    "position: sticky"
    ],
    "smoke": {
     "status": "ok",
@@ -4165,7 +4026,7 @@
   "Mahjong-fara-frontiere": {
    "file": "index.html",
    "status": "warn",
-   "kit": "1.8.0",
+   "kit": "1.8.1",
    "compatLayer": true,
    "syntaxErrors": [],
    "postFloor": {},
@@ -4202,14 +4063,9 @@
    "cssBeyondFloor": [
     ":has()",
     ":focus-visible",
-    "inset",
     "gap (flex)",
     "clamp()/min()/max()",
-    "color-mix()",
-    "accent-color",
-    "prefers-color-scheme",
-    "position: sticky",
-    "individual transform props"
+    "accent-color"
    ],
    "smoke": {
     "status": "ok",
@@ -4221,7 +4077,7 @@
   "MarkdownAtelier": {
    "file": "index.html",
    "status": "warn",
-   "kit": "1.8.0",
+   "kit": "1.8.1",
    "compatLayer": true,
    "syntaxErrors": [],
    "postFloor": {},
@@ -4256,8 +4112,6 @@
     "color-mix()",
     "backdrop-filter",
     "accent-color",
-    "prefers-color-scheme",
-    "individual transform props",
     "scroll-behavior"
    ],
    "smoke": {
@@ -4270,7 +4124,7 @@
   "Monstrarium": {
    "file": "index.html",
    "status": "warn",
-   "kit": "1.8.0",
+   "kit": "1.8.1",
    "compatLayer": true,
    "syntaxErrors": [],
    "postFloor": {},
@@ -4325,7 +4179,6 @@
     "clamp()/min()/max()",
     "prefers-color-scheme",
     "position: sticky",
-    "individual transform props",
     "scroll-behavior"
    ],
    "smoke": {
@@ -4378,7 +4231,7 @@
   "NOMIA": {
    "file": "index.html",
    "status": "warn",
-   "kit": "1.8.0",
+   "kit": "1.8.1",
    "compatLayer": true,
    "syntaxErrors": [],
    "postFloor": {},
@@ -4441,9 +4294,7 @@
     "clamp()/min()/max()",
     "color-mix()",
     "backdrop-filter",
-    "prefers-color-scheme",
     "position: sticky",
-    "individual transform props",
     "logical props",
     "scroll-behavior"
    ],
@@ -4457,7 +4308,7 @@
   "Nemurirea": {
    "file": "index.html",
    "status": "warn",
-   "kit": "1.8.0",
+   "kit": "1.8.1",
    "compatLayer": true,
    "syntaxErrors": [],
    "postFloor": {},
@@ -4490,9 +4341,7 @@
     "clamp()/min()/max()",
     "backdrop-filter",
     "accent-color",
-    "prefers-color-scheme",
     "position: sticky",
-    "individual transform props",
     "logical props",
     "scroll-behavior"
    ],
@@ -4506,7 +4355,7 @@
   "Nexus-fara-frontiere": {
    "file": "index.html",
    "status": "warn",
-   "kit": "1.8.0",
+   "kit": "1.8.1",
    "compatLayer": true,
    "syntaxErrors": [],
    "postFloor": {},
@@ -4554,9 +4403,7 @@
     "gap (flex)",
     "dvh/svh/lvh",
     "clamp()/min()/max()",
-    "backdrop-filter",
-    "prefers-color-scheme",
-    "individual transform props"
+    "backdrop-filter"
    ],
    "smoke": {
     "status": "ok",
@@ -4568,7 +4415,7 @@
   "Nota-Zero": {
    "file": "index.html",
    "status": "warn",
-   "kit": "1.8.0",
+   "kit": "1.8.1",
    "compatLayer": true,
    "syntaxErrors": [],
    "postFloor": {},
@@ -4600,11 +4447,9 @@
     "gap (flex)",
     "dvh/svh/lvh",
     "clamp()/min()/max()",
-    "color-mix()",
     "backdrop-filter",
     "accent-color",
     "prefers-color-scheme",
-    "individual transform props",
     "overflow: clip",
     "scroll-behavior"
    ],
@@ -4650,7 +4495,7 @@
   "NumeroLogIA": {
    "file": "index.html",
    "status": "warn",
-   "kit": "1.8.0",
+   "kit": "1.8.1",
    "compatLayer": true,
    "syntaxErrors": [],
    "postFloor": {},
@@ -4694,9 +4539,7 @@
     "aspect-ratio",
     "gap (flex)",
     "clamp()/min()/max()",
-    "prefers-color-scheme",
-    "position: sticky",
-    "individual transform props"
+    "position: sticky"
    ],
    "smoke": {
     "status": "ok",
@@ -4708,7 +4551,7 @@
   "Numerologie": {
    "file": "index.html",
    "status": "warn",
-   "kit": "1.8.0",
+   "kit": "1.8.1",
    "compatLayer": true,
    "syntaxErrors": [],
    "postFloor": {},
@@ -4738,10 +4581,8 @@
     ":focus-visible",
     "aspect-ratio",
     "gap (flex)",
-    "clamp()/min()/max()",
     "prefers-color-scheme",
     "position: sticky",
-    "individual transform props",
     "scroll-behavior"
    ],
    "smoke": {
@@ -4754,7 +4595,7 @@
   "OAZA": {
    "file": "index.html",
    "status": "warn",
-   "kit": "1.8.0",
+   "kit": "1.8.1",
    "compatLayer": true,
    "syntaxErrors": [],
    "postFloor": {},
@@ -4797,7 +4638,6 @@
     "backdrop-filter",
     "prefers-color-scheme",
     "position: sticky",
-    "individual transform props",
     "scroll-behavior"
    ],
    "smoke": {
@@ -4974,7 +4814,7 @@
   "OUTPOST": {
    "file": "index.html",
    "status": "warn",
-   "kit": "1.8.0",
+   "kit": "1.8.1",
    "compatLayer": true,
    "syntaxErrors": [],
    "postFloor": {},
@@ -5016,9 +4856,7 @@
     ":focus-visible",
     "gap (flex)",
     "clamp()/min()/max()",
-    "accent-color",
-    "prefers-color-scheme",
-    "individual transform props"
+    "accent-color"
    ],
    "smoke": {
     "status": "ok",
@@ -5030,7 +4868,7 @@
   "OmniHost": {
    "file": "index.html",
    "status": "warn",
-   "kit": "1.8.0",
+   "kit": "1.8.1",
    "compatLayer": true,
    "syntaxErrors": [],
    "postFloor": {},
@@ -5070,12 +4908,9 @@
     "aspect-ratio",
     "gap (flex)",
     "dvh/svh/lvh",
-    "clamp()/min()/max()",
     "color-mix()",
     "backdrop-filter",
-    "prefers-color-scheme",
     "position: sticky",
-    "individual transform props",
     "scroll-behavior"
    ],
    "smoke": {
@@ -5088,7 +4923,7 @@
   "Orar": {
    "file": "index.html",
    "status": "warn",
-   "kit": "1.8.0",
+   "kit": "1.8.1",
    "compatLayer": true,
    "syntaxErrors": [],
    "postFloor": {},
@@ -5133,11 +4968,9 @@
    "cssBeyondFloor": [
     ":has()",
     ":focus-visible",
-    "inset",
     "gap (flex)",
     "clamp()/min()/max()",
     "prefers-color-scheme",
-    "individual transform props",
     "scroll-behavior"
    ],
    "smoke": {
@@ -5150,7 +4983,7 @@
   "Origami": {
    "file": "index.html",
    "status": "warn",
-   "kit": "1.8.0",
+   "kit": "1.8.1",
    "compatLayer": true,
    "syntaxErrors": [],
    "postFloor": {},
@@ -5179,11 +5012,9 @@
     "gap (flex)",
     "dvh/svh/lvh",
     "clamp()/min()/max()",
-    "color-mix()",
     "backdrop-filter",
     "prefers-color-scheme",
     "position: sticky",
-    "individual transform props",
     "scroll-behavior"
    ],
    "smoke": {
@@ -5202,6 +5033,7 @@
    "postFloor": {},
    "apiBeyondFloor": [],
    "cssBeyondFloor": [
+    "gap (flex)",
     "prefers-color-scheme"
    ],
    "smoke": {
@@ -5214,7 +5046,7 @@
   "PULS": {
    "file": "index.html",
    "status": "warn",
-   "kit": "1.8.0",
+   "kit": "1.8.1",
    "compatLayer": true,
    "syntaxErrors": [],
    "postFloor": {},
@@ -5266,9 +5098,7 @@
     "inset",
     "gap (flex)",
     "clamp()/min()/max()",
-    "prefers-color-scheme",
     "position: sticky",
-    "individual transform props",
     "scroll-behavior"
    ],
    "smoke": {
@@ -5281,7 +5111,7 @@
   "PUNCTUM": {
    "file": "index.html",
    "status": "warn",
-   "kit": "1.8.0",
+   "kit": "1.8.1",
    "compatLayer": true,
    "syntaxErrors": [],
    "postFloor": {},
@@ -5317,7 +5147,6 @@
     "accent-color",
     "prefers-color-scheme",
     "position: sticky",
-    "individual transform props",
     "scroll-behavior"
    ],
    "smoke": {
@@ -5370,7 +5199,7 @@
   "PatruZeci": {
    "file": "index.html",
    "status": "warn",
-   "kit": "1.8.0",
+   "kit": "1.8.1",
    "compatLayer": true,
    "syntaxErrors": [],
    "postFloor": {},
@@ -5400,7 +5229,6 @@
     "dvh/svh/lvh",
     "clamp()/min()/max()",
     "backdrop-filter",
-    "prefers-color-scheme",
     "position: sticky",
     "scroll-behavior"
    ],
@@ -5521,7 +5349,7 @@
   "Poteca": {
    "file": "index.html",
    "status": "warn",
-   "kit": "1.8.0",
+   "kit": "1.8.1",
    "compatLayer": true,
    "syntaxErrors": [],
    "postFloor": {},
@@ -5576,7 +5404,6 @@
     "color-mix()",
     "accent-color",
     "prefers-color-scheme",
-    "individual transform props",
     "scroll-behavior"
    ],
    "smoke": {
@@ -5589,7 +5416,7 @@
   "PrintreInteligente": {
    "file": "index.html",
    "status": "warn",
-   "kit": "1.8.0",
+   "kit": "1.8.1",
    "compatLayer": true,
    "syntaxErrors": [],
    "postFloor": {},
@@ -5636,7 +5463,6 @@
     "backdrop-filter",
     "prefers-color-scheme",
     "position: sticky",
-    "individual transform props",
     "scroll-behavior"
    ],
    "smoke": {
@@ -5649,7 +5475,7 @@
   "Profund": {
    "file": "index.html",
    "status": "warn",
-   "kit": "1.8.0",
+   "kit": "1.8.1",
    "compatLayer": true,
    "syntaxErrors": [],
    "postFloor": {},
@@ -5690,9 +5516,6 @@
     "gap (flex)",
     "clamp()/min()/max()",
     "backdrop-filter",
-    "prefers-color-scheme",
-    "position: sticky",
-    "individual transform props",
     "scroll-behavior"
    ],
    "smoke": {
@@ -5705,7 +5528,7 @@
   "PromptVault": {
    "file": "index.html",
    "status": "warn",
-   "kit": "1.8.0",
+   "kit": "1.8.1",
    "compatLayer": true,
    "syntaxErrors": [],
    "postFloor": {},
@@ -5740,7 +5563,6 @@
     "color-mix()",
     "accent-color",
     "prefers-color-scheme",
-    "individual transform props",
     "scroll-behavior"
    ],
    "smoke": {
@@ -5753,7 +5575,7 @@
   "Provenienta": {
    "file": "index.html",
    "status": "warn",
-   "kit": "1.8.0",
+   "kit": "1.8.1",
    "compatLayer": true,
    "syntaxErrors": [],
    "postFloor": {},
@@ -5787,8 +5609,7 @@
     ":focus-visible",
     "gap (flex)",
     "clamp()/min()/max()",
-    "prefers-color-scheme",
-    "individual transform props"
+    "prefers-color-scheme"
    ],
    "smoke": {
     "status": "ok",
@@ -5800,7 +5621,7 @@
   "QSO": {
    "file": "index.html",
    "status": "warn",
-   "kit": "1.8.0",
+   "kit": "1.8.1",
    "compatLayer": true,
    "syntaxErrors": [],
    "postFloor": {},
@@ -5844,13 +5665,10 @@
    ],
    "cssBeyondFloor": [
     ":focus-visible",
-    "inset",
     "gap (flex)",
     "clamp()/min()/max()",
     "accent-color",
-    "prefers-color-scheme",
-    "position: sticky",
-    "individual transform props"
+    "position: sticky"
    ],
    "smoke": {
     "status": "ok",
@@ -5862,7 +5680,7 @@
   "REZONANTA": {
    "file": "index.html",
    "status": "warn",
-   "kit": "1.8.0",
+   "kit": "1.8.1",
    "compatLayer": true,
    "syntaxErrors": [],
    "postFloor": {},
@@ -5891,7 +5709,6 @@
     "accent-color",
     "prefers-color-scheme",
     "position: sticky",
-    "individual transform props",
     "scroll-behavior"
    ],
    "smoke": {
@@ -5904,7 +5721,7 @@
   "Radiestezie": {
    "file": "index.html",
    "status": "warn",
-   "kit": "1.8.0",
+   "kit": "1.8.1",
    "compatLayer": true,
    "syntaxErrors": [],
    "postFloor": {},
@@ -5935,9 +5752,7 @@
     "inset",
     "gap (flex)",
     "clamp()/min()/max()",
-    "prefers-color-scheme",
     "position: sticky",
-    "individual transform props",
     "scroll-behavior"
    ],
    "smoke": {
@@ -5950,7 +5765,7 @@
   "RegexLab": {
    "file": "index.html",
    "status": "warn",
-   "kit": "1.8.0",
+   "kit": "1.8.1",
    "compatLayer": true,
    "syntaxErrors": [],
    "postFloor": {},
@@ -5994,9 +5809,7 @@
     "gap (flex)",
     "clamp()/min()/max()",
     "backdrop-filter",
-    "prefers-color-scheme",
     "position: sticky",
-    "individual transform props",
     "scroll-behavior"
    ],
    "smoke": {
@@ -6009,7 +5822,7 @@
   "Reiki": {
    "file": "index.html",
    "status": "warn",
-   "kit": "1.8.0",
+   "kit": "1.8.1",
    "compatLayer": true,
    "syntaxErrors": [],
    "postFloor": {},
@@ -6042,10 +5855,7 @@
    "cssBeyondFloor": [
     ":focus-visible",
     "gap (flex)",
-    "clamp()/min()/max()",
-    "prefers-color-scheme",
     "position: sticky",
-    "individual transform props",
     "scroll-behavior"
    ],
    "smoke": {
@@ -6058,7 +5868,7 @@
   "Remi-fara-frontiere": {
    "file": "index.html",
    "status": "warn",
-   "kit": "1.8.0",
+   "kit": "1.8.1",
    "compatLayer": true,
    "syntaxErrors": [],
    "postFloor": {},
@@ -6096,10 +5906,6 @@
     ":focus-visible",
     "inset",
     "gap (flex)",
-    "clamp()/min()/max()",
-    "prefers-color-scheme",
-    "position: sticky",
-    "individual transform props",
     "scroll-behavior"
    ],
    "smoke": {
@@ -6112,7 +5918,7 @@
   "SEOptimum": {
    "file": "index.html",
    "status": "warn",
-   "kit": "1.8.0",
+   "kit": "1.8.1",
    "compatLayer": true,
    "syntaxErrors": [],
    "postFloor": {},
@@ -6159,11 +5965,8 @@
     "inset",
     "aspect-ratio",
     "gap (flex)",
-    "clamp()/min()/max()",
     "accent-color",
-    "prefers-color-scheme",
     "position: sticky",
-    "individual transform props",
     "scroll-behavior"
    ],
    "smoke": {
@@ -6176,7 +5979,7 @@
   "SEVA": {
    "file": "index.html",
    "status": "warn",
-   "kit": "1.8.0",
+   "kit": "1.8.1",
    "compatLayer": true,
    "syntaxErrors": [],
    "postFloor": {},
@@ -6226,9 +6029,7 @@
     "gap (flex)",
     "clamp()/min()/max()",
     "accent-color",
-    "prefers-color-scheme",
     "position: sticky",
-    "individual transform props",
     "scroll-behavior"
    ],
    "smoke": {
@@ -6241,7 +6042,7 @@
   "Sah-fara-frontiere": {
    "file": "index.html",
    "status": "warn",
-   "kit": "1.8.0",
+   "kit": "1.8.1",
    "compatLayer": true,
    "syntaxErrors": [],
    "postFloor": {},
@@ -6301,11 +6102,9 @@
     "aspect-ratio",
     "gap (flex)",
     "clamp()/min()/max()",
-    "color-mix()",
     "backdrop-filter",
     "prefers-color-scheme",
     "position: sticky",
-    "individual transform props",
     "scroll-behavior"
    ],
    "smoke": {
@@ -6318,7 +6117,7 @@
   "Scopone-fara-frontiere": {
    "file": "index.html",
    "status": "warn",
-   "kit": "1.8.0",
+   "kit": "1.8.1",
    "compatLayer": true,
    "syntaxErrors": [],
    "postFloor": {},
@@ -6358,14 +6157,10 @@
    ],
    "cssBeyondFloor": [
     ":focus-visible",
-    "inset",
     "aspect-ratio",
     "gap (flex)",
     "clamp()/min()/max()",
-    "color-mix()",
-    "prefers-color-scheme",
     "position: sticky",
-    "individual transform props",
     "scroll-behavior"
    ],
    "smoke": {
@@ -6378,7 +6173,7 @@
   "ScryVeil": {
    "file": "index.html",
    "status": "warn",
-   "kit": "1.8.0",
+   "kit": "1.8.1",
    "compatLayer": true,
    "syntaxErrors": [],
    "postFloor": {},
@@ -6418,11 +6213,9 @@
    ],
    "cssBeyondFloor": [
     ":focus-visible",
-    "inset",
     "gap (flex)",
     "clamp()/min()/max()",
-    "prefers-color-scheme",
-    "individual transform props"
+    "prefers-color-scheme"
    ],
    "smoke": {
     "status": "ok",
@@ -6434,7 +6227,7 @@
   "ScutSonor": {
    "file": "index.html",
    "status": "warn",
-   "kit": "1.8.0",
+   "kit": "1.8.1",
    "compatLayer": true,
    "syntaxErrors": [],
    "postFloor": {},
@@ -6452,10 +6245,7 @@
     ":focus-visible",
     "inset",
     "gap (flex)",
-    "clamp()/min()/max()",
-    "color-mix()",
-    "prefers-color-scheme",
-    "individual transform props"
+    "color-mix()"
    ],
    "smoke": {
     "status": "ok",
@@ -6467,7 +6257,7 @@
   "Solitaire-fara-frontiere": {
    "file": "index.html",
    "status": "warn",
-   "kit": "1.8.0",
+   "kit": "1.8.1",
    "compatLayer": true,
    "syntaxErrors": [],
    "postFloor": {},
@@ -6493,9 +6283,7 @@
     ":focus-visible",
     "inset",
     "gap (flex)",
-    "clamp()/min()/max()",
-    "prefers-color-scheme",
-    "individual transform props"
+    "clamp()/min()/max()"
    ],
    "smoke": {
     "status": "ok",
@@ -6507,7 +6295,7 @@
   "Sudoku-fara-frontiere": {
    "file": "index.html",
    "status": "warn",
-   "kit": "1.8.0",
+   "kit": "1.8.1",
    "compatLayer": true,
    "syntaxErrors": [],
    "postFloor": {},
@@ -6537,8 +6325,7 @@
     "color-mix()",
     "backdrop-filter",
     "prefers-color-scheme",
-    "position: sticky",
-    "individual transform props"
+    "position: sticky"
    ],
    "smoke": {
     "status": "ok",
@@ -6550,7 +6337,7 @@
   "Surveyor": {
    "file": "index.html",
    "status": "warn",
-   "kit": "1.8.0",
+   "kit": "1.8.1",
    "compatLayer": true,
    "syntaxErrors": [],
    "postFloor": {},
@@ -6586,11 +6373,9 @@
    ],
    "cssBeyondFloor": [
     ":focus-visible",
-    "inset",
     "gap (flex)",
     "clamp()/min()/max()",
-    "prefers-color-scheme",
-    "individual transform props"
+    "prefers-color-scheme"
    ],
    "smoke": {
     "status": "ok",
@@ -6822,7 +6607,7 @@
   "Table-fara-frontiere": {
    "file": "index.html",
    "status": "warn",
-   "kit": "1.8.0",
+   "kit": "1.8.1",
    "compatLayer": true,
    "syntaxErrors": [],
    "postFloor": {},
@@ -6866,9 +6651,6 @@
     "gap (flex)",
     "clamp()/min()/max()",
     "backdrop-filter",
-    "prefers-color-scheme",
-    "position: sticky",
-    "individual transform props",
     "scroll-behavior"
    ],
    "smoke": {
@@ -6881,7 +6663,7 @@
   "Tarot": {
    "file": "index.html",
    "status": "warn",
-   "kit": "1.8.0",
+   "kit": "1.8.1",
    "compatLayer": true,
    "syntaxErrors": [],
    "postFloor": {},
@@ -6914,10 +6696,7 @@
    "cssBeyondFloor": [
     ":focus-visible",
     "gap (flex)",
-    "clamp()/min()/max()",
-    "prefers-color-scheme",
     "position: sticky",
-    "individual transform props",
     "scroll-behavior"
    ],
    "smoke": {
@@ -6930,7 +6709,7 @@
   "TerRa": {
    "file": "index.html",
    "status": "warn",
-   "kit": "1.8.0",
+   "kit": "1.8.1",
    "compatLayer": true,
    "syntaxErrors": [],
    "postFloor": {},
@@ -6968,9 +6747,7 @@
     "dvh/svh/lvh",
     "clamp()/min()/max()",
     "backdrop-filter",
-    "prefers-color-scheme",
-    "position: sticky",
-    "individual transform props"
+    "position: sticky"
    ],
    "smoke": {
     "status": "ok",
@@ -6982,7 +6759,7 @@
   "Threads-fara-cont": {
    "file": "index.html",
    "status": "warn",
-   "kit": "1.8.0",
+   "kit": "1.8.1",
    "compatLayer": true,
    "syntaxErrors": [],
    "postFloor": {},
@@ -7012,9 +6789,7 @@
     ":focus-visible",
     "gap (flex)",
     "clamp()/min()/max()",
-    "accent-color",
-    "prefers-color-scheme",
-    "individual transform props"
+    "accent-color"
    ],
    "smoke": {
     "status": "ok",
@@ -7026,7 +6801,7 @@
   "Trade-Free-Link-Guardian": {
    "file": "index.html",
    "status": "warn",
-   "kit": "1.8.0",
+   "kit": "1.8.1",
    "compatLayer": true,
    "syntaxErrors": [],
    "postFloor": {},
@@ -7059,10 +6834,8 @@
    "cssBeyondFloor": [
     ":focus-visible",
     "gap (flex)",
-    "clamp()/min()/max()",
     "accent-color",
     "prefers-color-scheme",
-    "individual transform props",
     "scroll-behavior"
    ],
    "smoke": {
@@ -7081,7 +6854,7 @@
   "TranslateHub": {
    "file": "index.html",
    "status": "warn",
-   "kit": "1.8.0",
+   "kit": "1.8.1",
    "compatLayer": true,
    "syntaxErrors": [],
    "postFloor": {},
@@ -7136,11 +6909,8 @@
     "inset",
     "gap (flex)",
     "clamp()/min()/max()",
-    "color-mix()",
     "backdrop-filter",
-    "prefers-color-scheme",
     "position: sticky",
-    "individual transform props",
     "scroll-behavior"
    ],
    "smoke": {
@@ -7153,7 +6923,7 @@
   "Trusa-fara-frontiere": {
    "file": "index.html",
    "status": "warn",
-   "kit": "1.8.0",
+   "kit": "1.8.1",
    "compatLayer": true,
    "syntaxErrors": [],
    "postFloor": {},
@@ -7184,8 +6954,7 @@
     "inset",
     "gap (flex)",
     "clamp()/min()/max()",
-    "prefers-color-scheme",
-    "individual transform props"
+    "prefers-color-scheme"
    ],
    "smoke": {
     "status": "ok",
@@ -7261,7 +7030,7 @@
   "URME": {
    "file": "index.html",
    "status": "warn",
-   "kit": "1.8.0",
+   "kit": "1.8.1",
    "compatLayer": true,
    "syntaxErrors": [],
    "postFloor": {},
@@ -7312,9 +7081,7 @@
     "color-mix()",
     "backdrop-filter",
     "accent-color",
-    "prefers-color-scheme",
     "position: sticky",
-    "individual transform props",
     "scroll-behavior"
    ],
    "smoke": {
@@ -7327,7 +7094,7 @@
   "Undava": {
    "file": "index.html",
    "status": "warn",
-   "kit": "1.8.0",
+   "kit": "1.8.1",
    "compatLayer": true,
    "syntaxErrors": [],
    "postFloor": {},
@@ -7366,9 +7133,7 @@
     "clamp()/min()/max()",
     "backdrop-filter",
     "accent-color",
-    "prefers-color-scheme",
     "position: sticky",
-    "individual transform props",
     "scroll-behavior"
    ],
    "smoke": {
@@ -7381,7 +7146,7 @@
   "Universul-Observabil": {
    "file": "index.html",
    "status": "warn",
-   "kit": "1.8.0",
+   "kit": "1.8.1",
    "compatLayer": true,
    "syntaxErrors": [],
    "postFloor": {},
@@ -7407,8 +7172,6 @@
     "clamp()/min()/max()",
     "backdrop-filter",
     "accent-color",
-    "prefers-color-scheme",
-    "individual transform props",
     "scroll-behavior"
    ],
    "smoke": {
@@ -7421,7 +7184,7 @@
   "Universul-Observabil-1D": {
    "file": "index.html",
    "status": "warn",
-   "kit": "1.8.0",
+   "kit": "1.8.1",
    "compatLayer": true,
    "syntaxErrors": [],
    "postFloor": {},
@@ -7450,9 +7213,7 @@
     "clamp()/min()/max()",
     "backdrop-filter",
     "accent-color",
-    "prefers-color-scheme",
     "position: sticky",
-    "individual transform props",
     "scroll-behavior"
    ],
    "smoke": {
@@ -7465,7 +7226,7 @@
   "Universul-Observabil-2D": {
    "file": "index.html",
    "status": "warn",
-   "kit": "1.8.0",
+   "kit": "1.8.1",
    "compatLayer": true,
    "syntaxErrors": [],
    "postFloor": {},
@@ -7502,9 +7263,7 @@
     "clamp()/min()/max()",
     "backdrop-filter",
     "accent-color",
-    "prefers-color-scheme",
     "position: sticky",
-    "individual transform props",
     "scroll-behavior"
    ],
    "smoke": {
@@ -7517,7 +7276,7 @@
   "Universul-Observabil-3D": {
    "file": "index.html",
    "status": "warn",
-   "kit": "1.8.0",
+   "kit": "1.8.1",
    "compatLayer": true,
    "syntaxErrors": [],
    "postFloor": {},
@@ -7570,8 +7329,6 @@
     "clamp()/min()/max()",
     "backdrop-filter",
     "accent-color",
-    "prefers-color-scheme",
-    "individual transform props",
     "scroll-behavior"
    ],
    "smoke": {
@@ -7584,7 +7341,7 @@
   "VATRA": {
    "file": "index.html",
    "status": "warn",
-   "kit": "1.8.0",
+   "kit": "1.8.1",
    "compatLayer": true,
    "syntaxErrors": [],
    "postFloor": {},
@@ -7632,9 +7389,7 @@
     "gap (flex)",
     "clamp()/min()/max()",
     "accent-color",
-    "prefers-color-scheme",
     "position: sticky",
-    "individual transform props",
     "scroll-behavior"
    ],
    "smoke": {
@@ -7885,7 +7640,7 @@
   "VITALIS": {
    "file": "index.html",
    "status": "warn",
-   "kit": "1.8.0",
+   "kit": "1.8.1",
    "compatLayer": true,
    "syntaxErrors": [],
    "postFloor": {},
@@ -7924,7 +7679,6 @@
     "accent-color",
     "prefers-color-scheme",
     "position: sticky",
-    "individual transform props",
     "scroll-behavior"
    ],
    "smoke": {
@@ -7937,7 +7691,7 @@
   "VNTV": {
    "file": "index.html",
    "status": "warn",
-   "kit": "1.8.0",
+   "kit": "1.8.1",
    "compatLayer": true,
    "syntaxErrors": [],
    "postFloor": {},
@@ -7987,8 +7741,6 @@
     "dvh/svh/lvh",
     "clamp()/min()/max()",
     "backdrop-filter",
-    "prefers-color-scheme",
-    "individual transform props",
     "logical props",
     "scroll-behavior"
    ],
@@ -8002,7 +7754,7 @@
   "VNTV:dist/vntv.html": {
    "file": "dist/vntv.html",
    "status": "warn",
-   "kit": "1.8.0",
+   "kit": "1.8.1",
    "compatLayer": true,
    "syntaxErrors": [],
    "postFloor": {},
@@ -8052,8 +7804,6 @@
     "dvh/svh/lvh",
     "clamp()/min()/max()",
     "backdrop-filter",
-    "prefers-color-scheme",
-    "individual transform props",
     "logical props",
     "scroll-behavior"
    ],
@@ -8067,7 +7817,7 @@
   "VNTV:deploy/site/index.html": {
    "file": "deploy/site/index.html",
    "status": "warn",
-   "kit": "1.8.0",
+   "kit": "1.8.1",
    "compatLayer": true,
    "syntaxErrors": [],
    "postFloor": {},
@@ -8117,8 +7867,6 @@
     "dvh/svh/lvh",
     "clamp()/min()/max()",
     "backdrop-filter",
-    "prefers-color-scheme",
-    "individual transform props",
     "logical props",
     "scroll-behavior"
    ],
@@ -8132,7 +7880,7 @@
   "ValeaPlopului1972": {
    "file": "index.html",
    "status": "warn",
-   "kit": "1.8.0",
+   "kit": "1.8.1",
    "compatLayer": true,
    "syntaxErrors": [],
    "postFloor": {},
@@ -8163,9 +7911,7 @@
     "gap (flex)",
     "clamp()/min()/max()",
     "accent-color",
-    "prefers-color-scheme",
     "position: sticky",
-    "individual transform props",
     "scroll-behavior"
    ],
    "smoke": {
@@ -8233,7 +7979,7 @@
   "VaultCrypt": {
    "file": "index.html",
    "status": "warn",
-   "kit": "1.8.0",
+   "kit": "1.8.1",
    "compatLayer": true,
    "syntaxErrors": [],
    "postFloor": {},
@@ -8279,11 +8025,8 @@
     ":focus-visible",
     "inset",
     "gap (flex)",
-    "clamp()/min()/max()",
     "backdrop-filter",
     "accent-color",
-    "prefers-color-scheme",
-    "individual transform props",
     "scroll-behavior"
    ],
    "smoke": {
@@ -8296,7 +8039,7 @@
   "VietAR": {
    "file": "index.html",
    "status": "warn",
-   "kit": "1.8.0",
+   "kit": "1.8.1",
    "compatLayer": true,
    "syntaxErrors": [],
    "postFloor": {},
@@ -8326,7 +8069,6 @@
     "clamp()/min()/max()",
     "backdrop-filter",
     "prefers-color-scheme",
-    "individual transform props",
     "logical props",
     "scroll-behavior"
    ],
@@ -8340,7 +8082,7 @@
   "Vitrina": {
    "file": "index.html",
    "status": "warn",
-   "kit": "1.8.0",
+   "kit": "1.8.1",
    "compatLayer": true,
    "syntaxErrors": [],
    "postFloor": {},
@@ -8366,9 +8108,7 @@
     ":focus-visible",
     "inset",
     "gap (flex)",
-    "clamp()/min()/max()",
-    "prefers-color-scheme",
-    "individual transform props"
+    "clamp()/min()/max()"
    ],
    "smoke": {
     "status": "ok",
@@ -8380,7 +8120,7 @@
   "Voiajor": {
    "file": "index.html",
    "status": "warn",
-   "kit": "1.8.0",
+   "kit": "1.8.1",
    "compatLayer": true,
    "syntaxErrors": [],
    "postFloor": {},
@@ -8401,8 +8141,6 @@
     "clamp()/min()/max()",
     "backdrop-filter",
     "accent-color",
-    "prefers-color-scheme",
-    "individual transform props",
     "scroll-behavior"
    ],
    "smoke": {
@@ -8415,7 +8153,7 @@
   "VoiceAtelier": {
    "file": "index.html",
    "status": "warn",
-   "kit": "1.8.0",
+   "kit": "1.8.1",
    "compatLayer": true,
    "syntaxErrors": [],
    "postFloor": {},
@@ -8460,7 +8198,6 @@
     "clamp()/min()/max()",
     "prefers-color-scheme",
     "position: sticky",
-    "individual transform props",
     "logical props",
     "scroll-behavior"
    ],
@@ -8474,7 +8211,7 @@
   "X-fara-cont": {
    "file": "index.html",
    "status": "warn",
-   "kit": "1.8.0",
+   "kit": "1.8.1",
    "compatLayer": true,
    "syntaxErrors": [],
    "postFloor": {},
@@ -8502,10 +8239,7 @@
    ],
    "cssBeyondFloor": [
     ":focus-visible",
-    "gap (flex)",
-    "clamp()/min()/max()",
-    "prefers-color-scheme",
-    "individual transform props"
+    "gap (flex)"
    ],
    "smoke": {
     "status": "ok",
@@ -8517,7 +8251,7 @@
   "Zaruri-fara-frontiere": {
    "file": "index.html",
    "status": "warn",
-   "kit": "1.8.0",
+   "kit": "1.8.1",
    "compatLayer": true,
    "syntaxErrors": [],
    "postFloor": {},
@@ -8539,8 +8273,6 @@
     ":focus-visible",
     "gap (flex)",
     "clamp()/min()/max()",
-    "prefers-color-scheme",
-    "individual transform props",
     "scroll-behavior"
    ],
    "smoke": {
@@ -8553,7 +8285,7 @@
   "Zicala": {
    "file": "index.html",
    "status": "warn",
-   "kit": "1.8.0",
+   "kit": "1.8.1",
    "compatLayer": true,
    "syntaxErrors": [],
    "postFloor": {},
@@ -8576,7 +8308,6 @@
     "gap (flex)",
     "clamp()/min()/max()",
     "prefers-color-scheme",
-    "individual transform props",
     "scroll-behavior"
    ],
    "smoke": {
@@ -8589,7 +8320,7 @@
   "atelier-verificare": {
    "file": "index.html",
    "status": "warn",
-   "kit": "1.8.0",
+   "kit": "1.8.1",
    "compatLayer": true,
    "syntaxErrors": [],
    "postFloor": {},
@@ -8649,7 +8380,7 @@
   "balanta": {
    "file": "index.html",
    "status": "warn",
-   "kit": "1.8.0",
+   "kit": "1.8.1",
    "compatLayer": true,
    "syntaxErrors": [],
    "postFloor": {},
@@ -8697,7 +8428,7 @@
   "calendarium": {
    "file": "index.html",
    "status": "warn",
-   "kit": "1.8.0",
+   "kit": "1.8.1",
    "compatLayer": true,
    "syntaxErrors": [],
    "postFloor": {},
@@ -8918,7 +8649,7 @@
   "generator-frecvente": {
    "file": "index.html",
    "status": "warn",
-   "kit": "1.8.0",
+   "kit": "1.8.1",
    "compatLayer": true,
    "syntaxErrors": [],
    "postFloor": {},
@@ -8979,8 +8710,6 @@
     "gap (flex)",
     "clamp()/min()/max()",
     "backdrop-filter",
-    "prefers-color-scheme",
-    "individual transform props",
     "scroll-behavior"
    ],
    "smoke": {
@@ -8993,7 +8722,7 @@
   "glosar": {
    "file": "index.html",
    "status": "warn",
-   "kit": "1.8.0",
+   "kit": "1.8.1",
    "compatLayer": true,
    "syntaxErrors": [],
    "postFloor": {},
@@ -9041,7 +8770,7 @@
   "graiul": {
    "file": "index.html",
    "status": "warn",
-   "kit": "1.8.0",
+   "kit": "1.8.1",
    "compatLayer": true,
    "syntaxErrors": [],
    "postFloor": {},
@@ -9089,7 +8818,7 @@
   "indicativ-international": {
    "file": "index.html",
    "status": "warn",
-   "kit": "1.8.0",
+   "kit": "1.8.1",
    "compatLayer": true,
    "syntaxErrors": [],
    "postFloor": {},
@@ -9137,7 +8866,7 @@
   "orarium": {
    "file": "index.html",
    "status": "warn",
-   "kit": "1.8.0",
+   "kit": "1.8.1",
    "compatLayer": true,
    "syntaxErrors": [],
    "postFloor": {},
@@ -9175,12 +8904,9 @@
     ":focus-visible",
     "inset",
     "gap (flex)",
-    "clamp()/min()/max()",
     "backdrop-filter",
     "accent-color",
-    "prefers-color-scheme",
-    "position: sticky",
-    "individual transform props"
+    "position: sticky"
    ],
    "smoke": {
     "status": "ok",
@@ -9326,7 +9052,7 @@
   "proiector-fara-frontiere": {
    "file": "index.html",
    "status": "warn",
-   "kit": "1.8.0",
+   "kit": "1.8.1",
    "compatLayer": true,
    "syntaxErrors": [],
    "postFloor": {},
@@ -9362,7 +9088,6 @@
     "backdrop-filter",
     "prefers-color-scheme",
     "position: sticky",
-    "individual transform props",
     "scroll-behavior"
    ],
    "smoke": {
@@ -9375,7 +9100,7 @@
   "regula": {
    "file": "index.html",
    "status": "warn",
-   "kit": "1.8.0",
+   "kit": "1.8.1",
    "compatLayer": true,
    "syntaxErrors": [],
    "postFloor": {},
@@ -9423,7 +9148,7 @@
   "vietar-packs": {
    "file": "index.html",
    "status": "warn",
-   "kit": "1.8.0",
+   "kit": "1.8.1",
    "compatLayer": true,
    "syntaxErrors": [],
    "postFloor": {},

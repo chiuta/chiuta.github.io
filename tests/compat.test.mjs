@@ -3,7 +3,7 @@
 //   tools/compat/compat.config.json și cu stratul din fff-kit/src/compat.js; nicio țintă „fail”; fiecare card din catalog are o țintă;
 //   documentația citează pragul curent. Regenerare: vezi docs/COMPATIBILITATE.md § 3.
 //   Rulare: node tests/compat.test.mjs
-import fs from 'node:fs'; import path from 'node:path'; import {fileURLToPath} from 'node:url';
+import fs from 'node:fs'; import path from 'node:path'; import crypto from 'node:crypto'; import {fileURLToPath} from 'node:url';
 const HUB = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const rd = (p) => fs.readFileSync(path.join(HUB, p), 'utf8');
 const cfg = JSON.parse(rd('tools/compat/compat.config.json'));
@@ -14,6 +14,10 @@ const T = async (n, f) => { try { await f(); ok++; console.log('ok   ' + n); } c
 const yes = (c, m) => { if (!c) throw new Error(m); };
 const cmpVer = (a, b) => { const x = String(a).split('.').map(Number), y = String(b).split('.').map(Number); for (let i = 0; i < 3; i++) if ((x[i] || 0) !== (y[i] || 0)) return (x[i] || 0) - (y[i] || 0); return 0; };
 const ids = Object.keys(data.apps || {});
+// `C.version` din fff-kit/src/compat.js = ultima versiune de kit în care s-a schimbat stratul. Stratul e copiat în fiecare pagină ca script inline cu hash CSP,
+// deci o modificare cere re-ștampilarea tuturor paginilor și NU urmează automat KIT_VERSION (kit 1.8.1 nu l-a schimbat: paginile cu kit 1.8.1 raportează 1.8.0).
+// Suma fixează conținutul fiecărei versiuni: dacă compat.js se schimbă, testul cere ridicarea lui C.version și adăugarea sumei noi aici.
+const LAYER_SHA = {'1.8.0': '186b812b71a8826bbff155788bfa5021f56fac2750cbf881a5b82d70fe723c46'};
 
 await T('data/compat.json: structură (prag, kit minim, rezumat, ținte)', () => {
   yes(data.floor && data.summary && data.apps, 'lipsesc câmpuri');
@@ -63,10 +67,13 @@ await T('fiecare card din catalog are o țintă auditată (fără diferențe de 
   yes(!missing.length, 'fără țintă în data/compat.json: ' + missing.join(', ') + ' (rulează auditul pe depozitul lor)');
 });
 
-await T('stratul din kit: versiune = KIT_VERSION, prag = compat.config.json', () => {
+await T('stratul din kit: versiunea stratului între kitMinVersion și KIT_VERSION, conținut fixat de sumă; prag = compat.config.json', () => {
   const core = rd('fff-kit/src/core.js'), compat = rd('fff-kit/src/compat.js');
   const kv = (core.match(/KIT_VERSION\s*=\s*'([^']+)'/) || [])[1];
-  yes(kv && new RegExp("C\\.version = '" + kv.replace(/\./g, '\\.') + "'").test(compat), 'C.version ≠ KIT_VERSION ' + kv);
+  const lv = (compat.match(/C\.version = '([^']+)'/) || [])[1];
+  yes(kv && lv && cmpVer(lv, kv) <= 0 && cmpVer(lv, cfg.kitMinVersion) >= 0, 'C.version ' + lv + ' trebuie să fie între kitMinVersion ' + cfg.kitMinVersion + ' și KIT_VERSION ' + kv);
+  const sha = crypto.createHash('sha256').update(compat).digest('hex');
+  yes(LAYER_SHA[lv] === sha, 'compat.js s-a schimbat față de versiunea ' + lv + ' a stratului: ridică C.version la ' + kv + ' și adaugă în LAYER_SHA suma ' + sha + ' (apoi re-ștampilează paginile cu `build.mjs release --bump none`)');
   const fl = (compat.match(/C\.floor = (\{[^}]*\})/) || [])[1];
   yes(fl, 'C.floor lipsește');
   const f = Function('return (' + fl + ')')();
