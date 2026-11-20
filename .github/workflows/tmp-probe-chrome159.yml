@@ -1,0 +1,38 @@
+name: tmp-probe-chrome159
+on:
+  push:
+    branches: [tmp-probe-chrome159]
+permissions:
+  contents: read
+jobs:
+  probe:
+    runs-on: ubuntu-26.04
+    timeout-minutes: 15
+    strategy:
+      fail-fast: false
+      matrix:
+        sha: ['3ff37616e4bf0255dfbeb0315f4e6cca4501c76d', '5512d4ee04522a7bb48a9f4dabe969c2183cda71']
+        pw: ['1.65.1', '1.63.0']
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/checkout@v7
+        with:
+          repository: chiuta/AI-Liber
+          ref: ${{ matrix.sha }}
+          path: app
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 26
+      - name: Playwright + axe-core
+        run: |
+          mkdir tool && cd tool && npm init -y >/dev/null
+          npm install --no-audit --no-fund playwright@${{ matrix.pw }} axe-core@4.14.1
+          PLAYWRIGHT_BROWSERS_PATH="$GITHUB_WORKSPACE/.pw" npx playwright install --with-deps chromium
+      - name: Sonda
+        run: |
+          export PLAYWRIGHT_BROWSERS_PATH="$GITHUB_WORKSPACE/.pw"
+          export PW_ROOT="$GITHUB_WORKSPACE/tool/package.json"
+          export FFF_AXE="$GITHUB_WORKSPACE/tool/node_modules/axe-core/axe.min.js"
+          export CHROMIUM_PATH="$(cd tool && node -e "console.log(require('playwright').chromium.executablePath())")"
+          echo "app=${{ matrix.sha }} pw=${{ matrix.pw }}"
+          node tmp-probe/probe.mjs app

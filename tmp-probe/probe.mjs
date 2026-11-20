@@ -1,0 +1,27 @@
+// Sondă temporară (ramura tmp-probe-chrome159): repetă fluxul PII din tests/fff-r8.test.mjs al AI-Liber și listează mesajele din consolă cu locația, cererile eșuate și atributele on* din DOM.
+import {createRequire} from "module"; import fs from "fs"; import path from "path";
+const require = createRequire(process.env.PW_ROOT); const {chromium} = require("playwright");
+const root = path.resolve(process.argv[2]); const URL_ = "file://" + path.join(root, "index.html"); const AXE = process.env.FFF_AXE;
+const browser = await chromium.launch({executablePath: process.env.CHROMIUM_PATH || undefined});
+console.log("Chrome:", browser.version(), "| Playwright:", require("playwright/package.json").version, "| axe:", fs.readFileSync(AXE, "utf8").slice(0, 120).replace(/\s+/g, " "));
+const ctx = await browser.newContext({viewport: {width: 1280, height: 800}, colorScheme: "light", locale: "ro-RO", bypassCSP: false, acceptDownloads: true});
+const reqs = [], con = []; let step = "init";
+await ctx.route(/^https?:/, r => { const u = r.request().url(); reqs.push(r.request().resourceType() + " " + u);
+  if (u.startsWith("https://text.pollinations.ai/openai")) return r.fulfill({status: 200, contentType: "text/event-stream", body: 'data: {"choices":[{"delta":{"content":"Răspuns de test."}}]}\n\ndata: [DONE]\n\n'});
+  return r.abort(); });
+const p = await ctx.newPage();
+p.on("pageerror", e => con.push(`[${step}] pageerror ${e.message.slice(0, 200)}`));
+p.on("console", m => { const l = m.location(); con.push(`[${step}] ${m.type()} ${m.text().replace(/'sha256-[^']+'/g, "<h>").slice(0, 300)} @${(l.url || "").slice(-70)}:${l.lineNumber}:${l.columnNumber}`); });
+p.on("requestfailed", r => con.push(`[${step}] requestfailed ${r.resourceType()} ${r.url().slice(0, 140)} :: ${r.failure() && r.failure().errorText}`));
+await p.addInitScript({content: fs.readFileSync(AXE, "utf8")});
+await p.addInitScript(() => { try { localStorage.setItem("ai-liber.ok_pollinations", "1"); } catch (e) {} });
+const scan = async tag => { const r = await p.evaluate(() => { const out = []; const walk = n => { for (const e of n.querySelectorAll("*")) { for (const a of e.attributes) if (/^on/i.test(a.name)) out.push(e.tagName.toLowerCase() + "#" + e.id + "." + String(e.className).slice(0, 40) + " " + a.name + "=" + a.value.slice(0, 60)); if (e.shadowRoot) walk(e.shadowRoot); } }; walk(document); return out; }); console.log(`[${tag}] elemente cu atribute on*: ${r.length}`, JSON.stringify(r.slice(0, 12))); };
+step = "goto"; await p.goto(URL_); await p.waitForTimeout(3600); await scan("după încărcare");
+step = "select"; await p.evaluate(pr => { const m = MODELS.find(x => x.p === pr); selM(m.id); }, "pollinations"); await scan("după alegerea modelului");
+const txt = "Scrie-i lui ion.popescu@example.com un mesaj. IBAN-ul meu: RO49AAAA1B31007593840000 și CNP 1800101221144";
+step = "fill"; await p.fill("#cta", txt);
+step = "send"; await p.click("#csend"); await p.waitForSelector("dialog.fff-pii[open]"); await p.waitForTimeout(500); await scan("dialog PII deschis");
+step = "cancel"; await p.click('dialog.fff-pii button:has-text("Anulează"), dialog.fff-pii button:has-text("Cancel")'); await p.waitForTimeout(500); await scan("după Anulează");
+console.log("--- mesaje (" + con.length + "):"); con.forEach(c => console.log("  " + c));
+console.log("--- cereri http(s) (" + reqs.length + "):"); [...new Set(reqs)].forEach(c => console.log("  " + c.slice(0, 160)));
+await browser.close();
