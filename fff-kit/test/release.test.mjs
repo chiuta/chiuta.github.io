@@ -61,6 +61,18 @@ check('bumpVersion: sufix (-beta) sau nivel necunoscut → eroare', (() => { try
 check('replaceVersion: text simplu + regex escapat, delimitat (nu atinge 12.3.9 / 2.3.90 / 2.3.9.1)', (() => { const [t, n] = replaceVersion("a '2.3.9' b /2\\.3\\.9/ c 12.3.9 d 2.3.90 e 2.3.9.1 f v2.3.9", '2.3.9', '2.3.10'); return n === 3 && t.includes("'2.3.10'") && t.includes('/2\\.3\\.10/') && t.includes('12.3.9') && t.includes('2.3.90') && t.includes('2.3.9.1'); })());
 check('bumpTestText: schimbă versiunea și data, dar nu liniile despre versiunea KITULUI', (() => { const r = bumpTestText("x('2.3.9');\ninfo.kit.version === '2.3.9';\nupdated: '2026-10-22'", '2.3.9', '2.3.10', '2026-10-22', DATE); return r.lines === 2 && r.text.includes("x('2.3.10')") && r.text.includes("kit.version === '2.3.9'") && r.text.includes(DATE); })());
 
+check('bumpTestText: nu atinge comentariile (titluri de secțiune, istoricul auditului) și șirurile de user-agent; asertările rămân', (() => {
+  const src = "// teste de regresie din auditul (v2.3.9). Playwright\n/* 2.3.9. Dialog propriu */\nconst UA = 'Mozilla/5.0 (Linux; Android 2.3.9; SM-S918B) Chrome/117.0.0.0';\nassert.equal(v, '2.3.9');\nconst vs = 'Version/2.3.9 Safari/605.1.15';";
+  const r = bumpTestText(src, '2.3.9', '2.3.10', '', '');
+  return r.lines === 1 && r.text.includes('(v2.3.9)') && r.text.includes('/* 2.3.9. Dialog') && r.text.includes('Android 2.3.9') && r.text.includes('Version/2.3.9') && r.text.includes("assert.equal(v, '2.3.10')");
+})());
+check('bumpTestText: data veche se schimbă pe liniile cu «updated»/APP_DATE/lastDate, nu pe «validate»/«candidate»', (() => {
+  const src = "assert.equal(meta, '2026-10-22'); // updated\nconst APP_DATE = '2026-10-22';\nconst lastDate = '2026-10-22';\nvalidateFixture('2026-10-22');\nconst candidate = '2026-10-22';";
+  const r = bumpTestText(src, '2.3.9', '2.3.10', '2026-10-22', DATE);
+  const L = r.text.split('\n');
+  return r.lines === 3 && L[0].includes(DATE) && L[1].includes(DATE) && L[2].includes(DATE) && L[3].includes('2026-10-22') && L[4].includes('2026-10-22');
+})());
+
 console.log('release pe aplicație sintetică');
 {
   const root = tmp(), d = synth(root, 'alfa', {version: '2.3.9', date: '2026-10-22', modules: 'core,label,bundle,srs', disable: 'motiv de test'});

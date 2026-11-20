@@ -43,17 +43,23 @@ export function replaceVersion(text, oldV, newV) {
 }
 
 const KIT_LINE = /fff-kit|kit\.version|KIT_VERSION|kitVersion|FFF\.version|core\.version|\.kit\b|kitversion/i;
-const DATE_LINE = /updated|last-updated|Ultima|Last updated|Zuletzt|Dernière|Ultimo|Última|Utolsó|date|data\b/i;
+// «date»/«data» doar ca cuvânt întreg sau în camelCase/SNAKE (APP_DATE, lastDate), nu în «validate», «candidate», «update»
+const DATE_LINE = /updated|last-updated|Ultima|Last updated|Zuletzt|Dernière|Ultimo|Última|Utolsó|(?<![a-z])(?:date|data)(?![a-z])/i;
+const DATE_CAMEL = /[a-z](?:Date|Data)(?![a-z])/;
+// linii care NU poartă versiunea aplicației, deși conțin un număr de forma X.Y.Z: comentarii (istoric, titluri de secțiune) și șiruri de user-agent
+// (Android 14.1.1, Chrome/117.0.0.0, Version/17.1.2) — le atinsese: «Android 14.1.1» → «Android 14.1.2», «(v2.3.3)» → «(v2.3.4)» într-un comentariu despre un audit
+const COMMENT_LINE = /^\s*(?:\/\/|\/\*|\*|#)/;
+const UA_LINE = /Mozilla\/\d|user-?agent|\bAndroid \d|\b(?:CPU )?(?:iPhone )?OS \d+[._]\d|\bVersion\/\d|\b(?:Chrome|Chromium|Firefox|Safari|Edg|OPR|SamsungBrowser|CriOS|FxiOS)\/\d/i;
 
-/** Versiuni (și date) hard-codate în teste: înlocuire pe linii; liniile despre versiunea KITULUI rămân neatinse. */
+/** Versiuni (și date) hard-codate în teste: înlocuire pe linii; liniile despre versiunea KITULUI, comentariile și șirurile de user-agent rămân neatinse. */
 export function bumpTestText(text, oldV, newV, oldDate, newDate) {
   let changed = 0;
   const out = text.split('\n').map((line) => {
-    if (KIT_LINE.test(line)) return line;
+    if (KIT_LINE.test(line) || COMMENT_LINE.test(line) || UA_LINE.test(line)) return line;
     let l = line, hit = false;
     const [t, n] = replaceVersion(l, oldV, newV);
     if (n) { l = t; hit = true; }
-    if (oldDate && newDate && oldDate !== newDate && (hit || DATE_LINE.test(line)) && l.includes(oldDate)) { l = l.split(oldDate).join(newDate); hit = true; }
+    if (oldDate && newDate && oldDate !== newDate && (hit || DATE_LINE.test(line) || DATE_CAMEL.test(line)) && l.includes(oldDate)) { l = l.split(oldDate).join(newDate); hit = true; }
     if (hit) changed++;
     return l;
   });
