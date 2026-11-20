@@ -402,7 +402,7 @@
   },
   {
    "key": "BRAZDA",
-   "ver": "1.1.0",
+   "ver": "1.8.2",
    "off": "no",
    "langs": 8,
    "hosts": 0,
@@ -453,7 +453,7 @@
   },
   {
    "key": "CHIROMANTIA",
-   "ver": "2.5",
+   "ver": "2.6.3",
    "off": "full",
    "langs": 8,
    "hosts": 0,
@@ -464,7 +464,7 @@
   },
   {
    "key": "Claritas",
-   "ver": "1.9.1",
+   "ver": "1.10.3",
    "off": "full",
    "langs": 8,
    "hosts": 0,
@@ -495,7 +495,7 @@
   },
   {
    "key": "colibri-companion",
-   "ver": "0.1.0-alpha.4",
+   "ver": "0.1.0-alpha.7",
    "off": "no",
    "langs": 8,
    "hosts": 0,
@@ -637,7 +637,7 @@
   },
   {
    "key": "ecou-spectral-rs",
-   "ver": "0.1.0-alpha.1",
+   "ver": "0.1.0",
    "off": "no",
    "langs": 8,
    "hosts": 0,
@@ -719,7 +719,7 @@
   },
   {
    "key": "Fenarium",
-   "ver": "8",
+   "ver": "9.1.10",
    "off": "no",
    "langs": 8,
    "hosts": 0,
@@ -900,7 +900,7 @@
   },
   {
    "key": "LegatorOCR",
-   "ver": "0.2.0",
+   "ver": "0.2.0-pre.72",
    "off": "no",
    "langs": 8,
    "hosts": 0,
@@ -972,7 +972,7 @@
   },
   {
    "key": "MENSURA",
-   "ver": "1.4",
+   "ver": "1.6.11",
    "off": "no",
    "langs": 8,
    "hosts": 0,
@@ -1135,7 +1135,7 @@
   },
   {
    "key": "OSATURA",
-   "ver": "0.1.0-alpha",
+   "ver": "0.1.0-alpha.5",
    "off": "no",
    "langs": 1,
    "hosts": 0,
@@ -1257,7 +1257,7 @@
   },
   {
    "key": "PUNCTUM",
-   "ver": "2.5",
+   "ver": "2.6.3",
    "off": "full",
    "langs": 8,
    "hosts": 0,
@@ -1469,7 +1469,7 @@
   },
   {
    "key": "TEZAUR",
-   "ver": "0.4.0",
+   "ver": "0.6.0",
    "off": "no",
    "langs": 8,
    "hosts": 0,
@@ -1520,7 +1520,7 @@
   },
   {
    "key": "TurboCursa",
-   "ver": "1.7.1",
+   "ver": "1.20.1",
    "off": "full",
    "langs": 8,
    "hosts": 0,
@@ -1621,7 +1621,7 @@
   },
   {
    "key": "VERIGA",
-   "ver": "1.1.0",
+   "ver": "1.5.1",
    "off": "no",
    "langs": 8,
    "hosts": 0,
@@ -1682,7 +1682,7 @@
   },
   {
    "key": "VOIAJOR",
-   "ver": "1.1.0",
+   "ver": "1.3.3",
    "off": "no",
    "langs": 8,
    "hosts": 0,
@@ -2162,11 +2162,11 @@
   },
   "age": {
    "ref": "2026-11-20",
-   "fresh7": 146,
+   "fresh7": 155,
    "fresh30": 156,
    "stale30": 0,
    "stale90": 0,
-   "oldest": "OSATURA (27)"
+   "oldest": "OSATURA (10)"
   },
   "sources": {
    "total": 30,
@@ -2198,10 +2198,12 @@
     "Arhiva-LinkedIn",
     "Arhiva-fara-frontiere",
     "Aurora",
+    "BRAZDA",
     "Belot-fara-frontiere",
     "Bioenergoterapie",
     "Bolta",
     "BorderlessMelodies",
+    "CHIROMANTIA",
     "CLEPSIDRA",
     "Cadraj",
     "CalmWaves",
@@ -2259,6 +2261,7 @@
     "Orar",
     "Origami",
     "PULS",
+    "PUNCTUM",
     "PatruZeci",
     "Pendulul",
     "Poteca",
@@ -2297,6 +2300,7 @@
     "VATRA",
     "VITALIS",
     "VNTV",
+    "VOIAJOR",
     "ValeaPlopului1972",
     "VaultCrypt",
     "VietAR",

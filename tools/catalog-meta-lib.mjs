@@ -5,9 +5,20 @@ import path from 'node:path';
 
 export const LANGS8 = ['ro', 'en', 'fr', 'it', 'es', 'pt', 'de', 'hu'];
 export const PLATFORMS = ['web', 'native'];
-/** Carduri cu versiune/dată/linkuri întreținute de mână (nu din <meta> și app.json): sync-catalog nu le sincronizează, iar make-fixtures --check nu le compară cu fixtura. */
+/** Carduri cu linkuri (și, la proiectele fără <meta>/app.json, versiune și dată) întreținute de mână. sync-catalog le urmează doar versiunea și data din <meta application-version>/<meta last-updated> sau app.json, când depozitul e pe disc și le are; make-fixtures --check nu le compară cu fixtura. */
 export const EXTERNAL = new Set(['OSATURA', 'VERIGA', 'TEZAUR', 'LegatorOCR', 'Fenarium', 'MENSURA', 'BRAZDA', 'VOIAJOR', 'CHIROMANTIA', 'PUNCTUM', 'Claritas', 'TurboCursa', 'ANTENA', 'ARBITRU', 'ASTROLABIU', 'ECOGRAMA', 'ecou-spectral-rs', 'MARTOR', 'NEAMURI', 'TACTIL', 'ODISEEA', 'EXIF-CURAT', 'PORUMBEL', 'colibri-companion']);
 export const STATUSES = ['stable', 'experimental', 'alpha', 'lab'];
+
+/** Folderul depozitului `key` din `root`: numele exact sau, dacă lipsește, același nume fără a ține seama de majuscule. Cardurile se numesc BRAZDA, VOIAJOR, CHIROMANTIA, OSATURA,
+ *  iar clonele Brazda, Voiajor, Chiromantia, osatura: pe un sistem de fișiere care deosebește literele mari de cele mici (Linux) calea exactă nu există și aplicația ar fi trecută drept „fără depozit”. */
+export function repoDir(root, key) {
+  const exact = path.join(root, key);
+  if (fs.existsSync(exact)) return exact;
+  let names = [];
+  try { names = fs.readdirSync(root); } catch { return exact; }
+  const hit = names.find((n) => n.toLowerCase() === String(key).toLowerCase());
+  return hit ? path.join(root, hit) : exact;
+}
 
 export function loadMeta(hub) {
   const meta = JSON.parse(fs.readFileSync(path.join(hub, 'data', 'catalog-meta.json'), 'utf8'));

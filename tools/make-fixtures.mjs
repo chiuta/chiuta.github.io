@@ -13,7 +13,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import os from 'node:os';
 import {fileURLToPath} from 'node:url';
-import {EXTERNAL} from './catalog-meta-lib.mjs';
+import {EXTERNAL, repoDir} from './catalog-meta-lib.mjs';
 
 const HUB = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const argv = process.argv.slice(2);
@@ -38,13 +38,13 @@ function generate(OUT) {
   // aplicațiile fără clonă în ROOT își păstrează fixtura existentă (altfel o rulare pe un set parțial de clone ar șterge fixturile lor)
   const keep = {};
   for (const key of keys) {
-    const repo = path.join(ROOT, key);
+    const repo = repoDir(ROOT, key);
     if (!publicDir(repo) && ex(path.join(FIX, key))) keep[key] = snapshot(path.join(FIX, key));
   }
   fs.rmSync(OUT, {recursive: true, force: true});
   let n = 0; const skipped = [];
   for (const key of keys) {
-    const repo = path.join(ROOT, key);
+    const repo = repoDir(ROOT, key);
     const pub = publicDir(repo);
     if (!pub) {
       skipped.push(key);
@@ -95,7 +95,7 @@ if (CHECK && !ROOT) {
   console.log(`fixturi la zi: ${cards.length} carduri verificate (versiune + dată)`); process.exit(0);
 }
 if (!ROOT) { console.error('lipsește --root DIR (folderul cu clonele aplicațiilor). ' + REGEN); process.exit(2); }
-if (!keys.some((k) => publicDir(path.join(ROOT, k)))) { console.error(`în ${ROOT} nu există nicio clonă de aplicație: nu scriu nimic (ar goli fixturile). ` + REGEN); process.exit(2); }
+if (!keys.some((k) => publicDir(repoDir(ROOT, k)))) { console.error(`în ${ROOT} nu există nicio clonă de aplicație: nu scriu nimic (ar goli fixturile). ` + REGEN); process.exit(2); }
 
 if (CHECK) {
   const tmp = fs.mkdtempSync(path.join(os.tmpdir(), 'fixtures-'));

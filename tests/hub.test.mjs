@@ -7,8 +7,9 @@ import {createRequire} from 'node:module';
 import fs from 'node:fs';
 import path from 'node:path';
 import http from 'node:http';
-import {execFileSync} from 'node:child_process';
-import {fileURLToPath} from 'node:url';
+import os from 'node:os';
+import {execFileSync, spawnSync} from 'node:child_process';
+import {fileURLToPath, pathToFileURL} from 'node:url';
 
 const require = createRequire(process.env.FFF_NODE_TOOLS || '/opt/node-tools/package.json');
 const {chromium} = require('playwright');
@@ -345,6 +346,30 @@ await T('docs: DOMENII.md și DECIZII-AUTOR.md există, la zi cu depozitele; șa
   const files = tpl.map((f) => path.join(HUB, 'docs', 'notice-sabloane', f));
   for (const r of ['TranslateHub', 'Universul-Observabil-2D']) { const f = path.join(ROOT, r, 'NOTICE.md'); if (fs.existsSync(f)) files.push(f); }
   for (const f of files) { const t = fs.readFileSync(f, 'utf8'); if (/ȘABLON/.test(t)) ok(/de confirmat de autor/i.test(t), f + ' nu e marcat „de confirmat de autor”'); }
+});
+
+await T('catalog: depozitul se găsește indiferent de majuscule (BRAZDA ↔ Brazda), iar cardurile externe cu <meta> urmează depozitul', async () => {
+  const {repoDir, EXTERNAL} = await import(pathToFileURL(path.join(HUB, 'tools', 'catalog-meta-lib.mjs')).href);
+  const tmp = fs.mkdtempSync(path.join(os.tmpdir(), 'repodir-'));
+  try {
+    fs.mkdirSync(path.join(tmp, 'Brazda'));
+    ok(repoDir(tmp, 'BRAZDA') === path.join(tmp, 'Brazda'), 'BRAZDA nu s-a rezolvat la clona Brazda: ' + repoDir(tmp, 'BRAZDA'));
+    ok(repoDir(tmp, 'Brazda') === path.join(tmp, 'Brazda'), 'numele exact trebuie să rămână neschimbat');
+    ok(repoDir(tmp, 'lipsa') === path.join(tmp, 'lipsa'), 'fără potrivire se întoarce calea exactă (inexistentă)');
+    ok(repoDir(path.join(tmp, 'nu-exista'), 'X') === path.join(tmp, 'nu-exista', 'X'), 'rădăcină inexistentă: calea exactă, fără excepție');
+    // un card extern (Fenarium) cu <meta> într-o clonă cu alte majuscule: versiunea și data de pe card se aliniază la depozit
+    ok(EXTERNAL.has('Fenarium'), 'Fenarium trebuie să rămână card extern pentru acest test');
+    fs.mkdirSync(path.join(tmp, 'FENARIUM'));
+    fs.writeFileSync(path.join(tmp, 'FENARIUM', 'index.html'), '<!doctype html>\n<meta charset="utf-8">\n<meta name="application-version" content="99.8.7">\n<meta name="last-updated" content="2099-01-02">\n');
+    const r = spawnSync('node', [path.join(HUB, 'tools', 'sync-catalog.mjs'), '--check', '--root', tmp], {encoding: 'utf8'});
+    ok(/Fenarium \(extern\): v\S+ → v99\.8\.7/.test(r.stdout), 'cardul extern Fenarium nu urmează depozitul (FENARIUM/index.html): ' + r.stdout.split('\n').filter((l) => /Fenarium/.test(l)).join(' | '));
+    // card Rust fără <meta>: nu se scrie nimic, dar nota arată diferența față de Cargo.toml (și nu e o problemă care oprește CI)
+    fs.mkdirSync(path.join(tmp, 'VERIGA'));
+    fs.writeFileSync(path.join(tmp, 'VERIGA', 'Cargo.toml'), '[package]\nname = "veriga"\nversion = "9.9.9"\n');
+    const r2 = spawnSync('node', [path.join(HUB, 'tools', 'sync-catalog.mjs'), '--check', '--root', tmp], {encoding: 'utf8'});
+    ok(/^notă\s+VERIGA: cardul spune v\S+, Cargo\.toml din depozit v9\.9\.9/m.test(r2.stdout), 'lipsește nota pentru VERIGA: ' + r2.stdout.split('\n').filter((l) => /VERIGA/.test(l)).join(' | '));
+    ok(!/VERIGA \(extern\)/.test(r2.stdout), 'cardul VERIGA (fără <meta>) nu trebuie rescris de sincronizare');
+  } finally { fs.rmSync(tmp, {recursive: true, force: true}); }
 });
 
 await browser.close(); server.close();

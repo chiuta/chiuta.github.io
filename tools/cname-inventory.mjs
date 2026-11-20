@@ -13,6 +13,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import dns from 'node:dns/promises';
 import {fileURLToPath} from 'node:url';
+import {repoDir} from './catalog-meta-lib.mjs';
 
 const HUB = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const argv = process.argv.slice(2);
@@ -52,7 +53,7 @@ const rows = keys.map((key) => {
     const cname = EXTERNAL[key];
     return {key, where: 'depozit', cname, expected: cname, origin: `proprie: https://${cname}/`, note: `proiect Rust, site propriu; depozit chiuta/${key}`, sens: '', inHub: false, inRepo: true, own: true, prio: 0};
   }
-  const repo = path.join(ROOT, key), hubApp = path.join(HUB, 'apps', key);
+  const repo = repoDir(ROOT, key), hubApp = path.join(HUB, 'apps', key);
   const inRepo = ['', 'docs', 'site'].some((dir) => exists(path.join(repo, dir, 'index.html')));
   // O pagină din apps/ care e doar stub de redirecționare (migrate-apps.mjs: „s-a mutat”) nu mai înseamnă origine partajată: aplicația e pe domeniul ei.
   const hubStub = exists(path.join(hubApp, 'index.html')) && /<title>[^<]*s-a mutat/i.test(read(path.join(hubApp, 'index.html')));

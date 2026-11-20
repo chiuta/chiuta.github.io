@@ -30,7 +30,7 @@ import vm from 'node:vm';
 import {createHash} from 'node:crypto';
 import {fileURLToPath} from 'node:url';
 import {recomputeCspHashes} from '../fff-kit/lib/csp.mjs';
-import {EXTERNAL, buildRelations, loadEnvelopeInfo, relationEvidence, validateRelations, loadFlows, validateFlows, flowsByApp, loadMeta, deriveStatus, verText, variantOf, counts, validateMeta, coverageScore} from './catalog-meta-lib.mjs';
+import {EXTERNAL, repoDir, buildRelations, loadEnvelopeInfo, relationEvidence, validateRelations, loadFlows, validateFlows, flowsByApp, loadMeta, deriveStatus, verText, variantOf, counts, validateMeta, coverageScore} from './catalog-meta-lib.mjs';
 
 const HUB = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const argv = process.argv.slice(2);
@@ -42,7 +42,8 @@ const ROOT = path.resolve(ri >= 0 ? argv[ri + 1] : path.join(HUB, '..'));
 // Intrări EXTERNE: proiecte care nu sunt aplicații HTML dintr-un singur fișier (fără app.json / index.html de verificat aici).
 // Cardul lor se întreține de mână (versiune, dată, linkuri); sunt numărate în contor, dar nu sunt verificate ca aplicațiile fff.
 // Proiecte Rust (nu aplicații HTML single-file), fiecare cu site propriu: OSATURA (osatura.chiuta.ro), VERIGA (veriga.chiuta.ro), TEZAUR (tezaur.chiuta.ro), LegatorOCR (legatorocr.chiuta.ro); cod în github.com/chiuta/<Nume>.
-// FENARIUM și MENSURA: aplicații single-file încă fără app.json/meta de versiune (versiunea se ține pe card); după ce primesc metadatele kitului, se scot de aici.
+// FENARIUM și MENSURA: aplicații single-file care poartă acum <meta application-version>/<meta last-updated>; rămân aici (fără verificările complete ale fișei), dar cardul lor urmează metadatele din depozit.
+// Cardurile EXTERNE urmează versiunea și data din <meta> (sau app.json) când depozitul e pe disc și le are; la proiectele fără ele (Rust, extensii) se țin de mână, iar la --root se afișează o notă dacă Cargo.toml spune altceva.
 /* EXTERNAL: vezi catalog-meta-lib.mjs (listă comună cu make-fixtures --check) */
 const LANG_ORDER = ['en', 'ro', 'fr', 'it', 'es', 'pt', 'de', 'hu'];
 const OFFLINE_QUALIFIED = new Set(['TerRa', 'VietAR', 'Pendulul']);   // Pendulul: fișierul salvat se citește offline; aplicația nu înregistrează service worker
@@ -50,7 +51,7 @@ const OFFLINE_RE = /offline|fără conexiune|hors ligne|hors-ligne|senza conness
 
 const read = (p) => fs.readFileSync(p, 'utf8');
 const esc = (s) => s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-const problems = [], changes = [];
+const problems = [], changes = [], notes = [];
 const warn = (m) => problems.push(m);
 
 const meta = loadMeta(HUB);
@@ -72,7 +73,7 @@ function metaOf(h, name) {
   return c ? (c[2] ?? c[3]) : '';
 }
 function locate(key) {
-  const repo = path.join(ROOT, key), hub = path.join(HUB, 'apps', key);
+  const repo = repoDir(ROOT, key), hub = path.join(HUB, 'apps', key);
   if (fs.existsSync(path.join(repo, 'index.html'))) return {dir: repo, pub: repo, hub: false};
   if (fs.existsSync(path.join(repo, 'docs', 'index.html'))) return {dir: repo, pub: path.join(repo, 'docs'), hub: false};   // GitHub Pages din /docs (ex. Pendulul)
   if (fs.existsSync(path.join(hub, 'index.html'))) return {dir: hub, pub: hub, hub: true};
@@ -127,6 +128,22 @@ for (let i = 1; i < parts.length; i++) {
       if (tag !== before) changes.push(`${key}: acoperire → ${langs.join(',')} · ${plat}`);
       parts[i] = tag + parts[i].slice(te); }
     covCards[key] = {n: langs.length, plat, langs};
+    // versiune + dată: când depozitul e pe disc și poartă <meta application-version>/<meta last-updated> (sau app.json), cardul extern le urmează;
+    // proiectele fără aceste metadate (Rust, extensii) rămân întreținute de mână
+    { const x = truth(key);
+      if (x.missing || !x.version) {
+        // fără <meta>: proiect Rust; compar doar cu Cargo.toml din clonă, ca să prind un card rămas în urmă (nu e eroare: cardul se ține de mână)
+        try {
+          const ct = read(path.join(repoDir(ROOT, key), 'Cargo.toml'));
+          const sec = ct.split(/^\[(?=package\]|workspace\.package\])/m).slice(1).map((b) => b.match(/^version\s*=\s*"([^"]+)"/m)).find(Boolean);
+          const cv = sec && sec[1], cardV = (parts[i].match(/<span class="card-ver" data-ver="([^"]*)"/) || [])[1] || '';
+          if (cv && cardV !== cv && !cardV.startsWith(cv + '-')) notes.push(`${key}: cardul spune v${cardV}, Cargo.toml din depozit v${cv} (card extern, întreținut de mână)`);
+        } catch { /* fără Cargo.toml pe disc */ }
+      }
+      if (!x.missing && x.version && x.updated) {
+        const want = `<span class="card-ver" data-ver="${x.version}" data-upd="${x.updated}">${verText(x.version, (meta.apps[key] || {}).substantive)}</span>`;
+        parts[i] = parts[i].replace(/<span class="card-ver"[^>]*>[^<]*<\/span>/, (m) => { if (m !== want) changes.push(`${key} (extern): ${m.replace(/<[^>]+>/g, '')} → ${want.replace(/<[^>]+>/g, '')}`); return want; });
+      } }
     continue;
   }
   const t = truth(key);
@@ -283,6 +300,7 @@ if (!/rel="manifest"/.test(html)) warn('index.html nu leagă manifestul');
 /* ---- ieșire ---- */
 changes.forEach((c) => console.log('schimbare  ' + c));
 problems.forEach((p) => console.log('PROBLEMĂ    ' + p));
+for (const n of notes) console.log('notă       ' + n);
 console.log(`${nCards} carduri · ${changes.length} schimbări · ${problems.length} probleme · cea mai recentă dată ${latest}`);
 if (opt.check) process.exit(changes.length || problems.length ? 1 : 0);
 if (html !== orig) fs.writeFileSync(indexPath, html);
