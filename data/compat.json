@@ -15,8 +15,8 @@
   "warn": 178,
   "fail": 0,
   "smoke": {
-   "ok": 170,
-   "warn": 10,
+   "ok": 171,
+   "warn": 9,
    "fail": 0,
    "missing": 0
   }
@@ -1575,11 +1575,19 @@
   "Chiromantia:chiromantia.html": {
    "file": "chiromantia.html",
    "status": "warn",
-   "kit": "1.8.0",
+   "kit": "1.8.1",
    "compatLayer": true,
    "syntaxErrors": [],
    "postFloor": {},
    "apiBeyondFloor": [
+    {
+     "name": "requestIdleCallback",
+     "covered": true
+    },
+    {
+     "name": "ResizeObserver",
+     "covered": true
+    },
     {
      "name": "navigator.clipboard",
      "covered": true
@@ -3653,10 +3661,10 @@
    "apiBeyondFloor": [],
    "cssBeyondFloor": [],
    "smoke": {
-    "status": "warn",
+    "status": "ok",
     "newErrors": 0,
-    "nativeErrors": 3,
-    "legacyErrors": 3
+    "nativeErrors": 0,
+    "legacyErrors": 0
    }
   },
   "LegatorOCR:web/capture/index.html": {
@@ -5159,13 +5167,21 @@
   "PUNCTUM:punctum.html": {
    "file": "punctum.html",
    "status": "warn",
-   "kit": "1.8.0",
+   "kit": "1.8.1",
    "compatLayer": true,
    "syntaxErrors": [],
    "postFloor": {},
    "apiBeyondFloor": [
     {
      "name": "Array.flat/flatMap",
+     "covered": true
+    },
+    {
+     "name": "requestIdleCallback",
+     "covered": true
+    },
+    {
+     "name": "ResizeObserver",
      "covered": true
     },
     {
@@ -5242,7 +5258,7 @@
   "Pendulul": {
    "file": "docs/index.html",
    "status": "warn",
-   "kit": "1.8.0",
+   "kit": "1.8.1",
    "compatLayer": true,
    "syntaxErrors": [],
    "postFloor": {},
@@ -5286,8 +5302,6 @@
     "backdrop-filter",
     "accent-color",
     "text-wrap",
-    "prefers-color-scheme",
-    "individual transform props",
     "scroll-behavior"
    ],
    "smoke": {
@@ -5300,7 +5314,7 @@
   "Pendulul:dist/pendulul-3d.html": {
    "file": "dist/pendulul-3d.html",
    "status": "warn",
-   "kit": "1.8.0",
+   "kit": "1.8.1",
    "compatLayer": true,
    "syntaxErrors": [],
    "postFloor": {},
@@ -5336,7 +5350,6 @@
     "backdrop-filter",
     "accent-color",
     "text-wrap",
-    "prefers-color-scheme",
     "scroll-behavior"
    ],
    "smoke": {

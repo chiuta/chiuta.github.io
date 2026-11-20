@@ -153,6 +153,15 @@ await T('catalog: contoare derivate, stare, offline, fișă, variante Universul 
   });
   ok(info.nAll - info.nEngines === info.statApps, `contor aplicații ${info.statApps} ≠ carduri single-file ${info.nAll - info.nEngines}`);
   ok(info.statSec === info.nSec, `contor secțiuni ${info.statSec} ≠ ${info.nSec}`);
+  // cifrele din README (ro + en) și din <meta name="description"> sunt scrise de mână: trebuie să rămână egale cu contorul din pagină (a derivat de la 151 la 152 fără să observe nimeni)
+  {
+    const readme = fs.readFileSync(path.join(HUB, 'README.md'), 'utf8');
+    const desc = (fs.readFileSync(path.join(HUB, 'index.html'), 'utf8').match(/<meta name="description" content="([^"]*)"/) || [])[1] || '';
+    const num = (re, s) => +((s.match(re) || [])[1]);
+    const got = {ro: num(/\*\*(\d+) de aplicații single-file\*\*/, readme), en: num(/a hub for (\d+) single-file/, readme), meta: num(/: (\d+) free, open single-file/, desc)};
+    ok(got.ro === info.statApps && got.en === info.statApps && got.meta === info.statApps, `cifra aplicațiilor single-file din README (ro ${got.ro}, en ${got.en}) sau din meta description (${got.meta}) ≠ contorul din pagină (${info.statApps})`);
+    ok(readme.includes(`și ${info.nEngines} programe native`) && readme.includes(`plus ${info.nEngines} native programs`) && desc.includes(`plus ${info.nEngines} native programs`), `numărul de programe native (${info.nEngines}) nu e scris la fel în README și în meta description`);
+  }
   ok(info.variantsVisible === 0 && info.nAll - info.nLive === 3, 'variantele Universului Observabil trebuie ascunse (3)');
   ok(info.noBadges.length === 0, 'fără insigne/fișă: ' + info.noBadges.join(', '));
   ok(info.osCat === 'rust' && info.osSection === 'rust' && info.osStatus === 'alpha', 'OSATURA nu e în secțiunea Rust: ' + JSON.stringify([info.osCat, info.osSection, info.osStatus]));
