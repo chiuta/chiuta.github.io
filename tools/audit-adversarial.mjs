@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-// tools/audit-adversarial.mjs — baterie generică de audit adversarial pentru o aplicație HTML single-file (kit fff), versiunea 4.7.
+// tools/audit-adversarial.mjs — baterie generică de audit adversarial pentru o aplicație HTML single-file (kit fff), versiunea 4.8.
 //   node tools/audit-adversarial.mjs <depozit> [--quick] [--root DIR] [--out DIR]
 //   node tools/audit-adversarial.mjs --summary [DIR]      agregă rezultatele (JSON) dintr-un director: aplicații, constatări pe gravitate și pe cod
 // Scrie <out>/<depozit>.json cu {app, findings:[{sev,code,msg}], stats:{...}}; --root = folderul cu clonele depozitelor (implicit: părintele hubului),
@@ -7,7 +7,7 @@
 // PW_ROOT / FFF_NODE_TOOLS = /cale/package.json în care e instalat `playwright`.
 // Pași: încărcare (erori, cereri externe, încălcări CSP, stiluri neaplicate), 8 limbi (text brut, chei lipsă, netradus, mojibake), monkey-test cu
 // intrări ostile, stocare coruptă / indisponibilă / plină, ceas schimbat + fusuri, viewporturi mici (inclusiv 320 px în fiecare limbă), ținte
-// tactile, tastatură, igienă statică (charset, ortografie, id-uri, ARIA). Fără rețea: cererile externe sunt blocate și raportate.
+// tactile, tastatură, bare fixe (acoperite de conținut; conținut rămas sub bara de jos), igienă statică (charset, ortografie, id-uri, ARIA). Fără rețea: cererile externe sunt blocate și raportate.
 // Despre ce înseamnă o constatare și ce clase de fals pozitive există: docs/AUDIT-ADVERSARIAL-2026-11.md.
 import fs from 'node:fs';
 import path from 'node:path';
@@ -201,6 +201,82 @@ const LAYOUT = () => {
     if (e.scrollWidth > e.clientWidth + 2 && (e.textContent || '').trim().length > 2 && !e.querySelector('canvas,svg')) clipped.push((e.tagName + '.' + String(e.className).slice(0, 20) + ':' + (e.textContent || '').trim().slice(0, 24)));
   }
   return {sw: Math.max(de.scrollWidth, document.body.scrollWidth), cw: de.clientWidth, clipped};
+};
+
+// Bare fixe/lipicioase acoperite de conținut obișnuit (z-index lipsă): 5 puncte din bară, `elementFromPoint`. Se sar: fundaluri și văluri cât ecranul (> 60% din arie),
+// straturi cu `pointer-events: none` sau cu `z-index` negativ (decor pus intenționat în spatele conținutului) și orice element aflat el însuși într-un strat fix (modal, alt panou). Fals pozitive: docs/AUDIT-ADVERSARIAL-2026-11.md § 6.
+const FIXED_COVER = () => {
+  const vw = innerWidth, vh = innerHeight, out = [];
+  const fixedChain = (e) => { for (; e && e.nodeType === 1; e = e.parentElement) { const p = getComputedStyle(e).position; if (p === 'fixed' || p === 'sticky') return e; } return null; };
+  for (const bar of document.querySelectorAll('body *')) {
+    const cs = getComputedStyle(bar);
+    if (cs.position !== 'fixed' && cs.position !== 'sticky') continue;
+    if (cs.display === 'none' || cs.visibility === 'hidden' || +cs.opacity < 0.05 || cs.pointerEvents === 'none' || +cs.zIndex < 0) continue;   // z-index negativ: autorul l-a pus intenționat în spatele conținutului
+    if (bar.checkVisibility && !bar.checkVisibility({checkOpacity: true, checkVisibilityCSS: true})) continue;
+    const r = bar.getBoundingClientRect();
+    const x0 = Math.max(0, r.left), x1 = Math.min(vw, r.right), y0 = Math.max(0, r.top), y1 = Math.min(vh, r.bottom);
+    const area = (x1 - x0) * (y1 - y0);
+    if (area < 2500 || (x1 - x0) < vw * 0.3 || area > vw * vh * 0.6) continue;
+    let bad = 0, sample = '';
+    for (const [fx, fy] of [[.5, .5], [.2, .5], [.8, .5], [.5, .2], [.5, .8]]) {
+      const hit = document.elementFromPoint(x0 + (x1 - x0) * fx, y0 + (y1 - y0) * fy);
+      if (!hit || bar.contains(hit) || hit === bar || fixedChain(hit) || hit.contains(bar)) continue;
+      bad++; if (!sample) sample = hit.tagName + (typeof hit.className === 'string' && hit.className ? '.' + hit.className.split(' ')[0] : '') + ' «' + (hit.textContent || '').trim().slice(0, 30).replace(/\s+/g, ' ') + '»';
+    }
+    if (bad) out.push({bar: bar.tagName + (bar.id ? '#' + bar.id : '') + (typeof bar.className === 'string' && bar.className ? '.' + bar.className.split(' ')[0] : ''), z: cs.zIndex, bad, sample});
+  }
+  return out;
+};
+
+// Închide (cel mult de 3 ori) dialogul/ecranul de întâmpinare care acoperă pagina la prima pornire; întoarce true dacă a apăsat ceva.
+const DISMISS_WELCOME = () => {
+  const ds = [...document.querySelectorAll('[role=dialog],[aria-modal=true],dialog[open],[class*=welcome],[id*=welcome],[class*=overlay],[id*=Overlay]')].filter((d) => d.checkVisibility && d.checkVisibility() && d.getBoundingClientRect().height > innerHeight * 0.3);
+  if (!ds.length) return false;
+  const bts = ds.flatMap((d) => [...d.querySelectorAll('button,[role=button]')]).filter((x) => x.checkVisibility && x.checkVisibility());
+  const good = bts.find((x) => /ok|accept|continu|încep|start|am în|understand|got it|închide|close|✕|×|skip|salt/i.test(x.textContent + ' ' + (x.getAttribute('aria-label') || ''))) || bts[bts.length - 1];
+  if (!good) return false; good.click(); return true;
+};
+
+// Conținut care rămâne sub o bară fixă opacă de jos chiar și la derulare maximă (se măsoară marginea de jos a liniilor reale de text sau a elementelor media/control).
+const UNDER_BAR = () => {
+  const vw = innerWidth, vh = innerHeight;
+  const fixedAnc = (e) => { for (; e && e.nodeType === 1; e = e.parentElement) { const p = getComputedStyle(e).position; if (p === 'fixed' || p === 'sticky') return e; } return null; };
+  const bars = [];
+  for (const el of document.querySelectorAll('body *')) {
+    const cs = getComputedStyle(el);
+    if (cs.position !== 'fixed' || cs.display === 'none' || cs.visibility === 'hidden' || +cs.opacity < 0.5 || cs.pointerEvents === 'none') continue;
+    const r = el.getBoundingClientRect();
+    if (r.bottom < vh - 3 || r.height > vh * 0.4 || r.height < 12 || r.width < vw * 0.5) continue;
+    const m = cs.backgroundColor.match(/rgba?\(([^)]+)\)/); const parts = m ? m[1].split(',') : []; const a = parts.length === 4 ? +parts[3] : (parts.length ? 1 : 0);
+    if (a < 0.5 && cs.backdropFilter === 'none') continue;     // bară transparentă: conținutul se vede prin ea
+    if (el.checkVisibility && !el.checkVisibility({checkOpacity: true, checkVisibilityCSS: true})) continue;
+    bars.push({top: r.top, h: r.height});
+  }
+  if (!bars.length) return null;
+  const barTop = Math.min(...bars.map((b) => b.top));
+  let worst = null;
+  const media = new Set(['IMG', 'SVG', 'CANVAS', 'INPUT', 'BUTTON', 'SELECT', 'TEXTAREA', 'A', 'VIDEO', 'LABEL']);
+  // partea vizibilă a unui element e tăiată de strămoșii cu overflow (liste cu derulare proprie): ce a ieșit din ei nu e „sub bară”, ci ascuns de propriul container
+  const clipOf = (el) => { let top = -Infinity, bottom = Infinity; for (let a = el.parentElement; a && a !== document.body && a !== document.documentElement; a = a.parentElement) { if (/^(auto|scroll|hidden|clip)$/.test(getComputedStyle(a).overflowY)) { const q = a.getBoundingClientRect(); if (q.top > top) top = q.top; if (q.bottom < bottom) bottom = q.bottom; } } return {top, bottom}; };
+  for (const el of document.body.querySelectorAll('*')) {
+    if (fixedAnc(el)) continue;
+    const cs = getComputedStyle(el);
+    if (cs.display === 'none' || cs.visibility === 'hidden' || +cs.opacity < 0.1) continue;
+    if (el.checkVisibility && !el.checkVisibility({checkOpacity: true, checkVisibilityCSS: true})) continue;
+    let own = ''; for (const n of el.childNodes) if (n.nodeType === 3) own += n.textContent;
+    if (!own.trim() && !media.has(el.tagName)) continue;
+    let r = el.getBoundingClientRect();
+    if (r.width < 4 || r.height < 4 || r.bottom <= 0 || r.top >= vh || r.right <= 0 || r.left >= vw) continue;
+    if (!media.has(el.tagName) || el.tagName === 'LABEL') {
+      let mb = -1; for (const n of el.childNodes) if (n.nodeType === 3 && n.textContent.trim()) { const g = document.createRange(); g.selectNodeContents(n); for (const q of g.getClientRects()) if (q.height > 2 && q.bottom > mb) mb = q.bottom; }
+      if (mb < 0) continue; r = {top: r.top, bottom: mb};
+    }
+    const cl = clipOf(el); r = {top: Math.max(r.top, cl.top), bottom: Math.min(r.bottom, cl.bottom)};
+    if (r.bottom <= r.top + 2) continue;
+    if (!worst || r.bottom > worst.bottom) worst = {bottom: r.bottom, el: el.tagName + (el.id ? '#' + el.id : '') + (typeof el.className === 'string' && el.className ? '.' + el.className.split(' ')[0] : '') + ' «' + (own.trim() || el.getAttribute('aria-label') || el.value || '').slice(0, 24) + '»'};
+  }
+  if (worst && worst.bottom > barTop + 4) return {barH: Math.round(Math.max(...bars.map((b) => b.h))), under: Math.round(worst.bottom - barTop), el: worst.el, scrollable: document.documentElement.scrollHeight > vh + 2};
+  return null;
 };
 
 const CLICKABLES = () => {
@@ -597,13 +673,31 @@ function mulberry(seed) { let a = seed >>> 0; return () => { a |= 0; a = (a + 0x
         await ctx.close();
       }
     }
+
+    // S7 — bare fixe: acoperite de conținut (z-index lipsă) și conținut rămas sub bara de jos (320×640 și 1280×800)
+    if (budget(420000)) {
+      for (const [w, h] of [[320, 640], [1280, 800]]) {
+        const {ctx, page} = await openCtx(browser, {w, h});
+        await page.goto(url, {waitUntil: 'load', timeout: 30000}).catch(() => {});
+        await page.waitForTimeout(600);
+        for (let k = 0; k < 3; k++) { if (!(await page.evaluate(DISMISS_WELCOME).catch(() => false))) break; await page.waitForTimeout(350); }
+        for (const frac of [0, 0.5]) {
+          if (frac) { await page.evaluate((f) => window.scrollTo(0, (document.documentElement.scrollHeight - innerHeight) * f), frac).catch(() => {}); await page.waitForTimeout(250); }
+          for (const c of (await page.evaluate(FIXED_COVER).catch(() => [])).slice(0, 3)) add('med', 'fixed-covered', `${w}×${h}: bara fixă ${c.bar} (z-index ${c.z}) e acoperită de ${c.sample} în ${c.bad} din 5 puncte`);
+        }
+        await page.evaluate(() => window.scrollTo(0, 1e7)).catch(() => {}); await page.waitForTimeout(300);
+        const u = await page.evaluate(UNDER_BAR).catch(() => null);
+        if (u) add('med', 'under-bar', `${w}×${h}: la derulare maximă ${u.el} rămâne cu ${u.under} px sub bara fixă de jos (bară de ${u.barH} px${u.scrollable ? '' : '; pagina nu derulează'})`);
+        await ctx.close();
+      }
+    }
   } catch (e) {
     add('high', 'harness-crash', String(e && e.stack || e).slice(0, 300));
   } finally {
     await browser.close().catch(() => {});
   }
   flushHygiene();
-  stats.v = 4.7;
+  stats.v = 4.8;
   stats.seconds = Math.round((Date.now() - T0) / 1000);
   fs.writeFileSync(path.join(OUT, name + '.json'), JSON.stringify({app: name, findings: F, stats}, null, 1));
   console.log(`${name}: ${F.length} constatări (${F.filter((f) => f.sev === 'high').length} grave) în ${stats.seconds}s`);
