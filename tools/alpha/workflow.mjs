@@ -23,7 +23,7 @@ export function renderWorkflow(dir) {
   if (has('scripts/pack.mjs')) lines.push('      - run: node scripts/pack.mjs --check');   // pachetele din data/dist corespund fișierelor de specii și manifestelor
   if (has('scripts/validate.py')) {
     // Pillow doar când există optimizatorul de fotografii (testul lui se sare fără Pillow)
-    lines.push('      - uses: actions/setup-python@v7', "        with: { python-version: '3.12' }", '      - run: pip install jsonschema' + (has('scripts/optimize.py') ? ' pillow' : ''), '      - run: python scripts/validate.py');
+    lines.push('      - uses: actions/setup-python@v7', "        with: { python-version: '3.15' }", '      - run: pip install jsonschema' + (has('scripts/optimize.py') ? ' pillow' : ''), '      - run: python scripts/validate.py');
   }
   if (hasTests) lines.push('      - run: node --test "test/*.test.mjs"');
   if (has('scripts/build.mjs')) lines.push('      - run: node scripts/build.mjs --check');
