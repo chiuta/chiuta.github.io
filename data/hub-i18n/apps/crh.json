@@ -1,0 +1,1107 @@
+{
+ "lang": "crh",
+ "note": "Rânduri și etichete de card; detaliile (detail) lipsesc încă și rămân în engleză. Traducere asistată de IA, nerevizuită de un vorbitor nativ.",
+ "apps": {
+  "FreeDetect": {
+   "tags": [
+    "katalog",
+    "alıntılar"
+   ],
+   "line": "Metinniñ yapay zekâ ile yazılğanını yaki kopiyalanğanını teşkermege isteysiñizmi? 42 haricî alet ve alıntı yaratıcısı bir yerde. Ilova özü hiç bir şey tapmay."
+  },
+  "Arhiva-fara-frontiere": {
+   "tags": [
+    "web arhivleri",
+    "menbalar"
+   ],
+   "line": "Internet Archive kolleksiyalarına hesapsız bakıñız: izlev, materialğa saifeler, ögünden körüv ve sevgenleriñiz. Resmiy dir; archive.org IP-adresiñizni ve izlevlerniñizni kören."
+  },
+  "AcademiSearch": {
+   "tags": [
+    "edebiyat",
+    "menbalar"
+   ],
+   "line": "Bir izlev ile onlarca açıq menbadan ilmiy maqalelerni körüñiz. Cedveli alıntı içün saqlap olasıñız. İnternet kerek; soraularıñız o hizmetlerge kete."
+  },
+  "Surveyor": {
+   "tags": [
+    "bozuq bağlantılar",
+    "audit"
+   ],
+   "line": "Saytıñızda qaysı bağlantılar bar ve qaysılarınıñ çalışmağanı? Olarnı ankerler ve yöneltmelerle cedvelleştirir. Haricîlerni güvenilir teşkerüv mümkün degil. Faqat öz saytlarıñız içün."
+  },
+  "Trade-Free-Link-Guardian": {
+   "tags": [
+    "WordPress",
+    "GPL v2"
+   ],
+   "line": "WordPress saytıñız içün: bozuq bağlantılarnı tapa ve tüzetir, haricî hizmetsiz. Hakiqiy mundericeni deñiştirir, evvel yedek alıñız. Hakiqiy WordPress'te sınalmağan."
+  },
+  "OUTPOST": {
+   "tags": [
+    "monitoring"
+   ],
+   "line": "Saytlarıñızğa közet etiñiz ve cevap bergenini körüñiz. Faqat sekme açıq olğanda çalışa. Hata saifesi de cevap sayıla. Interfeys inglizce."
+  },
+  "ScryVeil": {
+   "tags": [
+    "OSINT",
+    "emniyet"
+   ],
+   "line": "Domen içün emniyet teşkerüvi yapıñız ve saqlamaq içün metin raporı alıñız. Bazı teşkerüvler eksik olabilir yaki açar talap etebilir. Üçünci taraf hizmetlerine bağlana; faqat öz domenleriñiz."
+  },
+  "Vitrina": {
+   "tags": [
+    "menba monitoringi"
+   ],
+   "line": "Umumiy Facebook yazısını hesapsız saytıñızğa qoyuñız ve azır kodnı kopiyalañız. Resmiy degil; Meta IP-adresiñizni kören, kösterilüv kafilet etilmey."
+  },
+  "Threads-fara-cont": {
+   "tags": [
+    "menba monitoringi"
+   ],
+   "line": "Umumiy Threads yazılarını hesapsız oquñız ve metin olaraq saqlañız. Resmiy degil; Meta IP-adresiñizni kören, bazen aracı hizmet kerek ola."
+  },
+  "X-fara-cont": {
+   "tags": [
+    "menba monitoringi"
+   ],
+   "line": "X'teki umumiy profillerge ve yazılarğa hesapsız çeşit yollar ile yetişiñiz: direkt bağlantı, arhiv, izlev yaki Nitter. Mündericeni oqumay; bağlantını archive.org'ğa yibere."
+  },
+  "Arhiva-LinkedIn": {
+   "tags": [
+    "arhivlev"
+   ],
+   "line": "LinkedIn yazıları haqqında özüñiz qoyğan notlarnı bir yerde saqlañız ve metin olaraq export etiñiz. Galereya resmiy embed qullana, onıñ içün LinkedIn'ge bağlana. Resmiy degil."
+  },
+  "Cadraj": {
+   "tags": [
+    "menba monitoringi"
+   ],
+   "line": "TikTok kliplerini qolnen toplañız, müellifler boyunca toparlañız ve resmiy pleyerde köreñiz. Körgenlerinizni işaretlep olasıñız."
+  },
+  "FASCICUL": {
+   "tags": [
+    "işbirligi"
+   ],
+   "line": "Odadaki telefonlarnı video proyektorda ortaq tahtağa çevire: resimler, notlar, suretler, lazer işaretleyici ve canlı kamera. Kompüterde sınalğan; hakiqiy telefonlarda alâ teşkerilmegen."
+  },
+  "INDICATIV": {
+   "tags": [
+    "imtihan",
+    "radio"
+   ],
+   "line": "ANCOM radiomevesqar imtihanına 723 sual ile, muvafıq aralıqlarda tekrarlanıp, internetsiz azırlanıñız. Resmiy degil; sual bankı qısmen teşkerilgen."
+  },
+  "ETER": {
+   "tags": [
+    "radio",
+    "ansiklopediya"
+   ],
+   "line": "Radiomevesqarlıqnı Morze kodu, Morze trenajeri, anten hesaplayıcıları ve bütün mündericede izlev bulunğan ansiklopediyada öyreniñiz."
+  },
+  "ATINGERE": {
+   "tags": [
+    "erişilebilirlik"
+   ],
+   "line": "Kitap sensorlı ekranda titreşimli Brayl yazısına (közü ve qulağı olmağanlar içün) yaki sesli kitapqa (közü olmağanlar içün) aylana. Asıl oquyıcılar ile tasdiqlanmağan; ceklemeleri bar."
+  },
+  "Clopotel": {
+   "tags": [
+    "tedbirler",
+    "MIT"
+   ],
+   "line": "Konferentsiya yaki atölyeñizni vaqtında tutuñız: gündemli saña taymeri ve soñ yaqınlaşqanda ihtar bergen sinyal. Romence ve inglizce."
+  },
+  "Monstrarium": {
+   "tags": [
+    "atölye",
+    "MIT"
+   ],
+   "line": "Qullanılmış materiallardan canavar yapqan atölyeni planlañız: ilova materialnı ve oturışlarnı hesaplay ve ses, 3D ve talim oyunı ile 50 canavar teklif ete."
+  },
+  "TranslateHub": {
+   "tags": [
+    "tercime",
+    "AI"
+   ],
+   "line": "22 tercime aleti arasından saylañız yaki öz açarıñız ile AI ile tercime etiñiz. AI ile tercime etilgen metin Anthropic hizmetine kete."
+  },
+  "DataWeave": {
+   "tags": [
+    "malümat"
+   ],
+   "line": "Cedvelni açıñız ve añlañız: statistika, diagrammalar, pivot cedveller ve korrelyatsiyalar. Malümatıñız cihazıñızda qala."
+  },
+  "MarkdownAtelier": {
+   "tags": [
+    "yazuv"
+   ],
+   "line": "Hüccetlerni Markdown'da yazıñız ve nasıl körüngenini derhal körüñiz, oñaylı formulalar ile, 7 tilde, internetsiz. Metinler brauzeriñizde qala; yedek nusqa saqlañız."
+  },
+  "RegexLab": {
+   "tags": [
+    "inkişaf"
+   ],
+   "line": "Muntazam ifadeni sınañız ve nelerge uyğunlığını derhal körüñiz: adım-adım añlatmalar, testler ve programnı dondurabilgende ihtar ile."
+  },
+  "SEOptimum": {
+   "tags": [
+    "web"
+   ],
+   "line": "Web saifesiniñ izlev sistemalarına qadar azır olğanını teşkeriñiz. 20 alet bar, saife tahlili ve izlev neticelerinde nasıl körüngeniniñ ögünden körüvi de."
+  },
+  "SEVA": {
+   "tags": [
+    "sağlıq"
+   ],
+   "line": "Uyqu, bedenniñ künlük ritmi, nefes ve beslenme haqqında dinlenilebilecek ansiklopediyada ögreniñiz. Faqat malümat içün; tibbiy tavsiye degil."
+  },
+  "PULS": {
+   "tags": [
+    "sağlıq",
+    "acil"
+   ],
+   "line": "Tez yardım kelgenge qadar ne yapılır? Romence ilk yardım qılavuzı, CPR metronomı ve ihtiyariy acil kartı ile. Klinik olaraq tasdiqlanmağan; 112'ni çağırıñız."
+  },
+  "VATRA": {
+   "tags": [
+    "saha"
+   ],
+   "line": "Tabiatta suv, ateş yaki barınaq qalmasa ne yapılır? İnternetsiz survival ansiklopediyası, izlev ve notlar ile. Faqat talim içün; acil vaziyette 112'ni çağırıñız."
+  },
+  "Eclipsa-2027": {
+   "tags": [
+    "astronomiya"
+   ],
+   "line": "2027 senesi 2 avgustta tolu Quyaş tutulmasınıñ nerede ve ne qadar devam etkenini haritada körüñiz, şeerler ve yer izlevi ile, internetsiz. Taqribiy qıymetler; Quyaşqa süzgüçsiz baqmañız."
+  },
+  "orarium": {
+   "tags": [
+    "astronomiya",
+    "vaqıt"
+   ],
+   "line": "Marsta, Ayda yaki asteroidde şimdi saat neçedir? 45 gök cisminde canlı yerli vaqıtnı köreñiz. Taqribiy model, internetsiz; navigatsiya içün degil."
+  },
+  "TerRa": {
+   "tags": [
+    "astronomiya"
+   ],
+   "line": "Yer, Ay ve sayyarelerde kün ve gece köstergen 3D globus ve harita. Satellit mevqileri onlayn yañartqanğa qadar taqriben 3 ay eski ola bile."
+  },
+  "Horizons.BeyondLimits": {
+   "tags": [
+    "kosmologiya"
+   ],
+   "line": "Kainatnıñ tarihında Büyük Partlayıştan soñuna qadar 91 merhale ile seyahat etiñiz. Kelecek ilmiy faraziyedir, qat'iy tahmin degil."
+  },
+  "Hyper4D": {
+   "tags": [
+    "matematika"
+   ],
+   "line": "Dört ölçemli şekillerniñ nasıl körüngenini körüñiz: ekranda aylandırıñız ve çeşit tarafından baqıñız. Suretler saqlanıp ola."
+  },
+  "ExploratoriiEco": {
+   "tags": [
+    "tabiat"
+   ],
+   "line": "Tabiat sevgenler içün saha qılavuzı: canlılar tasnifinden ve izlerinden Romaniyanıñ biomlarına, jurnal, etika ve acil vaziyetlerge qadar."
+  },
+  "FieldObserver": {
+   "tags": [
+    "saha"
+   ],
+   "line": "Saha közetlerinizni yazıñız, telefon sensorlarınıñ ölçülerini özü ilâve ete. Çıqışlarıñızdan arhiv saqlañız."
+  },
+  "VietAR": {
+   "tags": [
+    "biyoçeşitlilik"
+   ],
+   "line": "Bitkini yaki mahlûqnı suretke alıñız yaki yazıñız ve Romaniyadan 519 arasında türü haqqında fikir alıñız. Yañılabilir; onıñ esasında bir şey yemeñiz."
+  },
+  "VOIAJOR": {
+   "tags": [
+    "Voyager",
+    "simulyatsiya"
+   ],
+   "line": "Voyager 1 ve 2 trayektoriyalarını 1977'den bir milliard sene soñağa qadar, sayyarelerden Samanyolına qadar herhangi masştabta közetiñiz. Işaretleyici model, navigatsiya degil."
+  },
+  "Nemurirea": {
+   "tags": [
+    "biologiya"
+   ],
+   "line": "Bedenniñ nasıl qocalğanını ve ilimniñ biologik saatler ve ömür uzunlığı haqqında ne dügenini keşfediñiz, soñ viktorina ile özüñizni sınañız. Tibbiy tavsiye degil."
+  },
+  "IncredibleCosmos": {
+   "tags": [
+    "oyun",
+    "fizika"
+   ],
+   "line": "Sayyare ve yıldızlarnı cazibeleri kometanı maqsadqa yönelter ögürlikte yerleştiriñiz. 108 seviye, üç zorluq ve her seviyede üçke qadar yıldız."
+  },
+  "Cupa-Mondiala-2026": {
+   "tags": [
+    "simulyatsiya",
+    "resmiy degil"
+   ],
+   "line": "2026 Dünya Kubogında oynañız ve hayaliy turnirniñ açılışını közetiñiz. Neticeler tesadüfiy, tahmin degil; resmiy degil."
+  },
+  "AGORA": {
+   "tags": [
+    "iqtisadiyat",
+    "AB"
+   ],
+   "line": "Avro nasıl doğdı ve Romaniya içün ne añlata? Maastrihttan ECB'ge qadar 59 bölük ve seyahatçiler içün tavsiyeler. Resmiy degil."
+  },
+  "URME": {
+   "tags": [
+    "tabiat",
+    "Buzău"
+   ],
+   "line": "Buzăudaki Colți–Aluniș yolunda yürüyişke azırlanıñız: bitkiler, kehriba, fossiller, Quyaş doğuşı ve batışı vaqıtları, cihazlar. Harita navigatsiya içün degil."
+  },
+  "Belot-fara-frontiere": {
+   "tags": [
+    "qartlar",
+    "AI"
+   ],
+   "line": "Belotnı ve başqa memleketlerdeki aqrabalarını keşfediñiz, soñ masada oynañız: siz ve AI ortağıñız eki AI raqibine qarşı. Hesap varağı bar."
+  },
+  "Scopone-fara-frontiere": {
+   "tags": [
+    "qartlar",
+    "AI"
+   ],
+   "line": "Scopone nasıl doğğanını, qaideleri neler olğanını ve bölgeden bölgege nasıl farq etkenini öğreniñiz, soñ ipucu bere bilgen kompüterge qarşı oynañız."
+  },
+  "Solitaire-fara-frontiere": {
+   "tags": [
+    "qartlar"
+   ],
+   "line": "Klondike, FreeCell yaki Spider kibi solitaire oyunlarına baqıñız ve oynañız. Tıqılğanda ipucu soráñız yaki kompüter çezsin."
+  },
+  "Sudoku-fara-frontiere": {
+   "tags": [
+    "bilmece"
+   ],
+   "line": "Klassikten killer'ge yaki 3D'ge qadar 136 çeşit Sudoku, baqmaq ve oynamaq içün. Adım-adım añlatmalar ile yardım ete ve öz bilmeceleriñizni çöze."
+  },
+  "Domino-fara-frontiere": {
+   "tags": [
+    "domino",
+    "AI"
+   ],
+   "line": "Dominonıñ tarihını ve qaidelerini öğreniñiz, soñ masada kompüter idare etken birden üçke qadar raqipke qarşı oynañız. Adımnı keri alabilesiñiz."
+  },
+  "Mahjong-fara-frontiere": {
+   "tags": [
+    "Mahjong",
+    "AI"
+   ],
+   "line": "8 mahjong çeşidini keşfediñiz ve solitaire yaki dört oyunşılı oyunnı üç oñaylı kompüter raqibi ile oynañız. Internetsiz çalışa."
+  },
+  "Go-fara-frontiere": {
+   "tags": [
+    "Go",
+    "AI"
+   ],
+   "line": "Go'nıñ nereden çıqqanını ve nasıl oynalğanını öğreniñiz, soñ ipucu bere bilgen kompüterge qarşı kücüñizni sınañız. İnternet üzerinden hiç bir malümat yibermey."
+  },
+  "Zaruri-fara-frontiere": {
+   "tags": [
+    "zarlar"
+   ],
+   "line": "Oqumaq içün 26 zar oyunı, olarnıñ 12-si kompüterge qarşı oynalıp, ve ihtimalliklerli zar atuv simulyatorı. Pul qatnaşmay; internetsiz."
+  },
+  "Sah-fara-frontiere": {
+   "tags": [
+    "şahmat"
+   ],
+   "line": "Keşf etmek içün 700'den ziyade şahmat çeşidi, kiçik terminler lugatı ile; çoğusı içün kompüterge qarşı oynap olasıñız. Internetsiz çalışa."
+  },
+  "Dame-fara-frontiere": {
+   "tags": [
+    "dama"
+   ],
+   "line": "25 dama çeşidini kompüterge qarşı oynañız ve oyunıñızı saqlañız. Olarnıñ 16-sınıñ qaideleri taqribiydir, ⚠ ile işaretlengen."
+  },
+  "Table-fara-frontiere": {
+   "tags": [
+    "tavla"
+   ],
+   "line": "Tavla, Tavli, Narde ve tablanıñ Romaniya çeşitleri, oqumaq ve oynamaq içün: kompüterge qarşı 17 çeşit, klaviatura yaki sıçan ile."
+  },
+  "Remi-fara-frontiere": {
+   "tags": [
+    "remi"
+   ],
+   "line": "Remi ailesini keşfediñiz ve istatistika ile kompüterge qarşı 19 çeşit oynañız. 8 tilli ve iri, kolay körünğen taşlar yaki qartlar bar."
+  },
+  "Carti-de-joc-fara-frontiere": {
+   "tags": [
+    "qartlar"
+   ],
+   "line": "Solitaire ve Old Maid'den pokerge qadar: añlatılğan qaideli 17 qart oyunı, olarnıñ 8-ini derhal oynap olasıñız."
+  },
+  "Undava": {
+   "tags": [
+    "viktorina",
+    "talim"
+   ],
+   "line": "Dostlar ile viktorina yapıñız yaki oynañız, bir telefonda yaki kompüterde, ve yañlış cevap bergen sualleriñizni tekrar oynañız. Kahoot'qa beñzey, lâkin bağlı degil."
+  },
+  "AI-Liber": {
+   "tags": [
+    "AI"
+   ],
+   "line": "Bir yerden bir qaç AI yardımcısı ile, o cümleden öz kompüteriñizde çalışqanları ile, laflañız. Mesajlar saylağan provayderiñizge kete; AI yañılabilir."
+  },
+  "LocalMind": {
+   "tags": [
+    "yerli AI"
+   ],
+   "line": "Brauzeriñizde çalışqan kiçik AI yardımcısı ile laflañız. Modeller internetten bir kerte yüklene; yañılabilir."
+  },
+  "PromptVault": {
+   "tags": [
+    "promptlar"
+   ],
+   "line": "AI yardımcıları içün 500'den ziyade azır prompt, olardan saylap sevgenleriñizni işaretlep olasıñız. Öz metinleriñizni saqlamay."
+  },
+  "ARENA": {
+   "tags": [
+    "AI baalav"
+   ],
+   "line": "İki AI modelini körsüz cevaplatıñız ve eñ yahşısına ses beriñiz; sıralama kompüteriñizde saqlana. Öz açarlarıñız kerek."
+  },
+  "Nexus-fara-frontiere": {
+   "tags": [
+    "agentler"
+   ],
+   "line": "Bir qaç provayderniñ AI yardımcıları ile laflañız, laf izlevi ve saqlav ile. İnternet ve şifrelenmegen halde saqlanğan öz açarlarıñız kerek."
+  },
+  "VoiceAtelier": {
+   "tags": [
+    "ses"
+   ],
+   "line": "Onlarca tilde yüzlerce yapay sesniñ nasıl añlanğanını dinleñiz ve sesli kitapnıñ nasıl yapılğanını öğreniñiz. Onlayn nümune metinni haricî hizmetlerge yibere, faqat razılığıñız ile."
+  },
+  "Trusa-fara-frontiere": {
+   "tags": [
+    "yardımcılar"
+   ],
+   "line": "Künlük 15 kiçik alet toplamı: notlar, cedvel, Markdown, şifrelerniñ, maliye jurnalı ve daha. Kategoriyalarına ilham bergen YunoHost ile resmiy bağı yoq."
+  },
+  "API-fara-frontiere": {
+   "tags": [
+    "API"
+   ],
+   "line": "Ava, NASA suretleri, ISS mevqii ve onlarca diger canlı malümatnı bir yerde köreñiz. İnternet kerek ve hakiqiy hizmetler ile sınalmağan."
+  },
+  "OmniHost": {
+   "tags": [
+    "toplam"
+   ],
+   "line": "Yüzden ziyade iş aletiniñ bir yerge toplanğan büyük paketi. Dört haricî hizmetke bağlana; tafsilâtı README'de."
+  },
+  "VNTV": {
+   "tags": [
+    "medya",
+    "MIT"
+   ],
+   "line": "VideoNeat fragmentlerini hiç toqtamağan TV kanalı kibi oynatıñız. İnternet kerek; P2P rejiminde adresiñiz diger izleyicilerge körüne."
+  },
+  "OSATURA": {
+   "tags": [
+    "animatsiya",
+    "MPL/AGPL"
+   ],
+   "line": "2D resimlerni canlandırıñız: olarnı \"iskeletke\" bağlañız, areketke keltiriñiz ve animatsiyanı bir qaç formatta export etiñiz. Alfa versiya, şimdilik az sınalğan."
+  },
+  "OAZA": {
+   "tags": [
+    "hizmetler"
+   ],
+   "line": "Bir katalogğa toplanğan 340 meccanen web hizmetine baqıñız, adetince hesapsız. Cedvel 2026 senesi iyunde teşkerilgen, lâkin avtomatik degil."
+  },
+  "VaultCrypt": {
+   "tags": [
+    "emniyet"
+   ],
+   "line": "Başqalarınıñ közünden saqlamaq istegen bir şeyiñiz barmı? Fayl ve metinlerni brauzerde parol ile qıfılañız. Yoğaltılğan parolni tiklemek mümkün degil."
+  },
+  "Akasha": {
+   "tags": [
+    "notlar"
+   ],
+   "line": "Etiketler, izlev ve saifeler arası bağlar ile, internetsiz çalışqan defter. Hiç bir şeyni yoğaltmamaq içün faylnıñ yañı nusqasını endirip alıñız."
+  },
+  "CLEPSIDRA": {
+   "tags": [
+    "vaqıt"
+   ],
+   "line": "Keri sayğan saat, budilnik ve areket ve bayram künleri içün cedveller. Bayramlarnı ve öz tedbirleriñizni közete."
+  },
+  "Origami": {
+   "tags": [
+    "sanat"
+   ],
+   "line": "Kağıtnı adım-adım qatlamaqnı öğreniñiz: işaretler, tekniklar ve resimli modeller. Ilova qayda toqtağanıñıznı yadında tuta."
+  },
+  "Zicala": {
+   "tags": [
+    "medeniyet"
+   ],
+   "line": "550 toplamdan künde bir Romen atalar sözü. Izlep sevgenlerni saqlap olasıñız; şerhler AI yardımı ile yazılğan."
+  },
+  "Limpezimea": {
+   "tags": [
+    "edebiyat"
+   ],
+   "line": "\"Limpezimea\" ilmiy-hayaliy romanını yedi tilde oquñız. Beraber bargan vaqayname ve tenqitiy tedqiqat AI (Claude) yardımı ile yazılğan."
+  },
+  "Nota-Zero": {
+   "tags": [
+    "edebiyat"
+   ],
+   "line": "İp nazariyesi haqqında farazıy edebiyat hikâyesi, Romence, inglizce ve fransızca, ilmiy fikirlerni añlatqan notlar ile. Bu edebiyat, akademik menba degil."
+  },
+  "Pendulul": {
+   "tags": [
+    "edebiyat"
+   ],
+   "line": "Sayyare üç yıldız ve qara delik arasında salına: doquz ciltlik ilmiy-hayaliy roman, Alexio tarafından Claude ile beraber yazılğan. 3D simulyatsiya, internetsiz oquv içün saqlanabilgen oquyıcı, EPUB ve PDF ile."
+  },
+  "PrintreInteligente": {
+   "tags": [
+    "edebiyat"
+   ],
+   "line": "Artemis 2 ekipajından ilham alğan qaharmanlı interaktiv ilmiy-hayaliy romanğa kiriñiz. Tenqitler uydurmadır; tercime, ses ve AI imkânları haricî hizmetlerni qullana."
+  },
+  "BorderlessMelodies": {
+   "tags": [
+    "musiqa"
+   ],
+   "line": "Özü bestelegen musiqini brauzerde dinleñiz. Audio olaraq export etip olasıñız, uyqu taymeri de bar."
+  },
+  "EcoulSpectral": {
+   "tags": [
+    "audio"
+   ],
+   "line": "Sesni resim olaraq körüñiz, rahatsız etkenini saylañız ve ayırıñız yaki siliniz. Şuv azaltuv, ses añlav ve WAV'ğa saqlav bar."
+  },
+  "Constelar": {
+   "tags": [
+    "AI"
+   ],
+   "line": "Sohbetleriñizni yadında tutqan sanal yoldaşlar ile laflañız. Adetince oñaylı qaideler ile cevap bere; hakiqiy AI faqat provayder saylağanda ve mesajlarıñız ağa kete. Faqat büyüklerge."
+  },
+  "Tarot": {
+   "tags": [
+    "medeniyet"
+   ],
+   "line": "Tarot tarihını, qartlarnıñ sembollerini ve nasıl oqulğanını medeniy hadise olaraq keşfediñiz. Öz temponızda ögreniñ interaktiv kurs."
+  },
+  "Numerologie": {
+   "tags": [
+    "medeniyet"
+   ],
+   "line": "Numerologiyanı sembolik an'ane olaraq, tört seviyede, tecribeler, lugat, jurnal ve hesaplayıcı ile keşfediñiz. İlmiy tasdiqsız teqdim etile."
+  },
+  "PUNCTUM": {
+   "tags": [
+    "sağlıq",
+    "delil"
+   ],
+   "line": "Akupressura ve noqta terapiyalarınıñ talim atlası: interaktiv haritalarda 400'den ziyade noqta, idare etilgen seanslı öz-bakım ritinleri, delil ve emniyet. Doktornıñ yerini tutmay."
+  },
+  "Reiki": {
+   "tags": [
+    "medeniyet"
+   ],
+   "line": "Reiki'niñ ne olğanını, ruhiy tecribe olaraq, ve tedqiqatlarnıñ ne dügenini öğreniñiz: rahatlamadan başqa tesir içün yeterli delil tapılmağan. Doktornıñ yerini tutmay."
+  },
+  "Bioenergoterapie": {
+   "tags": [
+    "medeniyet"
+   ],
+   "line": "Bioenergiya terapiyası nedir ve nereden çıqqanını añlatqan kurs. Bu tecribeniñ şifa içün ilmiy delili yoq ve doktornıñ yerini tutmay."
+  },
+  "CHIROMANTIA": {
+   "tags": [
+    "el falı",
+    "medeniyet"
+   ],
+   "line": "İnteraktiv el falı atlası: çizgiler, tepeler, barmaqlar ve el çeşitleri ile el haritası, medeniy an'ane olaraq oqulğan, ilim ve tenqitiy fikir bölüği ile. İlmiy tasdiq yoq."
+  },
+  "Radiestezie": {
+   "tags": [
+    "medeniyet"
+   ],
+   "line": "Rozga ile qıdıruv haqqında 18 seviyeden keçiñiz, lugat, tecribe jurnalı ve beynelhalq eklemeler ile. Başından ilmiy tasdiqı olmağanını bildire."
+  },
+  "Inforenergetica": {
+   "tags": [
+    "medeniyet"
+   ],
+   "line": "Adetten tışqarı tecribe olğan inforenergetikanıñ ne iddia etkenini keşfediñiz, nizamlı kurs ile. İlmiy tasdiqı yoq ve tibbiy tavsiye degil."
+  },
+  "ECLIPSA": {
+   "tags": [
+    "astrologiya"
+   ],
+   "line": "Tutulmanıñ natal haritañızda qaysı astrologik evge tüşkenini ve soñraki 12 tutulmanı bilip alıñız. Hesaplav taqribiy ve izah sembolik, ilmiy tasdıqsız."
+  },
+  "Afrodisiace-fara-frontiere": {
+   "tags": [
+    "medeniyet"
+   ],
+   "line": "Adetince arzu ile bağlanğan 22 aş ve bitki haqqında oquñız, her birinde delil seviyesi ile. Büyüklerge medeniy qılavuz, tibbiy tavsiye degil."
+  },
+  "CalmWaves": {
+   "tags": [
+    "audio"
+   ],
+   "line": "Rahatlav ve uyqu içün o anda yaratılğan ambient musiqi. Tibbiy cihaz degil; tedqiqat bölüği bağımsız teşkerilmegen. Doktor tavsiyesini alıñız (epilepsiya)."
+  },
+  "ASMR": {
+   "tags": [
+    "audio"
+   ],
+   "line": "Ambient qatlamlar, tuşuv sesleri ve binaural urışlardan öz rahatlatıcı ses peyzajıñızı yapıñız. Uyqu taymeri bar ve qarışımıñıznı başqalar ile bölüşip olasıñız."
+  },
+  "NOMIA": {
+   "tags": [
+    "qurgu",
+    "faraziye",
+    "PWA"
+   ],
+   "line": "İnsanlar, yapay zekâlar ve diger akıl çeşitleri arasında ilk temas nasıl körüngen olur? 1001 hayal etilgen senariy, qurgu, fakt degil. İnternetsiz de çalışa."
+  },
+  "ValeaPlopului1972": {
+   "tags": [
+    "UAP",
+    "3D",
+    "qurgu"
+   ],
+   "line": "1972 senesi UFO vaqasını tışqarıdan, içeriden ve simulyatsiyada, 3D'de qaytadan quruluşta körüñiz. Bu hayal etilgen farazıyedir, delil degil."
+  },
+  "HoroScop": {
+   "tags": [
+    "astrologiya",
+    "efemerid",
+    "internetsiz"
+   ],
+   "line": "Tarih ve yer içün sayyare mevqilerini hesaplañız, soñ natal harita, aspektler ve uyğunlıqnı keşfediñiz. Sembolik astrologiya, ilmiy esassız. İnternetsiz."
+  },
+  "Aurora": {
+   "tags": [
+    "meditatsiya",
+    "ses",
+    "rahatlav"
+   ],
+   "line": "Rahatlatıcı tonlarnı, yumuşaqça urğan sesler dinleñiz ve nefes qılavuzına uyıñız. Faqat rahatlav içün, şifa degil. İnternetsiz çalışa."
+  },
+  "NumeroLogIA": {
+   "tags": [
+    "numerologiya",
+    "AI",
+    "internetsiz"
+   ],
+   "line": "Numerologiyanıñ, Çin BaZi astrologiyasınıñ ve biyoritmniñ doğğan künüñiz haqqında ne dügenini keşfediñiz, her hesaplav adım-adım añlatılğan. Sembolik sistema, ilmiy esassız."
+  },
+  "FrequencyLaboratory": {
+   "tags": [
+    "audio",
+    "laboratoriya",
+    "internetsiz"
+   ],
+   "line": "Kiçik audio laboratoriyasında sesler, tesirler ve işitüv testlerini sınañız. \"Şifalı\" tesirler isbatlanmağan ve doktornıñ yerini tutmay. İnternetsiz."
+  },
+  "generator-frecvente": {
+   "tags": [
+    "audio",
+    "generator",
+    "internetsiz"
+   ],
+   "line": "Saf tonlar ve urğan çift sesler yaratıñız, meşhur azır sazlamalarnı dinleñiz ve ne qadar yahşı işitkeniñizni taqribiy teşkeriñiz. Tibbiy cihaz degil. İnternetsiz."
+  },
+  "ACORDAJ": {
+   "tags": [
+    "ruhaniyet",
+    "atlas",
+    "tenqitiy ayırt etüv"
+   ],
+   "line": "Bin'den ziyade ruhiy kurs ve inisiatsiyağa tarihiy mundericeler ve tenqitiy baqış ile baqıñız. Menba sayt ile bağı yoq ve ilmiy tasdiqsız. İnternetsiz."
+  },
+  "Profund": {
+   "tags": [
+    "laf",
+    "qartlar",
+    "trade-free"
+   ],
+   "line": "Dostlar arasında yaki ailede lafnı küçük lafnıñ tışına çıqarğan 150 sual. Ekranda oynañız yaki basıp çıqarıñız, ihtiyariy taymer ile."
+  },
+  "Universul-Observabil": {
+   "tags": [
+    "astronomiya",
+    "kosmologiya",
+    "körüv"
+   ],
+   "line": "Körgen Kainatımız ne qadar büyük? Üç haritanı (çızıqlı, tüz, fezada) qıyaslañız ve kosmologik hesaplavlar yapıñız. Rakamlar bağımsız teşkerilmegen."
+  },
+  "Universul-Observabil-1D": {
+   "tags": [
+    "astronomiya",
+    "kosmologiya",
+    "körüv"
+   ],
+   "line": "Bizden başlap körünğen Kainatnıñ çetine qadar, bir oqqa yerleştirilgen 112 galaktikadan keçip seyahat etiñiz. Ironik ton, yuvarlaqlanğan qıymetler, talim maqsadı."
+  },
+  "Universul-Observabil-2D": {
+   "tags": [
+    "astronomiya",
+    "satira",
+    "kosmologiya"
+   ],
+   "line": "\"Yassı Yer\" satirik nesrinde galaktikalar haritası: şaqa, Yer yassı degil. 111 galaktika arasında yaqınlaştırıñız; mesafeler taqribiy. İnternetsiz."
+  },
+  "Universul-Observabil-3D": {
+   "tags": [
+    "astronomiya",
+    "kosmologiya",
+    "3D"
+   ],
+   "line": "3D haritada 115'ten ziyade galaktika arasında uçuñız, yol kösterilgen turlar ve sınavlar ile. Qıymetler taqribiy."
+  },
+  "QSO": {
+   "tags": [
+    "radio",
+    "jurnal"
+   ],
+   "line": "Radiomevesqar stantsiyañızdan radio temaslarnı UTC vaqıtı, lokatorlar ve statistika ile saqlañız. Resmiy degil; hesaplavlar taqribiy."
+  },
+  "Curatitor": {
+   "tags": [
+    "metadata",
+    "mahremiyet"
+   ],
+   "line": "Suretleriñizniñ ve fayllarıñıznıñ ne açıqlağanını (yer, kamera, müellif) körüñiz ve yibermezden evvel bu malümatnı çıqarıñız. Yüzlerni yaki diger körüngen mündericeni sakıtmay."
+  },
+  "Poteca": {
+   "tags": [
+    "GPX",
+    "izler"
+   ],
+   "line": "Yürüyiş yaki velosiped sürüvde yazılğan izlerni açıñız ve mesafeni, kötürilüvni ve yüksekilik profilini körüñiz. Olarnı kesip yaki qoşıp ta olasıñız. Harita yoq; kötürilüv taqmin etile."
+  },
+  "Orar": {
+   "tags": [
+    "taqvim",
+    "vaqıt"
+   ],
+   "line": "Kün, afta yaki ay boyunca körebilgen taqvim ve afta planlayıcısı, Romaniyanıñ resmiy bayram künleri ile. Budilnikler faqat saife açıq olğanda çala."
+  },
+  "Alfabete": {
+   "tags": [
+    "kodlar",
+    "öğrenüv"
+   ],
+   "line": "Morze, Brayl, fonetik elifba, bayraq semaforı ve eski şifrelerni öğreniñiz ve tecribe etiñiz, soñ varaq basıp çıqarıñız. Eski şifreler sırlarnı qorçalamay."
+  },
+  "Fabrica": {
+   "tags": [
+    "kurslar",
+    "müellifleştirüv"
+   ],
+   "line": "Kursnı sade metin olaraq yazıñız ve derslerli, soñ imtihanlı ve basılabilgen şahadetnameli saifege çeviriñiz. Şahadetnamenıñ resmiy qıymeti yoq."
+  },
+  "Bolta": {
+   "tags": [
+    "astronomiya",
+    "planetariy"
+   ],
+   "line": "Üstüñizdeki kökniñ 1900 ile 2100 arasında herhangi yerde ve künde nasıl olğanını körüñiz. Quyaş, Ay, sayyareler ve yıldızlar, 2027 tutulması ile. Qıymetler hesaplanğan, resmiy degil. İnternetsiz."
+  },
+  "BRAZDA": {
+   "tags": [
+    "Voyager",
+    "sinyal"
+   ],
+   "line": "Voyager Altın Plastinkasını adım-adım çezip alıñız, soñ şimdi yibergen zondqa yañı disk kodlañız. İlk adımlardaki suretler şematik, NASA'nıñ degil."
+  },
+  "Arbore": {
+   "tags": [
+    "şecere",
+    "GEDCOM"
+   ],
+   "line": "Ailenıñ şeceresini qurıñız: şahıslar, ailer, vaqıt çizgisi ve Romence qarındaşlıq hesaplayıcısı ile. Malümat faqat bu brauzerde qala, sinxronizatsiyasız."
+  },
+  "Gospodar": {
+   "tags": [
+    "büdcet",
+    "şahsiy maliye"
+   ],
+   "line": "Ev paralarını közetiñiz: hesaplar, hercamalar, aylıq büdcetler ve raportlar. Hesap kerek degil, lâkin parolni yoğaltsañız malümatnı yoğaltasıñız. Maliye tavsiyesi degil."
+  },
+  "Decibel": {
+   "tags": [
+    "ses",
+    "ölçüv"
+   ],
+   "line": "Etrafındaki şuvnıñ ne qadar yüksek olğanını ölçiñiz ve qaysı seslerden ibaret olğanını körüñiz. Işaretleyici işitüv testi de bar. Şahadetnameli cihaz degil; neticeler mikrofonğa bağlı."
+  },
+  "Provenienta": {
+   "tags": [
+    "C2PA",
+    "menşe"
+   ],
+   "line": "Suretiñiz bar ve kim imzalağanını ve qaysı tüzetmelerni bildirgenini bilmek isteysiñizmi? Ekli sayısal imzanı teşkeriñiz. Tecribeviy, faqat nümune fayllarda sınalğan."
+  },
+  "Lexicon": {
+   "tags": [
+    "lugat",
+    "til"
+   ],
+   "line": "Öz lugatlarıñızı alıp keliñiz ve diakritiksiz yaki yañlışlar ile yazsañız da sözlerni izleñiz. Faqat kiçik demo toplam ile kele. İnternetsiz."
+  },
+  "VERIGA": {
+   "tags": [
+    "bağlantı teşkerüvi",
+    "MIT"
+   ],
+   "line": "Web saytta yaki paqqada bozuq bağlantılarnı ve maqsatsız qalğan fayllarnı tapa. Windows, macOS ve Linux'ta çalışa; bir qadar kompüter bilgisi kerek."
+  },
+  "TEZAUR": {
+   "tags": [
+    "tedqiqat",
+    "MIT"
+   ],
+   "line": "Tezisiñiz içün yalıñız öz kitaplarıñızdan ve maqalelerinizden yazğan, teşkerilebilgen alıntılı yardımcı. Kompüteriñizde çalışa; hüccetleriñiz hiç bir vaqıt onı terk etmey. Devam etken iş."
+  },
+  "LegatorOCR": {
+   "tags": [
+    "skanerlev",
+    "MIT"
+   ],
+   "line": "Kitapnı skanerlep, tüzetilgen saifeli ve izlenebilgen metinli temiz PDF alıñız. Windows, macOS ve Linux'ta çalışa; skanlarıñız sizde qala."
+  },
+  "Fenarium": {
+   "tags": [
+    "qabul etüv",
+    "MIT"
+   ],
+   "line": "Fosfenizmden başlap bütün hislerdeki subyektiv qabul etüvlerniñ atlası ve atölyesi: 13 modullı kurs, idare etilgen tecribeler, körüv simulyatorı ve tesadüfiy A/B öz-tecribe laboratoriyası. Talim, tibbiy cihaz degil."
+  },
+  "MENSURA": {
+   "tags": [
+    "testler",
+    "MIT"
+   ],
+   "line": "IQ, EQ, CQ, RQ, icraiy fonksiyalarıñıznı ve hislerñizni 6 saada 18 test ile ölçiñiz, kompozit indeksler ve 95% ışanç aralıqları ile. Muvaqqat normalar, işaretleyici, tanı degil."
+  },
+  "Cronosala": {
+   "tags": [
+    "spor",
+    "vaqıt"
+   ],
+   "line": "Zal taymerleri: setler arası dinç, HIIT, Tabata, EMOM, AMRAP, devirler ve metronom, kg ve tekrarlar ile tecribe jurnalı."
+  },
+  "ScutSonor": {
+   "tags": [
+    "emniyet",
+    "ses"
+   ],
+   "line": "Agressiv itlerge tesadüf içün yüksek ses ve fonar stroboskopı, ve areket qılavuzı. Yardımcı, kafiletli qalqan degil."
+  },
+  "MIRAJ": {
+   "tags": [
+    "körüv",
+    "talim"
+   ],
+   "line": "Torlı qabıq nasıl köre ve beyin suretni nasıl qura: fovea, qör noqta, yañılışlar ve viktorina, üç seviyede."
+  },
+  "ANTROPOS": {
+   "tags": [
+    "skrining",
+    "biologiya"
+   ],
+   "line": "Yerli hesaplanğan istiqametlendirici ilmiy profil: PhenoAge biologik yaş, ses, el yazısı, saat resimi, TIPI şahsiyet ve reaktsiya vaqtı."
+  },
+  "DESCANTAR": {
+   "tags": [
+    "folklor",
+    "fasulye"
+   ],
+   "line": "41 fasulye ile fasulye falı (3×3 usulı, Oltenia çeşiti) ve 12 an'aneviy efsun, folklor tedqiqatınıñ obyekti olaraq."
+  },
+  "Index-fara-frontiere": {
+   "tags": [
+    "katalog",
+    "menbalar"
+   ],
+   "line": "Tek faylı HTML ilovalarnıñ kataloğı: chiuta.github.io toplamı ve haricî menbalar, izlev ve etiketler ile."
+  },
+  "DECUPAJ": {
+   "tags": [
+    "reels",
+    "video"
+   ],
+   "line": "Podkastnı, audionı yaki videonı brauzerde, hesapsız ve damğasız, subtitrli dikey kliplerge çeviriñiz. Fayllarıñız cihazıñıznı hiç terk etmey."
+  },
+  "LECTOR": {
+   "tags": [
+    "audio",
+    "kitaplar"
+   ],
+   "line": "Brauzerde yüksek sesle oqulğan kitaplar: EPUB, DOCX, PDF, TXT yaki yapıştırılğan metin, hesapsız ve serversiz. Metin cihazıñıznı hiç terk etmey."
+  },
+  "FARFURIA": {
+   "tags": [
+    "beslenme",
+    "sağlıq"
+   ],
+   "line": "Meccanen sayısal diyetolog: şahsiylestirilgen kaloriyalar ve makrolar, 7 künlük aş planı, aş jurnalı ve ağırlıq közetüvi. Doktornıñ yaki diyetolognıñ yerini tutmay."
+  },
+  "VITALIS": {
+   "tags": [
+    "sağlıq",
+    "uzun ömür"
+   ],
+   "line": "Şahsiy sağlıq, uzun ömür ve biyohakerlik yoldaşı: delil boyunca sıralanğan dokuz esas, hesaplayıcılar, yaşayış balı ve künlük ritual. Tibbiy tavsiye degil."
+  },
+  "REZONANTA": {
+   "tags": [
+    "aloqa",
+    "medya"
+   ],
+   "line": "Aloqa ve medya içün qılavuz ve aletler: mesaj, kanallar, basın bülteni, mülâqat, açıqlıq, plan ve inqiraz."
+  },
+  "Claritas": {
+   "tags": [
+    "erişilebilirlik",
+    "eklenti"
+   ],
+   "line": "Hepsi bir yerde erişilebilirlik brauzer eklentisi: kontrast tüzetüvi, oquv rejimi, yüksek sesle oquv ve WCAG audit. Telemetriya yoq, şebeke yoq, hesap yoq."
+  },
+  "TurboCursa": {
+   "tags": [
+    "yarış",
+    "Rust"
+   ],
+   "line": "Rust'ta yazılğan psevdo-3D arcade yarışçı: tohumdan yaratılğan manzaralar, 11 rejim, bölükler karyerası ve 2 oyunşı. Asıl, diger oyundan kod yaki asset yoq."
+  },
+  "ANTENA": {
+   "tags": [
+    "radio",
+    "antennalar"
+   ],
+   "line": "Devam etken iş: brauzer ön yüzlü NEC-2 ile uyğun tel anten çözücisi (momentler usulı). Şimdilik faqat pre-alfa iskelet."
+  },
+  "ARBITRU": {
+   "tags": [
+    "oyunlar",
+    "qaideler"
+   ],
+   "line": "Devam etken iş: tahta, qart, zar ve bilmece oyunları içün deklarativ qaide tilli universal qaide motorı. Şimdilik faqat pre-alfa iskelet."
+  },
+  "ASTROLABIU": {
+   "tags": [
+    "astronomiya",
+    "taqvimler"
+   ],
+   "line": "Devam etken iş: sap Rust'ta kök vaqiaları motorı (vaqıt şkalaları, tutulmalar, doğuş ve batış, taqvimler). Şimdilik faqat pre-alfa iskelet."
+  },
+  "ECOGRAMA": {
+   "tags": [
+    "audio",
+    "tiklev"
+   ],
+   "line": "Devam etken iş: spektrogramma redaktorı ve audio tiklev: spektrogrammada saylañız, tüzetiñiz, export etiñiz. Şimdilik faqat pre-alfa iskelet."
+  },
+  "ecou-spectral-rs": {
+   "tags": [
+    "audio",
+    "Rust"
+   ],
+   "line": "Devam etken iş: şuv azaltuv ve ses añlav plaginli yerli Rust spektrogramma redaktorı. Kod iskeleti ve plagin formatı bar, lâkin bitken imkân yoq."
+  },
+  "MARTOR": {
+   "tags": [
+    "arhivlev",
+    "delil"
+   ],
+   "line": "Devam etken iş: heşler, imzalar ve ışanılır vaqıt damğaları ile WARC/WACZ'da sudiy web alıv, internetsiz teşkerilebilgen. Şimdilik faqat pre-alfa iskelet."
+  },
+  "NEAMURI": {
+   "tags": [
+    "qarındaşlıq",
+    "şecere"
+   ],
+   "line": "Devam etken iş: şecere yolundan çeşit tillerde toğru qarındaşlıq terminine qadar qarındaşlıq motorı. Şimdilik faqat pre-alfa iskelet."
+  },
+  "TACTIL": {
+   "tags": [
+    "Brayl",
+    "erişilebilirlik"
+   ],
+   "line": "Devam etken iş: tuşuv çıqışı qatlamı: Brayl formatları (BRF, Unicode), displeyler, embosserlar ve sensorlı ekran titreşimi. Şimdilik faqat pre-alfa iskelet."
+  },
+  "atelier-verificare": {
+   "tags": [
+    "jurnalistika",
+    "teşkerüv",
+    "suretler"
+   ],
+   "line": "Suretlerni, videolarnı, bağlantılarnı ve domenlerni brauzeriñizde teşkeriñiz, hiç bir şey yüklenmey: asıl fayl türi ve SHA-256, EXIF/GPS, XMP/IPTC, Content Credentials (faqat oquv), hata seviyesi tahlili. Suretniñ asıl olğanını isbatlap olmay. Alfa."
+  },
+  "balanta": {
+   "tags": [
+    "AI",
+    "baalav"
+   ],
+   "line": "AI modellerini körsüz qıyaslañız: eki-sekiz modelniñ cevaplarını 92 Romence, inglizce ve macarca promptqa yapıştırıñız, A yaki B'ge ses beriñiz ve aralıqlı sıralama alıñız. Alfa; internetsiz çalışa."
+  },
+  "calendarium": {
+   "tags": [
+    "taqvimler",
+    "vaqıt"
+   ],
+   "line": "On bir taqvimden (Grigoriy, Yuliy, İbraniy, Hicriy, Fars, Çin, Maya, Mars…) birinde tarih yazıñız ve onı bütün başqalarında körüñiz, ay körünişi ile. Alfa; internetsiz çalışa."
+  },
+  "glosar": {
+   "tags": [
+    "tiller",
+    "lugatlar"
+   ],
+   "line": "Arumın, Megleno-Rumın ve Roma tilleri içün internetsiz lugat: diakritiksiz izlev, qaysı esas sözlerniñ eksik olğanını köriñiz, menba ve yazı ile söz ekleñiz. Alfa."
+  },
+  "graiul": {
+   "tags": [
+    "folklor",
+    "arhiv"
+   ],
+   "line": "Romen folklorınıñ (atalar sözleri, efsunlar, bilmeceler, koledalar) menba, vilâyet ve razılıq ile internetsiz arhivi. On atalar sözü ile başlana; daha ekleyip olasıñız. Alfa."
+  },
+  "indicativ-international": {
+   "tags": [
+    "radio",
+    "imtihanlar"
+   ],
+   "line": "Radiomevesqar imtihan suallerini beş qutulı tekrarlav cedveli ve vaqıtlı sınav imtihanları ile tecribe etiñiz; sual paketlerini bir ortaq JSON formatında import etiñiz. 50 tecribe sualı dahil; resmiy bank degil. Alfa."
+  },
+  "proiector-fara-frontiere": {
+   "tags": [
+    "sınıf",
+    "proyektsiya",
+    "viktorina"
+   ],
+   "line": "Sınıftaki telefonlar ortaq ekran ola, serversiz ve hesapsız: taymer, qutlama, viktorina, notlar ve tahta, bir şebekede QR kod yaki yapıştırılğan metin ile eşleştirilgen. Alfa: hakiqiy telefonlarda alâ sınalmağan."
+  },
+  "regula": {
+   "tags": [
+    "oyunlar",
+    "qaideler"
+   ],
+   "line": "Beş klassik eki oyunşılı oyunnı (Nine Men’s Morris, Alquerque, Fanorona, Mū tōrere, Hnefatafl) kompüterge yaki dostqa qarşı oynañız; öz oyunıñıznı JSON olaraq ekleñiz. Alfa; internetsiz çalışa."
+  },
+  "vietar-packs": {
+   "tags": [
+    "tabiat",
+    "türler"
+   ],
+   "line": "VietAR içün bölgeviy tür paketlerini köriñiz, import etiñiz, teşkeriñiz ve yaratıñız: bir qaç tilde adlar, zeherli işaretler, beñzegenler. 71 türlü beş taslaq başlanğıç paket. Alfa; internetsiz çalışa."
+  },
+  "PatruZeci": {
+   "tags": [
+    "WD-40",
+    "DIY"
+   ],
+   "line": "WD-40 qullanuvınıñ resimli, animatsiyalı atlası: 147 kartlı qılavuz ve 1993 qullanuvnıñ resmiy cedveli, her birinde öz animatsiyalı sahne. Resmiy degil, internetsiz, hesapsız."
+  },
+  "ODISEEA": {
+   "tags": [
+    "Voyager",
+    "hüccetli film"
+   ],
+   "line": "Voyager 1 ve 2 haqqında taqriben 4,5 daqiqalıq hüccetli film, bir HTML faylında: grafik kartasında yaratılğan sahneler, VR közlükleri içün 2D ve 3D export, 8 tilde."
+  },
+  "EXIF-CURAT": {
+   "tags": [
+    "metadata",
+    "mahremiyet"
+   ],
+   "line": "Devam etken iş: fayllardaki (suretler, PDF, Office, video: EXIF, GPS, XMP) kizli malümatnı körmek ve silmek içün alet, memoriya emniyetli parserlerli, Rust'ta yazılğan. Şimdilik faqat pre-alfa iskelet."
+  },
+  "PORUMBEL": {
+   "tags": [
+    "suretler",
+    "köçürüv"
+   ],
+   "line": "Telefonıñızda Open Camera ile çekken suretlerni kompüteriñizdeki paqqağa, oturış başına bir paqqa, avtomatik köçüre ve LegatorOCR'da aça. Hesap yoq, bulut yoq, üçünci taraf crate'ler yoq."
+  },
+  "colibri-companion": {
+   "tags": [
+    "yerli AI",
+    "desktop"
+   ],
+   "line": "Yerli çıqarım motorı colibri içün dostane desktop ilova: kompüteriñizge uyğun modelni saylañız, bir basuv ile yükleñiz ve onıñ ile laflañız. Hesap yoq, bulut hizmeti yoq."
+  },
+  "CartaColibri": {
+   "tags": [
+    "yerli AI",
+    "kitaphane"
+   ],
+   "line": "Colibrì motorında yerli AI kitaphanesi: saylağan paqqalarıñıznı indekslei, onlarda şimşek tez izley ve yerli modelden özet, malümat çıqarıv yaki sintez yaptıra, daima menba faylnı kösterip. Hiç bir şey kompüteriñizni terk etmey."
+  },
+  "PolyTabletop": {
+   "tags": [
+    "tahta oyunları",
+    "Rust"
+   ],
+   "line": "Kompüterge qarşı, terminalde yaki grafik pencerede oynalğan 240 stol oyunı, ve bir klaviaturada yaki şebeke üzerinden eki oyunşılı oyun. Rust'ta yazılğan; motor ve oyunlar haricî bağımlılıqsız."
+  },
+  "STRAJA": {
+   "tags": [
+    "mahremiyet",
+    "telefon"
+   ],
+   "line": "Telefonıñıznı oqığan AI agentlerine qarşı qalqan: qaysı ilovalar bildirüvlerñizni, ekranıñıznı, suretleriñizni ve SMS'leriñizni oqıp bilgenini köstere, yañı biri ruhset alğanda ihtar bere ve ruhsetni geri aldığıñız ayarlar ekranına alıp bara. Hesap yoq, INTERNET ruhseti yoq."
+  },
+  "CUPLAJ": {
+   "tags": [
+    "immersiv teatr",
+    "telefoniya"
+   ],
+   "line": "İmmersiv teatr içün ortaq hat telefoniyası: adiy Android telefonlar filosı mekânnıñ Wi-Fi'ı üzerinden hususiy telefon stantsiyasına aylana, bulutsız, hesapsız, reklamasız. Onıñ alâmetli imkânı \"cuplaj\": 1980'lerden taqriben 2006'ya qadar sabit telefonlarnıñ ortaq hattı."
+  },
+  "LUSTRUM": {
+   "tags": [
+    "telefon temizleyici",
+    "Android"
+   ],
+   "line": "Telefonıñıznı qaytarıñız: çöpni, kopiyalarnı, beñzer suretlerni ve ilova qalıqlarını tapa ve faqat razılığıñız ile temizley. INTERNET ruhseti yoq, onıñ içün fizikiy olaraq bir yerge bir şey yibermey."
+  },
+  "STENOGRAMA": {
+   "tags": [
+    "transkriptsiya",
+    "audio"
+   ],
+   "line": "Brauzerde yerli Whisper ile uzun audio transkriptsiyası: bir HTML fayl, hesapsız, serversiz, damğasız. Audio faylıñız cihazıñıznı hiç terk etmey; faqat Whisper modeli, bir kerte yüklene."
+  },
+  "GERMEN": {
+   "tags": [
+    "yerli AI",
+    "Rust"
+   ],
+   "line": "Kiçik til modelini sıfırdan, sap Rust'ta, adiy CPU'da öyretiñiz: Python yoq, CUDA yoq, hesap yoq, şebeke erişimi yoq, telemetriya yoq. Bir binar, bir metin fayl, bir komanda."
+  },
+  "CUANTOR": {
+   "tags": [
+    "kvant kompüteri",
+    "simulyator"
+   ],
+   "line": "Desktopıñız içün kvant kompüteri simulyatorı, 5'ten 1000 kubitke qadar, IBM Quantum Composer üslûbında interfeys ile. Tam matematika, lâkin hakiqiy kvant cihazı degil."
+  }
+ }
+}
