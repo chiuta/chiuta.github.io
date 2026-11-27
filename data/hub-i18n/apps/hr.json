@@ -1,0 +1,1107 @@
+{
+ "lang": "hr",
+ "note": "Rânduri și etichete de card; detaliile (detail) lipsesc încă și rămân în engleză. Traducere asistată de IA, nerevizuită de un vorbitor nativ.",
+ "apps": {
+  "FreeDetect": {
+   "tags": [
+    "katalog",
+    "citati"
+   ],
+   "line": "Želite provjeriti izgleda li tekst kao da ga je napisala ili kopirala umjetna inteligencija? 42 vanjska alata i generator citata na jednom mjestu. Sama aplikacija ništa ne otkriva."
+  },
+  "Arhiva-fara-frontiere": {
+   "tags": [
+    "web arhive",
+    "izvori"
+   ],
+   "line": "Pregledavajte zbirke Internet Archivea bez računa: pretraga, stranice stavki, pregled i favoriti. Neslužbeno; archive.org vidi vašu IP adresu i pretrage."
+  },
+  "AcademiSearch": {
+   "tags": [
+    "literatura",
+    "izvori"
+   ],
+   "line": "Jedna pretraga — znanstveni članci iz desetaka otvorenih izvora. Popis možete spremiti za citiranje. Potreban je internet; upiti idu tim uslugama."
+  },
+  "Surveyor": {
+   "tags": [
+    "mrtve veze",
+    "revizija"
+   ],
+   "line": "Koje veze ima vaša web-stranica i koje od njih ne rade? Navodi ih sa sidrima i preusmjeravanjima. Vanjske se ne mogu pouzdano provjeriti. Samo za vaše vlastite stranice."
+  },
+  "Trade-Free-Link-Guardian": {
+   "tags": [
+    "WordPress",
+    "GPL v2"
+   ],
+   "line": "Za vaše WordPress web-mjesto: pronalazi pokvarene veze i popravlja ih bez vanjskih usluga. Mijenja stvarni sadržaj, zato prvo napravite sigurnosnu kopiju. Nije testirano na pravom WordPressu."
+  },
+  "OUTPOST": {
+   "tags": [
+    "nadzor"
+   ],
+   "line": "Pratite svoje web-stranice i provjerite odgovaraju li još. Radi samo dok je kartica otvorena. I stranica s pogreškom računa se kao odgovor. Sučelje je na engleskom."
+  },
+  "ScryVeil": {
+   "tags": [
+    "OSINT",
+    "sigurnost"
+   ],
+   "line": "Provjerite sigurnost domene i dobijte tekstualno izvješće koje možete spremiti. Neke provjere mogu biti nepotpune ili zahtijevati ključ. Povezuje se s uslugama trećih strana; samo za vaše domene."
+  },
+  "Vitrina": {
+   "tags": [
+    "praćenje izvora"
+   ],
+   "line": "Ugradite javnu objavu s Facebooka na svoju stranicu bez računa i kopirajte gotov kod. Neslužbeno; Meta vidi vašu IP adresu, prikaz nije zajamčen."
+  },
+  "Threads-fara-cont": {
+   "tags": [
+    "praćenje izvora"
+   ],
+   "line": "Čitajte javne objave s Threadsa bez računa i spremite ih kao tekst. Neslužbeno; Meta vidi vašu IP adresu, ponekad je potreban posrednik."
+  },
+  "X-fara-cont": {
+   "tags": [
+    "praćenje izvora"
+   ],
+   "line": "Pristupite javnim profilima i objavama na X-u bez računa na nekoliko načina: izravna veza, arhiva, pretraga ili Nitter. Ne čita sadržaj; šalje vezu na archive.org."
+  },
+  "Arhiva-LinkedIn": {
+   "tags": [
+    "arhiviranje"
+   ],
+   "line": "Držite na jednom mjestu bilješke o LinkedIn objavama koje ste sami zalijepili i izvezite ih kao tekst. Galerija koristi službeno ugrađivanje pa se povezuje s LinkedInom. Neslužbeno."
+  },
+  "Cadraj": {
+   "tags": [
+    "praćenje izvora"
+   ],
+   "line": "Skupljajte TikTok klipove ručno, grupirane po autoru, i gledajte ih u službenom playeru. Možete označiti one koje ste već pogledali."
+  },
+  "FASCICUL": {
+   "tags": [
+    "suradnja"
+   ],
+   "line": "Pretvara telefone u sobi u zajedničku ploču na video-projektoru: crteži, bilješke, slike, laserski pokazivač i kamera uživo. Testirano na računalu; na stvarnim telefonima još nije potvrđeno."
+  },
+  "INDICATIV": {
+   "tags": [
+    "ispit",
+    "radio"
+   ],
+   "line": "Pripremite radioamaterski ispit ANCOM bez interneta: 723 pitanja s razmaknutim ponavljanjem. Neslužbeno; banka pitanja provjerena je samo djelomično."
+  },
+  "ETER": {
+   "tags": [
+    "radio",
+    "enciklopedija"
+   ],
+   "line": "Naučite radioamaterstvo u enciklopediji: Morseova abeceda, vježbač, kalkulatori antena i pretraga po cijelom sadržaju."
+  },
+  "ATINGERE": {
+   "tags": [
+    "pristupačnost"
+   ],
+   "line": "Pretvara knjigu u Brailleovo pismo s vibracijama na dodirnom zaslonu za gluhoslijepe ili u audioknjigu za slijepe. Nije provjereno s čitateljima Brailleova pisma; ima ograničenja."
+  },
+  "Clopotel": {
+   "tags": [
+    "događaji",
+    "MIT"
+   ],
+   "line": "Držite se vremena na konferenciji ili radionici: scenski mjerač vremena s vašim programom i signal kad se kraj približava. Na rumunjskom i engleskom."
+  },
+  "Monstrarium": {
+   "tags": [
+    "radionica",
+    "MIT"
+   ],
+   "line": "Planirajte radionicu izrade čudovišta od recikliranog materijala: aplikacija izračunava materijal i sesije, nudi 50 čudovišta sa zvukom, 3D-om i edukativnom igrom."
+  },
+  "TranslateHub": {
+   "tags": [
+    "prijevod",
+    "UI"
+   ],
+   "line": "Birajte među 22 alata za prevođenje ili prevodite s umjetnom inteligencijom vlastitim ključem. Tekst preveden UI-jem ide usluzi Anthropic."
+  },
+  "DataWeave": {
+   "tags": [
+    "podaci"
+   ],
+   "line": "Otvorite tablicu i razumite je: statistika, grafikoni, zaokretne tablice i korelacije. Vaši podaci ostaju na vašem uređaju."
+  },
+  "MarkdownAtelier": {
+   "tags": [
+    "pisanje"
+   ],
+   "line": "Pišite dokumente u Markdownu i odmah vidite kako izgledaju, s jednostavnim formulama; na 7 jezika, bez interneta. Tekstovi ostaju u vašem pregledniku; spremajte sigurnosnu kopiju."
+  },
+  "RegexLab": {
+   "tags": [
+    "razvoj"
+   ],
+   "line": "Isprobajte regularni izraz i odmah vidite što hvata; objašnjenja korak po korak, testovi i upozorenje ako može zamrznuti program."
+  },
+  "SEOptimum": {
+   "tags": [
+    "web"
+   ],
+   "line": "Provjerite koliko je web-stranica spremna za tražilice. 20 alata, uključujući analizu stranice i pregled kako će izgledati u rezultatima pretraživanja."
+  },
+  "SEVA": {
+   "tags": [
+    "zdravlje"
+   ],
+   "line": "Saznajte o snu, dnevnom ritmu tijela, disanju i prehrani u enciklopediji koju možete i poslušati. Samo informativno; nije liječnički savjet."
+  },
+  "PULS": {
+   "tags": [
+    "zdravlje",
+    "hitni slučajevi"
+   ],
+   "line": "Što činiti dok ne stigne hitna? Rumunjski vodič za prvu pomoć s metronomom za KPR i neobveznom karticom za hitne slučajeve. Klinički neprovjereno; nazovite 112."
+  },
+  "VATRA": {
+   "tags": [
+    "terenski rad"
+   ],
+   "line": "Što činiti ako u prirodi ostanete bez vode, vatre ili skloništa? Enciklopedija preživljavanja bez interneta, s pretragom i bilješkama. Samo za obrazovanje; u hitnom slučaju nazovite 112."
+  },
+  "Eclipsa-2027": {
+   "tags": [
+    "astronomija"
+   ],
+   "line": "Pogledajte na karti bez interneta gdje i koliko traje potpuna Sunčeva pomrčina 2. kolovoza 2027., s gradovima i pretragom mjesta. Vrijednosti su okvirne; ne gledajte u Sunce bez filtra."
+  },
+  "orarium": {
+   "tags": [
+    "astronomija",
+    "vrijeme"
+   ],
+   "line": "Koliko je sati sada na Marsu, na Mjesecu ili na asteroidu? Lokalno vrijeme uživo na 45 nebeskih tijela. Približan model, internet nije potreban; nije za navigaciju."
+  },
+  "TerRa": {
+   "tags": [
+    "astronomija"
+   ],
+   "line": "3D globus i karta koji prikazuju dan i noć na Zemlji, Mjesecu i planetima. Položaji satelita mogu kasniti oko 3 mjeseca dok ih ne osvježite online."
+  },
+  "Horizons.BeyondLimits": {
+   "tags": [
+    "kozmologija"
+   ],
+   "line": "Putujte kroz povijest svemira od Velikog praska do kraja kroz 91 prekretnicu. Budućnost je znanstvena špekulacija, a ne točno predviđanje."
+  },
+  "Hyper4D": {
+   "tags": [
+    "matematika"
+   ],
+   "line": "Pogledajte kako izgledaju četverodimenzionalni oblici: okrećite ih na zaslonu i promatrajte iz više kutova. Slike se mogu spremiti."
+  },
+  "ExploratoriiEco": {
+   "tags": [
+    "priroda"
+   ],
+   "line": "Terenski vodič za ljubitelje prirode: od klasifikacije živih bića i tragova do biomova Rumunjske, dnevnik promatranja, etika i hitni slučajevi."
+  },
+  "FieldObserver": {
+   "tags": [
+    "terenski rad"
+   ],
+   "line": "Bilježite svoja terenska promatranja; očitanja senzora telefona dodaju se automatski. Vodite arhivu svojih izlazaka."
+  },
+  "VietAR": {
+   "tags": [
+    "bioraznolikost"
+   ],
+   "line": "Fotografirajte ili snimite biljku ili stvorenje i dobijte predodžbu među 519 vrsta iz Rumunjske. Može pogriješiti; ništa ne jedite na temelju toga."
+  },
+  "VOIAJOR": {
+   "tags": [
+    "Voyager",
+    "simulacija"
+   ],
+   "line": "Pratite putanje Voyagera 1 i 2 od 1977. do milijardu godina unaprijed, u svakom mjerilu — od planeta do Mliječne staze. Okvirni model, nije za navigaciju."
+  },
+  "Nemurirea": {
+   "tags": [
+    "biologija"
+   ],
+   "line": "Otkrijte kako tijelo stari i što znanost kaže o biološkim satovima i dugovječnosti, zatim se provjerite kvizom. Nije liječnički savjet."
+  },
+  "IncredibleCosmos": {
+   "tags": [
+    "igra",
+    "fizika"
+   ],
+   "line": "Rasporedite planete i zvijezde tako da njihova gravitacija usmjeri komet prema cilju. 108 razina, tri težine i do tri zvjezdice po razini."
+  },
+  "Cupa-Mondiala-2026": {
+   "tags": [
+    "simulacija",
+    "neslužbeno"
+   ],
+   "line": "Igrajte na Svjetskom prvenstvu 2026. i pratite razvoj zamišljenog turnira. Rezultati su nasumični, nisu prognoza; neslužbeno."
+  },
+  "AGORA": {
+   "tags": [
+    "ekonomija",
+    "EU"
+   ],
+   "line": "Kako je nastao euro i što znači za Rumunjsku? 59 poglavlja od Maastrichta do ESB-a, plus savjeti za putnike. Neslužbeno."
+  },
+  "URME": {
+   "tags": [
+    "priroda",
+    "Buzău"
+   ],
+   "line": "Pripremite se za planinarenje stazom Colți–Aluniș u Buzăuu: biljke, jantar, fosili, vremena izlaska i zalaska sunca, oprema. Karta nije za navigaciju."
+  },
+  "Belot-fara-frontiere": {
+   "tags": [
+    "karte",
+    "UI"
+   ],
+   "line": "Upoznajte belot i srodne igre u drugim zemljama, zatim igrajte za stolom: vi i UI partner protiv dva UI protivnika. Blok za bodove je uključen."
+  },
+  "Scopone-fara-frontiere": {
+   "tags": [
+    "karte",
+    "UI"
+   ],
+   "line": "Saznajte kako je nastala scopone, koja su joj pravila i kako se mijenjaju od regije do regije, zatim igrajte protiv računala koje zna davati savjete."
+  },
+  "Solitaire-fara-frontiere": {
+   "tags": [
+    "karte"
+   ],
+   "line": "Pregledavajte i igrajte pasijanse kao što su Klondike, FreeCell ili Spider. Kad zapnete, zatražite savjet ili pustite računalo da riješi."
+  },
+  "Sudoku-fara-frontiere": {
+   "tags": [
+    "zagonetke"
+   ],
+   "line": "136 vrsta sudokua — od klasičnog do killera i 3D-a; pregledavajte i igrajte. Pomaže objašnjenjima korak po korak i rješava vaše vlastite zagonetke."
+  },
+  "Domino-fara-frontiere": {
+   "tags": [
+    "domino",
+    "UI"
+   ],
+   "line": "Naučite povijest i pravila domina, zatim igrajte za stolom protiv jednog do tri protivnika koje vodi računalo. Potez se može poništiti."
+  },
+  "Mahjong-fara-frontiere": {
+   "tags": [
+    "mahjong",
+    "UI"
+   ],
+   "line": "Upoznajte 8 vrsta mahjonga; igrajte pasijans ili igru za četvero s tri jednostavna protivnika koje vodi računalo. Radi bez interneta."
+  },
+  "Go-fara-frontiere": {
+   "tags": [
+    "go",
+    "UI"
+   ],
+   "line": "Saznajte odakle dolazi go i kako se igra, zatim se okušajte protiv računala koje zna davati savjete. Ne šalje nikakve podatke putem interneta."
+  },
+  "Zaruri-fara-frontiere": {
+   "tags": [
+    "kocke"
+   ],
+   "line": "26 igara s kockama o kojima možete čitati, 12 protiv računala; plus simulator bacanja s vjerojatnostima. Bez novca; izvan mreže."
+  },
+  "Sah-fara-frontiere": {
+   "tags": [
+    "šah"
+   ],
+   "line": "Više od 700 varijanti šaha za istraživanje i mali rječnik pojmova; većinu možete igrati protiv računala. Radi bez interneta."
+  },
+  "Dame-fara-frontiere": {
+   "tags": [
+    "dama"
+   ],
+   "line": "Igrajte 25 varijanti dame protiv računala i spremite partiju. Pravila 16 njih samo su približna i označena su znakom ⚠."
+  },
+  "Table-fara-frontiere": {
+   "tags": [
+    "backgammon"
+   ],
+   "line": "Backgammon, tavli, nardi i rumunjske varijante table; čitajte i igrajte: 17 varijanti protiv računala, tipkovnicom ili mišem."
+  },
+  "Remi-fara-frontiere": {
+   "tags": [
+    "remi"
+   ],
+   "line": "Upoznajte obitelj remija i igrajte 19 varijanti protiv računala sa statistikom. 8 jezika; krupne, lako vidljive pločice ili karte."
+  },
+  "Carti-de-joc-fara-frontiere": {
+   "tags": [
+    "karte"
+   ],
+   "line": "Od pasijansa i Crnog Petra do pokera: 17 igara s kartama s objašnjenim pravilima, 8 njih možete odmah igrati."
+  },
+  "Undava": {
+   "tags": [
+    "kviz",
+    "obrazovanje"
+   ],
+   "line": "Pripremite kviz ili ga igrajte s prijateljima na istom telefonu ili računalu i ponovno igrajte pitanja na koja ste pogrešno odgovorili. Slično Kahootu, ali bez povezivanja."
+  },
+  "AI-Liber": {
+   "tags": [
+    "UI"
+   ],
+   "line": "Razgovarajte s nekoliko asistenata s umjetnom inteligencijom na jednom mjestu, neki rade na vašem računalu. Poruke idu pružatelju kojeg odaberete; UI može pogriješiti."
+  },
+  "LocalMind": {
+   "tags": [
+    "lokalni UI"
+   ],
+   "line": "Čavrljajte s malim asistentom s umjetnom inteligencijom koji radi izravno u vašem pregledniku. Modeli se jednom preuzimaju s interneta; može pogriješiti."
+  },
+  "PromptVault": {
+   "tags": [
+    "promptovi"
+   ],
+   "line": "Više od 500 gotovih promptova za asistente s umjetnom inteligencijom; birajte i označavajte favorite. Ne sprema vaše vlastite tekstove."
+  },
+  "ARENA": {
+   "tags": [
+    "evaluacija UI-ja"
+   ],
+   "line": "Natjerajte dva UI modela da odgovaraju naslijepo i glasajte za bolji; ljestvica se čuva na vašem računalu. Potrebni su vam vlastiti ključevi."
+  },
+  "Nexus-fara-frontiere": {
+   "tags": [
+    "agenti"
+   ],
+   "line": "Čavrljajte s UI asistentima nekoliko pružatelja; razgovor s pretragom i spremanjem. Potrebni su internet i vaši vlastiti ključevi, koji se spremaju nešifrirani."
+  },
+  "VoiceAtelier": {
+   "tags": [
+    "glas"
+   ],
+   "line": "Poslušajte kako zvuče stotine umjetnih glasova na desetcima jezika i saznajte kako se radi audioknjiga. Online uzorak šalje tekst vanjskim uslugama samo uz vaše dopuštenje."
+  },
+  "Trusa-fara-frontiere": {
+   "tags": [
+    "alati"
+   ],
+   "line": "Komplet od 15 malih svakodnevnih alata: bilješke, tablica, Markdown, lozinke, financijski dnevnik i još. Nema službenu vezu s YunoHostom koji je inspirirao kategorije."
+  },
+  "API-fara-frontiere": {
+   "tags": [
+    "API"
+   ],
+   "line": "Vrijeme, NASA-ine snimke, položaj ISS-a i desetci podataka uživo na jednom mjestu. Potreban je internet; nije testirano sa stvarnim uslugama."
+  },
+  "OmniHost": {
+   "tags": [
+    "paket"
+   ],
+   "line": "Veliki paket od više od sto radnih alata na jednom mjestu. Povezuje se s četiri vanjske usluge; pojedinosti su u README-u."
+  },
+  "VNTV": {
+   "tags": [
+    "mediji",
+    "MIT"
+   ],
+   "line": "Puštajte VideoNeat trailere kao neprekidni televizijski kanal. Potreban je internet; u P2P načinu vaša je adresa vidljiva drugim gledateljima."
+  },
+  "OSATURA": {
+   "tags": [
+    "animacija",
+    "MPL/AGPL"
+   ],
+   "line": "Oživite 2D crteže: povežite ih sa «skeletom», pokrenite i izvezite animaciju u nekoliko formata. Alfa verzija, do sada malo testirana."
+  },
+  "OAZA": {
+   "tags": [
+    "usluge"
+   ],
+   "line": "340 besplatnih web-usluga, uglavnom bez računa, u jednom katalogu. Popis je provjeren u lipnju 2026., ali ne automatski."
+  },
+  "VaultCrypt": {
+   "tags": [
+    "sigurnost"
+   ],
+   "line": "Imate nešto što treba sakriti od znatiželjnih očiju? Zaključajte datoteke i tekstove lozinkom izravno u pregledniku. Izgubljena lozinka ne može se vratiti."
+  },
+  "Akasha": {
+   "tags": [
+    "bilješke"
+   ],
+   "line": "Bilježnica koja radi izvan mreže, s oznakama, pretragom i vezama među stranicama. Da ništa ne izgubite, preuzimajte svježu kopiju datoteke."
+  },
+  "CLEPSIDRA": {
+   "tags": [
+    "vrijeme"
+   ],
+   "line": "Sat za odbrojavanje, budilica i rasporedi za radne dane i vikende. Prati praznike i vaše vlastite događaje."
+  },
+  "Origami": {
+   "tags": [
+    "umjetnost"
+   ],
+   "line": "Naučite savijati papir korak po korak: oznake, tehnike i ilustrirani modeli. Aplikacija pamti gdje ste stali."
+  },
+  "Zicala": {
+   "tags": [
+    "kultura"
+   ],
+   "line": "Svaki dan jedna rumunjska poslovica iz zbirke od 550. Možete pretraživati i spremati favorite; komentari su napisani uz pomoć UI-ja."
+  },
+  "Limpezimea": {
+   "tags": [
+    "književnost"
+   ],
+   "line": "Čitajte znanstvenofantastični roman «Limpezimea» na sedam jezika. Popratna kronika i kritička studija napisane su uz pomoć UI-ja (Claude)."
+  },
+  "Nota-Zero": {
+   "tags": [
+    "književnost"
+   ],
+   "line": "Spekulativna fantastična priča o teoriji struna na rumunjskom, engleskom i francuskom, s bilješkama koje objašnjavaju znanstvene ideje. Fikcija je, nije akademski izvor."
+  },
+  "Pendulul": {
+   "tags": [
+    "književnost"
+   ],
+   "line": "Planet se njiše između tri zvijezde i crne rupe: znanstvenofantastični roman u devet svezaka koji je Alexio napisao zajedno s Claudeom. 3D simulacija, čitač sa spremanjem za čitanje izvan mreže, EPUB i PDF."
+  },
+  "PrintreInteligente": {
+   "tags": [
+    "književnost"
+   ],
+   "line": "Zakoračite u interaktivni znanstvenofantastični roman s likovima nadahnutim posadom Artemisa 2. Pregledi su izmišljeni; prijevod, glas i UI funkcije koriste vanjske usluge."
+  },
+  "BorderlessMelodies": {
+   "tags": [
+    "glazba"
+   ],
+   "line": "Slušajte glazbu koja sama sebe komponira izravno u pregledniku. Možete izvesti kao audio; postoji mjerač vremena za spavanje."
+  },
+  "EcoulSpectral": {
+   "tags": [
+    "audio"
+   ],
+   "line": "Pogledajte zvuk kao sliku, odaberite dio koji vas smeta i odvojite ga ili izbrišite. Uključuje smanjenje šuma, otkrivanje zvukova i spremanje kao WAV."
+  },
+  "Constelar": {
+   "tags": [
+    "UI"
+   ],
+   "line": "Čavrljajte s virtualnim prijateljima koji pamte vaše razgovore. Zadano odgovaraju prema jednostavnim pravilima; pravi UI samo ako odaberete pružatelja, i tada mu idu vaše poruke. Samo za odrasle."
+  },
+  "Tarot": {
+   "tags": [
+    "kultura"
+   ],
+   "line": "Istražite povijest tarota, simbole karata i način na koji se čitaju kao kulturni fenomen. Interaktivni tečaj vlastitim tempom."
+  },
+  "Numerologie": {
+   "tags": [
+    "kultura"
+   ],
+   "line": "Istražite numerologiju kao simboličku tradiciju na četiri razine, s vježbama, rječnikom, dnevnikom i kalkulatorom. Prikazano bez znanstvene potvrde."
+  },
+  "PUNCTUM": {
+   "tags": [
+    "zdravlje",
+    "dokazi"
+   ],
+   "line": "Edukativni atlas akupresure i točkastih terapija: više od 400 točaka na interaktivnim kartama, rutine samopomoći s vođenim sesijama, dokazi i sigurnost. Ne zamjenjuje liječnika."
+  },
+  "Reiki": {
+   "tags": [
+    "kultura"
+   ],
+   "line": "Saznajte što je reiki, duhovna praksa, i što govore istraživanja: nije nađeno dovoljno dokaza o učinku izvan opuštanja. Ne zamjenjuje liječnika."
+  },
+  "Bioenergoterapie": {
+   "tags": [
+    "kultura"
+   ],
+   "line": "Tečaj koji objašnjava što je bioenergetska terapija i odakle potječe. Nema znanstvenih dokaza o ljekovitom djelovanju prakse; ne zamjenjuje liječnika."
+  },
+  "CHIROMANTIA": {
+   "tags": [
+    "kiromantija",
+    "kultura"
+   ],
+   "line": "Interaktivni atlas kiromantije: karta dlana s linijama, brežuljcima, prstima i tipovima ruku, čitana kao kulturna tradicija; s odjeljkom o znanosti i kritičkom razmišljanju. Bez znanstvene potvrde."
+  },
+  "Radiestezie": {
+   "tags": [
+    "kultura"
+   ],
+   "line": "Prođite 18 razina o traženju vode šipkom, s rječnikom, dnevnikom prakse i međunarodnim dodacima. Od početka navodi da nema znanstvene potvrde."
+  },
+  "Inforenergetica": {
+   "tags": [
+    "kultura"
+   ],
+   "line": "Saznajte u strukturiranom tečaju što tvrdi inforenergetika, netradicionalna praksa. Bez znanstvene potvrde; nije liječnički savjet."
+  },
+  "ECLIPSA": {
+   "tags": [
+    "astrologija"
+   ],
+   "line": "Saznajte u koju astrološku kuću vaše natalne karte pada pomrčina i o idućih 12 pomrčina. Izračun je približan, tumačenje simboličko; bez znanstvene potvrde."
+  },
+  "Afrodisiace-fara-frontiere": {
+   "tags": [
+    "kultura"
+   ],
+   "line": "Čitajte o 22 namirnice i biljke tradicionalno povezane sa željom, s razinom dokaza za svaku. Kulturni vodič za odrasle, nije liječnički savjet."
+  },
+  "CalmWaves": {
+   "tags": [
+    "audio"
+   ],
+   "line": "Ambijentalna glazba za opuštanje i spavanje, stvarana u hodu. Nije medicinski proizvod; odjeljak o istraživanjima nije neovisno provjeren. Posavjetujte se s liječnikom (epilepsija)."
+  },
+  "ASMR": {
+   "tags": [
+    "audio"
+   ],
+   "line": "Napravite vlastiti umirujući zvučni krajolik od slojeva ambijenta, zvukova dodira i binauralnih otkucaja. Ima mjerač vremena za spavanje i možete podijeliti svoj miks."
+  },
+  "NOMIA": {
+   "tags": [
+    "fikcija",
+    "spekulacija",
+    "PWA"
+   ],
+   "line": "Kakav bi mogao biti prvi kontakt između ljudi, UI-ja i drugih vrsta uma? 1001 izmišljeni scenarij; fikcija, ne stvarnost. Radi i izvan mreže."
+  },
+  "ValeaPlopului1972": {
+   "tags": [
+    "NLO",
+    "3D",
+    "fikcija"
+   ],
+   "line": "Pogledajte NLO događaj iz 1972. izvana, iznutra i u simulaciji, rekonstruiran u 3D-u. To je zamišljena hipoteza, a ne dokaz."
+  },
+  "HoroScop": {
+   "tags": [
+    "astrologija",
+    "efemeride",
+    "izvan mreže"
+   ],
+   "line": "Izračunajte položaje planeta za datum i mjesto, zatim istražite natalnu kartu, aspekte i kompatibilnost. Simbolička astrologija, bez znanstvene osnove. Radi izvan mreže."
+  },
+  "Aurora": {
+   "tags": [
+    "meditacija",
+    "audio",
+    "opuštanje"
+   ],
+   "line": "Slušajte umirujuće tonove i lagano pulsirajuće zvukove i pratite vodič za disanje. Samo za opuštanje, nije liječenje. Radi bez interneta."
+  },
+  "NumeroLogIA": {
+   "tags": [
+    "numerologija",
+    "UI",
+    "izvan mreže"
+   ],
+   "line": "Saznajte što numerologija, kineska BaZi astrologija i bioritam kažu o vašem datumu rođenja, uz objašnjen svaki izračun. Simbolički sustav, bez znanstvene osnove."
+  },
+  "FrequencyLaboratory": {
+   "tags": [
+    "audio",
+    "laboratorij",
+    "izvan mreže"
+   ],
+   "line": "Isprobavajte zvukove, efekte i testove sluha u malom zvučnom laboratoriju. «Terapijski» učinci nisu dokazani; ne zamjenjuje liječnika. Radi izvan mreže."
+  },
+  "generator-frecvente": {
+   "tags": [
+    "audio",
+    "generator",
+    "izvan mreže"
+   ],
+   "line": "Stvarajte čiste tonove i pulsirajuće parove, slušajte poznate unaprijed postavljene vrijednosti i okvirno provjerite sluh. Nije medicinski proizvod. Radi izvan mreže."
+  },
+  "ACORDAJ": {
+   "tags": [
+    "duhovnost",
+    "atlas",
+    "kritičko razlikovanje"
+   ],
+   "line": "Pregledavajte više od tisuću duhovnih tečajeva i inicijacija s povijesnim kontekstom i kritičkim pogledom. Nije povezan s izvornom stranicom i nema znanstvene potvrde. Radi izvan mreže."
+  },
+  "Profund": {
+   "tags": [
+    "razgovor",
+    "kartice",
+    "trade-free"
+   ],
+   "line": "150 pitanja koja razgovor vode dalje od ćaskanja — među prijateljima ili u obitelji. Igrajte na zaslonu ili ispišite, uz neobvezni mjerač vremena."
+  },
+  "Universul-Observabil": {
+   "tags": [
+    "astronomija",
+    "kozmologija",
+    "vizualizacija"
+   ],
+   "line": "Koliki je vidljivi svemir? Usporedite tri karte (linearnu, ravnu, u prostoru) i radite kozmološke izračune. Brojevi nisu neovisno provjereni."
+  },
+  "Universul-Observabil-1D": {
+   "tags": [
+    "astronomija",
+    "kozmologija",
+    "vizualizacija"
+   ],
+   "line": "Putujte od nas do ruba vidljivog svemira pokraj 112 galaksija poredanih na jednoj osi. Ironičan ton, zaokružene vrijednosti, obrazovna svrha."
+  },
+  "Universul-Observabil-2D": {
+   "tags": [
+    "astronomija",
+    "satira",
+    "kozmologija"
+   ],
+   "line": "Karta galaksija u satiričnom izdanju «Ravna Zemlja»: šala je, Zemlja nije ravna. Zumirajte među 111 galaksija; udaljenosti su približne. Radi izvan mreže."
+  },
+  "Universul-Observabil-3D": {
+   "tags": [
+    "astronomija",
+    "kozmologija",
+    "3D"
+   ],
+   "line": "Letite među više od 115 galaksija na 3D karti s vođenim turama i misijama. Vrijednosti su približne."
+  },
+  "QSO": {
+   "tags": [
+    "radio",
+    "dnevnik"
+   ],
+   "line": "Vodite dnevnik radioveza svoje radioamaterske postaje s UTC vremenom, lokatorima i statistikom. Neslužbeno; izračuni su približni."
+  },
+  "Curatitor": {
+   "tags": [
+    "metapodaci",
+    "privatnost"
+   ],
+   "line": "Pogledajte što otkrivaju vaše fotografije i datoteke (mjesto, kamera, autor) i uklonite te podatke prije slanja. Ne skriva lica niti drugi vidljivi sadržaj."
+  },
+  "Poteca": {
+   "tags": [
+    "GPX",
+    "tragovi"
+   ],
+   "line": "Otvorite tragove snimljene na planinarenju ili biciklu i pogledajte udaljenost, uspon i visinski profil. Možete rezati ili spajati. Nema karte; uspon je procijenjen."
+  },
+  "Orar": {
+   "tags": [
+    "kalendar",
+    "vrijeme"
+   ],
+   "line": "Kalendar i tjedni planer sa službenim rumunjskim praznicima, s prikazom po danima, tjednima ili mjesecima. Alarmi zvone samo dok je stranica otvorena."
+  },
+  "Alfabete": {
+   "tags": [
+    "kodovi",
+    "učenje"
+   ],
+   "line": "Učite i vježbajte Morseovu abecedu, Brailleovo pismo, fonetsku abecedu, zastavičnu semaforsku abecedu i stare šifre, zatim ispišite stranicu. Stare šifre ne štite tajne."
+  },
+  "Fabrica": {
+   "tags": [
+    "tečajevi",
+    "izrada"
+   ],
+   "line": "Napišite tečaj kao običan tekst i pretvorite ga u stranicu s lekcijama, završnim testom i certifikatom za ispis. Certifikat nema službenu vrijednost."
+  },
+  "Bolta": {
+   "tags": [
+    "astronomija",
+    "planetarij"
+   ],
+   "line": "Kakvo je bilo nebo iznad glave na bilo kojem mjestu i danu između 1900. i 2100.? Sunce, Mjesec, planeti i zvijezde, kao i pomrčina 2027. Vrijednosti su izračunate, neslužbeno. Radi izvan mreže."
+  },
+  "BRAZDA": {
+   "tags": [
+    "Voyager",
+    "signal"
+   ],
+   "line": "Dekodirajte Voyagerovu zlatnu ploču korak po korak, zatim kodirajte novi disk za sondu koja se lansira sada. Slike u prvim koracima su shematske, nisu NASA-ine."
+  },
+  "Arbore": {
+   "tags": [
+    "rodoslovlje",
+    "GEDCOM"
+   ],
+   "line": "Izradite obiteljsko stablo s osobama, obiteljima, vremenskom crtom i rumunjskim kalkulatorom srodstva. Podaci ostaju samo u ovom pregledniku, bez sinkronizacije."
+  },
+  "Gospodar": {
+   "tags": [
+    "proračun",
+    "osobne financije"
+   ],
+   "line": "Pratite kućni novac: račune, troškove, mjesečne proračune i izvješća. Račun nije potreban, ali ako izgubite lozinku, gubite podatke. Nije financijski savjet."
+  },
+  "Decibel": {
+   "tags": [
+    "zvuk",
+    "mjerenje"
+   ],
+   "line": "Izmjerite koliko je glasna buka oko vas i pogledajte od kojih se zvukova sastoji. Postoji i okvirni test sluha. Nije certificirani uređaj; rezultati ovise o mikrofonu."
+  },
+  "Provenienta": {
+   "tags": [
+    "C2PA",
+    "podrijetlo"
+   ],
+   "line": "Imate sliku i želite znati tko ju je potpisao i koje je izmjene prijavio? Provjerite ugrađeni digitalni potpis. Eksperimentalno, testirano samo na primjerima datoteka."
+  },
+  "Lexicon": {
+   "tags": [
+    "rječnik",
+    "jezik"
+   ],
+   "line": "Donesite vlastite rječnike i tražite riječi čak i ako pišete bez dijakritika ili s pogreškama. Dolazi samo s malim demonstracijskim skupom. Radi izvan mreže."
+  },
+  "VERIGA": {
+   "tags": [
+    "provjera veza",
+    "MIT"
+   ],
+   "line": "Pronalazi pokvarene veze i osirotjele datoteke na web-stranici ili u mapi. Radi na Windowsima, macOS-u i Linuxu; potrebno je malo poznavanja računala."
+  },
+  "TEZAUR": {
+   "tags": [
+    "istraživanje",
+    "MIT"
+   ],
+   "line": "Asistent za diplomski rad koji piše samo na temelju vaših vlastitih knjiga i članaka, s provjerljivim citatima. Radi na vašem računalu; vaši dokumenti ga nikad ne napuštaju. U razvoju."
+  },
+  "LegatorOCR": {
+   "tags": [
+    "skeniranje",
+    "MIT"
+   ],
+   "line": "Skenirajte knjigu i dobijte čist PDF s ispravljenim stranicama i tekstom koji se može pretraživati. Radi na Windowsima, macOS-u i Linuxu; vaši skenovi ostaju kod vas."
+  },
+  "Fenarium": {
+   "tags": [
+    "percepcija",
+    "MIT"
+   ],
+   "line": "Atlas i radionica subjektivnih percepcija kroz sva osjetila, počevši od fosfenizma: tečaj s 13 modula, vođeni eksperimenti, vizualni simulator i laboratorij A/B samoeksperimenata s randomizacijom. Edukativno, nije medicinski proizvod."
+  },
+  "MENSURA": {
+   "tags": [
+    "testovi",
+    "MIT"
+   ],
+   "line": "Izmjerite IQ, EQ, CQ, RQ, izvršne funkcije i osjetila u 6 područja pomoću 18 testova, složenih indeksa i 95 % intervala pouzdanosti. Privremene norme, samo okvirno, nije dijagnoza."
+  },
+  "Cronosala": {
+   "tags": [
+    "sport",
+    "vrijeme"
+   ],
+   "line": "Mjerači vremena za teretanu: odmor između serija, HIIT, Tabata, EMOM, AMRAP, krugovi i metronom, plus dnevnik treninga s kg i ponavljanjima."
+  },
+  "ScutSonor": {
+   "tags": [
+    "sigurnost",
+    "zvuk"
+   ],
+   "line": "Glasan zvuk i stroboskop svjetiljke za susrete s agresivnim psima, plus vodič za ponašanje. To je pomoć, a ne zajamčen štit."
+  },
+  "MIRAJ": {
+   "tags": [
+    "vid",
+    "obrazovanje"
+   ],
+   "line": "Kako vidi mrežnica i kako mozak gradi sliku: fovea, slijepa pjega, iluzije i kviz, na tri razine."
+  },
+  "ANTROPOS": {
+   "tags": [
+    "probir",
+    "biologija"
+   ],
+   "line": "Okvirni znanstveni profil koji se računa lokalno: biološka dob PhenoAge, glas, rukopis, crtanje sata, TIPI osobnost i vrijeme reakcije."
+  },
+  "DESCANTAR": {
+   "tags": [
+    "folklor",
+    "grah"
+   ],
+   "line": "Gatanje iz 41 zrna graha (metoda 3×3, oltenska inačica) i 12 tradicionalnih bajanja kao predmet folklorne studije."
+  },
+  "Index-fara-frontiere": {
+   "tags": [
+    "katalog",
+    "izvori"
+   ],
+   "line": "Katalog jednodatotečnih HTML aplikacija: zbirka chiuta.github.io i vanjski izvori, s pretragom i oznakama."
+  },
+  "DECUPAJ": {
+   "tags": [
+    "reels",
+    "video"
+   ],
+   "line": "Pretvorite podcast, audio ili video u okomite klipove s titlovima izravno u pregledniku, bez računa i vodenog žiga. Vaše datoteke nikad ne napuštaju uređaj."
+  },
+  "LECTOR": {
+   "tags": [
+    "audio",
+    "knjige"
+   ],
+   "line": "Knjige čitane naglas izravno u pregledniku: EPUB, DOCX, PDF, TXT ili zalijepljen tekst, bez računa i poslužitelja. Tekst nikad ne napušta vaš uređaj."
+  },
+  "FARFURIA": {
+   "tags": [
+    "prehrana",
+    "zdravlje"
+   ],
+   "line": "Besplatan digitalni nutricionist: personalizirane kalorije i makronutrijenti, plan obroka za 7 dana, dnevnik prehrane i praćenje težine. Ne zamjenjuje liječnika ni nutricionista."
+  },
+  "VITALIS": {
+   "tags": [
+    "zdravlje",
+    "dugovječnost"
+   ],
+   "line": "Osobni pratitelj za zdravlje, dugovječnost i biohakiranje: devet stupova poredanih po dokazima, kalkulatori, ocjena načina života i dnevni ritual. Nije liječnički savjet."
+  },
+  "REZONANTA": {
+   "tags": [
+    "komunikacija",
+    "mediji"
+   ],
+   "line": "Vodič i alati za komunikaciju i medije: poruka, kanali, priopćenje za medije, intervju, jasnoća, plan i kriza."
+  },
+  "Claritas": {
+   "tags": [
+    "pristupačnost",
+    "proširenje"
+   ],
+   "line": "Sveobuhvatno proširenje preglednika za pristupačnost: ispravak kontrasta, način čitanja, čitanje naglas i WCAG provjera. Bez telemetrije, bez mreže, bez računa."
+  },
+  "TurboCursa": {
+   "tags": [
+    "utrke",
+    "Rust"
+   ],
+   "line": "Pseudo-3D arkadna utrkivačka igra napisana u Rustu: krajolici stvoreni iz sjemena, 11 načina, ligaška karijera i 2 igrača. Originalna; bez koda ili resursa iz druge igre."
+  },
+  "ANTENA": {
+   "tags": [
+    "radio",
+    "antene"
+   ],
+   "line": "U izradi: rješavač žičanih antena kompatibilan s NEC-2 (metoda momenata), sa sučeljem u pregledniku. Zasad samo pre-alfa kostur."
+  },
+  "ARBITRU": {
+   "tags": [
+    "igre",
+    "pravila"
+   ],
+   "line": "U izradi: univerzalni mehanizam pravila za igre na ploči, kartama, kockama i zagonetke, s deklarativnim jezikom pravila. Zasad samo pre-alfa kostur."
+  },
+  "ASTROLABIU": {
+   "tags": [
+    "astronomija",
+    "kalendari"
+   ],
+   "line": "U izradi: mehanizam nebeskih događaja u čistom Rustu (vremenske skale, pomrčine, izlasci i zalasci, kalendari). Zasad samo pre-alfa kostur."
+  },
+  "ECOGRAMA": {
+   "tags": [
+    "audio",
+    "restauracija"
+   ],
+   "line": "U izradi: uređivač spektrograma i restauracija zvuka: birajte na spektrogramu, popravljajte, izvozite. Zasad samo pre-alfa kostur."
+  },
+  "ecou-spectral-rs": {
+   "tags": [
+    "audio",
+    "Rust"
+   ],
+   "line": "U izradi: izvorni Rust uređivač spektrograma s dodacima za smanjenje šuma i otkrivanje zvukova. Postoje kostur koda i format dodataka, ali još nema gotovih značajki."
+  },
+  "MARTOR": {
+   "tags": [
+    "arhiviranje",
+    "dokazi"
+   ],
+   "line": "U izradi: sudsko hvatanje weba u WARC/WACZ s hashevima, potpisima i pouzdanim vremenskim žigovima, provjerljivo izvan mreže. Zasad samo pre-alfa kostur."
+  },
+  "NEAMURI": {
+   "tags": [
+    "srodstvo",
+    "rodoslovlje"
+   ],
+   "line": "U izradi: mehanizam srodstva — od puta u obiteljskom stablu do ispravnog izraza za srodstvo na mnogim jezicima. Zasad samo pre-alfa kostur."
+  },
+  "TACTIL": {
+   "tags": [
+    "Braille",
+    "pristupačnost"
+   ],
+   "line": "U izradi: sloj taktilnog izlaza: formati Brailleova pisma (BRF, Unicode), zasloni, pisači u reljefu i vibracija dodirnog zaslona. Zasad samo pre-alfa kostur."
+  },
+  "atelier-verificare": {
+   "tags": [
+    "novinarstvo",
+    "provjera",
+    "fotografije"
+   ],
+   "line": "Provjeravajte fotografije, videozapise, veze i domene u pregledniku, ništa se ne učitava: stvarna vrsta datoteke i SHA-256, EXIF/GPS, XMP/IPTC, Content Credentials (samo za čitanje), analiza razine pogreške. Ne može dokazati da je fotografija prava. Alfa."
+  },
+  "balanta": {
+   "tags": [
+    "UI",
+    "evaluacija"
+   ],
+   "line": "Naslijepo uspoređujte UI modele: zalijepite odgovore od dva do osam modela na 92 prompta na rumunjskom, engleskom i mađarskom, glasajte za A ili B i dobijte ljestvicu s intervalima. Alfa; radi izvan mreže."
+  },
+  "calendarium": {
+   "tags": [
+    "kalendari",
+    "vrijeme"
+   ],
+   "line": "Unesite datum u jednom od jedanaest kalendara (gregorijanski, julijanski, hebrejski, hidžra, perzijski, kineski, majanski, marsovski…) i vidite ga u svim ostalima, s prikazom mjeseca. Alfa; radi izvan mreže."
+  },
+  "glosar": {
+   "tags": [
+    "jezici",
+    "rječnici"
+   ],
+   "line": "Izvanmrežni rječnik za vlaški, meglenorumunjski i romski: tražite bez dijakritika, pogledajte koje osnovne riječi nedostaju i dodajte riječi s izvorom i registrom. Alfa."
+  },
+  "graiul": {
+   "tags": [
+    "folklor",
+    "arhiva"
+   ],
+   "line": "Izvanmrežna arhiva rumunjskog folklora (poslovice, bajanja, zagonetke, koledari) s izvorom, županijom i pristankom. Počinje s deset poslovica; možete dodati još. Alfa."
+  },
+  "indicativ-international": {
+   "tags": [
+    "radio",
+    "ispiti"
+   ],
+   "line": "Vježbajte pitanja za radioamaterski ispit uz raspored ponavljanja u pet kutija i probne ispite na vrijeme; uvezite pakete pitanja u zajedničkom JSON formatu. Uključeno 50 vježbovnih pitanja; nije službena banka. Alfa."
+  },
+  "proiector-fara-frontiere": {
+   "tags": [
+    "učionica",
+    "projekcija",
+    "kviz"
+   ],
+   "line": "Telefoni u učionici postaju zajednički zaslon bez poslužitelja i računa: mjerač vremena, anketa, kviz, bilješke i ploča; uparivanje QR kodom ili zalijepljenim tekstom na istoj mreži. Alfa: na stvarnim telefonima još nije testirano."
+  },
+  "regula": {
+   "tags": [
+    "igre",
+    "pravila"
+   ],
+   "line": "Igrajte pet klasičnih igara za dvoje (mlin, alquerque, fanorona, mū tōrere, hnefatafl) protiv računala ili prijatelja; dodajte vlastitu igru kao JSON. Alfa; radi izvan mreže."
+  },
+  "vietar-packs": {
+   "tags": [
+    "priroda",
+    "vrste"
+   ],
+   "line": "Pregledavajte, uvezite, provjerite i izradite regionalne pakete vrsta za VietAR: imena na više jezika, oznake toksičnosti, slične vrste. Pet nacrta početnih paketa sa 71 vrstom. Alfa; radi izvan mreže."
+  },
+  "PatruZeci": {
+   "tags": [
+    "WD-40",
+    "uradi sam"
+   ],
+   "line": "Ilustrirani animirani atlas primjena WD-40: vodič sa 147 kartica i službeni popis od 1993 primjene, svaka sa svojom animiranom scenom. Neslužbeno, izvan mreže, bez računa."
+  },
+  "ODISEEA": {
+   "tags": [
+    "Voyager",
+    "dokumentarac"
+   ],
+   "line": "Dokumentarac od oko 4,5 minute o Voyagerima 1 i 2 u jednoj HTML datoteci: scene generirane na grafičkoj kartici, izvoz u 2D i 3D za VR naočale, na 8 jezika."
+  },
+  "EXIF-CURAT": {
+   "tags": [
+    "metapodaci",
+    "privatnost"
+   ],
+   "line": "U izradi: alat u Rustu s memorijski sigurnim parserima za pregled i čišćenje skrivenih podataka u datotekama (slike, PDF, Office, video: EXIF, GPS, XMP). Zasad samo pre-alfa kostur."
+  },
+  "PORUMBEL": {
+   "tags": [
+    "fotografije",
+    "prijenos"
+   ],
+   "line": "Automatski prenosi fotografije snimljene u Open Camera na telefonu u mapu na računalu, jedna mapa po sesiji, i otvara ih u LegatorOCR-u. Bez računa, bez oblaka, bez cratea trećih strana."
+  },
+  "colibri-companion": {
+   "tags": [
+    "lokalni UI",
+    "desktop"
+   ],
+   "line": "Prijateljska desktop aplikacija za lokalni mehanizam zaključivanja colibri: odaberite model koji odgovara vašem računalu, preuzmite ga jednim klikom i čavrljajte s njim. Bez računa, bez oblačne usluge."
+  },
+  "CartaColibri": {
+   "tags": [
+    "lokalni UI",
+    "knjižnica"
+   ],
+   "line": "Lokalna UI knjižnica na mehanizmu Colibrì: indeksira mape koje odaberete, trenutno pretražuje i traži od lokalnog modela da sažme, izvuče podatke ili sintetizira, uvijek navodeći izvornu datoteku. Ništa ne napušta vaše računalo."
+  },
+  "PolyTabletop": {
+   "tags": [
+    "društvene igre",
+    "Rust"
+   ],
+   "line": "240 društvenih igara protiv računala u terminalu ili grafičkom prozoru, plus igra za dvoje na jednoj tipkovnici ili preko mreže. Napisano u Rustu; mehanizam i igre nemaju vanjskih ovisnosti."
+  },
+  "STRAJA": {
+   "tags": [
+    "privatnost",
+    "telefon"
+   ],
+   "line": "Štit protiv UI agenata koji čitaju vaš telefon: pokazuje koje aplikacije mogu čitati vaše obavijesti, zaslon, fotografije i SMS-ove, upozorava kad nova dobije pristup i vodi vas do postavke gdje opozivate dopuštenje. Bez računa, bez dopuštenja INTERNET."
+  },
+  "CUPLAJ": {
+   "tags": [
+    "imerzivno kazalište",
+    "telefonija"
+   ],
+   "line": "Telefonija sa zajedničkom linijom za imerzivno kazalište: flota običnih Android telefona postaje privatna centrala preko Wi-Fi-ja prostora; bez oblaka, bez računa, bez oglasa. Prepoznatljiva značajka je «cuplaj»: zajednička linija fiksnih telefona od 1980-ih do oko 2006."
+  },
+  "LUSTRUM": {
+   "tags": [
+    "čistač telefona",
+    "Android"
+   ],
+   "line": "Vratite prostor na telefonu: pronalazi nepotrebne datoteke, duplikate, slične fotografije i ostatke aplikacija i čisti ih samo uz vaš pristanak. Nema dopuštenje INTERNET, pa fizički ne može ništa nikamo poslati."
+  },
+  "STENOGRAMA": {
+   "tags": [
+    "transkripcija",
+    "audio"
+   ],
+   "line": "Transkripcija dugog audija izravno u pregledniku s lokalnim Whisperom: jedna HTML datoteka, bez računa, bez poslužitelja, bez vodenog žiga. Vaš audio nikad ne napušta uređaj; preuzima se samo Whisper model, jednom."
+  },
+  "GERMEN": {
+   "tags": [
+    "lokalni UI",
+    "Rust"
+   ],
+   "line": "Trenirajte mali jezični model od nule u čistom Rustu na običnom procesoru: bez Pythona, bez CUDA-e, bez računa, bez pristupa mreži, bez telemetrije. Jedna binarna datoteka, jedna tekstualna datoteka, jedna naredba."
+  },
+  "CUANTOR": {
+   "tags": [
+    "kvantno računalo",
+    "simulator"
+   ],
+   "line": "Simulator kvantnog računala za vaš desktop, od 5 do 1000 kubita, sa sučeljem u stilu IBM Quantum Composera. Točna matematika, ali ne pravi kvantni hardver."
+  }
+ }
+}
