@@ -12,12 +12,12 @@
  "summary": {
   "apps": 188,
   "ok": 3,
-  "warn": 179,
-  "fail": 6,
+  "warn": 185,
+  "fail": 0,
   "smoke": {
-   "ok": 177,
+   "ok": 179,
    "warn": 9,
-   "fail": 2,
+   "fail": 0,
    "missing": 0
   }
  },
@@ -1511,15 +1511,10 @@
   },
   "CartaColibri:site-carta/index.html": {
    "file": "site-carta/index.html",
-   "status": "fail",
+   "status": "warn",
    "kit": null,
-   "compatLayer": false,
-   "syntaxErrors": [
-    {
-     "line": 0,
-     "msg": "folosește API-uri acoperite doar de fff-compat (IntersectionObserver, navigator.clipboard, scroll cu opțiuni) dar pagina nu are stratul (tools/compat/lower.mjs --write îl adaugă)"
-    }
-   ],
+   "compatLayer": true,
+   "syntaxErrors": [],
    "postFloor": {},
    "apiBeyondFloor": [
     {
@@ -3236,15 +3231,10 @@
   },
   "GERMEN": {
    "file": "index.html",
-   "status": "fail",
+   "status": "warn",
    "kit": null,
-   "compatLayer": false,
-   "syntaxErrors": [
-    {
-     "line": 0,
-     "msg": "folosește API-uri acoperite doar de fff-compat (replaceChildren, navigator.clipboard, String.padStart/padEnd, String.trimStart/trimEnd) dar pagina nu are stratul (tools/compat/lower.mjs --write îl adaugă)"
-    }
-   ],
+   "compatLayer": true,
+   "syntaxErrors": [],
    "postFloor": {},
    "apiBeyondFloor": [
     {
@@ -3276,10 +3266,10 @@
     "scroll-behavior"
    ],
    "smoke": {
-    "status": "fail",
-    "newErrors": 2,
+    "status": "ok",
+    "newErrors": 0,
     "nativeErrors": 0,
-    "legacyErrors": 1
+    "legacyErrors": 0
    }
   },
   "Go-fara-frontiere": {
@@ -3787,15 +3777,10 @@
   },
   "LUSTRUM": {
    "file": "index.html",
-   "status": "fail",
+   "status": "warn",
    "kit": null,
-   "compatLayer": false,
-   "syntaxErrors": [
-    {
-     "line": 0,
-     "msg": "folosește API-uri acoperite doar de fff-compat (replaceChildren, IntersectionObserver, navigator.clipboard) dar pagina nu are stratul (tools/compat/lower.mjs --write îl adaugă)"
-    }
-   ],
+   "compatLayer": true,
+   "syntaxErrors": [],
    "postFloor": {},
    "apiBeyondFloor": [
     {
@@ -3824,10 +3809,10 @@
     "scroll-behavior"
    ],
    "smoke": {
-    "status": "fail",
-    "newErrors": 1,
+    "status": "ok",
+    "newErrors": 0,
     "nativeErrors": 0,
-    "legacyErrors": 1
+    "legacyErrors": 0
    }
   },
   "LegatorOCR": {
@@ -5540,15 +5525,10 @@
   },
   "PolyTabletop": {
    "file": "docs/index.html",
-   "status": "fail",
+   "status": "warn",
    "kit": null,
-   "compatLayer": false,
-   "syntaxErrors": [
-    {
-     "line": 0,
-     "msg": "folosește API-uri acoperite doar de fff-compat (navigator.clipboard) dar pagina nu are stratul (tools/compat/lower.mjs --write îl adaugă)"
-    }
-   ],
+   "compatLayer": true,
+   "syntaxErrors": [],
    "postFloor": {},
    "apiBeyondFloor": [
     {
@@ -6267,24 +6247,11 @@
   },
   "STENOGRAMA": {
    "file": "index.html",
-   "status": "fail",
+   "status": "warn",
    "kit": null,
-   "compatLayer": false,
-   "syntaxErrors": [
-    {
-     "line": 390,
-     "msg": "Unexpected token (260:10)"
-    },
-    {
-     "line": 0,
-     "msg": "folosește API-uri acoperite doar de fff-compat (Blob.arrayBuffer/text, navigator.clipboard, String.padStart/padEnd, <dialog>.showModal) dar pagina nu are stratul (tools/compat/lower.mjs --write îl adaugă)"
-    }
-   ],
-   "postFloor": {
-    "ES2018 object spread/rest": 1,
-    "ES2018 regex \\p": 1,
-    "ES2020 import()": 1
-   },
+   "compatLayer": true,
+   "syntaxErrors": [],
+   "postFloor": {},
    "apiBeyondFloor": [
     {
      "name": "Blob.arrayBuffer/text",
@@ -6319,15 +6286,10 @@
   },
   "STRAJA": {
    "file": "docs/index.html",
-   "status": "fail",
+   "status": "warn",
    "kit": null,
-   "compatLayer": false,
-   "syntaxErrors": [
-    {
-     "line": 0,
-     "msg": "folosește API-uri acoperite doar de fff-compat (IntersectionObserver, scroll cu opțiuni, <dialog>.showModal) dar pagina nu are stratul (tools/compat/lower.mjs --write îl adaugă)"
-    }
-   ],
+   "compatLayer": true,
+   "syntaxErrors": [],
    "postFloor": {},
    "apiBeyondFloor": [
     {
