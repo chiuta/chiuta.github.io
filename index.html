@@ -729,7 +729,7 @@
 </script>
 <script type="module" id="fff-imp">window.__fffImp=function(u){return import(u)};</script>
 <!--fff:compat:end-->
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data: blob:; style-src 'self' 'unsafe-inline'; font-src 'self' data:; media-src 'self' blob: data:; object-src 'none'; base-uri 'self'; form-action 'self'; worker-src 'self' blob:; script-src 'self' 'sha256-JQ/7Yhn7O+sKmuZN2xshEXzwwMvqVlo2OANl/JrM2lY=' 'sha256-QrjB1MbPYLmnffTbp57xa6SwKTdVSUGUyaLDtOnyJ+k=' 'sha256-CLz9ky8c+CI8yax80HOx/XKzzI+0llJZxdBKUKIqejE=' 'sha256-YO40Pa9U54kBXfBS8s7ySLVhwIuT7JC9cMSApha5DIk=' 'sha256-45vHvie+IgUd3Ud5TXXqlNSfTj1syqEJHdmmn629Gsk=' 'sha256-NhFYx+8UgWykiCFi4WXtcNrvQdtM0Hg323ahxHZhWmo=' 'sha256-8qWqoBs2wXPR0/K2FGOQkqRslizKQ5myWkSaVqIJlD8=' 'sha256-rwiX69fhg7g0t6uP6QCYQkK+MUMYeimVBjy1V+zYfkA=' 'sha256-e0nC3KSV3uUqYFHNu26/cjZFV0v5Apk7Gwf6ptIYCDo='; connect-src 'none'; manifest-src 'self'">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data: blob:; style-src 'self' 'unsafe-inline'; font-src 'self' data:; media-src 'self' blob: data:; object-src 'none'; base-uri 'self'; form-action 'self'; worker-src 'self' blob:; script-src 'self' 'sha256-JQ/7Yhn7O+sKmuZN2xshEXzwwMvqVlo2OANl/JrM2lY=' 'sha256-QrjB1MbPYLmnffTbp57xa6SwKTdVSUGUyaLDtOnyJ+k=' 'sha256-CLz9ky8c+CI8yax80HOx/XKzzI+0llJZxdBKUKIqejE=' 'sha256-YO40Pa9U54kBXfBS8s7ySLVhwIuT7JC9cMSApha5DIk=' 'sha256-41VB0Rk/IoK3LKqK8PouGXMNNeGTBviCHtp/5dtvm7s=' 'sha256-NhFYx+8UgWykiCFi4WXtcNrvQdtM0Hg323ahxHZhWmo=' 'sha256-8qWqoBs2wXPR0/K2FGOQkqRslizKQ5myWkSaVqIJlD8=' 'sha256-rwiX69fhg7g0t6uP6QCYQkK+MUMYeimVBjy1V+zYfkA=' 'sha256-e0nC3KSV3uUqYFHNu26/cjZFV0v5Apk7Gwf6ptIYCDo='; connect-src 'none'; manifest-src 'self'">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <meta name="color-scheme" content="dark light">
 <meta name="theme-color" id="theme-color-meta" content="#07060f">
@@ -1933,6 +1933,14 @@ function applyContent(lang){
     T[l]=t; CTRL[l]=x.CTRL; CONTENT[l]={sections:x.sections,misc:x.misc};
     LANG_META.push({id:l,label:x.label,flag:x.flag,name:x.name});
   });
+  /* descrierile aplicațiilor pentru limbile noi: fișiere separate (i18n/hub-apps.<limbă>.js), încărcate ca <script> doar la cerere
+     (CSP: script-src 'self'; connect-src rămâne 'none'). Până sosesc, și pentru orice cheie lipsă, rămâne engleza. */
+  var AV=["uk"], asked={}, base=applyContent;
+  window.__hubApps=function(l,apps){ if(N[l]&&CONTENT[l]){ CONTENT[l].apps=apps; if(curLang===l){ try{ base(l); }catch(_){} } } };
+  applyContent=function(lang){
+    base(lang);
+    if(AV.indexOf(lang)>-1&&!CONTENT[lang].apps&&!asked[lang]){ asked[lang]=1; var s=document.createElement('script'); s.src='i18n/hub-apps.'+lang+'.js'; s.async=true; document.head.appendChild(s); }
+  };
 })();
 /*i18n25:end*/
 window.addEventListener('DOMContentLoaded',function(){try{applyContent(curLang)}catch(_){}});

@@ -122,6 +122,29 @@ function applyPage() {
     const d = JSON.parse(fs.readFileSync(path.join(DIR, `${l}.json`), 'utf8'));
     data[l] = {T: d.T, tpl: d.tpl, CTRL: d.CTRL, sections: d.sections, misc: d.misc, name: reg.languages[l].name, flag: FLAG[l], label: l.toUpperCase(), loc: LOCALE[l], ...(d.dateFmt ? {dateFmt: d.dateFmt} : {}), ...(d.months ? {months: d.months} : {})};
   }
+  // 5b) descrierile aplicațiilor (parțiale sunt permise): data/hub-i18n/apps/<limbă>.json → i18n/hub-apps.<limbă>.js
+  const appLangs = [];
+  const EN = JSON.parse(html.match(/const CONTENT=(\{[\s\S]*?\});\nfunction applyContent/)[1]).en.apps;
+  const outDir = path.join(HUB, 'i18n');
+  for (const l of ok) {
+    const f = path.join(DIR, 'apps', `${l}.json`);
+    if (!fs.existsSync(f)) continue;
+    const src = JSON.parse(fs.readFileSync(f, 'utf8')).apps, out = {}, errs = [];
+    for (const [k, v] of Object.entries(src)) {
+      if (!EN[k]) { errs.push(`${k}: nu există în catalog`); continue; }
+      const o = {};
+      if (v.line !== undefined) { if (typeof v.line !== 'string' || v.line.length < 10) errs.push(`${k}.line`); else o.line = v.line.normalize('NFC'); }
+      if (v.detail !== undefined) { if (typeof v.detail !== 'string' || v.detail.length < 10) errs.push(`${k}.detail`); else o.detail = v.detail.normalize('NFC'); }
+      if (v.tags !== undefined) { if (!Array.isArray(v.tags) || v.tags.length !== EN[k].tags.length || v.tags.some((t) => typeof t !== 'string' || !t)) errs.push(`${k}.tags (trebuie ${EN[k].tags.length})`); else o.tags = v.tags.map((t) => t.normalize('NFC')); }
+      out[k] = o;
+    }
+    if (errs.length) { console.error(`descrieri ${l}: ${errs.length} erori → omis\n   ` + errs.slice(0, 10).join('\n   ')); process.exitCode = 1; continue; }
+    fs.mkdirSync(outDir, {recursive: true});
+    fs.writeFileSync(path.join(outDir, `hub-apps.${l}.js`), `/* generat de tools/i18n25/hub-i18n.mjs din data/hub-i18n/apps/${l}.json — nu edita de mână */\n__hubApps(${JSON.stringify(l)},${JSON.stringify(out).replace(/</g, '\\u003c')});\n`);
+    appLangs.push(l);
+    const n = Object.keys(EN).length, c = (fld) => Object.values(out).filter((x) => x[fld]).length;
+    console.log(`descrieri ${l}: rânduri ${c('line')}/${n} · etichete ${c('tags')}/${n} · detalii ${c('detail')}/${n}`);
+  }
   const block = `${BEGIN}
 (function(){
   var N=${JSON.stringify(data)};
@@ -143,6 +166,14 @@ function applyPage() {
     T[l]=t; CTRL[l]=x.CTRL; CONTENT[l]={sections:x.sections,misc:x.misc};
     LANG_META.push({id:l,label:x.label,flag:x.flag,name:x.name});
   });
+  /* descrierile aplicațiilor pentru limbile noi: fișiere separate (i18n/hub-apps.<limbă>.js), încărcate ca <script> doar la cerere
+     (CSP: script-src 'self'; connect-src rămâne 'none'). Până sosesc, și pentru orice cheie lipsă, rămâne engleza. */
+  var AV=${JSON.stringify(appLangs)}, asked={}, base=applyContent;
+  window.__hubApps=function(l,apps){ if(N[l]&&CONTENT[l]){ CONTENT[l].apps=apps; if(curLang===l){ try{ base(l); }catch(_){} } } };
+  applyContent=function(lang){
+    base(lang);
+    if(AV.indexOf(lang)>-1&&!CONTENT[lang].apps&&!asked[lang]){ asked[lang]=1; var s=document.createElement('script'); s.src='i18n/hub-apps.'+lang+'.js'; s.async=true; document.head.appendChild(s); }
+  };
 })();
 ${END}
 `;
