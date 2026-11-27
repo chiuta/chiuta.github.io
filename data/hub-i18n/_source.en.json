@@ -1,0 +1,207 @@
+{
+ "lang": "en",
+ "T": {
+  "themeLbl": "Theme",
+  "langLbl": "Language",
+  "modeLbl": "Mode",
+  "colorLbl": "Color",
+  "dark": "Dark",
+  "light": "Light",
+  "taglineStrong": "Open educational & verification tools",
+  "taglineRest": " — single-file, mostly offline, no account. Each app states its limits.",
+  "noteTxt": "Personal projects by one author, not official services. Educational use only: nothing here is medical, legal or financial advice. Each app's README lists any request it makes to third parties.",
+  "searchPh": "Name, topic or word…",
+  "noRes": "No project matches these filters.",
+  "badgeLocation": "Bucharest, RO",
+  "badgeOffline": "◈ Offline-First",
+  "badgeVanilla": "⬡ Single-file",
+  "badgeTelemetry": "⌀ No telemetry on this page",
+  "statRepos": "Apps",
+  "statModules": "Sections",
+  "statLangs": "Languages",
+  "statSent": "Sent",
+  "projects": "Projects",
+  "loading": "Fetching from GitHub…",
+  "darkThemes": "Dark themes",
+  "lightThemes": "Light themes",
+  "fSearch": "Search",
+  "fCat": "Category",
+  "fCatAll": "All categories",
+  "fLang": "App language",
+  "fLangAll": "Any language",
+  "fOff": "Offline use",
+  "fOffAny": "Any",
+  "fOffFull": "Works fully offline",
+  "fOffPart": "Works offline, some features need internet",
+  "fOffNo": "No offline support",
+  "fReset": "Reset filters",
+  "fForm": "Filter the catalog",
+  "demoHead": "Demo videos",
+  "demoLead": "Short silent screen recordings of each app, with subtitles in 8 languages. Hosted here, no third-party player.",
+  "demoAll": "All demo videos →",
+  "demoSec": "▶ Section reel",
+  "demoLink": "Demo videos",
+  "transpLink": "Transparency",
+  "aboutLine": "Alexandru-Ionuț Chiuță (Alexio): Romanian engineer and science-fiction author. Independent personal projects — not services of any institution and not official sources. Questions, corrections or removal requests:",
+  "copyright": "© 2026 Alexandru-Ionuț Chiuță · updated {d}",
+  "dataUpd": "Data updated on {d}",
+  "dataAsOf": "Data checked by the author on {d}",
+  "dataUnk": "Data date not confirmed",
+  "dataSrc": "source",
+  "bdStale": "outdated",
+  "staleTip": "The last update is older than twice the source cadence ({c}).",
+  "fData": "Data sources",
+  "cadFrozen": "frozen",
+  "cadSlow": "monthly",
+  "cadLive": "weekly",
+  "stInv": "not checked automatically",
+  "fStatus": "Status",
+  "fChain": "Chain with…",
+  "flowNext": "next step",
+  "flowPrev": "previous step",
+  "fStatusAny": "Any",
+  "stStable": "stable",
+  "stExperimental": "experimental",
+  "stAlpha": "alpha",
+  "fisaBtn": "Sheet",
+  "fCe": "In detail",
+  "fPentru": "Who it is for",
+  "fLimite": "Limits",
+  "fVersiune": "Version",
+  "fSubst": "Last substantive change",
+  "fSubstNone": "not recorded",
+  "fSync": "Catalog sync",
+  "bdOffFull": "fully offline",
+  "bdOffPart": "partly offline · needs internet",
+  "bdOffNo": "no offline support",
+  "fRelated": "Related",
+  "fVariants": "Variants",
+  "fShot": "Screenshot",
+  "fOnlyRoEn": "Sheet text exists only in Romanian and English; shown in English.",
+  "stLab": "lab",
+  "fAudit": "Internal audit",
+  "fMeasured": "Measured audit",
+  "fCifre": "Figures and sources",
+  "legendLab": "Lab. It works, but is not recommended for everyday use until fixed. The state is declared explicitly in the catalog, not computed from a score; a lab app never appears in “Recommended”.",
+  "platWeb": "web",
+  "platNative": "installable",
+  "fCov": "Coverage",
+  "fPlat": "Platform",
+  "platWebLong": "runs in the browser (a single HTML file)",
+  "platNativeLong": "installable native program, not a web page",
+  "fEvid": "Evidence",
+  "evTitle": "Level of evidence for what the practice claims (0–4)",
+  "ev0": "tradition / cultural value",
+  "ev1": "isolated reports and observations",
+  "ev2": "systematic observations, small or preliminary studies",
+  "ev3": "controlled studies",
+  "ev4": "verified (replicated, consensus)",
+  "evMode": "Historical / cultural mode: presented as tradition, not as established fact. The level rates the claims of the practice, not the software.",
+  "bdHealth": "does not replace a doctor",
+  "fHealth": "Health",
+  "healthNote": "For information only. It does not replace a doctor or another health professional; for health problems consult one, and in an emergency call 112.",
+  "bdFragile": "fragile",
+  "fFragile": "Fragility",
+  "fragileNote": "Depends on third-party sites or services that can change or block access; it may stop working without notice.",
+  "fChecked": "Last check",
+  "legendCov": "Coverage. The label on each card gives the interface languages (out of 8: ro, en, fr, it, es, pt, de, hu) and the platform: web (a file that runs in the browser) or installable (a native program). Score 0–4 from the number of languages.",
+  "legendEvid": "Evidence. Cards for practices with claimed effects (astrology, energy therapies, dowsing, “therapeutic” frequencies, relaxation) show a 0–4 meter: 0 tradition / cultural value, 1 isolated reports, 2 small or preliminary studies, 3 controlled studies, 4 verified. It rates the claims of the practice, not the software; 0–1 means “historical / cultural mode”.",
+  "legendHealth": "“Does not replace a doctor”: shown on apps with health-related content.",
+  "legendFragile": "“Fragile”: the app depends on third-party sites or services (scraping, unofficial embeds, public APIs) and may stop working without notice.",
+  "evModeShort": "historical / cultural mode",
+  "legendTitle": "How to read the cards",
+  "legendStatus": "Status. stable: version 1.0.0 or later with no experimental declaration in the README; experimental: declared so in the README; alpha: version 0.x or with an -alpha suffix. Derived by rule, not assessed one by one.",
+  "legendVer": "Versions follow MAJOR.MINOR.PATCH (SemVer), as declared by each app.",
+  "legendSubst": "A date next to the version is the last substantive change; when absent it is not recorded (the catalog sync date is in the sheet)."
+ },
+ "tpl": {
+  "nProjects": "{n} projects",
+  "nShown": "{n} of {m} projects",
+  "labNote": "Lab: internal audit score {s}/10, below the threshold of 5. It works, but is not recommended for everyday use until it is fixed.",
+  "covLangs": "{n} languages",
+  "covOnly": "{l} only",
+  "covPart": "{n} of 8 languages",
+  "covScore": "score {n}/4",
+  "statAppsTip": "Single-file apps: {n} ({l} cards in the list + {v} variants inside the Observable Universe hub card). OSATURA, VERIGA, TEZAUR and LegatorOCR, which are not single-file, are listed separately.",
+  "statSecTip": "{n} catalog sections, including the separate Rust section."
+ },
+ "CTRL": {
+  "animPlay": "Play background animation",
+  "animPause": "Pause background animation",
+  "toDark": "Switch to dark mode",
+  "toLight": "Switch to light mode",
+  "theme": "Theme",
+  "lang": "Language",
+  "skip": "Skip to content"
+ },
+ "sections": {
+  "rust": {
+   "title": "Rust: native programs, not HTML files",
+   "intro": "Projects written in Rust that are not single-file HTML apps: OSATURA (animation engine, alpha), VERIGA (link checker), TEZAUR (thesis research assistant, version 0.x) and LegatorOCR (scans → searchable PDF, version 0.x)."
+  },
+  "verificare": {
+   "title": "Verification, sources and web traces",
+   "intro": "Tools for checking where a piece of information comes from, what changed since publication, and whether a link is still alive. Each one declares in its README which requests it makes to third parties."
+  },
+  "educatie": {
+   "title": "Education and professional tools",
+   "intro": "Learning material and working tools for amateur radio, accessibility, event organization and working with text and data. Unofficial tools: they do not replace any authority."
+  },
+  "stiinta": {
+   "title": "Science, nature and fieldwork",
+   "intro": "Visualizations and encyclopedias built on public data. Where the data is approximate, the app says so."
+  },
+  "jocuri": {
+   "title": "Strategy games and rule atlases",
+   "intro": "Each game has an engine separate from the interface, a heuristic AI opponent with no access to hidden information, and its own test suites (for example, Belot: over 450,000 automated checks)."
+  },
+  "ai": {
+   "title": "AI under the user's control",
+   "intro": "Interfaces that let the user decide what leaves and where it goes. API keys stay in the browser, only \"obscured\", not encrypted: read the README before using them."
+  },
+  "utilitare": {
+   "title": "Utilities and creative projects",
+   "intro": "Small tools, built to last: one file, no account."
+  },
+  "cultura": {
+   "title": "Culture, practices and beliefs: a descriptive study",
+   "intro": "These apps describe practices without scientific evidence of efficacy (astrology, tarot, numerology, reiki, dowsing, etc.) as an object of cultural study, not as a recommendation. They do not replace medical, legal or financial advice."
+  },
+  "recomandate": {
+   "title": "Recommended",
+   "intro": "A selection to start with: source checking, translation, learning and working tools."
+  },
+  "confidentialitate": {
+   "title": "Privacy and authenticity",
+   "intro": "Strip file metadata, encrypt locally and check provenance credentials. Not independently audited: do not rely on them as the only safeguard for truly sensitive data."
+  },
+  "literatura": {
+   "title": "Literature and language",
+   "intro": "Dictionaries, alphabets and codes, proverbs and original fiction: tools for words, writing and reading. They are teaching aids, not normative references."
+  },
+  "teren": {
+   "title": "Field and trails",
+   "intro": "GPS tracks, field journals, hiking and survival guides. Everything runs locally; nothing replaces a map, a guide or local authorities, and nothing here is a navigation or safety device."
+  },
+  "sunet": {
+   "title": "Sound",
+   "intro": "Measuring, generating and analysing sound, plus music and ambience generated in the browser. The sound-level meter and hearing tests are indicative, not certified or medical devices."
+  },
+  "gospodarie": {
+   "title": "Home and organisation",
+   "intro": "Calendar, budget, family tree, notes and time: tools for everyday matters, with data kept in this browser, no account. Not financial, legal or tax advice."
+  }
+ },
+ "misc": {
+  "donateLabel": "Support",
+  "donateHide": "Hide",
+  "donateTitle": "Support the author",
+  "donateCbLabel": "Hide the support bar",
+  "cultureNote": "Read first. Descriptive content about scientifically unvalidated practices. Not a treatment or decision recommendation.",
+  "introLabel": "Introduction",
+  "github": "GitHub",
+  "live": "Live",
+  "open": "Open",
+  "nativeDemo": "Terminal demo"
+ }
+}

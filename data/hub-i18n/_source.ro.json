@@ -1,0 +1,207 @@
+{
+ "lang": "ro",
+ "T": {
+  "themeLbl": "Temă",
+  "langLbl": "Limbă",
+  "modeLbl": "Mod",
+  "colorLbl": "Culoare",
+  "dark": "Întunecat",
+  "light": "Luminos",
+  "taglineStrong": "Instrumente educaționale și de verificare",
+  "taglineRest": " — un singur fișier, în mare parte offline, fără cont. Fiecare aplicație își declară limitele.",
+  "noteTxt": "Proiecte personale ale unui singur autor, nu servicii oficiale. Doar uz educațional: nimic de aici nu este sfat medical, juridic sau financiar. README-ul fiecărei aplicații listează cererile către terți.",
+  "searchPh": "Nume, temă sau cuvânt…",
+  "noRes": "Niciun proiect nu corespunde filtrelor.",
+  "badgeLocation": "București, RO",
+  "badgeOffline": "◈ Offline-First",
+  "badgeVanilla": "⬡ Single-file",
+  "badgeTelemetry": "⌀ Fără telemetrie pe această pagină",
+  "statRepos": "Aplicații",
+  "statModules": "Secțiuni",
+  "statLangs": "Limbi",
+  "statSent": "Trimis",
+  "projects": "Proiecte",
+  "loading": "Se încarcă din GitHub…",
+  "darkThemes": "Teme întunecate",
+  "lightThemes": "Teme luminoase",
+  "fSearch": "Caută",
+  "fCat": "Categorie",
+  "fCatAll": "Toate categoriile",
+  "fLang": "Limba aplicației",
+  "fLangAll": "Orice limbă",
+  "fOff": "Folosire offline",
+  "fOffAny": "Oricare",
+  "fOffFull": "Funcționează complet offline",
+  "fOffPart": "Funcționează offline, unele funcții cer internet",
+  "fOffNo": "Fără suport offline",
+  "fReset": "Resetează filtrele",
+  "fForm": "Filtrează catalogul",
+  "demoHead": "Filmulețe demo",
+  "demoLead": "Înregistrări scurte, fără sunet, ale fiecărei aplicații, cu subtitrări în 8 limbi. Găzduite aici, fără player extern.",
+  "demoAll": "Toate filmulețele →",
+  "demoSec": "▶ Compilația secțiunii",
+  "demoLink": "Filmulețe demo",
+  "transpLink": "Transparență",
+  "aboutLine": "Alexandru-Ionuț Chiuță (Alexio): inginer și autor român de science fiction. Proiecte personale independente — nu sunt servicii ale vreunei instituții și nu sunt surse oficiale. Întrebări, corecturi sau cereri de eliminare:",
+  "copyright": "© 2026 Alexandru-Ionuț Chiuță · actualizat {d}",
+  "dataUpd": "Date actualizate la {d}",
+  "dataAsOf": "Date verificate de autor la {d}",
+  "dataUnk": "Data datelor: neconfirmată",
+  "dataSrc": "sursa",
+  "bdStale": "învechit",
+  "staleTip": "Ultima actualizare e mai veche de dublul cadenței sursei ({c}).",
+  "fData": "Surse de date",
+  "cadFrozen": "înghețat",
+  "cadSlow": "lunar",
+  "cadLive": "săptămânal",
+  "stInv": "nu se verifică automat",
+  "fStatus": "Stare",
+  "fChain": "Înlănțuie cu…",
+  "flowNext": "pasul următor",
+  "flowPrev": "pasul anterior",
+  "fStatusAny": "Oricare",
+  "stStable": "stabil",
+  "stExperimental": "experimental",
+  "stAlpha": "alpha",
+  "fisaBtn": "Fișă",
+  "fCe": "Pe larg",
+  "fPentru": "Pentru cine",
+  "fLimite": "Limite",
+  "fVersiune": "Versiune",
+  "fSubst": "Ultima schimbare de fond",
+  "fSubstNone": "neînregistrată",
+  "fSync": "Sincronizare catalog",
+  "bdOffFull": "offline complet",
+  "bdOffPart": "offline parțial · cere internet",
+  "bdOffNo": "fără suport offline",
+  "fRelated": "Înrudite",
+  "fVariants": "Variante",
+  "fShot": "Captură de ecran",
+  "fOnlyRoEn": "Textul fișei există doar în română și engleză; afișat în engleză.",
+  "stLab": "laborator",
+  "fAudit": "Audit intern",
+  "fMeasured": "Audit măsurat",
+  "fCifre": "Cifre și surse",
+  "legendLab": "Laborator. Funcționează, dar nu e recomandată pentru uz curent până la remediere. Starea e declarată explicit în catalog, nu calculată dintr-un scor; o aplicație de laborator nu apare niciodată în „Recomandate”.",
+  "platWeb": "web",
+  "platNative": "instalabil",
+  "fCov": "Acoperire",
+  "fPlat": "Platformă",
+  "platWebLong": "rulează în browser (un singur fișier HTML)",
+  "platNativeLong": "program nativ instalabil, nu pagină web",
+  "fEvid": "Dovezi",
+  "evTitle": "Nivelul de dovezi pentru ce afirmă practica (0–4)",
+  "ev0": "tradiție / valoare culturală",
+  "ev1": "relatări și observații izolate",
+  "ev2": "observații sistematice, studii mici sau preliminare",
+  "ev3": "studii controlate",
+  "ev4": "verificat (replicat, consens)",
+  "evMode": "Mod istoric / cultural: prezentat ca tradiție, nu ca fapt stabilit. Nivelul apreciază afirmațiile practicii, nu programul.",
+  "bdHealth": "nu înlocuiește medicul",
+  "fHealth": "Sănătate",
+  "healthNote": "Doar cu titlu informativ. Nu înlocuiește medicul sau alt specialist în sănătate; pentru probleme de sănătate consultă unul, iar în urgență sună la 112.",
+  "bdFragile": "fragil",
+  "fFragile": "Fragilitate",
+  "fragileNote": "Depinde de site-uri sau servicii terțe care se pot schimba sau pot bloca accesul; poate înceta să funcționeze fără anunț.",
+  "fChecked": "Ultima verificare",
+  "legendCov": "Acoperire. Eticheta de pe fiecare card arată limbile interfeței (din 8: ro, en, fr, it, es, pt, de, hu) și platforma: web (un fișier care rulează în browser) sau instalabil (program nativ). Scor 0–4 după numărul de limbi.",
+  "legendEvid": "Dovezi. Cardurile pentru practici cu efecte afirmate (astrologie, terapii energetice, radiestezie, frecvențe „terapeutice”, relaxare) arată un contor 0–4: 0 tradiție / valoare culturală, 1 relatări izolate, 2 studii mici sau preliminare, 3 studii controlate, 4 verificat. Apreciază afirmațiile practicii, nu programul; 0–1 înseamnă „mod istoric / cultural”.",
+  "legendHealth": "„Nu înlocuiește medicul”: apare la aplicațiile cu conținut legat de sănătate.",
+  "legendFragile": "„Fragil”: aplicația depinde de site-uri sau servicii terțe (scraping, embed-uri neoficiale, API-uri publice) și poate înceta să funcționeze fără anunț.",
+  "evModeShort": "mod istoric / cultural",
+  "legendTitle": "Cum citești fișele",
+  "legendStatus": "Stare. stabil: versiune 1.0.0 sau mai nouă, fără declarație de experimental în README; experimental: declarat astfel în README; alpha: versiune 0.x sau cu sufix -alpha. Derivată după regulă, nu evaluată individual.",
+  "legendVer": "Versiunile urmează MAJOR.MINOR.PATCH (SemVer), așa cum le declară fiecare aplicație.",
+  "legendSubst": "O dată lângă versiune este ultima schimbare de fond; dacă lipsește, nu este înregistrată (data de sincronizare a catalogului e în fișă)."
+ },
+ "tpl": {
+  "nProjects": "{n} proiecte",
+  "nShown": "{n} din {m} proiecte",
+  "labNote": "Laborator: scorul auditului intern este {s}/10, sub pragul de 5. Funcționează, dar nu e recomandată pentru uz curent până la remediere.",
+  "covLangs": "{n} limbi",
+  "covOnly": "doar {l}",
+  "covPart": "{n} din 8 limbi",
+  "covScore": "scor {n}/4",
+  "statAppsTip": "Aplicații single-file: {n} ({l} fișe în listă + {v} variante în fișa hub-ului Universul Observabil). OSATURA, VERIGA, TEZAUR și LegatorOCR, care nu sunt single-file, sunt listate separat.",
+  "statSecTip": "{n} secțiuni de catalog, inclusiv secțiunea separată Rust."
+ },
+ "CTRL": {
+  "animPlay": "Pornește animația de fundal",
+  "animPause": "Oprește animația de fundal",
+  "toDark": "Comută pe modul întunecat",
+  "toLight": "Comută pe modul luminos",
+  "theme": "Temă",
+  "lang": "Limbă",
+  "skip": "Sari la conținut"
+ },
+ "sections": {
+  "rust": {
+   "title": "Rust: programe native, nu fișiere HTML",
+   "intro": "Proiecte scrise în Rust, care nu sunt aplicații HTML dintr-un singur fișier: OSATURA (motor de animație, alpha), VERIGA (verificator de linkuri), TEZAUR (asistent de cercetare pentru teză, versiune 0.x) și LegatorOCR (scanări → PDF cu text căutabil, versiune 0.x)."
+  },
+  "verificare": {
+   "title": "Verificare, surse și urmele din web",
+   "intro": "Instrumente pentru a verifica de unde vine o informație, ce s-a schimbat de la publicare și dacă o legătură mai trăiește. Fiecare declară în README ce cereri face către terți."
+  },
+  "educatie": {
+   "title": "Educație și instrumente profesionale",
+   "intro": "Material de învățare și instrumente de lucru pentru radioamatorism, accesibilitate, organizarea de evenimente și lucrul cu texte și date. Unelte neoficiale: nu înlocuiesc nicio autoritate."
+  },
+  "stiinta": {
+   "title": "Știință, natură și teren",
+   "intro": "Vizualizări și enciclopedii construite pe date publice. Acolo unde datele sunt aproximative, aplicația spune asta."
+  },
+  "jocuri": {
+   "title": "Jocuri de strategie și atlase de reguli",
+   "intro": "Fiecare joc are motor separat de interfață, adversar AI euristic fără acces la informația ascunsă și suite de teste proprii (de pildă, Belot: peste 450.000 de verificări automate)."
+  },
+  "ai": {
+   "title": "AI sub controlul utilizatorului",
+   "intro": "Interfețe care lasă utilizatorul să decidă ce pleacă și unde. Cheile API rămân în browser, doar „ofuscate”, nu criptate: citește README-ul înainte să le folosești."
+  },
+  "utilitare": {
+   "title": "Utilitare și proiecte creative",
+   "intro": "Unelte mici, făcute să dureze: un fișier, fără cont."
+  },
+  "cultura": {
+   "title": "Cultură, practici și credințe: studiu descriptiv",
+   "intro": "Aceste aplicații descriu practici fără dovezi științifice de eficacitate (astrologie, tarot, numerologie, reiki, radiestezie ș.a.) ca obiect de studiu cultural, nu ca recomandare. Nu înlocuiesc sfatul medical, juridic sau financiar."
+  },
+  "recomandate": {
+   "title": "Recomandate",
+   "intro": "Selecție pentru un prim contact cu portofoliul: verificare de surse, traducere, învățare și instrumente de lucru."
+  },
+  "confidentialitate": {
+   "title": "Confidențialitate și autenticitate",
+   "intro": "Curăță metadatele fișierelor, criptează local și verifică atestări de proveniență. Neauditate independent: nu le folosi ca unică garanție pentru date cu adevărat sensibile."
+  },
+  "literatura": {
+   "title": "Literatură și limbă",
+   "intro": "Dicționare, alfabete și coduri, proverbe și proză originală: unelte pentru cuvinte, scriere și lectură. Sunt ajutoare didactice, nu referințe normative."
+  },
+  "teren": {
+   "title": "Teren și drumuri",
+   "intro": "Trasee GPS, jurnale de teren, ghiduri de drumeție și de supraviețuire. Totul rulează local; nimic nu înlocuiește harta, ghidul sau autoritățile locale și nimic nu este dispozitiv de navigație sau de siguranță."
+  },
+  "sunet": {
+   "title": "Sunet",
+   "intro": "Măsurare, generare și analiză de sunet, plus muzică și ambianță generate în browser. Sonometrul și testele auditive sunt orientative, nu dispozitive certificate sau medicale."
+  },
+  "gospodarie": {
+   "title": "Gospodărie și organizare",
+   "intro": "Calendar, buget, arbore genealogic, notițe și timp: unelte pentru treburile de zi cu zi, cu datele păstrate în acest browser, fără cont. Nu sunt consultanță financiară, juridică sau fiscală."
+  }
+ },
+ "misc": {
+  "donateLabel": "Sprijină",
+  "donateHide": "Ascunde",
+  "donateTitle": "Sprijină autorul",
+  "donateCbLabel": "Ascunde bara de sprijin",
+  "cultureNote": "Citește înainte. Conținut descriptiv despre practici nevalidate științific. Nu este recomandare de tratament sau de decizie.",
+  "introLabel": "Introducere",
+  "github": "GitHub",
+  "live": "Live",
+  "open": "Deschide",
+  "nativeDemo": "Demo în terminal"
+ }
+}
