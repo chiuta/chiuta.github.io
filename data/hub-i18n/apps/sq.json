@@ -1,0 +1,1107 @@
+{
+ "lang": "sq",
+ "note": "Rânduri și etichete de card; detaliile (detail) lipsesc încă și rămân în engleză. Traducere asistată de IA, nerevizuită de un vorbitor nativ.",
+ "apps": {
+  "FreeDetect": {
+   "tags": [
+    "katalog",
+    "citime"
+   ],
+   "line": "Dëshironi të kontrolloni nëse një tekst duket i shkruar ose i kopjuar nga inteligjenca artificiale? 42 mjete të jashtme dhe një gjenerues citimesh në një vend. Vetë aplikacioni nuk zbulon asgjë."
+  },
+  "Arhiva-fara-frontiere": {
+   "tags": [
+    "arkiva web",
+    "burime"
+   ],
+   "line": "Shfletoni koleksionet e Internet Archive pa llogari: kërkim, faqe artikujsh, parapamje dhe të preferuarat. Jozyrtar; archive.org e shikon adresën tuaj IP dhe kërkimet."
+  },
+  "AcademiSearch": {
+   "tags": [
+    "literaturë",
+    "burime"
+   ],
+   "line": "Një kërkim — artikuj shkencorë nga dhjetëra burime të hapura. Listën mund ta ruani për citim. Kërkon internet; kërkesat shkojnë te këto shërbime."
+  },
+  "Surveyor": {
+   "tags": [
+    "lidhje të vdekura",
+    "auditim"
+   ],
+   "line": "Çfarë lidhjesh ka faqja juaj dhe cilat nuk funksionojnë? I rendit me spirancat dhe ridrejtimet. Të jashtmet nuk verifikohen me siguri. Vetëm për faqet tuaja."
+  },
+  "Trade-Free-Link-Guardian": {
+   "tags": [
+    "WordPress",
+    "GPL v2"
+   ],
+   "line": "Për faqen tuaj në WordPress: gjen lidhje të prishura dhe i rregullon pa shërbime të jashtme. Ndryshon përmbajtje reale, ndaj bëni më parë një kopje rezervë. Nuk është provuar në një WordPress të vërtetë."
+  },
+  "OUTPOST": {
+   "tags": [
+    "monitorim"
+   ],
+   "line": "Ndiqni faqet tuaja dhe shihni nëse ende përgjigjen. Funksionon vetëm për sa kohë skeda mbetet e hapur. Edhe një faqe me gabim llogaritet si përgjigje. Ndërfaqja është në anglisht."
+  },
+  "ScryVeil": {
+   "tags": [
+    "OSINT",
+    "siguri"
+   ],
+   "line": "Kontrolloni sigurinë e një domeni dhe merrni një raport teksti që mund ta ruani. Disa kontrolle mund të jenë të paplota ose të kërkojnë çelës. Lidhet me shërbime të palëve të treta; vetëm për domenet tuaja."
+  },
+  "Vitrina": {
+   "tags": [
+    "ndjekje burimesh"
+   ],
+   "line": "Fusni një postim publik të Facebook-ut në faqen tuaj pa llogari dhe kopjoni kodin e gatshëm. Jozyrtar; Meta e shikon IP-në tuaj, shfaqja nuk garantohet."
+  },
+  "Threads-fara-cont": {
+   "tags": [
+    "ndjekje burimesh"
+   ],
+   "line": "Lexoni postime publike të Threads pa llogari dhe ruajini si tekst. Jozyrtar; Meta e shikon IP-në tuaj, ndonjëherë nevojitet një ndërmjetës."
+  },
+  "X-fara-cont": {
+   "tags": [
+    "ndjekje burimesh"
+   ],
+   "line": "Hyni në profile dhe postime publike në X pa llogari në disa mënyra: lidhje e drejtpërdrejtë, arkiv, kërkim ose Nitter. Nuk e lexon përmbajtjen; e dërgon lidhjen te archive.org."
+  },
+  "Arhiva-LinkedIn": {
+   "tags": [
+    "arkivim"
+   ],
+   "line": "Mbani në një vend shënime për postimet e LinkedIn që i keni ngjitur vetë dhe eksportojini si tekst. Galeria përdor ngulitjen zyrtare, prandaj lidhet me LinkedIn. Jozyrtar."
+  },
+  "Cadraj": {
+   "tags": [
+    "ndjekje burimesh"
+   ],
+   "line": "Mblidhni klipe të TikTok-ut me dorë, të grupuara sipas autorit, dhe shikojini në luajtësin zyrtar. Mund të shënoni ato që i keni parë tashmë."
+  },
+  "FASCICUL": {
+   "tags": [
+    "bashkëpunim"
+   ],
+   "line": "I kthen telefonat në një dhomë në një tabelë të përbashkët në videoprojektor: vizatime, shënime, imazhe, tregues lazer dhe kamerë e drejtpërdrejtë. Provuar në kompjuter; në telefona realë ende nuk është konfirmuar."
+  },
+  "INDICATIV": {
+   "tags": [
+    "provim",
+    "radio"
+   ],
+   "line": "Përgatituni për provimin e radioamatorëve ANCOM pa internet: 723 pyetje me përsëritje të shpërndarë. Jozyrtar; banka e pyetjeve është verifikuar vetëm pjesërisht."
+  },
+  "ETER": {
+   "tags": [
+    "radio",
+    "enciklopedi"
+   ],
+   "line": "Mësoni radioamatorizëm në një enciklopedi: alfabeti Morse, stërvitës, llogaritës antenash dhe kërkim në të gjithë përmbajtjen."
+  },
+  "ATINGERE": {
+   "tags": [
+    "aksesueshmëri"
+   ],
+   "line": "E kthen një libër në Brailë me dridhje në ekranin me prekje për të shurdhër-verbrit ose në audiolibër për të verbrit. Nuk është verifikuar me lexues të Brailës; ka kufizime."
+  },
+  "Clopotel": {
+   "tags": [
+    "ngjarje",
+    "MIT"
+   ],
+   "line": "Mbani kohën në një konferencë ose punishte: kohëmatës skene me programin tuaj dhe sinjal kur po afrohet fundi. Në rumanisht dhe anglisht."
+  },
+  "Monstrarium": {
+   "tags": [
+    "punishte",
+    "MIT"
+   ],
+   "line": "Planifikoni një punishte për krijimin e përbindëshave nga materiale të riciklueshme: aplikacioni llogarit materialet dhe seancat, ofron 50 përbindësha me zë, 3D dhe lojë edukative."
+  },
+  "TranslateHub": {
+   "tags": [
+    "përkthim",
+    "IA"
+   ],
+   "line": "Zgjidhni mes 22 mjeteve të përkthimit ose përktheni me inteligjencë artificiale me çelësin tuaj. Teksti i përkthyer me IA shkon te shërbimi i Anthropic."
+  },
+  "DataWeave": {
+   "tags": [
+    "të dhëna"
+   ],
+   "line": "Hapni një tabelë dhe kuptojeni: statistika, grafikë, tabela kryesore dhe korrelacione. Të dhënat tuaja mbeten në pajisjen tuaj."
+  },
+  "MarkdownAtelier": {
+   "tags": [
+    "shkrim"
+   ],
+   "line": "Shkruani dokumente në Markdown dhe shihni menjëherë si duken, me formula të thjeshta; në 7 gjuhë, pa internet. Tekstet mbeten në shfletuesin tuaj; ruani një kopje rezervë."
+  },
+  "RegexLab": {
+   "tags": [
+    "zhvillim"
+   ],
+   "line": "Provoni një shprehje të rregullt dhe shihni menjëherë çfarë kap; shpjegime hap pas hapi, teste dhe paralajmërim nëse mund ta ngrijë programin."
+  },
+  "SEOptimum": {
+   "tags": [
+    "web"
+   ],
+   "line": "Kontrolloni sa gati është një faqe web për motorët e kërkimit. 20 mjete, përfshirë analizën e faqes dhe parapamjen e mënyrës si do të shfaqet në rezultatet e kërkimit."
+  },
+  "SEVA": {
+   "tags": [
+    "shëndet"
+   ],
+   "line": "Mësoni për gjumin, ritmin ditor të trupit, frymëmarrjen dhe ushqimin në një enciklopedi që mund ta dëgjoni edhe. Vetëm informuese; nuk është këshillë mjekësore."
+  },
+  "PULS": {
+   "tags": [
+    "shëndet",
+    "urgjenca"
+   ],
+   "line": "Çfarë të bëni derisa të vijë ambulanca? Udhëzues rumun për ndihmën e parë me metronom për ringjalljen dhe kartë opsionale emergjence. Klinikisht i paverifikuar; telefononi 112."
+  },
+  "VATRA": {
+   "tags": [
+    "punë në terren"
+   ],
+   "line": "Çfarë të bëni nëse në natyrë mbaroni nga uji, zjarri ose strehimi? Enciklopedi mbijetese pa internet, me kërkim dhe shënime. Vetëm për edukim; në urgjencë telefononi 112."
+  },
+  "Eclipsa-2027": {
+   "tags": [
+    "astronomi"
+   ],
+   "line": "Shikoni në hartë pa internet ku dhe sa zgjat eklipsi i plotë diellor i 2 gushtit 2027, me qytete dhe kërkim vendi. Vlerat janë orientuese; mos e shikoni Diellin pa filtër."
+  },
+  "orarium": {
+   "tags": [
+    "astronomi",
+    "koha"
+   ],
+   "line": "Sa është ora tani në Mars, në Hënë ose në një asteroid? Ora lokale drejtpërdrejt në 45 trupa qiellorë. Model i përafërt, nuk nevojitet internet; jo për navigim."
+  },
+  "TerRa": {
+   "tags": [
+    "astronomi"
+   ],
+   "line": "Glob 3D dhe hartë që tregojnë ditën dhe natën në Tokë, në Hënë dhe në planetë. Pozicionet e satelitëve mund të vonojnë rreth 3 muaj derisa t'i përditësoni online."
+  },
+  "Horizons.BeyondLimits": {
+   "tags": [
+    "kozmologji"
+   ],
+   "line": "Udhëtoni nëpër historinë e Universit nga Big Bengu deri në fund përmes 91 pikave kyçe. E ardhmja është spekulim shkencor, jo parashikim i saktë."
+  },
+  "Hyper4D": {
+   "tags": [
+    "matematikë"
+   ],
+   "line": "Shikoni si duken format katërdimensionale: rrotulloni ato në ekran dhe vëzhgojini nga disa kënde. Imazhet mund të ruhen."
+  },
+  "ExploratoriiEco": {
+   "tags": [
+    "natyrë"
+   ],
+   "line": "Udhëzues terreni për dashamirët e natyrës: nga klasifikimi i qenieve të gjalla dhe gjurmët te biomet e Rumanisë, ditar vëzhgimesh, etikë dhe urgjenca."
+  },
+  "FieldObserver": {
+   "tags": [
+    "punë në terren"
+   ],
+   "line": "Shënoni vëzhgimet tuaja në terren; leximet e sensorëve të telefonit shtohen automatikisht. Mbani një arkiv të daljeve tuaja."
+  },
+  "VietAR": {
+   "tags": [
+    "biodiversitet"
+   ],
+   "line": "Fotografoni ose regjistroni një bimë apo krijesë dhe merrni një ide mes 519 llojeve nga Rumania. Mund të gabojë; mos hani asgjë mbi këtë bazë."
+  },
+  "VOIAJOR": {
+   "tags": [
+    "Voyager",
+    "simulim"
+   ],
+   "line": "Ndiqni trajektoret e Voyager 1 dhe 2 nga viti 1977 deri një miliard vjet përpara, në çdo shkallë — nga planetët te Rruga e Qumështit. Model orientues, jo për navigim."
+  },
+  "Nemurirea": {
+   "tags": [
+    "biologji"
+   ],
+   "line": "Zbuloni si plaket trupi dhe çfarë thotë shkenca për orët biologjike dhe jetëgjatësinë, pastaj provoni veten me një kuiz. Nuk është këshillë mjekësore."
+  },
+  "IncredibleCosmos": {
+   "tags": [
+    "lojë",
+    "fizikë"
+   ],
+   "line": "Vendosni planetë dhe yje që gravitacioni i tyre ta drejtojë një kometë drejt objektivit. 108 nivele, tri vështirësi dhe deri në tri yje për nivel."
+  },
+  "Cupa-Mondiala-2026": {
+   "tags": [
+    "simulim",
+    "jozyrtar"
+   ],
+   "line": "Luani në Kupën e Botës 2026 dhe ndiqni zhvillimin e një turneu imagjinar. Rezultatet janë të rastësishme, jo parashikim; jozyrtar."
+  },
+  "AGORA": {
+   "tags": [
+    "ekonomi",
+    "BE"
+   ],
+   "line": "Si lindi euro dhe çfarë do të thotë për Rumaninë? 59 kapituj nga Mastrihti te BQE, plus këshilla për udhëtarët. Jozyrtar."
+  },
+  "URME": {
+   "tags": [
+    "natyrë",
+    "Buzău"
+   ],
+   "line": "Përgatituni për ecje në shtegun Colți–Aluniș në Buzău: bimë, qelibar, fosile, orë lindjeje dhe perëndimi, pajisje. Harta nuk është për navigim."
+  },
+  "Belot-fara-frontiere": {
+   "tags": [
+    "letra",
+    "IA"
+   ],
+   "line": "Njihuni me belotin dhe lojërat e ngjashme në vende të tjera, pastaj luani në tryezë: ju dhe një partner IA kundër dy kundërshtarëve IA. Blloku i pikëve përfshihet."
+  },
+  "Scopone-fara-frontiere": {
+   "tags": [
+    "letra",
+    "IA"
+   ],
+   "line": "Mësoni si lindi scopone, cilat janë rregullat e saj dhe si ndryshojnë nga rajoni në rajon, pastaj luani kundër kompjuterit që di të japë këshilla."
+  },
+  "Solitaire-fara-frontiere": {
+   "tags": [
+    "letra"
+   ],
+   "line": "Shfletoni dhe luani pasjanca si Klondike, FreeCell ose Spider. Kur ngecni, kërkoni një ndihmë ose lëreni kompjuterin ta zgjidhë."
+  },
+  "Sudoku-fara-frontiere": {
+   "tags": [
+    "enigma"
+   ],
+   "line": "136 lloje sudoku — nga klasiku te killer dhe 3D; shfletoni dhe luani. Ndihmon me shpjegime hap pas hapi dhe zgjidh enigmat tuaja."
+  },
+  "Domino-fara-frontiere": {
+   "tags": [
+    "domino",
+    "IA"
+   ],
+   "line": "Mësoni historinë dhe rregullat e dominos, pastaj luani në tryezë kundër një deri në tre kundërshtarëve të drejtuar nga kompjuteri. Lëvizja mund të zhbëhet."
+  },
+  "Mahjong-fara-frontiere": {
+   "tags": [
+    "mahjong",
+    "IA"
+   ],
+   "line": "Njihuni me 8 lloje mahjong-u; luani pasjansë ose lojë me katër veta me tre kundërshtarë të thjeshtë të drejtuar nga kompjuteri. Funksionon pa internet."
+  },
+  "Go-fara-frontiere": {
+   "tags": [
+    "go",
+    "IA"
+   ],
+   "line": "Mësoni nga vjen go dhe si luhet, pastaj provoni veten kundër kompjuterit që di të japë këshilla. Nuk dërgon asnjë të dhënë përmes internetit."
+  },
+  "Zaruri-fara-frontiere": {
+   "tags": [
+    "zare"
+   ],
+   "line": "26 lojëra me zare që mund t'i lexoni, 12 prej tyre kundër kompjuterit; plus një simulator hedhjesh me probabilitete. Pa para; jashtë linje."
+  },
+  "Sah-fara-frontiere": {
+   "tags": [
+    "shah"
+   ],
+   "line": "Mbi 700 variante shahu për t'i eksploruar dhe një fjalor i vogël termash; shumicën mund t'i luani kundër kompjuterit. Funksionon pa internet."
+  },
+  "Dame-fara-frontiere": {
+   "tags": [
+    "damë"
+   ],
+   "line": "Luani 25 variante dame kundër kompjuterit dhe ruani lojën. Rregullat e 16 prej tyre janë vetëm të përafërta dhe shënohen me ⚠."
+  },
+  "Table-fara-frontiere": {
+   "tags": [
+    "tavëll"
+   ],
+   "line": "Tavëll, tavli, nardi dhe variante rumune të tablës; lexoni dhe luani: 17 variante kundër kompjuterit, me tastierë ose mi."
+  },
+  "Remi-fara-frontiere": {
+   "tags": [
+    "rami"
+   ],
+   "line": "Njihuni me familjen e ramit dhe luani 19 variante kundër kompjuterit me statistika. 8 gjuhë; pllaka ose letra të mëdha, lehtësisht të dukshme."
+  },
+  "Carti-de-joc-fara-frontiere": {
+   "tags": [
+    "letra"
+   ],
+   "line": "Nga pasjansa dhe Pjetri i Zi te pokeri: 17 lojëra me letra me rregulla të shpjeguara, 8 prej të cilave mund t'i luani menjëherë."
+  },
+  "Undava": {
+   "tags": [
+    "kuiz",
+    "edukim"
+   ],
+   "line": "Përgatitni një kuiz ose luajeni me miqtë në të njëjtin telefon ose kompjuter dhe rilozni pyetjet që i keni gabuar. I ngjashëm me Kahoot, por pa lidhje."
+  },
+  "AI-Liber": {
+   "tags": [
+    "IA"
+   ],
+   "line": "Bisedoni me disa asistentë të inteligjencës artificiale në një vend, disa funksionojnë në kompjuterin tuaj. Mesazhet shkojnë te ofruesi që zgjidhni; IA mund të gabojë."
+  },
+  "LocalMind": {
+   "tags": [
+    "IA lokale"
+   ],
+   "line": "Bisedoni me një asistent të vogël të inteligjencës artificiale që funksionon drejtpërdrejt në shfletuesin tuaj. Modelet shkarkohen nga interneti një herë; mund të gabojë."
+  },
+  "PromptVault": {
+   "tags": [
+    "kërkesa"
+   ],
+   "line": "Mbi 500 kërkesa të gatshme për asistentët e inteligjencës artificiale; zgjidhni dhe shënoni të preferuarat. Nuk i ruan tekstet tuaja."
+  },
+  "ARENA": {
+   "tags": [
+    "vlerësim IA"
+   ],
+   "line": "I bëni dy modele IA të përgjigjen verbërisht dhe votoni për më të mirin; renditja ruhet në kompjuterin tuaj. Nevojiten çelësat tuaj."
+  },
+  "Nexus-fara-frontiere": {
+   "tags": [
+    "agjentë"
+   ],
+   "line": "Bisedoni me asistentë IA nga disa ofrues; bisedë me kërkim dhe ruajtje. Nevojiten interneti dhe çelësat tuaj, që ruhen të pashifruar."
+  },
+  "VoiceAtelier": {
+   "tags": [
+    "zë"
+   ],
+   "line": "Dëgjoni si tingëllojnë qindra zëra artificialë në dhjetëra gjuhë dhe mësoni si bëhet një audiolibër. Shembulli online e dërgon tekstin te shërbime të jashtme vetëm me lejen tuaj."
+  },
+  "Trusa-fara-frontiere": {
+   "tags": [
+    "mjete"
+   ],
+   "line": "Një set me 15 mjete të vogla të përditshme: shënime, tabelë, Markdown, fjalëkalime, ditar financiar e të tjera. Nuk ka lidhje zyrtare me YunoHost që frymëzoi kategoritë."
+  },
+  "API-fara-frontiere": {
+   "tags": [
+    "API"
+   ],
+   "line": "Moti, imazhet e NASA-s, pozicioni i ISS-së dhe dhjetëra të dhëna drejtpërdrejt në një vend. Kërkon internet; nuk është provuar me shërbime reale."
+  },
+  "OmniHost": {
+   "tags": [
+    "paketë"
+   ],
+   "line": "Një paketë e madhe me mbi njëqind mjete pune në një vend. Lidhet me katër shërbime të jashtme; detajet janë te README."
+  },
+  "VNTV": {
+   "tags": [
+    "media",
+    "MIT"
+   ],
+   "line": "Luani trailerët e VideoNeat si një kanal televiziv pa ndërprerje. Kërkon internet; në mënyrën P2P adresa juaj është e dukshme për shikuesit e tjerë."
+  },
+  "OSATURA": {
+   "tags": [
+    "animacion",
+    "MPL/AGPL"
+   ],
+   "line": "Jepini jetë vizatimeve 2D: lidhini me një «skelet», vëreni në lëvizje dhe eksportoni animacionin në disa formate. Version alfa, deri tani pak i provuar."
+  },
+  "OAZA": {
+   "tags": [
+    "shërbime"
+   ],
+   "line": "340 shërbime web falas, kryesisht pa llogari, në një katalog. Lista u kontrollua në qershor 2026, por jo automatikisht."
+  },
+  "VaultCrypt": {
+   "tags": [
+    "siguri"
+   ],
+   "line": "Keni diçka për të fshehur nga sytë kureshtarë? Kyçni skedarë dhe tekste me fjalëkalim drejtpërdrejt në shfletues. Një fjalëkalim i humbur nuk rikthehet."
+  },
+  "Akasha": {
+   "tags": [
+    "shënime"
+   ],
+   "line": "Fletore që funksionon jashtë linje, me etiketa, kërkim dhe lidhje mes faqeve. Që të mos humbisni asgjë, shkarkoni një kopje të freskët të skedarit."
+  },
+  "CLEPSIDRA": {
+   "tags": [
+    "koha"
+   ],
+   "line": "Ora e numërimit mbrapsht, alarm dhe orare për ditët e punës dhe fundjavat. Ndjek festat dhe ngjarjet tuaja."
+  },
+  "Origami": {
+   "tags": [
+    "art"
+   ],
+   "line": "Mësoni të paloseni letrën hap pas hapi: simbole, teknika dhe modele të ilustruara. Aplikacioni kujton ku ishit ndalur."
+  },
+  "Zicala": {
+   "tags": [
+    "kulturë"
+   ],
+   "line": "Çdo ditë një proverb rumun nga një koleksion prej 550. Mund të kërkoni dhe të ruani të preferuarat; komentet u shkruan me ndihmën e IA-së."
+  },
+  "Limpezimea": {
+   "tags": [
+    "letërsi"
+   ],
+   "line": "Lexoni romanin shkencor-fantastik «Limpezimea» në shtatë gjuhë. Kronika shoqëruese dhe studimi kritik u shkruan me ndihmën e IA-së (Claude)."
+  },
+  "Nota-Zero": {
+   "tags": [
+    "letërsi"
+   ],
+   "line": "Një tregim fantastik spekulativ mbi teorinë e telave në rumanisht, anglisht dhe frëngjisht, me shënime që shpjegojnë idetë shkencore. Është fiksion, jo burim akademik."
+  },
+  "Pendulul": {
+   "tags": [
+    "letërsi"
+   ],
+   "line": "Një planet lëkundet mes tre yjesh dhe një vrime të zezë: roman shkencor-fantastik me nëntë vëllime që Alexio e shkroi së bashku me Claude. Simulim 3D, lexues me ruajtje për lexim jashtë linje, EPUB dhe PDF."
+  },
+  "PrintreInteligente": {
+   "tags": [
+    "letërsi"
+   ],
+   "line": "Hyni në një roman interaktiv shkencor-fantastik me personazhe të frymëzuar nga ekuipazhi i Artemis 2. Shqyrtimet janë të trilluara; përkthimi, zëri dhe funksionet e IA-së përdorin shërbime të jashtme."
+  },
+  "BorderlessMelodies": {
+   "tags": [
+    "muzikë"
+   ],
+   "line": "Dëgjoni muzikë që e kompozon vetë veten drejtpërdrejt në shfletues. Mund ta eksportoni si audio; ka kohëmatës gjumi."
+  },
+  "EcoulSpectral": {
+   "tags": [
+    "audio"
+   ],
+   "line": "Shikojeni zërin si imazh, zgjidhni pjesën që ju shqetëson dhe ndajeni ose fshijeni. Përfshin zvogëlim zhurme, zbulim tingujsh dhe ruajtje si WAV."
+  },
+  "Constelar": {
+   "tags": [
+    "IA"
+   ],
+   "line": "Bisedoni me miq virtualë që i kujtojnë bisedat tuaja. Si parazgjedhje përgjigjen sipas rregullave të thjeshta; IA e vërtetë vetëm nëse zgjidhni një ofrues, dhe atëherë mesazhet tuaja shkojnë tek ai. Vetëm për të rritur."
+  },
+  "Tarot": {
+   "tags": [
+    "kulturë"
+   ],
+   "line": "Zbuloni historinë e tarotit, simbolet e letrave dhe mënyrën si lexohen si fenomen kulturor. Kurs interaktiv me ritmin tuaj."
+  },
+  "Numerologie": {
+   "tags": [
+    "kulturë"
+   ],
+   "line": "Zbuloni numerologjinë si traditë simbolike në katër nivele, me ushtrime, fjalor, ditar dhe llogaritës. Paraqitet pa vërtetim shkencor."
+  },
+  "PUNCTUM": {
+   "tags": [
+    "shëndet",
+    "prova"
+   ],
+   "line": "Atlas edukativ i akupresurës dhe terapive me pika: mbi 400 pika në harta interaktive, rutina vetëkujdesi me seanca të udhëhequra, prova dhe siguri. Nuk e zëvendëson mjekun."
+  },
+  "Reiki": {
+   "tags": [
+    "kulturë"
+   ],
+   "line": "Mësoni çfarë është reiki, një praktikë shpirtërore, dhe çfarë thonë hulumtimet: nuk u gjetën prova të mjaftueshme për efekt përtej çlodhjes. Nuk e zëvendëson mjekun."
+  },
+  "Bioenergoterapie": {
+   "tags": [
+    "kulturë"
+   ],
+   "line": "Kurs që shpjegon çfarë është bioenergjetika terapeutike dhe nga vjen. Nuk ka prova shkencore për efekt shërues të praktikës; nuk e zëvendëson mjekun."
+  },
+  "CHIROMANTIA": {
+   "tags": [
+    "kiromanci",
+    "kulturë"
+   ],
+   "line": "Atlas interaktiv i kiromancisë: hartë e pëllëmbës me vija, kodra, gishta dhe lloje duarsh, e lexuar si traditë kulturore; me një seksion mbi shkencën dhe të menduarit kritik. Pa vërtetim shkencor."
+  },
+  "Radiestezie": {
+   "tags": [
+    "kulturë"
+   ],
+   "line": "Kaloni 18 nivele mbi kërkimin e ujit me shufër, me fjalor, ditar praktike dhe shtojca ndërkombëtare. Që në fillim thotë se nuk ka vërtetim shkencor."
+  },
+  "Inforenergetica": {
+   "tags": [
+    "kulturë"
+   ],
+   "line": "Mësoni në një kurs të strukturuar çfarë pretendon inforenergjetika, një praktikë jo konvencionale. Pa vërtetim shkencor; nuk është këshillë mjekësore."
+  },
+  "ECLIPSA": {
+   "tags": [
+    "astrologji"
+   ],
+   "line": "Mësoni në cilën shtëpi astrologjike të hartës suaj natale bie një eklips dhe për 12 eklipset e ardhshme. Llogaritja është e përafërt, interpretimi simbolik; pa vërtetim shkencor."
+  },
+  "Afrodisiace-fara-frontiere": {
+   "tags": [
+    "kulturë"
+   ],
+   "line": "Lexoni për 22 ushqime dhe bimë që lidhen tradicionalisht me dëshirën, me nivelin e provave për secilën. Udhëzues kulturor për të rritur, jo këshillë mjekësore."
+  },
+  "CalmWaves": {
+   "tags": [
+    "audio"
+   ],
+   "line": "Muzikë ambientale për çlodhje dhe gjumë, e krijuar menjëherë. Nuk është pajisje mjekësore; seksioni mbi kërkimin nuk është verifikuar në mënyrë të pavarur. Konsultohuni me mjekun (epilepsi)."
+  },
+  "ASMR": {
+   "tags": [
+    "audio"
+   ],
+   "line": "Krijoni peizazhin tuaj qetësues tingullor nga shtresa mjedisi, tinguj prekjeje dhe rrahje binaurale. Ka kohëmatës gjumi dhe mund ta ndani miksin tuaj."
+  },
+  "NOMIA": {
+   "tags": [
+    "fiksion",
+    "spekulim",
+    "PWA"
+   ],
+   "line": "Si mund të ishte kontakti i parë mes njerëzve, IA-ve dhe llojeve të tjera mendjesh? 1001 skenarë imagjinarë; fiksion, jo realitet. Funksionon edhe jashtë linje."
+  },
+  "ValeaPlopului1972": {
+   "tags": [
+    "UFO",
+    "3D",
+    "fiksion"
+   ],
+   "line": "Shikoni një ngjarje UFO të vitit 1972 nga jashtë, nga brenda dhe në simulim, të rindërtuar në 3D. Është një hipotezë imagjinare, jo provë."
+  },
+  "HoroScop": {
+   "tags": [
+    "astrologji",
+    "efemeride",
+    "jashtë linje"
+   ],
+   "line": "Llogaritni pozicionet e planetëve për një datë dhe vend, pastaj eksploroni hartën natale, aspektet dhe përputhshmërinë. Astrologji simbolike, pa bazë shkencore. Funksionon jashtë linje."
+  },
+  "Aurora": {
+   "tags": [
+    "meditim",
+    "audio",
+    "çlodhje"
+   ],
+   "line": "Dëgjoni tone qetësuese dhe tinguj që pulsojnë lehtë dhe ndiqni një udhëzues frymëmarrjeje. Vetëm për çlodhje, nuk është trajtim. Funksionon pa internet."
+  },
+  "NumeroLogIA": {
+   "tags": [
+    "numerologji",
+    "IA",
+    "jashtë linje"
+   ],
+   "line": "Mësoni çfarë thonë numerologjia, astrologjia kineze BaZi dhe bioritmi për datën tuaj të lindjes, me çdo llogaritje të shpjeguar. Sistem simbolik, pa bazë shkencore."
+  },
+  "FrequencyLaboratory": {
+   "tags": [
+    "audio",
+    "laborator",
+    "jashtë linje"
+   ],
+   "line": "Provoni tinguj, efekte dhe teste dëgjimi në një laborator të vogël zëri. Efektet «terapeutike» nuk janë provuar; nuk e zëvendëson mjekun. Funksionon jashtë linje."
+  },
+  "generator-frecvente": {
+   "tags": [
+    "audio",
+    "gjenerues",
+    "jashtë linje"
+   ],
+   "line": "Krijoni tone të pastra dhe çifte që pulsojnë, dëgjoni paracaktime të njohura dhe kontrolloni përafërsisht dëgjimin tuaj. Nuk është pajisje mjekësore. Funksionon jashtë linje."
+  },
+  "ACORDAJ": {
+   "tags": [
+    "shpirtërore",
+    "atlas",
+    "dallim kritik"
+   ],
+   "line": "Shfletoni mbi një mijë kurse shpirtërore dhe inicime me kontekst historik dhe vështrim kritik. Nuk është i lidhur me faqen burimore dhe nuk ka vërtetim shkencor. Funksionon jashtë linje."
+  },
+  "Profund": {
+   "tags": [
+    "bisedë",
+    "karta",
+    "trade-free"
+   ],
+   "line": "150 pyetje që e çojnë bisedën përtej llafeve të zakonshme — mes miqve ose në familje. Luani në ekran ose printoni, me kohëmatës opsional."
+  },
+  "Universul-Observabil": {
+   "tags": [
+    "astronomi",
+    "kozmologji",
+    "vizualizim"
+   ],
+   "line": "Sa i madh është Universi i dukshëm? Krahasoni tri harta (lineare, të sheshtë, në hapësirë) dhe bëni llogaritje kozmologjike. Numrat nuk janë verifikuar në mënyrë të pavarur."
+  },
+  "Universul-Observabil-1D": {
+   "tags": [
+    "astronomi",
+    "kozmologji",
+    "vizualizim"
+   ],
+   "line": "Udhëtoni nga ne deri në skajin e Universit të dukshëm duke kaluar 112 galaktika të vendosura në një bosht. Ton ironik, vlera të rrumbullakosura, qëllim edukativ."
+  },
+  "Universul-Observabil-2D": {
+   "tags": [
+    "astronomi",
+    "satirë",
+    "kozmologji"
+   ],
+   "line": "Hartë galaktikash në botimin satirik «Toka e Sheshtë»: është një shaka, Toka nuk është e sheshtë. Zmadhoni mes 111 galaktikave; distancat janë të përafërta. Funksionon jashtë linje."
+  },
+  "Universul-Observabil-3D": {
+   "tags": [
+    "astronomi",
+    "kozmologji",
+    "3D"
+   ],
+   "line": "Fluturoni mes mbi 115 galaktikave në një hartë 3D me turne të udhëhequra dhe misione. Vlerat janë të përafërta."
+  },
+  "QSO": {
+   "tags": [
+    "radio",
+    "ditar"
+   ],
+   "line": "Mbani ditarin e lidhjeve radio të stacionit tuaj radioamator me orën UTC, lokatorë dhe statistika. Jozyrtar; llogaritjet janë të përafërta."
+  },
+  "Curatitor": {
+   "tags": [
+    "metadata",
+    "privatësi"
+   ],
+   "line": "Shikoni çfarë zbulojnë fotot dhe skedarët tuaj (vendi, kamera, autori) dhe hiqini këto të dhëna para dërgimit. Nuk i fsheh fytyrat apo përmbajtje tjetër të dukshme."
+  },
+  "Poteca": {
+   "tags": [
+    "GPX",
+    "gjurmë"
+   ],
+   "line": "Hapni gjurmë të regjistruara në ecje ose me biçikletë dhe shihni distancën, ngjitjen dhe profilin e lartësisë. Mund t'i prisni ose bashkoni. Pa hartë; ngjitja është e vlerësuar."
+  },
+  "Orar": {
+   "tags": [
+    "kalendar",
+    "koha"
+   ],
+   "line": "Kalendar dhe planifikues javor me festat zyrtare rumune, me pamje ditore, javore ose mujore. Alarmet bien vetëm për sa kohë faqja mbetet e hapur."
+  },
+  "Alfabete": {
+   "tags": [
+    "kode",
+    "mësim"
+   ],
+   "line": "Mësoni dhe stërviteni me alfabetin Morse, Brailën, alfabetin fonetik, semaforin me flamuj dhe shifra të vjetra, pastaj printoni një faqe. Shifrat e vjetra nuk i mbrojnë sekretet."
+  },
+  "Fabrica": {
+   "tags": [
+    "kurse",
+    "krijim"
+   ],
+   "line": "Shkruani një kurs si tekst të thjeshtë dhe kthejeni në një faqe me mësime, test përfundimtar dhe certifikatë për printim. Certifikata nuk ka vlerë zyrtare."
+  },
+  "Bolta": {
+   "tags": [
+    "astronomi",
+    "planetar"
+   ],
+   "line": "Si ishte qielli mbi kokë në çdo vend dhe ditë midis 1900 dhe 2100? Dielli, Hëna, planetët dhe yjet, si dhe eklipsi i 2027. Vlerat janë të llogaritura, jozyrtare. Funksionon jashtë linje."
+  },
+  "BRAZDA": {
+   "tags": [
+    "Voyager",
+    "sinjal"
+   ],
+   "line": "Dekodoni Diskun e Artë të Voyager hap pas hapi, pastaj kodoni një disk të ri për një sondë që lëshohet tani. Imazhet në hapat e parë janë skematike, jo të NASA-s."
+  },
+  "Arbore": {
+   "tags": [
+    "gjenealogji",
+    "GEDCOM"
+   ],
+   "line": "Ndërtoni pemën e familjes me persona, familje, vijë kohore dhe një llogaritës rumun të farefisnisë. Të dhënat mbeten vetëm në këtë shfletues, pa sinkronizim."
+  },
+  "Gospodar": {
+   "tags": [
+    "buxhet",
+    "financa personale"
+   ],
+   "line": "Ndiqni paratë e shtëpisë: llogari, shpenzime, buxhete mujore dhe raporte. Nuk nevojitet llogari, por nëse humbisni fjalëkalimin, humbisni të dhënat. Nuk është këshillë financiare."
+  },
+  "Decibel": {
+   "tags": [
+    "zë",
+    "matje"
+   ],
+   "line": "Matni sa e fortë është zhurma përreth jush dhe shihni nga cilët tinguj përbëhet. Ka edhe një test orientues dëgjimi. Nuk është pajisje e certifikuar; rezultatet varen nga mikrofoni."
+  },
+  "Provenienta": {
+   "tags": [
+    "C2PA",
+    "origjina"
+   ],
+   "line": "Keni një imazh dhe dëshironi të dini kush e ka nënshkruar dhe çfarë redaktimesh ka deklaruar? Kontrolloni nënshkrimin dixhital të ngulitur. Eksperimentale, e provuar vetëm në skedarë shembull."
+  },
+  "Lexicon": {
+   "tags": [
+    "fjalor",
+    "gjuhë"
+   ],
+   "line": "Sillni fjalorët tuaj dhe kërkoni fjalë edhe nëse shkruani pa shenja diakritike ose me gabime. Vjen vetëm me një set të vogël demonstrimi. Funksionon jashtë linje."
+  },
+  "VERIGA": {
+   "tags": [
+    "kontroll lidhjesh",
+    "MIT"
+   ],
+   "line": "Gjen lidhje të prishura dhe skedarë jetimë në një faqe web ose dosje. Funksionon në Windows, macOS dhe Linux; kërkon pak njohje me kompjuterin."
+  },
+  "TEZAUR": {
+   "tags": [
+    "kërkim",
+    "MIT"
+   ],
+   "line": "Asistent teze që shkruan vetëm mbi bazën e librave dhe artikujve tuaj, me citime të verifikueshme. Funksionon në kompjuterin tuaj; dokumentet tuaja nuk e lënë kurrë. Në zhvillim."
+  },
+  "LegatorOCR": {
+   "tags": [
+    "skanim",
+    "MIT"
+   ],
+   "line": "Skanoni një libër dhe merrni një PDF të pastër me faqe të korrigjuara dhe tekst që kërkohet. Funksionon në Windows, macOS dhe Linux; skanimet tuaja mbeten te ju."
+  },
+  "Fenarium": {
+   "tags": [
+    "perceptim",
+    "MIT"
+   ],
+   "line": "Atlas dhe punishte e perceptimeve subjektive nëpër të gjitha shqisat, duke filluar nga fosfenizmi: kurs me 13 module, eksperimente të udhëhequra, simulator vizual dhe laborator vetë-eksperimentesh A/B me randomizim. Edukativ, nuk është pajisje mjekësore."
+  },
+  "MENSURA": {
+   "tags": [
+    "teste",
+    "MIT"
+   ],
+   "line": "Matni IQ, EQ, CQ, RQ, funksionet ekzekutive dhe shqisat në 6 fusha me 18 teste, indekse të përbërë dhe intervale besimi 95%. Norma të përkohshme, vetëm orientuese, nuk është diagnozë."
+  },
+  "Cronosala": {
+   "tags": [
+    "sport",
+    "koha"
+   ],
+   "line": "Kohëmatës për palestër: pushim midis serive, HIIT, Tabata, EMOM, AMRAP, qarqe dhe metronom, plus ditar stërvitjeje me kg dhe përsëritje."
+  },
+  "ScutSonor": {
+   "tags": [
+    "siguri",
+    "zë"
+   ],
+   "line": "Zë i fortë dhe stroboskop i elektrikut të dorës për takime me qen agresivë, plus udhëzues sjelljeje. Është një ndihmë, jo një mburojë e garantuar."
+  },
+  "MIRAJ": {
+   "tags": [
+    "shikim",
+    "edukim"
+   ],
+   "line": "Si sheh retina dhe si e ndërton truri imazhin: fovea, pika e verbër, iluzione dhe kuiz, në tri nivele."
+  },
+  "ANTROPOS": {
+   "tags": [
+    "shqyrtim",
+    "biologji"
+   ],
+   "line": "Profil shkencor orientues i llogaritur lokalisht: mosha biologjike PhenoAge, zëri, shkrimi i dorës, vizatimi i orës, personaliteti TIPI dhe koha e reagimit."
+  },
+  "DESCANTAR": {
+   "tags": [
+    "folklor",
+    "fasule"
+   ],
+   "line": "Fall me 41 kokrra fasule (metoda 3×3, varianti i Oltenisë) dhe 12 magji tradicionale si objekt studimi folklorik."
+  },
+  "Index-fara-frontiere": {
+   "tags": [
+    "katalog",
+    "burime"
+   ],
+   "line": "Katalog i aplikacioneve HTML me një skedar: koleksioni chiuta.github.io dhe burime të jashtme, me kërkim dhe etiketa."
+  },
+  "DECUPAJ": {
+   "tags": [
+    "reels",
+    "video"
+   ],
+   "line": "Ktheni një podcast, audio ose video në klipe vertikale me titra drejtpërdrejt në shfletues, pa llogari dhe pa filigran. Skedarët tuaj nuk e lënë kurrë pajisjen."
+  },
+  "LECTOR": {
+   "tags": [
+    "audio",
+    "libra"
+   ],
+   "line": "Libra të lexuar me zë drejtpërdrejt në shfletues: EPUB, DOCX, PDF, TXT ose tekst i ngjitur, pa llogari dhe pa server. Teksti nuk e lë kurrë pajisjen tuaj."
+  },
+  "FARFURIA": {
+   "tags": [
+    "ushqim",
+    "shëndet"
+   ],
+   "line": "Dietolog dixhital falas: kalori dhe makro të personalizuara, plan vaktesh për 7 ditë, ditar ushqimi dhe ndjekje e peshës. Nuk e zëvendëson mjekun apo dietologun."
+  },
+  "VITALIS": {
+   "tags": [
+    "shëndet",
+    "jetëgjatësi"
+   ],
+   "line": "Shoqërues personal për shëndetin, jetëgjatësinë dhe biohakimin: nëntë shtylla të renditura sipas provave, llogaritës, pikë e stilit të jetesës dhe ritual ditor. Nuk është këshillë mjekësore."
+  },
+  "REZONANTA": {
+   "tags": [
+    "komunikim",
+    "media"
+   ],
+   "line": "Udhëzues dhe mjete për komunikimin dhe median: mesazh, kanale, njoftim për shtyp, intervistë, qartësi, plan dhe krizë."
+  },
+  "Claritas": {
+   "tags": [
+    "aksesueshmëri",
+    "zgjerim"
+   ],
+   "line": "Zgjerim gjithëpërfshirës i shfletuesit për aksesueshmëri: korrigjim kontrasti, mënyrë leximi, lexim me zë dhe kontroll WCAG. Pa telemetri, pa rrjet, pa llogari."
+  },
+  "TurboCursa": {
+   "tags": [
+    "gara",
+    "Rust"
+   ],
+   "line": "Lojë arkade garash pseudo-3D e shkruar në Rust: peizazhe të gjeneruara nga një farë, 11 mënyra, karrierë në ligë dhe 2 lojtarë. Origjinale; pa kod apo burime nga një lojë tjetër."
+  },
+  "ANTENA": {
+   "tags": [
+    "radio",
+    "antena"
+   ],
+   "line": "Në zhvillim: zgjidhës antenash me tel i përputhshëm me NEC-2 (metoda e momenteve), me ndërfaqe në shfletues. Për momentin vetëm një skelet pre-alfa."
+  },
+  "ARBITRU": {
+   "tags": [
+    "lojëra",
+    "rregulla"
+   ],
+   "line": "Në zhvillim: motor universal rregullash për lojëra me tabelë, letra, zare dhe enigma me gjuhë deklarative rregullash. Për momentin vetëm një skelet pre-alfa."
+  },
+  "ASTROLABIU": {
+   "tags": [
+    "astronomi",
+    "kalendarë"
+   ],
+   "line": "Në zhvillim: motor ngjarjesh qiellore në Rust të pastër (shkallë kohore, eklipse, lindje dhe perëndime, kalendarë). Për momentin vetëm një skelet pre-alfa."
+  },
+  "ECOGRAMA": {
+   "tags": [
+    "audio",
+    "restaurim"
+   ],
+   "line": "Në zhvillim: redaktues spektrogramesh dhe restaurim zëri: zgjidhni në spektrogram, riparoni, eksportoni. Për momentin vetëm një skelet pre-alfa."
+  },
+  "ecou-spectral-rs": {
+   "tags": [
+    "audio",
+    "Rust"
+   ],
+   "line": "Në zhvillim: redaktues spektrogramesh natyral në Rust me shtojca për zvogëlim zhurme dhe zbulim tingujsh. Ekzistojnë skeleti i kodit dhe formati i shtojcave, por ende jo funksione të gatshme."
+  },
+  "MARTOR": {
+   "tags": [
+    "arkivim",
+    "prova"
+   ],
+   "line": "Në zhvillim: kapje ligjore e uebit në WARC/WACZ me hashe, nënshkrime dhe vula kohore të besueshme, e verifikueshme jashtë linje. Për momentin vetëm një skelet pre-alfa."
+  },
+  "NEAMURI": {
+   "tags": [
+    "farefisni",
+    "gjenealogji"
+   ],
+   "line": "Në zhvillim: motor farefisnie — nga një rrugë në pemën e familjes te termi i saktë i farefisnisë në shumë gjuhë. Për momentin vetëm një skelet pre-alfa."
+  },
+  "TACTIL": {
+   "tags": [
+    "Brailë",
+    "aksesueshmëri"
+   ],
+   "line": "Në zhvillim: shtresë dalje me prekje: formate Braile (BRF, Unicode), ekrane, printerë me reliev dhe dridhje e ekranit me prekje. Për momentin vetëm një skelet pre-alfa."
+  },
+  "atelier-verificare": {
+   "tags": [
+    "gazetari",
+    "verifikim",
+    "foto"
+   ],
+   "line": "Verifikoni foto, video, lidhje dhe domene në shfletuesin tuaj, asgjë nuk ngarkohet: lloji i vërtetë i skedarit dhe SHA-256, EXIF/GPS, XMP/IPTC, Content Credentials (vetëm lexim), analizë e nivelit të gabimit. Nuk mund të provojë se një foto është e vërtetë. Alfa."
+  },
+  "balanta": {
+   "tags": [
+    "IA",
+    "vlerësim"
+   ],
+   "line": "Krahasoni modele IA verbërisht: ngjitni përgjigjet e dy deri në tetë modeleve për 92 kërkesa në rumanisht, anglisht dhe hungarisht, votoni A ose B dhe merrni një renditje me intervale. Alfa; funksionon jashtë linje."
+  },
+  "calendarium": {
+   "tags": [
+    "kalendarë",
+    "koha"
+   ],
+   "line": "Shkruani një datë në një nga njëmbëdhjetë kalendarët (gregorian, julian, hebre, hixhri, persian, kinez, maja, marsian…) dhe shihni në të gjithë të tjerët, me pamje mujore. Alfa; funksionon jashtë linje."
+  },
+  "glosar": {
+   "tags": [
+    "gjuhë",
+    "fjalorë"
+   ],
+   "line": "Fjalor jashtë linje për aromanishten, meglenoromanishten dhe romanin: kërkoni pa shenja diakritike, shihni cilat fjalë bazë mungojnë dhe shtoni fjalë me burim dhe regjistër. Alfa."
+  },
+  "graiul": {
+   "tags": [
+    "folklor",
+    "arkiv"
+   ],
+   "line": "Arkiv jashtë linje i folklorit rumun (proverba, magji, gjëegjëza, kolinda) me burim, qark dhe pëlqim. Fillon me dhjetë proverba; mund të shtoni më shumë. Alfa."
+  },
+  "indicativ-international": {
+   "tags": [
+    "radio",
+    "provime"
+   ],
+   "line": "Stërvituni me pyetjet e provimit të radioamatorëve me orar përsëritjeje me pesë kuti dhe provime provë me kohë; importoni paketa pyetjesh në format të përbashkët JSON. Përfshihen 50 pyetje stërvitjeje; nuk është bankë zyrtare. Alfa."
+  },
+  "proiector-fara-frontiere": {
+   "tags": [
+    "klasë",
+    "projektim",
+    "kuiz"
+   ],
+   "line": "Telefonat në klasë bëhen ekran i përbashkët pa server dhe pa llogari: kohëmatës, sondazh, kuiz, shënime dhe tabelë; çiftim me kod QR ose tekst të ngjitur në të njëjtin rrjet. Alfa: në telefona realë ende nuk është provuar."
+  },
+  "regula": {
+   "tags": [
+    "lojëra",
+    "rregulla"
+   ],
+   "line": "Luani pesë lojëra klasike për dy (mulliri, alquerque, fanorona, mū tōrere, hnefatafl) kundër kompjuterit ose një miku; shtoni lojën tuaj si JSON. Alfa; funksionon jashtë linje."
+  },
+  "vietar-packs": {
+   "tags": [
+    "natyrë",
+    "lloje"
+   ],
+   "line": "Shfletoni, importoni, kontrolloni dhe krijoni paketa rajonale llojesh për VietAR: emra në disa gjuhë, shenja helmueshmërie, lloje të ngjashme. Pesë draft paketa nisjeje me 71 lloje. Alfa; funksionon jashtë linje."
+  },
+  "PatruZeci": {
+   "tags": [
+    "WD-40",
+    "bëje vetë"
+   ],
+   "line": "Atlas i ilustruar dhe i animuar i përdorimeve të WD-40: udhëzues me 147 karta dhe lista zyrtare me 1993 përdorime, secila me skenën e saj të animuar. Jozyrtar, jashtë linje, pa llogari."
+  },
+  "ODISEEA": {
+   "tags": [
+    "Voyager",
+    "dokumentar"
+   ],
+   "line": "Dokumentar prej rreth 4,5 minutash për Voyager 1 dhe 2 në një skedar HTML: skena të gjeneruara në kartën grafike, eksport në 2D dhe 3D për syze VR, në 8 gjuhë."
+  },
+  "EXIF-CURAT": {
+   "tags": [
+    "metadata",
+    "privatësi"
+   ],
+   "line": "Në zhvillim: mjet në Rust me analizues të sigurt për memorien për të parë dhe pastruar të dhëna të fshehura në skedarë (imazhe, PDF, Office, video: EXIF, GPS, XMP). Për momentin vetëm një skelet pre-alfa."
+  },
+  "PORUMBEL": {
+   "tags": [
+    "foto",
+    "transferim"
+   ],
+   "line": "I zhvendos automatikisht fotot e bëra me Open Camera në telefon në një dosje në kompjuter, një dosje për seancë, dhe i hap në LegatorOCR. Pa llogari, pa cloud, pa crate të palëve të treta."
+  },
+  "colibri-companion": {
+   "tags": [
+    "IA lokale",
+    "desktop"
+   ],
+   "line": "Aplikacion desktop miqësor për motorin lokal të inferencës colibri: zgjidhni një model që i përshtatet kompjuterit tuaj, shkarkojeni me një klikim dhe bisedoni me të. Pa llogari, pa shërbim cloud."
+  },
+  "CartaColibri": {
+   "tags": [
+    "IA lokale",
+    "bibliotekë"
+   ],
+   "line": "Bibliotekë lokale IA mbi motorin Colibrì: indekson dosjet që zgjidhni, kërkon menjëherë dhe i kërkon një modeli lokal të përmbledhë, nxjerrë të dhëna ose sintetizojë, duke treguar gjithmonë skedarin burimor. Asgjë nuk e lë kompjuterin tuaj."
+  },
+  "PolyTabletop": {
+   "tags": [
+    "lojëra tavoline",
+    "Rust"
+   ],
+   "line": "240 lojëra tavoline kundër kompjuterit në terminal ose dritare grafike, plus lojë për dy në të njëjtën tastierë ose përmes rrjetit. Shkruar në Rust; motori dhe lojërat nuk kanë varësi të jashtme."
+  },
+  "STRAJA": {
+   "tags": [
+    "privatësi",
+    "telefon"
+   ],
+   "line": "Mburojë kundër agjentëve IA që lexojnë telefonin tuaj: tregon cilat aplikacione mund të lexojnë njoftimet, ekranin, fotot dhe SMS-të tuaja, paralajmëron kur një e re merr akses dhe ju çon te cilësimi ku e revokoni lejen. Pa llogari, pa leje INTERNET."
+  },
+  "CUPLAJ": {
+   "tags": [
+    "teatër zhytës",
+    "telefoni"
+   ],
+   "line": "Telefoni me linjë të përbashkët për teatër zhytës: një flotë telefonash të zakonshëm Android bëhet central privat përmes Wi-Fi-t të vendit; pa cloud, pa llogari, pa reklama. Tipari dallues është «cuplaj»: linja e përbashkët e telefonave fiks nga vitet 1980 deri rreth 2006."
+  },
+  "LUSTRUM": {
+   "tags": [
+    "pastrues telefoni",
+    "Android"
+   ],
+   "line": "Rikthejeni hapësirën në telefon: gjen skedarë të panevojshëm, dublikatë, foto të ngjashme dhe mbetje aplikacionesh dhe i pastron vetëm me pëlqimin tuaj. Nuk ka leje INTERNET, ndaj fizikisht nuk mund të dërgojë asgjë askund."
+  },
+  "STENOGRAMA": {
+   "tags": [
+    "transkriptim",
+    "audio"
+   ],
+   "line": "Transkriptim i audios së gjatë drejtpërdrejt në shfletues me Whisper lokal: një skedar HTML, pa llogari, pa server, pa filigran. Audioja juaj nuk e lë kurrë pajisjen; shkarkohet vetëm modeli Whisper, një herë."
+  },
+  "GERMEN": {
+   "tags": [
+    "IA lokale",
+    "Rust"
+   ],
+   "line": "Stërvitni një model të vogël gjuhësor nga e para në Rust të pastër në një procesor të zakonshëm: pa Python, pa CUDA, pa llogari, pa qasje në rrjet, pa telemetri. Një binar, një skedar teksti, një komandë."
+  },
+  "CUANTOR": {
+   "tags": [
+    "kompjuter kuantik",
+    "simulator"
+   ],
+   "line": "Simulator i kompjuterit kuantik për desktopin tuaj, nga 5 deri në 1000 kubite, me ndërfaqe në stilin e IBM Quantum Composer. Matematikë e saktë, por jo harduer i vërtetë kuantik."
+  }
+ }
+}
