@@ -183,7 +183,8 @@
         "VaultCrypt",
         "ScryVeil",
         "EXIF-CURAT",
-        "atelier-verificare"
+        "atelier-verificare",
+        "STRAJA"
       ],
       "kw": "metadate metadata exif gps fotografie photo imagine image fisier file confidentialitate privacy cifrare encrypt criptare parola password c2pa autentic authentic fals fake deepfake provenienta securitate security biztonsag datenschutz sterge remove foto fotografia echt authentisch hiteles fenykep autenticita autentica autentico autentique"
     },
@@ -450,7 +451,8 @@
         "IncredibleCosmos",
         "Horizons.BeyondLimits",
         "Universul-Observabil",
-        "TerRa"
+        "TerRa",
+        "CUANTOR"
       ],
       "kw": "matematica mathematics fizica physics geometrie geometry 4d dimensiuni dimensions gravitatie gravity simulare simulation vizualizare visualization"
     },
@@ -514,7 +516,8 @@
         "FASCICUL",
         "Clopotel",
         "Monstrarium",
-        "proiector-fara-frontiere"
+        "proiector-fara-frontiere",
+        "CUPLAJ"
       ],
       "kw": "atelier workshop eveniment event conferinta conference predare teaching clasa classroom proiector projector cronometru timer quiz elevi pupils prezentare presentation"
     },
@@ -581,7 +584,8 @@
         "Scopone-fara-frontiere",
         "Solitaire-fara-frontiere",
         "ARBITRU",
-        "regula"
+        "regula",
+        "PolyTabletop"
       ],
       "kw": "carti cards cartes carte cartas karten kartya joc game belot remi rummy scopone solitaire poker"
     },
@@ -604,7 +608,8 @@
         "Table-fara-frontiere",
         "Domino-fara-frontiere",
         "Mahjong-fara-frontiere",
-        "Zaruri-fara-frontiere"
+        "Zaruri-fara-frontiere",
+        "PolyTabletop"
       ],
       "kw": "joc game jocuri table board sah chess go dame draughts checkers domino mahjong backgammon zaruri dice tabla sakk sakkozni ajedrez xadrez schach echecs scacchi"
     },
@@ -882,6 +887,26 @@
         "Curatitor"
       ],
       "kw": "parola password parole cifrare criptare encrypt encryption securitate security cheie key seif vault"
+    },
+    {
+      "id": "phone",
+      "name": {
+        "en": "Phone and mobile apps",
+        "ro": "Telefon și aplicații mobile",
+        "fr": "Téléphone et applications mobiles",
+        "it": "Telefono e app mobili",
+        "es": "Teléfono y aplicaciones móviles",
+        "pt": "Telemóvel e aplicações móveis",
+        "de": "Smartphone und mobile Apps",
+        "hu": "Telefon és mobilalkalmazások"
+      },
+      "members": [
+        "STRAJA",
+        "LUSTRUM",
+        "CUPLAJ",
+        "PORUMBEL"
+      ],
+      "kw": "telefon phone android iphone ios smartphone mobil mobile apk telemovel movil telephone telefono handy"
     }
   ],
   "extraRelations": [
@@ -1312,6 +1337,96 @@
       "colibri-companion",
       "LegatorOCR",
       "Colibri Companion are o bibliotecă de integrare care rulează LegatorOCR ca program extern (încă neconectată la nicio fereastră)"
+    ],
+    [
+      "CartaColibri",
+      "colibri-companion",
+      "amândouă lucrează cu motorul local Colibrì: Colibri Companion îi aduce modele și îl pornește, CartaColibri îl folosește ca să răspundă din documentele tale"
+    ],
+    [
+      "CartaColibri",
+      "LegatorOCR",
+      "CartaColibri caută LegatorOCR și îl deschide pentru documentele scanate, apoi textul recunoscut devine căutabil în bibliotecă"
+    ],
+    [
+      "CartaColibri",
+      "TEZAUR",
+      "două asistente locale care răspund doar din documentele tale, cu surse citate, fără să trimită nimic în afara calculatorului"
+    ],
+    [
+      "PolyTabletop",
+      "regula",
+      "două colecții de jocuri de masă contra calculatorului: regula e o pagină HTML offline cu cinci jocuri clasice, PolyTabletop un program Rust cu 240 de jocuri"
+    ],
+    [
+      "PolyTabletop",
+      "Zaruri-fara-frontiere",
+      "jocurile de zaruri se pot juca contra calculatorului în amândouă: în pagină HTML offline sau în terminal și fereastră, cu simulator de aruncări"
+    ],
+    [
+      "PolyTabletop",
+      "ARBITRU",
+      "ambele țintesc jocurile de masă: ARBITRU e un motor universal de reguli (încă schelet), PolyTabletop are deja jocurile implementate și jucabile"
+    ],
+    [
+      "STRAJA",
+      "EXIF-CURAT",
+      "amândouă țin de confidențialitatea ta: STRAJA arată cine poate citi telefonul, EXIF-CURAT (în lucru) va scoate datele ascunse din fișiere înainte să le dai mai departe"
+    ],
+    [
+      "STRAJA",
+      "VaultCrypt",
+      "amândouă țin datele private pe dispozitiv, fără cont și fără server: STRAJA supraveghează accesul la telefon, VaultCrypt încuie fișiere și texte cu parolă"
+    ],
+    [
+      "CUPLAJ",
+      "FASCICUL",
+      "amândouă folosesc telefoanele din sală ca instrument pentru spectacol sau atelier: CUPLAJ le face centrală telefonică, FASCICUL le face tablă comună pe proiector"
+    ],
+    [
+      "CUPLAJ",
+      "proiector-fara-frontiere",
+      "telefoanele din sală legate prin rețeaua locală, fără cont: proiector-fara-frontiere le face ecran comun, CUPLAJ le face linie telefonică privată"
+    ],
+    [
+      "LUSTRUM",
+      "STRAJA",
+      "amândouă lucrează fără permisiunea INTERNET și țin totul pe telefon: LUSTRUM curăță, STRAJA supraveghează cine are acces"
+    ],
+    [
+      "LUSTRUM",
+      "EXIF-CURAT",
+      "LUSTRUM găsește pozele duplicate, asemănătoare și neclare, EXIF-CURAT (în lucru) va scoate datele ascunse din pozele rămase"
+    ],
+    [
+      "STENOGRAMA",
+      "VoiceAtelier",
+      "VoiceAtelier arată cum sună vocile artificiale, STENOGRAMA face drumul invers: transformă vocea înregistrată în text"
+    ],
+    [
+      "STENOGRAMA",
+      "TranslateHub",
+      "după transcriere, textul poate merge la traducere: TranslateHub oferă 22 de unelte de tradus sau traducerea cu IA și cheia ta"
+    ],
+    [
+      "GERMEN",
+      "LocalMind",
+      "amândouă fac IA pe calculatorul tău, fără server: GERMEN antrenează un model mic de limbaj, LocalMind rulează un asistent mic în browser"
+    ],
+    [
+      "GERMEN",
+      "colibri-companion",
+      "GERMEN antrenează de la zero un model mic de limbaj, Colibri Companion rulează local modele deja antrenate: două capete ale IA locale"
+    ],
+    [
+      "CUANTOR",
+      "Hyper4D",
+      "două unelte de matematică și fizică vizuală: CUANTOR simulează circuite cuantice, Hyper4D arată cum arată formele în patru dimensiuni"
+    ],
+    [
+      "CUANTOR",
+      "GERMEN",
+      "două programe Rust de laborator care fac calcul numeric greu pe procesorul tău, fără GPU: un simulator cuantic și un antrenor de modele mici"
     ]
   ],
   "apps": {
@@ -6225,6 +6340,335 @@
         },
         "hu": {
           "limite": "Alfa verzió (0.1.0-alpha.7). Az alkalmazás nem tartalmazza a colibrit: letölti (a beleegyezéseddel) vagy megmutatja a telepítési parancsot, a válaszok minősége és sebessége pedig a választott modelltől és a számítógépedtől függ. Az MCP-eszközök korai funkciók, és attól függnek, mennyire tartja be a modell a kért formátumot; minden hívás a jóváhagyásodat kéri. Az Erőforrások panel tanácsai tájékoztató jellegűek, és az alkalmazás magától semmilyen beállítást nem módosít. Az új verziók napi ellenőrzése kikapcsolható."
+        }
+      }
+    },
+    "CartaColibri": {
+      "coverage": {
+        "langs": [
+          "ro",
+          "en",
+          "fr",
+          "it",
+          "es",
+          "pt",
+          "de",
+          "hu"
+        ],
+        "platform": "native"
+      },
+      "fisa": {
+        "ro": {
+          "limite": "Versiune alfa (0.2.0-alpha.9): funcționează, dar are asperități; păstrează copii de siguranță ale lucrurilor importante. Linux e platforma cel mai bine testată; pe Windows și macOS browserul web-grab se compilează în CI, dar nu a fost niciodată rulat de mână. Documentele tale sunt doar citite, niciodată modificate."
+        },
+        "en": {
+          "limite": "Alpha version (0.2.0-alpha.9): it works, but expect rough edges, so keep backups of anything important. Linux is the best-tested platform; on Windows and macOS the web-grab browser is compiled in CI but has never been run by hand. Your documents are only ever read, never changed."
+        },
+        "fr": {
+          "limite": "Version alpha (0.2.0-alpha.9) : elle fonctionne, mais attendez-vous à des aspérités ; gardez des sauvegardes de ce qui compte. Linux est la plateforme la mieux testée ; sous Windows et macOS, le navigateur web-grab est compilé en CI mais n’a jamais été lancé à la main. Vos documents sont seulement lus, jamais modifiés."
+        },
+        "it": {
+          "limite": "Versione alfa (0.2.0-alpha.9): funziona, ma ha ancora asperità; conserva copie di sicurezza di ciò che conta. Linux è la piattaforma più testata; su Windows e macOS il browser web-grab viene compilato in CI ma non è mai stato avviato a mano. I tuoi documenti vengono solo letti, mai modificati."
+        },
+        "es": {
+          "limite": "Versión alfa (0.2.0-alpha.9): funciona, pero tiene asperezas; conserva copias de seguridad de lo importante. Linux es la plataforma mejor probada; en Windows y macOS el navegador web-grab se compila en CI, pero nunca se ha ejecutado a mano. Tus documentos solo se leen, nunca se modifican."
+        },
+        "pt": {
+          "limite": "Versão alfa (0.2.0-alpha.9): funciona, mas tem arestas por limar; guarda cópias de segurança do que é importante. O Linux é a plataforma mais testada; no Windows e no macOS o navegador web-grab é compilado no CI, mas nunca foi executado à mão. Os teus documentos são apenas lidos, nunca alterados."
+        },
+        "de": {
+          "limite": "Alpha-Version (0.2.0-alpha.9): Sie funktioniert, hat aber Ecken und Kanten; sichere Wichtiges zusätzlich. Linux ist die am besten getestete Plattform; unter Windows und macOS wird der Browser web-grab in der CI gebaut, aber nie von Hand gestartet. Deine Dokumente werden nur gelesen, nie verändert."
+        },
+        "hu": {
+          "limite": "Alfa verzió (0.2.0-alpha.9): működik, de vannak benne bakik; a fontos dolgokról tarts biztonsági másolatot. A Linux a legjobban tesztelt platform; Windowson és macOS-en a web-grab böngésző a CI-ben lefordul, de kézzel még sosem futtatták. A dokumentumaidat csak olvassa, soha nem módosítja."
+        }
+      }
+    },
+    "PolyTabletop": {
+      "coverage": {
+        "langs": [
+          "ro",
+          "en",
+          "fr",
+          "it",
+          "es",
+          "pt",
+          "de",
+          "hu"
+        ],
+        "platform": "native"
+      },
+      "fisa": {
+        "ro": {
+          "limite": "Versiunea 0.9: interfața grafică a fost testată doar fără ecran, nu vizual pe un ecran real. Forța IA a fost măsurată față de mutări aleatorii și între bugete de timp, nu față de oameni. Regulile jocurilor scrise din memorie au fost comparate cu surse publice, nu cu fiecare regulament oficial, iar jocurile nu au fost încercate de jucători din afară. Jocul în rețea e testat doar prin bucla locală. Textul din interiorul jocurilor (cărți, bănci de conținut, indicii) e încă în română; traducerile nu au fost corectate de vorbitori nativi."
+        },
+        "en": {
+          "limite": "Version 0.9: the graphical interface was tested headless only, not visually on a real screen. AI strength was measured against random moves and between time budgets, not against human players. The rules of games written from memory were compared with public sources, not with every official rulebook, and outside players have not playtested them. Network play is tested over loopback only. The text inside the games (cards, content banks, prompts) is still Romanian; translations were not proofread by native speakers."
+        },
+        "fr": {
+          "limite": "Version 0.9 : l’interface graphique n’a été testée que sans écran, pas visuellement sur un écran réel. La force de l’IA a été mesurée contre des coups aléatoires et entre budgets de temps, pas contre des humains. Les règles des jeux écrits de mémoire ont été comparées à des sources publiques, pas à chaque règlement officiel, et des joueurs extérieurs ne les ont pas testés. Le jeu en réseau n’est testé qu’en boucle locale. Le texte à l’intérieur des jeux (cartes, banques de contenu, consignes) est encore en roumain ; les traductions n’ont pas été relues par des locuteurs natifs."
+        },
+        "it": {
+          "limite": "Versione 0.9: l’interfaccia grafica è stata provata solo senza schermo, non visivamente su uno schermo reale. La forza dell’IA è stata misurata contro mosse casuali e tra budget di tempo, non contro persone. Le regole dei giochi scritti a memoria sono state confrontate con fonti pubbliche, non con ogni regolamento ufficiale, e giocatori esterni non li hanno provati. Il gioco in rete è provato solo in locale (loopback). Il testo dentro i giochi (carte, banche di contenuti, indicazioni) è ancora in rumeno; le traduzioni non sono state riviste da madrelingua."
+        },
+        "es": {
+          "limite": "Versión 0.9: la interfaz gráfica solo se probó sin pantalla, no visualmente en una pantalla real. La fuerza de la IA se midió contra jugadas aleatorias y entre presupuestos de tiempo, no contra personas. Las reglas de los juegos escritos de memoria se compararon con fuentes públicas, no con cada reglamento oficial, y jugadores externos no los han probado. El juego en red solo se probó en bucle local. El texto dentro de los juegos (cartas, bancos de contenido, indicaciones) sigue en rumano; las traducciones no las han revisado hablantes nativos."
+        },
+        "pt": {
+          "limite": "Versão 0.9: a interface gráfica só foi testada sem ecrã, não visualmente num ecrã real. A força da IA foi medida contra jogadas aleatórias e entre orçamentos de tempo, não contra pessoas. As regras dos jogos escritos de memória foram comparadas com fontes públicas, não com cada regulamento oficial, e jogadores externos não os experimentaram. O jogo em rede só foi testado em loopback. O texto dentro dos jogos (cartas, bancos de conteúdo, indicações) continua em romeno; as traduções não foram revistas por falantes nativos."
+        },
+        "de": {
+          "limite": "Version 0.9: Die grafische Oberfläche wurde nur ohne Bildschirm getestet, nicht visuell auf einem echten Bildschirm. Die KI-Stärke wurde gegen Zufallszüge und zwischen Zeitbudgets gemessen, nicht gegen Menschen. Die Regeln aus dem Gedächtnis geschriebener Spiele wurden mit öffentlichen Quellen verglichen, nicht mit jedem offiziellen Regelwerk, und externe Spieler haben sie nicht getestet. Das Netzwerkspiel ist nur über Loopback getestet. Der Text in den Spielen (Karten, Inhaltsbanken, Hinweise) ist noch rumänisch; die Übersetzungen wurden nicht von Muttersprachlern geprüft."
+        },
+        "hu": {
+          "limite": "0.9-es verzió: a grafikus felületet csak képernyő nélkül tesztelték, nem vizuálisan valódi képernyőn. Az MI erejét véletlen lépések ellen és időkeretek között mérték, nem emberek ellen. Az emlékezetből leírt játékok szabályait nyilvános forrásokkal vetették össze, nem minden hivatalos szabálykönyvvel, és külső játékosok nem próbálták ki őket. A hálózati játékot csak loopbacken tesztelték. A játékokon belüli szöveg (kártyák, tartalombankok, felszólítások) még román; a fordításokat nem ellenőrizték anyanyelvi beszélők."
+        }
+      }
+    },
+    "STRAJA": {
+      "coverage": {
+        "langs": [
+          "ro",
+          "en",
+          "fr",
+          "it",
+          "es",
+          "pt",
+          "de",
+          "hu"
+        ],
+        "platform": "native"
+      },
+      "fisa": {
+        "ro": {
+          "limite": "STRAJA nu poate opri un agent: Android și iOS nu lasă o aplicație să retragă accesul alteia; ea arată, avertizează și te duce la ecranul potrivit. Nu poate bloca capturile de ecran făcute de alte aplicații, doar propriul ecran e protejat. Pe iPhone nu există audit, doar ghidul, un registru manual și memento-uri. Lista agenților IA cunoscuți e orientativă: adaugă manual ce lipsește."
+        },
+        "en": {
+          "limite": "STRAJA cannot stop an agent: Android and iOS do not let one app revoke another’s access; it shows, warns and takes you to the right screen. It cannot block screenshots taken by other apps; only its own screen is protected. On iPhone there is no audit, only the guide, a manual registry and reminders. The list of known AI agents is indicative: mark anything missing by hand."
+        },
+        "fr": {
+          "limite": "STRAJA ne peut pas arrêter un agent : Android et iOS ne permettent pas à une application de retirer l’accès d’une autre ; elle montre, avertit et vous mène au bon écran. Elle ne peut pas bloquer les captures d’écran faites par d’autres applications ; seul son propre écran est protégé. Sur iPhone, il n’y a pas d’audit, seulement le guide, un registre manuel et des rappels. La liste des agents IA connus est indicative : ajoutez à la main ce qui manque."
+        },
+        "it": {
+          "limite": "STRAJA non può fermare un agente: Android e iOS non permettono a un’app di revocare l’accesso di un’altra; mostra, avvisa e ti porta alla schermata giusta. Non può bloccare gli screenshot fatti da altre app; è protetta solo la sua schermata. Su iPhone non c’è audit, solo la guida, un registro manuale e promemoria. L’elenco degli agenti IA noti è indicativo: aggiungi a mano ciò che manca."
+        },
+        "es": {
+          "limite": "STRAJA no puede detener a un agente: Android e iOS no permiten que una aplicación retire el acceso de otra; muestra, avisa y te lleva a la pantalla correcta. No puede bloquear las capturas de pantalla hechas por otras aplicaciones; solo protege su propia pantalla. En iPhone no hay auditoría, solo la guía, un registro manual y recordatorios. La lista de agentes de IA conocidos es orientativa: añade a mano lo que falte."
+        },
+        "pt": {
+          "limite": "A STRAJA não consegue travar um agente: o Android e o iOS não deixam uma aplicação retirar o acesso de outra; mostra, avisa e leva-te ao ecrã certo. Não consegue bloquear as capturas de ecrã feitas por outras aplicações; só o seu próprio ecrã está protegido. No iPhone não há auditoria, apenas o guia, um registo manual e lembretes. A lista de agentes de IA conhecidos é indicativa: acrescenta à mão o que faltar."
+        },
+        "de": {
+          "limite": "STRAJA kann einen Agenten nicht stoppen: Android und iOS erlauben es einer App nicht, den Zugriff einer anderen zu entziehen; sie zeigt, warnt und führt dich zum richtigen Bildschirm. Sie kann Screenshots anderer Apps nicht blockieren; nur ihr eigener Bildschirm ist geschützt. Auf dem iPhone gibt es kein Audit, nur den Leitfaden, ein manuelles Register und Erinnerungen. Die Liste bekannter KI-Agenten ist nur ein Anhaltspunkt: Ergänze Fehlendes von Hand."
+        },
+        "hu": {
+          "limite": "A STRAJA nem tud megállítani egy ügynököt: az Android és az iOS nem engedi, hogy egy alkalmazás visszavonja egy másik hozzáférését; megmutatja, figyelmeztet, és a megfelelő képernyőre visz. Más alkalmazások képernyőképeit nem tudja blokkolni; csak a saját képernyője védett. iPhone-on nincs audit, csak az útmutató, egy kézi nyilvántartás és emlékeztetők. Az ismert MI-ügynökök listája tájékoztató jellegű: ami hiányzik, add hozzá kézzel."
+        }
+      }
+    },
+    "CUPLAJ": {
+      "coverage": {
+        "langs": [
+          "ro",
+          "en",
+          "fr",
+          "it",
+          "es",
+          "pt",
+          "de",
+          "hu"
+        ],
+        "platform": "native"
+      },
+      "status": "experimental",
+      "fisa": {
+        "ro": {
+          "limite": "Logica apelurilor (linia comună, permisiuni, limite, persistență) e acoperită de peste 250 de verificări automate, dar interfața Android și calea audio nu au fost încă testate pe telefoane fizice: încearcă cu câteva telefoane înainte de spectacol. Traficul din rețeaua locală nu e criptat (PIN-ul și codul camerei țin la distanță străinii cinstiți, nu sunt criptografie). Aplicația pentru iPhone nu a fost încercată pe iPhone-uri reale și nici cu un furnizor SIP real; apelurile prin internet, operatorii reali, NAT-urile, cartelele SIM, Bluetooth și Wi-Fi Direct nu au fost încercate pe dispozitive reale."
+        },
+        "en": {
+          "limite": "The call logic (party line, permissions, limits, persistence) is covered by more than 250 automated checks, but the Android interface and audio path have not yet been tested on physical phones: try a handful of phones before a show. Traffic on the local network is not encrypted (the PIN and room code keep honest strangers out; they are not cryptography). The iPhone app has not been tried on real iPhones or against a real SIP provider; internet calling, real operators, NATs, SIM cards, Bluetooth and Wi-Fi Direct have not been tried on real devices."
+        },
+        "fr": {
+          "limite": "La logique des appels (ligne partagée, permissions, limites, persistance) est couverte par plus de 250 vérifications automatiques, mais l’interface Android et le chemin audio n’ont pas encore été testés sur de vrais téléphones : essayez avec quelques téléphones avant un spectacle. Le trafic du réseau local n’est pas chiffré (le PIN et le code de salle écartent les inconnus honnêtes ; ce n’est pas de la cryptographie). L’application iPhone n’a pas été essayée sur de vrais iPhone ni avec un vrai fournisseur SIP ; les appels par Internet, les vrais opérateurs, les NAT, les cartes SIM, le Bluetooth et le Wi-Fi Direct n’ont pas été essayés sur de vrais appareils."
+        },
+        "it": {
+          "limite": "La logica delle chiamate (linea condivisa, permessi, limiti, persistenza) è coperta da oltre 250 verifiche automatiche, ma l’interfaccia Android e il percorso audio non sono ancora stati provati su telefoni fisici: prova con qualche telefono prima di uno spettacolo. Il traffico sulla rete locale non è cifrato (il PIN e il codice della sala tengono lontani gli estranei onesti; non sono crittografia). L’app per iPhone non è stata provata su iPhone reali né con un vero provider SIP; chiamate via Internet, operatori reali, NAT, SIM, Bluetooth e Wi-Fi Direct non sono stati provati su dispositivi reali."
+        },
+        "es": {
+          "limite": "La lógica de las llamadas (línea compartida, permisos, límites, persistencia) está cubierta por más de 250 comprobaciones automáticas, pero la interfaz de Android y la ruta de audio aún no se han probado en teléfonos físicos: prueba con unos cuantos teléfonos antes de una función. El tráfico de la red local no está cifrado (el PIN y el código de sala frenan a los extraños honrados; no son criptografía). La aplicación de iPhone no se ha probado en iPhone reales ni con un proveedor SIP real; las llamadas por Internet, los operadores reales, los NAT, las tarjetas SIM, el Bluetooth y el Wi-Fi Direct no se han probado en dispositivos reales."
+        },
+        "pt": {
+          "limite": "A lógica das chamadas (linha partilhada, permissões, limites, persistência) está coberta por mais de 250 verificações automáticas, mas a interface Android e o caminho de áudio ainda não foram testados em telemóveis físicos: experimenta com alguns telemóveis antes de um espetáculo. O tráfego da rede local não é cifrado (o PIN e o código da sala afastam os estranhos honestos; não são criptografia). A aplicação para iPhone não foi experimentada em iPhones reais nem com um fornecedor SIP real; as chamadas pela Internet, os operadores reais, os NAT, os cartões SIM, o Bluetooth e o Wi-Fi Direct não foram experimentados em dispositivos reais."
+        },
+        "de": {
+          "limite": "Die Anruflogik (Gemeinschaftsanschluss, Berechtigungen, Grenzen, Persistenz) ist durch mehr als 250 automatische Prüfungen abgedeckt, aber die Android-Oberfläche und der Audiopfad wurden noch nicht auf echten Telefonen getestet: Probiere vor einer Aufführung einige Telefone aus. Der Verkehr im lokalen Netz ist nicht verschlüsselt (PIN und Raumcode halten ehrliche Fremde fern; sie sind keine Kryptografie). Die iPhone-App wurde weder auf echten iPhones noch mit einem echten SIP-Anbieter ausprobiert; Internet-Anrufe, echte Betreiber, NATs, SIM-Karten, Bluetooth und Wi-Fi Direct wurden nicht auf echten Geräten erprobt."
+        },
+        "hu": {
+          "limite": "A hívások logikáját (közös vonal, engedélyek, korlátok, tartósság) több mint 250 automatikus ellenőrzés fedi, de az Android-felületet és a hangutat még nem tesztelték fizikai telefonokon: előadás előtt próbáld ki néhány telefonnal. A helyi hálózat forgalma nincs titkosítva (a PIN-kód és a szobakód a tisztességes idegeneket tartja távol; nem kriptográfia). Az iPhone-alkalmazást nem próbálták ki valódi iPhone-okon és valódi SIP-szolgáltatóval; az internetes hívásokat, a valódi szolgáltatókat, a NAT-okat, a SIM-kártyákat, a Bluetooth-t és a Wi-Fi Direct-et nem tesztelték valódi eszközökön."
+        }
+      }
+    },
+    "LUSTRUM": {
+      "coverage": {
+        "langs": [
+          "ro",
+          "en",
+          "fr",
+          "it",
+          "es",
+          "pt",
+          "de",
+          "hu"
+        ],
+        "platform": "native"
+      },
+      "fisa": {
+        "ro": {
+          "limite": "Versiune beta (0.8.0): testele unitare și instrumentate rulează în CI, dar aplicația nu a fost încă testată pe un telefon fizic; traducerile sunt făcute automat și nu au fost revizuite de vorbitori nativi. Compresia (doar JPEG) și programarea (doar gunoiul evident) sunt parțiale: unelte mature, ca SD Maid SE, fac mai mult. Android 11+ nu lasă nicio aplicație obișnuită să intre în folderele altor aplicații; nu există versiune pentru iPhone."
+        },
+        "en": {
+          "limite": "Beta version (0.8.0): unit and instrumented tests run in CI, but the app has not yet been tested on a physical phone; translations are machine-made and not reviewed by native speakers. Compression (JPEG only) and scheduling (obvious junk only) are partial: mature tools such as SD Maid SE do more. Android 11+ keeps every normal app out of other apps’ folders; there is no iPhone version."
+        },
+        "fr": {
+          "limite": "Version bêta (0.8.0) : des tests unitaires et instrumentés tournent en CI, mais l’application n’a pas encore été testée sur un téléphone physique ; les traductions sont automatiques et n’ont pas été relues par des locuteurs natifs. La compression (JPEG uniquement) et la planification (déchets évidents uniquement) sont partielles : des outils matures comme SD Maid SE font davantage. Android 11+ interdit à toute application ordinaire l’accès aux dossiers des autres ; il n’y a pas de version iPhone."
+        },
+        "it": {
+          "limite": "Versione beta (0.8.0): test unitari e strumentati girano in CI, ma l’app non è ancora stata provata su un telefono fisico; le traduzioni sono automatiche e non sono state riviste da madrelingua. La compressione (solo JPEG) e la pianificazione (solo i rifiuti evidenti) sono parziali: strumenti maturi come SD Maid SE fanno di più. Android 11+ impedisce a ogni app normale di entrare nelle cartelle delle altre; non esiste una versione per iPhone."
+        },
+        "es": {
+          "limite": "Versión beta (0.8.0): las pruebas unitarias e instrumentadas se ejecutan en CI, pero la aplicación aún no se ha probado en un teléfono físico; las traducciones son automáticas y no las han revisado hablantes nativos. La compresión (solo JPEG) y la programación (solo la basura evidente) son parciales: herramientas maduras como SD Maid SE hacen más. Android 11+ impide a cualquier aplicación normal entrar en las carpetas de otras; no hay versión para iPhone."
+        },
+        "pt": {
+          "limite": "Versão beta (0.8.0): os testes unitários e instrumentados correm no CI, mas a aplicação ainda não foi testada num telemóvel físico; as traduções são automáticas e não foram revistas por falantes nativos. A compressão (só JPEG) e o agendamento (só o lixo evidente) são parciais: ferramentas maduras como o SD Maid SE fazem mais. O Android 11+ impede qualquer aplicação normal de entrar nas pastas das outras; não existe versão para iPhone."
+        },
+        "de": {
+          "limite": "Beta-Version (0.8.0): Unit- und Instrumentationstests laufen in der CI, aber die App wurde noch nicht auf einem echten Telefon getestet; die Übersetzungen sind maschinell und wurden nicht von Muttersprachlern geprüft. Komprimierung (nur JPEG) und Zeitplan (nur offensichtlicher Datenmüll) sind nur teilweise vorhanden: ausgereifte Werkzeuge wie SD Maid SE leisten mehr. Android 11+ hält jede normale App aus den Ordnern anderer Apps heraus; eine iPhone-Version gibt es nicht."
+        },
+        "hu": {
+          "limite": "Béta verzió (0.8.0): az egység- és műszeres tesztek a CI-ben futnak, de az alkalmazást még nem tesztelték fizikai telefonon; a fordítások gépiek, anyanyelvi beszélők nem ellenőrizték őket. A tömörítés (csak JPEG) és az ütemezés (csak a nyilvánvaló szemét) részleges: az érett eszközök, például az SD Maid SE, többet tudnak. Az Android 11+ minden átlagos alkalmazást kizár a többi alkalmazás mappáiból; iPhone-verzió nincs."
+        }
+      }
+    },
+    "STENOGRAMA": {
+      "coverage": {
+        "langs": [
+          "ro",
+          "en",
+          "fr",
+          "it",
+          "es",
+          "de",
+          "hu"
+        ],
+        "platform": "web"
+      },
+      "status": "experimental",
+      "fisa": {
+        "ro": {
+          "limite": "Netestată cu Whisper real (modelele nu s-au putut descărca în mediul de dezvoltare; testele folosesc un motor simulat), nici pe Safari/iOS sau pe dispozitive reale. Safari nu decodează Opus (vocalele WhatsApp). Fișierele care nu sunt MP3 sau WAV se decodează întregi în memorie; peste 600 MB aplicația cere conversia. Cuvintele rare, numele proprii și acronimele se corectează manual."
+        },
+        "en": {
+          "limite": "Not tested with real Whisper (the models could not be downloaded in the development environment; the tests use a simulated engine), nor on Safari/iOS or on real devices. Safari does not decode Opus (WhatsApp voice notes). Files that are not MP3 or WAV are decoded whole in memory; above 600 MB the app asks for a conversion. Rare words, proper names and acronyms need manual correction."
+        },
+        "fr": {
+          "limite": "Non testée avec le vrai Whisper (les modèles n’ont pas pu être téléchargés dans l’environnement de développement ; les tests utilisent un moteur simulé), ni sur Safari/iOS ou sur de vrais appareils. Safari ne décode pas Opus (messages vocaux WhatsApp). Les fichiers qui ne sont ni MP3 ni WAV sont décodés en entier en mémoire ; au-delà de 600 Mo, l’application demande une conversion. Les mots rares, noms propres et acronymes se corrigent à la main."
+        },
+        "it": {
+          "limite": "Non testata con il vero Whisper (i modelli non si sono potuti scaricare nell’ambiente di sviluppo; i test usano un motore simulato), né su Safari/iOS o su dispositivi reali. Safari non decodifica Opus (messaggi vocali di WhatsApp). I file che non sono MP3 o WAV vengono decodificati interi in memoria; oltre 600 MB l’app chiede una conversione. Parole rare, nomi propri e acronimi vanno corretti a mano."
+        },
+        "es": {
+          "limite": "No probada con el Whisper real (los modelos no se pudieron descargar en el entorno de desarrollo; las pruebas usan un motor simulado), ni en Safari/iOS ni en dispositivos reales. Safari no decodifica Opus (notas de voz de WhatsApp). Los archivos que no son MP3 ni WAV se decodifican enteros en memoria; por encima de 600 MB la aplicación pide una conversión. Las palabras raras, los nombres propios y las siglas se corrigen a mano."
+        },
+        "pt": {
+          "limite": "Não testada com o Whisper real (os modelos não puderam ser descarregados no ambiente de desenvolvimento; os testes usam um motor simulado), nem no Safari/iOS ou em dispositivos reais. O Safari não descodifica Opus (mensagens de voz do WhatsApp). Os ficheiros que não são MP3 nem WAV são descodificados inteiros em memória; acima de 600 MB a aplicação pede uma conversão. As palavras raras, os nomes próprios e as siglas corrigem-se à mão."
+        },
+        "de": {
+          "limite": "Nicht mit dem echten Whisper getestet (die Modelle ließen sich in der Entwicklungsumgebung nicht herunterladen; die Tests nutzen eine simulierte Engine), ebenso wenig auf Safari/iOS oder echten Geräten. Safari dekodiert kein Opus (WhatsApp-Sprachnachrichten). Dateien, die weder MP3 noch WAV sind, werden komplett im Speicher dekodiert; über 600 MB verlangt die App eine Umwandlung. Seltene Wörter, Eigennamen und Akronyme müssen von Hand korrigiert werden."
+        },
+        "hu": {
+          "limite": "Valódi Whisperrel nem tesztelték (a modelleket nem lehetett letölteni a fejlesztői környezetben; a tesztek szimulált motort használnak), Safarin/iOS-en és valódi eszközökön sem. A Safari nem dekódolja az Opust (WhatsApp-hangüzenetek). Az MP3-tól és WAV-tól eltérő fájlokat egészében dekódolja a memóriában; 600 MB fölött az alkalmazás átalakítást kér. A ritka szavakat, tulajdonneveket és rövidítéseket kézzel kell javítani."
+        }
+      }
+    },
+    "GERMEN": {
+      "coverage": {
+        "langs": [
+          "ro",
+          "en",
+          "fr",
+          "it",
+          "es",
+          "pt",
+          "de",
+          "hu"
+        ],
+        "platform": "native"
+      },
+      "fisa": {
+        "ro": {
+          "limite": "Versiunea 0.6: e un atelier, nu o fabrică de chatbot-uri; corpusul demo e sintetic și minuscul, tot corpusul se citește în memorie, iar GPU și precizia mixtă lipsesc. Viteza nu a fost măsurată pe Windows, macOS sau pe mașini cu multe nuclee. GERMEN Studio a fost folosit într-un browser real doar pe Linux și în Chromium; nimeni nu l-a folosit încă cu un cititor de ecran. Sumele de control apără de accidente, nu de cineva care poate edita și metadatele."
+        },
+        "en": {
+          "limite": "Version 0.6: it is a workshop, not a chatbot factory; the demo corpus is synthetic and tiny, the whole corpus is read into memory, and there is no GPU backend or mixed precision. Speed has not been measured on Windows, macOS or machines with many cores. GERMEN Studio has been used in a real browser on Linux and in Chromium only; nobody has used it with a screen reader yet. Checksums guard against accidents, not against someone who can edit the metadata as well."
+        },
+        "fr": {
+          "limite": "Version 0.6 : c’est un atelier, pas une usine à chatbots ; le corpus de démonstration est synthétique et minuscule, tout le corpus est lu en mémoire, et il n’y a ni GPU ni précision mixte. La vitesse n’a pas été mesurée sous Windows, macOS ni sur des machines à nombreux cœurs. GERMEN Studio n’a été utilisé dans un vrai navigateur que sous Linux et dans Chromium ; personne ne l’a encore utilisé avec un lecteur d’écran. Les sommes de contrôle protègent des accidents, pas de quelqu’un qui peut aussi modifier les métadonnées."
+        },
+        "it": {
+          "limite": "Versione 0.6: è un laboratorio, non una fabbrica di chatbot; il corpus dimostrativo è sintetico e minuscolo, l’intero corpus viene letto in memoria e non ci sono né GPU né precisione mista. La velocità non è stata misurata su Windows, macOS o macchine con molti core. GERMEN Studio è stato usato in un browser reale solo su Linux e in Chromium; nessuno lo ha ancora usato con uno screen reader. I checksum proteggono dagli incidenti, non da chi può modificare anche i metadati."
+        },
+        "es": {
+          "limite": "Versión 0.6: es un taller, no una fábrica de chatbots; el corpus de demostración es sintético y diminuto, todo el corpus se lee en memoria y no hay GPU ni precisión mixta. La velocidad no se ha medido en Windows, macOS ni en máquinas con muchos núcleos. GERMEN Studio solo se ha usado en un navegador real en Linux y en Chromium; nadie lo ha usado aún con un lector de pantalla. Las sumas de comprobación protegen de accidentes, no de alguien que también pueda editar los metadatos."
+        },
+        "pt": {
+          "limite": "Versão 0.6: é uma oficina, não uma fábrica de chatbots; o corpus de demonstração é sintético e minúsculo, todo o corpus é lido para a memória e não há GPU nem precisão mista. A velocidade não foi medida no Windows, no macOS nem em máquinas com muitos núcleos. O GERMEN Studio só foi usado num navegador real no Linux e no Chromium; ninguém o usou ainda com um leitor de ecrã. As somas de verificação protegem de acidentes, não de alguém que também possa editar os metadados."
+        },
+        "de": {
+          "limite": "Version 0.6: Es ist eine Werkstatt, keine Chatbot-Fabrik; das Demo-Korpus ist synthetisch und winzig, das ganze Korpus wird in den Speicher gelesen, und es gibt weder GPU noch gemischte Präzision. Die Geschwindigkeit wurde unter Windows, macOS und auf Maschinen mit vielen Kernen nicht gemessen. GERMEN Studio wurde in einem echten Browser nur unter Linux und in Chromium benutzt; mit einem Screenreader hat es noch niemand verwendet. Prüfsummen schützen vor Unfällen, nicht vor jemandem, der auch die Metadaten bearbeiten kann."
+        },
+        "hu": {
+          "limite": "0.6-os verzió: műhely, nem csevegőrobot-gyár; a bemutató korpusz szintetikus és parányi, a teljes korpuszt beolvassa a memóriába, GPU és vegyes pontosság nincs. A sebességet nem mérték Windowson, macOS-en és sok magos gépeken. A GERMEN Studiót valódi böngészőben csak Linuxon és Chromiumban használták; képernyőolvasóval még senki. Az ellenőrző összegek a balesetek ellen védenek, nem az ellen, aki a metaadatokat is szerkesztheti."
+        }
+      }
+    },
+    "CUANTOR": {
+      "coverage": {
+        "langs": [
+          "ro",
+          "en",
+          "fr",
+          "it",
+          "es",
+          "pt",
+          "de",
+          "hu"
+        ],
+        "platform": "native"
+      },
+      "fisa": {
+        "ro": {
+          "limite": "Fiecare qubit în plus dublează munca: 24 de qubiți cer cam 256 MiB, 28 cam 4 GiB; dincolo de asta merg doar tiparele simple, iar un circuit aleatoriu de 1000 de qubiți e imposibil pentru orice calculator obișnuit. Legătura cu IBM nu a fost verificată pe hardware IBM real. Circuitele dinamice nu pot fi desenate în editor și nici trimise la hardware IBM."
+        },
+        "en": {
+          "limite": "Every extra qubit doubles the work: 24 qubits need about 256 MiB, 28 about 4 GiB; beyond that only simple patterns work, and a random 1000-qubit circuit is impossible for any normal computer. The IBM link has not been verified on real IBM hardware. Dynamic circuits cannot be drawn in the editor or sent to IBM hardware."
+        },
+        "fr": {
+          "limite": "Chaque qubit supplémentaire double le travail : 24 qubits demandent environ 256 Mio, 28 environ 4 Gio ; au-delà, seuls les motifs simples fonctionnent, et un circuit aléatoire de 1000 qubits est impossible pour tout ordinateur ordinaire. Le lien avec IBM n’a pas été vérifié sur du vrai matériel IBM. Les circuits dynamiques ne peuvent être ni dessinés dans l’éditeur ni envoyés au matériel IBM."
+        },
+        "it": {
+          "limite": "Ogni qubit in più raddoppia il lavoro: 24 qubit richiedono circa 256 MiB, 28 circa 4 GiB; oltre, funzionano solo schemi semplici, e un circuito casuale da 1000 qubit è impossibile per qualsiasi computer normale. Il collegamento con IBM non è stato verificato su hardware IBM reale. I circuiti dinamici non possono essere disegnati nell’editor né inviati all’hardware IBM."
+        },
+        "es": {
+          "limite": "Cada cúbit adicional duplica el trabajo: 24 cúbits necesitan unos 256 MiB y 28 unos 4 GiB; más allá solo funcionan patrones simples, y un circuito aleatorio de 1000 cúbits es imposible para cualquier ordenador normal. El enlace con IBM no se ha verificado en hardware IBM real. Los circuitos dinámicos no se pueden dibujar en el editor ni enviar al hardware de IBM."
+        },
+        "pt": {
+          "limite": "Cada qubit adicional duplica o trabalho: 24 qubits precisam de cerca de 256 MiB e 28 de cerca de 4 GiB; além disso só funcionam padrões simples, e um circuito aleatório de 1000 qubits é impossível para qualquer computador normal. A ligação à IBM não foi verificada em hardware IBM real. Os circuitos dinâmicos não podem ser desenhados no editor nem enviados para o hardware da IBM."
+        },
+        "de": {
+          "limite": "Jedes zusätzliche Qubit verdoppelt den Aufwand: 24 Qubits brauchen etwa 256 MiB, 28 etwa 4 GiB; darüber hinaus funktionieren nur einfache Muster, und ein zufälliger Schaltkreis mit 1000 Qubits ist für jeden normalen Computer unmöglich. Die IBM-Anbindung wurde auf echter IBM-Hardware nicht überprüft. Dynamische Schaltkreise lassen sich weder im Editor zeichnen noch an IBM-Hardware senden."
+        },
+        "hu": {
+          "limite": "Minden további kvantumbit megkétszerezi a munkát: 24 kvantumbithez nagyjából 256 MiB, 28-hoz nagyjából 4 GiB kell; efölött csak egyszerű minták működnek, és egy véletlenszerű 1000 kvantumbites áramkör bármely átlagos számítógép számára lehetetlen. Az IBM-kapcsolatot valódi IBM-hardveren nem ellenőrizték. A dinamikus áramköröket nem lehet megrajzolni a szerkesztőben, és IBM-hardverre sem lehet elküldeni."
         }
       }
     }

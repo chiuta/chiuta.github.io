@@ -78,6 +78,12 @@
     ],
     "Nota-Zero": [
       "recenzie.html"
+    ],
+    "CartaColibri": [
+      "site-carta/index.html"
+    ],
+    "CUANTOR": [
+      "site/index.html"
     ]
   },
   "$extraTargets": "Fișiere HTML single-file distribuite separat de index.html-ul principal al depozitului (copii de distribuție, rezultate de build, pagini web ale aplicațiilor Rust); intră în audit, în coborârea sintaxei și în smoke la fel ca aplicațiile. Cheie = depozit, valoare = căi relative. Rezultatul de build trebuie regenerat/coborât din nou după fiecare build (vezi docs/COMPATIBILITATE.md)."

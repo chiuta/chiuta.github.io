@@ -72,7 +72,7 @@ function liveAndApps(byName) {
     const r = byName.get(key.toLowerCase());
     apps.push({key, ver, off, langs: langs.length, hosts: hosts.length, score: r ? r.score : null, hm: r ? r.c + r.h + r.m : null, l: r ? r.l : null});
   }
-  try { execFileSync('node', [path.join(HUB, 'tools', 'sync-catalog.mjs'), '--check'], {stdio: 'pipe'}); live.syncOk = true; } catch { live.syncOk = false; }
+  try { execFileSync('node', [path.join(HUB, 'tools', 'sync-catalog.mjs'), '--check', '--root', ROOT], {stdio: 'pipe'}); live.syncOk = true; } catch { live.syncOk = false; }
   apps.sort((x, y) => x.key.toLowerCase().localeCompare(y.key.toLowerCase()));
   return {live, apps};
 }

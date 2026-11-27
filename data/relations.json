@@ -1,7 +1,7 @@
 {
  "schema": 1,
  "note": "Generat de tools/sync-catalog.mjs din data/catalog-meta.json, data/flows.json și registrul de plicuri; nu se editează de mână. Fiecare relație are cel puțin un motiv verificabil (vezi relationEvidence în tools/catalog-meta-lib.mjs).",
- "count": 722,
+ "count": 768,
  "relations": [
   {
    "a": "AcademiSearch",
@@ -591,6 +591,15 @@
    "reasons": [
     "topic:cards"
    ]
+  },
+  {
+   "a": "ARBITRU",
+   "b": "PolyTabletop",
+   "reasons": [
+    "topic:cards",
+    "pair"
+   ],
+   "why": "ambele țintesc jocurile de masă: ARBITRU e un motor universal de reguli (încă schelet), PolyTabletop are deja jocurile implementate și jucabile"
   },
   {
    "a": "ARBITRU",
@@ -1249,6 +1258,13 @@
   },
   {
    "a": "Belot-fara-frontiere",
+   "b": "PolyTabletop",
+   "reasons": [
+    "topic:cards"
+   ]
+  },
+  {
+   "a": "Belot-fara-frontiere",
    "b": "Profund",
    "reasons": [
     "module:fff-jocuri"
@@ -1632,6 +1648,37 @@
    "reasons": [
     "envelope:sound/profile",
     "module:fff-sunet"
+   ]
+  },
+  {
+   "a": "CartaColibri",
+   "b": "colibri-companion",
+   "reasons": [
+    "pair"
+   ],
+   "why": "amândouă lucrează cu motorul local Colibrì: Colibri Companion îi aduce modele și îl pornește, CartaColibri îl folosește ca să răspundă din documentele tale"
+  },
+  {
+   "a": "CartaColibri",
+   "b": "LegatorOCR",
+   "reasons": [
+    "pair"
+   ],
+   "why": "CartaColibri caută LegatorOCR și îl deschide pentru documentele scanate, apoi textul recunoscut devine căutabil în bibliotecă"
+  },
+  {
+   "a": "CartaColibri",
+   "b": "TEZAUR",
+   "reasons": [
+    "pair"
+   ],
+   "why": "două asistente locale care răspund doar din documentele tale, cu surse citate, fără să trimită nimic în afara calculatorului"
+  },
+  {
+   "a": "Carti-de-joc-fara-frontiere",
+   "b": "PolyTabletop",
+   "reasons": [
+    "topic:cards"
    ]
   },
   {
@@ -2042,6 +2089,51 @@
    ]
   },
   {
+   "a": "CUANTOR",
+   "b": "GERMEN",
+   "reasons": [
+    "pair"
+   ],
+   "why": "două programe Rust de laborator care fac calcul numeric greu pe procesorul tău, fără GPU: un simulator cuantic și un antrenor de modele mici"
+  },
+  {
+   "a": "CUANTOR",
+   "b": "Horizons.BeyondLimits",
+   "reasons": [
+    "topic:mathviz"
+   ]
+  },
+  {
+   "a": "CUANTOR",
+   "b": "Hyper4D",
+   "reasons": [
+    "topic:mathviz",
+    "pair"
+   ],
+   "why": "două unelte de matematică și fizică vizuală: CUANTOR simulează circuite cuantice, Hyper4D arată cum arată formele în patru dimensiuni"
+  },
+  {
+   "a": "CUANTOR",
+   "b": "IncredibleCosmos",
+   "reasons": [
+    "topic:mathviz"
+   ]
+  },
+  {
+   "a": "CUANTOR",
+   "b": "TerRa",
+   "reasons": [
+    "topic:mathviz"
+   ]
+  },
+  {
+   "a": "CUANTOR",
+   "b": "Universul-Observabil",
+   "reasons": [
+    "topic:mathviz"
+   ]
+  },
+  {
    "a": "Cupa-Mondiala-2026",
    "b": "DataWeave",
    "reasons": [
@@ -2060,6 +2152,73 @@
    "b": "Zaruri-fara-frontiere",
    "reasons": [
     "topic:luck"
+   ]
+  },
+  {
+   "a": "CUPLAJ",
+   "b": "Clopotel",
+   "reasons": [
+    "topic:workshop"
+   ]
+  },
+  {
+   "a": "CUPLAJ",
+   "b": "Fabrica",
+   "reasons": [
+    "topic:workshop"
+   ]
+  },
+  {
+   "a": "CUPLAJ",
+   "b": "FASCICUL",
+   "reasons": [
+    "topic:workshop",
+    "pair"
+   ],
+   "why": "amândouă folosesc telefoanele din sală ca instrument pentru spectacol sau atelier: CUPLAJ le face centrală telefonică, FASCICUL le face tablă comună pe proiector"
+  },
+  {
+   "a": "CUPLAJ",
+   "b": "LUSTRUM",
+   "reasons": [
+    "topic:phone"
+   ]
+  },
+  {
+   "a": "CUPLAJ",
+   "b": "Monstrarium",
+   "reasons": [
+    "topic:workshop"
+   ]
+  },
+  {
+   "a": "CUPLAJ",
+   "b": "PORUMBEL",
+   "reasons": [
+    "topic:phone"
+   ]
+  },
+  {
+   "a": "CUPLAJ",
+   "b": "proiector-fara-frontiere",
+   "reasons": [
+    "topic:workshop",
+    "pair"
+   ],
+   "why": "telefoanele din sală legate prin rețeaua locală, fără cont: proiector-fara-frontiere le face ecran comun, CUPLAJ le face linie telefonică privată"
+  },
+  {
+   "a": "CUPLAJ",
+   "b": "STRAJA",
+   "reasons": [
+    "topic:phone"
+   ]
+  },
+  {
+   "a": "CUPLAJ",
+   "b": "Undava",
+   "reasons": [
+    "topic:workshop"
    ]
   },
   {
@@ -2111,6 +2270,13 @@
   },
   {
    "a": "Curatitor",
+   "b": "STRAJA",
+   "reasons": [
+    "topic:privacy"
+   ]
+  },
+  {
+   "a": "Curatitor",
    "b": "Surveyor",
    "reasons": [
     "topic:audit"
@@ -2152,6 +2318,13 @@
   {
    "a": "Dame-fara-frontiere",
    "b": "Mahjong-fara-frontiere",
+   "reasons": [
+    "topic:board"
+   ]
+  },
+  {
+   "a": "Dame-fara-frontiere",
+   "b": "PolyTabletop",
    "reasons": [
     "topic:board"
    ]
@@ -2377,6 +2550,13 @@
   {
    "a": "Domino-fara-frontiere",
    "b": "Mahjong-fara-frontiere",
+   "reasons": [
+    "topic:board"
+   ]
+  },
+  {
+   "a": "Domino-fara-frontiere",
+   "b": "PolyTabletop",
    "reasons": [
     "topic:board"
    ]
@@ -2790,6 +2970,14 @@
   },
   {
    "a": "EXIF-CURAT",
+   "b": "LUSTRUM",
+   "reasons": [
+    "pair"
+   ],
+   "why": "LUSTRUM găsește pozele duplicate, asemănătoare și neclare, EXIF-CURAT (în lucru) va scoate datele ascunse din pozele rămase"
+  },
+  {
+   "a": "EXIF-CURAT",
    "b": "OSATURA",
    "reasons": [
     "topic:rust"
@@ -2815,6 +3003,15 @@
    "reasons": [
     "topic:privacy"
    ]
+  },
+  {
+   "a": "EXIF-CURAT",
+   "b": "STRAJA",
+   "reasons": [
+    "topic:privacy",
+    "pair"
+   ],
+   "why": "amândouă țin de confidențialitatea ta: STRAJA arată cine poate citi telefonul, EXIF-CURAT (în lucru) va scoate datele ascunse din fișiere înainte să le dai mai departe"
   },
   {
    "a": "EXIF-CURAT",
@@ -3414,8 +3611,31 @@
    "why": "ambele generează tonuri pe frecvențe alese"
   },
   {
+   "a": "GERMEN",
+   "b": "colibri-companion",
+   "reasons": [
+    "pair"
+   ],
+   "why": "GERMEN antrenează de la zero un model mic de limbaj, Colibri Companion rulează local modele deja antrenate: două capete ale IA locale"
+  },
+  {
+   "a": "GERMEN",
+   "b": "LocalMind",
+   "reasons": [
+    "pair"
+   ],
+   "why": "amândouă fac IA pe calculatorul tău, fără server: GERMEN antrenează un model mic de limbaj, LocalMind rulează un asistent mic în browser"
+  },
+  {
    "a": "Go-fara-frontiere",
    "b": "Mahjong-fara-frontiere",
+   "reasons": [
+    "topic:board"
+   ]
+  },
+  {
+   "a": "Go-fara-frontiere",
+   "b": "PolyTabletop",
    "reasons": [
     "topic:board"
    ]
@@ -3978,6 +4198,29 @@
    "b": "PromptVault",
    "reasons": [
     "topic:ai"
+   ]
+  },
+  {
+   "a": "LUSTRUM",
+   "b": "PORUMBEL",
+   "reasons": [
+    "topic:phone"
+   ]
+  },
+  {
+   "a": "LUSTRUM",
+   "b": "STRAJA",
+   "reasons": [
+    "topic:phone",
+    "pair"
+   ],
+   "why": "amândouă lucrează fără permisiunea INTERNET și țin totul pe telefon: LUSTRUM curăță, STRAJA supraveghează cine are acces"
+  },
+  {
+   "a": "Mahjong-fara-frontiere",
+   "b": "PolyTabletop",
+   "reasons": [
+    "topic:board"
    ]
   },
   {
@@ -4582,10 +4825,70 @@
    ]
   },
   {
+   "a": "PolyTabletop",
+   "b": "regula",
+   "reasons": [
+    "topic:cards",
+    "pair"
+   ],
+   "why": "două colecții de jocuri de masă contra calculatorului: regula e o pagină HTML offline cu cinci jocuri clasice, PolyTabletop un program Rust cu 240 de jocuri"
+  },
+  {
+   "a": "PolyTabletop",
+   "b": "Remi-fara-frontiere",
+   "reasons": [
+    "topic:cards"
+   ]
+  },
+  {
+   "a": "PolyTabletop",
+   "b": "Sah-fara-frontiere",
+   "reasons": [
+    "topic:board"
+   ]
+  },
+  {
+   "a": "PolyTabletop",
+   "b": "Scopone-fara-frontiere",
+   "reasons": [
+    "topic:cards"
+   ]
+  },
+  {
+   "a": "PolyTabletop",
+   "b": "Solitaire-fara-frontiere",
+   "reasons": [
+    "topic:cards"
+   ]
+  },
+  {
+   "a": "PolyTabletop",
+   "b": "Table-fara-frontiere",
+   "reasons": [
+    "topic:board"
+   ]
+  },
+  {
+   "a": "PolyTabletop",
+   "b": "Zaruri-fara-frontiere",
+   "reasons": [
+    "topic:board",
+    "pair"
+   ],
+   "why": "jocurile de zaruri se pot juca contra calculatorului în amândouă: în pagină HTML offline sau în terminal și fereastră, cu simulator de aruncări"
+  },
+  {
    "a": "PORUMBEL",
    "b": "colibri-companion",
    "reasons": [
     "topic:rust"
+   ]
+  },
+  {
+   "a": "PORUMBEL",
+   "b": "STRAJA",
+   "reasons": [
+    "topic:phone"
    ]
   },
   {
@@ -4766,6 +5069,13 @@
   {
    "a": "Provenienta",
    "b": "ScryVeil",
+   "reasons": [
+    "topic:privacy"
+   ]
+  },
+  {
+   "a": "Provenienta",
+   "b": "STRAJA",
    "reasons": [
     "topic:privacy"
    ]
@@ -5159,6 +5469,45 @@
    "reasons": [
     "pair"
    ]
+  },
+  {
+   "a": "STENOGRAMA",
+   "b": "TranslateHub",
+   "reasons": [
+    "pair"
+   ],
+   "why": "după transcriere, textul poate merge la traducere: TranslateHub oferă 22 de unelte de tradus sau traducerea cu IA și cheia ta"
+  },
+  {
+   "a": "STENOGRAMA",
+   "b": "VoiceAtelier",
+   "reasons": [
+    "pair"
+   ],
+   "why": "VoiceAtelier arată cum sună vocile artificiale, STENOGRAMA face drumul invers: transformă vocea înregistrată în text"
+  },
+  {
+   "a": "STRAJA",
+   "b": "atelier-verificare",
+   "reasons": [
+    "topic:privacy"
+   ]
+  },
+  {
+   "a": "STRAJA",
+   "b": "ScryVeil",
+   "reasons": [
+    "topic:privacy"
+   ]
+  },
+  {
+   "a": "STRAJA",
+   "b": "VaultCrypt",
+   "reasons": [
+    "topic:privacy",
+    "pair"
+   ],
+   "why": "amândouă țin datele private pe dispozitiv, fără cont și fără server: STRAJA supraveghează accesul la telefon, VaultCrypt încuie fișiere și texte cu parolă"
   },
   {
    "a": "Sudoku-fara-frontiere",
