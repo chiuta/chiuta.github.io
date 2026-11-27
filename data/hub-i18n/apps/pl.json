@@ -1,0 +1,1107 @@
+{
+ "lang": "pl",
+ "note": "Rânduri și etichete de card; detaliile (detail) lipsesc încă și rămân în engleză. Traducere asistată de IA, nerevizuită de un vorbitor nativ.",
+ "apps": {
+  "FreeDetect": {
+   "tags": [
+    "katalog",
+    "cytaty"
+   ],
+   "line": "Chcesz sprawdzić, czy tekst wygląda na napisany lub skopiowany przez sztuczną inteligencję? 42 zewnętrzne narzędzia i generator cytatów w jednym miejscu. Sama aplikacja niczego nie wykrywa."
+  },
+  "Arhiva-fara-frontiere": {
+   "tags": [
+    "archiwa internetowe",
+    "źródła"
+   ],
+   "line": "Przeglądaj zbiory Internet Archive bez konta: wyszukiwanie, strony pozycji, podgląd i ulubione. Nieoficjalne; archive.org widzi Twój adres IP i wyszukiwania."
+  },
+  "AcademiSearch": {
+   "tags": [
+    "literatura",
+    "źródła"
+   ],
+   "line": "Jedno wyszukiwanie — artykuły naukowe z dziesiątek otwartych źródeł. Listę możesz zapisać do cytowania. Wymaga internetu; zapytania trafiają do tych usług."
+  },
+  "Surveyor": {
+   "tags": [
+    "martwe linki",
+    "audyt"
+   ],
+   "line": "Jakie linki ma Twoja strona i które z nich nie działają? Wypisuje je wraz z kotwicami i przekierowaniami. Zewnętrznych nie da się wiarygodnie sprawdzić. Tylko dla Twoich własnych stron."
+  },
+  "Trade-Free-Link-Guardian": {
+   "tags": [
+    "WordPress",
+    "GPL v2"
+   ],
+   "line": "Dla Twojej strony na WordPressie: znajduje zepsute linki i naprawia je bez zewnętrznych usług. Zmienia prawdziwą treść, więc najpierw zrób kopię zapasową. Nie testowano na prawdziwym WordPressie."
+  },
+  "OUTPOST": {
+   "tags": [
+    "monitorowanie"
+   ],
+   "line": "Obserwuj swoje strony i sprawdzaj, czy jeszcze odpowiadają. Działa tylko, dopóki karta jest otwarta. Strona z błędem też liczy się jako odpowiedź. Interfejs po angielsku."
+  },
+  "ScryVeil": {
+   "tags": [
+    "OSINT",
+    "bezpieczeństwo"
+   ],
+   "line": "Sprawdź bezpieczeństwo domeny i otrzymaj tekstowy raport, który możesz zapisać. Niektóre kontrole mogą być niepełne lub wymagać klucza. Łączy się z usługami stron trzecich; tylko dla Twoich domen."
+  },
+  "Vitrina": {
+   "tags": [
+    "śledzenie kanałów"
+   ],
+   "line": "Osadź publiczny wpis z Facebooka na swojej stronie bez konta i skopiuj gotowy kod. Nieoficjalne; Meta widzi Twój adres IP, wyświetlenie nie jest gwarantowane."
+  },
+  "Threads-fara-cont": {
+   "tags": [
+    "śledzenie kanałów"
+   ],
+   "line": "Czytaj publiczne wpisy z Threads bez konta i zapisuj je jako tekst. Nieoficjalne; Meta widzi Twój adres IP, czasem potrzebny jest pośrednik."
+  },
+  "X-fara-cont": {
+   "tags": [
+    "śledzenie kanałów"
+   ],
+   "line": "Wchodź na publiczne profile i wpisy na X bez konta na kilka sposobów: bezpośredni link, archiwum, wyszukiwanie lub Nitter. Nie czyta treści; wysyła link do archive.org."
+  },
+  "Arhiva-LinkedIn": {
+   "tags": [
+    "archiwizacja"
+   ],
+   "line": "Trzymaj w jednym miejscu notatki o wpisach z LinkedIna, które sam wkleiłeś, i eksportuj je jako tekst. Galeria używa oficjalnego osadzania, więc łączy się z LinkedInem. Nieoficjalne."
+  },
+  "Cadraj": {
+   "tags": [
+    "śledzenie kanałów"
+   ],
+   "line": "Zbieraj klipy z TikToka ręcznie, pogrupowane według autora, i oglądaj je w oficjalnym odtwarzaczu. Możesz oznaczać te, które już widziałeś."
+  },
+  "FASCICUL": {
+   "tags": [
+    "współpraca"
+   ],
+   "line": "Zamienia telefony w sali we wspólną tablicę na projektorze: rysunki, notatki, obrazy, wskaźnik laserowy i kamera na żywo. Sprawdzone na komputerze; na prawdziwych telefonach jeszcze niepotwierdzone."
+  },
+  "INDICATIV": {
+   "tags": [
+    "egzamin",
+    "radio"
+   ],
+   "line": "Przygotuj się do egzaminu radioamatorskiego ANCOM bez internetu: 723 pytania z rozłożonym powtarzaniem. Nieoficjalne; bank pytań jest sprawdzony tylko częściowo."
+  },
+  "ETER": {
+   "tags": [
+    "radio",
+    "encyklopedia"
+   ],
+   "line": "Ucz się krótkofalarstwa w encyklopedii: alfabet Morse'a, trener, kalkulatory anten i wyszukiwanie w całej treści."
+  },
+  "ATINGERE": {
+   "tags": [
+    "dostępność"
+   ],
+   "line": "Zamienia książkę w pismo Braille'a z wibracjami na ekranie dotykowym dla głuchoniewidomych lub w audiobook dla niewidomych. Nie sprawdzono z czytelnikami Braille'a; ma ograniczenia."
+  },
+  "Clopotel": {
+   "tags": [
+    "wydarzenia",
+    "MIT"
+   ],
+   "line": "Mieść się w czasie na konferencji lub warsztatach: scenowy minutnik z Twoim programem i sygnał, gdy zbliża się koniec. Po rumuńsku i angielsku."
+  },
+  "Monstrarium": {
+   "tags": [
+    "warsztat",
+    "MIT"
+   ],
+   "line": "Zaplanuj warsztat tworzenia potworów z materiałów z recyklingu: aplikacja liczy materiały i sesje, oferuje 50 potworów z dźwiękiem, 3D i grą edukacyjną."
+  },
+  "TranslateHub": {
+   "tags": [
+    "tłumaczenie",
+    "SI"
+   ],
+   "line": "Wybieraj spośród 22 narzędzi do tłumaczenia lub tłumacz z pomocą sztucznej inteligencji własnym kluczem. Tekst przetłumaczony przez SI trafia do usługi Anthropic."
+  },
+  "DataWeave": {
+   "tags": [
+    "dane"
+   ],
+   "line": "Otwórz tabelę i zrozum ją: statystyki, wykresy, tabele przestawne i korelacje. Twoje dane zostają na Twoim urządzeniu."
+  },
+  "MarkdownAtelier": {
+   "tags": [
+    "pisanie"
+   ],
+   "line": "Pisz dokumenty w Markdownie i od razu zobacz, jak wyglądają, z prostymi wzorami; w 7 językach, bez internetu. Teksty zostają w przeglądarce; zapisuj kopię zapasową."
+  },
+  "RegexLab": {
+   "tags": [
+    "programowanie"
+   ],
+   "line": "Wypróbuj wyrażenie regularne i od razu zobacz, co dopasowuje; wyjaśnienia krok po kroku, testy i ostrzeżenie, jeśli może zawiesić program."
+  },
+  "SEOptimum": {
+   "tags": [
+    "web"
+   ],
+   "line": "Sprawdź, jak bardzo strona internetowa jest gotowa na wyszukiwarki. 20 narzędzi, w tym analiza strony i podgląd, jak wyświetli się w wynikach wyszukiwania."
+  },
+  "SEVA": {
+   "tags": [
+    "zdrowie"
+   ],
+   "line": "Poznaj sen, dobowy rytm organizmu, oddychanie i odżywianie w encyklopedii, której możesz też posłuchać. Tylko informacyjnie; to nie jest porada medyczna."
+  },
+  "PULS": {
+   "tags": [
+    "zdrowie",
+    "nagłe wypadki"
+   ],
+   "line": "Co robić, zanim przyjedzie karetka? Rumuński przewodnik pierwszej pomocy z metronomem do RKO i opcjonalną kartą ratunkową. Klinicznie niezweryfikowane; dzwoń pod 112."
+  },
+  "VATRA": {
+   "tags": [
+    "praca w terenie"
+   ],
+   "line": "Co robić, gdy w naturze zabraknie wody, ognia lub schronienia? Encyklopedia przetrwania bez internetu, z wyszukiwaniem i notatkami. Tylko edukacyjnie; w nagłym wypadku dzwoń pod 112."
+  },
+  "Eclipsa-2027": {
+   "tags": [
+    "astronomia"
+   ],
+   "line": "Zobacz na mapie bez internetu, gdzie i jak długo potrwa całkowite zaćmienie Słońca 2 sierpnia 2027, z miastami i wyszukiwaniem miejsca. Wartości są orientacyjne; nie patrz na Słońce bez filtra."
+  },
+  "orarium": {
+   "tags": [
+    "astronomia",
+    "czas"
+   ],
+   "line": "Która jest teraz godzina na Marsie, na Księżycu lub na asteroidzie? Czas lokalny na żywo na 45 ciałach niebieskich. Model przybliżony, internet niepotrzebny; nie do nawigacji."
+  },
+  "TerRa": {
+   "tags": [
+    "astronomia"
+   ],
+   "line": "Globus 3D i mapa pokazujące dzień i noc na Ziemi, Księżycu i planetach. Pozycje satelitów mogą się opóźniać o około 3 miesiące, dopóki ich nie zaktualizujesz online."
+  },
+  "Horizons.BeyondLimits": {
+   "tags": [
+    "kosmologia"
+   ],
+   "line": "Przejdź przez historię Wszechświata od Wielkiego Wybuchu do końca przez 91 kamieni milowych. Przyszłość to naukowa spekulacja, a nie dokładna prognoza."
+  },
+  "Hyper4D": {
+   "tags": [
+    "matematyka"
+   ],
+   "line": "Zobacz, jak wyglądają kształty czterowymiarowe: obracaj je na ekranie i oglądaj z kilku stron. Obrazy można zapisywać."
+  },
+  "ExploratoriiEco": {
+   "tags": [
+    "przyroda"
+   ],
+   "line": "Przewodnik terenowy dla miłośników przyrody: od klasyfikacji organizmów i śladów po biomy Rumunii, dziennik obserwacji, etyka i nagłe wypadki."
+  },
+  "FieldObserver": {
+   "tags": [
+    "praca w terenie"
+   ],
+   "line": "Zapisuj swoje obserwacje terenowe; odczyty z czujników telefonu dodają się automatycznie. Prowadzisz archiwum swoich wypraw."
+  },
+  "VietAR": {
+   "tags": [
+    "bioróżnorodność"
+   ],
+   "line": "Sfotografuj lub nagraj roślinę albo stworzenie i uzyskaj wyobrażenie spośród 519 gatunków z Rumunii. Może się mylić; niczego nie jedz na tej podstawie."
+  },
+  "VOIAJOR": {
+   "tags": [
+    "Voyager",
+    "symulacja"
+   ],
+   "line": "Śledź trajektorie Voyagera 1 i 2 od 1977 roku do miliarda lat naprzód, w każdej skali — od planet po Drogę Mleczną. Model orientacyjny, nie do nawigacji."
+  },
+  "Nemurirea": {
+   "tags": [
+    "biologia"
+   ],
+   "line": "Odkryj, jak starzeje się ciało i co nauka mówi o zegarach biologicznych i długowieczności, a potem sprawdź się w quizie. To nie jest porada medyczna."
+  },
+  "IncredibleCosmos": {
+   "tags": [
+    "gra",
+    "fizyka"
+   ],
+   "line": "Rozmieść planety i gwiazdy tak, aby ich grawitacja skierowała kometę do celu. 108 poziomów, trzy trudności i do trzech gwiazdek na poziom."
+  },
+  "Cupa-Mondiala-2026": {
+   "tags": [
+    "symulacja",
+    "nieoficjalne"
+   ],
+   "line": "Graj na Mistrzostwach Świata 2026 i śledź przebieg wymyślonego turnieju. Wyniki są losowe, nie są prognozą; nieoficjalne."
+  },
+  "AGORA": {
+   "tags": [
+    "ekonomia",
+    "UE"
+   ],
+   "line": "Jak powstało euro i co oznacza dla Rumunii? 59 rozdziałów od Maastricht do EBC, plus wskazówki dla podróżnych. Nieoficjalne."
+  },
+  "URME": {
+   "tags": [
+    "przyroda",
+    "Buzău"
+   ],
+   "line": "Przygotuj się na wędrówkę szlakiem Colți–Aluniș w Buzău: rośliny, bursztyn, skamieniałości, godziny wschodu i zachodu słońca, wyposażenie. Mapa nie służy do nawigacji."
+  },
+  "Belot-fara-frontiere": {
+   "tags": [
+    "karty",
+    "SI"
+   ],
+   "line": "Poznaj belota i pokrewne gry w innych krajach, potem graj przy stole: Ty i partner SI przeciwko dwóm przeciwnikom SI. Blok do punktów w zestawie."
+  },
+  "Scopone-fara-frontiere": {
+   "tags": [
+    "karty",
+    "SI"
+   ],
+   "line": "Dowiedz się, jak powstało scopone, jakie ma zasady i jak zmieniają się one z regionu na region, potem graj przeciwko komputerowi, który potrafi podpowiadać."
+  },
+  "Solitaire-fara-frontiere": {
+   "tags": [
+    "karty"
+   ],
+   "line": "Przeglądaj i graj w pasjanse, takie jak Klondike, FreeCell czy Spider. Gdy utkniesz, poproś o podpowiedź lub pozwól komputerowi rozwiązać."
+  },
+  "Sudoku-fara-frontiere": {
+   "tags": [
+    "łamigłówki"
+   ],
+   "line": "136 rodzajów sudoku — od klasycznego po killer i 3D; przeglądaj i graj. Pomaga wyjaśnieniami krok po kroku i rozwiązuje Twoje własne łamigłówki."
+  },
+  "Domino-fara-frontiere": {
+   "tags": [
+    "domino",
+    "SI"
+   ],
+   "line": "Poznaj historię i zasady domina, potem graj przy stole przeciwko jednemu do trzech przeciwników sterowanych przez komputer. Ruch można cofnąć."
+  },
+  "Mahjong-fara-frontiere": {
+   "tags": [
+    "mahjong",
+    "SI"
+   ],
+   "line": "Poznaj 8 odmian madżonga; graj w pasjansa lub w grę w cztery osoby z trzema prostymi przeciwnikami sterowanymi przez komputer. Działa bez internetu."
+  },
+  "Go-fara-frontiere": {
+   "tags": [
+    "go",
+    "SI"
+   ],
+   "line": "Dowiedz się, skąd pochodzi go i jak się gra, potem spróbuj swoich sił przeciwko komputerowi, który potrafi podpowiadać. Nie wysyła żadnych danych przez internet."
+  },
+  "Zaruri-fara-frontiere": {
+   "tags": [
+    "kości"
+   ],
+   "line": "26 gier w kości, o których możesz poczytać, 12 przeciwko komputerowi; plus symulator rzutów z prawdopodobieństwami. Bez pieniędzy; offline."
+  },
+  "Sah-fara-frontiere": {
+   "tags": [
+    "szachy"
+   ],
+   "line": "Ponad 700 odmian szachów do odkrywania i mały słownik pojęć; w większość możesz grać przeciwko komputerowi. Działa bez internetu."
+  },
+  "Dame-fara-frontiere": {
+   "tags": [
+    "warcaby"
+   ],
+   "line": "Graj w 25 odmian warcabów przeciwko komputerowi i zapisuj partię. Zasady 16 z nich są tylko przybliżone i oznaczone ⚠."
+  },
+  "Table-fara-frontiere": {
+   "tags": [
+    "backgammon"
+   ],
+   "line": "Backgammon, tavli, narda i rumuńskie odmiany tabli; czytaj i graj: 17 odmian przeciwko komputerowi, klawiaturą lub myszą."
+  },
+  "Remi-fara-frontiere": {
+   "tags": [
+    "remik"
+   ],
+   "line": "Poznaj rodzinę remika i graj w 19 odmian przeciwko komputerowi ze statystykami. 8 języków; duże, dobrze widoczne kostki lub karty."
+  },
+  "Carti-de-joc-fara-frontiere": {
+   "tags": [
+    "karty"
+   ],
+   "line": "Od pasjansa i Piotrusia po pokera: 17 gier karcianych z wyjaśnionymi zasadami, w 8 z nich możesz od razu zagrać."
+  },
+  "Undava": {
+   "tags": [
+    "quiz",
+    "edukacja"
+   ],
+   "line": "Przygotuj quiz lub zagraj w niego ze znajomymi na jednym telefonie lub komputerze i powtarzaj pytania, na które odpowiedziałeś źle. Podobne do Kahoota, ale bez łączenia się z siecią."
+  },
+  "AI-Liber": {
+   "tags": [
+    "SI"
+   ],
+   "line": "Rozmawiaj z kilkoma asystentami ze sztuczną inteligencją w jednym miejscu, niektórzy działają na Twoim komputerze. Wiadomości trafiają do wybranego przez Ciebie dostawcy; SI może się mylić."
+  },
+  "LocalMind": {
+   "tags": [
+    "lokalna SI"
+   ],
+   "line": "Rozmawiaj z małym asystentem ze sztuczną inteligencją, który działa bezpośrednio w Twojej przeglądarce. Modele pobierają się z internetu raz; może się mylić."
+  },
+  "PromptVault": {
+   "tags": [
+    "prompty"
+   ],
+   "line": "Ponad 500 gotowych promptów dla asystentów ze sztuczną inteligencją; wybieraj i oznaczaj ulubione. Nie zapisuje Twoich własnych tekstów."
+  },
+  "ARENA": {
+   "tags": [
+    "ocena SI"
+   ],
+   "line": "Spraw, by dwa modele SI odpowiadały w ciemno, i zagłosuj na lepszy; ranking jest przechowywany na Twoim komputerze. Potrzebne są własne klucze."
+  },
+  "Nexus-fara-frontiere": {
+   "tags": [
+    "agenci"
+   ],
+   "line": "Rozmawiaj z asystentami SI od kilku dostawców; rozmowa z wyszukiwaniem i zapisywaniem. Potrzebny jest internet i Twoje własne klucze, przechowywane bez szyfrowania."
+  },
+  "VoiceAtelier": {
+   "tags": [
+    "głos"
+   ],
+   "line": "Posłuchaj, jak brzmią setki sztucznych głosów w dziesiątkach języków, i dowiedz się, jak powstaje audiobook. Próbka online wysyła tekst do zewnętrznych usług tylko za Twoją zgodą."
+  },
+  "Trusa-fara-frontiere": {
+   "tags": [
+    "narzędzia"
+   ],
+   "line": "Zestaw 15 małych codziennych narzędzi: notatki, arkusz, Markdown, hasła, dziennik finansowy i inne. Nie ma oficjalnego związku z YunoHost, który zainspirował kategorie."
+  },
+  "API-fara-frontiere": {
+   "tags": [
+    "API"
+   ],
+   "line": "Pogoda, zdjęcia NASA, pozycja ISS i dziesiątki danych na żywo w jednym miejscu. Wymaga internetu; nie testowano z prawdziwymi usługami."
+  },
+  "OmniHost": {
+   "tags": [
+    "pakiet"
+   ],
+   "line": "Duży pakiet ponad stu narzędzi roboczych w jednym miejscu. Łączy się z czterema zewnętrznymi usługami; szczegóły w README."
+  },
+  "VNTV": {
+   "tags": [
+    "media",
+    "MIT"
+   ],
+   "line": "Odtwarzaj zwiastuny VideoNeat jak nieprzerwany kanał telewizyjny. Wymaga internetu; w trybie P2P Twój adres jest widoczny dla innych widzów."
+  },
+  "OSATURA": {
+   "tags": [
+    "animacja",
+    "MPL/AGPL"
+   ],
+   "line": "Ożyw rysunki 2D: połącz je ze «szkieletem», wprawiaj w ruch i eksportuj animację w kilku formatach. Wersja alfa, dotąd mało testowana."
+  },
+  "OAZA": {
+   "tags": [
+    "usługi"
+   ],
+   "line": "340 darmowych usług internetowych, w większości bez konta, w jednym katalogu. Lista została sprawdzona w czerwcu 2026, ale nie automatycznie."
+  },
+  "VaultCrypt": {
+   "tags": [
+    "bezpieczeństwo"
+   ],
+   "line": "Masz coś do ukrycia przed wścibskimi oczami? Zablokuj pliki i teksty hasłem bezpośrednio w przeglądarce. Utraconego hasła nie da się odzyskać."
+  },
+  "Akasha": {
+   "tags": [
+    "notatki"
+   ],
+   "line": "Notatnik działający offline, z etykietami, wyszukiwaniem i linkami między stronami. Aby niczego nie stracić, pobieraj świeżą kopię pliku."
+  },
+  "CLEPSIDRA": {
+   "tags": [
+    "czas"
+   ],
+   "line": "Zegar odliczający, budzik i harmonogramy na dni robocze i weekendy. Uwzględnia święta i Twoje własne wydarzenia."
+  },
+  "Origami": {
+   "tags": [
+    "sztuka"
+   ],
+   "line": "Naucz się składać papier krok po kroku: symbole, techniki i ilustrowane modele. Aplikacja pamięta, gdzie skończyłeś."
+  },
+  "Zicala": {
+   "tags": [
+    "kultura"
+   ],
+   "line": "Codziennie jedno rumuńskie przysłowie z kolekcji 550. Możesz wyszukiwać i zapisywać ulubione; komentarze napisano z pomocą SI."
+  },
+  "Limpezimea": {
+   "tags": [
+    "literatura"
+   ],
+   "line": "Czytaj powieść science fiction «Limpezimea» w siedmiu językach. Towarzysząca kronika i studium krytyczne powstały z pomocą SI (Claude)."
+  },
+  "Nota-Zero": {
+   "tags": [
+    "literatura"
+   ],
+   "line": "Spekulatywna opowieść fantastyczna o teorii strun po rumuńsku, angielsku i francusku, z notatkami wyjaśniającymi idee naukowe. To fikcja, nie źródło akademickie."
+  },
+  "Pendulul": {
+   "tags": [
+    "literatura"
+   ],
+   "line": "Planeta kołysze się między trzema gwiazdami a czarną dziurą: dziewięciotomowa powieść science fiction, którą Alexio napisał wspólnie z Claude'em. Symulacja 3D, czytnik z zapisem do czytania offline, EPUB i PDF."
+  },
+  "PrintreInteligente": {
+   "tags": [
+    "literatura"
+   ],
+   "line": "Wejdź do interaktywnej powieści science fiction z bohaterami inspirowanymi załogą Artemis 2. Recenzje są zmyślone; tłumaczenie, głos i funkcje SI korzystają z usług zewnętrznych."
+  },
+  "BorderlessMelodies": {
+   "tags": [
+    "muzyka"
+   ],
+   "line": "Słuchaj muzyki, która sama się komponuje, bezpośrednio w przeglądarce. Możesz eksportować jako audio; jest minutnik snu."
+  },
+  "EcoulSpectral": {
+   "tags": [
+    "audio"
+   ],
+   "line": "Zobacz dźwięk jako obraz, zaznacz fragment, który Ci przeszkadza, i oddziel go lub usuń. Zawiera redukcję szumu, wykrywanie dźwięków i zapis jako WAV."
+  },
+  "Constelar": {
+   "tags": [
+    "SI"
+   ],
+   "line": "Rozmawiaj z wirtualnymi przyjaciółmi, którzy pamiętają Twoje rozmowy. Domyślnie odpowiadają według prostych reguł; prawdziwa SI tylko jeśli wybierzesz dostawcę, i wtedy trafiają do niego Twoje wiadomości. Tylko dla dorosłych."
+  },
+  "Tarot": {
+   "tags": [
+    "kultura"
+   ],
+   "line": "Odkryj historię tarota, symbole kart i sposób ich odczytywania jako zjawisko kulturowe. Interaktywny kurs we własnym tempie."
+  },
+  "Numerologie": {
+   "tags": [
+    "kultura"
+   ],
+   "line": "Odkryj numerologię jako symboliczną tradycję na czterech poziomach, z ćwiczeniami, słownikiem, dziennikiem i kalkulatorem. Przedstawione bez naukowego potwierdzenia."
+  },
+  "PUNCTUM": {
+   "tags": [
+    "zdrowie",
+    "dowody"
+   ],
+   "line": "Edukacyjny atlas akupresury i terapii punktowych: ponad 400 punktów na interaktywnych mapach, rutyny samoopieki z prowadzonymi sesjami, dowody i bezpieczeństwo. Nie zastępuje lekarza."
+  },
+  "Reiki": {
+   "tags": [
+    "kultura"
+   ],
+   "line": "Dowiedz się, czym jest reiki, praktyka duchowa, i co mówią badania: nie znaleziono wystarczających dowodów na działanie wykraczające poza relaksację. Nie zastępuje lekarza."
+  },
+  "Bioenergoterapie": {
+   "tags": [
+    "kultura"
+   ],
+   "line": "Kurs wyjaśniający, czym jest bioenergoterapia i skąd się wywodzi. Brak naukowych dowodów na leczniczy efekt praktyki; nie zastępuje lekarza."
+  },
+  "CHIROMANTIA": {
+   "tags": [
+    "chiromancja",
+    "kultura"
+   ],
+   "line": "Interaktywny atlas chiromancji: mapa dłoni z liniami, wzgórkami, palcami i typami rąk, czytana jako tradycja kulturowa; z działem o nauce i krytycznym myśleniu. Bez naukowego potwierdzenia."
+  },
+  "Radiestezie": {
+   "tags": [
+    "kultura"
+   ],
+   "line": "Przejdź 18 poziomów o szukaniu wody różdżką, ze słownikiem, dziennikiem praktyki i międzynarodowymi dodatkami. Od początku zaznacza, że nie ma naukowego potwierdzenia."
+  },
+  "Inforenergetica": {
+   "tags": [
+    "kultura"
+   ],
+   "line": "Dowiedz się w ustrukturyzowanym kursie, co twierdzi inforenergetyka, niekonwencjonalna praktyka. Bez naukowego potwierdzenia; to nie jest porada medyczna."
+  },
+  "ECLIPSA": {
+   "tags": [
+    "astrologia"
+   ],
+   "line": "Dowiedz się, w którym domu astrologicznym Twojej mapy urodzeniowej wypada zaćmienie, i o kolejnych 12 zaćmieniach. Obliczenie jest przybliżone, interpretacja symboliczna; bez naukowego potwierdzenia."
+  },
+  "Afrodisiace-fara-frontiere": {
+   "tags": [
+    "kultura"
+   ],
+   "line": "Czytaj o 22 produktach i roślinach tradycyjnie kojarzonych z pożądaniem, z poziomem dowodów dla każdej. Przewodnik kulturowy dla dorosłych, nie porada medyczna."
+  },
+  "CalmWaves": {
+   "tags": [
+    "audio"
+   ],
+   "line": "Muzyka ambient do relaksu i snu, tworzona na bieżąco. Nie jest wyrobem medycznym; część o badaniach nie została niezależnie zweryfikowana. Skonsultuj się z lekarzem (padaczka)."
+  },
+  "ASMR": {
+   "tags": [
+    "audio"
+   ],
+   "line": "Stwórz własny uspokajający pejzaż dźwiękowy z warstw otoczenia, dźwięków dotyku i uderzeń binauralnych. Ma minutnik snu i możesz udostępnić swój miks."
+  },
+  "NOMIA": {
+   "tags": [
+    "fikcja",
+    "spekulacja",
+    "PWA"
+   ],
+   "line": "Jaki mógłby być pierwszy kontakt między ludźmi, SI i innymi rodzajami umysłów? 1001 zmyślonych scenariuszy; fikcja, nie rzeczywistość. Działa też offline."
+  },
+  "ValeaPlopului1972": {
+   "tags": [
+    "UFO",
+    "3D",
+    "fikcja"
+   ],
+   "line": "Zobacz zdarzenie z UFO z 1972 roku z zewnątrz, od środka i w symulacji, zrekonstruowane w 3D. To wymyślona hipoteza, a nie dowód."
+  },
+  "HoroScop": {
+   "tags": [
+    "astrologia",
+    "efemerydy",
+    "offline"
+   ],
+   "line": "Oblicz pozycje planet dla daty i miejsca, potem poznaj mapę urodzeniową, aspekty i zgodność. Astrologia symboliczna, bez podstaw naukowych. Działa offline."
+  },
+  "Aurora": {
+   "tags": [
+    "medytacja",
+    "audio",
+    "relaks"
+   ],
+   "line": "Słuchaj uspokajających tonów i lekko pulsujących dźwięków oraz podążaj za przewodnikiem oddechu. Tylko do relaksu, nie jest to leczenie. Działa bez internetu."
+  },
+  "NumeroLogIA": {
+   "tags": [
+    "numerologia",
+    "SI",
+    "offline"
+   ],
+   "line": "Dowiedz się, co numerologia, chińska astrologia BaZi i biorytm mówią o Twojej dacie urodzenia, z wyjaśnionym każdym obliczeniem. System symboliczny, bez podstaw naukowych."
+  },
+  "FrequencyLaboratory": {
+   "tags": [
+    "audio",
+    "laboratorium",
+    "offline"
+   ],
+   "line": "Wypróbuj dźwięki, efekty i testy słuchu w małym laboratorium dźwięku. «Terapeutyczne» efekty nie są udowodnione; nie zastępuje lekarza. Działa offline."
+  },
+  "generator-frecvente": {
+   "tags": [
+    "audio",
+    "generator",
+    "offline"
+   ],
+   "line": "Twórz czyste tony i pulsujące pary, słuchaj znanych ustawień wstępnych i z grubsza sprawdź słuch. Nie jest wyrobem medycznym. Działa offline."
+  },
+  "ACORDAJ": {
+   "tags": [
+    "duchowość",
+    "atlas",
+    "krytyczne rozróżnianie"
+   ],
+   "line": "Przeglądaj ponad tysiąc kursów duchowych i inicjacji z kontekstem historycznym i krytycznym spojrzeniem. Nie jest powiązany ze stroną źródłową i nie ma naukowego potwierdzenia. Działa offline."
+  },
+  "Profund": {
+   "tags": [
+    "rozmowa",
+    "karty",
+    "trade-free"
+   ],
+   "line": "150 pytań, które wyprowadzają rozmowę poza pogaduszki — wśród przyjaciół lub w rodzinie. Graj na ekranie lub wydrukuj, z opcjonalnym minutnikiem."
+  },
+  "Universul-Observabil": {
+   "tags": [
+    "astronomia",
+    "kosmologia",
+    "wizualizacja"
+   ],
+   "line": "Jak duży jest widzialny Wszechświat? Porównaj trzy mapy (liniową, płaską, w przestrzeni) i wykonuj obliczenia kosmologiczne. Liczby nie zostały niezależnie zweryfikowane."
+  },
+  "Universul-Observabil-1D": {
+   "tags": [
+    "astronomia",
+    "kosmologia",
+    "wizualizacja"
+   ],
+   "line": "Podróżuj od nas do krawędzi widzialnego Wszechświata obok 112 galaktyk ułożonych na jednej osi. Ironiczny ton, zaokrąglone wartości, cel edukacyjny."
+  },
+  "Universul-Observabil-2D": {
+   "tags": [
+    "astronomia",
+    "satyra",
+    "kosmologia"
+   ],
+   "line": "Mapa galaktyk w satyrycznej wersji «Płaska Ziemia»: to żart, Ziemia nie jest płaska. Przybliżaj wśród 111 galaktyk; odległości są przybliżone. Działa offline."
+  },
+  "Universul-Observabil-3D": {
+   "tags": [
+    "astronomia",
+    "kosmologia",
+    "3D"
+   ],
+   "line": "Lataj wśród ponad 115 galaktyk na mapie 3D z prowadzonymi wycieczkami i misjami. Wartości są przybliżone."
+  },
+  "QSO": {
+   "tags": [
+    "radio",
+    "dziennik"
+   ],
+   "line": "Prowadź dziennik łączności radiowych swojej stacji krótkofalarskiej z czasem UTC, lokatorami i statystykami. Nieoficjalne; obliczenia są przybliżone."
+  },
+  "Curatitor": {
+   "tags": [
+    "metadane",
+    "prywatność"
+   ],
+   "line": "Zobacz, co ujawniają Twoje zdjęcia i pliki (miejsce, aparat, autor), i usuń te dane przed wysłaniem. Nie ukrywa twarzy ani innej widocznej treści."
+  },
+  "Poteca": {
+   "tags": [
+    "GPX",
+    "ślady"
+   ],
+   "line": "Otwórz ślady zarejestrowane na wędrówce lub rowerze i zobacz dystans, podejście i profil wysokości. Możesz przycinać lub łączyć. Bez mapy; podejście jest szacowane."
+  },
+  "Orar": {
+   "tags": [
+    "kalendarz",
+    "czas"
+   ],
+   "line": "Kalendarz i tygodniowy planer z oficjalnymi rumuńskimi świętami, z widokiem dziennym, tygodniowym lub miesięcznym. Alarmy dzwonią tylko, dopóki strona jest otwarta."
+  },
+  "Alfabete": {
+   "tags": [
+    "kody",
+    "nauka"
+   ],
+   "line": "Ucz się i ćwicz alfabet Morse'a, pismo Braille'a, alfabet fonetyczny, semafor flagowy i stare szyfry, potem wydrukuj stronę. Stare szyfry nie chronią tajemnic."
+  },
+  "Fabrica": {
+   "tags": [
+    "kursy",
+    "tworzenie"
+   ],
+   "line": "Napisz kurs jako zwykły tekst i zamień go w stronę z lekcjami, testem końcowym i certyfikatem do wydruku. Certyfikat nie ma oficjalnej wartości."
+  },
+  "Bolta": {
+   "tags": [
+    "astronomia",
+    "planetarium"
+   ],
+   "line": "Jakie było niebo nad głową w dowolnym miejscu i dniu między 1900 a 2100? Słońce, Księżyc, planety i gwiazdy, a także zaćmienie 2027. Wartości są obliczone, nieoficjalne. Działa offline."
+  },
+  "BRAZDA": {
+   "tags": [
+    "Voyager",
+    "sygnał"
+   ],
+   "line": "Zdekoduj Złotą Płytę Voyagera krok po kroku, potem zakoduj nowy dysk dla sondy wysyłanej teraz. Obrazy w pierwszych krokach są schematyczne, nie pochodzą z NASA."
+  },
+  "Arbore": {
+   "tags": [
+    "rodowód",
+    "GEDCOM"
+   ],
+   "line": "Zbuduj drzewo genealogiczne z osobami, rodzinami, osią czasu i rumuńskim kalkulatorem pokrewieństwa. Dane zostają tylko w tej przeglądarce, bez synchronizacji."
+  },
+  "Gospodar": {
+   "tags": [
+    "budżet",
+    "finanse osobiste"
+   ],
+   "line": "Śledź domowe pieniądze: konta, wydatki, miesięczne budżety i raporty. Konto nie jest potrzebne, ale jeśli zgubisz hasło, stracisz dane. To nie jest porada finansowa."
+  },
+  "Decibel": {
+   "tags": [
+    "dźwięk",
+    "pomiar"
+   ],
+   "line": "Zmierz, jak głośny jest hałas wokół Ciebie, i zobacz, z jakich dźwięków się składa. Jest też orientacyjny test słuchu. Nie jest certyfikowanym przyrządem; wyniki zależą od mikrofonu."
+  },
+  "Provenienta": {
+   "tags": [
+    "C2PA",
+    "pochodzenie"
+   ],
+   "line": "Masz obraz i chcesz wiedzieć, kto go podpisał i jakie edycje zadeklarował? Sprawdź wbudowany podpis cyfrowy. Eksperymentalne, testowane tylko na plikach przykładowych."
+  },
+  "Lexicon": {
+   "tags": [
+    "słownik",
+    "język"
+   ],
+   "line": "Przynieś własne słowniki i szukaj słów, nawet jeśli piszesz bez znaków diakrytycznych lub z błędami. Dostarczane tylko z małym zestawem demonstracyjnym. Działa offline."
+  },
+  "VERIGA": {
+   "tags": [
+    "sprawdzanie linków",
+    "MIT"
+   ],
+   "line": "Znajduje zepsute linki i osierocone pliki na stronie lub w folderze. Działa na Windowsie, macOS i Linuksie; wymaga odrobiny obycia z komputerem."
+  },
+  "TEZAUR": {
+   "tags": [
+    "badania",
+    "MIT"
+   ],
+   "line": "Asystent pracy dyplomowej, który pisze wyłącznie na podstawie Twoich własnych książek i artykułów, z weryfikowalnymi cytatami. Działa na Twoim komputerze; Twoje dokumenty nigdy go nie opuszczają. W rozwoju."
+  },
+  "LegatorOCR": {
+   "tags": [
+    "skanowanie",
+    "MIT"
+   ],
+   "line": "Zeskanuj książkę i uzyskaj czysty PDF z poprawionymi stronami i przeszukiwalnym tekstem. Działa na Windowsie, macOS i Linuksie; Twoje skany zostają u Ciebie."
+  },
+  "Fenarium": {
+   "tags": [
+    "percepcja",
+    "MIT"
+   ],
+   "line": "Atlas i pracownia subiektywnych wrażeń we wszystkich zmysłach, począwszy od fosfenizmu: kurs z 13 modułami, prowadzone eksperymenty, symulator wizualny i laboratorium samoeksperymentów A/B z randomizacją. Edukacyjne, nie jest wyrobem medycznym."
+  },
+  "MENSURA": {
+   "tags": [
+    "testy",
+    "MIT"
+   ],
+   "line": "Zmierz IQ, EQ, CQ, RQ, funkcje wykonawcze i zmysły w 6 obszarach za pomocą 18 testów, wskaźników złożonych i 95% przedziałów ufności. Normy tymczasowe, tylko orientacyjnie, nie jest to diagnoza."
+  },
+  "Cronosala": {
+   "tags": [
+    "sport",
+    "czas"
+   ],
+   "line": "Minutniki na siłownię: odpoczynek między seriami, HIIT, Tabata, EMOM, AMRAP, obwody i metronom, plus dziennik treningowy z kg i powtórzeniami."
+  },
+  "ScutSonor": {
+   "tags": [
+    "bezpieczeństwo",
+    "dźwięk"
+   ],
+   "line": "Głośny dźwięk i stroboskop latarki na spotkania z agresywnymi psami, plus poradnik zachowania. To pomoc, a nie gwarantowana tarcza."
+  },
+  "MIRAJ": {
+   "tags": [
+    "wzrok",
+    "edukacja"
+   ],
+   "line": "Jak widzi siatkówka i jak mózg buduje obraz: dołek środkowy, ślepa plamka, iluzje i quiz, na trzech poziomach."
+  },
+  "ANTROPOS": {
+   "tags": [
+    "badanie przesiewowe",
+    "biologia"
+   ],
+   "line": "Orientacyjny profil naukowy liczony lokalnie: wiek biologiczny PhenoAge, głos, pismo ręczne, rysowanie zegara, osobowość TIPI i czas reakcji."
+  },
+  "DESCANTAR": {
+   "tags": [
+    "folklor",
+    "fasola"
+   ],
+   "line": "Wróżenie z 41 ziaren fasoli (metoda 3×3, wariant oltenijski) i 12 tradycyjnych zaklęć jako przedmiot badań folklorystycznych."
+  },
+  "Index-fara-frontiere": {
+   "tags": [
+    "katalog",
+    "źródła"
+   ],
+   "line": "Katalog jednoplikowych aplikacji HTML: kolekcja chiuta.github.io i źródła zewnętrzne, z wyszukiwaniem i etykietami."
+  },
+  "DECUPAJ": {
+   "tags": [
+    "reels",
+    "wideo"
+   ],
+   "line": "Zamień podcast, audio lub wideo w pionowe klipy z napisami bezpośrednio w przeglądarce, bez konta i znaku wodnego. Twoje pliki nigdy nie opuszczają urządzenia."
+  },
+  "LECTOR": {
+   "tags": [
+    "audio",
+    "książki"
+   ],
+   "line": "Książki czytane na głos bezpośrednio w przeglądarce: EPUB, DOCX, PDF, TXT lub wklejony tekst, bez konta i serwera. Tekst nigdy nie opuszcza Twojego urządzenia."
+  },
+  "FARFURIA": {
+   "tags": [
+    "odżywianie",
+    "zdrowie"
+   ],
+   "line": "Darmowy cyfrowy dietetyk: spersonalizowane kalorie i makroskładniki, plan posiłków na 7 dni, dziennik żywieniowy i śledzenie wagi. Nie zastępuje lekarza ani dietetyka."
+  },
+  "VITALIS": {
+   "tags": [
+    "zdrowie",
+    "długowieczność"
+   ],
+   "line": "Osobisty towarzysz zdrowia, długowieczności i biohackingu: dziewięć filarów uszeregowanych według dowodów, kalkulatory, wynik stylu życia i codzienny rytuał. To nie jest porada medyczna."
+  },
+  "REZONANTA": {
+   "tags": [
+    "komunikacja",
+    "media"
+   ],
+   "line": "Przewodnik i narzędzia do komunikacji i mediów: przekaz, kanały, komunikat prasowy, wywiad, klarowność, plan i kryzys."
+  },
+  "Claritas": {
+   "tags": [
+    "dostępność",
+    "rozszerzenie"
+   ],
+   "line": "Wszechstronne rozszerzenie przeglądarki dla dostępności: korekta kontrastu, tryb czytania, czytanie na głos i kontrola WCAG. Bez telemetrii, bez sieci, bez konta."
+  },
+  "TurboCursa": {
+   "tags": [
+    "wyścigi",
+    "Rust"
+   ],
+   "line": "Pseudo-3D zręcznościowa gra wyścigowa napisana w Ruście: krajobrazy generowane z ziarna, 11 trybów, kariera w lidze i 2 graczy. Oryginalna; bez kodu ani zasobów z innej gry."
+  },
+  "ANTENA": {
+   "tags": [
+    "radio",
+    "anteny"
+   ],
+   "line": "W budowie: solwer anten drucianych zgodny z NEC-2 (metoda momentów), z interfejsem w przeglądarce. Na razie tylko szkielet pre-alfa."
+  },
+  "ARBITRU": {
+   "tags": [
+    "gry",
+    "zasady"
+   ],
+   "line": "W budowie: uniwersalny silnik zasad do gier planszowych, karcianych, kościanych i łamigłówek z deklaratywnym językiem reguł. Na razie tylko szkielet pre-alfa."
+  },
+  "ASTROLABIU": {
+   "tags": [
+    "astronomia",
+    "kalendarze"
+   ],
+   "line": "W budowie: silnik zdarzeń niebieskich w czystym Ruście (skale czasu, zaćmienia, wschody i zachody, kalendarze). Na razie tylko szkielet pre-alfa."
+  },
+  "ECOGRAMA": {
+   "tags": [
+    "audio",
+    "restauracja"
+   ],
+   "line": "W budowie: edytor spektrogramów i restauracja dźwięku: zaznaczaj na spektrogramie, naprawiaj, eksportuj. Na razie tylko szkielet pre-alfa."
+  },
+  "ecou-spectral-rs": {
+   "tags": [
+    "audio",
+    "Rust"
+   ],
+   "line": "W budowie: natywny edytor spektrogramów w Ruście z wtyczkami redukcji szumu i wykrywania dźwięków. Jest szkielet kodu i format wtyczek, ale gotowych funkcji jeszcze nie ma."
+  },
+  "MARTOR": {
+   "tags": [
+    "archiwizacja",
+    "dowody"
+   ],
+   "line": "W budowie: sądowe przechwytywanie stron internetowych do WARC/WACZ z hashami, podpisami i zaufanymi znacznikami czasu, weryfikowalne offline. Na razie tylko szkielet pre-alfa."
+  },
+  "NEAMURI": {
+   "tags": [
+    "pokrewieństwo",
+    "rodowód"
+   ],
+   "line": "W budowie: silnik pokrewieństwa — od ścieżki w drzewie genealogicznym do właściwego określenia pokrewieństwa w wielu językach. Na razie tylko szkielet pre-alfa."
+  },
+  "TACTIL": {
+   "tags": [
+    "Braille",
+    "dostępność"
+   ],
+   "line": "W budowie: warstwa wyjścia dotykowego: formaty Braille'a (BRF, Unicode), wyświetlacze, drukarki reliefowe i wibracje ekranu dotykowego. Na razie tylko szkielet pre-alfa."
+  },
+  "atelier-verificare": {
+   "tags": [
+    "dziennikarstwo",
+    "weryfikacja",
+    "zdjęcia"
+   ],
+   "line": "Weryfikuj zdjęcia, filmy, linki i domeny w przeglądarce, nic nie jest przesyłane: prawdziwy typ pliku i SHA-256, EXIF/GPS, XMP/IPTC, Content Credentials (tylko odczyt), analiza poziomu błędu. Nie może udowodnić, że zdjęcie jest prawdziwe. Alfa."
+  },
+  "balanta": {
+   "tags": [
+    "SI",
+    "ocena"
+   ],
+   "line": "Porównuj modele SI w ciemno: wklej odpowiedzi od dwóch do ośmiu modeli na 92 prompty po rumuńsku, angielsku i węgiersku, głosuj na A lub B i otrzymaj ranking z przedziałami. Alfa; działa offline."
+  },
+  "calendarium": {
+   "tags": [
+    "kalendarze",
+    "czas"
+   ],
+   "line": "Wpisz datę w jednym z jedenastu kalendarzy (gregoriański, juliański, hebrajski, hidżra, perski, chiński, Majów, marsjański…) i zobacz ją we wszystkich pozostałych, z widokiem miesiąca. Alfa; działa offline."
+  },
+  "glosar": {
+   "tags": [
+    "języki",
+    "słowniki"
+   ],
+   "line": "Słownik offline dla arumuńskiego, meglenorumuńskiego i romskiego: szukaj bez znaków diakrytycznych, zobacz, których podstawowych słów brakuje, i dodawaj słowa ze źródłem i rejestrem. Alfa."
+  },
+  "graiul": {
+   "tags": [
+    "folklor",
+    "archiwum"
+   ],
+   "line": "Archiwum offline rumuńskiego folkloru (przysłowia, zaklęcia, zagadki, kolędy) ze źródłem, okręgiem i zgodą. Zaczyna się od dziesięciu przysłów; możesz dodać więcej. Alfa."
+  },
+  "indicativ-international": {
+   "tags": [
+    "radio",
+    "egzaminy"
+   ],
+   "line": "Ćwicz pytania z egzaminu radioamatorskiego z harmonogramem powtórek w pięciu pudełkach i egzaminami próbnymi na czas; importuj pakiety pytań we wspólnym formacie JSON. W zestawie 50 pytań ćwiczeniowych; nie jest to oficjalny bank. Alfa."
+  },
+  "proiector-fara-frontiere": {
+   "tags": [
+    "klasa",
+    "projekcja",
+    "quiz"
+   ],
+   "line": "Telefony w klasie stają się wspólnym ekranem bez serwera i kont: minutnik, ankieta, quiz, notatki i tablica; parowanie kodem QR lub wklejonym tekstem w tej samej sieci. Alfa: na prawdziwych telefonach jeszcze nie testowano."
+  },
+  "regula": {
+   "tags": [
+    "gry",
+    "zasady"
+   ],
+   "line": "Graj w pięć klasycznych gier dla dwóch osób (młynek, alquerque, fanorona, mū tōrere, hnefatafl) przeciwko komputerowi lub znajomemu; dodaj własną grę jako JSON. Alfa; działa offline."
+  },
+  "vietar-packs": {
+   "tags": [
+    "przyroda",
+    "gatunki"
+   ],
+   "line": "Przeglądaj, importuj, sprawdzaj i twórz regionalne pakiety gatunków dla VietAR: nazwy w kilku językach, oznaczenia toksyczności, gatunki podobne. Pięć szkiców pakietów startowych z 71 gatunkami. Alfa; działa offline."
+  },
+  "PatruZeci": {
+   "tags": [
+    "WD-40",
+    "zrób to sam"
+   ],
+   "line": "Ilustrowany animowany atlas zastosowań WD-40: przewodnik ze 147 kartami i oficjalna lista 1993 zastosowań, każde z własną animowaną sceną. Nieoficjalne, offline, bez konta."
+  },
+  "ODISEEA": {
+   "tags": [
+    "Voyager",
+    "dokument"
+   ],
+   "line": "Dokument trwający około 4,5 minuty o Voyagerach 1 i 2 w jednym pliku HTML: sceny generowane na karcie graficznej, eksport w 2D i 3D dla gogli VR, w 8 językach."
+  },
+  "EXIF-CURAT": {
+   "tags": [
+    "metadane",
+    "prywatność"
+   ],
+   "line": "W budowie: narzędzie w Ruście z bezpiecznymi dla pamięci parserami do podglądu i czyszczenia ukrytych danych w plikach (obrazy, PDF, Office, wideo: EXIF, GPS, XMP). Na razie tylko szkielet pre-alfa."
+  },
+  "PORUMBEL": {
+   "tags": [
+    "zdjęcia",
+    "transfer"
+   ],
+   "line": "Automatycznie przenosi zdjęcia zrobione w Open Camera na telefonie do folderu na komputerze, jeden folder na sesję, i otwiera je w LegatorOCR. Bez konta, bez chmury, bez crate'ów stron trzecich."
+  },
+  "colibri-companion": {
+   "tags": [
+    "lokalna SI",
+    "desktop"
+   ],
+   "line": "Przyjazna aplikacja desktopowa dla lokalnego silnika wnioskowania colibri: wybierz model pasujący do Twojego komputera, pobierz jednym kliknięciem i rozmawiaj z nim. Bez konta, bez usługi w chmurze."
+  },
+  "CartaColibri": {
+   "tags": [
+    "lokalna SI",
+    "biblioteka"
+   ],
+   "line": "Lokalna biblioteka SI na silniku Colibrì: indeksuje wybrane przez Ciebie foldery, wyszukuje natychmiast i prosi lokalny model o streszczenie, wyodrębnienie danych lub syntezę, zawsze wskazując plik źródłowy. Nic nie opuszcza Twojego komputera."
+  },
+  "PolyTabletop": {
+   "tags": [
+    "gry planszowe",
+    "Rust"
+   ],
+   "line": "240 gier planszowych przeciwko komputerowi w terminalu lub oknie graficznym, plus gra dla dwóch osób na jednej klawiaturze lub przez sieć. Napisane w Ruście; silnik i gry nie mają zewnętrznych zależności."
+  },
+  "STRAJA": {
+   "tags": [
+    "prywatność",
+    "telefon"
+   ],
+   "line": "Tarcza przed agentami SI czytającymi Twój telefon: pokazuje, które aplikacje mogą czytać Twoje powiadomienia, ekran, zdjęcia i SMS-y, ostrzega, gdy nowa uzyska dostęp, i prowadzi do ustawień, gdzie cofniesz uprawnienie. Bez konta, bez uprawnienia INTERNET."
+  },
+  "CUPLAJ": {
+   "tags": [
+    "teatr immersyjny",
+    "telefonia"
+   ],
+   "line": "Telefonia ze wspólną linią dla teatru immersyjnego: flota zwykłych telefonów z Androidem staje się prywatną centralą przez Wi-Fi miejsca; bez chmury, bez kont, bez reklam. Cechą charakterystyczną jest «cuplaj»: wspólna linia telefonów stacjonarnych od lat 80. do około 2006."
+  },
+  "LUSTRUM": {
+   "tags": [
+    "czyszczenie telefonu",
+    "Android"
+   ],
+   "line": "Odzyskaj miejsce w telefonie: znajduje zbędne pliki, duplikaty, podobne zdjęcia i resztki aplikacji i czyści je tylko za Twoją zgodą. Nie ma uprawnienia INTERNET, więc fizycznie nie może niczego nigdzie wysłać."
+  },
+  "STENOGRAMA": {
+   "tags": [
+    "transkrypcja",
+    "audio"
+   ],
+   "line": "Transkrypcja długiego audio bezpośrednio w przeglądarce z lokalnym Whisperem: jeden plik HTML, bez konta, bez serwera, bez znaku wodnego. Twoje audio nigdy nie opuszcza urządzenia; pobiera się tylko model Whisper, raz."
+  },
+  "GERMEN": {
+   "tags": [
+    "lokalna SI",
+    "Rust"
+   ],
+   "line": "Trenuj mały model językowy od zera w czystym Ruście na zwykłym procesorze: bez Pythona, bez CUDA, bez konta, bez dostępu do sieci, bez telemetrii. Jeden plik binarny, jeden plik tekstowy, jedno polecenie."
+  },
+  "CUANTOR": {
+   "tags": [
+    "komputer kwantowy",
+    "symulator"
+   ],
+   "line": "Symulator komputera kwantowego na Twój pulpit, od 5 do 1000 kubitów, z interfejsem w stylu IBM Quantum Composer. Dokładna matematyka, ale nie prawdziwy sprzęt kwantowy."
+  }
+ }
+}
