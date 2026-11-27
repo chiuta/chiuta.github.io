@@ -1,0 +1,1107 @@
+{
+ "lang": "tr",
+ "note": "Rânduri și etichete de card; detaliile (detail) lipsesc încă și rămân în engleză. Traducere asistată de IA, nerevizuită de un vorbitor nativ.",
+ "apps": {
+  "FreeDetect": {
+   "tags": [
+    "katalog",
+    "alıntılar"
+   ],
+   "line": "Bir metnin yapay zekâ tarafından yazılmış ya da kopyalanmış gibi görünüp görünmediğini mi kontrol etmek istiyorsunuz? 42 harici araç ve bir alıntı oluşturucu tek yerde. Uygulamanın kendisi hiçbir şey tespit etmez."
+  },
+  "Arhiva-fara-frontiere": {
+   "tags": [
+    "web arşivleri",
+    "kaynaklar"
+   ],
+   "line": "Internet Archive koleksiyonlarına hesapsız göz atın: arama, öğe sayfaları, önizleme ve favorileriniz. Resmî değildir; archive.org IP adresinizi ve aramalarınızı görür."
+  },
+  "AcademiSearch": {
+   "tags": [
+    "literatür",
+    "kaynaklar"
+   ],
+   "line": "Bir kez arayın, onlarca açık kaynaktan bilimsel makaleleri görün. Listeyi alıntılar için kaydedebilirsiniz. İnternet gerekir; aramalarınız bu hizmetlere gider."
+  },
+  "Surveyor": {
+   "tags": [
+    "ölü bağlantılar",
+    "denetim"
+   ],
+   "line": "Web sitenizde hangi bağlantılar var, hangileri bozuk? Çapalar ve yönlendirmelerle birlikte listeler. Harici olanlar güvenilir biçimde doğrulanamaz. Yalnızca kendi siteleriniz için."
+  },
+  "Trade-Free-Link-Guardian": {
+   "tags": [
+    "WordPress",
+    "GPL v2"
+   ],
+   "line": "WordPress siteniz için: bozuk bağlantıları bulur ve harici hizmet olmadan düzeltir. Gerçek içeriği değiştirir, bu yüzden önce yedek alın. Gerçek bir WordPress'te denenmemiştir."
+  },
+  "OUTPOST": {
+   "tags": [
+    "izleme"
+   ],
+   "line": "Sitelerinizi izleyin ve hâlâ yanıt verip vermediğini görün. Yalnızca sekme açık kaldığı sürece çalışır. Hata sayfası da yanıt sayılır. Arayüz İngilizcedir."
+  },
+  "ScryVeil": {
+   "tags": [
+    "OSINT",
+    "güvenlik"
+   ],
+   "line": "Bir alan adı üzerinde güvenlik kontrolü yapın ve kaydedebileceğiniz bir metin raporu alın. Bazı kontroller eksik olabilir veya anahtar gerektirebilir. Üçüncü taraf hizmetlere bağlanır; yalnızca kendi alan adlarınız için."
+  },
+  "Vitrina": {
+   "tags": [
+    "kaynak izleme"
+   ],
+   "line": "Herkese açık bir Facebook gönderisini hesapsız sitenize koyun ve hazır kodu kopyalayın. Resmî değildir; Meta IP adresinizi görür, gösterim garanti edilmez."
+  },
+  "Threads-fara-cont": {
+   "tags": [
+    "kaynak izleme"
+   ],
+   "line": "Herkese açık Threads gönderilerini hesapsız okuyun ve metin olarak kaydedin. Resmî değildir; Meta IP adresinizi görür, bazen aracı bir hizmet gerekir."
+  },
+  "X-fara-cont": {
+   "tags": [
+    "kaynak izleme"
+   ],
+   "line": "X'teki herkese açık profillere ve gönderilere hesapsız birkaç yolla ulaşın: doğrudan bağlantı, arşiv, arama veya Nitter. İçeriği okumaz; bağlantıyı archive.org'a gönderir."
+  },
+  "Arhiva-LinkedIn": {
+   "tags": [
+    "arşivleme"
+   ],
+   "line": "Kendi yapıştırdığınız LinkedIn gönderilerine ilişkin notlarınızı tek yerde tutun ve metin olarak dışa aktarın. Galeri resmî gömme kullanır, bu yüzden LinkedIn'e bağlanır. Resmî değildir."
+  },
+  "Cadraj": {
+   "tags": [
+    "kaynak izleme"
+   ],
+   "line": "TikTok kliplerini elle, yazara göre gruplayarak toplayın ve resmî oynatıcıda izleyin. Daha önce izlediklerinizi işaretleyebilirsiniz."
+  },
+  "FASCICUL": {
+   "tags": [
+    "iş birliği"
+   ],
+   "line": "Odadaki telefonları video projektörde ortak bir panoya dönüştürür: çizimler, notlar, görseller, lazer işaretçi ve canlı kamera. Bilgisayarda denendi; gerçek telefonlarda henüz doğrulanmadı."
+  },
+  "INDICATIV": {
+   "tags": [
+    "sınav",
+    "telsiz"
+   ],
+   "line": "ANCOM amatör telsiz sınavına, uygun aralıklarla tekrarlanan 723 soruyla, internetsiz hazırlanın. Resmî değildir; soru bankası yalnızca kısmen doğrulanmıştır."
+  },
+  "ETER": {
+   "tags": [
+    "telsiz",
+    "ansiklopedi"
+   ],
+   "line": "Amatör telsizi Mors alfabesi, Mors çalıştırıcısı, anten hesaplayıcıları ve tüm içerikte aramayla bir ansiklopedide öğrenin."
+  },
+  "ATINGERE": {
+   "tags": [
+    "erişilebilirlik"
+   ],
+   "line": "Bir kitap, dokunmatik ekranda titreşimlerle sağır-körler için Braille'e ya da körler için sesli kitaba dönüşür. Braille okurlarıyla doğrulanmadı; sınırları vardır."
+  },
+  "Clopotel": {
+   "tags": [
+    "etkinlikler",
+    "MIT"
+   ],
+   "line": "Konferansınızı veya atölyenizi zamanında tutun: gündeminizle bir sahne zamanlayıcısı ve bitişin yaklaştığını bildiren bir sinyal. Rumence ve İngilizce."
+  },
+  "Monstrarium": {
+   "tags": [
+    "atölye",
+    "MIT"
+   ],
+   "line": "Geri dönüşüm malzemelerinden canavar yapılan bir atölye planlayın: uygulama malzemeleri ve oturumları hesaplar, sesli, 3B ve eğitici oyunlu 50 canavar sunar."
+  },
+  "TranslateHub": {
+   "tags": [
+    "çeviri",
+    "YZ"
+   ],
+   "line": "22 çeviri aracı arasından seçin ya da kendi anahtarınızla yapay zekâ ile çevirin. Yapay zekâyla çevrilen metin Anthropic hizmetine gider."
+  },
+  "DataWeave": {
+   "tags": [
+    "veri"
+   ],
+   "line": "Bir tabloyu açın ve anlamlandırın: istatistikler, grafikler, pivot tablolar ve korelasyonlar. Verileriniz cihazınızda kalır."
+  },
+  "MarkdownAtelier": {
+   "tags": [
+    "yazı"
+   ],
+   "line": "Belgeleri Markdown ile yazın ve basit formüllerle nasıl göründüğünü anında görün; 7 dilde, internetsiz. Metinler tarayıcınızda kalır; yedek kopya kaydedin."
+  },
+  "RegexLab": {
+   "tags": [
+    "geliştirme"
+   ],
+   "line": "Bir düzenli ifadeyi deneyin ve neyle eşleştiğini hemen görün; adım adım açıklamalar, testler ve programı dondurabileceği zaman uyarı ile."
+  },
+  "SEOptimum": {
+   "tags": [
+    "web"
+   ],
+   "line": "Bir web sayfasının arama motorlarına ne kadar hazır olduğunu kontrol edin. Sayfa analizi ve arama sonuçlarında nasıl göründüğünün önizlemesi dahil 20 aracı vardır."
+  },
+  "SEVA": {
+   "tags": [
+    "sağlık"
+   ],
+   "line": "Uykuyu, vücudun günlük ritmini, nefesi ve beslenmeyi, dinleyebileceğiniz bir ansiklopedide öğrenin. Yalnızca bilgi amaçlıdır; tıbbi tavsiye değildir."
+  },
+  "PULS": {
+   "tags": [
+    "sağlık",
+    "acil durum"
+   ],
+   "line": "Ambulans gelene kadar ne yapılır? Rumence bir ilk yardım rehberi; CPR metronomu ve isteğe bağlı acil durum kartıyla. Klinik olarak doğrulanmadı; 112'yi arayın."
+  },
+  "VATRA": {
+   "tags": [
+    "saha çalışması"
+   ],
+   "line": "Doğada suyunuz, ateşiniz ya da barınağınız biterse ne yapılır? Arama ve notlarla, internetsiz bir hayatta kalma ansiklopedisi. Yalnızca eğitim amaçlı; acil durumda 112'yi arayın."
+  },
+  "Eclipsa-2027": {
+   "tags": [
+    "astronomi"
+   ],
+   "line": "2 Ağustos 2027 tam Güneş tutulmasının nerede ve ne kadar sürdüğünü, şehirler ve yer aramasıyla, internetsiz haritada görün. Değerler yaklaşıktır; Güneş'e filtresiz bakmayın."
+  },
+  "orarium": {
+   "tags": [
+    "astronomi",
+    "zaman"
+   ],
+   "line": "Şu an Mars'ta, Ay'da ya da bir asteroitte saat kaç? 45 gök cisminde canlı yerel saati görün. Yaklaşık model, internet gerekmez; seyrüsefer için değildir."
+  },
+  "TerRa": {
+   "tags": [
+    "astronomi"
+   ],
+   "line": "Dünya'da, Ay'da ve gezegenlerde gece ile gündüzü gösteren 3B küre ve harita. Çevrimiçi güncelleyene kadar uydu konumları yaklaşık 3 ay eski olabilir."
+  },
+  "Horizons.BeyondLimits": {
+   "tags": [
+    "kozmoloji"
+   ],
+   "line": "Evrenin tarihinde Büyük Patlama'dan sona kadar 91 dönüm noktasıyla yolculuk edin. Gelecek bilimsel bir spekülasyondur, kesin bir öngörü değildir."
+  },
+  "Hyper4D": {
+   "tags": [
+    "matematik"
+   ],
+   "line": "Dört boyutlu şekillerin neye benzediğini görün: ekranda döndürün ve birkaç açıdan inceleyin. Görüntüler kaydedilebilir."
+  },
+  "ExploratoriiEco": {
+   "tags": [
+    "doğa"
+   ],
+   "line": "Doğa severler için bir saha rehberi: canlıların sınıflandırılmasından ve izlerinden Romanya'nın biyomlarına, bir güncelik defteri, etik ve acil durumlara."
+  },
+  "FieldObserver": {
+   "tags": [
+    "saha çalışması"
+   ],
+   "line": "Saha gözlemlerinizi not edin, telefon sensörlerinden okumaları otomatik ekler. Çıkışlarınızın bir arşivini tutarsınız."
+  },
+  "VietAR": {
+   "tags": [
+    "biyoçeşitlilik"
+   ],
+   "line": "Bir bitkinin ya da canlının fotoğrafını çekin veya kaydedin ve Romanya'dan 519 tür arasından bir fikir edinin. Yanılabilir; buna dayanarak hiçbir şey yemeyin."
+  },
+  "VOIAJOR": {
+   "tags": [
+    "Voyager",
+    "simülasyon"
+   ],
+   "line": "Voyager 1 ve 2'nin 1977'den bir milyar yıl sonrasına uzanan yörüngelerini, gezegenlerden Samanyolu'na her ölçekte izleyin. Gösterge niteliğinde bir model; seyrüsefer değildir."
+  },
+  "Nemurirea": {
+   "tags": [
+    "biyoloji"
+   ],
+   "line": "Vücudun nasıl yaşlandığını, bilimin biyolojik saatler ve uzun ömür hakkında ne söylediğini keşfedin, sonra bir testle kendinizi deneyin. Tıbbi tavsiye değildir."
+  },
+  "IncredibleCosmos": {
+   "tags": [
+    "oyun",
+    "fizik"
+   ],
+   "line": "Gezegenleri ve yıldızları, kütleçekimleri bir kuyruklu yıldızı hedefe yönlendirecek şekilde yerleştirin. 108 seviye, üç zorluk ve seviye başına en fazla üç yıldız."
+  },
+  "Cupa-Mondiala-2026": {
+   "tags": [
+    "simülasyon",
+    "resmî değil"
+   ],
+   "line": "2026 Dünya Kupası'nda oynayın ve hayalî bir turnuvanın gelişimini izleyin. Sonuçlar rastgeledir, tahmin değildir; resmî değildir."
+  },
+  "AGORA": {
+   "tags": [
+    "ekonomi",
+    "AB"
+   ],
+   "line": "Euro nasıl doğdu ve Romanya için ne anlama geliyor? Maastricht'ten ECB'ye 59 bölüm, ayrıca gezginler için ipuçları. Resmî değildir."
+  },
+  "URME": {
+   "tags": [
+    "doğa",
+    "Buzău"
+   ],
+   "line": "Buzău'daki Colți–Aluniș patikasında yürüyüşe hazırlanın: bitkiler, kehribar, fosiller, gün doğumu ve batımı saatleri, ekipman. Harita seyrüsefer için değildir."
+  },
+  "Belot-fara-frontiere": {
+   "tags": [
+    "kartlar",
+    "YZ"
+   ],
+   "line": "Belot'u ve başka ülkelerdeki akrabalarını keşfedin, sonra masada oynayın: siz ve bir YZ ortağı, iki YZ rakibe karşı. Puan kâğıdı dahildir."
+  },
+  "Scopone-fara-frontiere": {
+   "tags": [
+    "kartlar",
+    "YZ"
+   ],
+   "line": "Scopone'nin nasıl doğduğunu, kurallarının neler olduğunu ve bölgeden bölgeye nasıl değiştiğini öğrenin, sonra ipucu verebilen bilgisayara karşı oynayın."
+  },
+  "Solitaire-fara-frontiere": {
+   "tags": [
+    "kartlar"
+   ],
+   "line": "Klondike, FreeCell veya Spider gibi solitaire oyunlarına göz atın ve oynayın. Takıldığınızda ipucu isteyin ya da bilgisayarın çözmesine izin verin."
+  },
+  "Sudoku-fara-frontiere": {
+   "tags": [
+    "bulmaca"
+   ],
+   "line": "Klasikten killer'a ya da 3B'ye 136 Sudoku türü; göz atın ve oynayın. Adım adım açıklamalarla yardım eder ve kendi bulmacalarınızı çözer."
+  },
+  "Domino-fara-frontiere": {
+   "tags": [
+    "domino",
+    "YZ"
+   ],
+   "line": "Dominonun tarihini ve kurallarını öğrenin, sonra bilgisayarın yönettiği bir ila üç rakibe karşı masada oynayın. Hamle geri alınabilir."
+  },
+  "Mahjong-fara-frontiere": {
+   "tags": [
+    "Mahjong",
+    "YZ"
+   ],
+   "line": "8 mahjong türünü keşfedin; solitaire ya da bilgisayarın yönettiği üç basit rakiple dört kişilik oyunu oynayın. Çevrimdışı çalışır."
+  },
+  "Go-fara-frontiere": {
+   "tags": [
+    "Go",
+    "YZ"
+   ],
+   "line": "Go'nun nereden geldiğini ve nasıl oynandığını öğrenin, sonra ipucu verebilen bilgisayara karşı şansınızı deneyin. İnternet üzerinden hiçbir veri göndermez."
+  },
+  "Zaruri-fara-frontiere": {
+   "tags": [
+    "zar"
+   ],
+   "line": "Hakkında okuyabileceğiniz 26 zar oyunu, 12'si bilgisayara karşı oynanabilir; ayrıca olasılıklı bir zar atma simülatörü. Para yok; çevrimdışı."
+  },
+  "Sah-fara-frontiere": {
+   "tags": [
+    "satranç"
+   ],
+   "line": "Keşfedeceğiniz 700'ü aşkın satranç çeşidi ve küçük bir terim sözlüğü; çoğunu bilgisayara karşı oynayabilirsiniz. Çevrimdışı çalışır."
+  },
+  "Dame-fara-frontiere": {
+   "tags": [
+    "dama"
+   ],
+   "line": "25 dama çeşidini bilgisayara karşı oynayın ve oyununuzu kaydedin. 16'sının kuralları yalnızca yaklaşıktır ve ⚠ ile işaretlidir."
+  },
+  "Table-fara-frontiere": {
+   "tags": [
+    "tavla"
+   ],
+   "line": "Tavla, Tavli, Nardı ve tablanın Romanya çeşitleri; okuyun ve oynayın: bilgisayara karşı 17 çeşit, klavye veya fareyle."
+  },
+  "Remi-fara-frontiere": {
+   "tags": [
+    "remi"
+   ],
+   "line": "Remi ailesini keşfedin ve bilgisayara karşı 19 çeşidi istatistiklerle oynayın. 8 dili vardır; büyük, kolay görülür taşlar veya kartlar."
+  },
+  "Carti-de-joc-fara-frontiere": {
+   "tags": [
+    "kartlar"
+   ],
+   "line": "Solitaire ve Kötü Kız'dan pokere: kuralları açıklanmış 17 kart oyunu, 8'ini hemen oynayabilirsiniz."
+  },
+  "Undava": {
+   "tags": [
+    "sınav",
+    "eğitim"
+   ],
+   "line": "Arkadaşlarınızla aynı telefonda veya bilgisayarda bir sınav hazırlayın ya da oynayın ve yanlış yaptığınız soruları yeniden oynayın. Kahoot'a benzer ama bağlantısızdır."
+  },
+  "AI-Liber": {
+   "tags": [
+    "YZ"
+   ],
+   "line": "Birkaç YZ asistanıyla tek yerden konuşun, bazıları kendi bilgisayarınızda çalışır. Mesajlar seçtiğiniz sağlayıcıya gider; YZ hata yapabilir."
+  },
+  "LocalMind": {
+   "tags": [
+    "yerel YZ"
+   ],
+   "line": "Doğrudan tarayıcınızda çalışan küçük bir YZ asistanıyla sohbet edin. Modeller internetten bir kez indirilir; yanılabilir."
+  },
+  "PromptVault": {
+   "tags": [
+    "istemler"
+   ],
+   "line": "YZ asistanları için 500'den fazla hazır istem; seçip favorilerinizi işaretlersiniz. Kendi metinlerinizi saklamaz."
+  },
+  "ARENA": {
+   "tags": [
+    "YZ değerlendirme"
+   ],
+   "line": "İki YZ modelinin kör yanıt vermesini sağlayın ve en iyisine oy verin; sıralama bilgisayarınızda tutulur. Kendi anahtarlarınız gerekir."
+  },
+  "Nexus-fara-frontiere": {
+   "tags": [
+    "ajanlar"
+   ],
+   "line": "Birkaç sağlayıcıdan YZ asistanlarıyla sohbet edin; konuşma arama ve kaydetme ile. İnternet ve şifrelenmeden saklanan kendi anahtarlarınız gerekir."
+  },
+  "VoiceAtelier": {
+   "tags": [
+    "ses"
+   ],
+   "line": "Onlarca dilde yüzlerce yapay sesin nasıl duyulduğunu dinleyin ve bir sesli kitabın nasıl yapıldığını öğrenin. Çevrimiçi örnek, metni yalnızca izninizle harici hizmetlere gönderir."
+  },
+  "Trusa-fara-frontiere": {
+   "tags": [
+    "yardımcı programlar"
+   ],
+   "line": "15 küçük günlük araçtan oluşan bir set: notlar, hesap tablosu, Markdown, parolalar, finans defteri ve daha fazlası. Kategorilerine ilham veren YunoHost ile resmî bir bağı yoktur."
+  },
+  "API-fara-frontiere": {
+   "tags": [
+    "API"
+   ],
+   "line": "Hava durumunu, NASA görüntülerini, ISS konumunu ve onlarca canlı ayrıntıyı tek yerde görün. İnternet gerekir; gerçek hizmetlerle denenmemiştir."
+  },
+  "OmniHost": {
+   "tags": [
+    "paket"
+   ],
+   "line": "Tek yerde toplanmış yüzü aşkın iş aracından oluşan büyük bir paket. Dört harici hizmete bağlanır; ayrıntılar README'dedir."
+  },
+  "VNTV": {
+   "tags": [
+    "medya",
+    "MIT"
+   ],
+   "line": "VideoNeat fragmanlarını hiç durmayan bir TV kanalı gibi oynatın. İnternet gerekir; P2P kipinde adresiniz diğer izleyicilere görünür."
+  },
+  "OSATURA": {
+   "tags": [
+    "animasyon",
+    "MPL/AGPL"
+   ],
+   "line": "2B çizimlere can verin: bir «iskelete» bağlayın, harekete geçirin ve animasyonu birkaç biçimde dışa aktarın. Alfa sürümü, şimdiye dek az denendi."
+  },
+  "OAZA": {
+   "tags": [
+    "hizmetler"
+   ],
+   "line": "Çoğunlukla hesapsız 340 ücretsiz web hizmetine tek katalogda göz atın. Liste Haziran 2026'da denetlendi, ancak otomatik olarak değil."
+  },
+  "VaultCrypt": {
+   "tags": [
+    "güvenlik"
+   ],
+   "line": "Meraklı gözlerden saklanacak bir şeyiniz mi var? Dosyaları ve metinleri doğrudan tarayıcıda bir parolayla kilitleyin. Kaybolan parola geri alınamaz."
+  },
+  "Akasha": {
+   "tags": [
+    "notlar"
+   ],
+   "line": "Etiketler, arama ve sayfalar arası bağlantılarla çevrimdışı çalışan bir defter. Hiçbir şey kaybetmemek için dosyanın taze bir kopyasını indirirsiniz."
+  },
+  "CLEPSIDRA": {
+   "tags": [
+    "zaman"
+   ],
+   "line": "Geri sayım saati, alarm ve hafta içi ile hafta sonu için programlar. Tatilleri ve kendi etkinliklerinizi takip eder."
+  },
+  "Origami": {
+   "tags": [
+    "sanat"
+   ],
+   "line": "Kâğıt katlamayı adım adım öğrenin: semboller, teknikler ve resimli modeller. Uygulama kaldığınız yeri hatırlar."
+  },
+  "Zicala": {
+   "tags": [
+    "kültür"
+   ],
+   "line": "550'lük bir koleksiyondan her gün bir Rumen atasözü. Arayabilir ve favorileri kaydedebilirsiniz; yorumlar YZ yardımıyla yazıldı."
+  },
+  "Limpezimea": {
+   "tags": [
+    "edebiyat"
+   ],
+   "line": "«Limpezimea» bilimkurgu romanını yedi dilde okuyun. Eşlik eden kronik ve eleştirel çalışma YZ (Claude) yardımıyla yazıldı."
+  },
+  "Nota-Zero": {
+   "tags": [
+    "edebiyat"
+   ],
+   "line": "Sicim teorisi üzerine, Rumence, İngilizce ve Fransızca spekülatif bir kurgu öyküsü; bilimsel fikirleri açıklayan notlarla. Kurgudur, akademik kaynak değildir."
+  },
+  "Pendulul": {
+   "tags": [
+    "edebiyat"
+   ],
+   "line": "Bir gezegen üç yıldız ile bir kara delik arasında salınır: Alexio'nun Claude ile birlikte yazdığı dokuz ciltlik bir bilimkurgu romanı. 3B simülasyon, çevrimdışı okuma için kaydedilebilir bir okuyucu, EPUB ve PDF ile."
+  },
+  "PrintreInteligente": {
+   "tags": [
+    "edebiyat"
+   ],
+   "line": "Artemis 2 ekibinden esinlenen karakterlerle etkileşimli bir bilimkurgu romanına adım atın. İncelemeler kurgudur; çeviri, ses ve YZ özellikleri harici hizmetler kullanır."
+  },
+  "BorderlessMelodies": {
+   "tags": [
+    "müzik"
+   ],
+   "line": "Kendi kendini besteleyen müziği doğrudan tarayıcıda dinleyin. Ses olarak dışa aktarabilirsiniz ve bir uyku zamanlayıcısı vardır."
+  },
+  "EcoulSpectral": {
+   "tags": [
+    "ses"
+   ],
+   "line": "Sesi bir görüntü olarak görün, sizi rahatsız eden kısmı seçin ve ayırın ya da silin. Gürültü azaltma, ses algılama ve WAV olarak kaydetme içerir."
+  },
+  "Constelar": {
+   "tags": [
+    "YZ"
+   ],
+   "line": "Konuşmalarınızı hatırlayan sanal arkadaşlarla sohbet edin. Varsayılan olarak basit kurallarla yanıtlarlar; gerçek YZ yalnızca bir sağlayıcı seçerseniz, mesajlarınız ona gider. Yalnızca yetişkinler."
+  },
+  "Tarot": {
+   "tags": [
+    "kültür"
+   ],
+   "line": "Tarotun tarihini, kartların sembollerini ve nasıl okunduğunu kültürel bir olgu olarak keşfedin. Kendi hızınızda izleyeceğiniz etkileşimli bir kurs."
+  },
+  "Numerologie": {
+   "tags": [
+    "kültür"
+   ],
+   "line": "Numerolojiyi sembolik bir gelenek olarak, alıştırmalar, sözlük, günlük ve hesaplayıcıyla dört seviyede keşfedin. Bilimsel doğrulama olmadan sunulur."
+  },
+  "PUNCTUM": {
+   "tags": [
+    "sağlık",
+    "kanıt"
+   ],
+   "line": "Akupresür ve nokta temelli tedavilerin eğitici bir atlası: etkileşimli haritalarda 400'ü aşkın nokta, rehberli seanslarla öz bakım rutinleri, kanıtlar ve güvenlik. Doktorun yerini tutmaz."
+  },
+  "Reiki": {
+   "tags": [
+    "kültür"
+   ],
+   "line": "Manevi bir uygulama olan Reiki'nin ne olduğunu ve araştırmaların ne söylediğini öğrenin: rahatlamanın ötesinde bir etkiye dair yeterli kanıt bulunmadı. Doktorun yerini tutmaz."
+  },
+  "Bioenergoterapie": {
+   "tags": [
+    "kültür"
+   ],
+   "line": "Biyoenerji terapisinin ne olduğunu ve nereden geldiğini açıklayan bir kurs. Uygulamanın iyileştirici etkisine dair bilimsel kanıt yoktur ve doktorun yerini tutmaz."
+  },
+  "CHIROMANTIA": {
+   "tags": [
+    "el falı",
+    "kültür"
+   ],
+   "line": "Etkileşimli bir el falı atlası: çizgiler, tepeler, parmaklar ve el tipleriyle bir avuç haritası, kültürel gelenek olarak okunur; bilim ve eleştirel düşünme bölümüyle. Bilimsel doğrulama yok."
+  },
+  "Radiestezie": {
+   "tags": [
+    "kültür"
+   ],
+   "line": "Çubukla su arama üzerine 18 seviyeyi, sözlük, uygulama günlüğü ve uluslararası eklerle gözden geçirin. Baştan bilimsel doğrulaması olmadığını belirtir."
+  },
+  "Inforenergetica": {
+   "tags": [
+    "kültür"
+   ],
+   "line": "Geleneksel olmayan bir uygulama olan inforenerjetiğin ne iddia ettiğini yapılandırılmış bir kursta keşfedin. Bilimsel doğrulaması yoktur ve tıbbi tavsiye değildir."
+  },
+  "ECLIPSA": {
+   "tags": [
+    "astroloji"
+   ],
+   "line": "Bir tutulmanın doğum haritanızda hangi astrolojik eve düştüğünü ve sonraki 12 tutulmayı öğrenin. Hesap yaklaşıktır, yorum sembolik; bilimsel doğrulama yok."
+  },
+  "Afrodisiace-fara-frontiere": {
+   "tags": [
+    "kültür"
+   ],
+   "line": "Geleneksel olarak arzuyla ilişkilendirilen 22 yiyecek ve bitki hakkında, her biri kanıt düzeyiyle birlikte okuyun. Yetişkinler için kültürel bir rehber, tıbbi tavsiye değil."
+  },
+  "CalmWaves": {
+   "tags": [
+    "ses"
+   ],
+   "line": "Anında üretilen, rahatlama ve uyku için ortam müziği. Tıbbi cihaz değildir; araştırma bölümü bağımsız olarak doğrulanmamıştır. Bir doktora danışın (epilepsi)."
+  },
+  "ASMR": {
+   "tags": [
+    "ses"
+   ],
+   "line": "Ortam katmanlarından, dokunma seslerinden ve binaural vuruşlardan kendi rahatlatıcı ses manzaranızı oluşturun. Uyku zamanlayıcısı vardır ve karışımınızı paylaşabilirsiniz."
+  },
+  "NOMIA": {
+   "tags": [
+    "kurgu",
+    "spekülasyon",
+    "PWA"
+   ],
+   "line": "İnsanlar, yapay zekâlar ve diğer akıl türleri arasındaki ilk temas nasıl olabilir? 1001 hayalî senaryo; kurgudur, gerçek değil. Çevrimdışı da çalışır."
+  },
+  "ValeaPlopului1972": {
+   "tags": [
+    "UFO",
+    "3B",
+    "kurgu"
+   ],
+   "line": "1972 tarihli bir UFO olayını dışarıdan, içeriden ve simülasyonda, 3B olarak yeniden kurulmuş hâliyle görün. Hayalî bir hipotezdir, kanıt değildir."
+  },
+  "HoroScop": {
+   "tags": [
+    "astroloji",
+    "efemeris",
+    "çevrimdışı"
+   ],
+   "line": "Bir tarih ve yer için gezegen konumlarını hesaplayın, sonra doğum haritasını, açıları ve uyumu keşfedin. Sembolik astroloji, bilimsel temeli yok. Çevrimdışı."
+  },
+  "Aurora": {
+   "tags": [
+    "meditasyon",
+    "ses",
+    "rahatlama"
+   ],
+   "line": "Yatıştırıcı tonları, hafifçe titreşen sesleri dinleyin ve bir nefes rehberini izleyin. Yalnızca rahatlama içindir, tedavi değildir. Çevrimdışı çalışır."
+  },
+  "NumeroLogIA": {
+   "tags": [
+    "numeroloji",
+    "YZ",
+    "çevrimdışı"
+   ],
+   "line": "Numeroloji, Çin BaZi astrolojisi ve biyoritmin doğum tarihiniz hakkında ne söylediğini, her hesap adım adım açıklanarak öğrenin. Sembolik sistem, bilimsel temeli yok."
+  },
+  "FrequencyLaboratory": {
+   "tags": [
+    "ses",
+    "laboratuvar",
+    "çevrimdışı"
+   ],
+   "line": "Küçük bir ses laboratuvarında sesleri, efektleri ve işitme testlerini deneyin. «Terapötik» etkiler kanıtlanmamıştır ve doktorun yerini tutmaz. Çevrimdışı."
+  },
+  "generator-frecvente": {
+   "tags": [
+    "ses",
+    "üreteç",
+    "çevrimdışı"
+   ],
+   "line": "Saf tonlar ve titreşen çift sesler oluşturun, bilinen hazır ayarları dinleyin ve ne kadar iyi duyduğunuzu kabaca kontrol edin. Tıbbi cihaz değildir. Çevrimdışı."
+  },
+  "ACORDAJ": {
+   "tags": [
+    "maneviyat",
+    "atlas",
+    "eleştirel ayırt etme"
+   ],
+   "line": "Tarihsel bağlam ve eleştirel bir bakışla bini aşkın manevi kursa ve inisiyasyona göz atın. Kaynak siteyle bağlantılı değildir ve bilimsel doğrulaması yoktur. Çevrimdışı."
+  },
+  "Profund": {
+   "tags": [
+    "sohbet",
+    "kartlar",
+    "trade-free"
+   ],
+   "line": "Sohbeti havadan sudan konuşmanın ötesine taşıyan 150 soru, arkadaşlar arasında veya ailede. Ekranda oynayın ya da yazdırın, isteğe bağlı zamanlayıcıyla."
+  },
+  "Universul-Observabil": {
+   "tags": [
+    "astronomi",
+    "kozmoloji",
+    "görselleştirme"
+   ],
+   "line": "Görebildiğimiz Evren ne kadar büyük? Üç haritayı (doğrusal, düz, uzayda) karşılaştırın ve kozmolojik hesaplar yapın. Rakamlar bağımsız olarak doğrulanmamıştır."
+  },
+  "Universul-Observabil-1D": {
+   "tags": [
+    "astronomi",
+    "kozmoloji",
+    "görselleştirme"
+   ],
+   "line": "Bizden başlayıp tek bir eksene yerleştirilmiş 112 galaksiyi geçerek görünür Evrenin kenarına doğru yolculuk edin. İronik üslup, yuvarlatılmış değerler, eğitici amaç."
+  },
+  "Universul-Observabil-2D": {
+   "tags": [
+    "astronomi",
+    "hiciv",
+    "kozmoloji"
+   ],
+   "line": "Hicivli «Düz Dünya» baskısında bir galaksi haritası: bir şakadır, Dünya düz değildir. 111 galaksi arasında yakınlaştırın; mesafeler yaklaşıktır. Çevrimdışı."
+  },
+  "Universul-Observabil-3D": {
+   "tags": [
+    "astronomi",
+    "kozmoloji",
+    "3B"
+   ],
+   "line": "Rehberli turlar ve görevlerle 3B haritada 115'ten fazla galaksi arasında uçun. Değerler yaklaşıktır."
+  },
+  "QSO": {
+   "tags": [
+    "telsiz",
+    "günlük"
+   ],
+   "line": "Amatör telsiz istasyonunuzun telsiz bağlantılarını UTC saati, lokatörler ve istatistiklerle takip edin. Resmî değildir; hesaplar yaklaşıktır."
+  },
+  "Curatitor": {
+   "tags": [
+    "üstveri",
+    "gizlilik"
+   ],
+   "line": "Fotoğraflarınızın ve dosyalarınızın neleri açığa çıkardığını (yer, kamera, yazar) görün ve göndermeden önce bu verileri kaldırın. Yüzleri veya diğer görünen içeriği gizlemez."
+  },
+  "Poteca": {
+   "tags": [
+    "GPX",
+    "izler"
+   ],
+   "line": "Yürüyüşte ya da bisikletle kaydedilen izleri açın ve mesafeyi, yükselişi ve yükseklik profilini görün. Kesebilir veya birleştirebilirsiniz. Harita yok; yükseliş tahminidir."
+  },
+  "Orar": {
+   "tags": [
+    "takvim",
+    "zaman"
+   ],
+   "line": "Gün, hafta veya ay olarak görüntüleyebileceğiniz, Romanya resmî tatilleriyle bir takvim ve haftalık planlayıcı. Alarmlar yalnızca sayfa açık kaldığı sürece çalar."
+  },
+  "Alfabete": {
+   "tags": [
+    "kodlar",
+    "öğrenme"
+   ],
+   "line": "Mors, Braille, fonetik alfabe, bayrak semaforu ve eski şifreleri öğrenin ve çalışın, sonra bir sayfa yazdırın. Eski şifreler sırları korumaz."
+  },
+  "Fabrica": {
+   "tags": [
+    "kurslar",
+    "hazırlama"
+   ],
+   "line": "Bir kursu düz metin olarak yazın ve derslerle, bir final testiyle ve yazdırılabilir bir sertifikayla bir sayfaya dönüştürün. Sertifikanın resmî değeri yoktur."
+  },
+  "Bolta": {
+   "tags": [
+    "astronomi",
+    "planetaryum"
+   ],
+   "line": "1900 ile 2100 arasında herhangi bir yerde ve günde başınızın üstündeki gökyüzü nasıldı? Güneş'i, Ay'ı, gezegenleri ve yıldızları, ayrıca 2027 tutulmasını görün. Değerler hesaplanmıştır, resmî değildir. Çevrimdışı."
+  },
+  "BRAZDA": {
+   "tags": [
+    "Voyager",
+    "sinyal"
+   ],
+   "line": "Voyager Altın Plağı'nı adım adım çözün, sonra şimdi fırlatılan bir sonda için yeni bir disk kodlayın. İlk adımlardaki görüntüler şematiktir, NASA'nınkiler değil."
+  },
+  "Arbore": {
+   "tags": [
+    "soyağacı",
+    "GEDCOM"
+   ],
+   "line": "Kişiler, aileler, zaman çizelgesi ve Rumence bir akrabalık hesaplayıcısıyla aile ağacınızı oluşturun. Veriler yalnızca bu tarayıcıda kalır, eşitleme yok."
+  },
+  "Gospodar": {
+   "tags": [
+    "bütçe",
+    "kişisel finans"
+   ],
+   "line": "Hane parasını takip edin: hesaplar, giderler, aylık bütçeler ve raporlar. Hesap gerekmez ama parolanızı kaybederseniz verilerinizi kaybedersiniz. Finansal tavsiye değildir."
+  },
+  "Decibel": {
+   "tags": [
+    "ses",
+    "ölçüm"
+   ],
+   "line": "Çevredeki gürültünün ne kadar yüksek olduğunu ölçün ve hangi seslerden oluştuğunu görün. Gösterge niteliğinde bir işitme testi de vardır. Sertifikalı cihaz değildir; sonuçlar mikrofona bağlıdır."
+  },
+  "Provenienta": {
+   "tags": [
+    "C2PA",
+    "köken"
+   ],
+   "line": "Elinizde bir görüntü var ve onu kimin imzaladığını ve hangi düzenlemeleri bildirdiğini mi bilmek istiyorsunuz? Ekli dijital imzayı denetleyin. Deneysel, yalnızca örnek dosyalarda denendi."
+  },
+  "Lexicon": {
+   "tags": [
+    "sözlük",
+    "dil"
+   ],
+   "line": "Kendi sözlüklerinizi getirin ve aksan işaretsiz ya da hatalı yazsanız bile kelimeleri arayın. Yalnızca küçük bir demo setiyle gelir. Çevrimdışı."
+  },
+  "VERIGA": {
+   "tags": [
+    "bağlantı denetimi",
+    "MIT"
+   ],
+   "line": "Bir web sitesinde veya klasörde bozuk bağlantıları ve amaçsız kalmış dosyaları bulur. Windows, macOS ve Linux'ta çalışır; biraz bilgisayar aşinalığı gerektirir."
+  },
+  "TEZAUR": {
+   "tags": [
+    "araştırma",
+    "MIT"
+   ],
+   "line": "Yalnızca kendi kitaplarınızdan ve makalelerinizden, doğrulanabilir alıntılarla yazan bir tez asistanı. Bilgisayarınızda çalışır; belgeleriniz asla çıkmaz. Geliştirme sürüyor."
+  },
+  "LegatorOCR": {
+   "tags": [
+    "tarama",
+    "MIT"
+   ],
+   "line": "Bir kitabı tarayın ve düzeltilmiş sayfalara ve aranabilir metne sahip temiz bir PDF alın. Windows, macOS ve Linux'ta çalışır; taramalarınız sizde kalır."
+  },
+  "Fenarium": {
+   "tags": [
+    "algı",
+    "MIT"
+   ],
+   "line": "Fosfenizmden başlayarak tüm duyulardaki öznel algıların atlası ve atölyesi: 13 modüllü kurs, rehberli deneyler, görsel simülatör ve rastgeleleştirilmiş A/B öz-deney laboratuvarı. Eğitici, tıbbi cihaz değildir."
+  },
+  "MENSURA": {
+   "tags": [
+    "testler",
+    "MIT"
+   ],
+   "line": "IQ, EQ, CQ, RQ, yürütücü işlevlerinizi ve duyularınızı 6 alanda 18 testle, bileşik indeksler ve %95 güven aralıklarıyla ölçün. Geçici normlar, yalnızca gösterge niteliğinde, tanı değildir."
+  },
+  "Cronosala": {
+   "tags": [
+    "spor",
+    "zaman"
+   ],
+   "line": "Spor salonu zamanlayıcıları: setler arası dinlenme, HIIT, Tabata, EMOM, AMRAP, devreler ve bir metronom, ayrıca kg ve tekrarlı antrenman günlüğü."
+  },
+  "ScutSonor": {
+   "tags": [
+    "güvenlik",
+    "ses"
+   ],
+   "line": "Saldırgan köpeklerle karşılaşmalar için yüksek ses ve el feneri stroboskopu, ayrıca bir davranış rehberi. Bir yardımcıdır, garantili bir kalkan değildir."
+  },
+  "MIRAJ": {
+   "tags": [
+    "görme",
+    "eğitim"
+   ],
+   "line": "Retina nasıl görür ve beyin görüntüyü nasıl kurar: fovea, kör nokta, yanılsamalar ve bir sınav, üç seviyede."
+  },
+  "ANTROPOS": {
+   "tags": [
+    "tarama",
+    "biyoloji"
+   ],
+   "line": "Yerel olarak hesaplanan yönlendirici bir bilimsel profil: PhenoAge biyolojik yaşı, ses, el yazısı, saat çizimi, TIPI kişiliği ve tepki süresi."
+  },
+  "DESCANTAR": {
+   "tags": [
+    "halk bilimi",
+    "fasulye"
+   ],
+   "line": "41 fasulyeyle fasulye falı (3×3 yöntemi, Oltenya çeşidi) ve 12 geleneksel büyü, bir halk bilimi inceleme nesnesi olarak."
+  },
+  "Index-fara-frontiere": {
+   "tags": [
+    "katalog",
+    "kaynaklar"
+   ],
+   "line": "Tek dosyalık HTML uygulamalarının kataloğu: chiuta.github.io koleksiyonu ve harici kaynaklar, arama ve etiketlerle."
+  },
+  "DECUPAJ": {
+   "tags": [
+    "reels",
+    "video"
+   ],
+   "line": "Bir podcast'i, sesi ya da videoyu, doğrudan tarayıcıda, hesapsız ve filigransız, altyazılı dikey kliplere dönüştürün. Dosyalarınız cihazınızdan asla çıkmaz."
+  },
+  "LECTOR": {
+   "tags": [
+    "ses",
+    "kitaplar"
+   ],
+   "line": "Doğrudan tarayıcıda sesli okunan kitaplar: EPUB, DOCX, PDF, TXT veya yapıştırılmış metin, hesapsız ve sunucusuz. Metin cihazınızdan asla çıkmaz."
+  },
+  "FARFURIA": {
+   "tags": [
+    "beslenme",
+    "sağlık"
+   ],
+   "line": "Ücretsiz bir dijital diyetisyen: kişiselleştirilmiş kalori ve makrolar, 7 günlük yemek planı, yemek günlüğü ve kilo takibi. Doktorun ya da diyetisyenin yerini tutmaz."
+  },
+  "VITALIS": {
+   "tags": [
+    "sağlık",
+    "uzun ömür"
+   ],
+   "line": "Özel bir sağlık, uzun ömür ve biyohackleme arkadaşı: kanıta göre sıralanmış dokuz sütun, hesaplayıcılar, bir yaşam tarzı puanı ve günlük bir ritüel. Tıbbi tavsiye değildir."
+  },
+  "REZONANTA": {
+   "tags": [
+    "iletişim",
+    "medya"
+   ],
+   "line": "İletişim ve medya için bir rehber ve araçlar: mesaj, kanallar, basın bülteni, röportaj, açıklık, plan ve kriz."
+  },
+  "Claritas": {
+   "tags": [
+    "erişilebilirlik",
+    "uzantı"
+   ],
+   "line": "Hepsi bir arada erişilebilirlik tarayıcı uzantısı: kontrast düzeltme, okuyucu kipi, sesli okuma ve WCAG denetimi. Telemetri yok, ağ yok, hesap yok."
+  },
+  "TurboCursa": {
+   "tags": [
+    "yarış",
+    "Rust"
+   ],
+   "line": "Rust ile yazılmış sözde 3B bir arcade yarış oyunu: tohumdan üretilen manzaralar, 11 kip, bir lig kariyeri ve 2 oyuncu. Özgün, başka bir oyundan kod veya varlık yok."
+  },
+  "ANTENA": {
+   "tags": [
+    "telsiz",
+    "antenler"
+   ],
+   "line": "Çalışma sürüyor: tarayıcı ön yüzlü, NEC-2 uyumlu bir tel anten çözücüsü (moment yöntemi). Şimdilik yalnızca bir ön-alfa iskeleti."
+  },
+  "ARBITRU": {
+   "tags": [
+    "oyunlar",
+    "kurallar"
+   ],
+   "line": "Çalışma sürüyor: tahta, kart, zar ve bulmaca oyunları için bildirimsel bir kural diliyle evrensel bir kural motoru. Şimdilik yalnızca bir ön-alfa iskeleti."
+  },
+  "ASTROLABIU": {
+   "tags": [
+    "astronomi",
+    "takvimler"
+   ],
+   "line": "Çalışma sürüyor: saf Rust ile bir gökyüzü olayları motoru (zaman ölçekleri, tutulmalar, doğuş ve batış, takvimler). Şimdilik yalnızca bir ön-alfa iskeleti."
+  },
+  "ECOGRAMA": {
+   "tags": [
+    "ses",
+    "restorasyon"
+   ],
+   "line": "Çalışma sürüyor: bir spektrogram düzenleyici ve ses restorasyonu: spektrogramda seç, onar, dışa aktar. Şimdilik yalnızca bir ön-alfa iskeleti."
+  },
+  "ecou-spectral-rs": {
+   "tags": [
+    "ses",
+    "Rust"
+   ],
+   "line": "Çalışma sürüyor: gürültü azaltma ve ses algılama eklentileriyle yerel bir Rust spektrogram düzenleyici. Kod iskeleti ve eklenti biçimi var, ama henüz bitmiş bir özellik yok."
+  },
+  "MARTOR": {
+   "tags": [
+    "arşivleme",
+    "kanıt"
+   ],
+   "line": "Çalışma sürüyor: özetler, imzalar ve güvenilir zaman damgalarıyla WARC/WACZ'de adli web yakalama, çevrimdışı doğrulanabilir. Şimdilik yalnızca bir ön-alfa iskeleti."
+  },
+  "NEAMURI": {
+   "tags": [
+    "akrabalık",
+    "soyağacı"
+   ],
+   "line": "Çalışma sürüyor: bir akrabalık motoru, aile ağacındaki bir yoldan birçok dilde doğru akraba terimine. Şimdilik yalnızca bir ön-alfa iskeleti."
+  },
+  "TACTIL": {
+   "tags": [
+    "Braille",
+    "erişilebilirlik"
+   ],
+   "line": "Çalışma sürüyor: bir dokunsal çıktı katmanı: Braille biçimleri (BRF, Unicode), ekranlar, kabartma yazıcılar ve dokunmatik ekran titreşimi. Şimdilik yalnızca bir ön-alfa iskeleti."
+  },
+  "atelier-verificare": {
+   "tags": [
+    "gazetecilik",
+    "doğrulama",
+    "fotoğraflar"
+   ],
+   "line": "Fotoğrafları, videoları, bağlantıları ve alan adlarını tarayıcınızda denetleyin, hiçbir şey yüklenmez: gerçek dosya türü ve SHA-256, EXIF/GPS, XMP/IPTC, Content Credentials (salt okunur), hata düzeyi analizi. Bir fotoğrafın gerçek olduğunu kanıtlayamaz. Alfa."
+  },
+  "balanta": {
+   "tags": [
+    "YZ",
+    "değerlendirme"
+   ],
+   "line": "YZ modellerini kör karşılaştırın: iki ila sekiz modelin 92 Rumence, İngilizce ve Macarca istemine yanıtlarını yapıştırın, A veya B'ye oy verin ve aralıklı bir sıralama alın. Alfa; çevrimdışı çalışır."
+  },
+  "calendarium": {
+   "tags": [
+    "takvimler",
+    "zaman"
+   ],
+   "line": "On bir takvimden (Gregoryen, Jülyen, İbrani, Hicri, Fars, Çin, Maya, Mars…) birinde bir tarih yazın ve ay görünümüyle diğerlerinin hepsinde görün. Alfa; çevrimdışı çalışır."
+  },
+  "glosar": {
+   "tags": [
+    "diller",
+    "sözlükler"
+   ],
+   "line": "Ulahça, Megleno-Romence ve Romanice için çevrimdışı bir sözlük: aksan işaretsiz arayın, hangi temel sözcüklerin eksik olduğunu görün, kaynak ve kayıtla sözcük ekleyin. Alfa."
+  },
+  "graiul": {
+   "tags": [
+    "halk bilimi",
+    "arşiv"
+   ],
+   "line": "Kaynak, il ve rızayla Rumen halk bilimi (atasözleri, büyüler, bilmeceler, kolindalar) çevrimdışı arşivi. On atasözüyle başlar; daha fazlasını ekleyebilirsiniz. Alfa."
+  },
+  "indicativ-international": {
+   "tags": [
+    "telsiz",
+    "sınavlar"
+   ],
+   "line": "Amatör telsiz sınav sorularını beş kutulu bir tekrar programı ve süreli deneme sınavlarıyla çalışın; soru paketlerini ortak bir JSON biçiminde içe aktarın. 50 alıştırma sorusu dahil; resmî banka değildir. Alfa."
+  },
+  "proiector-fara-frontiere": {
+   "tags": [
+    "sınıf",
+    "projeksiyon",
+    "sınav"
+   ],
+   "line": "Sınıftaki telefonlar sunucusuz ve hesapsız ortak bir ekrana dönüşür: zamanlayıcı, anket, sınav, notlar ve beyaz tahta; aynı ağda QR kod veya yapıştırılmış metinle eşleştirilir. Alfa: gerçek telefonlarda henüz denenmedi."
+  },
+  "regula": {
+   "tags": [
+    "oyunlar",
+    "kurallar"
+   ],
+   "line": "Beş klasik iki kişilik oyunu (Dokuz Taş Değirmeni, Alquerque, Fanorona, Mū tōrere, Hnefatafl) bilgisayara ya da bir arkadaşa karşı oynayın; kendi oyununuzu JSON olarak ekleyin. Alfa; çevrimdışı çalışır."
+  },
+  "vietar-packs": {
+   "tags": [
+    "doğa",
+    "türler"
+   ],
+   "line": "VietAR için bölgesel tür paketlerine göz atın, içe aktarın, denetleyin ve oluşturun: birkaç dilde adlar, zehirlilik işaretleri, benzer türler. 71 türlü beş taslak başlangıç paketi. Alfa; çevrimdışı çalışır."
+  },
+  "PatruZeci": {
+   "tags": [
+    "WD-40",
+    "kendin yap"
+   ],
+   "line": "WD-40 kullanımlarının resimli, hareketli atlası: 147 kartlık bir rehber ve her biri kendi hareketli sahnesiyle 1993 kullanımın resmî listesi. Resmî değil, çevrimdışı, hesapsız."
+  },
+  "ODISEEA": {
+   "tags": [
+    "Voyager",
+    "belgesel"
+   ],
+   "line": "Voyager 1 ve 2 üzerine tek bir HTML dosyasında yaklaşık 4,5 dakikalık bir belgesel: ekran kartında üretilen sahneler, VR gözlükleri için 2B ve 3B dışa aktarma, 8 dilde."
+  },
+  "EXIF-CURAT": {
+   "tags": [
+    "üstveri",
+    "gizlilik"
+   ],
+   "line": "Çalışma sürüyor: dosyalardaki (görüntüler, PDF, Office, video: EXIF, GPS, XMP) gizli verileri görmek ve temizlemek için bellek güvenli ayrıştırıcılarla Rust'ta yazılmış bir araç. Şimdilik yalnızca bir ön-alfa iskeleti."
+  },
+  "PORUMBEL": {
+   "tags": [
+    "fotoğraflar",
+    "aktarım"
+   ],
+   "line": "Telefonunuzda Open Camera ile çektiğiniz fotoğrafları otomatik olarak bilgisayarınızdaki bir klasöre taşır, oturum başına bir klasör, ve LegatorOCR'da açar. Hesap yok, bulut yok, üçüncü taraf crate yok."
+  },
+  "colibri-companion": {
+   "tags": [
+    "yerel YZ",
+    "masaüstü"
+   ],
+   "line": "Yerel çıkarım motoru colibri için dostane bir masaüstü uygulaması: bilgisayarınıza uyan bir model seçin, tek tıkla indirin ve onunla sohbet edin. Hesap yok, bulut hizmeti yok."
+  },
+  "CartaColibri": {
+   "tags": [
+    "yerel YZ",
+    "kütüphane"
+   ],
+   "line": "Colibrì motoru üzerinde yerel bir YZ kütüphanesi: seçtiğiniz klasörleri dizinler, anında arar ve yerel bir modelden özetlemesini, veri çıkarmasını ya da sentezlemesini ister, her zaman kaynak dosyayı belirterek. Hiçbir şey bilgisayarınızdan çıkmaz."
+  },
+  "PolyTabletop": {
+   "tags": [
+    "masa oyunları",
+    "Rust"
+   ],
+   "line": "Bilgisayara karşı terminalde ya da grafik pencerede oynayabileceğiniz 240 masa oyunu, ayrıca tek klavyede veya ağ üzerinden iki kişilik oyun. Rust ile yazıldı; motor ve oyunların harici bağımlılığı yok."
+  },
+  "STRAJA": {
+   "tags": [
+    "gizlilik",
+    "telefon"
+   ],
+   "line": "Telefonunuzu okuyan YZ ajanlarına karşı bir kalkan: hangi uygulamaların bildirimlerinizi, ekranınızı, fotoğraflarınızı ve SMS'lerinizi okuyabildiğini gösterir, yenisi erişim aldığında uyarır ve sizi izni geri alacağınız ayar ekranına götürür. Hesap yok, INTERNET izni yok."
+  },
+  "CUPLAJ": {
+   "tags": [
+    "sürükleyici tiyatro",
+    "telefonculuk"
+   ],
+   "line": "Sürükleyici tiyatro için ortak hat telefonculuğu: sıradan Android telefonlardan oluşan bir filo, mekânın Wi-Fi'si üzerinden özel bir santrale dönüşür; bulut yok, hesap yok, reklam yok. İmza özelliği «cuplaj»: 1980'lerden 2006 civarına kadar sabit telefonların ortak hattı."
+  },
+  "LUSTRUM": {
+   "tags": [
+    "telefon temizleyici",
+    "Android"
+   ],
+   "line": "Telefonunuzu geri kazanın: gereksiz dosyaları, kopyaları, benzer fotoğrafları ve uygulama kalıntılarını bulur ve yalnızca onayınızla temizler. INTERNET izni yoktur, bu yüzden fiziksel olarak hiçbir yere bir şey gönderemez."
+  },
+  "STENOGRAMA": {
+   "tags": [
+    "yazıya dökme",
+    "ses"
+   ],
+   "line": "Yerel Whisper ile doğrudan tarayıcıda uzun ses yazıya dökme: tek bir HTML dosyası, hesap yok, sunucu yok, filigran yok. Ses dosyanız cihazdan asla çıkmaz; yalnızca Whisper modeli, bir kez indirilir."
+  },
+  "GERMEN": {
+   "tags": [
+    "yerel YZ",
+    "Rust"
+   ],
+   "line": "Küçük bir dil modelini sıfırdan, saf Rust ile, sıradan bir işlemcide eğitin: Python yok, CUDA yok, hesap yok, ağ erişimi yok, telemetri yok. Bir ikili dosya, bir metin dosyası, bir komut."
+  },
+  "CUANTOR": {
+   "tags": [
+    "kuantum bilgisayar",
+    "simülatör"
+   ],
+   "line": "Masaüstünüz için, 5'ten 1000 kübite kadar, IBM Quantum Composer tarzı bir arayüzle kuantum bilgisayar simülatörü. Kesin matematik, ama gerçek kuantum donanımı değil."
+  }
+ }
+}
