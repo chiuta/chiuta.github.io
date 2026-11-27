@@ -1,7 +1,11 @@
 // Texte fixe pentru transparenta.html, în cele 8 limbi (en, ro, fr, it, es, pt, de, hu).
 // Cifrele și numele aplicațiilor vin din data/transparenta.json; aici sunt doar propozițiile. Substituenți: {nume}.
+// Limbile noi (17) vin din data/transparenta-i18n/<limbă>.json ({name, UI, CODES}), în ordinea din data/limbi.json.
 // Regulă: orice cheie nouă trebuie să existe în TOATE cele 8 limbi (verificat de tests/hub.test.mjs și de tools/transparenta.mjs --check).
 
+import fs from 'node:fs';
+import path from 'node:path';
+import {fileURLToPath} from 'node:url';
 export const LANGS = ['en', 'ro', 'fr', 'it', 'es', 'pt', 'de', 'hu'];
 export const LANG_NAMES = {en: 'English', ro: 'Română', fr: 'Français', it: 'Italiano', es: 'Español', pt: 'Português', de: 'Deutsch', hu: 'Magyar'};
 
@@ -775,3 +779,22 @@ export const CODE_KIND = {
   fuzzerr: 'k_tech', lssize: 'k_tech', focus: 'k_tech', size: 'k_author', secret: 'k_tech', inject: 'k_tech', brick: 'k_limit', ext: 'k_tech', h1: 'k_tech', offline: 'k_tech',
   perf: 'k_tech', names: 'k_tech', uperr: 'k_tech', monkeyerr: 'k_tech',
 };
+
+// ── limbile noi (data/transparenta-i18n/*.json); lipsa unui fișier = limba nu apare în pagină
+{
+  const HUB = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
+  const reg = JSON.parse(fs.readFileSync(path.join(HUB, 'data', 'limbi.json'), 'utf8'));
+  for (const l of reg.order) {
+    if (LANGS.includes(l)) continue;
+    const f = path.join(HUB, 'data', 'transparenta-i18n', `${l}.json`);
+    if (!fs.existsSync(f)) continue;
+    const d = JSON.parse(fs.readFileSync(f, 'utf8'));
+    LANGS.push(l); LANG_NAMES[l] = d.name; UI[l] = d.UI;
+    for (const [c, v] of Object.entries(d.CODES)) if (CODES[c]) CODES[c][l] = v;
+  }
+}
+export const RTL_LANGS = (() => {
+  const HUB = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
+  const reg = JSON.parse(fs.readFileSync(path.join(HUB, 'data', 'limbi.json'), 'utf8'));
+  return LANGS.filter((l) => reg.languages[l] && reg.languages[l].dir === 'rtl');
+})();

@@ -21,6 +21,8 @@ const ROOT = path.resolve(rootArg || process.env.FFF_ROOT || (fs.existsSync(path
 console.log('depozite aplicații: ' + path.relative(HUB, ROOT) + (ROOT.includes('fixtures') ? ' (fixturi)' : ''));
 const tool = (name, ...extra) => execFileSync('node', [path.join(HUB, 'tools', name), ...extra, '--root', ROOT], {stdio: 'pipe'});
 const LANGS = ['en', 'ro', 'fr', 'it', 'es', 'pt', 'de', 'hu'];
+const NEW_LANGS = ['uk', 'rmy', 'tr', 'crh', 'ru', 'sr', 'sk', 'bg', 'hr', 'el', 'yi', 'cs', 'pl', 'hy', 'rue', 'sq', 'mk'];
+const ALL_LANGS = LANGS.concat(NEW_LANGS);
 const MIME = {'.html': 'text/html; charset=utf-8', '.js': 'text/javascript', '.json': 'application/json', '.webmanifest': 'application/manifest+json', '.png': 'image/png', '.css': 'text/css'};
 
 const results = [];
@@ -288,15 +290,16 @@ await T('catalog: localStorage indisponibil (mod privat / cookie-uri blocate) nu
   await ctx.close();
 });
 
-await T('transparenta.html: 8 limbi, fără chei/substituenți neinterpolați, fără rețea externă, fără depășire la 360px', async () => {
-  for (const l of LANGS) {
+await T('transparenta.html: 25 de limbi, fără chei/substituenți neinterpolați, fără rețea externă, fără depășire la 360px, idișul de la dreapta la stânga', async () => {
+  for (const l of ALL_LANGS) {
     const {ctx, page, errors, external} = await open(l, 'transparenta.html', {viewport: {width: 360, height: 740}});
     await page.waitForFunction((l) => document.documentElement.lang === l, l);
     const r = await page.evaluate(() => ({
       text: document.body.innerText, h1: document.querySelectorAll('h1').length, rows: document.querySelectorAll('table.apps tbody tr').length,
-      over: document.documentElement.scrollWidth > innerWidth + 1, sel: document.getElementById('lang').value,
+      over: document.documentElement.scrollWidth > innerWidth + 1, sel: document.getElementById('lang').value, dir: document.documentElement.dir || 'ltr',
     }));
     ok(r.h1 === 1, `${l}: ${r.h1} H1`);
+    ok(r.dir === (l === 'yi' ? 'rtl' : 'ltr'), `${l}: direcția ${r.dir}`);
     ok(r.rows >= 100, `${l}: ${r.rows} rânduri în tabel`);
     ok(!/\{\w+\}|undefined|NaN|\[object/.test(r.text), `${l}: text neinterpolat: ${(r.text.match(/.{20}(\{\w+\}|undefined|NaN|\[object).{10}/) || [''])[0]}`);
     ok(!r.over, `${l}: depășire orizontală la 360px`);
