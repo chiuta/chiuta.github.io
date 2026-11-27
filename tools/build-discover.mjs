@@ -12,7 +12,7 @@ const rd = (f) => fs.readFileSync(path.join(D, f), 'utf8').replace(/\s+$/, '');
 const file = path.join(HUB, 'index.html');
 let html = fs.readFileSync(file, 'utf8');
 const check = process.argv.includes('--check');
-const js = rd('discover.js').replace('/*@@I18N@@*/', () => rd('i18n.js'));
+const js = rd('discover.js').replace('/*@@I18N@@*/', () => rd('i18n.js') + (fs.existsSync(path.join(D, 'i18n25.js')) ? '\n' + rd('i18n25.js') : ''));
 if (/<\/script>/i.test(js)) throw new Error('discover.js conține </script>');
 function region(name, anchorRe, where, body) {
   const s = `<!--DISC:${name}:START-->`, e = `<!--DISC:${name}:END-->`;

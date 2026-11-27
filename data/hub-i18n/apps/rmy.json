@@ -1,574 +1,664 @@
 {
  "lang": "rmy",
- "note": "Rânduri și etichete de card; detaliile (detail) lipsesc încă și rămân în engleză. Traducere asistată de IA, nerevizuită de un vorbitor nativ.",
+ "note": "Rânduri, etichete și detalii de card. Traducere asistată de IA, nerevizuită de un vorbitor nativ.",
  "apps": {
   "FreeDetect": {
    "tags": [
     "katalogo",
     "citatura"
    ],
-   "line": "Kamas te dikhes si o lil dikhel sar kerdo e AI-estar vaj sar kopiato? Ko jek than si 42 avrutne instrumenturi thaj jek generatoro citaturenghe. E aplikacija korkori ni arakhel ništo."
+   "line": "Kamas te dikhes si o lil dikhel sar kerdo e AI-estar vaj sar kopiato? Ko jek than si 42 avrutne instrumenturi thaj jek generatoro citaturenghe. E aplikacija korkori ni arakhel ništo.",
+   "detail": "Panelo e 42 avrutne instrumentenqe te arakhel AI/plagiato thaj jek generatoro citaturenqo (kontrolirinel o ISBN). Korkoro ništo ni arakhel; ažutinel te dikhes e referencie."
   },
   "Arhiva-fara-frontiere": {
    "tags": [
     "web arhivi",
     "sursi"
    ],
-   "line": "Dikh e kolekcie e Internet Archive-esqe bi kontosko: rodipen, đivdin e fišuri, dikhipen angleder thaj o pekle. Na si oficialo; archive.org dikhel tiro IP thaj o rodipena."
+   "line": "Dikh e kolekcie e Internet Archive-esqe bi kontosko: rodipen, đivdin e fišuri, dikhipen angleder thaj o pekle. Na si oficialo; archive.org dikhel tiro IP thaj o rodipena.",
+   "detail": "Na oficialo browseri vaš e kolekcie e Internet Archive-esqe (rodipen, fišuri, angledikhipen, e kamle thaj e pale rodipena ine pastem ko than), bi kontosko. Na rodel ando Wayback Machine; archive.org lel o IP thaj o rodipena."
   },
   "AcademiSearch": {
    "tags": [
     "literatura",
     "sursi"
    ],
-   "line": "Rod jekvar thaj dikh šukar štiinčifikane lila andar but putarde sursi. Šaj te ačhes e lista pale citaturi. Trebul internet; o rodipena džan ko ola servisi."
+   "line": "Rod jekvar thaj dikh šukar štiinčifikane lila andar but putarde sursi. Šaj te ačhes e lista pale citaturi. Trebul internet; o rodipena džan ko ola servisi.",
+   "detail": "Akademiko meta-rodipen pe 11 putarde API (OpenAlex, Crossref, arXiv thaj aver) thaj linkuri ko portali; eksporto BibTeX/RIS/CSV. Trebul internet; tire rodipena džan ko ola servisi."
   },
   "Surveyor": {
    "tags": [
     "phagle linkuri",
     "audit"
    ],
-   "line": "Save linkuri si ke tiro sajto, thaj save si phagle? Del tut lenge e lista, e ankori thaj e redirekturi. E avrutne našti te si siguro konfirmime. Numa pale tire korkore sajturi."
+   "line": "Save linkuri si ke tiro sajto, thaj save si phagle? Del tut lenge e lista, e ankori thaj e redirekturi. E avrutne našti te si siguro konfirmime. Numa pale tire korkore sajturi.",
+   "detail": "Kerel e lista e linkurenqi anda jek sajto (statiko HTML, interfejso pe anglikano), vi e angeri thaj e redirekturi. E avrutne našti te si konfirmime andar o browseri (CORS); bičhavel kereshi; dikh numa tire korkore sajturen."
   },
   "Trade-Free-Link-Guardian": {
    "tags": [
     "WordPress",
     "GPL v2"
    ],
-   "line": "Vaš tiro WordPress sajto: arakhel e phagle linkuri thaj thovel len ande rig, bi avrutne servisosko. Paruvel o chačo kontinuto, adaleske kam sigurancako kopia angleder. Na si probime pe chačo WordPress."
+   "line": "Vaš tiro WordPress sajto: arakhel e phagle linkuri thaj thovel len ande rig, bi avrutne servisosko. Paruvel o chačo kontinuto, adaleske kam sigurancako kopia angleder. Na si probime pe chačo WordPress.",
+   "detail": "WordPress plugino so dikhel e linkuri thaj thovel pale e phagle, deterministiko, bi avrutne servisosko. Paruvel o chačo kontinuto: ker jek sigurancako kopia. Na si probime pe chačo WordPress."
   },
   "OUTPOST": {
    "tags": [
     "monitorizarea"
    ],
-   "line": "Dikh te tire sajturi ainei džan thaj ali ažutinen. Kerel buči numa sar o tab ačhel putardo. Vi e greša-pagina si ažutipe. E interfejso si pe anglikano."
+   "line": "Dikh te tire sajturi ainei džan thaj ali ažutinen. Kerel buči numa sar o tab ačhel putardo. Vi e greša-pagina si ažutipe. E interfejso si pe anglikano.",
+   "detail": "Monitor ando browseri vaš o dostupnipe: dikhel te tire sajturi ažutinen (na genel o HTTP status-kodo; 404/500 genen sar ažutipe). Numa sar o tab ačhel putardo. Interfejso pe anglikano."
   },
   "ScryVeil": {
    "tags": [
     "OSINT",
     "siguranca"
    ],
-   "line": "Ker jek kontrolo sigurancako vaš jek domeno thaj lel jek teksto-raporto te ačhes. Nesave kontrole šaj te naj ke but vaj trebun jek čavi. Džal ko trito servisi; numa pale tire domeni."
+   "line": "Ker jek kontrolo sigurancako vaš jek domeno thaj lel jek teksto-raporto te ačhes. Nesave kontrole šaj te naj ke but vaj trebun jek čavi. Džal ko trito servisi; numa pale tire domeni.",
+   "detail": "Sigurancako diagnostiko vaš jek domeno (DNS, RDAP, certifikati), e raporto sar teksto save šaj te eksportines; o headers thaj o kontrole e reputaciaqe si sigo phandle vaj mangen jek čavi. Džal ko trito servisi; numa vaš domenura save si tumare."
   },
   "Vitrina": {
    "tags": [
     "monitorizarea sursenghi"
    ],
-   "line": "Thov jek publiko postiri andar Facebook ko tiro sajto, bi kontosko, thaj kopiin o kodo gata vaš te thoves. Na si oficialo; Meta dikhel tiro IP, thaj o dikhipen naj garantimen."
+   "line": "Thov jek publiko postiri andar Facebook ko tiro sajto, bi kontosko, thaj kopiin o kodo gata vaš te thoves. Na si oficialo; Meta dikhel tiro IP, thaj o dikhipen naj garantimen.",
+   "detail": "Thovel publike Facebook-ske pagine/postiri pe Meta plugini, na oficialo; kopiinel o embed-kodo. “Bi kontosko” na rakhel “bi lingipe”: Meta dikhel tiro IP; o dikhipen naj garantimen."
   },
   "Threads-fara-cont": {
    "tags": [
     "monitorizarea sursenghi"
    ],
-   "line": "Genes publike postiri andar Threads bi kontosko thaj ačh len sar teksto. Na si oficialo; Meta dikhel tiro IP, thaj varekana trebul jek maškarutno servisi."
+   "line": "Genes publike postiri andar Threads bi kontosko thaj ačh len sar teksto. Na si oficialo; Meta dikhel tiro IP, thaj varekana trebul jek maškarutno servisi.",
+   "detail": "Sikavel publike Threads postiri pe Meta embed, bi kontosko; ine opcie te ačhes ko than thaj eksporto .txt. Meta dikhel tiro IP; šaj te trebul CORS proxy. Na oficialo."
   },
   "X-fara-cont": {
    "tags": [
     "monitorizarea sursenghi"
    ],
-   "line": "Pašol ke publike profili thaj postiri ko X bi kontosko, pe but ekhe: direkto link, arhiva, rodipen vaj Nitter. Na genel o kontinuto; bičhavel o link ko archive.org."
+   "line": "Pašol ke publike profili thaj postiri ko X bi kontosko, pe but ekhe: direkto link, arhiva, rodipen vaj Nitter. Na genel o kontinuto; bičhavel o link ko archive.org.",
+   "detail": "Kerel droma bi kontosko ko publike X profili thaj postiri: direkto link, Wayback arhiva, rodipen, Nitter. Na genel o kontinuto; bičhavel o username/link ko archive.org."
   },
   "Arhiva-LinkedIn": {
    "tags": [
     "arhivarea"
    ],
-   "line": "Ačh ke jek than tire notiri pale LinkedIn postiri save korkori ine pastem thaj eksportiin len sar teksto. E galerija use e oficialo embed, vašoleske džal ko LinkedIn. Na si oficialo."
+   "line": "Ačh ke jek than tire notiri pale LinkedIn postiri save korkori ine pastem thaj eksportiin len sar teksto. E galerija use e oficialo embed, vašoleske džal ko LinkedIn. Na si oficialo.",
+   "detail": "Arhiva e notiquri pe LinkedIn postiri save korkori ine pastem (importo CSV, eksporto Markdown) + galerija pe oficialo LinkedIn embed (dikhel e LinkedIn). Na oficialo."
   },
   "Cadraj": {
    "tags": [
     "monitorizarea sursenghi"
    ],
-   "line": "Khedel TikTok klipuri ke vast, ekhetane pala autori, thaj dikh len ando oficialo plejeri. Šaj te markines so dikhlan dija."
+   "line": "Khedel TikTok klipuri ke vast, ekhetane pala autori, thaj dikh len ando oficialo plejeri. Šaj te markines so dikhlan dija.",
+   "detail": "Vastesko khedipen e TikTok klipuronqo pala autori, save džan ando oficialo plejeri; marko “dikhlo”."
   },
   "FASCICUL": {
    "tags": [
     "kolaborarea"
    ],
-   "line": "Kerel e telefonurendar andi sala jek ekhetano tablo pe videoproiektori: dizenia, notiri, imaginja, laserosko kolibri thaj kamera ando trajo. Probime pe kompjuteri; ainei verifikime pe chače telefonuri."
+   "line": "Kerel e telefonurendar andi sala jek ekhetano tablo pe videoproiektori: dizenia, notiri, imaginja, laserosko kolibri thaj kamera ando trajo. Probime pe kompjuteri; ainei verifikime pe chače telefonuri.",
+   "detail": "Telefonura ↔ video-projektori: jek ekhetani tabla e dikhipnaqe, notiqe, fotografienqe, laser-pointeriqe thaj camera pe than, ando jek file. Direkto WebRTC phandipen ando lokalo rjeti, bi trito server; opcionalo relay ko telefono-hotspot (Android/Termux). Probime ando Chromium; ni verifikuime pe chače telefonura."
   },
   "INDICATIV": {
    "tags": [
     "examen",
     "radio"
    ],
-   "line": "Gata tut vaš o ANCOM examen vaš radioamaturi e 723 pučhipnasa, ando kamuna pauzi, bi internetosko. Na si oficialo; e banka pučhipnengi si numa kotor verifikimi."
+   "line": "Gata tut vaš o ANCOM examen vaš radioamaturi e 723 pučhipnasa, ando kamuna pauzi, bi internetosko. Na si oficialo; e banka pučhipnengi si numa kotor verifikimi.",
+   "detail": "Offline, na oficialo trenero vaš o ANCOM radioamatoresko ispiti (723 pučipena, phirdo zuraripen, rodipen ande pučipnenqi baza). Na si ANCOM material; e pučipnenqi baza si verifikuime numa kotorisa."
   },
   "ETER": {
    "tags": [
     "radio",
     "enciklopedija"
    ],
-   "line": "Siklov o radioamaturismo andi enciklopedija e Morse kodosa, Morse trener, kalkulatoruri vaš antene thaj rodipen ando sa o kontinuto."
+   "line": "Siklov o radioamaturismo andi enciklopedija e Morse kodosa, Morse trener, kalkulatoruri vaš antene thaj rodipen ando sa o kontinuto.",
+   "detail": "Enciklopedia e radioamatorenqi: Morse, Koch trenero, kalkulatori vaš antene, globalo rodipen."
   },
   "ATINGERE": {
    "tags": [
     "pristupačnost"
    ],
-   "line": "Jek lil bešel braille ko touchscreen, e vibracijenca, vaš e kale-kore manuša, vaj audiolil vaš e kore. Na si validimi e nativne genitorenca; si les limiti."
+   "line": "Jek lil bešel braille ko touchscreen, e vibracijenca, vaš e kale-kore manuša, vaj audiolil vaš e kore. Na si validimi e nativne genitorenca; si les limiti.",
+   "detail": "Paruvel e lila ande taktilo braille vaj ande audio-lila. Na si validuime e chače genenqe; dikh e limiti ando README."
   },
   "Clopotel": {
    "tags": [
     "eventuri",
     "MIT"
    ],
-   "line": "Ačh ti konferenca vaj o workshopo ando vakti: jek scenako tajmeri e agendasa thaj jek signalo so ankhavel kana avel o agor. Ando romaniko thaj anglikano."
+   "line": "Ačh ti konferenca vaj o workshopo ando vakti: jek scenako tajmeri e agendasa thaj jek signalo so ankhavel kana avel o agor. Ando romaniko thaj anglikano.",
+   "detail": "Timeri vaš o štagjo e lista e vorbitorenqi (importo text/CSV) thaj jek signalo te del xabor, RO/EN."
   },
   "Monstrarium": {
    "tags": [
     "workshop",
     "MIT"
    ],
-   "line": "Planuin jek workshop kana keres čudovišta andar recikline materialuri: e aplikacija kalkulil e materialuri thaj e seansi thaj del 50 čudovišta e zvukonca, 3D thaj jek edukativno loko."
+   "line": "Planuin jek workshop kana keres čudovišta andar recikline materialuri: e aplikacija kalkulil e materialuri thaj e seansi thaj del 50 čudovišta e zvukonca, 3D thaj jek edukativno loko.",
+   "detail": "Planeri vaš jek atelieri e monštrenqo andar recikluime materiali: korkoro kalkulinel e materiali, programo pe serie, 50 originale monštra e zvukenca, 3D thaj jek sikljovnipnaskero khelipen."
   },
   "TranslateHub": {
    "tags": [
     "prevodo",
     "AI"
    ],
-   "line": "Alos maškar 22 instrumenturi vaš prevodo vaj prevod e AI-esa, tire korkore čavesa. O teksto prevodimo e AI-esa džal ko Anthropic servisi."
+   "line": "Alos maškar 22 instrumenturi vaš prevodo vaj prevod e AI-esa, tire korkore čavesa. O teksto prevodimo e AI-esa džal ko Anthropic servisi.",
+   "detail": "Direktorio e 22 instrumenturenqo vaš o paruvipen, vi jek AI paruvno ko tiro korkoro čavi. O AI teksto bičhalel ko api.anthropic.com."
   },
   "DataWeave": {
    "tags": [
     "datele"
    ],
-   "line": "Putar jek tabela thaj achar la: statistike, grafikuri, pivot tabeli thaj korelacie. Tire datele ačhen pe tiro aparato."
+   "line": "Putar jek tabela thaj achar la: statistike, grafikuri, pivot tabeli thaj korelacie. Tire datele ačhen pe tiro aparato.",
+   "detail": "Dikh CSV/TSV/JSON ando jek file: tabela, statistika, grafikuri, pivot thaj korelacie; tire datenqe ačhen ko tiro aparato."
   },
   "MarkdownAtelier": {
    "tags": [
     "ramomos"
    ],
-   "line": "Ramos lila ando Markdown thaj dikh abruder sar dikhen, e sima formulenca, pe 7 čhiba, bi internetosko. O teksturi ačhen ando tiro browser; ker jek kopia sigurancako."
+   "line": "Ramos lila ando Markdown thaj dikh abruder sar dikhen, e sima formulenca, pe 7 čhiba, bi internetosko. O teksturi ačhen ando tiro browser; ker jek kopia sigurancako.",
+   "detail": "Offline Markdown editori e angledikhipnaça, GFM, jek kotor LaTeX (MathML), 7 čhiba, rodipen thaj .json kopia. O lila ačhen ando browseri."
   },
   "RegexLab": {
    "tags": [
     "dezvoltarea"
    ],
-   "line": "Probuin jek regulari ekspresija thaj dikh akana so ladel, e eksplikacie pas-pale-pas, testi thaj jek ankhaviba kana šaj te phandel o programa."
+   "line": "Probuin jek regulari ekspresija thaj dikh akana so ladel, e eksplikacie pas-pale-pas, testi thaj jek ankhaviba kana šaj te phandel o programa.",
+   "detail": "Probipen e JavaScript regularone mostrenqo e sikavipnaça, probenca thaj ReDoS dikhipe."
   },
   "SEOptimum": {
    "tags": [
     "web"
    ],
-   "line": "Dikh sode šukar si gata jek web-pagina vaš e rodipnaskere motoruri. Si les 20 instrumenturi, use e pagina-analiza thaj jek angledikhipen sar ankalel ando rodipen."
+   "line": "Dikh sode šukar si gata jek web-pagina vaš e rodipnaskere motoruri. Si les 20 instrumenturi, use e pagina-analiza thaj jek angledikhipen sar ankalel ando rodipen.",
+   "detail": "20 SEO instrumenturi ando browseri: analiza pe pagina, SERP angledikhipe."
   },
   "SEVA": {
    "tags": [
     "sastipe"
    ],
-   "line": "Sikljov buteder vaš o sovipe, o dineskero ritmo e truposko, o phurdipe thaj o xaipe, andi enciklopedija so šaj vi te šunes. Numa vaš informacia; na si medicinako sfato."
+   "line": "Sikljov buteder vaš o sovipe, o dineskero ritmo e truposko, o phurdipe thaj o xaipe, andi enciklopedija so šaj vi te šunes. Numa vaš informacia; na si medicinako sfato.",
+   "detail": "Enciklopedia vaš e sastipe: sovipen, cirkadiano ritmo, phurdipen, xabe; šunipen e genimasqo. Informativo; na si doktoresko ažutipe."
   },
   "PULS": {
    "tags": [
     "sastipe",
     "urđentia"
    ],
-   "line": "So keres dži kana avel e ambulanca? Jek ghidosa vaš o angluno ažutor ando romaniko, e CPR metronomosa thaj jek opcionalo kartela urđentiako. Na si klinikane validimi; akhar 112."
+   "line": "So keres dži kana avel e ambulanca? Jek ghidosa vaš o angluno ažutor ando romaniko, e CPR metronomosa thaj jek opcionalo kartela urđentiako. Na si klinikane validimi; akhar 112.",
+   "detail": "Ghid vaš e angluni ažutipe pe romanes (CPR e metronomosa, garoto-ligačipe), rodipnaça thaj opcionalo karta vaš e urgentia. O kontinuto na si klinikano validuime katar specialisto; na ačhel e autorizuime kursosko than. Ande urgentia, vičin 112."
   },
   "VATRA": {
    "tags": [
     "pe phuv"
    ],
-   "line": "So keres te našti tut o paj, o jag vaj e adăposto ando džungli? Jek enciklopedija vaš e prezervarea, bi internetosko, e rodipnasa thaj notiranca. Numa edukativo; ando urđentia akhar 112."
+   "line": "So keres te našti tut o paj, o jag vaj e adăposto ando džungli? Jek enciklopedija vaš e prezervarea, bi internetosko, e rodipnasa thaj notiranca. Numa edukativo; ando urđentia akhar 112.",
+   "detail": "Offline enciklopedia vaš o prežhivipe (paj, jag, adăpostipe, orientaripe), rodipnaça thaj notiquri ine pastem ko than. Edukativo material, na ačhel e angluni ažutipnaskere kursosko than; ande urgentia vičin 112."
   },
   "Eclipsa-2027": {
    "tags": [
     "astronomija"
    ],
-   "line": "Dikh pe harta kaj thaj sode vakti ačhel e sumnakaj eklipsa e Kamesqi andi 2 avgust 2027, e foruri thaj rodipen pe thana, bi internetosko. Aproksimativne valori; ma dikh ko Kham bi filtri."
+   "line": "Dikh pe harta kaj thaj sode vakti ačhel e sumnakaj eklipsa e Kamesqi andi 2 avgust 2027, e foruri thaj rodipen pe thana, bi internetosko. Aproksimativne valori; ma dikh ko Kham bi filtri.",
+   "detail": "Offline harta e totalone eklipsasqi katar o 2 avgusto 2027, e doravipnaça, acoperirea pe foruri thaj rodipen e thanengo. Indikativne vrednosti; na dikh ko Kham bi certifikuime filtrenqo."
   },
   "orarium": {
    "tags": [
     "astronomija",
     "vakti"
    ],
-   "line": "Sode si o ceasi akana pe Marso, pe Čhon vaj pe jek asteroido? Dikh o lokalo vakti ando trajo pe 45 nebesne trupuri. Aproksimativno model, bi internetosko; na vaš navigacia."
+   "line": "Sode si o ceasi akana pe Marso, pe Čhon vaj pe jek asteroido? Dikh o lokalo vakti ando trajo pe 45 nebesne trupuri. Aproksimativno model, bi internetosko; na vaš navigacia.",
+   "detail": "O vrama pe sa e lumi: lokalo vrama pe than pe 45 trupuri (Čhon, Marso, planeti, čhoni, asteroidi), o ritmo e orengo kontra e Phuv, distanca thaj o vrama te džal thaj te ale pale, jek paruvno e vramaqe zonenqo thaj harti e kolonizaciaqe. Indikativno model, offline; na vaš navigacia. Si o miždžo e rjatesko thaj o dive pe sako trupo, e transmisioneske vrama maškar e Phuv thaj o trupo, thaj jek link ko TerRa."
   },
   "TerRa": {
    "tags": [
     "astronomija"
    ],
-   "line": "Jek 3D globo thaj jek harta so sikavel e đes thaj e rat pe Phuv, Čhon thaj e planeturi. O pozicie e satelitengere šaj te si phurane dži ko 3 čhon dži kana neveles online."
+   "line": "Jek 3D globo thaj jek harta so sikavel e đes thaj e rat pe Phuv, Čhon thaj e planeturi. O pozicie e satelitengere šaj te si phurane dži ko 3 čhon dži kana neveles online.",
+   "detail": "3D globo thaj harta: terminatoro, Čhon, planeti. E satelitura xasnaren jek purano snimko (~3 čhon) offline; vaš e aktualne pozicie, paruv online. Jekhutno link vaš sako dikhipen; o ašmeno katar sa e 45 trupuri e ORARIUM-esqe, phandle ando duj rigi."
   },
   "Horizons.BeyondLimits": {
    "tags": [
     "kosmologija"
    ],
-   "line": "Phir andi istorija e them katar o Bik Bang dži ko agor, ando 91 khetane tradi. O avutnipe si štiinčifiko pendžaripe, na si siguro profetipe."
+   "line": "Phir andi istorija e them katar o Bik Bang dži ko agor, ando 91 khetane tradi. O avutnipe si štiinčifiko pendžaripe, na si siguro profetipe.",
+   "detail": "Harta e vramasqi katar o Baro Bum dži ko agor e universosqo: 91 intamplenqi, eksporto Markdown; o avutnipe si spekulativo, na si validuime predikcia."
   },
   "Hyper4D": {
    "tags": [
     "matematika"
    ],
-   "line": "Dikh sar dikhen e štarimerutne formi: phiravel len pe ekrano thaj dikh len pe but rig. E imaginja šaj te ačhen."
+   "line": "Dikh sar dikhen e štarimerutne formi: phiravel len pe ekrano thaj dikh len pe but rig. E imaginja šaj te ačhen.",
+   "detail": "4D geometria ando SVG: 3D prerezuri e 4D trupurenqe thaj politopenqe, e 4D→3D→2D projekcie phirade ando čačo vrama, eksporto SVG."
   },
   "ExploratoriiEco": {
    "tags": [
     "natura"
    ],
-   "line": "Jek ghido vaš e manuša so kamen e natura: katar e klasifikacia e dživdenge thaj lengere pašvo dži ko biomi e Romaniako, jek jurnalo, etika thaj urđentia."
+   "line": "Jek ghido vaš e manuša so kamen e natura: katar e klasifikacia e dživdenge thaj lengere pašvo dži ko biomi e Romaniako, jek jurnalo, etika thaj urđentia.",
+   "detail": "Ghid pe than vaš e naturalisturi ande 20 kotora: klasifikacia e dživdipnaqi, simnuri thaj ghilja, romane biomuri, kalkulatori, lilo e pativoske, etika, urgentie thaj glosaro."
   },
   "FieldObserver": {
    "tags": [
     "pe phuv"
    ],
-   "line": "Ramos tire observacie pe phuv, thaj o telefono ando korkoro thovel e valori andar e senzori. Ačhes jek arhiva e tire iklipnenge."
+   "line": "Ramos tire observacie pe phuv, thaj o telefono ando korkoro thovel e valori andar e senzori. Ačhes jek arhiva e tire iklipnenge.",
+   "detail": "Lilo e dikhipnasqo pe than e telefonoskere senzorenca; arhiva, eksporto JSON/CSV."
   },
   "VietAR": {
    "tags": [
     "biodiversitate"
    ],
-   "line": "Ker foto vaj thov pe filmo jek zumi vaj dživdo thaj lel jek ideja so specija si, andar 519 katar i Romanija. Šaj te si greša; ma xa ništo pala adava."
+   "line": "Ker foto vaj thov pe filmo jek zumi vaj dživdo thaj lel jek ideja so specija si, andar 519 katar i Romanija. Šaj te si greša; ma xa ništo pala adava.",
+   "detail": "Indikativno pendžaripen e 519 romane specienqo katar fotografia/zvuko; šaj te si pogreši, na xa rukhe vaj gribi pe leste. O modeluri si čhorde katar trite rigi; na si dostano offline."
   },
   "VOIAJOR": {
    "tags": [
     "Voyager",
     "simulacia"
    ],
-   "line": "Phir pala e Voyager 1 thaj 2 trajektorie katar 1977 dži ko jek miliardo berš angle, pe sa skala, katar e planeturi dži ko Calea Lactee. Indikativo model, na si navigacia."
+   "line": "Phir pala e Voyager 1 thaj 2 trajektorie katar 1977 dži ko jek miliardo berš angle, pe sa skala, katar e planeturi dži ko Calea Lactee. Indikativo model, na si navigacia.",
+   "detail": "Simulacia e Voyager 1 thaj 2 trajektorienqi (1977 dži pe majbut sar jek miliardo berša): balistike luke maškar e čače obilaske, ekstrapolacia e solarone gravitacijasa thaj e lokalone galaktikane dinamikasa, e heliosfera, o Oort-eskoro oblako thaj 19 pašutne čerhaja e korkore phirimaça."
   },
   "Nemurirea": {
    "tags": [
     "biologija"
    ],
-   "line": "Arakh sar phurdel o trupo thaj so phenel e štiinca vaš e biologikane ceasuri thaj e lungo dživdipe, pale probuin tut korkoro jek kvizosa. Na si medicinako sfato."
+   "line": "Arakh sar phurdel o trupo thaj so phenel e štiinca vaš e biologikane ceasuri thaj e lungo dživdipe, pale probuin tut korkoro jek kvizosa. Na si medicinako sfato.",
+   "detail": "Interaktivno esejo pe biologikane orengo thaj e štiinca vaš e lungo dživdipe, e agoresko kvizosa. Informativo; na si doktoresko ažutipe."
   },
   "IncredibleCosmos": {
    "tags": [
     "loko",
     "fizika"
    ],
-   "line": "Thov planeturi thaj čerhaja asavke kaj lengiri gravitacia te inkljarel jek kometa ko skopo. 108 nivele, trin zorali thaj dži ko trin čerhaja pe sakone nivelo."
+   "line": "Thov planeturi thaj čerhaja asavke kaj lengiri gravitacia te inkljarel jek kometa ko skopo. 108 nivele, trin zorali thaj dži ko trin čerhaja pe sakone nivelo.",
+   "detail": "Gravitacijako puzzle: thov planeti thaj čerhaja avka kaj lengiri gravitacia te anel jek kometa ko ciljo; 108 nivelura ande 12 kategorie, trin zorale, notiripe 1–3 zvezde, rodipnaça."
   },
   "Cupa-Mondiala-2026": {
    "tags": [
     "simulacia",
     "na oficialo"
    ],
-   "line": "Khel ko Mondialo e 2026 thaj dikh sar phirel jek khelno turniri. O rezultati si ando hazardo, na si profecie; na si oficialo."
+   "line": "Khel ko Mondialo e 2026 thaj dikh sar phirel jek khelno turniri. O rezultati si ando hazardo, na si profecie; na si oficialo.",
+   "detail": "Fikcionalo, na oficialo simulatori e Lumake Kupake 2026: rezultatura pe sansa, na predikcie; naj phandlo e FIFA-aça."
   },
   "AGORA": {
    "tags": [
     "ekonomija",
     "EU"
    ],
-   "line": "Sar bijanđa o euro thaj so sikavel vaš i Romanija? 59 kotora, katar o Maastricht dži ko ECB, use sfaturi vaš e phirutne. Na si oficialo."
+   "line": "Sar bijanđa o euro thaj so sikavel vaš i Romanija? 59 kotora, katar o Maastricht dži ko ECB, use sfaturi vaš e phirutne. Na si oficialo.",
+   "detail": "Informativo atlaso e eurozonasqo ande 59 kotora: katar o Maastricht thaj e ECB dži ko Rumunia thaj o euro, vi jek ghid vaš e phirutne. Na oficialo, bi zakonoso valoro."
   },
   "URME": {
    "tags": [
     "natura",
     "Buzău"
    ],
-   "line": "Gata tut vaš jek phirimos pe drom Colți–Aluniș ando Buzău: zumi, ambra, fosilie, vakti e khamesko anglunipe thaj bešipe, ekipamento. E harta na si vaš navigacia."
+   "line": "Gata tut vaš jek phirimos pe drom Colți–Aluniș ando Buzău: zumi, ambra, fosilie, vakti e khamesko anglunipe thaj bešipe, ekipamento. E harta na si vaš navigacia.",
+   "detail": "Informativo, na oficialo ghid vaš e phirimata pe Colți–Aluniș (rukhe, ambra, fosili), e Kham-aračipnaça/ačhipnaça thaj lista e opremaqi. Skematiko harta, na vaš navigacia; o lipsipe andar o arakhlo than si zabranime."
   },
   "Belot-fara-frontiere": {
    "tags": [
     "karti",
     "AI"
    ],
-   "line": "Arakh o belot thaj lesqere phralen andar avre thema, pale khel ko astali: tu thaj jek AI-partnero pale duj AI-protivniki. Si les jek tabela vaš o punktuo."
+   "line": "Arakh o belot thaj lesqere phralen andar avre thema, pale khel ko astali: tu thaj jek AI-partnero pale duj AI-protivniki. Si les jek tabela vaš o punktuo.",
+   "detail": "Atlaso e familiaqo belote/bela/klaverjas/jass thaj jek khelipen vaš 4 khelne (tu thaj jek AI partneri kontra duj AI kontra-khelne); o romano belot si e angluni prioriteta; lilo e punktenqo."
   },
   "Scopone-fara-frontiere": {
    "tags": [
     "karti",
     "AI"
    ],
-   "line": "Arakh sar bijanđa o Scopone, save si lesqere rukuna thaj sar paruven katar regiuna ko regiuna, pale khel pale o kompjuteri, so šaj te del tut sfaturi."
+   "line": "Arakh sar bijanđa o Scopone, save si lesqere rukuna thaj sar paruven katar regiuna ko regiuna, pale khel pale o kompjuteri, so šaj te del tut sfaturi.",
+   "detail": "Atlaso e Scopone-esqo (15 lila: sar ulo, e regule, e regionalone diferencie) thaj jek khelipen kontra jek lokalo AI (heuristiko / Monte-Carlo), e ažutipnaça; italiane vaj frenčike boja."
   },
   "Solitaire-fara-frontiere": {
    "tags": [
     "karti"
    ],
-   "line": "Dikh e solitaire lokonge sar Klondike, FreeCell vaj Spider thaj khel len. Kana ačhes ande bar, mang jek sfato vaj muk o kompjuteri te solvil."
+   "line": "Dikh e solitaire lokonge sar Klondike, FreeCell vaj Spider thaj khel len. Kana ačhes ande bar, mang jek sfato vaj muk o kompjuteri te solvil.",
+   "detail": "Atlaso e solitaire khelipnasqo (Klondike, FreeCell, Spider thaj aver) pe jek ekhetano motori; “Ažutipe” katar jek solver e limitosa vaš e nodi/vrama thaj opcionalo auto-rezolvipe."
   },
   "Sudoku-fara-frontiere": {
    "tags": [
     "puzzle"
    ],
-   "line": "136 feluri Sudoku, katar o klasiko dži ko killer vaj 3D, te dikhes thaj te khelles. Ažutil tut e eksplikacie pas-pale-pas thaj solvil tire korkore puzzle."
+   "line": "136 feluri Sudoku, katar o klasiko dži ko killer vaj 3D, te dikhes thaj te khelles. Ažutil tut e eksplikacie pas-pale-pas thaj solvil tire korkore puzzle.",
+   "detail": "Atlaso e 136 Sudoku variantenqo (klasiko, killer, jigsaw, greko-latino, 3D thaj but aver), jek generatoro e jekhe rezolvipnaça, rezolvipe pas-pas e kotarimaça, 7 modi khelipnaqe thaj jek solver."
   },
   "Domino-fara-frontiere": {
    "tags": [
     "domino",
     "AI"
    ],
-   "line": "Sikljov e istorija thaj e rukuna e dominoskere, pale khel ko astali pale jek dži ko trin protivniki kontrolime katar o kompjuteri. Šaj te thoves palpale jek mutaripe."
+   "line": "Sikljov e istorija thaj e rukuna e dominoskere, pale khel ko astali pale jek dži ko trin protivniki kontrolime katar o kompjuteri. Šaj te thoves palpale jek mutaripe.",
+   "detail": "Atlaso e domino-esqo (sar ulo, e regule, e aproksimacie) thaj jek khelipnasqi tabla kontra 1–3 AI khelne, e trin nivelenca; khuvipe pale e ačhi."
   },
   "Mahjong-fara-frontiere": {
    "tags": [
     "Mahjong",
     "AI"
    ],
-   "line": "Arakh 8 mahjong variante thaj khel solitaire vaj o loko pe štar manuša, e trin sima protivnikenca kontrolime katar o kompjuteri. Kerel buči bi internetosko."
+   "line": "Arakh 8 mahjong variante thaj khel solitaire vaj o loko pe štar manuša, e trin sima protivnikenca kontrolime katar o kompjuteri. Kerel buči bi internetosko.",
+   "detail": "Atlaso e 8 mahjong variantenqo, solitaire thaj mahjong vaš 4 khelne (riichi, Hong Kong, Sichuan) kontra 3 sasti heuristike AI. Offline."
   },
   "Go-fara-frontiere": {
    "tags": [
     "Go",
     "AI"
    ],
-   "line": "Arakh katar kaj avel o Go thaj sar khelel pes, pale probuin tut pale o kompjuteri, so šaj te del tut sfaturi. Na bičhavel ništo pe internet."
+   "line": "Arakh katar kaj avel o Go thaj sar khelel pes, pale probuin tut pale o kompjuteri, so šaj te del tut sfaturi. Na bičhavel ništo pe internet.",
+   "detail": "Atlaso e Go-esqo (18 lila: sar ulo, e regule, e aproksimacie) thaj jek khelipen kontra jek lokalo AI (Monte-Carlo, na LLM), e SGF thaj ažutipnaça; bi rjetake mangipena."
   },
   "Zaruri-fara-frontiere": {
    "tags": [
     "zaruri"
    ],
-   "line": "26 loko e zarenca te genes pa lende, 12 lendar khelen pes pale o kompjuteri, use jek simulatoro e frimimaskoro e probabilitetenca. Bi love; bi internetosko."
+   "line": "26 loko e zarenca te genes pa lende, 12 lendar khelen pes pale o kompjuteri, use jek simulatoro e frimimaskoro e probabilitetenca. Bi love; bi internetosko.",
+   "detail": "Atlaso e 26 zarengere khelipnasqo; 12 si te khelen kontra jek didaktiko AI (na LLM), vi jek NdM simulatori e exactone probabilitatenca. Na si khelipen vaš love; offline."
   },
   "Sah-fara-frontiere": {
    "tags": [
     "šaho"
    ],
-   "line": "Buteder sar 700 variante e šahoskere te dikhes, e cikno dikcionaro e termenengo; vaš but šaj te khelles pale o kompjuteri. Kerel buči bi internetosko."
+   "line": "Buteder sar 700 variante e šahoskere te dikhes, e cikno dikcionaro e termenengo; vaš but šaj te khelles pale o kompjuteri. Kerel buči bi internetosko.",
+   "detail": "706 intrimata vaš e šaxosqe variante (numa nesave si e verifikuime sursa; nesave si sintetike) thaj 299 termenura ando leksiko. Offline, e lokalone motorosa vaš but variante."
   },
   "Dame-fara-frontiere": {
    "tags": [
     "dame"
    ],
-   "line": "Khel 25 variante e damengere pale o kompjuteri thaj ačh o loko. O rukuna vaš 16 lendar si numa aproksimativne, markime e ⚠."
+   "line": "Khel 25 variante e damengere pale o kompjuteri thaj ačh o loko. O rukuna vaš 16 lendar si numa aproksimativne, markime e ⚠.",
+   "detail": "25 variante e damenqe te khelen kontra jek didaktiko AI, e eksportosa e khelipnasqo; 16 si e aproksimativne regulenca (markuime ⚠)."
   },
   "Table-fara-frontiere": {
    "tags": [
     "tabla"
    ],
-   "line": "Backgammon, Tavli, Narde thaj e romanikane variante e tablake, te genes thaj te khelles: 17 variante pale o kompjuteri, e tastatura vaj e maus."
+   "line": "Backgammon, Tavli, Narde thaj e romanikane variante e tablake, te genes thaj te khelles: 17 variante pale o kompjuteri, e tastatura vaj e maus.",
+   "detail": "Khelipnasqo atlaso e familiaqo backgammon: backgammon, Tavli, Tavla, Narde, Gul Bara thaj romane variante; 17 variante kontra jek sikavno AI; khelipen e klaviaturaça."
   },
   "Remi-fara-frontiere": {
    "tags": [
     "remi"
    ],
-   "line": "Arakh e familia e remiskiri thaj khel 19 variante pale o kompjuteri, e statistikenca. Si les 8 čhiba thaj bare, lokes dikhline plaki vaj karti."
+   "line": "Arakh e familia e remiskiri thaj khel 19 variante pale o kompjuteri, e statistikenca. Si les 8 čhiba thaj bare, lokes dikhline plaki vaj karti.",
+   "detail": "Atlaso e remi familiaqo khelipnasqo: 19 variante te khelen kontra jek lokalo AI, e statistikaça; interfejso ande 8 čhiba, e bare plaćenca thaj kartenca."
   },
   "Carti-de-joc-fara-frontiere": {
    "tags": [
     "karti"
    ],
-   "line": "Katar Solitaire thaj Old Maid dži ko poker: 17 kartengere loko e eksplikime rukunenca, 8 lendar šaj te khelles vi akana."
+   "line": "Katar Solitaire thaj Old Maid dži ko poker: 17 kartengere loko e eksplikime rukunenca, 8 lendar šaj te khelles vi akana.",
+   "detail": "Interaktivo atlaso e kartenqo khelipnasqo, katar Solitaire thaj Old Maid dži ko poker: 17 khelipena e lila e regulenqe, katar lende 8 si te khelen."
   },
   "Undava": {
    "tags": [
     "kviz",
     "edukacia"
    ],
-   "line": "Ker vaj khel jek kviz e amalenca, pe jek telefono vaj kompjuteri, thaj khel palpale e pučhipena so gresardan. Sar o Kahoot, numa bi legatura lesa."
+   "line": "Ker vaj khel jek kviz e amalenca, pe jek telefono vaj kompjuteri, thaj khel palpale e pučhipena so gresardan. Sar o Kahoot, numa bi legatura lesa.",
+   "detail": "Kahoot-eskero kvizo (na phandlo lesa), ando jek file: korkoro vaj ande rig pe jek aparato, e pale khelipnaça e gresenqo. O khelipen pe than si numa ando server verzia."
   },
   "AI-Liber": {
    "tags": [
     "AI"
    ],
-   "line": "Vakar e but AI-ažutitorenca andar jek than, use nesave so džan pe tiro kompjuteri. O mesaji džan ko provajderi so alosares; e AI šaj te kerel greši."
+   "line": "Vakar e but AI-ažutitorenca andar jek than, use nesave so džan pe tiro kompjuteri. O mesaji džan ko provajderi so alosares; e AI šaj te kerel greši.",
+   "detail": "Chat e but AI furnizorenca, vi e lokalone (Ollama, WebLLM). O lila džan ko furnizori so ažutines; e AI-ske ginavipa šaj te si pogreši."
   },
   "LocalMind": {
    "tags": [
     "lokalo AI"
    ],
-   "line": "Vakar e jek cikno AI-ažutitorosa so kerel buči ando tiro browser. O modeluri si ladime katar internet jekvar; šaj te kerel greši."
+   "line": "Vakar e jek cikno AI-ažutitorosa so kerel buči ando tiro browser. O modeluri si ladime katar internet jekvar; šaj te kerel greši.",
+   "detail": "Chat e cire modelurenca (Qwen3, LFM2) so kerena buči lokalo ando browseri (WebGPU). O modeluri avena katar Hugging Face; šaj te si pogreši. Trebul jek lokalo server vaj e publiko pagina."
   },
   "PromptVault": {
    "tags": [
     "prompturi"
    ],
-   "line": "Buteder sar 500 prompturi gata vaš AI-ažutitoruri, katar save alos thaj markines o kamle. Na ačhel tire korkore teksturi."
+   "line": "Buteder sar 500 prompturi gata vaš AI-ažutitoruri, katar save alos thaj markines o kamle. Na ačhel tire korkore teksturi.",
+   "detail": "Biblioteka e 500+ promptenqi e kamlenca, na si menadžeri vaš tire korkore prompturi."
   },
   "ARENA": {
    "tags": [
     "AI evaluacia"
    ],
-   "line": "Muk duj AI-modeluri te ažutin bi te dikhel kon, thaj vota vaš o maj šukar; o rangiro ačhel pe tiro kompjuteri. Trebun tut tire korkore čavi."
+   "line": "Muk duj AI-modeluri te ažutin bi te dikhel kon, thaj vota vaš o maj šukar; o rangiro ačhel pe tiro kompjuteri. Trebun tut tire korkore čavi.",
+   "detail": "Zakerde duelura maškar AI modeluri e lokalone Elo rangosa (eksporto CSV). Trebun tire korkore API čavurja vaj lokalo serveri; e demo modeluri si simulime."
   },
   "Nexus-fara-frontiere": {
    "tags": [
     "agenturi"
    ],
-   "line": "Vakar e AI-ažutitorenca andar but provajderi, e rodipen ande vakarimata thaj ačhaviba. Trebul internet thaj tire korkore čavi, so ačhen bi šifrimi."
+   "line": "Vakar e AI-ažutitorenca andar but provajderi, e rodipen ande vakarimata thaj ačhaviba. Trebul internet thaj tire korkore čavi, so ačhen bi šifrimi.",
+   "detail": "AI chat klijenti e tire korkore API čavenca (Anthropic, OpenAI, Google, OpenAI-compatible), rodipnaça thaj eksporto Markdown; e “agentura” si prompturi. Trebul internet; e čavurja ačhen bi šifrimaqe."
   },
   "VoiceAtelier": {
    "tags": [
     "glaso"
    ],
-   "line": "Šun sar šunen pes šelencar artificiale glasuri ande desa čhiba thaj sikljov sar kerdol jek audiolil. O online ekzemplaro bičhavel o teksto ko avrutne servisi, numa tire akordosa."
+   "line": "Šun sar šunen pes šelencar artificiale glasuri ande desa čhiba thaj sikljov sar kerdol jek audiolil. O online ekzemplaro bičhavel o teksto ko avrutne servisi, numa tire akordosa.",
+   "detail": "Katalogo e 427 neuronalone glasenqo (141 lokali) thaj jek ghid vaš e audio-lila. O online primeri bičhalel o teksto ko jek relay thaj ko Microsoft, numa e tire manglipnaça. Na si TTS studio."
   },
   "Trusa-fara-frontiere": {
    "tags": [
     "utilitaruri"
    ],
-   "line": "Jek kit e 15 cikne instrumenturi vaš sakodivesutni: notiri, tabela, Markdown, paroli, jek finansiaro jurnalo thaj aver. Naj les oficialo legatura e YunoHost, so inspirisardas e kategorie."
+   "line": "Jek kit e 15 cikne instrumenturi vaš sakodivesutni: notiri, tabela, Markdown, paroli, jek finansiaro jurnalo thaj aver. Naj les oficialo legatura e YunoHost, so inspirisardas e kategorie.",
+   "detail": "Jek set e 15 cire modulenqo ramome katar o zero (notiqe, tabela, Markdown, parole, lilo e financienqo thaj aver), inspirime katar e YunoHost aplikaciengere kategorie; na phandle lenca."
   },
   "API-fara-frontiere": {
    "tags": [
     "API"
    ],
-   "line": "Dikh o vremja, NASA imaginja, e ISS pozicia thaj desa avre detalie ando trajo ke jek than. Trebul internet thaj naj probime e chače servisenca."
+   "line": "Dikh o vremja, NASA imaginja, e ISS pozicia thaj desa avre detalie ando trajo ke jek than. Trebul internet thaj naj probime e chače servisenca.",
+   "detail": "52 widgeturi: 47 pe publike API (trebul internet; kana putres online korkoro phandel e Open-Meteo, NASA thaj ISS) thaj 5 lokale instrumenturi. Na si probime pe čače serveri."
   },
   "OmniHost": {
    "tags": [
     "suita"
    ],
-   "line": "Jek baro pačko e buteder sar šel instrumenturi vaš buči, khedime ke jek than. Džal ko štar avrutne servisi; e detalie si ando README."
+   "line": "Jek baro pačko e buteder sar šel instrumenturi vaš buči, khedime ke jek than. Džal ko štar avrutne servisi; e detalie si ando README.",
+   "detail": "Suita vaš e buči (~4 MB, 141 moduli). Phandel štar avrutne hosturi; dikh o README."
   },
   "VNTV": {
    "tags": [
     "media",
     "MIT"
    ],
-   "line": "Muk e VideoNeat trailere te džan sar jek TV-kanalo so ni ačhel. Trebul internet; ando P2P modo, tiro adresa si dikhlo e avre dikhitorenge."
+   "line": "Muk e VideoNeat trailere te džan sar jek TV-kanalo so ni ačhel. Trebul internet; ando P2P modo, tiro adresa si dikhlo e avre dikhitorenge.",
+   "detail": "VideoNeat trejleri sar jek bi-agoreskero TV programo, vi jek Stremio addon. Trebul internet (videoneat.com, videos.trom.tf); ande P2P modo, o tiro IP si dikhlo e aver dikhnenqe."
   },
   "OSATURA": {
    "tags": [
     "animacia",
     "MPL/AGPL"
    ],
-   "line": "Ker e 2D dizenia te dživdinen: thov len pe jek \"skeleto\", thov len ande kolibri thaj eksportiin e animacia ande but formaturi. Alfa versia, cikno probime dži akana."
+   "line": "Ker e 2D dizenia te dživdinen: thov len pe jek \"skeleto\", thov len ande kolibri thaj eksportiin e animacia ande but formaturi. Alfa versia, cikno probime dži akana.",
+   "detail": "2D vektorialo rigging thaj animacia motori ando Rust (kokala, IK, skinning, fizika, mašini e stavenqe) e browser studiosa thaj eksporto ande SVG, PNG, GIF, Lottie thaj glTF. Nativo programo (komanda-rinda + studio) thaj WebAssembly moduli, na jek HTML file; alpha, cire probime e manušendar dži akana. Licenci: MPL-2.0 biblioteke, AGPL-3.0-or-later CLI."
   },
   "OAZA": {
    "tags": [
     "servisi"
    ],
-   "line": "Dikh 340 bi love web-servisi, sa bi kontosko, khedime ande jek katalogo. E lista sas kontrolime andi Iunia 2026, numa na korkori."
+   "line": "Dikh 340 bi love web-servisi, sa bi kontosko, khedime ande jek katalogo. E lista sas kontrolime andi Iunia 2026, numa na korkori.",
+   "detail": "Katalogo e 340 bešlipnasqe trite web servisenqo, sa o drom bi kontosko (na si korkoro verifikuime; dikhlo ando juni 2026)."
   },
   "VaultCrypt": {
    "tags": [
     "siguranca"
    ],
-   "line": "Si tut ništo so kamesa te garuves? Phand lila thaj teksturi e paroloja, ando browser. Garado parolo našti te o arakhes palpale."
+   "line": "Si tut ništo so kamesa te garuves? Phand lila thaj teksturi e paroloja, ando browser. Garado parolo našti te o arakhes palpale.",
+   "detail": "AES-256-GCM šifrimo e file-enqo thaj e tekstoqo ando browseri. Na si audituime nezavisimo; jek xasardi parola našti te si pale lini."
   },
   "Akasha": {
    "tags": [
     "notiri"
    ],
-   "line": "Jek notebooko e tagurenca, rodipen thaj legaturi maškar e pagine, so kerel buči bi internetosko. Te na našes ništo, ladin tut jek neves kopia e fišosqiri."
+   "line": "Jek notebooko e tagurenca, rodipen thaj legaturi maškar e pagine, so kerel buči bi internetosko. Te na našes ništo, ladin tut jek neves kopia e fišosqiri.",
+   "detail": "Offline notiquri ando jek file, e tagenca, rodipnaça thaj [[Titlo]] linkuri; te ačhes e tire datenqe, čhin tut jek neva kopia e file-esqi (quine)."
   },
   "CLEPSIDRA": {
    "tags": [
     "vakti"
    ],
-   "line": "Jek ceasi so ginavel pale, alarma thaj programi vaš e đesa e butjakere thaj e sundako/kurkeskere. Dikhel e svetkuri thaj tire korkore eventuri."
+   "line": "Jek ceasi so ginavel pale, alarma thaj programi vaš e đesa e butjakere thaj e sundako/kurkeskere. Dikhel e svetkuri thaj tire korkore eventuri.",
+   "detail": "Pale-orako ceasi, alarma, programi vaš e kurkeske dive/kurkeske agor, sarbi, intamplenqi."
   },
   "Origami": {
    "tags": [
     "arta"
    ],
-   "line": "Siklov te phagres lil pas-pale-pas: simboluri, tehnike thaj ilustrime modeluri. E aplikacija gindil kaj ačhilan."
+   "line": "Siklov te phagres lil pas-pale-pas: simboluri, tehnike thaj ilustrime modeluri. E aplikacija gindil kaj ačhilan.",
+   "detail": "Ghid vaš o origami: notacia, tehnike, modeluri pas-pas, e progresosa ine pastem ko than."
   },
   "Zicala": {
    "tags": [
     "kultura"
    ],
-   "line": "Jek romaniko zicala sako đes, andar jek kolekcia e 550. Šaj te rodes thaj te ačhes e kamle; o komentaruri si ramome e AI-ažutorosa."
+   "line": "Jek romaniko zicala sako đes, andar jek kolekcia e 550. Šaj te rodes thaj te ačhes e kamle; o komentaruri si ramome e AI-ažutorosa.",
+   "detail": "550 romane vorbe e phurenqe e vorbasa e dive, rodipnaça thaj eksporto/importo e kamlenqo; e SWOT/TOWS komentariuri si AI-ažutime."
   },
   "Limpezimea": {
    "tags": [
     "literatura"
    ],
-   "line": "Gen o sci-fi roman \"Limpezimea\" pe efta čhiba. O kronika thaj e kritiko studija so džan lesa si ramome e AI (Claude) ažutorosa."
+   "line": "Gen o sci-fi roman \"Limpezimea\" pe efta čhiba. O kronika thaj e kritiko studija so džan lesa si ramome e AI (Claude) ažutorosa.",
+   "detail": "O sci-fi romani “Limpezimea” ande 7 čhiba, genimasqi edicia. O kritikano aparatso (kronika, studia) si ramome e AI ažutipnaça (Claude)."
   },
   "Nota-Zero": {
    "tags": [
     "literatura"
    ],
-   "line": "Jek speculativno fikcie so vakarel vaš e string teoria, ando romaniko, anglikano thaj frenčikano, e notenca so eksplikin e štiinčifikane idei. Si fikcia, na akademiko sursa."
+   "line": "Jek speculativno fikcie so vakarel vaš e string teoria, ando romaniko, anglikano thaj frenčikano, e notenca so eksplikin e štiinčifikane idei. Si fikcia, na akademiko sursa.",
+   "detail": "Spekulativo fikcia, povestire pe e teoria e čarenqi, pe romanes, anglikano thaj frenčiko, e kotarimaske štiinčifikane notenca (fikcia, na akademiko sursa)."
   },
   "Pendulul": {
    "tags": [
     "literatura"
    ],
-   "line": "Jek planeta kolibrel maškar trin čerhaja thaj jek kali gaura: jek sci-fi roman ande enja volumuri, ramimo katar o Alexio ekhetane e Claude. E 3D simulacia, jek ačhavdo čitatoro vaš genipe bi internetosko, EPUB thaj PDF."
+   "line": "Jek planeta kolibrel maškar trin čerhaja thaj jek kali gaura: jek sci-fi roman ande enja volumuri, ramimo katar o Alexio ekhetane e Claude. E 3D simulacia, jek ačhavdo čitatoro vaš genipe bi internetosko, EPUB thaj PDF.",
+   "detail": "Ineňgo-volumosko sci-fi romani katar o Alexio, ramome e Claude: jek planeta džal angle-pale maškar trin čerhaja thaj jek kalo prek. Si jek 3D simulacia thaj o lila-genimasqo ando jek HTML file save šaj te ačhes thaj te genes offline, vi EPUB thaj PDF."
   },
   "PrintreInteligente": {
    "tags": [
     "literatura"
    ],
-   "line": "Del andre ande jek interaktivno sci-fi roman, e karakteri inspirime katar e ekipa Artemis 2. E recenzie si fikcie; e prevodo, e glaso thaj e AI funkcie use avrutne servisi."
+   "line": "Del andre ande jek interaktivno sci-fi roman, e karakteri inspirime katar e ekipa Artemis 2. E recenzie si fikcie; e prevodo, e glaso thaj e AI funkcie use avrutne servisi.",
+   "detail": "Interaktivo sci-fi romani, fikcia e personažonenca inspirime katar o ekipaži Artemis 2; e kritike si fikcionale. O paruvipen, o online glaso thaj e AI funkcie lena avrutne servisi."
   },
   "BorderlessMelodies": {
    "tags": [
     "muzika"
    ],
-   "line": "Šun muzika so ramol korkori pes, ando browser. Šaj te eksportines la sar audio, thaj si les timer vaš o sovipe."
+   "line": "Šun muzika so ramol korkori pes, ando browser. Šaj te eksportines la sar audio, thaj si les timer vaš o sovipe.",
+   "detail": "Proceduralo zvuko ando Web Audio, e audio eksportosa thaj jek timeri vaš o sovipen."
   },
   "EcoulSpectral": {
    "tags": [
     "audio"
    ],
-   "line": "Dikh o zvuko sar imaginja, alos o kotor so rakhel tut thaj izolin lo vaj mekh lo. Si les redukcia e zgomotosqiri, detekcia e glasosqiri thaj ačhaviba ando WAV."
+   "line": "Dikh o zvuko sar imaginja, alos o kotor so rakhel tut thaj izolin lo vaj mekh lo. Si les redukcia e zgomotosqiri, detekcia e glasosqiri thaj ačhaviba ando WAV.",
+   "detail": "Lokalo editori e spektrogramaqo: markin jek regiuni vrama–frekvencia thaj izolin la vaj mekh la; dikhipen e glasosqo, kamlipen e zvukosqo, eksporto WAV."
   },
   "Constelar": {
    "tags": [
     "AI"
    ],
-   "line": "Vakar e virtuale amalenca so gindin tire vakarimata. Sar standardo phenen pala simple rukuna; chači AI numa te alos jek provajderi, thaj tire mesaji džan ke lo. Numa vaš bare."
+   "line": "Vakar e virtuale amalenca so gindin tire vakarimata. Sar standardo phenen pala simple rukuna; chači AI numa te alos jek provajderi, thaj tire mesaji džan ke lo. Numa vaš bare.",
+   "detail": "Vorbakere khetanipe e lokalone godjasa. Pe default jek sasto motori pe regule; čači AI numa te alosares jek furnizori (o lila džan ko leste). Vaš e baredone; na ačhel e terapiake than."
   },
   "Tarot": {
    "tags": [
     "kultura"
    ],
-   "line": "Arakh e istorija e tarotosqiri, e simboluri e kartengere thaj sar genen pes, dikhle sar kulturako fenomeno. Jek interaktivno kursi so phires ando tiro ritmo."
+   "line": "Arakh e istorija e tarotosqiri, e simboluri e kartengere thaj sar genen pes, dikhle sar kulturako fenomeno. Jek interaktivno kursi so phires ando tiro ritmo.",
+   "detail": "Interaktivo kursos: e istoria, e simbolura thaj o genipen e kartenqo, sar jek kulturalo fenomeno."
   },
   "Numerologie": {
    "tags": [
     "kultura"
    ],
-   "line": "Dikh e numerologia sar simbolika tradicia, pe štar nivele e egzercicie, glosaro, jurnalo thaj kalkulatoro. Del pes bi štiinčifiko validacia."
+   "line": "Dikh e numerologia sar simbolika tradicia, pe štar nivele e egzercicie, glosaro, jurnalo thaj kalkulatoro. Del pes bi štiinčifiko validacia.",
+   "detail": "Interaktivo kursos pe numerologia sar simbolikani tradicia: štar nivelura, ćirenqe, glosaro, jurnali thaj kalkulatori; sikado bi štiinčifikano validuipe."
   },
   "PUNCTUM": {
    "tags": [
     "sastipe",
     "dokazi"
    ],
-   "line": "Jek edukativno atlaso e akupresurakoro thaj e terapienge pe punkturi: buteder sar 400 punkturi pe interaktivne harti, rutine vaš korkori griža e ghidime seansenca, dokazi thaj siguranca. Na thovel e doktoro."
+   "line": "Jek edukativno atlaso e akupresurakoro thaj e terapienge pe punkturi: buteder sar 400 punkturi pe interaktivne harti, rutine vaš korkori griža e ghidime seansenca, dokazi thaj siguranca. Na thovel e doktoro.",
+   "detail": "Edukativo atlaso e terapienqo pe punkturi (akupunktura, akupresura, moksa, ventuze, aurikulari terapia, refleksologia thaj aver): 410 punkturi pe 14 meridiani, 60 variante e nivelosa e dokazenqo, SVG harti, bolipa thaj rutini, jek kursos, jek kvizo, flashcards thaj personalo kontrole e sigurancake."
   },
   "Reiki": {
    "tags": [
     "kultura"
    ],
-   "line": "Arakh so si o Reiki, jek duxovno praktika, thaj so phenel e cerkitnipe: na sas arakhlo dosta dokazo vaš jek efekto maj but sar e relaksacia. Na thovel e doktoro."
+   "line": "Arakh so si o Reiki, jek duxovno praktika, thaj so phenel e cerkitnipe: na sas arakhlo dosta dokazo vaš jek efekto maj but sar e relaksacia. Na thovel e doktoro.",
+   "detail": "Kursos pe Reiki, jek duhovniko praktika: e analize arakhen na dosta dokazi vaš varesavo efekto maj but katar o lokhipen/placebo; na ačhel e doktoreskero than."
   },
   "Bioenergoterapie": {
    "tags": [
     "kultura"
    ],
-   "line": "Jek kursi so eksplikil so si e bioenergetikano terapia thaj katar avel. E praktika naj la štiinčifiko dokazo vaš sastiaripe thaj na thovel e doktoro."
+   "line": "Jek kursi so eksplikil so si e bioenergetikano terapia thaj katar avel. E praktika naj la štiinčifiko dokazo vaš sastiaripe thaj na thovel e doktoro.",
+   "detail": "Kursos pe bioenergetikani terapia, jek praktika bi štiinčifikane dokazengo vaš sastaripe; na ačhel e doktoreskero than."
   },
   "CHIROMANTIA": {
    "tags": [
     "chiromantia",
     "kultura"
    ],
-   "line": "Jek interaktivno atlaso e chiromantiako: jek harta e vastosqiri e linienca, bare, angušta thaj tipuri vastengere, genime sar kulturako tradicia, e jek kotor vaš e štiinca thaj o kritiko gindipe. Bi štiinčifiko validacia."
+   "line": "Jek interaktivno atlaso e chiromantiako: jek harta e vastosqiri e linienca, bare, angušta thaj tipuri vastengere, genime sar kulturako tradicia, e jek kotor vaš e štiinca thaj o kritiko gindipe. Bi štiinčifiko validacia.",
+   "detail": "Interaktivo atlaso e chiromantiaqo: jek SVG harta e vastesqi (kali/čači), e linie, e bula, e angusta, e vastengere tipuri, e angustengere ćirdimata, e 2D:4D merimata, vodimo genipen, flashcards, jek kvizo, jek Barnum zakerdo test thaj jek cold-reading simulatori; sako tvrdipe si e nivelosa e dokazengo."
   },
   "Radiestezie": {
    "tags": [
     "kultura"
    ],
-   "line": "Phir prekal 18 nivele vaš e radiestezia, e glosaro, jurnalo e praktikakoro thaj internacionale anekse. Phenel katar o angluno vakti kaj naj la štiinčifiko validacia."
+   "line": "Phir prekal 18 nivele vaš e radiestezia, e glosaro, jurnalo e praktikakoro thaj internacionale anekse. Phenel katar o angluno vakti kaj naj la štiinčifiko validacia.",
+   "detail": "Kursos ande 18 nivelura pe radiestezia, e glosaroça, jek jurnali e praktikaqo thaj internacionalone anekse; phenel katar o jekhto kaj naj le štiinčifikano validuipe."
   },
   "Inforenergetica": {
    "tags": [
     "kultura"
    ],
-   "line": "Arakh so phenel e inforenergetika, jek na-konvencionalo praktika, ande jek strukturime kursi. Naj la štiinčifiko validacia thaj na si medicinako sfato."
+   "line": "Arakh so phenel e inforenergetika, jek na-konvencionalo praktika, ande jek strukturime kursi. Naj la štiinčifiko validacia thaj na si medicinako sfato.",
+   "detail": "Kursos pe inforenergetika, jek nekonvencionalo praktika bi štiinčifikano validuipe; na si doktoresko ažutipe."
   },
   "ECLIPSA": {
    "tags": [
     "astrologija"
    ],
-   "line": "Arakh ande savi astrologikani kher perel jek eklipsa pe tiro natalo harta, use e aver 12 eklipsi. O kalkulo si aproksimativno thaj e interpretacia si simbolika, bi štiinčifiko validacia."
+   "line": "Arakh ande savi astrologikani kher perel jek eklipsa pe tiro natalo harta, use e aver 12 eklipsi. O kalkulo si aproksimativno thaj e interpretacia si simbolika, bi štiinčifiko validacia.",
+   "detail": "Ko savo astrologikano kher peľa jek eklipsa ando natalo harta, vi e urmatore 12 eklipse. Lokalo, aproksimativno astronomikano kalkulo; simbolikani interpretacia, e astrologia naj la štiinčifikano validuipe."
   },
   "Afrodisiace-fara-frontiere": {
    "tags": [
     "kultura"
    ],
-   "line": "Gen vaš 22 xaibe thaj zumi so si pala tradicia phandle e kamipnasa, sakoneste lesqero nivelo e dokazosqiro. Jek kulturako ghido vaš baro, na si medicinako sfato."
+   "line": "Gen vaš 22 xaibe thaj zumi so si pala tradicia phandle e kamipnasa, sakoneste lesqero nivelo e dokazosqiro. Jek kulturako ghido vaš baro, na si medicinako sfato.",
+   "detail": "Kulturalo ghid vaš 22 xabe thaj rukhe tradicionalo phandle e kamlipnaça, e nivelosa e dokazengo vaš sako intrimo. Edukativo, na si doktoresko ažutipe."
   },
   "CalmWaves": {
    "tags": [
     "audio"
    ],
-   "line": "Ambijentalo muzika kerdi pe than, vaš relaksacia thaj sovipe. Na si medicinako aparato; o kotor e cerkitnipasqero na si verifikimo korkoro. Mang sfato katar o doktoro (epilepsia)."
+   "line": "Ambijentalo muzika kerdi pe than, vaš relaksacia thaj sovipe. Na si medicinako aparato; o kotor e cerkitnipasqero na si verifikimo korkoro. Mang sfato katar o doktoro (epilepsia).",
+   "detail": "Generativno ambijentalo zvuko vaš o lokhipen/sovipen. Na si medicinako aparato; e studiaqi kotor naj nezavisimo verifikuime. Rod doktoresko ažutipe (epilepsia)."
   },
   "ASMR": {
    "tags": [
     "audio"
    ],
-   "line": "Ker tiro korkoro relaksantno zvukosko pejzaž andar ambijentale sluji, zvukuri pe pipe thaj binauralo bitovi. Si les timer vaš o sovipe, thaj šaj te bičhaves o miksi e averenge."
+   "line": "Ker tiro korkoro relaksantno zvukosko pejzaž andar ambijentale sluji, zvukuri pe pipe thaj binauralo bitovi. Si les timer vaš o sovipe, thaj šaj te bičhaves o miksi e averenge.",
+   "detail": "Mikseri e lokhipnaske zvukonqo generime ando čačo vrama (Web Audio): ambijentalone sloji, zvuka e atingipnaqe, binauralone ritmura thaj timeri vaš o sovipen; mikso so šaj te bičhaves."
   },
   "NOMIA": {
    "tags": [
@@ -576,7 +666,8 @@
     "speculacia",
     "PWA"
    ],
-   "line": "Sar šaj te dikhel pes o angluno kontakto maškar e manuša, e artificiale inteligencie thaj avre sorta gindura? 1001 gindime scenarie, fikcia, na si fakto. Kerel buči vi bi internetosko."
+   "line": "Sar šaj te dikhel pes o angluno kontakto maškar e manuša, e artificiale inteligencie thaj avre sorta gindura? 1001 gindime scenarie, fikcia, na si fakto. Kerel buči vi bi internetosko.",
+   "detail": "Konceptualo simulatori e Manuš–AI–NHI kontakto protokolenqo, 1001 intrimata, pativoski e antologiaqi “Printre inteligențe”. Fikcia/spekulacia, na verifikuime faktura; offline PWA, RO/EN."
   },
   "ValeaPlopului1972": {
    "tags": [
@@ -584,7 +675,8 @@
     "3D",
     "fikcia"
    ],
-   "line": "Dikh jek UFO-hari katar 1972 andar avri, andar andre thaj ande simulacia, rekonstruime ando 3D. Si jek gindimi ipoteza, na si dokazo."
+   "line": "Dikh jek UFO-hari katar 1972 andar avri, andar andre thaj ande simulacia, rekonstruime ando 3D. Si jek gindimi ipoteza, na si dokazo.",
+   "detail": "3D rekonstrukcia e UAP kazosqi katar Valea Plopului (1972): avrutno, simulacia, dikhlo andral. Spekulativo, pe na verifikuime publike sursi, bi manglipe e manušenqo so si phende; na si dokazo."
   },
   "HoroScop": {
    "tags": [
@@ -592,7 +684,8 @@
     "efemeride",
     "bi internetosko"
    ],
-   "line": "Kalkulin e planetengere pozicie vaš jek data thaj than, pale rodes e natalo harta, e aspekti thaj e kompatibilitate. Simbolika astrologija, bi štiinčifiko bazo. Bi internetosko."
+   "line": "Kalkulin e planetengere pozicie vaš jek data thaj than, pale rodes e natalo harta, e aspekti thaj e kompatibilitate. Simbolika astrologija, bi štiinčifiko bazo. Bi internetosko.",
+   "detail": "Offline personalo efemerida: e planetenqe pozicie kalkulime ando browseri (cini precizia), natalo harta, aspekturi, sinastria. Simbolikani astrologia, bi štiinčifikano validuipe; licenca MIT."
   },
   "Aurora": {
    "tags": [
@@ -600,7 +693,8 @@
     "zvuko",
     "relaksacia"
    ],
-   "line": "Šun miškarde tonuri, lokes pulsime zvukuri thaj phir pala jek ghido vaš o phurdipe. Numa vaš relaksacia, na si kurativo. Kerel buči bi internetosko."
+   "line": "Šun miškarde tonuri, lokes pulsime zvukuri thaj phir pala jek ghido vaš o phurdipe. Numa vaš relaksacia, na si kurativo. Kerel buči bi internetosko.",
+   "detail": "Zvukosko sveto than: čakrengere tonuri, binauralone ritmura thaj ghid vaš o phurdipen, offline. Numa vaš o lokhipen, na si droba; e frekvence naj le štiinčifikano validuipe. Licenca MIT; nezavisimo projekto."
   },
   "NumeroLogIA": {
    "tags": [
@@ -608,7 +702,8 @@
     "AI",
     "bi internetosko"
    ],
-   "line": "Arakh so phenen e numerologia, e kineziko BaZi astrologia thaj o biorito vaš tiro bijandipnaskero đes, sa e kalkuli eksplikime pas-pale-pas. Simbolikano sistemo, bi štiinčifiko bazo."
+   "line": "Arakh so phenen e numerologia, e kineziko BaZi astrologia thaj o biorito vaš tiro bijandipnaskero đes, sa e kalkuli eksplikime pas-pale-pas. Simbolikano sistemo, bi štiinčifiko bazo.",
+   "detail": "Pitagorejsko/Kaldejsko numerologia, BaZi thaj biorhythm ande 7 čhiba, kalkuluri pas-pas, portreturi so šaj te eksportines sar JSON; opcionalo AI orakulo tire korkore modelosa. Simbolikano sistemo, bi štiinčifikano validuipe; licenca MIT."
   },
   "FrequencyLaboratory": {
    "tags": [
@@ -616,7 +711,8 @@
     "laboratorio",
     "bi internetosko"
    ],
-   "line": "Probuin zvukuri, efekturi thaj teste e šunipnaskere ande jek cikno audio laboratorio. O \"terapeutikane\" efekturi si na-dokazime thaj na thoven e doktoro. Bi internetosko."
+   "line": "Probuin zvukuri, efekturi thaj teste e šunipnaskere ande jek cikno audio laboratorio. O \"terapeutikane\" efekturi si na-dokazime thaj na thoven e doktoro. Bi internetosko.",
+   "detail": "Audio laboratorio ando browseri (oscilatori, binauralo, efekturi, analizatori, ašunipnaskere testura), offline. Numa vaš informacia: e “terapeutikane” presetura naj le dokazime doktoresko efekto; na si medicinako aparato."
   },
   "generator-frecvente": {
    "tags": [
@@ -624,7 +720,8 @@
     "generatoro",
     "bi internetosko"
    ],
-   "line": "Ker thude tonuri thaj pulsime dujgune zvukuri, šun prezeturi kamle thaj lel jek approksimativno kontrolo sar šukar šunes. Na si medicinako aparato. Bi internetosko."
+   "line": "Ker thude tonuri thaj pulsime dujgune zvukuri, šun prezeturi kamle thaj lel jek approksimativno kontrolo sar šukar šunes. Na si medicinako aparato. Bi internetosko.",
+   "detail": "Generatori e tonenqo ando browseri (binauralo, sekvenceri, EQ, indikativo ašunipnasko test, rodipen e presetenqo), offline. Numa vaš informacia: e Solfeggio/Schumann presetura naj le štiinčifikano validuipe; na si medicinako aparato."
   },
   "ACORDAJ": {
    "tags": [
@@ -632,7 +729,8 @@
     "atlaso",
     "kritiko diskernamento"
    ],
-   "line": "Dikh buteder sar jek mii duxovne kursi thaj iniciacie, e istorikano kontekstosa thaj kritiko dikhipe. Na si phandlo e sursako sajtosa thaj bi štiinčifiko validacia. Bi internetosko."
+   "line": "Dikh buteder sar jek mii duxovne kursi thaj iniciacie, e istorikano kontekstosa thaj kritiko dikhipe. Na si phandlo e sursako sajtosa thaj bi štiinčifiko validacia. Bi internetosko.",
+   "detail": "Offline atlaso e 1134 duhovnikane kursurenqo/inicierenqo (e lista katar cursurispirituale.webnode.ro, na phandlo lenca), e istorikane kontekstosa thaj kritikano godjaripe; bi štiinčifikano validuipe."
   },
   "Profund": {
    "tags": [
@@ -640,7 +738,8 @@
     "karti",
     "trade-free"
    ],
-   "line": "150 pučhipena so inkljaren o vakarimos maškar e cikne vakarimata, maškar e amala vaj ande familia. Khel len pe ekrano vaj printin len, e opcionalo timeriosa."
+   "line": "150 pučhipena so inkljaren o vakarimos maškar e cikne vakarimata, maškar e amala vaj ande familia. Khel len pe ekrano vaj printin len, e opcionalo timeriosa.",
+   "detail": "Khelipen e 150 pučipnenqo vaš e importantne vorbi (RO/EN/FR), online vaj printime, e khelnenca thaj opcionalo timeri; adaptime katar deepcards.org, e originali ačhen e pravenqo e ičharnenqo (MIT numa vaš o kodo thaj e originalo kotor)."
   },
   "Universul-Observabil": {
    "tags": [
@@ -648,7 +747,8 @@
     "kosmologija",
     "vizualizacia"
    ],
-   "line": "Sar baro si e Univerzo so šaj te dikhas? Prindžar trin harti (lineara, ploska, ando than) thaj ker kosmologikane kalkuli. E cifre naj verifikime korkoro."
+   "line": "Sar baro si e Univerzo so šaj te dikhas? Prindžar trin harti (lineara, ploska, ando than) thaj ker kosmologikane kalkuli. E cifre naj verifikime korkoro.",
+   "detail": "Hub pagina so sikavel thaj paruvel e 1D, 2D thaj 3D vizualizacie e dikhlo Universosqe, e offline kosmologikane kalkulatorosa; e cifre thaj e rekorduri si katar o katalogo e majosqo 2026, na verifikuime nezavisimo. RO/EN."
   },
   "Universul-Observabil-1D": {
    "tags": [
@@ -656,7 +756,8 @@
     "kosmologija",
     "vizualizacia"
    ],
-   "line": "Ankhav katar amen thaj phir kije o agor e dikhline Univerzosko, ando drom e 112 galaksie thovde pe jek ašna. Ironiko tono, rotunjime valori, edukativno skopo."
+   "line": "Ankhav katar amen thaj phir kije o agor e dikhline Univerzosko, ando drom e 112 galaksie thovde pe jek ašna. Ironiko tono, rotunjime valori, edukativno skopo.",
+   "detail": "1D harta e dikhlo Universosqi: 112 galaxie pe jek radialo os (vrama, distanca, redshift), e tabelaça e datenqi thaj eksporto CSV. Edukativo, ironikane tonosa; ćirdine vrednosti, rekorduri sar ko dive e katalogosqo (majo 2026)."
   },
   "Universul-Observabil-2D": {
    "tags": [
@@ -664,7 +765,8 @@
     "satira",
     "kosmologija"
    ],
-   "line": "Jek harta e galaksienqiri ando satirikano \"Ploska Phuv\" izdanje: jek maškara, e Phuv na si ploska. Zumin maškar 111 galaksie; e dur si aproksimativne. Bi internetosko."
+   "line": "Jek harta e galaksienqiri ando satirikano \"Ploska Phuv\" izdanje: jek maškara, e Phuv na si ploska. Zumin maškar 111 galaksie; e dur si aproksimativne. Bi internetosko.",
+   "detail": "Interaktivo 2D harta e dikhlo universosqi (111 galaxie, logaritmikani skala, JWST date) ande jek satirikani edicia “Pljosko Phuv”: parodia, e Phuv naj pljosko; e distance si aproksimativne. RO/EN, offline."
   },
   "Universul-Observabil-3D": {
    "tags": [
@@ -672,280 +774,320 @@
     "kosmologija",
     "3D"
    ],
-   "line": "Phir maškar buteder sar 115 galaksie pe jek 3D harta, e ghidime turi thaj proviki. O valori si aproksimativne."
+   "line": "Phir maškar buteder sar 115 galaksie pe jek 3D harta, e ghidime turi thaj proviki. O valori si aproksimativne.",
+   "detail": "Interaktivo 3D harta (WebGL) e dikhlo universosqi: 115+ galaxie, 12 horizonturi, 30 turure, provokacie ando ghid, eksporto GLB/CSV/BibTeX. Aproksimativne vrednosti; JWST rekorduri sar ko majo 2026."
   },
   "QSO": {
    "tags": [
     "radio",
     "jurnalo"
    ],
-   "line": "Ačh e radio kontaktura katar tiro radioamaturo stacia, UTC vaktosa, locatorura thaj statistike. Na si oficialo; e kalkuli si aproksimativne."
+   "line": "Ačh e radio kontaktura katar tiro radioamaturo stacia, UTC vaktosa, locatorura thaj statistike. Na si oficialo; e kalkuli si aproksimativne.",
+   "detail": "Na oficialo lilo e radioamatoresko statiaqo: QSO-ura e UTC ceasosa, importo/eksporto ADIF 3.1, Maidenhead lokatori, kontrole vaš dubluri, statistika. Partialo tabela e prefixenqi (na DXCC); aproksimativne kalkuluri."
   },
   "Curatitor": {
    "tags": [
     "metadatele",
     "privatnost"
    ],
-   "line": "Dikh so sikavel tire fotografie thaj fišuri (than, aparato, autoro) thaj thov avri adala datele angleder te bičhaves len. Na garavel e muja vaj aver dikhle kontinuto."
+   "line": "Dikh so sikavel tire fotografie thaj fišuri (than, aparato, autoro) thaj thov avri adala datele angleder te bičhaves len. Na garavel e muja vaj aver dikhle kontinuto.",
+   "detail": "Sikavel thaj hrabinel lokalo e metadate e file-enqe (GPS, kamera, autori, software) bi te kerel pale e pikseli vaj o zvuko, thaj dikhel pale o rezultato. Na kerel anonimo o kontinuto (muja, zgomoto e senzoroskoro)."
   },
   "Poteca": {
    "tags": [
     "GPX",
     "trasee"
    ],
-   "line": "Putar e trasee ramome kana phiravas vaj kana džas e bicikleta thaj dikh e dur, e ankhipe thaj e profilo e ankhipnaskoro. Šaj vi te čhinde vaj te phandes len. Naj harta; o ankhipe si aprecime."
+   "line": "Putar e trasee ramome kana phiravas vaj kana džas e bicikleta thaj dikh e dur, e ankhipe thaj e profilo e ankhipnaskoro. Šaj vi te čhinde vaj te phandes len. Naj harta; o ankhipe si aprecime.",
+   "detail": "Dikhipnasqo thaj editori vaš e GPX/GeoJSON/KML/CSV trasure: statistika, profilo e uslimasqo, čhinipen, ekhetanipen, simplifikipen, eksporto. Bi bazna harta; e uslipe/ušlipe si aproksimativne."
   },
   "Orar": {
    "tags": [
     "kalendaro",
     "vakti"
    ],
-   "line": "Jek kalendaro thaj jek kurkesko planeri so šaj te dikhes pe đes, kurko vaj čhon, e romanikane publike svetkurenca. E alarmi bajin numa sar e pagina ačhel putardi."
+   "line": "Jek kalendaro thaj jek kurkesko planeri so šaj te dikhes pe đes, kurko vaj čhon, e romanikane publike svetkurenca. E alarmi bajin numa sar e pagina ačhel putardi.",
+   "detail": "Kalendari thaj kurkesko planeri: dikhipena pe čhon/kurko/dive/agenda, RFC 5545 pale-aviipe, vramaqe zone, romane publike sarbe, importo/eksporto .ics. E alarmi bagen numa sar o tab ačhel putardo."
   },
   "Alfabete": {
    "tags": [
     "kodi",
     "sikljovipe"
    ],
-   "line": "Siklov thaj ker praktika e Morse, braille, e fonetikano alfabeto, e semaforo e flagenqero thaj e phurane šifre, pale printin jek lista. E phurane šifre na arakhen e garavde."
+   "line": "Siklov thaj ker praktika e Morse, braille, e fonetikano alfabeto, e semaforo e flagenqero thaj e phurane šifre, pale printin jek lista. E phurane šifre na arakhen e garavde.",
+   "detail": "Referenca, paruvno, trenero thaj printime lil vaš Morse, braille (nivelo 1), fonetike alfabetura, semafor, Baudot, bazi e numerenqe thaj klasikane šifre. E klasikane šifre naj dena siguranca."
   },
   "Fabrica": {
    "tags": [
     "kursi",
     "ramomos"
    ],
-   "line": "Ramos jek kursi sar simplo teksto thaj ker la jek pagina e lekcienca, jek angluno test thaj jek printabilo certifikato. O certifikato naj les oficialo valoare."
+   "line": "Ramos jek kursi sar simplo teksto thaj ker la jek pagina e lekcienca, jek angluno test thaj jek printabilo certifikato. O certifikato naj les oficialo valoare.",
+   "detail": "Fabrika vaš kursurja thaj kvizuri: ramo jek kursos ando sasto Markdown thaj eksportin les sar jek korkoro HTML file e lokalone progresosa, jek agoresko test thaj jek printimo certifikato (bi akreditarimasko valoro)."
   },
   "Bolta": {
    "tags": [
     "astronomija",
     "planetario"
    ],
-   "line": "Sar dikhelas o nebo opral tut, ando sa o than thaj sa o đes maškar 1900 thaj 2100? Dikh o Kham, e Čhon, e planeturi thaj e čerhaja, use e 2027 eklipsa. O valori si kalkulime, na oficiale. Bi internetosko."
+   "line": "Sar dikhelas o nebo opral tut, ando sa o than thaj sa o đes maškar 1900 thaj 2100? Dikh o Kham, e Čhon, e planeturi thaj e čerhaja, use e 2027 eklipsa. O valori si kalkulime, na oficiale. Bi internetosko.",
+   "detail": "Offline planetariumo vaš sako than thaj vrama maškar 1900 thaj 2100: Kham, Čhon, planeti, 1.627 čerhaja, konstelacie, intamplenqi thaj jek pagina pe eklipsa katar o 2027. Kalkulime vrednosti, na oficialo."
   },
   "BRAZDA": {
    "tags": [
     "Voyager",
     "signalo"
    ],
-   "line": "Dekodin o Voyager Golden Record pas-pale-pas, pale kodin jek neves disko vaš jek probe so ankhavel akana. E imaginja ande angluna pasi si skematikane, na si e NASA-ske."
+   "line": "Dekodin o Voyager Golden Record pas-pale-pas, pale kodin jek neves disko vaš jek probe so ankhavel akana. E imaginja ande angluna pasi si skematikane, na si e NASA-ske.",
+   "detail": "Dekoderi thaj enkoderi ande 12 pasuri vaš o Voyager Golden Record: zorako, o hidrogenosko ceasi, e pulsarenqi harta, o signalo jek fotografiaqo, kalibrarimo e kružoça, dekodipen linija pala linija, boja, tiro korkoro file, kontribucie thaj o enkodipen jek diskosqo 2026–2027."
   },
   "Arbore": {
    "tags": [
     "genealogija",
     "GEDCOM"
    ],
-   "line": "Ker tiro familiako kašt, e manušenca, familiencar, jek timeline thaj jek kalkulatoro e rodnipaskoro ando romaniko. E datele ačhen numa ande adava browseri, bi sinkronizacia."
+   "line": "Ker tiro familiako kašt, e manušenca, familiencar, jek timeline thaj jek kalkulatoro e rodnipaskoro ando romaniko. E datele ačhen numa ande adava browseri, bi sinkronizacia.",
+   "detail": "Lokalo genealogia: manuša, familie, importo/eksporto GEDCOM 5.5.1, SVG grafikuri, vramaqi linija, kalkulatori e rodimasqo (numa romani terminologia). Bi sinkronizacia; e datura ačhen ando adava browseri."
   },
   "Gospodar": {
    "tags": [
     "buđeto",
     "personalo finansi"
    ],
-   "line": "Ačh e love e kheresqere: konturi, hărčuri, čhonutne buđetura thaj raportura. Na trebul kontosko, numa te našes o parolo, našes e datele. Na si finansiaro sfato."
+   "line": "Ačh e love e kheresqere: konturi, hărčuri, čhonutne buđetura thaj raportura. Na trebul kontosko, numa te našes o parolo, našes e datele. Na si finansiaro sfato.",
+   "detail": "Lokalo kherutno buđeto: kontura, kategorie, tranzakcie, importo CSV, čhonutne buđeturi, raporturi thaj kalkulatori e sikade formulenca. Bi kontosko vaj sinkronizacia; jek xasardi parola si xasardo datura. Na si finansiako ažutipe."
   },
   "Decibel": {
    "tags": [
     "zvuko",
     "merimos"
    ],
-   "line": "Mer sode zorales si o zgomoto angle tut thaj dikh andar so zvukuri si kerdo. Si les vi jek indikativo test e šunipnaskero. Na si certifikimo aparato; o rezultati den pe o mikrofono."
+   "line": "Mer sode zorales si o zgomoto angle tut thaj dikh andar so zvukuri si kerdo. Si les vi jek indikativo test e šunipnaskero. Na si certifikimo aparato; o rezultati den pe o mikrofono.",
+   "detail": "Merimo e zvukosqo, spektro-analizatori (1/3 oktava, FFT) thaj jek indikativo ašunipnasko test. Na si certifikuime merimasqo aparato thaj bi zakonoso vaj doktoresko valoro; e citipa džan katar o mikrofono thaj o kalibripe."
   },
   "Provenienta": {
    "tags": [
     "C2PA",
     "proveniencia"
    ],
-   "line": "Si tut jek imagine thaj kames te džanes kon ando lake vast thodas o semno thaj save paruvipena phenel? Kontrolin o digitalo semno phandlo. Eksperimentalo, probime numa pe ekzemplare fišuri."
+   "line": "Si tut jek imagine thaj kames te džanes kon ando lake vast thodas o semno thaj save paruvipena phenel? Kontrolin o digitalo semno phandlo. Eksperimentalo, probime numa pe ekzemplare fišuri.",
+   "detail": "Lokalo, eksperimentalo kontrolori vaš C2PA / Content Credentials: sikavel kon ramosarda thaj save paruvipa si phende, thaj verifikuinel o ramosaripe thaj o phandipen e file-eskere bajtenca. Probime numa pe sintetike file-uri; bi lista e patjaqi."
   },
   "Lexicon": {
    "tags": [
     "dikcionaro",
     "čhib"
    ],
-   "line": "Anes tire korkore dikcionaruri thaj rod ande lende lafura, vi te ramos bi diakritike vaj e greši. Avel numa jek cikno demo kompleto. Bi internetosko."
+   "line": "Anes tire korkore dikcionaruri thaj rod ande lende lafura, vi te ramos bi diakritike vaj e greši. Avel numa jek cikno demo kompleto. Bi internetosko.",
+   "detail": "Offline motori vaš lekšikona: ane tire korkore lekšikona (TSV/CSV, JSON, StarDict, dictd, XDXF) thaj rod pe angluno kotor, bi akcentosko, fuzzy vaj ando sasto teksto. O ekhetanipe so avel (345 intrimata) si demo, na jek sasto lekšikono."
   },
   "VERIGA": {
    "tags": [
     "link kontrola",
     "MIT"
    ],
-   "line": "Arakhel e phagle linkuri ko jek sajto vaj ande jek dosar, use e fišuri so ačhile bi skopo. Kerel buči pe Windows, macOS thaj Linux; trebul nesavi kompjuterosko džaniba."
+   "line": "Arakhel e phagle linkuri ko jek sajto vaj ande jek dosar, use e fišuri so ačhile bi skopo. Kerel buči pe Windows, macOS thaj Linux; trebul nesavi kompjuterosko džaniba.",
+   "detail": "Kontrolori e linkurenqo (clean-room) vaš e sajturi thaj lokale direktoria, ramo ando Rust: komanda-rinda, nativo desktop aplikacia (egui) thaj jek HTML verzia ando jek file. Dikhel e HTML thaj CSS linkuri, redirekturi, #fragment angere, bi-phandle file-uri, robots.txt thaj sitemap. Windows, macOS thaj Linux; licenca MIT."
   },
   "TEZAUR": {
    "tags": [
     "cerkitnipe",
     "MIT"
    ],
-   "line": "Jek ažutitoro vaš tiri tezi so ramol numa andar tire korkore lila thaj artikole, e verifikabilne citaturenca. Kerel buči pe tiro kompjuteri; tire dokumenturi ni džan avri katar lo. Buči ande bući."
+   "line": "Jek ažutitoro vaš tiri tezi so ramol numa andar tire korkore lila thaj artikole, e verifikabilne citaturenca. Kerel buči pe tiro kompjuteri; tire dokumenturi ni džan avri katar lo. Buči ande bući.",
+   "detail": "Lokalo rodipnaskero ažutitori vaš te ramos jek tezo, ramo ando Rust, e ginavipnaça so si phandle e citaturenca: indeksinel tire lila thaj artikolurja (PDF, EPUB, DOCX, txt), lel e pasaži thaj ramol numa katar lende, e kontrolime [n] citaturenca thaj jek lista e referenciaqi. Kerel buči pe tiro korkoro kompjuteri e lokalone modelosa (Ollama, Jan, LM Studio); tire dokumenturi bilo kana na džan avrijal. Verzia 0.x; licenca MIT."
   },
   "LegatorOCR": {
    "tags": [
     "scanning",
     "MIT"
    ],
-   "line": "Skanin jek lil thaj lel jek thudo PDF e ustavde pagine thaj teksto ande savo šaj te rodes. Kerel buči pe Windows, macOS thaj Linux; tire skenuri ačhen tuste."
+   "line": "Skanin jek lil thaj lel jek thudo PDF e ustavde pagine thaj teksto ande savo šaj te rodes. Kerel buči pe Windows, macOS thaj Linux; tire skenuri ačhen tuste.",
+   "detail": "Clean-room post-procesori ramo ando Rust vaš e skenime lila: čhinel e duple pagine, thovel o kriveipe, čhinel, kerel e marginja, kuchavel thaj binarizinel, pala kova eksportinel jek PDF vaj fotografie e rodipnasqo OCR text sloji. Grafikano aplikacia (Windows, macOS, Linux) thaj komanda-rinda, ande 8 čhiba. O pendžaripen e tekstoqo (OCR) trebul o alag Tesseract programo; sa o aver kerel buči bi leste. Verzia 0.x; licenca MIT."
   },
   "Fenarium": {
    "tags": [
     "percepcia",
     "MIT"
    ],
-   "line": "Jek atlaso thaj workshop e subjektivne percepcienqero pe sa e simturi, ankhavdo katar o Fosfenismo: jek kursi e 13 moduluri, ghidime eksperimenturi, jek vizualno simulatoro thaj jek laboratorio e randomizime A/B korkoro-eksperimenturi. Edukativo, na si medicinako aparato."
+   "line": "Jek atlaso thaj workshop e subjektivne percepcienqero pe sa e simturi, ankhavdo katar o Fosfenismo: jek kursi e 13 moduluri, ghidime eksperimenturi, jek vizualno simulatoro thaj jek laboratorio e randomizime A/B korkoro-eksperimenturi. Edukativo, na si medicinako aparato.",
+   "detail": "Atlaso e phenenqo (fosfeni, pale-fotografie, zvuka sar tinitus thaj aver), kursos e 13 modulenqo, laboratorio vaš korkoro eksperimento; na si medicinako aparato."
   },
   "MENSURA": {
    "tags": [
     "teste",
     "MIT"
    ],
-   "line": "Mer tiro IQ, EQ, CQ, RQ, e egzekutive funkcie thaj e simturi e 18 teste ande 6 domenii, e kompozite indici thaj 95% intervali e pačivipaskere. Provizorie norme, numa indikativo, na si diagnoza."
+   "line": "Mer tiro IQ, EQ, CQ, RQ, e egzekutive funkcie thaj e simturi e 18 teste ande 6 domenii, e kompozite indici thaj 95% intervali e pačivipaskere. Provizorie norme, numa indikativo, na si diagnoza.",
+   "detail": "18 testura ande 6 domeniuri (IQ, EQ, CQ, RQ, ezekutivne funkcie, simtura), indeksa e pačajipnaske intervalenca, eksporto/importo JSON; provizorne norme."
   },
   "Cronosala": {
    "tags": [
     "sport",
     "vakti"
    ],
-   "line": "Tajmeruri vaš sala: pauza maškar e seturi, HIIT, Tabata, EMOM, AMRAP, cirkuite thaj metronomo, use jek jurnalo e antrenamentoskoro e kg thaj repeticiensa."
+   "line": "Tajmeruri vaš sala: pauza maškar e seturi, HIIT, Tabata, EMOM, AMRAP, cirkuite thaj metronomo, use jek jurnalo e antrenamentoskoro e kg thaj repeticiensa.",
+   "detail": "Timeri vaš o gimnastiko thaj lilo e trenengo ando jek HTML file: adaptivo xaramipen maškar e serie, Interval/HIIT, Tabata, EMOM, AMRAP, cirkuita e stacienqe, tempo, metronomo, 4-kurkengo čhonutno programo, katalogo e ćirenqo thaj QR kodura vaš e mašini. O datura ačhen ando browseri; o interfejso si pe romanes."
   },
   "ScutSonor": {
    "tags": [
     "siguranca",
     "zvuko"
    ],
-   "line": "Zorano zvuko thaj stroboskopo e lampa vaš e arakhipa e agresive džukelenca, use jek ghido vaš o phiripe. Jek ažutor, na si garantimi arakhiba."
+   "line": "Zorano zvuko thaj stroboskopo e lampa vaš e arakhipa e agresive džukelenca, use jek ghido vaš o phiripe. Jek ažutor, na si garantimi arakhiba.",
+   "detail": "Kerel jek 2–8 kHz sweep, eksperimentalo ultrazvuko, jek sirena thaj jek test vaš o zvučniko, e limiteriça so ačhel e zorale zvukos, strobo e lanternaqo (2,5 Hz), modo vaš o dive thaj ghid e sigurancaqo. Jek file, bi lingipe. O dokazi kaj o zvuko tradel e džukle si slabe."
   },
   "MIRAJ": {
    "tags": [
     "dikhipe",
     "edukacia"
    ],
-   "line": "Sar dikhel e retina thaj sar kerel o godi e imagine: fovea, o kor than, iluzie thaj jek kviz, pe trin nivele."
+   "line": "Sar dikhel e retina thaj sar kerel o godi e imagine: fovea, o kor than, iluzie thaj jek kviz, pe trin nivele.",
+   "detail": "Interaktivo sikavipe e dikhipnasqo pe trin nivelura (neve, maškarutne, avrijal): e retina, e fovea, o koro than, e optikane atencie, jek rezumato thaj jek kvizo e 10 pučipnenqo. Jek file, interfejso pe romanes thaj anglikano."
   },
   "ANTROPOS": {
    "tags": [
     "screening",
     "biologija"
    ],
-   "line": "Jek orientativo štiinčifiko profilo, kalkulimo lokalno: PhenoAge biologikano berš, glaso, vast-ramomos, ramomos e ceasosko, TIPI personalitate thaj vakti e reakciakoro."
+   "line": "Jek orientativo štiinčifiko profilo, kalkulimo lokalno: PhenoAge biologikano berš, glaso, vast-ramomos, ramomos e ceasosko, TIPI personalitate thaj vakti e reakciakoro.",
+   "detail": "Edukativo instrumento vaš o filtrimo, na si diagnoza: PhenoAge biologikani vrasta e garda e dikhipnasqi, analiza e glasosqi, grafometria e ramosarimasqi, testura e ceasosqi thaj e manušesqo te ramos, TIPI, testura e reakciaqe, printimo raporto thaj eksporto JSON. O datura ačhen ando browseri."
   },
   "DESCANTAR": {
    "tags": [
     "folklori",
     "bobi"
    ],
-   "line": "Divinacia e bobenca, 41 bobi (3×3 metoda, oltenikani varianta) thaj 12 tradicionale descântece, sar objekto e folklorosko studiosqo."
+   "line": "Divinacia e bobenca, 41 bobi (3×3 metoda, oltenikani varianta) thaj 12 tradicionale descântece, sar objekto e folklorosko studiosqo.",
+   "detail": "Romani dat ande bobi ande trin metode (3×3 pala lil, Oltenia, trin grămezi), genipen pala Šero, Jilo thaj Pinrre, 12 tradicionalone descântece, faza e čhonesqi, brojačo e recitaciaqo, generatoro e descântecenqo, istoria thaj jek ghid so šaj te kopiines. Folkloriko kontinuto paruvdo ande 8 čhiba e AI, na reviduime e čače vorbitorendar."
   },
   "Index-fara-frontiere": {
    "tags": [
     "katalogo",
     "resursi"
    ],
-   "line": "Jek katalogo e single-file HTML aplikacienqero: e kolekcia chiuta.github.io use avrutne resursi, e rodipnasa thaj taguri."
+   "line": "Jek katalogo e single-file HTML aplikacienqero: e kolekcia chiuta.github.io use avrutne resursi, e rodipnasa thaj taguri.",
+   "detail": "Oxto projekturi katar e autoresqi kolekcia thaj oxto avrutne resursi, sikade sa o drom, e živo rodipnaça, e tagi pe kliko, jek RO/EN paruvipe, kali/parni tema thaj jek intrimo so katalogil korkoro pes. Bi rjetake mangipena. Jek statiko snimko katar o 5 julio 2026."
   },
   "DECUPAJ": {
    "tags": [
     "reels",
     "video"
    ],
-   "line": "Ker jek podcast, audio vaj video, vertikale klipuri e subtitrurenca, ando browser, bi kontosko thaj bi watermarko. Tire fišuri ni džan avri katar o aparato."
+   "line": "Ker jek podcast, audio vaj video, vertikale klipuri e subtitrurenca, ando browser, bi kontosko thaj bi watermarko. Tire fišuri ni džan avri katar o aparato.",
+   "detail": "Vertikale reelsuri andar jek podcasto (audio vaj video) ando jek HTML file: alosar o kotor pe talaso e zvukosqo, ande sugestie e momentenqe, lokalo transkripcia e Whisper-eça, stilime podnaslovi, 4 aspekturi (9:16, 4:5, 1:1, 16:9), rjata vaš eksporto thaj MP4 e WebCodecs. Interfejso ande 8 čhiba."
   },
   "LECTOR": {
    "tags": [
     "audio",
     "lila"
    ],
-   "line": "Lila genime zorales ando browser: EPUB, DOCX, PDF, TXT vaj teksto pastem, bi kontosko thaj bi serveri. O teksto ni džal avri katar o aparato."
+   "line": "Lila genime zorales ando browser: EPUB, DOCX, PDF, TXT vaj teksto pastem, bi kontosko thaj bi serveri. O teksto ni džal avri katar o aparato.",
+   "detail": "Ašun lila genimasa ande jek HTML file: EPUB, DOCX, PDF (e romano OCR vaš e skenuri), TXT; e aparatosqe glasura vaj Piper ro_RO, e vorba so bolel ačhel markime, timeri vaš o sovipen, kapitole, markeri, lekšikono e uštaripnasqo, lokalo biblioteka thaj teme lokhe vaš e disleksia. Interfejso ande 8 čhiba."
   },
   "FARFURIA": {
    "tags": [
     "nutricia",
     "sastipe"
    ],
-   "line": "Jek bi love digitalo dietetičaro: personalizime kalorie thaj makro, jek 7-đesutno plano xaibengo, jek xaibengo jurnalo thaj ačhaviba e kilosko. Na thovel e doktoro vaj e dietetičaro."
+   "line": "Jek bi love digitalo dietetičaro: personalizime kalorie thaj makro, jek 7-đesutno plano xaibengo, jek xaibengo jurnalo thaj ačhaviba e kilosko. Na thovel e doktoro vaj e dietetičaro.",
+   "detail": "Digitalo dietetičaro ando jek HTML file: kalorie thaj makro ciljurja (Mifflin–St Jeor, nivelo e aktivitetaqo, ciljo), jek 7-diveskero plano e xabengo e filtrenca vaš e dieta thaj e alergeni, baza e xabenqi, jurnali e xabenqo thaj sikavipe e kilengo. Regule e sigurancaqe vaš e cire, e istoria e xabeskere dosaqi thaj e vrikake nasvalipe. Interfejso ande 8 čhiba."
   },
   "VITALIS": {
    "tags": [
     "sastipe",
     "lungo dživdipe"
    ],
-   "line": "Jek privato amalo vaš sastipe, lungo dživdipe thaj biohacking: nou stlpi rangime pala dokazi, kalkulatoruri, jek skoro e dživdipnaskoro thaj jek đesutno ritualo. Na si medicinako sfato."
+   "line": "Jek privato amalo vaš sastipe, lungo dživdipe thaj biohacking: nou stlpi rangime pala dokazi, kalkulatoruri, jek skoro e dživdipnaskoro thaj jek đesutno ritualo. Na si medicinako sfato.",
+   "detail": "Ažutitori vaš e sastipe thaj o lungo dživdipe ando jek HTML file: nou stuburja zakerde pala e dokazi, kalkulatura (HOMA-IR, TyG, kurmo-ko-lungo, Mifflin–St Jeor, zone e jileskere ritmosqe, ciklura e sovipnasqe, proteini), timeri vaš o postipe, ritmo e phurdipnasqo, 360 skoro e radar grafikoça, referentne vrednosti vaš e biomarkeri thaj sledimo e sako diveskere ritualosqo. Na oficialo ažutitori vaš o BioHacking360 event. Interfejso ande 8 čhiba."
   },
   "REZONANTA": {
    "tags": [
     "komunikacia",
     "media"
    ],
-   "line": "Jek ghido thaj instrumenturi vaš komunikacia thaj media: mesaji, kanali, komunikato e presako, intervju, clarita, plano thaj krizi."
+   "line": "Jek ghido thaj instrumenturi vaš komunikacia thaj media: mesaji, kanali, komunikato e presako, intervju, clarita, plano thaj krizi.",
+   "detail": "Sar te kerdes e manušen te ašunen, ando jek HTML file: 12 principi e praktikane testosa, e “kher e mesažosqo” (jek 30-sekundosko pitch, jek postiri, jek cino thaj jek bolimasqo verzia), rekomandacie vaš e mediake kanali, generatoro e presa-komunikatosqo ando oklopno piramida, jek lil vaš e intervju, analizatori e tekstoskere ačhipnaqo, jek plano e komunikaciaqo e eksportosa text/CSV thaj e pasura e jekhte oraqe ande jek krizo. Interfejso ande 8 čhiba."
   },
   "Claritas": {
    "tags": [
     "pristupačnost",
     "extensija"
    ],
-   "line": "Jek sa-ande-jek extensija e browserosqi vaš pristupačnost: ladžo e kontrastosko, modo vaš genipe, genipe pe zorales thaj jek WCAG audit. Bi telemetria, bi rjeta, bi kontosko."
+   "line": "Jek sa-ande-jek extensija e browserosqi vaš pristupačnost: ladžo e kontrastosko, modo vaš genipe, genipe pe zorales thaj jek WCAG audit. Bi telemetria, bi rjeta, bi kontosko.",
+   "detail": "Bi-love ekstensia vaš e dostupnipe ando browseri: automatikano kontrasto-pačipe (WCAG AA/AAA), e zorale kontrastoske teme, filtri vaš e boja-korimata, bareder teksto thaj fonturi lokhe vaš e disleksia, lineal vaš o genipen, maska thaj lupa, modo vaš o genipen, bolipen e vaznime, bare kliko-thana thaj skeniripe e jekhe butonosa, WCAG 2.2 audito, lokalone screenshoturi thaj ekranosqo snimipe. Vaš Chromium, Firefox thaj Safari; interfejso ande 8 čhiba."
   },
   "TurboCursa": {
    "tags": [
     "trke",
     "Rust"
    ],
-   "line": "Jek pseudo-3D arcade trkosko loko ramimo ande Rust: pejzaži kerde katar seme, 11 modi, jek karijera pe divizii thaj 2 khelitora. Originalo, bi kodo vaj asetura katar aver loko."
+   "line": "Jek pseudo-3D arcade trkosko loko ramimo ande Rust: pejzaži kerde katar seme, 11 modi, jek karijera pe divizii thaj 2 khelitora. Originalo, bi kodo vaj asetura katar aver loko.",
+   "detail": "Clean-room pseudo-3D arcade khelipen e kursenqo ramo ando Rust: originalo motori, art, muzika thaj nav, sa generime katar jek seed (19 pejzažurja), kampania, vrama-kurso, bi-agoreskero, Rush Hour, slalom, ogledalo, Blackout, Zen, kontra CPU, duj khelne pe jek ekrano thaj jek karijera pe divizie. Kerel buči nativo vaj sar jek web file; interfejso ande 8 čhiba."
   },
   "ANTENA": {
    "tags": [
     "radio",
     "antene"
    ],
-   "line": "Buči ande bući: jek NEC-2-kompatibilo solveri vaš antene e tarenca (metoda e momentenqiri) e browserosko front end. Dži akana numa jek pre-alfa skeleto."
+   "line": "Buči ande bući: jek NEC-2-kompatibilo solveri vaš antene e tarenca (metoda e momentenqiri) e browserosko front end. Dži akana numa jek pre-alfa skeleto.",
+   "detail": "Buči ando than: jek NEC-2-kompatibilno solveri vaš e teliske antene (metoda e momentenqi) e browser front-endosa. Dži akana numa jek pre-alpha skeleto."
   },
   "ARBITRU": {
    "tags": [
     "loko",
     "rukuna"
    ],
-   "line": "Buči ande bući: jek univerzalo motoro e rukunengo vaš tabla, karti, zaruri thaj puzzle loko, jek deklarativo čhib e rukunengi. Dži akana numa jek pre-alfa skeleto."
+   "line": "Buči ande bući: jek univerzalo motoro e rukunengo vaš tabla, karti, zaruri thaj puzzle loko, jek deklarativo čhib e rukunengi. Dži akana numa jek pre-alfa skeleto.",
+   "detail": "Buči ando than: jek univerzalo motori e regulenqo vaš e tabla, karti, zarengere thaj puzzle khelipena, e deklarativo čhib e regulenqi. Dži akana numa jek pre-alpha skeleto."
   },
   "ASTROLABIU": {
    "tags": [
     "astronomija",
     "kalendaruri"
    ],
-   "line": "Buči ande bući: jek motoro e nebosqere evenimenturengo (vaktosqe skali, eklipsi, ankhipe thaj bešipe, kalendaruri), ande čisto Rust. Dži akana numa jek pre-alfa skeleto."
+   "line": "Buči ande bući: jek motoro e nebosqere evenimenturengo (vaktosqe skali, eklipsi, ankhipe thaj bešipe, kalendaruri), ande čisto Rust. Dži akana numa jek pre-alfa skeleto.",
+   "detail": "Buči ando than: jek motori e ašmeskere intamplenqo (vramaqe skale, eklipse, ušlipe thaj perimo, kalendari), ando čisto Rust. Dži akana numa jek pre-alpha skeleto."
   },
   "ECOGRAMA": {
    "tags": [
     "audio",
     "restaurarea"
    ],
-   "line": "Buči ande bući: jek editori e spektrogramaqoro thaj restaurarea e audiosqiri: alos pe spektrograma, thov šukar, eksportin. Dži akana numa jek pre-alfa skeleto."
+   "line": "Buči ande bući: jek editori e spektrogramaqoro thaj restaurarea e audiosqiri: alos pe spektrograma, thov šukar, eksportin. Dži akana numa jek pre-alfa skeleto.",
+   "detail": "Buči ando than: jek editori e spektrogramaqo thaj restaurime e audio-esqo: alosar pe spektrogram, pačuv, eksportin. Dži akana numa jek pre-alpha skeleto."
   },
   "ecou-spectral-rs": {
    "tags": [
     "audio",
     "Rust"
    ],
-   "line": "Buči ande bući: jek nativo Rust editori e spektrogramaqoro e plugin vaš redukcia e zgomotosqiri thaj detekcia e glasosqiri. Si les jek kodosko skeleto thaj jek plugin format, numa naj ni jek funkcia gata."
+   "line": "Buči ande bući: jek nativo Rust editori e spektrogramaqoro e plugin vaš redukcia e zgomotosqiri thaj detekcia e glasosqiri. Si les jek kodosko skeleto thaj jek plugin format, numa naj ni jek funkcia gata.",
+   "detail": "Buči ando than: jek nativo Rust editori e spektrogramaqo e plugini vaš o zvukosko lokhipen thaj o dikhipen e glasosqo. Si leste jek kodoske skeleto thaj jek plugin format, numa dži akana naj ni jek gata funkcia."
   },
   "MARTOR": {
    "tags": [
     "arhivarea",
     "dokazi"
    ],
-   "line": "Buči ande bući: forensiko web capture ande WARC/WACZ e hašurenca, semnurenca thaj pačivale vakti-semnuri, verifikabilo bi internetosko. Dži akana numa jek pre-alfa skeleto."
+   "line": "Buči ande bući: forensiko web capture ande WARC/WACZ e hašurenca, semnurenca thaj pačivale vakti-semnuri, verifikabilo bi internetosko. Dži akana numa jek pre-alfa skeleto.",
+   "detail": "Buči ando than: forenziko web snimipe ande WARC/WACZ e hashenca, ramosarimaça thaj patjavne vramaqe markenca, so šaj te si verifikuime offline. Dži akana numa jek pre-alpha skeleto."
   },
   "NEAMURI": {
    "tags": [
     "rodnipe",
     "genealogija"
    ],
-   "line": "Buči ande bući: jek motoro e rodnipaskoro, katar jek drom ando familiako kašt dži ko chačo termino e rodosko ande but čhiba. Dži akana numa jek pre-alfa skeleto."
+   "line": "Buči ande bući: jek motoro e rodnipaskoro, katar jek drom ando familiako kašt dži ko chačo termino e rodosko ande but čhiba. Dži akana numa jek pre-alfa skeleto.",
+   "detail": "Buči ando than: jek motori e rodimasqo, katar o drom ando familiako rukh dži ko čačo termino e rodimasqo ande but čhiba. Dži akana numa jek pre-alpha skeleto."
   },
   "TACTIL": {
    "tags": [
     "braille",
     "pristupačnost"
    ],
-   "line": "Buči ande bući: jek tactilo kotor e ankhipaskoro: braille formaturi (BRF, Unicode), displeji, embosseri thaj vibracia pe touchscreen. Dži akana numa jek pre-alfa skeleto."
+   "line": "Buči ande bući: jek tactilo kotor e ankhipaskoro: braille formaturi (BRF, Unicode), displeji, embosseri thaj vibracia pe touchscreen. Dži akana numa jek pre-alfa skeleto.",
+   "detail": "Buči ando than: jek sloji vaš o taktilo kherdipen: braille formati (BRF, Unicode), ekrani, embosseri thaj vibracia e atingipnaske ekranosqi. Dži akana numa jek pre-alpha skeleto."
   },
   "atelier-verificare": {
    "tags": [
@@ -953,42 +1095,48 @@
     "verifikacia",
     "fotografie"
    ],
-   "line": "Kontrolin fotografie, video, linkuri thaj domeni ando tiro browser, ništo na ladel avri: chačo fišosko tipo thaj SHA-256, EXIF/GPS, XMP/IPTC, Content Credentials (numa genipe), eroresko-nivelo analiza. Našti te sikavel kaj jek foto si chachi. Alfa."
+   "line": "Kontrolin fotografie, video, linkuri thaj domeni ando tiro browser, ništo na ladel avri: chačo fišosko tipo thaj SHA-256, EXIF/GPS, XMP/IPTC, Content Credentials (numa genipe), eroresko-nivelo analiza. Našti te sikavel kaj jek foto si chachi. Alfa.",
+   "detail": "Jek verifikipnasko instrumento vaš e žurnalisturi thaj e kamle genne so kerel buči lokalo. Thov fotografie, videuri, linkuri, domenura vaj teksto thaj lel rezultatura e nivelosa e shushipnaqo vaš sako: o čačo file-eskero tipo, SHA-256, EXIF thaj GPS pozicia, XMP thaj IPTC, ćirdimata e AI fotografiengere generatorenqo, Content Credentials manifesturi (C2PA; genime, na validuime), analiza e greša-nivelosqi vaš JPEG, video metadate e ključoske kadrenca vaš o pale-rodipen e fotografiaqo, thaj anatomia e linkosqi. Duj opcionalone rjetake kontrole (DNS rezumato, Internet Archive) kerena buči numa pala so markines jek kutija e manglipasqi. O raporto (Markdown, JSON vaj PDF) sikavel e limiti e metodaqe. Našti te dokazinel kaj jek fotografia si čači: e metadate so naj phenen cirdo, thaj e metadate šaj te si falšime. Alpha; nou katar e deš-jek kontrole kerena buči offline; e file-uri ačhen ando browseri."
   },
   "balanta": {
    "tags": [
     "AI",
     "evaluacia"
    ],
-   "line": "Konparin AI-modeluri bi te dikhes kon: thov o ažutipe e duje dži ko oxto modelengere pe 92 prompturi ando romaniko, anglikano thaj ungrikano, vota A vaj B thaj lel jek rangiro e intervalonca. Alfa; kerel buči bi internetosko."
+   "line": "Konparin AI-modeluri bi te dikhes kon: thov o ažutipe e duje dži ko oxto modelengere pe 92 prompturi ando romaniko, anglikano thaj ungrikano, vota A vaj B thaj lel jek rangiro e intervalonca. Alfa; kerel buči bi internetosko.",
+   "detail": "Zakerdo paš-paš evaluipe e AI modelenqo pe romanes. Korkoro thoves e ginavipa sakone modelosqe (ništo naj vičime: bi API čavi, bi kontura), e aplikacia garavel e navura e modelenqe ando ginavipa, thovel e rjata katar jek seed thaj skriminel tiro glaso. O rangosa kerel buči e Bradley–Terry thaj Elo e 95% bootstrap intervalenca, vi e procento e bijanipnaqo, e pozicia-pristrasno thaj e tabele jek-kontra-jek. O glasura thaj e ginavipa si putarde JSON Lines file-uri. Cine glasenca vaj prompturenca o rangosa ništo generalo ni phenel. Alpha; o datura ačhen ando browseri; bi lingipe."
   },
   "calendarium": {
    "tags": [
     "kalendaruri",
     "vakti"
    ],
-   "line": "Ramos jek data ande savo dži ko un-deš kalendaruri (Gregorianikano, Julianikano, Ebrejoskero, Hijri, Persikano, Kineziko, Maya, Marsosko…) thaj dikh la ande sa e avre, e čhonesko dikhipe. Alfa; kerel buči bi internetosko."
+   "line": "Ramos jek data ande savo dži ko un-deš kalendaruri (Gregorianikano, Julianikano, Ebrejoskero, Hijri, Persikano, Kineziko, Maya, Marsosko…) thaj dikh la ande sa e avre, e čhonesko dikhipe. Alfa; kerel buči bi internetosko.",
+   "detail": "Paruvel e datumura maškar jekhdeš kalendari (Gregorianoko, Julianoko, Revideno Julianoko, Hebrejsko, Hijri, Persiako, Koptiko, Etiopiako, Chinesko, Maya thaj Mars Sol Date), sikavel o Julianoko Dive, o kurkesko dive thaj e ISO kurko, thaj si leste jek čhonutno dikhipen e dujto kalendareça tala sako dive. Si le romane notiquri (phurano thaj neve stilo, o paruvipe katar o 1919, e Patradži) thaj jek atlaso e kalendarenqo, jek plugin vaš sako kalendari. E vrednosti si kalkulime, e sikade limitenca (o Hijri kalendari si o tabelakero; e rjaturi si arakhle). Alpha, ande 8 čhiba, kerel buči offline; bi lingipe."
   },
   "glosar": {
    "tags": [
     "čhiba",
     "dikcionaruri"
    ],
-   "line": "Jek dikcionaro bi internetosko vaš Armanikano, Megleno-Romaniko thaj Romani: rod bi diakritike, dikh save fundamentale lafura naj, thov lafura e sursasa thaj jek ramomos. Alfa."
+   "line": "Jek dikcionaro bi internetosko vaš Armanikano, Megleno-Romaniko thaj Romani: rod bi diakritike, dikh save fundamentale lafura naj, thov lafura e sursasa thaj jek ramomos. Alfa.",
+   "detail": "Lekšikona vaš e čhiba e minoritetenqe thaj e ulavde ande ristipe, kerde katar lengere vorbitorura. Rodel bi diakritike, sikavel e pačajipe (skica, sursa, reviduime), si le jek tabela e acoperirea vaš 50 bazno koncepturi, thaj mekhel te thos vorbi e sursa, e licenca thaj jek snimipe (dži ko 50 KB). Eksportinel TSV thaj Anki file-uri thaj jek kontribucioneskero file vaš o projekto. E startone listi si cine — numerali thaj nesave vorbi, sako e jek publikuime sursa — thaj ni jek vorbitori na dikhla len dži akana. Alpha; kerel buči offline; o datura ačhen ando browseri dži kana len tele."
   },
   "graiul": {
    "tags": [
     "folklori",
     "arhiva"
    ],
-   "line": "Jek arhiva bi internetosko e romanikane folklorosqiri (paramisa, descântece, ghičitori, colinde) e sursasa, judeco thaj akordo. Ankhavel e deš paramisenca; šaj te thoves buteder. Alfa."
+   "line": "Jek arhiva bi internetosko e romanikane folklorosqiri (paramisa, descântece, ghičitori, colinde) e sursasa, judeco thaj akordo. Ankhavel e deš paramisenca; šaj te thoves buteder. Alfa.",
+   "detail": "Rodipen bi diakritike, e filtrenca pala tipo, judeco thaj pačajipe; jek vorbasqo e diveskero (e jekhe vaš sa pe jek datumo), jek skematiko harta e plitkenqi vaš 41 judece thaj Bukurešti, thaj jek forma vaš te thos nešto so manglel jek sursa thaj, vaš e descântece thaj sa so si khedime katar jek manuš, jek manglipe. Eksportinel jek kontribucioneskero file thaj TSV. E startone datura si deš romane vorbi katar Wikiquote; ni jek na si reviduime katar jek folkloristo. Alpha; kerel buči offline; o datura ačhen ando browseri dži kana len tele."
   },
   "indicativ-international": {
    "tags": [
     "radio",
     "examenuri"
    ],
-   "line": "Ker praktika e pučhipnenca e radioamaturo examenesqe e pandž kutie-repeticiako plano thaj probe examenuri e vaktosa; importin pačkuri pučhipnengere ande jek kumuno JSON format. Si 50 pučhipena vaš praktika; na si oficialo banka. Alfa."
+   "line": "Ker praktika e pučhipnenca e radioamaturo examenesqe e pandž kutie-repeticiako plano thaj probe examenuri e vaktosa; importin pačkuri pučhipnengere ande jek kumuno JSON format. Si 50 pučhipena vaš praktika; na si oficialo banka. Alfa.",
+   "detail": "Trenero thaj simulatori e ispitosqo vaš e pučipena e radioamatoreskere licencaqe, jek ekhetano pako format vaš te šaj sakoi phuv te thol peski baza. “Sikljov” phenel pale e čače ginavipa palal 1, 3, 7, 14 thaj 30 dive thaj sikavel sako ginavipe e sursasa; “Ispiti” si jek testo e vramaqe thaj e limita vaš te des; “Pako” importinel thaj dikhel e paka thaj ačhel kopia e tire progresosqi. O pako so si ande aplikacia ažutinel 50 originale probako pučipena ramome vaš adava projekto — na si oficialo baza — thaj ni jek phuvako pako naj ande aplikacia dži akana. Alpha; kerel buči offline; o progreso ačhel ando browseri."
   },
   "proiector-fara-frontiere": {
    "tags": [
@@ -996,112 +1144,128 @@
     "projekcia",
     "kviz"
    ],
-   "line": "E klasako telefonuri kerdon jek ekhetano ekrano, bi serveri thaj bi kontosko: tajmeri, anketa, kviz, notiri thaj tabla, phandle e QR-kodosa vaj pastem teksto pe jek rjeta. Alfa: ainei probime pe chače telefonuri."
+   "line": "E klasako telefonuri kerdon jek ekhetano ekrano, bi serveri thaj bi kontosko: tajmeri, anketa, kviz, notiri thaj tabla, phandle e QR-kodosa vaj pastem teksto pe jek rjeta. Alfa: ainei probime pe chače telefonuri.",
+   "detail": "Jek ekhetano ekrano vaš e klasa, bi server thaj bi konto. O sikavno putrel e pagina ko projektori; sakole siklovneskero telefono phandel pes e jek kodosa (QR kadra, fotografia e kodosqi vaj pastime teksto), dži ko 30 telefonura ekhe. Si pandž aktivitetura: jek timeri e pale-genimasqo, jek anketa e živo bareça, jek kvizo (pučipena katar jek JSON, sasto teksto vaj CSV file; o čačo ginavipe ačhel pe projektori dži kana si sikado; bonuso vaš e sigipe thaj tabela e punktenqi), sticky notiquri thaj jek tabla jek bojasa vaš sako telefono. O rezultatura šaj te ačhen sar CSV, teksto vaj PNG. Sako aktiviteto kerel buči ande jek izolime kadro numa e lubnenca so phenel, thaj jek neva aktiviteto si jek deskriptori thaj jek skripto. O sikavno šaj te phandel vaj te lel avri jek telefono thaj te agorisarel e sesia; sako aparato alosarel peskiri čhib (oxto) thaj pesko dikhipen (kali, zoralo kontrasto, bare vorbi). Kerel buči offline kana si putardo jekvar thaj šaj te instalines les. Alpha: probime ando Chromium e čače phandipnenca pe jek mašina, na pe čače telefonura, aver browserura vaj sikavnenge rjeti. O phandipen mangel e jekhe lokalo rjeti (bi relay), sikavel o IP e sako aparatosqo e averesqe thaj na verifikuinel kon si o aver aparato. O format e kvizosqo “Undava” na si te del: ni jek specifikacia na arakhlo."
   },
   "regula": {
    "tags": [
     "loko",
     "rukuna"
    ],
-   "line": "Khel pandž klasikane loko vaš duj khelitora (Nine Men's Morris, Alquerque, Fanorona, Mū tōrere, Hnefatafl) pale o kompjuteri vaj jek amal; thov tiro korkoro loko sar JSON. Alfa; kerel buči bi internetosko."
+   "line": "Khel pandž klasikane loko vaš duj khelitora (Nine Men's Morris, Alquerque, Fanorona, Mū tōrere, Hnefatafl) pale o kompjuteri vaj jek amal; thov tiro korkoro loko sar JSON. Alfa; kerel buči bi internetosko.",
+   "detail": "Jek motori e regulenqo vaš e tradicionalone tablengere khelipena: sako khelipen si jek JSON file, thaj o tekstos e regulenqo ande oxto čhiba si generimo katar e korkore datura so khelel o motori, vašoleske o teksto thaj o khelipen našti te phagen jek averestar. Sako rig šaj te si manuš, jek sansako khelno vaj o kompjuteri pe duj nivelura; khuvipe, pale-kerdo, jek ažutipe thaj jek lilo e ginavengo so šaj te kopiines. Šaj te pastines, te verifikuines thaj te khelés tiro korkoro khelipen. E khelipena si rekonstrukcie, na turnirengere regule, thaj sakoi phenel sar sigurno si lakere regule. Alpha; kerel buči offline; bi lingipe."
   },
   "vietar-packs": {
    "tags": [
     "natura",
     "specije"
    ],
-   "line": "Dikh, importin, kontrolin thaj ker regionalne pačkuri e specienqere vaš VietAR: anava ande but čhiba, markuri vaš otrava, sima. Pandž draftokere startuitoruri pačkuri e 71 specienca. Alfa; kerel buči bi internetosko."
+   "line": "Dikh, importin, kontrolin thaj ker regionalne pačkuri e specienqere vaš VietAR: anava ande but čhiba, markuri vaš otrava, sima. Pandž draftokere startuitoruri pačkuri e 71 specienca. Alfa; kerel buči bi internetosko.",
+   "detail": "Regionale pako e specienqo vaš o VietAR: navura ande but čhiba, jek marko vaš e otrava, e privicakere si-avkavne, thaj than vaš e licencime fotografie thaj linkuri e zvukosqe. Dikh thaj rod pandž startone paka (Rumunia: rukhe thaj gribi, čiriklja, gruve; Bulgaria thaj Moldova: skeleturi), importin jek pako, dikh les e kodole regulenca sar o repozitorio, vaj ker jek vaš jek školakiri klasa vaj jek klubo e natura. E startone paka si skice bi fotografie vaj zvuka, thaj “na markime sar otravisko” ni kana na phenel kaj si xabnasqo vaj sigurno. O VietAR aplikacia našti te importinel paka dži akana. Alpha; kerel buči offline."
   },
   "PatruZeci": {
    "tags": [
     "WD-40",
     "DIY"
    ],
-   "line": "O ilustrime, animime atlaso e WD-40 xasnaripnasqoro: jek ghido e 147 kartenqoro thaj e oficialo lista e 1993 xasnaripnasqiri, sakoneste lesqiri animimi skena. Na si oficialo, bi internetosko, bi kontosko."
+   "line": "O ilustrime, animime atlaso e WD-40 xasnaripnasqoro: jek ghido e 147 kartenqoro thaj e oficialo lista e 1993 xasnaripnasqiri, sakoneste lesqiri animimi skena. Na si oficialo, bi internetosko, bi kontosko.",
+   "detail": "Ilustrime, animime atlaso e WD-40 sprayosqe xasnaripnasqo ando jek offline file: jek ghid e 147 kartenqo ande 14 kategorie (e nivelosa e riskosqo thaj so kerel o spray), e oficialo lista “2000+ xasnaripa” e 1993 intrimatenca, thaj jek kotor e 25 maj xasnaripnenqo, miti thaj ažutipa katar web artikoluri. 131 animime scenake variante, filtri pala kategoria thaj funkcia, interfejso ande 8 čhiba. Na oficialo, nezavisimo aplikacia."
   },
   "ODISEEA": {
    "tags": [
     "Voyager",
     "dokumentaro"
    ],
-   "line": "Jek dokumentaro e 4,5 minutenqoro vaš e Voyager 1 thaj 2, ande jek HTML fišo: skene kerde e grafikano karta, 2D thaj 3D eksporto vaš VR čamavre, pe 8 čhiba."
+   "line": "Jek dokumentaro e 4,5 minutenqoro vaš e Voyager 1 thaj 2, ande jek HTML fišo: skene kerde e grafikano karta, 2D thaj 3D eksporto vaš VR čamavre, pe 8 čhiba.",
+   "detail": "Dokumentaro e 4,5 minutenqo pe e Voyager 1 thaj 2 sondi, ando jek HTML file so kerel buči lokalo ando browseri, bi server thaj bi instalipe. Proceduralone scene generime pe e grafikani karta (WebGL): planeti, sonda, raketa, DSN antena, o Golden Record, e heliosfera, o Pale Blue Dot. Publike NASA/JPL thaj Wikimedia Commons fotografie, vaj tiri korkori fotografia vaš sako scena. Eksporto ande 2D, paš (1920×1080) thaj sasto (3840×1080) 3D paš-paš, thaj jek modo vaš o telefono vaš VR okulare sar VR BOX; ambijentalo muzika generime ando browseri, opcionalo bolipen. Interfejso, bolipen, podnaslovi thaj kredite ande 8 čhiba."
   },
   "EXIF-CURAT": {
    "tags": [
     "metadatele",
     "privatnost"
    ],
-   "line": "Buči ande bući: jek instrumento te dikhes thaj te nikalos e garade datele ande fišuri (imaginja, PDF, Office, video: EXIF, GPS, XMP), e memoriasa siguro parseruri, ramimo ande Rust. Dži akana numa jek pre-alfa skeleto."
+   "line": "Buči ande bući: jek instrumento te dikhes thaj te nikalos e garade datele ande fišuri (imaginja, PDF, Office, video: EXIF, GPS, XMP), e memoriasa siguro parseruri, ramimo ande Rust. Dži akana numa jek pre-alfa skeleto.",
+   "detail": "Buči ando than: jek instrumento te dikhes thaj te hrabines e garude datura ande file-uri (fotografie, PDF, Office, video: EXIF, GPS, XMP), e parseruri sigurne vaš e memoria, ramo ando Rust. Dži akana numa jek pre-alpha skeleto."
   },
   "PORUMBEL": {
    "tags": [
     "fotografie",
     "transfero"
    ],
-   "line": "Ando korkoro mukhel e fotografie so keres e Open Camera pe tiro telefono ande jek dosar pe tiro kompjuteri, jek dosar vaš sakone sesiune, thaj putrel len ando LegatorOCR. Bi kontosko, bi cloudo, bi crates katar trite."
+   "line": "Ando korkoro mukhel e fotografie so keres e Open Camera pe tiro telefono ande jek dosar pe tiro kompjuteri, jek dosar vaš sakone sesiune, thaj putrel len ando LegatorOCR. Bi kontosko, bi cloudo, bi crates katar trite.",
+   "detail": "Jek cino programo ramo ando Rust, bi trite crates (Windows, macOS, Linux), so anel e fotografie so kerdan e Open Camera ko tiro kompjuteri: pe Wi-Fi (jek upload pagina vaj WebDAV, e QR kodosa), pe ADB (USB vaj Wi-Fi) vaj katar jek sinkronizime direktorio (Syncthing thaj aver). Thovel e fotografie ande jek direktorio vaš sako sesia e fotografienqi thaj putrel sako gata sesia ando LegatorOCR (čhinipen, thovipe e kriveipasqo, kapi, PDF e OCR). Jek lokalo kontrolako panelo thaj jek komanda “porumbel doctor” vaš o diagnoza; ništo na džal avri katar tiri rjeta. Verzia 0.x; licenca MIT."
   },
   "colibri-companion": {
    "tags": [
     "lokalo AI",
     "desktop"
    ],
-   "line": "Jek lačho desktop aplikacia vaš colibri, o lokalo inference motoro: alos jek model so lel pe tiro kompjuteri, ladin les jekhe klikosa thaj vakar lesa. Bi kontosko, bi cloud servisi."
+   "line": "Jek lačho desktop aplikacia vaš colibri, o lokalo inference motoro: alos jek model so lel pe tiro kompjuteri, ladin les jekhe klikosa thaj vakar lesa. Bi kontosko, bi cloud servisi.",
+   "detail": "Jek desktop aplikacia ramo ando Rust vaš o colibri (JustVugg/colibri): arakhel o Python thaj o colibri, sikavel numa e modeluri so si ande tire kompjuteroskiri memoria, anel len tele e pauzaça thaj e pale-startosa, startinel o lokalo server thaj putrel o chat (ginavipa so avena pe kotora, Markdown, ačhe vorbi, rodipen, lokale dokumenturi thaj MCP instrumenturi e lubnaça pe sako vičimo). O panelo Resursi sikavel o procesori, e memoria, e grafikani karta thaj e putarde phandipa. Windows, macOS, Linux; interfejso ande 8 čhiba; licenca Apache-2.0."
   },
   "CartaColibri": {
    "tags": [
     "lokalo AI",
     "biblioteka"
    ],
-   "line": "Jek lokalo AI biblioteka pe Colibrì motoro: indeksuil e dosaruri so alosares, rodel ande lende ande jek ankhipe thaj puči jek lokalo model te kerel rezumato, te ankhavel datele vaj te kerel sinteza, sakovar citil o fišo-sursa. Ništo ni džal avri katar tiro kompjuteri."
+   "line": "Jek lokalo AI biblioteka pe Colibrì motoro: indeksuil e dosaruri so alosares, rodel ande lende ande jek ankhipe thaj puči jek lokalo model te kerel rezumato, te ankhavel datele vaj te kerel sinteza, sakovar citil o fišo-sursa. Ništo ni džal avri katar tiro kompjuteri.",
+   "detail": "Jek programo ramo ando Rust, e lokalo pagina (127.0.0.1) thaj komanda-rinda. Indeksinel e direktoria so alosares (e originali si numa genime, bilo kana paruvde), rodel ando sasto teksto (vorbi, “fraze”, angluno*, AND/OR/NOT, filtri pala tipo, baripe, than) thaj khedel e file-uri. Jek lokalo Colibrì model kerel rezumato, ankalel (tabela vaj JSON, “NA ARAKHLO” ando than e garipnenqo), sintetizinel vaj paruvel, sa o drom e vičime sursenca [S1], [S2] thaj jek grounding skoro. Si lei vi o cino web-grab browseri, jek MCP server numa vaš genipen, importura (bookmarkuri, Obsidian, Zotero, RSS) thaj jek kontrolo e tire korkore tekstosqo kontra e biblioteka. Bi konto, bi telemetria; interfejso ande 8 čhiba; alpha verzia 0.2; licenca MIT."
   },
   "PolyTabletop": {
    "tags": [
     "tabla loko",
     "Rust"
    ],
-   "line": "240 tabla-loko so khelen pes pale o kompjuteri, ando terminalo vaj ande jek grafikano prozoro, use khelipe vaš duj khelitora pe jek tastatura vaj pe rjeta. Ramimo ande Rust; o motoro thaj e loko naj len avrutne dependenci."
+   "line": "240 tabla-loko so khelen pes pale o kompjuteri, ando terminalo vaj ande jek grafikano prozoro, use khelipe vaš duj khelitora pe jek tastatura vaj pe rjeta. Ramimo ande Rust; o motoro thaj e loko naj len avrutne dependenci.",
+   "detail": "Clean-room kolekcia e tablengere khelipnenqi ramo ando Rust: 240 khelipena te khelen kontra o kompjuteri, ando terminali vaj ando grafikano than, vi hot-seat thaj rjetako khelipen vaš duj. Abstraktone klasike, kartengere thaj zarengere khelipena, originale variante e modernone mehanikenqe e peskere navenca, kooperativne khelipena e AI partnerosa, khelipena e garude roliqe, party thaj vorbengere khelipena; o katalogo si le 1200 intrimata, e jek toolkit vaš role-playing (zarura, lila, generatoro e dungeonosqo, simulatori e maškarimasqo). AI kontra-khelno (alpha-beta, MCTS), arena AI kontra AI, transkripturi thaj pale-dikhipena. Interfejso ande 8 čhiba; verzia 0.9; licenca MIT vaj Apache-2.0."
   },
   "STRAJA": {
    "tags": [
     "privatnost",
     "telefono"
    ],
-   "line": "Jek scuto kije e AI-agenti so genen o telefono: sikavel save aplikacie šaj te genen tire notifikacie, ekrano, fotografie thaj SMS, ankhavel tut kana jek nevi lel access thaj legarel tut ko ekrano e setingurenqoro kaj o anglal les. Bi kontosko, bi INTERNET permisia."
+   "line": "Jek scuto kije e AI-agenti so genen o telefono: sikavel save aplikacie šaj te genen tire notifikacie, ekrano, fotografie thaj SMS, ankhavel tut kana jek nevi lel access thaj legarel tut ko ekrano e setingurenqoro kaj o anglal les. Bi kontosko, bi INTERNET permisia.",
+   "detail": "Jek aplikacia vaš Android (APK) thaj iPhone (na ramosardo IPA). Pe Android sikavel e aplikacie e atingipnaske lubnenca vaš e notificacie, e dostupnipnaskere servisi, e rolo e ažutitorosqo thaj e lubne vaš e media thaj SMS, e riskosko skoro vaš sakoi aplikacia thaj vaš o sasto telefono; jek periodikano monitori paruvel o telefono e bazna linijaça thaj sikavel tut pale sako neva atingipe. Putrel e čači pagina e sistemoskere sikavipnaqi vaš te lel pale jek atingipe thaj ni kana na paruvel ništo bi te sikavel. Phanglo atingipe e pale-aračipnaça, thaj jek ghid e 12 mariipnaça vaš e mariipe. Pe iPhone naj audito (o iOS garavel e averengere aplikacie lubne), numa o ghid, jek vastesko registro thaj pale-aračipe. Našti te ačhavel jek agento. Bi INTERNET lubni, bi kopia; 8 čhiba; verzia 1.0; licenca MIT."
   },
   "CUPLAJ": {
    "tags": [
     "imersivo teatro",
     "telefonia"
    ],
-   "line": "Party-line telefonia vaš imersivo teatro: jek flota e sima Android telefonurendar kerdol jek privato telefonosko centralo pe e Wi-Fi e thanesko, bi cloud, bi kontura, bi reklame. Lesqiri nišani si o \"cuplaj\": o ekhetano party line e fixe telefonurenqoro katar o 1980 dži ko 2006."
+   "line": "Party-line telefonia vaš imersivo teatro: jek flota e sima Android telefonurendar kerdol jek privato telefonosko centralo pe e Wi-Fi e thanesko, bi cloud, bi kontura, bi reklame. Lesqiri nišani si o \"cuplaj\": o ekhetano party line e fixe telefonurenqoro katar o 1980 dži ko 2006.",
+   "detail": "Jek Android aplikacia (APK) thaj jek iPhone/iPad aplikacia (na ramosardo IPA). O organizatori thaj e aktora vorbin e dikhnenca pe lokalo Wi-Fi; jek telefono (o kontrolo) si e centrala. Šov telefonoskere epoche (1985 e kružoça, 1995 e tastaturaça, 2003 mobilo, 2025 smartphone, 2045 nosimo, 2080 ekhetano godi), e ekhetani linia kaj duj abonenti ekhetan jek linia, čače vičina, push-to-talk publiko vičipe, jek backstage kanali, kue (teksto pe sasto ekrano, vibracia, zvonipe, blic, vorbimo glaso, fantomsko vičipe) thaj jek skripto e GO thaj PLAY. Bi infrastruktura, opcionalo AES-128-GCM rjetako čavo, direktone P2P vičina. Bi analitika, bi serveri, bi kontura. 8 čhiba; verzia 1.10; licenca MIT."
   },
   "LUSTRUM": {
    "tags": [
     "telefonosko čistitoro",
     "Android"
    ],
-   "line": "Lel palpale tiro telefono: arakhel o khuxino, dupli, sima fotografie thaj e aplikacie-ačhipe, thaj čistil len numa tire akordosa. Naj les INTERNET permisia, vašoleske fizikano našti te bičhavel ništo ni kaj."
+   "line": "Lel palpale tiro telefono: arakhel o khuxino, dupli, sima fotografie thaj e aplikacie-ačhipe, thaj čistil len numa tire akordosa. Naj les INTERNET permisia, vašoleske fizikano našti te bičhavel ništo ni kaj.",
+   "detail": "Jek Android aplikacia (Kotlin). Than pala file-eskero tipo, bare, phurane thaj bi-folose file-uri, exactone dubluri (baripe, sigo ćirdimo, pala kova SHA-256), fotografie sar jek averesa (perceptualo hashing), so ačhilo katar e šinde aplikacie, JPEG kompresia, keširi, mlječe thaj kale fotografie, jek Swiper (čhavo = hrabin, čači = ačh), programime kuchavipe thaj jek 30-diveskero LUSTRUM kosi vaš te ristes pale. Bi INTERNET lubni: ništo na džal avri katar o telefono. Bi root-oskero čudo: o Android 11+ na mekhel ni jek aplikacia te džal ando averengere aplikacienqe direktoria. 8 čhiba (mašinake paruvipa); beta verzia 0.8; licenca MIT."
   },
   "STENOGRAMA": {
    "tags": [
     "transkripcia",
     "audio"
    ],
-   "line": "Transkripcia e lungone audiosqiri ando browser, e lokalo Whisper: jek HTML fišo, bi kontosko, bi serveri, bi watermarko. Tiro audiofišo ni džal avri katar o aparato; ladel pes numa o Whisper model, jekvar."
+   "line": "Transkripcia e lungone audiosqiri ando browser, e lokalo Whisper: jek HTML fišo, bi kontosko, bi serveri, bi watermarko. Tiro audiofišo ni džal avri katar o aparato; ladel pes numa o Whisper model, jekvar.",
+   "detail": "Genel MP3 thaj WAV pe kotora (vašoleske o lungipe na si limitime katar e memoria); e aver formati (M4A, OGG/Opus, MP4, FLAC) si dekodime sasto. Sako kotor si čhindo ko jek pauza vašoleske e vorbi te na phagen; o progreso si ačhardo, vašoleske šaj te ačhes thaj te lel pale. Editori ando pagina (kliko pe jek vrama te ašunes o than), hrabipe e Whisper-eskere tipikane bikheleske frazenqo, eksporto ande .txt, .srt, .vtt, .docx vaj o clipboard. Lel o WebGPU kana si, aver o procesori (WASM). Instalibilo PWA; o model ačhel ando keši pala o jekhto tele-anipe. E biblioteka si čhorde katar jSDelivr ko jekhto transkribipe, kontrolime e SHA-384. Interfejso ande 7 čhiba; licenca MIT."
   },
   "GERMEN": {
    "tags": [
     "lokalo AI",
     "Rust"
    ],
-   "line": "Trenuin jek cikno čhibako model katar o zero, ande čisto Rust, pe jek simplo CPU: bi Python, bi CUDA, bi kontosko, bi rjeta, bi telemetria. Jek binaro, jek tekstosko fišo, jek komanda."
+   "line": "Trenuin jek cikno čhibako model katar o zero, ande čisto Rust, pe jek simplo CPU: bi Python, bi CUDA, bi kontosko, bi rjeta, bi telemetria. Jek binaro, jek tekstosko fišo, jek komanda.",
+   "detail": "Jek Rust programo (pe Burn, lesqe čisto Rust CPU backend) so siklol jek GPT-eskero rjeta pe bajtura vaj pe jek BPE vokabularo siklado katar tiro korkoro teksto, pala kova generinel teksto katar o siklado model. GERMEN Studio: jek lokalo than (127.0.0.1) e kurba e loss, e sigipe thaj e tekstoske primerura, ande 8 čhiba. Komande vaš te meres e kompjuteroskiri sigipe thaj te dikhes thaj te pačes e modelenqere file-uri. Si jek atelieri vaš te sikljoves thaj te eksperimentines, na jek fabrika e chatbotenqi: jek model e 1–25 milionenqe parametrenca siklol e forma e tekstosqi, na e lumako džanipe. Bi GPU, bi mikso preciziaqo. Verzia 0.6; licenca MIT."
   },
   "CUANTOR": {
    "tags": [
     "kvantikano kompjuteri",
     "simulatoro"
    ],
-   "line": "Jek simulatoro e kvantikane kompjuteresqoro vaš tiro desktop, katar 5 dži ko 1000 qubit, e IBM Quantum Composer stilosko interfejso. Egzakto matematika, numa na si chačo kvantikano hardveri."
+   "line": "Jek simulatoro e kvantikane kompjuteresqoro vaš tiro desktop, katar 5 dži ko 1000 qubit, e IBM Quantum Composer stilosko interfejso. Egzakto matematika, numa na si chačo kvantikano hardveri.",
+   "detail": "Jek Rust programo ande štar kotora (kernel, than, komanda-rinda, IBM phandipen) vaš Windows, macOS thaj Linux. Jek tabla vaš e kheriipe sar o IBM Composer: thov e bojatne gates pe liniji (qubiti) thaj dikh sar e barura thaj jek sfera sikaven o rezultato, e kana jek tekstoskero panelo ramol o kodoleske circuito pe čačo vrama ande OpenQASM thaj Qiskit. Trin kalkulatora: jek so gindil sako numero (dži ko 28 qubiti), jek zoralo sigo vaš e sasti gates (dži ko 4096) thaj jek vaš e circuitura e cine rospapa. Measure, reset thaj if ando maškar e kerimasqo, tire korkore gates, simulime zgomoto, rezultatura so šaj te kerdes pale e seed. Genel OpenQASM 2.0 thaj 3.0; šaj te putres o circuito ando IBM Composer vaj te bičhaves les pe jek čačo IBM mašina e tire korkore kontoskere čavesa (na verifikuime pe čače IBM hardveri). Interfejso ande 8 čhiba; verzia 0.2."
   }
  }
 }

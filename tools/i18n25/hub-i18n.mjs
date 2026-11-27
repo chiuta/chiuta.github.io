@@ -183,6 +183,35 @@ ${END}
   html = html.replace(reBlock, '');
   const DCL = "window.addEventListener('DOMContentLoaded',function(){try{applyContent(curLang)}catch(_){}});";
   html = replaceOnce(html, DCL, `${block}${DCL}`, 'DOMContentLoaded applyContent');
+  // 5c) asistentul de descoperire (DD) și insigna „NOU” pentru limbile noi: data/hub-i18n/dd/<limbă>.json
+  {
+    const DDB = '/*i18n25:dd:begin*/', DDE = '/*i18n25:dd:end*/';
+    const dd = {}, newl = {};
+    const enDD = JSON.parse(fs.readFileSync(path.join(DIR, 'dd', '_en.json'), 'utf8'));
+    for (const l of ok) {
+      const f = path.join(DIR, 'dd', `${l}.json`);
+      if (!fs.existsSync(f)) continue;
+      const j = JSON.parse(fs.readFileSync(f, 'utf8'));
+      const out = {};
+      for (const [k, v] of Object.entries(j.DD || {})) {
+        if (!(k in enDD) || typeof v !== 'string' || !v) continue;
+        const ph = (x) => (x.match(/\{\d+\}/g) || []).sort().join();
+        if (ph(v) !== ph(enDD[k])) { console.error(`dd ${l}.${k}: substituenții nu se potrivesc → omis`); process.exitCode = 1; continue; }
+        out[k] = v.normalize('NFC');
+      }
+      dd[l] = out;
+      if (j.NEW) newl[l] = j.NEW;
+    }
+    // sursa generată pentru asistent: tools/discover/i18n25.js (inclus în index.html de tools/build-discover.mjs — rulează-l după `apply`)
+    fs.writeFileSync(path.join(HUB, 'tools', 'discover', 'i18n25.js'), `/* generat de tools/i18n25/hub-i18n.mjs din data/hub-i18n/dd/*.json — nu edita de mână */\nObject.assign(DD,${JSON.stringify(dd).replace(/</g, '\\u003c')});\n`);
+    html = html.replace(new RegExp(DDB.replace(/[/*:]/g, '\\$&') + '[\\s\\S]*?' + DDE.replace(/[/*:]/g, '\\$&') + '\\n'), '');
+    const nb = JSON.stringify(newl);
+    if (!html.includes('/*i18n25:newl*/')) {
+      html = replaceOnce(html, "NEWL[(document.documentElement.lang||'en').slice(0,2)]||'NEW'", "/*i18n25:newl*/(Object.assign(NEWL," + nb + "),NEWL[document.documentElement.lang]||NEWL[(document.documentElement.lang||'en').slice(0,2)]||'NEW')", 'NEWL');
+    } else {
+      html = html.replace(/\/\*i18n25:newl\*\/\(Object\.assign\(NEWL,[^)]*\),/, () => '/*i18n25:newl*/(Object.assign(NEWL,' + nb + '),');
+    }
+  }
   // 6) contorul „Limbi” din antet = limbile interfeței hubului
   html = html.replace(/(<div class="stat-value">)\d+(<span class="u">lang<\/span>)/, (m, a, b) => `${a}${ui.length}${b}`);
   fs.writeFileSync(file, html);
