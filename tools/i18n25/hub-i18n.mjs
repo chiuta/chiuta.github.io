@@ -205,6 +205,15 @@ ${END}
     // sursa generată pentru asistent: tools/discover/i18n25.js (inclus în index.html de tools/build-discover.mjs — rulează-l după `apply`)
     fs.writeFileSync(path.join(HUB, 'tools', 'discover', 'i18n25.js'), `/* generat de tools/i18n25/hub-i18n.mjs din data/hub-i18n/dd/*.json — nu edita de mână */\nObject.assign(DD,${JSON.stringify(dd).replace(/</g, '\\u003c')});\n`);
     html = html.replace(new RegExp(DDB.replace(/[/*:]/g, '\\$&') + '[\\s\\S]*?' + DDE.replace(/[/*:]/g, '\\$&') + '\\n'), '');
+    // bara de confort (hub-ux): data/hub-i18n/ux/<limbă>.json → tools/hub-ux/i18n25.js (inclus de tools/hub-ux/apply.mjs)
+    {
+      const ux = {};
+      for (const l of ok) {
+        const f = path.join(DIR, 'ux', `${l}.json`);
+        if (fs.existsSync(f)) ux[l] = JSON.parse(fs.readFileSync(f, 'utf8'));
+      }
+      fs.writeFileSync(path.join(HUB, 'tools', 'hub-ux', 'i18n25.js'), `/* generat de tools/i18n25/hub-i18n.mjs din data/hub-i18n/ux/*.json — nu edita de mână */\n(function(X){ Object.keys(X).forEach(function(l){ Object.keys(X[l]).forEach(function(k){ if(S[k]) S[k][l]=X[l][k]; }); }); })(${JSON.stringify(ux).replace(/</g, '\\u003c')});\n`);
+    }
     const nb = JSON.stringify(newl);
     if (!html.includes('/*i18n25:newl*/')) {
       html = replaceOnce(html, "NEWL[(document.documentElement.lang||'en').slice(0,2)]||'NEW'", "/*i18n25:newl*/(Object.assign(NEWL," + nb + "),NEWL[document.documentElement.lang]||NEWL[(document.documentElement.lang||'en').slice(0,2)]||'NEW')", 'NEWL');

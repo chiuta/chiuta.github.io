@@ -1,0 +1,16 @@
+{
+"sections":"Działy",
+"view":"Widok",
+"roomy":"Szczegółowy",
+"compact":"Kompaktowy",
+"saved":"Zapisane",
+"savedHint":"Naciśnij ☆ na karcie, aby ją zapisać. Zapisane elementy zostają tylko na tym urządzeniu.",
+"save":"Zapisz",
+"unsave":"Usuń z zapisanych",
+"recent":"Ostatnio otwarte",
+"clear":"Wyczyść historię",
+"share":"Kopiuj link do tego widoku",
+"copied":"Link skopiowany",
+"filters":"Filtry",
+"top":"Do góry"
+}

@@ -14,7 +14,7 @@ const indexPath = path.join(HUB, 'index.html');
 const swPath = path.join(HUB, 'sw.js');
 const read = (p) => fs.readFileSync(p, 'utf8');
 const css = read(path.join(HERE, 'hub-ux.css')).trimEnd();
-const js = read(path.join(HERE, 'hub-ux.js')).trimEnd();
+const js = read(path.join(HERE, 'hub-ux.js')).replace('/*@@UX25@@*/', () => (fs.existsSync(path.join(HERE, 'i18n25.js')) ? read(path.join(HERE, 'i18n25.js')).trimEnd() : '')).trimEnd();
 if (/<\/script>/i.test(js) || /<\/style>/i.test(css) || /UX:(CSS|JS):(START|END)/.test(js + css)) { console.error('sursa conține o etichetă de închidere sau un marcaj de injectare'); process.exit(1); }
 
 let html = read(indexPath);
