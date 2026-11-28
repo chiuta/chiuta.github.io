@@ -1,6 +1,6 @@
 {
   "version": "2.2.3",
-  "updated": "2026-11-20",
+  "updated": "2026-11-22",
   "egress": [
     {
       "host": "alexio.tf",

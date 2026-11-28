@@ -46,7 +46,8 @@ const keys = html.split('<div class="app-card"').slice(1).map((c) => (c.match(/d
 const slugOf = (k) => k.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
 
 // Intrări EXTERNE (nu sunt aplicații HTML dintr-un singur fișier; vezi tools/sync-catalog.mjs): origine proprie declarată aici, fără verificare pe disc.
-const EXTERNAL = {OSATURA: 'osatura.chiuta.ro', VERIGA: 'veriga.chiuta.ro', TEZAUR: 'tezaur.chiuta.ro', LegatorOCR: 'legatorocr.chiuta.ro'};
+// CartaColibri are site-ul în site-carta/, iar CUANTOR își ține domeniul în setările GitHub Pages (fără fișier CNAME în depozit; chiuta.github.io/CUANTOR/ redirecționează la cuantor.chiuta.ro, verificat la 2026-11-27).
+const EXTERNAL = {OSATURA: 'osatura.chiuta.ro', VERIGA: 'veriga.chiuta.ro', TEZAUR: 'tezaur.chiuta.ro', LegatorOCR: 'legatorocr.chiuta.ro', CartaColibri: 'cartacolibri.chiuta.ro', CUANTOR: 'cuantor.chiuta.ro'};
 
 const rows = keys.map((key) => {
   if (EXTERNAL[key]) {

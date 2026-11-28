@@ -1,6 +1,6 @@
 {
  "schema": 1,
- "snapshot": "2026-11-20",
+ "snapshot": "2026-11-27",
  "a1": {
   "date": "2026-10-21",
   "apps": 110,
@@ -189,7 +189,7 @@
   },
   {
    "key": "AI-Liber",
-   "ver": "2.4.3",
+   "ver": "2.4.4",
    "off": "part",
    "langs": 8,
    "hosts": 16,
@@ -442,6 +442,17 @@
    "l": 3
   },
   {
+   "key": "CartaColibri",
+   "ver": "0.2.0-alpha.9",
+   "off": "no",
+   "langs": 8,
+   "hosts": 0,
+   "score": null,
+   "hm": null,
+   "l": null,
+   "ext": true
+  },
+  {
    "key": "Carti-de-joc-fara-frontiere",
    "ver": "2.3.3",
    "off": "full",
@@ -506,7 +517,7 @@
   },
   {
    "key": "Constelar",
-   "ver": "2.2.3",
+   "ver": "2.2.5",
    "off": "part",
    "langs": 8,
    "hosts": 3,
@@ -525,6 +536,17 @@
    "l": null
   },
   {
+   "key": "CUANTOR",
+   "ver": "0.2.1",
+   "off": "no",
+   "langs": 8,
+   "hosts": 0,
+   "score": null,
+   "hm": null,
+   "l": null,
+   "ext": true
+  },
+  {
    "key": "Cupa-Mondiala-2026",
    "ver": "8.4.3",
    "off": "full",
@@ -533,6 +555,17 @@
    "score": 7.4,
    "hm": 1,
    "l": 5
+  },
+  {
+   "key": "CUPLAJ",
+   "ver": "1.10.0",
+   "off": "no",
+   "langs": 8,
+   "hosts": 0,
+   "score": null,
+   "hm": null,
+   "l": null,
+   "ext": true
   },
   {
    "key": "Curatitor",
@@ -769,6 +802,17 @@
    "l": 6
   },
   {
+   "key": "GERMEN",
+   "ver": "0.6.0",
+   "off": "no",
+   "langs": 8,
+   "hosts": 0,
+   "score": null,
+   "hm": null,
+   "l": null,
+   "ext": true
+  },
+  {
    "key": "glosar",
    "ver": "0.2.1",
    "off": "full",
@@ -931,13 +975,24 @@
   },
   {
    "key": "LocalMind",
-   "ver": "2.4.3",
+   "ver": "2.4.4",
    "off": "part",
    "langs": 8,
    "hosts": 7,
    "score": 3.6,
    "hm": 3,
    "l": 7
+  },
+  {
+   "key": "LUSTRUM",
+   "ver": "0.8.0",
+   "off": "no",
+   "langs": 8,
+   "hosts": 0,
+   "score": null,
+   "hm": null,
+   "l": null,
+   "ext": true
   },
   {
    "key": "Mahjong-fara-frontiere",
@@ -1175,6 +1230,17 @@
    "l": null
   },
   {
+   "key": "PolyTabletop",
+   "ver": "0.9.2",
+   "off": "no",
+   "langs": 8,
+   "hosts": 0,
+   "score": null,
+   "hm": null,
+   "l": null,
+   "ext": true
+  },
+  {
    "key": "PORUMBEL",
    "ver": "0.1.0-alpha.1",
    "off": "no",
@@ -1405,6 +1471,28 @@
    "score": 9.2,
    "hm": 0,
    "l": 3
+  },
+  {
+   "key": "STENOGRAMA",
+   "ver": "1.0.0",
+   "off": "part",
+   "langs": 7,
+   "hosts": 0,
+   "score": null,
+   "hm": null,
+   "l": null,
+   "ext": true
+  },
+  {
+   "key": "STRAJA",
+   "ver": "1.0.1",
+   "off": "no",
+   "langs": 8,
+   "hosts": 0,
+   "score": null,
+   "hm": null,
+   "l": null,
+   "ext": true
   },
   {
    "key": "Sudoku-fara-frontiere",
@@ -2098,10 +2186,10 @@
   ]
  },
  "health": {
-  "date": "2026-11-20",
-  "apps": 156,
+  "date": "2026-11-27",
+  "apps": 164,
   "relations": {
-   "withRelation": 131,
+   "withRelation": 140,
    "orphans": [
     "ACORDAJ",
     "API-fara-frontiere",
@@ -2126,18 +2214,17 @@
     "SEOptimum",
     "Scopone-fara-frontiere",
     "Table-fara-frontiere",
-    "VNTV",
-    "Zaruri-fara-frontiere"
+    "VNTV"
    ],
-   "pairs": 119,
+   "pairs": 137,
    "flows": 4,
    "flowApps": 16
   },
   "coverage": {
-   "full8": 154,
-   "partial": 0,
+   "full8": 161,
+   "partial": 1,
    "single": 2,
-   "native": 17,
+   "native": 24,
    "avg": 3.96
   },
   "score": {
@@ -2161,12 +2248,12 @@
    ]
   },
   "age": {
-   "ref": "2026-11-20",
-   "fresh7": 155,
-   "fresh30": 156,
+   "ref": "2026-11-27",
+   "fresh7": 156,
+   "fresh30": 164,
    "stale30": 0,
    "stale90": 0,
-   "oldest": "OSATURA (10)"
+   "oldest": "OSATURA (17)"
   },
   "sources": {
    "total": 30,
@@ -2179,7 +2266,7 @@
    "healthFile": "2026-11-23"
   },
   "versions": {
-   "cards": 156,
+   "cards": 164,
    "measured": 138,
    "behind": [
     "ACORDAJ",
@@ -2325,15 +2412,23 @@
     "ANTENA",
     "ARBITRU",
     "ASTROLABIU",
+    "CUANTOR",
+    "CUPLAJ",
+    "CartaColibri",
     "Claritas",
     "ECOGRAMA",
     "EXIF-CURAT",
+    "GERMEN",
+    "LUSTRUM",
     "LegatorOCR",
     "MARTOR",
     "NEAMURI",
     "ODISEEA",
     "OSATURA",
     "PORUMBEL",
+    "PolyTabletop",
+    "STENOGRAMA",
+    "STRAJA",
     "TACTIL",
     "TEZAUR",
     "TurboCursa",

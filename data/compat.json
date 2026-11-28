@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-20",
+ "generated": "2026-11-27",
  "floor": {
   "chrome": 55,
   "edge": 15,
@@ -10,12 +10,12 @@
  },
  "kitMinVersion": "1.8.0",
  "summary": {
-  "apps": 180,
-  "ok": 2,
-  "warn": 178,
+  "apps": 188,
+  "ok": 3,
+  "warn": 185,
   "fail": 0,
   "smoke": {
-   "ok": 171,
+   "ok": 179,
    "warn": 9,
    "fail": 0,
    "missing": 0
@@ -1354,6 +1354,47 @@
     "legacyErrors": 0
    }
   },
+  "CUANTOR:site/index.html": {
+   "file": "site/index.html",
+   "status": "ok",
+   "kit": null,
+   "compatLayer": false,
+   "syntaxErrors": [],
+   "postFloor": {},
+   "apiBeyondFloor": [],
+   "cssBeyondFloor": [],
+   "smoke": {
+    "status": "ok",
+    "newErrors": 0,
+    "nativeErrors": 0,
+    "legacyErrors": 0
+   }
+  },
+  "CUPLAJ": {
+   "file": "docs/index.html",
+   "status": "warn",
+   "kit": null,
+   "compatLayer": false,
+   "syntaxErrors": [],
+   "postFloor": {},
+   "apiBeyondFloor": [],
+   "cssBeyondFloor": [
+    ":focus-visible",
+    "inset",
+    "aspect-ratio",
+    "gap (flex)",
+    "clamp()/min()/max()",
+    "backdrop-filter",
+    "position: sticky",
+    "scroll-behavior"
+   ],
+   "smoke": {
+    "status": "ok",
+    "newErrors": 0,
+    "nativeErrors": 0,
+    "legacyErrors": 0
+   }
+  },
   "Cadraj": {
    "file": "index.html",
    "status": "warn",
@@ -1460,6 +1501,46 @@
     "clamp()/min()/max()",
     "backdrop-filter",
     "accent-color"
+   ],
+   "smoke": {
+    "status": "ok",
+    "newErrors": 0,
+    "nativeErrors": 0,
+    "legacyErrors": 0
+   }
+  },
+  "CartaColibri:site-carta/index.html": {
+   "file": "site-carta/index.html",
+   "status": "warn",
+   "kit": null,
+   "compatLayer": true,
+   "syntaxErrors": [],
+   "postFloor": {},
+   "apiBeyondFloor": [
+    {
+     "name": "IntersectionObserver",
+     "covered": true
+    },
+    {
+     "name": "navigator.clipboard",
+     "covered": true
+    },
+    {
+     "name": "scroll cu opțiuni",
+     "covered": true
+    }
+   ],
+   "cssBeyondFloor": [
+    ":focus-visible",
+    "inset",
+    "aspect-ratio",
+    "gap (flex)",
+    "clamp()/min()/max()",
+    "color-mix()",
+    "backdrop-filter",
+    "position: sticky",
+    "individual transform props",
+    "scroll-behavior"
    ],
    "smoke": {
     "status": "ok",
@@ -3148,6 +3229,49 @@
     "legacyErrors": 0
    }
   },
+  "GERMEN": {
+   "file": "index.html",
+   "status": "warn",
+   "kit": null,
+   "compatLayer": true,
+   "syntaxErrors": [],
+   "postFloor": {},
+   "apiBeyondFloor": [
+    {
+     "name": "replaceChildren",
+     "covered": true
+    },
+    {
+     "name": "navigator.clipboard",
+     "covered": true
+    },
+    {
+     "name": "String.padStart/padEnd",
+     "covered": true
+    },
+    {
+     "name": "String.trimStart/trimEnd",
+     "covered": true
+    }
+   ],
+   "cssBeyondFloor": [
+    ":focus-visible",
+    "inset",
+    "gap (flex)",
+    "clamp()/min()/max()",
+    "color-mix()",
+    "accent-color",
+    "prefers-color-scheme",
+    "logical props",
+    "scroll-behavior"
+   ],
+   "smoke": {
+    "status": "ok",
+    "newErrors": 0,
+    "nativeErrors": 0,
+    "legacyErrors": 0
+   }
+  },
   "Go-fara-frontiere": {
    "file": "index.html",
    "status": "warn",
@@ -3641,6 +3765,46 @@
     "clamp()/min()/max()",
     "backdrop-filter",
     "accent-color",
+    "position: sticky",
+    "scroll-behavior"
+   ],
+   "smoke": {
+    "status": "ok",
+    "newErrors": 0,
+    "nativeErrors": 0,
+    "legacyErrors": 0
+   }
+  },
+  "LUSTRUM": {
+   "file": "index.html",
+   "status": "warn",
+   "kit": null,
+   "compatLayer": true,
+   "syntaxErrors": [],
+   "postFloor": {},
+   "apiBeyondFloor": [
+    {
+     "name": "replaceChildren",
+     "covered": true
+    },
+    {
+     "name": "IntersectionObserver",
+     "covered": true
+    },
+    {
+     "name": "navigator.clipboard",
+     "covered": true
+    }
+   ],
+   "cssBeyondFloor": [
+    ":focus-visible",
+    "inset",
+    "aspect-ratio",
+    "gap (flex)",
+    "clamp()/min()/max()",
+    "color-mix()",
+    "backdrop-filter",
+    "prefers-color-scheme",
     "position: sticky",
     "scroll-behavior"
    ],
@@ -5359,6 +5523,35 @@
     "legacyErrors": 0
    }
   },
+  "PolyTabletop": {
+   "file": "docs/index.html",
+   "status": "warn",
+   "kit": null,
+   "compatLayer": true,
+   "syntaxErrors": [],
+   "postFloor": {},
+   "apiBeyondFloor": [
+    {
+     "name": "navigator.clipboard",
+     "covered": true
+    }
+   ],
+   "cssBeyondFloor": [
+    ":focus-visible",
+    "gap (flex)",
+    "clamp()/min()/max()",
+    "prefers-color-scheme",
+    "position: sticky",
+    "logical props",
+    "scroll-behavior"
+   ],
+   "smoke": {
+    "status": "ok",
+    "newErrors": 0,
+    "nativeErrors": 0,
+    "legacyErrors": 0
+   }
+  },
   "Poteca": {
    "file": "index.html",
    "status": "warn",
@@ -6043,6 +6236,85 @@
     "clamp()/min()/max()",
     "accent-color",
     "position: sticky",
+    "scroll-behavior"
+   ],
+   "smoke": {
+    "status": "ok",
+    "newErrors": 0,
+    "nativeErrors": 0,
+    "legacyErrors": 0
+   }
+  },
+  "STENOGRAMA": {
+   "file": "index.html",
+   "status": "warn",
+   "kit": null,
+   "compatLayer": true,
+   "syntaxErrors": [],
+   "postFloor": {},
+   "apiBeyondFloor": [
+    {
+     "name": "Blob.arrayBuffer/text",
+     "covered": true
+    },
+    {
+     "name": "navigator.clipboard",
+     "covered": true
+    },
+    {
+     "name": "String.padStart/padEnd",
+     "covered": true
+    },
+    {
+     "name": "<dialog>.showModal",
+     "covered": true
+    }
+   ],
+   "cssBeyondFloor": [
+    ":focus-visible",
+    "gap (flex)",
+    "color-mix()",
+    "prefers-color-scheme",
+    "scroll-behavior"
+   ],
+   "smoke": {
+    "status": "ok",
+    "newErrors": 0,
+    "nativeErrors": 0,
+    "legacyErrors": 0
+   }
+  },
+  "STRAJA": {
+   "file": "docs/index.html",
+   "status": "warn",
+   "kit": null,
+   "compatLayer": true,
+   "syntaxErrors": [],
+   "postFloor": {},
+   "apiBeyondFloor": [
+    {
+     "name": "IntersectionObserver",
+     "covered": true
+    },
+    {
+     "name": "scroll cu opțiuni",
+     "covered": true
+    },
+    {
+     "name": "<dialog>.showModal",
+     "covered": true
+    }
+   ],
+   "cssBeyondFloor": [
+    ":focus-visible",
+    "inset",
+    "aspect-ratio",
+    "gap (flex)",
+    "clamp()/min()/max()",
+    "backdrop-filter",
+    "accent-color",
+    "position: sticky",
+    "display: contents",
     "scroll-behavior"
    ],
    "smoke": {
