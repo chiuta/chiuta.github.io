@@ -1,8 +1,8 @@
 {
   "schema": 1,
-  "note": "Registrul celor 25 de limbi ale portofoliului „fără frontiere”: cele 8 de bază (ro, en, fr, it, es, pt, de, hu) și limbile celor 17 minorități naționale din România care nu sunt deja între ele (lista din Carta europeană a limbilor regionale sau minoritare: maghiară, romani, ucraineană, germană, turcă, tătară, rusă, sârbă, slovacă, bulgară, croată, greacă, idiș, cehă, poloneză, italiană, armeană, rutenă, albaneză, macedoneană). Sursa unică pentru codurile de limbă, numele afișate, direcția textului și nivelul de încredere al traducerilor asistate de IA. `confidence` nu este o garanție: arată unde revizuirea de către vorbitori nativi este cea mai urgentă (low = resurse puține pentru limbă, medium = limbă cu resurse moderate, high = limbă cu resurse bogate). Niciuna dintre limbile noi nu a fost revizuită de un vorbitor nativ (vezi docs/TRADUCERI-REVIZIE.md).",
+  "note": "Registrul celor 27 de limbi ale portofoliului „fără frontiere”: cele 8 de bază (ro, en, fr, it, es, pt, de, hu) și limbile celor 17 minorități naționale din România care nu sunt deja între ele (lista din Carta europeană a limbilor regionale sau minoritare: maghiară, romani, ucraineană, germană, turcă, tătară, rusă, sârbă, slovacă, bulgară, croată, greacă, idiș, cehă, poloneză, italiană, armeană, rutenă, albaneză, macedoneană). Sursa unică pentru codurile de limbă, numele afișate, direcția textului și nivelul de încredere al traducerilor asistate de IA. `confidence` nu este o garanție: arată unde revizuirea de către vorbitori nativi este cea mai urgentă (low = resurse puține pentru limbă, medium = limbă cu resurse moderate, high = limbă cu resurse bogate). Niciuna dintre limbile noi nu a fost revizuită de un vorbitor nativ (vezi docs/TRADUCERI-REVIZIE.md).",
   "core": ["ro", "en", "fr", "it", "es", "pt", "de", "hu"],
-  "order": ["en", "ro", "fr", "it", "es", "pt", "de", "hu", "uk", "rmy", "tr", "crh", "ru", "sr", "sk", "bg", "hr", "el", "yi", "cs", "pl", "hy", "rue", "sq", "mk"],
+  "order": ["en", "ro", "fr", "it", "es", "pt", "de", "hu", "uk", "rmy", "tr", "crh", "ru", "sr", "sk", "bg", "hr", "el", "yi", "cs", "pl", "hy", "rue", "sq", "mk", "eo", "la"],
   "languages": {
     "en":  {"name": "English",            "bcp47": "en",       "script": "Latn", "dir": "ltr", "group": "core",      "confidence": "high"},
     "ro":  {"name": "Română",             "bcp47": "ro",       "script": "Latn", "dir": "ltr", "group": "core",      "confidence": "high"},
@@ -28,6 +28,8 @@
     "hy":  {"name": "Հայերեն",            "bcp47": "hy",       "script": "Armn", "dir": "ltr", "group": "minority",  "confidence": "medium", "minority": "armeană", "note": "armeana de vest sau de est: se folosește armeana standard de est, înțeleasă de ambele comunități"},
     "rue": {"name": "Русиньскый язык",    "bcp47": "rue",      "script": "Cyrl", "dir": "ltr", "group": "minority",  "confidence": "low",  "minority": "rutenă", "note": "rusina carpatică; fără normă unică, se folosește ortografia rusinei carpatice din Slovacia"},
     "sq":  {"name": "Shqip",              "bcp47": "sq",       "script": "Latn", "dir": "ltr", "group": "minority",  "confidence": "medium", "minority": "albaneză"},
-    "mk":  {"name": "Македонски",         "bcp47": "mk",       "script": "Cyrl", "dir": "ltr", "group": "minority",  "confidence": "medium", "minority": "macedoneană"}
+    "mk":  {"name": "Македонски",         "bcp47": "mk",       "script": "Cyrl", "dir": "ltr", "group": "minority",  "confidence": "medium", "minority": "macedoneană"},
+    "eo":  {"name": "Esperanto",          "bcp47": "eo",       "script": "Latn", "dir": "ltr", "group": "extra",     "confidence": "medium", "note": "limbă auxiliară internațională, adăugată la cererea autorului (nu e limbă minoritară din România)"},
+    "la":  {"name": "Latina",             "bcp47": "la",       "script": "Latn", "dir": "ltr", "group": "extra",     "confidence": "medium", "note": "latină clasică cu vocabular modern ecleziastic/neologic (Vocabularium recens); adăugată la cererea autorului"}
   }
 }

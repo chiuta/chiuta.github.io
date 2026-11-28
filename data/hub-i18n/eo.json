@@ -1,0 +1,222 @@
+{
+ "lang": "eo",
+ "T": {
+  "themeLbl": "Etoso",
+  "langLbl": "Lingvo",
+  "modeLbl": "Reĝimo",
+  "colorLbl": "Koloro",
+  "dark": "Malhela",
+  "light": "Hela",
+  "taglineStrong": "Malfermitaj edukaj kaj kontrolaj iloj",
+  "taglineRest": " — unu dosiero, plejparte sen interreto, sen konto. Ĉiu aplikaĵo deklaras siajn limojn.",
+  "noteTxt": "Personaj projektoj de unu aŭtoro, ne oficialaj servoj. Nur eduka uzo: nenio ĉi tie estas kuracista, jura aŭ financa konsilo. La README de ĉiu aplikaĵo listigas ĉiun peton, kiun ĝi sendas al triaj partioj.",
+  "searchPh": "Nomo, temo aŭ vorto…",
+  "noRes": "Neniu projekto kongruas kun ĉi tiuj filtriloj.",
+  "badgeLocation": "Bukareŝto, RO",
+  "badgeOffline": "◈ Unue senrete",
+  "badgeVanilla": "⬡ Unu dosiero",
+  "badgeTelemetry": "⌀ Neniu telemetrio en ĉi tiu paĝo",
+  "statRepos": "Aplikaĵoj",
+  "statModules": "Sekcioj",
+  "statLangs": "Lingvoj",
+  "statSent": "Sendite",
+  "projects": "Projektoj",
+  "loading": "Elŝutado de GitHub…",
+  "darkThemes": "Malhelaj etosoj",
+  "lightThemes": "Helaj etosoj",
+  "fSearch": "Serĉi",
+  "fCat": "Kategorio",
+  "fCatAll": "Ĉiuj kategorioj",
+  "fLang": "Lingvo de la aplikaĵo",
+  "fLangAll": "Ajna lingvo",
+  "fOff": "Senreta uzo",
+  "fOffAny": "Ajna",
+  "fOffFull": "Funkcias tute senrete",
+  "fOffPart": "Funkcias senrete, kelkaj funkcioj bezonas interreton",
+  "fOffNo": "Neniu senreta subteno",
+  "fReset": "Rekomenci filtrilojn",
+  "fForm": "Filtri la katalogon",
+  "demoHead": "Demonstraj filmetoj",
+  "demoLead": "Mallongaj senson-filmetoj de ĉiu aplikaĵo, kun subtekstoj en 8 lingvoj. Gastigitaj ĉi tie, sen tria ludilo.",
+  "demoAll": "Ĉiuj demonstraj filmetoj →",
+  "demoSec": "▶ Filmo de la sekcio",
+  "demoLink": "Demonstraj filmetoj",
+  "transpLink": "Travidebleco",
+  "aboutLine": "Alexandru-Ionuț Chiuță (Alexio): rumana inĝeniero kaj aŭtoro de sciencfikcio. Sendependaj personaj projektoj — ne servoj de iu institucio kaj ne oficialaj fontoj. Demandoj, korektoj aŭ petoj pri forigo:",
+  "copyright": "© 2026 Alexandru-Ionuț Chiuță · ĝisdatigita {d}",
+  "dataUpd": "Datumoj ĝisdatigitaj la {d}",
+  "dataAsOf": "Datumoj kontrolitaj de la aŭtoro la {d}",
+  "dataUnk": "Dato de la datumoj ne konfirmita",
+  "dataSrc": "fonto",
+  "bdStale": "malaktuala",
+  "staleTip": "La lasta ĝisdatigo estas pli ol dufoje pli malnova ol la ritmo de la fonto ({c}).",
+  "fData": "Datumfontoj",
+  "cadFrozen": "frostita",
+  "cadSlow": "monata",
+  "cadLive": "semajna",
+  "stInv": "ne kontrolita aŭtomate",
+  "fStatus": "Stato",
+  "fChain": "Ĉenigi kun…",
+  "flowNext": "sekva paŝo",
+  "flowPrev": "antaŭa paŝo",
+  "fStatusAny": "Ajna",
+  "stStable": "stabila",
+  "stExperimental": "eksperimenta",
+  "stAlpha": "alfa",
+  "fisaBtn": "Folio",
+  "fCe": "Detale",
+  "fPentru": "Por kiu ĝi estas",
+  "fLimite": "Limoj",
+  "fVersiune": "Versio",
+  "fSubst": "Lasta grava ŝanĝo",
+  "fSubstNone": "ne registrita",
+  "fSync": "Sinkronigo de la katalogo",
+  "bdOffFull": "tute senrete",
+  "bdOffPart": "parte senrete · bezonas interreton",
+  "bdOffNo": "neniu senreta subteno",
+  "fRelated": "Rilataj",
+  "fVariants": "Variantoj",
+  "fShot": "Ekrankopio",
+  "fOnlyRoEn": "La teksto de la folio ekzistas nur en la rumana kaj la angla; montrata en la angla.",
+  "stLab": "laboratorio",
+  "fAudit": "Interna kontrolo",
+  "fMeasured": "Mezurita kontrolo",
+  "fCifre": "Ciferoj kaj fontoj",
+  "legendLab": "Laboratorio. Ĝi funkcias, sed ne estas rekomendata por ĉiutaga uzo ĝis riparo. La stato estas eksplicite deklarita en la katalogo, ne kalkulita el poentaro; laboratoria aplikaĵo neniam aperas en “Rekomenditaj”.",
+  "platWeb": "reta",
+  "platNative": "instalebla",
+  "fCov": "Kovro",
+  "fPlat": "Platformo",
+  "platWebLong": "funkcias en la retumilo (unu HTML-dosiero)",
+  "platNativeLong": "instalebla denaska programo, ne retpaĝo",
+  "fEvid": "Pruvoj",
+  "evTitle": "Nivelo de pruvoj por tio, kion la praktiko asertas (0–4)",
+  "ev0": "tradicio / kultura valoro",
+  "ev1": "izolitaj raportoj kaj observoj",
+  "ev2": "sistemaj observoj, malgrandaj aŭ provizoraj studoj",
+  "ev3": "kontrolitaj studoj",
+  "ev4": "kontrolita (reprodukta, konsenso)",
+  "evMode": "Historia / kultura reĝimo: prezentita kiel tradicio, ne kiel pruvita fakto. La nivelo taksas la asertojn de la praktiko, ne la programaron.",
+  "bdHealth": "ne anstataŭas kuraciston",
+  "fHealth": "Sano",
+  "healthNote": "Nur informe. Ĝi ne anstataŭas kuraciston aŭ alian sanprofesiulon; por sanproblemoj konsultu tian, kaj en urĝo telefonu 112.",
+  "bdFragile": "fragila",
+  "fFragile": "Fragileco",
+  "fragileNote": "Dependas de eksteraj retejoj aŭ servoj, kiuj povas ŝanĝiĝi aŭ bloki aliron; ĝi povas ĉesi funkcii sen avizo.",
+  "fChecked": "Lasta kontrolo",
+  "legendCov": "Kovro. La etikedo sur ĉiu karto donas la interfacajn lingvojn (el 8: ro, en, fr, it, es, pt, de, hu) kaj la platformon: reta (dosiero, kiu funkcias en la retumilo) aŭ instalebla (denaska programo). Poentaro 0–4 laŭ la nombro de lingvoj.",
+  "legendEvid": "Pruvoj. Kartoj de praktikoj kun asertitaj efikoj (astrologio, energiaj terapioj, bastonsorĉado, “kuracaj” frekvencoj, malstreĉado) montras mezurilon 0–4: 0 tradicio / kultura valoro, 1 izolitaj raportoj, 2 malgrandaj aŭ provizoraj studoj, 3 kontrolitaj studoj, 4 kontrolita. Ĝi taksas la asertojn de la praktiko, ne la programaron; 0–1 signifas “historia / kultura reĝimo”.",
+  "legendHealth": "“Ne anstataŭas kuraciston”: montrata ĉe aplikaĵoj kun sanrilata enhavo.",
+  "legendFragile": "“Fragila”: la aplikaĵo dependas de eksteraj retejoj aŭ servoj (skrapado, neoficialaj enkonstruoj, publikaj API-oj) kaj povas ĉesi funkcii sen avizo.",
+  "evModeShort": "historia / kultura reĝimo",
+  "legendTitle": "Kiel legi la kartojn",
+  "legendStatus": "Stato. stabila: versio 1.0.0 aŭ pli nova sen eksperimenta deklaro en la README; eksperimenta: tiel deklarita en la README; alfa: versio 0.x aŭ kun sufikso -alpha. Derivita laŭ regulo, ne taksita unuope.",
+  "legendVer": "Versioj sekvas MAJOR.MINOR.PATCH (SemVer), kiel deklarite de ĉiu aplikaĵo.",
+  "legendSubst": "Dato apud la versio estas la lasta grava ŝanĝo; se mankas, ĝi ne estas registrita (la dato de sinkronigo de la katalogo estas en la folio)."
+ },
+ "tpl": {
+  "nProjects": "{n} projektoj",
+  "nShown": "{n} el {m} projektoj",
+  "labNote": "Laboratorio: poentaro de interna kontrolo {s}/10, sub la sojlo de 5. Ĝi funkcias, sed ne estas rekomendata por ĉiutaga uzo ĝis riparo.",
+  "covLangs": "{n} lingvoj",
+  "covOnly": "nur {l}",
+  "covPart": "{n} el 8 lingvoj",
+  "covScore": "poentaro {n}/4",
+  "statAppsTip": "Unudosieraj aplikaĵoj: {n} ({l} kartoj en la listo + {v} variantoj en la karto de la nodo Observebla Universo). OSATURA, VERIGA, TEZAUR kaj LegatorOCR, kiuj ne estas unudosieraj, estas listigitaj aparte.",
+  "statSecTip": "{n} katalogaj sekcioj, inkluzive de la aparta sekcio Rust."
+ },
+ "CTRL": {
+  "animPlay": "Ludi fonan animacion",
+  "animPause": "Paŭzigi fonan animacion",
+  "toDark": "Ŝalti malhelan reĝimon",
+  "toLight": "Ŝalti helan reĝimon",
+  "theme": "Etoso",
+  "lang": "Lingvo",
+  "skip": "Salti al la enhavo"
+ },
+ "sections": {
+  "rust": {
+   "title": "Rust: denaskaj programoj, ne HTML-dosieroj",
+   "intro": "Projektoj skribitaj en Rust, kiuj ne estas unudosieraj HTML-aplikaĵoj: OSATURA (animada motoro, alfa), VERIGA (kontrolilo de ligiloj), TEZAUR (helpanto por tezaj esploroj, versio 0.x) kaj LegatorOCR (skanaĵoj → serĉebla PDF, versio 0.x)."
+  },
+  "verificare": {
+   "title": "Kontrolo, fontoj kaj retaj spuroj",
+   "intro": "Iloj por kontroli de kie venas informo, kio ŝanĝiĝis post la publikigo, kaj ĉu ligilo ankoraŭ vivas. Ĉiu deklaras en sia README, kiujn petojn ĝi sendas al triaj partioj."
+  },
+  "educatie": {
+   "title": "Edukaj kaj profesiaj iloj",
+   "intro": "Lernmaterialo kaj laboriloj por amatora radio, alirebleco, organizado de eventoj kaj laboro kun teksto kaj datumoj. Neoficialaj iloj: ili ne anstataŭas ian aŭtoritaton."
+  },
+  "stiinta": {
+   "title": "Scienco, naturo kaj kampa laboro",
+   "intro": "Bildigoj kaj enciklopedioj surbazitaj de publikaj datumoj. Kie la datumoj estas proksimumaj, la aplikaĵo tion diras."
+  },
+  "jocuri": {
+   "title": "Strategiaj ludoj kaj reguloj-atlasoj",
+   "intro": "Ĉiu ludo havas motoron aparte de la interfaco, heŭristikan komputilan kontraŭulon sen aliro al kaŝitaj informoj, kaj proprajn testarojn (ekzemple Belot: pli ol 450 000 aŭtomataj kontroloj)."
+  },
+  "ai": {
+   "title": "Artefarita inteligento sub kontrolo de la uzanto",
+   "intro": "Interfacoj, kiuj lasas la uzanton decidi, kio foriras kaj kien ĝi iras. API-ŝlosiloj restas en la retumilo, nur “kaŝitaj”, ne ĉifritaj: legu la README antaŭ uzo."
+  },
+  "utilitare": {
+   "title": "Utilaĵoj kaj kreivaj projektoj",
+   "intro": "Malgrandaj iloj, faritaj por daŭri: unu dosiero, sen konto."
+  },
+  "cultura": {
+   "title": "Kulturo, praktikoj kaj kredoj: priskriba studo",
+   "intro": "Ĉi tiuj aplikaĵoj priskribas praktikojn sen scienca pruvo de efikeco (astrologio, taroto, numerologio, reiki, bastonsorĉado ktp.) kiel objekton de kultura studo, ne kiel rekomendon. Ili ne anstataŭas kuracistan, juran aŭ financan konsilon."
+  },
+  "recomandate": {
+   "title": "Rekomenditaj",
+   "intro": "Elekto por komenci: kontrolo de fontoj, traduko, lernado kaj laboriloj."
+  },
+  "confidentialitate": {
+   "title": "Privateco kaj aŭtenteco",
+   "intro": "Forigi metadatumojn de dosieroj, ĉifri loke kaj kontroli akreditaĵojn de deveno. Ne sendepende kontrolitaj: ne fidu ilin kiel solan protekton de vere sentemaj datumoj."
+  },
+  "literatura": {
+   "title": "Literaturo kaj lingvo",
+   "intro": "Vortaroj, alfabetoj kaj kodoj, proverboj kaj originala prozo: iloj por vortoj, verkado kaj legado. Ili estas lernhelpiloj, ne normigaj referencoj."
+  },
+  "teren": {
+   "title": "Kampo kaj migrovojoj",
+   "intro": "GPS-spuroj, kampaj taglibroj, migrado kaj postvivaj gvidiloj. Ĉio funkcias loke; nenio anstataŭas mapon, gvidanton aŭ lokajn aŭtoritatojn, kaj nenio ĉi tie estas navigada aŭ sekureca aparato."
+  },
+  "sunet": {
+   "title": "Sono",
+   "intro": "Mezurado, generado kaj analizo de sono, plus muziko kaj etoso generitaj en la retumilo. La sonnivelmezurilo kaj aŭdotestoj estas indikaj, ne atestitaj nek kuracaj aparatoj."
+  },
+  "gospodarie": {
+   "title": "Hejmo kaj organizado",
+   "intro": "Kalendaro, buĝeto, genealogia arbo, notoj kaj tempo: iloj por ĉiutagaj aferoj, kun datumoj konservitaj en ĉi tiu retumilo, sen konto. Ne financa, jura aŭ impostkonsilo."
+  }
+ },
+ "misc": {
+  "donateLabel": "Subteni",
+  "donateHide": "Kaŝi",
+  "donateTitle": "Subteni la aŭtoron",
+  "donateCbLabel": "Kaŝi la subtenan breton",
+  "cultureNote": "Legu unue. Priskriba enhavo pri sciencpruve nevalidigitaj praktikoj. Ne rekomendo pri kuracado aŭ decido.",
+  "introLabel": "Enkonduko",
+  "github": "GitHub",
+  "live": "Rete",
+  "open": "Malfermi",
+  "nativeDemo": "Terminala demonstro"
+ },
+ "dateFmt": "{d}-a de {m} {y}",
+ "months": [
+  "januaro",
+  "februaro",
+  "marto",
+  "aprilo",
+  "majo",
+  "junio",
+  "julio",
+  "aŭgusto",
+  "septembro",
+  "oktobro",
+  "novembro",
+  "decembro"
+ ]
+}
