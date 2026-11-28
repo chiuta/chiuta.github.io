@@ -135,20 +135,82 @@
   "skip": "İçeriğe geç"
  },
  "sections": {
-  "rust": {"title": "Rust: yerel programlar, HTML dosyası değil", "intro": "Tek dosyalı HTML uygulaması olmayan, Rust ile yazılmış projeler: OSATURA (animasyon motoru, alfa), VERIGA (bağlantı denetleyici), TEZAUR (tez araştırma yardımcısı, sürüm 0.x) ve LegatorOCR (taramalar → aranabilir PDF, sürüm 0.x)."},
-  "verificare": {"title": "Doğrulama, kaynaklar ve web izleri", "intro": "Bir bilginin nereden geldiğini, yayımlandığından beri neyin değiştiğini ve bir bağlantının hâlâ çalışıp çalışmadığını denetleme araçları. Her biri README dosyasında üçüncü taraflara yaptığı istekleri belirtir."},
-  "educatie": {"title": "Eğitim ve mesleki araçlar", "intro": "Amatör telsizcilik, erişilebilirlik, etkinlik organizasyonu ve metin ile veri işleme için öğrenme materyalleri ve çalışma araçları. Resmî olmayan araçlardır: hiçbir kurumun yerini tutmaz."},
-  "stiinta": {"title": "Bilim, doğa ve saha çalışması", "intro": "Kamuya açık verilere dayanan görselleştirmeler ve ansiklopediler. Veriler yaklaşıksa uygulama bunu belirtir."},
-  "jocuri": {"title": "Strateji oyunları ve kural atlasları", "intro": "Her oyunun arayüzden ayrı bir motoru, gizli bilgiye erişimi olmayan sezgisel bir yapay zekâ rakibi ve kendi test paketleri vardır (örneğin Belot: 450.000’den fazla otomatik denetim)."},
-  "ai": {"title": "Kullanıcının denetiminde yapay zekâ", "intro": "Neyin cihazdan çıkacağına ve nereye gideceğine kullanıcının karar vermesini sağlayan arayüzler. API anahtarları tarayıcıda yalnızca “gizlenmiş” olarak saklanır, şifrelenmez: kullanmadan önce README dosyasını okuyun."},
-  "utilitare": {"title": "Yardımcı programlar ve yaratıcı projeler", "intro": "Uzun ömürlü olsun diye yapılmış küçük araçlar: tek dosya, hesapsız."},
-  "cultura": {"title": "Kültür, uygulamalar ve inançlar: betimleyici bir çalışma", "intro": "Bu uygulamalar, etkinliğine dair bilimsel kanıt bulunmayan uygulamaları (astroloji, tarot, numeroloji, reiki, değnekle su arama vb.) bir öneri olarak değil, kültürel inceleme nesnesi olarak betimler. Tıbbi, hukuki veya mali tavsiyenin yerini tutmaz."},
-  "recomandate": {"title": "Önerilenler", "intro": "Başlangıç için bir seçki: kaynak doğrulama, çeviri, öğrenme ve çalışma araçları."},
-  "confidentialitate": {"title": "Gizlilik ve özgünlük", "intro": "Dosya meta verilerini temizleyin, yerelde şifreleyin ve köken kimlik bilgilerini doğrulayın. Bağımsız olarak denetlenmemiştir: gerçekten hassas veriler için tek güvence olarak buna güvenmeyin."},
-  "literatura": {"title": "Edebiyat ve dil", "intro": "Sözlükler, alfabeler ve kodlar, atasözleri ve özgün kurmaca: sözcükler, yazı ve okuma için araçlar. Öğretim araçlarıdır, normatif başvuru kaynakları değildir."},
-  "teren": {"title": "Saha ve patikalar", "intro": "GPS izleri, saha günlükleri, yürüyüş ve hayatta kalma rehberleri. Her şey yerelde çalışır; hiçbir şey harita, rehber veya yerel yetkililerin yerini tutmaz ve burada hiçbir şey bir navigasyon ya da güvenlik cihazı değildir."},
-  "sunet": {"title": "Ses", "intro": "Sesi ölçme, üretme ve çözümleme; ayrıca tarayıcıda üretilen müzik ve ortam sesleri. Ses düzeyi ölçer ve işitme testleri yalnızca yol göstericidir, sertifikalı veya tıbbi cihaz değildir."},
-  "gospodarie": {"title": "Ev ve düzen", "intro": "Takvim, bütçe, soy ağacı, notlar ve zaman: günlük işler için araçlar; veriler bu tarayıcıda kalır, hesap gerekmez. Mali, hukuki veya vergi tavsiyesi değildir."}
+  "rust": {
+   "title": "Rust: yerel motorlar ve araçlar",
+   "intro": "Rust ile yazılmış programlar, HTML dosyası değil: OSATURA (2D animasyon motoru, alpha), VERIGA (bağlantı denetleyicisi), LegatorOCR (taramalar → aranabilir PDF, sürüm 0.x), PORUMBEL (telefon fotoğrafları bilgisayarınıza) ve devam eden çalışmalar MARTOR ile EXIF-CURAT."
+  },
+  "verificare": {
+   "title": "Doğrulama, kaynaklar ve web izleri",
+   "intro": "Bir bilginin nereden geldiğini, yayımlandığından beri neyin değiştiğini ve bir bağlantının hâlâ çalışıp çalışmadığını denetleme araçları. Her biri README dosyasında üçüncü taraflara yaptığı istekleri belirtir."
+  },
+  "educatie": {
+   "title": "Eğitim ve mesleki araçlar",
+   "intro": "Amatör telsizcilik, erişilebilirlik, etkinlik organizasyonu ve metin ile veri işleme için öğrenme materyalleri ve çalışma araçları. Resmî olmayan araçlardır: hiçbir kurumun yerini tutmaz."
+  },
+  "stiinta": {
+   "title": "Bilim, doğa ve saha çalışması",
+   "intro": "Kamuya açık verilere dayanan görselleştirmeler ve ansiklopediler. Veriler yaklaşıksa uygulama bunu belirtir."
+  },
+  "jocuri": {
+   "title": "Strateji oyunları ve kural atlasları",
+   "intro": "Her oyunun arayüzden ayrı bir motoru, gizli bilgiye erişimi olmayan sezgisel bir yapay zekâ rakibi ve kendi test paketleri vardır (örneğin Belot: 450.000’den fazla otomatik denetim)."
+  },
+  "ai": {
+   "title": "Kullanıcının denetiminde yapay zekâ",
+   "intro": "Neyin cihazdan çıkacağına ve nereye gideceğine kullanıcının karar vermesini sağlayan arayüzler. API anahtarları tarayıcıda yalnızca “gizlenmiş” olarak saklanır, şifrelenmez: kullanmadan önce README dosyasını okuyun."
+  },
+  "utilitare": {
+   "title": "Yardımcı programlar ve yaratıcı projeler",
+   "intro": "Uzun ömürlü olsun diye yapılmış küçük araçlar: tek dosya, hesapsız."
+  },
+  "cultura": {
+   "title": "Kültür, uygulamalar ve inançlar: betimleyici bir çalışma",
+   "intro": "Bu uygulamalar, etkinliğine dair bilimsel kanıt bulunmayan uygulamaları (astroloji, tarot, numeroloji, reiki, değnekle su arama vb.) bir öneri olarak değil, kültürel inceleme nesnesi olarak betimler. Tıbbi, hukuki veya mali tavsiyenin yerini tutmaz."
+  },
+  "recomandate": {
+   "title": "Önerilenler",
+   "intro": "Başlangıç için bir seçki: kaynak doğrulama, çeviri, öğrenme ve çalışma araçları."
+  },
+  "confidentialitate": {
+   "title": "Gizlilik ve özgünlük",
+   "intro": "Dosya meta verilerini temizleyin, yerelde şifreleyin ve köken kimlik bilgilerini doğrulayın. Bağımsız olarak denetlenmemiştir: gerçekten hassas veriler için tek güvence olarak buna güvenmeyin."
+  },
+  "literatura": {
+   "title": "Edebiyat ve dil",
+   "intro": "Sözlükler, alfabeler ve kodlar, atasözleri ve özgün kurmaca: sözcükler, yazı ve okuma için araçlar. Öğretim araçlarıdır, normatif başvuru kaynakları değildir."
+  },
+  "teren": {
+   "title": "Saha ve patikalar",
+   "intro": "GPS izleri, saha günlükleri, yürüyüş ve hayatta kalma rehberleri. Her şey yerelde çalışır; hiçbir şey harita, rehber veya yerel yetkililerin yerini tutmaz ve burada hiçbir şey bir navigasyon ya da güvenlik cihazı değildir."
+  },
+  "sunet": {
+   "title": "Ses",
+   "intro": "Sesi ölçme, üretme ve çözümleme; ayrıca tarayıcıda üretilen müzik ve ortam sesleri. Ses düzeyi ölçer ve işitme testleri yalnızca yol göstericidir, sertifikalı veya tıbbi cihaz değildir."
+  },
+  "gospodarie": {
+   "title": "Ev ve düzen",
+   "intro": "Takvim, bütçe, soy ağacı, notlar ve zaman: günlük işler için araçlar; veriler bu tarayıcıda kalır, hesap gerekmez. Mali, hukuki veya vergi tavsiyesi değildir."
+  },
+  "mobil": {
+   "title": "Mobil uygulamalar: Android ve iPhone",
+   "intro": "Yerel telefon uygulamaları (Android için APK, mevcut olduğunda iPhone için imzasız IPA): STRAJA (AI ajanlarına karşı kalkan), CUPLAJ (sürükleyici tiyatro iletişimi) ve LUSTRUM (Android için dosya temizleyici)."
+  },
+  "extensii": {
+   "title": "Tarayıcı uzantıları",
+   "intro": "Tarayıcının içinde çalışan uzantılar: Claritas (erişilebilirlik: kontrast düzeltme, okuyucu modu, metinden sese) ve TEZAUR (Rust ile yazılmış tez araştırma asistanı, ayrıca bir Chrome/Firefox uzantısıyla birlikte gelir)."
+  },
+  "rust-ai": {
+   "title": "Rust: yerel AI",
+   "intro": "Modelleri kendi bilgisayarınızda çalıştıran Rust programları: GERMEN (küçük bir GPT'yi sıfırdan eğitir), CartaColibri (yerel AI kitaplığı) ve colibri-companion (colibri için masaüstü arayüzü)."
+  },
+  "rust-jocuri": {
+   "title": "Rust: oyunlar",
+   "intro": "Rust ile oyunlar ve kural motorları: TurboCursa (arcade yarış), PolyTabletop (240 masa oyunu) ve ARBITRU (kural motoru, devam eden çalışma)."
+  },
+  "rust-stiinta": {
+   "title": "Rust: bilim, ses ve kültür",
+   "intro": "Bilim, ses, erişilebilirlik ve kültür için Rust araçları: CUANTOR (kuantum simülatörü), ASTROLABIU, ANTENA, ECOGRAMA, ecou-spectral-rs, TACTIL ve NEAMURI; CUANTOR dışındakilerin hepsi devam eden çalışmadır."
+  }
  },
  "misc": {
   "donateLabel": "Destek ol",

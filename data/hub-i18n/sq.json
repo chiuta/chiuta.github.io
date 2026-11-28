@@ -135,20 +135,82 @@
   "skip": "Kalo te përmbajtja"
  },
  "sections": {
-  "rust": {"title": "Rust: programe vendase, jo skedarë HTML", "intro": "Projekte të shkruara në Rust që nuk janë aplikacione HTML me një skedar: OSATURA (motor animacioni, alfa), VERIGA (kontrollues lidhjesh), TEZAUR (ndihmës kërkimi për tezë, versioni 0.x) dhe LegatorOCR (skanime → PDF e kërkueshme, versioni 0.x)."},
-  "verificare": {"title": "Verifikim, burime dhe gjurmë në rrjet", "intro": "Mjete për të parë nga vjen një informacion, çfarë ka ndryshuar që nga botimi dhe nëse një lidhje është ende gjallë. Secili në README-n e vet tregon çfarë kërkesash dërgon te palë të treta."},
-  "educatie": {"title": "Arsim dhe mjete profesionale", "intro": "Materiale mësimore dhe mjete pune për radioamatorizmin, aksesueshmërinë, organizimin e ngjarjeve dhe përpunimin e tekstit e të dhënave. Mjete jozyrtare: nuk zëvendësojnë asnjë organ."},
-  "stiinta": {"title": "Shkencë, natyrë dhe punë në terren", "intro": "Vizualizime dhe enciklopedi të ndërtuara mbi të dhëna publike. Kur të dhënat janë të përafërta, aplikacioni e thotë."},
-  "jocuri": {"title": "Lojëra strategjike dhe atlase rregullash", "intro": "Çdo lojë ka një motor të ndarë nga ndërfaqja, një kundërshtar heuristik me inteligjencë artificiale pa qasje te informacioni i fshehur dhe grupe testesh të veta (për shembull, Belot: mbi 450.000 kontrolle automatike)."},
-  "ai": {"title": "Inteligjencë artificiale nën kontrollin e përdoruesit", "intro": "Ndërfaqe që e lënë përdoruesin të vendosë çfarë del nga pajisja dhe ku shkon. Çelësat API mbeten në shfletues vetëm “të maskuar”, jo të enkriptuar: lexoni README-n para se t’i përdorni."},
-  "utilitare": {"title": "Shërbime dhe projekte krijuese", "intro": "Mjete të vogla të ndërtuara për të zgjatur: një skedar, pa llogari."},
-  "cultura": {"title": "Kulturë, praktika dhe besime: një studim përshkrues", "intro": "Këto aplikacione përshkruajnë praktika pa prova shkencore efikasiteti (astrologji, tarot, numerologji, reiki, radiestezi etj.) si objekt studimi kulturor, jo si rekomandim. Nuk zëvendësojnë këshillën mjekësore, juridike ose financiare."},
-  "recomandate": {"title": "Të rekomanduara", "intro": "Një përzgjedhje për të nisur: verifikimi i burimeve, përkthimi, të mësuarit dhe mjetet e punës."},
-  "confidentialitate": {"title": "Privatësia dhe vërtetësia", "intro": "Hiqni metadatat e skedarëve, enkriptoni lokalisht dhe verifikoni kredencialet e origjinës. Nuk janë audituar në mënyrë të pavarur: mos u mbështetni te ato si mbrojtje e vetme për të dhëna vërtet të ndjeshme."},
-  "literatura": {"title": "Letërsi dhe gjuhë", "intro": "Fjalorë, alfabete dhe kode, proverba dhe prozë origjinale: mjete për fjalët, shkrimin dhe leximin. Janë ndihmësa mësimorë, jo manuale normative."},
-  "teren": {"title": "Terreni dhe shtigjet", "intro": "Gjurmë GPS, ditarë terreni, udhëzues për ecje dhe mbijetesë. Gjithçka punon lokalisht; asgjë nuk zëvendëson hartën, udhërrëfyesin ose autoritetet vendore, dhe asgjë këtu nuk është pajisje navigimi apo sigurie."},
-  "sunet": {"title": "Zëri", "intro": "Matja, krijimi dhe analiza e zërit, si dhe muzika e atmosfera e krijuara në shfletues. Matësi i zhurmës dhe testet e dëgjimit janë vetëm orientues, nuk janë pajisje të certifikuara apo mjekësore."},
-  "gospodarie": {"title": "Shtëpia dhe organizimi", "intro": "Kalendar, buxhet, pema familjare, shënime dhe koha: mjete për gjërat e përditshme, të dhënat mbeten në këtë shfletues, pa llogari. Nuk janë këshillë financiare, juridike apo tatimore."}
+  "rust": {
+   "title": "Rust: motorë dhe mjete vendase",
+   "intro": "Programe të shkruara në Rust, jo skedarë HTML: OSATURA (motor animacioni 2D, alfa), VERIGA (kontrollues lidhjesh), LegatorOCR (skanime → PDF i kërkueshëm, version 0.x), PORUMBEL (foto nga telefoni në kompjuterin tuaj) dhe MARTOR e EXIF-CURAT, në punë e sipër."
+  },
+  "verificare": {
+   "title": "Verifikim, burime dhe gjurmë në rrjet",
+   "intro": "Mjete për të parë nga vjen një informacion, çfarë ka ndryshuar që nga botimi dhe nëse një lidhje është ende gjallë. Secili në README-n e vet tregon çfarë kërkesash dërgon te palë të treta."
+  },
+  "educatie": {
+   "title": "Arsim dhe mjete profesionale",
+   "intro": "Materiale mësimore dhe mjete pune për radioamatorizmin, aksesueshmërinë, organizimin e ngjarjeve dhe përpunimin e tekstit e të dhënave. Mjete jozyrtare: nuk zëvendësojnë asnjë organ."
+  },
+  "stiinta": {
+   "title": "Shkencë, natyrë dhe punë në terren",
+   "intro": "Vizualizime dhe enciklopedi të ndërtuara mbi të dhëna publike. Kur të dhënat janë të përafërta, aplikacioni e thotë."
+  },
+  "jocuri": {
+   "title": "Lojëra strategjike dhe atlase rregullash",
+   "intro": "Çdo lojë ka një motor të ndarë nga ndërfaqja, një kundërshtar heuristik me inteligjencë artificiale pa qasje te informacioni i fshehur dhe grupe testesh të veta (për shembull, Belot: mbi 450.000 kontrolle automatike)."
+  },
+  "ai": {
+   "title": "Inteligjencë artificiale nën kontrollin e përdoruesit",
+   "intro": "Ndërfaqe që e lënë përdoruesin të vendosë çfarë del nga pajisja dhe ku shkon. Çelësat API mbeten në shfletues vetëm “të maskuar”, jo të enkriptuar: lexoni README-n para se t’i përdorni."
+  },
+  "utilitare": {
+   "title": "Shërbime dhe projekte krijuese",
+   "intro": "Mjete të vogla të ndërtuara për të zgjatur: një skedar, pa llogari."
+  },
+  "cultura": {
+   "title": "Kulturë, praktika dhe besime: një studim përshkrues",
+   "intro": "Këto aplikacione përshkruajnë praktika pa prova shkencore efikasiteti (astrologji, tarot, numerologji, reiki, radiestezi etj.) si objekt studimi kulturor, jo si rekomandim. Nuk zëvendësojnë këshillën mjekësore, juridike ose financiare."
+  },
+  "recomandate": {
+   "title": "Të rekomanduara",
+   "intro": "Një përzgjedhje për të nisur: verifikimi i burimeve, përkthimi, të mësuarit dhe mjetet e punës."
+  },
+  "confidentialitate": {
+   "title": "Privatësia dhe vërtetësia",
+   "intro": "Hiqni metadatat e skedarëve, enkriptoni lokalisht dhe verifikoni kredencialet e origjinës. Nuk janë audituar në mënyrë të pavarur: mos u mbështetni te ato si mbrojtje e vetme për të dhëna vërtet të ndjeshme."
+  },
+  "literatura": {
+   "title": "Letërsi dhe gjuhë",
+   "intro": "Fjalorë, alfabete dhe kode, proverba dhe prozë origjinale: mjete për fjalët, shkrimin dhe leximin. Janë ndihmësa mësimorë, jo manuale normative."
+  },
+  "teren": {
+   "title": "Terreni dhe shtigjet",
+   "intro": "Gjurmë GPS, ditarë terreni, udhëzues për ecje dhe mbijetesë. Gjithçka punon lokalisht; asgjë nuk zëvendëson hartën, udhërrëfyesin ose autoritetet vendore, dhe asgjë këtu nuk është pajisje navigimi apo sigurie."
+  },
+  "sunet": {
+   "title": "Zëri",
+   "intro": "Matja, krijimi dhe analiza e zërit, si dhe muzika e atmosfera e krijuara në shfletues. Matësi i zhurmës dhe testet e dëgjimit janë vetëm orientues, nuk janë pajisje të certifikuara apo mjekësore."
+  },
+  "gospodarie": {
+   "title": "Shtëpia dhe organizimi",
+   "intro": "Kalendar, buxhet, pema familjare, shënime dhe koha: mjete për gjërat e përditshme, të dhënat mbeten në këtë shfletues, pa llogari. Nuk janë këshillë financiare, juridike apo tatimore."
+  },
+  "mobil": {
+   "title": "Aplikacione mobile: Android dhe iPhone",
+   "intro": "Aplikacione vendase për telefon (APK për Android, IPA i pa nënshkruar për iPhone ku disponohet): STRAJA (mburojë kundër agjentëve AI), CUPLAJ (komunikim për teatrin imersiv) dhe LUSTRUM (pastrues skedarësh për Android)."
+  },
+  "extensii": {
+   "title": "Shtesa për shfletues",
+   "intro": "Shtesa që punojnë brenda shfletuesit: Claritas (aksesueshmëri: korrigjim kontrasti, mënyrë leximi, tekst në të folur) dhe TEZAUR (asistent kërkimi për teza i shkruar në Rust, që vjen edhe me një shtesë Chrome/Firefox)."
+  },
+  "rust-ai": {
+   "title": "Rust: AI lokale",
+   "intro": "Programe Rust që ekzekutojnë modele në kompjuterin tuaj: GERMEN (stërvit një GPT të vogël nga zero), CartaColibri (bibliotekë AI lokale) dhe colibri-companion (ndërfaqe desktop për colibri)."
+  },
+  "rust-jocuri": {
+   "title": "Rust: lojëra",
+   "intro": "Lojëra dhe motorë rregullash në Rust: TurboCursa (gara arcade), PolyTabletop (240 lojëra tavoline) dhe ARBITRU (motor rregullash, në punë e sipër)."
+  },
+  "rust-stiinta": {
+   "title": "Rust: shkencë, tingull dhe kulturë",
+   "intro": "Mjete Rust për shkencën, tingullin, aksesueshmërinë dhe kulturën: CUANTOR (simulator kuantik), ASTROLABIU, ANTENA, ECOGRAMA, ecou-spectral-rs, TACTIL dhe NEAMURI; të gjithë përveç CUANTOR janë në punë e sipër."
+  }
  },
  "misc": {
   "donateLabel": "Mbështet",
@@ -162,6 +224,19 @@
   "open": "Hap",
   "nativeDemo": "Demonstrim në terminal"
  },
- "months": ["janar", "shkurt", "mars", "prill", "maj", "qershor", "korrik", "gusht", "shtator", "tetor", "nëntor", "dhjetor"],
+ "months": [
+  "janar",
+  "shkurt",
+  "mars",
+  "prill",
+  "maj",
+  "qershor",
+  "korrik",
+  "gusht",
+  "shtator",
+  "tetor",
+  "nëntor",
+  "dhjetor"
+ ],
  "dateFmt": "{d} {m} {y}"
 }
