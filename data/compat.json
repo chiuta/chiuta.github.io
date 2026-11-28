@@ -10,12 +10,12 @@
  },
  "kitMinVersion": "1.8.0",
  "summary": {
-  "apps": 188,
+  "apps": 189,
   "ok": 3,
-  "warn": 185,
+  "warn": 186,
   "fail": 0,
   "smoke": {
-   "ok": 179,
+   "ok": 180,
    "warn": 9,
    "fail": 0,
    "missing": 0
@@ -9476,6 +9476,43 @@
     "newErrors": 0,
     "nativeErrors": 0,
     "legacyErrors": 0
+   }
+  },
+  "ERATA": {
+   "file": "docs/index.html",
+   "status": "warn",
+   "kit": null,
+   "compatLayer": false,
+   "syntaxErrors": [
+    {
+     "line": 0,
+     "msg": "folosește API-uri acoperite doar de fff-compat (scroll cu opțiuni) dar pagina nu are stratul (tools/compat/lower.mjs --write îl adaugă)"
+    }
+   ],
+   "postFloor": {},
+   "apiBeyondFloor": [
+    {
+     "name": "scroll cu opțiuni",
+     "covered": true
+    }
+   ],
+   "cssBeyondFloor": [
+    ":focus-visible",
+    "gap (flex)",
+    "clamp()/min()/max()",
+    "accent-color",
+    "prefers-color-scheme",
+    "scroll-behavior"
+   ],
+   "smoke": {
+    "status": "ok",
+    "newErrors": 0,
+    "nativeErrors": 0,
+    "legacyErrors": 0
+   },
+   "exception": {
+    "syntax": true,
+    "because": "pagina de prezentare a extensiei nu are stratul fff-compat; singurul API fără strat e window.scrollTo cu opțiuni, protejat în pagină de try/catch cu rezerva scrollTo(0,0) (docs/index.html, linia 1933), deci pe browsere vechi doar sare direct sus"
    }
   }
  }

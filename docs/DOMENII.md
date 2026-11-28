@@ -5,8 +5,8 @@
 
 ## Pe scurt
 
-- Aplicații în catalog: **164** (164 în depozite proprii, 0 în `apps/` din hub).
-- Cu **origine proprie** (CNAME `<slug>.chiuta.ro`): **164**.
+- Aplicații în catalog: **165** (165 în depozite proprii, 0 în `apps/` din hub).
+- Cu **origine proprie** (CNAME `<slug>.chiuta.ro`): **165**.
 - Pe **origine partajată** `chiuta.ro`: **0** (0 aplicații din hub + 0 depozit(e) fără CNAME).
 - De mutat pe origine proprie (sensibile, din hub): **0** cu prioritate 1 (), **0** cu prioritate 2 ().
 
@@ -77,7 +77,7 @@ Datele din `localStorage`/`IndexedDB` **nu se mută singure**: noua origine porn
 
 ## Verificare
 
-Stare verificată în Etapa 7 (consolidare): 164 din 164 depozite au CNAME `<slug>.chiuta.ro` și nicio aplicație nu e pe origine partajată (fiecare își păstrează `localStorage`/IndexedDB separat). Ce NU s-a putut verifica din mediul de lucru: rezolvarea DNS (`--dns` dă ENOTFOUND din spatele proxy-ului) și starea GitHub Pages „live”; acestea rămân de confirmat de pe o rețea cu DNS public.
+Stare verificată în Etapa 7 (consolidare): 165 din 165 depozite au CNAME `<slug>.chiuta.ro` și nicio aplicație nu e pe origine partajată (fiecare își păstrează `localStorage`/IndexedDB separat). Ce NU s-a putut verifica din mediul de lucru: rezolvarea DNS (`--dns` dă ENOTFOUND din spatele proxy-ului) și starea GitHub Pages „live”; acestea rămân de confirmat de pe o rețea cu DNS public.
 
 ```
 node tools/cname-inventory.mjs --check   # documentul corespunde depozitelor de pe disc
@@ -93,6 +93,7 @@ node tools/cname-inventory.mjs --dns     # informativ: interoghează DNS-ul publ
 | LUSTRUM | depozit | `lustrum.chiuta.ro` | proprie: https://lustrum.chiuta.ro/ | — |  |
 | Claritas | depozit | `claritas.chiuta.ro` | proprie: https://claritas.chiuta.ro/ | — |  |
 | TEZAUR | depozit | `tezaur.chiuta.ro` | proprie: https://tezaur.chiuta.ro/ | — | proiect Rust, site propriu; depozit chiuta/TEZAUR |
+| ERATA | depozit | `erata.chiuta.ro` | proprie: https://erata.chiuta.ro/ | — | proiect Rust, site propriu; depozit chiuta/ERATA |
 | OSATURA | depozit | `osatura.chiuta.ro` | proprie: https://osatura.chiuta.ro/ | — | proiect Rust, site propriu; depozit chiuta/OSATURA |
 | VERIGA | depozit | `veriga.chiuta.ro` | proprie: https://veriga.chiuta.ro/ | — | proiect Rust, site propriu; depozit chiuta/VERIGA |
 | LegatorOCR | depozit | `legatorocr.chiuta.ro` | proprie: https://legatorocr.chiuta.ro/ | — | proiect Rust, site propriu; depozit chiuta/LegatorOCR |

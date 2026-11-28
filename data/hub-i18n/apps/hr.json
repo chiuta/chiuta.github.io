@@ -1266,6 +1266,14 @@
    ],
    "line": "Simulator kvantnog računala za vaš desktop, od 5 do 1000 kubita, sa sučeljem u stilu IBM Quantum Composera. Točna matematika, ali ne pravi kvantni hardver.",
    "detail": "Program u Rustu u četiri dijela (jezgra, prozor, naredbeni redak, IBM veza) za Windows, macOS i Linux. Ploča za crtanje poput IBM-ova Composera: postavite obojena vrata na linije (kubite) i gledajte kako stupci i sfera prikazuju rezultat, dok tekstualna ploča isti krug uživo ispisuje u OpenQASM-u i Qiskitu. Tri kalkulatora: jedan koji pamti svaki broj (do 28 kubita), jedan vrlo brz za jednostavna vrata (do 4096) i jedan za krugove s malo grananja. Mjerenje, reset i if usred izvođenja, vaša vlastita vrata, simulirani šum, rezultati koje možete ponoviti sa sjemenom. Čita OpenQASM 2.0 i 3.0; krug možete otvoriti u IBM Composeru ili poslati na pravi IBM stroj s ključem vlastitog računa (nije provjereno na pravom IBM hardveru). Sučelje na 8 jezika; inačica 0.2."
+  },
+  "ERATA": {
+   "tags": [
+    "lektor",
+    "proširenje"
+   ],
+   "line": "Preglednički lektor koji provjerava pravopis, gramatiku, interpunkciju i tipografiju izravno na vašem računalu: bez računa, bez poslužitelja, bez telemetrije. Najdublji za rumunjski.",
+   "detail": "Proširenje za Chromium i Firefox (inačica za Safari nije testirana), napisano od nule bez koda, pravila ili podataka iz LanguageTool ili bilo kojeg drugog provjerivača. Radi u poljima textarea, input i contenteditable i crta podvlake bez mijenjanja stranice. Prepoznaje jezik po odlomku, vraća dijakritike (ro, fr, es, pt) samo ondje gdje je ispravak nedvosmislen i ima duboka pravila za rumunjski (zarez ispod ș/ț, „să/sa“, „într-un“, zarez ispred „dar/însă“). Osobni rječnik, vlastita pravila, prekidač po web-mjestu, uvoz Hunspell rječnika. Neobavezno prepisivanje putem lokalnog modela (samo localhost, zadano isključeno). Sučelje na 25 jezika. Inačica 0.4; licenca MIT."
   }
  }
 }

@@ -197,7 +197,7 @@
   },
   "extensii": {
    "title": "Rozšírenia prehliadača",
-   "intro": "Rozšírenia, ktoré bežia vo vnútri prehliadača: Claritas (prístupnosť: oprava kontrastu, režim čítačky, prevod textu na reč) a TEZAUR (výskumný asistent pre záverečné práce napísaný v jazyku Rust, ktorý obsahuje aj rozšírenie pre Chrome/Firefox)."
+   "intro": "Rozšírenia, ktoré bežia vo vnútri prehliadača: Claritas (prístupnosť: oprava kontrastu, režim čítačky, prevod textu na reč), TEZAUR (výskumný asistent pre záverečné práce napísaný v jazyku Rust, ktorý obsahuje aj rozšírenie pre Chrome/Firefox) a ERATA (offline korektor pravopisu, gramatiky a interpunkcie)."
   },
   "rust-ai": {
    "title": "Rust: lokálna AI",

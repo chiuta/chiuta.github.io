@@ -1266,6 +1266,14 @@
    ],
    "line": "Simulator i kompjuterit kuantik për desktopin tuaj, nga 5 deri në 1000 kubite, me ndërfaqe në stilin e IBM Quantum Composer. Matematikë e saktë, por jo harduer i vërtetë kuantik.",
    "detail": "Program Rust në katër pjesë (bërthama, dritarja, linja e komandës, lidhja IBM) për Windows, macOS dhe Linux. Një tabelë vizatimi si Composer i IBM: vendosni porta me ngjyra në linja (kubite) dhe shikoni shtylla dhe një sferë që tregojnë rezultatin, ndërsa një panel teksti shkruan të njëjtin qark drejtpërdrejt në OpenQASM dhe Qiskit. Tri kalkulatorë: një që kujton çdo numër (deri në 28 kubite), një shumë i shpejtë për porta të thjeshta (deri në 4096) dhe një për qarqe me pak degëzime. Matje, reset dhe if në mes të ekzekutimit, portat tuaja, zhurmë e simuluar, rezultate të përsëritshme me një farë. Lexon OpenQASM 2.0 dhe 3.0; mund ta hapni qarkun në IBM Composer ose ta dërgoni në një makinë reale IBM me çelësin e llogarisë suaj (e paverifikuar në harduer real IBM). Ndërfaqe në 8 gjuhë; version 0.2."
+  },
+  "ERATA": {
+   "tags": [
+    "korrektues",
+    "shtesë"
+   ],
+   "line": "Korrektues në shfletues që kontrollon drejtshkrimin, gramatikën, pikësimin dhe tipografinë drejt në kompjuterin tuaj: pa llogari, pa server, pa telemetri. Më i thelli për rumanishten.",
+   "detail": "Shtesë për Chromium dhe Firefox (versioni për Safari i patestuar), e shkruar nga zero pa kod, rregulla ose të dhëna nga LanguageTool apo ndonjë kontrollues tjetër. Punon në fushat textarea, input dhe contenteditable dhe vizaton nënvizimet pa ndryshuar faqen. Zbulon gjuhën për çdo paragraf, rikthen diakritikët (ro, fr, es, pt) vetëm kur korrigjimi është i pakundërshtueshëm, dhe ka rregulla të thella për rumanishten (presje poshtë ș/ț, “să/sa”, “într-un”, presja para “dar/însă”). Fjalor personal, rregulla të personalizuara, çelës për çdo faqe, import fjalorësh Hunspell. Rishkrim opsional përmes një modeli lokal (vetëm localhost, i çaktivizuar si parazgjedhje). Ndërfaqe në 25 gjuhë. Version 0.4; licencë MIT."
   }
  }
 }

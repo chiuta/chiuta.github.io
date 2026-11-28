@@ -21,6 +21,10 @@
         "regex-d-flag"
       ],
       "because": "m.indices au fallback determinist (blocul fff:idx din web/veriga.html), comparat cu rezultatul nativ pe >240 000 de potriviri în web/tests/indices.test.js"
+    },
+    "ERATA": {
+      "syntax": true,
+      "because": "pagina de prezentare a extensiei nu are stratul fff-compat; singurul API fără strat e window.scrollTo cu opțiuni, protejat în pagină de try/catch cu rezerva scrollTo(0,0) (docs/index.html, linia 1933), deci pe browsere vechi doar sare direct sus"
     }
   },
   "$exceptions": "Excepții per aplicație: «syntax»: true ignoră erorile de sintaxă ale auditului (fals pozitive verificate); «manual»: [tipuri] recunoaște ca rezolvate manual notele codemodului de acest tip; «because» este obligatoriu.",
@@ -84,6 +88,9 @@
     ],
     "CUANTOR": [
       "site/index.html"
+    ],
+    "ERATA": [
+      "docs/index.html"
     ]
   },
   "$extraTargets": "Fișiere HTML single-file distribuite separat de index.html-ul principal al depozitului (copii de distribuție, rezultate de build, pagini web ale aplicațiilor Rust); intră în audit, în coborârea sintaxei și în smoke la fel ca aplicațiile. Cheie = depozit, valoare = căi relative. Rezultatul de build trebuie regenerat/coborât din nou după fiecare build (vezi docs/COMPATIBILITATE.md)."

@@ -197,7 +197,7 @@
   },
   "extensii": {
    "title": "Browseroskere ekstensie",
-   "intro": "Ekstensie so kerena buči andre ando browseri: Claritas (dostupnipe: pačipe e kontrastosqo, modo vaš o genipen, teksto-ando-glaso) thaj TEZAUR (rodipnaskero ažutitori vaš tezi ramo ando Rust, so anel vi jek Chrome/Firefox ekstensia)."
+   "intro": "Ekstensie so kerena buči andre ando browseri: Claritas (dostupnipe: pačipe e kontrastosqo, modo vaš o genipen, teksto-ando-glaso), TEZAUR (rodipnaskero ažutitori vaš tezi ramo ando Rust, so anel vi jek Chrome/Firefox ekstensia) thaj ERATA (offline koretori vaš ramosaripe, gramatika thaj punktuacia)."
   },
   "rust-ai": {
    "title": "Rust: lokalo AI",

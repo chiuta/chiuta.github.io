@@ -1,7 +1,7 @@
 {
  "schema": 1,
  "note": "Generat de tools/sync-catalog.mjs din data/catalog-meta.json, data/flows.json și registrul de plicuri; nu se editează de mână. Fiecare relație are cel puțin un motiv verificabil (vezi relationEvidence în tools/catalog-meta-lib.mjs).",
- "count": 768,
+ "count": 774,
  "relations": [
   {
    "a": "AcademiSearch",
@@ -299,6 +299,13 @@
    "b": "CLEPSIDRA",
    "reasons": [
     "topic:home"
+   ]
+  },
+  {
+   "a": "Akasha",
+   "b": "ERATA",
+   "reasons": [
+    "topic:authoring"
    ]
   },
   {
@@ -1755,6 +1762,14 @@
   },
   {
    "a": "Claritas",
+   "b": "ERATA",
+   "reasons": [
+    "pair"
+   ],
+   "why": "două extensii de browser care lucrează local, fără telemetrie și fără cont: Claritas face pagina mai ușor de citit, ERATA îți corectează ce scrii în ea"
+  },
+  {
+   "a": "Claritas",
    "b": "LECTOR",
    "reasons": [
     "topic:access",
@@ -2838,6 +2853,37 @@
     "topic:audiolab",
     "envelope:sound/profile",
     "module:fff-sunet"
+   ]
+  },
+  {
+   "a": "ERATA",
+   "b": "Fabrica",
+   "reasons": [
+    "topic:authoring"
+   ]
+  },
+  {
+   "a": "ERATA",
+   "b": "MarkdownAtelier",
+   "reasons": [
+    "topic:authoring",
+    "pair"
+   ],
+   "why": "cine scrie texte lungi are nevoie de un editor și de un corector: ERATA verifică local ce tastezi, fără să trimită nimic pe un server"
+  },
+  {
+   "a": "ERATA",
+   "b": "TEZAUR",
+   "reasons": [
+    "pair"
+   ],
+   "why": "TEZAUR te ajută să găsești și să citezi sursele unei teze, ERATA îți corectează ortografia, gramatica și punctuația textului pe care îl scrii"
+  },
+  {
+   "a": "ERATA",
+   "b": "Trusa-fara-frontiere",
+   "reasons": [
+    "topic:authoring"
    ]
   },
   {

@@ -1266,6 +1266,14 @@
    ],
    "line": "Simulátor kvantového počítače pro váš desktop, od 5 do 1000 qubitů, s rozhraním ve stylu IBM Quantum Composer. Přesná matematika, ale ne skutečný kvantový hardware.",
    "detail": "Program v Rustu o čtyřech částech (jádro, okno, příkazový řádek, spojení s IBM) pro Windows, macOS a Linux. Kreslicí plocha jako IBM Composer: položte barevná hradla na linie (qubity) a sledujte, jak sloupce a koule ukazují výsledek, zatímco textový panel zapisuje tentýž obvod živě v OpenQASM a Qiskit. Tři kalkulátory: jeden, který si pamatuje každé číslo (až 28 qubitů), jeden velmi rychlý pro jednoduchá hradla (až 4096) a jeden pro obvody s málo větveními. Měření, reset a if uprostřed běhu, vlastní hradla, simulovaný šum, opakovatelné výsledky pomocí seedu. Čte OpenQASM 2.0 a 3.0; obvod můžete otevřít v IBM Composer nebo odeslat na skutečný stroj IBM s klíčem k vašemu vlastnímu účtu (neověřeno na skutečném hardwaru IBM). Rozhraní v 8 jazycích; verze 0.2."
+  },
+  "ERATA": {
+   "tags": [
+    "korektor",
+    "rozšíření"
+   ],
+   "line": "Prohlížečový korektor, který kontroluje pravopis, gramatiku, interpunkci a typografii přímo ve vašem počítači: bez účtu, bez serveru, bez telemetrie. Nejhlubší pro rumunštinu.",
+   "detail": "Rozšíření pro Chromium a Firefox (sestavení pro Safari netestováno), napsané od nuly bez jakéhokoli kódu, pravidel či dat z LanguageTool nebo jiného kontrolního nástroje. Funguje v polích textarea, input a contenteditable a vykresluje podtržení, aniž by měnilo stránku. Rozpoznává jazyk po odstavcích, obnovuje diakritiku (ro, fr, es, pt) jen tam, kde je oprava jednoznačná, a má hluboká rumunská pravidla (čárka pod ș/ț, „să/sa“, „într-un“, čárka před „dar/însă“). Osobní slovník, vlastní pravidla, přepínač pro jednotlivé weby, import slovníků Hunspell. Volitelné přepisování pomocí lokálního modelu (pouze localhost, ve výchozím stavu vypnuto). Rozhraní v 25 jazycích. Verze 0.4; licence MIT."
   }
  }
 }

@@ -1266,6 +1266,14 @@
    ],
    "line": "Simulilo de kvantuma komputilo por via labortablo, de 5 ĝis 1000 kubitoj, kun interfaco laŭ IBM Quantum Composer. Preciza matematiko, sed ne reala kvantuma aparataro.",
    "detail": "Rust-programo en kvar partoj (kerno, fenestro, komandlinio, IBM-ligo) por Windows, macOS kaj Linux. Desegna tabulo kiel Composer de IBM: metu kolorajn pordojn sur liniojn (kubitoj) kaj rigardu stangojn kaj sferon montri la rezulton, dum teksta panelo skribas la saman cirkviton viva en OpenQASM kaj Qiskit. Tri kalkuliloj: unu kiu memoras ĉiun nombron (ĝis 28 kubitoj), unu tre rapida por simplaj pordoj (ĝis 4096) kaj unu por cirkvitoj kun malmultaj branĉoj. Mezuri, restarigi kaj if meze de rulo, viaj propraj pordoj, simulita bruo, rezultoj ripeteblaj per semo. Ĝi legas OpenQASM 2.0 kaj 3.0; vi povas malfermi la cirkviton en IBM Composer aŭ sendi ĝin al reala maŝino de IBM per via propra konta ŝlosilo (ne kontrolita sur reala aparataro de IBM). Interfaco en 8 lingvoj; versio 0.2."
+  },
+  "ERATA": {
+   "tags": [
+    "korektilo",
+    "etendaĵo"
+   ],
+   "line": "Retumila korektilo, kiu kontrolas literumon, gramatikon, interpunkcion kaj tipografion rekte en via komputilo: sen konto, sen servilo, sen telemetrio. Plej profunda por la rumana.",
+   "detail": "Etendaĵo por Chromium kaj Firefox (Safari-versio netestita), skribita de nulo sen kodo, reguloj aŭ datumoj de LanguageTool aŭ alia kontrolilo. Ĝi funkcias en kampoj textarea, input kaj contenteditable kaj desegnas siajn substrekojn sen ŝanĝi la paĝon. Ĝi detektas la lingvon laŭ alineo, restarigas diakritajn signojn (ro, fr, es, pt) nur kie la korekto estas senduba, kaj havas profundajn rumanajn regulojn (komo-malsupre ș/ț, “să/sa”, “într-un”, la komo antaŭ “dar/însă”). Persona vortaro, propraj reguloj, ŝaltilo laŭ retejo, importo de vortaroj Hunspell. Laŭvola reverkado per loka modelo (nur localhost, implicite malŝaltita). Interfaco en 25 lingvoj. Versio 0.4; permesilo MIT."
   }
  }
 }

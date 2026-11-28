@@ -197,7 +197,7 @@
   },
   "extensii": {
    "title": "Proširenja za preglednik",
-   "intro": "Proširenja koja rade unutar preglednika: Claritas (pristupačnost: popravak kontrasta, način čitača, pretvaranje teksta u govor) i TEZAUR (istraživački asistent za radove napisan u Rustu, koji dolazi i s proširenjem za Chrome/Firefox)."
+   "intro": "Proširenja koja rade unutar preglednika: Claritas (pristupačnost: popravak kontrasta, način čitača, pretvaranje teksta u govor), TEZAUR (istraživački asistent za radove napisan u Rustu, koji dolazi i s proširenjem za Chrome/Firefox) i ERATA (izvanmrežni lektor za pravopis, gramatiku i interpunkciju)."
   },
   "rust-ai": {
    "title": "Rust: lokalni AI",
