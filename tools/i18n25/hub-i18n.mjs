@@ -145,8 +145,11 @@ function applyPage() {
     const n = Object.keys(EN).length, c = (fld) => Object.values(out).filter((x) => x[fld]).length;
     console.log(`descrieri ${l}: rânduri ${c('line')}/${n} · etichete ${c('tags')}/${n} · detalii ${c('detail')}/${n}`);
   }
+  const pal = {};
+  for (const l of ok) { const f = path.join(DIR, 'pal', `${l}.json`); if (fs.existsSync(f)) pal[l] = JSON.parse(fs.readFileSync(f, 'utf8')); }
   const block = `${BEGIN}
 (function(){
+  window.__palNames=${JSON.stringify(pal)};
   var N=${JSON.stringify(data)};
   function rep(s,m){ return String(s).replace(/\\{([a-z]+)\\}/g,function(x,k){ return m[k]!==undefined?m[k]:x; }); }
   function en(){ var c=T.en.copyright||'', m=/(\\d+) (\\w+) (\\d{4})/.exec(c); return m?new Date(m[2]+' '+m[1]+', '+m[3]+' 12:00:00 UTC'):null; }
