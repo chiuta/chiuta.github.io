@@ -135,20 +135,82 @@
   "skip": "Preskoči na sadržaj"
  },
  "sections": {
-  "rust": {"title": "Rust: izvorni programi, a ne HTML datoteke", "intro": "Projekti pisani u Rustu koji nisu HTML aplikacije u jednoj datoteci: OSATURA (mehanizam za animaciju, alfa), VERIGA (provjera poveznica), TEZAUR (pomoćnik za istraživanje u radu, inačica 0.x) i LegatorOCR (skenovi → PDF s pretraživanjem, inačica 0.x)."},
-  "verificare": {"title": "Provjera, izvori i tragovi na webu", "intro": "Alati za provjeru odakle informacija dolazi, što se promijenilo od objave i je li poveznica još živa. Svaki u svom README-u navodi koje zahtjeve šalje trećim stranama."},
-  "educatie": {"title": "Obrazovanje i stručni alati", "intro": "Materijali za učenje i radni alati za radioamaterstvo, pristupačnost, organizaciju događaja te rad s tekstom i podacima. Neslužbeni alati: ne zamjenjuju nijedno tijelo."},
-  "stiinta": {"title": "Znanost, priroda i terenski rad", "intro": "Vizualizacije i enciklopedije izgrađene na javnim podacima. Gdje su podaci približni, aplikacija to kaže."},
-  "jocuri": {"title": "Strateške igre i atlasi pravila", "intro": "Svaka igra ima mehanizam odvojen od sučelja, heurističkog protivnika s umjetnom inteligencijom bez pristupa skrivenim informacijama i vlastite skupove testova (na primjer, Belot: više od 450.000 automatskih provjera)."},
-  "ai": {"title": "Umjetna inteligencija pod kontrolom korisnika", "intro": "Sučelja koja korisniku daju da odluči što napušta uređaj i kamo ide. API ključevi ostaju u pregledniku samo „skriveni”, ne šifrirani: pročitajte README prije uporabe."},
-  "utilitare": {"title": "Alati i kreativni projekti", "intro": "Mali alati napravljeni da traju: jedna datoteka, bez računa."},
-  "cultura": {"title": "Kultura, prakse i vjerovanja: opisna studija", "intro": "Ove aplikacije opisuju prakse bez znanstvenih dokaza o učinkovitosti (astrologija, tarot, numerologija, reiki, radiestezija i sl.) kao predmet kulturnog proučavanja, a ne kao preporuku. Ne zamjenjuju medicinski, pravni ni financijski savjet."},
-  "recomandate": {"title": "Preporučeno", "intro": "Izbor za početak: provjera izvora, prevođenje, učenje i radni alati."},
-  "confidentialitate": {"title": "Privatnost i autentičnost", "intro": "Uklonite metapodatke datoteka, šifrirajte lokalno i provjerite vjerodajnice podrijetla. Nisu neovisno revidirani: ne oslanjajte se na njih kao na jedinu zaštitu uistinu osjetljivih podataka."},
-  "literatura": {"title": "Književnost i jezik", "intro": "Rječnici, abecede i kodovi, poslovice i autorska proza: alati za riječi, pisanje i čitanje. To su nastavna sredstva, a ne normativni priručnici."},
-  "teren": {"title": "Teren i staze", "intro": "GPS tragovi, terenski dnevnici, planinarski vodiči i vodiči za preživljavanje. Sve radi lokalno; ništa ne zamjenjuje kartu, vodiča ni lokalne vlasti, i ništa ovdje nije navigacijski ni sigurnosni uređaj."},
-  "sunet": {"title": "Zvuk", "intro": "Mjerenje, stvaranje i analiza zvuka te glazba i atmosfera generirane u pregledniku. Mjerač razine zvuka i testovi sluha samo su orijentacijski, nisu certificirani ni medicinski uređaji."},
-  "gospodarie": {"title": "Dom i organizacija", "intro": "Kalendar, proračun, obiteljsko stablo, bilješke i vrijeme: alati za svakodnevne stvari, podaci ostaju u ovom pregledniku, bez računa. Nije financijski, pravni ni porezni savjet."}
+  "rust": {
+   "title": "Rust: nativni pogoni i alati",
+   "intro": "Programi napisani u Rustu, a ne HTML datoteke: OSATURA (pogon za 2D animaciju, alpha), VERIGA (provjera poveznica), LegatorOCR (skenovi → PDF koji se može pretraživati, inačica 0.x), PORUMBEL (fotografije s telefona na vaše računalo) te radovi u tijeku MARTOR i EXIF-CURAT."
+  },
+  "verificare": {
+   "title": "Provjera, izvori i tragovi na webu",
+   "intro": "Alati za provjeru odakle informacija dolazi, što se promijenilo od objave i je li poveznica još živa. Svaki u svom README-u navodi koje zahtjeve šalje trećim stranama."
+  },
+  "educatie": {
+   "title": "Obrazovanje i stručni alati",
+   "intro": "Materijali za učenje i radni alati za radioamaterstvo, pristupačnost, organizaciju događaja te rad s tekstom i podacima. Neslužbeni alati: ne zamjenjuju nijedno tijelo."
+  },
+  "stiinta": {
+   "title": "Znanost, priroda i terenski rad",
+   "intro": "Vizualizacije i enciklopedije izgrađene na javnim podacima. Gdje su podaci približni, aplikacija to kaže."
+  },
+  "jocuri": {
+   "title": "Strateške igre i atlasi pravila",
+   "intro": "Svaka igra ima mehanizam odvojen od sučelja, heurističkog protivnika s umjetnom inteligencijom bez pristupa skrivenim informacijama i vlastite skupove testova (na primjer, Belot: više od 450.000 automatskih provjera)."
+  },
+  "ai": {
+   "title": "Umjetna inteligencija pod kontrolom korisnika",
+   "intro": "Sučelja koja korisniku daju da odluči što napušta uređaj i kamo ide. API ključevi ostaju u pregledniku samo „skriveni”, ne šifrirani: pročitajte README prije uporabe."
+  },
+  "utilitare": {
+   "title": "Alati i kreativni projekti",
+   "intro": "Mali alati napravljeni da traju: jedna datoteka, bez računa."
+  },
+  "cultura": {
+   "title": "Kultura, prakse i vjerovanja: opisna studija",
+   "intro": "Ove aplikacije opisuju prakse bez znanstvenih dokaza o učinkovitosti (astrologija, tarot, numerologija, reiki, radiestezija i sl.) kao predmet kulturnog proučavanja, a ne kao preporuku. Ne zamjenjuju medicinski, pravni ni financijski savjet."
+  },
+  "recomandate": {
+   "title": "Preporučeno",
+   "intro": "Izbor za početak: provjera izvora, prevođenje, učenje i radni alati."
+  },
+  "confidentialitate": {
+   "title": "Privatnost i autentičnost",
+   "intro": "Uklonite metapodatke datoteka, šifrirajte lokalno i provjerite vjerodajnice podrijetla. Nisu neovisno revidirani: ne oslanjajte se na njih kao na jedinu zaštitu uistinu osjetljivih podataka."
+  },
+  "literatura": {
+   "title": "Književnost i jezik",
+   "intro": "Rječnici, abecede i kodovi, poslovice i autorska proza: alati za riječi, pisanje i čitanje. To su nastavna sredstva, a ne normativni priručnici."
+  },
+  "teren": {
+   "title": "Teren i staze",
+   "intro": "GPS tragovi, terenski dnevnici, planinarski vodiči i vodiči za preživljavanje. Sve radi lokalno; ništa ne zamjenjuje kartu, vodiča ni lokalne vlasti, i ništa ovdje nije navigacijski ni sigurnosni uređaj."
+  },
+  "sunet": {
+   "title": "Zvuk",
+   "intro": "Mjerenje, stvaranje i analiza zvuka te glazba i atmosfera generirane u pregledniku. Mjerač razine zvuka i testovi sluha samo su orijentacijski, nisu certificirani ni medicinski uređaji."
+  },
+  "gospodarie": {
+   "title": "Dom i organizacija",
+   "intro": "Kalendar, proračun, obiteljsko stablo, bilješke i vrijeme: alati za svakodnevne stvari, podaci ostaju u ovom pregledniku, bez računa. Nije financijski, pravni ni porezni savjet."
+  },
+  "mobil": {
+   "title": "Mobilne aplikacije: Android i iPhone",
+   "intro": "Nativne aplikacije za telefon (APK za Android, nepotpisani IPA za iPhone gdje je dostupan): STRAJA (štit protiv AI agenata), CUPLAJ (komunikacija u imerzivnom kazalištu) i LUSTRUM (čistač datoteka za Android)."
+  },
+  "extensii": {
+   "title": "Proširenja za preglednik",
+   "intro": "Proširenja koja rade unutar preglednika: Claritas (pristupačnost: popravak kontrasta, način čitača, pretvaranje teksta u govor) i TEZAUR (istraživački asistent za radove napisan u Rustu, koji dolazi i s proširenjem za Chrome/Firefox)."
+  },
+  "rust-ai": {
+   "title": "Rust: lokalni AI",
+   "intro": "Programi u Rustu koji pokreću modele na vašem računalu: GERMEN (trenira mali GPT od nule), CartaColibri (lokalna AI knjižnica) i colibri-companion (desktop sučelje za colibri)."
+  },
+  "rust-jocuri": {
+   "title": "Rust: igre",
+   "intro": "Igre i pogoni pravila u Rustu: TurboCursa (arkadne utrke), PolyTabletop (240 stolnih igara) i ARBITRU (pogon pravila, rad u tijeku)."
+  },
+  "rust-stiinta": {
+   "title": "Rust: znanost, zvuk i kultura",
+   "intro": "Alati u Rustu za znanost, zvuk, pristupačnost i kulturu: CUANTOR (kvantni simulator), ASTROLABIU, ANTENA, ECOGRAMA, ecou-spectral-rs, TACTIL i NEAMURI; svi osim CUANTOR-a su radovi u tijeku."
+  }
  },
  "misc": {
   "donateLabel": "Podrži",

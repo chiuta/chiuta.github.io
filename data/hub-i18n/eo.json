@@ -136,8 +136,8 @@
  },
  "sections": {
   "rust": {
-   "title": "Rust: denaskaj programoj, ne HTML-dosieroj",
-   "intro": "Projektoj skribitaj en Rust, kiuj ne estas unudosieraj HTML-aplikaĵoj: OSATURA (animada motoro, alfa), VERIGA (kontrolilo de ligiloj), TEZAUR (helpanto por tezaj esploroj, versio 0.x) kaj LegatorOCR (skanaĵoj → serĉebla PDF, versio 0.x)."
+   "title": "Rust: denaskaj motoroj kaj iloj",
+   "intro": "Programoj skribitaj en Rust, ne HTML-dosieroj: OSATURA (2D-animada motoro, alfa), VERIGA (kontrolilo de ligiloj), LegatorOCR (skanaĵoj → serĉebla PDF, versio 0.x), PORUMBEL (telefonaj fotoj al via komputilo) kaj la laboroj en progreso MARTOR kaj EXIF-CURAT."
   },
   "verificare": {
    "title": "Kontrolo, fontoj kaj retaj spuroj",
@@ -190,6 +190,26 @@
   "gospodarie": {
    "title": "Hejmo kaj organizado",
    "intro": "Kalendaro, buĝeto, genealogia arbo, notoj kaj tempo: iloj por ĉiutagaj aferoj, kun datumoj konservitaj en ĉi tiu retumilo, sen konto. Ne financa, jura aŭ impostkonsilo."
+  },
+  "mobil": {
+   "title": "Porteblaj aplikaĵoj: Android kaj iPhone",
+   "intro": "Denaskaj telefonaj aplikaĵoj (APK por Android, nesubskribita IPA por iPhone kie disponebla): STRAJA (ŝildo kontraŭ AI-agentoj), CUPLAJ (komunikado por mergebla teatro) kaj LUSTRUM (dosierpurigilo por Android)."
+  },
+  "extensii": {
+   "title": "Retumilaj etendaĵoj",
+   "intro": "Etendaĵoj, kiuj funkcias en la retumilo: Claritas (alirebleco: korekto de kontrasto, legreĝimo, voĉlegado) kaj TEZAUR (helpanto por tezaj esploroj skribita en Rust, kiu liveras ankaŭ etendaĵon por Chrome/Firefox)."
+  },
+  "rust-ai": {
+   "title": "Rust: loka AI",
+   "intro": "Rust-programoj, kiuj lanĉas modelojn en via propra komputilo: GERMEN (trejnas malgrandan GPT de nulo), CartaColibri (loka AI-biblioteko) kaj colibri-companion (labortabla interfaco por colibri)."
+  },
+  "rust-jocuri": {
+   "title": "Rust: ludoj",
+   "intro": "Ludoj kaj regulmotoroj en Rust: TurboCursa (arkada vetkurado), PolyTabletop (240 tabulaj ludoj) kaj ARBITRU (regulmotoro, laboro en progreso)."
+  },
+  "rust-stiinta": {
+   "title": "Rust: scienco, sono kaj kulturo",
+   "intro": "Rust-iloj por scienco, sono, alirebleco kaj kulturo: CUANTOR (kvantuma simulilo), ASTROLABIU, ANTENA, ECOGRAMA, ecou-spectral-rs, TACTIL kaj NEAMURI; ĉiuj krom CUANTOR estas laboroj en progreso."
   }
  },
  "misc": {

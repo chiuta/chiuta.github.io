@@ -136,8 +136,8 @@
  },
  "sections": {
   "rust": {
-   "title": "Rust: programmata nativa, non fasciculi HTML",
-   "intro": "Incepta in Rust scripta, quae applicationes HTML fasciculi unici non sunt: OSATURA (motor animationis, alpha), VERIGA (inspector nexuum), TEZAUR (adiutor investigationis thesium, versio 0.x) et LegatorOCR (scansiones → PDF quaerendum, versio 0.x)."
+   "title": "Rust: motores et instrumenta nativa",
+   "intro": "Programmata in Rust scripta, non fasciculi HTML: OSATURA (motor animationis 2D, alpha), VERIGA (inspector nexuum), LegatorOCR (scansiones → PDF quaerendum, versio 0.x), PORUMBEL (photographiae telephoni ad computatrum tuum) et opera in progressu MARTOR et EXIF-CURAT."
   },
   "verificare": {
    "title": "Verificatio, fontes et vestigia interretialia",
@@ -190,6 +190,26 @@
   "gospodarie": {
    "title": "Domus et ordinatio",
    "intro": "Calendarium, rationarium, arbor genealogica, notae et tempus: instrumenta rerum cotidianarum, cum datis in hoc navigatro servatis, sine ratione. Non consilium pecuniarium, iuridicum vel fiscale."
+  },
+  "mobil": {
+   "title": "Applicationes mobiles: Android et iPhone",
+   "intro": "Applicationes telephonorum nativae (APK pro Android, IPA non subscriptum pro iPhone ubi praesto est): STRAJA (scutum contra agentes AI), CUPLAJ (communicatio pro theatro immersivo) et LUSTRUM (purgator fasciculorum pro Android)."
+  },
+  "extensii": {
+   "title": "Extensiones navigatri",
+   "intro": "Extensiones quae in navigatro operantur: Claritas (accessibilitas: correctio contrastus, modus lectoris, lectio recitata) et TEZAUR (adiutor investigationis thesium in Rust scriptus, qui etiam extensionem Chrome/Firefox praebet)."
+  },
+  "rust-ai": {
+   "title": "Rust: AI localis",
+   "intro": "Programmata Rust quae exemplaria in computatro tuo proprio exsecuntur: GERMEN (exemplar GPT parvum a fundamentis trahit), CartaColibri (bibliotheca AI localis) et colibri-companion (interfacies mensae pro colibri)."
+  },
+  "rust-jocuri": {
+   "title": "Rust: ludi",
+   "intro": "Ludi et motores regularum in Rust: TurboCursa (cursus arcade), PolyTabletop (240 ludi tabulares) et ARBITRU (motor regularum, opus in progressu)."
+  },
+  "rust-stiinta": {
+   "title": "Rust: scientia, sonus et cultura",
+   "intro": "Instrumenta Rust pro scientia, sono, accessibilitate et cultura: CUANTOR (simulator quanticus), ASTROLABIU, ANTENA, ECOGRAMA, ecou-spectral-rs, TACTIL et NEAMURI; omnia praeter CUANTOR opera in progressu sunt."
   }
  },
  "misc": {

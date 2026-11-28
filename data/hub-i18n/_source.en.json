@@ -136,8 +136,8 @@
  },
  "sections": {
   "rust": {
-   "title": "Rust: native programs, not HTML files",
-   "intro": "Projects written in Rust that are not single-file HTML apps: OSATURA (animation engine, alpha), VERIGA (link checker), TEZAUR (thesis research assistant, version 0.x) and LegatorOCR (scans → searchable PDF, version 0.x)."
+   "title": "Rust: native engines and tools",
+   "intro": "Programs written in Rust, not HTML files: OSATURA (2D animation engine, alpha), VERIGA (link checker), LegatorOCR (scans → searchable PDF, version 0.x), PORUMBEL (phone photos to your computer) and the work-in-progress MARTOR and EXIF-CURAT."
   },
   "verificare": {
    "title": "Verification, sources and web traces",
@@ -190,6 +190,26 @@
   "gospodarie": {
    "title": "Home and organisation",
    "intro": "Calendar, budget, family tree, notes and time: tools for everyday matters, with data kept in this browser, no account. Not financial, legal or tax advice."
+  },
+  "mobil": {
+   "title": "Mobile apps: Android and iPhone",
+   "intro": "Native phone apps (APK for Android, unsigned IPA for iPhone where available): STRAJA (shield against AI agents), CUPLAJ (immersive-theatre communication) and LUSTRUM (file cleaner for Android)."
+  },
+  "extensii": {
+   "title": "Browser extensions",
+   "intro": "Extensions that run inside the browser: Claritas (accessibility: contrast fixing, reader mode, text-to-speech) and TEZAUR (thesis research assistant written in Rust, which also ships a Chrome/Firefox extension)."
+  },
+  "rust-ai": {
+   "title": "Rust: local AI",
+   "intro": "Rust programs that run models on your own computer: GERMEN (trains a small GPT from scratch), CartaColibri (local AI library) and colibri-companion (desktop interface for colibri)."
+  },
+  "rust-jocuri": {
+   "title": "Rust: games",
+   "intro": "Games and rules engines in Rust: TurboCursa (arcade racing), PolyTabletop (240 tabletop games) and ARBITRU (rules engine, work in progress)."
+  },
+  "rust-stiinta": {
+   "title": "Rust: science, sound and culture",
+   "intro": "Rust tools for science, sound, accessibility and culture: CUANTOR (quantum simulator), ASTROLABIU, ANTENA, ECOGRAMA, ecou-spectral-rs, TACTIL and NEAMURI; all but CUANTOR are work in progress."
   }
  },
  "misc": {

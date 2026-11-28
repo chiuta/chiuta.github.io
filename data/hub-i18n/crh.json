@@ -135,20 +135,82 @@
   "skip": "Mundericege keç"
  },
  "sections": {
-  "rust": {"title": "Rust: yerlik programmalar, HTML dosyaları degil", "intro": "Bir dosyalı HTML uyğulamaları olmağan, Rust tilinde yazılğan layihalar: OSATURA (animatsiya motorı, alfa), VERIGA (bağlantı tekşerici), TEZAUR (tez tedqiqat yardımcısı, versiya 0.x) ve LegatorOCR (skanerlemeler → qıdırıla bilgen PDF, versiya 0.x)."},
-  "verificare": {"title": "Tekşerüv, menbalar ve vebdeki izler", "intro": "Bir malümatnıñ neredendir keldigini, neşir etilgenden berli ne deñişkenini ve bir bağlantınıñ daa çalışqanını tekşerüv vastaları. Er biri öz README dosyasında üçünci taraflarğa nasıl istekler yibergenini bildire."},
-  "educatie": {"title": "Oquv ve kesbiy vastalar", "intro": "Radiohavesqarlıq, irişilebilirlik, tedbirlerni teşkil etüv ve metin ile malümat bilen çalışuv içün oquv materialları ve iş vastaları. Resmiy olmağan vastalar: hiç bir organnıñ yerini tutmay."},
-  "stiinta": {"title": "İlim, tabiat ve saha işi", "intro": "Açıq malümatlarğa dayanğan körünişler ve ansiklopediyalar. Malümat taqribiy olğanda, uyğulama bunı bildire."},
-  "jocuri": {"title": "Strategiya oyunları ve qaide atlasları", "intro": "Er bir oyunnıñ interfeysten ayrı motorı, gizli malümatqa kirişi olmağan evristik AI raqibi ve öz sınav toplamları bar (meselâ, Belot: 450 000-den ziyade avtomatik tekşerüv)."},
-  "ai": {"title": "Qullanıcı nezaretinde suniy zeka", "intro": "Qullanıcığa cihazdan neniñ çıqqanını ve nereye ketkenini qarar bermege imkân bergen interfeyslar. API açarları brauzerde yalıñız “gizlengen” alda qala, şifrelenmey: qullanmazdan evel README’ni oquñız."},
-  "utilitare": {"title": "Yardımcı programmalar ve yaratıcı layihalar", "intro": "Uzaq yaşamaq içün yapılğan küçük vastalar: bir dosya, hesapsız."},
-  "cultura": {"title": "Medeniyet, pratikalar ve inançlar: tasvirleyici tedqiqat", "intro": "Bu uyğulamalar tesirliligi içün ilmiy isbatı olmağan pratikalarnı (astrologiya, taro, numerologiya, reyki, çubuq ile suv qıdırmaq ve ilâhre) tavsiye degil, medeniy tedqiqat nesnesi olaraq tasvirleyler. Tıbbiy, hukuqiy yaki malî aqılnıñ yerini tutmaylar."},
-  "recomandate": {"title": "Tavsiye etilgenler", "intro": "Başlamaq içün saylama: menba tekşerüvi, tercime, oquv ve iş vastaları."},
-  "confidentialitate": {"title": "Hususiylik ve asıllıq", "intro": "Dosya metamalümatını çıqarıñız, yerlikte şifreleñiz ve menşe şahadetnamelerini tekşeriñiz. Müstaqil olaraq teftiş etilmegenler: çın nazik malümat içün yalıñız qorçalav olaraq olarğa ışanmañız."},
-  "literatura": {"title": "Edebiyat ve til", "intro": "Lugatlar, elifbeler ve kodlar, atalar sözleri ve asıl nesir: sözler, yazuv ve oquv içün vastalar. Bular oquv yardımcılarıdır, normativ qullanmalar degil."},
-  "teren": {"title": "Saha ve yollar", "intro": "GPS izleri, saha gündelikleri, yürüyiş ve yaşap qalmaq yolbaşçıları. Er şey yerlikte çalışa; hiç bir şey haritanıñ, yolbaşçınıñ yaki yerli idarenıñ yerini tutmay ve bu yerde hiç bir şey navigatsiya yaki emniyet cihazı degildir."},
-  "sunet": {"title": "Ses", "intro": "Sesni ölçmek, yaratmaq ve tahlil etmek, ayrıca brauzerde yaratılğan musiqi ve muhit. Ses ölçeri ve işitüv sınavları yalıñız yol köstergici, şahadetli yaki tıbbiy cihazlar degil."},
-  "gospodarie": {"title": "Ev ve teşkilât", "intro": "Takvim, büdce, nesil ağacı, notlar ve vaqıt: künlük işler içün vastalar, malümat bu brauzerde qala, hesapsız. Malî, hukuqiy yaki salıq aqılı degil."}
+  "rust": {
+   "title": "Rust: yerli motorlar ve aletler",
+   "intro": "Rust'ta yazılğan proğramlar, HTML fayllar degil: OSATURA (2D animatsiya motorı, alpha), VERIGA (bağlantı teşkerici), LegatorOCR (tarılmalar → aranabilir PDF, 0.x nusqası), PORUMBEL (telefon fotolarını kompüterge ketirüv) ve devam etken MARTOR ile EXIF-CURAT işleri."
+  },
+  "verificare": {
+   "title": "Tekşerüv, menbalar ve vebdeki izler",
+   "intro": "Bir malümatnıñ neredendir keldigini, neşir etilgenden berli ne deñişkenini ve bir bağlantınıñ daa çalışqanını tekşerüv vastaları. Er biri öz README dosyasında üçünci taraflarğa nasıl istekler yibergenini bildire."
+  },
+  "educatie": {
+   "title": "Oquv ve kesbiy vastalar",
+   "intro": "Radiohavesqarlıq, irişilebilirlik, tedbirlerni teşkil etüv ve metin ile malümat bilen çalışuv içün oquv materialları ve iş vastaları. Resmiy olmağan vastalar: hiç bir organnıñ yerini tutmay."
+  },
+  "stiinta": {
+   "title": "İlim, tabiat ve saha işi",
+   "intro": "Açıq malümatlarğa dayanğan körünişler ve ansiklopediyalar. Malümat taqribiy olğanda, uyğulama bunı bildire."
+  },
+  "jocuri": {
+   "title": "Strategiya oyunları ve qaide atlasları",
+   "intro": "Er bir oyunnıñ interfeysten ayrı motorı, gizli malümatqa kirişi olmağan evristik AI raqibi ve öz sınav toplamları bar (meselâ, Belot: 450 000-den ziyade avtomatik tekşerüv)."
+  },
+  "ai": {
+   "title": "Qullanıcı nezaretinde suniy zeka",
+   "intro": "Qullanıcığa cihazdan neniñ çıqqanını ve nereye ketkenini qarar bermege imkân bergen interfeyslar. API açarları brauzerde yalıñız “gizlengen” alda qala, şifrelenmey: qullanmazdan evel README’ni oquñız."
+  },
+  "utilitare": {
+   "title": "Yardımcı programmalar ve yaratıcı layihalar",
+   "intro": "Uzaq yaşamaq içün yapılğan küçük vastalar: bir dosya, hesapsız."
+  },
+  "cultura": {
+   "title": "Medeniyet, pratikalar ve inançlar: tasvirleyici tedqiqat",
+   "intro": "Bu uyğulamalar tesirliligi içün ilmiy isbatı olmağan pratikalarnı (astrologiya, taro, numerologiya, reyki, çubuq ile suv qıdırmaq ve ilâhre) tavsiye degil, medeniy tedqiqat nesnesi olaraq tasvirleyler. Tıbbiy, hukuqiy yaki malî aqılnıñ yerini tutmaylar."
+  },
+  "recomandate": {
+   "title": "Tavsiye etilgenler",
+   "intro": "Başlamaq içün saylama: menba tekşerüvi, tercime, oquv ve iş vastaları."
+  },
+  "confidentialitate": {
+   "title": "Hususiylik ve asıllıq",
+   "intro": "Dosya metamalümatını çıqarıñız, yerlikte şifreleñiz ve menşe şahadetnamelerini tekşeriñiz. Müstaqil olaraq teftiş etilmegenler: çın nazik malümat içün yalıñız qorçalav olaraq olarğa ışanmañız."
+  },
+  "literatura": {
+   "title": "Edebiyat ve til",
+   "intro": "Lugatlar, elifbeler ve kodlar, atalar sözleri ve asıl nesir: sözler, yazuv ve oquv içün vastalar. Bular oquv yardımcılarıdır, normativ qullanmalar degil."
+  },
+  "teren": {
+   "title": "Saha ve yollar",
+   "intro": "GPS izleri, saha gündelikleri, yürüyiş ve yaşap qalmaq yolbaşçıları. Er şey yerlikte çalışa; hiç bir şey haritanıñ, yolbaşçınıñ yaki yerli idarenıñ yerini tutmay ve bu yerde hiç bir şey navigatsiya yaki emniyet cihazı degildir."
+  },
+  "sunet": {
+   "title": "Ses",
+   "intro": "Sesni ölçmek, yaratmaq ve tahlil etmek, ayrıca brauzerde yaratılğan musiqi ve muhit. Ses ölçeri ve işitüv sınavları yalıñız yol köstergici, şahadetli yaki tıbbiy cihazlar degil."
+  },
+  "gospodarie": {
+   "title": "Ev ve teşkilât",
+   "intro": "Takvim, büdce, nesil ağacı, notlar ve vaqıt: künlük işler içün vastalar, malümat bu brauzerde qala, hesapsız. Malî, hukuqiy yaki salıq aqılı degil."
+  },
+  "mobil": {
+   "title": "Mobil ilovalar: Android ve iPhone",
+   "intro": "Telefon içün yerli ilovalar (Android içün APK, mümkün olğan yerde iPhone içün imzasız IPA): STRAJA (AI agentlerine qarşı qalqan), CUPLAJ (imersiv teatrda kommunikatsiya) ve LUSTRUM (Android içün fayl temizleyici)."
+  },
+  "extensii": {
+   "title": "Brauzer kengeytmeleri",
+   "intro": "Brauzer içinde çalışqan kengeytmeler: Claritas (irişilebilirlik: kontrast tüzetüvi, oquv rejimi, metinni sesli oquv) ve TEZAUR (Rust'ta yazılğan tez tedqiqat yardımcısı, Chrome/Firefox kengeytmesi de bar)."
+  },
+  "rust-ai": {
+   "title": "Rust: yerli AI",
+   "intro": "Modellerni öz kompüteriñizde çalıştırğan Rust proğramları: GERMEN (kiçik GPT'ni evelden eğite), CartaColibri (yerli AI kitaphanesi) ve colibri-companion (colibri içün masaüstü interfeysi)."
+  },
+  "rust-jocuri": {
+   "title": "Rust: oyunlar",
+   "intro": "Rust'ta oyunlar ve qaide motorları: TurboCursa (arcade yarış), PolyTabletop (240 masa oyunı) ve ARBITRU (qaide motorı, devam etken iş)."
+  },
+  "rust-stiinta": {
+   "title": "Rust: ilim, ses ve medeniyet",
+   "intro": "İlim, ses, irişilebilirlik ve medeniyet içün Rust aletleri: CUANTOR (kvant simulyatorı), ASTROLABIU, ANTENA, ECOGRAMA, ecou-spectral-rs, TACTIL ve NEAMURI; CUANTOR'dan ğayrısı devam etken işlerdir."
+  }
  },
  "misc": {
   "donateLabel": "Destekle",
@@ -162,6 +224,19 @@
   "open": "Aç",
   "nativeDemo": "Terminalde körsetüv"
  },
- "months": ["yanvar", "fevral", "mart", "aprel", "mayıs", "iyun", "iyul", "avgust", "sentâbr", "oktâbr", "noyabr", "dekabr"],
+ "months": [
+  "yanvar",
+  "fevral",
+  "mart",
+  "aprel",
+  "mayıs",
+  "iyun",
+  "iyul",
+  "avgust",
+  "sentâbr",
+  "oktâbr",
+  "noyabr",
+  "dekabr"
+ ],
  "dateFmt": "{d} {m} {y}"
 }

@@ -135,20 +135,82 @@
   "skip": "Prejsť na obsah"
  },
  "sections": {
-  "rust": {"title": "Rust: natívne programy, nie súbory HTML", "intro": "Projekty napísané v jazyku Rust, ktoré nie sú jednosúborovými aplikáciami HTML: OSATURA (animačný engine, alfa), VERIGA (kontrola odkazov), TEZAUR (výskumný asistent pre záverečnú prácu, verzia 0.x) a LegatorOCR (skeny → PDF s vyhľadávaním, verzia 0.x)."},
-  "verificare": {"title": "Overovanie, zdroje a stopy na webe", "intro": "Nástroje na zistenie, odkiaľ informácia pochádza, čo sa od zverejnenia zmenilo a či je odkaz ešte živý. Každý v svojom README uvádza, aké požiadavky posiela tretím stranám."},
-  "educatie": {"title": "Vzdelávanie a profesionálne nástroje", "intro": "Učebné materiály a pracovné nástroje pre rádioamatérstvo, prístupnosť, organizovanie podujatí a prácu s textom a údajmi. Neoficiálne nástroje: nenahrádzajú žiadny orgán."},
-  "stiinta": {"title": "Veda, príroda a terénna práca", "intro": "Vizualizácie a encyklopédie postavené na verejných údajoch. Ak sú údaje približné, aplikácia to uvádza."},
-  "jocuri": {"title": "Strategické hry a atlasy pravidiel", "intro": "Každá hra má engine oddelený od rozhrania, heuristického protihráča s umelou inteligenciou bez prístupu ku skrytým informáciám a vlastné sady testov (napríklad Belot: vyše 450 000 automatických kontrol)."},
-  "ai": {"title": "Umelá inteligencia pod kontrolou používateľa", "intro": "Rozhrania, ktoré používateľovi umožňujú rozhodnúť, čo opustí zariadenie a kam to ide. Kľúče API zostávajú v prehliadači len „zakryté“, nie zašifrované: pred použitím si prečítajte README."},
-  "utilitare": {"title": "Nástroje a kreatívne projekty", "intro": "Malé nástroje postavené na dlhý život: jeden súbor, bez účtu."},
-  "cultura": {"title": "Kultúra, praktiky a presvedčenia: opisná štúdia", "intro": "Tieto aplikácie opisujú praktiky bez vedeckých dôkazov o účinnosti (astrológia, tarot, numerológia, reiki, rádiestézia a pod.) ako predmet kultúrneho štúdia, nie ako odporúčanie. Nenahrádzajú lekársku, právnu ani finančnú radu."},
-  "recomandate": {"title": "Odporúčané", "intro": "Výber na začiatok: overovanie zdrojov, preklad, učenie a pracovné nástroje."},
-  "confidentialitate": {"title": "Súkromie a autenticita", "intro": "Odstráňte metadáta súborov, šifrujte lokálne a overujte poverenia pôvodu. Nie sú nezávisle auditované: nespoliehajte sa na ne ako na jedinú ochranu skutočne citlivých údajov."},
-  "literatura": {"title": "Literatúra a jazyk", "intro": "Slovníky, abecedy a kódy, príslovia a pôvodná próza: nástroje pre slová, písanie a čítanie. Sú to učebné pomôcky, nie normatívne príručky."},
-  "teren": {"title": "Terén a trasy", "intro": "Stopy GPS, terénne denníky, turistické a prežívacie príručky. Všetko beží lokálne; nič nenahrádza mapu, sprievodcu ani miestne orgány a nič tu nie je navigačným ani bezpečnostným zariadením."},
-  "sunet": {"title": "Zvuk", "intro": "Meranie, generovanie a analýza zvuku, ako aj hudba a atmosféra generované v prehliadači. Hlukomer a testy sluchu sú orientačné, nie certifikované ani zdravotnícke zariadenia."},
-  "gospodarie": {"title": "Domácnosť a organizácia", "intro": "Kalendár, rozpočet, rodokmeň, poznámky a čas: nástroje na každodenné veci, údaje zostávajú v tomto prehliadači, bez účtu. Nie je to finančná, právna ani daňová rada."}
+  "rust": {
+   "title": "Rust: natívne enginy a nástroje",
+   "intro": "Programy napísané v jazyku Rust, nie súbory HTML: OSATURA (2D animačný engine, alpha), VERIGA (kontrolór odkazov), LegatorOCR (skeny → PDF s vyhľadávaním, verzia 0.x), PORUMBEL (fotografie z telefónu do vášho počítača) a rozpracované MARTOR a EXIF-CURAT."
+  },
+  "verificare": {
+   "title": "Overovanie, zdroje a stopy na webe",
+   "intro": "Nástroje na zistenie, odkiaľ informácia pochádza, čo sa od zverejnenia zmenilo a či je odkaz ešte živý. Každý v svojom README uvádza, aké požiadavky posiela tretím stranám."
+  },
+  "educatie": {
+   "title": "Vzdelávanie a profesionálne nástroje",
+   "intro": "Učebné materiály a pracovné nástroje pre rádioamatérstvo, prístupnosť, organizovanie podujatí a prácu s textom a údajmi. Neoficiálne nástroje: nenahrádzajú žiadny orgán."
+  },
+  "stiinta": {
+   "title": "Veda, príroda a terénna práca",
+   "intro": "Vizualizácie a encyklopédie postavené na verejných údajoch. Ak sú údaje približné, aplikácia to uvádza."
+  },
+  "jocuri": {
+   "title": "Strategické hry a atlasy pravidiel",
+   "intro": "Každá hra má engine oddelený od rozhrania, heuristického protihráča s umelou inteligenciou bez prístupu ku skrytým informáciám a vlastné sady testov (napríklad Belot: vyše 450 000 automatických kontrol)."
+  },
+  "ai": {
+   "title": "Umelá inteligencia pod kontrolou používateľa",
+   "intro": "Rozhrania, ktoré používateľovi umožňujú rozhodnúť, čo opustí zariadenie a kam to ide. Kľúče API zostávajú v prehliadači len „zakryté“, nie zašifrované: pred použitím si prečítajte README."
+  },
+  "utilitare": {
+   "title": "Nástroje a kreatívne projekty",
+   "intro": "Malé nástroje postavené na dlhý život: jeden súbor, bez účtu."
+  },
+  "cultura": {
+   "title": "Kultúra, praktiky a presvedčenia: opisná štúdia",
+   "intro": "Tieto aplikácie opisujú praktiky bez vedeckých dôkazov o účinnosti (astrológia, tarot, numerológia, reiki, rádiestézia a pod.) ako predmet kultúrneho štúdia, nie ako odporúčanie. Nenahrádzajú lekársku, právnu ani finančnú radu."
+  },
+  "recomandate": {
+   "title": "Odporúčané",
+   "intro": "Výber na začiatok: overovanie zdrojov, preklad, učenie a pracovné nástroje."
+  },
+  "confidentialitate": {
+   "title": "Súkromie a autenticita",
+   "intro": "Odstráňte metadáta súborov, šifrujte lokálne a overujte poverenia pôvodu. Nie sú nezávisle auditované: nespoliehajte sa na ne ako na jedinú ochranu skutočne citlivých údajov."
+  },
+  "literatura": {
+   "title": "Literatúra a jazyk",
+   "intro": "Slovníky, abecedy a kódy, príslovia a pôvodná próza: nástroje pre slová, písanie a čítanie. Sú to učebné pomôcky, nie normatívne príručky."
+  },
+  "teren": {
+   "title": "Terén a trasy",
+   "intro": "Stopy GPS, terénne denníky, turistické a prežívacie príručky. Všetko beží lokálne; nič nenahrádza mapu, sprievodcu ani miestne orgány a nič tu nie je navigačným ani bezpečnostným zariadením."
+  },
+  "sunet": {
+   "title": "Zvuk",
+   "intro": "Meranie, generovanie a analýza zvuku, ako aj hudba a atmosféra generované v prehliadači. Hlukomer a testy sluchu sú orientačné, nie certifikované ani zdravotnícke zariadenia."
+  },
+  "gospodarie": {
+   "title": "Domácnosť a organizácia",
+   "intro": "Kalendár, rozpočet, rodokmeň, poznámky a čas: nástroje na každodenné veci, údaje zostávajú v tomto prehliadači, bez účtu. Nie je to finančná, právna ani daňová rada."
+  },
+  "mobil": {
+   "title": "Mobilné aplikácie: Android a iPhone",
+   "intro": "Natívne telefónne aplikácie (APK pre Android, nepodpísaný IPA pre iPhone, kde je dostupný): STRAJA (štít proti agentom AI), CUPLAJ (komunikácia v imerzívnom divadle) a LUSTRUM (čistič súborov pre Android)."
+  },
+  "extensii": {
+   "title": "Rozšírenia prehliadača",
+   "intro": "Rozšírenia, ktoré bežia vo vnútri prehliadača: Claritas (prístupnosť: oprava kontrastu, režim čítačky, prevod textu na reč) a TEZAUR (výskumný asistent pre záverečné práce napísaný v jazyku Rust, ktorý obsahuje aj rozšírenie pre Chrome/Firefox)."
+  },
+  "rust-ai": {
+   "title": "Rust: lokálna AI",
+   "intro": "Programy v jazyku Rust, ktoré spúšťajú modely na vašom vlastnom počítači: GERMEN (trénuje malý GPT od nuly), CartaColibri (lokálna knižnica AI) a colibri-companion (desktopové rozhranie pre colibri)."
+  },
+  "rust-jocuri": {
+   "title": "Rust: hry",
+   "intro": "Hry a enginy pravidiel v jazyku Rust: TurboCursa (arkádové preteky), PolyTabletop (240 stolových hier) a ARBITRU (engine pravidiel, rozpracovaný)."
+  },
+  "rust-stiinta": {
+   "title": "Rust: veda, zvuk a kultúra",
+   "intro": "Nástroje v jazyku Rust pre vedu, zvuk, prístupnosť a kultúru: CUANTOR (kvantový simulátor), ASTROLABIU, ANTENA, ECOGRAMA, ecou-spectral-rs, TACTIL a NEAMURI; všetky okrem CUANTOR sú rozpracované."
+  }
  },
  "misc": {
   "donateLabel": "Podporiť",

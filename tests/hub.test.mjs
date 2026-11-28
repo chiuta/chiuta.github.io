@@ -127,7 +127,7 @@ await T('catalog: căutare text (inclusiv în altă limbă, fără diacritice), 
   await ctx.close();
 });
 
-await T('catalog: contoare derivate, stare, offline, fișă, variante Universul Observabil, înrudite, secțiunea Rust separată (OSATURA, VERIGA, TEZAUR, LegatorOCR)', async () => {
+await T('catalog: contoare derivate, stare, offline, fișă, variante Universul Observabil, înrudite, secțiunea Rust separată (OSATURA, VERIGA, LegatorOCR, PORUMBEL, MARTOR, EXIF-CURAT)', async () => {
   const LIVE = '#apps-grid .app-card:not([data-variant-of])';
   const {ctx, page, errors, external} = await open('ro');
   await page.waitForSelector(LIVE);
@@ -147,6 +147,10 @@ await T('catalog: contoare derivate, stare, offline, fișă, variante Universul 
       noBadges: live.filter((c) => !c.querySelector('.card-badges .bd-stable, .card-badges .bd-experimental, .card-badges .bd-alpha, .card-badges .bd-lab') || !c.querySelector('.card-badges [class*="bd-off-"]') || !c.querySelector('details.fisa')).map(key),
       osCat: os.dataset.cat, osSection: prev && prev.id, osStatus: os.dataset.status,
       rustCards: all.filter((c) => c.dataset.cat === 'rust').map(key).join(),
+      groupOrder: [...document.querySelectorAll('#apps-grid .sec-head')].map((h) => h.id).join(),
+      groups: Object.fromEntries(['mobil', 'extensii', 'rust-ai', 'rust-jocuri', 'rust-stiinta'].map((g) => [g, all.filter((c) => c.dataset.cat === g).map(key).join()])),
+      nativeOutside: all.filter((c) => c.dataset.plat === 'native' && !/^(mobil|extensii|rust(-.+)?)$/.test(c.dataset.cat)).map(key).join(),
+      htmlInNative: all.filter((c) => c.dataset.plat !== 'native' && /^(mobil|extensii|rust(-.+)?)$/.test(c.dataset.cat)).map(key).join(),
       uoVariantLinks: [...uo.querySelectorAll('.var-list a')].map((a) => a.getAttribute('href')),
       shots: document.querySelectorAll('.fisa-shot').length,
       recom: live.filter((c) => c.dataset.cat === 'recomandate').map((c) => [key(c), (meta.apps[key(c)].measured || meta.apps[key(c)]).score, c.dataset.status]),
@@ -168,7 +172,12 @@ await T('catalog: contoare derivate, stare, offline, fișă, variante Universul 
   ok(info.variantsVisible === 0 && info.nAll - info.nLive === 3, 'variantele Universului Observabil trebuie ascunse (3)');
   ok(info.noBadges.length === 0, 'fără insigne/fișă: ' + info.noBadges.join(', '));
   ok(info.osCat === 'rust' && info.osSection === 'rust' && info.osStatus === 'alpha', 'OSATURA nu e în secțiunea Rust: ' + JSON.stringify([info.osCat, info.osSection, info.osStatus]));
-  ok(info.rustCards === 'OSATURA,VERIGA,TEZAUR,LegatorOCR', 'secțiunea Rust: ' + info.rustCards);
+  ok(info.rustCards === 'OSATURA,VERIGA,LegatorOCR,PORUMBEL,MARTOR,EXIF-CURAT', 'secțiunea Rust: ' + info.rustCards);
+  // ordinea cerută de autor: aplicații mobile, extensii, Rust, apoi categoriile single-file HTML
+  ok(info.groupOrder.startsWith('mobil,extensii,rust,rust-ai,rust-jocuri,rust-stiinta,'), 'ordinea grupurilor: ' + info.groupOrder);
+  ok(info.groups.mobil === 'STRAJA,CUPLAJ,LUSTRUM' && info.groups.extensii === 'Claritas,TEZAUR', 'mobil/extensii: ' + JSON.stringify(info.groups));
+  ok(info.groups['rust-ai'] === 'GERMEN,CartaColibri,colibri-companion' && info.groups['rust-jocuri'] === 'TurboCursa,PolyTabletop,ARBITRU' && info.groups['rust-stiinta'] === 'CUANTOR,ASTROLABIU,ANTENA,ECOGRAMA,ecou-spectral-rs,TACTIL,NEAMURI', 'grupurile Rust: ' + JSON.stringify(info.groups));
+  ok(info.nativeOutside === '' && info.htmlInNative === '', 'programe native în afara primelor grupuri: [' + info.nativeOutside + '] / aplicații HTML în ele: [' + info.htmlInNative + ']');
   ok(info.uoVariantLinks.length === 3 && info.uoVariantLinks.every((u) => /Universul-Observabil-[123]D\/?$/.test(u)), 'fișa hub-ului nu listează cele 3 variante: ' + info.uoVariantLinks.join(','));
   ok(info.shots === 0, 'nu trebuie să existe capturi dacă nu sunt declarate');
   ok([...info.statuses.alpha].sort().join() === 'ANTENA,ARBITRU,ASTROLABIU,CUANTOR,CartaColibri,ECOGRAMA,EXIF-CURAT,GERMEN,LUSTRUM,LegatorOCR,MARTOR,NEAMURI,OSATURA,PORUMBEL,PolyTabletop,TACTIL,TEZAUR,atelier-verificare,balanta,calendarium,colibri-companion,ecou-spectral-rs,glosar,graiul,indicativ-international,proiector-fara-frontiere,regula,vietar-packs' && [...info.statuses.experimental].sort().join() === 'CUPLAJ,Provenienta,STENOGRAMA' && info.statuses.stable.length > 100, 'stări: ' + JSON.stringify(info.statuses).slice(0, 200));

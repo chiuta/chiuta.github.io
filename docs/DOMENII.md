@@ -88,6 +88,30 @@ node tools/cname-inventory.mjs --dns     # informativ: interoghează DNS-ul publ
 
 | Aplicație | Loc | CNAME | Origine | Sensibilă | Observații |
 |---|---|---|---|---|---|
+| STRAJA | depozit | `straja.chiuta.ro` | proprie: https://straja.chiuta.ro/ | — |  |
+| CUPLAJ | depozit | `cuplaj.chiuta.ro` | proprie: https://cuplaj.chiuta.ro/ | — |  |
+| LUSTRUM | depozit | `lustrum.chiuta.ro` | proprie: https://lustrum.chiuta.ro/ | — |  |
+| Claritas | depozit | `claritas.chiuta.ro` | proprie: https://claritas.chiuta.ro/ | — |  |
+| TEZAUR | depozit | `tezaur.chiuta.ro` | proprie: https://tezaur.chiuta.ro/ | — | proiect Rust, site propriu; depozit chiuta/TEZAUR |
+| OSATURA | depozit | `osatura.chiuta.ro` | proprie: https://osatura.chiuta.ro/ | — | proiect Rust, site propriu; depozit chiuta/OSATURA |
+| VERIGA | depozit | `veriga.chiuta.ro` | proprie: https://veriga.chiuta.ro/ | — | proiect Rust, site propriu; depozit chiuta/VERIGA |
+| LegatorOCR | depozit | `legatorocr.chiuta.ro` | proprie: https://legatorocr.chiuta.ro/ | — | proiect Rust, site propriu; depozit chiuta/LegatorOCR |
+| PORUMBEL | depozit | `porumbel.chiuta.ro` | proprie: https://porumbel.chiuta.ro/ | — |  |
+| MARTOR | depozit | `martor.chiuta.ro` | proprie: https://martor.chiuta.ro/ | — |  |
+| EXIF-CURAT | depozit | `exif-curat.chiuta.ro` | proprie: https://exif-curat.chiuta.ro/ | — |  |
+| GERMEN | depozit | `germen.chiuta.ro` | proprie: https://germen.chiuta.ro/ | — |  |
+| CartaColibri | depozit | `cartacolibri.chiuta.ro` | proprie: https://cartacolibri.chiuta.ro/ | — | proiect Rust, site propriu; depozit chiuta/CartaColibri |
+| colibri-companion | depozit | `colibri-companion.chiuta.ro` | proprie: https://colibri-companion.chiuta.ro/ | — |  |
+| TurboCursa | depozit | `turbocursa.chiuta.ro` | proprie: https://turbocursa.chiuta.ro/ | — |  |
+| PolyTabletop | depozit | `polytabletop.chiuta.ro` | proprie: https://polytabletop.chiuta.ro/ | — |  |
+| ARBITRU | depozit | `arbitru.chiuta.ro` | proprie: https://arbitru.chiuta.ro/ | — |  |
+| CUANTOR | depozit | `cuantor.chiuta.ro` | proprie: https://cuantor.chiuta.ro/ | — | proiect Rust, site propriu; depozit chiuta/CUANTOR |
+| ASTROLABIU | depozit | `astrolabiu.chiuta.ro` | proprie: https://astrolabiu.chiuta.ro/ | — |  |
+| ANTENA | depozit | `antena.chiuta.ro` | proprie: https://antena.chiuta.ro/ | — |  |
+| ECOGRAMA | depozit | `ecograma.chiuta.ro` | proprie: https://ecograma.chiuta.ro/ | — |  |
+| ecou-spectral-rs | depozit | `ecou-spectral-rs.chiuta.ro` | proprie: https://ecou-spectral-rs.chiuta.ro/ | — |  |
+| TACTIL | depozit | `tactil.chiuta.ro` | proprie: https://tactil.chiuta.ro/ | — |  |
+| NEAMURI | depozit | `neamuri.chiuta.ro` | proprie: https://neamuri.chiuta.ro/ | — |  |
 | DataWeave | depozit | `dataweave.chiuta.ro` | proprie: https://dataweave.chiuta.ro/ | — |  |
 | Undava | depozit | `undava.chiuta.ro` | proprie: https://undava.chiuta.ro/ | — |  |
 | MarkdownAtelier | depozit | `markdownatelier.chiuta.ro` | proprie: https://markdownatelier.chiuta.ro/ | — |  |
@@ -104,13 +128,10 @@ node tools/cname-inventory.mjs --dns     # informativ: interoghează DNS-ul publ
 | Threads-fara-cont | depozit | `threads-fara-cont.chiuta.ro` | proprie: https://threads-fara-cont.chiuta.ro/ | — |  |
 | Vitrina | depozit | `vitrina.chiuta.ro` | proprie: https://vitrina.chiuta.ro/ | — |  |
 | X-fara-cont | depozit | `x-fara-cont.chiuta.ro` | proprie: https://x-fara-cont.chiuta.ro/ | — |  |
-| MARTOR | depozit | `martor.chiuta.ro` | proprie: https://martor.chiuta.ro/ | — |  |
 | atelier-verificare | depozit | `atelier-verificare.chiuta.ro` | proprie: https://atelier-verificare.chiuta.ro/ | — |  |
 | Curatitor | depozit | `curatitor.chiuta.ro` | proprie: https://curatitor.chiuta.ro/ | — |  |
 | Provenienta | depozit | `provenienta.chiuta.ro` | proprie: https://provenienta.chiuta.ro/ | — |  |
 | VaultCrypt | depozit | `vaultcrypt.chiuta.ro` | proprie: https://vaultcrypt.chiuta.ro/ | pe origine proprie (corect) |  |
-| EXIF-CURAT | depozit | `exif-curat.chiuta.ro` | proprie: https://exif-curat.chiuta.ro/ | — |  |
-| STRAJA | depozit | `straja.chiuta.ro` | proprie: https://straja.chiuta.ro/ | — |  |
 | ATINGERE | depozit | `atingere.chiuta.ro` | proprie: https://atingere.chiuta.ro/ | — |  |
 | Clopotel | depozit | `clopotel.chiuta.ro` | proprie: https://clopotel.chiuta.ro/ | — |  |
 | Monstrarium | depozit | `monstrarium.chiuta.ro` | proprie: https://monstrarium.chiuta.ro/ | — |  |
@@ -127,12 +148,9 @@ node tools/cname-inventory.mjs --dns     # informativ: interoghează DNS-ul publ
 | FARFURIA | depozit | `farfuria.chiuta.ro` | proprie: https://farfuria.chiuta.ro/ | — |  |
 | VITALIS | depozit | `vitalis.chiuta.ro` | proprie: https://vitalis.chiuta.ro/ | — |  |
 | REZONANTA | depozit | `rezonanta.chiuta.ro` | proprie: https://rezonanta.chiuta.ro/ | — |  |
-| ANTENA | depozit | `antena.chiuta.ro` | proprie: https://antena.chiuta.ro/ | — |  |
-| TACTIL | depozit | `tactil.chiuta.ro` | proprie: https://tactil.chiuta.ro/ | — |  |
 | indicativ-international | depozit | `indicativ-international.chiuta.ro` | proprie: https://indicativ-international.chiuta.ro/ | — |  |
 | proiector-fara-frontiere | depozit | `proiector-fara-frontiere.chiuta.ro` | proprie: https://proiector-fara-frontiere.chiuta.ro/ | — |  |
 | MIRAJ | depozit | `miraj.chiuta.ro` | proprie: https://miraj.chiuta.ro/ | — |  |
-| CUPLAJ | depozit | `cuplaj.chiuta.ro` | proprie: https://cuplaj.chiuta.ro/ | — |  |
 | Alfabete | depozit | `alfabete.chiuta.ro` | proprie: https://alfabete.chiuta.ro/ | — |  |
 | Lexicon | depozit | `lexicon.chiuta.ro` | proprie: https://lexicon.chiuta.ro/ | da, dar deja pe origine proprie |  |
 | Limpezimea | depozit | `limpezimea.chiuta.ro` | proprie: https://limpezimea.chiuta.ro/ | — |  |
@@ -159,11 +177,9 @@ node tools/cname-inventory.mjs --dns     # informativ: interoghează DNS-ul publ
 | Universul-Observabil-3D | depozit | `universul-observabil-3d.chiuta.ro` | proprie: https://universul-observabil-3d.chiuta.ro/ | — |  |
 | VietAR | depozit | `vietar.chiuta.ro` | proprie: https://vietar.chiuta.ro/ | — |  |
 | VOIAJOR | depozit | `voiajor.chiuta.ro` | proprie: https://voiajor.chiuta.ro/ | — |  |
-| ASTROLABIU | depozit | `astrolabiu.chiuta.ro` | proprie: https://astrolabiu.chiuta.ro/ | — |  |
 | calendarium | depozit | `calendarium.chiuta.ro` | proprie: https://calendarium.chiuta.ro/ | — |  |
 | ANTROPOS | depozit | `antropos.chiuta.ro` | proprie: https://antropos.chiuta.ro/ | — |  |
 | ODISEEA | depozit | `odiseea.chiuta.ro` | proprie: https://odiseea.chiuta.ro/ | — |  |
-| CUANTOR | depozit | `cuantor.chiuta.ro` | proprie: https://cuantor.chiuta.ro/ | — | proiect Rust, site propriu; depozit chiuta/CUANTOR |
 | ExploratoriiEco | depozit | `exploratoriieco.chiuta.ro` | proprie: https://exploratoriieco.chiuta.ro/ | — |  |
 | FieldObserver | depozit | `fieldobserver.chiuta.ro` | proprie: https://fieldobserver.chiuta.ro/ | — |  |
 | Poteca | depozit | `poteca.chiuta.ro` | proprie: https://poteca.chiuta.ro/ | da, dar deja pe origine proprie |  |
@@ -179,8 +195,6 @@ node tools/cname-inventory.mjs --dns     # informativ: interoghează DNS-ul publ
 | FrequencyLaboratory | depozit | `frequencylaboratory.chiuta.ro` | proprie: https://frequencylaboratory.chiuta.ro/ | — |  |
 | generator-frecvente | depozit | `generator-frecvente.chiuta.ro` | proprie: https://generator-frecvente.chiuta.ro/ | — |  |
 | DECUPAJ | depozit | `decupaj.chiuta.ro` | proprie: https://decupaj.chiuta.ro/ | — |  |
-| ECOGRAMA | depozit | `ecograma.chiuta.ro` | proprie: https://ecograma.chiuta.ro/ | — |  |
-| ecou-spectral-rs | depozit | `ecou-spectral-rs.chiuta.ro` | proprie: https://ecou-spectral-rs.chiuta.ro/ | — |  |
 | Akasha | depozit | `akasha.chiuta.ro` | proprie: https://akasha.chiuta.ro/ | — |  |
 | Arbore | depozit | `arbore.chiuta.ro` | proprie: https://arbore.chiuta.ro/ | da, dar deja pe origine proprie |  |
 | CLEPSIDRA | depozit | `clepsidra.chiuta.ro` | proprie: https://clepsidra.chiuta.ro/ | — |  |
@@ -201,10 +215,7 @@ node tools/cname-inventory.mjs --dns     # informativ: interoghează DNS-ul publ
 | Sudoku-fara-frontiere | depozit | `sudoku-fara-frontiere.chiuta.ro` | proprie: https://sudoku-fara-frontiere.chiuta.ro/ | — |  |
 | Table-fara-frontiere | depozit | `table-fara-frontiere.chiuta.ro` | proprie: https://table-fara-frontiere.chiuta.ro/ | — |  |
 | Zaruri-fara-frontiere | depozit | `zaruri-fara-frontiere.chiuta.ro` | proprie: https://zaruri-fara-frontiere.chiuta.ro/ | — |  |
-| TurboCursa | depozit | `turbocursa.chiuta.ro` | proprie: https://turbocursa.chiuta.ro/ | — |  |
-| ARBITRU | depozit | `arbitru.chiuta.ro` | proprie: https://arbitru.chiuta.ro/ | — |  |
 | regula | depozit | `regula.chiuta.ro` | proprie: https://regula.chiuta.ro/ | — |  |
-| PolyTabletop | depozit | `polytabletop.chiuta.ro` | proprie: https://polytabletop.chiuta.ro/ | — |  |
 | AI-Liber | depozit | `ai-liber.chiuta.ro` | proprie: https://ai-liber.chiuta.ro/ | — |  |
 | ARENA | depozit | `arena.chiuta.ro` | proprie: https://arena.chiuta.ro/ | — |  |
 | LocalMind | depozit | `localmind.chiuta.ro` | proprie: https://localmind.chiuta.ro/ | — |  |
@@ -212,9 +223,6 @@ node tools/cname-inventory.mjs --dns     # informativ: interoghează DNS-ul publ
 | PromptVault | depozit | `promptvault.chiuta.ro` | proprie: https://promptvault.chiuta.ro/ | pe origine proprie (corect) |  |
 | VoiceAtelier | depozit | `voiceatelier.chiuta.ro` | proprie: https://voiceatelier.chiuta.ro/ | — |  |
 | balanta | depozit | `balanta.chiuta.ro` | proprie: https://balanta.chiuta.ro/ | — |  |
-| colibri-companion | depozit | `colibri-companion.chiuta.ro` | proprie: https://colibri-companion.chiuta.ro/ | — |  |
-| CartaColibri | depozit | `cartacolibri.chiuta.ro` | proprie: https://cartacolibri.chiuta.ro/ | — | proiect Rust, site propriu; depozit chiuta/CartaColibri |
-| GERMEN | depozit | `germen.chiuta.ro` | proprie: https://germen.chiuta.ro/ | — |  |
 | API-fara-frontiere | depozit | `api-fara-frontiere.chiuta.ro` | proprie: https://api-fara-frontiere.chiuta.ro/ | — |  |
 | Constelar | depozit | `constelar.chiuta.ro` | proprie: https://constelar.chiuta.ro/ | pe origine proprie (corect) |  |
 | OAZA | depozit | `oaza.chiuta.ro` | proprie: https://oaza.chiuta.ro/ | — |  |
@@ -223,10 +231,7 @@ node tools/cname-inventory.mjs --dns     # informativ: interoghează DNS-ul publ
 | Trusa-fara-frontiere | depozit | `trusa-fara-frontiere.chiuta.ro` | proprie: https://trusa-fara-frontiere.chiuta.ro/ | — |  |
 | VNTV | depozit | `vntv.chiuta.ro` | proprie: https://vntv.chiuta.ro/ | — |  |
 | Cronosala | depozit | `cronosala.chiuta.ro` | proprie: https://cronosala.chiuta.ro/ | — |  |
-| Claritas | depozit | `claritas.chiuta.ro` | proprie: https://claritas.chiuta.ro/ | — |  |
 | Index-fara-frontiere | depozit | `index-fara-frontiere.chiuta.ro` | proprie: https://index-fara-frontiere.chiuta.ro/ | — |  |
-| PORUMBEL | depozit | `porumbel.chiuta.ro` | proprie: https://porumbel.chiuta.ro/ | — |  |
-| LUSTRUM | depozit | `lustrum.chiuta.ro` | proprie: https://lustrum.chiuta.ro/ | — |  |
 | STENOGRAMA | depozit | `stenograma.chiuta.ro` | proprie: https://stenograma.chiuta.ro/ | — |  |
 | ACORDAJ | depozit | `acordaj.chiuta.ro` | proprie: https://acordaj.chiuta.ro/ | — |  |
 | Afrodisiace-fara-frontiere | depozit | `afrodisiace-fara-frontiere.chiuta.ro` | proprie: https://afrodisiace-fara-frontiere.chiuta.ro/ | — |  |
@@ -245,10 +250,5 @@ node tools/cname-inventory.mjs --dns     # informativ: interoghează DNS-ul publ
 | Reiki | depozit | `reiki.chiuta.ro` | proprie: https://reiki.chiuta.ro/ | — |  |
 | Tarot | depozit | `tarot.chiuta.ro` | proprie: https://tarot.chiuta.ro/ | — |  |
 | ValeaPlopului1972 | depozit | `valeaplopului1972.chiuta.ro` | proprie: https://valeaplopului1972.chiuta.ro/ | — |  |
-| NEAMURI | depozit | `neamuri.chiuta.ro` | proprie: https://neamuri.chiuta.ro/ | — |  |
 | graiul | depozit | `graiul.chiuta.ro` | proprie: https://graiul.chiuta.ro/ | — |  |
 | DESCANTAR | depozit | `descantar.chiuta.ro` | proprie: https://descantar.chiuta.ro/ | — |  |
-| OSATURA | depozit | `osatura.chiuta.ro` | proprie: https://osatura.chiuta.ro/ | — | proiect Rust, site propriu; depozit chiuta/OSATURA |
-| VERIGA | depozit | `veriga.chiuta.ro` | proprie: https://veriga.chiuta.ro/ | — | proiect Rust, site propriu; depozit chiuta/VERIGA |
-| TEZAUR | depozit | `tezaur.chiuta.ro` | proprie: https://tezaur.chiuta.ro/ | — | proiect Rust, site propriu; depozit chiuta/TEZAUR |
-| LegatorOCR | depozit | `legatorocr.chiuta.ro` | proprie: https://legatorocr.chiuta.ro/ | — | proiect Rust, site propriu; depozit chiuta/LegatorOCR |
