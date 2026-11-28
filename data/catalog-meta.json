@@ -494,7 +494,8 @@
         "Fabrica",
         "MarkdownAtelier",
         "Akasha",
-        "Trusa-fara-frontiere"
+        "Trusa-fara-frontiere",
+        "ERATA"
       ],
       "kw": "scriere writing scrie write curs course lectii lessons markdown notite notes document caiet notebook creare create redactare"
     },
@@ -1427,6 +1428,21 @@
       "CUANTOR",
       "GERMEN",
       "două programe Rust de laborator care fac calcul numeric greu pe procesorul tău, fără GPU: un simulator cuantic și un antrenor de modele mici"
+    ],
+    [
+      "ERATA",
+      "Claritas",
+      "două extensii de browser care lucrează local, fără telemetrie și fără cont: Claritas face pagina mai ușor de citit, ERATA îți corectează ce scrii în ea"
+    ],
+    [
+      "ERATA",
+      "TEZAUR",
+      "TEZAUR te ajută să găsești și să citezi sursele unei teze, ERATA îți corectează ortografia, gramatica și punctuația textului pe care îl scrii"
+    ],
+    [
+      "ERATA",
+      "MarkdownAtelier",
+      "cine scrie texte lungi are nevoie de un editor și de un corector: ERATA verifică local ce tastezi, fără să trimită nimic pe un server"
     ]
   ],
   "apps": {
@@ -6669,6 +6685,47 @@
         },
         "hu": {
           "limite": "Minden további kvantumbit megkétszerezi a munkát: 24 kvantumbithez nagyjából 256 MiB, 28-hoz nagyjából 4 GiB kell; efölött csak egyszerű minták működnek, és egy véletlenszerű 1000 kvantumbites áramkör bármely átlagos számítógép számára lehetetlen. Az IBM-kapcsolatot valódi IBM-hardveren nem ellenőrizték. A dinamikus áramköröket nem lehet megrajzolni a szerkesztőben, és IBM-hardverre sem lehet elküldeni."
+        }
+      }
+    },
+    "ERATA": {
+      "coverage": {
+        "langs": [
+          "ro",
+          "en",
+          "fr",
+          "it",
+          "es",
+          "pt",
+          "de",
+          "hu"
+        ],
+        "platform": "native"
+      },
+      "fisa": {
+        "ro": {
+          "limite": "Versiunea 0.4: un proiect nou, fără utilizatori și fără istoric. Are în jur de o sută de verificări scrise de mână, mult mai puține reguli de gramatică decât corectoarele vechi, și nu există încă o măsurare independentă de precizie. Dicționare incluse doar pentru unele limbi; pentru maghiară nu există verificare ortografică. Testele automate rulează doar pe Chromium; Firefox a trecut doar de lint, iar Safari n-a fost încercat. Nu merge în Google Docs, pe telefon sau în programe de birou. Traducerile interfeței (17 limbi) sunt automate, nerevizuite de vorbitori nativi."
+        },
+        "en": {
+          "limite": "Version 0.4: a new project with no user base and no track record. It has roughly a hundred hand-written checks, far fewer grammar rules than the long-established checkers, and no independent precision measurement yet. Dictionaries are bundled for some languages only; there is no spell checking for Hungarian. Automated tests run on Chromium only; Firefox has passed lint only and Safari has not been tried. It does not work in Google Docs, on phones or in office programs. The interface translations (17 languages) are machine-made and not reviewed by native speakers."
+        },
+        "fr": {
+          "limite": "Version 0.4 : un projet récent, sans base d'utilisateurs ni historique. Il compte environ une centaine de vérifications écrites à la main, bien moins de règles de grammaire que les correcteurs établis, et aucune mesure de précision indépendante n'existe encore. Des dictionnaires sont fournis pour certaines langues seulement ; il n'y a pas de correction orthographique pour le hongrois. Les tests automatiques ne tournent que sur Chromium ; Firefox n'a passé que le lint et Safari n'a pas été essayé. Ne fonctionne pas dans Google Docs, sur téléphone ni dans les logiciels bureautiques. Les traductions de l'interface (17 langues) sont automatiques et non relues par des locuteurs natifs."
+        },
+        "it": {
+          "limite": "Versione 0.4: un progetto nuovo, senza utenti né storia. Ha circa un centinaio di controlli scritti a mano, molte meno regole grammaticali dei correttori affermati e non esiste ancora una misura indipendente della precisione. I dizionari sono inclusi solo per alcune lingue; per l'ungherese non c'è il controllo ortografico. I test automatici girano solo su Chromium; Firefox ha superato solo il lint e Safari non è stato provato. Non funziona in Google Docs, sul telefono né nei programmi d'ufficio. Le traduzioni dell'interfaccia (17 lingue) sono automatiche e non riviste da madrelingua."
+        },
+        "es": {
+          "limite": "Versión 0.4: un proyecto nuevo, sin usuarios ni trayectoria. Tiene alrededor de un centenar de comprobaciones escritas a mano, bastantes menos reglas gramaticales que los correctores consolidados y aún no hay una medición independiente de precisión. Los diccionarios se incluyen solo para algunos idiomas; no hay corrección ortográfica para el húngaro. Las pruebas automáticas se ejecutan solo en Chromium; Firefox solo ha pasado el lint y Safari no se ha probado. No funciona en Google Docs, en el móvil ni en programas de oficina. Las traducciones de la interfaz (17 idiomas) son automáticas y no las ha revisado ningún hablante nativo."
+        },
+        "pt": {
+          "limite": "Versão 0.4: um projeto novo, sem utilizadores nem historial. Tem cerca de uma centena de verificações escritas à mão, bem menos regras gramaticais do que os corretores consolidados e ainda não existe uma medição independente de precisão. Os dicionários vêm incluídos só para alguns idiomas; para o húngaro não há verificação ortográfica. Os testes automáticos correm só no Chromium; o Firefox apenas passou no lint e o Safari não foi experimentado. Não funciona no Google Docs, no telemóvel nem em programas de escritório. As traduções da interface (17 idiomas) são automáticas e não foram revistas por falantes nativos."
+        },
+        "de": {
+          "limite": "Version 0.4: ein neues Projekt ohne Nutzerschaft und ohne Erfahrungswerte. Es hat etwa hundert handgeschriebene Prüfungen, deutlich weniger Grammatikregeln als etablierte Prüfprogramme, und es gibt noch keine unabhängige Genauigkeitsmessung. Wörterbücher sind nur für einige Sprachen enthalten; für Ungarisch gibt es keine Rechtschreibprüfung. Automatische Tests laufen nur auf Chromium; Firefox hat nur den Lint bestanden, Safari wurde nicht ausprobiert. Es funktioniert nicht in Google Docs, auf dem Handy oder in Büroprogrammen. Die Übersetzungen der Oberfläche (17 Sprachen) sind maschinell und nicht von Muttersprachlern geprüft."
+        },
+        "hu": {
+          "limite": "0.4-es verzió: új projekt, felhasználói kör és előzmények nélkül. Nagyjából száz kézzel írt ellenőrzése van, jóval kevesebb nyelvtani szabály, mint a régóta működő ellenőrzőkben, és még nincs független pontosságmérés. Szótár csak egyes nyelvekhez van beépítve; magyarra nincs helyesírás-ellenőrzés. Az automatikus tesztek csak Chromiumon futnak; a Firefox csak a lintet teljesítette, a Safarit nem próbálták ki. Nem működik Google Dokumentumokban, telefonon és irodai programokban. A felület fordításai (17 nyelv) gépiek, anyanyelvi beszélő nem ellenőrizte őket."
         }
       }
     }

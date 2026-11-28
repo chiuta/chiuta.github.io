@@ -1266,6 +1266,14 @@
    ],
    "line": "Simulator computatri quantici pro mensa tua, a 5 ad 1000 qubits, cum interfacie in stilo IBM Quantum Composer. Mathematica exacta, sed non hardware quanticum verum.",
    "detail": "Programma Rust in quattuor partibus (nucleus, fenestra, linea mandatorum, nexus IBM) pro Windows, macOS et Linux. Tabula delineandi qualis IBM Composer: portas coloratas in lineis (qubits) pone et vide barras et sphaeram eventum ostendere, dum panel textus idem circuitum vivum in OpenQASM et Qiskit scribit. Tres calculatores: unus qui omnem numerum meminit (usque ad 28 qubits), unus celerrimus pro portis simplicibus (usque ad 4096) et unus pro circuitibus cum paucis ramis. Mensura, reset et if in medio cursu, portae tuae, strepitus simulatus, eventus repetibiles cum semine. OpenQASM 2.0 et 3.0 legit; circuitum in IBM Composer aperire vel ad machinam IBM veram cum clave rationis tuae mittere potes (in hardware IBM vero non verificatum). Interfacies in 8 linguis; versio 0.2."
+  },
+  "ERATA": {
+   "tags": [
+    "correctio",
+    "extensio"
+   ],
+   "line": "Corrector in navigatro qui orthographiam, grammaticam, interpunctionem et typographiam in ipso computatro tuo inspicit: sine ratione, sine servatro, sine telemetria. Profundissimus pro lingua Romanica.",
+   "detail": "Extensio pro Chromium et Firefox (versio Safari non probata), a fundamentis scripta sine ullo codice, regulis vel datis ex LanguageTool vel alio inspectore. In campis textarea, input et contenteditable operatur et subliniationes suas sine pagina mutanda delineat. Linguam per paragraphum detegit, diacritica (ro, fr, es, pt) restituit tantum ubi correctio non ambigua est, et regulas Romanicas profundas habet (virgula inferior ș/ț, “să/sa”, “într-un”, virgula ante “dar/însă”). Dictionarium personale, regulae propriae, commutator per situm, importatio dictionariorum Hunspell. Reformulatio optionalis per exemplar locale (localhost tantum, ex defectu exstincta). Interfacies in 25 linguis. Versio 0.4; licentia MIT."
   }
  }
 }

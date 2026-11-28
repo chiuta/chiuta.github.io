@@ -197,7 +197,7 @@
   },
   "extensii": {
    "title": "Rozszerzenia przeglądarki",
-   "intro": "Rozszerzenia działające wewnątrz przeglądarki: Claritas (dostępność: korekta kontrastu, tryb czytnika, zamiana tekstu na mowę) i TEZAUR (asystent badawczy do pracy dyplomowej napisany w Rust, który dostarcza także rozszerzenie do Chrome/Firefox)."
+   "intro": "Rozszerzenia działające wewnątrz przeglądarki: Claritas (dostępność: korekta kontrastu, tryb czytnika, zamiana tekstu na mowę), TEZAUR (asystent badawczy do pracy dyplomowej napisany w Rust, który dostarcza także rozszerzenie do Chrome/Firefox) i ERATA (korektor offline pisowni, gramatyki i interpunkcji)."
   },
   "rust-ai": {
    "title": "Rust: lokalna AI",

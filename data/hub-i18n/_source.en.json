@@ -197,7 +197,7 @@
   },
   "extensii": {
    "title": "Browser extensions",
-   "intro": "Extensions that run inside the browser: Claritas (accessibility: contrast fixing, reader mode, text-to-speech) and TEZAUR (thesis research assistant written in Rust, which also ships a Chrome/Firefox extension)."
+   "intro": "Extensions that run inside the browser: Claritas (accessibility: contrast fixing, reader mode, text-to-speech), TEZAUR (thesis research assistant written in Rust, which also ships a Chrome/Firefox extension) and ERATA (offline proofreader for spelling, grammar and punctuation)."
   },
   "rust-ai": {
    "title": "Rust: local AI",

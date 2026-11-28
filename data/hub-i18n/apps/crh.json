@@ -1266,6 +1266,14 @@
    ],
    "line": "Desktopıñız içün kvant kompüteri simulyatorı, 5'ten 1000 kubitke qadar, IBM Quantum Composer üslûbında interfeys ile. Tam matematika, lâkin hakiqiy kvant cihazı degil.",
    "detail": "Dört qısımdan (yadro, pencere, komanda satırı, IBM bağlantısı) Rust proğramı, Windows, macOS ve Linux içün. IBM Composer kibi çizüv tahtası: sızıqlarğa (kubitler) renkli kapılar qoyuñız ve çubuqlar ile sferanıñ neticeni köstergenini körüñiz, metin paneli aynı sxemanı OpenQASM ve Qiskit'te canlı yaza. Üç esaplayıcı: er sanını esinde tutqan (28 kubitke qadar), sade kapılar içün pek tez olğan (4096'ya qadar) ve az dallı sxemalar içün olğan. Ölçüv, resetleme ve işleniş ortasında if, öz kapılarıñız, simulyatsiya etilgen gürültü, tohum ile tekrarlana bilgen neticeler. OpenQASM 2.0 ve 3.0'nı oqu; sxemanı IBM Composer'de açmaq yaki öz hesap açarıñız ile real IBM maşinasına yibermek mümkün (real IBM cihazında tasdiqlanmağan). Interfeys 8 tilde; 0.2 nusqası."
+  },
+  "ERATA": {
+   "tags": [
+    "tüzetici",
+    "kengeytme"
+   ],
+   "line": "Imlâ, grammatika, noqtalama ve tipografiyanı toğrudan kompüteriñizde teşkergen brauzer tüzeticisi: hesap yoq, server yoq, telemetriya yoq. Romen tili içün eñ teren.",
+   "detail": "Chromium ve Firefox içün kengeytme (Safari nusqası sınalmağan), LanguageTool'dan yaki diger teşkericiden kod, qaide yaki veri almadan, evelden yazılğan. textarea, input ve contenteditable sahalarında çalışa ve saifeni deñiştirmeden astını çize. Tilni abzac boyunca tanıy, diakritikanı (ro, fr, es, pt) faqat tüzetüv añlaşıqlı olğanda qaytara ve teren Romen qaideleri bar (comma-below ș/ț, “să/sa”, “într-un”, “dar/însă” aldındaki vergül). Şahsiy lugat, öz qaideler, saytqa köre almaştırğıç, Hunspell lugatlarını ithal etüv. İstege köre yerli model vastasınen yañıdan yazuv (faqat localhost, ögünden qapalı). Interfeys 25 tilde. 0.4 nusqası; MIT lisenziyası."
   }
  }
 }

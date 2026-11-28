@@ -6,7 +6,7 @@ import path from 'node:path';
 export const LANGS8 = ['ro', 'en', 'fr', 'it', 'es', 'pt', 'de', 'hu'];
 export const PLATFORMS = ['web', 'native'];
 /** Carduri cu linkuri (și, la proiectele fără <meta>/app.json, versiune și dată) întreținute de mână. sync-catalog le urmează doar versiunea și data din <meta application-version>/<meta last-updated> sau app.json, când depozitul e pe disc și le are; make-fixtures --check nu le compară cu fixtura. */
-export const EXTERNAL = new Set(['OSATURA', 'VERIGA', 'TEZAUR', 'LegatorOCR', 'Fenarium', 'MENSURA', 'BRAZDA', 'VOIAJOR', 'CHIROMANTIA', 'PUNCTUM', 'Claritas', 'TurboCursa', 'ANTENA', 'ARBITRU', 'ASTROLABIU', 'ECOGRAMA', 'ecou-spectral-rs', 'MARTOR', 'NEAMURI', 'TACTIL', 'ODISEEA', 'EXIF-CURAT', 'PORUMBEL', 'colibri-companion', 'CartaColibri', 'PolyTabletop', 'STRAJA', 'CUPLAJ', 'LUSTRUM', 'STENOGRAMA', 'GERMEN', 'CUANTOR']);
+export const EXTERNAL = new Set(['OSATURA', 'VERIGA', 'TEZAUR', 'LegatorOCR', 'Fenarium', 'MENSURA', 'BRAZDA', 'VOIAJOR', 'CHIROMANTIA', 'PUNCTUM', 'Claritas', 'TurboCursa', 'ANTENA', 'ARBITRU', 'ASTROLABIU', 'ECOGRAMA', 'ecou-spectral-rs', 'MARTOR', 'NEAMURI', 'TACTIL', 'ODISEEA', 'EXIF-CURAT', 'PORUMBEL', 'colibri-companion', 'CartaColibri', 'PolyTabletop', 'STRAJA', 'CUPLAJ', 'LUSTRUM', 'STENOGRAMA', 'GERMEN', 'CUANTOR', 'ERATA']);
 export const STATUSES = ['stable', 'experimental', 'alpha', 'lab'];
 
 /** Folderul depozitului `key` din `root`: numele exact sau, dacă lipsește, același nume fără a ține seama de majuscule. Cardurile se numesc BRAZDA, VOIAJOR, CHIROMANTIA, OSATURA,

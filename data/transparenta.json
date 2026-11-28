@@ -669,6 +669,17 @@
    "ext": true
   },
   {
+   "key": "ERATA",
+   "ver": "0.4.1",
+   "off": "full",
+   "langs": 8,
+   "hosts": 0,
+   "score": null,
+   "hm": null,
+   "l": null,
+   "ext": true
+  },
+  {
    "key": "ecou-spectral-rs",
    "ver": "0.1.0",
    "off": "no",
@@ -2186,10 +2197,10 @@
   ]
  },
  "health": {
-  "date": "2026-11-27",
-  "apps": 164,
+  "date": "2026-11-28",
+  "apps": 165,
   "relations": {
-   "withRelation": 140,
+   "withRelation": 141,
    "orphans": [
     "ACORDAJ",
     "API-fara-frontiere",
@@ -2216,15 +2227,15 @@
     "Table-fara-frontiere",
     "VNTV"
    ],
-   "pairs": 137,
+   "pairs": 140,
    "flows": 4,
    "flowApps": 16
   },
   "coverage": {
-   "full8": 161,
+   "full8": 162,
    "partial": 1,
    "single": 2,
-   "native": 24,
+   "native": 25,
    "avg": 3.96
   },
   "score": {
@@ -2248,12 +2259,12 @@
    ]
   },
   "age": {
-   "ref": "2026-11-27",
-   "fresh7": 156,
-   "fresh30": 164,
+   "ref": "2026-11-28",
+   "fresh7": 157,
+   "fresh30": 165,
    "stale30": 0,
    "stale90": 0,
-   "oldest": "OSATURA (17)"
+   "oldest": "OSATURA (18)"
   },
   "sources": {
    "total": 30,
@@ -2266,7 +2277,7 @@
    "healthFile": "2026-11-23"
   },
   "versions": {
-   "cards": 164,
+   "cards": 165,
    "measured": 138,
    "behind": [
     "ACORDAJ",
@@ -2417,6 +2428,7 @@
     "CartaColibri",
     "Claritas",
     "ECOGRAMA",
+    "ERATA",
     "EXIF-CURAT",
     "GERMEN",
     "LUSTRUM",

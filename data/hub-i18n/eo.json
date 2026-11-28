@@ -197,7 +197,7 @@
   },
   "extensii": {
    "title": "Retumilaj etendaĵoj",
-   "intro": "Etendaĵoj, kiuj funkcias en la retumilo: Claritas (alirebleco: korekto de kontrasto, legreĝimo, voĉlegado) kaj TEZAUR (helpanto por tezaj esploroj skribita en Rust, kiu liveras ankaŭ etendaĵon por Chrome/Firefox)."
+   "intro": "Etendaĵoj, kiuj funkcias en la retumilo: Claritas (alirebleco: korekto de kontrasto, legreĝimo, voĉlegado), TEZAUR (helpanto por tezaj esploroj skribita en Rust, kiu liveras ankaŭ etendaĵon por Chrome/Firefox) kaj ERATA (senreta korektilo de literumo, gramatiko kaj interpunkcio)."
   },
   "rust-ai": {
    "title": "Rust: loka AI",

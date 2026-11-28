@@ -197,7 +197,7 @@
   },
   "extensii": {
    "title": "Extensiones navigatri",
-   "intro": "Extensiones quae in navigatro operantur: Claritas (accessibilitas: correctio contrastus, modus lectoris, lectio recitata) et TEZAUR (adiutor investigationis thesium in Rust scriptus, qui etiam extensionem Chrome/Firefox praebet)."
+   "intro": "Extensiones quae in navigatro operantur: Claritas (accessibilitas: correctio contrastus, modus lectoris, lectio recitata), TEZAUR (adiutor investigationis thesium in Rust scriptus, qui etiam extensionem Chrome/Firefox praebet) et ERATA (corrector sine nexu pro orthographia, grammatica et interpunctione)."
   },
   "rust-ai": {
    "title": "Rust: AI localis",

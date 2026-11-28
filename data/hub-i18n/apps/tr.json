@@ -1266,6 +1266,14 @@
    ],
    "line": "Masaüstünüz için, 5'ten 1000 kübite kadar, IBM Quantum Composer tarzı bir arayüzle kuantum bilgisayar simülatörü. Kesin matematik, ama gerçek kuantum donanımı değil.",
    "detail": "Windows, macOS ve Linux için dört parçalı bir Rust programı (çekirdek, pencere, komut satırı, IBM bağlantısı). IBM'in Composer'ı gibi bir çizim tahtası: hatlara (kübitlere) renkli kapılar koyun ve çubukların ve bir kürenin sonucu göstermesini izleyin; bir metin paneli aynı devreyi canlı olarak OpenQASM ve Qiskit ile yazar. Üç hesaplayıcı: her sayıyı hatırlayan bir tane (28 kübite kadar), basit kapılar için çok hızlı bir tane (4096'ya kadar) ve az dallanmalı devreler için bir tane. Çalışma ortasında ölç, sıfırla ve if, kendi kapılarınız, simüle edilmiş gürültü, bir tohumla tekrarlanabilir sonuçlar. OpenQASM 2.0 ve 3.0'ı okur; devreyi IBM Composer'da açabilir veya kendi hesap anahtarınızla gerçek bir IBM makinesine gönderebilirsiniz (gerçek IBM donanımında doğrulanmadı). Arayüz 8 dilde; sürüm 0.2."
+  },
+  "ERATA": {
+   "tags": [
+    "yazım denetimi",
+    "uzantı"
+   ],
+   "line": "Yazımı, dil bilgisini, noktalamayı ve tipografiyi doğrudan bilgisayarınızda denetleyen tarayıcı düzeltmeni: hesap yok, sunucu yok, telemetri yok. En derin destek Romence için.",
+   "detail": "Chromium ve Firefox için (Safari sürümü denenmedi), LanguageTool'dan veya başka bir denetleyiciden hiçbir kod, kural ya da veri almadan sıfırdan yazılmış bir uzantı. textarea, input ve contenteditable alanlarında çalışır ve altı çizgileri sayfayı değiştirmeden çizer. Dili paragraf başına algılar, aksanlı harfleri (ro, fr, es, pt) yalnızca düzeltme belirsiz olmadığında geri yükler ve derin Romence kurallarına sahiptir (virgül altlı ș/ț, “să/sa”, “într-un”, “dar/însă” öncesindeki virgül). Kişisel sözlük, özel kurallar, site başına anahtar, Hunspell sözlüklerini içe aktarma. Yerel bir model aracılığıyla isteğe bağlı yeniden yazım (yalnızca localhost, varsayılan olarak kapalı). Arayüz 25 dilde. Sürüm 0.4; MIT lisansı."
   }
  }
 }

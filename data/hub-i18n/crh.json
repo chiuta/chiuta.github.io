@@ -197,7 +197,7 @@
   },
   "extensii": {
    "title": "Brauzer kengeytmeleri",
-   "intro": "Brauzer içinde çalışqan kengeytmeler: Claritas (irişilebilirlik: kontrast tüzetüvi, oquv rejimi, metinni sesli oquv) ve TEZAUR (Rust'ta yazılğan tez tedqiqat yardımcısı, Chrome/Firefox kengeytmesi de bar)."
+   "intro": "Brauzer içinde çalışqan kengeytmeler: Claritas (irişilebilirlik: kontrast tüzetüvi, oquv rejimi, metinni sesli oquv), TEZAUR (Rust'ta yazılğan tez tedqiqat yardımcısı, Chrome/Firefox kengeytmesi de bar) ve ERATA (imlâ, grammatika ve noqtalama içün oflayn tüzetici)."
   },
   "rust-ai": {
    "title": "Rust: yerli AI",

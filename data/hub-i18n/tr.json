@@ -197,7 +197,7 @@
   },
   "extensii": {
    "title": "Tarayıcı uzantıları",
-   "intro": "Tarayıcının içinde çalışan uzantılar: Claritas (erişilebilirlik: kontrast düzeltme, okuyucu modu, metinden sese) ve TEZAUR (Rust ile yazılmış tez araştırma asistanı, ayrıca bir Chrome/Firefox uzantısıyla birlikte gelir)."
+   "intro": "Tarayıcının içinde çalışan uzantılar: Claritas (erişilebilirlik: kontrast düzeltme, okuyucu modu, metinden sese), TEZAUR (Rust ile yazılmış tez araştırma asistanı, ayrıca bir Chrome/Firefox uzantısıyla birlikte gelir) ve ERATA (yazım, dil bilgisi ve noktalama için çevrimdışı düzeltmen)."
   },
   "rust-ai": {
    "title": "Rust: yerel AI",

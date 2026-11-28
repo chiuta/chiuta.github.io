@@ -1266,6 +1266,14 @@
    ],
    "line": "Jek simulatoro e kvantikane kompjuteresqoro vaš tiro desktop, katar 5 dži ko 1000 qubit, e IBM Quantum Composer stilosko interfejso. Egzakto matematika, numa na si chačo kvantikano hardveri.",
    "detail": "Jek Rust programo ande štar kotora (kernel, than, komanda-rinda, IBM phandipen) vaš Windows, macOS thaj Linux. Jek tabla vaš e kheriipe sar o IBM Composer: thov e bojatne gates pe liniji (qubiti) thaj dikh sar e barura thaj jek sfera sikaven o rezultato, e kana jek tekstoskero panelo ramol o kodoleske circuito pe čačo vrama ande OpenQASM thaj Qiskit. Trin kalkulatora: jek so gindil sako numero (dži ko 28 qubiti), jek zoralo sigo vaš e sasti gates (dži ko 4096) thaj jek vaš e circuitura e cine rospapa. Measure, reset thaj if ando maškar e kerimasqo, tire korkore gates, simulime zgomoto, rezultatura so šaj te kerdes pale e seed. Genel OpenQASM 2.0 thaj 3.0; šaj te putres o circuito ando IBM Composer vaj te bičhaves les pe jek čačo IBM mašina e tire korkore kontoskere čavesa (na verifikuime pe čače IBM hardveri). Interfejso ande 8 čhiba; verzia 0.2."
+  },
+  "ERATA": {
+   "tags": [
+    "koretori",
+    "ekstensia"
+   ],
+   "line": "Koretori ando browseri so dikhel e ramosaripe, gramatika, punktuacia thaj tipografia pe tiro korkoro kompjuteri: bi konto, bi server, bi telemetria. Maj dungo vaš o romano.",
+   "detail": "Jek ekstensia vaš Chromium thaj Firefox (o Safari build na si probime), ramo katar o zero bi kodo, regule vaj datura katar LanguageTool vaj aver koretori. Kerel buči ande textarea, input thaj contenteditable thana thaj kheldel e ćirdimata bi te paruvel e pagina. Arakhel e čhib pe sako paragrafo, thovel pale e diakritike (ro, fr, es, pt) numa kana o pačipe si jekhutno, thaj si le dungo romane regule (zarnako-tele ș/ț, “să/sa”, “într-un”, o zarno angle “dar/însă”). Personalo lekšikono, korkore regule, kontrolo vaš sako sajto, importo e Hunspell lekšikonenqo. Opcionalo paruvipe e tekstosqo e jek lokalo modelosa (numa localhost, na si startime pe default). Interfejso ande 25 čhiba. Verzia 0.4; licenca MIT."
   }
  }
 }

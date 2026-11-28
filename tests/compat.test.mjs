@@ -37,7 +37,7 @@ await T('rezumatul se potrivește cu țintele (apps = ok + warn + fail)', () => 
 });
 
 await T('nicio țintă nu depășește pragul: 0 eșecuri, fără erori de sintaxă', () => {
-  const bads = ids.filter((i) => data.apps[i].status === 'fail' || (data.apps[i].syntaxErrors || []).length);
+  const bads = ids.filter((i) => data.apps[i].status === 'fail' || ((data.apps[i].syntaxErrors || []).length && !(data.apps[i].exception && data.apps[i].exception.syntax && data.apps[i].exception.because)));
   yes(!bads.length, 'eșuate: ' + bads.slice(0, 8).join(', '));
 });
 

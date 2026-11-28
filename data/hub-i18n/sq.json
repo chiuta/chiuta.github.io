@@ -197,7 +197,7 @@
   },
   "extensii": {
    "title": "Shtesa për shfletues",
-   "intro": "Shtesa që punojnë brenda shfletuesit: Claritas (aksesueshmëri: korrigjim kontrasti, mënyrë leximi, tekst në të folur) dhe TEZAUR (asistent kërkimi për teza i shkruar në Rust, që vjen edhe me një shtesë Chrome/Firefox)."
+   "intro": "Shtesa që punojnë brenda shfletuesit: Claritas (aksesueshmëri: korrigjim kontrasti, mënyrë leximi, tekst në të folur), TEZAUR (asistent kërkimi për teza i shkruar në Rust, që vjen edhe me një shtesë Chrome/Firefox) dhe ERATA (korrektues offline për drejtshkrim, gramatikë dhe pikësim)."
   },
   "rust-ai": {
    "title": "Rust: AI lokale",

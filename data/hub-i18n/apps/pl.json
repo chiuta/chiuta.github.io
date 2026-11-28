@@ -1266,6 +1266,14 @@
    ],
    "line": "Symulator komputera kwantowego na Twój pulpit, od 5 do 1000 kubitów, z interfejsem w stylu IBM Quantum Composer. Dokładna matematyka, ale nie prawdziwy sprzęt kwantowy.",
    "detail": "Program w Rust w czterech częściach (rdzeń, okno, wiersz poleceń, łącze z IBM) dla Windows, macOS i Linux. Tablica do rysowania jak Composer IBM: umieszczaj kolorowe bramki na liniach (kubity) i obserwuj, jak słupki i sfera pokazują wynik, podczas gdy panel tekstowy zapisuje ten sam obwód na żywo w OpenQASM i Qiskit. Trzy kalkulatory: jeden pamiętający każdą liczbę (do 28 kubitów), jeden bardzo szybki dla prostych bramek (do 4096) i jeden dla obwodów z niewieloma rozgałęzieniami. Pomiar, reset i if w środku przebiegu, własne bramki, symulowany szum, powtarzalne wyniki dzięki ziarnu. Czyta OpenQASM 2.0 i 3.0; możesz otworzyć obwód w IBM Composer lub wysłać go do prawdziwej maszyny IBM z własnym kluczem konta (nie zweryfikowane na prawdziwym sprzęcie IBM). Interfejs w 8 językach; wersja 0.2."
+  },
+  "ERATA": {
+   "tags": [
+    "korekta",
+    "rozszerzenie"
+   ],
+   "line": "Korektor w przeglądarce, który sprawdza pisownię, gramatykę, interpunkcję i typografię bezpośrednio na Twoim komputerze: bez konta, bez serwera, bez telemetrii. Najgłębiej dla rumuńskiego.",
+   "detail": "Rozszerzenie dla Chromium i Firefoksa (wersja na Safari nie była testowana), napisane od zera, bez kodu, reguł ani danych z LanguageTool ani żadnego innego korektora. Działa w polach textarea, input i contenteditable i rysuje podkreślenia bez zmieniania strony. Wykrywa język w każdym akapicie, przywraca znaki diakrytyczne (ro, fr, es, pt) tylko tam, gdzie poprawka jest jednoznaczna, i ma głębokie reguły dla rumuńskiego (ș/ț z przecinkiem poniżej, „să/sa”, „într-un”, przecinek przed „dar/însă”). Słownik osobisty, własne reguły, przełącznik dla każdej witryny, import słowników Hunspell. Opcjonalne przepisywanie przez lokalny model (tylko localhost, domyślnie wyłączone). Interfejs w 25 językach. Wersja 0.4; licencja MIT."
   }
  }
 }
