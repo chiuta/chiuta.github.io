@@ -21,7 +21,7 @@ const ROOT = path.resolve(rootArg || process.env.FFF_ROOT || (fs.existsSync(path
 console.log('depozite aplicații: ' + path.relative(HUB, ROOT) + (ROOT.includes('fixtures') ? ' (fixturi)' : ''));
 const tool = (name, ...extra) => execFileSync('node', [path.join(HUB, 'tools', name), ...extra, '--root', ROOT], {stdio: 'pipe'});
 const LANGS = ['en', 'ro', 'fr', 'it', 'es', 'pt', 'de', 'hu'];
-const NEW_LANGS = ['uk', 'rmy', 'tr', 'crh', 'ru', 'sr', 'sk', 'bg', 'hr', 'el', 'yi', 'cs', 'pl', 'hy', 'rue', 'sq', 'mk'];
+const NEW_LANGS = ['uk', 'rmy', 'tr', 'crh', 'ru', 'sr', 'sk', 'bg', 'hr', 'el', 'yi', 'cs', 'pl', 'hy', 'rue', 'sq', 'mk', 'eo', 'la'];
 const ALL_LANGS = LANGS.concat(NEW_LANGS);
 const MIME = {'.html': 'text/html; charset=utf-8', '.js': 'text/javascript', '.json': 'application/json', '.webmanifest': 'application/manifest+json', '.png': 'image/png', '.css': 'text/css'};
 
@@ -290,7 +290,7 @@ await T('catalog: localStorage indisponibil (mod privat / cookie-uri blocate) nu
   await ctx.close();
 });
 
-await T('transparenta.html: 25 de limbi, fără chei/substituenți neinterpolați, fără rețea externă, fără depășire la 360px, idișul de la dreapta la stânga', async () => {
+await T('transparenta.html: 27 de limbi, fără chei/substituenți neinterpolați, fără rețea externă, fără depășire la 360px, idișul de la dreapta la stânga', async () => {
   for (const l of ALL_LANGS) {
     const {ctx, page, errors, external} = await open(l, 'transparenta.html', {viewport: {width: 360, height: 740}});
     await page.waitForFunction((l) => document.documentElement.lang === l, l);

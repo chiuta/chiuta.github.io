@@ -82,8 +82,8 @@ function checkLang(l) {
 }
 
 // ---------- aplicare în index.html ----------
-const FLAG = {uk: '🇺🇦', tr: '🇹🇷', ru: '🇷🇺', sr: '🇷🇸', sk: '🇸🇰', bg: '🇧🇬', hr: '🇭🇷', el: '🇬🇷', cs: '🇨🇿', pl: '🇵🇱', hy: '🇦🇲', sq: '🇦🇱', mk: '🇲🇰', rmy: '🌐', crh: '🌐', yi: '🌐', rue: '🌐'};
-const LOCALE = {uk: 'uk-UA', tr: 'tr-TR', ru: 'ru-RU', sr: 'sr-Cyrl-RS', sk: 'sk-SK', bg: 'bg-BG', hr: 'hr-HR', el: 'el-GR', cs: 'cs-CZ', pl: 'pl-PL', hy: 'hy-AM', sq: 'sq-AL', mk: 'mk-MK', yi: 'yi', rmy: 'en-GB', crh: 'tr-TR', rue: 'uk-UA'};
+const FLAG = {uk: '🇺🇦', tr: '🇹🇷', ru: '🇷🇺', sr: '🇷🇸', sk: '🇸🇰', bg: '🇧🇬', hr: '🇭🇷', el: '🇬🇷', cs: '🇨🇿', pl: '🇵🇱', hy: '🇦🇲', sq: '🇦🇱', mk: '🇲🇰', rmy: '🌐', crh: '🌐', yi: '🌐', rue: '🌐', eo: '🌐', la: '🌐'};
+const LOCALE = {uk: 'uk-UA', tr: 'tr-TR', ru: 'ru-RU', sr: 'sr-Cyrl-RS', sk: 'sk-SK', bg: 'bg-BG', hr: 'hr-HR', el: 'el-GR', cs: 'cs-CZ', pl: 'pl-PL', hy: 'hy-AM', sq: 'sq-AL', mk: 'mk-MK', yi: 'yi', rmy: 'en-GB', crh: 'tr-TR', rue: 'uk-UA', eo: 'eo', la: 'la'};
 const BEGIN = '/*i18n25:begin*/', END = '/*i18n25:end*/', UBEGIN = '/*i18n25:ui:begin*/', UEND = '/*i18n25:ui:end*/';
 
 function replaceOnce(s, from, to, label) {

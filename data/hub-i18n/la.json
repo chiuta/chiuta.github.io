@@ -1,0 +1,222 @@
+{
+ "lang": "la",
+ "T": {
+  "themeLbl": "Thema",
+  "langLbl": "Lingua",
+  "modeLbl": "Modus",
+  "colorLbl": "Color",
+  "dark": "Obscurus",
+  "light": "Lucidus",
+  "taglineStrong": "Instrumenta aperta ad discendum et verificandum",
+  "taglineRest": " — fasciculus unicus, plerumque sine nexu interretiali, sine ratione. Quaeque applicatio fines suos declarat.",
+  "noteTxt": "Incepta privata unius auctoris, non officia publica. Ad discendum tantum: nihil hic est consilium medicum, iuridicum vel pecuniarium. README cuiusque applicationis omnes petitiones ad tertios enumerat.",
+  "searchPh": "Nomen, argumentum vel verbum…",
+  "noRes": "Nullum inceptum his filtris respondet.",
+  "badgeLocation": "Bucarestum, RO",
+  "badgeOffline": "◈ Primum sine nexu",
+  "badgeVanilla": "⬡ Fasciculus unicus",
+  "badgeTelemetry": "⌀ Sine telemetria in hac pagina",
+  "statRepos": "Applicationes",
+  "statModules": "Sectiones",
+  "statLangs": "Linguae",
+  "statSent": "Missum",
+  "projects": "Incepta",
+  "loading": "Ex GitHub accipitur…",
+  "darkThemes": "Themata obscura",
+  "lightThemes": "Themata lucida",
+  "fSearch": "Quaere",
+  "fCat": "Categoria",
+  "fCatAll": "Omnes categoriae",
+  "fLang": "Lingua applicationis",
+  "fLangAll": "Quaelibet lingua",
+  "fOff": "Usus sine nexu",
+  "fOffAny": "Quilibet",
+  "fOffFull": "Plene sine nexu operatur",
+  "fOffPart": "Sine nexu operatur, sed quaedam functiones interrete egent",
+  "fOffNo": "Sine nexu non operatur",
+  "fReset": "Filtra restitue",
+  "fForm": "Catalogum filtra",
+  "demoHead": "Videoclipsa demonstrativa",
+  "demoLead": "Brevia videoclipsa tacita de singulis applicationibus, cum subtitulis in 8 linguis. Hic hospitantur, sine instrumento tertii.",
+  "demoAll": "Omnia videoclipsa demonstrativa →",
+  "demoSec": "▶ Series sectionis",
+  "demoLink": "Videoclipsa demonstrativa",
+  "transpLink": "Perspicuitas",
+  "aboutLine": "Alexandru-Ionuț Chiuță (Alexio): ingeniarius Romanus et scriptor fabularum scientificarum. Incepta privata independentia — non officia ullius institutionis neque fontes officiales. Quaestiones, correctiones vel petitiones removendi:",
+  "copyright": "© 2026 Alexandru-Ionuț Chiuță · renovatum {d}",
+  "dataUpd": "Data renovata die {d}",
+  "dataAsOf": "Data ab auctore inspecta die {d}",
+  "dataUnk": "Dies datorum non confirmatus",
+  "dataSrc": "fons",
+  "bdStale": "vetustum",
+  "staleTip": "Ultima renovatio vetustior est quam duplum frequentiae fontis ({c}).",
+  "fData": "Fontes datorum",
+  "cadFrozen": "immutabilis",
+  "cadSlow": "menstruus",
+  "cadLive": "hebdomadalis",
+  "stInv": "non sponte inspectum",
+  "fStatus": "Status",
+  "fChain": "Coniunge cum…",
+  "flowNext": "gradus proximus",
+  "flowPrev": "gradus prior",
+  "fStatusAny": "Quilibet",
+  "stStable": "stabilis",
+  "stExperimental": "experimentalis",
+  "stAlpha": "alpha",
+  "fisaBtn": "Tabula",
+  "fCe": "Singillatim",
+  "fPentru": "Cui destinatum",
+  "fLimite": "Fines",
+  "fVersiune": "Versio",
+  "fSubst": "Ultima mutatio substantialis",
+  "fSubstNone": "non notata",
+  "fSync": "Synchronizatio catalogi",
+  "bdOffFull": "plene sine nexu",
+  "bdOffPart": "partim sine nexu · interrete eget",
+  "bdOffNo": "sine nexu non operatur",
+  "fRelated": "Cognata",
+  "fVariants": "Variantes",
+  "fShot": "Imago tabulae",
+  "fOnlyRoEn": "Textus tabulae solum Romanice et Anglice exstat; Anglice ostenditur.",
+  "stLab": "experimentum",
+  "fAudit": "Recensio interna",
+  "fMeasured": "Recensio mensurata",
+  "fCifre": "Numeri et fontes",
+  "legendLab": "Experimentum. Operatur, sed ad usum cotidianum non commendatur donec corrigatur. Status in catalogo expresse declaratur, non ex puncto computatur; applicatio experimentalis numquam in “Commendatis” apparet.",
+  "platWeb": "interrete",
+  "platNative": "installabile",
+  "fCov": "Ambitus",
+  "fPlat": "Suggestus",
+  "platWebLong": "in navigatro operatur (fasciculus HTML unicus)",
+  "platNativeLong": "programma nativum installabile, non pagina interretialis",
+  "fEvid": "Testimonia",
+  "evTitle": "Gradus testimoniorum pro eis quae praxis adfirmat (0–4)",
+  "ev0": "traditio / valor culturalis",
+  "ev1": "relationes et observationes singulae",
+  "ev2": "observationes systematicae, studia parva vel praeliminaria",
+  "ev3": "studia moderata",
+  "ev4": "verificatum (repetitum, consensus)",
+  "evMode": "Modus historicus / culturalis: ut traditio praesentatur, non ut res constituta. Gradus adfirmationes praxis aestimat, non programma computatrale.",
+  "bdHealth": "medicum non substituit",
+  "fHealth": "Salus",
+  "healthNote": "Ad informandum tantum. Medicum aliumve professionalem sanitatis non substituit; in difficultatibus valetudinis eum consule, et in casu urgenti numerum 112 voca.",
+  "bdFragile": "fragile",
+  "fFragile": "Fragilitas",
+  "fragileNote": "A situ vel officiis tertiorum pendet, quae mutari vel aditum prohibere possunt; sine monitu cessare potest.",
+  "fChecked": "Ultima inspectio",
+  "legendCov": "Ambitus. Titulus in quaque charta linguas interfaciei (ex 8: ro, en, fr, it, es, pt, de, hu) et suggestum indicat: interrete (fasciculus in navigatro operans) vel installabile (programma nativum). Puncta 0–4 ex numero linguarum.",
+  "legendEvid": "Testimonia. Chartae praxium cum effectibus adfirmatis (astrologia, therapiae energeticae, radiaesthesia, frequentiae “therapeuticae”, relaxatio) mensuram 0–4 ostendunt: 0 traditio / valor culturalis, 1 relationes singulae, 2 studia parva vel praeliminaria, 3 studia moderata, 4 verificatum. Adfirmationes praxis aestimat, non programma computatrale; 0–1 significat “modum historicum / culturalem”.",
+  "legendHealth": "“Medicum non substituit”: in applicationibus cum contentu ad salutem pertinente ostenditur.",
+  "legendFragile": "“Fragile”: applicatio a situs vel officiis tertiorum pendet (extractio, inclusiones non officiales, API publicae) et sine monitu cessare potest.",
+  "evModeShort": "modus historicus / culturalis",
+  "legendTitle": "Quomodo chartae legantur",
+  "legendStatus": "Status. stabilis: versio 1.0.0 vel recentior sine declaratione experimentali in README; experimentalis: ita in README declaratus; alpha: versio 0.x vel cum suffixo -alpha. Ex regula derivatur, non singulatim aestimatur.",
+  "legendVer": "Versiones formam MAJOR.MINOR.PATCH (SemVer) sequuntur, ut ab unaquaque applicatione declaratur.",
+  "legendSubst": "Dies iuxta versionem est ultima mutatio substantialis; si abest, non notatur (dies synchronizationis catalogi in tabula est)."
+ },
+ "tpl": {
+  "nProjects": "{n} incepta",
+  "nShown": "{n} ex {m} inceptis",
+  "labNote": "Experimentum: punctum recensionis internae {s}/10, infra limen 5. Operatur, sed ad usum cotidianum non commendatur donec corrigatur.",
+  "covLangs": "{n} linguae",
+  "covOnly": "solum {l}",
+  "covPart": "{n} ex 8 linguis",
+  "covScore": "puncta {n}/4",
+  "statAppsTip": "Applicationes fasciculi unici: {n} ({l} chartae in indice + {v} variantes intra chartam centri Universi Observabilis). OSATURA, VERIGA, TEZAUR et LegatorOCR, quae fasciculi unici non sunt, separatim recensentur.",
+  "statSecTip": "{n} sectiones catalogi, sectione Rust separata inclusa."
+ },
+ "CTRL": {
+  "animPlay": "Animationem pone in motum",
+  "animPause": "Animationem sistere",
+  "toDark": "Ad modum obscurum muta",
+  "toLight": "Ad modum lucidum muta",
+  "theme": "Thema",
+  "lang": "Lingua",
+  "skip": "Ad contentum transili"
+ },
+ "sections": {
+  "rust": {
+   "title": "Rust: programmata nativa, non fasciculi HTML",
+   "intro": "Incepta in Rust scripta, quae applicationes HTML fasciculi unici non sunt: OSATURA (motor animationis, alpha), VERIGA (inspector nexuum), TEZAUR (adiutor investigationis thesium, versio 0.x) et LegatorOCR (scansiones → PDF quaerendum, versio 0.x)."
+  },
+  "verificare": {
+   "title": "Verificatio, fontes et vestigia interretialia",
+   "intro": "Instrumenta ad inspiciendum unde informatio veniat, quid post publicationem mutatum sit, et num nexus adhuc vivat. Quodque in README suo declarat quas petitiones ad tertios faciat."
+  },
+  "educatie": {
+   "title": "Instrumenta educationis et professionalia",
+   "intro": "Materia discendi et instrumenta laboris ad radiotelegraphiam amatoriam, accessibilitatem, eventa ordinanda et textus datorumque tractationem. Instrumenta non officialia: nullam auctoritatem substituunt."
+  },
+  "stiinta": {
+   "title": "Scientia, natura et opera in agro",
+   "intro": "Visualizationes et encyclopaediae in datis publicis fundatae. Ubi data approximata sunt, applicatio id dicit."
+  },
+  "jocuri": {
+   "title": "Ludi strategici et atlantes regularum",
+   "intro": "Quisque ludus motorem ab interfacie separatum habet, adversarium AI heuristicum sine aditu ad informationes occultas, et suas series probationum (exempli gratia, Belot: plus quam 450 000 inspectiones automaticae)."
+  },
+  "ai": {
+   "title": "AI sub potestate usoris",
+   "intro": "Interfaces quae usori permittunt decernere quid exeat et quo eat. Claves API in navigatro manent, tantum “obscuratae”, non cryptatae: README lege antequam eis uteris."
+  },
+  "utilitare": {
+   "title": "Utilitates et incepta creativa",
+   "intro": "Instrumenta parva, ad durandum facta: fasciculus unus, sine ratione."
+  },
+  "cultura": {
+   "title": "Cultura, praxes et opiniones: studium descriptivum",
+   "intro": "Hae applicationes praxes sine testimoniis scientificis efficaciae (astrologiam, tarot, numerologiam, reiki, radiaesthesiam, etc.) ut obiectum studii culturalis describunt, non ut commendationem. Consilium medicum, iuridicum vel pecuniarium non substituunt."
+  },
+  "recomandate": {
+   "title": "Commendata",
+   "intro": "Delectus ad incipiendum: verificatio fontium, translatio, discere et instrumenta laboris."
+  },
+  "confidentialitate": {
+   "title": "Secretum et authenticitas",
+   "intro": "Metadata fasciculorum remove, localiter crypta et testimonia originis inspice. Ab ullo externo non recensita: ne eis ut unico praesidio datorum vere sensibilium confidas."
+  },
+  "literatura": {
+   "title": "Litteratura et lingua",
+   "intro": "Dictionaria, alphabeta et codices, proverbia et fabulae originales: instrumenta verborum, scribendi et legendi. Auxilia didactica sunt, non normae."
+  },
+  "teren": {
+   "title": "Ager et semitae",
+   "intro": "Vestigia GPS, ephemerides agri, itineraria montana et manualia superviventiae. Omnia localiter operantur; nihil tabulam geographicam, ducem vel auctoritates locales substituit, neque hic ullum instrumentum navigationis vel securitatis est."
+  },
+  "sunet": {
+   "title": "Sonus",
+   "intro": "Mensuratio, generatio et analysis soni, itemque musica et ambientia in navigatro generata. Sonometrum et probationes auditus indicativa sunt, non instrumenta certificata vel medica."
+  },
+  "gospodarie": {
+   "title": "Domus et ordinatio",
+   "intro": "Calendarium, rationarium, arbor genealogica, notae et tempus: instrumenta rerum cotidianarum, cum datis in hoc navigatro servatis, sine ratione. Non consilium pecuniarium, iuridicum vel fiscale."
+  }
+ },
+ "misc": {
+  "donateLabel": "Adiuva",
+  "donateHide": "Cela",
+  "donateTitle": "Auctorem adiuva",
+  "donateCbLabel": "Taeniam adiumenti cela",
+  "cultureNote": "Prius lege. Contentus descriptivus de praxibus scientifice non validatis. Non est commendatio curationis vel decisionis.",
+  "introLabel": "Introductio",
+  "github": "GitHub",
+  "live": "In directo",
+  "open": "Aperi",
+  "nativeDemo": "Demonstratio terminalis"
+ },
+ "dateFmt": "{d} {m} {y}",
+ "months": [
+  "ianuarii",
+  "februarii",
+  "martii",
+  "aprilis",
+  "maii",
+  "iunii",
+  "iulii",
+  "augusti",
+  "septembris",
+  "octobris",
+  "novembris",
+  "decembris"
+ ]
+}

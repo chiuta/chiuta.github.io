@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-// coverage — acoperirea celor 25 de limbi (data/limbi.json) pe fiecare depozit public, fără dependențe externe.
+// coverage — acoperirea celor 27 de limbi (data/limbi.json) pe fiecare depozit public, fără dependențe externe.
 //
 //   node tools/i18n25/coverage.mjs --root DIR [--json OUT.json] [--md OUT.md] [--lang uk] [--missing]
 //
