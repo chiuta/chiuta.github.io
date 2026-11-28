@@ -729,7 +729,7 @@
 </script>
 <script type="module" id="fff-imp">window.__fffImp=function(u){return import(u)};</script>
 <!--fff:compat:end-->
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data: blob:; style-src 'self' 'unsafe-inline'; font-src 'self' data:; media-src 'self' blob: data:; object-src 'none'; base-uri 'self'; form-action 'self'; worker-src 'self' blob:; script-src 'self' 'sha256-JQ/7Yhn7O+sKmuZN2xshEXzwwMvqVlo2OANl/JrM2lY=' 'sha256-QrjB1MbPYLmnffTbp57xa6SwKTdVSUGUyaLDtOnyJ+k=' 'sha256-CLz9ky8c+CI8yax80HOx/XKzzI+0llJZxdBKUKIqejE=' 'sha256-YO40Pa9U54kBXfBS8s7ySLVhwIuT7JC9cMSApha5DIk=' 'sha256-aK2xZWiaw1A9YdKKN1rlUtBfRwMXUsx12g2TXuezxQA=' 'sha256-NhFYx+8UgWykiCFi4WXtcNrvQdtM0Hg323ahxHZhWmo=' 'sha256-0YcVCnFDpHw5mpoo0grf9x/1d3uskaBPcIY1o2yuQ90=' 'sha256-r0MN7gDWmSqx8dOjbwYxh8d+ajkeDUl5tv5AAfrHZqY=' 'sha256-e0nC3KSV3uUqYFHNu26/cjZFV0v5Apk7Gwf6ptIYCDo='; connect-src 'none'; manifest-src 'self'">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data: blob:; style-src 'self' 'unsafe-inline'; font-src 'self' data:; media-src 'self' blob: data:; object-src 'none'; base-uri 'self'; form-action 'self'; worker-src 'self' blob:; script-src 'self' 'sha256-JQ/7Yhn7O+sKmuZN2xshEXzwwMvqVlo2OANl/JrM2lY=' 'sha256-QrjB1MbPYLmnffTbp57xa6SwKTdVSUGUyaLDtOnyJ+k=' 'sha256-CLz9ky8c+CI8yax80HOx/XKzzI+0llJZxdBKUKIqejE=' 'sha256-YO40Pa9U54kBXfBS8s7ySLVhwIuT7JC9cMSApha5DIk=' 'sha256-aK2xZWiaw1A9YdKKN1rlUtBfRwMXUsx12g2TXuezxQA=' 'sha256-sAs9yMLMGcmVPH4GK4eeU+p5fKne0hfZi6b8oV1Q/L4=' 'sha256-0YcVCnFDpHw5mpoo0grf9x/1d3uskaBPcIY1o2yuQ90=' 'sha256-r0MN7gDWmSqx8dOjbwYxh8d+ajkeDUl5tv5AAfrHZqY=' 'sha256-e0nC3KSV3uUqYFHNu26/cjZFV0v5Apk7Gwf6ptIYCDo='; connect-src 'none'; manifest-src 'self'">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <meta name="color-scheme" content="dark light">
 <meta name="theme-color" id="theme-color-meta" content="#07060f">
@@ -1174,7 +1174,7 @@ a.card-link.demo-link:hover{background:var(--accent-lo)}
 .card-media:hover .card-play{transform:scale(1.08)}
 .card-media.on .card-play{opacity:.85}
 .card-media:focus-within{outline:2px solid var(--accent);outline-offset:2px}
-.app-card.no-clip .card-media{display:none}
+.app-card.no-clip .card-media{display:none}.app-card.still .card-play{display:none}
 #vlight{margin:auto;inset:0;height:fit-content;border:0;padding:0;background:transparent;max-width:min(94vw,1100px);width:100%;color:var(--text)}
 #vlight::backdrop{background:rgba(2,4,10,.82);backdrop-filter:blur(6px)}
 #vlight[open]{animation:vpop .3s cubic-bezier(.2,.9,.3,1.2)}
@@ -2881,12 +2881,12 @@ init();
   function tx(k){ return L[k][lg()]; }
   var reduce=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
   var save=navigator.connection&&navigator.connection.saveData;
-  var MAXP=3, live=[];
+  var MAXP=3, live=[], STILL={'ANTENA':1,'ARBITRU':1,'ASTROLABIU':1,'CUANTOR':1,'CUPLAJ':1,'CartaColibri':1,'Claritas':1,'ECOGRAMA':1,'EXIF-CURAT':1,'GERMEN':1,'LUSTRUM':1,'MARTOR':1,'NEAMURI':1,'PORUMBEL':1,'PolyTabletop':1,'STRAJA':1,'TACTIL':1,'TurboCursa':1,'colibri-companion':1,'ecou-spectral-rs':1};
   function slugOf(c){ var n=c.querySelector('.card-name'); var m=n&&(n.getAttribute('data-c')||'').match(/^apps\|([^|]+)\|/); return m?m[1]:null; }
   function src(slug,loc){ var l=lg(); return 'demo/'+slug+(loc&&l!=='en'?'/loc/'+l:'')+'/video.mp4'; }
   function stop(c){ var f=c.querySelector('.card-media'); if(!f) return; var v=f.querySelector('video'); if(v){ try{v.pause();}catch(e){} v.removeAttribute('src'); try{v.load();}catch(e){} v.remove(); } f.classList.remove('on'); c.classList.remove('vid-on'); live=live.filter(function(x){return x!==c;}); }
   function start(c){
-    var f=c.querySelector('.card-media'); if(!f||c.classList.contains('no-clip')||f.querySelector('video')) return;
+    var f=c.querySelector('.card-media'); if(!f||c.classList.contains('no-clip')||c.classList.contains('still')||f.querySelector('video')) return;
     while(live.length>=MAXP) stop(live[0]);
     var slug=c.__slug, v=document.createElement('video'); v.muted=true; v.loop=true; v.playsInline=true; v.setAttribute('playsinline',''); v.preload='auto'; v.tabIndex=-1; v.setAttribute('aria-hidden','true');
     var triedLoc=lg()!=='en';
@@ -2918,7 +2918,7 @@ init();
   if(dlg){ document.getElementById('vl-x').addEventListener('click',closeBox); dlg.addEventListener('click',function(e){ if(e.target===dlg) closeBox(); }); dlg.addEventListener('close',function(){ try{vv.pause();}catch(e){} }); }
   var io=('IntersectionObserver' in window)?new IntersectionObserver(function(es){ es.forEach(function(e){ var c=e.target.closest('.app-card'); if(!c) return; if(e.isIntersecting&&e.intersectionRatio>=.6){ if(!reduce&&!save) start(c); } else stop(c); }); },{threshold:[0,.6]}):null;
   function build(c){
-    if(c.__slug) return; var slug=slugOf(c); if(!slug) return; c.__slug=slug;
+    if(c.__slug) return; var slug=slugOf(c); if(!slug) return; c.__slug=slug; if(STILL[slug]) c.classList.add('still');
     var body=c.querySelector('.card-body'); if(!body) return;
     var f=document.createElement('figure'); f.className='card-media';
     var img=document.createElement('img'); img.alt=''; img.loading='lazy'; img.decoding='async';
@@ -2927,7 +2927,7 @@ init();
     img.__setSrc();
     var b=document.createElement('button'); b.type='button'; b.className='card-play'; b.textContent=tx('play'); b.setAttribute('aria-label',tx('play')+' — '+((c.querySelector('.card-name')||{}).textContent||slug));
     f.appendChild(img); f.appendChild(b);
-    f.addEventListener('click',function(){ openBox(c); });
+    if(!STILL[slug]) f.addEventListener('click',function(){ openBox(c); });
     c.addEventListener('pointerenter',function(e){ if(e.pointerType==='mouse'||reduce||save) start(c); });
     body.insertBefore(f,body.firstChild);
     if(io) io.observe(f);
