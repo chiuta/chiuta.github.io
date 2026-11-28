@@ -1,0 +1,16 @@
+{
+"sections":"Bölümler",
+"view":"Görünüm",
+"roomy":"Ayrıntılı",
+"compact":"Kompakt",
+"saved":"Kaydedilenler",
+"savedHint":"Bir kartı kaydetmek için ☆ simgesine basın. Kaydedilenler yalnızca bu cihazda kalır.",
+"save":"Kaydet",
+"unsave":"Kaydedilenlerden kaldır",
+"recent":"Son açılanlar",
+"clear":"Geçmişi temizle",
+"share":"Bu görünümün bağlantısını kopyala",
+"copied":"Bağlantı kopyalandı",
+"filters":"Filtreler",
+"top":"Başa dön"
+}

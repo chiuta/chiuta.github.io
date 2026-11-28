@@ -17,7 +17,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import {execFileSync} from 'node:child_process';
 import {fileURLToPath} from 'node:url';
-import {LANGS, LANG_NAMES, UI, CODES, CODE_KIND} from './transparenta-i18n.mjs';
+import {LANGS, LANG_NAMES, UI, CODES, CODE_KIND, RTL_LANGS} from './transparenta-i18n.mjs';
 import {recomputeCspHashes} from '../fff-kit/lib/csp.mjs';
 import {ensureCompat} from './compat/layer.mjs';
 import {inlineBlock} from './texturi-hub/inline.mjs';   // texturi fractale (fff-texturi) în pagina generată
@@ -347,7 +347,7 @@ ul.plain{padding-left:1.2rem;max-width:50rem}ul.plain li{margin:.45rem 0}
 ul.cards{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(10.5rem,1fr));gap:.75rem}
 ul.cards li{background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:.8rem .9rem;display:flex;flex-direction:column;gap:.2rem}
 .cv{font-size:1.35rem;font-weight:700}.cl{font-size:.88rem;color:var(--muted)}
-.kind{display:inline-block;font-size:.78rem;padding:.05rem .5rem;border-radius:99px;background:var(--chip);color:var(--muted);white-space:nowrap}
+.kind{display:inline-block;font-size:.78rem;padding:.05rem .5rem;border-radius:99px;background:var(--chip);color:var(--muted);max-width:100%;overflow-wrap:anywhere}
 .tw{overflow-x:auto;border:1px solid var(--border);border-radius:10px;background:var(--bg2);margin:.4rem 0}.tw.narrow{max-width:26rem}
 table{border-collapse:collapse;width:100%;font-size:.92rem}th,td{padding:.5rem .7rem;text-align:left;vertical-align:top;border-bottom:1px solid var(--border)}
 thead th{font-size:.82rem;color:var(--muted);white-space:nowrap}tbody th{font-weight:600}tr:last-child>*{border-bottom:0}.n{text-align:right;font-variant-numeric:tabular-nums}
@@ -361,6 +361,7 @@ var UI=${JSON.stringify(UI)};
 var CODES=${JSON.stringify(CODES)};
 var CODE_KIND=${JSON.stringify(CODE_KIND)};
 var LANGS=${JSON.stringify(LANGS)};
+var RTL=${JSON.stringify(RTL_LANGS)};
 var render=(${renderSrc.toString()})(D,UI,CODES,CODE_KIND);
 var root=document.documentElement,main=document.getElementById('content'),sel=document.getElementById('lang');
 function safeGet(k){try{return localStorage.getItem(k)}catch(e){return null}}
@@ -368,7 +369,7 @@ function safeSet(k,v){try{localStorage.setItem(k,v)}catch(e){}}
 var mode=safeGet('mode');if(mode==='light'||mode==='dark')root.setAttribute('data-mode',mode);
 function setLang(l){
   if(LANGS.indexOf(l)<0)l='en';
-  root.lang=l;var T=UI[l];
+  root.lang=l;root.dir=RTL.indexOf(l)>-1?'rtl':'ltr';var T=UI[l];
   main.innerHTML=render(l);
   document.getElementById('ttl').textContent=T.title;
   document.title=T.title+' · chiuta.ro';
@@ -377,7 +378,8 @@ function setLang(l){
   sel.value=l;
 }
 sel.addEventListener('change',function(){safeSet('lang',sel.value);setLang(sel.value)});
-var l=safeGet('lang')||(navigator.language||'en').slice(0,2).toLowerCase();
+var l=safeGet('lang')||(navigator.language||'en').toLowerCase();
+if(LANGS.indexOf(l)<0)l=l.split('-')[0];
 if(LANGS.indexOf(l)<0)l='en';
 if(l!=='en')setLang(l);
 })();

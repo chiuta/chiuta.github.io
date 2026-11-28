@@ -1,0 +1,1271 @@
+{
+ "lang": "cs",
+ "note": "Rânduri, etichete și detalii de card. Traducere asistată de IA, nerevizuită de un vorbitor nativ.",
+ "apps": {
+  "FreeDetect": {
+   "tags": [
+    "katalog",
+    "citace"
+   ],
+   "line": "Chcete zkontrolovat, zda text vypadá, jako by ho napsala nebo zkopírovala umělá inteligence? 42 externích nástrojů a generátor citací na jednom místě. Samotná aplikace nic nedetekuje.",
+   "detail": "Přehled 42 externích nástrojů pro detekci AI/plagiátů a generátor citací (ověřuje ISBN). Sám nic nedetekuje, pomáhá s kontrolou zdrojů."
+  },
+  "Arhiva-fara-frontiere": {
+   "tags": [
+    "webové archivy",
+    "zdroje"
+   ],
+   "line": "Procházejte sbírky Internet Archive bez účtu: vyhledávání, stránky položek, náhled a oblíbené. Neoficiální; archive.org vidí vaši IP adresu a vyhledávání.",
+   "detail": "Neoficiální prohlížeč sbírek Internet Archive (vyhledávání, stránky položek, náhled, oblíbené a poslední hledání uložené lokálně), bez účtu. Neprohledává Wayback Machine; archive.org obdrží vaši IP adresu a hledané výrazy."
+  },
+  "AcademiSearch": {
+   "tags": [
+    "literatura",
+    "zdroje"
+   ],
+   "line": "Jedno hledání — vědecké články z desítek otevřených zdrojů. Seznam si můžete uložit pro citování. Vyžaduje internet; dotazy jdou těmto službám.",
+   "detail": "Akademický meta-vyhledávač přes 11 otevřených API (OpenAlex, Crossref, arXiv atd.) plus odkazy na portály; export BibTeX/RIS/CSV. Vyžaduje internet; vaše dotazy se odesílají těmto službám."
+  },
+  "Surveyor": {
+   "tags": [
+    "mrtvé odkazy",
+    "audit"
+   ],
+   "line": "Jaké odkazy má váš web a které z nich nefungují? Vypíše je s kotvami a přesměrováními. Externí nelze spolehlivě ověřit. Jen pro vaše vlastní weby.",
+   "detail": "Inventarizuje odkazy webu (statické HTML, anglické rozhraní), včetně kotev a přesměrování. Externí odkazy nelze z prohlížeče potvrdit (CORS); odesílá požadavky; kontrolujte jen vlastní weby."
+  },
+  "Trade-Free-Link-Guardian": {
+   "tags": [
+    "WordPress",
+    "GPL v2"
+   ],
+   "line": "Pro váš web na WordPressu: najde rozbité odkazy a opraví je bez externích služeb. Mění skutečný obsah, proto si nejdřív udělejte zálohu. Na skutečném WordPressu netestováno.",
+   "detail": "Plugin pro WordPress, který kontroluje odkazy a deterministicky opravuje nefunkční, bez externí služby. Mění skutečný obsah: vytvořte zálohu. Nevyzkoušeno na skutečném WordPressu."
+  },
+  "OUTPOST": {
+   "tags": [
+    "monitorování"
+   ],
+   "line": "Sledujte své weby a zjistěte, zda ještě odpovídají. Funguje, jen dokud je karta otevřená. Chybová stránka se také počítá jako odpověď. Rozhraní je v angličtině.",
+   "detail": "Monitor dostupnosti v prohlížeči: kontroluje, zda vaše weby odpovídají (nečte stavový kód HTTP; 404/500 se počítá jako odpověď). Jen při otevřené záložce. Anglické rozhraní."
+  },
+  "ScryVeil": {
+   "tags": [
+    "OSINT",
+    "bezpečnost"
+   ],
+   "line": "Zkontrolujte bezpečnost domény a získejte textovou zprávu, kterou můžete uložit. Některé kontroly mohou být neúplné nebo vyžadovat klíč. Připojuje se ke službám třetích stran; jen pro vaše domény.",
+   "detail": "Bezpečnostní diagnostika domény (DNS, RDAP, certifikáty) s exportovatelnou textovou zprávou; kontroly hlaviček a reputace jsou často blokované nebo vyžadují klíč. Kontaktuje třetí strany; jen pro domény, které vlastníte."
+  },
+  "Vitrina": {
+   "tags": [
+    "sledování kanálů"
+   ],
+   "line": "Vložte veřejný příspěvek z Facebooku na svůj web bez účtu a zkopírujte hotový kód. Neoficiální; Meta vidí vaši IP adresu, zobrazení není zaručeno.",
+   "detail": "Vkládá veřejné stránky/příspěvky na Facebooku přes pluginy Meta, neoficiálně; kopíruje vkládací kód. „Bez účtu“ neznamená „bez sledování“: Meta vidí vaši IP adresu; zobrazení není zaručeno."
+  },
+  "Threads-fara-cont": {
+   "tags": [
+    "sledování kanálů"
+   ],
+   "line": "Čtěte veřejné příspěvky z Threads bez účtu a uložte je jako text. Neoficiální; Meta vidí vaši IP adresu, někdy je potřeba prostředník.",
+   "detail": "Zobrazuje veřejné příspěvky na Threads přes vložení od Meta, bez účtu; volitelné lokální ukládání, export do .txt. Meta vidí vaši IP adresu; může vyžadovat proxy CORS. Neoficiální."
+  },
+  "X-fara-cont": {
+   "tags": [
+    "sledování kanálů"
+   ],
+   "line": "Přistupujte k veřejným profilům a příspěvkům na X bez účtu několika způsoby: přímý odkaz, archiv, vyhledávání nebo Nitter. Obsah nečte; odkaz posílá do archive.org.",
+   "detail": "Vytváří cesty k veřejným profilům a příspěvkům na X bez účtu: přímý odkaz, archiv Wayback, vyhledávání, Nitter. Nečte obsah; odesílá uživatelské jméno/odkaz na archive.org."
+  },
+  "Arhiva-LinkedIn": {
+   "tags": [
+    "archivace"
+   ],
+   "line": "Uchovejte na jednom místě poznámky o příspěvcích z LinkedInu, které jste sami vložili, a exportujte je jako text. Galerie používá oficiální vkládání, takže se připojuje k LinkedInu. Neoficiální.",
+   "detail": "Archiv poznámek k ručně vloženým příspěvkům z LinkedInu (import CSV, export Markdown) + galerie přes oficiální vložení LinkedIn (kontaktuje LinkedIn). Neoficiální."
+  },
+  "Cadraj": {
+   "tags": [
+    "sledování kanálů"
+   ],
+   "line": "Sbírejte klipy z TikToku ručně, seskupené podle autora, a sledujte je v oficiálním přehrávači. Můžete si označit ty, které jste už viděli.",
+   "detail": "Ruční sbírka klipů z TikToku podle autora, přehrávaná oficiálním přehrávačem; značka „zhlédnuto“."
+  },
+  "FASCICUL": {
+   "tags": [
+    "spolupráce"
+   ],
+   "line": "Promění telefony v místnosti ve společnou tabuli na projektoru: kresby, poznámky, obrázky, laserové ukazovátko a živá kamera. Otestováno na počítači; na skutečných telefonech zatím nepotvrzeno.",
+   "detail": "Telefony ↔ video projektor: sdílená tabule s kreslením, poznámkami, obrázky, laserovým ukazovátkem a živou kamerou, v jednom souboru. Přímé spojení WebRTC v lokální síti, bez serveru třetí strany; volitelné relay na telefonu s hotspotem (Android/Termux). Testováno v Chromiu; zatím neověřeno na skutečných telefonech."
+  },
+  "INDICATIV": {
+   "tags": [
+    "zkouška",
+    "rádio"
+   ],
+   "line": "Připravte se na radioamatérskou zkoušku ANCOM bez internetu: 723 otázek s rozloženým opakováním. Neoficiální; banka otázek je ověřena jen částečně.",
+   "detail": "Offline neoficiální trenažér ke zkoušce radioamatérů ANCOM (723 otázek, rozložené opakování, hledání v bance otázek). Není to materiál ANCOM; banka otázek je ověřena jen částečně."
+  },
+  "ETER": {
+   "tags": [
+    "rádio",
+    "encyklopedie"
+   ],
+   "line": "Naučte se radioamatérství v encyklopedii: Morseova abeceda, cvičitel, kalkulačky antén a hledání v celém obsahu.",
+   "detail": "Encyklopedie radioamatérství: Morseovka, Kochův trenažér, kalkulátory antén, globální vyhledávání."
+  },
+  "ATINGERE": {
+   "tags": [
+    "přístupnost"
+   ],
+   "line": "Promění knihu v Braillovo písmo s vibracemi na dotykové obrazovce pro hluchoslepé nebo v audioknihu pro nevidomé. S čtenáři Braillova písma neověřeno; má omezení.",
+   "detail": "Převádí knihy na hmatovou brailleovu abecedu nebo audioknihy. Neověřeno s rodilými čtenáři; omezení viz README."
+  },
+  "Clopotel": {
+   "tags": [
+    "události",
+    "MIT"
+   ],
+   "line": "Stíhejte čas na konferenci nebo workshopu: jevištní časovač s vaším programem a signál, když se blíží konec. V rumunštině a angličtině.",
+   "detail": "Časovač pro pódium s programem řečníků (import textu/CSV) a varovným signálem, RO/EN."
+  },
+  "Monstrarium": {
+   "tags": [
+    "workshop",
+    "MIT"
+   ],
+   "line": "Naplánujte workshop výroby příšer z recyklovaného materiálu: aplikace počítá materiál a sezení, nabízí 50 příšer se zvukem, 3D a vzdělávací hrou.",
+   "detail": "Plánovač dílny na monstra z recyklovaných materiálů: sám vypočítá materiály, harmonogram po sériích, 50 původních monster se zvuky, 3D a vzdělávací hra."
+  },
+  "TranslateHub": {
+   "tags": [
+    "překlad",
+    "UI"
+   ],
+   "line": "Vyberte si z 22 překladových nástrojů nebo překládejte s umělou inteligencí pomocí vlastního klíče. Text přeložený UI jde službě Anthropic.",
+   "detail": "Adresář 22 překladatelských nástrojů plus AI překladač s vaším vlastním klíčem. Text pro AI se odesílá na api.anthropic.com."
+  },
+  "DataWeave": {
+   "tags": [
+    "data"
+   ],
+   "line": "Otevřete tabulku a pochopte ji: statistiky, grafy, kontingenční tabulky a korelace. Vaše data zůstávají na vašem zařízení.",
+   "detail": "Prozkoumejte CSV/TSV/JSON v jediném souboru: tabulka, statistiky, grafy, kontingenční tabulky a korelace; vaše data zůstávají ve vašem zařízení."
+  },
+  "MarkdownAtelier": {
+   "tags": [
+    "psaní"
+   ],
+   "line": "Pište dokumenty v Markdownu a hned vidíte, jak vypadají, s jednoduchými vzorci; v 7 jazycích, bez internetu. Texty zůstávají ve vašem prohlížeči; ukládejte si zálohu.",
+   "detail": "Offline editor Markdownu s náhledem, GFM, podmnožinou LaTeXu (MathML), 7 jazyky, vyhledáváním a zálohou .json. Dokumenty zůstávají v prohlížeči."
+  },
+  "RegexLab": {
+   "tags": [
+    "vývoj"
+   ],
+   "line": "Vyzkoušejte regulární výraz a hned uvidíte, co zachytává; vysvětlení krok za krokem, testy a upozornění, pokud může program zamrznout.",
+   "detail": "Testování regulárních výrazů JavaScriptu s vysvětlením, testy a upozorněním na ReDoS."
+  },
+  "SEOptimum": {
+   "tags": [
+    "web"
+   ],
+   "line": "Zkontrolujte, jak je webová stránka připravena pro vyhledávače. 20 nástrojů včetně analýzy stránky a náhledu, jak se zobrazí ve výsledcích vyhledávání.",
+   "detail": "20 SEO nástrojů v prohlížeči: analýza stránky, náhledy SERP."
+  },
+  "SEVA": {
+   "tags": [
+    "zdraví"
+   ],
+   "line": "Dozvíte se o spánku, denním rytmu těla, dýchání a výživě v encyklopedii, kterou si můžete i poslechnout. Pouze informativní; není to lékařská rada.",
+   "detail": "Encyklopedie pohody: spánek, cirkadiánní rytmus, dýchání, výživa; poslech předčítání. Informativní; nejedná se o lékařskou radu."
+  },
+  "PULS": {
+   "tags": [
+    "zdraví",
+    "nouzové situace"
+   ],
+   "line": "Co dělat, než přijede záchranka? Rumunská příručka první pomoci s metronomem pro KPR a volitelnou nouzovou kartou. Klinicky neověřeno; volejte 112.",
+   "detail": "Průvodce první pomocí v rumunštině (resuscitace s metronomem, škrtidlo), s vyhledáváním a volitelnou záchrannou kartou. Obsah klinicky neověřen specialistou; nenahrazuje autorizovaný kurz. V nouzi volejte 112."
+  },
+  "VATRA": {
+   "tags": [
+    "práce v terénu"
+   ],
+   "line": "Co dělat, když v přírodě dojde voda, oheň nebo úkryt? Encyklopedie přežití bez internetu s vyhledáváním a poznámkami. Jen pro vzdělávání; v nouzi volejte 112.",
+   "detail": "Offline encyklopedie přežití (voda, oheň, přístřeší, navigace), s vyhledáváním a lokálně uloženými poznámkami. Vzdělávací materiál, nenahrazuje kurz první pomoci; v nouzi volejte 112."
+  },
+  "Eclipsa-2027": {
+   "tags": [
+    "astronomie"
+   ],
+   "line": "Podívejte se na mapě bez internetu, kde a jak dlouho potrvá úplné zatmění Slunce 2. srpna 2027, s městy a hledáním místa. Hodnoty jsou orientační; nedívejte se na Slunce bez filtru.",
+   "detail": "Offline mapa úplného zatmění Slunce 2. srpna 2027, s délkami trvání, pokrytím podle měst a vyhledáváním míst. Orientační hodnoty; nedívejte se na Slunce bez certifikovaných filtrů."
+  },
+  "orarium": {
+   "tags": [
+    "astronomie",
+    "čas"
+   ],
+   "line": "Kolik je teď hodin na Marsu, na Měsíci nebo na asteroidu? Místní čas naživo na 45 nebeských tělesech. Přibližný model, internet není potřeba; není pro navigaci.",
+   "detail": "Čas na každém světě: živý místní čas na 45 tělesech (Měsíc, Mars, planety, měsíce, asteroidy), rychlost chodu hodin oproti Zemi, vzdálenost a doba oběhu signálu tam a zpět, převodník časových pásem a mapy kolonizace. Orientační model, offline; ne pro navigaci. Obsahuje půlnoc a poledne na každém tělese, okna přenosu Země–těleso a odkaz na TerRa."
+  },
+  "TerRa": {
+   "tags": [
+    "astronomie"
+   ],
+   "line": "3D glóbus a mapa zobrazující den a noc na Zemi, Měsíci a planetách. Polohy satelitů mohou mít zpoždění asi 3 měsíce, dokud je neaktualizujete online.",
+   "detail": "3D glóbus a mapa: terminátor, Měsíc, planety. Družice používají offline zastaralý snímek (~3 měsíce); pro aktuální polohy aktualizujte online. Jedinečný odkaz pro každý pohled; obloha z kteréhokoli z 45 těles ORARIUM, propojeno oběma směry."
+  },
+  "Horizons.BeyondLimits": {
+   "tags": [
+    "kosmologie"
+   ],
+   "line": "Projděte historii vesmíru od velkého třesku po konec přes 91 milníků. Budoucnost je vědecká spekulace, ne přesná předpověď.",
+   "detail": "Časová mapa od Velkého třesku po konec vesmíru: 91 událostí, export Markdown; budoucnost je spekulativní, nejde o ověřenou předpověď."
+  },
+  "Hyper4D": {
+   "tags": [
+    "matematika"
+   ],
+   "line": "Podívejte se, jak vypadají čtyřrozměrné tvary: otáčejte je na obrazovce a prohlížejte z několika úhlů. Obrázky lze uložit.",
+   "detail": "4D geometrie v SVG: 3D řezy 4D těles a polytopů s projekcemi 4D→3D→2D otáčenými v reálném čase, export SVG."
+  },
+  "ExploratoriiEco": {
+   "tags": [
+    "příroda"
+   ],
+   "line": "Terénní příručka pro přátele přírody: od klasifikace živých tvorů a stop po biomy Rumunska, deník pozorování, etika a nouzové situace.",
+   "detail": "Terénní příručka pro přírodovědce ve 20 oddílech: klasifikace života, znamení a stopy, rumunské biomy, kalkulátory, deník, etika, nouzové situace a slovník."
+  },
+  "FieldObserver": {
+   "tags": [
+    "práce v terénu"
+   ],
+   "line": "Zapisujte si terénní pozorování; údaje ze senzorů telefonu se přidávají automaticky. Vedete archiv svých výjezdů.",
+   "detail": "Deník terénních pozorování využívající senzory telefonu; archiv, export JSON/CSV."
+  },
+  "VietAR": {
+   "tags": [
+    "biodiverzita"
+   ],
+   "line": "Vyfoťte nebo nahrajte rostlinu či tvora a získejte představu z 519 druhů z Rumunska. Může se mýlit; na tomto základě nic nejezte.",
+   "detail": "Orientační určování 519 rumunských druhů z obrazu/zvuku; může se mýlit, na jeho základě nejezte rostliny ani houby. Modely se stahují od třetích stran; není plně offline."
+  },
+  "VOIAJOR": {
+   "tags": [
+    "Voyager",
+    "simulace"
+   ],
+   "line": "Sledujte dráhy Voyageru 1 a 2 od roku 1977 po miliardu let dopředu, v každém měřítku — od planet po Mléčnou dráhu. Orientační model, není pro navigaci.",
+   "detail": "Simulace drah Voyageru 1 a 2 (1977 až přes miliardu let): balistické oblouky mezi skutečnými průlety, extrapolace se sluneční gravitací a místní galaktickou dynamikou, heliosféra, Oortův oblak a 19 blízkých hvězd s vlastním pohybem."
+  },
+  "Nemurirea": {
+   "tags": [
+    "biologie"
+   ],
+   "line": "Objevte, jak tělo stárne a co věda říká o biologických hodinách a dlouhověkosti, pak se vyzkoušejte kvízem. Není to lékařská rada.",
+   "detail": "Interaktivní esej o biologických hodinách a vědě o dlouhověkosti se závěrečným kvízem. Informativní účel, nejedná se o lékařskou radu."
+  },
+  "IncredibleCosmos": {
+   "tags": [
+    "hra",
+    "fyzika"
+   ],
+   "line": "Rozmístěte planety a hvězdy tak, aby jejich gravitace nasměrovala kometu k cíli. 108 úrovní, tři obtížnosti a až tři hvězdy na úroveň.",
+   "detail": "Gravitační hádanka: umístěte planety a hvězdy tak, aby jejich gravitace navedla kometu k cíli; 108 úrovní ve 12 kategoriích, tři obtížnosti, hodnocení 1–3 hvězdy, s vyhledáváním."
+  },
+  "Cupa-Mondiala-2026": {
+   "tags": [
+    "simulace",
+    "neoficiální"
+   ],
+   "line": "Hrajte na mistrovství světa 2026 a sledujte vývoj vymyšleného turnaje. Výsledky jsou náhodné, nejsou předpověď; neoficiální.",
+   "detail": "Fiktivní, neoficiální simulátor mistrovství světa 2026: náhodné výsledky, nikoli předpovědi; bez spojení s FIFA."
+  },
+  "AGORA": {
+   "tags": [
+    "ekonomika",
+    "EU"
+   ],
+   "line": "Jak vzniklo euro a co znamená pro Rumunsko? 59 kapitol od Maastrichtu po ECB, plus tipy pro cestovatele. Neoficiální.",
+   "detail": "Informativní atlas eurozóny v 59 oddílech: od Maastrichtu a ECB po Rumunsko a euro, plus průvodce pro cestovatele. Neoficiální, bez právní závaznosti."
+  },
+  "URME": {
+   "tags": [
+    "příroda",
+    "Buzău"
+   ],
+   "line": "Připravte se na túru po stezce Colți–Aluniș v Buzău: rostliny, jantar, zkameněliny, časy východu a západu slunce, vybavení. Mapa není pro navigaci.",
+   "detail": "Informativní, neoficiální turistický průvodce po trase Colți–Aluniș (rostliny, jantar, zkameněliny), s východem/západem Slunce a seznamem vybavení. Schematická mapa, ne pro navigaci; odběr z chráněné oblasti je zakázán."
+  },
+  "Belot-fara-frontiere": {
+   "tags": [
+    "karty",
+    "UI"
+   ],
+   "line": "Poznejte belot a příbuzné hry v jiných zemích, pak hrajte u stolu: vy a partner s UI proti dvěma soupeřům s UI. Blok na body je součástí.",
+   "detail": "Atlas rodiny her belote/bela/klaverjas/jass a hra pro 4 hráče (vy a AI partner proti dvěma AI soupeřům); přednost má rumunský belot; zápisník skóre."
+  },
+  "Scopone-fara-frontiere": {
+   "tags": [
+    "karty",
+    "UI"
+   ],
+   "line": "Zjistěte, jak vznikla scopone, jaká má pravidla a jak se mění region od regionu, pak hrajte proti počítači, který umí radit.",
+   "detail": "Atlas hry scopone (15 listů: původ, pravidla, regionální rozdíly) a hra proti lokální AI (heuristika / Monte Carlo), s nápovědami; italské nebo francouzské barvy."
+  },
+  "Solitaire-fara-frontiere": {
+   "tags": [
+    "karty"
+   ],
+   "line": "Procházejte a hrajte solitéry jako Klondike, FreeCell nebo Spider. Když uvíznete, požádejte o nápovědu nebo nechte počítač vyřešit.",
+   "detail": "Atlas pasiánsů (Klondike, FreeCell, Spider a další) na společném jádru; „Nápověda“ od řešiče s limitem uzlů/času a volitelným automatickým řešením."
+  },
+  "Sudoku-fara-frontiere": {
+   "tags": [
+    "hádanky"
+   ],
+   "line": "136 druhů sudoku — od klasického po killer a 3D; procházejte a hrajte. Pomáhá vysvětlením krok za krokem a řeší vaše vlastní hádanky.",
+   "detail": "Atlas 136 variant sudoku (klasické, killer, jigsaw, řecko-latinské, 3D a mnoho dalších), s generátorem s jednoznačným řešením, vysvětleným řešením krok za krokem, 7 herními režimy a řešičem."
+  },
+  "Domino-fara-frontiere": {
+   "tags": [
+    "domino",
+    "UI"
+   ],
+   "line": "Naučte se historii a pravidla domina, pak hrajte u stolu proti jednomu až třem soupeřům řízeným počítačem. Tah lze vrátit.",
+   "detail": "Atlas domina (původ, pravidla, aproximace) a herní stůl proti 1–3 hráčům AI, se třemi úrovněmi; vrácení tahu."
+  },
+  "Mahjong-fara-frontiere": {
+   "tags": [
+    "mahjong",
+    "UI"
+   ],
+   "line": "Poznejte 8 druhů mahjongu; hrajte solitér nebo hru ve čtyřech se třemi jednoduchými soupeři řízenými počítačem. Funguje bez internetu.",
+   "detail": "Atlas 8 variant mahjongu, pasiánsový mahjong a mahjong pro 4 hráče (riichi, Hongkong, S’-čchuan) proti 3 jednoduchým heuristickým AI. Offline."
+  },
+  "Go-fara-frontiere": {
+   "tags": [
+    "go",
+    "UI"
+   ],
+   "line": "Zjistěte, odkud pochází go a jak se hraje, pak zkuste štěstí proti počítači, který umí radit. Neposílá žádná data přes internet.",
+   "detail": "Atlas hry go (18 listů: původ, pravidla, aproximace) a hra proti lokální AI (Monte Carlo, nikoli LLM), s SGF a nápovědami; bez síťových požadavků."
+  },
+  "Zaruri-fara-frontiere": {
+   "tags": [
+    "kostky"
+   ],
+   "line": "26 her s kostkami, o kterých si můžete přečíst, 12 proti počítači; plus simulátor hodů s pravděpodobnostmi. Bez peněz; offline.",
+   "detail": "Atlas 26 her s kostkami; 12 hratelných proti didaktické AI (nikoli LLM), plus simulátor NdM s přesnými pravděpodobnostmi. Není to hazardní hra; offline."
+  },
+  "Sah-fara-frontiere": {
+   "tags": [
+    "šachy"
+   ],
+   "line": "Více než 700 variant šachu k objevování a malý slovník pojmů; většinu můžete hrát proti počítači. Funguje bez internetu.",
+   "detail": "706 hesel o šachových variantách (jen některá s ověřeným zdrojem; některá syntetická) a 299 hesel lexikonu. Offline, s lokálním enginem pro mnoho variant."
+  },
+  "Dame-fara-frontiere": {
+   "tags": [
+    "dáma"
+   ],
+   "line": "Hrajte 25 variant dámy proti počítači a uložte si partii. Pravidla 16 z nich jsou jen přibližná a jsou označena ⚠.",
+   "detail": "25 variant dámy hratelných proti didaktické AI, s exportem partií; 16 má přibližná pravidla (označeno ⚠)."
+  },
+  "Table-fara-frontiere": {
+   "tags": [
+    "vrhcáby"
+   ],
+   "line": "Vrhcáby, tavli, nardy a rumunské varianty tably; čtěte a hrajte: 17 variant proti počítači, klávesnicí nebo myší.",
+   "detail": "Hratelný atlas rodiny vrhcáby: backgammon, Tavli, Tavla, Narde, Gul Bara a rumunské varianty; 17 variant proti výukové AI; ovládání klávesnicí."
+  },
+  "Remi-fara-frontiere": {
+   "tags": [
+    "rummy"
+   ],
+   "line": "Poznejte rodinu rummy a hrajte 19 variant proti počítači se statistikami. 8 jazyků; velké, dobře viditelné kameny nebo karty.",
+   "detail": "Atlas rodiny her rummy: 19 hratelných variant proti lokální AI, se statistikami; rozhraní v 8 jazycích, s velkými kameny a kartami."
+  },
+  "Carti-de-joc-fara-frontiere": {
+   "tags": [
+    "karty"
+   ],
+   "line": "Od solitéru a černého Petra po poker: 17 karetních her s vysvětlenými pravidly, 8 z nich můžete hned hrát.",
+   "detail": "Interaktivní atlas karetních her, od pasiánsu a černého Petra po poker: 17 her s listy pravidel, 8 z nich hratelných."
+  },
+  "Undava": {
+   "tags": [
+    "kvíz",
+    "vzdělávání"
+   ],
+   "line": "Připravte kvíz nebo ho hrajte s přáteli na jednom telefonu či počítači a opakujte otázky, na které jste odpověděli špatně. Podobné jako Kahoot, ale bez připojení.",
+   "detail": "Kvíz ve stylu Kahoot (nepřidružený), v jediném souboru: sólo nebo střídání na jednom zařízení, s opakováním chyb. Hra živě je jen v serverové edici."
+  },
+  "AI-Liber": {
+   "tags": [
+    "UI"
+   ],
+   "line": "Povídejte si s několika asistenty s umělou inteligencí na jednom místě, někteří běží na vašem počítači. Zprávy jdou poskytovateli, kterého si zvolíte; UI se může mýlit.",
+   "detail": "Chat s více poskytovateli AI, včetně lokálních (Ollama, WebLLM). Zprávy jdou poskytovateli, kterého zvolíte; odpovědi AI mohou být chybné."
+  },
+  "LocalMind": {
+   "tags": [
+    "lokální UI"
+   ],
+   "line": "Chatujte s malým asistentem s umělou inteligencí, který běží přímo ve vašem prohlížeči. Modely se jednou stáhnou z internetu; může se mýlit.",
+   "detail": "Chat s malými modely (Qwen3, LFM2) běžícími lokálně v prohlížeči (WebGPU). Modely pocházejí z Hugging Face; může se mýlit. Vyžaduje lokální server nebo veřejnou stránku."
+  },
+  "PromptVault": {
+   "tags": [
+    "prompty"
+   ],
+   "line": "Více než 500 hotových promptů pro asistenty s umělou inteligencí; vybírejte a označujte oblíbené. Neukládá vaše vlastní texty.",
+   "detail": "Knihovna 500+ promptů s oblíbenými, nejde o správce vlastních promptů."
+  },
+  "ARENA": {
+   "tags": [
+    "hodnocení UI"
+   ],
+   "line": "Nechte dva modely UI odpovídat naslepo a hlasujte pro lepší; žebříček se uchovává na vašem počítači. Potřebujete vlastní klíče.",
+   "detail": "Slepé souboje modelů AI s lokálním žebříčkem Elo (export CSV). Vyžaduje vaše vlastní klíče API nebo lokální servery; demo modely jsou simulované."
+  },
+  "Nexus-fara-frontiere": {
+   "tags": [
+    "agenti"
+   ],
+   "line": "Chatujte s asistenty UI od několika poskytovatelů; konverzace s hledáním a ukládáním. Potřebný je internet a vaše vlastní klíče, které se ukládají nešifrované.",
+   "detail": "Klient AI chatu s vašimi vlastními klíči API (Anthropic, OpenAI, Google, kompatibilní s OpenAI), s vyhledáváním a exportem Markdown; „agenti“ jsou prompty. Vyžaduje internet; klíče se ukládají nešifrovaně."
+  },
+  "VoiceAtelier": {
+   "tags": [
+    "hlas"
+   ],
+   "line": "Poslechněte si, jak znějí stovky umělých hlasů v desítkách jazyků, a zjistěte, jak se dělá audiokniha. Online ukázka posílá text externím službám jen s vaším svolením.",
+   "detail": "Katalog 427 neuronových hlasů (141 lokalizací) a průvodce audioknihami. Online ukázka odešle text na relay a společnosti Microsoft, jen s vaším souhlasem. Není to studio TTS."
+  },
+  "Trusa-fara-frontiere": {
+   "tags": [
+    "nástroje"
+   ],
+   "line": "Sada 15 malých každodenních nástrojů: poznámky, tabulka, Markdown, hesla, finanční deník a další. Nemá oficiální vazbu na YunoHost, který inspiroval kategorie.",
+   "detail": "Sada 15 malých modulů napsaných od nuly (poznámky, tabulka, Markdown, hesla, finanční deník a další), inspirovaných kategoriemi aplikací YunoHost; bez přidružení."
+  },
+  "API-fara-frontiere": {
+   "tags": [
+    "API"
+   ],
+   "line": "Počasí, snímky NASA, poloha ISS a desítky živých údajů na jednom místě. Vyžaduje internet; s reálnými službami netestováno.",
+   "detail": "52 widgetů: 47 nad veřejnými API (vyžaduje internet; při online otevření automaticky kontaktuje Open-Meteo, NASA a ISS) a 5 lokálních nástrojů. Nevyzkoušeno se skutečnými servery."
+  },
+  "OmniHost": {
+   "tags": [
+    "balík"
+   ],
+   "line": "Velký balík více než sta pracovních nástrojů na jednom místě. Připojuje se ke čtyřem externím službám; podrobnosti jsou v README.",
+   "detail": "Produktivní sada (~4 MB, 141 modulů). Kontaktuje čtyři externí hostitele; viz README."
+  },
+  "VNTV": {
+   "tags": [
+    "média",
+    "MIT"
+   ],
+   "line": "Přehrávejte trailery VideoNeat jako nekonečný televizní kanál. Vyžaduje internet; v režimu P2P je vaše adresa viditelná pro ostatní diváky.",
+   "detail": "Upoutávky VideoNeat jako nepřetržitý televizní program, plus doplněk pro Stremio. Vyžaduje internet (videoneat.com, videos.trom.tf); v režimu P2P je vaše IP adresa viditelná ostatním divákům."
+  },
+  "OSATURA": {
+   "tags": [
+    "animace",
+    "MPL/AGPL"
+   ],
+   "line": "Oživte 2D kresby: připojte je ke «kostře», rozpohybujte a exportujte animaci v několika formátech. Alfa verze, zatím málo testovaná.",
+   "detail": "Engine pro 2D vektorový rigging a animaci v Rustu (kosti, IK, skinning, fyzika, stavové automaty) s prohlížečovým studiem a exportem do SVG, PNG, GIF, Lottie a glTF. Nativní program (příkazový řádek + studio) a modul WebAssembly, ne jediný soubor HTML; alfa, uživateli zatím málo vyzkoušeno. Licence: knihovny MPL-2.0, CLI AGPL-3.0-or-later."
+  },
+  "OAZA": {
+   "tags": [
+    "služby"
+   ],
+   "line": "340 bezplatných webových služeb, většinou bez účtu, v jednom katalogu. Seznam byl zkontrolován v červnu 2026, ale ne automaticky.",
+   "detail": "Katalog 340 bezplatných webových služeb třetích stran, obvykle použitelných bez účtu (automaticky neověřeno; zkontrolováno v červnu 2026)."
+  },
+  "VaultCrypt": {
+   "tags": [
+    "bezpečnost"
+   ],
+   "line": "Máte něco, co je třeba skrýt před zvědavýma očima? Zamkněte soubory a texty heslem přímo v prohlížeči. Ztracené heslo nelze obnovit.",
+   "detail": "Šifrování souborů a textu AES-256-GCM v prohlížeči. Nezávisle neauditováno; ztracené heslo nelze obnovit."
+  },
+  "Akasha": {
+   "tags": [
+    "poznámky"
+   ],
+   "line": "Zápisník, který funguje offline, se štítky, vyhledáváním a odkazy mezi stránkami. Abyste nic neztratili, stahujte si čerstvou kopii souboru.",
+   "detail": "Offline poznámky v jediném souboru, se štítky, vyhledáváním a odkazy [[Title]]; abyste si data uchovali, stáhnete si čerstvou kopii souboru (quine)."
+  },
+  "CLEPSIDRA": {
+   "tags": [
+    "čas"
+   ],
+   "line": "Odpočítávací hodiny, budík a rozvrhy pro pracovní dny a víkendy. Sleduje svátky a vaše vlastní události.",
+   "detail": "Obrácené hodiny, budík, rozvrhy pro všední dny/víkendy, svátky, události."
+  },
+  "Origami": {
+   "tags": [
+    "umění"
+   ],
+   "line": "Naučte se skládat papír krok za krokem: symboly, techniky a ilustrované modely. Aplikace si pamatuje, kde jste skončili.",
+   "detail": "Průvodce origami: zápis, techniky, modely krok za krokem, s lokálně uloženým pokrokem."
+  },
+  "Zicala": {
+   "tags": [
+    "kultura"
+   ],
+   "line": "Denně jedno rumunské přísloví ze sbírky 550. Můžete vyhledávat a ukládat oblíbená; komentáře byly napsány s pomocí UI.",
+   "detail": "550 rumunských přísloví s příslovím dne, vyhledáváním a exportem/importem oblíbených; komentáře SWOT/TOWS jsou vytvořeny s pomocí AI."
+  },
+  "Limpezimea": {
+   "tags": [
+    "literatura"
+   ],
+   "line": "Čtěte sci-fi román «Limpezimea» v sedmi jazycích. Doprovodná kronika a kritická studie byly napsány s pomocí UI (Claude).",
+   "detail": "Sci-fi román „Limpezimea“ v 7 jazycích, čtenářské vydání. Kritický aparát (kronika, studie) vznikl s pomocí AI (Claude)."
+  },
+  "Nota-Zero": {
+   "tags": [
+    "literatura"
+   ],
+   "line": "Spekulativní fantastický příběh o teorii strun v rumunštině, angličtině a francouzštině, s poznámkami vysvětlujícími vědecké myšlenky. Je to fikce, ne akademický zdroj.",
+   "detail": "Spekulativní povídka o teorii strun, v rumunštině, angličtině a francouzštině, s vysvětlujícími vědeckými poznámkami (fikce, nikoli akademický zdroj)."
+  },
+  "Pendulul": {
+   "tags": [
+    "literatura"
+   ],
+   "line": "Planeta se kývá mezi třemi hvězdami a černou dírou: devítidílný sci-fi román, který Alexio napsal společně s Claudem. 3D simulace, čtečka s ukládáním pro čtení offline, EPUB a PDF.",
+   "detail": "Devítidílný sci-fi román od Alexia, napsaný s Claudem: planeta kmitá mezi třemi hvězdami a černou dírou. Obsahuje 3D simulaci a čtečku knihy v jediném souboru HTML, který si můžete uložit a číst offline, plus EPUB a PDF."
+  },
+  "PrintreInteligente": {
+   "tags": [
+    "literatura"
+   ],
+   "line": "Vstupte do interaktivního sci-fi románu s postavami inspirovanými posádkou Artemis 2. Recenze jsou vymyšlené; překlad, hlas a funkce UI využívají externí služby.",
+   "detail": "Interaktivní sci-fi román, fikce s postavami inspirovanými posádkou Artemis 2; recenze jsou fiktivní. Překlad, online hlas a funkce AI využívají externí služby."
+  },
+  "BorderlessMelodies": {
+   "tags": [
+    "hudba"
+   ],
+   "line": "Poslouchejte hudbu, která se sama komponuje, přímo v prohlížeči. Můžete exportovat jako audio; je tu časovač spánku.",
+   "detail": "Procedurální hudba ve Web Audio, s exportem zvuku a časovačem spánku."
+  },
+  "EcoulSpectral": {
+   "tags": [
+    "audio"
+   ],
+   "line": "Podívejte se na zvuk jako na obraz, vyberte část, která vás ruší, a oddělte ji nebo smažte. Obsahuje redukci šumu, detekci zvuků a ukládání jako WAV.",
+   "detail": "Lokální editor spektrogramu: označte časově-frekvenční oblast a izolujte ji nebo odstraňte; detekce hlasu, redukce šumu, export WAV."
+  },
+  "Constelar": {
+   "tags": [
+    "UI"
+   ],
+   "line": "Chatujte s virtuálními přáteli, kteří si pamatují vaše rozhovory. Ve výchozím nastavení odpovídají podle jednoduchých pravidel; skutečná UI jen pokud si vyberete poskytovatele, a pak mu jdou vaše zprávy. Jen pro dospělé.",
+   "detail": "Konverzační společníci s lokální pamětí. Ve výchozím stavu jednoduchý pravidlový engine; skutečná AI jen pokud zvolíte poskytovatele (zprávy se mu odesílají). Pro dospělé; nenahrazuje terapii."
+  },
+  "Tarot": {
+   "tags": [
+    "kultura"
+   ],
+   "line": "Objevte historii tarotu, symboly karet a způsob, jak se čtou, jako kulturní fenomén. Interaktivní kurz vlastním tempem.",
+   "detail": "Interaktivní kurz: historie, symboly a výklad karet jako kulturní fenomén."
+  },
+  "Numerologie": {
+   "tags": [
+    "kultura"
+   ],
+   "line": "Objevte numerologii jako symbolickou tradici na čtyřech úrovních, s cvičeními, slovníkem, deníkem a kalkulačkou. Představeno bez vědeckého potvrzení.",
+   "detail": "Interaktivní kurz numerologie jako symbolické tradice: čtyři úrovně, cvičení, slovník, deník a kalkulátor; prezentováno bez vědeckého ověření."
+  },
+  "PUNCTUM": {
+   "tags": [
+    "zdraví",
+    "důkazy"
+   ],
+   "line": "Vzdělávací atlas akupresury a bodových terapií: více než 400 bodů na interaktivních mapách, rutiny sebepéče s vedenými sezeními, důkazy a bezpečnost. Nenahrazuje lékaře.",
+   "detail": "Vzdělávací atlas bodových terapií (akupunktura, akupresura, moxování, baňkování, aurikuloterapie, reflexologie a další): 410 bodů na 14 meridiánech, 60 variant s úrovní důkazů, mapy SVG, potíže a rutiny, kurz, kvíz, kartičky a osobní bezpečnostní kontroly."
+  },
+  "Reiki": {
+   "tags": [
+    "kultura"
+   ],
+   "line": "Zjistěte, co je reiki, duchovní praxe, a co říkají výzkumy: nebylo nalezeno dost důkazů o účinku nad rámec uvolnění. Nenahrazuje lékaře.",
+   "detail": "Kurz Reiki, duchovní praxe: přehledy nacházejí nedostatečné důkazy o jakémkoli účinku mimo relaxaci/placebo; nenahrazuje lékaře."
+  },
+  "Bioenergoterapie": {
+   "tags": [
+    "kultura"
+   ],
+   "line": "Kurz vysvětlující, co je bioenergetická terapie a odkud pochází. Neexistují vědecké důkazy o léčivém účinku praxe; nenahrazuje lékaře.",
+   "detail": "Kurz bioenergetické terapie, praxe bez vědeckých důkazů o léčivém účinku; nenahrazuje lékaře."
+  },
+  "CHIROMANTIA": {
+   "tags": [
+    "chiromantie",
+    "kultura"
+   ],
+   "line": "Interaktivní atlas chiromantie: mapa dlaně s liniemi, pahorky, prsty a typy rukou, čtená jako kulturní tradice; s oddílem o vědě a kritickém myšlení. Bez vědeckého potvrzení.",
+   "detail": "Interaktivní atlas chiromantie: mapa dlaně v SVG (levá/pravá), linie, pahorky, prsty, typy rukou, otisky prstů, měření 2D:4D, řízený výklad, kartičky, kvíz, slepý test Barnumova efektu a simulátor cold readingu; každé tvrzení nese úroveň důkazů."
+  },
+  "Radiestezie": {
+   "tags": [
+    "kultura"
+   ],
+   "line": "Projděte 18 úrovní o hledání vody virgulí se slovníkem, deníkem praxe a mezinárodními přílohami. Hned na začátku uvádí, že nemá vědecké potvrzení.",
+   "detail": "Kurz o 18 úrovních o proutkaření, se slovníkem, deníkem praxe a mezinárodními přílohami; od začátku uvádí, že nemá vědecké ověření."
+  },
+  "Inforenergetica": {
+   "tags": [
+    "kultura"
+   ],
+   "line": "Zjistěte ve strukturovaném kurzu, co tvrdí inforenergetika, netradiční praxe. Bez vědeckého potvrzení; není to lékařská rada.",
+   "detail": "Kurz inforenergetiky, nekonvenční praxe bez vědeckého ověření; nejedná se o lékařskou radu."
+  },
+  "ECLIPSA": {
+   "tags": [
+    "astrologie"
+   ],
+   "line": "Zjistěte, do kterého astrologického domu vaší natální mapy zatmění padá, a o dalších 12 zatměních. Výpočet je přibližný, výklad symbolický; bez vědeckého potvrzení.",
+   "detail": "Do kterého astrologického domu zatmění spadá v natálním horoskopu, plus dalších 12 zatmění. Lokální, přibližný astronomický výpočet; symbolický výklad, astrologie nemá vědecké ověření."
+  },
+  "Afrodisiace-fara-frontiere": {
+   "tags": [
+    "kultura"
+   ],
+   "line": "Čtěte o 22 potravinách a bylinách tradičně spojovaných s touhou, s úrovní důkazů pro každou. Kulturní průvodce pro dospělé, ne lékařská rada.",
+   "detail": "Kulturní průvodce 22 potravinami a rostlinami tradičně spojovanými s touhou, s úrovní důkazů u každého hesla. Vzdělávací, nejedná se o lékařskou radu."
+  },
+  "CalmWaves": {
+   "tags": [
+    "audio"
+   ],
+   "line": "Ambientní hudba pro uvolnění a spánek, vytvářená za běhu. Není zdravotnický prostředek; část o výzkumu nebyla nezávisle ověřena. Poraďte se s lékařem (epilepsie).",
+   "detail": "Generativní ambientní hudba pro relaxaci/spánek. Není to zdravotnický prostředek; sekce výzkumu není nezávisle ověřena. Poraďte se s lékařem (epilepsie)."
+  },
+  "ASMR": {
+   "tags": [
+    "audio"
+   ],
+   "line": "Vytvořte si vlastní uklidňující zvukovou krajinu z vrstev prostředí, zvuků doteku a binaurálních úderů. Má časovač spánku a mix můžete sdílet.",
+   "detail": "Mixér relaxačních zvuků generovaných v reálném čase (Web Audio): ambientní vrstvy, zvuky doteku, binaurální rytmy a časovač spánku; sdílitelný mix."
+  },
+  "NOMIA": {
+   "tags": [
+    "fikce",
+    "spekulace",
+    "PWA"
+   ],
+   "line": "Jaký by mohl být první kontakt mezi lidmi, UI a jinými druhy mysli? 1001 vymyšlených scénářů; fikce, ne realita. Funguje i offline.",
+   "detail": "Koncepční simulátor protokolů kontaktu člověk–AI–NHI, 1001 položek, doprovod k antologii „Printre inteligențe“. Fikce/spekulace, nikoli ověřená fakta; offline PWA, RO/EN."
+  },
+  "ValeaPlopului1972": {
+   "tags": [
+    "UFO",
+    "3D",
+    "fikce"
+   ],
+   "line": "Podívejte se na událost s UFO z roku 1972 zvenčí, zevnitř a v simulaci, rekonstruovanou ve 3D. Je to vymyšlená hypotéza, ne důkaz.",
+   "detail": "3D rekonstrukce případu UAP Valea Plopului (1972): exteriér, simulace, představený interiér. Spekulativní, založeno na neověřených veřejných zdrojích, bez souhlasu jmenovaných osob; nejde o důkaz."
+  },
+  "HoroScop": {
+   "tags": [
+    "astrologie",
+    "efemeridy",
+    "offline"
+   ],
+   "line": "Vypočítejte polohy planet pro datum a místo, pak prozkoumejte natální mapu, aspekty a kompatibilitu. Symbolická astrologie, bez vědeckého základu. Funguje offline.",
+   "detail": "Offline osobní efemeridy: polohy planet počítané v prohlížeči (snížená přesnost), natální horoskop, aspekty, synastrie. Symbolická astrologie, bez vědeckého ověření; licence MIT."
+  },
+  "Aurora": {
+   "tags": [
+    "meditace",
+    "audio",
+    "relaxace"
+   ],
+   "line": "Poslouchejte uklidňující tóny a jemně pulzující zvuky a sledujte dechového průvodce. Jen pro uvolnění, není to léčba. Funguje bez internetu.",
+   "detail": "Zvukové útočiště: tóny čaker, binaurální rytmy a průvodce dýcháním, offline. Pouze relaxace, nikoli medicína; frekvence nemají vědecké ověření. Licence MIT; nezávislý projekt."
+  },
+  "NumeroLogIA": {
+   "tags": [
+    "numerologie",
+    "UI",
+    "offline"
+   ],
+   "line": "Zjistěte, co numerologie, čínská astrologie BaZi a biorytmus říkají o vašem datu narození, s vysvětleným každým výpočtem. Symbolický systém, bez vědeckého základu.",
+   "detail": "Pythagorejská/chaldejská numerologie, BaZi a biorytmy v 7 jazycích, výpočty krok za krokem, portréty exportovatelné jako JSON; volitelné AI orákulum přes váš vlastní model. Symbolický systém, bez vědeckého ověření; licence MIT."
+  },
+  "FrequencyLaboratory": {
+   "tags": [
+    "audio",
+    "laboratoř",
+    "offline"
+   ],
+   "line": "Vyzkoušejte zvuky, efekty a testy sluchu v malé zvukové laboratoři. «Terapeutické» účinky nejsou prokázány; nenahrazuje lékaře. Funguje offline.",
+   "detail": "Zvuková laboratoř v prohlížeči (oscilátory, binaurální rytmy, efekty, analyzátory, testy sluchu), offline. Pouze pro informaci: „terapeutické“ předvolby nemají prokázaný lékařský účinek; není to zdravotnický prostředek."
+  },
+  "generator-frecvente": {
+   "tags": [
+    "audio",
+    "generátor",
+    "offline"
+   ],
+   "line": "Vytvářejte čisté tóny a pulzující páry, poslouchejte známé předvolby a zhruba si zkontrolujte sluch. Není zdravotnický prostředek. Funguje offline.",
+   "detail": "Generátor tónů v prohlížeči (binaurální, sekvencer, EQ, orientační test sluchu, vyhledávání předvoleb), offline. Pouze pro informaci: předvolby Solfeggio/Schumann nemají vědecké ověření; není to zdravotnický prostředek."
+  },
+  "ACORDAJ": {
+   "tags": [
+    "duchovnost",
+    "atlas",
+    "kritické rozlišování"
+   ],
+   "line": "Procházejte přes tisíc duchovních kurzů a zasvěcení s historickým kontextem a kritickým pohledem. Není propojen se zdrojovým webem a nemá vědecké potvrzení. Funguje offline.",
+   "detail": "Offline atlas 1134 duchovních kurzů/zasvěcení (seznam z cursurispirituale.webnode.ro, bez přidružení), s historickým kontextem a kritickým rozlišováním; bez vědeckého ověření."
+  },
+  "Profund": {
+   "tags": [
+    "rozhovor",
+    "karty",
+    "trade-free"
+   ],
+   "line": "150 otázek, které posunou rozhovor za malé řeči — mezi přáteli nebo v rodině. Hrajte na obrazovce nebo vytiskněte, s volitelným časovačem.",
+   "detail": "Hra se 150 otázkami pro smysluplné rozhovory (RO/EN/FR), online nebo vytištěná, s hráči a volitelným časovačem; převzato z deepcards.org, originály zůstávají majetkem jejich držitelů práv (MIT jen pro kód a původní část)."
+  },
+  "Universul-Observabil": {
+   "tags": [
+    "astronomie",
+    "kosmologie",
+    "vizualizace"
+   ],
+   "line": "Jak velký je pozorovatelný vesmír? Porovnejte tři mapy (lineární, plochou, v prostoru) a provádějte kosmologické výpočty. Čísla nebyla nezávisle ověřena.",
+   "detail": "Rozcestník, který představuje a porovnává 1D, 2D a 3D vizualizace pozorovatelného vesmíru, s offline kosmologickým kalkulátorem; údaje a rekordy pocházejí z katalogu z května 2026, nezávisle neověřeno. RO/EN."
+  },
+  "Universul-Observabil-1D": {
+   "tags": [
+    "astronomie",
+    "kosmologie",
+    "vizualizace"
+   ],
+   "line": "Cestujte od nás na okraj viditelného vesmíru kolem 112 galaxií uspořádaných na jedné ose. Ironický tón, zaokrouhlené hodnoty, vzdělávací účel.",
+   "detail": "1D mapa pozorovatelného vesmíru: 112 galaxií na radiální ose (čas, vzdálenost, rudý posuv), s datovou tabulkou a exportem CSV. Vzdělávací, s ironickým tónem; zaokrouhlené hodnoty, rekordy k datu katalogu (květen 2026)."
+  },
+  "Universul-Observabil-2D": {
+   "tags": [
+    "astronomie",
+    "satira",
+    "kosmologie"
+   ],
+   "line": "Mapa galaxií v satirickém vydání «Plochá Země»: je to vtip, Země není plochá. Přibližujte mezi 111 galaxiemi; vzdálenosti jsou přibližné. Funguje offline.",
+   "detail": "Interaktivní 2D mapa pozorovatelného vesmíru (111 galaxií, logaritmická škála, data JWST) v satirické edici „Plochá Země“: parodie, Země není plochá; vzdálenosti jsou přibližné. RO/EN, offline."
+  },
+  "Universul-Observabil-3D": {
+   "tags": [
+    "astronomie",
+    "kosmologie",
+    "3D"
+   ],
+   "line": "Létejte mezi více než 115 galaxiemi na 3D mapě s vedenými prohlídkami a misemi. Hodnoty jsou přibližné.",
+   "detail": "Interaktivní 3D mapa (WebGL) pozorovatelného vesmíru: 115+ galaxií, 12 horizontů, 30 prohlídek, výzvy v průvodci, export GLB/CSV/BibTeX. Přibližné hodnoty; rekordy JWST k květnu 2026."
+  },
+  "QSO": {
+   "tags": [
+    "rádio",
+    "deník"
+   ],
+   "line": "Veďte deník radiových spojení své radioamatérské stanice s časem UTC, lokátory a statistikami. Neoficiální; výpočty jsou přibližné.",
+   "detail": "Neoficiální deník radioamatérské stanice: spojení QSO s časem UTC, import/export ADIF 3.1, lokátory Maidenhead, kontrola duplicit, statistiky. Částečná tabulka prefixů (ne DXCC); přibližné výpočty."
+  },
+  "Curatitor": {
+   "tags": [
+    "metadata",
+    "soukromí"
+   ],
+   "line": "Podívejte se, co prozrazují vaše fotografie a soubory (místo, fotoaparát, autor), a odstraňte tyto údaje před odesláním. Neskrývá tváře ani jiný viditelný obsah.",
+   "detail": "Lokálně zobrazí a odstraní metadata souborů (GPS, fotoaparát, autor, software) bez překódování pixelů či zvuku a výsledek znovu zkontroluje. Neanonymizuje obsah (tváře, šum senzoru)."
+  },
+  "Poteca": {
+   "tags": [
+    "GPX",
+    "stopy"
+   ],
+   "line": "Otevřete stopy zaznamenané na túře nebo na kole a podívejte se na vzdálenost, stoupání a výškový profil. Můžete stříhat nebo spojovat. Bez mapy; stoupání je odhadnuto.",
+   "detail": "Prohlížeč a editor stop GPX/GeoJSON/KML/CSV: statistiky, výškový profil, řezání, spojování, zjednodušení, export. Bez podkladové mapy; stoupání/klesání jsou odhady."
+  },
+  "Orar": {
+   "tags": [
+    "kalendář",
+    "čas"
+   ],
+   "line": "Kalendář a týdenní plánovač s oficiálními rumunskými svátky, se zobrazením po dnech, týdnech nebo měsících. Budíky zvoní, jen dokud je stránka otevřená.",
+   "detail": "Kalendář a týdenní plánovač: zobrazení měsíc/týden/den/agenda, opakování podle RFC 5545, časová pásma, rumunské státní svátky, import/export .ics. Alarmy zvoní jen při otevřené záložce."
+  },
+  "Alfabete": {
+   "tags": [
+    "kódy",
+    "učení"
+   ],
+   "line": "Učte se a procvičujte Morseovu abecedu, Braillovo písmo, fonetickou abecedu, vlajkovou semaforovou abecedu a staré šifry, pak vytiskněte stránku. Staré šifry nechrání tajemství.",
+   "detail": "Přehled, převodník, trenažér a tisknutelný list pro Morseovu abecedu, brailla (stupeň 1), fonetické abecedy, semafor, Baudot, číselné soustavy a klasické šifry. Klasické šifry nenabízejí žádnou bezpečnost."
+  },
+  "Fabrica": {
+   "tags": [
+    "kurzy",
+    "tvorba"
+   ],
+   "line": "Napište kurz jako prostý text a proměňte ho ve stránku s lekcemi, závěrečným testem a certifikátem k tisku. Certifikát nemá oficiální hodnotu.",
+   "detail": "Továrna na kurzy a kvízy: napište kurz v prostém Markdownu a exportujte ho jako jediný samostatný soubor HTML s lokálním pokrokem, závěrečným testem a tisknutelným certifikátem (bez akreditační hodnoty)."
+  },
+  "Bolta": {
+   "tags": [
+    "astronomie",
+    "planetárium"
+   ],
+   "line": "Jaká byla obloha nad hlavou na libovolném místě a v libovolný den mezi lety 1900 a 2100? Slunce, Měsíc, planety a hvězdy, i zatmění 2027. Hodnoty jsou vypočítané, neoficiální. Funguje offline.",
+   "detail": "Offline planetárium pro libovolné místo a čas mezi lety 1900 a 2100: Slunce, Měsíc, planety, 1 627 hvězd, souhvězdí, události a stránka o zatmění 2027. Vypočtené hodnoty, nikoli oficiální."
+  },
+  "BRAZDA": {
+   "tags": [
+    "Voyager",
+    "signál"
+   ],
+   "line": "Dekódujte zlatou desku Voyageru krok za krokem, pak zakódujte nový disk pro sondu vypouštěnou nyní. Obrázky v prvních krocích jsou schematické, nejsou od NASA.",
+   "detail": "12krokový dekodér a kodér Zlaté desky Voyageru: rychlost, vodíkové hodiny, mapa pulsarů, signál obrazu, kalibrace kružnicí, dekódování řádek po řádku, barva, váš vlastní soubor, příspěvky a kódování disku 2026–2027."
+  },
+  "Arbore": {
+   "tags": [
+    "rodokmen",
+    "GEDCOM"
+   ],
+   "line": "Vytvořte rodinný strom s osobami, rodinami, časovou osou a rumunskou kalkulačkou příbuzenství. Data zůstávají jen v tomto prohlížeči, bez synchronizace.",
+   "detail": "Lokální genealogie: osoby, rodiny, import/export GEDCOM 5.5.1, grafy SVG, časová osa, kalkulátor příbuzenství (pouze rumunská terminologie). Bez synchronizace; data zůstávají v tomto prohlížeči."
+  },
+  "Gospodar": {
+   "tags": [
+    "rozpočet",
+    "osobní finance"
+   ],
+   "line": "Sledujte domácí peníze: účty, výdaje, měsíční rozpočty a přehledy. Účet není potřeba, ale pokud ztratíte heslo, ztratíte data. Není to finanční rada.",
+   "detail": "Lokální domácí rozpočet: účty, kategorie, transakce, import CSV, měsíční rozpočty, přehledy a kalkulátory s průhlednými vzorci. Bez účtu a synchronizace; ztracené heslo znamená ztracená data. Nejedná se o finanční poradenství."
+  },
+  "Decibel": {
+   "tags": [
+    "zvuk",
+    "měření"
+   ],
+   "line": "Změřte, jak hlasitý je hluk kolem vás, a podívejte se, z jakých zvuků se skládá. Je tu i orientační test sluchu. Není certifikovaný přístroj; výsledky závisí na mikrofonu.",
+   "detail": "Hlukoměr, spektrální analyzátor (1/3 oktávy, FFT) a orientační test sluchu. Není to certifikovaný měřič a nemá právní ani lékařskou hodnotu; hodnoty závisí na mikrofonu a kalibraci."
+  },
+  "Provenienta": {
+   "tags": [
+    "C2PA",
+    "původ"
+   ],
+   "line": "Máte obrázek a chcete vědět, kdo ho podepsal a jaké úpravy deklaroval? Zkontrolujte vložený digitální podpis. Experimentální, testováno jen na vzorových souborech.",
+   "detail": "Lokální, experimentální kontrola C2PA / Content Credentials: ukáže, kdo podepsal a jaké úpravy byly deklarovány, a ověří podpis a vazbu na bajty souboru. Testováno jen na syntetických souborech; bez seznamu důvěryhodných."
+  },
+  "Lexicon": {
+   "tags": [
+    "slovník",
+    "jazyk"
+   ],
+   "line": "Přineste si vlastní slovníky a hledejte slova, i když píšete bez diakritiky nebo s chybami. Dodává se jen s malou ukázkovou sadou. Funguje offline.",
+   "detail": "Offline slovníkový engine: přineste si vlastní slovníky (TSV/CSV, JSON, StarDict, dictd, XDXF) a hledejte podle předpony, bez ohledu na diakritiku, přibližně nebo fulltextem. Přibalená sada (345 hesel) je demo, nikoli úplný slovník."
+  },
+  "VERIGA": {
+   "tags": [
+    "kontrola odkazů",
+    "MIT"
+   ],
+   "line": "Najde rozbité odkazy a osiřelé soubory na webu nebo ve složce. Funguje na Windows, macOS a Linuxu; vyžaduje trochu znalosti počítače.",
+   "detail": "Kontrola odkazů (clean-room) pro weby a lokální složky, napsaná v Rustu: příkazový řádek, nativní desktopová aplikace (egui) a verze v jediném souboru HTML. Kontroluje odkazy HTML a CSS, přesměrování, kotvy #fragment, osiřelé soubory, robots.txt a sitemap. Windows, macOS a Linux; licence MIT."
+  },
+  "TEZAUR": {
+   "tags": [
+    "výzkum",
+    "MIT"
+   ],
+   "line": "Asistent pro diplomovou práci, který píše jen na základě vašich vlastních knih a článků, s ověřitelnými citacemi. Běží na vašem počítači; vaše dokumenty ho nikdy neopustí. Ve vývoji.",
+   "detail": "Lokální výzkumný asistent pro psaní závěrečné práce, napsaný v Rustu, s odpověďmi opřenými o citace: indexuje vaše knihy a články (PDF, EPUB, DOCX, txt), vyhledává pasáže a píše pouze z nich, s ověřenými citacemi [n] a seznamem literatury. Běží na vašem počítači s lokálním modelem (Ollama, Jan, LM Studio); vaše dokumenty ho neopustí. Verze 0.x; licence MIT."
+  },
+  "LegatorOCR": {
+   "tags": [
+    "skenování",
+    "MIT"
+   ],
+   "line": "Naskenujte knihu a získejte čisté PDF s opravenými stránkami a prohledávatelným textem. Funguje na Windows, macOS a Linuxu; vaše skeny zůstávají u vás.",
+   "detail": "Clean-room postprocesor napsaný v Rustu pro skenované knihy: dělí dvoustrany, narovnává zešikmení, ořezává, nastavuje okraje, čistí a binarizuje, poté exportuje PDF nebo obrázky s prohledávatelnou textovou vrstvou OCR. Grafická aplikace (Windows, macOS, Linux) a příkazový řádek, v 8 jazycích. Rozpoznávání textu (OCR) vyžaduje samostatný program Tesseract; vše ostatní funguje bez něj. Verze 0.x; licence MIT."
+  },
+  "Fenarium": {
+   "tags": [
+    "vnímání",
+    "MIT"
+   ],
+   "line": "Atlas a dílna subjektivních vjemů přes všechny smysly, počínaje fosfenismem: kurz se 13 moduly, vedené experimenty, vizuální simulátor a laboratoř A/B sebeexperimentů s randomizací. Vzdělávací, není zdravotnický prostředek.",
+   "detail": "Atlas fénů (fosfeny, následné obrazy, zvuky podobné tinnitu a další), 13modulový kurz, laboratoř pro sebeexperimenty; není to zdravotnický prostředek."
+  },
+  "MENSURA": {
+   "tags": [
+    "testy",
+    "MIT"
+   ],
+   "line": "Změřte IQ, EQ, CQ, RQ, exekutivní funkce a smysly v 6 oblastech pomocí 18 testů, složených indexů a 95% intervalů spolehlivosti. Předběžné normy, jen orientačně, není to diagnóza.",
+   "detail": "18 testů v 6 oblastech (IQ, EQ, CQ, RQ, exekutivní funkce, smysly), indexy s intervaly spolehlivosti, export/import JSON; předběžné normy."
+  },
+  "Cronosala": {
+   "tags": [
+    "sport",
+    "čas"
+   ],
+   "line": "Časovače do posilovny: odpočinek mezi sériemi, HIIT, Tabata, EMOM, AMRAP, okruhy a metronom, plus tréninkový deník s kg a opakováními.",
+   "detail": "Posilovací časovače a tréninkový deník v jediném souboru HTML: adaptivní odpočinek mezi sériemi, Interval/HIIT, Tabata, EMOM, AMRAP, okruhy po stanovištích, tempo, metronom, 4týdenní měsíční program, katalog cviků a QR kódy pro stroje. Data zůstávají v prohlížeči; rozhraní je v rumunštině."
+  },
+  "ScutSonor": {
+   "tags": [
+    "bezpečnost",
+    "zvuk"
+   ],
+   "line": "Hlasitý zvuk a stroboskop svítilny pro setkání s agresivními psy, plus průvodce chováním. Je to pomoc, ne zaručený štít.",
+   "detail": "Generuje rozmítání 2–8 kHz, experimentální ultrazvuk, sirénu a test reproduktoru, s limiterem, který udržuje hlasitost, stroboskop svítilny (2,5 Hz), denní režim a bezpečnostního průvodce. Jediný soubor, bez sledování. Důkazy, že zvuk psy odpuzuje, jsou slabé."
+  },
+  "MIRAJ": {
+   "tags": [
+    "zrak",
+    "vzdělávání"
+   ],
+   "line": "Jak vidí sítnice a jak mozek skládá obraz: fovea, slepá skvrna, iluze a kvíz, na třech úrovních.",
+   "detail": "Interaktivní vysvětlení vidění na třech úrovních (začátečník, středně pokročilý, pokročilý): sítnice, fovea, slepá skvrna, optické iluze, shrnutí a kvíz o 10 otázkách. Jediný soubor, rozhraní v rumunštině a angličtině."
+  },
+  "ANTROPOS": {
+   "tags": [
+    "screening",
+    "biologie"
+   ],
+   "line": "Orientační vědecký profil počítaný lokálně: biologický věk PhenoAge, hlas, rukopis, kreslení hodin, osobnost TIPI a reakční doba.",
+   "detail": "Vzdělávací screeningový nástroj, nikoli diagnóza: biologický věk PhenoAge s kontrolou věrohodnosti, analýza hlasu, grafometrie rukopisu, test hodin a kresby postavy, TIPI, reakční testy, tisknutelná zpráva a export JSON. Data zůstávají v prohlížeči."
+  },
+  "DESCANTAR": {
+   "tags": [
+    "folklór",
+    "fazole"
+   ],
+   "line": "Věštění ze 41 fazolí (metoda 3×3, olténská varianta) a 12 tradičních zaříkávání jako předmět folklorní studie.",
+   "detail": "Rumunské věštění z bobů ve třech metodách (3×3 podle knihy, Olténie, tři hromádky), výklady podle Hlavy, Srdce a Nohou, 12 tradičních zaříkadel, fáze Měsíce, počítadlo recitace, generátor zaříkadel, historie a kopírovatelný průvodce. Folklorní obsah přeložený do 8 jazyků pomocí AI, nerevidovaný rodilými mluvčími."
+  },
+  "Index-fara-frontiere": {
+   "tags": [
+    "katalog",
+    "zdroje"
+   ],
+   "line": "Katalog jednosouborových HTML aplikací: sbírka chiuta.github.io a externí zdroje, s vyhledáváním a štítky.",
+   "detail": "Osm projektů ze sbírky autora a osm externích zdrojů, jasně označených, s živým vyhledáváním, klikacími štítky, přepínačem RO/EN, tmavým/světlým motivem a položkou, která katalogizuje sama sebe. Bez síťových požadavků. Statický snímek z 5. července 2026."
+  },
+  "DECUPAJ": {
+   "tags": [
+    "reels",
+    "video"
+   ],
+   "line": "Proměňte podcast, audio nebo video ve vertikální klipy s titulky přímo v prohlížeči, bez účtu a vodoznaku. Vaše soubory nikdy neopustí zařízení.",
+   "detail": "Vertikální reely z podcastu (audio nebo video) v jediném souboru HTML: vyberte úsek na křivce zvuku, získejte návrhy momentů, lokální přepis pomocí Whisper, stylizované titulky, 4 poměry stran (9:16, 4:5, 1:1, 16:9), frontu exportu a MP4 přes WebCodecs. Rozhraní v 8 jazycích."
+  },
+  "LECTOR": {
+   "tags": [
+    "audio",
+    "knihy"
+   ],
+   "line": "Knihy čtené nahlas přímo v prohlížeči: EPUB, DOCX, PDF, TXT nebo vložený text, bez účtu a serveru. Text nikdy neopustí vaše zařízení.",
+   "detail": "Poslouchejte knihy předčítané z jediného souboru HTML: EPUB, DOCX, PDF (s rumunským OCR pro skeny), TXT; hlasy zařízení nebo Piper ro_RO, zvýrazněné vyslovované slovo, časovač spánku, kapitoly, záložky, výslovnostní slovník, lokální knihovna a motivy vhodné pro dyslexii. Rozhraní v 8 jazycích."
+  },
+  "FARFURIA": {
+   "tags": [
+    "výživa",
+    "zdraví"
+   ],
+   "line": "Bezplatný digitální nutriční poradce: personalizované kalorie a makroživiny, jídelníček na 7 dní, deník stravy a sledování hmotnosti. Nenahrazuje lékaře ani nutričního terapeuta.",
+   "detail": "Digitální dietolog v jediném souboru HTML: cíle kalorií a makroživin (Mifflin–St Jeor, úroveň aktivity, cíl), 7denní jídelníček s filtry diet a alergenů, databáze potravin, jídelní deník a sledování hmotnosti. Bezpečnostní pravidla pro nezletilé, poruchy příjmu potravy v anamnéze a onemocnění ledvin. Rozhraní v 8 jazycích."
+  },
+  "VITALIS": {
+   "tags": [
+    "zdraví",
+    "dlouhověkost"
+   ],
+   "line": "Osobní společník pro zdraví, dlouhověkost a biohacking: devět pilířů seřazených podle důkazů, kalkulačky, skóre životního stylu a denní rituál. Není to lékařská rada.",
+   "detail": "Společník pro zdraví a dlouhověkost v jediném souboru HTML: devět pilířů seřazených podle důkazů, kalkulátory (HOMA-IR, TyG, poměr pas/výška, Mifflin–St Jeor, zóny tepové frekvence, spánkové cykly, bílkoviny), časovač půstu, dechový metronom, skóre 360 s radarovým grafem, referenční rozsahy biomarkerů a denní sledovač rituálů. Neoficiální společník události BioHacking360. Rozhraní v 8 jazycích."
+  },
+  "REZONANTA": {
+   "tags": [
+    "komunikace",
+    "média"
+   ],
+   "line": "Průvodce a nástroje pro komunikaci a média: sdělení, kanály, tisková zpráva, rozhovor, srozumitelnost, plán a krize.",
+   "detail": "Jak přimět lidi, aby naslouchali, v jediném souboru HTML: 12 zásad s praktickým testem, „dům sdělení“ (30sekundová prezentace, příspěvek, krátká a mluvená verze), doporučení mediálních kanálů, generátor tiskové zprávy s obrácenou pyramidou, list k rozhovoru, analyzátor srozumitelnosti textu, komunikační plán s exportem text/CSV a kroky první hodiny krize. Rozhraní v 8 jazycích."
+  },
+  "Claritas": {
+   "tags": [
+    "přístupnost",
+    "rozšíření"
+   ],
+   "line": "Univerzální rozšíření prohlížeče pro přístupnost: oprava kontrastu, režim čtení, čtení nahlas a kontrola WCAG. Bez telemetrie, bez sítě, bez účtu.",
+   "detail": "Bezplatné rozšíření pro přístupnost v prohlížeči: automatická oprava kontrastu (WCAG AA/AAA), vysokokontrastní motivy, filtry pro barvoslepost, větší text a písma vhodná pro dyslexii, čtecí pravítko, maska a lupa, režim čtečky, předčítání, velké klikací cíle a skenování jedním spínačem, audit WCAG 2.2, lokální snímky obrazovky a nahrávání obrazovky. Pro Chromium, Firefox a Safari; rozhraní v 8 jazycích."
+  },
+  "TurboCursa": {
+   "tags": [
+    "závody",
+    "Rust"
+   ],
+   "line": "Pseudo-3D arkádová závodní hra napsaná v Rustu: krajiny generované ze zrna, 11 režimů, ligová kariéra a 2 hráči. Originální; bez kódu či zdrojů z jiné hry.",
+   "detail": "Clean-room pseudo-3D arkádové závody napsané v Rustu: původní engine, grafika, hudba i název, vše generované ze seedu (19 krajin), kampaň, časovka, nekonečný režim, Rush Hour, slalom, zrcadlo, Blackout, Zen, proti počítači, hra pro dva na rozdělené obrazovce a kariéra v divizích. Běží nativně nebo jako webový soubor; rozhraní v 8 jazycích."
+  },
+  "ANTENA": {
+   "tags": [
+    "rádio",
+    "antény"
+   ],
+   "line": "Ve vývoji: řešič drátových antén kompatibilní s NEC-2 (metoda momentů), s rozhraním v prohlížeči. Zatím jen pre-alfa kostra.",
+   "detail": "Rozpracováno: řešič drátových antén kompatibilní s NEC-2 (momentová metoda) s webovým rozhraním. Zatím jen kostra v pre-alfa stavu."
+  },
+  "ARBITRU": {
+   "tags": [
+    "hry",
+    "pravidla"
+   ],
+   "line": "Ve vývoji: univerzální engine pravidel pro stolní, karetní, kostkové a logické hry s deklarativním jazykem pravidel. Zatím jen pre-alfa kostra.",
+   "detail": "Rozpracováno: univerzální engine pravidel pro deskové, karetní, kostkové a logické hry s deklarativním jazykem pravidel. Zatím jen kostra v pre-alfa stavu."
+  },
+  "ASTROLABIU": {
+   "tags": [
+    "astronomie",
+    "kalendáře"
+   ],
+   "line": "Ve vývoji: engine nebeských událostí v čistém Rustu (časové škály, zatmění, východy a západy, kalendáře). Zatím jen pre-alfa kostra.",
+   "detail": "Rozpracováno: engine nebeských událostí (časové škály, zatmění, východ a západ, kalendáře) v čistém Rustu. Zatím jen kostra v pre-alfa stavu."
+  },
+  "ECOGRAMA": {
+   "tags": [
+    "audio",
+    "restaurování"
+   ],
+   "line": "Ve vývoji: editor spektrogramů a restaurování zvuku: vybírejte na spektrogramu, opravujte, exportujte. Zatím jen pre-alfa kostra.",
+   "detail": "Rozpracováno: editor spektrogramu a restaurování zvuku: výběr na spektrogramu, oprava, export. Zatím jen kostra v pre-alfa stavu."
+  },
+  "ecou-spectral-rs": {
+   "tags": [
+    "audio",
+    "Rust"
+   ],
+   "line": "Ve vývoji: nativní editor spektrogramů v Rustu s pluginy pro redukci šumu a detekci zvuků. Existuje kostra kódu a formát pluginů, ale hotové funkce zatím ne.",
+   "detail": "Rozpracováno: nativní editor spektrogramu v Rustu s pluginy pro redukci šumu a detekci hlasu. Má kostru kódu a formát pluginů, ale zatím žádnou dokončenou funkci."
+  },
+  "MARTOR": {
+   "tags": [
+    "archivace",
+    "důkazy"
+   ],
+   "line": "Ve vývoji: soudní zachycení webu do WARC/WACZ s hashi, podpisy a důvěryhodnými časovými razítky, ověřitelné offline. Zatím jen pre-alfa kostra.",
+   "detail": "Rozpracováno: forenzní zachycení webu ve WARC/WACZ s hashi, podpisy a důvěryhodnými časovými razítky, ověřitelné offline. Zatím jen kostra v pre-alfa stavu."
+  },
+  "NEAMURI": {
+   "tags": [
+    "příbuzenství",
+    "rodokmen"
+   ],
+   "line": "Ve vývoji: engine příbuzenství — od cesty v rodinném stromě ke správnému příbuzenskému výrazu v mnoha jazycích. Zatím jen pre-alfa kostra.",
+   "detail": "Rozpracováno: engine příbuzenství, od cesty v rodokmenu ke správnému označení příbuzného v mnoha jazycích. Zatím jen kostra v pre-alfa stavu."
+  },
+  "TACTIL": {
+   "tags": [
+    "Braille",
+    "přístupnost"
+   ],
+   "line": "Ve vývoji: vrstva hmatového výstupu: formáty Braillova písma (BRF, Unicode), displeje, reliéfní tiskárny a vibrace dotykové obrazovky. Zatím jen pre-alfa kostra.",
+   "detail": "Rozpracováno: vrstva hmatového výstupu: formáty braillova písma (BRF, Unicode), displeje, tiskárny a vibrace dotykové obrazovky. Zatím jen kostra v pre-alfa stavu."
+  },
+  "atelier-verificare": {
+   "tags": [
+    "žurnalistika",
+    "ověřování",
+    "fotografie"
+   ],
+   "line": "Ověřujte fotografie, videa, odkazy a domény v prohlížeči, nic se nenahrává: skutečný typ souboru a SHA-256, EXIF/GPS, XMP/IPTC, Content Credentials (jen pro čtení), analýza úrovně chyby. Nemůže dokázat, že fotografie je pravá. Alfa.",
+   "detail": "Sada nástrojů pro ověřování pro novináře a pozorné čtenáře, která běží lokálně. Přidejte obrázky, videa, odkazy, domény nebo text a získejte zjištění s úrovní obav u každého: skutečný typ souboru, SHA-256, EXIF a poloha GPS, XMP a IPTC, stopy generátorů AI obrázků, manifesty Content Credentials (C2PA; čteno, nikoli validováno), analýza chybové úrovně pro JPEG, metadata videa s klíčovými snímky pro zpětné vyhledávání obrázků a anatomie odkazu. Dvě volitelné síťové kontroly (shrnutí DNS, Internet Archive) se spustí až po zaškrtnutí souhlasu. Zpráva (Markdown, JSON nebo PDF) uvádí omezení metody. Nemůže dokázat, že fotografie je autentická: chybějící metadata říkají málo a metadata lze zfalšovat. Alfa; devět z jedenácti kontrol funguje offline; soubory zůstávají v prohlížeči."
+  },
+  "balanta": {
+   "tags": [
+    "UI",
+    "hodnocení"
+   ],
+   "line": "Slepě porovnávejte modely UI: vložte odpovědi dvou až osmi modelů na 92 promptů v rumunštině, angličtině a maďarštině, hlasujte pro A nebo B a získejte žebříček s intervaly. Alfa; funguje offline.",
+   "detail": "Slepé srovnání modelů AI v rumunštině vedle sebe. Odpovědi každého modelu vkládáte sami (nic se nevolá: žádné klíče API, žádné účty), aplikace skryje názvy modelů v odpovědích, pevně určí pořadí ze seedu a zaznamená váš hlas. Žebříček používá Bradley–Terry a Elo s 95% bootstrapovými intervaly, plus podíl výher, zkreslení pozicí a tabulky vzájemných zápasů. Hlasy a odpovědi jsou otevřené soubory JSON Lines. S málo hlasy nebo prompty žebříček neříká nic obecného. Alfa; data zůstávají v prohlížeči; bez sledování."
+  },
+  "calendarium": {
+   "tags": [
+    "kalendáře",
+    "čas"
+   ],
+   "line": "Zadejte datum v jednom z jedenácti kalendářů (gregoriánský, juliánský, hebrejský, hidžra, perský, čínský, mayský, marsovský…) a uvidíte ho ve všech ostatních, se zobrazením měsíce. Alfa; funguje offline.",
+   "detail": "Převádí data mezi jedenácti kalendáři (gregoriánský, juliánský, revidovaný juliánský, hebrejský, hidžra, perský, koptský, etiopský, čínský, mayský a Mars Sol Date), zobrazuje juliánské datum, den v týdnu a týden ISO a má měsíční zobrazení s druhým kalendářem pod každým dnem. Obsahuje rumunské poznámky (starý a nový styl, přechod 1919, Velikonoce) a atlas kalendářů, jeden plugin na kalendář. Hodnoty jsou vypočtené, s uvedenými omezeními (kalendář hidžra je tabulkový; rozsahy jsou hlídané). Alfa, v 8 jazycích, funguje offline; bez sledování."
+  },
+  "glosar": {
+   "tags": [
+    "jazyky",
+    "slovníky"
+   ],
+   "line": "Offline slovník pro arumunštinu, meglenorumunštinu a romštinu: hledejte bez diakritiky, podívejte se, která základní slova chybí, a přidávejte slova se zdrojem a registrem. Alfa.",
+   "detail": "Slovníky menšinových a ohrožených jazyků, vytvářené jejich mluvčími. Hledá bez ohledu na diakritiku, ukazuje spolehlivost (koncept, se zdrojem, zrevidováno), má tabulku pokrytí 50 základních pojmů a umožňuje přidávat slova se zdrojem, licencí a nahrávkou (do 50 KB). Exportuje soubory TSV a Anki a příspěvkový soubor pro projekt. Úvodní seznamy jsou malé — číslovky a několik slov, každé s publikovaným zdrojem — a žádný mluvčí je zatím nerevidoval. Alfa; funguje offline; data zůstávají v prohlížeči, dokud je nestáhnete."
+  },
+  "graiul": {
+   "tags": [
+    "folklór",
+    "archiv"
+   ],
+   "line": "Offline archiv rumunského folkloru (přísloví, zaříkávání, hádanky, koledy) se zdrojem, županií a souhlasem. Začíná deseti příslovími; můžete přidat další. Alfa.",
+   "detail": "Hledání bez ohledu na diakritiku, s filtry podle typu, župy a spolehlivosti; přísloví dne (stejné pro všechny v daný den), schematická dlaždicová mapa 41 žup a Bukurešti a formulář pro přidávání, který vyžaduje zdroj a u zaříkadel a všeho, co bylo získáno od osoby, souhlas. Exportuje příspěvkový soubor a TSV. Úvodní data je deset rumunských přísloví z Wikiquote; žádné nezrevidoval folklorista. Alfa; funguje offline; data zůstávají v prohlížeči, dokud je nestáhnete."
+  },
+  "indicativ-international": {
+   "tags": [
+    "rádio",
+    "zkoušky"
+   ],
+   "line": "Procvičujte otázky z radioamatérské zkoušky s rozvrhem opakování v pěti krabičkách a zkušebními testy na čas; importujte balíčky otázek ve společném formátu JSON. Zahrnuje 50 cvičných otázek; není to oficiální banka. Alfa.",
+   "detail": "Trenažér a simulátor zkoušky z otázek k radioamatérské licenci, se sdíleným formátem balíčků, aby si každá země mohla přidat vlastní banku. „Trénink“ opakuje správné odpovědi po 1, 3, 7, 14 a 30 dnech a vysvětluje každou odpověď se zdrojem; „Zkouška“ je časovaný test s hranicí úspěšnosti; „Balíčky“ importují a kontrolují balíčky a zálohují váš pokrok. Vestavěný balíček obsahuje 50 původních cvičných otázek napsaných pro tento projekt — nejde o oficiální banku — a žádný balíček pro konkrétní zemi zatím není součástí. Alfa; funguje offline; pokrok zůstává v prohlížeči."
+  },
+  "proiector-fara-frontiere": {
+   "tags": [
+    "třída",
+    "projekce",
+    "kvíz"
+   ],
+   "line": "Telefony ve třídě se stanou společnou obrazovkou bez serveru a účtů: časovač, anketa, kvíz, poznámky a tabule; spárování QR kódem nebo vloženým textem ve stejné síti. Alfa: na skutečných telefonech zatím netestováno.",
+   "detail": "Sdílená obrazovka pro třídu, bez serveru a bez účtu. Učitel otevře stránku u projektoru; telefon každého žáka se připojí výměnou kódu (snímky QR, fotografie kódu nebo vložený text), až 30 telefonů najednou. Součástí je pět aktivit: odpočítávací časovač, anketa s živými sloupci, kvíz (otázky ze souboru JSON, prostého textu nebo CSV; správná odpověď zůstává na projektoru, dokud není odhalena; bonus za rychlost a tabulka skóre), lepicí lístky a tabule s jednou barvou na telefon. Výsledky lze uložit jako CSV, text nebo PNG. Každá aktivita běží v izolovaném rámci jen s oprávněními, která deklaruje, a nová aktivita je jeden deskriptor a jeden skript. Učitel může telefon zamknout nebo odebrat a ukončit relaci; každé zařízení si zvolí vlastní jazyk (osm) a vzhled (tmavý, vysoký kontrast, velký text). Po otevření funguje offline a lze ji nainstalovat. Alfa: testováno v Chromiu se skutečnými spojeními na jednom stroji, nikoli na skutečných telefonech, v jiných prohlížečích ani ve školních sítích. Spárování vyžaduje stejnou lokální síť (bez relay), ukazuje IP adresu každého zařízení druhému a neověřuje, kdo je druhé zařízení. Formát kvízu „Undava“ není podporován: nebyla nalezena žádná specifikace."
+  },
+  "regula": {
+   "tags": [
+    "hry",
+    "pravidla"
+   ],
+   "line": "Hrajte pět klasických her pro dva (mlýn, alquerque, fanorona, mū tōrere, hnefatafl) proti počítači nebo příteli; přidejte vlastní hru jako JSON. Alfa; funguje offline.",
+   "detail": "Jeden engine pravidel pro tradiční deskové hry: každá hra je soubor JSON a text pravidel v osmi jazycích se generuje ze stejných dat, podle nichž engine hraje, takže text a hra si nemohou odporovat. Každá strana může být člověk, náhodný hráč nebo počítač na dvou úrovních; vrácení a opakování tahu, nápověda a záznam tahů, který lze zkopírovat. Můžete vložit, ověřit a hrát vlastní hru. Hry jsou rekonstrukce, nikoli turnajová pravidla, a každá uvádí, jak jistá jsou její pravidla. Alfa; funguje offline; bez sledování."
+  },
+  "vietar-packs": {
+   "tags": [
+    "příroda",
+    "druhy"
+   ],
+   "line": "Procházejte, importujte, kontrolujte a vytvářejte regionální balíčky druhů pro VietAR: názvy ve více jazycích, označení toxicity, podobné druhy. Pět návrhů startovacích balíčků se 71 druhy. Alfa; funguje offline.",
+   "detail": "Regionální balíčky druhů pro VietAR: názvy v několika jazycích, příznak jedovatosti, nebezpeční dvojníci a místo pro licencované fotografie a odkazy na zvuky. Procházejte a hledejte v pěti úvodních balíčcích (Rumunsko: rostliny a houby, ptáci, savci; Bulharsko a Moldavsko: kostry), importujte balíček, zkontrolujte ho stejnými pravidly jako repozitář nebo vytvořte vlastní pro školní třídu či přírodovědný kroužek. Úvodní balíčky jsou koncepty bez fotografií a zvuků a „neoznačeno jako jedovaté“ nikdy neznamená jedlé nebo bezpečné. Aplikace VietAR zatím balíčky importovat neumí. Alfa; funguje offline."
+  },
+  "PatruZeci": {
+   "tags": [
+    "WD-40",
+    "udělej si sám"
+   ],
+   "line": "Ilustrovaný animovaný atlas použití WD-40: průvodce se 147 kartami a oficiální seznam 1993 použití, každé s vlastní animovanou scénou. Neoficiální, offline, bez účtu.",
+   "detail": "Ilustrovaný, animovaný atlas použití spreje WD-40 v jediném offline souboru: průvodce se 147 kartami ve 14 kategoriích (s úrovní rizika a tím, co sprej dělá), oficiální seznam „2000+ použití“ s 1993 položkami a oddíl s 25 dalšími použitími, mýty a varováními z webových článků. 131 animovaných variant scén, filtry podle kategorie a funkce, rozhraní v 8 jazycích. Neoficiální, nezávislá aplikace."
+  },
+  "ODISEEA": {
+   "tags": [
+    "Voyager",
+    "dokument"
+   ],
+   "line": "Dokument o délce asi 4,5 minuty o Voyagerech 1 a 2 v jednom HTML souboru: scény generované na grafické kartě, export ve 2D a 3D pro VR brýle, v 8 jazycích.",
+   "detail": "Dokument o délce asi 4,5 minuty o sondách Voyager 1 a 2, v jediném souboru HTML, který běží lokálně v prohlížeči, bez serveru a bez instalace. Procedurální scény generované na grafické kartě (WebGL): planety, sonda, raketa, anténa DSN, Zlatá deska, heliosféra, Pale Blue Dot. Veřejné snímky NASA/JPL a Wikimedia Commons, nebo váš vlastní obrázek pro každou scénu. Export ve 2D, půlené (1920×1080) a plné (3840×1080) 3D side-by-side a režim pro telefon pro brýle VR, například VR BOX; ambientní hudba generovaná v prohlížeči, volitelný komentář. Rozhraní, komentář, titulky a závěrečné titulky v 8 jazycích."
+  },
+  "EXIF-CURAT": {
+   "tags": [
+    "metadata",
+    "soukromí"
+   ],
+   "line": "Ve vývoji: nástroj v Rustu s paměťově bezpečnými parsery pro zobrazení a čištění skrytých údajů v souborech (obrázky, PDF, Office, video: EXIF, GPS, XMP). Zatím jen pre-alfa kostra.",
+   "detail": "Rozpracováno: nástroj pro zobrazení a odstranění skrytých dat v souborech (obrázky, PDF, Office, video: EXIF, GPS, XMP), s paměťově bezpečnými parsery, napsaný v Rustu. Zatím jen kostra v pre-alfa stavu."
+  },
+  "PORUMBEL": {
+   "tags": [
+    "fotografie",
+    "přenos"
+   ],
+   "line": "Automaticky přenáší fotografie pořízené v Open Camera na telefonu do složky v počítači, jedna složka na relaci, a otevírá je v LegatorOCR. Bez účtu, bez cloudu, bez cratů třetích stran.",
+   "detail": "Malý program napsaný v Rustu, bez knihoven třetích stran (Windows, macOS, Linux), který přenáší fotografie pořízené aplikací Open Camera do vašeho počítače: přes Wi-Fi (stránka pro nahrávání nebo WebDAV, s QR kódem), přes ADB (USB nebo Wi-Fi) nebo ze synchronizované složky (Syncthing atd.). Třídí fotografie do jedné složky na každou focenou relaci a každou dokončenou relaci otevře v LegatorOCR (dělení, narovnání, ořez, PDF s OCR). Lokální ovládací panel a příkaz „porumbel doctor“ pro diagnostiku; nic neopouští vaši síť. Verze 0.x; licence MIT."
+  },
+  "colibri-companion": {
+   "tags": [
+    "lokální UI",
+    "desktop"
+   ],
+   "line": "Přátelská desktopová aplikace pro lokální inferenční engine colibri: vyberte model, který se hodí na váš počítač, stáhněte ho jedním kliknutím a chatujte s ním. Bez účtu, bez cloudové služby.",
+   "detail": "Desktopová aplikace napsaná v Rustu pro colibri (JustVugg/colibri): najde Python a colibri, zobrazí jen modely, které se vejdou do paměti vašeho počítače, stáhne je s pozastavením a obnovením, spustí lokální server a otevře chat (streamované odpovědi, Markdown, uložené konverzace, vyhledávání, lokální dokumenty a nástroje MCP se schválením každého volání). Panel Zdroje ukazuje procesor, paměť, grafickou kartu a otevřená spojení. Windows, macOS, Linux; rozhraní v 8 jazycích; licence Apache-2.0."
+  },
+  "CartaColibri": {
+   "tags": [
+    "lokální UI",
+    "knihovna"
+   ],
+   "line": "Lokální knihovna UI na enginu Colibrì: indexuje složky, které vyberete, okamžitě vyhledává a žádá lokální model o shrnutí, extrakci údajů nebo syntézu, vždy s uvedením zdrojového souboru. Nic neopustí váš počítač.",
+   "detail": "Program napsaný v Rustu, s lokální stránkou (127.0.0.1) a příkazovým řádkem. Indexuje složky, které zvolíte (originály se jen čtou, nikdy nemění), prohledává fulltext (slova, „fráze“, prefix*, AND/OR/NOT, filtry podle typu, velikosti, umístění) a seskupuje soubory. Lokální model Colibrì shrnuje, extrahuje (tabulka nebo JSON, „NOT FOUND“ místo odhadů), syntetizuje nebo porovnává, vždy s citovanými zdroji [S1], [S2] a skóre ukotvení. Má také malý webový prohlížeč web-grab, MCP server jen pro čtení, importy (záložky, Obsidian, Zotero, RSS) a kontrolu vašeho vlastního textu vůči knihovně. Bez účtu, bez telemetrie; rozhraní v 8 jazycích; alfa verze 0.2; licence MIT."
+  },
+  "PolyTabletop": {
+   "tags": [
+    "stolní hry",
+    "Rust"
+   ],
+   "line": "240 stolních her proti počítači v terminálu nebo grafickém okně, plus hra pro dva na jedné klávesnici nebo přes síť. Napsáno v Rustu; engine a hry nemají externí závislosti.",
+   "detail": "Clean-room sbírka stolních her napsaná v Rustu: 240 hratelných her proti počítači, v terminálu nebo v grafickém okně, plus hot-seat a hra dvou hráčů po síti. Abstraktní klasiky, karetní a kostkové hry, původní varianty moderních mechanik pod vlastními názvy, kooperativní hry s AI partnerem, hry se skrytými rolemi, párty a slovní hry; katalog má 1200 položek, s nástroji pro hry na hrdiny (kostky, listy, generátor dungeonů, simulátor bitev). AI soupeř (alfa-beta, MCTS), aréna AI proti AI, přepisy a záznamy. Rozhraní v 8 jazycích; verze 0.9; licence MIT nebo Apache-2.0."
+  },
+  "STRAJA": {
+   "tags": [
+    "soukromí",
+    "telefon"
+   ],
+   "line": "Štít proti agentům UI čtoucím váš telefon: ukáže, které aplikace mohou číst vaše notifikace, obrazovku, fotografie a SMS, upozorní, když nová získá přístup, a zavede vás do nastavení, kde oprávnění odvoláte. Bez účtu, bez oprávnění INTERNET.",
+   "detail": "Aplikace pro Android (APK) a iPhone (nepodepsaný IPA). Na Androidu vypíše aplikace s přístupem k oznámením, službami přístupnosti, rolí asistenta a oprávněními k médiím a SMS, s rizikovým skóre pro každou aplikaci i pro celý telefon; periodický monitor porovnává telefon se základní hodnotou a upozorní vás na každý nový přístup. Otevře přesnou stránku systémového nastavení pro odebrání přístupu a nikdy nic potichu nemění. Dočasný přístup s připomenutím a 12bodový průvodce ochranou. Na iPhonu audit není (iOS skrývá oprávnění jiných aplikací), jen průvodce, ruční registr a připomenutí. Agenta zastavit nemůže. Bez oprávnění INTERNET, bez zálohování; 8 jazyků; verze 1.0; licence MIT."
+  },
+  "CUPLAJ": {
+   "tags": [
+    "pohlcující divadlo",
+    "telefonie"
+   ],
+   "line": "Telefonie se sdílenou linkou pro pohlcující divadlo: flotila obyčejných telefonů s Androidem se stane soukromou ústřednou přes Wi-Fi místa; bez cloudu, bez účtů, bez reklam. Charakteristická funkce je «cuplaj»: sdílená linka pevných telefonů od 80. let do roku 2006.",
+   "detail": "Aplikace pro Android (APK) a iPhone/iPad (nepodepsaný IPA). Organizátoři a herci mluví s diváky přes lokální Wi-Fi; jeden telefon (řídicí) je ústředna. Šest telefonních dob (1985 s číselníkem, 1995 s klávesnicí, 2003 mobil, 2025 chytrý telefon, 2045 nositelná zařízení, 2080 sdílená mysl), společná linka, kde dva účastníci sdílejí jednu linku, skutečné hovory, veřejné hlášení push-to-talk, kanál zákulisí, narážky (text na celou obrazovku, vibrace, zvonění, blesk, mluvený hlas, fantomový hovor) a scénář s GO a PLAY. Bez infrastruktury, volitelný síťový klíč AES-128-GCM, přímé hovory P2P. Bez analytiky, bez serverů, bez účtů. 8 jazyků; verze 1.10; licence MIT."
+  },
+  "LUSTRUM": {
+   "tags": [
+    "čistič telefonu",
+    "Android"
+   ],
+   "line": "Získejte zpět místo v telefonu: najde nepotřebné soubory, duplikáty, podobné fotografie a zbytky aplikací a vyčistí je jen s vaším souhlasem. Nemá oprávnění INTERNET, takže fyzicky nemůže nic nikam odeslat.",
+   "detail": "Aplikace pro Android (Kotlin). Úložiště podle typu souboru, velké, staré a nepotřebné soubory, přesné duplicity (velikost, rychlý otisk, poté SHA-256), podobné fotografie (percepční hashování), zbytky odinstalovaných aplikací, komprese JPEG, mezipaměti, rozmazané a tmavé fotografie, Swiper (vlevo = smazat, vpravo = ponechat), plánované čištění a 30denní koš LUSTRUM pro vrácení. Bez oprávnění INTERNET: nic neopouští telefon. Žádná kouzla na úrovni roota: Android 11+ drží každou běžnou aplikaci mimo datové složky jiných aplikací. 8 jazyků (strojové překlady); beta verze 0.8; licence MIT."
+  },
+  "STENOGRAMA": {
+   "tags": [
+    "přepis",
+    "audio"
+   ],
+   "line": "Přepis dlouhého audia přímo v prohlížeči s lokálním Whisperem: jeden HTML soubor, bez účtu, bez serveru, bez vodoznaku. Vaše audio nikdy neopustí zařízení; stáhne se jen model Whisper, jednou.",
+   "detail": "Čte MP3 a WAV po částech (délka tedy není omezena pamětí); jiné formáty (M4A, OGG/Opus, MP4, FLAC) se dekódují celé. Každý úsek se řeže na pauze, aby se slova nerozdělila; průběh se ukládá, takže můžete přerušit a pokračovat. Editor na stránce (kliknutím na čas uslyšíte dané místo), odstranění typických „duchových“ frází Whisperu, export do .txt, .srt, .vtt, .docx nebo do schránky. Používá WebGPU, je-li dostupné, jinak procesor (WASM). Instalovatelná PWA; model zůstane po prvním stažení v mezipaměti. Knihovna se při prvním přepisu načítá z jsDelivr, kontrolováno pomocí SHA-384. Rozhraní v 7 jazycích; licence MIT."
+  },
+  "GERMEN": {
+   "tags": [
+    "lokální UI",
+    "Rust"
+   ],
+   "line": "Trénujte malý jazykový model od nuly v čistém Rustu na běžném procesoru: bez Pythonu, bez CUDA, bez účtu, bez přístupu k síti, bez telemetrie. Jeden binární soubor, jeden textový soubor, jeden příkaz.",
+   "detail": "Program v Rustu (na Burn, s jeho čistě rustovým backendem CPU), který trénuje síť typu GPT nad bajty nebo nad slovníkem BPE naučeným z vašeho vlastního textu a poté z natrénovaného modelu generuje text. GERMEN Studio: lokální okno (127.0.0.1) s křivkou ztráty, rychlostí a ukázkami textu, v 8 jazycích. Příkazy pro změření rychlosti vašeho počítače a pro kontrolu a opravu souborů modelu. Je to dílna pro učení a experimentování, nikoli továrna na chatboty: model o 1–25 milionech parametrů se učí formu textu, nikoli znalosti o světě. Bez GPU, bez smíšené přesnosti. Verze 0.6; licence MIT."
+  },
+  "CUANTOR": {
+   "tags": [
+    "kvantový počítač",
+    "simulátor"
+   ],
+   "line": "Simulátor kvantového počítače pro váš desktop, od 5 do 1000 qubitů, s rozhraním ve stylu IBM Quantum Composer. Přesná matematika, ale ne skutečný kvantový hardware.",
+   "detail": "Program v Rustu o čtyřech částech (jádro, okno, příkazový řádek, spojení s IBM) pro Windows, macOS a Linux. Kreslicí plocha jako IBM Composer: položte barevná hradla na linie (qubity) a sledujte, jak sloupce a koule ukazují výsledek, zatímco textový panel zapisuje tentýž obvod živě v OpenQASM a Qiskit. Tři kalkulátory: jeden, který si pamatuje každé číslo (až 28 qubitů), jeden velmi rychlý pro jednoduchá hradla (až 4096) a jeden pro obvody s málo větveními. Měření, reset a if uprostřed běhu, vlastní hradla, simulovaný šum, opakovatelné výsledky pomocí seedu. Čte OpenQASM 2.0 a 3.0; obvod můžete otevřít v IBM Composer nebo odeslat na skutečný stroj IBM s klíčem k vašemu vlastnímu účtu (neověřeno na skutečném hardwaru IBM). Rozhraní v 8 jazycích; verze 0.2."
+  }
+ }
+}

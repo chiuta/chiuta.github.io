@@ -8,7 +8,7 @@ function ls(k,v){ try{ if(v===undefined) return W.localStorage.getItem(k); W.loc
 function rm(k){ try{ W.localStorage.removeItem(k); }catch(e){} }
 var reduce=W.matchMedia&&W.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-/* ---------- texte, în cele 8 limbi ---------- */
+/* ---------- texte, în cele 8 limbi (+ cele 17 noi din i18n25.js, generat de tools/i18n25/hub-i18n.mjs) ---------- */
 var S={
   sections:{ro:'Secțiuni',en:'Sections',fr:'Rubriques',it:'Sezioni',es:'Secciones',pt:'Secções',de:'Bereiche',hu:'Szekciók'},
   view:{ro:'Afișare',en:'View',fr:'Affichage',it:'Vista',es:'Vista',pt:'Vista',de:'Ansicht',hu:'Nézet'},
@@ -25,7 +25,8 @@ var S={
   filters:{ro:'Filtre',en:'Filters',fr:'Filtres',it:'Filtri',es:'Filtros',pt:'Filtros',de:'Filter',hu:'Szűrők'},
   top:{ro:'Înapoi sus',en:'Back to top',fr:'Retour en haut',it:'Torna su',es:'Volver arriba',pt:'Voltar ao topo',de:'Nach oben',hu:'Vissza a tetejére'}
 };
-function lang(){ var l=(H.lang||'en').slice(0,2).toLowerCase(); return S.top[l]?l:'en'; }
+/*@@UX25@@*/
+function lang(){ var f=(H.lang||'en').toLowerCase(), l=S.top[f]?f:f.slice(0,2); return S.top[l]?l:'en'; }
 function s(k){ var o=S[k]; return o[lang()]||o.en; }
 
 /* ---------- stare ---------- */

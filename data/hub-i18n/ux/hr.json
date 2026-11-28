@@ -1,0 +1,16 @@
+{
+ "sections": "Odjeljci",
+ "view": "Prikaz",
+ "roomy": "Detaljno",
+ "compact": "Sažeto",
+ "saved": "Spremljeno",
+ "savedHint": "Pritisnite ☆ na kartici da je spremite. Spremljene stavke ostaju samo na ovom uređaju.",
+ "save": "Spremi",
+ "unsave": "Ukloni iz spremljenih",
+ "recent": "Nedavno otvoreno",
+ "clear": "Očisti povijest",
+ "share": "Kopiraj poveznicu na ovaj prikaz",
+ "copied": "Poveznica kopirana",
+ "filters": "Filtri",
+ "top": "Natrag na vrh"
+}

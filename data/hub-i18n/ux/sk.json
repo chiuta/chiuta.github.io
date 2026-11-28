@@ -1,0 +1,16 @@
+{
+"sections":"Sekcie",
+"view":"Zobrazenie",
+"roomy":"Podrobné",
+"compact":"Kompaktné",
+"saved":"Uložené",
+"savedHint":"Stlačením ☆ na karte ju uložíte. Uložené položky zostávajú iba v tomto zariadení.",
+"save":"Uložiť",
+"unsave":"Odstrániť z uložených",
+"recent":"Naposledy otvorené",
+"clear":"Vymazať históriu",
+"share":"Kopírovať odkaz na toto zobrazenie",
+"copied":"Odkaz skopírovaný",
+"filters":"Filtre",
+"top":"Späť hore"
+}
